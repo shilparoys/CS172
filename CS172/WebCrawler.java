@@ -4,33 +4,52 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import java.util.*;
 
 
 public class WebCrawler{
 
+  public static void printCollection(Collection<String> c){
+    Iterator<String> it = c.iterator();
+    while ( it.hasNext() ){
+      System.out.println(it.next());
+    }
+
+  }
+
+  //method to parse html file 
   public static void jsoupParse(String fileName){
-    File input = new File(fileName);
     try{
+      Set <String> url = new HashSet<String>();
+
+      File input = new File("./htmlfolder/"+ fileName);
       Document doc = Jsoup.parse(input, "UTF-8", "");
+
       Element content = doc.getElementById("content");
       Elements links = content.getElementsByTag("a");
       for (Element link : links) {
         String linkHref = link.attr("href");
-        String linkText = link.text();
+        url.add(linkHref);
       }
-    }
-    catch (Exception e){
-      System.err.println("Caught IOException: " + e.getMessage());
+      printCollection(url);
 
     }
+    catch(IOException e){
+      e.printStackTrace();
+    }
+
+
+
   }
 
-  public static void downloadFile(String seed, int i) throws IOException, MalformedURLException{
+  //downlaoding file contents
+  public static void downloadFile(String seed, int i, File dir) throws IOException, MalformedURLException{
 
     URL urlObj = new URL(seed);
     BufferedReader x = new BufferedReader(new InputStreamReader(urlObj.openConnection().getInputStream()));
+
     String fileName = "file" + i + ".html";
-    BufferedWriter fos = new BufferedWriter(new FileWriter(fileName));
+    BufferedWriter fos = new BufferedWriter(new FileWriter(new File(dir, fileName)));
     while(x.ready()){
       String line = x.readLine();
       fos.write(line);
@@ -39,17 +58,20 @@ public class WebCrawler{
     x.close();
     fos.close();
     jsoupParse(fileName);
-  }
-  //method
+
+
+  //method to read from seedFile which contains .edu domains
   public static void readSeedFile(String fileName, String htmlFile){
     try{
       int i = 0;
       BufferedReader reader = new BufferedReader(new FileReader(fileName));
       String line;
       String outputPossible;
+      File dir = new File("htmlfolder");
+      dir.mkdir();
       while ((line = reader.readLine()) != null){
         System.out.println(line);
-        downloadFile(line, i++);
+        downloadFile(line, i++, dir);
       }
       reader.close();
     }
