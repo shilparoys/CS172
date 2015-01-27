@@ -9,7 +9,7 @@ import java.util.*;
 
 public class WebCrawler{
 
-  public static void printCollection(Collection<String> c){
+  public static void printCollection(Set<String> c){
     Iterator<String> it = c.iterator();
     while ( it.hasNext() ){
       System.out.println(it.next());
@@ -17,18 +17,19 @@ public class WebCrawler{
 
   }
 
-  //method to parse html file 
+  //method to parse html file
   public static void jsoupParse(String fileName){
     try{
       Set <String> url = new HashSet<String>();
 
       File input = new File("./htmlfolder/"+ fileName);
-      Document doc = Jsoup.parse(input, "UTF-8", "");
+      Document doc = Jsoup.parse(input, "UTF-8");
 
-      Element content = doc.getElementById("content");
-      Elements links = content.getElementsByTag("a");
+      //Element content = doc.getElementById("content");
+      Elements links = doc.select("a[href]");
       for (Element link : links) {
-        String linkHref = link.attr("href");
+        String linkHref = link.attr("abs:href");
+        System.out.println(linkHref);
         url.add(linkHref);
       }
       printCollection(url);
@@ -58,6 +59,7 @@ public class WebCrawler{
     x.close();
     fos.close();
     jsoupParse(fileName);
+  }
 
 
   //method to read from seedFile which contains .edu domains
