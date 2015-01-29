@@ -8,28 +8,28 @@ import java.util.*;
 
 public class WebCrawler{
 
-  static Set <String> url = new HashSet<String>();
+  private Set <String> url = new TreeSet<String>();
 
-  public static void printCollection(Set<String> c){
-    Iterator<String> it = c.iterator();
+  public void printCollection(){
+    Iterator<String> it = url.iterator();
     while ( it.hasNext() ){
       System.out.println(it.next());
     }
   }
 
-  public static void parseHttpOnly(Set<String>url){
+  public void parseHttpOnly(){
     Iterator<String> it = url.iterator();
     while(it.hasNext()){
-      if(it.next().contains("http:")){}
+    String temp = it.next();
+      if(temp.contains("http:")){}
       else{
         it.remove();
       }
     }
-   //printCollection(url);
+    printCollection();
   }
 
-  public static void removeBookmark(Set<String>url){
-    Set <String> urlTemp = new HashSet<String>();
+  public void removeBookmark(){
     Iterator<String> it = url.iterator();
     int index = 0;
     while(it.hasNext()){
@@ -39,22 +39,21 @@ public class WebCrawler{
         String temp = new String(curr.substring(0, index));
         it.remove();
         if(!url.contains(temp)){
-          urlTemp.add(temp);
+          url.add(temp);
         }
       }
     }
-    url.addAll(urlTemp);
-    printCollection(url);
+    printCollection();
 }
 
   //method to clean urls
-  public static void cleanURL(Set<String> url){
-    parseHttpOnly(url);
-    removeBookmark(url);
+  public void cleanURL(){
+    parseHttpOnly();
+    //removeBookmark();
   }
 
   //method to parse html file
-  public static void jsoupParse(String fileName, String baseUrl){
+  public void jsoupParse(String fileName, String baseUrl){
     try{
       File input = new File("./htmlfolder/"+ fileName);
       Document doc = Jsoup.parse(input, "UTF-8", baseUrl);
@@ -63,16 +62,16 @@ public class WebCrawler{
         String linkHref = link.attr("abs:href");
         url.add(linkHref);
       }
-    //printCollection(url);
+   printCollection();
     }
     catch(IOException e){
       e.printStackTrace();
     }
-    cleanURL(url);
+    //cleanURL();
   }
 
   //downlaoding file contents
-  public static void downloadFile(String seed, int i, File dir) throws IOException, MalformedURLException{
+  public void downloadFile(String seed, int i, File dir) throws IOException, MalformedURLException{
     URL urlObj = new URL(seed);
     BufferedReader x = new BufferedReader(new InputStreamReader(urlObj.openConnection().getInputStream()));
     String fileName = "file" + i + ".html";
@@ -89,7 +88,7 @@ public class WebCrawler{
 
 
   //method to read from seedFile which contains .edu domains
-  public static void readSeedFile(String fileName, String htmlFile){
+  public void readSeedFile(String fileName, String htmlFile){
     try{
       int i = 0;
       BufferedReader reader = new BufferedReader(new FileReader(fileName));
@@ -98,9 +97,13 @@ public class WebCrawler{
       File dir = new File("htmlfolder");
       dir.mkdir();
       while ((line = reader.readLine()) != null){
+        if(!line.trim().equals(""))
         downloadFile(line, i++, dir);
       }
       reader.close();
+    }
+    catch(IOException e){
+      System.err.format("IO exception at readLine");
     }
     catch (Exception e){
       System.err.format("Exception occurred trying to read '%s'.\n", fileName);
@@ -108,14 +111,14 @@ public class WebCrawler{
   }
 
   //main method
-  public static void main(String [] args){
-    String htmlFile = "";
-    //read input from command line
-    String fileName = args[0];
-    int numPages = Integer.parseInt(args[1]);
-    int hopsAway = Integer.parseInt(args[2]);
-    String output = args[3];
-    //read seed file
-    readSeedFile(fileName, htmlFile);
-  }
+  // public static void main(String [] args){
+  //   String htmlFile = "";
+  //   //read input from command line
+  //   String fileName = args[0];
+  //   int numPages = Integer.parseInt(args[1]);
+  //   int hopsAway = Integer.parseInt(args[2]);
+  //   String output = args[3];
+  //   //read seed file
+  //   readSeedFile(fileName, htmlFile);
+  // }
 }
