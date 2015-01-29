@@ -9,63 +9,53 @@ import java.util.*;
 public class WebCrawler{
 
   static Set <String> url = new HashSet<String>();
-  static URL urlObj;
 
   public static void printCollection(Set<String> c){
     Iterator<String> it = c.iterator();
     while ( it.hasNext() ){
       System.out.println(it.next());
     }
-
   }
 
   public static void parseHttpOnly(Set<String>url){
     Iterator<String> it = url.iterator();
     while(it.hasNext()){
-      if(it.next().contains("http:")){
-      }
+      if(it.next().contains("http:")){}
       else{
         it.remove();
       }
     }
-  //  printCollection(url);
+   //printCollection(url);
   }
 
   public static void removeBookmark(Set<String>url){
+    Set <String> urlTemp = new HashSet<String>();
     Iterator<String> it = url.iterator();
     int index = 0;
     while(it.hasNext()){
       String curr = it.next();
-      if(curr.contains("#")){   
+      if(curr.contains("#")){
         index = curr.indexOf("#");
-        String temp = new String(curr.substring(0, index)); 
-/*
-System.out.println(" \nfound ");
-System.out.println(curr);
-System.out.println(temp);
-*/
-         it.remove();
-         if(!url.contains(temp)){
-//System.out.println("new url is not in the list\n\n");
-//           url.add(temp);   //this will not work, won't add
-         }
-       }
+        String temp = new String(curr.substring(0, index));
+        it.remove();
+        if(!url.contains(temp)){
+          urlTemp.add(temp);
+        }
       }
-    printCollection(url);
     }
+    url.addAll(urlTemp);
+    printCollection(url);
+}
 
   //method to clean urls
   public static void cleanURL(Set<String> url){
-    //parse only http links
     parseHttpOnly(url);
     removeBookmark(url);
-
   }
 
   //method to parse html file
   public static void jsoupParse(String fileName, String baseUrl){
     try{
-
       File input = new File("./htmlfolder/"+ fileName);
       Document doc = Jsoup.parse(input, "UTF-8", baseUrl);
       Elements links = doc.select("a[href]");
@@ -73,18 +63,16 @@ System.out.println(temp);
         String linkHref = link.attr("abs:href");
         url.add(linkHref);
       }
-    //  printCollection(url);
+    //printCollection(url);
     }
     catch(IOException e){
       e.printStackTrace();
     }
-
     cleanURL(url);
   }
 
   //downlaoding file contents
   public static void downloadFile(String seed, int i, File dir) throws IOException, MalformedURLException{
-
     URL urlObj = new URL(seed);
     BufferedReader x = new BufferedReader(new InputStreamReader(urlObj.openConnection().getInputStream()));
     String fileName = "file" + i + ".html";
@@ -121,7 +109,6 @@ System.out.println(temp);
 
   //main method
   public static void main(String [] args){
-
     String htmlFile = "";
     //read input from command line
     String fileName = args[0];
@@ -130,7 +117,5 @@ System.out.println(temp);
     String output = args[3];
     //read seed file
     readSeedFile(fileName, htmlFile);
-
   }
-
 }
