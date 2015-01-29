@@ -33,17 +33,26 @@ public class WebCrawler{
 
   public static void removeBookmark(Set<String>url){
     Iterator<String> it = url.iterator();
+    int index = 0;
     while(it.hasNext()){
-      if(it.next().contains("#")){
-        int index = it.next().indexOf("#");
-      //  String temp =it.next().substring(0, index-1);
-        //it.remove();
-      //  System.out.println(temp);
-        //url.add(temp);
+      String curr = it.next();
+      if(curr.contains("#")){   
+        index = curr.indexOf("#");
+        String temp = new String(curr.substring(0, index)); 
+/*
+System.out.println(" \nfound ");
+System.out.println(curr);
+System.out.println(temp);
+*/
+         it.remove();
+         if(!url.contains(temp)){
+//System.out.println("new url is not in the list\n\n");
+//           url.add(temp);   //this will not work, won't add
+         }
+       }
       }
-    }
     printCollection(url);
-  }
+    }
 
   //method to clean urls
   public static void cleanURL(Set<String> url){
