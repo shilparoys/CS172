@@ -6,8 +6,10 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import java.util.*;
 
-
 public class WebCrawler{
+
+  static Set <String> url = new HashSet<String>();
+  static URL urlObj;
 
   public static void printCollection(Set<String> c){
     Iterator<String> it = c.iterator();
@@ -17,30 +19,58 @@ public class WebCrawler{
 
   }
 
+  public static void parseHttpOnly(Set<String>url){
+    Iterator<String> it = url.iterator();
+    while(it.hasNext()){
+      if(it.next().contains("http:")){
+      }
+      else{
+        it.remove();
+      }
+    }
+  //  printCollection(url);
+  }
+
+  public static void removeBookmark(Set<String>url){
+    Iterator<String> it = url.iterator();
+    while(it.hasNext()){
+      if(it.next().contains("#")){
+        int index = it.next().indexOf("#");
+      //  String temp =it.next().substring(0, index-1);
+        //it.remove();
+      //  System.out.println(temp);
+        //url.add(temp);
+      }
+    }
+    printCollection(url);
+  }
+
+  //method to clean urls
+  public static void cleanURL(Set<String> url){
+    //parse only http links
+    parseHttpOnly(url);
+    removeBookmark(url);
+
+  }
+
   //method to parse html file
-  public static void jsoupParse(String fileName){
+  public static void jsoupParse(String fileName, String baseUrl){
     try{
-      Set <String> url = new HashSet<String>();
 
       File input = new File("./htmlfolder/"+ fileName);
-      Document doc = Jsoup.parse(input, "UTF-8");
-
-      //Element content = doc.getElementById("content");
+      Document doc = Jsoup.parse(input, "UTF-8", baseUrl);
       Elements links = doc.select("a[href]");
       for (Element link : links) {
         String linkHref = link.attr("abs:href");
-        System.out.println(linkHref);
         url.add(linkHref);
       }
-      printCollection(url);
-
+    //  printCollection(url);
     }
     catch(IOException e){
       e.printStackTrace();
     }
 
-
-
+    cleanURL(url);
   }
 
   //downlaoding file contents
@@ -48,7 +78,6 @@ public class WebCrawler{
 
     URL urlObj = new URL(seed);
     BufferedReader x = new BufferedReader(new InputStreamReader(urlObj.openConnection().getInputStream()));
-
     String fileName = "file" + i + ".html";
     BufferedWriter fos = new BufferedWriter(new FileWriter(new File(dir, fileName)));
     while(x.ready()){
@@ -58,7 +87,7 @@ public class WebCrawler{
     }
     x.close();
     fos.close();
-    jsoupParse(fileName);
+    jsoupParse(fileName, seed);
   }
 
 
@@ -72,14 +101,12 @@ public class WebCrawler{
       File dir = new File("htmlfolder");
       dir.mkdir();
       while ((line = reader.readLine()) != null){
-        System.out.println(line);
         downloadFile(line, i++, dir);
       }
       reader.close();
     }
     catch (Exception e){
       System.err.format("Exception occurred trying to read '%s'.\n", fileName);
-
     }
   }
 
