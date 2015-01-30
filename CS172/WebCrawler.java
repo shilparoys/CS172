@@ -9,7 +9,8 @@ import java.util.*;
 
 public class WebCrawler{
 
-	private Set <String> url = new TreeSet<String>();
+	private Set <String> url = new HashSet<String>();
+	private String linkHref;
 
     public void printCollection(){
     	Iterator<String> it = url.iterator();
@@ -18,60 +19,55 @@ public class WebCrawler{
     	}
 	}
 
-	public void parseHttpOnly(){
-    	Iterator<String> it = url.iterator();
-    	while(it.hasNext()){
-    		String temp = it.next();
-			if(temp.contains("http:")){}
-        	else{
-        		it.remove();
-        	}
-    	}
-		printCollection();
+	public String parseHttpOnly(){
+			if(linkHref.contains("http:")){
+				return linkHref;
+			}
+      else{
+				return "";
+      }
 	}
 
-	public void removeBookmark(){
-    	Iterator<String> it = url.iterator();
+	public String removeBookmark(){
     	int index = 0;
-    	while(it.hasNext()){
-        	String curr = it.next();
-      		if(curr.contains("#")){
-        		index = curr.indexOf("#");
-        		String temp = new String(curr.substring(0, index));
-        		it.remove();
-        		if(!url.contains(temp)){
-        			url.add(temp);
-        		}
-      		}
-    	}	
-    	printCollection();
+			if(linkHref.contains("#")){
+				index = linkHref.indexOf("#");
+        String temp = new String(linkHref.substring(0, index));
+				return temp;
+      }
+			return linkHref;
 	}
 
     //method to clean urls
-  	public void cleanURL(){
-		parseHttpOnly();
-      	//removeBookmark();
+  	public String cleanURL(){
+		linkHref = parseHttpOnly();
+		if(!linkHref.isEmpty()){
+			linkHref = removeBookmark();
+		}
+		return linkHref;
 	}
 
 	//method to parse html file
   	public void jsoupParse(String fileName, String baseUrl){
     	try{
         	File input = new File("./htmlfolder/"+ fileName);
-        	Document doc = Jsoup.parse(input, "UTF-8", baseUrl);
+        	Document doc = Jsoup.parse(input, "UTF-8", "");
         	Elements links = doc.select("a[href]");
         	for (Element link : links) {
-				String linkHref = link.attr("abs:href");
-
-		    	//if(url.contains(linkHref)){} //doesn't work for removing repeats
-		    	//else
-					url.add(linkHref);
+				   	linkHref = link.attr("abs:href");
+						linkHref.trim();
+						if(!linkHref.isEmpty()){
+							linkHref = cleanURL();
+							if(!linkHref.isEmpty() && !url.contains(linkHref)){
+									url.add(linkHref);
+							}
+						}
       		}
     		printCollection();
     	}
     	catch(IOException e){
       		e.printStackTrace();
     	}
-    	//cleanURL();
   	}
 
 	//downlaoding file contents
