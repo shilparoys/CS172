@@ -44,7 +44,7 @@ body {min-width: 881px;}
 }(document, 'script', 'facebook-jssdk'));</script><a name="top" />
 <p id="skiplink"><a accesskey="2" href="#content">Skip over navigation</a>�<a accesskey="0" href="/main/about/site/accesskeys/">View Access Keys</a></p>
 <div id="wrappercontainer"><div id="wrapper"><div id="headercontainer"><div id="header"><div id="bannercontainer"><div id="banner">
-       <img alt="Princeton University Photo" src="/main/images/banner/11.jpg" />
+       <img alt="Princeton University Photo" src="/main/images/banner/18.jpg" />
         </div></div><div id="logobarcontainer"><div id="logobar">
 <h1><a accesskey="1" href="/main/" title="Princeton University"><img alt="Princeton University" src="/main/css/images/princeton_university.gif" /><span /></a></h1>
 </div></div><div id="toolbarcontainer"><div id="toolbar">
@@ -753,3 +753,24 @@ document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.
 var pageTracker = _gat._getTracker("UA-1512522-2");
 pageTracker._trackPageview();
 </script><script type="text/javascript">
+
+$j(document).ready(function(){
+  var localserver = "www.princeton.edu/main/";
+  $j("a").not("a[href='#']").not("a[href^='/main/']").not("a[href^='http://"+localserver+"']").click(function(){
+    var url = $j(this).attr("href").replace(/^http\:\/\/(www\.)*/i, "");
+    pageTracker._trackPageview('/main/_outbound/'+url);
+  });
+  $j("a[href$=pdf]").click(function(){
+    var url = $j(this).attr("href").replace(/^http\:\/\/(www\.)*/i, "");
+    pageTracker._trackPageview('/main/_documents/'+url);
+  });
+});
+</script><script type="text/javascript">
+setTimeout(function(){var a=document.createElement("script");
+var b=document.getElementsByTagName("script")[0];
+a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0023/0812.js?"+Math.floor(new Date().getTime()/3600000);
+a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script>
+</body>
+
+</html>

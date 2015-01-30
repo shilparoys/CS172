@@ -51,7 +51,7 @@ public class WebCrawler{
   	public void jsoupParse(String fileName, String baseUrl){
     	try{
         	File input = new File("./htmlfolder/"+ fileName);
-        	Document doc = Jsoup.parse(input, "UTF-8", "");
+        	Document doc = Jsoup.parse(input, "UTF-8", "baseUrl");
         	Elements links = doc.select("a[href]");
         	for (Element link : links) {
 				   	linkHref = link.attr("abs:href");
@@ -63,7 +63,6 @@ public class WebCrawler{
 							}
 						}
       		}
-    		printCollection();
     	}
     	catch(IOException e){
       		e.printStackTrace();
@@ -110,15 +109,4 @@ public class WebCrawler{
     	}
   	}
 
-	//main method
-  	// public static void main(String [] args){
-		//String htmlFile = "";
-  	    //read input from command line
-  	    //String fileName = args[0];
-     	//int numPages = Integer.parseInt(args[1]);
-     	//int hopsAway = Integer.parseInt(args[2]);
-     	//String output = args[3];
-        //read seed file
-     	//readSeedFile(fileName, htmlFile);
-     	//}
 }
