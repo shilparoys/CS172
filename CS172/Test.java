@@ -13,6 +13,6 @@ public class Test{
 
       WebCrawler wb = new WebCrawler();
       wb.readSeedFile(fileName, htmlFile);
-      wb.printCollection();
+      //wb.printCollection("b");
   }
 }

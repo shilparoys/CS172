@@ -10,13 +10,24 @@ import java.util.*;
 public class WebCrawler{
 
 	private Set <String> url = new HashSet<String>();
+	private Set <String> robots = new HashSet<String>();
 	private String linkHref;
 
-    public void printCollection(){
+    public void printCollection(String which){
     	Iterator<String> it = url.iterator();
-    	while ( it.hasNext() ){
-			System.out.println(it.next());
+		Iterator<String> it2 = robots.iterator();
+
+		if(which.equals("a")){
+    		while ( it.hasNext() ){
+				System.out.println(it.next());
+			}
     	}
+		if(which.equals("b")){
+    		while ( it2.hasNext() ){
+				System.out.println(it2.next());
+
+			}
+		}
 	}
 
 	public String parseHttpOnly(){
@@ -60,6 +71,7 @@ public class WebCrawler{
 							linkHref = cleanURL();
 							if(!linkHref.isEmpty() && !url.contains(linkHref)){
 									url.add(linkHref);
+									//robots(linkHref);						
 							}
 						}
       		}
@@ -85,7 +97,6 @@ public class WebCrawler{
     	jsoupParse(fileName, seed);
   	}
 
-
 	//method to read from seedFile which contains .edu domains
   	public void readSeedFile(String fileName, String htmlFile){
     	try{
@@ -108,5 +119,45 @@ public class WebCrawler{
       	System.err.format("Exception occurred trying to read '%s'.\n", fileName);
     	}
   	}
+
+	public void robots(String seed){
+		try{
+    	    URL urlObj = new URL(seed);
+			String host = urlObj.getHost();
+			String robot ="http://" + host + "/robots.txt";
+			URL robotsurl = new URL(robot);
+
+			/* Check if URL exists. */
+			HttpURLConnection.setFollowRedirects(false);
+			HttpURLConnection con = (HttpURLConnection) robotsurl.openConnection();
+			con.setRequestMethod("GET");
+			con.connect();
+			int exists = con.getResponseCode(); 
+
+
+			if(exists == 200){
+    	    	BufferedReader in = new BufferedReader(new InputStreamReader(robotsurl.openConnection().getInputStream()));
+				String output;
+				while((output = in.readLine()) != null){
+					if(output.contains("Disallow:") && output.length() > 10 ){
+						output.replaceAll("\\s","");
+				    	int index = output.indexOf(":");
+						output = output.substring(index+1, output.length());
+						String added = "http://" + host + output;
+						added.replaceAll("\\s","");
+						robots.add(added);
+						//TOFIX: weird spaces in added, what should be done with the *'s? 
+					}
+				}
+				in.close();  
+			}
+		}
+		catch(IOException e){
+			System.err.format("IO exception in robots");
+		}
+    	catch (Exception e){
+      	System.err.format("Exception occurred in robots");
+    	}
+	}
 
 }
