@@ -24,6 +24,7 @@ public class Test{
       }
       else{
         System.err.println("Seed file not found");
+        System.exit(1);
       }
   }
 }

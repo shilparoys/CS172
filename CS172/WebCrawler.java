@@ -9,10 +9,12 @@ import java.util.*;
 
 public class WebCrawler{
 
+    //private member variables
 	private Set <String> url = new HashSet<String>();
 	private Set <String> robots = new HashSet<String>();
 	private String linkHref;
-
+    
+    //method to print out Collection
     public void printCollection(String which){
     	Iterator<String> it = url.iterator();
 		Iterator<String> it2 = robots.iterator();
