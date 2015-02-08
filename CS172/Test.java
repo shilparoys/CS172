@@ -9,8 +9,7 @@ public class Test{
         System.exit(1);
       }
 
-      String htmlFile = "";
-      //read input from command line
+      String htmlFile = ""; //read input from command line
       String fileName = args[0];
       int numPages = Integer.parseInt(args[1]);
       int hopsAway = Integer.parseInt(args[2]);
@@ -35,6 +34,6 @@ public class Test{
         System.exit(1);
       }
 
-      wb.printCollection();
+    //  wb.printCollection();
   }
 }

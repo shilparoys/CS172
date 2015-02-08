@@ -17,10 +17,10 @@ public class WebCrawler{
 	private Set<String> url = new HashSet<String>();
 
   private String linkHref;
-	private int currenthop;
+  private int currenthop;
   private int numPages;
   private int maxHopsAway;
-	private int addTo;
+  private int addTo;
   private int i = 0;
 
   //constructor
@@ -136,6 +136,7 @@ public class WebCrawler{
 
 	//method to read from seedFile which contains .edu domains, 0th hop
   public void readSeedFile(String fileName, String htmlFile){
+System.out.println("readseedfile");
 		try{
 			BufferedReader reader = new BufferedReader(new FileReader(fileName));
       String line;
@@ -144,9 +145,19 @@ public class WebCrawler{
       dir.mkdir();
 			//reading from input file here
       while ((line = reader.readLine()) != null){
-				if(!line.trim().equals(""))
+	  	if(!line.trim().equals("")){
+
+	System.out.println(maxHopsAway);
+			if(maxHopsAway > 0)
 				downloadFile(line,/* i++,*/ dir);
+			else{
+				if(url.size() < numPages ){
+			System.out.println("readseedfile no hops");
+					addToList(line);
+				}
 			}
+		}
+	  }
       reader.close();
 			//now we want to read from the queues
 			currenthop++;
