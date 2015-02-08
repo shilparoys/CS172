@@ -1,310 +1,155 @@
 
 
-<!DOCTYPE html>
-<html lang="en">
+ 
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-		
+<title>UCR Campus Map Beta</title>
+<!-- Google Universal Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-
-<!-- Facebook Metatags -->
-<meta property='og:image' content='http://cdn.assets-phoenix.net/content/dam/altcloud/img/locations/AL-Birmingham-Campus.jpg' />
-<meta property='og:title' content='Online Colleges, Schools & Classes' />
-<meta property='og:name' content='University of Phoenix' />
-<meta property='og:type' content='website' />
-<meta property='article:author' content='' />
-    
-
-    
-        <link rel="dns-prefetch" href="//ajax.googleapis.com">
-        <link rel="dns-prefetch" href="//cdn.assets-phoenix.net">
-        
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="robots" content="noodp,noydir">
-      <meta name="keywords" content="">
-    
-
-    
-      <meta name="description" content="University of Phoenix offers campus and online degree programs, certificate courses, and individual online classes. Learn more about admissions, accreditation, tuition and financial aid options, or get started with your enrollment today.">
-      <meta property="og:description" content='University of Phoenix offers campus and online degree programs, certificate courses, and individual online classes. Learn more about admissions, accreditation, tuition and financial aid options, or get started with your enrollment today.'>
-    <link rel="canonical" href="/">
-  <meta name="title" content="University of Phoenix - Phoenix.edu" />
-  <title>Online Colleges, Schools & Classes - University of Phoenix</title>
-
-  <!-- for MS Surface Tiles -->
-  <meta name="msapplication-TileImage" content="/etc/designs/ac/img/logo_tile_white_144x144.png">
-  <meta name="msapplication-TileColor" content="#0099cc">
-
-  
-
-  
-  
-  
+  ga('create', 'UA-3051875-1', 'ucr.edu');
+  ga('send', 'pageview');
+</script>
 <script type="text/javascript">
-        if ( !window.CQ_Analytics ) {
-            window.CQ_Analytics = {};
-        }
-        if ( !CQ_Analytics.TestTarget ) {
-            CQ_Analytics.TestTarget = {};
-        }
-        CQ_Analytics.TestTarget.clientCode = 'apollogroupinc';
-    </script>
-    <link rel="stylesheet" href="/etc/clientlibs/foundation/testandtarget/testandtarget.css" type="text/css">
-<script type="text/javascript" src="/etc/clientlibs/foundation/testandtarget/testandtarget.js"></script>
-<script type="text/javascript" src="/etc/clientlibs/foundation/testandtarget/init.js"></script>
+if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/Blackberry/)) || (navigator.userAgent.match(/Android/)) || (navigator.userAgent.match(/iPod/i)))
+{location.replace("mobile.html");}
+</script>
+<style type="text/css">
+ span{cursor:pointer;}
+</style>
+<link type="text/css" rel="stylesheet" href="//www.ucr.edu/min/g=6bis-bluea-wide2" media="all" />
+<link type="text/css" rel="stylesheet" href="//www.ucr.edu/min/f=css/print6.css" media="print" />
 
-
-
-
-
-  <!-- RSS INCLUDE -->
-  
-  <!-- END RSS INCLUDE -->
-
-  <!-- Serving Open Sans via Google Web Fonts -->
-  <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700"/>
-  <!--[if IE]>
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:700italic" rel="stylesheet" type="text/css">
-  <![endif]-->
-
-  <!-- global client library css includes -->
-  <link rel="stylesheet" href="/etc/designs/statics/altcloud/clientlibs/global-head.css" type="text/css">
-<link rel="stylesheet" href="/apps/altcloud/components/homepage/clientlibs.css" type="text/css">
-
-
-  <link href="/etc/designs/ac/img/favicon.ico" rel="icon"/>
-
-  
-  
-
-  <link rel="icon" href="/etc/designs/ac/img/favicon.ico" type="image/x-icon">
-  <link rel="shortcut icon" href="/etc/designs/ac/img/favicon.ico" type="image/x-icon">
-
-  <!-- BEGIN: VERSION INFO -->
-  <script type="text/javascript">
-        var acVersion = "6.28.0.52678";
-    </script>                  
-  <!-- END: VERSION INFO -->
-
-  
-  
-
-
-
-
+<link rel="stylesheet" type="text/css" href="/css/local.css" media="all" />
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="//www.ucr.edu/min/g=js2"></script>
+<script type="text/javascript" src="ProojectedOverlay.js"></script>
+<script type="text/javascript" src="geoxml3.js"></script>
+<script type="text/javascript" src="UCRCampusMap1.js"></script>
+<script type="text/javascript" src="customPano.js"></script>
 <script type="text/javascript">
-if ( typeof COMMON === 'undefined' ) {
-    COMMON = {};
-}
+var viewResource = function(val){ return "<div id='my_resource' style='text-align:left;padding:10px;' ><p>The information provide here is from the Riverside Transit Agency's website and is being provided to the UCR constituancy as a service. For more information regarding schedules and routes plase see their <a href='http://www.riversidetransit.com/home/index.php?option=com_content&view=article&id=116&Itemid=106' rel='nofollow' target='infor_win'>website</a>. For other inforamation regarding parking or UCR Transportation please <a href='http://www.parking.ucr.edu/'>contact taps</a>.</p>"+
+"<p><strong>**Crest Cruiser/Bear Runner only operate during the academic year</strong></p><p><select onchange='document.getElementById(\"infor_win\").src=this.value'>"+
+"<option value='http://www.riversidetransit.com/home/images/stories/DOWNLOADS/ROUTES/001.pdf'>Route 1 – Service from UCR to Riverside Plaza, Galleria at Tyler, Corona Transit Center</option>"+
+"<option value='http://www.riversidetransit.com/home/images/stories/DOWNLOADS/ROUTES/014.pdf'>Route 14 – Service from Loma Linda to UCR and Galleria at Tyler</option>"+
+"<option value='http://www.riversidetransit.com/home/images/stories/DOWNLOADS/ROUTES/016.pdf'>Route 16 – Service from UCR to Canyon Crest Towne Center and Moreno Valley Mall</option>"+
+"<option value='http://www.riversidetransit.com/home/images/stories/DOWNLOADS/ROUTES/051.pdf'>Route 51 Crest Cruiser** – Service from UCR to Canyon Crest Towne Center</option>"+
+"<option value='http://www.riversidetransit.com/home/images/stories/DOWNLOADS/ROUTES/053.pdf'>Route 53 – Bear Runner** – Evening service UCR to Canyon Crest Towne Center</option>"+
+"<option value='http://www.riversidetransit.com/home/images/stories/DOWNLOADS/ROUTES/204.pdf'>**Express Route 204 – Service between Montclair Transcenter and UCR with stops in Ontario and Jurupa</option>"+
+"<option value='http://www.riversidetransit.com/home/images/stories/DOWNLOADS/ROUTES/208.pdf'>**Express Route 208 – Service between Temecula and UCR with stops in Murrieta, Sun City, and Perris</option>"+
+"<option value='http://www.riversidetransit.com/home/images/stories/DOWNLOADS/ROUTES/212.pdf'>**Express Route 212 - Service between San Jacinto and UCR witn stops in Hemet and Perris</option></select><iframe style='margin-left:-10px;margin-top:15px;' id='infor_win' src='"+val+"'></iframe></p></div>";}
 
-if ( typeof UPX === 'undefined' ) {
-    UPX = {};
-}
-
-UPX.pageComponents = ['campus_finder','footer','footerAlternate','header','mainNav','headerAlternate','mainNav','imageCarousel','quicklinks','columns','horizontalline','htmlsnippet','image','slideshow_item','parsys','row','spacer','styledcontainer','text','title','parsys','nt:unstructured',];
+var imageDisplay = function (img){ return "<img src='"+img+"'  style='width:auto !important;height:400px !important;display:block;margin:10px auto auto !important;'>";
+} 
 
 
-UPX.sessionservice = true;
-
-
-UPX.editmode = false;
 </script>
 
-  <!-- global client library js includes -->
-  <script type="text/javascript" src="/etc/designs/statics/altcloud/clientlibs/global-head.js"></script>
-
-
-  <!--[if lte IE 7]>
-    <script src="/etc/designs/statics/altcloud/clientlibs/old-ie/ie7.js"></script>
-  <![endif]-->
-
-  <!-- HTML5 shim -->
-  <!--[if lt IE 9]>
-    <script type='text/javascript' src='/etc/designs/ac/js/responsive/html5.js'></script>
-  <![endif]-->
-  
-    <script type="text/javascript">var inHeadTS=(new Date()).getTime();</script>
-    
-  
-  <script type="text/javascript">
-        var eCampus = "false";
-	if (document.cookie.indexOf("euopx") >= 0) {
-		 eCampus = "true";
-	}
-var visitorSegment = 'first-visit';
-if(document.cookie.indexOf('euopx') != -1) {
-	visitorSegment = 'student';
-}else if(document.cookie.indexOf('betaHomepage') != -1){
-	visitorSegment = 'repeat-visit';
-}
-var inHeadTS=(new Date()).getTime();
-</script>
-<script>var UA = 'UA-876819-1';</script>
-<meta name="google-site-verification" content="vJcAyxjrNx1gFZXYGVRJQgGhFtOShtoGaGySKPjdz7Q" />
-
+<link rel="stylesheet" type="text/css" href="MainMap.css" media="all"/>
+<!--[if IE]>
+<link rel="stylesheet" type="text/css" href="css/ie.css" media="all" />
+<![endif]-->
 </head>
+<body >
 
+<div class="branding">
 
-<body id="homepage" class="homepage">
+<div id="search-detail"></div>
+<div id="locations-detail">
+ 
 
-<div class="parbase clientcontext"><script type="text/javascript" src="/etc/clientlibs/granite/jquery.js"></script>
-<script type="text/javascript" src="/etc/clientlibs/granite/utils.js"></script>
-<script type="text/javascript" src="/etc/clientlibs/granite/jquery/granite.js"></script>
-<script type="text/javascript" src="/etc/clientlibs/foundation/jquery.js"></script>
-<script type="text/javascript" src="/etc/clientlibs/foundation/shared.js"></script>
-<script type="text/javascript" src="/etc/clientlibs/granite/underscore.js"></script>
-<script type="text/javascript" src="/etc/clientlibs/foundation/personalization/kernel.js"></script>
-<script type="text/javascript">
-    $CQ(function() {
-        CQ_Analytics.SegmentMgr.loadSegments("/etc/segmentation/uopx");
-        CQ_Analytics.ClientContextUtils.init("/etc/clientcontext/aptimus","");
-
-        
-    });
-</script>
+</div>
+<div id="legend-detail"></div>
+<div id="legend-settings"></div>
+<div id="directions-detail" >
+</div>
+<div id="mast_head">
+  <h2><a href="http://ucr.edu/"><span class="accessibility">UCR Campus Map <!--sup style="font-size: 0.31em; font-style: italic; color: rgb(241, 171, 0); font-weight: bold;">BETA</sup--></span></a><a href="http://campusmap.ucr.edu/campus-Map.php"></a><!--img src="images/beta_logo.png"/--></h2>
 </div>
 
-<script type="text/javascript" src="/etc/clientlibs/granite/jquery/noconflict.js"></script>
+<div id="main_nav" >
+<span tabindex="0" id="l_legend_detail" onmouseover="document.getElementById('f_img_le').src='images/feedback2.png'" onmouseout="document.getElementById('f_img_le').src='images/feedback.png'" onclick="document.location='feedback.html'" onkeydown="function(e){if(e.keyCode==13){document.location='feedback.html';}}">
+<!-- onclick="getNewWindow('DIV','legend-detail',legend)" onkeydown="handleMyKeyEvent(event,'DIV','legend-detail',legend)"-->
+<img id="f_img_le" src="images/feedback.png" alt="feedback"/>
+Feedback</span>
+<span tabindex="0" id="l_search_detail" onmouseover="document.getElementById('f_img_s').src='images/search_over.png'" onmouseout="document.getElementById('f_img_s').src='images/search1.png'"  onclick="getNewWindow('DIV','search-detail',searchB)" onkeydown="handleMyKeyEvent(event,'DIV','search-detail',searchB)">
+<img  id="f_img_s" src="images/search1.png"/>
+Search</span>
+<span tabindex="0" id="l_locations_detail"  onmouseover="document.getElementById('f_img_l').src='images/locations_over.png'" onmouseout="document.getElementById('f_img_l').src='images/locations1.png'"   onclick="getNewWindow('DIV','locations-detail','val')" onkeydown="handleMyKeyEvent(event,'DIV','locations-detail','val')" >
+<img id="f_img_l" src="images/locations1.png"/>
+Locations</span>
+<span tabindex="0" id="l_search_detail1" onmouseover="document.getElementById('f_img_s1').src='images/hshuttle2.png'" onmouseout="document.getElementById('f_img_s1').src='images/hshuttle1.png'"  onclick="getNewWindow('DIV','Schedule-detail',viewResource(this.getAttribute('frm1')))" frm1="http://www.riversidetransit.com/home/images/stories/DOWNLOADS/ROUTES/001.pdf" onkeydown="handleMyKeyEvent(event,'DIV','Schedule-detail',viewResource(this.getAttribute('frm1')))">
+<img  id="f_img_s1" src="images/hshuttle1.png" />
+Bus Schedule</span>
+
+<span tabindex="0" id="l_search_detail1"  onclick="document.location='http://admissions.ucr.edu/VisitUCR/virtualTours'" onmouseout="document.getElementById('f_img_s1q').src='images/360-0.png'" onmouseover="document.getElementById('f_img_s1q').src='images/360-1.png'">
+<img  id="f_img_s1q" src="images/360-0.png"  />
+Virtual Tours</span>
 
 
 
-   
-<script type="text/javascript">
-var UPXFeatureFlags = {
-	'feature.campus.finder.use.plct': true
-       
-        ,       
-        'feature.common.test.2': false
-       
-        ,       
-        'feature.common.test.1': false
-       
-        ,       
-        'feature.course.finder.use.plct': true
-       
-        ,       
-        'feature.ce.hub.pages.use.plct': true
-       
-        ,       
-        'feature.program.explorer.use.plct': true
-       
-        ,       
-        'feature.program.page.use.plct': true
-       
-        ,       
-        'feature.program.page.auto.pdf': true
-       
-        ,       
-        'feature.program.filter.use.plct': true
-       
-        ,       
-        'feature.certificate.page.use.plct': true
-};
-</script>
 
-
-<script type="text/javascript">
-var UPXPlctServiceUrl = "/api/plct/3/uopx";
-var UPXValidationServiceUrl = "/api/validation-service/1/uopx";
-</script>
-
-
-
-<script type="text/javascript" src="/etc/designs/common/js/scripts.js"></script>
-
-<script type="text/javascript" src="/etc/designs/ac/js/scripts.js"></script>
-
-<script type="text/javascript">
-  var coremetricsStartPath = "/aCloud";
-  COMMONTestUtilities.init();
-</script>
-
-
-
-<div class="global_properties"></div>
-
-<div class="prepopulation"><script type="text/javascript">
-var referer = document.referrer;
-var e=/^((\w+):\/\/)([^:\/\s]+)/;
-
-if (referer != null && referer.length > 0 && referer.match(e)) {
-		var host = RegExp.$3;
-		var queryName = "";
-		var engine = "";
-
-		if (host.indexOf("google") > 0 || host.indexOf("bing") > 0) {
-			engine = host.split(".")[1];
-			queryName = "q";
-		} else if (host.indexOf("yahoo") > 0) {
-				engine = "yahoo";
-				queryName = "p";
-		} else if (host.indexOf("aol") > 0) {
-				engine = "aol";
-				queryName = "query";
-		}
-
-		var queryString = referer.substring(referer.indexOf("?"));
-		if (referer.length > 0) {
-				var query;
-				var params = queryString.substring(1).split("&");
-				var found = false;
-				var count = 0;
-				var pattern = /^(\w+)=(\S+)$/;
-				while (!found && count < params.length) {
-						if (params[count].match(pattern)) {
-								var key = RegExp.$1;
-								var value = RegExp.$2;
-								if (key.match(queryName)) {
-										found = true;
-										setCookieValue("ac_prepop", "referring_domain=" + escape(host));
-										setCookieValue("ac_prepop", "referring_url=" + escape(referer));
-										setCookieValue("ac_prepop", "referring_engine=" + escape(engine));
-										if (engine != "" ) setCookieValue("ac_prepop", "referring_term=" + escape(unescape(value)));
-								}
-						}
-						count ++;
-				}
-		}
-}
-
-cookieArgSpooler("ac_prepop","clphone,pvp_campaign,pvp_campaign_int,detail_code,first_name,last_name,email_address,address,city,state,postal_code,postal_code_int,program_type,program_type_2,level_education,foreign_credit,military,program,channel,category,psrc,psrc_url,vrefid,creative_id,creative_desc,keyword,v1,v2,v3,v4,v5,v6,v7,v8,area_interest,tracking,income,source,detail,cluserid,unit,provider,initiative,mktg_prog,placement,version,classification,destination,distribution,user1,user2,user3,user4,user5,chat,kw,mode,cid");
-
-</script>
+<!--span tabindex="6" id="l_legend_settings" onmouseover="document.getElementById('f_img_se').src='images/settings_over.png'" onmouseout="document.getElementById('f_img_se').src='images/settings1.png'"  onclick="getNewWindow('DIV','legend-settings',settings)" onkeydown="handleMyKeyEvent(event,'DIV','legend-settings',settings)">
+<img id="f_img_se" src="images/settings1.png"/>
+Settings</span-->
 </div>
 
-<div class="requestsearchattribute searchrequest">
+<ul class="l_map_list_footer" >
+<li><a href="/campus-Map.php" tabindex='0'>Old Campus Map</a></li>
+<li><a href='javascript:void(0)' style='color:white;text-decoration:none;border:0;' onmouseout='this.style.color="#FFFFFF"' tabindex='0' onmouseover='this.style.color="#F1Ab00"' onclick="getNewWindow('DIV','directions-detail',directionD)">Directions to UCR Campus</a></li><li><a indextab='0' style='color:white;text-decoration:none;border:0;' onmouseout='this.style.color="#FFFFFF"' onmouseover='this.style.color="#F1Ab00"'  href="http://campusmap.ucr.edu/map-color.pdf">Large-Format Printable Map</a></li><li><a indextab='0' style='color:white;text-decoration:none;border:0;' onmouseout='this.style.color="#FFFFFF"' onmouseover='this.style.color="#F1Ab00"'  href="http://campusmap.ucr.edu/map.pdf">8½×11  Printable Map</a></li></ul>
 </div>
 
+<div tabindex="10" id="map_canvas" class="map_canvas">
 
+</div>
+<div class="footer">
+<div>
 
-<div class="skipNav" tabindex="0">[ <a href="#" name="content">Skip Main Nav</a> ]</div>
+</div>
+   <div id="footerwrapper">
+      <div id="prefooter">
+         <div class="column2">
+            <h3>General Campus Information</h3>
+            <address>University of California, Riverside<br />900 University Ave.<br />
+            Riverside, CA 92521<br /><br />Tel: (951) 827-1012<br />E-mail: <a href="mailto:ucr@ucr.edu">ucr@ucr.edu</a><br /><br /><br /></address>
+         </div>
+         <div class="column2">
+            <h3>Campus Parking Information</h3>
+            <address>There is a charge for visitor parking.
+            More information is available at <a href="http://www.parking.ucr.edu">Transportation and Parking Services</a><br /><br />
+            <strong>Parking information:</strong> (951) 827-4395<br />
+            Monday&ndash;Friday, 8 a.m.&ndash;4 p.m.<br /><br />
+After hours: <strong>Campus Police</strong> (951) 827-5222</address>
 
-<noscript class="enableJS">
-  <div>JavaScript is disabled in your web browser! Please enable this feature in order to take full advantage of this site.</div>
-</noscript>
+         </div>
+         <div class="column2R">
+            <h3>Additional Information</h3>
+            <address><strong>Receiving</strong><br />
+            3401 Watkins Drive<br />
+            Riverside, CA 92521  <br /><br />
+            <strong>Admissions/Campus Tours</strong><br />
+            Office of Undergraduate Recruitment-Tours<br />(951) 827-TOUR<br />
+            <a href="http://admissions.ucr.edu/VisitUCR">Campus Tours</a></address>
+         </div>
+         <div class="clear"></div>
+      </div>
+      <div id="footer">
+         <ul>
+            <li><a href="feedback.html">Feedback</a></li>
+            <li><a href="http://www.ucr.edu/privacy.html">Privacy Policy</a></li>
 
-<div class="quickAccessBar quick_access_bar">
+            <li><a href="http://www.ucr.edu/terms.html">&copy; 2014 Regents of the University of California</a></li>
+         </ul>
+      </div>
 
-<div class="student-access">
-  <div class="phx-container">
-    <ul>
-      <li>
-        <a class="prep-center headerVisitingStudent" href="/experience.html?path=%2Fexperience%2Fprep-center.html" title="Phoenix Prep Center" name="header_Phoenix_Prep_Center" id="header_Phoenix_Prep_Center">Phoenix Prep Center<span class="ie-after-fix"><!--[if !IE 9 ]>&nbsp;&gt;<![endif]--></span></a>
-      </li>
-      <li class="vscLI">
-        <span class="userProfileNav hide"><a href="/" class="unContainer"></a></span>
-        <ul class="userProfileNavOverlay hide">
-          <li class="profileNavLink">
-            <a name="headeralternate_profile" href="/experience/profile.html" id="headeralternate_profile">Edit Profile<span class="ie-after-fix"><!--[if !IE 9 ]>&nbsp;&gt;<![endif]--></span></a>
-          </li>
-          <li class="profileNavLink">
-            <a name="headeralternate_changepassword" href="/experience/profile.html?tab_filter=tabsComponent_account_settings" id="headeralternate_changepassword">Change Password<span class="ie-after-fix"><!--[if !IE 9 ]>&nbsp;&gt;<![endif]--></span></a>
-          </li>
-          <li class="profileNavLink">
-            <a name="headeralternate_signout" class="sign-out" href="#" id="headeralternate_signout">Sign out<span class="ie-after-fix"><!--[if !IE 9 ]>&nbsp;&gt;<![endif]--></span></a>
-          </li>
-        </ul>
+   </div>
+<script type="text/javascript" src="MapInits.js"></script>
+</div>
+</body>
+</html>
+<!-- Generated in 0.025841 seconds using 1.50 MiB of memory. -->

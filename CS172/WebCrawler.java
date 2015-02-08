@@ -11,49 +11,47 @@ import java.util.concurrent.*;
 public class WebCrawler{
 
     //private member variables
-	//queue for URLs to crawl
-	private Queue<String> readylist = new LinkedList<String>();
-	//list that contains all of the urls
-	private ConcurrentHashMap<String, Integer> url = new ConcurrentHashMap<String, Integer>();
+	//one queue = 1 depth
+	private Queue<String> readylist1 = new LinkedList<String>();
+	private Queue<String> readylist2 = new LinkedList<String>();
+	private Set<String> url = new HashSet<String>();
+
     private String linkHref;
 	private int currenthop;
     private int numPages;
     private int maxHopsAway;
-    int i = 0;
+	private int addTo;
+    private int i = 0;
 
     //constructor
     WebCrawler(int pages, int hops){
 		numPages = pages;
 		maxHopsAway = hops;
 		currenthop = 0;
+		addTo = 1;
     }
 
     //method to print out Collection
     public void printCollection(){
-		Iterator it = readylist.iterator();
-		System.out.println(url.size());
+		Iterator it = url.iterator();
+		//System.out.println(url.size());
 
-/*		while(it.hasNext()){
+		while(it.hasNext()){
 			System.out.println(it.next());
 		}
-		System.out.println("\n\n");
-*/
-
-        //for url, concurrenthashmap iteration
-		for(Iterator<String> i = url.keySet().iterator(); i.hasNext(); ) {
-			String key = i.next();
-			System.out.println(key);
-    	}
-
 	}
 
-	//add to both lists
-	public void addToList(String currURL, int hop){
-		readylist.add(currURL);
-		url.putIfAbsent(currURL, hop);
+	//add to all lists
+	public void addToList(String currURL){
+		//they're both empty at the beginning
+		if(addTo == 1)
+			readylist1.add(currURL);
+		else if(addTo == 2)
+			readylist2.add(currURL);
+		else
+			System.out.println("addTo error");
 
-
-		readMoreURL();
+		url.add(currURL);
 	}
 
 	public String parseHttpOnly(){
@@ -112,7 +110,7 @@ public class WebCrawler{
 							if(!linkHref.isEmpty() && !url.contains(linkHref)){
 								linkHref = stripForwardSlash();
 								if(url.size() < numPages ){
-									addToList(linkHref,currenthop);
+									addToList(linkHref);
 								}
 								else
 									return;
@@ -150,11 +148,20 @@ public class WebCrawler{
       		String outputPossible;
       		File dir = new File("htmlfolder");
       		dir.mkdir();
+			//reading from input file here
       		while ((line = reader.readLine()) != null){
         		if(!line.trim().equals(""))
         			downloadFile(line,/* i++,*/ dir);
 			}
       		reader.close();
+
+			//now we want to read from the queues
+			currenthop++;
+			while((currenthop < maxHopsAway) && (url.size() < numPages)){
+				readMoreURL(dir);
+				currenthop++;
+			}
+		
     	}
     	catch(IOException e){
       	System.err.format("IO exception at readLine");
@@ -165,21 +172,38 @@ public class WebCrawler{
   	}
 
     //similar to readSeedFile, reads from readylist
-	public void readMoreURL(){
+	public void readMoreURL(File dir){
 		String myURL = "";
 		try{
-			currenthop++;
-			if(currenthop > maxHopsAway )
-				return;
-
-      		File dir = new File("htmlfolder");
-			 myURL = readylist.poll();
-			if(myURL != null){
-				RobotExclusionUtil r = new RobotExclusionUtil();
-				boolean follow = r.robotsShouldFollow(myURL);
-				if(follow)
-					downloadFile(myURL, dir);
+System.out.println("READMOREURL");
+			if(addTo == 1){
+				myURL = readylist1.poll();
+				while(myURL != null){
+					RobotExclusionUtil r = new RobotExclusionUtil();
+					boolean follow = r.robotsShouldFollow(myURL);
+					if(follow){
+						downloadFile(myURL, dir);
+					}
+					myURL = readylist2.poll();
+				}
+				addTo = 2;
 			}
+
+			else if(addTo == 2){
+				myURL = readylist2.poll();
+				while(myURL != null){
+					RobotExclusionUtil r = new RobotExclusionUtil();
+					boolean follow = r.robotsShouldFollow(myURL);
+					if(follow)
+						downloadFile(myURL, dir);
+					myURL = readylist2.poll();
+				}
+				addTo = 1;
+			}
+			else
+				System.out.println("addTo error");
+
+							
 		}
 		catch(IOException e){
       		System.err.format("IO exception at readLine");
