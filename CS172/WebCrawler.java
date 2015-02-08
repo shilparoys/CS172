@@ -173,9 +173,13 @@ public class WebCrawler{
 				return;
 		
       		File dir = new File("htmlfolder");
-			myURL = readylist.poll();
-			if(myURL != null)
-				downloadFile(myURL, dir);
+			 myURL = readylist.poll();
+			if(myURL != null){
+				RobotExclusionUtil r = new RobotExclusionUtil();  
+				boolean follow = r.robotsShouldFollow(myURL);
+				if(follow)
+					downloadFile(myURL, dir);
+			}
 		}
 		catch(IOException e){
       		System.err.format("IO exception at readLine");
