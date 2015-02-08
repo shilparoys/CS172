@@ -120,6 +120,39 @@ public class WebCrawler{
     }
   }
 
+	int j = 0;
+	public void outputToFile(String fileName2){
+		try{
+			j++;
+			File theDir = new File(fileName2);
+			if(!theDir.exists()){
+				theDir.mkdirs();
+			}
+			Iterator it = url.iterator();
+			while(it.hasNext()){
+				String temp = it.next().toString();
+				URL urlObj = new URL(temp);
+				BufferedReader x = new BufferedReader(new InputStreamReader(urlObj.openConnection().getInputStream()));
+				String fileName = "file" + i + ".html";
+				BufferedWriter fos = new BufferedWriter(new FileWriter(new File(theDir, fileName)));
+				while(x.ready() && keepgoing){
+						String line = x.readLine();
+						fos.write(line);
+						fos.write("\n");
+					}
+				x.close();
+				fos.close();
+
+			}
+		}
+		catch(MalformedURLException ex){
+		}
+		catch(IOException e){
+				System.err.format("IO exception at downloadfile");
+			}
+
+	}
+
 	//downlaoding file contents
   public void downloadFile(String seed, File dir) throws IOException, MalformedURLException{
 	try{
@@ -130,7 +163,7 @@ public class WebCrawler{
 	String fileName = "file" + i + ".html";
 
 //System.out.println("download file name: " + fileName);
-    
+
     BufferedWriter fos = new BufferedWriter(new FileWriter(new File(dir, fileName)));
     while(x.ready() && keepgoing){
 			String line = x.readLine();

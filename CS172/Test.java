@@ -35,5 +35,6 @@ public class Test{
       }
 
       wb.printCollection();
+      wb.outputToFile(output);
   }
 }
