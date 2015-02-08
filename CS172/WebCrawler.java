@@ -136,7 +136,6 @@ public class WebCrawler{
 
 	//method to read from seedFile which contains .edu domains, 0th hop
   public void readSeedFile(String fileName, String htmlFile){
-System.out.println("readseedfile");
 		try{
 			BufferedReader reader = new BufferedReader(new FileReader(fileName));
       String line;
@@ -146,25 +145,18 @@ System.out.println("readseedfile");
 			//reading from input file here
       while ((line = reader.readLine()) != null){
 	  	if(!line.trim().equals("")){
-
-	System.out.println(maxHopsAway);
-			if(maxHopsAway > 0)
-				downloadFile(line,/* i++,*/ dir);
-			else{
-				if(url.size() < numPages ){
-			System.out.println("readseedfile no hops");
-					addToList(line);
-				}
+			if(url.size() < numPages ){
+				addToList(line);
 			}
 		}
 	  }
       reader.close();
-			//now we want to read from the queues
-			currenthop++;
-			while((currenthop < maxHopsAway) && (url.size() < numPages)){
-				readMoreURL(dir);
-				currenthop++;
-			}
+	  //now we want to read from the queues
+	  currenthop++;
+	  while((currenthop <= maxHopsAway) && (url.size() < numPages)){
+		readMoreURL(dir);
+		currenthop++;
+	  }
 
     }
     catch(IOException e){
@@ -179,7 +171,6 @@ System.out.println("readseedfile");
 	public void readMoreURL(File dir){
 		String myURL = "";
 		try{
-			System.out.println("READMOREURL");
 			if(addTo == 1){
 				myURL = readylist1.poll();
 				while(myURL != null){

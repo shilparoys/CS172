@@ -34,6 +34,6 @@ public class Test{
         System.exit(1);
       }
 
-    //  wb.printCollection();
+      wb.printCollection();
   }
 }
