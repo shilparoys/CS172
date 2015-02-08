@@ -4,6 +4,11 @@ public class Test{
 
   public static void main(String[] args){
 
+      if(args.length != 4){
+        System.err.println("invaid param num");
+        System.exit(1);
+      }
+
       String htmlFile = "";
       //read input from command line
       String fileName = args[0];
