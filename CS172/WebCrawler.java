@@ -14,9 +14,8 @@ public class WebCrawler{
 	private String linkHref;
     
     //method to print out Collection
-    public void printCollection(String which){
+    public void printCollection(){
     	Iterator<String> it = url.iterator();
-
     	while ( it.hasNext() ){
 			System.out.println(it.next());
 			}

@@ -9,6 +9,7 @@ public class Test{
       int numPages = Integer.parseInt(args[1]);
       int hopsAway = Integer.parseInt(args[2]);
       String output = args[3];
+       	WebCrawler wb = new WebCrawler();
       //check if numPages and hopsAway is a valid no. 
       if(numPages <= 0 ||  hopsAway <= 0){
 	    System.err.println("Invalid Number");
@@ -18,7 +19,6 @@ public class Test{
       File f = new File(fileName);
       if(f.exists() && f.isFile()){
       	//read seed file
-      	WebCrawler wb = new WebCrawler();
       	wb.readSeedFile(fileName, htmlFile);
       	//wb.printCollection("b");
       }
@@ -26,5 +26,6 @@ public class Test{
         System.err.println("Seed file not found");
         System.exit(1);
       }
+      wb.printCollection();
   }
 }
