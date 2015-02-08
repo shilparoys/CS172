@@ -1,155 +1,571 @@
+<!DOCTYPE html>
+<!--[if IE 7]> <html lang="en" class="ie7"> <![endif]-->
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
 
-
- 
-<?xml version="1.0" encoding="utf-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<title>UCR Campus Map Beta</title>
-<!-- Google Universal Analytics -->
+<title>Stanford University</title>
+
+<!-- Meta -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Stanford University is one of the world's leading research and teaching institutions.  It is located in Stanford, California." />
+<meta name="author" content="Stanford Office of University Commmunications" />
+<meta property="og:title" content="Stanford University" />
+<meta property="og:type" content="website" />
+<meta property="og:description" content="Stanford University, one of the world's leading teaching and research universities, is dedicated to finding solutions to big challenges and to preparing students for leadership in a complex world." />
+<meta property="og:url" content="http://www.stanford.edu/" />
+<meta property="og:image" content="http://stanford.edu/about/images/intro_about.jpg" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="800" />
+<meta property="og:image:height" content="532" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@Stanford" />
+<meta name="twitter:title" content="Stanford University" />
+<meta name="twitter:description" content="Stanford University, one of the world's leading teaching and research universities, is dedicated to finding solutions to big challenges and to preparing students for leadership in a complex world." />
+<meta name="twitter:image" content="http://stanford.edu/about/images/intro_about.jpg" />
+<link rel="publisher" href="https://plus.google.com/102312438958695854492" />
+<link rel="alternate" type="application/rss+xml" title="Stanford University News RSS Feed" href="http://news.stanford.edu/rss/index.xml" />
+<!-- CSS -->
+<link rel="stylesheet" href="/assets/css/bootstrap.min.css"  type="text/css" />
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" type="text/css" />
+<link rel="stylesheet" href="/assets/colorbox/colorbox.css" type="text/css" />
+<link rel="stylesheet" href="/assets/css/base.min.css?v=1.3" type="text/css" />
+<link rel="stylesheet" href="/assets/css/homepage.min.css?v=1.4" type="text/css"/>
+<!--[if lt IE 9]>
+  <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<!--[if IE 8]>
+  <link rel="stylesheet" type="text/css" href="/assets/css/ie/ie8.css" />
+<![endif]-->
+<!--[if IE 7]>
+  <link rel="stylesheet" type="text/css" href="/assets/css/ie/ie7.css" />
+<![endif]-->
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-3051875-1', 'ucr.edu');
+  ga('create', 'UA-1860414-1', 'stanford.edu');
   ga('send', 'pageview');
 </script>
-<script type="text/javascript">
-if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/Blackberry/)) || (navigator.userAgent.match(/Android/)) || (navigator.userAgent.match(/iPod/i)))
-{location.replace("mobile.html");}
-</script>
-<style type="text/css">
- span{cursor:pointer;}
-</style>
-<link type="text/css" rel="stylesheet" href="//www.ucr.edu/min/g=6bis-bluea-wide2" media="all" />
-<link type="text/css" rel="stylesheet" href="//www.ucr.edu/min/f=css/print6.css" media="print" />
-
-<link rel="stylesheet" type="text/css" href="/css/local.css" media="all" />
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-<script type="text/javascript" src="//www.ucr.edu/min/g=js2"></script>
-<script type="text/javascript" src="ProojectedOverlay.js"></script>
-<script type="text/javascript" src="geoxml3.js"></script>
-<script type="text/javascript" src="UCRCampusMap1.js"></script>
-<script type="text/javascript" src="customPano.js"></script>
-<script type="text/javascript">
-var viewResource = function(val){ return "<div id='my_resource' style='text-align:left;padding:10px;' ><p>The information provide here is from the Riverside Transit Agency's website and is being provided to the UCR constituancy as a service. For more information regarding schedules and routes plase see their <a href='http://www.riversidetransit.com/home/index.php?option=com_content&view=article&id=116&Itemid=106' rel='nofollow' target='infor_win'>website</a>. For other inforamation regarding parking or UCR Transportation please <a href='http://www.parking.ucr.edu/'>contact taps</a>.</p>"+
-"<p><strong>**Crest Cruiser/Bear Runner only operate during the academic year</strong></p><p><select onchange='document.getElementById(\"infor_win\").src=this.value'>"+
-"<option value='http://www.riversidetransit.com/home/images/stories/DOWNLOADS/ROUTES/001.pdf'>Route 1 – Service from UCR to Riverside Plaza, Galleria at Tyler, Corona Transit Center</option>"+
-"<option value='http://www.riversidetransit.com/home/images/stories/DOWNLOADS/ROUTES/014.pdf'>Route 14 – Service from Loma Linda to UCR and Galleria at Tyler</option>"+
-"<option value='http://www.riversidetransit.com/home/images/stories/DOWNLOADS/ROUTES/016.pdf'>Route 16 – Service from UCR to Canyon Crest Towne Center and Moreno Valley Mall</option>"+
-"<option value='http://www.riversidetransit.com/home/images/stories/DOWNLOADS/ROUTES/051.pdf'>Route 51 Crest Cruiser** – Service from UCR to Canyon Crest Towne Center</option>"+
-"<option value='http://www.riversidetransit.com/home/images/stories/DOWNLOADS/ROUTES/053.pdf'>Route 53 – Bear Runner** – Evening service UCR to Canyon Crest Towne Center</option>"+
-"<option value='http://www.riversidetransit.com/home/images/stories/DOWNLOADS/ROUTES/204.pdf'>**Express Route 204 – Service between Montclair Transcenter and UCR with stops in Ontario and Jurupa</option>"+
-"<option value='http://www.riversidetransit.com/home/images/stories/DOWNLOADS/ROUTES/208.pdf'>**Express Route 208 – Service between Temecula and UCR with stops in Murrieta, Sun City, and Perris</option>"+
-"<option value='http://www.riversidetransit.com/home/images/stories/DOWNLOADS/ROUTES/212.pdf'>**Express Route 212 - Service between San Jacinto and UCR witn stops in Hemet and Perris</option></select><iframe style='margin-left:-10px;margin-top:15px;' id='infor_win' src='"+val+"'></iframe></p></div>";}
-
-var imageDisplay = function (img){ return "<img src='"+img+"'  style='width:auto !important;height:400px !important;display:block;margin:10px auto auto !important;'>";
-} 
-
-
-</script>
-
-<link rel="stylesheet" type="text/css" href="MainMap.css" media="all"/>
-<!--[if IE]>
-<link rel="stylesheet" type="text/css" href="css/ie.css" media="all" />
-<![endif]-->
 </head>
-<body >
 
-<div class="branding">
+<body>
+<div id="su-wrap"> 
+  <!-- #su-wrap start -->
+  <div id="su-content"> <!-- #su-content start --> 
+    
+    <!-- #header --> 
+    <!--=== Top ===-->
+<div id="top">
+  <div class="container"> 
+    <!--=== Skip links ===-->
+    <div id="skip"> <a href="#content" onClick="$('#content').focus()">Skip to content</a> </div>
+    <!-- /Skip links --> 
+  </div>
+</div>
+<!--/top--> 
 
-<div id="search-detail"></div>
-<div id="locations-detail">
+<!--=== Header ===-->
+<div id="header" class="clearfix" role="banner">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8"> 
+        <!-- Logo -->
+        <div id="logo" class="clearfix"> <a href="/"><img class="img-responsive" src="/assets/su-images/stanforduniversity-white@2x.png"  alt="Stanford University" /></a> </div>
+        <!-- /logo --> 
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Menu -->
+<div id="mainmenu" class="clearfix" role="navigation">
+  <div class="container">
+    <div class="navbar navbar-default"> 
+      
+      <!-- main navigation -->
+      <button type="button" class="navbar-toggle btn-navbar" data-toggle="collapse" data-target=".navbar-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="menu-text">Menu</span></button>
+      <!-- /nav-collapse -->
+      
+      <div class="navbar-collapse collapse"> 
+        <!--search box-->
+        <div id="nav-search" role="search">
+          <form action="http://www.stanford.edu/hpcgi/page-route.cgi" method="post" id="search-form" accept-charset="UTF-8">
+            <h2 class="hidden">Search form</h2>
+            <div id="search-type">
+              <label for="search-web">Web</label>
+              <input name="search_type" type="radio" value="web" checked="checked" id="search-web" class="radio-search"/>
+              <label for="search-people">People</label>
+              <input name="search_type" type="radio" value="people" id="search-people" class="radio-search"/>
+            </div>
+            <label class="hidden" for="search-field">Search term</label>
+            <input title="Search string" class="input-medium" placeholder="Search web or people" type="text" id="search-field" name="search_string" value="" size="15" maxlength="128" />
+            <button id="search-btn" type="submit" name="submit"  aria-label="Search" formmethod="post"><i class="fa fa-search"></i></button>
+          </form>
+        </div>
+        <div  role="navigation">
+          <div id="primary-nav" tabindex="0">
+            <ul class="nav navbar-nav" aria-label="primary navigation">
+              <li id="nav-about"> <a href="/about">About Stanford</a></li>
+              <li id="nav-admission"> <a href="/admission">Admission</a> </li>
+              <li id="nav-academics"> <a href="/academics">Academics </a> </li>
+              <li id="nav-research"> <a href="/research">Research</a></li>
+              <li id="nav-campuslife"> <a href="/campuslife">Campus Life</a></li>
+            </ul>
+          </div>
+          <div id="gateway-nav">
+            <h4><span class="fa fa-chevron-circle-right"></span>Information for...</h4>
+            <ul id="gateways" class="pull-right" aria-label="gateways">
+              <li id="nav-students"><a href="/gateways/students">Students</a></li>
+              <li id="nav-facstaff"><a href="/gateways/facstaff">Faculty / Staff</a></li>
+              <li id="nav-parents" class="su-link" data-ua-action="parents-gateway" data-ua-label="nav"><a href="http://parents.stanford.edu">Parents</a></li>
+              <li id="nav-alumni" class="su-link" data-ua-action="alumni-gateway" data-ua-label="nav"><a href="http://alumni.stanford.edu/get/page/about-us">Alumni</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- /nav-collapse --> 
+    </div>
+    <!-- /navbar --> 
+    
+  </div>
+  <!-- /container --> 
+</div>
+<!-- /mainmenu --> 
+
+    <div id="content" role="main" tabindex="0">
+
+        
+
+
+
+
+        <!-- Feature Banner -->
+        <div id="feature-banner" class="container carousel slide margin-bottom-20"> 
+
+          <!-- Indicators -->
+          <ol class="carousel-indicators" aria-label="featured stories">
+            <li role="presentation" class="active"><button data-target="#feature-banner" data-slide-to="0"><span class="screen-reader">Story 1</span></button></li>
+            <li role="presentation"><button data-target="#feature-banner" data-slide-to="1"><span class="screen-reader">Story 2</span></button></li>
+            <li role="presentation"><button data-target="#feature-banner" data-slide-to="2"><span class="screen-reader">Story 3</span></button></li>
+            <li role="presentation"><button data-target="#feature-banner" data-slide-to="3"><span class="screen-reader">Story 4</span></button></li>
+            <li role="presentation"><button data-target="#feature-banner" data-slide-to="4"><span class="screen-reader">Story 5</span></button></li>
+          </ol>
+          
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner">
+            
+<!-- begin feature banner 1 -->
+<div class="item active" tabindex="0">
+<a href="http://news.stanford.edu/features/2014/coral-reef/" class="su-link" data-ua-action="feature1.html" data-ua-label="The+race+to+save+coral" title="Photo Credit: Courtesy Steve Palumbi "><img src="/rw_includes/homepage/images/2015-02-05_ht_palumbidiver.jpg" alt="Steve Palumbi underwater hovering above coral " />
+
+<div class="carousel-caption  right-top bg-white" >
+<h3 class="red">The race to save coral</h3>
+<p class="dark">Climate change has forced coral reefs on the path to extinction. Stanford's Steve Palumbi has a plan to rescue them.</p>
+</div>
+</a>
+
+</div>
+<!-- end feature banner 1 -->
+
+
+<!-- begin feature banner 2 -->
+<div class="item" tabindex="-1">
+<a href="http://news.stanford.edu/features/2015/undergrad-research/" class="su-link" data-ua-action="feature2.html" data-ua-label="Beyond+the+classroom" title="Photo Credit: L.A. Cicero"><img src="/assets/images/spinner.gif" data-src="/rw_includes/homepage/images/2015-02-02_ht_ug_research_richie.jpg" alt="Male student working with a computer and microscope in a lab" />
+
+<div class="carousel-caption  right bg-white" >
+<h3 class="red">Beyond the classroom</h3>
+<p class="dark">Research opportunities expand Stanford undergraduates' academic horizons while helping them find their own future path.</p>
+</div>
+</a>
+
+</div>
+<!-- end feature banner 2 -->
+
+
+<!-- begin feature banner 3 -->
+<div class="item" tabindex="-1">
+<a href="http://news.stanford.edu/features/cybersecurity/" class="su-link" data-ua-action="feature3.html" data-ua-label="Tackling+cybersecurity" title="Photo Credit: Shutterstock"><img src="/assets/images/spinner.gif" data-src="/rw_includes/homepage/images/2015-01-28_cybersecurity-hometop.jpg" alt="Graphic showing lock over computer code" />
+
+<div class="carousel-caption  right bg-none" >
+<h3 class="white">Tackling cybersecurity</h3>
+<p class="white">Stanford's broad network of thought leaders are taking an interdisciplinary approach to security in the information age.</p>
+</div>
+</a>
+
+</div>
+<!-- end feature banner 3 -->
+
+
+<!-- begin feature banner 4 -->
+<div class="item" tabindex="-1">
+<a href="http://news.stanford.edu/news/2015/january/conflict-felter-database-011615.html" class="su-link" data-ua-action="feature4.html" data-ua-label="A+road+to+peace" title="Photo Credit: Joe Tronco"><img src="/assets/images/spinner.gif" data-src="/rw_includes/homepage/images/2015-01-19_ht_conflict_4257.jpg" alt="Stanford scholar Joe Felter with members of the Philippine military" />
+
+<div class="carousel-caption  right bg-white" >
+<h3 class="red">A road to peace</h3>
+<p class="dark">Project to understand conflict in the world's political hotspots may hold the key to finding stability, Stanford scholar says</p>
+</div>
+</a>
+
+</div>
+<!-- end feature banner 4 -->
+
+
+<!-- begin feature banner 5 -->
+<div class="item" tabindex="-1">
+<a href="http://news.stanford.edu/news/2015/january/jamie-oliver-cooks-010915.html" class="su-link" data-ua-action="feature5.html" data-ua-label="Learning+through+eating" title="Photo Credit: L.A. Cicero"><img src="/assets/images/spinner.gif" data-src="/rw_includes/homepage/images/2015-01-09_ht_Oliver_096.jpg" alt="Students in teaching kitchen with celebrity chef Jamie Oliver" />
+
+<div class="carousel-caption  right bg-white" >
+<h3 class="red">Learning through eating</h3>
+<p class="dark">Stanford students discover that sometimes the road to an education might be through their stomachs.</p>
+</div>
+</a>
+
+</div>
+<!-- end feature banner 5 -->
+
+
+
+          </div>
+          
+          <!-- Controls -->
+          <button class="left carousel-control" data-target="#feature-banner" data-slide="prev" accesskey="p"><i class="fa fa-angle-left"></i><span class="screen-reader">Previous Story</span></button> 
+          <button class="right carousel-control" data-target="#feature-banner" data-slide="next" accesskey="n"><i class="fa fa-angle-right"></i><span class="screen-reader">Next Story</span></button> 
+
+        </div>
+        <!--//End Feature Banner--> 
+      
+      <div class="container margin-bottom-30"> 
+        <!-- Top Stories -->
+        <div class="headline">
+          <h2>Top Stories</h2>
+        </div>
+        <div class="row" id="news"> 
+          <!-- Top Stories include file --> 
+          
+<div class="col-sm-3 news-item">
+  <div class="news-img">
+    <a href="http://news.stanford.edu/news/2015/february/symphony-orchestra-planets-020415.html" class="su-link" data-ua-action="hp-news" title="Photo Credit: Kurt Hickman"><img src="/rw_includes/homepage/images/2015-02-04_planets_hp.jpg" class="img-responsive" alt="Silhouette of violinist over image of Earth projected on a screen " /></a>
+  </div>
+  <div class="news-text">
+    <h3><a href="http://news.stanford.edu/news/2015/february/symphony-orchestra-planets-020415.html" class="su-link" data-ua-action="hp-news">'Planets' align</a></h3>
+    <p>Stanford Symphony Orchestra blends sight and sound with production of Gustav Holst's <em>The Planets.</em></p>
+  </div>
+</div>
+
+
+<div class="col-sm-3 news-item">
+  <div class="news-img">
+    <a href="http://news.stanford.edu/news/2015/february/software-simulation-oscar-020515.html" class="su-link" data-ua-action="hp-news" title="Photo Credit: Industrial Light & Magic"><img src="/rw_includes/homepage/images/2015-02-05_fedkiw_home.jpg" class="img-responsive" alt="Scene from 'Terminator Salvation'" /></a>
+  </div>
+  <div class="news-text">
+    <h3><a href="http://news.stanford.edu/news/2015/february/software-simulation-oscar-020515.html" class="su-link" data-ua-action="hp-news">The 'wow!' factor</a></h3>
+    <p>Stanford computer scientist shares Academy Award for software toolkit to digitize blockbuster destruction.</p>
+  </div>
+</div>
+
+
+<div class="col-sm-3 news-item">
+  <div class="news-img">
+    <a href="http://news.stanford.edu/news/2015/february/poverty-report-card-020215.html" class="su-link" data-ua-action="hp-news" title="Photo Credit: AP/Mark Lennihan"><img src="/rw_includes/homepage/images/2015-02-02_poverty_home.jpg" class="img-responsive" alt="homeless person on city street" /></a>
+  </div>
+  <div class="news-text">
+    <h3><a href="http://news.stanford.edu/news/2015/february/poverty-report-card-020215.html" class="su-link" data-ua-action="hp-news">Pockets of poverty</a></h3>
+    <p>Stanford research shows dramatic differences in poverty throughout United States.</p>
+  </div>
+</div>
+
+
+
+          
+          <div class="col-sm-3" id="more-news">
+            <h4>More headlines</h4>
+            <ul>
+              <!-- More Headlines include file --> 
+              <li><a href="http://news.stanford.edu/news/2015/february/nba-virtual-reality-020615.html" class="su-link"  data-ua-action="hp-news" data-ua-label="NBA+commissioner+visits+Stanford+for+lesson+in+virtual+reality">NBA commissioner visits Stanford for lesson in virtual reality</a></li>
+<li><a href="http://med.stanford.edu/news/all-news/2015/02/researchers-discover-insulin-decreasing-hormone-in-flies-humans.html" class="su-link"  data-ua-action="hp-news" data-ua-label="Researchers+discover+hormone+that+regulates+insulin+levels+in+fruit+flies%2C+humans">Researchers discover hormone that regulates insulin levels in fruit flies, humans</a></li>
+<li><a href="http://news.stanford.edu/news/2015/february/gender-innovate-research-020315.html" class="su-link"  data-ua-action="hp-news" data-ua-label="Stanford+historian+explores+how+gender+analysis+leads+to+innovation">Stanford historian explores how gender analysis leads to innovation</a></li>
+
+
+            </ul>
+            <p class="more-link"><a href="http://news.stanford.edu" class="su-link" data-ua-action="news.stanford.edu"><i class="fa fa-chevron-circle-right"></i> <span>More News</span></a></p>
+          </div>
+        </div>
+        <!-- //End Top Stories --> 
+      </div>
+      
+      <!-- Social Media Row -->
+      <div class="container  margin-bottom-20">
+        <div class="row">
+          <div class="col-sm-9">
+            <div id="social-feature" class="row">
+              <span class="screen-reader">Latest tweet</span>
+              <!-- Social Feature include file --> 
+              <!-- Tweet ID 563859461866262528 -->
+<div class="col-xs-12 col-sm-3 text-center" id="tweet_info">
+  <p class="social-timestamp"><time class="timeago" datetime="2015-02-06T16:39:06-08:00">5 min.</time><br/>ago</p>
+  <a id="badge" href="https://twitter.com/Stanford" class="tweet-link" data-ua-action="@Stanford timeline" data-ua-label="badge">
+    <i class='fa fa-twitter'></i> <span>@Stanford</span>
+  </a>
+</div>
+<div class="col-xs-12 col-sm-9" id="tweet_text">
+  <p>.<a href='https://twitter.com/theranos' class='tweet-link' data-ua-action='mention'>@theranos</a> CEO Elizabeth Holmes: Find "what you'd be doing if you weren’t paid for it. Ever." <a href='http://stanford.io/1LWvPS9' class='tweet-link' data-ua-action='url'>stanford.io/1LWvPS9</a> <a href='https://pbs.twimg.com/media/B9M7MWHIgAIRPVI.png' class='tweet-link' data-ua-action='media'>pic.twitter.com/i9HP2gkHYF</a></p>
+</div> 
+            </div>
+          </div>
+          <div class="col-sm-3" id="social-icons">
+            <ul>
+              <li id="social_facebook"><a title="Facebook" class="xsu-link" data-ua-action="social" data-ua-label="Facebook" href="http://www.facebook.com/stanford"><img src="assets/su-images/social/facebook@2x.png" alt="Facebook" /></a></li>
+              <li id="social_twitter"><a title="Twitter" class="xsu-link" data-ua-action="social" data-ua-label="Twitter" href="http://twitter.com/stanford"><img src="assets/su-images/social/twitter@2x.png" alt="Twitter" /></a></li>
+              <li id="social_itunes"><a title="iTunes U" class="xsu-link" data-ua-action="social" data-ua-label="iTunes U" href="http://itunes.stanford.edu"><img src="assets/su-images/social/apple@2x.png" alt="iTunes U" /></a></li>
+              <li id="social_youtube"><a title="YouTube" class="xsu-link" data-ua-action="social" data-ua-label="YouTube" href="http://www.youtube.com/stanford"><img src="assets/su-images/social/youtube@2x.png" alt="YouTube" /></a></li>
+              <li id="social_instagram"><a title="Instagram" class="xsu-link" data-ua-action="social" data-ua-label="Instagram" href="http://instagram.com/stanford"><img src="assets/su-images/social/instagram@2x.png" alt="Instagram" /></a></li>
+              <li id="social_futurity"><a title="Futurity" class="xsu-link" data-ua-action="social" data-ua-label="Futurity" href="http://futurity.org/university/stanford-university/"><img src="assets/su-images/social/futurity@2x.png" alt="Futurity" /></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- //End Social Media Row --> 
+      
+      <!-- At Stanford / Events / Athletics  Row -->
+      <div class="container  margin-bottom-20">
+        <div class="row">
+          <div class="col-sm-9">
+            <div class="row"> 
+              <!-- At Stanford -->
+              <div class="col-sm-6" id="at-stanford" data-num-items="5">
+                <div class="headline">
+                  <h2>At Stanford</h2>
+                </div>
+                <!-- At Stanford include file --> 
+                  <!-- begin at stanford 1 -->
+  <div class="item">
+    <a href="http://anderson.stanford.edu" class="su-link" data-ua-action="at-stanford-1" data-ua-label="Anderson+Collection">
+      <img src="/rw_includes/homepage/atstanford/images/anderson_collection.jpg" alt="Anderson Collection"  class="img-responsive" />
+      <div class="image-caption">
+        <h3>Anderson Collection</h3>
+        <p>One of the world's most outstanding collections of modern and contemporary American art.</p>
+      </div>
+    </a>
+  </div>
+  <!-- end at stanford 1 -->
+ 
+                <p class="more-link"><a href="atstanford"><i class="fa fa-chevron-circle-right"></i> <span>More sites</span></a></p>
+              </div>
+              
+              <!-- Events -->
+              <div class="col-sm-6"  id="event-list">
+                <div class="headline">
+                  <h2>Events</h2>
+                </div>
+                <!-- Events include file --> 
+                 
+<div class="event postcard-left">
+<div class="event-date">
+<span class="event-month">FEB</span> <span class="event-day">7</span>
+</div>
+<div class="event-text">
+<h3><a href="https://events.stanford.edu/events/493/49315/" class="su-link" data-ua-action="hp-event" data-ua-label="id ">Native American Law Conference</a></h3>
+<p class="timestamp">9:30 a.m.</p>
+</div>
+</div>
+
+ 
+<div class="event postcard-left">
+<div class="event-date">
+<span class="event-month">FEB</span> <span class="event-day">9</span>
+</div>
+<div class="event-text">
+<h3><a href="https://events.stanford.edu/events/490/49005/" class="su-link" data-ua-action="hp-event" data-ua-label="id ">Dance: Molissa Fenley and Co.</a></h3>
+<p class="timestamp">4:15 p.m.</p>
+</div>
+</div>
+
+ 
+<div class="event postcard-left">
+<div class="event-date">
+
+</div>
+<div class="event-text">
+<h3><a href="https://events.stanford.edu/events/482/48237/" class="su-link" data-ua-action="hp-event" data-ua-label="id ">European Media And Tech Reporting in Europe</a></h3>
+<p class="timestamp">4:30 p.m.</p>
+</div>
+</div>
+
+
+
+
+                
+                <p class="more-link"><a href="http://events.stanford.edu" class="su-link" data-ua-action="events.stanford.edu"><i class="fa fa-chevron-circle-right"></i> <span>Event Calendar</span></a></p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Athletics -->
+          <div id="sports" class="col-sm-3">
+            <div class="headline">
+              <h2>Athletics</h2>
+            </div>
+            <!-- Athletics include file --> 
+            
+<div class="postcard-left">
+  <div class="postcard-image visible-xs visible-lg"><img src="/rw_includes/homepage/images/athletics/softball.png" class="image_news" alt="Stanford softball" /></div>
+  <div class="postcard-text">
+    <h3><a href="http://www.gostanford.com/ViewArticle.dbml?DB_OEM_ID=30600&amp;ATCLID=209874424" class="su-link" data-ua-action="hp-athletics">Cardinal softball</a></h3>
+    <p>New head coach Rachel Hanson talks about the 2015 season, which begins on Thursday.</p>
+  </div>
+</div>
+
+
+
+            <p class="more-link"><a href="http://gostanford.com" class="su-link" data-ua-action="gostanford.com"><i class="fa fa-chevron-circle-right"></i> <span>GoStanford.com</span></a></p>
+          </div>
+        </div>
+      </div>
+      <!-- //End At Stanford / Events / Athletics Row --> 
+      
+    </div>
+    <!--/body--> 
+  </div>
+  <!-- #su-content end --> 
+</div>
+<!-- #su-wrap end --> 
+
+<!-- #footer --> 
+<div id="footer" class="clearfix footer" role="contentinfo">
+  <div class="container">
+    <div id="footer-content" class="row">
+      <div class="col-xs-12 col-sm-1-4 col-md-2">
+        <div class="block">
+          <h3>Schools</h3>
+          <ul class="footer-list">
+            <li><a href="http://gsb.stanford.edu" class="su-link" data-ua-label="footer">Business</a></li>
+            <li><a href="http://earth.stanford.edu" class="su-link" data-ua-label="footer">Earth Sciences</a></li>
+            <li><a href="http://ed.stanford.edu" class="su-link" data-ua-label="footer">Education</a></li>
+            <li><a href="http://engineering.stanford.edu" class="su-link" data-ua-label="footer">Engineering</a></li>
+            <li><a href="http://humsci.stanford.edu" class="su-link" data-ua-label="footer">Humanities &amp; Sciences</a></li>
+            <li><a href="http://www.law.stanford.edu" class="su-link" data-ua-label="footer">Law</a></li>
+            <li><a href="http://med.stanford.edu" class="su-link" data-ua-label="footer">Medicine</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-1-4 col-md-2">
+        <div class="block">
+          <h3>Departments</h3>
+          <ul class="footer-list">
+            <li><a href="/academics/departments">Departments A - Z</a></li>
+            <li><a href="/academics/programs">Interdisciplinary Programs</a></li>
+          </ul>
+          <h3>Research</h3>
+          <ul  class="footer-list">
+            <li><a href="https://doresearch.stanford.edu" class="su-link" data-ua-label="footer">DoResearch</a></li>
+            <li><a href="http://doresearch.stanford.edu/interdisciplinary" class="su-link" data-ua-label="footer" data-ua-action="doresearch.stanford.edu/interdisciplinary">Interdisciplinary Institutes</a></li>
+            <li class="last"><a href="http://library.stanford.edu" class="su-link" data-ua-label="footer">Libraries</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-1-4 col-md-2">
+        <div class="block">
+          <h3>Health care</h3>
+          <ul  class="footer-list">
+            <li><a href="http://stanfordhealthcare.org/" class="su-link" data-ua-label="footer">Stanford Health Care</a></li>
+            <li><a href="http://www.stanfordchildrens.org" class="su-link" data-ua-label="footer">Stanford Children's Health</a></li>
+          </ul>
+          <h3>Online Learning</h3>
+          <ul class="footer-list">
+            <li><a href="http://online.stanford.edu" class="su-link" data-ua-label="footer">Stanford Online</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-1-4 col-md-2">
+        <div class="block">
+          <h3>About Stanford</h3>
+          <ul class="footer-list">
+            <li><a href="http://facts.stanford.edu" class="su-link" data-ua-label="footer">Facts</a></li>
+            <li><a href="/about/history">History</a></li>
+			 <li><a href="http://wasc.stanford.edu/">Accreditation</a></li>
+          </ul>
+        </div>
+        <div class="block">
+          <h3>Admission</h3>
+          <ul class="footer-list">
+            <li><a href="http://admission.stanford.edu" class="su-link" data-ua-label="footer">Undergraduate</a></li>
+            <li><a href="http://studentaffairs.stanford.edu/gradadmissions" class="su-link" data-ua-label="footer">Graduate</a></li>
+            <li><a href="http://finaid.stanford.edu" class="su-link" data-ua-label="footer">Financial Aid</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-1-4 col-md-2">
+        <div class="block">
+          <h3>Resources</h3>
+          <ul class="footer-list">
+            <li><a href="/atoz/">A - Z Index</a></li>
+            <li><a href="http://campus-map.stanford.edu" class="su-link" data-ua-label="footer">Campus Map</a></li>
+            <li><a href="http://stanfordwho.stanford.edu" class="su-link" data-ua-label="footer">Directory</a></li>
+            <li><a href="http://profiles.stanford.edu" class="su-link" data-ua-label="footer">Stanford Profiles</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="hp-buttons" class="col-xs-12 col-md-2">
+        <ul>
+          <li><a href="/admission" class="btn btn-u btn-block"><i class="fa fa-graduation-cap fa-fw"></i> <span>Apply</span> </a> </li>
+          <li><a href="http://visit.stanford.edu" class="btn btn-u btn-block su-link" data-ua-label="footer" data-ua-action="visitors-gateway"><i class="fa fa-plane fa-fw"></i> <span>Visit Campus</span></a> </li>
+          <li><a href="http://giving.stanford.edu" class="btn btn-u btn-block su-link" data-ua-label="footer"><i class="fa fa-gift fa-fw"></i> <span>Make a Gift</span></a> </li>
+          <li><a href="http://stanfordcareers.stanford.edu" class="btn btn-u btn-block su-link" data-ua-label="footer"><i class="fa fa-user fa-fw"></i> <span>Find a Job</span> </a> </li>
+          <li><a href="/contact" class="btn btn-u btn-block"><i class="fa fa-comment-o fa-fw"></i> <span>Contact Us</span></a> </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Global footer snippet start -->
+  <div id="global-footer">
+    <div class="container">
+      <div class="row">
+        <div id="bottom-logo" class="col-xs-6 col-sm-2"> <a href="http://www.stanford.edu"> <img src="/assets/su-images/footer-stanford-logo@2x.png" alt="Stanford University" width="105" height="49"/> </a> </div>
+        <!-- #bottom-logo end -->
+        <div id="bottom-text" class="col-xs-6 col-sm-10">
+          <ul>
+            <li class="home"><a href="/">SU Home</a></li>
+            <li class="maps alt"><a href="http://visit.stanford.edu/plan/maps.html" class="su-link" data-ua-action="visit.stanford.edu/plan/maps" data-ua-label="global-footer">Maps &amp; Directions</a></li>
+            <li class="search-stanford"><a href="http://stanford.edu/search/">Search Stanford</a></li>
+            <li class="terms alt"><a href="/site/terms.html">Terms of Use</a></li>
+            <li class="emergency-info"><a href="http://emergency.stanford.edu/" class="su-link" data-ua-label="global-footer">Emergency Info</a></li>
+          </ul>
+        </div>
+        <!-- .bottom-text end -->
+        <div class="clear"></div>
+        <p class="copyright vcard col-sm-10">&copy; <span class="fn org">Stanford University</span>.&nbsp; <span class="adr"> <span class="locality">Stanford</span>, <span class="region">California</span> <span class="postal-code">94305</span></span>.  <span id="termsofuse"><a href="http://web.stanford.edu/group/security/dmca.html" class="su-link" data-ua-action="copyright-complaints" data-ua-label="global-footer">Copyright Complaints</a>&nbsp;&nbsp;&nbsp;<a href="https://adminguide.stanford.edu/chapter-1/subchapter-5/policy-1-5-4" class="su-link" data-ua-action="trademark-notice" data-ua-label="global-footer">Trademark Notice</a></span></p>
+      </div>
+      <!-- .row end --> 
+    </div>
+    <!-- .container end --> 
+  </div>
+  <!-- global-footer end --> 
+  <!-- Global footer snippet end --> 
+  
+</div>
  
 
-</div>
-<div id="legend-detail"></div>
-<div id="legend-settings"></div>
-<div id="directions-detail" >
-</div>
-<div id="mast_head">
-  <h2><a href="http://ucr.edu/"><span class="accessibility">UCR Campus Map <!--sup style="font-size: 0.31em; font-style: italic; color: rgb(241, 171, 0); font-weight: bold;">BETA</sup--></span></a><a href="http://campusmap.ucr.edu/campus-Map.php"></a><!--img src="images/beta_logo.png"/--></h2>
-</div>
+<!-- JS and jQuery -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="/assets/js/jquery-mobile-1.3.2.js"></script> 
+<script src="/assets/js/modernizr.custom.17475.js"></script> 
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/colorbox/jquery.colorbox.js"></script> 
+<script src="/assets/js/jquery.timeago.js"></script> 
 
-<div id="main_nav" >
-<span tabindex="0" id="l_legend_detail" onmouseover="document.getElementById('f_img_le').src='images/feedback2.png'" onmouseout="document.getElementById('f_img_le').src='images/feedback.png'" onclick="document.location='feedback.html'" onkeydown="function(e){if(e.keyCode==13){document.location='feedback.html';}}">
-<!-- onclick="getNewWindow('DIV','legend-detail',legend)" onkeydown="handleMyKeyEvent(event,'DIV','legend-detail',legend)"-->
-<img id="f_img_le" src="images/feedback.png" alt="feedback"/>
-Feedback</span>
-<span tabindex="0" id="l_search_detail" onmouseover="document.getElementById('f_img_s').src='images/search_over.png'" onmouseout="document.getElementById('f_img_s').src='images/search1.png'"  onclick="getNewWindow('DIV','search-detail',searchB)" onkeydown="handleMyKeyEvent(event,'DIV','search-detail',searchB)">
-<img  id="f_img_s" src="images/search1.png"/>
-Search</span>
-<span tabindex="0" id="l_locations_detail"  onmouseover="document.getElementById('f_img_l').src='images/locations_over.png'" onmouseout="document.getElementById('f_img_l').src='images/locations1.png'"   onclick="getNewWindow('DIV','locations-detail','val')" onkeydown="handleMyKeyEvent(event,'DIV','locations-detail','val')" >
-<img id="f_img_l" src="images/locations1.png"/>
-Locations</span>
-<span tabindex="0" id="l_search_detail1" onmouseover="document.getElementById('f_img_s1').src='images/hshuttle2.png'" onmouseout="document.getElementById('f_img_s1').src='images/hshuttle1.png'"  onclick="getNewWindow('DIV','Schedule-detail',viewResource(this.getAttribute('frm1')))" frm1="http://www.riversidetransit.com/home/images/stories/DOWNLOADS/ROUTES/001.pdf" onkeydown="handleMyKeyEvent(event,'DIV','Schedule-detail',viewResource(this.getAttribute('frm1')))">
-<img  id="f_img_s1" src="images/hshuttle1.png" />
-Bus Schedule</span>
-
-<span tabindex="0" id="l_search_detail1"  onclick="document.location='http://admissions.ucr.edu/VisitUCR/virtualTours'" onmouseout="document.getElementById('f_img_s1q').src='images/360-0.png'" onmouseover="document.getElementById('f_img_s1q').src='images/360-1.png'">
-<img  id="f_img_s1q" src="images/360-0.png"  />
-Virtual Tours</span>
-
-
-
-
-<!--span tabindex="6" id="l_legend_settings" onmouseover="document.getElementById('f_img_se').src='images/settings_over.png'" onmouseout="document.getElementById('f_img_se').src='images/settings1.png'"  onclick="getNewWindow('DIV','legend-settings',settings)" onkeydown="handleMyKeyEvent(event,'DIV','legend-settings',settings)">
-<img id="f_img_se" src="images/settings1.png"/>
-Settings</span-->
-</div>
-
-<ul class="l_map_list_footer" >
-<li><a href="/campus-Map.php" tabindex='0'>Old Campus Map</a></li>
-<li><a href='javascript:void(0)' style='color:white;text-decoration:none;border:0;' onmouseout='this.style.color="#FFFFFF"' tabindex='0' onmouseover='this.style.color="#F1Ab00"' onclick="getNewWindow('DIV','directions-detail',directionD)">Directions to UCR Campus</a></li><li><a indextab='0' style='color:white;text-decoration:none;border:0;' onmouseout='this.style.color="#FFFFFF"' onmouseover='this.style.color="#F1Ab00"'  href="http://campusmap.ucr.edu/map-color.pdf">Large-Format Printable Map</a></li><li><a indextab='0' style='color:white;text-decoration:none;border:0;' onmouseout='this.style.color="#FFFFFF"' onmouseover='this.style.color="#F1Ab00"'  href="http://campusmap.ucr.edu/map.pdf">8½×11  Printable Map</a></li></ul>
-</div>
-
-<div tabindex="10" id="map_canvas" class="map_canvas">
-
-</div>
-<div class="footer">
-<div>
-
-</div>
-   <div id="footerwrapper">
-      <div id="prefooter">
-         <div class="column2">
-            <h3>General Campus Information</h3>
-            <address>University of California, Riverside<br />900 University Ave.<br />
-            Riverside, CA 92521<br /><br />Tel: (951) 827-1012<br />E-mail: <a href="mailto:ucr@ucr.edu">ucr@ucr.edu</a><br /><br /><br /></address>
-         </div>
-         <div class="column2">
-            <h3>Campus Parking Information</h3>
-            <address>There is a charge for visitor parking.
-            More information is available at <a href="http://www.parking.ucr.edu">Transportation and Parking Services</a><br /><br />
-            <strong>Parking information:</strong> (951) 827-4395<br />
-            Monday&ndash;Friday, 8 a.m.&ndash;4 p.m.<br /><br />
-After hours: <strong>Campus Police</strong> (951) 827-5222</address>
-
-         </div>
-         <div class="column2R">
-            <h3>Additional Information</h3>
-            <address><strong>Receiving</strong><br />
-            3401 Watkins Drive<br />
-            Riverside, CA 92521  <br /><br />
-            <strong>Admissions/Campus Tours</strong><br />
-            Office of Undergraduate Recruitment-Tours<br />(951) 827-TOUR<br />
-            <a href="http://admissions.ucr.edu/VisitUCR">Campus Tours</a></address>
-         </div>
-         <div class="clear"></div>
-      </div>
-      <div id="footer">
-         <ul>
-            <li><a href="feedback.html">Feedback</a></li>
-            <li><a href="http://www.ucr.edu/privacy.html">Privacy Policy</a></li>
-
-            <li><a href="http://www.ucr.edu/terms.html">&copy; 2014 Regents of the University of California</a></li>
-         </ul>
-      </div>
-
-   </div>
-<script type="text/javascript" src="MapInits.js"></script>
-</div>
+<!--[if lt IE 9]>
+	<script src="assets/js/respond.js"></script>
+<![endif]--> 
+<!-- Custom JS --> 
+<script src="/assets/js/base.js?v=1.3"></script> 
+<script src="/assets/js/homepage.js?v=1.3"></script>
 </body>
 </html>
-<!-- Generated in 0.030737 seconds using 1.50 MiB of memory. -->

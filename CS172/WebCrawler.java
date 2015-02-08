@@ -13,11 +13,11 @@ public class WebCrawler{
     //private member variables
 	//queue for URLs to crawl
 	private Queue<String> readylist = new LinkedList<String>();
-	//list that contains all of the urls 
+	//list that contains all of the urls
 	private ConcurrentHashMap<String, Integer> url = new ConcurrentHashMap<String, Integer>();
     private String linkHref;
 	private int currenthop;
-    private int numPages; 
+    private int numPages;
     private int maxHopsAway;
     int i = 0;
 
@@ -27,7 +27,7 @@ public class WebCrawler{
 		maxHopsAway = hops;
 		currenthop = 0;
     }
-    
+
     //method to print out Collection
     public void printCollection(){
 		Iterator it = readylist.iterator();
@@ -44,7 +44,7 @@ public class WebCrawler{
 			String key = i.next();
 			System.out.println(key);
     	}
-		
+
 	}
 
 	//add to both lists
@@ -87,7 +87,7 @@ public class WebCrawler{
             return newLink;
         }
         return linkHref;
-    }            
+    }
 
     //method to clean urls
   	public String cleanURL(){
@@ -152,7 +152,7 @@ public class WebCrawler{
       		dir.mkdir();
       		while ((line = reader.readLine()) != null){
         		if(!line.trim().equals(""))
-        			downloadFile(line,/* i++,*/ dir); 
+        			downloadFile(line,/* i++,*/ dir);
 			}
       		reader.close();
     	}
@@ -165,17 +165,17 @@ public class WebCrawler{
   	}
 
     //similar to readSeedFile, reads from readylist
-	public void readMoreURL(){ 
+	public void readMoreURL(){
 		String myURL = "";
 		try{
 			currenthop++;
-			if(currenthop > maxHopsAway ) 
+			if(currenthop > maxHopsAway )
 				return;
-		
+
       		File dir = new File("htmlfolder");
 			 myURL = readylist.poll();
 			if(myURL != null){
-				RobotExclusionUtil r = new RobotExclusionUtil();  
+				RobotExclusionUtil r = new RobotExclusionUtil();
 				boolean follow = r.robotsShouldFollow(myURL);
 				if(follow)
 					downloadFile(myURL, dir);
@@ -199,7 +199,7 @@ public class WebCrawler{
 			HttpURLConnection con = (HttpURLConnection) urlObj.openConnection();
 			con.setRequestMethod("GET");
 			con.connect();
-			int exists = con.getResponseCode(); 
+			int exists = con.getResponseCode();
 			if(exists == 200)
 				return true;
 			return false;
