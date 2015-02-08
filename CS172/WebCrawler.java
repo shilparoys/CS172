@@ -10,23 +10,31 @@ import java.util.*;
 public class WebCrawler{
 
     //private member variables
-	private Set <String> url = new HashSet<String>();
-	private String linkHref;
+    private Set <String> url = new HashSet<String>();
+    private String linkHref;
+    private int numPages; 
+    private int hopsAway;
+
+    //constructor
+    WebCrawler(int pages, int hops){
+	numPages = pages;
+	hopsAway = hops;
+    }
     
     //method to print out Collection
     public void printCollection(){
     	Iterator<String> it = url.iterator();
     	while ( it.hasNext() ){
 			System.out.println(it.next());
-			}
+		}
     }
 
 	public String parseHttpOnly(){
-			if(linkHref.contains("http:")){
-				return linkHref;
-			}
-      else{
-				return "";
+		if(linkHref.contains("http:")){
+			return linkHref;
+		}
+        else{
+			return "";
       }
 	}
 
@@ -35,9 +43,9 @@ public class WebCrawler{
 			if(linkHref.contains("#")){
 				index = linkHref.indexOf("#");
         String temp = new String(linkHref.substring(0, index));
-				return temp;
-      }
-			return linkHref;
+			return temp;
+        }
+		return linkHref;
 	}
 
     String deleteCharAt(String strValue, int index) {
@@ -75,8 +83,11 @@ public class WebCrawler{
 						if(!linkHref.isEmpty()){
 							linkHref = cleanURL();
 							if(!linkHref.isEmpty() && !url.contains(linkHref)){
-                                    linkHref = stripForwardSlash();
-									url.add(linkHref);
+								linkHref = stripForwardSlash();
+								if(url.size() < numPages)
+						        	url.add(linkHref);
+								else
+								    return;
 							}
 						}
       		}

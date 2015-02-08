@@ -9,7 +9,7 @@ public class Test{
       int numPages = Integer.parseInt(args[1]);
       int hopsAway = Integer.parseInt(args[2]);
       String output = args[3];
-       	WebCrawler wb = new WebCrawler();
+       	WebCrawler wb = new WebCrawler(numPages, hopsAway);
       //check if numPages and hopsAway is a valid no. 
       if(numPages <= 0 ||  hopsAway <= 0){
 	    System.err.println("Invalid Number");
