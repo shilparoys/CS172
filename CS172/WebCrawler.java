@@ -21,7 +21,6 @@ public class WebCrawler{
   private int numPages;
   private int maxHopsAway;
   private int addTo;
-  private int i = 0;
 
   //constructor
   WebCrawler(int pages, int hops){
@@ -92,7 +91,7 @@ public class WebCrawler{
 
 	//method to parse html file
   public void jsoupParse(String fileName, String baseUrl){
-		try{
+	try{
 			File input = new File("./htmlfolder/"+ fileName);
       Document doc = Jsoup.parse(input, "UTF-8", "baseUrl");
       Elements links = doc.select("a[href]");
@@ -118,12 +117,30 @@ public class WebCrawler{
   }
 
 	//downlaoding file contents
-  public void downloadFile(String seed,/* int i,*/ File dir) throws IOException, MalformedURLException{
-		i++;
+  public void downloadFile(String seed, File dir) throws IOException, MalformedURLException{
+	//System.out.println("download file seed: " + seed);
+	try{
     URL urlObj = new URL(seed);
   	BufferedReader x = new BufferedReader(new InputStreamReader(urlObj.openConnection().getInputStream()));
-  	String fileName = "file" + i + ".html";
-    BufferedWriter fos = new BufferedWriter(new FileWriter(new File(dir, fileName)));
+
+  	String fileName = seed;
+
+	if(fileName.contains("http://")){
+		fileName = fileName.substring(7, fileName.length() );
+		int length = fileName.length();
+		if(fileName.charAt(length-1) == '/'){
+			fileName = fileName.substring(0, fileName.length() -1);
+		}
+
+	}
+	fileName = fileName + ".html";
+//	System.out.println("downloadfile filename: " + fileName);
+    
+    //BufferedWriter fos = new BufferedWriter(new FileWriter(new File(dir, fileName)));
+	PrintWriter fos = new PrintWriter(dir + fileName + ".html", "UTF-8");
+	fos.println(x);
+	fos.close();
+	/*
     while(x.ready()){
 			String line = x.readLine();
       fos.write(line);
@@ -131,7 +148,13 @@ public class WebCrawler{
     }
   	x.close();
   	fos.close();
+	*/
 		jsoupParse(fileName, seed);
+	}
+ catch(IOException e){
+			System.err.format("IO exception at downloadfile");
+    }
+
   }
 
 	//method to read from seedFile which contains .edu domains, 0th hop
@@ -146,7 +169,10 @@ public class WebCrawler{
       while ((line = reader.readLine()) != null){
 	  	if(!line.trim().equals("")){
 			if(url.size() < numPages ){
-				addToList(line);
+				linkHref = line;
+				linkHref = cleanURL();
+				linkHref = stripForwardSlash();
+				addToList(linkHref);
 			}
 		}
 	  }
@@ -179,7 +205,7 @@ public class WebCrawler{
 					if(follow){
 						downloadFile(myURL, dir);
 					}
-					myURL = readylist2.poll();
+					myURL = readylist1.poll();
 				}
 				addTo = 2;
 			}

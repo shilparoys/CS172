@@ -1,0 +1,901 @@
+
+
+
+<!DOCTYPE html>
+
+
+<html lang="en">
+      
+      
+        
+    
+    
+    
+    
+
+      
+      
+      <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />  
+        
+        <title>MIT OpenCourseWare | Free Online Course Materials </title>
+    <!-- Begin Automatic Metadata Insertion -->
+    <meta content="Global" name="WT.cg_n" />
+    <meta content="Home" name="WT.cg_s" />
+    <meta content="MIT OpenCourseWare is a web-based publication of virtually all MIT course content. OCW is open and available to the world and is a permanent MIT activity."
+          name="Description" />
+    <meta content="MIT OpenCourseWare" name="Author" />
+    <meta content="opencourseware,MIT OCW,courseware,MIT opencourseware,Free Courses,class notes,class syllabus,class materials,tutorials,online courses,MIT courses"
+          name="keywords" />
+    <meta content="Home | MIT OpenCourseWare"
+          name="Search_Display" />
+    <!-- End Automatic Metadata Insertion -->
+
+	<link title="default" rel="stylesheet" type="text/css"
+       href="/styles/grid.css" /><link title="default"
+    rel="stylesheet" type="text/css" href="/styles/base.css" /><link
+    title="default" rel="stylesheet" type="text/css"
+    href="/styles/menu.css" /><link title="default"
+    rel="stylesheet" type="text/css"
+    href="/styles/jquery.bubblepopup.css" /><link
+    title="default" rel="stylesheet" type="text/css"
+    href="/styles/global.css" /><link title="default"
+    rel="stylesheet" type="text/css"
+    href="/styles/anythingslider.css" /><link
+    title="default" rel="stylesheet" type="text/css"
+    href="/styles/sitehome.css" />
+	<link href="/xml/ocwcc.rdf" type="application/rdf+xml" rel="metadata" />
+	<link rel="canonical" href="http://ocw.mit.edu/index.htm">
+	<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+	
+	<link rel="alternate" type="application/rss+xml"
+       href="/rss/new/mit-newcourses.xml"
+       title="New Courses" />
+	
+	<script type="text/javascript" src="/scripts/jquery.js"></script>
+	<script type="text/javascript" src="/jwplayer/jwplayer.js"></script>
+	<script type="text/javascript"
+         src="/scripts/ocw-media-utils.js"></script>
+	<script type="text/javascript" src="/scripts/ocw.js"></script>
+	<script type="text/javascript"
+         src="/scripts/webtrends.load.js"></script>
+	<script type="text/javascript"
+         src="/scripts/googleanalytics.js"></script>
+	<script type="text/javascript"
+         src="/scripts/jquery.bubblepopup.min.js"></script>
+	<script type="text/javascript"
+         src="/scripts/jquery.anythingslider.js"></script>
+	<script type="text/javascript"
+         src="/scripts/jquery-div-toggle.js"></script>
+	<script type="text/javascript"
+         src="/scripts/bubble-popup.js"></script>
+	
+	
+	
+    
+    
+    
+    <script type="text/javascript">
+    $.fn.courserotator = function(previous, next, options){
+        var sliderList = $(this).children()[0];
+        if (sliderList) {
+            var increment = $(sliderList).children().outerWidth("true"),
+            elmnts = $(sliderList).children(),
+            numElmts = elmnts.length,
+            sizeFirstElmnt = increment,
+            shownInViewport = Math.round($(this).width() / sizeFirstElmnt),
+            firstElementOnViewPort = 1,
+            isAnimating = false;
+            
+            var random_number = Math.floor(Math.random()*numElmts);
+            if(random_number!=0) {firstElementOnViewPort = random_number+1;}
+            
+            if (numElmts > 1){
+                jQuery(previous).css('display','block');
+                jQuery(next).css('display','block');
+                jQuery(sliderList).parents('#coro').css('width','611px');
+                jQuery(sliderList).parents('#coro2').css('width','690px');
+            }
+            
+            for (i = 0; i < shownInViewport; i++) {
+                $(sliderList).css('width',(numElmts+shownInViewport)*increment + increment + "px");
+                $(sliderList).append($(elmnts[i]).clone());
+                $(sliderList).css('left', "-" + random_number * sizeFirstElmnt + "px"); 
+                 }
+                                           
+            $(previous).click(function(event){
+                if (!isAnimating) {
+                    if (firstElementOnViewPort == 1) {
+                        $(sliderList).css('left', "-" + numElmts * sizeFirstElmnt + "px");
+                        firstElementOnViewPort = numElmts;
+                    }
+                    else {
+                        firstElementOnViewPort--;
+                    }
+                    
+                    $(sliderList).animate({
+                        left: "+=" + increment,
+                        y: 0,
+                        queue: true
+                    }, "swing", function(){isAnimating = false;});
+                    isAnimating = true;
+                }                
+            });
+            
+            $(next).click(function(event){
+                if (!isAnimating) {
+                    if (firstElementOnViewPort > numElmts) {
+                        firstElementOnViewPort = 2;
+                        $(sliderList).css('left', "0px");
+                    }
+                    else {
+                        firstElementOnViewPort++;
+                    }
+                    $(sliderList).animate({
+                        left: "-=" + increment,
+                        y: 0,
+                        queue: true
+                    }, "swing", function(){isAnimating = false;});
+                    isAnimating = true;
+                }
+            });
+        }
+    };
+    </script>
+    
+    
+    
+    <script type="text/javascript">
+	$(document).ready(function(){
+        <!-- Site Home Rotator initialization -->
+        $('#slider').anythingSlider();
+        // Call the Randomize Function for Every Slot of Home Page Feature Rotator.
+        randomize("Slot1","slot1_len");
+	    randomize("Slot2","slot2_len");
+	    randomize("Slot3","slot3_len");
+	    randomize("Slot4","slot4_len");
+	    randomize("Slot5","slot5_len");
+		randomize("Slot6","slot6_len");
+	    $( ".cloned_first.panel").html($('#slider li:first').next().html()); // This will Override the Clone Panel of Slider after last slot DIV and Create the Clone panel of first slot.
+	    $( ".cloned_last.panel").html($('#slider li:last').prev().html());  // This will Override the Clone Panel of Slider before first slot DIV and Create the Clone panel of last slot.
+        $('#carousel_inner').courserotator('#left_scroll', '#right_scroll');
+        changeQuote();
+    });	
+    </script>  
+     
+    	<script type="text/javascript">
+			setTimeout(function(){var a=document.createElement("script");
+			var b=document.getElementsByTagName("script")[0];
+			a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0017/3534.js?"+Math.floor(new Date().getTime()/3600000);
+			a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+			
+			//google ads script for footer logos
+			var googletag = googletag || {};
+			googletag.cmd = googletag.cmd || [];
+			(function() {
+			var gads = document.createElement('script');
+			gads.async = true;
+			gads.type = 'text/javascript';
+			var useSSL = 'https:' == document.location.protocol;
+			gads.src = (useSSL ? 'https:' : 'http:') +
+			'//www.googletagservices.com/tag/js/gpt.js';
+			var node = document.getElementsByTagName('script')[0];
+			node.parentNode.insertBefore(gads, node);
+			})();
+            
+            //script for sending the pageview request to GA server
+			ga('send', 'pageview', location.pathname + location.search + location.hash);
+		</script>		
+		<script type="text/javascript">		
+			googletag.cmd.push(function() {
+			googletag.defineSlot('/1064917/HOME_CORP_LOGO_1', [145, 53], 'div-gpt-ad-1388181177156-0').addService(googletag.pubads());
+			googletag.defineSlot('/1064917/HOME_CORP_LOGO_2', [145, 53], 'div-gpt-ad-1388181177156-1').addService(googletag.pubads());
+			googletag.defineSlot('/1064917/HOME_CORP_LOGO_3', [145, 53], 'div-gpt-ad-1388181177156-2').addService(googletag.pubads());
+			googletag.defineSlot('/1064917/HOME_CORP_LOGO_4', [145, 53], 'div-gpt-ad-1388181177156-3').addService(googletag.pubads());
+			googletag.defineSlot('/1064917/HOME_CORP_LOGO_5', [145, 53], 'div-gpt-ad-1388181177156-4').addService(googletag.pubads());
+			googletag.defineSlot('/1064917/HOME_CORP_LOGO_6', [145, 53], 'div-gpt-ad-1388181177156-5').addService(googletag.pubads());
+			googletag.pubads().enableSingleRequest();		
+			googletag.enableServices();			
+			});		
+		</script>		 	
+		
+		
+			<script type="text/javascript">
+				var _qevents = _qevents || [];
+				(function() {
+				var elem = document.createElement('script');
+				elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") 
+							+ ".quantserve.com/quant.js";
+				elem.async = true;
+				elem.type = "text/javascript";
+				var scpt = document.getElementsByTagName('script')[0];
+				scpt.parentNode.insertBefore(elem, scpt);
+				})();
+				function p2l(pathname,query,hash){
+				pathname = pathname.replace(/\//gi,"__")
+				if(pathname === "-slash-") {
+				pathname = "homepage";
+				}
+				pathname = pathname.replace(/\./gi,"_");
+				query = query.replace(/\?/gi,'-');
+				params = query.split('&');
+				args = []
+				for(arg = 0; arg < params.length; arg++){
+				args.push(params[arg].split('=')[0]);
+				}
+				pathname += args.join('-');
+				pathname += hash.replace(/#/gi,"-");
+				return pathname;
+				};
+				_qevents.push({
+				qacct:"p-H4_RgmfqHMS3m",
+				labels: "_fp.event." + p2l(document.location.pathname,
+				document.location.search, document.location.hash)
+				});
+			</script>
+			<noscript>
+				<div style="display:none;"><img src="//pixel.quantserve.com/pixel/p-H4_RgmfqHMS3m.gif" border="0" height="1" width="1" alt="Quantcast" /></div>
+			</noscript>
+		  
+	   
+		 
+
+        
+        
+        
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </head>
+    <body itemscope itemtype="http://schema.org/WebPage">
+        
+        <div id="top">
+			<div id="grid">
+				
+				
+					
+<div id="portletwrapper-6f63772e746f70706f72746c65746d616e616765720a636f6e746578740a2f506c6f6e650a736974652d686561646572"
+     class="portletWrapper kssattr-portlethash-6f63772e746f70706f72746c65746d616e616765720a636f6e746578740a2f506c6f6e650a736974652d686561646572"><div class="portletStaticText portlet-static-site-header"><div id="banner" role="banner" class="grid_6 alpha"><a href="/"><img src="/images/ocw_mast.png" alt="MIT OpenCourseWare, Massachusetts Institute of Technology" class="logo" /></a></div> <div id="subscribe" role="form toolbar" class="grid_6 omega"><div class="module"><table class="social">     <tbody>         <tr>             <td class="socialbutton"><a href="/subscribe/index.htm?utm_source=header"><img alt="An icon depicting an envelope." src="/images/trans.gif" />Subscribe to the OCW Newsletter</a></td>             <td><a href="https://plus.google.com/104567381989352550847/posts"><img src="/images/icon_gp.png" alt="Click to visit our Google+ page." /></a><a href="https://www.pinterest.com/mitocw/pins/"><img src="/images/icon_pin.png" alt="Click to visit our Pinterest page." /></a><a href="http://facebook.com/mitocw"><img src="/images/icon_fb.png" alt="Click to visit our Facebook page." /></a><a href="http://twitter.com/mitocw"><img src="/images/icon_tw.png" alt="Click to visit our Twitter feed." /></a></td>         </tr>     </tbody> </table></div> <p class="helplinks"><a href="/help">Help</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="/jsp/feedback.jsp?Referer=">Contact Us</a></p></div> <div class="clear">&nbsp;</div></div>
+
+</div>
+
+
+
+
+
+<div id="mega" role="navigation" class="grid_8 alpha">        
+	<ul id="menu">
+        <li id="menu_home" class="selected">
+            <a href="/"><img src="/images/top-nav_home.png" class="home_icon" alt="Click for site home page." /></a><!-- Begin Home Item -->
+        </li><!-- End Home Item -->        
+        <li>
+            <a href="#" class="drop">Courses</a><!-- Begin 5 columns Item -->
+            <div class="dropdown_5columns-a mega-courses">                    
+                <div class="col_1a">
+                    <div class="row_1a">
+                        <div class="quart">
+                            <h2 class="nav">Find courses by:</h2>
+                            <ul class="nav-bullet find_by">
+                                <li><a href="/courses/find-by-topic/">Topic</a></li>
+                                <li><a href="/courses/find-by-number/">MIT Course Number</a></li>
+                                <li><a href="/courses/find-by-department/">Department</a></li>
+                            </ul>
+                        </div>
+                        <div class="quart">
+                            <h2 class="nav">Collections</h2>
+                            <ul class="nav-bullet">
+                                <li><a href="/courses/audio-video-courses/">Audio/Video Lectures</a></li>
+                                <li><a href="/courses/online-textbooks/">Online Textbooks</a></li>
+                                <li><a href="/courses/new-courses/">New Courses</a></li>
+                                <li><a href="/courses/most-visited-courses/">Most Visited Courses</a></li>
+                                <li><a href="/courses/ocw-scholar/">OCW Scholar Courses</a></li>
+                                <li><a href="/courses/this-course-at-mit/">This Course at MIT</a></li>
+                                <li><a href="/resources/">Supplemental Resources</a></li>
+                            </ul>
+                        </div>
+                        <div class="clear">&nbsp;</div>
+                    </div>
+                    <div class="row_1b">
+                        <h2 class="nav">Cross-Disciplinary Topic Lists</h2>
+                        <div class="quart">
+                        <ul class="nav-bullet">
+                            <li><a href="/courses/energy-courses">Energy</a></li>
+                            <li><a href="/courses/entrepreneurship">Entrepreneurship</a></li>
+                            <li><a href="/courses/environment-courses">Environment</a></li>
+                        </ul>
+                        </div>    
+                        <div class="quart">
+                        <ul class="nav-bullet">
+                        	<li><a href="/courses/intro-programming">Introductory Programming</a></li>
+                            <li><a href="/courses/life-sciences">Life Sciences</a></li>
+                            <li><a href="/courses/transportation-courses">Transportation</a></li>
+                        </ul>
+                        </div>
+                        <div class="clear">&nbsp;</div>
+                    </div>
+                    <div class="clear">&nbsp;</div>
+                </div>
+                <div class="col_1b">
+                    <h2 class="nav">Translated Courses</h2>
+                    <ul class="nav-bullet">
+                        <li><a href="/courses/translated-courses/traditional-chinese">&#32321;&#39636;&#23383; / Traditional Chinese</a></li>
+                        <li><a href="/courses/translated-courses/spanish">Espa&#241;ol / Spanish</a></li>
+                        <li><a href="/courses/translated-courses/portuguese">Portugu&#234;s / Portuguese</a></li>
+                        <li><a href="/courses/translated-courses/persian">&#1601;&#1575;&#1585;&#1587;&#1740; / Persian</a></li>
+                        <li><a href="/courses/translated-courses/turkish">T&#252;rk&#231;e / Turkish</a></li>
+                        <li><a href="/courses/translated-courses/korean">(&#48708;&#46356;&#50724;)&#54620;&#44397; / Korean</a></li>
+                        <li><a href="/courses/translated-courses">More...</a></li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li>
+            <a href="" class="drop">About</a>
+            <div class="dropdown_1column-a">
+                <div class="col_1">
+                    <ul class="nav-bullet mega-div-bottom">
+                        <li><a href="/about/">About MIT OpenCourseWare</a></li>
+                    </ul>
+                    <ul class="nav-bullet mega-div-bottom">
+                        <li><a href="/about/site-statistics/">Site Stats</a></li>
+                        <li><a href="/about/ocw-stories/">OCW Stories</a></li>                        
+                    </ul>
+                    <ul class="nav-bullet mega-div-bottom">
+                        <li><a href="/about/media-coverage/">Media Coverage</a></li>
+                        <li><a href="/about/newsletter/">Newsletter</a></li>
+                        <li><a href="/about/media-coverage/press-releases/">Press Releases</a></li>
+                    </ul>
+                    <ul class="nav-bullet">
+                        <li><a href="/about/next-decade/">OCW's Next Decade</a></li>
+                    </ul>
+                </div>
+            </div>  
+        </li>    
+        <li>
+            <a href="" class="drop">Donate</a>        
+            <div class="dropdown_1column-a">
+                    <div class="col_1">
+                        <ul class="nav-bullet mega-div-bottom">
+                            <li><a href="/donate/">Make a Donation</a></li>
+                            <li><a href="/donate/why-donate/">Why Donate?</a></li>
+                            <li><a href="/donate/ocw-course-champions-program/">Become a Course Champion</a></li>
+                            <li><a href="/donate/our-supporters/">Our Supporters</a></li>
+                            <li><a href="/donate/other-ways-to-contribute/">Other Ways to Contribute</a></li>
+                            <li><a href="/donate/shop-ocw">Shop OCW</a></li>
+                        </ul>
+                        <ul class="nav-bullet">
+                            <li><a href="/support/">Become a Corporate Sponsor</a></li>
+                        </ul>
+                    </div>
+            </div>            
+        </li>        
+        <li>
+            <a href="" class="drop">Featured Sites</a>        
+            <div class="dropdown_1column-a">
+                <div class="col_1">
+                    <ul class="nav-bullet mega-div-bottom">
+                        <li><a href="/high-school/">Highlights for High School</a></li>
+                        <li><a href="/educator/">OCW Educator</a></li>
+                    </ul>
+                    <ul class="nav-bullet mega-div-top">
+                        <li><a href="http://ocw.mit.edu/ans7870/featured/mitx-courses-on-edx.htm">MITx Courses on edX</a></li>
+                        <li><a href="http://teachingexcellence.mit.edu/">Teaching Excellence at MIT</a></li>
+						<li><a href="http://www.oeconsortium.org/">Open Education Consortium</a></li>
+                    </ul>
+                </div>
+            </div>            
+        </li>
+    </ul>        
+</div>
+<div id="search" role="search" class="grid_4 omega">
+    <form method="get" action="http://search.mit.edu/search">
+        <input type="hidden" value="ocw" name="site" />  
+        <input type="hidden" value="mit" name="client" /> 			 
+        <input type="hidden" value="*" name="getfields" />  
+        <input type="hidden" value="xml_no_dtd" name="output" /> 			 
+        <input type="hidden" value="http://ocw.mit.edu/search/google-ocw.xsl" name="proxystylesheet" />
+        <input type="hidden" value="WT%2Ecg_s:Course Home|WT%2Ecg_s:Resource Home" name="requiredfields" /> 
+        <input type="hidden" value="WT%2Ecg_s:Course Home|WT%2Ecg_s:Resource Home" name="sectionlimit" /> 
+        <input type="hidden" value="i" name="as_dt" /> 			 
+        <input type="hidden" value="utf-8" name="oe" />  
+        <input type="hidden" value="web" name="departmentName" />
+        <input type="hidden" value="0" name="filter" />
+        <input type="hidden" name="courseName" />
+        <table class="search">
+            <tbody>
+                <tr>
+                    <td class="black"><input type="text" onblur="fillSearchBox()" onfocus="clearSearchBox()" maxlength="255" value="Search" name="q" class="greytext searchField" id="terms" /></td> 			 
+                    <td class="black"><input type="image" src="/images/button_search.png" name="btnG" class="sub_button" /></td>			 
+                    <td class="text2"><a href="/search/AdvancedSearch.htm">Advanced<br />Search</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    
+</div>
+<div class="clear"></div>
+<!-- *end header* -->  
+
+	<div id="home_rotator" role="marquee" class="grid_12 alpha omega">
+		<ul id="slider">
+		  
+				<li id="Slot1">	    		   	    		      
+	    		       <input id="slot1_len" type="hidden"
+                     name="slot1_length" value="1">
+	    		        
+					        <div class="frame"
+                  style="background-image:url(feature-curated-18-05.jpg);"
+                  id="0Slot1">													
+						     <p class="more"><span class="shade2" style="font-size: .8em; text-shadow: none;">&raquo; <a href="http://ocw.mit.edu/courses/mathematics/18-05-introduction-to-probability-and-statistics-spring-2014/index.htm
+">18.05 Intro to Probability & Statistics</a></span></p>
+	        			     <p class="credit shade2">Photo Credit: MIT OpenCourseWare.</p>
+						     <p class="headline shade2" style="color: white; text-shadow: none; font-size:3em;">Redesigned for Active Learning</p>						                            							                        							                        					
+					        </div>
+					    					 				 
+				</li>			
+		  
+		  
+		    	<li id="Slot2">	    		   	    		     
+	    		       <input id="slot2_len" type="hidden"
+                     name="slot2_length" value="1">
+	    		        
+	    		          <div class="frame"
+                      style="background-image:url(/feature-about-get-started-dome.jpg);"
+                      id="0Slot2">													
+						     <p class="more"><span>&nbsp;&raquo;<a href="/help/get-started-with-ocw/"> Learn more</a></span></p>
+	        			     <p class="credit shade2">Photo credit: <a href="http://www.flickr.com/photos/usr_c/5633432466/">usr.c</a> on Flickr.</p>
+						     <p class="headline">Unlocking Knowledge, <br>Empowering Minds.</p>
+
+<p class="headline" style="font-size: 2em">Free lecture notes, exams, and videos from MIT. <br>No registration required.</p>						     		                        							                        							                        					
+					      </div>
+					    
+				</li>			
+		  
+		  	
+		     	<li id="Slot3">	    		       		     
+	    		       <input id="slot3_len" type="hidden"
+                     name="slot3_length" value="1">
+	    		        
+					       <div class="frame"
+                 style="background-image:url(feature_scholar_6041sc.jpg);"
+                 id="0Slot3">													
+						     <p class="more"><span  class="shade2">&raquo; <a href="/courses/electrical-engineering-and-computer-science/6-041sc-probabilistic-systems-analysis-and-applied-probability-fall-2013/">Learn More</a></span></p>
+	        			     <p class="credit shade2">Photo Credit: Courtesy of <a href="http://www.flickr.com/photos/9675912@N08/4602993722/">Juliana Cristina</a> on Flickr.</p>
+						     <p class="headline shade2">Understanding Uncertainty</p>
+<p class="headline shade2" style="font-size: 2em;">New OCW Scholar course on probability,
+<p class="headline shade2" style="font-size: 2em;">designed specifically for independent learners.</p>						     		                        							                        							                        					
+					       </div>
+					    
+				</li>			 
+		  
+		  
+		     	<li id="Slot4">	    		   	    		     
+	    		       <input id="slot4_len" type="hidden"
+                     name="slot4_length" value="2">
+	    		        
+					       <div class="frame"
+                 style="background-image:url(feature-mitx-3-072x.jpg);"
+                 id="0Slot4">											
+						     <p class="more"><span class="shade2" style="font-size: .8em; text-shadow: none;">&raquo; <a href="https://www.edx.org/course/symmetry-structure-tensor-properties-mitx-3-072x?utm_source=OCW&utm_medium=HomePage&utm_campaign=OCW">14-week course begins Feb. 10, 2015</a></span></p>
+	        			     
+						     <p class="headline shade2" style="color: white; text-shadow: none; font-size:3.2em;"><img src="mitx-logo-white.png" alt="MITx logo"><br />Symmetry, Structure and Tensor Properties of Materials</p>						     		                        							                        							                        					
+					       </div>
+					    
+	    		        
+					       <div class="frame"
+                 style="background-image:url(feature_donate_2014EOYCampaign2.png);"
+                 id="1Slot4">											
+						     <p class="more"><span class="shade2">&raquo; <a href="/courses/mitx-related-courseware">Learn more and register</a>&nbsp;</span></p>
+	        			     <p class="credit shade2">Photo Credit: <a href="https://www.flickr.com/photos/enerva/14872809839/">Sonny Abesamis</a></p>
+						     <p class="shade2 headline" style="font-size:4em; width:290px;" style="color: white;"><img src="mitx-logo-white.png" alt="MITx logo"><br />New Courses<br />For Winter</p>						     		                        							                        							                        					
+					       </div>
+					    					 				 
+				    
+				</li>			
+		  
+		  
+	     
+	        	 <li id="Slot6">	    		   	    		     
+	    		       <input id="slot6_len" type="hidden"
+                     name="slot6_length" value="1">
+	    		        
+					       <div class="frame"
+                 style="background-image:url(feature-donate-growing.jpg);"
+                 id="0Slot6">													
+						     <p class="more">&raquo; <a href="/donate/why-donate/">Donate Now</a></p>
+	        			     <p class="credit shade2">Photo credit: <a href="http://www.flickr.com/photos/wheatfields/7027233953/">net_efekt</a> on Flickr.</p>
+						     <p class="headline">Help Keep<br />OpenCourseWare<br />Going<br />and Growing.<p>						     		                        							                        							                        					
+					       </div>
+					    
+			    </li>			 
+	     					
+		</ul>        				        		
+    </div>        
+
+				
+				
+			</div><!-- top grid end -->
+		</div><!-- top end -->
+			
+		<div id="center_home">
+		<div id="grid">
+
+			
+			<div id="support" role="" class="grid_12 alpha omega">
+				<div id="support-c1" class="grid_3 alpha"></div>
+				<div id="support-c2" class="grid_3"></div>
+				<div id="support-c3" class="grid_3">
+	            
+				</div>
+				<div id="support-c4" class="grid_3 omega"></div>
+			</div>
+			
+			<div id="course_rotator_home" class="grid_8 alpha" role="">
+				
+	<h2 class="global">Featured Courses</h2>
+	<p class="orange shift1"><span class="bullet">&raquo;</span> <a href="/courses">View All Courses</a></p>
+    <div id="coro">
+    	<div id="left_scroll" class="nav">&nbsp;</div>
+	    <div id="carousel_inner">
+		    <ul id="carousel_ul">
+	    		
+	    			<li>	
+		    		   <div class="item">
+			        		<a href="/courses/biology/7-013-introductory-biology-spring-2013"><img
+    src="/courses/biology/7-013-introductory-biology-spring-2013/7-013s13-th.jpg" /></a>
+			        		<p class="badgeVideo">Video</p>		        					        		
+			       		    <p class="cTitle"><a
+    href="/courses/biology/7-013-introductory-biology-spring-2013">Introductory Biology</a></p>
+				        </div>
+		    		   <div class="item">
+			        		<a href="/courses/political-science/17-588-field-seminar-in-comparative-politics-fall-2013"><img
+    src="/courses/political-science/17-588-field-seminar-in-comparative-politics-fall-2013/17-588f13-th.jpg" /></a>
+			        		<p class="badgeNew">New</p>		        					        		
+			       		    <p class="cTitle"><a
+    href="/courses/political-science/17-588-field-seminar-in-comparative-politics-fall-2013">Field Seminar in Comparative Politics</a></p>
+				        </div>
+		    		   <div class="item">
+			        		<a href="/courses/electrical-engineering-and-computer-science/6-s096-effective-programming-in-c-and-c-january-iap-2014"><img
+    src="/courses/electrical-engineering-and-computer-science/6-s096-effective-programming-in-c-and-c-january-iap-2014/6-s096iap14-th.jpg" /></a>
+			        		<p class="badgeStart">Introductory</p>		        					        		
+			       		    <p class="cTitle"><a
+    href="/courses/electrical-engineering-and-computer-science/6-s096-effective-programming-in-c-and-c-january-iap-2014">Effective Programming in C and C++</a></p>
+				        </div>
+		    		   <div class="item">
+			        		<a href="/courses/civil-and-environmental-engineering/1-84j-atmospheric-chemistry-fall-2013"><img
+    src="/courses/civil-and-environmental-engineering/1-84j-atmospheric-chemistry-fall-2013/1-84jf13-th.jpg" /></a>
+			        		<p class="badgeNew">New</p>		        					        		
+			       		    <p class="cTitle"><a
+    href="/courses/civil-and-environmental-engineering/1-84j-atmospheric-chemistry-fall-2013">Atmospheric Chemistry</a></p>
+				        </div>
+				    </li>   			
+			    
+	    		
+	    			   			
+			    
+	    		
+	    			   			
+			    
+	    		
+	    			   			
+			    
+	    		
+	    			<li>	
+		    		   <div class="item">
+			        		<a href="/courses/brain-and-cognitive-sciences/9-20-animal-behavior-fall-2013"><img
+    src="/courses/brain-and-cognitive-sciences/9-20-animal-behavior-fall-2013/9-20f13-th.jpg" /></a>
+			        		<p class="badgeNew">New</p>		        					        		
+			       		    <p class="cTitle"><a
+    href="/courses/brain-and-cognitive-sciences/9-20-animal-behavior-fall-2013">Animal Behavior</a></p>
+				        </div>
+		    		   <div class="item">
+			        		<a href="/courses/physics/8-04-quantum-physics-i-spring-2013"><img
+    src="/courses/physics/8-04-quantum-physics-i-spring-2013/8-04s13-th.jpg" /></a>
+			        		<p class="badgeVideo">Video</p>		        					        		
+			       		    <p class="cTitle"><a
+    href="/courses/physics/8-04-quantum-physics-i-spring-2013">Quantum Physics I</a></p>
+				        </div>
+		    		   <div class="item">
+			        		<a href="/courses/electrical-engineering-and-computer-science/6-837-computer-graphics-fall-2012"><img
+    src="/courses/electrical-engineering-and-computer-science/6-837-computer-graphics-fall-2012/6-837f12-th.jpg" /></a>
+			        		<p class="badgeNews">Editor's Pick</p>		        					        		
+			       		    <p class="cTitle"><a
+    href="/courses/electrical-engineering-and-computer-science/6-837-computer-graphics-fall-2012">Computer Graphics</a></p>
+				        </div>
+		    		   <div class="item">
+			        		<a href="/courses/comparative-media-studies-writing/21w-763j-transmedia-storytelling-modern-science-fiction-spring-2014"><img
+    src="/courses/comparative-media-studies-writing/21w-763j-transmedia-storytelling-modern-science-fiction-spring-2014/21w-763js14-th.jpg" /></a>
+			        		<p class="badgeNew">New</p>		        					        		
+			       		    <p class="cTitle"><a
+    href="/courses/comparative-media-studies-writing/21w-763j-transmedia-storytelling-modern-science-fiction-spring-2014">Transmedia Storytelling: Modern Science Fiction</a></p>
+				        </div>
+				    </li>   			
+			    
+	    		
+	    			   			
+			    
+	    		
+	    			   			
+			    
+	    		
+	    			   			
+			    
+	    		
+	    			<li>	
+		    		   <div class="item">
+			        		<a href="/courses/history/21h-001-how-to-stage-a-revolution-fall-2013"><img
+    src="/courses/history/21h-001-how-to-stage-a-revolution-fall-2013/21h-001f13-th.jpg" /></a>
+			        		<p class="badgeStart">Introductory</p>		        					        		
+			       		    <p class="cTitle"><a
+    href="/courses/history/21h-001-how-to-stage-a-revolution-fall-2013">How to Stage a Revolution</a></p>
+				        </div>
+		    		   <div class="item">
+			        		<a href="/resources/res-18-006-calculus-revisited-single-variable-calculus-fall-2010"><img
+    src="/resources/res-18-006-calculus-revisited-single-variable-calculus-fall-2010/res-18-006f10-th.jpg" /></a>
+			        		<p class="badgeVideo">Video</p>		        					        		
+			       		    <p class="cTitle"><a
+    href="/resources/res-18-006-calculus-revisited-single-variable-calculus-fall-2010">Calculus Revisited: Single Variable Calculus</a></p>
+				        </div>
+		    		   <div class="item">
+			        		<a href="/courses/sloan-school-of-management/15-871-introduction-to-system-dynamics-fall-2013"><img
+    src="/courses/sloan-school-of-management/15-871-introduction-to-system-dynamics-fall-2013/15-871f13-th.jpg" /></a>
+			        		<p class="badgeNew">New</p>		        					        		
+			       		    <p class="cTitle"><a
+    href="/courses/sloan-school-of-management/15-871-introduction-to-system-dynamics-fall-2013">Introduction to System Dynamics</a></p>
+				        </div>
+		    		   <div class="item">
+			        		<a href="/courses/literature/21l-501-the-american-novel-stranger-and-stranger-spring-2013"><img
+    src="/courses/literature/21l-501-the-american-novel-stranger-and-stranger-spring-2013/21l-501s13-th.jpg" /></a>
+			        		<p class="badgeNews">Editor's Pick</p>		        					        		
+			       		    <p class="cTitle"><a
+    href="/courses/literature/21l-501-the-american-novel-stranger-and-stranger-spring-2013">The American Novel: Stranger and Stranger</a></p>
+				        </div>
+				    </li>   			
+			    
+	    		
+	    			   			
+			    
+	    		
+	    			   			
+			    
+	    		
+	    			   			
+			    
+	    		
+	    			<li>	
+		    		   <div class="item">
+			        		<a href="/courses/womens-and-gender-studies/wgs-s10-gender-power-leadership-and-the-workplace-spring-2014"><img
+    src="/courses/womens-and-gender-studies/wgs-s10-gender-power-leadership-and-the-workplace-spring-2014/wgs-s10s14-th.jpg" /></a>
+			        		<p class="badgeNew">New</p>		        					        		
+			       		    <p class="cTitle"><a
+    href="/courses/womens-and-gender-studies/wgs-s10-gender-power-leadership-and-the-workplace-spring-2014">Gender, Power, Leadership, and the Workplace</a></p>
+				        </div>
+		    		   <div class="item">
+			        		<a href="/courses/engineering-systems-division/esd-864-modeling-and-assessment-for-policy-spring-2013"><img
+    src="/courses/engineering-systems-division/esd-864-modeling-and-assessment-for-policy-spring-2013/esd-864s13-th.jpg" /></a>
+			        		<p class="badgeNews">Editor's Pick</p>		        					        		
+			       		    <p class="cTitle"><a
+    href="/courses/engineering-systems-division/esd-864-modeling-and-assessment-for-policy-spring-2013">Modeling and Assessment for Policy</a></p>
+				        </div>
+		    		   <div class="item">
+			        		<a href="/courses/comparative-media-studies-writing/cms-611j-creating-video-games-fall-2013"><img
+    src="/courses/comparative-media-studies-writing/cms-611j-creating-video-games-fall-2013/cms-611jf13-th.jpg" /></a>
+			        		<p class="badgePopular">Popular</p>		        					        		
+			       		    <p class="cTitle"><a
+    href="/courses/comparative-media-studies-writing/cms-611j-creating-video-games-fall-2013">Creating Video Games</a></p>
+				        </div>
+		    		   <div class="item">
+			        		<a href="/courses/mathematics/18-821-project-laboratory-in-mathematics-spring-2013"><img
+    src="/courses/mathematics/18-821-project-laboratory-in-mathematics-spring-2013/18-821s13-th.jpg" /></a>
+			        		<p class="badgeNews">Editor's Pick</p>		        					        		
+			       		    <p class="cTitle"><a
+    href="/courses/mathematics/18-821-project-laboratory-in-mathematics-spring-2013">Project Laboratory in Mathematics</a></p>
+				        </div>
+				    </li>   			
+			    
+	    		
+	    			   			
+			    
+	    		
+	    			   			
+			    
+	    		
+	    			   			
+			    
+		    </ul>
+	    </div>
+	    <div id="right_scroll" class="nav">&nbsp;</div>
+    </div>
+
+
+				
+				
+				<div id="inset">
+				
+							
+					
+        <div class="" id="parent-fieldname-bottom_text_1">
+            <div role="" class="grid_4 alpha" id="news">&nbsp;</div> <script type="text/javascript" src="http://www.google.com/jsapi">
+</script> <script type="text/javascript" src="/scripts/ocw_rss_news.js">
+</script> <div role="" class="grid_4 omega" id="meet"><h2 class="global"><a href="/faculty">Meet Our Instructors</a></h2> <ul class="prof">     <li><a id="proLink1" class="selected" href="#">Gilbert Strang</a></li>     <li><a id="proLink2" href="#">Michael Cuthbert</a></li>     <li><a id="proLink3" href="#">Eric Klopfer</a></li> </ul> <div class="profile" id="pro1"><p><a href="/faculty/gilbert-strang"><img width="72" height="96" alt="strang-blue_th.jpg" src="/faculty/gilbert-strang/strang-blue_th.jpg" style="margin-bottom:200px;" /></a> Prof. Gilbert Strang<br /> Professor of Mathematics</p> <p style="" class="quote">&ldquo;A big part of my life is to open mathematics to students everywhere. I'm very supportive of the whole idea of making these courses available to people around the world. Everyone has the capacity to learn mathematics, and if you can offer a little bit of guidance, the process of discovery is so valuable.&rdquo;</p> <div class="inset_button"><a href="/faculty/gilbert-strang"><img alt="Learn more" src="/images/button_learn.png" /></a></div></div> <div class="profile" id="pro2"><p><a href="/faculty/michael-cuthbert"><img width="79" height="96" alt="cuthbert_th.png" src="/faculty/michael-cuthbert/cuthbert_th.png" /></a> Michael Cuthbert<br /> MIT Associate Professor of Music</p> <p style="" class="quote">&ldquo;OCW can be valuable for faculty who are creating their own courses. It allows anyone to get an inside look at how other professors are organizing and teaching their classes.&rdquo;</p> <div class="inset_button"><a href="/faculty/michael-cuthbert"><img alt="Learn more" src="/images/button_learn.png" /></a></div></div> <div class="profile" id="pro3"><p><a href="/faculty/eric-klopfer"><img width="79" height="96" alt="Prof. Eric Klopfer" src="/faculty/eric-klopfer/eric_klopfer-th.jpg" /></a> Prof. Eric Klopfer<br /> MIT Professor, Director of the Scheller Teacher Education Program</p> <p class="quote">&ldquo;We&rsquo;re going to see a shift away from very passive forms of learning, where students are the consumers...&rdquo;</p> <div class="inset_button"><a href="/faculty/eric-klopfer"><img alt="Learn more" src="/images/button_learn.png" /></a></div></div></div> <div class="clear">&nbsp;</div> <p>&nbsp;</p>
+            
+        </div>
+    
+				</div>
+		
+			</div>
+		
+		
+		
+			<div id="right_side" class="grid_4 omega" role="">
+			
+			
+			
+			
+        <div class="" id="parent-fieldname-bottom_text_2">
+            <p>OCW makes the materials used in the teaching of MIT's subjects available on the Web.</p> <p>&nbsp;</p> <p><a href="/help/get-started-with-ocw/"><img style="width: 302px; height: 55px" alt="Learn more about how to use OpenCourseWare. Click to get started." src="/images/button_get-started.png" /></a></p>
+            
+        </div>
+    
+			
+			
+			
+			   <div id="home_ad">
+			  		
+<!-- RSI google ad space-->
+
+
+<div id="google_ads">    
+    <script type="text/javascript" src="http://partner.googleadservices.com/gampad/google_service.js"></script>
+    <script type="text/javascript">GS_googleAddAdSenseService("ca-pub-6588555046597237");GS_googleEnableAllServices();</script>
+    <script type="text/javascript">GA_googleAddSlot("ca-pub-6588555046597237", "HOME_SLOT_B");GA_googleAddSlot("ca-pub-6588555046597237", "HOME_SLOT_B");</script>
+    <script type="text/javascript">GA_googleFetchAds();</script>
+    <script language="javascript" type="text/javascript">
+GA_googleAddAttr("TYPE","HOUSE");
+GA_googleAddAttr("DEPARTMENT","WEB");
+GA_googleAddAttr("PG_SECTION","HOME");
+GA_googleAddAttr("PG_AREA","HOME");
+GA_googleAddAttr("PG_TLP","");
+</script>
+    <script type="text/javascript">GA_googleFillSlot("HOME_SLOT_B");</script><script type="text/javascript">GA_googleFillSlot("HOME_SLOT_B");</script>
+</div>
+
+<!-- End RSI ads--> 
+
+
+					</div>
+			   </div>
+                				
+	
+	
+		</div>	
+	
+	</div>
+		
+		<div id="bottom">
+			<div id="grid">
+				
+<div id="portletwrapper-6f63772e626f74746f6d706f72746c65746d616e616765720a636f6e746578740a2f506c6f6e650a736974652d666f6f746572"
+     class="portletWrapper kssattr-portlethash-6f63772e626f74746f6d706f72746c65746d616e616765720a636f6e746578740a2f506c6f6e650a736974652d666f6f746572"><div class="portletStaticText portlet-static-site-footer"><div id="bottom">
+<div id="grid"><!-- *begin footer* -->
+<div role="navigation sitemap" id="footer">
+<div class="grid_2 alpha" id="foot-c1">
+<h4 class="footer">Courses</h4>
+<ul class="foot-bullet">
+    <li><a href="/courses/find-by-topic/">Find by Topic</a></li>
+    <li><a href="/courses/find-by-number/">Find by Course Number</a></li>
+    <li><a href="/courses/find-by-department/">Find by Department</a></li>
+    <li><a href="/courses/audio-video-courses/">Audio/Video Courses</a></li>
+    <li><a href="/courses/online-textbooks/">Online Textbooks</a></li>
+    <li><a href="/courses/new-courses/">New Courses</a></li>
+    <li><a href="/courses/most-visited-courses/">Most Visited Courses</a></li>
+    <li><a href="/courses/ocw-scholar/">OCW Scholar Courses</a></li>
+    <li><a href="/courses/this-course-at-mit/">This Course at MIT</a></li>
+    <li><a href="/resources/">Supplemental Resources</a></li>
+    <li><a href="/courses/translated-courses/">Translated Courses</a></li>
+</ul>
+</div>
+<div class="grid_2" id="foot-c2">
+<h4 class="footer">About</h4>
+<ul class="foot-bullet">
+    <li><a href="/about/">About OpenCourseWare</a></li>
+    <li><a href="/about/site-statistics/">Site Stats</a></li>
+    <li><a href="/about/ocw-stories/">OCW Stories</a></li>
+    <li><a href="/about/media-coverage/">Media Coverage</a></li>
+    <li><a href="/about/newsletter/">Newsletter</a></li>
+    <li><a href="/about/media-coverage/press-releases/">Press Releases</a></li>
+    <li><a href="/about/next-decade/">OCW's Next Decade</a></li>
+</ul>
+</div>
+<div class="grid_2" id="foot-c3">
+<h4 class="footer">Donate</h4>
+<ul class="foot-bullet">
+    <li><a href="/donate">Make a Donation</a></li>
+    <li><a href="/donate/why-donate/">Why Donate?</a></li>
+    <li><a href="/donate/ocw-course-champions-program/">Become a Course Champion</a></li>
+    <li><a href="/donate/our-supporters/">Our Supporters</a></li>
+    <li><a href="/donate/other-ways-to-contribute/">Other Ways to Contribute</a></li>
+    <li><a href="/donate/shop-ocw/">Shop OCW</a></li>
+    <li><a href="/support/">Become a Corporate Sponsor</a></li>
+</ul>
+</div>
+<div class="grid_2" id="foot-c4">
+<h4 class="footer">Featured Sites</h4>
+<ul class="foot-bullet">
+    <li><a href="/high-school/">Highlights for High School</a></li>
+    <li><a href="/educator/">OCW Educator</a></li>
+    <li><a href="http://ocw.mit.edu/ans7870/featured/mitx-courses-on-edx.htm">MITx Courses on edX</a></li>
+    <li><a href="http://teachingexcellence.mit.edu/">Teaching Excellence at MIT</a></li>
+    <li><a href="http://www.oeconsortium.org/">Open Education Consortium</a></li>
+</ul>
+<h4 style="margin-top: 14px;" class="footer">Tools</h4>
+<ul class="foot-bullet">
+    <li><a href="/help/">Help &amp; FAQs</a></li>
+    <li><a href="/jsp/feedback.jsp">Contact Us</a></li>
+    <li><a href="/search/AdvancedSearch.htm">Advanced Search</a></li>
+    <li><a href="/help/site-map/">Site Map</a></li>
+    <li><a href="/terms/">Privacy &amp; Terms of Use</a></li>
+    <li><a href="/help/rss/">RSS Feeds</a></li>
+</ul>
+</div>
+<div itemtype="http://schema.org/CollegeOrUniversity" itemscope="" itemprop="publisher" class="grid_4 omega" id="foot-c5">
+<h4 class="footer">About <span itemprop="name">MIT OpenCourseWare</span></h4>
+<p itemprop="description" class="accent">MIT OpenCourseWare makes the materials used in the teaching of almost all of MIT's subjects available on the Web, free of charge. With more than 2,200 courses available, OCW is delivering on the promise of open sharing of knowledge.</p>
+</div>
+<div class="grid_8 alpha" id="foot-copy"><a href="http://web.mit.edu"><img style="width: 195; height: 44;" alt="Massachusetts Institute of Technology logo and name." src="/images/logo_mit.png" /></a>                 <a href="http://www.oeconsortium.org/"><img style="width: 219px; height: 59px; vertical-align: top;" alt="Open Education Consortium logo." src="/images/logo_oec.png" /></a>                 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" itemprop="useRightsUrl" rel="license"><img style="width: 126px; height: 44px; margin-right: 0;" alt="Creative Commons logo with terms BY-NC-SA." src="/images/cc_by-nc-sa.png" /></a>
+<p class="copyright">&copy; 2001&ndash;2015<br />
+Massachusetts Institute of Technology</p>
+<p style="font-size: 0.9em; margin-bottom: 15px;">Your use of the MIT OpenCourseWare site and materials is subject to our <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons License</a> and other <a rel="cc:morePermissions" href="/terms/">terms of use</a>.</p>
+</div>
+<div class="grid_4 omega" id="foot-support">
+<h4 class="footer">Our Corporate Supporters</h4>
+<!-- HOME_CORP_LOGO_1 -->
+<div class="sponsors_google_ads_even" id="div-gpt-ad-1388181177156-0"><script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1388181177156-0'); });
+</script></div>
+<!-- HOME_CORP_LOGO_2 -->
+<div class="sponsors_google_ads_odd" id="div-gpt-ad-1388181177156-1"><script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1388181177156-1'); });
+</script></div>
+<!-- HOME_CORP_LOGO_3 -->
+<div class="sponsors_google_ads_even" id="div-gpt-ad-1388181177156-2"><script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1388181177156-2'); });
+</script></div>
+<!-- HOME_CORP_LOGO_4 -->
+<div class="sponsors_google_ads_odd" id="div-gpt-ad-1388181177156-3"><script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1388181177156-3'); });
+</script></div>
+<!-- HOME_CORP_LOGO_5 -->
+<div class="sponsors_google_ads_even" id="div-gpt-ad-1388181177156-4"><script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1388181177156-4'); });
+</script></div>
+<!-- HOME_CORP_LOGO_6 -->
+<div class="sponsors_google_ads_odd" id="div-gpt-ad-1388181177156-5"><script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1388181177156-5'); });
+</script></div>
+</div>
+</div>
+</div>
+</div></div>
+
+</div>
+
+
+
+
+
+<noscript><img alt="dcsimg" id="dcsimg" width="1" height="1" src="//statse.webtrendslive.com/dcs8q9s2ag9xjywz8l6x34ik5_6b3t/njs.gif?dcsuri=/nojavascript&amp;WT.js=No&amp;WT.tv=10.2.10&amp;dcssip=www.ocw.mit.edu"/></noscript>                
+			</div> <!-- bottom grid end -->
+		</div><!-- bottom end -->
+		
+		
+   </body>
+ </html>
