@@ -51,6 +51,20 @@ public class WebCrawler{
 			return linkHref;
 	}
 
+    String deleteCharAt(String strValue, int index) {
+        return strValue.substring(0, index) + strValue.substring(index + 1);
+    }
+
+    //strip last forwardslash
+    public String stripForwardSlash(){
+        int length = linkHref.length();
+        if(linkHref.charAt(length-1) == '/'){
+            String newLink = deleteCharAt(linkHref, length-1);
+            return newLink;
+        }
+        return linkHref;
+    }            
+
     //method to clean urls
   	public String cleanURL(){
 		linkHref = parseHttpOnly();
@@ -72,6 +86,7 @@ public class WebCrawler{
 						if(!linkHref.isEmpty()){
 							linkHref = cleanURL();
 							if(!linkHref.isEmpty() && !url.contains(linkHref)){
+                                    linkHref = stripForwardSlash();
 									url.add(linkHref);
 									//robots(linkHref);						
 							}
