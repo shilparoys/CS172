@@ -11,7 +11,7 @@ public class Test{
       String output = args[3];
       //check if numPages and hopsAway is a valid no. 
       if(numPages <= 0 ||  hopsAway <= 0){
-	System.err.println("Invalid Number");
+	    System.err.println("Invalid Number");
         System.exit(1);
       }
       //check if inputFile exists
