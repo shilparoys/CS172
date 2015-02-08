@@ -26,7 +26,7 @@ public class Test{
       File f = new File(fileName);
       if(f.exists() && f.isFile()){
       	//read seed file
-      	wb.readSeedFile(fileName, htmlFile);
+      	wb.readSeedFile(fileName, htmlFile, output);
       //	wb.printCollection();
       }
       else{

@@ -122,18 +122,17 @@ public class WebCrawler{
 
 	public void outputToFile(String fileName2){
 		try{
-			File theDir = new File(fileName2);
-			if(!theDir.exists()){
-				theDir.mkdirs();
-			}
-            String fileName = "answers.txt";
-            BufferedWriter writer = new BufferedWriter(new FileWriter("answers.txt"));
-            Iterator<String> iterator = url.iterator(); 
+		/*	File f = new File("answers.txt");
+			if(!f.exists()){
+				f.createNewFile();
+			}*/
+			BufferedWriter wr = new BufferedWriter(new FileWriter(new File(fileName2, "answers.txt")));
+			Iterator<String> iterator = url.iterator();
 			while(iterator.hasNext()){
-                String temp = iterator.next().toString();
-                writer.write(temp + "\n");
-            }
-            writer.close();
+				String temp = iterator.next().toString();
+				wr.write(temp + "\n");
+			}
+			wr.close();
 		}
 		catch(IOException e){
 				System.err.format("IO exception at downloadfile");
@@ -169,13 +168,15 @@ public class WebCrawler{
   }
 
 	//method to read from seedFile which contains .edu domains, 0th hop
-  public void readSeedFile(String fileName, String htmlFile){
+  public void readSeedFile(String fileName, String htmlFile, String output){
 	try{
 		BufferedReader reader = new BufferedReader(new FileReader(fileName));
       	String line;
       	String outputPossible;
-      	File dir = new File("htmlfolder");
-      	dir.mkdir();
+      	File dir = new File(output);
+        if(!dir.exists()){
+      	    dir.mkdir();
+        }
 			//reading from input file here
       	while ((line = reader.readLine()) != null){
 	  		if(!line.trim().equals("")){
