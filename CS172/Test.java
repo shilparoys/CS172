@@ -33,6 +33,7 @@ public class Test{
         System.exit(1);
       }
       wb.readSeedFile();
+
 	  wb.threadTask();
 
   }

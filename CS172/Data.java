@@ -8,6 +8,7 @@ public class Data{
 	private BlockingQueue<URLObj> readylist;
 	private Set<String> url;
 	private int currentNumPages;
+	private int numThreads;
 	private int currentHopsAway;
 	private int maxThreads;
 	
@@ -15,6 +16,7 @@ public class Data{
 		readylist = new LinkedBlockingQueue<URLObj>();
 		threadList = new ArrayList<Thread>();
 		url = new HashSet<String>();
+		numThreads = 0;
 		currentNumPages = 0;
 		currentHopsAway = 0;
 		maxThreads = 80;
@@ -49,8 +51,14 @@ public class Data{
 	public int currHop(){
 		return currentHopsAway;
 	}
-	public int getCurrNumThreads(){
-		return threadList.size();
+	public int getNumThreads(){
+		return numThreads;
+	}
+	public synchronized void addNumThreads(){
+		numThreads++;
+	}
+	public synchronized void subNumThreads(){
+		numThreads--;
 	}
 	public synchronized void addThread(Thread a){
 		threadList.add(a);
@@ -61,5 +69,4 @@ public class Data{
 				thread.interrupt();
 		}
 	}
-	
 }

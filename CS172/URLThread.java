@@ -23,18 +23,18 @@ public class URLThread implements Runnable{
 	//downloading file contents
 	public void downloadFile() throws IOException, MalformedURLException{
 	try{
-	    	
 		curr.numPagesinc();
 		URLObj currseed = curr.removeQueue();
 		String seed = currseed.getURL();
 
 		RobotExclusionUtil robotcheck = new RobotExclusionUtil();
 		if(!robotcheck.robotsShouldFollow(seed) ){
+			curr.subNumThreads();
 			return;
 		}
-		
+	
 		curr.urlAdd(seed);
-		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("answers.txt", true) ) );
+		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("./" + dir +"/answers.txt", true) ) );
 		out.println(seed);
 		out.close();
 		//hops inc
@@ -42,35 +42,35 @@ public class URLThread implements Runnable{
 		if(currseed.getHops() != nextseed.getHops() ){
 			curr.hopsinc();
 		}
+
 		
 		URL urlObj = new URL(seed);
   		BufferedReader x = new BufferedReader(new InputStreamReader(urlObj.openStream() ) );
-		String fileName = "file" + curr.currPage() + ".html";
-    		BufferedWriter fos = new BufferedWriter(new FileWriter(new File(dir, fileName)));
+		String fileName = seed.substring(7, seed.length() );
+    	BufferedWriter fos = new BufferedWriter(new FileWriter(new File(dir, fileName)));
 
-    		String line;
-    		while((line = x.readLine()) != null){
+    	String line;
+    	while((line = x.readLine()) != null){
 			fos.write(line);
-      			fos.write("\n");
-    		}
+      		fos.write("\n");
+    	}
   		x.close();
   		fos.close();
 		jsoupParse(fileName, seed, currseed.getHops() + 1);
-
+		curr.subNumThreads();
 	}
  	catch(IOException e){
 		System.err.format("IO exception at downloadfile");
-    	}	
-       }
+    }	
+  }
 
   public void jsoupParse(String fileName, String baseUrl, int hops){
 	try{
-		///CHANGE THIS BACK TO OUTPUT FILE NAME
-		String ot = "./" +"out" + "/";
+		String ot = "./" +  dir + "/";
 		File input = new File(ot + fileName);
-     		Document doc = Jsoup.parse(input, "UTF-8", "baseUrl");
-      		Elements links = doc.select("a[href]");
-      		for (Element link : links) {
+     	Document doc = Jsoup.parse(input, "UTF-8", "baseUrl");
+      	Elements links = doc.select("a[href]");
+      	for (Element link : links) {
 			linkHref = link.attr("abs:href");
 			linkHref.trim();
 			if(!linkHref.isEmpty()){
@@ -84,8 +84,8 @@ public class URLThread implements Runnable{
 						
 				}
 			}	
-      		}
-    	}
+      	}
+    }
   	catch(IOException e){
 		e.printStackTrace();
    	 }
@@ -94,8 +94,7 @@ public class URLThread implements Runnable{
 
 public boolean validURL(String url){
 	try{
-    		URL urlObj = new URL(url);
-		// Check if URL exists. 
+    	URL urlObj = new URL(url);
 		HttpURLConnection.setFollowRedirects(false);
 		HttpURLConnection con = (HttpURLConnection) urlObj.openConnection();
 		con.setRequestMethod("GET");
@@ -105,9 +104,9 @@ public boolean validURL(String url){
 			return true;
 		return false;
 	}
-    	catch (Exception e){
-	      	System.err.format("Exception occurred in validURL");
-    	}
+    catch (Exception e){
+		System.err.format("Exception occurred in validURL");
+    }
 	return false;
 
 }
@@ -115,7 +114,7 @@ public void run(){
 	try{
 		downloadFile();
 	}
-	 catch(IOException e){
+	catch(IOException e){
 		System.err.format("IO exception at downloadfile");
     }	
 }
@@ -128,7 +127,7 @@ public String parseHttpOnly(){
 }
 
 	public String removeBookmark(){
-    	int index = 0;
+ 		int index = 0;
 		if(linkHref.contains("#")){
 			index = linkHref.indexOf("#");
       		String temp = new String(linkHref.substring(0, index));
@@ -137,9 +136,9 @@ public String parseHttpOnly(){
 		return linkHref;
 	}
 
-  String deleteCharAt(String strValue, int index) {
+	String deleteCharAt(String strValue, int index) {
 		return strValue.substring(0, index) + strValue.substring(index + 1);
-  }
+	}
 
   //strip last forwardslash
   public String stripForwardSlash(){
@@ -163,9 +162,9 @@ public String parseHttpOnly(){
 		if(t == null)
 		{
 			t = new Thread(this);
+			curr.addNumThreads();
 			curr.addThread(t);
 			t.start();
 		}
 	}
-
 }

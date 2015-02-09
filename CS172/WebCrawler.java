@@ -15,6 +15,8 @@ public class WebCrawler{
   private String linkHref;
   private int maxNumPages;
   private int maxHopsAway;
+  private int maxThreads = 5;
+  private int i=0;
   private File output;
   private Data d; 
 
@@ -26,6 +28,7 @@ public class WebCrawler{
 		maxHopsAway = hops;
 		output = ot;
   }
+
 	public String parseHttpOnly(){
 		if(linkHref.contains("http:"))
 			return linkHref;
@@ -73,7 +76,6 @@ public class WebCrawler{
 			//reading from input file here
       	while ((line = reader.readLine()) != null){
 	  		if(!line.trim().equals("")){
-				//page will be downloaded
 				linkHref = line;
 				linkHref = cleanURL();
 				linkHref = stripForwardSlash();
@@ -82,7 +84,6 @@ public class WebCrawler{
 			}
 	  	}
       reader.close();
-	  d.hopsinc();
 	}
     catch(IOException e){
 		System.err.format("IO exception at readLine");
@@ -93,17 +94,18 @@ public class WebCrawler{
   }
 
   	public void threadTask(){
-		int i=0;
+		//check number of lines in the seed file and compare
+//		if(maxNumPages > numLines)
+//			maxThreads = numLines;
 		while(true){
-			if(d.currPage() >= maxNumPages || d.currHop() >= maxHopsAway || d.queueIsEmpty() )
+			if(d.currPage() >= maxNumPages || d.currHop() > maxHopsAway || d.queueIsEmpty() )
 			{
 				break;
 			}	
-		
-			if(i < 25){
+	
+			if(d.getNumThreads() < maxThreads){
 				URLThread t = new URLThread(fileName, d, output);
 				t.start();
-			i++;
 			}
 		}
 		d.finishThread();
