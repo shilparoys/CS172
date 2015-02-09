@@ -107,6 +107,7 @@ public class WebCrawler{
 					linkHref = cleanURL();
 					if(!linkHref.isEmpty() && !url.contains(linkHref)){
 						linkHref = stripForwardSlash();
+					//	if(validURL(linkHref))
 							addToList(linkHref);
 						
 					}
@@ -143,7 +144,6 @@ public class WebCrawler{
 
 	String fileName = "file" + i + ".html";
 
-//System.out.println("download file i: " + i);
 
     BufferedWriter fos = new BufferedWriter(new FileWriter(new File(dir, fileName)));
 
@@ -154,11 +154,12 @@ public class WebCrawler{
     }
   	x.close();
   	fos.close();
+System.out.println("download file i: " + i);
 	jsoupParse(fileName, seed);
     if(i >= maxNumPages){
 		keepgoing = false;
 
-// System.out.println("downloadpages false");
+ //System.out.println("downloadpages false");
 	}
 
 	}
@@ -191,6 +192,7 @@ public class WebCrawler{
 	  	}
       reader.close();
 	  //now we want to read from the queues
+	  addTo = 2;
 	  currenthop++;
 	  while((currenthop <= maxHopsAway)){
 		readMoreURL(dir);
@@ -209,22 +211,20 @@ public class WebCrawler{
 	public void readMoreURL(File dir){
 		String myURL = "";
 		try{
-			if(addTo == 1){
+			if(addTo == 2){
 				myURL = readylist1.poll();
 				while(myURL != null && keepgoing){
 					RobotExclusionUtil r = new RobotExclusionUtil();
 					boolean follow = r.robotsShouldFollow(myURL);
 					if(follow && i < maxNumPages){
-	System.out.println("readmoreurl myURL: " + myURL);
 						downloadFile(myURL, dir);
-						
 					}
 					myURL = readylist1.poll();
 				}
-				addTo = 2;
+				addTo = 1;
 			}
 
-			else if(addTo == 2){
+			else if(addTo == 1){
 				myURL = readylist2.poll();
 				while(myURL != null && keepgoing){
 					RobotExclusionUtil r = new RobotExclusionUtil();
@@ -233,7 +233,7 @@ public class WebCrawler{
 						downloadFile(myURL, dir);
 					myURL = readylist2.poll();
 				}
-				addTo = 1;
+				addTo = 2;
 			}
 			else
 				System.out.println("addTo error");
@@ -253,6 +253,7 @@ public class WebCrawler{
 		try{
     	URL urlObj = new URL(url);
 
+//System.out.println("in validURL");
 			/* Check if URL exists. */
 			HttpURLConnection.setFollowRedirects(false);
 			HttpURLConnection con = (HttpURLConnection) urlObj.openConnection();
