@@ -11,10 +11,10 @@ import java.util.concurrent.*;
 public class WebCrawler{
 
   //private member variables
-	//one queue = 1 depth
-	private Queue<String> readylist1 = new LinkedList<String>();
-	private Queue<String> readylist2 = new LinkedList<String>();
-	private Set<String> url = new HashSet<String>();
+  //one queue = 1 depth
+  private Queue<String> readylist1 = new LinkedList<String>();
+  private Queue<String> readylist2 = new LinkedList<String>();
+  private Set<String> url = new HashSet<String>();
 
   private String linkHref;
   private int currenthop;
@@ -36,9 +36,9 @@ public class WebCrawler{
 
   //method to print out Collection
   public void printCollection(){
-		Iterator it = url.iterator();
-		while(it.hasNext())
-			System.out.println(it.next());
+  	Iterator it = url.iterator();
+	while(it.hasNext())
+		System.out.println(it.next());
 	}
 
 	//add to all lists
@@ -62,12 +62,12 @@ public class WebCrawler{
 	}
 
 	public String removeBookmark(){
-    int index = 0;
+    	int index = 0;
 		if(linkHref.contains("#")){
 			index = linkHref.indexOf("#");
-      String temp = new String(linkHref.substring(0, index));
+      		String temp = new String(linkHref.substring(0, index));
 			return temp;
-    }
+    	}
 		return linkHref;
 	}
 
@@ -77,20 +77,20 @@ public class WebCrawler{
 
   //strip last forwardslash
   public String stripForwardSlash(){
-		int length = linkHref.length();
-		if(linkHref.charAt(length-1) == '/'){
-			String newLink = deleteCharAt(linkHref, length-1);
-      return newLink;
+	int length = linkHref.length();
+	if(linkHref.charAt(length-1) == '/'){
+		String newLink = deleteCharAt(linkHref, length-1);
+    	return newLink;
     }
     return linkHref;
   }
 
   //method to clean urls
   public String cleanURL(){
-		linkHref = parseHttpOnly();
-		if(!linkHref.isEmpty())
-			linkHref = removeBookmark();
-		return linkHref;
+	linkHref = parseHttpOnly();
+	if(!linkHref.isEmpty())
+		linkHref = removeBookmark();
+	return linkHref;
 	}
 
 	//method to parse html file
@@ -98,24 +98,23 @@ public class WebCrawler{
 	try{
 		String ot = "./" + output + "/";
 		File input = new File(ot + fileName);
-      Document doc = Jsoup.parse(input, "UTF-8", "baseUrl");
-      Elements links = doc.select("a[href]");
-      for (Element link : links) {
-				linkHref = link.attr("abs:href");
-				linkHref.trim();
-				if(!linkHref.isEmpty()){
-					linkHref = cleanURL();
-					if(!linkHref.isEmpty() && !url.contains(linkHref)){
-						linkHref = stripForwardSlash();
-					//	if(validURL(linkHref))
-							addToList(linkHref);
-						
-					}
+     	Document doc = Jsoup.parse(input, "UTF-8", "baseUrl");
+      	Elements links = doc.select("a[href]");
+      	for (Element link : links) {
+			linkHref = link.attr("abs:href");
+			linkHref.trim();
+			if(!linkHref.isEmpty()){
+				linkHref = cleanURL();
+				if(!linkHref.isEmpty() && !url.contains(linkHref)){
+					linkHref = stripForwardSlash();
+				//	if(validURL(linkHref))
+						addToList(linkHref);
 				}
-      }
+			}	
+      	}
     }
   	catch(IOException e){
-			e.printStackTrace();
+		e.printStackTrace();
     }
   }
 
@@ -132,42 +131,58 @@ public class WebCrawler{
 		catch(IOException e){
 				System.err.format("IO exception at downloadfile");
 			}
-
 	}
 
-	//downlaoding file contents
+	//downloading file contents
   public void downloadFile(String seed, File dir) throws IOException, MalformedURLException{
 	try{
 		i++;
 		URL urlObj = new URL(seed);
-  	BufferedReader x = new BufferedReader(new InputStreamReader(urlObj.openStream() ) );
+  		BufferedReader x = new BufferedReader(new InputStreamReader(urlObj.openStream() ) );
+		String fileName = "file" + i + ".html";
 
-	String fileName = "file" + i + ".html";
+    	BufferedWriter fos = new BufferedWriter(new FileWriter(new File(dir, fileName)));
 
-
-    BufferedWriter fos = new BufferedWriter(new FileWriter(new File(dir, fileName)));
-
-    String line;
-    while((line = x.readLine()) != null && keepgoing){
-      fos.write(line);
-      fos.write("\n");
-    }
-  	x.close();
-  	fos.close();
-System.out.println("download file i: " + i);
-	jsoupParse(fileName, seed);
-    if(i >= maxNumPages){
-		keepgoing = false;
-
- //System.out.println("downloadpages false");
+    	String line;
+    	while((line = x.readLine()) != null && keepgoing){
+			fos.write(line);
+      		fos.write("\n");
+    	}
+  		x.close();
+  		fos.close();
+		jsoupParse(fileName, seed);
+    	if(i >= maxNumPages){
+			keepgoing = false;
+		}
 	}
-
-	}
- catch(IOException e){
-			System.err.format("IO exception at downloadfile");
+ 	catch(IOException e){
+		System.err.format("IO exception at downloadfile");
     }
-//System.out.println("download file : end");
+  }
 
+  public void singleFileDownload(String seed, File dir) throws IOException, MalformedURLException{
+	try{
+		i++;
+		URL urlObj = new URL(seed);
+  		BufferedReader x = new BufferedReader(new InputStreamReader(urlObj.openStream() ) );
+		String fileName = "file" + i + ".html";
+
+    	BufferedWriter fos = new BufferedWriter(new FileWriter(new File(dir, fileName)));
+
+    	String line;
+    	while((line = x.readLine()) != null && keepgoing){
+			fos.write(line);
+      		fos.write("\n");
+    	}
+  		x.close();
+  		fos.close();
+    	if(i >= maxNumPages){
+			keepgoing = false;
+		}
+	}
+ 	catch(IOException e){
+		System.err.format("IO exception at downloadfile");
+    }
   }
 
 	//method to read from seedFile which contains .edu domains, 0th hop
@@ -181,13 +196,14 @@ System.out.println("download file i: " + i);
       	    dir.mkdir();
         }
 			//reading from input file here
-      	while ((line = reader.readLine()) != null){
+      	while ((line = reader.readLine()) != null && keepgoing){
 	  		if(!line.trim().equals("")){
-				//FIX THIS
-					linkHref = line;
-					linkHref = cleanURL();
-					linkHref = stripForwardSlash();
-					addToList(linkHref);
+				//page will be downloaded
+				singleFileDownload(line,dir);
+				linkHref = line;
+				linkHref = cleanURL();
+				linkHref = stripForwardSlash();
+				addToList(linkHref);
 			}
 	  	}
       reader.close();
@@ -195,12 +211,12 @@ System.out.println("download file i: " + i);
 	  addTo = 2;
 	  currenthop++;
 	  while((currenthop <= maxHopsAway)){
-		readMoreURL(dir);
+      	readMoreURL(dir);
 		currenthop++;
 	  }
     }
     catch(IOException e){
-			System.err.format("IO exception at readLine");
+		System.err.format("IO exception at readLine");
     }
     catch (Exception e){
     	System.err.format("Exception occurred trying to read '%s'.\n", fileName);
@@ -237,8 +253,6 @@ System.out.println("download file i: " + i);
 			}
 			else
 				System.out.println("addTo error");
-
-
 		}
 		catch(IOException e){
       		System.err.format("IO exception at readLine");
@@ -252,8 +266,6 @@ System.out.println("download file i: " + i);
 	public boolean validURL(String url){
 		try{
     	URL urlObj = new URL(url);
-
-//System.out.println("in validURL");
 			/* Check if URL exists. */
 			HttpURLConnection.setFollowRedirects(false);
 			HttpURLConnection con = (HttpURLConnection) urlObj.openConnection();
