@@ -18,16 +18,18 @@ public class WebCrawler{
 
   private String linkHref;
   private int currenthop;
-  private int numPages;
+  private int maxNumPages;
   private int maxHopsAway;
   private int addTo;
   private int i=0;
   private boolean keepgoing = true;
+  private String output;
 
   //constructor
-  WebCrawler(int pages, int hops){
-		numPages = pages;
+  WebCrawler(int pages, int hops, String ot){
+		maxNumPages = pages;
 		maxHopsAway = hops;
+		output = ot;
 		currenthop = 0;
 		addTo = 1;
   }
@@ -94,7 +96,8 @@ public class WebCrawler{
 	//method to parse html file
   public void jsoupParse(String fileName, String baseUrl){
 	try{
-			File input = new File("./htmlfolder/"+ fileName);
+		String ot = "./" + output + "/";
+		File input = new File(ot + fileName);
       Document doc = Jsoup.parse(input, "UTF-8", "baseUrl");
       Elements links = doc.select("a[href]");
       for (Element link : links) {
@@ -104,13 +107,8 @@ public class WebCrawler{
 					linkHref = cleanURL();
 					if(!linkHref.isEmpty() && !url.contains(linkHref)){
 						linkHref = stripForwardSlash();
-						if(url.size() < numPages ){
 							addToList(linkHref);
-						}
-						else{
-							keepgoing = false;
-							return;
-						}
+						
 					}
 				}
       }
@@ -122,10 +120,6 @@ public class WebCrawler{
 
 	public void outputToFile(String fileName2){
 		try{
-		/*	File f = new File("answers.txt");
-			if(!f.exists()){
-				f.createNewFile();
-			}*/
 			BufferedWriter wr = new BufferedWriter(new FileWriter(new File(fileName2, "answers.txt")));
 			Iterator<String> iterator = url.iterator();
 			while(iterator.hasNext()){
@@ -144,26 +138,34 @@ public class WebCrawler{
   public void downloadFile(String seed, File dir) throws IOException, MalformedURLException{
 	try{
 		i++;
-    URL urlObj = new URL(seed);
-  	BufferedReader x = new BufferedReader(new InputStreamReader(urlObj.openConnection().getInputStream()));
+		URL urlObj = new URL(seed);
+  	BufferedReader x = new BufferedReader(new InputStreamReader(urlObj.openStream() ) );
 
 	String fileName = "file" + i + ".html";
 
-//System.out.println("download file name: " + fileName);
+//System.out.println("download file i: " + i);
 
     BufferedWriter fos = new BufferedWriter(new FileWriter(new File(dir, fileName)));
-    while(x.ready() && keepgoing){
-			String line = x.readLine();
+
+    String line;
+    while((line = x.readLine()) != null && keepgoing){
       fos.write(line);
       fos.write("\n");
     }
   	x.close();
   	fos.close();
 	jsoupParse(fileName, seed);
+    if(i >= maxNumPages){
+		keepgoing = false;
+
+// System.out.println("downloadpages false");
+	}
+
 	}
  catch(IOException e){
 			System.err.format("IO exception at downloadfile");
     }
+//System.out.println("download file : end");
 
   }
 
@@ -180,22 +182,20 @@ public class WebCrawler{
 			//reading from input file here
       	while ((line = reader.readLine()) != null){
 	  		if(!line.trim().equals("")){
-				if(url.size() < numPages ){
+				//FIX THIS
 					linkHref = line;
 					linkHref = cleanURL();
 					linkHref = stripForwardSlash();
 					addToList(linkHref);
-				}
 			}
 	  	}
       reader.close();
 	  //now we want to read from the queues
 	  currenthop++;
-	  while((currenthop <= maxHopsAway) && (url.size() < numPages)){
+	  while((currenthop <= maxHopsAway)){
 		readMoreURL(dir);
 		currenthop++;
 	  }
-
     }
     catch(IOException e){
 			System.err.format("IO exception at readLine");
@@ -214,8 +214,10 @@ public class WebCrawler{
 				while(myURL != null && keepgoing){
 					RobotExclusionUtil r = new RobotExclusionUtil();
 					boolean follow = r.robotsShouldFollow(myURL);
-					if(follow){
+					if(follow && i < maxNumPages){
+	System.out.println("readmoreurl myURL: " + myURL);
 						downloadFile(myURL, dir);
+						
 					}
 					myURL = readylist1.poll();
 				}
@@ -227,7 +229,7 @@ public class WebCrawler{
 				while(myURL != null && keepgoing){
 					RobotExclusionUtil r = new RobotExclusionUtil();
 					boolean follow = r.robotsShouldFollow(myURL);
-					if(follow)
+					if(follow && i<maxNumPages)
 						downloadFile(myURL, dir);
 					myURL = readylist2.poll();
 				}
