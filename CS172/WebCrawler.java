@@ -15,15 +15,17 @@ public class WebCrawler{
   private String linkHref;
   private int maxNumPages;
   private int maxHopsAway;
+  private int numLines;
   private int maxThreads = 5;
-  private int i=0;
+ // private int i=0;
   private File output;
   private Data d; 
 
   //constructor
-  WebCrawler(String file, int pages, int hops, File ot){
+  WebCrawler(String file, int pages, int hops, File ot, int fl){
 	    d = new Data();
 	    fileName = file;
+		numLines = fl;
 		maxNumPages = pages;
 		maxHopsAway = hops;
 		output = ot;
@@ -95,15 +97,15 @@ public class WebCrawler{
 
   	public void threadTask(){
 		//check number of lines in the seed file and compare
-//		if(maxNumPages > numLines)
-//			maxThreads = numLines;
+		if(maxNumPages > numLines && d.currHop() == 0)
+			maxThreads = numLines;
 		while(true){
 			if(d.currPage() >= maxNumPages || d.currHop() > maxHopsAway || d.queueIsEmpty() )
 			{
 				break;
 			}	
 	
-			if(d.getNumThreads() < maxThreads){
+			else if(d.getNumThreads() < maxThreads){
 				URLThread t = new URLThread(fileName, d, output);
 				t.start();
 			}
