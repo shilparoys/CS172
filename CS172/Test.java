@@ -9,12 +9,10 @@ public class Test{
         System.exit(1);
       }
 
-      String htmlFile = ""; //read input from command line
       String fileName = args[0];
       int numPages = Integer.parseInt(args[1]);
       int hopsAway = Integer.parseInt(args[2]);
       String output = args[3];
-      WebCrawler wb = new WebCrawler(numPages, hopsAway,output);
 
       //check if numPages and hopsAway is a valid no.
       if(numPages <= 0 ||  hopsAway < 0){
@@ -22,18 +20,20 @@ public class Test{
         System.exit(1);
       }
 
+	  File dir = new File(output);
+	  if(!dir.exists())
+		  dir.mkdir();
+
+      WebCrawler wb = new WebCrawler(fileName, numPages, hopsAway, dir);
+
       //check if inputFile exists
       File f = new File(fileName);
-      if(f.exists() && f.isFile()){
-      	//read seed file
-      	wb.readSeedFile(fileName, htmlFile, output);
-      }
-      else{
+      if(!f.exists() && !f.isFile()){
         System.err.println("Seed file not found");
         System.exit(1);
       }
+      wb.readSeedFile();
+	  wb.threadTask();
 
-     // wb.printCollection();
-      wb.outputToFile(output);
   }
 }
