@@ -58,7 +58,7 @@ public class URLThread implements Runnable{
   		fos.close();
 		jsoupParse(fileName, seed, currseed.getHops() + 1);
 		curr.subNumThreads();
-	System.out.println("done with jsoup");
+//	System.out.println("done with jsoup");
 	}
  	catch(IOException e){
 		System.err.format("IO exception at downloadfile");
@@ -146,8 +146,7 @@ public String parseHttpOnly(){
 	int length = linkHref.length();
 	if(linkHref.charAt(length-1) == '/'){
 		String newLink = deleteCharAt(linkHref, length-1);
-    	return newLink;
-    }
+    	return newLink; }
     return linkHref;
   }
 

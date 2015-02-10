@@ -13,7 +13,7 @@ public class Test{
       int numPages = Integer.parseInt(args[1]);
       int hopsAway = Integer.parseInt(args[2]);
       String output = args[3];
-	  int fileLines = Integer.parseInt(args[4]); 
+//	  int fileLines = Integer.parseInt(args[4]); 
 
       //check if numPages and hopsAway is a valid no.
       if(numPages <= 0 ||  hopsAway < 0){
@@ -25,7 +25,7 @@ public class Test{
 	  if(!dir.exists())
 		  dir.mkdir();
 
-      WebCrawler wb = new WebCrawler(fileName, numPages, hopsAway, dir, fileLines);
+      WebCrawler wb = new WebCrawler(fileName, numPages, hopsAway, dir);// fileLines);
 
       //check if inputFile exists
       File f = new File(fileName);
