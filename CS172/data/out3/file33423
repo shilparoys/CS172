@@ -1,0 +1,1293 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+ <head profile="http://gmpg.org/xfn/11"> 
+  <meta http-equiv="X-UA-Compatible" content="IE=8"> 
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+  <title>
+Jackson School of Geosciences</title> 
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"> 
+  <link rel="icon" href="/favicon.ico" type="image/x-icon"> 
+  <link rel="alternate" type="application/rss+xml" title="JSG News RSS Feed" href="http://www.jsg.utexas.edu/news/feed/"> 
+  <link rel="stylesheet" href="http://www.jsg.utexas.edu/wp-content/themes/motion/style.css?v=2" type="text/css" media="screen"> 
+  <!--[if lt IE 7]>
+<link href="http://www.jsg.utexas.edu/wp-content/themes/motion/ie6.css" rel="stylesheet" type="text/css" media="screen" />
+<script type="text/javascript">var clear="http://www.jsg.utexas.edu/wp-content/themes/motion/images/clear.gif"; //path to clear.gif</script>
+<script type="text/javascript" src="http://www.jsg.utexas.edu/wp-content/themes/motion/js/unitpngfix.js"></script>
+<![endif]--> 
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script> 
+  <script type="text/javascript" src="http://www.jsg.utexas.edu/wp-content/themes/motion/js/jquery.tools.min.js"></script> 
+  <script type="text/javascript" src="http://www.jsg.utexas.edu/wp-content/themes/motion/js/jtruncate.js"></script> 
+  <style>
+.panes div.paneContent {
+	display:none;		
+	padding:15px 10px;
+	border-top:0;
+	height:100px;
+	font-size:14px;
+	background-color:#fff;
+}
+</style> 
+  <script type="text/javascript">
+$().ready(function() {
+
+	$('.video').prepend('<div class="video-icon"><img width="0" height="100%" src="http://www.jsg.utexas.edu/wp-content/themes/motion/images/blank.gif" /><img src="http://www.jsg.utexas.edu/wp-content/themes/motion/images/video.png" width="44" height="45" alt="video" /></div>')
+	
+    $('.truncate').jTruncate({
+        length: 150,
+        minTrail: 0,
+        moreText: "[more]",
+        lessText: "[hide]",
+        ellipsisText: "... ",
+        moreAni: "fast"
+    });
+    
+    });
+</script> 
+  <!--<script type="text/javascript" src="http://www.jsg.utexas.edu/wp-content/themes/motion/js/fancybox/jquery.easing-1.3.pack.js"></script>--> 
+  <script type="text/javascript" src="http://www.jsg.utexas.edu/wp-content/themes/motion/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script> 
+  <link rel="stylesheet" type="text/css" href="http://www.jsg.utexas.edu/wp-content/themes/motion/js/fancybox/jquery.fancybox-1.3.4.css" media="screen"> 
+  <script type="text/javascript">
+$(document).ready(function()
+{
+	$('.event-modal').fancybox({
+		'hideOnContentClick' : false,  
+		'centerOnScroll' : true, 
+		'transitionIn' : 'elastic', 
+		'transitionOut' : 'elastic', 
+		'speedIn' : 300, 
+		'speedOut' : 300,
+	});
+	
+	$("a.fancyGallery").fancybox(
+	{
+		'titlePosition'	: 'over',
+		'centerOnScroll' : true
+	});
+	
+	$("#thumbnails").click(function()
+	{
+		$('.big_thumb, .description').hide();
+		$('.thumb').show();
+	});
+	
+	$("#listing").click(function()
+	{
+		$('.thumb').hide();
+		$('.big_thumb, .description').show();
+	});
+});
+</script> 
+  <script type="text/javascript">
+$(document).ready(function() {
+	
+	$('#filter').click(function(e)
+	{
+		e.preventDefault();
+		$('#filterBox').toggle();
+	});
+	
+	// Close if click again and already open
+	$('#quickLinksClose').click(function(e)
+	{
+		e.preventDefault();
+		
+		$('#quickLinks').slideToggle();
+		
+		if($('#prospective-links').is(":visible"))
+		{
+			$('#prospective-links').fadeToggle();
+		}
+		
+		if($('#community-links').is(":visible"))
+		{
+			$('#community-links').fadeToggle();
+		}
+		
+		if($('#recruiter-links').is(":visible"))
+		{
+			$('#recruiter-links').fadeToggle();
+		}
+		
+		if($('#alumni-links').is(":visible"))
+		{
+			$('#alumni-links').fadeToggle();
+		}
+	});
+	
+	// Prospective Students
+	$('#menu-item-3600').click(function(e)
+	{
+		e.preventDefault();
+		
+		// Close if click again and already open
+		if($('#prospective-links').is(":visible"))
+		{
+			$('#quickLinks').slideToggle();
+			$('#prospective-links').fadeToggle();
+		}
+		else
+		{
+			if($('#quickLinks').is(":hidden"))
+			{
+				$('#quickLinksWrapper').css('height', '125px');
+				$('#quickLinks').css('height', '175px');
+				$('#quickLinks').slideToggle();
+			}
+			else
+			{
+				$("#quickLinksWrapper").animate({height:"125px"}, 300);
+				$("#quickLinks").animate({height:"175px"}, 300);
+			}
+			
+			// Hide other links
+			if($('#community-links').is(":visible"))
+			{
+				$('#community-links').hide();
+			}
+			if($('#recruiter-links').is(":visible"))
+			{
+				$('#recruiter-links').hide();
+			}
+			if($('#alumni-links').is(":visible"))
+			{
+				$('#alumni-links').hide();
+			}
+			
+			// Show prospective links
+			if($('#prospective-links').is(":hidden"))
+			{
+				//alert('show prospective');
+				$('#prospective-links').delay(300).fadeIn();
+			}	
+		}
+	});
+	
+	// JSG Community
+	$('#menu-item-3601').click(function(e)
+	{
+		e.preventDefault();
+		
+		if($('#community-links').is(":visible"))
+		{
+			$('#quickLinks').slideToggle();
+			$('#community-links').fadeToggle();
+		}
+		else
+		{
+			if($('#quickLinks').is(":hidden"))
+			{
+				$('#quickLinksWrapper').css('height', '240px');
+				$('#quickLinks').css('height', '290px');
+				$('#quickLinks').slideToggle();
+			}
+			else
+			{
+				$("#quickLinksWrapper").animate({height:"240px"}, 300);
+				$("#quickLinks").animate({height:"290px"}, 300);
+			}
+			
+			// Hide other links
+			if($('#prospective-links').is(":visible"))
+			{
+				$('#prospective-links').hide();
+			}
+			if($('#recruiter-links').is(":visible"))
+			{
+				$('#recruiter-links').hide();
+			}
+			if($('#alumni-links').is(":visible"))
+			{
+				$('#alumni-links').hide();
+			}
+			
+			// Show community links
+			if($('#community-links').is(":hidden"))
+			{
+				$('#community-links').delay(300).fadeIn();
+			}
+		}
+	});
+	
+	// Alumni & Friends
+	$('#menu-item-2601').click(function(e)
+	{
+		e.preventDefault();
+		
+		if($('#alumni-links').is(":visible"))
+		{
+			$('#quickLinks').slideToggle();
+			$('#alumni-links').fadeToggle();
+		}
+		else
+		{
+			if($('#quickLinks').is(":hidden"))
+			{
+				$('#quickLinksWrapper').css('height', '125px');
+				$('#quickLinks').css('height', '175px');
+				$('#quickLinks').slideToggle();
+			}
+			else
+			{
+				$("#quickLinksWrapper").animate({height:"125px"}, 300);
+				$("#quickLinks").animate({height:"175px"}, 300);
+			}
+			
+			// Hide other links
+			if($('#prospective-links').is(":visible"))
+			{
+				$('#prospective-links').hide();
+			}
+			if($('#community-links').is(":visible"))
+			{
+				$('#community-links').hide();
+			}
+			if($('#recruiter-links').is(":visible"))
+			{
+				$('#recruiter-links').hide();
+			}
+			
+			// Show recruiter links
+			if($('#alumni-links').is(":hidden"))
+			{
+				$('#alumni-links').delay(300).fadeIn();
+			}
+		}
+	});
+	
+	// Recruiters & Companies
+	$('#menu-item-3602').click(function(e)
+	{
+		e.preventDefault();
+		
+		if($('#recruiter-links').is(":visible"))
+		{
+			$('#quickLinks').slideToggle();
+			$('#recruiter-links').fadeToggle();
+		}
+		else
+		{
+			if($('#quickLinks').is(":hidden"))
+			{
+				$('#quickLinksWrapper').css('height', '125px');
+				$('#quickLinks').css('height', '175px');
+				$('#quickLinks').slideToggle();
+			}
+			else
+			{
+				$("#quickLinksWrapper").animate({height:"125px"}, 300);
+				$("#quickLinks").animate({height:"175px"}, 300);
+			}
+			
+			// Hide other links
+			if($('#prospective-links').is(":visible"))
+			{
+				$('#prospective-links').hide();
+			}
+			if($('#community-links').is(":visible"))
+			{
+				$('#community-links').hide();
+			}
+			if($('#alumni-links').is(":visible"))
+			{
+				$('#alumni-links').hide();
+			}
+			
+			// Show recruiter links
+			if($('#recruiter-links').is(":hidden"))
+			{
+				$('#recruiter-links').delay(300).fadeIn();
+			}
+		}
+	});
+	
+});
+</script> 
+  <link rel="stylesheet" id="fancybox-css" href="http://www.jsg.utexas.edu/wp-content/plugins/easy-fancybox/fancybox/jquery.fancybox-1.3.7.min.css?ver=1.5.7" type="text/css" media="screen"> 
+  <link rel="stylesheet" id="featured-post-css-css" href="http://www.jsg.utexas.edu/wp-content/plugins/featured-post-with-thumbnail/featured-post.css?ver=4.0.1" type="text/css" media="all"> 
+  <script type="text/javascript" src="http://www.jsg.utexas.edu/wp-includes/js/jquery/jquery.js?ver=1.11.1"></script>
+  <script>jQueryWP = jQuery;</script> 
+  <script type="text/javascript" src="http://www.jsg.utexas.edu/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1"></script> 
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.jsg.utexas.edu/xmlrpc.php?rsd"> 
+  <!-- Easy FancyBox 1.5.7 using FancyBox 1.3.7 - RavanH (http://status301.net/wordpress-plugins/easy-fancybox/) --> 
+  <script type="text/javascript">
+/* <![CDATA[ */
+var fb_timeout = null;
+var fb_opts = { 'overlayShow' : true, 'hideOnOverlayClick' : true, 'showCloseButton' : false, 'centerOnScroll' : true, 'enableEscapeButton' : true, 'autoScale' : true, 'speedIn' : 600 };
+var easy_fancybox_handler = function(){
+	/* IMG */
+	var fb_IMG_select = 'a[href*=".jpg"]:not(.nofancybox,.pin-it-button):not(:empty), area[href*=".jpg"]:not(.nofancybox):not(:empty), a[href*=".gif"]:not(.nofancybox,.pin-it-button):not(:empty), area[href*=".gif"]:not(.nofancybox):not(:empty), a[href*=".png"]:not(.nofancybox,.pin-it-button):not(:empty), area[href*=".png"]:not(.nofancybox):not(:empty)';
+	jQuery(fb_IMG_select).addClass('fancybox image');
+	var fb_IMG_sections = jQuery('div.gallery ');
+	fb_IMG_sections.each(function() { jQuery(this).find(fb_IMG_select).attr('rel', 'gallery-' + fb_IMG_sections.index(this)); });
+	jQuery('a.fancybox, area.fancybox, li.fancybox a:not(li.nofancybox a)').fancybox( jQuery.extend({}, fb_opts, { 'transitionIn' : 'elastic', 'easingIn' : 'easeOutBack', 'transitionOut' : 'elastic', 'easingOut' : 'easeInBack', 'opacity' : false, 'hideOnContentClick' : false, 'titleShow' : true, 'titlePosition' : 'inside', 'titleFromAlt' : true, 'showNavArrows' : true, 'enableKeyboardNav' : true, 'cyclic' : false }) );
+	/* SWF */
+	jQuery('a[href*=".swf"]:not(.nofancybox):not(:empty), area[href*=".swf"]:not(.nofancybox):not(:empty)').addClass('fancybox-swf');
+	jQuery('a.fancybox-swf, area.fancybox-swf, li.fancybox-swf a:not(li.nofancybox a)').fancybox( jQuery.extend({}, fb_opts, { 'type' : 'swf', 'width' : 620, 'height' : 503, 'padding' : 0, 'titleShow' : false, 'titlePosition' : 'float', 'titleFromAlt' : false, 'swf' : {'wmode':'opaque','allowfullscreen':true} }) );
+	/* Auto-click */ 
+	jQuery('#fancybox-auto').trigger('click');
+}
+/* ]]> */
+</script> 
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30013622-1']);
+  _gaq.push(['_setDomainName', 'jsg.utexas.edu']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script> 
+ </head> 
+ <body class="home blog"> 
+  <a href="#skip" class="offscreen">Skip Navigation</a> 
+  <!--sphider_noindex--> 
+  <div id="quickLinks" class="clearfix" style="display:none"> 
+   <div id="generalLinks"> 
+    <div id="generalLinksWrapper"> 
+     <div class="links clearfix" style="width:930px"> 
+      <ul class="link-list"> 
+       <li class="first"><a href="http://www.utexas.edu" target="_blank">UT Main</a></li>
+       <li><a href="http://www.utexas.edu/directory" target="_blank">UT Directory</a></li>
+       <li><a href="https://utdirect.utexas.edu/utdirect/index.WBX" target="_blank">UT Direct</a></li>
+       <li><a href="https://courses.utexas.edu" target="_blank">Blackboard</a></li>
+       <li><a href="http://www.utexas.edu/its" target="_blank">ITS</a></li>
+       <li><a href="http://registrar.utexas.edu/calendars/" target="_blank">Academic Calendar</a></li>
+       <li><a href="http://www.utexas.edu/parking/fs/" target="_blank">Parking &amp; Transportation</a></li>
+       <li><a href="http://finaid.utexas.edu/" target="_blank">Financial Aid</a></li>
+       <li><a href="http://www.utexas.edu/hr/current/services/" target="_blank">Human Resource Services</a></li>
+       <li><a href="http://www.utexas.edu/jobs" target="_blank">UT Jobs</a></li> 
+      </ul> 
+      <div id="quickLinksClose">
+       <a href="">X</a>
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="quickLinksWrapper" class="clearfix"> 
+    <div id="prospective-links" style="display:none"> 
+     <div class="links clearfix"> 
+      <table> 
+       <tbody>
+        <tr> 
+         <td><a href="/education/undergraduate/"><img src="/wp-content/uploads/2011/08/undergraduates.jpg" width="75" height="75" alt="Prospective Undergraduate Students"></a></td> 
+         <td> <h3><a href="/education/undergraduate/">Prospective Undergraduates</a></h3> 
+          <ul class="link-list"> 
+           <li class="first"><a href="http://www.jsg.utexas.edu/education/undergraduate" target="">Undergrad Main</a></li>
+           <li><a href="http://www.jsg.utexas.edu/education/student-views/" target="">Student Views</a></li>
+           <li><a href="http://www.jsg.utexas.edu/education/undergraduate/degrees-offered/" target="">Degrees Offered</a></li>
+           <li><a href="http://www.jsg.utexas.edu/education/undergraduate/honors-program/" target="">Honors Program</a></li>
+           <li><a href="http://www.jsg.utexas.edu/education/undergraduate/admissions/" target="">Admissions</a></li>
+           <li><a href="http://www.jsg.utexas.edu/education/undergraduate/courses-catalogs/" target="">Courses &amp; Catalogs</a></li>
+           <li><a href="http://www.jsg.utexas.edu/education/undergraduate/field-experiences/" target="">Field Experiences</a></li>
+           <li><a href="http://www.jsg.utexas.edu/education/student-opportunities/" target="">Opportunities</a></li> 
+          </ul> </td> 
+        </tr> 
+       </tbody>
+      </table> 
+     </div> 
+     <div class="links clearfix"> 
+      <table> 
+       <tbody>
+        <tr> 
+         <td><a href="/education/graduate/"><img src="/wp-content/uploads/2011/08/graduates.jpg" width="75" height="75" alt="Prospective Graduate Students"></a></td> 
+         <td> <h3><a href="/education/graduate/">Prospective Graduates</a></h3> 
+          <ul class="link-list"> 
+           <li class="first"><a href="http://www.jsg.utexas.edu/education/graduate" target="">Graduate Main</a></li>
+           <li><a href="http://www.jsg.utexas.edu/education/graduate/supervisors/" target="">Find a Supervisor</a></li>
+           <li><a href="http://www.jsg.utexas.edu/research/themes/" target="">Research Themes</a></li>
+           <li><a href="http://www.jsg.utexas.edu/education/graduate/degrees-offered/" target="">Degrees Offered</a></li>
+           <li><a href="http://www.jsg.utexas.edu/education/graduate/admissions/" target="">Admissions</a></li>
+           <li><a href="http://www.jsg.utexas.edu/eer" target="">EER Graduate Program</a></li>
+           <li><a href="http://www.jsg.utexas.edu/education/graduate/financial-support/" target="">Support</a></li>
+           <li><a href="http://www.jsg.utexas.edu/education/graduate/graduate-studies-committee/" target="">Grad Studies Committee</a></li>
+           <li><a href="http://www.jsg.utexas.edu/education/student-opportunities/" target="">Opportunities</a></li> 
+          </ul> </td> 
+        </tr> 
+       </tbody>
+      </table> 
+     </div> 
+    </div>
+    <!-- /prospective-links --> 
+    <div id="community-links" style="display:none"> 
+     <div id="linksRow" class="clearfix"> 
+      <div class="links"> 
+       <table> 
+        <tbody>
+         <tr> 
+          <td><a href="https://intranet.jsg.utexas.edu/students/default.aspx" target="_blank"><img src="/wp-content/uploads/2011/08/undergraduate.jpg" width="75" height="75" alt="JSG Undergraduate Students"></a></td> 
+          <td> <a href="https://intranet.jsg.utexas.edu/students/default.aspx" target="_blank"><h3>Current Undergraduates</h3></a> 
+           <ul class="link-list"> 
+            <li class="first"><a href="https://intranet.jsg.utexas.edu/students/default.aspx" target="">Intranet</a></li>
+            <li><a href="https://utdirect.utexas.edu/dpjsg/index.WBX" target="">Services</a></li>
+            <li><a href="https://intranet.jsg.utexas.edu/Policies%20Procedures%20%20Forms/Forms/AllItems.aspx?RootFolder=%2fPolicies%20Procedures%20%20Forms%2fStudents%2fUndergraduate%20Student%20Policies%20and%20Other%20Information&amp;FolderCTID=&amp;View=4406EE65-DA14-4B96-8" target="">Policies</a></li>
+            <li><a href="https://intranet.jsg.utexas.edu/students/Shared%20Documents/DGS%20-%20Undergrad%20Tutoring/" target="">Tutoring</a></li>
+            <li><a href="http://www.jsg.utexas.edu/education/undergraduate/honors-program/" target="">Honors</a></li>
+            <li><a href="http://www.jsg.utexas.edu/careers/" target="">Careers</a></li>
+            <li><a href="http://www.jsg.utexas.edu/education/undergraduate/courses-catalogs/" target="_blank">Courses &amp; Catalogs</a></li>
+            <li><a href="https://intranet.jsg.utexas.edu/Policies%20Procedures%20%20Forms/Students/Undergraduate%20Advising%20Information/electives.pdf" target="">Electives</a></li>
+            <li><a href="http://www.jsg.utexas.edu/education/undergraduate/field-experiences/" target="">Field Experiences</a></li>
+            <li><a href="http://www.jsg.utexas.edu/education/student-organizations/" target="">Student Orgs</a></li>
+            <li><a href="http://www.jsg.utexas.edu/events/graduation/" target="">Graduation</a></li> 
+           </ul> </td> 
+         </tr> 
+        </tbody>
+       </table> 
+      </div> 
+      <div class="links"> 
+       <table> 
+        <tbody>
+         <tr> 
+          <td><a href="https://intranet.jsg.utexas.edu/students/default.aspx" target="_blank"><img src="/wp-content/uploads/2011/08/graduate.jpg" width="75" height="75" alt="JSG Graduate Students"></a></td> 
+          <td> <a href="https://intranet.jsg.utexas.edu/students/default.aspx" target="_blank"><h3>Current Graduates</h3></a> 
+           <ul class="link-list"> 
+            <li class="first"><a href="https://intranet.jsg.utexas.edu/students/default.aspx" target="">Intranet</a></li>
+            <li><a href="https://intranet.jsg.utexas.edu/Policies%20Procedures%20%20Forms/Forms/AllItems.aspx?RootFolder=%2fPolicies%20Procedures%20%20Forms%2fStudents%2fGraduate%20Student%20Forms&amp;FolderCTID=&amp;View=4406EE65-DA14-4B96-864C-304C545E41B4" target="">Forms</a></li>
+            <li><a href="https://intranet.jsg.utexas.edu/Policies%20Procedures%20%20Forms/Forms/AllItems.aspx?RootFolder=%2fPolicies%20Procedures%20%20Forms%2fStudents%2fGraduate%20Student%20Policies%20and%20Other%20Information&amp;FolderCTID=&amp;View=4406EE65-DA14-4B96-864C-3" target="">Policies</a></li>
+            <li><a href="http://www.jsg.utexas.edu/education/graduate/supervisors/" target="">Supervisors</a></li>
+            <li><a href="http://www.jsg.utexas.edu/careers" target="">Careers</a></li>
+            <li><a href="http://www.jsg.utexas.edu/education/graduate/courses-catalogs/" target="">Courses &amp; Catalogs</a></li>
+            <li><a href="http://www.jsg.utexas.edu/education/graduate/financial-support/" target="">Support</a></li>
+            <li><a href="https://intranet.jsg.utexas.edu/all/Digital%20Sign%20Templates/Forms/AllItems.aspx" target="">Promoting Events</a></li>
+            <li><a href="http://www.jsg.utexas.edu/events/graduation/" target="">Graduation</a></li>
+            <li><a href="https://utdirect.utexas.edu/registration/chooseSemester.WBX?s_student_eid=" target="_blank">Registration</a></li>
+            <li><a href="http://www.jsg.utexas.edu/facilities/" target="">Facility Requests</a></li> 
+           </ul> </td> 
+         </tr> 
+        </tbody>
+       </table> 
+      </div> 
+     </div> 
+     <div id="linksRow" class="clearfix"> 
+      <div class="links"> 
+       <table> 
+        <tbody>
+         <tr> 
+          <td><a href="https://intranet.jsg.utexas.edu/facstaff/default.aspx" target="_blank"><img src="/wp-content/uploads/2011/08/faculty.jpg" width="75" height="75" alt="JSG Faculty &amp; Research Scientists"></a></td> 
+          <td> <a href="https://intranet.jsg.utexas.edu/facstaff/default.aspx" target="_blank"><h3>Faculty &amp; Research Scientists</h3></a> 
+           <ul class="link-list"> 
+            <li class="first"><a href="https://intranet.jsg.utexas.edu/facstaff/default.aspx" target="">Intranet</a></li>
+            <li><a href="https://intranet.jsg.utexas.edu/Policies%20Procedures%20%20Forms/Forms/AllItems.aspx" target="">Policies &amp; Forms</a></li>
+            <li><a href="https://apps.jsg.utexas.edu/profiles/" target="">Edit My Profile</a></li>
+            <li><a href="http://www.jsg.utexas.edu/research/find-an-expert/" target="">Find an Expert</a></li>
+            <li><a href="http://www.utexas.edu/faculty/" target="_blank">UT Faculty</a></li>
+            <li><a href="https://intranet.jsg.utexas.edu/all/Digital%20Sign%20Templates/Forms/AllItems.aspx" target="">Promoting Events</a></li>
+            <li><a href="http://www.utexas.edu/research/resources/" target="_blank">Research Resources</a></li>
+            <li><a href="http://www.jsg.utexas.edu/help/" target="">IT Help</a></li>
+            <li><a href="http://www.jsg.utexas.edu/facilities/" target="">Facility Requests</a></li> 
+           </ul> </td> 
+         </tr> 
+        </tbody>
+       </table> 
+      </div> 
+      <div class="links"> 
+       <table> 
+        <tbody>
+         <tr> 
+          <td><a href="https://intranet.jsg.utexas.edu/facstaff/default.aspx" target="_blank"><img src="/wp-content/uploads/2011/08/staff.jpg" width="75" height="75" alt="JSG Staff"></a></td> 
+          <td> <a href="https://intranet.jsg.utexas.edu/facstaff/default.aspx" target="_blank"><h3>Staff</h3></a> 
+           <ul class="link-list"> 
+            <li class="first"><a href="https://intranet.jsg.utexas.edu/facstaff/default.aspx" target="">Intranet</a></li>
+            <li><a href="https://intranet.jsg.utexas.edu/Policies%20Procedures%20%20Forms/Forms/AllItems.aspx" target="">Policies &amp; Forms</a></li>
+            <li><a href="https://intranet.jsg.utexas.edu/facstaff/committees/NextSteps/default.aspx" target="">Next Steps</a></li>
+            <li><a href="http://www.utexas.edu/staff/" target="_blank">UT Staff Site</a></li>
+            <li><a href="https://utdirect.utexas.edu/pntime/" target="">Time Sheet</a></li>
+            <li><a href="https://utdirect.utexas.edu/payroll/po8/payroll_info.WBX" target="_blank">Paycheck Profile</a></li>
+            <li><a href="https://intranet.jsg.utexas.edu/all/JSG%20Logo/Forms/AllItems.aspx" target="">JSG Logos</a></li>
+            <li><a href="https://intranet.jsg.utexas.edu/all/Digital%20Sign%20Templates/Forms/AllItems.aspx" target="">Promoting Events</a></li>
+            <li><a href="http://www.jsg.utexas.edu/help" target="">IT Help</a></li>
+            <li><a href="http://www.jsg.utexas.edu/facilities/" target="">Facility Requests</a></li> 
+           </ul> </td> 
+         </tr> 
+        </tbody>
+       </table> 
+      </div> 
+     </div> 
+    </div>
+    <!-- /community-links --> 
+    <div id="recruiter-links" style="display:none"> 
+     <div id="linksRow" class="clearfix"> 
+      <div class="links"> 
+       <table> 
+        <tbody>
+         <tr> 
+          <td><a href="/careers/for-recruiters/"><img src="/wp-content/uploads/2011/08/recruiters.jpg" width="75" height="75" alt="Recruiters"></a></td> 
+          <td> <h3><a href="/careers/for-recruiters/">For Recruiters</a></h3> 
+           <ul class="link-list"> 
+            <li class="first"><a href="https://employer.myinterfase.com/utgeo/employer" target="_blank">Geo-Source</a></li>
+            <li><a href="http://www.jsg.utexas.edu/careers/for-recruiters/while-in-austin/" target="">While in Austin</a></li>
+            <li><a href="http://www.jsg.utexas.edu/careers/for-recruiters/on-campus-recruiting/" target="">On-Campus Recruiting</a></li>
+            <li><a href="http://www.jsg.utexas.edu/careers/for-recruiters/recruiting-policies" target="">Recruiting Policies</a></li>
+            <li><a href="http://www.jsg.utexas.edu/careers/for-recruiters/resume-reviews" target="">Resume Reviews</a></li>
+            <li><a href="http://www.jsg.utexas.edu/careers/for-recruiters/scheduling-info-sessions" target="">Scheduling Info Sessions</a></li>
+            <li><a href="http://www.jsg.utexas.edu/careers/contact-us/" target="">Contact Us</a></li> 
+           </ul> </td> 
+         </tr> 
+        </tbody>
+       </table> 
+      </div> 
+      <div class="links"> 
+       <table> 
+        <tbody>
+         <tr> 
+          <td><img src="/wp-content/uploads/2011/08/companies.jpg" width="75" height="75" alt="Companies"></td> 
+          <td> <h3>For Companies</h3> 
+           <ul class="link-list"> 
+            <li class="first"><a href="http://www.jsg.utexas.edu/alumni/support/corporate-foundation-giving/" target="">Corporate &amp; Foundation Giving</a></li>
+            <li><a href="http://www.jsg.utexas.edu/research/industry-collaborations/" target="">Industry Collaborations</a></li>
+            <li><a href="http://www.jsg.utexas.edu/people/find-an-expert/" target="">Find an Expert</a></li> 
+           </ul> </td> 
+         </tr> 
+        </tbody>
+       </table> 
+      </div> 
+     </div> 
+    </div>
+    <!-- /recruiter-links --> 
+    <div id="alumni-links" style="display:none"> 
+     <div id="linksRow" class="clearfix"> 
+      <div class="links"> 
+       <table> 
+        <tbody>
+         <tr> 
+          <td><a href="/alumni/friends-alumni-network/"><img src="/wp-content/uploads/2011/10/alumni.jpg" width="75" height="75" alt="JSG Alumni"></a></td> 
+          <td> <h3><a href="/alumni/friends-alumni-network/">Alumni</a></h3> 
+           <ul class="link-list"> 
+            <li class="first"><a href="http://www.jsg.utexas.edu/alumni/friends-alumni-network/" target="">Friends &amp; Alumni Network</a></li>
+            <li><a href="http://www.jsg.utexas.edu/alumni/events-calendar/" target="">Events Calendar</a></li>
+            <li><a href="http://www.jsg.utexas.edu/careers" target="">Career Center</a></li>
+            <li><a href="http://www.jsg.utexas.edu/alumni/publications/" target="">Publications</a></li>
+            <li><a href="http://www.jsg.utexas.edu/alumni/support/" target="">Support JSG</a></li>
+            <li><a href="http://www.jsg.utexas.edu/alumni/contact-us/" target="">Contact Us</a></li>
+            <li><a href="https://utdirect.utexas.edu/apps/utgiving/online/nlogon/?menu1=JS**" target="">Make a Gift</a></li> 
+           </ul> </td> 
+         </tr> 
+        </tbody>
+       </table> 
+      </div> 
+      <div class="links"> 
+       <table> 
+        <tbody>
+         <tr> 
+          <td><a href="/alumni/support/"><img src="/wp-content/uploads/2011/08/support.jpg" width="75" height="75" alt="Support JSG"></a></td> 
+          <td> <h3><a href="/alumni/support/">Support JSG</a></h3> 
+           <ul class="link-list"> 
+            <li class="first"><a href="http://www.jsg.utexas.edu/alumni/support/" target="">Support Main</a></li>
+            <li><a href="http://www.jsg.utexas.edu/alumni/support/why-give/" target="">Why Give</a></li>
+            <li><a href="http://www.jsg.utexas.edu/alumni/support/ways-to-give/" target="">Ways to Give</a></li>
+            <li><a href="http://www.jsg.utexas.edu/alumni/support/making-a-difference/" target="">Making a Difference</a></li>
+            <li><a href="http://www.jsg.utexas.edu/alumni/support/endowments-list/" target="">Endowments List</a></li>
+            <li><a href="http://www.jsg.utexas.edu/alumni/support/celebrate-giving/" target="">Celebrate Giving</a></li>
+            <li><a href="http://www.jsg.utexas.edu/alumni/support/geology-foundation/" target="">Geology Foundation</a></li>
+            <li><a href="https://utdirect.utexas.edu/apps/utgiving/online/nlogon/?menu1=JS**" target="">Make a Gift</a></li> 
+           </ul> </td> 
+         </tr> 
+        </tbody>
+       </table> 
+      </div> 
+     </div> 
+    </div>
+    <!-- /alumni-links --> 
+   </div>
+   <!-- /quickLinksWrapper --> 
+  </div>
+  <!-- /quickLinks --> 
+  <!--/sphider_noindex--> 
+  <div id="ut_topbg"></div> 
+  <div id="wrapper"> 
+   <!--sphider_noindex--> 
+   <div id="ut_top"> 
+    <div id="ut_mark">
+     <a href="http://www.utexas.edu"><img src="http://www.jsg.utexas.edu/wp-content/themes/motion/images/utMark.gif" alt="The University of Texas at Austin"></a>
+    </div> 
+    <div id="give">
+     <a href="http://www.jsg.utexas.edu/alumni/support">Make a Gift</a>
+    </div> 
+    <div id="search"> 
+     <form method="get" id="searchform" action="/search/"> 
+      <div id="input"> 
+       <input type="text" title="Search this site..." value="Search this site..." onfocus="if (this.value == 'Search this site...' ) { this.value = ''; }" onblur="if (this.value == '' ) { this.value = 'Search this site...'; }" name="query" id="searchbox"> 
+       <input type="hidden" name="search" value="1"> 
+       <input id="imgsubmit" type="image" value="Search" title="Search" src="http://www.jsg.utexas.edu/wp-content/themes/motion/images/blank.gif" alt="Submit"> 
+      </div> 
+     </form> 
+    </div> 
+   </div>
+   <!-- /ut_top --> 
+   <div id="header"> 
+    <div id="top"> 
+     <div class="menu-person-menu-container">
+      <ul id="menu-person-menu" class="top_menu">
+       <li id="menu-item-3600" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3600"><a href="#">Prospective Students</a></li> 
+       <li id="menu-item-3601" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3601"><a href="#">JSG Community</a></li> 
+       <li id="menu-item-2601" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2601"><a href="#">Alumni &amp; Friends</a></li> 
+       <li id="menu-item-3602" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3602"><a href="#">Recruiters &amp; Companies</a></li> 
+      </ul>
+     </div> 
+    </div>
+    <!-- /top --> 
+    <div id="logo"> 
+     <a href="http://www.jsg.utexas.edu/"><img src="http://www.jsg.utexas.edu/wp-content/themes/motion/images/jsgLogo.gif" alt="Jackson School of Geosciences"></a> 
+    </div>
+    <!-- /logo --> 
+    <div class="menu-main-menu-container">
+     <ul id="menu-main-menu" class="primary_menu">
+      <li id="menu-item-4983" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4983"><a href="http://www.jsg.utexas.edu/alumni/support">Support</a></li> 
+      <li id="menu-item-2914" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2914"><a href="http://www.jsg.utexas.edu/events">Events</a></li> 
+      <li id="menu-item-887" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-887"><a href="http://www.jsg.utexas.edu/news">News</a></li> 
+      <li id="menu-item-3617" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3617"><a href="http://www.jsg.utexas.edu/outreach/">Outreach</a></li> 
+      <li id="menu-item-3616" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3616"><a href="http://www.jsg.utexas.edu/people/">People</a></li> 
+      <li id="menu-item-3615" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3615"><a href="http://www.jsg.utexas.edu/education/">Education</a></li> 
+      <li id="menu-item-3614" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3614"><a href="http://www.jsg.utexas.edu/research/">Research</a></li> 
+      <li id="menu-item-3598" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3598"><a href="http://www.jsg.utexas.edu/about/">About</a></li> 
+     </ul>
+    </div> 
+   </div>
+   <!-- /header --> 
+   <!--/sphider_noindex--> 
+   <div id="main" class="clearfix"> 
+    <div id="content" class="full"> 
+     <a id="skip" name="skip"></a> 
+     <div id="feature"> 
+      <div id="navBg">
+       &nbsp;
+      </div> 
+      <div id="slideshow"> 
+       <div>
+        <a href="http://www.jsg.utexas.edu/news/newsletter/"><img src="http://www.jsg.utexas.edu/wp-content/uploads/2014/10/Cover-image.jpg" width="960" height="360" class="20141024161301" alt="Read the 2014 Newsletter - A tradition since 1950, the Newsletter highlights research, news and achievements by Jackson School faculty, students, scientists and alumni"></a>
+        <div class="caption">
+         <h2>Read the 2014 Newsletter</h2>
+         <p class="subtitle">A tradition since 1950, the Newsletter highlights research, news and achievements by Jackson School faculty, students, scientists and alumni</p>
+        </div>
+        <div class="captionBg"></div>
+       </div> 
+       <div>
+        <a href="https://www.youtube.com/watch?v=IhX2_6uQuHQ"><img src="http://www.jsg.utexas.edu/wp-content/uploads/2014/12/GeoFORCE-resized.jpg" width="960" height="360" class="20141211215752" alt="Video: GeoFORCE - Changing lives since 2005"></a>
+        <div class="caption">
+         <h2>Video: GeoFORCE</h2>
+         <p class="subtitle">Changing lives since 2005</p>
+        </div>
+        <div class="captionBg"></div>
+       </div> 
+       <div>
+        <a href="http://youtu.be/l68ExPSnv1w"><img src="http://www.jsg.utexas.edu/wp-content/uploads/2014/10/Lidar-video-resized.jpg" width="960" height="360" class="20141028141313" alt="Video: Unveiling Earth's Surface - Airborne lidar at the Jackson School's Bureau of Economic Geology"></a>
+        <div class="caption">
+         <h2>Video: Unveiling Earth's Surface</h2>
+         <p class="subtitle">Airborne lidar at the Jackson School's Bureau of Economic Geology</p>
+        </div>
+        <div class="captionBg"></div>
+       </div> 
+       <div>
+        <a href="https://www.youtube.com/watch?v=2dczMf2NYOs"><img src="http://www.jsg.utexas.edu/wp-content/uploads/2015/02/BEG-core-research-screen-shot-resized.jpg" width="960" height="360" class="20150210182759" alt="Video: Preserving Stories From the Rocks - Bureau of Economic Geology core facility is vital for research and exploration"></a>
+        <div class="caption">
+         <h2>Video: Preserving Stories From the Rocks</h2>
+         <p class="subtitle">Bureau of Economic Geology core facility is vital for research and exploration</p>
+        </div>
+        <div class="captionBg"></div>
+       </div> 
+       <div>
+        <a href="http://youtu.be/f1G302BBX9w"><img src="http://www.jsg.utexas.edu/wp-content/uploads/2014/10/Homepage-image.jpg" width="960" height="360" class="20141023211152" alt="Video: Fire, Ice &amp; Huge Quantity of Potential Energy - Researchers at the Jackson School of Geosciences are leading a project to learn more about frozen methane under the Gulf of Mexico"></a>
+        <div class="caption">
+         <h2>Video: Fire, Ice &amp; Huge Quantity of Potential Energy</h2>
+         <p class="subtitle">Researchers at the Jackson School of Geosciences are leading a project to learn more about frozen methane under the Gulf of Mexico</p>
+        </div>
+        <div class="captionBg"></div>
+       </div> 
+       <div>
+        <a href="http://youtu.be/diQ8pufZgLk"><img src="http://www.jsg.utexas.edu/wp-content/uploads/2013/12/phillips-cave-banner.jpg" width="960" height="360" class="20131210164027" alt="Video: New Stash of Ice Age Fossils"></a>
+        <div class="caption">
+         <h2>Video: New Stash of Ice Age Fossils</h2>
+         <p class="subtitle"></p>
+        </div>
+        <div class="captionBg"></div>
+       </div> 
+      </div> 
+     </div> 
+     <div id="body" class="clearfix"> 
+      <div id="news"> 
+       <ul class="tabs"> 
+        <li><a href="#">News</a></li> 
+        <li><a href="#">Events</a></li> 
+       </ul>
+       <!-- /tabs --> 
+       <div class="panes"> 
+        <div class="paneContent"> 
+         <a href="http://www.jsg.utexas.edu/news/2015/02/ut-geosciences-dean-discusses-goals-opportunities"> <p class="featured_post_clipout_thumb"></p><p class="featured_post_clipin_thumb"><img src="http://www.jsg.utexas.edu/news/files/DeanMosher_SH2013_0036-e1424906199120-250x315.jpg" alt="" width="90"></p><p></p></a>
+         <h2 class="featured-title"><a href="http://www.jsg.utexas.edu/news/2015/02/ut-geosciences-dean-discusses-goals-opportunities">UT Geosciences dean discusses goals, opportunities</a></h2>
+         <p>Editor’s Note: This is part of a series of Q-and-A’s with UT’s deans. This interview has been edited and condensed. Sharon Mosher has been dean of the Jackson School of Geosciences since 2009. The Daily Texan: Can you tell us a...</p>
+         <ul class="paneLinks">
+          <li><a href="http://www.jsg.utexas.edu/news/2015/02/ut-geosciences-dean-discusses-goals-opportunities">UT Geosciences dean discusses goals, opportunities</a></li>
+          <li><a href="http://www.jsg.utexas.edu/news/2015/02/ut-jackson-school-of-geosciences-enhances-research-ties-with-mexico">UT Jackson School of Geosciences Enhances Research Ties with Mexico </a></li>
+          <li><a href="http://www.jsg.utexas.edu/news/2015/02/earthquake-activity-linked-to-injection-wells-may-vary-by-region">Earthquake activity linked to injection wells may vary by region</a></li>
+          <li><a href="http://www.jsg.utexas.edu/news/2015/02/the-qa-todd-caldwell">The Q&amp;A: Todd Caldwell</a></li>
+          <li class="more"><a href="http://www.jsg.utexas.edu/news/">more →</a></li>
+         </ul> 
+        </div> 
+        <div class="paneContent"> 
+         <table class="eventListing"> 
+          <tbody>
+           <tr> 
+            <td width="50"> <p class="eventDate"> <span class="month">MAR</span><br><span class="day">02</span> </p> </td> 
+            <td> <p class="eventInfo"> <a href="#901" class="event-modal">Career Center Open House</a><br> <span> 9:00 AM </span> </p> </td> 
+           </tr> 
+          </tbody>
+         </table> 
+         <div style="display: none;"> 
+          <div id="901" style="font-size:12px;line-height:18px;text-align:left;width:650px;height:400px;overflow:auto;padding:15px;border:2px solid #eee;background:#f7f7f7"> 
+           <h2 style="font-size:1.5em;margin-bottom:20px;color:#cc5500">Career Center Open House</h2> 
+           <div style="border:2px solid #eee;background:#fff;margin-bottom:15px;"> 
+            <table> 
+             <tbody>
+              <tr> 
+               <td>&nbsp;</td> 
+               <td style="text-align:right"><strong>Start:</strong></td> 
+               <td>March 2, 2015 at 9:00 am</td> 
+               <td>&nbsp;</td> 
+               <td>&nbsp;</td> 
+               <td style="text-align:right"><strong>End:</strong></td> 
+               <td>March 2, 2015 at 12:00 pm</td>
+              </tr>
+              <tr>
+               <td>&nbsp;</td>
+               <td style="text-align:right"><strong>Location:</strong></td>
+               <td colspan="4">JGB 2.112 Martineau Career Services Suite</td>
+              </tr>
+              <tr>
+               <td>&nbsp;</td>
+               <td style="text-align:right"><strong>Contact:</strong></td>
+               <td colspan="4">Chelsea Ochoa, chelsea.ochoa@jsg.utexas.edu, 5122320893</td>
+              </tr>
+             </tbody>
+            </table>
+           </div>JSG students, faculty and staff are invited to come by the Career Center for coffee and bagels. 
+          </div> 
+         </div> 
+         <table class="eventListing"> 
+          <tbody>
+           <tr> 
+            <td width="50"> <p class="eventDate"> <span class="month">MAR</span><br><span class="day">02</span> </p> </td> 
+            <td> <p class="eventInfo"> <a href="#911" class="event-modal">Climate Forum speaker series: Prof. Elinor Martin</a><br> <span> 3:00 PM </span> </p> </td> 
+           </tr> 
+          </tbody>
+         </table> 
+         <div style="display: none;"> 
+          <div id="901" style="font-size:12px;line-height:18px;text-align:left;width:650px;height:400px;overflow:auto;padding:15px;border:2px solid #eee;background:#f7f7f7"> 
+           <h2 style="font-size:1.5em;margin-bottom:20px;color:#cc5500">Career Center Open House</h2> 
+           <div style="border:2px solid #eee;background:#fff;margin-bottom:15px;"> 
+            <table> 
+             <tbody>
+              <tr> 
+               <td>&nbsp;</td> 
+               <td style="text-align:right"><strong>Start:</strong></td> 
+               <td>March 2, 2015 at 9:00 am</td> 
+               <td>&nbsp;</td> 
+               <td>&nbsp;</td> 
+               <td style="text-align:right"><strong>End:</strong></td> 
+               <td>March 2, 2015 at 12:00 pm</td>
+              </tr>
+              <tr>
+               <td>&nbsp;</td>
+               <td style="text-align:right"><strong>Location:</strong></td>
+               <td colspan="4">JGB 2.112 Martineau Career Services Suite</td>
+              </tr>
+              <tr>
+               <td>&nbsp;</td>
+               <td style="text-align:right"><strong>Contact:</strong></td>
+               <td colspan="4">Chelsea Ochoa, chelsea.ochoa@jsg.utexas.edu, 5122320893</td>
+              </tr>
+             </tbody>
+            </table>
+           </div>JSG students, faculty and staff are invited to come by the Career Center for coffee and bagels. 
+          </div> 
+         </div> 
+         <div style="display: none;"> 
+          <div id="911" style="font-size:12px;line-height:18px;text-align:left;width:650px;height:400px;overflow:auto;padding:15px;border:2px solid #eee;background:#f7f7f7"> 
+           <h2 style="font-size:1.5em;margin-bottom:20px;color:#cc5500">Climate Forum speaker series: Prof. Elinor Martin</h2> 
+           <div style="border:2px solid #eee;background:#fff;margin-bottom:15px;"> 
+            <table> 
+             <tbody>
+              <tr> 
+               <td>&nbsp;</td> 
+               <td style="text-align:right"><strong>Start:</strong></td> 
+               <td>March 2, 2015 at 3:00 pm</td> 
+               <td>&nbsp;</td> 
+               <td>&nbsp;</td> 
+               <td style="text-align:right"><strong>End:</strong></td> 
+               <td>March 2, 2015 at 4:00 pm</td>
+              </tr>
+              <tr>
+               <td>&nbsp;</td>
+               <td style="text-align:right"><strong>Location:</strong></td>
+               <td colspan="4">JGB 3.222</td>
+              </tr>
+              <tr>
+               <td>&nbsp;</td>
+               <td style="text-align:right"><strong>Contact:</strong></td>
+               <td colspan="4">Kai Zhang, kzkaizhang@gmail.com</td>
+              </tr>
+             </tbody>
+            </table>
+           </div>Elinor Martin (Assistant Prof. from Oklahoma Univ.)
+          </div> 
+         </div> 
+         <table class="eventListing"> 
+          <tbody>
+           <tr> 
+            <td width="50"> <p class="eventDate"> <span class="month">MAR</span><br><span class="day">02</span> </p> </td> 
+            <td> <p class="eventInfo"> <a href="#924" class="event-modal">Soft Rock Seminar - Reynaldy Fifariz</a><br> <span> 12:00 PM </span> </p> </td> 
+           </tr> 
+          </tbody>
+         </table> 
+         <div style="display: none;"> 
+          <div id="901" style="font-size:12px;line-height:18px;text-align:left;width:650px;height:400px;overflow:auto;padding:15px;border:2px solid #eee;background:#f7f7f7"> 
+           <h2 style="font-size:1.5em;margin-bottom:20px;color:#cc5500">Career Center Open House</h2> 
+           <div style="border:2px solid #eee;background:#fff;margin-bottom:15px;"> 
+            <table> 
+             <tbody>
+              <tr> 
+               <td>&nbsp;</td> 
+               <td style="text-align:right"><strong>Start:</strong></td> 
+               <td>March 2, 2015 at 9:00 am</td> 
+               <td>&nbsp;</td> 
+               <td>&nbsp;</td> 
+               <td style="text-align:right"><strong>End:</strong></td> 
+               <td>March 2, 2015 at 12:00 pm</td>
+              </tr>
+              <tr>
+               <td>&nbsp;</td>
+               <td style="text-align:right"><strong>Location:</strong></td>
+               <td colspan="4">JGB 2.112 Martineau Career Services Suite</td>
+              </tr>
+              <tr>
+               <td>&nbsp;</td>
+               <td style="text-align:right"><strong>Contact:</strong></td>
+               <td colspan="4">Chelsea Ochoa, chelsea.ochoa@jsg.utexas.edu, 5122320893</td>
+              </tr>
+             </tbody>
+            </table>
+           </div>JSG students, faculty and staff are invited to come by the Career Center for coffee and bagels. 
+          </div> 
+         </div> 
+         <div style="display: none;"> 
+          <div id="911" style="font-size:12px;line-height:18px;text-align:left;width:650px;height:400px;overflow:auto;padding:15px;border:2px solid #eee;background:#f7f7f7"> 
+           <h2 style="font-size:1.5em;margin-bottom:20px;color:#cc5500">Climate Forum speaker series: Prof. Elinor Martin</h2> 
+           <div style="border:2px solid #eee;background:#fff;margin-bottom:15px;"> 
+            <table> 
+             <tbody>
+              <tr> 
+               <td>&nbsp;</td> 
+               <td style="text-align:right"><strong>Start:</strong></td> 
+               <td>March 2, 2015 at 3:00 pm</td> 
+               <td>&nbsp;</td> 
+               <td>&nbsp;</td> 
+               <td style="text-align:right"><strong>End:</strong></td> 
+               <td>March 2, 2015 at 4:00 pm</td>
+              </tr>
+              <tr>
+               <td>&nbsp;</td>
+               <td style="text-align:right"><strong>Location:</strong></td>
+               <td colspan="4">JGB 3.222</td>
+              </tr>
+              <tr>
+               <td>&nbsp;</td>
+               <td style="text-align:right"><strong>Contact:</strong></td>
+               <td colspan="4">Kai Zhang, kzkaizhang@gmail.com</td>
+              </tr>
+             </tbody>
+            </table>
+           </div>Elinor Martin (Assistant Prof. from Oklahoma Univ.)
+          </div> 
+         </div> 
+         <div style="display: none;"> 
+          <div id="924" style="font-size:12px;line-height:18px;text-align:left;width:650px;height:400px;overflow:auto;padding:15px;border:2px solid #eee;background:#f7f7f7"> 
+           <h2 style="font-size:1.5em;margin-bottom:20px;color:#cc5500">Soft Rock Seminar - Reynaldy Fifariz</h2> 
+           <div style="border:2px solid #eee;background:#fff;margin-bottom:15px;"> 
+            <table> 
+             <tbody>
+              <tr> 
+               <td>&nbsp;</td> 
+               <td style="text-align:right"><strong>Start:</strong></td> 
+               <td>March 2, 2015 at 12:00 pm</td> 
+               <td>&nbsp;</td> 
+               <td>&nbsp;</td> 
+               <td style="text-align:right"><strong>End:</strong></td> 
+               <td>March 2, 2015 at 1:00 pm</td>
+              </tr>
+              <tr>
+               <td>&nbsp;</td>
+               <td style="text-align:right"><strong>Location:</strong></td>
+               <td colspan="4">JGB 3.222</td>
+              </tr>
+             </tbody>
+            </table>
+           </div>
+          </div> 
+         </div> 
+         <table class="eventListing"> 
+          <tbody>
+           <tr> 
+            <td width="50"> <p class="eventDate"> <span class="month">MAR</span><br><span class="day">03</span> </p> </td> 
+            <td> <p class="eventInfo"> <a href="#873" class="event-modal">Tech Sessions Speaker Series: PhD Talk</a><br> <span> 4:00 PM </span> </p> </td> 
+           </tr> 
+          </tbody>
+         </table> 
+         <div style="display: none;"> 
+          <div id="901" style="font-size:12px;line-height:18px;text-align:left;width:650px;height:400px;overflow:auto;padding:15px;border:2px solid #eee;background:#f7f7f7"> 
+           <h2 style="font-size:1.5em;margin-bottom:20px;color:#cc5500">Career Center Open House</h2> 
+           <div style="border:2px solid #eee;background:#fff;margin-bottom:15px;"> 
+            <table> 
+             <tbody>
+              <tr> 
+               <td>&nbsp;</td> 
+               <td style="text-align:right"><strong>Start:</strong></td> 
+               <td>March 2, 2015 at 9:00 am</td> 
+               <td>&nbsp;</td> 
+               <td>&nbsp;</td> 
+               <td style="text-align:right"><strong>End:</strong></td> 
+               <td>March 2, 2015 at 12:00 pm</td>
+              </tr>
+              <tr>
+               <td>&nbsp;</td>
+               <td style="text-align:right"><strong>Location:</strong></td>
+               <td colspan="4">JGB 2.112 Martineau Career Services Suite</td>
+              </tr>
+              <tr>
+               <td>&nbsp;</td>
+               <td style="text-align:right"><strong>Contact:</strong></td>
+               <td colspan="4">Chelsea Ochoa, chelsea.ochoa@jsg.utexas.edu, 5122320893</td>
+              </tr>
+             </tbody>
+            </table>
+           </div>JSG students, faculty and staff are invited to come by the Career Center for coffee and bagels. 
+          </div> 
+         </div> 
+         <div style="display: none;"> 
+          <div id="911" style="font-size:12px;line-height:18px;text-align:left;width:650px;height:400px;overflow:auto;padding:15px;border:2px solid #eee;background:#f7f7f7"> 
+           <h2 style="font-size:1.5em;margin-bottom:20px;color:#cc5500">Climate Forum speaker series: Prof. Elinor Martin</h2> 
+           <div style="border:2px solid #eee;background:#fff;margin-bottom:15px;"> 
+            <table> 
+             <tbody>
+              <tr> 
+               <td>&nbsp;</td> 
+               <td style="text-align:right"><strong>Start:</strong></td> 
+               <td>March 2, 2015 at 3:00 pm</td> 
+               <td>&nbsp;</td> 
+               <td>&nbsp;</td> 
+               <td style="text-align:right"><strong>End:</strong></td> 
+               <td>March 2, 2015 at 4:00 pm</td>
+              </tr>
+              <tr>
+               <td>&nbsp;</td>
+               <td style="text-align:right"><strong>Location:</strong></td>
+               <td colspan="4">JGB 3.222</td>
+              </tr>
+              <tr>
+               <td>&nbsp;</td>
+               <td style="text-align:right"><strong>Contact:</strong></td>
+               <td colspan="4">Kai Zhang, kzkaizhang@gmail.com</td>
+              </tr>
+             </tbody>
+            </table>
+           </div>Elinor Martin (Assistant Prof. from Oklahoma Univ.)
+          </div> 
+         </div> 
+         <div style="display: none;"> 
+          <div id="924" style="font-size:12px;line-height:18px;text-align:left;width:650px;height:400px;overflow:auto;padding:15px;border:2px solid #eee;background:#f7f7f7"> 
+           <h2 style="font-size:1.5em;margin-bottom:20px;color:#cc5500">Soft Rock Seminar - Reynaldy Fifariz</h2> 
+           <div style="border:2px solid #eee;background:#fff;margin-bottom:15px;"> 
+            <table> 
+             <tbody>
+              <tr> 
+               <td>&nbsp;</td> 
+               <td style="text-align:right"><strong>Start:</strong></td> 
+               <td>March 2, 2015 at 12:00 pm</td> 
+               <td>&nbsp;</td> 
+               <td>&nbsp;</td> 
+               <td style="text-align:right"><strong>End:</strong></td> 
+               <td>March 2, 2015 at 1:00 pm</td>
+              </tr>
+              <tr>
+               <td>&nbsp;</td>
+               <td style="text-align:right"><strong>Location:</strong></td>
+               <td colspan="4">JGB 3.222</td>
+              </tr>
+             </tbody>
+            </table>
+           </div>
+          </div> 
+         </div> 
+         <div style="display: none;"> 
+          <div id="873" style="font-size:12px;line-height:18px;text-align:left;width:650px;height:400px;overflow:auto;padding:15px;border:2px solid #eee;background:#f7f7f7"> 
+           <h2 style="font-size:1.5em;margin-bottom:20px;color:#cc5500">Tech Sessions Speaker Series: PhD Talk</h2> 
+           <div style="border:2px solid #eee;background:#fff;margin-bottom:15px;"> 
+            <table> 
+             <tbody>
+              <tr> 
+               <td>&nbsp;</td> 
+               <td style="text-align:right"><strong>Start:</strong></td> 
+               <td>March 3, 2015 at 4:00 pm</td> 
+               <td>&nbsp;</td> 
+               <td>&nbsp;</td> 
+               <td style="text-align:right"><strong>End:</strong></td> 
+               <td>March 3, 2015 at 5:00 pm</td>
+              </tr>
+             </tbody>
+            </table>
+           </div>
+          </div> 
+         </div> 
+         <p class="moreEvents"><a href="http://www.jsg.utexas.edu/events">more →</a></p> 
+        </div> 
+       </div>
+       <!-- /panes --> 
+      </div>
+      <!-- /news --> 
+      <div id="spotlights"> 
+       <div class="spotlight" style="width:200">
+        <a href="http://www.jsg.utexas.edu/alumni/"><img src="http://www.jsg.utexas.edu/wp-content/uploads/2013/06/alumni.jpg" width="200" height="85" class="20130619155451" alt="Alumni - Tailgates, reunions and continuing education with your fellow alums"></a>
+        <div class="spotlightTitle">
+         <a href="http://www.jsg.utexas.edu/alumni/">Alumni</a>
+        </div>
+        <div class="spotlightCaption">
+         Tailgates, reunions and continuing education with your fellow alums
+        </div>
+       </div> 
+       <div class="spotlight spotlightEven" style="width:200">
+        <a href="http://www.jsg.utexas.edu/alumni/files/BEG_Salt_Tectonics_Complex.pdf"><img src="http://www.jsg.utexas.edu/wp-content/uploads/2014/11/martincomplex.jpg" width="200" height="85" class="20141107203525" alt="New Salt Tectonics Complex - Honoring Martin Jackson, raising funds towards a newly renovated Salt Tectonics Modeling Complex"></a>
+        <div class="spotlightTitle">
+         <a href="http://www.jsg.utexas.edu/alumni/files/BEG_Salt_Tectonics_Complex.pdf">New Salt Tectonics Complex</a>
+        </div>
+        <div class="spotlightCaption">
+         Honoring Martin Jackson, raising funds towards a newly renovated Salt Tectonics Modeling Complex
+        </div>
+       </div> 
+       <div class="spotlight" style="width:200">
+        <a href="http://www.jsg.utexas.edu/events/future-of-geoscience-undergraduate-education/"><img src="http://www.jsg.utexas.edu/wp-content/uploads/2014/07/austin-resized.jpg" width="200" height="85" class="20140701181829" alt="Geoscience Education - Summit on Future of Undergraduate Geoscience Education: Summary Report &amp; Survey"></a>
+        <div class="spotlightTitle">
+         <a href="http://www.jsg.utexas.edu/events/future-of-geoscience-undergraduate-education/">Geoscience Education</a>
+        </div>
+        <div class="spotlightCaption">
+         Summit on Future of Undergraduate Geoscience Education: Summary Report &amp; Survey
+        </div>
+       </div> 
+       <div class="spotlight spotlightEven" style="width:200">
+        <a href="http://www.jsg.utexas.edu/alumni/files/geoforceGiving.pdf"><img src="http://www.jsg.utexas.edu/wp-content/uploads/2014/04/geoforce3-resized.jpg" width="200" height="85" class="20140422135351" alt="GeoFORCE Challenge Match - This endowment has launched to ensure the continuation of this critical program"></a>
+        <div class="spotlightTitle">
+         <a href="http://www.jsg.utexas.edu/alumni/files/geoforceGiving.pdf">GeoFORCE Challenge Match</a>
+        </div>
+        <div class="spotlightCaption">
+         This endowment has launched to ensure the continuation of this critical program
+        </div>
+       </div> 
+       <div class="spotlight" style="width:200">
+        <a href="http://www.jsg.utexas.edu/people/employment-opportunities/"><img src="http://www.jsg.utexas.edu/wp-content/uploads/2014/11/behr-152-resized.jpg" width="200" height="85" class="20141112215934" alt="Work at JSG - The Jackson School is hiring. Apply online."></a>
+        <div class="spotlightTitle">
+         <a href="http://www.jsg.utexas.edu/people/employment-opportunities/">Work at JSG</a>
+        </div>
+        <div class="spotlightCaption">
+         The Jackson School is hiring. Apply online.
+        </div>
+       </div> 
+       <div class="spotlight spotlightEven" style="width:200">
+        <a href="http://www.jsg.utexas.edu/education/graduate/supervisors/"><img src="http://www.jsg.utexas.edu/wp-content/uploads/2013/10/advsiors200-1.jpg" width="200" height="85" class="20131016183902" alt="Find a Supervisor - Grad students work with over 70 scientists in 9 research disciplines"></a>
+        <div class="spotlightTitle">
+         <a href="http://www.jsg.utexas.edu/education/graduate/supervisors/">Find a Supervisor</a>
+        </div>
+        <div class="spotlightCaption">
+         Grad students work with over 70 scientists in 9 research disciplines
+        </div>
+       </div> 
+       <div id="spotlightDivider">
+        &nbsp;
+       </div> 
+      </div> 
+     </div> 
+    </div>
+    <!-- /content --> 
+    <!--sphider_noindex--> 
+    <div class="footer"> 
+     <ul id="themes"> 
+      <li><a href="http://www.jsg.utexas.edu/research/themes/climate-carbon-geobiology" class="doubleLine climate-carbon-geobiology">Climate, Carbon &amp; Geobiology</a></li>
+      <li><a href="http://www.jsg.utexas.edu/research/themes/energy-geosciences" class="energy-geosciences">Energy Geosciences</a></li>
+      <li><a href="http://www.jsg.utexas.edu/research/themes/marine-geosciences" class="marine-geosciences">Marine Geosciences</a></li>
+      <li><a href="http://www.jsg.utexas.edu/research/themes/planetary-sciences" class="planetary-sciences">Planetary Sciences</a></li>
+      <li><a href="http://www.jsg.utexas.edu/research/themes/solid-earth-tectonic-processes" class="doubleLine solid-earth-tectonic-processes">Solid Earth &amp; Tectonic Processes</a></li>
+      <li class="lastTheme"><a href="http://www.jsg.utexas.edu/research/themes/surface-hydrologic-processes" class="doubleLine surface-hydrologic-processes">Surface &amp; Hydrologic Processes</a></li> 
+     </ul> 
+     <div class="foot1"> 
+      <h5>Departments &amp; Units</h5> 
+      <ul id="programs"> 
+       <li> 
+        <ul> 
+         <li><a href="/dgs">Department of Geological Sciences</a></li> 
+        </ul> </li> 
+      </ul> 
+     </div> 
+     <div class="foot2"> 
+      <ul class="programsCont"> 
+       <li> 
+        <ul> 
+         <li><a href="http://www.beg.utexas.edu/" target="_blank">Bureau of Economic Geology</a></li> 
+        </ul> </li> 
+      </ul> 
+     </div> 
+     <div class="foot3"> 
+      <ul class="programsCont"> 
+       <li> 
+        <ul> 
+         <li><a href="http://www.ig.utexas.edu/" target="_blank">Institute for Geophysics</a></li> 
+        </ul> </li> 
+      </ul> 
+     </div> 
+    </div>
+    <!-- /footer --> 
+    <div class="footer"> 
+     <div class="foot1"> 
+      <h5>Programs &amp; Centers</h5> 
+      <ul class="programs"> 
+       <li> 
+        <ul> 
+         <li><a href="http://www.ices.utexas.edu/research/centers-groups/?cg=ccgo" target="_blank">Center for Computational Geosciences &amp; Optimization</a></li>
+         <li><a href="http://www.beg.utexas.edu/energyecon/index.php" target="_blank">Center for Energy Economics</a></li>
+         <li><a href="http://www.jsg.utexas.edu/ciess/" target="_blank">Center for Integrated Earth System Science</a></li>
+         <li><a href="http://www.jsg.utexas.edu/cieep/" target="_blank">Center for International Energy &amp; Environmental Policy</a></li>
+         <li><a href="http://www.beg.utexas.edu/gccc/" target="_blank">Gulf Coast Carbon Center</a></li>
+         <li><a href="http://www.beg.utexas.edu/aec/index.php" target="_blank">Advanced Energy Consortium</a></li>
+         <li><a href="http://www.beg.utexas.edu/indassoc/agl/index.htm" target="_blank">Applied Geodynamics Laboratory</a></li>
+         <li><a href="https://steelresearch.geo.utexas.edu" target="_blank">Bars in Tidal Environments</a></li>
+         <li><a href="http://www.beg.utexas.edu/cswr" target="_blank">Center for Sustainable Water Resources</a></li>
+         <li><a href="http://edger.jsg.utexas.edu/html/index.html" target="_blank">EDGER Forum (Exploration &amp; Development Geophysics Education &amp; Research)</a></li> 
+        </ul> </li> 
+      </ul> 
+     </div> 
+     <div class="foot2"> 
+      <ul class="programsCont"> 
+       <li> 
+        <ul> 
+         <li><a href="http://www.beg.utexas.edu/egl/" target="_blank">Exploration Geophysics</a></li>
+         <li><a href="http://www.beg.utexas.edu/frac/index.php" target="_blank">Fracture Research and Application Consortium</a></li>
+         <li><a href="http://www.ig.utexas.edu/research/projects/gbds/gbds.htm" target="_blank">Gulf Basin Depositional Synthesis Project</a></li>
+         <li><a href="http://www.ctlab.geo.utexas.edu/" target="_blank">High-Resolution X-ray Computed Tomography Facility</a></li>
+         <li><a href="http://www.geo.utexas.edu/climate/" target="_blank">Land, Environment &amp; Atmospheric Dynamics</a></li>
+         <li><a href="http://www.jsg.utexas.edu/lacp/" target="_blank">Latin America &amp; Caribbean Energy Program</a></li>
+         <li><a href="http://www.beg.utexas.edu/msrl/index.php" target="_blank">Mudrock Systems Research Laboratory</a></li>
+         <li><a href="http://nees.utexas.edu/" target="_blank">Network for Earthquake Engineering Simulation</a></li>
+         <li><a href="http://www.jsg.utexas.edu/npl/" target="_blank">Non-vertebrate Paleontology Laboratory</a></li>
+         <li><a href="http://www.ig.utexas.edu/research/projects/plates/" target="_blank">PLATES</a></li> 
+        </ul> </li> 
+      </ul> 
+     </div> 
+     <div class="foot3"> 
+      <ul class="programsCont"> 
+       <li> 
+        <ul> 
+         <li><a href="http://www.beg.utexas.edu/starr/index.php" target="_blank">Project STARR</a></li>
+         <li><a href="http://www.beg.utexas.edu/indassoc/dm2/index.htm" target="_blank">Quantitative Clastics Laboratory</a></li>
+         <li>Remote Sensing of Earth and Planetary Surface and Environment Program</li>
+         <li><a href="http://www.beg.utexas.edu/rcrl/" target="_blank">Reservoir Characterization Research Laboratory</a></li>
+         <li><a href="https://steelresearch.geo.utexas.edu/Webdata/Riomar_front_page/" target="_blank">RioMAR</a></li>
+         <li><a href="http://www.jsg.utexas.edu/sdi/" target="_blank">Structural Diagenesis Initiative</a></li>
+         <li><a href="http://www.beg.utexas.edu/tccs/" target="_blank">Texas Consortium for Computational Seismology</a></li>
+         <li><a href="http://www.beg.utexas.edu/geofluids/index.php" target="_blank">UT GeoFluids</a></li>
+         <li><a href="http://www.jsg.utexas.edu/vpl/" target="_blank">Vertebrate Paleontology Laboratory</a></li> 
+        </ul> </li> 
+      </ul> 
+     </div> 
+    </div>
+    <!-- /footer --> 
+    <div class="footer"> 
+     <div class="foot1"> 
+      <h5>Affiliated UT Programs &amp; Centers</h5> 
+      <ul class="programs"> 
+       <li> 
+        <ul> 
+         <li><a href="http://www.utefrc.org" target="_blank">Center for Frontiers of Subsurface Energy Security</a></li>
+         <li><a href="http://www.cpge.utexas.edu" target="_blank">Center for Petroleum and Geosystems Engineering</a></li> 
+        </ul> </li> 
+      </ul> 
+     </div> 
+     <div class="foot2"> 
+      <ul class="programsCont"> 
+       <li> 
+        <ul> 
+         <li><a href="http://www.csr.utexas.edu" target="_blank">Center for Space Research</a></li>
+         <li><a href="http://www.esi.utexas.edu" target="_blank">Environmental Science Institute</a></li> 
+        </ul> </li> 
+      </ul> 
+     </div> 
+     <div class="foot3"> 
+      <ul class="programsCont"> 
+       <li> 
+        <ul> 
+         <li><a href="http://www.tacc.utexas.edu" target="_blank">Texas Advanced Computing Center</a></li>
+         <li><a href="http://www.energy.utexas.edu/" target="_blank">UT Austin Energy Institute</a></li> 
+        </ul> </li> 
+      </ul> 
+     </div> 
+    </div>
+    <!-- /footer --> 
+    <div id="credits"> 
+     <div id="creditsleft"> 
+      <a href="http://www.jsg.utexas.edu/help/">IT Help</a> &nbsp;|&nbsp; 
+      <a href="https://apps.jsg.utexas.edu/profiles" target="_blank">Profiles</a> &nbsp;|&nbsp; 
+      <a href="https://utdirect.utexas.edu" target="_blank">UT Direct</a> &nbsp;|&nbsp; 
+      <a href="https://courses.utexas.edu" target="_blank">Blackboard</a> &nbsp;|&nbsp; 
+      <a href="http://www.utexas.edu/cio/policies/web-privacy/" target="_blank">Privacy Policy</a> &nbsp;|&nbsp; 
+      <a href="http://www.utexas.edu/cio/policies/web-accessibility/" target="_blank">Accessibility</a>
+      <br>© 2015 Jackson School of Geosciences, The University of Texas at Austin
+     </div> 
+     <div id="creditsright"> 
+      <a href="https://utdirect.utexas.edu/apps/utgiving/online/nlogon/?menu1=JS**" target="_blank"><img src="http://www.jsg.utexas.edu/wp-content/uploads/2013/10/makeAGift.gif" alt="Make a Gift to JSG"></a>
+      <a href="http://www.youtube.com/user/JSGUTAUSTIN" target="_blank"><img src="http://www.jsg.utexas.edu/wp-content/uploads/2013/10/youtube.gif" alt="JSG's YouTube Channel"></a>
+      <a href="http://www.jsg.utexas.edu/news/feed" target="_blank"><img src="http://www.jsg.utexas.edu/wp-content/uploads/2013/10/rss.gif" alt="JSG's RSS News Feed"></a>
+      <a href="https://twitter.com/txgeosciences" target="_blank"><img src="https://www.jsg.utexas.edu/wp-content/uploads/2013/10/twitter.gif" alt="JSG's Twitter"></a>
+      <a href="http://www.facebook.com/UTJSG" target="_blank"><img src="https://www.jsg.utexas.edu/wp-content/uploads/2013/10/facebook.gif" alt="JSG's Facebook"></a> 
+     </div> 
+    </div>
+    <!-- /credits --> 
+    <!--/sphider_noindex--> 
+    <script type="text/javascript">
+jQuery(document).ready(function($) {
+	$("#slideshow").before('<ul id="nav">').cycle({ 
+	    fx: 'fade',
+	    timeout: 8000,
+	    speed: 1000,
+	    pause: 1,
+	    fit: 1,
+	    pager:  '#nav', 
+	    pagerAnchorBuilder: function(idx, slide) { 
+        	var src = $('img',slide).attr('src');
+        	var alt = $('img',slide).attr('alt');
+        	return '<li><a href="#"><div class="clipout_thumb"><div class="clipin_thumb"><img src="'+src+'" height="50" alt="'+alt+'" /></div></div></a></li>'; 
+		} 
+    	/*pagerAnchorBuilder: function(idx, slide) { 
+			return '<li><a href="#"><div class="clipout_thumb"><div class="clipin_thumb"><img src="' + slide.src + '" height="50" /></div></div></a></li>'; 
+        } */
+	});
+});
+</script> 
+    <script type="text/javascript" src="http://www.jsg.utexas.edu/wp-content/plugins/wp-cycle/jquery.cycle.all.min.js?ver=4.0.1"></script> 
+    <script type="text/javascript" src="http://www.jsg.utexas.edu/wp-content/plugins/easy-fancybox/fancybox/jquery.fancybox-1.3.7.min.js?ver=1.5.7"></script> 
+    <script type="text/javascript" src="http://www.jsg.utexas.edu/wp-content/plugins/easy-fancybox/jquery.easing.pack.js?ver=1.3"></script> 
+    <script type="text/javascript" src="http://www.jsg.utexas.edu/wp-content/plugins/easy-fancybox/jquery.mousewheel.min.js?ver=3.1.12"></script> 
+    <script type="text/javascript">
+jQuery(document).on('ready post-load', easy_fancybox_handler );
+</script> 
+    <script>var pltNewTabURLs = ["http:\/\/www.lib.utexas.edu\/geo\/","https:\/\/apps.jsg.utexas.edu\/forms\/form\/building-room-access-request"];(function(){(function(e){var t;t=e.jQueryWP||e.jQuery;return t(function(e){return typeof e.fn.on=="function"?e("body").on("click","a",function(t){var n;n=e(this);if(e.inArray(n.attr("href"),pltNewTabURLs)>-1)return n.attr("target","_blank")}):typeof console!="undefined"&&console!==null?console.log("Page Links To: Some other code has overridden the WordPress copy of jQuery. This is bad. Because of this, Page Links To cannot open links in a new window."):void 0})})(window)}).call(this);</script>
+   </div>
+   <!-- /wrapper --> 
+   <script type="text/javascript">
+$(document).ready(function () 
+{
+			$("ul.tabs").tabs("div.panes > div");
+	});
+</script>   
+  </div>
+  <!-- /main --> 
+  <!-- Dynamic page generated in 0.752 seconds. --> 
+  <!-- Cached page generated by WP-Super-Cache on 2015-03-02 09:53:35 --> 
+  <!-- super cache -->
+ </body>
+</html>

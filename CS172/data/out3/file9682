@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"XAYAVVVRGwYGVVVaAwQ="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=s(e),f=c.length,u=i(a,o,r),d=0;f>d;d++)c[d].apply(u,n);return u}function a(t,e){f[t]=s(t).concat(e)}function s(t){return f[t]||[]}function c(){return n(e)}var f={};return{on:a,emit:e,create:c,listeners:s,_events:f}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],3:[function(t){function e(t,e,n,i,s){try{c?c-=1:r("err",[s||new UncaughtException(t,e,n)])}catch(f){try{r("ierr",[f,(new Date).getTime(),!0])}catch(u){}}return"function"==typeof a?a.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(5),i=t("ee"),a=window.onerror,s=!1,c=0;t("loader").features.err=!0,window.onerror=e,NREUM.noticeError=n;try{throw new Error}catch(f){"stack"in f&&(t(1),t(4),"addEventListener"in window&&t(2),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&t(3),s=!0)}i.on("fn-start",function(){s&&(c+=1)}),i.on("fn-err",function(t,e,r){s&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){s&&!this.thrown&&c>0&&(c-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:8,2:5,3:9,4:7,5:21,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],4:[function(t){function e(){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var n=t("ee"),r=t("handle"),o=t(2);t("loader").features.stn=!0,t(1),n.on("fn-start",function(t){var e=t[0];e instanceof Event&&(this.bstStart=Date.now())}),n.on("fn-end",function(t,e){var n=t[0];n instanceof Event&&r("bst",[n,e,this.bstStart,Date.now()])}),o.on("fn-start",function(t,e,n){this.bstStart=Date.now(),this.bstType=n}),o.on("fn-end",function(t,e){r("bstTimer",[e,this.bstStart,Date.now(),this.bstType])}),n.on("pushState-start",function(){this.time=Date.now(),this.startPath=location.pathname+location.hash}),n.on("pushState-end",function(){r("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),"addEventListener"in window.performance&&(window.performance.addEventListener("webkitresourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.webkitClearResourceTimings()},!1),window.performance.addEventListener("resourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.clearResourceTimings()},!1)),document.addEventListener("scroll",e,!1),document.addEventListener("keypress",e,!1),document.addEventListener("click",e,!1)}},{1:6,2:8,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],5:[function(t,e){function n(t){i.inPlace(t,["addEventListener","removeEventListener"],"-",r)}function r(t){return t[1]}var o=(t(1),t("ee").create()),i=t(2)(o),a=t("gos");if(e.exports=o,n(window),"getPrototypeOf"in Object){for(var s=document;s&&!s.hasOwnProperty("addEventListener");)s=Object.getPrototypeOf(s);s&&n(s);for(var c=XMLHttpRequest.prototype;c&&!c.hasOwnProperty("addEventListener");)c=Object.getPrototypeOf(c);c&&n(c)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&n(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t){if(t[1]){var e=t[1];"function"==typeof e?this.wrapped=t[1]=a(e,"nr@wrapped",function(){return i(e,"fn-",null,e.name||"anonymous")}):"function"==typeof e.handleEvent&&i.inPlace(e,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:21,2:22,ee:"QJf3ax",gos:"7eSDFh"}],6:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window.history,["pushState"],"-")},{1:22,2:21,ee:"QJf3ax"}],7:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=r(t[0],"fn-")})},{1:22,2:21,ee:"QJf3ax"}],8:[function(t,e){function n(t,e,n){var r=t[0];"string"==typeof r&&(r=new Function(r)),t[0]=o(r,"fn-",null,n)}var r=(t(2),t("ee").create()),o=t(1)(r);e.exports=r,o.inPlace(window,["setTimeout","setInterval","setImmediate"],"setTimer-"),r.on("setTimer-start",n)},{1:22,2:21,ee:"QJf3ax"}],9:[function(t,e){function n(){c.inPlace(this,d,"fn-")}function r(t,e){c.inPlace(e,["onreadystatechange"],"fn-")}function o(t,e){return e}var i=t("ee").create(),a=t(1),s=t(2),c=s(i),f=s(a),u=window.XMLHttpRequest,d=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];e.exports=i,window.XMLHttpRequest=function(t){var e=new u(t);try{i.emit("new-xhr",[],e),f.inPlace(e,["addEventListener","removeEventListener"],"-",function(t,e){return e}),e.addEventListener("readystatechange",n,!1)}catch(r){try{i.emit("internal-error",[r])}catch(o){}}return e},window.XMLHttpRequest.prototype=u.prototype,c.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",o),i.on("send-xhr-start",r),i.on("open-xhr-start",r)},{1:5,2:22,ee:"QJf3ax"}],10:[function(t){function e(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function n(t){var n=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;c>i;i++)t.removeEventListener(s[i],this.listener,!1);if(!n.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){n.status=t.status;var a=t.responseType,f="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,u=e(f);if(u&&(r.rxSize=u),this.sameOrigin){var d=t.getResponseHeader("X-NewRelic-App-Data");d&&(n.cat=d.split(", ").pop())}}else n.status=0;r.cbTime=this.cbTime,o("xhr",[n,r,this.startTime])}}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}if(window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)){t("loader").features.xhr=!0;var o=t("handle"),i=t(2),a=t("ee"),s=["load","error","abort","timeout"],c=s.length,f=t(1);t(4),t(3),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=n,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,n){var r=this.metrics,o=t[0],i=this;if(r&&o){var f=e(o);f&&(r.txSize=f)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof n.onload))&&i.end(n)}catch(e){try{a.emit("internal-error",[e])}catch(r){}}};for(var u=0;c>u;u++)n.addEventListener(s[u],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof XMLHttpRequest&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&&a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{1:"XL7HBI",2:11,3:9,4:5,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],11:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&&e.port===n.port&&e.protocol===n.protocol,r}},{}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):(o[t]||(o[t]=[]),void o[t].push(e))}var r=t("ee").create(),o={};e.exports=n,n.ee=r,r.q=o},{ee:"QJf3ax"}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],G9z0Bl:[function(t,e){function n(){var t=l.info=NREUM.info;if(t&&t.licenseKey&&t.applicationID&&f&&f.body){s(h,function(e,n){e in t||(t[e]=n)}),l.proto="https"===p.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var e=f.createElement("script");e.src=l.proto+t.agent,f.body.appendChild(e)}}function r(){"complete"===f.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=t(1),c=window,f=c.document,u="addEventListener",d="attachEvent",p=(""+location).split("?")[0],h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-515.min.js"},l=e.exports={offset:i(),origin:p,features:{}};f[u]?(f[u]("DOMContentLoaded",o,!1),c[u]("load",n,!1)):(f[d]("onreadystatechange",r),c[d]("onload",n)),a("mark",["firstbyte",i()])},{1:20,handle:"D5DuLP"}],20:[function(t,e){function n(t,e){var n=[],o="",i=0;for(o in t)r.call(t,o)&&(n[i]=e(o,t[o]),i+=1);return n}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],21:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],22:[function(t,e){function n(t){return!(t&&"function"==typeof t&&t.apply&&!t[i])}var r=t("ee"),o=t(1),i="nr@wrapper",a=Object.prototype.hasOwnProperty;e.exports=function(t){function e(t,e,r,a){function nrWrapper(){var n,i,s,f;try{i=this,n=o(arguments),s=r&&r(n,i)||{}}catch(d){u([d,"",[n,i,a],s])}c(e+"start",[n,i,a],s);try{return f=t.apply(i,n)}catch(p){throw c(e+"err",[n,i,p],s),p}finally{c(e+"end",[n,i,f],s)}}return n(t)?t:(e||(e=""),nrWrapper[i]=!0,f(t,nrWrapper),nrWrapper)}function s(t,r,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<r.length;c++)s=r[c],a=t[s],n(a)||(t[s]=e(a,f?s+o:o,i,s,t))}function c(e,n,r){try{t.emit(e,n,r)}catch(o){u([o,e,n,r])}}function f(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){u([r])}for(var o in t)a.call(t,o)&&(e[o]=t[o]);return e}function u(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=r),e.inPlace=s,e.flag=i,e}},{1:21,ee:"QJf3ax"}]},{},["G9z0Bl",3,10,4]);</script> 
+  <title>
+                        Photos tagged with iris_workshop                  </title> 
+  <link rel="shortcut icon" href="/gallery3/lib/images/favicon.ico" type="image/x-icon"> 
+  <link rel="apple-touch-icon-precomposed" href="/gallery3/lib/images/apple-touch-icon.png"> 
+  <script type="text/javascript">
+    var MSG_CANCEL = "Cancel";
+    </script> 
+  <link rel="alternate" type="application/rss+xml" href="/gallery3/rss/feed/tag/tag/128"> 
+  <!--[if lte IE 8]>
+    <link rel="stylesheet" type="text/css" href="/gallery3/themes/iris/css/fix-ie.css"
+          media="screen,print,projection" />
+    <![endif]--> 
+  <!-- LOOKING FOR YOUR CSS? It's all been combined into the link below --> 
+  <link rel="stylesheet" type="text/css" href="/gallery3/combined/css/6214ae57c2e107047e23f58adbb34edf" media="screen,print,projection"> 
+  <!-- LOOKING FOR YOUR JAVASCRIPT? It's all been combined into the link below --> 
+  <script type="text/javascript" src="/gallery3/combined/javascript/68c9c97f48b49a3dc71784a4dea7fcda"></script> 
+ </head> 
+ <body> 
+  <div id="doc4" class="yui-t5 g-view"> 
+   <div id="g-header" class="ui-helper-clearfix"> 
+    <div id="g-banner"> 
+     <a id="g-logo" class="g-left" href="/gallery3/" title="go back to the Gallery home"> <img width="113" height="90" alt="Gallery logo: Your photos on your web site" src="/gallery3/themes/iris/images/iris-only/header-logo.png"> </a> 
+     <ul id="g-login-menu" class="g-inline ui-helper-clear-fix"> 
+      <li> <a id="g-login-link" class="g-dialog-link " href="/gallery3/login/ajax" title="Login"> Login </a> </li> 
+     </ul> 
+     <form action="/gallery3/search" id="g-quick-search-form" class="g-short-form"> 
+      <ul> 
+       <li> <label for="g-search">Search the gallery</label> <input type="hidden" name="album" value="1"> <input type="text" name="q" id="g-search" class="text"> </li> 
+       <li> <input type="submit" value="Go" class="submit"> </li> 
+      </ul> 
+     </form> 
+     <!-- hide the menu until after the page has loaded, to minimize menu flicker --> 
+     <div id="g-site-menu" style="visibility: hidden"> 
+      <ul class="g-menu"> 
+       <li> <a class="g-menu-link " href="/gallery3/" title="Home"> Home </a> </li> 
+       <li> <a class="g-menu-link " href="/gallery3/pages/show/faq" title="FAQ"> FAQ </a> </li> 
+       <li> <a class="g-menu-link " href="/gallery3/pages/show/terms" title="Terms of Use"> Terms of Use </a> </li> 
+      </ul> 
+     </div> 
+     <script type="text/javascript"> $(document).ready(function() { $("#g-site-menu").css("visibility", "visible"); }) </script> 
+    </div> 
+    <ul class="g-breadcrumbs"> 
+     <li class="                      g-first"> <a href="/gallery3/"> IRIS Image Gall… </a> </li> 
+     <li class="g-active                      "> Tag: iris_works… </li> 
+    </ul> 
+   </div> 
+   <div id="bd"> 
+    <div id="yui-main"> 
+     <div class="yui-b"> 
+      <div id="g-content" class="yui-g"> 
+       <div id="g-album-header"> 
+        <div id="g-album-header-buttons"> 
+        </div> 
+        <h1>Tag: iris_workshop</h1> 
+       </div> 
+       <ul id="g-album-grid" class="ui-helper-clearfix"> 
+        <li class="g-item g-album"> <a href="/gallery3/activities/2008workshop"> <img id="g-photo-id-46" class="g-thumbnail" alt="photo" src="/gallery3/var/thumbs/activities/2008workshop/.album.jpg?m=1400096832" width="200" height="133"> </a> <h2>IRIS 2008 Workshop</h2> 
+         <ul class="g-metadata"> 
+          <li>Views: 771</li>
+          <li>By: Rick Callender</li> 
+         </ul> </li> 
+        <li class="g-item g-album"> <a href="/gallery3/activities/IRIS_workshop_2010"> <img id="g-photo-id-55" class="g-thumbnail" alt="photo" src="/gallery3/var/thumbs/activities/IRIS_workshop_2010/.album.jpg?m=1400096832" width="200" height="146"> </a> <h2>IRIS 2010 Workshop</h2> 
+         <ul class="g-metadata"> 
+          <li>Views: 2637</li>
+          <li>By: Rick Callender</li> 
+         </ul> </li> 
+        <li class="g-item "> <a href="/gallery3/activities/2008workshop/DSC_0001"> <img id="g-photo-id-171" class="g-thumbnail" alt="photo" src="/gallery3/var/thumbs/activities/2008workshop/DSC_0001.JPG?m=1400095810" width="200" height="133"> </a> <h2>The View from Skamania Lodge</h2> 
+         <ul class="g-metadata"> 
+          <li>Views: 293</li>
+          <li>By: Rick Callender</li> 
+         </ul> </li> 
+        <li class="g-item "> <a href="/gallery3/activities/2008workshop/DSC_0013"> <img id="g-photo-id-172" class="g-thumbnail" alt="photo" src="/gallery3/var/thumbs/activities/2008workshop/DSC_0013.JPG?m=1400095812" width="200" height="133"> </a> <h2>Workshop Session</h2> 
+         <ul class="g-metadata"> 
+          <li>Views: 287</li>
+          <li>By: Rick Callender</li> 
+         </ul> </li> 
+        <li class="g-item "> <a href="/gallery3/activities/2008workshop/DSC_0041"> <img id="g-photo-id-173" class="g-thumbnail" alt="photo" src="/gallery3/var/thumbs/activities/2008workshop/DSC_0041.JPG?m=1400095813" width="200" height="133"> </a> <h2>Taking a Break</h2> 
+         <ul class="g-metadata"> 
+          <li>Views: 280</li>
+          <li>By: Rick Callender</li> 
+         </ul> </li> 
+        <li class="g-item "> <a href="/gallery3/activities/2008workshop/DSC_0048"> <img id="g-photo-id-174" class="g-thumbnail" alt="photo" src="/gallery3/var/thumbs/activities/2008workshop/DSC_0048.JPG?m=1400095814" width="200" height="133"> </a> <h2>KeckCAVES Operator</h2> 
+         <ul class="g-metadata"> 
+          <li>Views: 278</li>
+          <li>By: Rick Callender</li> 
+         </ul> </li> 
+        <li class="g-item "> <a href="/gallery3/activities/2008workshop/DSC_0050"> <img id="g-photo-id-175" class="g-thumbnail" alt="photo" src="/gallery3/var/thumbs/activities/2008workshop/DSC_0050.JPG?m=1400095815" width="200" height="133"> </a> <h2>Poster Session at IRIS 2008 Workshop</h2> 
+         <ul class="g-metadata"> 
+          <li>Views: 339</li>
+          <li>By: Rick Callender</li> 
+         </ul> </li> 
+        <li class="g-item "> <a href="/gallery3/activities/2008workshop/DSC_0071"> <img id="g-photo-id-176" class="g-thumbnail" alt="photo" src="/gallery3/var/thumbs/activities/2008workshop/DSC_0071.JPG?m=1400095816" width="200" height="133"> </a> <h2>KeckCAVES Inhabitants</h2> 
+         <ul class="g-metadata"> 
+          <li>Views: 281</li>
+          <li>By: Rick Callender</li> 
+         </ul> </li> 
+        <li class="g-item "> <a href="/gallery3/activities/2008workshop/DSC_0072"> <img id="g-photo-id-177" class="g-thumbnail" alt="photo" src="/gallery3/var/thumbs/activities/2008workshop/DSC_0072.JPG?m=1400095818" width="200" height="133"> </a> <h2>KeckCAVES in 3-D!</h2> 
+         <ul class="g-metadata"> 
+          <li>Views: 282</li>
+          <li>By: Rick Callender</li> 
+         </ul> </li> 
+       </ul> 
+       <ul class="g-paginator ui-helper-clearfix"> 
+        <li class="g-first"> <a class="g-button ui-icon-left ui-state-disabled ui-corner-all"> <span class="ui-icon ui-icon-seek-first"></span>First</a> <a class="g-button ui-icon-left ui-state-disabled ui-corner-all"> <span class="ui-icon ui-icon-seek-prev"></span>Previous</a> </li> 
+        <li class="g-info"> Photos 1 - 9 of 162 </li> 
+        <li class="g-text-right"> <a href="/gallery3/tag/128/iris_workshop?page=2" class="g-button ui-icon-right ui-state-default ui-corner-all"> <span class="ui-icon ui-icon-seek-next"></span>Next</a> <a href="/gallery3/tag/128/iris_workshop?page=18" class="g-button ui-icon-right ui-state-default ui-corner-all"> <span class="ui-icon ui-icon-seek-end"></span>Last</a> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div id="g-sidebar" class="yui-b"> 
+     <div id="g-view-menu" class="g-buttonset ui-helper-clearfix"> 
+      <ul class="g-menu"> 
+       <li> <a id="g-slideshow-link" class="g-menu-link " href="javascript:cooliris.embed.show({maxScale:0,feed:'/gallery3/rss/feed/tag/tag/128'})" title="View slideshow"> View slideshow </a> </li> 
+      </ul> 
+     </div> 
+     <div id="iris-sidebar" class="g-block"> 
+      <h2>Welcome</h2> 
+      <div class="g-block-content"> 
+       <p>Welcome to the IRIS Image Gallery – a diverse collection of photographs and visuals that encompass the range and breadth of seismology and the seismological community.</p> 
+       <p>Please browse through our albums. These low and medium-resolution images can be freely used for personal and educational/academic purposes, but we request you recognize the image contributor by including in your product or presentation the credit displayed with each image.</p> 
+       <p>More information is available in the <a href="pages/show/terms">Image Use Agreement</a>.</p> 
+       <p>If you have any comments, questions, or suggestions related to the IRIS Image Gallery, you can send them to <a href="mailto:gallery@iris.edu">gallery@iris.edu</a>.</p> 
+      </div> 
+     </div> 
+     <div id="g-rss" class="g-block"> 
+      <h2>Available RSS feeds</h2> 
+      <div class="g-block-content"> 
+       <ul id="g-feeds"> 
+        <li style="clear: both;"> <span class="ui-icon-left"> <a href="/gallery3/rss/feed/tag/tag/128"> <span class="ui-icon ui-icon-signal-diag"></span> Tag feed for iris_workshop </a> </span> </li> 
+        <li style="clear: both;"> <span class="ui-icon-left"> <a href="/gallery3/rss/feed/gallery/latest"> <span class="ui-icon ui-icon-signal-diag"></span> Latest photos and movies </a> </span> </li> 
+       </ul> 
+      </div> 
+     </div> 
+     <div id="g-tag" class="g-block"> 
+      <h2>Popular tags</h2> 
+      <div class="g-block-content"> 
+       <script type="text/javascript">
+  $("#g-add-tag-form").ready(function() {
+    var url = $("#g-tag-cloud-autocomplete-url").attr("href");
+    $("#g-add-tag-form input:text").gallery_autocomplete(
+      url, {
+        max: 30,
+        multiple: true,
+        multipleSeparator: ',',
+        cacheLength: 1,
+        selectFirst: false
+      }
+    );
+    $("#g-add-tag-form").ajaxForm({
+      dataType: "json",
+      success: function(data) {
+        if (data.result == "success") {
+          $("#g-tag-cloud").html(data.cloud);
+        }
+        $("#g-add-tag-form").resetForm();
+      }
+    });
+  });
+</script> 
+       <div id="g-tag-cloud"> 
+        <a id="g-tag-cloud-autocomplete-url" style="display: none" href="/gallery3/tags/autocomplete"></a> 
+        <ul> 
+         <li class="size2"> <span>66 photos are tagged with </span> <a href="/gallery3/tag/199/2006+proposal">2006 proposal</a> </li> 
+         <li class="size6"> <span>146 photos are tagged with </span> <a href="/gallery3/tag/229/2010+workshop">2010 workshop</a> </li> 
+         <li class="size0"> <span>21 photos are tagged with </span> <a href="/gallery3/tag/88/best_of_iris">best_of_iris</a> </li> 
+         <li class="size0"> <span>20 photos are tagged with </span> <a href="/gallery3/tag/152/china">china</a> </li> 
+         <li class="size2"> <span>68 photos are tagged with </span> <a href="/gallery3/tag/180/earthquake">earthquake</a> </li> 
+         <li class="size2"> <span>67 photos are tagged with </span> <a href="/gallery3/tag/198/earthquakes">earthquakes</a> </li> 
+         <li class="size1"> <span>33 photos are tagged with </span> <a href="/gallery3/tag/131/education">education</a> </li> 
+         <li class="size0"> <span>16 photos are tagged with </span> <a href="/gallery3/tag/112/equipment">equipment</a> </li> 
+         <li class="size0"> <span>16 photos are tagged with </span> <a href="/gallery3/tag/58/Facility">Facility</a> </li> 
+         <li class="size3"> <span>85 photos are tagged with </span> <a href="/gallery3/tag/6/field">field</a> </li> 
+         <li class="size3"> <span>91 photos are tagged with </span> <a href="/gallery3/tag/100/figure">figure</a> </li> 
+         <li class="size0"> <span>17 photos are tagged with </span> <a href="/gallery3/tag/158/flexible_array">flexible_array</a> </li> 
+         <li class="size1"> <span>24 photos are tagged with </span> <a href="/gallery3/tag/141/Global_Seismographic_Network">Global_Seismographic_Network</a> </li> 
+         <li class="size2"> <span>67 photos are tagged with </span> <a href="/gallery3/tag/72/gsn">gsn</a> </li> 
+         <li class="size0"> <span>23 photos are tagged with </span> <a href="/gallery3/tag/133/illustration">illustration</a> </li> 
+         <li class="size2"> <span>49 photos are tagged with </span> <a href="/gallery3/tag/74/installation">installation</a> </li> 
+         <li class="size2"> <span>51 photos are tagged with </span> <a href="/gallery3/tag/73/instrumentation">instrumentation</a> </li> 
+         <li class="size1"> <span>42 photos are tagged with </span> <a href="/gallery3/tag/46/iPhoto+Original">iPhoto Original</a> </li> 
+         <li class="size7"> <span>162 photos are tagged with </span> <a href="/gallery3/tag/128/iris_workshop">iris_workshop</a> </li> 
+         <li class="size2"> <span>57 photos are tagged with </span> <a href="/gallery3/tag/225/Long_Range_Science_Plan">Long_Range_Science_Plan</a> </li> 
+         <li class="size1"> <span>34 photos are tagged with </span> <a href="/gallery3/tag/70/need_review">need_review</a> </li> 
+         <li class="size0"> <span>22 photos are tagged with </span> <a href="/gallery3/tag/228/NGS">NGS</a> </li> 
+         <li class="size1"> <span>30 photos are tagged with </span> <a href="/gallery3/tag/29/poster">poster</a> </li> 
+         <li class="size2"> <span>57 photos are tagged with </span> <a href="/gallery3/tag/224/Seismological_Grand_Challenges">Seismological_Grand_Challenges</a> </li> 
+         <li class="size0"> <span>16 photos are tagged with </span> <a href="/gallery3/tag/145/solar">solar</a> </li> 
+         <li class="size2"> <span>53 photos are tagged with </span> <a href="/gallery3/tag/75/station">station</a> </li> 
+         <li class="size1"> <span>37 photos are tagged with </span> <a href="/gallery3/tag/113/students">students</a> </li> 
+         <li class="size1"> <span>25 photos are tagged with </span> <a href="/gallery3/tag/69/transportable_array">transportable_array</a> </li> 
+         <li class="size1"> <span>41 photos are tagged with </span> <a href="/gallery3/tag/24/USGS">USGS</a> </li> 
+         <li class="size1"> <span>36 photos are tagged with </span> <a href="/gallery3/tag/19/workshop">workshop</a> </li> 
+        </ul> 
+       </div> 
+      </div> 
+     </div> 
+     <div id="g-pages" class="g-block"> 
+      <h2>Pages</h2> 
+      <div class="g-block-content"> 
+       <ul id="g-pages-list">
+        <li style="clear: both;"><a href="/gallery3/pages/show/faq">FAQ</a></li>
+        <li style="clear: both;"><a href="/gallery3/pages/show/terms">Terms of Use</a></li>
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="g-footer" class="ui-helper-clearfix"> 
+    <ul id="g-credits" class="g-inline"> 
+     <li class="g-first">Powered by <a href="http://galleryproject.org"><bdo dir="ltr">Gallery 3.0.9 (Chartres)</bdo></a></li> 
+    </ul> 
+   </div> 
+  </div> 
+  <script src="http://e.cooliris.com/slideshow/v/37732/go.js" type="text/javascript"></script> 
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"beacon-5.newrelic.com","licenseKey":"a0c27f55c0","applicationID":"5614845","transactionName":"MQNUbUAAW0UAVEwKVwhJY0tbTlJXDVtdEUFVSV9XVgRNGBFfSA==","queueTime":0,"applicationTime":64,"atts":"HURXGwgaSEs=","errorBeacon":"bam.nr-data.net","agent":"js-agent.newrelic.com\/nr-515.min.js"}</script>  
+ </body>
+</html>

@@ -1,0 +1,610 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+ <head profile="http://gmpg.org/xfn/11"> 
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+  <meta name="distribution" content="global"> 
+  <meta name="robots" content="follow, all"> 
+  <meta name="language" content="en"> 
+  <meta name="verify-v1" content="7XvBEj6Tw9dyXjHST/9sgRGxGymxFdHIZsM6Ob/xo5E="> 
+  <meta name="Author" content="UOC Virtual Library Tech Team"> 
+  <meta name="keywords" lang="en" content="libraries, virtual libraries, labs, blog, solutions, library topics, UOC"> 
+  <meta name="description" lang="es" content="Blog about innovation, solutions, findings of the Virtual Library Tech Team of the Open University of Catalonia"> 
+  <meta name="google-site-verification" content="dhN4E8QqS3i4UGKzLnXVYUMqYjiWGKulmfW0W9UbeiI"> 
+  <title> #LibTechNotes</title> 
+  <link rel="Shortcut Icon" href="http://labs.biblioteca.uoc.edu/blog/wp-content/themes/structure_themes/structure_blog_full/images/favicon.ico" type="image/x-icon"> 
+  <link rel="stylesheet" href="http://labs.biblioteca.uoc.edu/blog/wp-content/themes/structure_themes/structure_blog_full/style.css" type="text/css" media="screen"> 
+  <link rel="alternate" type="application/rss+xml" title="#LibTechNotes RSS Feed" href="http://labs.biblioteca.uoc.edu/blog/?feed=rss2"> 
+  <link rel="alternate" type="application/atom+xml" title="#LibTechNotes Atom Feed" href="http://labs.biblioteca.uoc.edu/blog/?feed=atom"> 
+  <link rel="pingback" href="http://labs.biblioteca.uoc.edu/blog/xmlrpc.php"> 
+  <link rel="stylesheet" id="tweeter_css-css" href="http://labs.biblioteca.uoc.edu/blog/wp-content/plugins/tweeter-a-twitter-widget/styles.css?ver=1.0.0" type="text/css" media="screen"> 
+  <link rel="stylesheet" id="vye_dynamic-css" href="http://labs.biblioteca.uoc.edu/blog/wp-content/plugins/youtube-embed/css/main.min.css?ver=4.1.1" type="text/css" media="all"> 
+  <link rel="stylesheet" id="wp-pagenavi-css" href="http://labs.biblioteca.uoc.edu/blog/wp-content/plugins/wp-pagenavi/pagenavi-css.css?ver=2.70" type="text/css" media="all"> 
+  <link rel="stylesheet" id="author-avatars-widget-css" href="http://labs.biblioteca.uoc.edu/blog/wp-content/plugins/author-avatars/css/widget.css?ver=1.8.6.4" type="text/css" media="all"> 
+  <link rel="stylesheet" id="author-avatars-shortcode-css" href="http://labs.biblioteca.uoc.edu/blog/wp-content/plugins/author-avatars/css/shortcode.css?ver=1.8.6.4" type="text/css" media="all"> 
+  <!-- This site uses the Google Analytics by Yoast plugin v5.3.1 - Universal enabled - https://yoast.com/wordpress/plugins/google-analytics/ --> 
+  <script type="text/javascript">
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+
+	__gaTracker('create', 'UA-16654579-5', 'auto');
+	__gaTracker('set', 'forceSSL', true);
+	__gaTracker('require', 'displayfeatures');
+	__gaTracker('send','pageview');
+
+</script> 
+  <!-- / Google Analytics by Yoast --> 
+  <script type="text/javascript" src="http://twitterjs.googlecode.com/svn/trunk/src/twitter.min.js?ver=4.1.1"></script> 
+  <script type="text/javascript" src="http://labs.biblioteca.uoc.edu/blog/wp-includes/js/jquery/jquery.js?ver=1.11.1"></script> 
+  <script type="text/javascript" src="http://labs.biblioteca.uoc.edu/blog/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1"></script> 
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://labs.biblioteca.uoc.edu/blog/xmlrpc.php?rsd"> 
+  <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://labs.biblioteca.uoc.edu/blog/wp-includes/wlwmanifest.xml"> 
+  <meta name="generator" content="WordPress 4.1.1"> 
+  <script type="text/javascript" src="http://labs.biblioteca.uoc.edu/blog/wp-includes/js/tw-sack.min.js?ver=1.6.1"></script> 
+  <script type="text/javascript">
+//<![CDATA[
+
+	function reportComment( commentID )
+	{
+
+			
+			var reporter_comment = document.getElementById( 'reportcomment_comment_textarea_' + commentID ).value;
+			var mysack = new sack( 'http://labs.biblioteca.uoc.edu/blog/wp-content/plugins/report-comments/report.php?c='+commentID+'&r='+escape(reporter_comment) );
+				
+		mysack.method = 'POST';
+	
+		mysack.onError	= function() { die( "There was an error reporting this comment. Please try again later." ) };
+		mysack.onCompletion = function() { finishReport( commentID, eval( '(' + this.response + ')' )); }
+	
+		mysack.runAJAX();
+	}
+
+	function reportComment_AddTextArea( commentID )
+	{
+		document.getElementById( 'reportcomment_results_div_' + commentID ).innerHTML = "Please tell us why you are reporting this comment (optional):";
+
+		var textarea = "<textarea name=\"reportcomment_comment_textarea_" + commentID + "\" id=\"reportcomment_comment_textarea_" + commentID + "\" cols=\"55\" rows=\"4\" class=\"reportcomment_textarea\"></textarea><br /><input type=\"button\" name=\"Report Comment\" value=\"Report Comment\" onclick=\"reportComment( " + commentID + " );\" />";
+
+		document.getElementById( 'reportcomment_comment_div_' + commentID ).innerHTML = textarea;
+	}
+
+	function finishReport( commentID, response )
+	{
+		var message = '<span class="reportedcomment_text">'+response.message+'</span>';
+		document.getElementById( 'reportcomment_results_div_' + commentID ).innerHTML = message;
+			
+			document.getElementById( 'reportcomment_comment_div_' + commentID ).innerHTML = '';
+			}
+//]]>
+</script> 
+  <style type="text/css">
+	.reportedcomment_text { color: #777; }
+</style> 
+  <script type="text/javascript" charset="utf-8">
+        if ( window.addEventListener ) {
+          var kkeys = [], konami = "38,38,40,40,37,39,37,39,66,65";
+          window.addEventListener("keydown", function(e){
+            kkeys.push( e.keyCode );
+            if ( kkeys.toString().indexOf( konami ) >= 0 )
+            	window.location = "http://labs.biblioteca.uoc.edu/labs/egg";
+          }, true);
+        }
+      </script> 
+  <script type="text/javascript" src="http://labs.biblioteca.uoc.edu/blog/wp-content/themes/structure_themes/structure_blog_full/js/superfish/superfish.js"></script> 
+  <script type="text/javascript" src="http://labs.biblioteca.uoc.edu/blog/wp-content/themes/structure_themes/structure_blog_full/js/superfish/hoverIntent.js"></script> 
+  <script type="text/javascript" src="http://labs.biblioteca.uoc.edu/blog/wp-content/themes/structure_themes/structure_blog_full/js/iepngfix_tilebg.js"></script> 
+  <!--IE6 Fix--> 
+  <style type="text/css">
+	img, div, a, input, body, span { 
+		behavior: url(http://labs.biblioteca.uoc.edu/blog/wp-content/themes/structure_themes/structure_blog_full/images/iepngfix.htc);
+	}
+</style> 
+  <script type="text/javascript"> 
+ 
+	var $j = jQuery.noConflict();
+	
+	$j(document).ready(function() { 
+		$j('ul.ot-menu').superfish(); 
+	});
+ 
+</script> 
+  <!-- A�ade esta etiqueta en la cabecera o delante de la etiqueta body. --> 
+  <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script> 
+ </head> 
+ <body> 
+  <div id="wrap"> 
+   <div id="header"> 
+    <div class="headerleft"> 
+     <p id="title"><a href="http://labs.biblioteca.uoc.edu/blog/" title="Home">#LibTechNotes</a></p> 
+    </div> 
+    <!--      <div class="headerright">
+            <form id="searchformheader" method="get" action="/blog/index.php">
+            <input type="text" value="Search Here and Press Enter" name="s" id="searchbox" onfocus="if (this.value == 'Search Here and Press Enter') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Search Here and Press Enter';}" />
+            <input type="hidden" id="searchbutton" value="Go" /></form>
+            
+           <div id="navicons">
+            	<a href="#blank" target="_blank"><img class="navicon" src="http://labs.biblioteca.uoc.edu/blog/wp-content/themes/structure_themes/structure_blog_full/images/rss_icon.png" title="RSS Feed" alt="RSS" /></a>
+            	<a href="#blank" target="_blank"><img class="navicon" src="http://labs.biblioteca.uoc.edu/blog/wp-content/themes/structure_themes/structure_blog_full/images/facebook_icon.png" title="Facebook" alt="Facebook" /></a>
+                <a href="#blank" target="_blank"><img class="navicon" src="http://labs.biblioteca.uoc.edu/blog/wp-content/themes/structure_themes/structure_blog_full/images/twitter_icon.png" title="Twitter" alt="Twitter" /></a>
+            </div> 
+        </div> --> 
+    <div class="headerright"> 
+     <span class="logo_uoc"><a href="http://www.uoc.edu" target="_blank"><img src="http://labs.biblioteca.uoc.edu/blog/wp-content/themes/structure_themes/structure_blog_full/images/logo_web_uoc.png" alt="UOC" title="UOC"></a></span> 
+    </div> 
+   </div> 
+   <div id="navbar"> 
+    <ul class="ot-menu"> 
+     <li class="current_page_item"><a href="http://labs.biblioteca.uoc.edu/blog">Home</a></li> 
+     <li class="page_item page-item-2"><a href="http://labs.biblioteca.uoc.edu/blog/?page_id=2">About</a></li> 
+    </ul> 
+    <div id="phrase">
+      Just another 
+     <a href="http://www.uoc.edu/portal/english/index.html">UOC</a> 
+     <a href="http://biblioteca.uoc.edu/">Virtual Library</a> website 
+    </div> 
+   </div> 
+   <div style="clear:both;"></div> 
+   <div id="content"> 
+    <div id="contentleft"> 
+     <div class="postarea"> 
+      <div class="posttitle"> 
+       <div class="commenticon"> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?p=4550#comments" title="Comments">0</a> 
+        <span></span> 
+       </div> 
+       <h2><a href="http://labs.biblioteca.uoc.edu/blog/?p=4550" rel="bookmark">The Audiovisual Librarian</a></h2> 
+       <div class="postauthor"> 
+        <p>Posted by <a href="http://labs.biblioteca.uoc.edu/blog/?author=84" title="Posts by Gema Santos" rel="author">Gema Santos</a> on February 16, 2015 &nbsp;</p> 
+       </div> 
+      </div> 
+      <blockquote>
+       <p>Librarians are becoming more aware of the potential of audiovisual and multimedia formats as resource materials.</p>
+      </blockquote> 
+      <p>As information providers, they are interested in the provision of information in the formats most suited to the differing needs of various types of use. Moreover, audiovisual media are part of our cultural heritage, carrying a huge amount of information that needs to be preserved for future use.</p> 
+      <p><strong> Nowadays</strong> <strong>there is an increasing demand for audiovisual librarians</strong> <strong>that constitutes an important role to be developed in libraries, digital archives and documentation centers (of news agencies, newspapers, television broadcasters or film studios). </strong></p> 
+      <p>The audiovisual librarian establishes contacts with major film distributors, evaluates and selects audiovisual materials for particular needs and uses, supervises the delivery of information services via audiovisual technology and is responsible of acquisition and maintenance of materials, equipment and supplies (Dell, 2014). Some other requirements for audiovisual librarians are to remain current regarding new developments in the production of audiovisual materials and to have knowledge of copyright laws.</p> 
+      <p>Multi-professional teams of television producers usually count on librarians. They are responsible of searching recordings and images in external supplier’s databases as well as in their own digital archives.</p> 
+      <blockquote>
+       <p>As multimedia managers, librarians should be able to locate and provide access to materials from different sources and they also should label resources with metadata to organize and retrieve them (Hidalgo, 2008).</p>
+      </blockquote> 
+      <p>Great efforts have been made by organizations like<strong> IFLA</strong> to <strong>establish international cataloguing rules, indexing mining data and guidelines for audiovisual material</strong>. As early as 1972, The UNESCO Public Library Manifesto had stressed the need for audiovisual media in libraries (IFLA 2004), which was materialized in the IFLA 2003 Conference with the “<em><strong><a href="http://www.ifla.org/files/assets/hq/publications/professional-report/80.pdf" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://www.ifla.org/files/assets/hq/publications/professional-report/80.pdf', 'Guidelines for Audiovisual and Multimedia Materials in Libraries and other Institutions');">Guidelines for Audiovisual and Multimedia Materials in Libraries and other Institutions</a></strong>“</em>.</p> 
+      <p>IFLA has also an Audiovisual and Multimedia Section (<a href="http://www.ifla.org/about-avms" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://www.ifla.org/about-avms', 'AVMS');">AVMS</a>), an international forum for persons working with non book media in every kind of library and information service, which represents the organization in the Coordinating Council of Audiovisual Archive Associations (<a href="http://www.ccaaa.org/" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://www.ccaaa.org/', 'CCAAA');">CCAAA</a>).</p> 
+      <div id="attachment_4562" style="width: 271px" class="wp-caption alignright">
+       <a href="http://biblioteca.uoc.edu/en/resources/open-audiovisual-heritage" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://biblioteca.uoc.edu/en/resources/open-audiovisual-heritage', '');"><img class="  wp-image-4562" src="http://labs.biblioteca.uoc.edu/blog/wp-content/uploads/2015/02/WorldDay_oksize.png" alt="World Day of Audiovisual Heritage" width="261" height="175"></a>
+       <p class="wp-caption-text">UOC Virtual Library’s dossier of resources “World Day of Audiovisual Heritage”</p>
+      </div> 
+      <p>There are a variety of audiovisual resources banks, such as: repositories, online audiovisual media, digital archives (from UNESCO and other organizations), experimental projects, etc.</p> 
+      <p><strong>At Open University of Catalonia (UOC) we offer studies of “A<a href="http://estudios.uoc.edu/es/masters-posgrados-especializaciones/especializacion/comunicacion-informacion/documentacion-audiovisual/presentacion" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://estudios.uoc.edu/es/masters-posgrados-especializaciones/especializacion/comunicacion-informacion/documentacion-audiovisual/presentacion', 'udiovisual Documentation and Film Researcher');">udiovisual Documentation and Film Researcher</a>“. At UOC Virtual Library we also collaborate with this&nbsp;professional development. </strong>An example is the cretation of a<strong> dossier of resources about “<a href="http://biblioteca.uoc.edu/en/resources/open-audiovisual-heritage" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://biblioteca.uoc.edu/en/resources/open-audiovisual-heritage', 'Open audiovisual heritage');"><em>Open audiovisual heritage</em></a>”</strong>, linked to the World Day of Audiovisual Heritage (on 27th of October).</p> 
+      <p>&nbsp;</p> 
+      <p>&nbsp;</p> 
+      <p>BIBLIOGRAPHY:</p> 
+      <p>Dell, Shondra (2014). How to Become a Audiovisual Librarian. Available at: <a href="https://books.google.es/books" onclick="__gaTracker('send', 'event', 'outbound-article', 'https://books.google.es/books', 'https://books.google.es/books');">https://books.google.es/books</a></p> 
+      <p>Hidalgo Goyanes, Paloma (2008). The training of managers journalistic contents. The television&nbsp;documentary in the digital environment. X Jornadas de Gestión de la Información.. Biblioteca Nacional, Madrid, 20-21 de noviembre de 2008. Madrid: SEDIC, 2008, pp. 89-101</p> 
+      <p>IFLA (2004). Guidelines for Audiovisual and Multimedia materials in libraries and other institutions. International Federation of Library Associations and Institutions Professional Reports, No. 80.</p> 
+      <p>&nbsp;</p> 
+      <div class="postmeta"> 
+       <p>Filed under <a href="http://labs.biblioteca.uoc.edu/blog/?cat=91" rel="category">Monday post</a>, <a href="http://labs.biblioteca.uoc.edu/blog/?cat=1" rel="category">Virtual libraries</a> · Tagged with <a href="http://labs.biblioteca.uoc.edu/blog/?tag=audiovisual" rel="tag">audiovisual</a>, <a href="http://labs.biblioteca.uoc.edu/blog/?tag=digital-archive" rel="tag">digital archive</a>, <a href="http://labs.biblioteca.uoc.edu/blog/?tag=librarianship" rel="tag">librarianship</a>, <a href="http://labs.biblioteca.uoc.edu/blog/?tag=online-resources" rel="tag">online resources</a>, <a href="http://labs.biblioteca.uoc.edu/blog/?tag=open-educational-resources" rel="tag">Open Educational Resources</a></p> 
+      </div> 
+      <div class="posttitle"> 
+       <div class="commenticon"> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?p=4544#comments" title="Comments">0</a> 
+        <span></span> 
+       </div> 
+       <h2><a href="http://labs.biblioteca.uoc.edu/blog/?p=4544" rel="bookmark">Mendeley advanced options</a></h2> 
+       <div class="postauthor"> 
+        <p>Posted by <a href="http://labs.biblioteca.uoc.edu/blog/?author=82" title="Posts by Albert Cervera" rel="author">Albert Cervera</a> on February 2, 2015 &nbsp;</p> 
+       </div> 
+      </div> 
+      <p>&nbsp;</p> 
+      <p>It is now two years since the UOC Library made the <a href="http://biblioteca.uoc.edu/en/resources/resource/mendeley-premium" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://biblioteca.uoc.edu/en/resources/resource/mendeley-premium', 'Mendeley Premium');">Mendeley Premium</a> reference manager freely available to all members of the UOC community. It replaced RefWorks, which had until then been the reference manager that the University had provided to its students and faculty.</p> 
+      <p>&nbsp;</p> 
+      <p><img class=" aligncenter" src="http://biblioteca.uoc.edu/sites/default/files/mendeley_xs_9.png" alt="" width="240" height="161"></p> 
+      <p>&nbsp;</p> 
+      <p>To help make the transition from one bibliographic manager to the other, the Library produced a <a href="http://biblioteca.uoc.edu/prestatgeries/M3051/TalleresMendeley_CAT/html5/modul_1.html" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://biblioteca.uoc.edu/prestatgeries/M3051/TalleresMendeley_CAT/html5/modul_1.html', 'tutorial');">tutorial</a> explaining how to access and register for a personal account on Mendeley. It also explained the basic features. Likewise, since the beginning, the Library has organized workshops every semester to help both faculty and students get started with this reference manager.</p> 
+      <p>Lately, users’ growing level of experience with the tool has meant that some have reached the end of these initial Mendeley workshops asking for more. Some users have asked for higher-level workshops to look at its more advanced features, especially those linked to use of this reference manager as a social network for sharing documents online, creating groups, discovering new articles and documents linked to a specific subject, compiling statistics and meeting other researchers, etc.</p> 
+      <p>Here at the UOC Library, we have rolled up our sleeves and started work on expanding the tutorial on Mendeley to cover these new features and to offer new more advanced workshops to meet the demands of the UOC’s user community.</p> 
+      <p>In any case, it is interesting to see the evolution in reference managers in recent years. They have moved away from simply focusing on the work of researchers – helping them compile, organize and cite bibliographic references in their research – towards 2.0-style tools that aid the sharing of resources and the generation of authentic specialist social networks. They have been very popular with users and gained a strong foothold in academia as specialist networks for making contacts and discoveries.</p> 
+      <p>&nbsp;</p> 
+      <div class="postmeta"> 
+       <p>Filed under <a href="http://labs.biblioteca.uoc.edu/blog/?cat=91" rel="category">Monday post</a>, <a href="http://labs.biblioteca.uoc.edu/blog/?cat=94" rel="category">Solutions</a>, <a href="http://labs.biblioteca.uoc.edu/blog/?cat=56" rel="category">Tools</a> · Tagged with </p> 
+      </div> 
+      <div class="posttitle"> 
+       <div class="commenticon"> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?p=4532#comments" title="Comments">0</a> 
+        <span></span> 
+       </div> 
+       <h2><a href="http://labs.biblioteca.uoc.edu/blog/?p=4532" rel="bookmark">2015 new year resolutions</a></h2> 
+       <div class="postauthor"> 
+        <p>Posted by <a href="http://labs.biblioteca.uoc.edu/blog/?author=5" title="Posts by Francesc March" rel="author">Francesc March</a> on January 5, 2015 &nbsp;</p> 
+       </div> 
+      </div> 
+      <p>We&nbsp;are&nbsp;just starting a year,&nbsp;another&nbsp;chance to work with technologies on libraries. We have been talking about lots of subjects on this blog since we&nbsp;started in&nbsp;November 2010.</p> 
+      <div id="attachment_4535" style="width: 310px" class="wp-caption aligncenter">
+       <a href="http://labs.biblioteca.uoc.edu/blog/wp-content/uploads/2015/01/tagCloud2014.png"><img class="size-medium wp-image-4535" src="http://labs.biblioteca.uoc.edu/blog/wp-content/uploads/2015/01/tagCloud2014-300x178.png" alt="Tag Cloud 2014" width="300" height="178"></a>
+       <p class="wp-caption-text">Tag Cloud 2014</p>
+      </div> 
+      <p>Making predictions about the subjects that we are going to talk along this year seems quite difficult.<br> <a href="http://www.infotoday.com/cilmag/dec14/Breeding--Library-Technology-Forecast-for-2015-and-Beyond.shtml" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://www.infotoday.com/cilmag/dec14/Breeding--Library-Technology-Forecast-for-2015-and-Beyond.shtml', 'Breeding’s 2015 predictions');" title="Breeding Library Technology Forecast 2015" target="_blank">Breeding’s 2015 predictions</a> subjects like linking data, mobile and 3D printing are some concepts that he mentions.</p> 
+      <p>In the UOC’s library we will&nbsp;keep on&nbsp;working with all the academic aspects of learning and research, keeping the evolution of the <a href="http://biblioteca.uoc.edu/en" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://biblioteca.uoc.edu/en', 'library website');" title="UOC Library" target="_blank">library website</a>, working with the open access, the bibliometry, keeping analyzing the new ILS systems and all the new challenges that this new year&nbsp;will&nbsp;bring&nbsp;us in&nbsp;the 20th anniversary&nbsp;of the <a href="http://www.uoc.edu/portal/en/index.html" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://www.uoc.edu/portal/en/index.html', 'university');" title="UOC" target="_blank">university</a>.</p> 
+      <blockquote>
+       <p>Happy new year!</p>
+      </blockquote> 
+      <div class="postmeta"> 
+       <p>Filed under <a href="http://labs.biblioteca.uoc.edu/blog/?cat=91" rel="category">Monday post</a>, <a href="http://labs.biblioteca.uoc.edu/blog/?cat=1" rel="category">Virtual libraries</a> · Tagged with <a href="http://labs.biblioteca.uoc.edu/blog/?tag=new-year" rel="tag">new year</a></p> 
+      </div> 
+      <div class="posttitle"> 
+       <div class="commenticon"> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?p=4525#comments" title="Comments">0</a> 
+        <span></span> 
+       </div> 
+       <h2><a href="http://labs.biblioteca.uoc.edu/blog/?p=4525" rel="bookmark">Options for open access publication</a></h2> 
+       <div class="postauthor"> 
+        <p>Posted by <a href="http://labs.biblioteca.uoc.edu/blog/?author=79" title="Posts by Mari Vállez" rel="author">Mari Vállez</a> on December 29, 2014 &nbsp;</p> 
+       </div> 
+      </div> 
+      <p>Horizon 2020 is a flagship initiative aimed at securing Europe’s global competitiveness.</p> 
+      <blockquote>
+       <p>It is the biggest <strong>EU research and innovation</strong> programme ever with nearly €80 billion of funding available over 7 years (2014 to 2020).</p>
+      </blockquote> 
+      <p>The results of research funded by this programme must be published in open access. The aim is to optimize the impact of publicly funded research and innovation. A few weeks ago, my colleague Gema Santos wrote about <a href="http://labs.biblioteca.uoc.edu/blog/?p=4508">Open research data and the role of libraries</a> and I am now going to talk about <strong>open access publishing</strong>, or what is known as <strong>‘gold’ open access</strong>. This is when an article is immediately provided in open access as published, because the authors publish in an open access journal or cover the costs.</p> 
+      <p>Publishing in open access journals is perfectly compatible with publishing in <strong>high-impact</strong> <strong>journals</strong>. There are open access journals listed in the <a href="http://www.doaj.org/" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://www.doaj.org/', 'Directory of Open Access Journals (DOA');">Directory of Open Access Journals (DOA</a>J) and present in the <a href="http://metalib.cbuc.cat/V/36L8EUCVAG7VYH6E7YGEEAALHKM9I7PSKC2E82N3GLA4JC5FJ8-00932?FUNC=FIND-DB-1-LOCATE&amp;MODE=locate&amp;F-WCL=ISI+Journal&amp;F-WPB=&amp;F-WFL=&amp;F-WRD=&amp;F-WTY=&amp;RESTRICTED=all&amp;PORTAL=UOC&amp;INSTITUTE=UOC&amp;NEW_LNG=eng&amp;pds_handle=GUEST" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://metalib.cbuc.cat/V/36L8EUCVAG7VYH6E7YGEEAALHKM9I7PSKC2E82N3GLA4JC5FJ8-00932?FUNC=FIND-DB-1-LOCATE&amp;MODE=locate&amp;F-WCL=ISI+Journal&amp;F-WPB=&amp;F-WFL=&amp;F-WRD=&amp;F-WTY=&amp;RESTRICTED=all&amp;PORTAL=UOC&amp;INSTITUTE=UOC&amp;NEW_LNG=eng&amp;pds_handle=GUEST', 'Journal Citation Report (JCR)');">Journal Citation Report (JCR)</a> and <a href="http://www.scimagojr.com/journalsearch.php" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://www.scimagojr.com/journalsearch.php', 'SCImago Journal Rank (SJR)');">SCImago Journal Rank (SJR)</a>.</p> 
+      <blockquote>
+       <p>The UOC Virtual Library has launched an update to its <a href="http://labs.biblioteca.uoc.edu/test/doaj/">website</a> that aids access to <strong>high-impact open access journals </strong>(data updated in late November).</p> 
+       <p>&nbsp;</p>
+      </blockquote> 
+      <p><a href="http://labs.biblioteca.uoc.edu/test/doaj/"><img class="aligncenter wp-image-4527" src="http://labs.biblioteca.uoc.edu/blog/wp-content/uploads/2014/12/open-access-journals.jpg" alt="open access journals" width="625" height="393"></a><br> Here is a list of the <strong>open access policies of the leading publishers</strong> for those authors who choose open access publication with a commercial publisher.</p> 
+      <ul> 
+       <li>&nbsp;<a href="http://journals.cambridge.org/action/stream?pageId=9128&amp;level=2" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://journals.cambridge.org/action/stream?pageId=9128&amp;level=2', 'Open Access at Cambridge');">Open Access at Cambridge</a></li> 
+       <li><a href="http://www.elsevier.com/about/open-access" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://www.elsevier.com/about/open-access', 'Open access at Elsevier');">Open access at Elsevier</a></li> 
+       <li><a href="http://www.emeraldgrouppublishing.com/openaccess.htm" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://www.emeraldgrouppublishing.com/openaccess.htm', 'Emerald and Open Access');">Emerald and Open Access</a></li> 
+       <li><a href="http://www.tandfonline.com/page/openaccess" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://www.tandfonline.com/page/openaccess', 'Open access with Taylor &amp; Francis');">Open access with Taylor &amp; Francis</a></li> 
+       <li><a href="http://www.ieee.org/publications_standards/publications/authors/open_access.html" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://www.ieee.org/publications_standards/publications/authors/open_access.html', 'IEEE Open Access Publishing Options');">IEEE Open Access Publishing Options</a></li> 
+       <li><a href="http://www.oxfordjournals.org/en/oxford-open/index.html" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://www.oxfordjournals.org/en/oxford-open/index.html', 'Oxford Open');">Oxford Open</a></li> 
+       <li><a href="http://www.palgrave.com/page/about-us-palgrave-open/" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://www.palgrave.com/page/about-us-palgrave-open/', 'Palgrave Open');">Palgrave Open</a></li> 
+       <li><a href="http://www.uk.sagepub.com/openaccess.cp" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://www.uk.sagepub.com/openaccess.cp', 'Open Access at Sage ');">Open Access at Sage </a></li> 
+       <li><a href="http://www.springer.com/gp/open-access" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://www.springer.com/gp/open-access', 'Publish open access with Springer');">Publish open access with Springer</a></li> 
+       <li><a href="http://www.wileyopenaccess.com/view/index.html" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://www.wileyopenaccess.com/view/index.html', 'Wiley Open Access');">Wiley Open Access</a></li> 
+      </ul> 
+      <div class="postmeta"> 
+       <p>Filed under <a href="http://labs.biblioteca.uoc.edu/blog/?cat=37" rel="category">Labs</a>, <a href="http://labs.biblioteca.uoc.edu/blog/?cat=91" rel="category">Monday post</a>, <a href="http://labs.biblioteca.uoc.edu/blog/?cat=56" rel="category">Tools</a>, <a href="http://labs.biblioteca.uoc.edu/blog/?cat=1" rel="category">Virtual libraries</a> · Tagged with <a href="http://labs.biblioteca.uoc.edu/blog/?tag=infographics" rel="tag">infographics</a>, <a href="http://labs.biblioteca.uoc.edu/blog/?tag=open-access" rel="tag">open access</a>, <a href="http://labs.biblioteca.uoc.edu/blog/?tag=tools-2" rel="tag">tools</a></p> 
+      </div> 
+      <div class="posttitle"> 
+       <div class="commenticon"> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?p=4508#comments" title="Comments">0</a> 
+        <span></span> 
+       </div> 
+       <h2><a href="http://labs.biblioteca.uoc.edu/blog/?p=4508" rel="bookmark">Open Research Data and the role of libraries</a></h2> 
+       <div class="postauthor"> 
+        <p>Posted by <a href="http://labs.biblioteca.uoc.edu/blog/?author=84" title="Posts by Gema Santos" rel="author">Gema Santos</a> on December 9, 2014 &nbsp;</p> 
+       </div> 
+      </div> 
+      <blockquote>
+       <p>The growing interest, and new trend inside the EU programs, about the Open Research Data is also a latent potential for libraries.</p>
+      </blockquote> 
+      <p>Libraries have an important data management role to play, due to experience with collection policies, data curation and repositories. According to the <strong><a href="http://cdn.nmc.org/media/2014-nmc-horizon-report-library-EN.pdf" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://cdn.nmc.org/media/2014-nmc-horizon-report-library-EN.pdf', 'Horitzon Report – 2014 Library edition');">Horitzon Report – 2014 Library edition</a></strong>, re-conceptualization of data management has become an opportunity for libraries, which are well poised to be the managers. They can support in digitally archiving the datasets from publications, tagging them with metadata and keywords, and making them searchable.</p> 
+      <p>Europe has recently created an enabling context to foster the open research data and data management systems. In July of 2013 the European Comission held a<strong>&nbsp;<a href="http://ec.europa.eu/digital-agenda/en/news/ec-public-consultation-open-research-data-2-july-brussels" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://ec.europa.eu/digital-agenda/en/news/ec-public-consultation-open-research-data-2-july-brussels', 'Public Consultation on Open Research Data');">Public Consultation on Open Research Data</a></strong> to different stakeholders (research and publishing communities, libraries, universities, industry, etc). Some of the main outcomes, summarized in <a href="https://ec.europa.eu/digital-agenda/sites/digital-agenda/files/Report_2013" onclick="__gaTracker('send', 'event', 'outbound-article', 'https://ec.europa.eu/digital-agenda/sites/digital-agenda/files/Report_2013', 'this report');">this <strong>report</strong></a>, pointed out the convenience of libraries in “<em>in brokering open data issues between research teams and publishers</em>“. Libraries subscribed to the approach that research data should be open by default and be re-used discussed about the re-use. Further, a <strong>joint statement paper submitted by LIBER, OpenAIRE and COAR</strong> stated that all research data has to be registered and deposited into at least one Open Data repository.</p> 
+      <p>&nbsp;</p> 
+      <p><object style="margin:0px" width="425" height="355"><param name="movie" value="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=id=41938299&amp;doc=newboardmemberpresentation-141124015913-conversion-gate02"><param name="allowFullScreen" value="true"><param name="allowScriptAccess" value="always"><param name="wmode" value="transparent"><embed src="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=id=41938299&amp;doc=newboardmemberpresentation-141124015913-conversion-gate02" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="355" wmode="transparent"></object></p> 
+      <p>In December of 2013, Horitzon 2020 stablished the <a href="http://ec.europa.eu/research/participants/data/ref/h2020/grants_manual/hi/oa_pilot/h2020-hi-oa-pilot-guide_en.pdf" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://ec.europa.eu/research/participants/data/ref/h2020/grants_manual/hi/oa_pilot/h2020-hi-oa-pilot-guide_en.pdf', 'Guidelines on Open Access to Scientific Publications and Research Data');">Guidelines on Open Access to Scientific Publications and Research Data</a> and also launched an <strong>Open Research Data Pilot</strong>, in order to improve and maximise access to and re-use of research data generated by projects. Researchers interested in submitting a proposal to apply for EU research funding, and more specifically to participate in the Open Research Data Pilot, are required to have a data management plan (DMP). That means they must thing about how the research data will be collected or generated, how these will be handled during the research project, which kind of curation and preservation Standards will be applied, how data will be shared through open licenses, etc.</p> 
+      <p>As a result of researchers’ needs and the emerging capacity of libraries, the <strong><a href="http://www.arl.org/" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://www.arl.org/', 'Association for Research Libraries (ARL');">Association for Research Libraries (ARL</a>) </strong>has created a <a href="http://www.arl.org/focus-areas/e-research/data-access-management-and-sharing#.VIdSUzGG_mM" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://www.arl.org/focus-areas/e-research/data-access-management-and-sharing#.VIdSUzGG_mM', 'guide to help library professionals');">guide to help library professionals</a> to develop an effective data management service and to encourage the sharing of data and publishing workflows</p> 
+      <blockquote>
+       <p>Guiding researchers in data management plans and to deposit and share open research data, as well as to support them in technologies for the analysis of their research, are some of the new challenges for libraries.</p>
+      </blockquote> 
+      <div class="postmeta"> 
+       <p>Filed under <a href="http://labs.biblioteca.uoc.edu/blog/?cat=91" rel="category">Monday post</a>, <a href="http://labs.biblioteca.uoc.edu/blog/?cat=1" rel="category">Virtual libraries</a> · Tagged with </p> 
+      </div> 
+      <!--	<div id="prevLink"><p></p></div>
+			<div id="nextLink"><p><a href="http://labs.biblioteca.uoc.edu/blog/?paged=2" >Next Page &raquo;</a></p></div> --> 
+      <!-- navegacio pagenavi --> 
+      <div class="wp-pagenavi"> 
+       <span class="pages">Page 1 of 40</span>
+       <span class="current">1</span>
+       <a class="page larger" href="http://labs.biblioteca.uoc.edu/blog/?paged=2">2</a>
+       <a class="page larger" href="http://labs.biblioteca.uoc.edu/blog/?paged=3">3</a>
+       <a class="page larger" href="http://labs.biblioteca.uoc.edu/blog/?paged=4">4</a>
+       <a class="page larger" href="http://labs.biblioteca.uoc.edu/blog/?paged=5">5</a>
+       <span class="extend">...</span>
+       <a class="larger page" href="http://labs.biblioteca.uoc.edu/blog/?paged=10">10</a>
+       <a class="larger page" href="http://labs.biblioteca.uoc.edu/blog/?paged=20">20</a>
+       <a class="larger page" href="http://labs.biblioteca.uoc.edu/blog/?paged=30">30</a>
+       <span class="extend">...</span>
+       <a class="nextpostslink" rel="next" href="http://labs.biblioteca.uoc.edu/blog/?paged=2">»</a>
+       <a class="last" href="http://labs.biblioteca.uoc.edu/blog/?paged=40">Last »</a> 
+      </div> 
+      <!-- navegacio pagenavi --> 
+     </div> 
+    </div> 
+    <!-- begin r_sidebar --> 
+    <div id="sidebar_right"> 
+     <ul> 
+      <p><a href="http://labs.biblioteca.uoc.edu/blog/?feed=rss2" title="Syndicate this site using RSS"> <img src="http://www.mozilla.org/images/feed-icon-28x28.png" alt="RSS Feed" title="RSS Feed"> <b>RSS feeds</b> </a></p> 
+      <br> 
+      <script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script> 
+      <script>
+		new TWTR.Widget({
+		  version: 2,
+		  type: 'search',
+		  search: '#LibTechNotes',
+		  interval: 30000,
+		  title: 'by @UOClibrarylabs',
+		  subject: '#LibTechNotes',
+		  width: 'auto',
+		  height: 300,
+		  theme: {
+		    shell: {
+		      background: '#000000',
+		      color: '#ffffff'
+		    },
+		    tweets: {
+		      background: '#ffffff',
+		      color: '#444444',
+		      links: '#7a9c2a'
+		    }
+		  },
+		  features: {
+		    scrollbar: true,
+		    loop: true,
+		    live: false,
+		    behavior: 'default'
+		  }
+		}).render().start();
+		</script> 
+      <br> 
+      <li id="text-11" class="widget widget_text"> 
+       <div class="textwidget">
+        <a href="https://twitter.com/UOClibrarylabs" onclick="__gaTracker('send', 'event', 'outbound-widget', 'https://twitter.com/UOClibrarylabs', 'Tweets by @UOClibrarylabs');" class="twitter-timeline" data-widget-id="355238029025214464">Tweets by @UOClibrarylabs</a> 
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+       </div> </li> 
+      <li id="author_avatars-2" class="widget widget_author_avatars"><h4>Authors</h4>
+       <div class="author-list">
+        <div class="user">
+         <a href="http://labs.biblioteca.uoc.edu/blog/?author=82" title=""><span class="avatar" title=""><img src="http://1.gravatar.com/avatar/b9b0c89d3584277cfa51cb532f0f4679?s=45&amp;d=&amp;r=G" class="avatar avatar-45 photo" height="45" width="45" title="" alt=""></span></a>
+        </div>
+        <div class="user">
+         <a href="http://labs.biblioteca.uoc.edu/blog/?author=81" title=""><span class="avatar" title=""><img src="http://0.gravatar.com/avatar/cddb9dc3d81c354a5cb388187e2884e0?s=45&amp;d=&amp;r=G" class="avatar avatar-45 photo" height="45" width="45" title="" alt=""></span></a>
+        </div>
+        <div class="user">
+         <a href="http://labs.biblioteca.uoc.edu/blog/?author=5" title=""><span class="avatar" title=""><img src="http://0.gravatar.com/avatar/46da1414fa2686fb1dcb9e7ab628483f?s=45&amp;d=&amp;r=G" class="avatar avatar-45 photo" height="45" width="45" title="" alt=""></span></a>
+        </div>
+        <div class="user">
+         <a href="http://labs.biblioteca.uoc.edu/blog/?author=84" title=""><span class="avatar" title=""><img src="http://1.gravatar.com/avatar/5781d6c556468fad010cdec5f51319d3?s=45&amp;d=&amp;r=G" class="avatar avatar-45 photo" height="45" width="45" title="" alt=""></span></a>
+        </div>
+        <div class="user">
+         <a href="http://labs.biblioteca.uoc.edu/blog/?author=4" title=""><span class="avatar" title=""><img src="http://0.gravatar.com/avatar/c252ec498d8fd355231e4358acbc6bcc?s=45&amp;d=&amp;r=G" class="avatar avatar-45 photo" height="45" width="45" title="" alt=""></span></a>
+        </div>
+        <div class="user">
+         <a href="http://labs.biblioteca.uoc.edu/blog/?author=79" title=""><span class="avatar" title=""><img src="http://0.gravatar.com/avatar/e3aa0dc0ef9142f86c25104708528193?s=45&amp;d=&amp;r=G" class="avatar avatar-45 photo" height="45" width="45" title="" alt=""></span></a>
+        </div>
+        <div class="user">
+         <a href="http://labs.biblioteca.uoc.edu/blog/?author=2" title=""><span class="avatar" title=""><img src="http://1.gravatar.com/avatar/fe4722ebb03a5ec999d828c368b6db9d?s=45&amp;d=&amp;r=G" class="avatar avatar-45 photo" height="45" width="45" title="" alt=""></span></a>
+        </div>
+        <div class="user">
+         <a href="http://labs.biblioteca.uoc.edu/blog/?author=83" title=""><span class="avatar" title=""><img src="http://0.gravatar.com/avatar/4f20c55d5f62cc8458851e1ae5256c03?s=45&amp;d=&amp;r=G" class="avatar avatar-45 photo" height="45" width="45" title="" alt=""></span></a>
+        </div>
+        <div class="user">
+         <a href="http://labs.biblioteca.uoc.edu/blog/?author=123" title=""><span class="avatar" title=""><img src="http://0.gravatar.com/avatar/adc900fe8ff1c0aa943b96505004d2da?s=45&amp;d=&amp;r=G" class="avatar avatar-45 photo" height="45" width="45" title="" alt=""></span></a>
+        </div>
+        <div class="user">
+         <a href="http://labs.biblioteca.uoc.edu/blog/?author=6" title=""><span class="avatar" title=""><img src="http://1.gravatar.com/avatar/7704f38d7f57805f253e824b169a049b?s=45&amp;d=&amp;r=G" class="avatar avatar-45 photo" height="45" width="45" title="" alt=""></span></a>
+        </div>
+       </div></li> 
+      <li id="author_avatars-3" class="widget widget_author_avatars"><h4>Contributor</h4>
+       <div class="author-list">
+        <div class="user">
+         <a href="http://labs.biblioteca.uoc.edu/blog/?author=122" title=""><span class="avatar" title=""><img src="http://1.gravatar.com/avatar/5bd011996d6295562eb93b8ac1c682a6?s=45&amp;d=&amp;r=G" class="avatar avatar-45 photo" height="45" width="45" title="" alt=""></span></a>
+        </div>
+        <div class="user">
+         <a href="http://labs.biblioteca.uoc.edu/blog/?author=80" title=""><span class="avatar" title=""><img src="http://1.gravatar.com/avatar/def1603d529714d3c92a1a5e7aa20dd5?s=45&amp;d=&amp;r=G" class="avatar avatar-45 photo" height="45" width="45" title="" alt=""></span></a>
+        </div>
+        <div class="user">
+         <a href="http://labs.biblioteca.uoc.edu/blog/?author=14" title=""><span class="avatar" title=""><img src="http://1.gravatar.com/avatar/520c37b4f59afa962446a7db3fb7721f?s=45&amp;d=&amp;r=G" class="avatar avatar-45 photo" height="45" width="45" title="" alt=""></span></a>
+        </div>
+        <div class="user">
+         <a href="http://labs.biblioteca.uoc.edu/blog/?author=3" title=""><span class="avatar" title=""><img src="http://0.gravatar.com/avatar/6cfe496c34a6d90a89f5fb5b5ee63a9f?s=45&amp;d=&amp;r=G" class="avatar avatar-45 photo" height="45" width="45" title="" alt=""></span></a>
+        </div>
+       </div></li> 
+      <li id="categories-3" class="widget widget_categories"><h4>Themes</h4> 
+       <ul> 
+        <li class="cat-item cat-item-36"><a href="http://labs.biblioteca.uoc.edu/blog/?cat=36">Events</a> </li> 
+        <li class="cat-item cat-item-37"><a href="http://labs.biblioteca.uoc.edu/blog/?cat=37">Labs</a> </li> 
+        <li class="cat-item cat-item-89"><a href="http://labs.biblioteca.uoc.edu/blog/?cat=89">Library website</a> </li> 
+        <li class="cat-item cat-item-41"><a href="http://labs.biblioteca.uoc.edu/blog/?cat=41">Metadata</a> </li> 
+        <li class="cat-item cat-item-77"><a href="http://labs.biblioteca.uoc.edu/blog/?cat=77">Mobile Libraries</a> </li> 
+        <li class="cat-item cat-item-91"><a href="http://labs.biblioteca.uoc.edu/blog/?cat=91">Monday post</a> </li> 
+        <li class="cat-item cat-item-42"><a href="http://labs.biblioteca.uoc.edu/blog/?cat=42">OPAC</a> </li> 
+        <li class="cat-item cat-item-63"><a href="http://labs.biblioteca.uoc.edu/blog/?cat=63">Q&amp;A</a> </li> 
+        <li class="cat-item cat-item-94"><a href="http://labs.biblioteca.uoc.edu/blog/?cat=94">Solutions</a> </li> 
+        <li class="cat-item cat-item-56"><a href="http://labs.biblioteca.uoc.edu/blog/?cat=56">Tools</a> </li> 
+        <li class="cat-item cat-item-1"><a href="http://labs.biblioteca.uoc.edu/blog/?cat=1">Virtual libraries</a> </li> 
+       </ul> </li> 
+      <li id="archives-3" class="widget widget_archive"><h4>Archives</h4> <select name="archive-dropdown" onchange="document.location.href=this.options[this.selectedIndex].value;"> <option value="">Select Month</option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201502"> February 2015 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201501"> January 2015 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201412"> December 2014 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201411"> November 2014 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201410"> October 2014 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201409"> September 2014 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201408"> August 2014 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201407"> July 2014 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201406"> June 2014 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201405"> May 2014 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201404"> April 2014 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201403"> March 2014 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201402"> February 2014 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201401"> January 2014 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201312"> December 2013 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201311"> November 2013 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201310"> October 2013 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201309"> September 2013 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201308"> August 2013 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201307"> July 2013 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201306"> June 2013 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201305"> May 2013 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201304"> April 2013 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201303"> March 2013 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201302"> February 2013 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201301"> January 2013 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201212"> December 2012 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201211"> November 2012 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201210"> October 2012 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201209"> September 2012 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201208"> August 2012 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201207"> July 2012 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201206"> June 2012 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201205"> May 2012 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201204"> April 2012 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201203"> March 2012 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201202"> February 2012 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201201"> January 2012 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201112"> December 2011 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201111"> November 2011 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201110"> October 2011 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201109"> September 2011 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201108"> August 2011 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201107"> July 2011 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201106"> June 2011 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201105"> May 2011 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201104"> April 2011 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201103"> March 2011 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201102"> February 2011 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201101"> January 2011 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201012"> December 2010 </option> <option value="http://labs.biblioteca.uoc.edu/blog/?m=201011"> November 2010 </option> </select> </li> 
+      <li id="recent-posts-3" class="widget widget_recent_entries"> <h4>Recent Posts</h4> 
+       <ul> 
+        <li> <a href="http://labs.biblioteca.uoc.edu/blog/?p=4550">The Audiovisual Librarian</a> </li> 
+        <li> <a href="http://labs.biblioteca.uoc.edu/blog/?p=4544">Mendeley advanced options</a> </li> 
+        <li> <a href="http://labs.biblioteca.uoc.edu/blog/?p=4532">2015 new year resolutions</a> </li> 
+        <li> <a href="http://labs.biblioteca.uoc.edu/blog/?p=4525">Options for open access publication</a> </li> 
+        <li> <a href="http://labs.biblioteca.uoc.edu/blog/?p=4508">Open Research Data and the role of libraries</a> </li> 
+       </ul> </li> 
+      <li id="tag_cloud-3" class="widget widget_tag_cloud"><h4>Tags</h4>
+       <div class="tagcloud">
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=activism" class="tag-link-46" title="9 topics" style="font-size: 14.363636363636pt;">activism</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=analytics" class="tag-link-132" title="4 topics" style="font-size: 8pt;">analytics</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=api" class="tag-link-93" title="9 topics" style="font-size: 14.363636363636pt;">API</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=apps" class="tag-link-49" title="4 topics" style="font-size: 8pt;">apps</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=bibliographic-data" class="tag-link-62" title="8 topics" style="font-size: 13.30303030303pt;">bibliographic data</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=catalogue" class="tag-link-66" title="12 topics" style="font-size: 16.69696969697pt;">catalogue</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=conference" class="tag-link-151" title="4 topics" style="font-size: 8pt;">conference</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=creativity" class="tag-link-51" title="12 topics" style="font-size: 16.69696969697pt;">creativity</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=data" class="tag-link-124" title="6 topics" style="font-size: 11.181818181818pt;">data</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=development" class="tag-link-147" title="5 topics" style="font-size: 9.6969696969697pt;">development</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=discovery-tools" class="tag-link-78" title="10 topics" style="font-size: 15.212121212121pt;">discovery tools</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=drupal" class="tag-link-100" title="12 topics" style="font-size: 16.69696969697pt;">drupal</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=education" class="tag-link-128" title="8 topics" style="font-size: 13.30303030303pt;">education</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=ils" class="tag-link-115" title="15 topics" style="font-size: 18.606060606061pt;">ILS</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=infographics" class="tag-link-55" title="8 topics" style="font-size: 13.30303030303pt;">infographics</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=innovation" class="tag-link-50" title="12 topics" style="font-size: 16.69696969697pt;">innovation</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=internet" class="tag-link-44" title="5 topics" style="font-size: 9.6969696969697pt;">Internet</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=internet-culture" class="tag-link-85" title="22 topics" style="font-size: 22pt;">Internet culture</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=libraries" class="tag-link-88" title="8 topics" style="font-size: 13.30303030303pt;">libraries</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=library" class="tag-link-45" title="6 topics" style="font-size: 11.181818181818pt;">Library</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=library-2-0" class="tag-link-160" title="8 topics" style="font-size: 13.30303030303pt;">Library 2.0</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=library-software" class="tag-link-114" title="6 topics" style="font-size: 11.181818181818pt;">library software</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=linked-data" class="tag-link-39" title="7 topics" style="font-size: 12.242424242424pt;">linked data</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=management" class="tag-link-52" title="4 topics" style="font-size: 8pt;">management</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=mash-up" class="tag-link-43" title="6 topics" style="font-size: 11.181818181818pt;">Mash-up</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=millennium" class="tag-link-82" title="5 topics" style="font-size: 9.6969696969697pt;">Millennium</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=mobile-web" class="tag-link-75" title="5 topics" style="font-size: 9.6969696969697pt;">Mobile Web</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=opac" class="tag-link-42" title="9 topics" style="font-size: 14.363636363636pt;">OPAC</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=open-data" class="tag-link-38" title="11 topics" style="font-size: 16.060606060606pt;">open data</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=open-education" class="tag-link-113" title="13 topics" style="font-size: 17.545454545455pt;">open education</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=semantic-web" class="tag-link-40" title="6 topics" style="font-size: 11.181818181818pt;">semantic web</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=social-networks" class="tag-link-108" title="6 topics" style="font-size: 11.181818181818pt;">social networks</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=solutions" class="tag-link-60" title="4 topics" style="font-size: 8pt;">solutions</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=team" class="tag-link-6" title="6 topics" style="font-size: 11.181818181818pt;">team</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=tools-2" class="tag-link-61" title="14 topics" style="font-size: 18.181818181818pt;">tools</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=uoc" class="tag-link-11" title="7 topics" style="font-size: 12.242424242424pt;">UOC</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=usability" class="tag-link-73" title="6 topics" style="font-size: 11.181818181818pt;">usability</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=user-centered-design" class="tag-link-202" title="6 topics" style="font-size: 11.181818181818pt;">user-centered design</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=users" class="tag-link-58" title="8 topics" style="font-size: 13.30303030303pt;">users</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=ux" class="tag-link-30" title="7 topics" style="font-size: 12.242424242424pt;">UX</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=visualization" class="tag-link-117" title="6 topics" style="font-size: 11.181818181818pt;">visualization</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=web" class="tag-link-35" title="4 topics" style="font-size: 8pt;">web</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=webcraft" class="tag-link-67" title="6 topics" style="font-size: 11.181818181818pt;">webcraft</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=web-design" class="tag-link-164" title="6 topics" style="font-size: 11.181818181818pt;">web design</a> 
+        <a href="http://labs.biblioteca.uoc.edu/blog/?tag=website" class="tag-link-87" title="13 topics" style="font-size: 17.545454545455pt;">website</a>
+       </div> </li> 
+      <li id="text-8" class="widget widget_text"><h4>like!</h4> 
+       <div class="textwidget">
+        <!-- Añade esta etiqueta donde quieras colocar el botón +1 --> 
+        <g:plusone></g:plusone> 
+        <br>
+        <br> 
+        <iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Flabs.biblioteca.uoc.edu%2Fblog%2F&amp;layout=standard&amp;show_faces=false&amp;width=400&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:280px; height:35px;" allowtransparency="true"></iframe>
+       </div> </li> 
+      <li id="text-4" class="widget widget_text"> 
+       <div class="textwidget">
+        <!-- Include the Google Friend Connect javascript library. --> 
+        <script type="text/javascript" src="http://www.google.com/friendconnect/script/friendconnect.js"></script> 
+        <!-- Define the div tag where the gadget will be inserted. --> 
+        <!-- <div id="div-170951722438108673" style="width:276px;border:1px solid #cccccc;"></div> --> 
+        <!-- Render the gadget into a div. --> 
+        <script type="text/javascript">
+var skin = {};
+skin['BORDER_COLOR'] = '#cccccc';
+skin['ENDCAP_BG_COLOR'] = '#e0ecff';
+skin['ENDCAP_TEXT_COLOR'] = '#333333';
+skin['ENDCAP_LINK_COLOR'] = '#0000cc';
+skin['ALTERNATE_BG_COLOR'] = '#ffffff';
+skin['CONTENT_BG_COLOR'] = '#ffffff';
+skin['CONTENT_LINK_COLOR'] = '#0000cc';
+skin['CONTENT_TEXT_COLOR'] = '#333333';
+skin['CONTENT_SECONDARY_LINK_COLOR'] = '#7777cc';
+skin['CONTENT_SECONDARY_TEXT_COLOR'] = '#666666';
+skin['CONTENT_HEADLINE_COLOR'] = '#333333';
+skin['NUMBER_ROWS'] = '4';
+google.friendconnect.container.setParentUrl('/blog/' /* location of rpc_relay.html and canvas.html */);
+google.friendconnect.container.renderMembersGadget(
+ { id: 'div-170951722438108673',
+   site: '09927984586259535782' },
+  skin);
+</script>
+       </div> </li> 
+      <li id="text-6" class="widget widget_text"> 
+       <div class="textwidget">
+        <div id="cc_license"> 
+         <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://creativecommons.org/licenses/by-nc-sa/3.0/', '');" title="Creative Commons License" target="_blank"><img style="float: left; margin: 0px 10px 0px 0px;" src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" alt="Creative Commons License" border="0"></a> This work is licensed under a 
+         <a href="http://creativecommons.org" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://creativecommons.org', 'Creative Commons');" title="Creative Commons" target="_blank">Creative Commons</a> Attribution-NonCommercial-ShareAlike 3.0 Unported License.
+        </div>
+       </div> </li> 
+     </ul> 
+    </div> 
+   </div> 
+   <!-- begin footer --> 
+   <div style="clear:both;"></div> 
+   <div id="footertopbg"> 
+    <div id="footertop"> 
+     <div class="footertopleft"> 
+      <ul> 
+       <li id="linkcat-27" class="widget widget_mylinkorder"><h4>Our Base Camp</h4> 
+        <ul class="xoxo blogroll"> 
+         <li><a href="http://labs.biblioteca.uoc.edu/" target="_blank">LibLabs Web</a></li> 
+         <li><a href="http://biblioteca.uoc.edu/app/bibweb/?q=en" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://biblioteca.uoc.edu/app/bibweb/?q=en', 'UOC Virtual Library');" target="_blank">UOC Virtual Library</a></li> 
+         <li><a href="http://www.uoc.edu/portal/english/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.uoc.edu/portal/english/', 'UOC Web');" target="_blank">UOC Web</a></li> 
+         <li><a href="http://www.uoc.edu/portal/english/la_universitat/tecnologia_uoc/index.html" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.uoc.edu/portal/english/la_universitat/tecnologia_uoc/index.html', 'UOC Technology');">UOC Technology</a></li> 
+        </ul> </li> 
+      </ul> 
+     </div> 
+     <div class="footertopmidleft"> 
+      <ul> 
+       <li id="linkcat-28" class="widget widget_mylinkorder"><h4>More innovation fans @ the UOC</h4> 
+        <ul class="xoxo blogroll"> 
+         <li><a href="http://lt.uoc.edu/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://lt.uoc.edu/', 'Office of Learning Technologies');" target="_blank">Office of Learning Technologies</a></li> 
+         <li><a href="http://www.innovauoc.org/foruminnovacio/en/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.innovauoc.org/foruminnovacio/en/', 'Innovation Forum');" target="_blank">Innovation Forum</a></li> 
+         <li><a href="http://icommunity.blogs.uoc.edu" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://icommunity.blogs.uoc.edu', 'iCommunity');" target="_blank">iCommunity</a></li> 
+         <li><a href="http://edtech.blogs.uoc.edu/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://edtech.blogs.uoc.edu/', 'EdTech');" target="_blank">EdTech</a></li> 
+        </ul> </li> 
+      </ul> 
+     </div> 
+     <div class="footertopmidright"> 
+      <ul> 
+       <li id="linkcat-29" class="widget widget_mylinkorder"><h4>Other library tech sites we like</h4> 
+        <ul class="xoxo blogroll"> 
+         <li><a href="http://www.librarytechnology.org/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.librarytechnology.org/', 'Library Technology Guides');">Library Technology Guides</a></li> 
+         <li><a href="http://www.rss4lib.com/library-labs.html" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.rss4lib.com/library-labs.html', 'RSS4Lib');">RSS4Lib</a></li> 
+         <li><a href="http://www.code4lib.org/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.code4lib.org/', 'code4lib');">code4lib</a></li> 
+         <li><a href="http://www.oclc.org/research/default.htm" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.oclc.org/research/default.htm', 'OCLC Research');">OCLC Research</a></li> 
+        </ul> </li> 
+      </ul> 
+     </div> 
+     <div class="footertopright"> 
+      <ul> 
+       <li id="search-3" class="widget widget_search"><h4>Find what you want…</h4>
+        <form role="search" method="get" id="searchform" class="searchform" action="http://labs.biblioteca.uoc.edu/blog/"> 
+         <div> 
+          <label class="screen-reader-text" for="s">Search for:</label> 
+          <input type="text" value="" name="s" id="s"> 
+          <input type="submit" id="searchsubmit" value="Search"> 
+         </div> 
+        </form></li> 
+       <li id="text-9" class="widget widget_text"> 
+        <div class="textwidget">
+         <!-- AddThis Button BEGIN --> 
+         <div class="addthis_toolbox addthis_default_style addthis_32x32_style"> 
+          <a class="addthis_button_facebook"></a> 
+          <a class="addthis_button_twitter"></a> 
+          <a class="addthis_button_email"></a> 
+          <a class="addthis_button_compact"></a> 
+         </div> 
+         <script type="text/javascript">var addthis_config = {"data_track_clickback":true};</script> 
+         <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=buoc"></script> 
+         <!-- AddThis Button END -->
+        </div> </li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="footerbg"> 
+    <div id="footer"> 
+     <div class="footerleft"> 
+      <div class="footertop"> 
+       <br> 
+       <!--   <p>Copyright &copy; 2015 &middot; All Rights Reserved &middot; #LibTechNotes</p> --> 
+      </div> 
+      <div class="footerbottom"> 
+       <p><a href="http://www.structuretheme.com" target="_blank">The Structure Theme</a> by <a href="http://www.mukustudios.com" target="_blank">Muku Studios</a> and <a href="http://www.jeffmilone.com" target="_blank">Jeff Milone</a> · <a href="http://labs.biblioteca.uoc.edu/blog/?feed=rss2" target="_blank">RSS Feed</a> · <a href="http://labs.biblioteca.uoc.edu/blog/wp-login.php">Log in</a></p> 
+      </div> 
+     </div> 
+     <!-- <div class="footerright">
+    		<a href="http://www.uoc.edu" target="_blank"><img src="http://labs.biblioteca.uoc.edu/blog/wp-content/themes/structure_themes/structure_blog_full/images/footer_logo.png" alt="Organic Themes" /></a>
+    	</div> --> 
+    </div> 
+   </div> 
+  </div> 
+  <script type="text/javascript" src="http://labs.biblioteca.uoc.edu/blog/wp-includes/js/jquery/ui/core.min.js?ver=1.11.2"></script> 
+  <script type="text/javascript" src="http://labs.biblioteca.uoc.edu/blog/wp-includes/js/jquery/ui/widget.min.js?ver=1.11.2"></script> 
+  <script type="text/javascript" src="http://labs.biblioteca.uoc.edu/blog/wp-includes/js/jquery/ui/tabs.min.js?ver=1.11.2"></script> 
+  <script type="text/javascript" src="http://labs.biblioteca.uoc.edu/blog/wp-includes/js/jquery/ui/mouse.min.js?ver=1.11.2"></script> 
+  <script type="text/javascript" src="http://labs.biblioteca.uoc.edu/blog/wp-includes/js/jquery/ui/sortable.min.js?ver=1.11.2"></script>  
+ </body>
+</html>

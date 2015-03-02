@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <title>
+        
+          IRIS: 
+  DMC Web Services
+
+        
+      </title> 
+  <meta name="keywords" content="seismology, seismological data,
+  earthquakes, iris dmc"> 
+  <meta name="description" content="IRIS is a consortium of
+  universities dedicated to the operation of science facilities
+  for the acquisition, management, and distribution of seismological
+  data."> 
+  <!-- Forces IE to render in 'latest' compatible mode --> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge"> 
+  <link rel="stylesheet" media="screen" type="text/css" href="/static/css/iris.css"> 
+  <link rel="stylesheet" media="print" type="text/css" href="/static/css/new_site/print.css"> 
+  <link rel="stylesheet" type="text/css" href="/static/css/jquery-ui-iris-theme/jquery-ui-1.8.23.custom.css"> 
+  <link rel="stylesheet" type="text/css" href="/static/webservicedoc/css/services.css"> 
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script> 
+  <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script> 
+  <!--
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+    --> 
+  <script type="text/javascript" src="/static/libs/megamenu/megamenu_plugins.js"></script> 
+  <script type="text/javascript" src="/static/libs/megamenu/megamenu.min.js"></script> 
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-1860730-1', 'iris.edu');
+      ga('send', 'pageview');
+    
+    </script> 
+  <!-- START: Syntax highlighting --> 
+  <link rel="stylesheet" type="text/css" href="/static/libs/prettify/r298/css/prettify.css"> 
+  <script type="text/javascript" src="/static/libs/prettify/r298/js/prettify.js">
+  </script> 
+  <script type="text/javascript">
+  $(document).ready(function(){
+    prettyPrint();
+  });
+  </script> 
+  <!-- END: Syntax highlighting --> 
+ </head> 
+ <body> 
+  <div id="site-container"> 
+   <header> 
+    <div id="header-container" class="services"> 
+     <div class="container"> 
+      <div id="header" class="services"> 
+       <div id="header-left"> 
+        <div id="logo" class="services"> 
+         <a href="http://www.iris.edu/hq" title="IRIS"> <img src="/static/img/layout/logos/services-header-logo.png" alt="IRIS"> </a> 
+        </div> 
+        <div id="logo-name"> 
+         <img src="/static/img/layout/logos/HEADER_TXT.png" alt="Incorporated Research Institutions for Seismology"> 
+        </div> 
+       </div>
+       <!-- #header-left --> 
+       <div id="header-right"> 
+        <ul id="top-menu"> 
+         <li> <a href="http://www.iris.edu/dms/nodes/dmc" title="IRIS DMC">DMC</a> </li> 
+         <li> <a href="http://www.iris.edu/hq" title="IRIS HQ">Home</a> </li> 
+        </ul> 
+        <div id="nsf"> 
+         <div id="nsf-logo"> 
+          <a href="http://www.nsf.gov/" title="The National Science Foundation" target="_blank"> <img src="/static/img/layout/logos/nsf.png" alt="The National Science Foundation"> </a> 
+         </div> 
+         <div id="nsf-text"> 
+          <!--
+              A university consortium dedicated to the
+              operation of science facilities for the
+              acquisition, management, and distribution of
+              freely available seismic data.
+              --> 
+         </div> 
+        </div>
+        <!-- #nsf --> 
+       </div>
+       <!-- #header-right --> 
+       <div class="clear"></div> 
+      </div>
+      <!-- #header --> 
+     </div>
+     <!-- #container --> 
+    </div>
+    <!-- #header-container --> 
+   </header> 
+   <div class="container"> 
+    <div class="wrapper"> 
+     <div> 
+      <ul class="breadcrumb"> 
+       <li> <a href="/">WebServices Home</a> </li> 
+      </ul> 
+     </div> 
+     <div id="page"> 
+      <div class="row"> 
+       <div class="col-xs-12"> 
+        <div id="page-content"> 
+         <h1> IRIS DMC Web Services </h1> 
+         <div id="content"> 
+          <h2>Service Implementations</h2> 
+          <h3><a href="fdsnws">FDSNWS</a></h3> 
+          <table class="table table-striped table-bordered table-condensed"> 
+           <thead> 
+            <tr> 
+             <th>Service Interface</th> 
+             <th>Version</th> 
+             <th>Summary</th> 
+             <th>Return options</th> 
+            </tr> 
+           </thead> 
+           <tbody> 
+            <tr> 
+             <td> <p> <a href="/fdsnws/station/1"> station </a> </p> </td> 
+             <td> <p> <a href="/fdsnws/station/docs/1"> v.1 </a> </p> </td> 
+             <td> <p>metadata for time series stored in <span class="caps">SEED</span> format</p></td> 
+             <td> 
+              <ul> 
+               <li><a href="http://www.fdsn.org/xml/station/"><span class="caps">FDSN</span> StationXML</a></li> 
+               <li>Text</li> 
+              </ul></td> 
+            </tr> 
+            <tr> 
+             <td> <p> <a href="/fdsnws/dataselect/1"> dataselect </a> </p> </td> 
+             <td> <p> <a href="/fdsnws/dataselect/docs/1"> v.1 </a> </p> </td> 
+             <td> <p>time series data in miniSEED format</p></td> 
+             <td> <p><a href="http://www.iris.edu/dms/nodes/dmc/data/formats/seed/">miniSEED</a></p></td> 
+            </tr> 
+            <tr> 
+             <td> <p> <a href="/fdsnws/event/1"> event </a> </p> </td> 
+             <td> <p> <a href="/fdsnws/event/docs/1"> v.1 </a> </p> </td> 
+             <td> <p>contributed earthquake origin and magnitude estimates</p></td> 
+             <td> 
+              <ul> 
+               <li><a href="https://quake.ethz.ch/quakeml">QuakeML</a></li> 
+               <li>Text</li> 
+              </ul></td> 
+            </tr> 
+           </tbody> 
+          </table> 
+          <h3><a href="irisws">IRISWS</a></h3> 
+          <table class="table table-striped table-bordered table-condensed"> 
+           <thead> 
+            <tr> 
+             <th>Service Interface</th> 
+             <th>Version</th> 
+             <th>Summary</th> 
+             <th>Return options</th> 
+            </tr> 
+           </thead> 
+           <tbody> 
+            <tr> 
+             <td> <p> <a href="/irisws/timeseries/1"> timeseries </a> </p> </td> 
+             <td> <p> <a href="/irisws/timeseries/docs/1"> v.1 </a> </p> </td> 
+             <td> <p>similar to ws-dataselect with additional options for processing and reformatting</p></td> 
+             <td> <p><span class="caps">ASCII</span>, <span class="caps">WAV</span>, <a href="http://ds.iris.edu/ds/nodes/dmc/data/types#miniSEED">miniSEED</a>, <a href="http://ds.iris.edu/ds/nodes/dmc/software/downloads/sac"><span class="caps">SAC</span></a>, <span class="caps">PNG</span></p></td> 
+            </tr> 
+            <tr> 
+             <td> <p> <a href="/irisws/rotation/1"> rotation </a> </p> </td> 
+             <td> <p> <a href="/irisws/rotation/docs/1"> v.1 </a> </p> </td> 
+             <td> <p>rotate waveform data into alternate coordinate system</p></td> 
+             <td> 
+              <ul> 
+               <li>zipped (various)</li> 
+               <li>png</li> 
+              </ul></td> 
+            </tr> 
+            <tr> 
+             <td> <p> <a href="/irisws/sacpz/1"> sacpz </a> </p> </td> 
+             <td> <p> <a href="/irisws/sacpz/docs/1"> v.1 </a> </p> </td> 
+             <td> <p>instrument response information (per channel)</p></td> 
+             <td> <p>Poles and Zeroes in <span class="caps">ASCII</span></p></td> 
+            </tr> 
+            <tr> 
+             <td> <p> <a href="/irisws/resp/1"> resp </a> </p> </td> 
+             <td> <p> <a href="/irisws/resp/docs/1"> v.1 </a> </p> </td> 
+             <td> <p>channel response information</p></td> 
+             <td> <p><a href="http://ds.iris.edu/ds/nodes/dmc/kb/questions/60/what-is-a-resp-file/"><span class="caps">SEED</span> <span class="caps">RESP</span></a></p></td> 
+            </tr> 
+            <tr> 
+             <td> <p> <a href="/irisws/evalresp/1"> evalresp </a> </p> </td> 
+             <td> <p> <a href="/irisws/evalresp/docs/1"> v.1 </a> </p> </td> 
+             <td> <p>instrument response information evaluated from <span class="caps">IRIS</span> metadata</p></td> 
+             <td> 
+              <ul> 
+               <li><span class="caps">ASCII</span> : frequency-amplitude-phase</li> 
+               <li><span class="caps">ASCII</span> : complex-spectra</li> 
+               <li>Bode style plots</li> 
+              </ul></td> 
+            </tr> 
+            <tr> 
+             <td> <p> <a href="/irisws/virtualnetwork/1"> virtualnetwork </a> </p> </td> 
+             <td> <p> <a href="/irisws/virtualnetwork/docs/1"> v.1 </a> </p> </td> 
+             <td> <p>list of stations in a virtual network</p></td> 
+             <td> 
+              <ul> 
+               <li><span class="caps">XML</span></li> 
+               <li><span class="caps">CVS</span></li> 
+              </ul></td> 
+            </tr> 
+            <tr> 
+             <td> <p> <a href="/irisws/traveltime/1"> traveltime </a> </p> </td> 
+             <td> <p> <a href="/irisws/traveltime/docs/1"> v.1 </a> </p> </td> 
+             <td> <p>travel times and ray parameters for seismic phases using a 1-D spherical earth model</p></td> 
+             <td> <p><span class="caps">ASCII</span></p></td> 
+            </tr> 
+            <tr> 
+             <td> <p> <a href="/irisws/flinnengdahl/2"> flinnengdahl </a> </p> </td> 
+             <td> <p> <a href="/irisws/flinnengdahl/docs/2"> v.2 </a> </p> </td> 
+             <td> <p>a Flinn-Engdahl region code or name for a latitude, longitude pair</p></td> 
+             <td> 
+              <ul> 
+               <li><span class="caps">ASCII</span> : region code</li> 
+               <li><span class="caps">ASCII</span> : name</li> 
+              </ul></td> 
+            </tr> 
+            <tr> 
+             <td> <p> <a href="/irisws/distaz/1"> distaz </a> </p> </td> 
+             <td> <p> <a href="/irisws/distaz/docs/1"> v.1 </a> </p> </td> 
+             <td> <p>distance, azimuth and back-azimuth between two locations</p></td> 
+             <td> <p><span class="caps">XML</span></p></td> 
+            </tr> 
+            <tr> 
+             <td> <p> <a href="/irisws/metadatachange/1"> metadatachange </a> </p> </td> 
+             <td> <p> <a href="/irisws/metadatachange/docs/1"> v.1 </a> </p> </td> 
+             <td> <p>changes made to <span class="caps">SEED</span> metadata</p></td> 
+             <td> <p><span class="caps">XML</span></p></td> 
+            </tr> 
+            <tr> 
+             <td> <p> <a href="/irisws/fedcatalog/1"> fedcatalog </a> </p> </td> 
+             <td> <p> <a href="/irisws/fedcatalog/docs/1"> v.1 </a> </p> </td> 
+             <td> <p>A service for federating requests for channel metadata across multiple data centers.</p></td> 
+             <td> <p>text</p></td> 
+            </tr> 
+           </tbody> 
+          </table> 
+          <h3><a href="mustang">MUSTANG</a></h3> 
+          <table class="table table-striped table-bordered table-condensed"> 
+           <thead> 
+            <tr> 
+             <th>Service Interface</th> 
+             <th>Version</th> 
+             <th>Summary</th> 
+             <th>Return options</th> 
+            </tr> 
+           </thead> 
+           <tbody> 
+            <tr> 
+             <td> <p> <a href="/mustang/measurements/1"> measurements </a> </p> </td> 
+             <td> <p> <a href="/mustang/measurements/docs/1"> v.1 </a> </p> </td> 
+             <td> <p>The main <span class="caps">MUSTANG</span> web service returning measurements for metrics relating to station data quality.</p></td> 
+             <td> 
+              <ul> 
+               <li><span class="caps">XML</span> (default)</li> 
+               <li>text</li> 
+               <li><span class="caps">CSV</span></li> 
+               <li><span class="caps">JSON</span></li> 
+               <li><span class="caps">JSONP</span></li> 
+              </ul></td> 
+            </tr> 
+            <tr> 
+             <td> <p> <a href="/mustang/noise-psd/1"> noise-psd </a> </p> </td> 
+             <td> <p> <a href="/mustang/noise-psd/docs/1"> v.1 </a> </p> </td> 
+             <td> <p>Returns Power Spectral Density estimates of seismic data and can generate aggregate plots.</p></td> 
+             <td> 
+              <ul> 
+               <li>Text – <span class="caps">CSV</span></li> 
+               <li><span class="caps">XML</span></li> 
+               <li>Plot (<span class="caps">PNG</span>)</li> 
+              </ul></td> 
+            </tr> 
+            <tr> 
+             <td> <p> <a href="/mustang/noise-pdf/1"> noise-pdf </a> </p> </td> 
+             <td> <p> <a href="/mustang/noise-pdf/docs/1"> v.1 </a> </p> </td> 
+             <td> <p>Returns Probability Density Functions in frequency `bins` and can generate aggregate plots.</p></td> 
+             <td> 
+              <ul> 
+               <li>Text – <span class="caps">CSV</span></li> 
+               <li><span class="caps">XML</span></li> 
+               <li>Plot (<span class="caps">PNG</span>)</li> 
+              </ul></td> 
+            </tr> 
+            <tr> 
+             <td> <p> <a href="/mustang/noise-mode-timeseries/1"> noise-mode-timeseries </a> </p> </td> 
+             <td> <p> <a href="/mustang/noise-mode-timeseries/docs/1"> v.1 </a> </p> </td> 
+             <td> <p>Returns <span class="caps">PDF</span> Mode Timelines at select frequencies and can generate plots.</p></td> 
+             <td> 
+              <ul> 
+               <li>Text – <span class="caps">CSV</span></li> 
+               <li><span class="caps">XML</span></li> 
+               <li>Plot (<span class="caps">PNG</span>)</li> 
+              </ul></td> 
+            </tr> 
+            <tr> 
+             <td> <p> <a href="/mustang/metrics/1"> metrics </a> </p> </td> 
+             <td> <p> <a href="/mustang/metrics/docs/1"> v.1 </a> </p> </td> 
+             <td> <p>The metrics web service returns a description of available metrics in a variety of formats</p></td> 
+             <td> 
+              <ul> 
+               <li><span class="caps">XML</span></li> 
+               <li><span class="caps">HTML</span></li> 
+               <li><span class="caps">XSD</span></li> 
+               <li><span class="caps">JSON</span></li> 
+               <li><span class="caps">JSONP</span></li> 
+              </ul></td> 
+            </tr> 
+            <tr> 
+             <td> <p> <a href="/mustang/targets/1"> targets </a> </p> </td> 
+             <td> <p> <a href="/mustang/targets/docs/1"> v.1 </a> </p> </td> 
+             <td> <p>The targets web service returns a list of stations and channels for a given metric.</p></td> 
+             <td> 
+              <ul> 
+               <li>Text</li> 
+              </ul></td> 
+            </tr> 
+           </tbody> 
+          </table> 
+          <h2>Overview</h2> 
+          <p>Web services can be accessed in a number of different ways:</p> 
+          <ul> 
+           <li>Small requests can be handled through your browser.</li> 
+           <li><a href="/clients/">Dedicated clients</a> are available for making more complex or larger queries.</li> 
+           <li><a href="/schemas/">Various schemas</a> are available for download.</li> 
+           <li>Automated or scripted requests can be made using programs such as <a href="http://www.gnu.org/software/wget/">wget</a> or <a href="http://curl.haxx.se/">curl</a>.</li> 
+           <li>A <a href="http://ds.iris.edu/ds/nodes/dmc/software/downloads/iris-ws/">Java API</a> is available for Java and MATLAB users.</li> 
+          </ul> 
+          <p>A <a href="http://ds.iris.edu/mailman/listinfo/webservices">webservices mailing list</a> (with <a href="http://ds.iris.edu/pipermail/webservices/">archive</a>) is available. Users of these services are encouraged to sign up for the mailing list to receive announcements of services changes and interruptions, beta releases and to take part in discussions related to the services or ask for help.</p> 
+          <p><a href="http://ds.iris.edu/ds/nodes/dmc/services/usage/">Usage Guidelines</a></p> 
+          <h2>Real time data</h2> 
+          <p>All open data arriving in (near) real time at the IRIS DMC are available from the DMC's <a href="http://ds.iris.edu/ds/nodes/dmc/services/seedlink/">SeedLink server</a>.</p> 
+          <p>The web services <em>should not be used</em> to retrieve continuous, real time data via <strong>repeated polling</strong>. Instead, the SeedLink server should be used when continuous data streams are needed.</p> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div id="footer"> 
+     <div id="footer-bottom"> 
+      <ul> 
+       <li><span><a href="http://www.iris.edu/hq" title="IRIS"><img src="/static/img/layout/logos/URL_TXT.png"></a></span></li> 
+       <li><em><a href="http://www.nsf.gov/" title="The National Science Foundation" target="_blank">Sponsored by the National Science Foundation</a></em></li> 
+       <li><a href="http://www.iris.edu/hq" title="IRIS">© Copyright 2015 IRIS</a></li> 
+       <li>1200 New York Avenue NW, Suite 400, Washington, DC 20005, 202-682-2220</li> 
+       <li><a href="mailto:info@iris.edu">info@iris.edu</a></li> 
+      </ul> 
+     </div>
+     <!-- #footer-bottom --> 
+    </div>
+    <!-- #footer --> 
+   </div> 
+  </div>
+  <!-- #site-container -->   
+ </body>
+</html>

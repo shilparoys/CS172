@@ -1,0 +1,1103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+  <meta name="Keywords" content="transfer, programs, university, universities, international student, International Programs, International study, International services, English as a second language, ESL, esl, Community college, college, university, English study, academic English, intensive English, Under graduate education, transfer education, two year education, Seattle, Washington, Seattle USA, Western United States, Safe friendly campus, secure and protected campus, Computer Science, technology, high tech programs, Green River Community College, GRCC, Green River College, foreign student, F-1 Visa"> 
+  <meta name="Description" content="Green River Community College is a nationally recognized leader among community colleges that transfer courses to four-year colleges and universities."> 
+  <title>University Transfer :: Green River Community College International 
+Programs</title> 
+  <!-- Site and page defaults --> 
+  <script language="JavaScript" type="text/javascript" src="../p7pm/p7popmenu.js"></script> 
+  <link href="../css/styles10.css" media="screen" rel="Stylesheet" type="text/css"> 
+  <style>
+<!--
+#university-list {
+	display: none;
+	}
+	
+#sample-classes {
+	width: 100%;
+	margin:0;
+	padding:0;
+	}
+	
+.class-group {
+	width: 46%;
+	margin: 10px;
+	margin-bottom: 12px;
+	padding: 0;
+	float: left;
+	}
+	
+	.class-group dt {
+		font-weight: bold;
+		border-bottom: 1px solid #ccc;
+		margin: 0 0 10px 0;
+		}
+	
+	.class-group dd, .class-group ul li {
+		font-size: 11px;
+		margin: 0;
+		padding: 0;
+		}
+		
+/*#main2 a:link {
+	color: #a5003b; 
+	border: none; 
+	text-decoration: none;
+}*/
+
+ul.arrow-list  {
+	margin: 0 0 4px 0;
+	padding: 0 0 0 8px;
+	list-style-type: none;
+	}
+	
+ul.arrow-list li{
+	margin: 0 0 4px 0;
+	padding: 0 0 0 10px;
+	background: url(/images/panel_arrow_bullet1.gif) no-repeat left 6px;
+	list-style-type: none;
+	}
+	
+#grcc-to-uc-berkeley {
+ 	width: 200px; 
+ 	/*float: right; */
+ 	margin: 10px 0 12px 16px; 
+ 	padding: 0; 
+ 	text-align: center;
+	}
+	
+#grcc-to-uc-berkeley a.video-panel, #grcc-to-uc-berkeley a:visited.video-panel {
+	background-image: url("/international/content/images/grcc-berkely-200-163pg.jpg");
+	background-repeat: no-repeat;
+	background-position: top left;
+	width: 200px; 
+	height: 163px; 
+	display: block; 
+	text-indent: -9000px; 
+	text-decoration: none; 
+	border-bottom: none;
+	}
+	
+#grcc-to-uc-berkeley .caption {
+	font-size: 11px;
+	margin: 0 10px 12px 10px;
+	}
+
+		
+-->
+</style> 
+  <!-- jQuery UI Tabs --> 
+  <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/redmond/jquery-ui.min.css" type="text/css"> 
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> 
+  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script> 
+  <script type="text/javascript">
+    $(function() {
+
+    $(document).ready(function(){
+        var getHash = function(key){
+            var parts = window.location.hash.substr(1).split(/\|/);
+            var _key = parseInt(key) || 0;
+            return _key < parts.length ? parts[_key] : false;
+        };
+        var setHash = function(key, value){
+            var parts = window.location.hash.substr(1).split(/\|/);
+            var _key = parseInt(key) || 0;
+            parts[_key] = value
+            window.location.hash = '#' + parts.join('|');
+        };
+        $("#transfer, #testimonial_wrapper").accordion({
+            heightStyle: "content",
+            collapsible: true,
+            animated: 'slide',
+            navigation: true,
+            activate: function(event, ui) {
+                if(ui.newHeader.length > 0){
+                    // A new accordion panel is open
+                    setHash(1, ui.newHeader.parent().children('h3').index(ui.newHeader));
+                }else{
+                    // In case accordion panel is closed
+                    setHash(1, '');
+                }
+            },
+            active: false
+        });
+        
+        $( "#tab-wrapper" ).tabs({
+            collapsible: false,
+            activate: function(event, ui) {
+                if(ui.newTab.length > 0){
+                    // A new tab is open
+                    var tabHash = ui.newTab.parent().children().index(ui.newTab);
+                    if(tabHash == getHash(0)){
+                        // In case current tab is the one in Hash, we open wanted accordion panel
+                        // Make sure to parseInt hash value, because jquery-ui require an integer
+                        ui.newPanel.find('.accordion').accordion('option', 'active', parseInt(getHash(1)));
+                    }else{
+                        setHash(1,'');
+                    }
+                    setHash(0, tabHash);
+                }else{
+                    // In case we close tab, hash is cleared
+                    window.location.hash = ''
+                }
+            },
+            create: function(event, ui){
+                if(ui.tab.length > 0){
+                    var tabHash = ui.tab.parent().children().index(ui.tab);
+                    if(tabHash == getHash(0)){
+                        // In case current tab is the one in Hash, we open wanted accordion panel
+                        // Make sure to parseInt hash value, because jquery-ui require an integer
+                        ui.panel.find('.accordion').accordion('option', 'active', parseInt(getHash(1)));
+                    }else{
+                        setHash(1,'');
+                    }
+                    setHash(0, tabHash);
+                }
+            },
+            // Make sure to parseInt hash value, because jquery-ui require an integer
+            // Remove the " || 0 " if you want all to be closed
+            active: parseInt(getHash(0)) || 0
+        });
+    });
+});
+</script> 
+  <script async="true" type="text/javascript" src="//cdn.bizible.com/_biz-a.js"></script> 
+ </head> 
+ <body id="programs"> 
+  <a name="top" id="top"></a> 
+  <!-- Header --> 
+  <div id="skip"> 
+   <a href="#content" title="skip to content">skip to content</a>
+  </div> 
+  <div id="skip"> 
+   <a href="#nav" title="skip to main navigation">skip to main navigation</a>
+  </div> 
+  <div id="head_wrapper"> 
+   <div id="header"> 
+    <div id="topbar"> 
+     <p class="nav"><a href="http://greenriverip.mobi/">Mobile Site</a></p> 
+     <!--<p class="nav"><a href="/international/sitemap.shtm">Site Map</a></p>--> 
+     <div id="flag_wrapper"> 
+      <p class="language">Choose a Language »</p> 
+      <ul class="flags"> 
+       <li class="brazil"><a target="_blank" href="/international/content/translations/portuguese.pdf" title="Brazil"><b>Brazil</b></a></li> 
+       <li class="russian_federation"><a target="_blank" href="/international/content/translations/Russian.pdf" title="Russian Federation"><b>Russian Federation</b></a></li> 
+       <li class="ukraine"><a target="_blank" href="/international/content/translations/Russian.pdf" title="Ukraine"><b>Ukraine</b></a></li> 
+       <!--<li class="saudi_arabia"><a target="_blank" href="/international/content/translations/Arabic.pdf" title="Saudi Arabia"><b>Saudi Arabia</b></a></li>--> 
+       <li class="indonesia"><a target="_blank" href="/international/content/translations/indonesian.pdf" title="Indonesia"><b>Indonesia</b></a></li> 
+       <li class="japan"><a target="_blank" href="/international/content/translations/japanese.pdf" title="Japan"><b>Japan</b></a></li> 
+       <li class="korea"><a target="_blank" href="/international/content/translations/korean.pdf" title="Korea"><b>Korea</b></a></li> 
+       <li class="mexico"><a target="_blank" href="/international/content/translations/spanish.pdf" title="Mexico"><b>Mexico</b></a></li> 
+       <li class="prchina"><a target="_blank" href="/international/content/translations/schinese.pdf" title="Peoples Republic of China"><b>Peoples Republic of China</b></a></li> 
+       <li class="taiwan"><a target="_blank" href="/international/content/translations/tchinese.pdf" title="Taiwan"><b>Taiwan</b></a></li> 
+       <li class="thailand"><a target="_blank" href="/international/content/translations/thai.pdf" title="Thailand"><b>Thailand</b></a></li> 
+       <li class="turkey"><a target="_blank" href="/international/content/translations/turkish.pdf" title="Turkey"><b>Turkey</b></a></li> 
+       <!--<li class="netherlands"><a target="_blank" href="/international/content/translations/2010_dutch.pdf" title="The Netherlands"><b>The Netherlands</b></a></li>--> 
+       <li class="vietnam"><a target="_blank" href="/international/content/translations/vietnamese.pdf" title="Vietnam"><b>Vietnam</b></a></li> 
+       <li class="english"><a target="_blank" href="/international/content/translations/English.pdf" title="English Version"><b>Eng</b></a></li> 
+      </ul> 
+     </div> 
+    </div> 
+    <div id="logo"> 
+     <p class="logo"><a href="/">Green River Community College</a></p> 
+    </div> 
+    <div id="titlebar"> 
+     <p><a href="/international/index.shtm">International Programs</a></p> 
+    </div> 
+   </div> 
+  </div> 
+  <div id="page_wrapper"> 
+   <!-- Navigation Sidebar -->
+   <a name="nav" id="top"></a> 
+   <div id="sidebar" class="clearfix col1"> 
+    <!-- Google CSE code begins --> 
+    <div class="searchbar"> 
+     <a name="search" id="search"></a> 
+     <form action="http://www.google.com/cse" id="cse-search-box"> 
+      <div> 
+       <input type="hidden" name="cx" value="012185660827822766942:qzzb9vlvq2i"> 
+       <input type="hidden" name="ie" value="UTF-8"> 
+       <input type="text" name="q" id="q" autocomplete="off" size="31"> 
+       <input type="submit" name="sa" value="" id="search_button"> 
+      </div> 
+     </form> 
+     <!-- orginal watermark source... src="http://www.google.com/cse/brand?form=cse-search-box&lang=en" --> 
+     <script type="text/javascript" src="/scripts/google/google_search_watermark.js"></script> 
+    </div> 
+    <!-- Google CSE Search Box Ends --> 
+    <!-- Start of Round Corner Box (top, bottom and center) --> 
+    <div class="light-green-rnd-corner-box" style="display: block; clear:both;"> 
+     <div class="light-green-rnd-corner-box-top"> 
+      <div class="light-green-rnd-corner-box-bottom"> 
+       <!-- --> 
+       <!-- Menu Contents --> 
+       <div id="main_nav" class="p7PMMv08"> 
+        <ul class="p7PMM"> 
+         <li><a id="apply_link" href="/international/applynow.shtm"><strong>Apply Now!</strong></a></li> 
+         <li><a id="contact_link" href="/international/contact.shtm"><strong>Contact Us</strong></a></li> 
+         <li><a id="welcome_link" href="/international/index.shtm">Welcome</a></li> 
+         <li><a id="about_link" href="/international/about/index.shtm">About Us</a></li> 
+         <li><a id="admission_link" href="/international/admission/index.shtm"> Admission</a></li> 
+         <li><a id="advising_link" href="/international/advising/index.shtm#0|5">Advising</a></li> 
+         <li><a id="arrival_link" href="/international/arrival/index.shtm">Arrival &amp; Airport Pickup</a></li> 
+         <li><a id="video_media_link" href="http://www.greenriver.edu/International/blogs-video-media/index.shtm">Blogs, Videos &amp; Media</a></li> 
+         <li><a id="college_info_link" href="/international/college_info/index.shtm"> College Information</a></li> 
+         <li><a id="costs_link" href="/international/costs/index.shtm">Costs &amp; Payments</a></li> 
+         <li><a id="dates_link" href="/international/dates/index.shtm">Dates &amp; Deadlines</a></li> 
+         <li><a id="housing_link" href="/international/housing/index.shtm">Housing</a></li> 
+         <li><a id="orientation_link" href="http://grcc.greenriver.edu/international/orientation/index.aspx">Orientation</a></li> 
+         <li><a id="parents_link" href="/international/parents/index.shtm">Parent Resources</a></li> 
+         <li><a id="programs_link" href="/international/programs/index.shtm">Programs</a></li> 
+         <li><a id="scholarships_link" href="/international/scholarships/index.shtm">Scholarships</a></li> 
+         <li><a id="student_life_link" href="/international/activities/index.shtm">Student Life</a></li> 
+         <li><a id="newsletter_link" href="/international/studentnews/2015/0102/index.shtm" target="_blank">Student News</a></li> 
+        </ul> 
+       </div> 
+       <!-- End of Menu Contents --> 
+       <div id="navbottom"></div> 
+       <!-- SUB LINKS START --> 
+       <div id="channels"> 
+        <h2>Information for: </h2> 
+        <ul class="sublinks"> 
+         <li><a href="/international/current-students/index.shtm">Current Students</a></li> 
+         <li><a href="/international/alumni/index.shtm">Int'l Alumni Program</a></li> 
+         <li><a href="/international/partners/index.shtm">Partners &amp; Agencies</a></li> 
+         <li> <a target="_blank" href="/international/host-families/"> Host Families</a></li> 
+         <!--<li><a href="http://www.greenriver.edu/international/partners/india-yugavidyaa.shtm">Yugavidyaa</a></li>--> 
+        </ul> 
+       </div> 
+       <!-- PANEL ADS --> 
+       <div style="margin:16px;"> 
+        <a target="_blank" href="http://www.greenriver.edu/international/partners/news/2013/march-april-issue89/paul-simon-award.html" style="background:none !important;"> <img border="0" src="/international/content/images/PaulSimon_Comprehensive-Logo-2013-138px.png"></a>
+       </div> 
+       <!-- This closes all the round corner box divs --> 
+      </div>
+     </div>
+    </div> 
+    <!-- --> 
+    <div> 
+    </div> 
+   </div> 
+   <!-- Content -->
+   <a name="content" id="top"></a> 
+   <div id="main_content" class="clearfix col2"> 
+    <div id="main2"> 
+     <h2><a name="content_start" id="content_start"></a>Programs</h2> 
+     <h1>University Transfer</h1> 
+     <div style="display: block; margin-top: 0;margin-bottom: 20px;"> 
+      <h3>Green River - A Leader in Nationwide US University Transfer</h3> 
+      <p>Our international students have been admitted to top, world-ranked universities including: University of Washington, Berkeley, Brown, UCLA, Cornell, Johns Hopkins, Indiana University, Purdue, University of Michigan, University of Texas-Austin and many others.</p> 
+      <p> <a target="_blank" href="http://www.greenriver.edu/International/content/docs/transfer-record.pdf"> GRCC Transfer record to Top 100 World Universities</a>. - as ranked by Shanghai Jiao Tong University</p> 
+      <ul> 
+       <li><a href="/international/content/docs/transfer-deadlines-gpas-and-tuition-current.pdf" title="university transfer application information for international students" target="_new"><strong>University Transfer Application &amp; Deadline Information for International Students</strong></a></li> 
+      </ul> 
+     </div> 
+     <div class="clear clearfix"></div> 
+     <div class="content"> 
+      <!-- TAB PANELS START HERE --> 
+      <div id="tab-wrapper"> 
+       <ul> 
+        <li><a href="#transfer-to"><span>Where Students Transfer To</span></a></li> 
+        <li><a href="#program-info"><span>Program Information</span></a></li> 
+        <li><a href="#testimonials"><span>Testimonials</span></a></li> 
+       </ul> 
+       <!-- TAB - WHERE STUDENTS TRANSFER TO --> 
+       <div id="transfer-to"> 
+        <h3>See where students are transferring to</h3> 
+        <p>Green River Community College students were recently admitted to the following highly competitive US universities.</p> 
+        <div style="float: right; text-align: right;"> 
+         <img border="0" src="/international/content/images/transfer_map.jpg" width="320" height="217" alt="University Transfer Planning"> 
+         <div style="clear: both; height: 12px;"></div> 
+         <div id="grcc-to-uc-berkeley"> 
+          <div>
+           <a class="video-panel youtube" target="_blank" href="http://www.youtube.com/user/greenriverintlprgms" title="Green River International Programs on YouTube"> GRCC to UC Berkeley</a> 
+          </div> 
+          <p class="caption"><a target="_blank" class="youtube" href="http://www.youtube.com/user/greenriverintlprgms" title="Green River International Programs on YouTube">Hear</a> what our <b>UC Berkeley </b>transfer students say about their Green River experience.</p> 
+         </div> 
+        </div> 
+        <ul type="square"> 
+         <li><a target="_blank" href="http://www.washington.edu/">University of Washington</a> </li> 
+         <li><a target="_blank" href="http://www.seattleu.edu/">Seattle University</a> </li> 
+         <li><a target="_blank" href="http://www.berkeley.edu/">University of California, Berkeley</a> </li> 
+         <li><a target="_blank" href="http://www.ucla.edu/">UCLA</a> </li> 
+         <li><a target="_blank" href="http://www.purdue.edu/">Purdue University</a> </li> 
+         <li><a target="_blank" href="http://www.indiana.edu/">Indiana University</a> </li> 
+         <li><a href="http://www.brown.edu/" title="Brown Univeristy" target="_blank">Brown University</a></li> 
+         <li><a target="_blank" href="http://www.cornell.edu">Cornell</a></li> 
+         <li><a target="_blank" href="http://www.jhu.edu">Johns Hopkins</a></li> 
+         <li><a target="_blank" href="http://www.ucsb.edu">University of California Santa Barbara</a></li> 
+         <li><a target="_blank" href="http://www.hpu.edu/">Hawaii Pacific University</a> </li> 
+         <li><a target="_blank" href="http://www.umich.edu/flash.html">University of Michigan</a> </li> 
+         <li><a target="_blank" href="http://www1.umn.edu/twincities/index.php">University of Minnesota</a> </li> 
+         <li><a target="_blank" href="http://www.unc.edu">University of North Carolina at Chapel Hill</a></li> 
+         <li><a target="_blank" href="http://www.uoregon.edu/">University of Oregon</a> </li> 
+         <li><a href="http://www.upenn.edu/" target="_blank">University of Pennsylvania</a></li> 
+         <li><a target="_blank" href="http://www.usc.edu/">University of Southern California</a> </li> 
+         <li><a target="_blank" href="http://www.virginia.edu">University of Virginia</a> </li> 
+         <li><a target="_blank" href="http://www.wisc.edu">University of Wisconsin </a></li> 
+         <li><a target="_blank" href="http://www.wsu.edu">Washington State University</a> </li> 
+         <li><a target="_blank" href="http://www.calstate.edu">California State University</a> </li> 
+         <li><a target="_blank" href="http://www.osu.edu">Ohio State University</a> </li> 
+         <li><a target="_blank" href="http://www.parsons.edu">Parsons School of Design</a> </li> 
+         <li><a target="_blank" href="http://www.pratt.edu">Pratt Institute</a> </li> 
+         <li><a target="_blank" href="http://www.sjsu.edu">San Jose State University</a> </li> 
+         <li><a target="_blank" href="http://www.tufts.edu/">Tufts University</a> </li> 
+         <br> 
+         <br> ...and many more*. GRCC international students are admitted to many top 100 world universities, as ranked by 
+         <a target="_blank" href="/International/content/docs/transfer-record.pdf"> Shanghai Jiaotong University</a>. 
+        </ul> *Note: Admission to selective universities is highly competitive.&nbsp; 
+        <ul class="arrow-list"> 
+         <li><a href="/international/contact.htm">Request information</a></li> 
+        </ul> 
+       </div> 
+       <!-- TAB - PROGRAM INFORMATION --> 
+       <div id="program-info"> 
+        <div style="margin-bottom: 12px;"> 
+         <div class="accordion" id="transfer"> 
+          <h3>University Transfer Pathway</h3> 
+          <div> 
+           <p>Green River Community College international students have been admitted to hundreds of universities all over the US. Students gain the qualifications needed for admission at Green River Community College and transfer to top universities as third year juniors. Admission is not guaranteed, but our students have been very successful in gaining admission to top universities. </p> 
+           <p>Read more about <strong><a href="/international/university-transfer-pathway/index.shtm#0|0">University Transfer Pathway</a></strong>. </p> 
+          </div> 
+          <h3>University Transfer Majors Include</h3> 
+          <div> 
+           <img border="0" src="/international/content/images/library.jpg" width="250" height="296" align="right" alt="Student studying in the Holman Library"> 
+           <ul type="square"> 
+            <li>Architecture</li> 
+            <li>Art/Design </li> 
+            <li>Aviation </li> 
+            <li>Biology</li> 
+            <li>Business </li> 
+            <li>Chemistry </li> 
+            <li>Communications </li> 
+            <li>Computer Science</li> 
+            <li>Economics </li> 
+            <li>Education</li> 
+            <li>Engineering </li> 
+            <li>English</li> 
+            <li>Environmental Science </li> 
+            <li>Journalism </li> 
+            <li>Mathematics</li> 
+            <li>Pharmacy </li> 
+            <li>Physics </li> 
+            <li>Pre-Medicine</li> 
+            <li>Psychology </li> 
+            <li>Public Relations </li> 
+            <li>Sociology </li> 
+            <li>Speech... and more! </li> 
+           </ul> 
+          </div> 
+          <h3>University Transfer Planning</h3> 
+          <div id="planning"> 
+           <p>Working closely with their academic advisor, students develop a personal transfer plan based on their major and their specific destination transfer universities. Advisors help students understand the university admission process. They also offer valuable guidance in selecting appropriate transfer options. GRCC has developed Transfer Planning Guides that serve as a roadmap of coursework. The Transfer Planning Guide is a planning tool that allows students to know where they are and where they will be during every step of their education at Green River.</p> 
+           <p>Sample Transfer Planning Guides for:</p> 
+           <ul> 
+            <li> <a target="_blank" href="/international/pdf/sample-transfer-planning-guide-associate-in-arts-2013.pdf"> Associate in Arts</a></li> 
+            <li> <a target="_blank" href="/international/pdf/sample-transfer-planning-guide-business-2013.pdf"> Business</a></li> 
+            <li> <a target="_blank" href="/international/pdf/sample-transfer-planning-guide-BioPharmMed-2013.pdf"> Associate in Science I - Biology, Pharmacy, and Pre-Med</a></li> 
+            <li> <a target="_blank" href="/international/pdf/sample-transfer-planning-guide-engineering-2013.pdf"> Associate in Science II - Engineering</a></li> 
+            <li> <a target="_blank" href="/international/pdf/sample-transfer-planning-guide-computer-science-2013.pdf"> Associate in Science - Computer Science</a></li> 
+           </ul> 
+           <p>During the first two years of study, students take a combination of general education classes and introductory classes in their major. During their final two years at university, students take upper-level classes in their major and any remaining general education classes. </p> 
+          </div> 
+          <h3>Sample Classes for Popular University Transfer Majors</h3> 
+          <div> 
+           <dl id="sample-classes"> 
+            <div class="two-column"> 
+             <h4>Engineering:</h4> 
+             <ul> 
+              <li>Physics for Engineering</li> 
+              <li>Calculus</li> 
+              <li>Advanced Mathematics</li> 
+              <li>Introduction to Engineering Problems</li> 
+              <li>Statistics</li> 
+              <li>Engineering Design Graphics</li> 
+              <li>Materials Science</li> 
+              <li>Thermodynamics</li> 
+              <li>Dynamics</li> 
+              <li>Mechanics of Materials</li> 
+             </ul> 
+             <h4>Business:</h4> 
+             <ul> 
+              <li>Introduction to Business</li> 
+              <li>Government and Society</li> 
+              <li>Financial and Managerial Accounting</li> 
+              <li>Microeconomics</li> 
+              <li>Macroeconomics</li> 
+              <li>Business Law</li> 
+              <li>Finite Math</li> 
+              <li>Calculus for Business</li> 
+              <li>Statistics for Business</li> 
+              <li>Speech</li> 
+             </ul> 
+            </div> 
+            <div class="two-column last"> 
+             <h4>Computer Science:</h4> 
+             <ul> 
+              <li>Physics for Engineering</li> 
+              <li>Calculus</li> 
+              <li>Advanced Mathematics</li> 
+              <li>Philosophy of Logic</li> 
+              <li>Computer Information Technology</li> 
+              <li>Program Design</li> 
+              <li>C Programming</li> 
+              <li>C++ Programming</li> 
+             </ul> 
+             <h4>Art/Design:</h4> 
+             <ul> 
+              <li>Beginning Design</li> 
+              <li>Drawing</li> 
+              <li>Color and Design</li> 
+              <li>3 Dimensional Design</li> 
+              <li>Digital Photography</li> 
+              <li>Painting, and History of Art</li> 
+             </ul> 
+            </div> 
+            <div class="clear"></div> 
+            <ul class="arrow-list"> 
+             <li><a href="/international/contact.shtm">Request information</a></li> 
+            </ul> 
+           </dl>
+          </div> 
+          <h3>General Education Requirements</h3> 
+          <div> 
+           <img src="/international/content/images/classroom_shot.jpg" width="250" height="175" alt="Students in a classroom." class="left border0"> 
+           <p>In order to obtain a bachelor's degree in the US, all students must complete specific requirements for their major as well as general education requirements which represent a foundation of learning in various areas including Math, Writing, Science, Social Science and Humanities. Students are given freedom to select classes of their choice from general categories.</p> 
+           <p>For example, within the "Social Science" category, students can choose any one of the following subjects: sociology, psychology, political science, history, geography and others. The Humanities category includes: art, speech, communications, languages, music, philosophy, and others. Science includes: chemistry, biology, physics, astronomy, and others.</p> 
+           <ul class="arrow-list"> 
+            <li><a href="/international/contact.shtm">Request information</a></li> 
+           </ul> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+       <!-- TAB - TESTIMONIALS --> 
+       <div id="testimonials"> 
+        <h3>Our students talk about their university transfer experience:</h3> 
+        <div class="accordion" id="testimonial_wrapper"> 
+         <h3>Class of 2014</h3> 
+         <div> 
+          <table id="testimonials"> 
+           <tbody>
+            <tr> 
+             <td> <img border="0" src="/international/content/images/iris-espinoza.jpg" width="100" height="129" alt="Iris Espinoza - Venezuela"> 
+              <div class="text"> 
+               <p><b>Iris Espinoza - Venezuela</b><br> San Diego State University<br> Major: International Business </p> 
+               <p><i>Green River Community College helped me achieve my dream of transferring to a top university in the United States. I fulfilled my goals thanks to the guidance of excellent advisors, the effort I put into completing my classes, and the good team of instructors that complemented my learning during this stage of my life. Thanks to GRCC I've grown as a person, I have become independent, and have acquired a lot of knowledge that will help me in this next chapter. </i> </p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/valeriya-gornostayeva.jpg" width="100" height="129" alt="Valeriya Gornostayeva  - Kazakhstan"> 
+              <div class="text"> 
+               <p><b>Valeriya Gornostayeva - Kazakhstan</b><br> City University of New York <br> Major: Communications<br> </p> 
+               <p><i>Green River Community College was the best start that I could ever wish for. The staff and instructors of Green River made my bright future possible. Green River is a perfect place for international students to start their successful career. Thank you to everyone who was next to me for these 2 years. I am blessed and happy to have Green River in my life!</i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/ivania-hartanto.jpg" width="100" height="129" alt="Ivania Livia Hartanto - Indonesia"> 
+              <div class="text"> 
+               <p><b>Ivania Livia Hartanto - Indonesia</b><br> Cornell University<br> Major: Food Science <br> Also admitted to: UC Davis, Ohio State University, U of Wisconsin Madison.</p> 
+               <p><i>One and a half years ago, before I came to the States, I imagined Green River as an isolated community college in the middle of the forest, gloomy rainy days, and scary instructors. It's funny though, how my perspective changed. Studying at Green River has been a great experience! Green River not only offered a great education, but also offered a warm and welcoming community where I could grow and feel a sense of family. I'm going to miss GRCC a lot: the people, the jogging trails, the environment...everything. I would really like to thank everyone for all their advice, encouragement and support. Green River really pushed me to be the very best that I can be.</i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/so-dam-hong.jpg" width="100" height="129" alt="So Dam Hong- South Korea"> 
+              <div class="text"> 
+               <p><b>So-dam Hong - South Korea</b><br> William and Mary<br> Major: International Relations<br> Also admitted to: George Washington University</p> 
+               <p><i>I want to thank everyone I got to know at Green River Community College. The people who I was lucky enough to meet and get to know at GRCC helped me grow and learn as a person and a student beyond my expectation. Faculty and advisers were always helpful and encouraging, giving me hope and helping me look forward to the future. Supervisors and co-workers at International Programs were the warmest people I have ever met. Last but not least, my friends here at GRCC are those I am very proud of, and I hope to keep them in my life. I can for sure say that I made a great choice when I chose to come to GRCC two years ago. </i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/sarah-li.jpg" width="100" height="129" alt="Xintong (Sarah) Li  - China"> 
+              <div class="text"> 
+               <p><b>Xintong (Sarah) Li - China</b><br> Wellesley College<br> Major: Economics and Political science <br> Also admitted to: University of Pennsylvania, Cornell University, Washington University in St. Louis, Mount Holyoke College. </p> 
+               <p><i>After spending three weeks at the University of Washington-Seattle, I decided to transfer to Green River Community College due to a sudden change in my family's financial situation. I never fathomed attending a community college before; this decision surprised and left me unsettled. I made the necessary change, but felt frustrated and disoriented; I wanted to return to my standard routine. However, my time at Green River was a time of transition. I learned to utilize time efficiently, make independent decisions, and seek advice from faculty which was a rewarding process. I developed a greater sense of identity, honed my abilities, and built my ambitions. At GRCC, I met a lot of wonderful people who gave me so much help, such as my adviser Helen Kwon, my boss, Kai and my political science professor Allison Jansen and economic professor Mark Blasdell. My life at Green River gave me a memorable and solid foundation. Sometimes, change is inevitable; progress is optional. And Green River well prepared me for the future. I am truly thankful and grateful. </i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/ruth-liu.jpg" width="100" height="129" alt="Ruth Liu  - China"> 
+              <div class="text"> 
+               <p><b>Ruth Liu - China</b><br> University of Nevada, Las Vegas<br> Major: Hospitality Management <br> Also admitted to: University of Illinois Urbana Champaign </p> 
+               <p><i>Coming to Green River Community College was the best choice I have ever made. GRCC made me feel that my goals can clearly be achieved step by step. I love everyone in the International Programs office especially. Their advice helped me to live better, study better, and work better."</i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/oliver-opoku.jpg" width="100" height="129" alt="Oliver Opoku "> 
+              <div class="text"> 
+               <p><b>Oliver Opoku - The Netherlands</b><br> University College Roosevelt<br> Major: Economics</p> 
+               <p><i>When I decided to study abroad, the first thing I worried about was the cost of studying at a 4-year university. Green River's University Transfer Program is eventually what sold me on the idea of studying abroad. It allowed me to spend two amazing years at Green River Community College where I experienced a diverse curriculum, small classrooms and instructors that offer personal attention to students. In addition, the university transfer program helped me organize my studies and prepare me for any university I wanted to go to. My personal advisor helped me with various difficult decisions both academic and otherwise. I've grown as a student and as person. I owe much of this amazing period in my life to Green River Community College. </i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+            </tr>
+            <tr> 
+             <td> <img border="0" src="/international/content/images/bernard-santosa.jpg" width="100" height="129" alt="Bernard Halim Santosa"> 
+              <div class="text"> 
+               <p><b>Bernard Halim Santosa - Indonesia</b><br> UCLA<br> Major: Mechanical Engineering<br> Also admitted to: University of Washington - Seattle, University of Illinois-Urbana Champaign, UC Davis, Drexel University </p> 
+               <p><i>Green River played a significant role in helping me transfer to a top university in America. Green River has an awesome advising team who work tirelessly to ensure the success of its international students. There are a lot of opportunities offered by international programs, such as volunteer activities and Foundation for Success Peer Mentoring, to exercise the leadership skills for students. The lectures at GRCC are delivered in small to medium sized classes supported by labs and state-of-the-art technologies. From an academic standpoint, GRCC has outstanding Engineering faculty who prepare their students for getting into their dream schools. Therefore, I highly recommend GRCC to international students who want to study in America and transfer to world-renowned universities. </i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/william-santosa.jpg" width="100" height="129" alt="William Halim Santosa - Indonesia"> 
+              <div class="text"> 
+               <p><b>William Halim Santosa - Indonesia</b><br> UCLA<br> Major: Business Economics<br> Also admitted to: UC Berkeley, UC Davis, UC San Diego, Indiana University Bloomington, University of Minnesota Twin Cities, and Drexel University. </p> 
+               <p><i>Green River is the place where I gained the tools that could help me achieve my goals. In fact, transferring to a top university has been my dream since I was in high school and Green River made my dream come true. Knowledge, strong will, positive thinking, responsibility and commitment are among the qualities I gained from studying at Green River. Green River was the right place for me to begin my journey to becoming a successful person in the future.</i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+            </tr>
+            <tr> 
+             <td> <img border="0" src="/international/content/images/vladimir-panfilov.jpg" width="100" height="129" alt="Vladimir Panfilov  - Moldova"> 
+              <div class="text"> 
+               <p><b>Vladimir Panfilov - Moldova</b><br> University of Minnesota <br> Major: Economics<br> </p> 
+               <p><i>Green River is not just a place or just a college; it is a vibrant community of people willing to excel in what they do. For the past 2 years, I enjoyed the diverse student body and the faculty who are dedicated and willing to offer students their best by sharing their knowledge and experience. I do not regret that I chose to study at GRCC because I learned and cultivated integrity, organizational skills, independence, patience, and leadership. All these things helped me to take one more step forward in building my personality. The knowledge I gained in the classrooms helped me to get into University of Minnesota Twin Cities where I will continue my studies in economics. I will continue what I started at GRCC, so in the future I can contribute in building the free and democratic society we all want to live in.</i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/marie-svensson.jpg" width="100" height="129" alt="Yingying Ye - China"> 
+              <div class="text"> 
+               <p><b>Marie Svensson - Sweden</b><br> Montclair State University<br> Major: Biology<br> Also admitted to: Florida Southern College</p> 
+               <p><i>Green River Community College was a great start for me. It was easy to get to know other people and improve my English fast. GRCC has a great program for international students. The variety of fun and interestingclasses GRCC has to offer made it easy for me to find what I needed to get my AA. Student Life offers many activities every quarter. I got to know new people and learned something new as well. Working on campus helped me balance studies with other responsibilities. All of these things are important for my future in going to a 4-year university. I feel more prepared than I imagined. I have experienced a smaller school where help is always available and where teachers know and remember your name. I feel ready for the next step in a bigger school with more students, because GRCC gave me a great start. </i> </p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/gloria-tan.jpg" width="100" height="129" alt="Gloria Tan - Singapore"> 
+              <div class="text"> 
+               <p><b>Gloria Tan - Singapore</b><br> American University <br> Major: International Relations<br> Also admitted to: UC Berkeley, Johns Hopkins University, George Washington University, American University of Paris </p> 
+               <p><i>When I came to Green River, I didn't know what to expect. We don't have community colleges or Associate degrees in Singapore. At Green River, people come from all walks of life. There are parents returning to classes with their children who are completing high school, grandparents wanting to continue their education, people from the workforce who need re-training, others who take classes for the fun of learning. It's fantastic; it's real. That's how society is - made of people with many different aspirations. I found a warm and accepting community willing to extend me many opportunities, learn about my culture, and hear my ideas. On my first day at school, Ross Jennings (VP of Int'l Prog) told us to say yes to new experiences. His advice got me into so much trouble - I started getting involved in Student Senate, clubs and CLEO. Keeping his message in mind helped me grow, and I learned to embrace change and seize opportunities. My supportive instructors, advisors, supervisors and friends have also been amazing people willing to share their wealth of experience and advice. Two years ago, I was on a gap year after high school, working to save money while trying to figure out my next step. I never would have imagined winning any awards or being admitted to so many schools. Yes, I received many rejection letters as well, but Green River has taught me to put myself out there and dare to dream. </i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/tian-yin.jpg" width="100" height="129" alt="Tian Yin - Singapore"> 
+              <div class="text"> 
+               <p><b>Tian Yin - Singapore</b><br> UC Berkeley<br> Major: Molecular Toxicology<br> Also admitted to: Penn State, Ohio State, and UC Davis </p> 
+               <p><i>Green River has been more than just my home away from home for the past two years. The faculty and their passion and dedication to teaching is simply inspiring. The small, but strong community is always encouraging, and there is a bountiful of resources that students can tap on (be it tutoring or student activities). Becoming active on campus was one of the best decisions I've made in my time here at Green River and I highly encourage everyone to do the same. The leadership experience will nurture you into leaders of character and the experiences you gain will broaden your perspectives.</i></p> 
+              </div> </td> 
+            </tr> 
+           </tbody>
+          </table> 
+         </div> 
+         <h3>Class of 2013</h3> 
+         <div> 
+          <table id="testimonials"> 
+           <tbody>
+            <tr> 
+             <td> <img border="0" src="/international/content/images/eric-kim.jpg" width="100" height="129" alt="Eric (Dalim) Kim - South Korea"> 
+              <div class="text"> 
+               <p><b>Eric (Dalim) Kim - South Korea</b><br> University of Pennsylvania<br> Major: Marketing / Economics</p> 
+               <p><i>The famous Aesop once said in his Fables, "Heaven helps those who help themselves". In fact, Green River Community College does offer its students a rich spectrum of academics, dedicated faculty and a warm environment. During my time here, I was lucky to be able to maximize these opportunities which allowed me to fortify my educational experience and personal enrichment. I am eternally grateful for meeting the people who guided me towards my dream of attending the University of Pennsylvania. Not to say there weren't obstacles involved, I had more problems than there are security officers on campus, personally, emotionally and mentality. Fortunately, as I mentioned earlier, there were people I met at Green River who will go on to be my allies for the rest of my life. In my humble opinion, that is where I truly got my money's worth. </i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/hwanwook-ian-lee.jpg" width="100" height="129" alt="Hwanwook (Ian) Lee - South Korea"> 
+              <div class="text"> 
+               <p><b>Hwanwook (Ian) Lee - South Korea</b><br> University of Southern California<br> Major: Accouting</p> 
+               <p><i>Green River has been really helpful. This college has great instructors, advising team, and an amazing program for international students that helps students focus on their study. This is one of the reasons for my successful transfer. </i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/indira-pranabudi.jpg" width="100" height="129" alt="Indira Pranabudi - Indonesia"> 
+              <div class="text"> 
+               <p><b>Indira Pranabudi - Indonesia</b><br> Brown University<br> Major: Computer Science<br> Also Accepted to: Northeastern University, University of Indiana - Bloomington, University of Colorado - Boulder </p> 
+               <p><i>In the past one and a half years at Green River, I feel that I have grown more as an individual than I have in my entire life. Not living with my parents has been tough, but the instructors, along with my advisors and supervisors have all been great role models for me. In hindsight, I am glad I chose to attend Green River Community College.</i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/yu-sato.jpg" width="100" height="129" alt="Yu Sato - Japane"> 
+              <div class="text"> 
+               <p><b>Yu Sato - Japan</b><br> University of California, Berkeley<br> Major: Molecular Environmental Biology <br> Also Accepted to: University of California, Los Angeles</p> 
+               <p><i>Green River has taught me so many things - everything from academics to really valuable social and life lessons, making it so much more than a mere stepping stone for my future aspirations and ambitions. The time that I've spent here will always hold some of the best memories for me.</i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/ngoc-man-truong.jpg" width="100" height="129" alt="Ngoc Man Truong  - Vietnam"> 
+              <div class="text"> 
+               <p><b>Ngoc Man Truong - Vietnam</b><br> University of Massachusetts - Amherst<br> Major: Finance<br> </p> 
+               <p><i>Green River offered me a great learning experience and personal growth. This college has an international multicultural environment where I could broaden my knowledge and enjoy a working experience with professional faculty and nice colleagues from different backgrounds. </i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/koen-valks.jpg" width="100" height="129" alt="Koen Valks - The Netherlands"> 
+              <div class="text"> 
+               <p><b>Koen Valks - The Netherlands</b><br> American University<br> Major: International Relations<br> </p> 
+               <p><i>Green River helped me develop further as a person and a leader. Because I put myself in positions where I had to interact with people from different cultures and countries, I eventually came to the realization that I wanted to study the relations between countries and what makes us the same, not what makes us different. This helped me build the bridge to American University, a university that will further help me with my continuous growth as a person.</i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/yingying-ye.jpg" width="100" height="129" alt="Yingying Ye - China"> 
+              <div class="text"> 
+               <p><b>Yingying Ye - China</b><br> Emory University<br> Major: Economics<br> Also Accepted to: University of Rochester, Ohio State University</p> 
+               <p><i>The two years that I spent at Green River has actually surprised me. There are so many possibilities that can be explored and challenged. Those experiences helped me to better prepare for future study and career, and I do believe that I have learned American culture from a different perspective. </i> </p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/ho-leung-yung.jpg" width="100" height="129" alt="Ho Leung Yung - Hong Kong"> 
+              <div class="text"> 
+               <p><b>Ho Leung Yung - Hong Kong</b><br> University of California, Los Angeles<br> Major: Business Economics<br> Also Accepted to:University of California, Santa Barbara; University of California, San Diego </p> 
+               <p><i>Green River was such a great place for me to study. Faculty guided me in my studies, and students were eager to participate in class activities. They are the valuable resources which helped me succeed in my university admissions as well as my field of study.</i> </p> 
+              </div> </td> 
+            </tr> 
+           </tbody>
+          </table> 
+         </div> 
+         <h3>Class of 2012</h3> 
+         <div> 
+          <table id="testimonials"> 
+           <tbody>
+            <tr> 
+             <td> <img border="0" src="/international/content/images/lars-andersen.jpg" width="100" height="129" alt="Lars Berg Andersen  - Norway"> 
+              <div class="text"> 
+               <p><b>Lars Berg Andersen - Norway</b><br> Seattle University<br> Major: Film studies </p> 
+               <p><i>My experience at Green River has made me eager to further investigate our world and the people in it, and go deeper into the areas of film studies. Green River's flexibility and variety of classes made it possible for me to create a schedule of classes that would easily transfer towards my major.</i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/he-xun-cheo.jpg" width="100" height="129" alt="He Xun (Jayden) Cheo  - Singapore"> 
+              <div class="text"> 
+               <p><b>He Xun (Jayden) Cheo - Singapore</b><br> University of Illinois, Urbana-Champaign<br> Major: Computer Science </p> 
+               <p><i>As an international student, one of the big differences is how classes are conducted in the USA. Green River was a stepping stone and like training wheels for the US education system. Studying at Green River has helped me to assimilate into the US education system and society.</i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/ho-kiu-olivia-mok.jpg" width="100" height="129" alt="Ho Kiu Olivia Mok - Hong Kong"> 
+              <div class="text"> 
+               <p><b>Ho Kiu Olivia Mok - Hong Kong</b><br> University of North Carolina - Chapel Hill<br> Major: Journalism<br> </p> 
+               <p><i>With the close relationship students have with instructors on campus, Green River has a friendly learning environment. My experience here has been exceptional. These two years have been a turning point of my life where I found my passion in journalism and my direction as to who I am and who I want to become. </i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/saurabh-nair.jpg" width="100" height="129" alt="Saurabh (Prince) Nair - India"> 
+              <div class="text"> 
+               <p><b>Saurabh (Prince) Nair - India</b><br> Embry Riddle Aeronautical University<br> Major: Aerospace Engineering<br> Also Accepted to: University of Chicago <br> </p> 
+               <p><i>After having spent two years at Green River, I think it was a decision well made. It has prepared me in all possible ways to enter a four year university. In my own experience, I found that community college was a great place for me to figure out what major I was going to pursue and where I would eventually obtain my degree.</i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/tienneke-tjiang.jpg" width="100" height="129" alt="Tienneke Tjiang - Indonesia"> 
+              <div class="text"> 
+               <p><b>Tienneke Tjiang - Indonesia</b><br> University of Southern California<br> Major: International Business</p> 
+               <p><i>Green River has helped so much in shaping me into an adult. The advising team was awesome, the instructors were very helpful, it's a good environment for study, and the student programs were interesting. </i> </p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/yonex.jpg" width="100" height="129" alt="Ziyong (Yonex) Yang - China"> 
+              <div class="text"> 
+               <p><b>Ziyong (Yonex) Yang - China</b><br> Georgia Institute Technology <br> Major: Industrial Engineering</p> 
+               <p><i>By working and participating in different activities at Green River, I improved both my English and leadership skills, which built a solid foundation for my further studies at Georgia Tech. Moreover, I like how Green River has small sized classes because I get more attention from the instructor in class. </i> </p> 
+              </div> </td> 
+            </tr> 
+           </tbody>
+          </table> 
+         </div> 
+         <h3>Class of 2011</h3> 
+         <div> 
+          <table id="testimonials2011"> 
+           <tbody>
+            <tr> 
+             <td> <img border="0" src="/international/content/images/alison-chiu.jpg" width="100" height="129" alt="Alison Chiu - Hong Kong"> 
+              <div class="text"> 
+               <p><b>Alison Chiu - Hong Kong</b><br> University of Oregon<br> Major: Business/Marketing </p> 
+               <p><i>I enjoyed being a student at Green River Community College. GRCC has a great International Program, advisors provide us with useful information for transferring, such as schedule planning. GRCC provides opportunities to learn through various types of activities and events, and leadership experience opportunities. The Campus Corner Apartments are always a great place to know more diverse friends and expand your community. Overall I like the environment here a lot! </i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/jordan.jpg" width="100" height="129" alt="Iordan Bokov - Bulgaria"> 
+              <div class="text"> 
+               <p><b>Iordan Bokov - Bulgaria</b><br> University of Washington - Foster School of Business<br> Major: Business<br> Also Accepted to: University of Chicago <br> </p> 
+               <p><i>I love the campus; it is so nice, quiet, very green and clean, with lots of animals walking around. All the teachers and faculty really helped me achieve my goals and improve myself. They encouraged me and guided me. After being here for two years I found myself actively involved in the college life. The school offers so many opportunities. I did a lot of volunteering and met new people, which helped me learn a lot about the culture and the American way of life.</i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/shiyun-zhong.jpg" width="100" height="129" alt="Shiyun Zhong - China"> 
+              <div class="text"> 
+               <p><b>Shiyun Zhong - China</b><br> University of Washington - Seattle<br> Major: Economics</p> 
+               <p><i>As opposed to other international students, I only studied at GRCC for one year. Therefore my study schedule was much more intense than others, and I had to prepare for transferring right after I came to GRCC. I appreciate GRCC because the advisors there helped me make a detailed study plan, provide me with a lot of transfer information, and hosted various community activities. Thanks for all the efforts GRCC made to make my time here more interesting and meaningful. </i> </p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/bach-xuan-dao.jpg" width="100" height="129" alt="Bach Xuan Dao - Vietnam"> 
+              <div class="text"> 
+               <p><b>Bach Xuan Dao - Vietnam</b><br> UC Berkeley<br> Major: Computer Engineering</p> 
+               <p><i>When I first came to Green River Community College, I was told that: "From here, you can go anywhere you want!". I initially did not believe that statement. How can a student from a community college in a small town in Washington State go anywhere he wants. Ironically, I proved myself wrong in the end. The academically challenging yet friendly environment at Green River has made my dream come true. Be involved in the campus life, grab friends with the same goals as you, try your best in the classes, and success will likely come to you! </i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/carlos-lameiras.jpg" width="100" height="129" alt="Carlos Lameiras - Portugal"> 
+              <div class="text"> 
+               <p><b>Carlos Lameiras - Portugal </b><br> Purdue University<br> Major: Architecture<br> </p> 
+               <p><i>Green River Community College provided an awesome environment for me to stay focused on my studies. I got to transfer to a top university thanks to the advisors who helped me a lot with my academic plan. Not only does GRCC provide many fun events for international students, teachers and students here are also very nice and friendly. I love hanging out in the library, which is the best place ever! </i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/cicely-natasha.jpg" width="100" height="129" alt="Cicely Natasha - Indonesia"> 
+              <div class="text"> 
+               <p><b>Cicely Natasha - Indonesia</b><br> Pratt Institute<br> Major: Architecture<br> <i><br> Green River Community College was a great place for me to learn and actualize myself. For me, GRCC was like my second home, and my first home in the USA. Almost all of the instructors and advisors were wonderful! They were supportive, thoughtful, friendly and helpful. Besides, I made a lot of good friends from many different countries, which gave me a lot of new experiences and insight. Finally, GRCC was able to help me to get accepted at an exceptional university. It is a once-in-a-lifetime and unforgettable experience being there. </i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/davaa-lkhagva.jpg" width="100" height="129" alt="Davaa Lkhagva â Hong Kong"> 
+              <div class="text"> 
+               <p><b>Davaajargal Lkhagva â Mongolia </b><br> University of Washington <br> Major: Finance<br> Also Accepted to: Indiana University</p> 
+               <p><i>The two years that I have been at Green River Community College have changed my life. Absolutely, at the beginning I faced a lot of challenges, but I set my goals and tried to achieve. Studying in the USA was my greatest decision. The experiences that I have had in America have greatly influenced my future life. Green River is the friendliest place that I have ever been to. I have met a lot of great people, made a lot of diverse friends, even life-long friends. GRCC is a great resource and opportunity for students. I would like to give thanks to all my supervisors, advisors, instructors and friends for supporting me these years and helping me transfer to a great university. Now, I am ready to make another step towards my dream. </i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/remco-zweetsloot.jpg" width="100" height="129" alt="Ryohei Sawai - Japan"> 
+              <div class="text"> 
+               <p><b>Remco Zweetsloot - The Netherlands</b><br> Roosevelt Academy<br> Major: Political Science</p> 
+               <p><i>Green River is truly a great school for almost any major. The instructors are passionate, the students are friendly and open, the environment is great, and there are more clubs and out-of-the-classroom activities than you could possibly participate in. By getting involved and working hard here I found out what I want to do, where I want to go and how to get there. The two years I spent here were by far the best ones of my life. </i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/edwin-sanjaya.jpg" width="100" height="129" alt="Edwin Sanjaya â Indonesia "> 
+              <div class="text"> 
+               <p><b>Edwin Sanjaya - Indonesia </b><br> University of Michigan<br> Major: Aerospace Engineering<br> Also Accepted to: UT Austin, UIUC </p> 
+               <p><i>GRCC gave me a lot of opportunities to be a better person. The advisors helped me make an academic plan so that I can transfer to top university, and most of the classes I took here transfer to my university. GRCC also gives students the opportunity to get experience by working part-time on campus, as a tutor, a grader, a CLEO member, an assistant at the IP office, etc. In addition, there are lots of scholarship opportunities at GRCC through the Green River Foundation and International Programs. The instructors are really helpful â they not only assist in school subjects, but also in personal life.</i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/hannah-tran.jpg" width="100" height="129" alt="Hannah Tran - Vietnam"> 
+              <div class="text"> 
+               <p><b>Hannah Tran - Vietnam </b><br> University of South Carolina, Columbia<br> Major: International Business<br> Also Accepted to: University of South Carolina, UNC Charlotte, Oregon State University, Fairleigh Dickinson University</p> 
+               <p><i>GRCC has equipped me to be a better person and student and has helped me transfer to a good university. Volunteer programs at GRCC are outstanding, which not only helps new students to adapt to the new multicultural environment but also helps students improve their skills. Moreover, advisors are always there to assist me, for example, helping me find a good university that fulfills my skills and ambitions. GRCC is really a stepping stone for me to achieve higher goals in the future. </i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/irene-ler.jpg" width="100" height="129" alt="Irene Ler - Malaysia"> 
+              <div class="text"> 
+               <p><b>Irene Ler - Malaysia</b><br> University of Texas, Austin<br> Major: General</p> 
+               <p><i>My time at Green River has been memorable. I've gotten the opportunity to meet lots of people and make new friends. There are a lot of activities offered at the college, such as volunteering opportunities and different clubs we can join. I like how the classes are small, giving students the one-on-one time we need with our instructors when required. I'm glad that with the help of the IP advisors I was able to plan out my classes and transfer to a university." </i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/khoa-dang-pham.jpg" width="100" height="129" alt="Khoa Dang Pham - Vietnam"> 
+              <div class="text"> 
+               <p><b>Khoa Dang Pham - Vietnam</b><br> University of North Carolina, Chapel Hill<br> Major: Computer Science<br> Also Accepted to: University of Minnesota, University of Utah, Stony Brook University, UT Dallas <br> </p> 
+               <p><i>The International Programs rocks! The advising team was awesome. They helped me to transfer to a top-notch university by giving me wonderful advice and a concrete degree plan so that I knew exactly what I needed to do to apply to my school of choice. Also, the High School Completion Program really saved me time and a lot of money. Thanks to Green River, especially the International Programs, I am able to graduate at the age of 18 with lots of challenging yet intriguing opportunities awaiting me along the road.</i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/melanie-fung.jpg" width="100" height="129" alt="Melanie Mok - Hong Kong"> 
+              <div class="text"> 
+               <p><b>Melanie Mok - Hong Kong</b><br> UC Los Angeles<br> Major: Biochemistry<br> Also Accepted to: UC San Diego, UC Davis, San Diego State University</p> 
+               <p><i>Green River has the best International Program in the State of Washington. The advisers made me a detailed degree plan, which guided me through my 2 years at Green River. They got me in the right direction. The instructors at Green River are so passionate in their teaching, and they give students great help in their studies. There are a lot of international students at Green River, which gave me tons of opportunities to understand different cultures and their values. I am really glad to have studied at Green River during my first 2 years in America, and I love this school! </i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/natasha-budiman.jpg" width="100" height="129" alt="Natasha Budiman - Indonesia"> 
+              <div class="text"> 
+               <p><b>Natasha Budiman - Indonesia</b><br> University of Southern California<br> Major: Business/Marketing<br> Also Accepted to: UC Davis and UC San Diego</p> 
+               <p><i>It was a blessing for me to become a part of the GRCC community. I truly believe that GRCC acts as a strong stepping-stone for students to embark and move on to University life. The friendly environment of the community and the campus also makes the studying experience a very pleasant one! Working as a Student Marketing Assistant in the International Programs Office taught me many things, including responsibility, integrity and creativity. I have met and known so many wonderful people here â not only from my country, Indonesia, but from all around the world! </i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/quyen-nguyen.jpg" width="100" height="129" alt="Quyen Nguyen - Vietnam"> 
+              <div class="text"> 
+               <p><b>Quyen Nguyen - Vietnam</b><br> University of Washington, Tacoma<br> Major: Accounting/Finance</p> 
+               <p><i>Coming to GRCC was one of the most important decisions I have ever made, and I am glad that I made a good choice. I like GRCC because of its wonderful International Programs: lots of great programs like transfer, High School Completion, and IESL, helpful and nice IP staff who helped me transfer to a top university, and a friendly environment for international students. Also, I've experienced a diverse community because there are many international students from different countries and cultures, as well as American students. I could participate in many activities on campus like volunteering, working, or attending events. GRCC is a good place that I'd like to recommend to everyone because "You can go anywhere from Green River."</i> </p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/randy-yohan.jpg" width="100" height="129" alt="Randy Yohan - Indonesia"> 
+              <div class="text"> 
+               <p><b>Randy Yohan â Indonesia</b><br> University of Texas-Austin<br> Major: Business Finance<br> Also Accepted to: UC Los Angeles, UC Davis, UIUC </p> 
+               <p><i>When I heard of Red McCombs School of Business at UT Austin, it seemed impossible for me to go there. However, Green River changed my perception and made my dream comes true! The small classes keep a strong connection between the instructors and the students. Experienced advisors were always there to help students with their degree planning. Clubs and organizations are available to encourage students to get involved in the campus outside of the classroom. And last but not least, the environment is a good place to study! GRCC really changed my life. </i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/ryohei-sawai.jpg" width="100" height="129" alt="Ryohei Sawai - Japan"> 
+              <div class="text"> 
+               <p><b>Ryohei Sawai - Japan</b><br> Arizona State University<br> Major: Business Management</p> 
+               <p><i>The reason I chose GRCC was that I heard it had a lot of good programs for international students who are transferring to four-year universities. It actually has many events, such as International Transfer Fair, that help us decide which university to go to. Also, there are many volunteer and work opportunities in GRCC. I volunteered for some classes and student programs, and I worked for TRIO and Disability Support Services. As an international student, my English is not perfect, but those opportunities helped me improve my English and communication skills very much. GRCC gives us a lot of chances that help us transfer to four-year universities and develop ourselves.</i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/sungyoun-choi.jpg" width="100" height="129" alt="Sungyoun Choi - South Korea"> 
+              <div class="text"> 
+               <p><b>Sungyoun Choi - South Korea</b><br> University of Southern California<br> Major: Finance<br> Also Accepted to: Indiana University, Saint Mary University, UC Santa Barbara, UC Davis </p> 
+               <p><i>International Programs and staff at Green River Community College totally changed my life, and I would say they are the best professionals in this field. If you are hesitating to study abroad, just come here and have help from the awesome staff at Green River Community College. Then, you will see your clear and bright future. </i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/wei-huang.jpg" width="100" height="129" alt="Wei Huang - China"> 
+              <div class="text"> 
+               <p><b>Wei Huang - China</b><br> University of Illinois, Urbana-Champaign <br> Major: Business</p> 
+               <p><i>Green River has many nice instructors. They are knowledgeable and always ready to answer my questions. They really helped me gain basic knowledge and skills in my field that make me well-prepared for transferring to a top university. I think studying at Green River was really a good start of my adventure in the U.S.</i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/yitong-yang.jpg" width="100" height="129" alt="Yitong Yang - China"> 
+              <div class="text"> 
+               <p><b>Yitong Yang - China</b><br> University of Illinois, Urbana-Champaign<br> Major: Computer Science<br> Also accepted to: UC Los Angeles </p> 
+               <p><i>Green River helped me transfer with its professional advising team. They gave me really strong support when I planned my academic schedule, and they provided me with a lot of useful information to arrange my transfer. In addition, GRCC is a good college because it has a wonderful study environment. </i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/yohanne-ade-pratama.jpg" width="100" height="129" alt="Yohannes Ade Pratama - Indonesia"> 
+              <div class="text"> 
+               <p><b>Yohannes Ade Pratama - Indonesia</b><br> UC Berkeley<br> Major: Chemical Engineering<br> Also Accepted to: University of Minnesota, UIUC</p> 
+               <p><i>I really enjoyed the two years I spent here. Green River has a really good engineering program, all of the teachers really know the materials they lecture in well. In addition to that, Green River also has great resources and an excellent study environment. Tons of activities are also available. The best thing for me was the community, which really helped me grow. </i></p> 
+              </div> </td> 
+            </tr> 
+           </tbody>
+          </table> 
+         </div> 
+         <h3>Class of 2010</h3> 
+         <div> 
+          <table id="testimonials"> 
+           <tbody>
+            <tr> 
+             <td> <img border="0" src="/international/content/images/alexander-soekinto.jpg" width="100" height="129" alt="Alexander Soekinto"> 
+              <div class="text"> 
+               <p><b>Alexander Soekinto - Indonesia</b><br> University of Texas at Austin<br> Major: Actuarial Science </p> 
+               <p><i>Green River helped me a lot with transferring to the UT. The instructors are really helpful and friendly and they're always there when I need help, even when it's not class time. The International Programs advisors also helped me get information about the university I wanted to transfer to. I like Green River because of the environment and the international student community - it's very global. There are a lot of people from different countries and you learn a lot about different cultures. There's also a lot of activities to do and it's a lot of fun. </i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/ching-hsin-ho.jpg" width="100" height="129" alt="Ching Hsin Ho - Taiwan"> 
+              <div class="text"> 
+               <p><b>Ching Hsin Ho - Taiwan</b><br> University of Washington - Seattle<br> Major: Animal Science</p> 
+               <p><i>Green River helped me a lot through good advising and academic planning. I like Green River's green environment, it's very relaxing and it helped me concentrate on studying. </i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/daxi-tang.jpg" width="100" height="129" alt="Daxi Tang - Singapore"> 
+              <div class="text"> 
+               <p><b>Daxi Tang - Singapore </b><br> University of Washington<br> Major: Business Finance <br> </p> 
+               <p><i>Green River helped me transfer to a top university by giving me another chance at life. I like Green River because the environment is very nice and it encourages you to study hard. It's also comfortable living. </i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/felix-halim.jpg" width="100" height="129" alt="Felix Halim - Indonesia"> 
+              <div class="text"> 
+               <p><b>Felix Halim - Indonesia</b><br> UC Berkeley <br> Major: Chemical Engineering <br> <i><br> Green River helped me transfer to a top university. I like Green River because it has a good environment. Also, at Green River, I got a lot of good advice which helped me plan my degree, and a lot of good professors in all of my subjects. I think Green River is a very good Community College and I will recommend everyone to come here. </i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/jessie-ho.jpg" width="100" height="129" alt="Jessie Ho â Hong Kong"> 
+              <div class="text"> 
+               <p><b>Jessie Ho - Hong Kong </b><br> Purdue University <br> Major: Dietetics</p> 
+               <p><i>Green River helped me transfer to a top university because my advisers were very helpful, they made an excellent degree plan. I like Green River because the people are very friendly, the instructors are very knowledgeable, and I can take a wide variety of classes here. </i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/kristine-tjung.jpg" width="100" height="129" alt="Kristine Tjung â Indonesia "> 
+              <div class="text"> 
+               <p><b>Kristine Tjung - Indonesia </b><br> UC Berkeley<br> Major: Chemical Engineering<br> </p> 
+               <p><i>Green River helped me transfer to a top university by giving me a good grounding so I have the basics to do well there (UC Berkeley). I like Green River because it has small classes. so I get attention and I also like the environment. </i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/man-yin-wong.jpg" width="100" height="129" alt="Man Yin Wong - Hong Kong"> 
+              <div class="text"> 
+               <p><b>Man Yin Wong - Hong Kong </b><br> University of Minnesota<br> Major: Communications</p> 
+               <p><i>Green River is a great place for exploring your potential. This is the right way to help you transfer to top universities, it always seems impossible until it's done. I achieved my goal at Green River. </i> </p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/michael-rusli.jpg" width="100" height="129" alt="Michael Rusli - Indonesia"> 
+              <div class="text"> 
+               <p><b>Michael Rusli - Indonesia</b><br> University of Michigan - Ann Arbor<br> Major: Aerospace Engineering</p> 
+               <p><i>Green River helped me transfer to a top university by helping me with my degree plan. I like Green River because it's a good environment to study.</i> </p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/nhu-phan.jpg" width="100" height="129" alt="Nhu Phan - Vietnam"> 
+              <div class="text"> 
+               <p><b>Nhu Phan - Vietnam</b><br> UC Davis <br> Major: Economics<br> <i><br> Green River helped me transfer to a top university, and they helped me to select a degree plan by helping me think about what I want to do with my life. I like Green River because it has a unique study environment where students can be safe with a lot of helpful resources to help with their studies, and there are a lot of activities for students to be involved. At Green River students never feel alone, there is always someone here to help them. </i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/shihao-niu.jpg" width="100" height="129" alt="Shihao Niu - China"> 
+              <div class="text"> 
+               <p><b>Shihao Niu - China</b><br> University of Illinois at Urbana-Champaign<br> Major: Business</p> 
+               <p><i>I like Green River because it has the best international program in the state of Washington. IP advisors at Green River are knowledgeable and professional. No matter which university you want to transfer to, the advisers here can always get you in the right direction. Green River also provides great experience for international students to be involved on campus. I had an amazing experience with ASGRCC Student Senate as the chairperson of the finance committee, and I also led a business club called Multicultural Business Student Association to help students who had ideas about their career. The wonderful experience not only helped me transfer to a top university in the US, but those experiences also benefit my future life. Green River is the first step on my road to success. </i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/si-li-2.jpg" width="100" height="129" alt="Si Li - China"> 
+              <div class="text"> 
+               <p><b>Si Li - China</b><br> University of Washington - Seattle<br> Major: Accounting</p> 
+               <p><i>Green River helped me transfer to a top university because there is a great international program and the IP office is really helpful, they advise me with my educational plan. I like Green River because there are many great activities I can participate in after my classes and living on campus is a good opportunity to know more students, from America or other countries.</i> </p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/sooyoun-park.jpg" width="100" height="129" alt="Sooyoun Park â South Korea"> 
+              <div class="text"> 
+               <p><b>Sooyoun Park - South Korea</b><br> Cornell University<br> Major: Civil Engineering</p> 
+               <p><i>Green River helped me transfer to a top university. I like Green River because there are various degree plans for every major, and it also has a lot of extra activities such as an engineering club, math contests, and a lot of social events for students. I think it's a really great place not only to get an education but also to experience the American culture.</i> </p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/susil-limbu.jpg" width="100" height="129" alt="Susil Limbu - Nepal"> 
+              <div class="text"> 
+               <p><b>Susil Limbu - Nepal</b><br> Purdue University<br> Major: Mechanical Engineering</p> 
+               <p><i>Green River helped me transfer to a top university with a wide variety of classes in engineering that form a basic foundation for my major in the future. I like Green River because there are a lot of friendly staff and people and the environment is good for education. </i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/uyanga-erdenebileg.jpg" width="100" height="129" alt="Uyanga Erdenebileg - Mongolia"> 
+              <div class="text"> 
+               <p><b>Uyanga Erdenebileg - Mongolia</b><br> University of Washington - Seattle<br> Major: Accounting</p> 
+               <p><i>Green River helped me transfer to a top university with the careful degree planning of the advisers, and they also helped me write my personal statement, which was a really big help for me. Green River has a nice location, it's safe with fresh air. Coming to Green River was one of the best decision I've ever made, my special thanks to International Programs academic advisers who helped me set up my degree plan and to the instructors who are so passionate about the subjects they're teaching. At Green River with such a large number of international students, I learned to accept their values and diversity and at this point I'm confident I can move on to the next stage of my life. </i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/wu-seifa.jpg" width="100" height="129" alt="Wu Seifa - Liberia"> 
+              <div class="text"> 
+               <p><b>Wu Seifa - Liberia</b><br> Northwest University<br> Major: Criminal Justice</p> 
+               <p><i>Green River helped me transfer to a good university thanks to the teachers, advisers and tutors. Because I have a good GPA they encouraged me to get a scholarship at a good university. I like Green River because the campus is surrounded by many trees. People at Green River are like family and they always help you out. </i> </p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/yufan-claire-liao.jpg" width="100" height="129" alt="YuFan (Claire) Liao - China"> 
+              <div class="text"> 
+               <p><b>YuFan (Claire) Liao - China</b><br> University of Michigan - Ann Arbor<br> Major: Mechanical Engineering</p> 
+               <p><i>Green River helped me transfer to a top university because it has a very professional advising team. They helped me plan my academic schedule and it also helped me to develop towards my educational goal all the way through my academic years. I like Green River because it is a very quiet and friendly environment and the people are very nice. I came here alone without friends, but the instructors and advisors here helped me to no longer feel out of place and I really appreciate it. </i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/yumi-nakata.jpg" width="100" height="129" alt="Yumi Nakata - Japan"> 
+              <div class="text"> 
+               <p><b>Yumi Nakata - Japan</b><br> University of Washington - Seattle<br> Major: Business</p> 
+               <p><i>I like Green River because I've met a lot of nice people from all over the world and they also have a very good transfer program that helped me transfer to a good university. </i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/yuka-kato.jpg" width="100" height="129" alt="Yuka Kato - Japan"> 
+              <div class="text"> 
+               <p><b>Yuka Kato - Japan</b><br> University of Minnesota<br> Major: Communications</p> 
+               <p><i>Green River helped me transfer to a top university because a lot of people at Green River supported me. In particular, I was working at the Commencement Achievement Program and the supervisors were very nice. They always cared about me, they always asked me if I was doing well, they always supported me. I like Green River because there's diversity here. I didn't think there was a lot of culture in the United States before I came here, but when I came here I realized there are a lot of people from different cultures and I learned from that. </i></p> 
+              </div> </td> 
+            </tr> 
+           </tbody>
+          </table> 
+         </div> 
+         <h3>Class of 2009</h3> 
+         <div> 
+          <table id="testimonials"> 
+           <tbody>
+            <tr> 
+             <td> <img border="0" src="/international/content/images/shufei_zhang.jpg" width="100" height="129" alt="Shufei Zhang- China"> 
+              <div class="text"> 
+               <p><b>Shufei Zhang - China </b><br> UCLA<br> Major: Psychology<br> Also accepted to: University of Michigan</p> 
+               <p><i>Green River is a small school with small classes, so I got a lot of personalized attention from faculty and advisors. I got valuable advice on how to get into a top 4-year university.</i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/nadira.jpg" width="100" height="129" alt="Nadira Purdayinta - Indonesia"> 
+              <div class="text"> 
+               <p><b>Nadira Purdayinta - Indonesia </b><br> Cornell University<br> Major: Human Development<br> </p> 
+               <p><i>The High School Completion Plus Program was really helpful. During the transfer process, universities ask for university transcripts and a diploma. I could send both. It is also easier to apply for internships. Almost all of them require a High School Diploma. It really makes it easier to show them the diploma from GRCC (so I don't have to translate and legalize my transcript). The other benefit is that international students can save a lot of money being enrolled in this program. My goal is to work for the United Nations in the future.</i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/hans_oswald.jpg" width="100" height="129" alt="Hans Oswald- Germany"> 
+              <div class="text"> 
+               <p><b>Hans Oswald- Germany </b><br> University of North Carolina, Charlotte<br> Major: Business <br> Also accepted to: University of Houston and University of South Florida</p> 
+               <p><i>Green River was tremendously helpful in getting me into a top four year school. Together with my advisers I achieved my dream of attending a state-of-the-art university. I'm very grateful for the time I spent at this College. </i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/mervyn_tsui.jpg" width="100" height="129" alt="Mervyn Tsui - Hong Kong/China"> 
+              <div class="text"> 
+               <p><b>Mervyn Tsui - Hong Kong/China </b><br> University of Southern California (USC) <br> Major: Economics and Mathematics <br> Also accepted to: UT Austin, Penn State, UC Davis and UC Irvine<br> </p> 
+               <p><i>Thanks to Green River I am transferring to a top university. The faculty and advisors helped me plan my two-year class schedule. The advisors helped me with my application and provided feedback on my personal essay.</i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/eric_januar.jpg" width="100" height="129" alt="Eric Januar - Indonesia"> 
+              <div class="text"> 
+               <p><b>Eric Januar - Indonesia </b><br> UC Berkeley<br> Major: Chemical Engineering<br> </p> 
+               <p><i>GRCC was an enormous stepping-stone for me. My dreams of possibilities become images of probabilities. I had amazing and passionate instructors and advisors that truly cared about me. Here I discovered my passion for preserving earth through Chemical Engineering.</i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/keiichiro_seto.jpg" width="100" height="129" alt="Keiichiro Seto - Japan"> 
+              <div class="text"> 
+               <p><b>Keiichiro Seto - Japan </b><br> WSU<br> Major: Computer Science</p> 
+               <p><i>When I first came to Green River I didn't know what to major in. My advisor asked me about my hobbies and gave me great advice. I really enjoy Computer Science. GRCC made me, me.</i> </p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/haram_kim.jpg" width="100" height="149" alt="Ha Ram Kim - Korea"> 
+              <div class="text"> 
+               <p><b>Ha Ram Kim - Korea</b><br> Embry-Riddle<br> Major: Aerospace Engineering</p> 
+               <p><i>Green River's Work-Study program helped me to finish my A.S. degree. I hope more people can take advantages of this. Also, the math, physics, and engineering instructors are good at not only teaching, but also supporting and advising. I'm so thankful to have studied here.</i> </p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/khulan_tumurbat.jpg" width="100" height="129" alt="Khulan Tumurbat - Mongolia"> 
+              <div class="text"> 
+               <p><b>Khulan Tumurbat - Mongolia</b><br> University of Washington - Seattle<br> Major: Psychology<br> Also accepted to WSU and University of Oregon</p> 
+               <p><i>GRCC is one of the friendliest places I have ever been. There are so many resources and I had so much support. I collected a lot of stars on this campus. I feel confident I can move on...but this place will always be in my heart.</i></p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/livia_mueller.jpg" width="100" height="129" alt="Livia Elisa Muller - Switzerland"> 
+              <div class="text"> 
+               <p><b>Livia Elisa Muller - Switzerland</b><br> American University<br> Major: International Studies<br> Also accepted to UNC-Chapel Hill and Brandeis<br> </p> 
+               <p><i>Green River was an immense influence in my getting accepted into a top university and I am extremely thankful for having made the decision to come here. </i> <a target="_blank" href="http://www.greenriver.edu/news/livia_muller.htm"> President's Award Recipient</a> </p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/ying_ju_lai.jpg" width="100" height="129" alt="Ying Ju Lai - Taiwan"> 
+              <div class="text"> 
+               <p><b>Ying Ju Lai - Taiwan</b><br> University of Washington - Seattle<br> Major: Business<br> Also accepted to WSU and Indiana University<br> </p> 
+               <p><i>The instructors at Green River are patient and experienced. Some of the classes were challenging and they were always very helpful. They also assisted me a lot when I applied to universities.</i> </p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> <img border="0" src="/international/content/images/thanh_nguyen.jpg" width="100" height="129" alt="Thanh Van Nguyen - Vietnam"> 
+              <div class="text"> 
+               <p><b>Thanh Van Nguyen - Vietnam</b><br> Georgia Tech<br> Major: Electrical Engineering<br> Also accepted to: UCLA, Purdue, and UC Davis</p> 
+               <p><i>The faculty and advisors are all compassionate, encouraging and dedicated to helping students excel academically. It was an overall positive college experience.</i> </p> 
+              </div> </td> 
+            </tr> 
+           </tbody>
+          </table> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+      <!-- TAB PANELS END HERE --> 
+     </div> 
+    </div> 
+   </div> 
+   <!-- Footer --> 
+   <div id="footer"> 
+    <p> <a href="#top">Back to Top</a>&nbsp;&nbsp;|&nbsp; <a href="http://www.greenriver.edu/international/contact.shtm">Contact Us</a>&nbsp;&nbsp;|&nbsp; <a href="http://www.greenriver.edu/about-grcc/website/website-feedback.htm">Website Feedback</a>&nbsp;&nbsp;|&nbsp; <a href="http://www.greenriver.edu/about-grcc/public-information/public-disclosure.htm">Public Disclosure</a>&nbsp;&nbsp;|&nbsp; <a href="https://redflag.riskaware.com/reporter.php/grcc" target="_blank">Send a Red Flag</a>&nbsp;&nbsp;|&nbsp; <a target="_blank" href="https://www.gatornet.greenriver.edu/index.htm">Intranet</a>&nbsp;&nbsp;|&nbsp; <a target="_blank" href="https://webmail.greenriver.edu">Web Mail</a> </p> 
+    <!--GOOGLE ANALYTICS--> 
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-6170259-3']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script> 
+    <!-- End of GOOGLE ANALYTICS --> 
+    <!-- Crazy Egg Test --> 
+    <script type="text/javascript">
+setTimeout(function(){var a=document.createElement("script");
+var b=document.getElementsByTagName("script")[0];
+a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0006/7361.js?"+Math.floor(new Date().getTime()/3600000);
+a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script> 
+    <!-- End of Crazy Egg Test --> 
+   </div>
+   <!-- End of #footer -->
+  </div> 
+  <!--<div>
+	<a id="checks" href="http://validator.w3.org/check?uri=referer">
+	<img src="images/valid-xhtml10.gif" alt="Valid XHTML 1.0 Transitional" height="31" width="88" /></a>
+</div>-->   
+ </body>
+</html>

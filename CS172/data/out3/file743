@@ -1,0 +1,95 @@
+<html>
+ <!-- Waitlist Inquiry Login 
+     LOGIN FORM waci230.html
+     03/05/03 ver. 1.0 Cloned from waci221
+-->
+ <head> 
+  <title>Manage My Waitlists</title> 
+  <script language="JavaScript">
+<!-- // Activate cloak
+  var clicker=0;
+  function clickCounter(){
+  ++clicker;
+  if (clicker == 1){
+     return true
+  }
+  if (clicker > 10){
+     clicker=0;
+  }
+  return false;
+  }
+
+  function verifySID () {
+    var sid=document.reglogin.sid.value;
+    var pin=document.reglogin.pin.value;
+    if (sid.length!=9){
+      alert("A nine digit SID is required.");
+      return false
+    }else{
+      if (pin.length<4){
+         alert("You must enter a 4 to 6 digit PIN.");
+         return false;
+      }
+    }
+    if (clickCounter()){
+      document.reglogin.submit();
+    }
+    return true;
+    }
+    // Deactivate cloak -->
+    </script> 
+ </head> 
+ <!-- center>
+	<h3><font color="#FF0000" size="3">Maintenance Notice</font></h3>
+	<div class="notice_text">
+	<b>The SBCTC will be performing state-mandated changes to their data center over Presidents Day weekend.</b><br>
+	<b>Manage My Waitlists will be unavailable between Friday, February 13th at 5:00 p.m. and Tuesday, February 17th at 5:00 a.m.</b><br>
+	<b>Thank you for your patience.&nbsp; We apologize 
+	in advance for any inconvenience these service outages 
+	may cause.</b>
+	</div>
+  </center><br><br> ---> 
+ <body bgcolor="#99CCCC" onload="document.reglogin.sid.value=&quot;&quot;;
+    document.reglogin.pin.value=&quot;&quot;;
+    document.reglogin.sid.focus()"> 
+  <center> 
+   <font color="#006600" size="4"><b>Green River Community College</b></font>
+   <p> <b> <font size="5" face="Arial">Manage My Waitlists </font></b> </p>
+   <br> 
+   <p> <font face="Arial" color="#800000" size="3">Students are responsible for the accuracy of their class schedule.<br>To prevent from being added into a class you no longer want,<br><b><u>please remove yourself from any unwanted class waitlists</u></b></font><br> </p> 
+   <form method="POST" action="https://grcc.greenriver.edu/cgi-bin/rqserver.exe" name="reglogin"> 
+    <input type="hidden" name="request" value="inqwlist"> 
+    <input type="hidden" name="function" value="01"> 
+    <br>
+    <table border="0" cellspacing="10" cellpadding="0"> 
+     <tbody>
+      <tr> 
+       <td><font face="Arial" size="2"><b>Type your Student Identification Number (SID)</b></font></td> 
+       <td><input type="password" name="sid" size="9" maxlength="9" value=""></td> 
+      </tr>  
+      <tr> 
+       <td><font face="Arial" size="2"><b>Type your Personal Identification Number (PIN)</b><font face="Arial" size="2"></font></font></td> 
+       <td><input type="password" name="pin" size="6" maxlength="6" value=""></td> 
+      </tr> 
+      <tr> 
+       <td><font face="Arial" size="2"><b>Select quarter.</b></font></td> 
+       <td> <select name="yrq"> <option value="B454">Spring 2015 </option></select><b> </b> </td> 
+      </tr>
+      <tr>  
+      </tr>
+     </tbody>
+    </table> 
+    <br> 
+   </form>
+  </center> 
+  <center> 
+   <input type="button" value="Display My Waitlists" onclick="verifySID()"> 
+   <p>&nbsp;</p> 
+  </center>   
+  <p align="center"><font face="Arial" size="2"><b>Forgot your PIN? </b>Call (253) 833-9111, ext. 2500 to have your PIN reset.</font></p>
+  <br> 
+  <center> 
+   <font face="Arial" size="2"> <a href="http://www.greenriver.edu/online-services.htm">Back to Main Menu</a></font> 
+  </center>  
+ </body>
+</html>

@@ -1,0 +1,595 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml">
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"443df9d6f3","applicationID":"2694996","transactionName":"dlxeFhNeXF5XRBpAEFdfWQFOWV9fVw==","queueTime":0,"applicationTime":201,"agent":"js-agent.newrelic.com/nr-536.min.js"}</script> 
+  <script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VwQDUFVACgUJUFhbAQ=="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=s(e),u=c.length,f=i(a,o,r),d=0;u>d;d++)c[d].apply(f,n);return f}function a(t,e){u[t]=s(t).concat(e)}function s(t){return u[t]||[]}function c(){return n(e)}var u={};return{on:a,emit:e,create:c,listeners:s,_events:u}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],3:[function(t){function e(t,e,n,i,s){try{c?c-=1:r("err",[s||new UncaughtException(t,e,n)])}catch(u){try{r("ierr",[u,(new Date).getTime(),!0])}catch(f){}}return"function"==typeof a?a.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(5),i=t("ee"),a=window.onerror,s=!1,c=0;t("loader").features.err=!0,window.onerror=e;try{throw new Error}catch(u){"stack"in u&&(t(3),t(4),"addEventListener"in window&&t(1),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&t(2),s=!0)}i.on("fn-start",function(){s&&(c+=1)}),i.on("fn-err",function(t,e,r){s&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){s&&!this.thrown&&c>0&&(c-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:4,2:7,3:6,4:5,5:20,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],4:[function(t,e){function n(t){i.inPlace(t,["addEventListener","removeEventListener"],"-",r)}function r(t){return t[1]}var o=(t(1),t("ee").create()),i=t(2)(o),a=t("gos");if(e.exports=o,n(window),"getPrototypeOf"in Object){for(var s=document;s&&!s.hasOwnProperty("addEventListener");)s=Object.getPrototypeOf(s);s&&n(s);for(var c=XMLHttpRequest.prototype;c&&!c.hasOwnProperty("addEventListener");)c=Object.getPrototypeOf(c);c&&n(c)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&n(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t){if(t[1]){var e=t[1];"function"==typeof e?this.wrapped=t[1]=a(e,"nr@wrapped",function(){return i(e,"fn-",null,e.name||"anonymous")}):"function"==typeof e.handleEvent&&i.inPlace(e,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:20,2:21,ee:"QJf3ax",gos:"7eSDFh"}],5:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=r(t[0],"fn-")})},{1:21,2:20,ee:"QJf3ax"}],6:[function(t,e){function n(t,e,n){var r=t[0];"string"==typeof r&&(r=new Function(r)),t[0]=o(r,"fn-",null,n)}var r=(t(2),t("ee").create()),o=t(1)(r);e.exports=r,o.inPlace(window,["setTimeout","setInterval","setImmediate"],"setTimer-"),r.on("setTimer-start",n)},{1:21,2:20,ee:"QJf3ax"}],7:[function(t,e){function n(){c.inPlace(this,d,"fn-")}function r(t,e){c.inPlace(e,["onreadystatechange"],"fn-")}function o(t,e){return e}var i=t("ee").create(),a=t(1),s=t(2),c=s(i),u=s(a),f=window.XMLHttpRequest,d=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];e.exports=i,window.XMLHttpRequest=function(t){var e=new f(t);try{i.emit("new-xhr",[],e),u.inPlace(e,["addEventListener","removeEventListener"],"-",function(t,e){return e}),e.addEventListener("readystatechange",n,!1)}catch(r){try{i.emit("internal-error",[r])}catch(o){}}return e},window.XMLHttpRequest.prototype=f.prototype,c.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",o),i.on("send-xhr-start",r),i.on("open-xhr-start",r)},{1:4,2:21,ee:"QJf3ax"}],8:[function(t){function e(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function n(t){var n=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;c>i;i++)t.removeEventListener(s[i],this.listener,!1);if(!n.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){n.status=t.status;var a=t.responseType,u="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,f=e(u);if(f&&(r.rxSize=f),this.sameOrigin){var d=t.getResponseHeader("X-NewRelic-App-Data");d&&(n.cat=d.split(", ").pop())}}else n.status=0;r.cbTime=this.cbTime,o("xhr",[n,r,this.startTime])}}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}if(window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)){t("loader").features.xhr=!0;var o=t("handle"),i=t(2),a=t("ee"),s=["load","error","abort","timeout"],c=s.length,u=t(1);t(4),t(3),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=n,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,n){var r=this.metrics,o=t[0],i=this;if(r&&o){var u=e(o);u&&(r.txSize=u)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof n.onload))&&i.end(n)}catch(e){try{a.emit("internal-error",[e])}catch(r){}}};for(var f=0;c>f;f++)n.addEventListener(s[f],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+u(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+u(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof XMLHttpRequest&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&&a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{1:"XL7HBI",2:9,3:7,4:4,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],9:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&&e.port===n.port&&e.protocol===n.protocol,r}},{}],10:[function(t,e){function n(t){return function(){r(t,[(new Date).getTime()].concat(i(arguments)))}}var r=t("handle"),o=t(1),i=t(2);"undefined"==typeof window.newrelic&&(newrelic=window.NREUM);var a=["setPageViewName","trackUserAction","finished","traceEvent","inlineHit","noticeError"];o(a,function(t,e){window.NREUM[e]=n("api-"+e)}),e.exports=window.NREUM},{1:19,2:20,handle:"D5DuLP"}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):(o[t]||(o[t]=[]),void o[t].push(e))}var r=t("ee").create(),o={};e.exports=n,n.ee=r,r.q=o},{ee:"QJf3ax"}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],G9z0Bl:[function(t,e){function n(){var t=l.info=NREUM.info;if(t&&t.licenseKey&&t.applicationID&&u&&u.body){s(h,function(e,n){e in t||(t[e]=n)}),l.proto="https"===p.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var e=u.createElement("script");e.src=l.proto+t.agent,u.body.appendChild(e)}}function r(){"complete"===u.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=t(1),c=(t(2),window),u=c.document,f="addEventListener",d="attachEvent",p=(""+location).split("?")[0],h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-536.min.js"},l=e.exports={offset:i(),origin:p,features:{}};u[f]?(u[f]("DOMContentLoaded",o,!1),c[f]("load",n,!1)):(u[d]("onreadystatechange",r),c[d]("onload",n)),a("mark",["firstbyte",i()])},{1:19,2:10,handle:"D5DuLP"}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],19:[function(t,e){function n(t,e){var n=[],o="",i=0;for(o in t)r.call(t,o)&&(n[i]=e(o,t[o]),i+=1);return n}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],20:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],21:[function(t,e){function n(t){return!(t&&"function"==typeof t&&t.apply&&!t[i])}var r=t("ee"),o=t(1),i="nr@wrapper",a=Object.prototype.hasOwnProperty;e.exports=function(t){function e(t,e,r,a){function nrWrapper(){var n,i,s,u;try{i=this,n=o(arguments),s=r&&r(n,i)||{}}catch(d){f([d,"",[n,i,a],s])}c(e+"start",[n,i,a],s);try{return u=t.apply(i,n)}catch(p){throw c(e+"err",[n,i,p],s),p}finally{c(e+"end",[n,i,u],s)}}return n(t)?t:(e||(e=""),nrWrapper[i]=!0,u(t,nrWrapper),nrWrapper)}function s(t,r,o,i){o||(o="");var a,s,c,u="-"===o.charAt(0);for(c=0;c<r.length;c++)s=r[c],a=t[s],n(a)||(t[s]=e(a,u?s+o:o,i,s,t))}function c(e,n,r){try{t.emit(e,n,r)}catch(o){f([o,e,n,r])}}function u(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){f([r])}for(var o in t)a.call(t,o)&&(e[o]=t[o]);return e}function f(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=r),e.inPlace=s,e.flag=i,e}},{1:20,ee:"QJf3ax"}]},{},["G9z0Bl",3,8]);</script> 
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, user-scalable=1"> 
+  <title>Summer Jobs and Seasonal Jobs in Great Places | CoolWorks.com</title> 
+  <link href="http://fonts.googleapis.com/css?family=Rambla:400,700" rel="stylesheet" type="text/css"> 
+  <link href="/assets/cw-assets-6cd7dd2c6fbfe421c84e2695f3b0f552.css" media="screen" rel="stylesheet"> 
+  <link href="/assets/cw5_login-1db3e49b2f8aa69c6156d2d6f5f3d85b.css" media="screen" rel="stylesheet"> 
+  <script src="/assets/cw-assets-16b22baca4c63815de9974e8166336dc.js"></script> 
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-234969-1', {'cookieDomain': 'coolworks.com', 'siteSpeedSampleRate': 10});
+  ga('require', 'displayfeatures');
+  ga('set', 'contentGroup1', 'Home');
+  ga('send', 'pageview');
+</script> 
+  <meta content="Summer jobs and Seasonal jobs in National Parks, Ski Resorts, Ranches, Camps and Cruise Ships and other Great Places." name="description"> 
+  <meta content="summer jobs, employment, seasonal jobs, work, camp, national parks, resort, internship, student, job listing, career, Job, summerjobs, summer break, resort jobs, ski jobs, cruise jobs, cool jobs, teen" name="keywords"> 
+  <meta content="CoolWorks.com" property="og:site_name"> 
+  <meta content="CoolWorks.com" property="og:title"> 
+  <meta content="Summer jobs and Seasonal jobs in National Parks, Ski Resorts, Ranches, Camps and Cruise Ships and other Great Places." property="og:description"> 
+  <meta content="http://www.coolworks.com/system/heros/274/square/yosemite-leap.jpg?1399439008" property="og:image"> 
+  <meta content="http://www.coolworks.com/" property="og:url"> 
+  <meta content="159890424038290" property="fb:app_id"> 
+  <link href="http://www.coolworks.com/whats-new.xml" rel="alternate" title="CoolWorks.com What's New RSS Feed" type="application/rss+xml"> 
+  <link href="/assets/home-ba507d1c56f99d91b29ee9f7d2d5f6a5.css" media="screen" rel="stylesheet"> 
+  <script src="/assets/home-2c20bd3fa44e5bf818fc19a661a88b22.js"></script> 
+  <script type="text/javascript">
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+(function() {
+var gads = document.createElement('script');
+gads.async = true;
+gads.type = 'text/javascript';
+var useSSL = 'https:' == document.location.protocol;
+gads.src = (useSSL ? 'https:' : 'http:') +
+'//www.googletagservices.com/tag/js/gpt.js';
+var node = document.getElementsByTagName('script')[0];
+node.parentNode.insertBefore(gads, node);
+})();
+</script> 
+  <script type="text/javascript">
+googletag.cmd.push(function() {
+googletag.defineSlot('/1004057/HomeTopRightBig', [300, 250], 'div-gpt-ad-1425243149512-0').addService(googletag.pubads());
+googletag.pubads().enableSingleRequest();
+googletag.pubads().collapseEmptyDivs();
+googletag.enableServices();
+});
+</script> 
+ </head> 
+ <body class="blue-mtn equal-cols"> 
+  <div id="wrapper" class="container_12"> 
+   <div id="header" class="clearfix"> 
+    <div class="grid_4" id="logo"> 
+     <a href="/"><img alt="CoolWorks.com" height="79" src="/assets/cw-logo.png" width="300"></a> 
+    </div> 
+    <div class="grid_8" id="nav"> 
+     <div id="nav-links" class="clearfix"> 
+      <ul> 
+       <li><a href="/about/about-us.html">About</a></li> 
+       <li><a href="/about/news.html">News</a></li> 
+       <li><a href="/about/faq.html">FAQ</a></li> 
+      </ul> 
+     </div> 
+     <div id="nav-menus" class="clearfix"> 
+      <div id="find-a-job">
+       <a href="/find-a-job/" class="nav-button">Find a Job</a> 
+       <div class="sub clearfix"> 
+        <ul class="subnav"> 
+         <li class="label">Find jobs by:</li> 
+         <li class="tab" id="category-tab"><a href="/find-a-job/#category" class="tab">Category</a> 
+          <div class="links"> 
+           <ul class="grid_2 alpha"> 
+            <li><a href="/camp-jobs/">Camp Jobs</a></li> 
+            <li><a href="/careers/">Careers</a></li> 
+            <li><a href="/conference-retreat-centers/">Conference and Retreat Centers</a></li> 
+            <li><a href="/conservation-corps/">Conservation Corps</a></li> 
+            <li><a href="/driving-jobs/">Driving Jobs</a></li> 
+            <li><a href="/environmental-jobs/">Environmental Jobs</a></li> 
+            <li><a href="/farm-garden-jobs/">Farm and Garden Jobs</a></li> 
+            <li><a href="/restaurant-jobs/">Food and Bev Jobs</a></li> 
+           </ul> 
+           <ul class="grid_2"> 
+            <li><a href="/fishing-jobs/">Fishing Jobs</a></li> 
+            <li><a href="/guide-jobs/">Guide Jobs</a></li> 
+            <li><a href="/housekeeping-hospitality-jobs/">Housekeeping / Hospitality</a></li> 
+            <li><a href="/internships/">Internships</a></li> 
+            <li><a href="/international-job-seekers/">J-1/H2B Visa Info</a></li> 
+            <li><a href="/jobs-on-horseback/">Jobs on Horseback</a></li> 
+            <li><a href="/jobs-with-rv-spaces/">Jobs for RVers</a></li> 
+            <li><a href="/jobs-on-water/">Jobs on Water</a></li> 
+            <li><a href="/national-park-jobs/">National Park Jobs</a></li> 
+           </ul> 
+           <ul class="grid_2"> 
+            <li><a href="/management-jobs/">Managers / Supervisors</a></li> 
+            <li><a href="/non-profits/">Non Profits</a></li> 
+            <li><a href="/older-bolder/">Older and Bolder</a></li> 
+            <li><a href="/other-cool-jobs/">Other Cool Jobs</a></li> 
+            <li><a href="/ranch-jobs/">Ranch Jobs</a></li> 
+            <li><a href="/resort-jobs/">Resort Jobs</a></li> 
+            <li><a href="/restaurant-jobs/">Restaurant Jobs</a></li> 
+            <li><a href="/retail-jobs/">Retail Jobs</a></li> 
+            <li><a href="/seasonal-pros/">Seasonal Pros</a></li> 
+           </ul> 
+           <ul class="grid_2 omega"> 
+            <li><a href="/ski-resort-jobs/">Ski Resort Jobs</a></li> 
+            <li><a href="/state-park-jobs/">State Park Jobs</a></li> 
+            <li><a href="/teaching-jobs/">Teachers / Educators</a></li> 
+            <li><a href="/teen-jobs/">Teen Jobs</a></li> 
+            <li><a href="/trip-leaders/">Trip Leaders</a></li> 
+            <li><a href="/volunteer/">Volunteer</a></li> 
+            <li><a href="/work-abroad/">Work, Study, Teach Abroad</a></li> 
+           </ul> 
+           <div class="foot"> 
+            <ul> 
+             <li><a class="whats-new" href="/whats-new/">What's New</a></li> 
+             <li><a class="help-wanted-now" href="/help-wanted-now/">Help Wanted Now</a></li> 
+             <li><a class="highlighted-jobs" href="/highlighted-jobs/">Highlighted Jobs</a></li> 
+             <li><a class="job-map" href="/job-map/">Job Map</a></li> 
+            </ul> 
+           </div> 
+          </div> </li> 
+         <li class="tab" id="state-tab"> <a href="/jobs-by-state/" class="tab">State</a> 
+          <div class="links"> 
+           <ul class="grid_2 alpha"> 
+            <li><a href="/alabama-jobs/">Alabama</a></li> 
+            <li><a href="/alaska-jobs/">Alaska</a></li> 
+            <li><a href="/arizona-jobs/">Arizona</a></li> 
+            <li><a href="/arkansas-jobs/">Arkansas</a></li> 
+            <li><a href="/california-jobs/">California</a></li> 
+            <li><a href="/colorado-jobs/">Colorado</a></li> 
+            <li><a href="/connecticut-jobs/">Connecticut</a></li> 
+            <li><a href="/delaware-jobs/">Delaware</a></li> 
+            <li><a href="/florida-jobs/">Florida</a></li> 
+            <li><a href="/georgia-jobs/">Georgia</a></li> 
+            <li><a href="/hawaii-jobs/">Hawaii</a></li> 
+            <li><a href="/idaho-jobs/">Idaho</a></li> 
+            <li><a href="/illinois-jobs/">Illinois</a></li> 
+           </ul> 
+           <ul class="grid_2"> 
+            <li><a href="/indiana-jobs/">Indiana</a></li> 
+            <li><a href="/iowa-jobs/">Iowa</a></li> 
+            <li><a href="/kansas-jobs/">Kansas</a></li> 
+            <li><a href="/kentucky-jobs/">Kentucky</a></li> 
+            <li><a href="/louisiana-jobs/">Louisiana</a></li> 
+            <li><a href="/maine-jobs/">Maine</a></li> 
+            <li><a href="/maryland-jobs/">Maryland</a></li> 
+            <li><a href="/massachusetts-jobs/">Massachusetts</a></li> 
+            <li><a href="/michigan-jobs/">Michigan</a></li> 
+            <li><a href="/minnesota-jobs/">Minnesota</a></li> 
+            <li><a href="/mississippi-jobs/">Mississippi</a></li> 
+            <li><a href="/missouri-jobs/">Missouri</a></li> 
+            <li><a href="/montana-jobs/">Montana</a></li> 
+           </ul> 
+           <ul class="grid_2"> 
+            <li><a href="/nebraska-jobs/">Nebraska</a></li> 
+            <li><a href="/nevada-jobs/">Nevada</a></li> 
+            <li><a href="/new-hampshire-jobs/">New Hampshire</a></li> 
+            <li><a href="/new-jersey-jobs/">New Jersey</a></li> 
+            <li><a href="/new-mexico-jobs/">New Mexico</a></li> 
+            <li><a href="/new-york-jobs/">New York</a></li> 
+            <li><a href="/north-carolina-jobs/">North Carolina</a></li> 
+            <li><a href="/north-dakota-jobs/">North Dakota</a></li> 
+            <li><a href="/ohio-jobs/">Ohio</a></li> 
+            <li><a href="/oklahoma-jobs/">Oklahoma</a></li> 
+            <li><a href="/oregon-jobs/">Oregon</a></li> 
+            <li><a href="/pennsylvania-jobs/">Pennsylvania</a></li> 
+            <li><a href="/rhode-island-jobs/">Rhode Island</a></li> 
+           </ul> 
+           <ul class="grid_2 omega"> 
+            <li><a href="/south-carolina-jobs/">South Carolina</a></li> 
+            <li><a href="/south-dakota-jobs/">South Dakota</a></li> 
+            <li><a href="/tennessee-jobs/">Tennessee</a></li> 
+            <li><a href="/texas-jobs/">Texas</a></li> 
+            <li><a href="/utah-jobs/">Utah</a></li> 
+            <li><a href="/vermont-jobs/">Vermont</a></li> 
+            <li><a href="/virginia-jobs/">Virginia</a></li> 
+            <li><a href="/washington-jobs/">Washington</a></li> 
+            <li><a href="/west-virginia-jobs/">West Virginia</a></li> 
+            <li><a href="/wisconsin-jobs/">Wisconsin</a></li> 
+            <li><a href="/wyoming-jobs/">Wyoming</a></li> 
+           </ul> 
+           <div class="foot"> 
+            <ul> 
+             <li><a class="whats-new" href="/whats-new/">What's New</a></li> 
+             <li><a class="help-wanted-now" href="/help-wanted-now/">Help Wanted Now</a></li> 
+             <li><a class="highlighted-jobs" href="/highlighted-jobs/">Highlighted Jobs</a></li> 
+             <li><a class="job-map" href="/job-map/">Job Map</a></li> 
+            </ul> 
+           </div> 
+          </div> </li> 
+         <li class="tab" id="season-tab"><a href="/find-a-job/#season" class="tab">Season</a> 
+          <div class="links"> 
+           <ul class="grid_2 alpha"> 
+            <li><a href="/summer-jobs/">Summer Jobs</a></li> 
+            <li><a href="/year-round-jobs/">Year-round Jobs</a></li> 
+           </ul> 
+           <ul class="grid_2"> 
+            <li><a href="/fall-jobs/">Fall Jobs</a></li> 
+           </ul> 
+           <ul class="grid_2"> 
+            <li><a href="/winter-jobs/">Winter Jobs</a></li> 
+           </ul> 
+           <ul class="grid_2 omega"> 
+            <li><a href="/spring-jobs/">Spring Jobs</a></li> 
+           </ul> 
+           <div class="foot"> 
+            <ul> 
+             <li><a class="whats-new" href="/whats-new/">What's New</a></li> 
+             <li><a class="help-wanted-now" href="/help-wanted-now/">Help Wanted Now</a></li> 
+             <li><a class="highlighted-jobs" href="/highlighted-jobs/">Highlighted Jobs</a></li> 
+             <li><a class="job-map" href="/job-map/">Job Map</a></li> 
+            </ul> 
+           </div> 
+          </div> </li> 
+         <li class="tab" id="national-park-tab"> <a href="/national-park-jobs/" class="tab">National Park</a> 
+          <div class="links"> 
+           <ul class="grid_2 alpha"> 
+            <li><a href="/acadia-national-park-jobs/">Acadia </a></li> 
+            <li><a href="/admiralty-island-jobs/">Admiralty Island</a></li> 
+            <li><a href="/arches-national-park-jobs/">Arches </a></li> 
+            <li><a href="/arctic-national-wildlife-refuge-jobs/">Arctic National Wildlife Refuge</a></li> 
+            <li><a href="/badlands-national-park-jobs/">Badlands</a></li> 
+            <li><a href="/big-bend-national-park-jobs/">Big Bend </a></li> 
+            <li><a href="/blue-ridge-parkway-jobs/">Blue Ridge Parkway</a></li> 
+            <li><a href="/bryce-canyon-national-park-jobs/">Bryce Canyon</a></li> 
+            <li><a href="/canyonlands-national-park-jobs/">Canyonlands</a></li> 
+            <li><a href="/cape-cod-jobs/">Cape Cod National Seashore</a></li> 
+            <li><a href="/crater-lake-national-park-jobs/">Crater Lake</a></li> 
+           </ul> 
+           <ul class="grid_2"> 
+            <li><a href="/death-valley-national-park-jobs/">Death Valley</a></li> 
+            <li><a href="/denali-national-park-jobs/">Denali</a></li> 
+            <li><a href="/everglades-national-park-jobs/">Everglades</a></li> 
+            <li><a href="/gates-of-the-arctic-jobs/">Gates of the Arctic</a></li> 
+            <li><a href="/glacier-bay-national-park-jobs/">Glacier Bay</a></li> 
+            <li><a href="/glacier-national-park-jobs/">Glacier</a></li> 
+            <li><a href="/glen-canyon-lake-powell-jobs/">Glen Canyon - Lake Powell</a></li> 
+            <li><a href="/grand-canyon-national-park-jobs/">Grand Canyon</a></li> 
+            <li><a href="/grand-teton-national-park-jobs/">Grand Teton</a></li> 
+            <li><a href="/hawaii-volcanoes-national-park-jobs/">Hawaii Volcanoes</a></li> 
+            <li><a href="/isle-royale-national-park-jobs/">Isle Royale</a></li> 
+            <li><a href="/katmai-national-park-jobs/">Katmai</a></li> 
+           </ul> 
+           <ul class="grid_2"> 
+            <li><a href="/kenai-fjords-national-park-jobs/">Kenai Fjords</a></li> 
+            <li><a href="/lake-clark-national-park-jobs/">Lake Clark</a></li> 
+            <li><a href="/mammoth-cave-national-park-jobs/">Mammoth Cave</a></li> 
+            <li><a href="/mesa-verde-national-park-jobs/">Mesa Verde</a></li> 
+            <li><a href="/misty-fjords-national-park-jobs/">Misty Fjords</a></li> 
+            <li><a href="/mount-rainier-national-park-jobs/">Mount Rainier</a></li> 
+            <li><a href="/mount-rushmore-black-hills-jobs/">Mount Rushmore - Black Hills</a></li> 
+            <li><a href="/north-cascades-national-park-jobs/">North Cascades</a></li> 
+            <li><a href="/olympic-national-park-jobs/">Olympic</a></li> 
+            <li><a href="/rocky-mountain-national-park-jobs/">Rocky Mountain</a></li> 
+            <li><a href="/saguaro-national-park-jobs/">Saguaro</a></li> 
+           </ul> 
+           <ul class="grid_2 omega"> 
+            <li><a href="/sequoia-kings-canyon-national-park-jobs/">Sequoia and Kings Canyon</a></li> 
+            <li><a href="/shenandoah-national-park-jobs/">Shenandoah</a></li> 
+            <li><a href="/smoky-mountains-national-park-jobs/">Great Smoky Mountains</a></li> 
+            <li><a href="/theodore-roosevelt-national-park-jobs/">Theodore Roosevelt</a></li> 
+            <li><a href="/voyageurs-national-park-jobs/">Voyageurs</a></li> 
+            <li><a href="/wrangell-st-elias-jobs/">Wrangell - St Elias</a></li> 
+            <li><a href="/yellowstone-national-park-jobs/">Yellowstone</a></li> 
+            <li><a href="/yosemite-national-park-jobs/">Yosemite</a></li> 
+            <li><a href="/yukon-flats-national-wildlife-refuge-jobs/">Yukon Flats National Wildlife Refuge</a></li> 
+            <li><a href="/zion-national-park-jobs/">Zion</a></li> 
+           </ul> 
+           <div class="foot"> 
+            <ul> 
+             <li><a class="whats-new" href="/whats-new/">What's New</a></li> 
+             <li><a class="help-wanted-now" href="/help-wanted-now/">Help Wanted Now</a></li> 
+             <li><a class="highlighted-jobs" href="/highlighted-jobs/">Highlighted Jobs</a></li> 
+             <li><a class="job-map" href="/job-map/">Job Map</a></li> 
+            </ul> 
+           </div> 
+          </div> </li> 
+        </ul> 
+       </div> 
+      </div> 
+      <div class="search-box"> 
+       <form action="/search" method="get"> 
+        <input autocomplete="off" id="q" name="q" type="text" placeholder="Search jobs and employers"> 
+        <button class="search" type="submit" value="Search">Search</button> 
+       </form> 
+      </div> 
+      <div id="employers">
+       <a href="/employers/" class="nav-button">Post a Job</a> 
+       <div class="sub clearfix"> 
+        <ul class="subnav"> 
+         <li class="label">&nbsp;</li> 
+         <li class="tab" id="new-emp-tab"> 
+          <div class="links"> 
+           <ul class="grid_3 alpha"> 
+            <li><a href="/signups/new">Signup and Post a Job</a></li> 
+            <li><a href="/login">Login to Post a Job</a></li> 
+            <li><a href="https://staffingcenter.coolworks.com/">Staffing Center Login</a></li> 
+            <li><a href="/employers/posting-options.html">Posting Options</a></li> 
+            <li><a href="/coolworks/form/employer-profile-form">Submit Profile Info</a></li> 
+           </ul> 
+           <div class="foot"> 
+            <ul> 
+             <li><a href="/about/the-coolworks-team.html" class="our-team">Our Team</a></li> 
+             <li><a href="/about/contact-us.html" class="contact-us">Contact Us</a></li> 
+             <li><a href="http://seasonalhr.coolworks.com/" class="hr-blog">HR Blog</a></li> 
+             <li><a href="/about/terms-of-use.html" class="terms-of-use">Terms of Use</a></li> 
+            </ul> 
+           </div> 
+          </div> </li> 
+        </ul> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="hero"> 
+    <div id="slides"> 
+     <div> 
+      <img alt="Yosemite - Half Dome Summit. Photo by Bill Berg" height="340" src="/system/heros/274/original/yosemite-leap.jpg?1399439008" width="960"> 
+      <div class="caption">
+       Yosemite - Half Dome Summit. Photo by Bill Berg
+      </div> 
+     </div> 
+     <div>
+      <a href="/colorado-jobs"><img alt="Pikes Peak by Alice Lund" height="340" src="/system/heros/133/original/pikes-peak-by-alice-lund-colorado.jpg?1399438844" width="960"></a>
+      <div class="caption">
+       <a href="/colorado-jobs">Colorado Jobs</a> - Pikes Peak by Alice Lund
+      </div>
+     </div>
+     <div>
+      <a href="/denali-national-park-jobs"><img alt="Colette on Denali.  Mt Hunter in the Background." height="340" src="/system/heros/181/original/snow-hero.jpg?1399438897" width="960"></a>
+      <div class="caption">
+       <a href="/denali-national-park-jobs">Denali National Park and Preserve</a> - Colette on Denali. Mt Hunter in the Background.
+      </div>
+     </div>
+     <div>
+      <a href="/grand-canyon-national-park-jobs"><img alt="One of the most amazing places on the planet.  Photograph by Kari Quaas. " height="340" src="/system/heros/187/original/Grand-Canyon-Hero-Shot.jpg?1399438906" width="960"></a>
+      <div class="caption">
+       <a href="/grand-canyon-national-park-jobs">Grand Canyon National Park</a> - One of the most amazing places on the planet. Photograph by Kari Quaas. 
+      </div>
+     </div> 
+    </div> 
+   </div> 
+   <div id="content" class="clearfix"> 
+    <div id="top-wide" class="alpha omega"> 
+    </div> 
+    <div id="left-col" class="alpha"> 
+     <h1>CoolWorks.com</h1> 
+     <p class="subhead">Jobs in Great Places ®</p> 
+     <div class="clearfix" id="intro_links"> 
+      <h3>Search or browse for jobs in great places!</h3> 
+      <div class="search-box"> 
+       <form action="/search" method="get"> 
+        <input autocomplete="off" id="q" name="q" placeholder="Search jobs and employers" type="text"> 
+        <button class="search" type="submit">Search</button> 
+       </form> 
+      </div> 
+      <div class="grid_3 alpha"> 
+       <ul class="no-bullet"> 
+        <li><a href="/whats-new/">What's New</a></li> 
+        <li><a href="/help-wanted-now/">Help Wanted Now</a></li> 
+        <li><a href="/jobs">Highlighted Jobs</a></li> 
+        <li><a href="/job-map/">Job Map</a></li> 
+       </ul> 
+       <ul class="no-bullet"> 
+        <li><a href="/about/faq.html">Cool Works FAQ</a></li> 
+        <li><a href="http://blog.coolworks.com/">Our Blog</a></li> 
+       </ul> 
+      </div> 
+      <div class="grid_2 omega"> 
+       <ul class="no-bullet"> 
+        <li><a href="/find-a-job/">Categories</a></li> 
+        <li><a href="/find-a-job/#season">Seasons</a></li> 
+        <li><a href="/jobs-by-state/">States</a></li> 
+        <li><a href="/national-park-jobs/">National Parks</a></li> 
+       </ul> 
+       <ul class="no-bullet"> 
+        <li><a href="/theblast/">Email Updates</a></li> 
+        <li><a href="/about/news.html">In the News</a></li> 
+       </ul> 
+      </div> 
+     </div> 
+     <div id="new-profiles"> 
+      <h2>Newest Employers</h2> 
+      <p>Click to read details about all their jobs, application process and much more!</p> 
+      <div class="profile-listing"> 
+       <h4><a href="/mountain-village-resort/profile">Mountain Village Resort</a></h4> 
+       <p class="blurb"> Work and Play in the heart of the Sawtooth Mountains! </p> 
+       <div class="clear"></div> 
+      </div> 
+      <div class="profile-listing"> 
+       <h4><a href="/harbor-view-hotel/profile">Harbor View Hotel</a></h4> 
+       <p class="blurb">Spend a Summer Island Style…Join us on Martha’s Vineyard in 2015! </p> 
+       <div class="clear"></div> 
+      </div> 
+      <div class="profile-listing"> 
+       <h4><a href="/park-city-transit/profile">Park City Transit</a></h4> 
+       <p class="blurb">Make friends from around the world being a Bus Driver in Park City. </p> 
+       <div class="clear"></div> 
+      </div> 
+      <div class="profile-listing"> 
+       <h4><a href="/outdoor-rafting-adventures/profile">Outdoor Rafting Adventures</a></h4> 
+       <p class="blurb">Outdoor Adventures in the Smoky Mountains! </p> 
+       <div class="clear"></div> 
+      </div> 
+      <div class="profile-listing"> 
+       <h4><a href="/alaska-mountain-guides-and-chilkat-guides/profile">Alaska Mountain Guides &amp; Chilkat Guides</a></h4> 
+       <p class="blurb">Adventure guide jobs in Haines and Skagway, Alaska </p> 
+       <div class="clear"></div> 
+      </div> 
+      <div class="profile-listing"> 
+       <h4><a href="/echo-canyon-river-expeditions/profile">Echo Canyon River Expeditions</a></h4> 
+       <p class="blurb">Raft Guide Jobs in Colorado </p> 
+       <div class="clear"></div> 
+      </div> 
+      <div class="profile-listing"> 
+       <h4><a href="/alaska-outdoors/profile">Alaska Outdoors</a></h4> 
+       <p class="blurb">Lead and Assistant Guide Jobs Throughout the Great State of Alaska </p> 
+       <div class="clear"></div> 
+      </div> 
+      <div class="profile-listing"> 
+       <h4><a href="/b-bar-ranch/profile">B Bar Ranch</a></h4> 
+       <p class="blurb">Summer Ranch Jobs on Yellowstone's Border </p> 
+       <div class="clear"></div> 
+      </div> 
+      <div class="profile-listing"> 
+       <h4><a href="/pahaska-tepee/profile">Pahaska Tepee Resort</a></h4> 
+       <p class="blurb">Spend this summer next to Yellowstone National Park </p> 
+       <div class="clear"></div> 
+      </div> 
+      <div class="profile-listing"> 
+       <h4><a href="/silver-cliff-ranch/profile">Silver Cliff Ranch</a></h4> 
+       <p class="blurb">Spend a Summer in the Colorado High Country! </p> 
+       <div class="clear"></div> 
+      </div> 
+      <div class="profile-listing"> 
+       <h4><a href="/stonewater-cove-resort-and-spa-llc/profile">Stonewater Cove Resort and Spa</a></h4> 
+       <p class="blurb">Work at family-owned luxury resort on lake in middle of Ozark Mountain Wilderness </p> 
+       <div class="clear"></div> 
+      </div> 
+      <div class="profile-listing"> 
+       <h4><a href="/death-valley-lodging-company-stovepipe-wells/profile">Death Valley Lodging Company (Stovepipe Wells)</a></h4> 
+       <p class="blurb">Fall in love with the desert! <a href="/jobs-with-rv-spaces"><img alt="RV Spaces" class="rv" height="14" src="/assets/rv-icon-698c078831e24047d69ae1d4bbb3297d.png" title="RV Spaces" width="34"></a></p> 
+       <div class="clear"></div> 
+      </div> 
+      <div class="profile-listing"> 
+       <h4><a href="/taku-glacier-lodge-inc/profile">Taku Glacier Lodge Inc.</a></h4> 
+       <p class="blurb">Adventurous jobs at Alaska's remote Taku Glacier Lodge near Juneau </p> 
+       <div class="clear"></div> 
+      </div> 
+      <div class="profile-listing"> 
+       <h4><a href="/camp-europe/profile">Camp Europe</a></h4> 
+       <p class="blurb">Paid Summer-Volunteer Positions throughout Europe </p> 
+       <div class="clear"></div> 
+      </div> 
+      <div class="profile-listing"> 
+       <h4><a href="/american-prairie-reserve/profile">American Prairie Reserve</a></h4> 
+       <p class="blurb">Hiring Hospitality Supervisors to help create the American Serengeti! </p> 
+       <div class="clear"></div> 
+      </div> 
+      <h3><a class="action-link" href="/whats-new/">More New Employers...</a></h3> 
+     </div> 
+     <div class="sidebar3"> 
+      <h3>Post a Job</h3> 
+      <h4>New Employers</h4> 
+      <ul class="no-bullet"> 
+       <li><a href="/employers/posting-options.html">Learn about Cool Works</a></li> 
+       <li><a href="/signups/new">Register and Post</a></li> 
+      </ul> 
+      <h4>Returning Employers</h4> 
+      <ul class="no-bullet"> 
+       <li><a href="/login">Login to Post a Job</a></li> 
+       <li><a href="https://staffingcenter.coolworks.com/">Login to the Staffing Center</a></li> 
+      </ul> 
+     </div> 
+     <div class="sidebar4"> 
+      <h3>Resources</h3> 
+      <ul class="no-bullet"> 
+       <li><a href="http://blog.coolworks.com/">Our Blog</a></li> 
+       <li><a href="/about/faq.html">Cool Works FAQ</a></li> 
+       <li><a href="/theblast/">Email Updates</a></li> 
+       <li><a href="http://my.coolworks.com/">My Cool Works</a></li> 
+      </ul> 
+      <ul class="no-bullet"> 
+       <li><a href="/webcams/">Yellowstone River webcam</a></li> 
+       <li><a href="/about/news.html">News and Media</a></li> 
+      </ul> 
+     </div> 
+    </div> 
+    <div id="right-col" class="omega"> 
+     <div id="right-col-top"> 
+      <div class="sidebar_ad"> 
+       <!-- /1004057/HomeTopRightBig --> 
+       <div id="div-gpt-ad-1425243149512-0" class="dfp-ad " style="width:300px; height:250px;"> 
+        <script type="text/javascript">
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1425243149512-0'); });
+</script> 
+       </div> 
+      </div> 
+     </div> 
+     <div id="new-jobs"> 
+      <h2>Newest Jobs</h2> 
+      <p>Check out these specific job opportunities that <strong>need to be filled right away!</strong></p> 
+      <div class="job-listing"> 
+       <h4><a href="/yellowstone-park-travelodge/highlighted-job/4824-work-a-front-desk-with-a-view-of-yellowstone-park--2">Work a Front Desk with a view of Yellowstone Park this summer!</a></h4> 
+       <h5> Rodeway Inn and Suites – <span class="location">Gardiner, Montana</span> </h5> 
+       <p> Front Desk Staff </p> 
+      </div> 
+      <div class="job-listing"> 
+       <h4><a href="/korman-marketing-group/help-wanted-now/3946-high-end-hopsitality-jobs">High End Hopsitality Jobs</a></h4> 
+       <h5> KMG – <span class="location">KMG Hospitality - Crazy Mountain Ranch</span> </h5> 
+       <p> Activities, Culinary, Dinging, Housekeeping, Maintenance, </p> 
+      </div> 
+      <div class="job-listing"> 
+       <h4><a href="/new-haven-ranch/highlighted-job/4822-wanted-cook-for-working-cattle-and-guest-ranch-in--1">Wanted: COOK for working cattle &amp; guest ranch in northeast Wyoming</a></h4> 
+       <h5> New Haven Ranch – <span class="location">near Devils Tower in the beautiful Black Hills</span> </h5> 
+       <p> Ranch Cook for lunch and supper </p> 
+      </div> 
+      <div class="job-listing"> 
+       <h4><a href="/incredible-adventures/highlighted-job/4815-thinking-of-travelling-the-world-as-a-g-adventures-3">Thinking of travelling the world as a G Adventures Tour Leader?</a></h4> 
+       <h5> Incredible Adventures – <span class="location">San Francisco, CA</span> </h5> 
+       <p> G Adventures - Chief Experience Officer </p> 
+      </div> 
+      <div class="job-listing"> 
+       <h4><a href="/yosemite-bug-rustic-mountain-resort/highlighted-job/4821-breakfast-cook-yosemite-area">Breakfast Cook Yosemite Area</a></h4> 
+       <h5> Yosemite Bug Rustic Mountain Resort – <span class="location">Mountain, Scenic River, Wilderness, Small Gold Town, National Park</span> </h5> 
+       <p> Breakfast Line Cook </p> 
+      </div> 
+      <div class="job-listing"> 
+       <h4><a href="/waterfall-resort/highlighted-job/4809-world-class-sport-fishing-resort-seeking-qualified-3">World Class Sport Fishing Resort seeking qualified line cooks.</a></h4> 
+       <h5> Waterfall Resort – <span class="location">SE Alaska Prince of Wales Island</span> </h5> 
+       <p> Line Cook </p> 
+      </div> 
+      <div class="job-listing"> 
+       <h4><a href="/two-harbors-enterprises/help-wanted-now/3942-breakfast-lunch-and-dinner-line-cooks-1">Breakfast, Lunch and Dinner Line Cooks</a></h4> 
+       <h5> Santa Catalina Island Resort Services - Two Harbors – <span class="location">Beautiful Santa Catalina Island</span> </h5> 
+       <p> Breakfast, Lunch and Dinner Line Cooks </p> 
+      </div> 
+      <div class="job-listing"> 
+       <h4><a href="/eastern-sierra-interpretive-assoc/highlighted-job/4819-mountains-dot-dot-dot-mountains-dot-dot-dot-mounta">Mountains...mountains...mountains</a></h4> 
+       <h5> Eastern Sierra Interpretive Assoc. – <span class="location">Mountains mountains mountains!</span> </h5> 
+       <p> Visitor Center Coordinators (3) </p> 
+      </div> 
+      <div class="job-listing"> 
+       <h4><a href="/chisos-mountains-lodge-forever/help-wanted-now/3944-chisos-mountains-lodge-is-the-perfect-place-for-ad-1">Chisos Mountains Lodge is the Perfect Place for Adventure or to Get Away From it All!</a></h4> 
+       <h5> Chisos Mountain Lodge – <span class="location">Where countries and cultures meet along the Rio Grande</span> </h5> 
+       <p> Front Desk Clerk </p> 
+      </div> 
+      <div class="job-listing"> 
+       <h4><a href="/birch-trail-camp/highlighted-job/4818-seeking-a-camp-nurse-who-wants-to-spend-time-in-th">Seeking a Camp Nurse Who Wants to Spend Time in the Outdoors with Kids</a></h4> 
+       <h5> <a href="/birch-trail-camp/profile">Birch Trail Camp for Girls</a> – <span class="location">Minong, Wisconsin - Come visit the beautiful northwoods!</span> </h5> 
+       <p> Camp Nurse </p> 
+      </div> 
+      <h3><a class="action-link" href="/whats-new/">More New Jobs...</a></h3> 
+     </div> 
+     <div id="share"> 
+      <p class="share-widget"> <span class="st_facebook_hcount" displaytext="Facebook" title="Share on Facebook"></span> <span class="st_fblike_hcount"></span> <br> <span class="st_email_hcount" displaytext="Email" title="Send an Email"></span> <span class="st_twitter_hcount" displaytext="Tweet" title="Tweet!"></span> <br> <span class="st_plusone_hcount"></span> <span class="st_pinterest_hcount"></span> <span class="st_linkedin_hcount"></span> </p> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="footer" class="clearfix"> 
+    <div class="grid_12 middle"> 
+     <p> <a href="http://twitter.com/coolworks"><img alt="Twitter" height="32" src="/assets/icons/twitter-2-9b7fa936a3cde7573540e1d640988272.png" title="Foolow us on Twitter" width="32"></a> <a href="http://www.facebook.com/CoolWorks"><img alt="Facebook" height="32" src="/assets/icons/facebook-2-5bf5743ac0ec67905728e7e3f6441184.png" title="Visit us on Facebook" width="32"></a> <a href="http://my.coolworks.com/"><img alt="MyCoolWorks" height="32" src="/assets/icons/mycw-2-ba44573c5fe393365bfe0aac79d3d9d6.png" title="Hang out at My CoolWorks" width="32"></a> <a href="/about/privacy.html">Privacy Policy</a> <a href="/about/terms-of-use.html">Terms of Use</a> <a href="/about/site-map.html">Site Map</a> Copyright ©1995 - 2015 <a href="/">CoolWorks® </a> </p> 
+     <br> 
+    </div> 
+   </div> 
+  </div> 
+  <script type="text/javascript">
+setTimeout(function(){var a=document.createElement("script");
+var b=document.getElementsByTagName("script")[0];
+a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0004/5596.js?"+Math.floor(new Date().getTime()/3600000);
+a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script> 
+  <script type="text/javascript">var switchTo5x=true;</script> 
+  <script type="text/javascript">var __st_loadLate=true;</script> 
+  <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script> 
+  <script type="text/javascript">
+  stLight.options({
+  publisher: '0c31c083-c8f6-48a0-aa30-338749fdfdc7',
+  publisherGA: 'UA-234969-1',
+  tracking: 'google',
+  onhover: false,
+  theme: '3'
+});
+</script>   
+ </body>
+</html>

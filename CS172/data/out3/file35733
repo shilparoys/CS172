@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head> 
+  <link rel="stylesheet" href="css/wr.css" type="text/css"> 
+  <link rel="stylesheet" href="css/webreg_menu.css" type="text/css"> 
+  <link rel="stylesheet" href="css/termselblock.css" type="text/css"> 
+  <link rel="stylesheet" href="css/webregmain.css" type="text/css"> 
+  <link rel="stylesheet" href="css/login.css" type="text/css"> 
+  <title>USC Web Registration System</title> 
+  <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script> 
+  <script type="text/javascript" src="js/jquery.validate.min.js"></script> 
+  <script type="text/javascript" src="js/contact.js"></script> 
+  <style type="text/css">
+    .notification_error{border:1px solid #a25965;height:auto;width:90%;padding:4px;background:#f8f0f1;text-align:left; -moz-border-radius:5px;}
+    .notification_ok{border:1px solid #567397;height:auto;width:90%;padding:8px;background:#f5f9fd;text-align:center;-moz-border-radius:5px;}
+#contactus .info_fieldset { -moz-border-radius: 7px; border: 1px #dddddd solid;}
+#contactus .info_fieldset legend { border: 1px #dddddd solid; color:Black; font:13px Verdana; padding:2px 5px 2px 5px; -moz-border-radius:3px; }
+
+.control-group { margin-bottom:2px;}
+
+#contactus .textbox { height:20px; padding:1px; width:150px;}
+
+/*#contactus .button{border:1px solid #999999; border-top-color:#cccccc;border-left-color:#cccccc; background:white; color:#333333; height:2em; padding:1px;
+        font: 11px Verdanda, Helvetica, Arial, sans-serif; -moz-border-radius:3px; }
+*/
+#contactus .button 
+{ margin:1px;padding:3px;color:#ffcc00; background-color:#990000;border:solid 1px #333; font-weight:bold;
+  -webkit-border-radius:.4em; -moz-border-radius:.4em; border-radius:.4em;
+  -webkit-box-shadow:1px 1px 1px #ccc; box-shadow:2px 2px 2px #bbb;
+}
+#contactus .button[disabled]{ background-color:#ffffff; color:#cccccc;}
+#contactus .button:hover{ cursor:pointer; background-color:#ffcc00; color:#990000;}
+
+/* label */
+#contactus .control-label {width:100px; padding-left:10px; margin:5px; float:left; text-align:left;}
+/* input, textarea */
+#contactus input, textarea { margin:5px; padding:0px; float:left; border:1px solid #999999; border-top-color:#cccccc; border-left-color:#cccccc; color:#333333; font:11px Verdana, Helvetica, Arial, sans-serif; -moz-border-radius: 3px; }
+#contactus textarea { width:280px; height:100px;}
+/* BR */
+#contactus br { clear: left;}
+.clear { clear:both;}
+label.valid{width:24px; height:24px;background:url(images/Done.png) center center no-repeat; display: inline-block; text-indent:-9999px;}
+label.error { font-weight:bold; color:red; padding:2px 8px; margin-top:2px;}
+
+.control-group.error>label,.control-group.error .help-block,.control-group.error .help-inline{color:#b94a48;}
+.control-group.error input,.control-group.error select,.control-group.error textarea{color:#b94a48;border-color:#b94a48;}.control-group.error input:focus,.control-group.error select:focus,.control-group.error textarea:focus{border-color:#953b39;-webkit-box-shadow:0 0 6px #d59392;-moz-box-shadow:0 0 6px #d59392;box-shadow:0 0 6px #d59392;}
+.control-group.error .input-prepend .add-on,.control-group.error .input-append .add-on{color:#b94a48;background-color:#f2dede;border-color:#b94a48;}
+.control-group.success>label,.control-group.success .help-block,.control-group.success .help-inline{color:#468847;}
+.control-group.success input,.control-group.success select,.control-group.success textarea{color:#468847;border-color:#468847;}.control-group.success input:focus,.control-group.success select:focus,.control-group.success textarea:focus{border-color:#356635;-webkit-box-shadow:0 0 6px #7aba7b;-moz-box-shadow:0 0 6px #7aba7b;box-shadow:0 0 6px #7aba7b;}
+.control-group.success .input-prepend .add-on,.control-group.success .input-append .add-on{color:#468847;background-color:#dff0d8;border-color:#468847;}
+input:focus:required:invalid,textarea:focus:required:invalid,select:focus:required:invalid{color:#b94a48;border-color:#ee5f5b;}input:focus:required:invalid:focus,textarea:focus:required:invalid:focus,select:focus:required:invalid:focus{border-color:#e9322d;-webkit-box-shadow:0 0 6px #f8b9b7;-moz-box-shadow:0 0 6px #f8b9b7;box-shadow:0 0 6px #f8b9b7;}
+
+
+</style> 
+ </head> 
+ <body class="wrbody"> 
+  <!-- USCheader --> 
+  <div class="hdr-div"> 
+   <table class="centered-table" border="0" width="100%" cellspacing="0" cellpadding="0"> 
+    <tbody>
+     <tr> 
+      <td> <a href="http://www.usc.edu"><img src="images/usc-name-gold-cardinal.gif" border="0" alt="University of Southern California" width="255" height="25"></a> </td> 
+      <td rowspan="2" align="right" valign="top"> <a href="http://www.usc.edu"><img src="images/mono-gold-cardinal-med.gif" alt="" width="65" height="50" border="0"></a> </td> 
+     </tr> 
+     <tr> 
+      <td rowspan="2" align="left"> <a href="#"><img src="images/WebRegistrationTitle.jpg" border="0" alt="Web Site Name" width="450" height="25"></a> </td> 
+     </tr> 
+    </tbody>
+   </table> 
+  </div> 
+  <!-- end of USCheader --> 
+  <div class="content-div" id="contactus"> 
+   <center> 
+    <div style="width:600px; margin-top:30px; text-align:left; margin-left:20px;"> 
+     <fieldset class="info_fieldset">
+      <legend>Contact Us</legend> 
+      <div id="note" style="margin-bottom:2px;"></div> 
+      <div id="fields"> 
+       <form id="contact-form"> 
+        <div class="control-group"> 
+         <label class="control-label" for="lastName">Last Name *</label> 
+         <div class="controls">
+          <input class="textbox" type="text" name="lastName" id="lastName" value="" maxlength="25">
+          <br>
+         </div> 
+        </div> 
+        <div class="control-group"> 
+         <label class="control-label" for="firstName">First Name *</label> 
+         <div class="controls">
+          <input class="textbox" type="text" name="firstName" id="firstName" value="" maxlength="25">
+          <br>
+         </div> 
+        </div> 
+        <div class="control-group"> 
+         <label class="control-label" for="uscid">Your USC ID *</label> 
+         <div class="controls">
+          <input class="textbox" type="text" name="uscid" id="uscid" value="" maxlength="10">
+          <br>
+         </div> 
+        </div> 
+        <div class="control-group"> 
+         <label class="control-label" for="email">Your Email *</label> 
+         <div class="controls">
+          <input class="textbox" type="text" name="email" id="email" value="" maxlength="200">
+          <br>
+         </div> 
+        </div> 
+        <div class="control-group"> 
+         <label class="control-label" for="phone">Your Phone # *</label> 
+         <div class="controls">
+          <input class="textbox" type="text" name="phone" id="phone" value="" maxlength="15">
+          <br>
+         </div> 
+        </div> 
+        <div class="control-group"> 
+         <label class="control-label" for="term">Term *</label> 
+         <div class="controls">
+          <select class="ddl" name="term" id="term"> <option id="t0" value="">Please select a term</option> <option value="20152"> Summer 2015</option><option value="20151"> Spring 2015</option><option value="20143"> Fall 2014</option> </select>
+          <br>
+         </div> 
+        </div> 
+        <div class="control-group"> 
+         <label class="control-label" for="major">Major *</label> 
+         <div class="controls">
+          <input class="textbox" type="text" name="major" id="major" value="" maxlength="20">
+          <br>
+         </div> 
+        </div> 
+        <div class="control-group"> 
+         <label class="control-label" for="subject">Problem Type *</label> 
+         <div class="controls">
+          <select class="ddl" name="subject" id="subject"> <option id="0" value="">Please select an option</option> <option id="1" value="A">A registration appointment time</option> <option id="2" value="TuitionRefund">Tuition Refund Insurance</option> <option id="3" value="TimeConflict">Time Conflict</option> <option id="4" value="Enroll20">Enrolling in 20+ units</option> <option id="5" value="ErrMsg">Help understanding an error message</option> <option id="6" value="Acct">Help with a restriction on my account</option> <option id="7" value="Dept">Help locating an academic department</option> <option id="8" value="Other">Other</option> </select>
+          <br>
+         </div> 
+        </div> 
+        <div class="control-group"> 
+         <label class="control-label" for="message">Details *</label> 
+         <div class="controls">
+          <textarea name="message" id="message" rows="5" cols="25"></textarea>
+          <br>
+         </div> 
+        </div> 
+        <br> 
+        <label>&nbsp;&nbsp;&nbsp;</label>
+        <input type="submit" class="button" name="submit" id="submit" value="Send Message"> &nbsp;
+        <input type="button" class="button" name="reset" id="reset" value="Reset"> &nbsp;&nbsp;&nbsp; 
+        <input type="button" class="button" name="closecontact" id="closecontact" value="Close"> 
+       </form> 
+      </div> 
+     </fieldset> 
+    </div> 
+   </center> 
+  </div>   
+ </body>
+</html>

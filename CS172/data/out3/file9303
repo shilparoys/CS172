@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <title>WebRequest : IRIS</title> 
+  <meta name="description" content="The WebRequest tool allows
+    users to compose breq_fast-style requests and send them directly
+    to the DMC."> 
+  <link rel="stylesheet" type="text/css" href="/static/libs/bootstrap/2.2.2/css/bootstrap.css"> 
+  <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script> 
+  <script type="text/javascript" src="/static/libs/jquery-validation/1.11.0/jquery.validate.js"></script> 
+  <script type="text/javascript" src="/assets/js/quicklinks.js"></script> 
+  <script type="text/javascript">
+      <!--
+      function popup(mylink, windowname) {
+        if (! window.focus) return true;
+        var href;
+        if (typeof(mylink) == 'string')
+          href=mylink;
+        else
+          href=mylink.href;
+        window.open(href, windowname, 'width=800,height=300,scrollbars=yes');
+        return false;
+      }
+      //-->
+
+      $(document).ready(function(){
+        $.validator.addMethod("injectioncheck", function(value, element, param) {
+          if(value.match(new RegExp("^"+param+"$"))) return false;
+          return true
+        });
+        $("#webreq").validate({
+          rules: {
+            name: { injectioncheck: "[<>!\\?\\*\/].*" },
+            inst: { injectioncheck: "[<>!\\?\\*\/].*" },
+            address: { injectioncheck: "[<>!\\?\\*\/].*" },
+          },
+          messages: {
+            name: "Required. Characters banned: <>=!?*/",
+            inst: "Required. Characters banned: <>=!?*/",
+            address: "Required. Characters banned: <>=!?*/",
+          },
+          highlight: function(label) {
+            $(label).closest('.control-group').addClass('error');
+          },
+          success: function(label) {
+            label.addClass('valid').closest('.control-group').addClass('success');
+          }
+        });
+      });
+    </script> 
+  <style type="text/css" media="all">@import url(/assets/css/default.css);</style> 
+  <style type="text/css" media="all">
+      @import url(/assets/css/homepage.css);
+      .table-white {
+        background-color:#FFFFFF;
+      }
+      .input-tiny {
+        width:40px;
+      }
+    </style> 
+ </head> 
+ <body> 
+  <div id="container"> 
+   <!-- START: CONTAINER --> 
+   <!-- START: IRIS HEADER --> 
+   <div id="header"> 
+    <div id="irisLogoLink"> 
+     <a href="/hq/"> <img src="/assets/images/layout/transparent.gif" alt="IRIS logo" width="178" height="65" title="Return to IRIS Homepage"></a> 
+    </div> 
+    <div id="links"> 
+     <a href="/hq/contact">Contact</a> 
+     <a href="/hq/staff">Staff</a> 
+     <a href="/hq/employment">Employment</a> 
+     <a href="/hq/sitemap">Sitemap</a> 
+     <form action="/hq/search" method="get"> 
+      <input type="hidden" name="cx" value="011835713541211780569:w8gihycyx-y"> 
+      <input type="hidden" name="cof" value="FORID:9"> 
+      <input type="hidden" name="ie" value="UTF-8"> 
+      <input class="box" name="q" type="text" size="13"> 
+      <input type="image" class="search" src="/assets/images/layout/searchButton.gif" alt="Search"> 
+     </form> 
+     <div id="nsfLogoLink"> 
+      <a href="/dms/dmc/"> <img title="DMC home" src="/assets/images/layout/transparent.gif" alt="IRIS is a consortium sponsored by the NSF dedicated to exploring the Earth" width="178" height="20"> </a> 
+     </div> 
+    </div> 
+   </div> 
+   <!-- END: IRIS HEADER --> 
+   <div id="nav"> 
+    <!-- START: MAIN IRIS NAV --> 
+    <ul id="topMenu"> 
+     <li class="onhome base"><a href="/hq" class="top onhome"></a></li> 
+     <li class="about base"><a href="/hq/about_iris" class="top about"></a> 
+      <ul> 
+       <li class="first down"><a href="/hq/programs">Programs </a> 
+        <ul> 
+         <li><a href="/hq/programs/ds">DMS</a></li> 
+         <li><a href="/hq/programs/education_and_outreach">Education and Outreach </a></li> 
+         <li><a href="/hq/programs/gsn">GSN </a></li> 
+         <li><a href="/hq/programs/passcal">PASSCAL </a></li> 
+         <li><a href="http://www.usarray.org">USArray </a></li> 
+        </ul> </li> 
+       <li class="ieFix3"><a href="/hq/about_iris/governance">Governance </a></li> 
+       <li class="ieFix6"><a href="/hq/about_iris/membership">Membership </a></li> 
+       <li class="ieFix9"><a href="/hq/staff">Staff </a></li> 
+      </ul> </li> 
+     <li class="data base"><a href="/data" class="top data"></a> 
+      <ul> 
+       <li class="down"><a href="/data">Data Access </a> 
+        <ul> 
+         <li><a href="/data/seismograms">Seismograms </a></li> 
+         <li><a href="/data/event">Event Data </a></li> 
+         <li><a href="/data/metadata">Metadata </a></li> 
+         <li><a href="/data/historical">Historical Data </a></li> 
+         <li><a href="/data/products">Data Products </a></li> 
+        </ul> </li> 
+       <li class="ieFix3"><a href="/data/access/">Data Access Navigator </a></li> 
+       <li class="ieFix6"><a href="/data/#submit_data">Submitting Data </a></li> 
+      </ul> </li> 
+     <li class="software base"><a href="/software" class="top software"></a> 
+      <ul> 
+       <li class="first down"><a href="/software">DMS Software </a> 
+        <ul> 
+         <li><a href="/ds/nodes/dmc/software/downloads">Downloads </a></li> 
+         <li><a href="/ds/nodes/dmc/software/meta/categories/apis-and-toolkits/">Libraries </a></li> 
+         <li><a href="/ds/nodes/dmc/tools/">Web Utilities </a></li> 
+         <li><a href="/ds/nodes/dmc/manuals/">Manuals </a></li> 
+         <li><a href="/ds/nodes/dmc/tutorials/">Tutorials </a></li> 
+         <li><a href="/hq/about_iris/mailing_lists">Mailing Lists </a></li> 
+        </ul> </li> 
+       <li class="ieFix3"><a href="http://www.passcal.nmt.edu/content/software-resources">PASSCAL Software </a></li> 
+       <li class="ieFix6"><a href="/hq/programs/education_and_outreach/software">Educational Software </a></li> 
+      </ul> </li> 
+     <li class="instrumentation base"><a href="/hq/instrumentation" class="top instrumentation"></a> 
+      <ul> 
+       <li class="first"><a href="/hq/programs/passcal/instrumentation">PASSCAL </a></li> 
+       <li><a href="/USArray/researchers/instrumentation.html">USArray </a></li> 
+       <li><a href="/hq/programs/gsn/instrumentation">GSN </a></li> 
+       <li><a href="/hq/programs/education_and_outreach/seismographs_in_schools">Education and Outreach </a></li> 
+       <li class="down"><a href="/servlet/quackquery/">Quality Assurance </a> 
+        <ul> 
+         <li><a href="/earthscope/usarray/qc/">USArray QC </a></li> 
+         <li><a href="/servlet/quackquery/">QUACK </a></li> 
+        </ul> </li> 
+      </ul> </li> 
+     <li class="publications base"><a href="/hq/publications" class="top publications"></a> 
+      <ul> 
+       <li class="first"><a href="/hq/publications/annual_reports">Annual Reports </a></li> 
+       <li><a href="/hq/publications/brochures_and_onepagers">Brochures and One-Pagers </a></li> 
+       <li><a href="/hq/publications/brochures_and_onepagers/edu">Educational Materials </a></li> 
+       <li class="down"><a href="/hq/publications/newsletters">Newsletters </a> 
+        <ul> 
+         <li><a href="/hq/publications/newsletters/iris">IRIS Newsletter </a></li> 
+         <li><a href="/ds/newsletter/">DS Newsletter </a></li> 
+        </ul> </li> 
+       <li class="ieFix3"><a href="/hq/publications/proposals_and_reviews">Proposals and Reviews </a></li> 
+       <li class="ieFix6"><a href="/hq/publications">More Publications</a></li> 
+      </ul> </li> 
+    </ul> 
+    <!-- END: MAIN IRIS NAV --> 
+    <!-- START: MAIN DMC NAV --> 
+    <ul id="topMenu"> 
+     <li class="space base"><a href="" class="top space"></a></li> 
+     <li class="aboutdmc base"><a href="/ds/nodes/dmc/" class="top aboutdmc"></a> 
+      <ul> 
+       <li class="first"><a href="/ds/nodes/dmc/">IRIS DMC home</a></li> 
+       <li><a href="/ds/newsletter/">Newsletter Archive </a></li> 
+       <li><a href="/ds/nodes/dmc/about/staff/">Staff </a></li> 
+      </ul> </li> 
+     <li class="services base"><a href="/ds/services/" class="top services"></a> 
+      <ul> 
+       <li class="first"><a href="/ieb/">IRIS Earthquake Browser</a></li> 
+       <li><a href="/mda/">MetaData Aggregator</a></li> 
+       <li><a href="/ds/nodes/dmc/services/seedlink/">SeedLink</a></li> 
+       <li><a href="http://service.iris.edu" target="_blank">Web Services</a></li> 
+      </ul> </li> 
+    </ul> 
+    <!-- END: MAIN DMC NAV --> 
+   </div> 
+   <div id="belowNav"></div> 
+   <div id="main"> 
+    <!-- START: MAIN --> 
+    <div id="centerInner"> 
+     <!-- START: CONTENT --> 
+     <h1>Data</h1> 
+     <div id="breadCrumbs"> 
+      <a href="/hq/">Home</a> » 
+      <a href="/forms/">Forms</a> 
+     </div> 
+     <h2> <img src="/images/icons/iris-icon.jpg" alt="icon" width="80" height="80" align="absmiddle"> WebRequest</h2> 
+     <p>This is a data request form that allows users to submit BREQ_FAST-formatted data requests to the DMC.<br> [<strong>*</strong> required fields]</p> 
+     <!-- START: FORM --> 
+     <form method="post" id="webreq" action="/cgi-bin/forms/webrequest.pl" class="form-horizontal"> 
+      <fieldset> 
+       <legend>Select Data Type</legend> 
+       <div class="control-group"> 
+        <label class="control-label" for="emailto">Email to *</label> 
+        <div class="controls"> 
+         <select name="emailto" id="emailto" class="required"> <option value="breq_fast@iris.washington.edu">full SEED</option> <option value="dataless@iris.washington.edu">dataless SEED</option> <option value="miniseed@iris.washington.edu">miniSEED</option> <option value="sync@iris.washington.edu">sync file</option> </select> 
+        </div> 
+       </div> 
+      </fieldset> 
+      <fieldset> 
+       <legend>User Information</legend> 
+       <div class="control-group"> 
+        <label class="control-label" for="name">Name *</label> 
+        <div class="controls"> 
+         <input type="text" name="name" id="name" class="required"> 
+        </div> 
+       </div> 
+       <div class="control-group"> 
+        <label class="control-label" for="inst">Institution *</label> 
+        <div class="controls"> 
+         <input type="text" name="inst" id="inst" class="required"> 
+        </div> 
+       </div> 
+       <div class="control-group"> 
+        <label class="control-label" for="address">Address *</label> 
+        <div class="controls"> 
+         <input type="text" name="address" id="address" class="required"> 
+        </div> 
+       </div> 
+       <div class="control-group"> 
+        <label class="control-label" for="email">Email *</label> 
+        <div class="controls"> 
+         <input type="text" name="email" id="email" class="required email"> 
+        </div> 
+       </div> 
+       <div class="control-group"> 
+        <label class="control-label" for="phone">Telephone *</label> 
+        <div class="controls"> 
+         <input type="text" name="phone" id="phone" class="required"> 
+        </div> 
+       </div> 
+       <div class="control-group"> 
+        <label class="control-label" for="phone"> <a href="quality.htm" onclick="return popup(this, 'notes')"> Quality </a> * </label> 
+        <div class="controls"> 
+         <select name="quality" id="quality" class="required"> <option value="B" selected>B - Best Data</option> <option value="E">E - Everything</option> <option value="Q">Q - Data tagged as QC'd</option> <option value="D">D - Data of indeterminate quality</option> <option value="R">R - Raw Data</option> </select> 
+        </div> 
+       </div> 
+      </fieldset> 
+      <fieldset> 
+       <legend>Media and Label choices</legend> 
+       <div class="control-group"> 
+        <label class="control-label" for="media">Media</label> 
+        <div class="controls"> 
+         <select name="media" id="media"> <option value="FTP" selected>Electronic (FTP)</option> <option value="DAT">DAT 4mm</option> <option value="DLT3">DLT</option> <option value="Exabyte">Exabyte 8mm</option> <option value="DVD">DVD-R</option> <option value="CD">CD</option> </select> 
+        </div> 
+       </div> 
+       <div class="control-group"> 
+        <label class="control-label" for="altmedia">Alternative Media</label> 
+        <div class="controls"> 
+         <select name="altmedia" id="altmedia"> <option value="FTP">Electronic (FTP)</option> <option value="DAT" selected>DAT 4mm</option> <option value="DLT3">DLT</option> <option value="Exabyte">Exabyte 8mm</option> <option value="DVD">DVD-R</option> <option value="CD">CD</option> </select> 
+        </div> 
+       </div> 
+       <div class="control-group"> 
+        <label class="control-label" for="altmedia2">Alternative Media 2</label> 
+        <div class="controls"> 
+         <select name="altmedia2" id="altmedia2"> <option value="FTP">Electronic (FTP)</option> <option value="DAT">DAT 4mm</option> <option value="DLT3" selected>DLT</option> <option value="Exabyte">Exabyte 8mm</option> <option value="DVD">DVD-R</option> <option value="CD">CD</option> </select> 
+        </div> 
+       </div> 
+       <div class="control-group"> 
+        <label class="control-label" for="label">Label</label> 
+        <div class="controls"> 
+         <input type="text" id="label" name="label" maxlength="30"> 
+        </div> 
+       </div> 
+      </fieldset> 
+      <fieldset> 
+       <legend>Data Selection</legend> 
+       <p>Your data request will be sent in the format of a BREQ_FAST request. If you are unfamiliar with the BREQ_FAST request format, then please <a href="/manuals/breq_fast.htm" target="_blank">read the manual</a>. <strong>You do not need to specify the number of channels using this form</strong> (as described in the manual).</p> 
+       <h3>Please read the following before making a request:</h3> 
+       <p>You can make up to 5 requests per submission. The first line is an example and will not be part of your request. If you wish to make more than 5 requests, then you will need to return to this page and enter the information in the fields below. 
+        <!-- Do NOT use the 'clear form' button unless you want to 
+              fill out the whole thing again.  --> You will receive e-mail after the request has reached the DMC.</p> 
+       <p>Click on these links to view the list of <a href="/dms/nodes/dmc/services/network_codes/" target="_blank">Permanent Network Codes</a> or <a href="http://www.iris.edu/SeismiQuery/tempNets.phtml" target="_blank">Temporary Network Codes</a> (Select "ALL" or "PASSCAL ONLY" under the Short Description Query, then click View Results) or <a href="http://www.iris.edu/vnets" target="_blank">Virtual Network Codes</a>.</p> 
+       <h3>Wildcards</h3> 
+       <p>You may use a single "?" to wildcard station. You <strong>MUST</strong>, however, use a "?" for each character wildcarded in the channel field. (example: "S?" will not get you all S channels but "S??" will).</p> 
+       <h3>Fields</h3> 
+       <table class="table table-bordered table-striped table-condensed table-white"> 
+        <thead> 
+         <tr> 
+          <th>use '?' when wildcarding</th> 
+          <th>CANNOT wildcard this field</th> 
+          <th colspan="6">STARTING TIME</th> 
+          <th colspan="6">ENDING TIME</th> 
+          <th>use '?' when wildcarding</th> 
+          <th>LOCATION</th> 
+         </tr> 
+         <tr> 
+          <th>Station</th> 
+          <th> <a href="/dms/newsletter/vol1/no1/specification-of-seismograms-the-location-identifier" onclick="return popup(this, 'notes')"> Network </a> or Virtual Network </th> 
+          <th>Year<br>YYYY</th> 
+          <th>Month<br> MM</th> 
+          <th>Day<br> DD</th> 
+          <th>Hour<br> 00</th> 
+          <th>Min<br> 00</th> 
+          <th>Sec<br> 00.0000</th> 
+          <th>Year<br>YYYY</th> 
+          <th>Month<br> MM</th> 
+          <th>Day<br> DD</th> 
+          <th>Hour<br> 00</th> 
+          <th>Min<br> 00</th> 
+          <th>Sec<br> 00.0000</th> 
+          <th> <a href="/dms/newsletter/vol1/no1/specification-of-seismograms-the-location-identifier" onclick="return popup(this, 'notes')"> Channel names </a> </th> 
+          <th> <a href="/dms/newsletter/vol1/no1/specification-of-seismograms-the-location-identifier" onclick="return popup(this, 'notes')"> Loc ID </a> </th> 
+         </tr> 
+        </thead> 
+        <tbody> 
+         <tr> 
+          <td>GRFO</td> 
+          <td>IU</td> 
+          <td>1995</td> 
+          <td>01</td> 
+          <td>02</td> 
+          <td>00</td> 
+          <td>18</td> 
+          <td>10.4000</td> 
+          <td>1995</td> 
+          <td>01</td> 
+          <td>02</td> 
+          <td>00</td> 
+          <td>20</td> 
+          <td>10.4000</td> 
+          <td>SH? B??</td> 
+          <td>00</td> 
+         </tr> 
+         <tr>
+          <!-- START: LINE 3 --> 
+          <td> <input type="text" name="station3" id="station3" maxlength="5" class="input-tiny"> </td> 
+          <td> <input type="text" name="network3" id="network3" maxlength="14" class="input-tiny"> </td> 
+          <td> <input type="text" name="syear3" id="syear3" maxlength="4" class="input-tiny"> </td> 
+          <td> <input type="text" name="smonth3" id="smonth3" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="sday3" id="sday3" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="shour3" id="shour3" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="smin3" id="smin3" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="ssec3" id="ssec3" maxlength="7" class="input-tiny"> </td> 
+          <td> <input type="text" name="eyear3" id="eyear3" maxlength="4" class="input-tiny"> </td> 
+          <td> <input type="text" name="emonth3" id="emonth3" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="eday3" id="eday3" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="ehour3" id="ehour3" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="emin3" id="emin3" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="esec3" id="esec3" maxlength="7" class="input-tiny"> </td> 
+          <td> <input type="text" name="chs3" id="chs3" maxlength="15" class="input-tiny"> </td> 
+          <td> <input type="text" name="loc3" id="loc3" maxlength="2" class="input-tiny"> </td> 
+          <!-- END: LINE 3 -->
+         </tr>
+         <tr>
+          <!-- START: LINE 4 --> 
+          <td> <input type="text" name="station4" id="station4" maxlength="5" class="input-tiny"> </td> 
+          <td> <input type="text" name="network4" id="network4" maxlength="14" class="input-tiny"> </td> 
+          <td> <input type="text" name="syear4" id="syear4" maxlength="4" class="input-tiny"> </td> 
+          <td> <input type="text" name="smonth4" id="smonth4" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="sday4" id="sday4" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="shour4" id="shour4" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="smin4" id="smin4" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="ssec4" id="ssec4" maxlength="7" class="input-tiny"> </td> 
+          <td> <input type="text" name="eyear4" id="eyear4" maxlength="4" class="input-tiny"> </td> 
+          <td> <input type="text" name="emonth4" id="emonth4" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="eday4" id="eday4" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="ehour4" id="ehour4" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="emin4" id="emin4" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="esec4" id="esec4" maxlength="7" class="input-tiny"> </td> 
+          <td> <input type="text" name="chs4" id="chs4" maxlength="15" class="input-tiny"> </td> 
+          <td> <input type="text" name="loc4" id="loc4" maxlength="2" class="input-tiny"> </td> 
+          <!-- END: LINE 4 -->
+         </tr>
+         <tr>
+          <!-- START: LINE 5 --> 
+          <td> <input type="text" name="station5" id="station5" maxlength="5" class="input-tiny"> </td> 
+          <td> <input type="text" name="network5" id="network5" maxlength="14" class="input-tiny"> </td> 
+          <td> <input type="text" name="syear5" id="syear5" maxlength="4" class="input-tiny"> </td> 
+          <td> <input type="text" name="smonth5" id="smonth5" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="sday5" id="sday5" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="shour5" id="shour5" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="smin5" id="smin5" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="ssec5" id="ssec5" maxlength="7" class="input-tiny"> </td> 
+          <td> <input type="text" name="eyear5" id="eyear5" maxlength="4" class="input-tiny"> </td> 
+          <td> <input type="text" name="emonth5" id="emonth5" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="eday5" id="eday5" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="ehour5" id="ehour5" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="emin5" id="emin5" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="esec5" id="esec5" maxlength="7" class="input-tiny"> </td> 
+          <td> <input type="text" name="chs5" id="chs5" maxlength="15" class="input-tiny"> </td> 
+          <td> <input type="text" name="loc5" id="loc5" maxlength="2" class="input-tiny"> </td> 
+          <!-- END: LINE 5 -->
+         </tr>
+         <tr>
+          <!-- START: LINE 6 --> 
+          <td> <input type="text" name="station6" id="station6" maxlength="5" class="input-tiny"> </td> 
+          <td> <input type="text" name="network6" id="network6" maxlength="14" class="input-tiny"> </td> 
+          <td> <input type="text" name="syear6" id="syear6" maxlength="4" class="input-tiny"> </td> 
+          <td> <input type="text" name="smonth6" id="smonth6" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="sday6" id="sday6" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="shour6" id="shour6" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="smin6" id="smin6" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="ssec6" id="ssec6" maxlength="7" class="input-tiny"> </td> 
+          <td> <input type="text" name="eyear6" id="eyear6" maxlength="4" class="input-tiny"> </td> 
+          <td> <input type="text" name="emonth6" id="emonth6" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="eday6" id="eday6" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="ehour6" id="ehour6" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="emin6" id="emin6" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="esec6" id="esec6" maxlength="7" class="input-tiny"> </td> 
+          <td> <input type="text" name="chs6" id="chs6" maxlength="15" class="input-tiny"> </td> 
+          <td> <input type="text" name="loc6" id="loc6" maxlength="2" class="input-tiny"> </td> 
+          <!-- END: LINE 6 -->
+         </tr>
+         <tr>
+          <!-- START: LINE 7 --> 
+          <td> <input type="text" name="station7" id="station7" maxlength="5" class="input-tiny"> </td> 
+          <td> <input type="text" name="network7" id="network7" maxlength="14" class="input-tiny"> </td> 
+          <td> <input type="text" name="syear7" id="syear7" maxlength="4" class="input-tiny"> </td> 
+          <td> <input type="text" name="smonth7" id="smonth7" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="sday7" id="sday7" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="shour7" id="shour7" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="smin7" id="smin7" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="ssec7" id="ssec7" maxlength="7" class="input-tiny"> </td> 
+          <td> <input type="text" name="eyear7" id="eyear7" maxlength="4" class="input-tiny"> </td> 
+          <td> <input type="text" name="emonth7" id="emonth7" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="eday7" id="eday7" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="ehour7" id="ehour7" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="emin7" id="emin7" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="esec7" id="esec7" maxlength="7" class="input-tiny"> </td> 
+          <td> <input type="text" name="chs7" id="chs7" maxlength="15" class="input-tiny"> </td> 
+          <td> <input type="text" name="loc7" id="loc7" maxlength="2" class="input-tiny"> </td> 
+          <!-- END: LINE 7 -->
+         </tr>
+         <tr>
+          <!-- START: LINE 8 --> 
+          <td> <input type="text" name="station8" id="station8" maxlength="5" class="input-tiny"> </td> 
+          <td> <input type="text" name="network8" id="network8" maxlength="14" class="input-tiny"> </td> 
+          <td> <input type="text" name="syear8" id="syear8" maxlength="4" class="input-tiny"> </td> 
+          <td> <input type="text" name="smonth8" id="smonth8" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="sday8" id="sday8" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="shour8" id="shour8" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="smin8" id="smin8" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="ssec8" id="ssec8" maxlength="7" class="input-tiny"> </td> 
+          <td> <input type="text" name="eyear8" id="eyear8" maxlength="4" class="input-tiny"> </td> 
+          <td> <input type="text" name="emonth8" id="emonth8" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="eday8" id="eday8" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="ehour8" id="ehour8" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="emin8" id="emin8" maxlength="2" class="input-tiny"> </td> 
+          <td> <input type="text" name="esec8" id="esec8" maxlength="7" class="input-tiny"> </td> 
+          <td> <input type="text" name="chs8" id="chs8" maxlength="15" class="input-tiny"> </td> 
+          <td> <input type="text" name="loc8" id="loc8" maxlength="2" class="input-tiny"> </td> 
+          <!-- END: LINE 8 -->
+         </tr> 
+        </tbody> 
+       </table> 
+      </fieldset> 
+      <div class="form-actions"> 
+       <button type="submit" class="btn btn-primary"> Send Request </button> 
+      </div> 
+     </form> 
+     <!-- END: FORM --> 
+     <!-- END: CONTENT --> 
+    </div> 
+    <div> 
+     <div class="clear"></div> 
+     <div id="footer"> 
+      <div id="top">
+       <!-- -->
+      </div> 
+      <div id="leftHalf"> 
+       <a href="/hq">Home</a> | 
+       <a href="/hq/about_iris">About IRIS</a> | 
+       <a href="/hq/programs">Programs</a> | 
+       <a href="/ds/nodes/dmc/data">Data</a> | 
+       <a href="/ds/nodes/dmc/software">Software</a> | 
+       <a href="/hq/instrumentation">Instrumentation</a> | 
+       <a href="/hq/publications">Publications</a> | 
+       <a href="/ds/nodes/dmc/about/staff">Staff</a> | 
+       <a href="/hq/employment">Employment</a> | 
+       <a href="/hq/sitemap">Sitemap</a> | 
+       <a href="/hq/contact">Contact</a> 
+       <p> <a href="/hq/"> <img src="/assets/images/layout/irisFooterLogo.gif" alt="IRIS" border="0"> </a> <br> Copyright © 2014 IRIS - Incorporated Research Institutions for Seismology<br> <a href="/hq/forms/web_update" target="_blank" class="requestUpdate">Submit changes, questions, or comments related to this page.</a> </p> 
+      </div> 
+      <div id="rightHalf"> 
+       <a href="http://www.nsf.gov"> <img src="/assets/images/layout/nsfFooterLogo.gif" alt="NSF" border="0"></a> 
+      </div> 
+     </div> 
+     <script type="text/javascript">
+// It's possible for the tracker to be included multiple times, so check for the variable it
+// creates, and if it exists already then log a duplicate
+if (typeof(ga) === "undefined") {
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+  ga('create', 'UA-1860730-1', 'iris.edu');
+  ga('send', 'pageview');
+} else {
+  // Log this as a duplicate
+  ga('send', 'event', 'GA Tracker', 'Duplicated');
+}
+// It's also possible that the older GA tracker is running here.  Log that case as well.
+if (typeof(_gaq) !== "undefined") {
+  ga('send', 'event', 'GA Tracker', 'Both Old and New');
+}
+</script> 
+    </div> 
+    <!-- END: MAIN --> 
+   </div> 
+   <!-- END: CONTAINER --> 
+  </div>   
+ </body>
+</html>

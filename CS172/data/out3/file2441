@@ -1,0 +1,859 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+  <title>
+        Rave Login
+         - University of Wyoming
+    </title> 
+  <link rel="stylesheet" type="text/css" href="/includes/css/rave4/global.css?version=1421093551884"> 
+  <!-- BEGIN /WEB-INF/jsp/common/rave4/styleOverRide.jsp --> 
+  <style type="text/css">
+
+
+    
+    BODY {
+        background-color: #FFFFFF;
+    }
+    
+    
+
+
+
+</style> 
+  <!-- END /WEB-INF/jsp/common/rave4/styleOverRide.jsp --> 
+  <script type="text/javascript" language="javascript" src="/includes/lib/jquery.min.js?version=1421093551884"></script> 
+  <script type="text/javascript" language="javascript" src="/includes/js/validateFormInputs.js?version=1421093551884"></script> 
+  <script type="text/javascript" language="javascript">
+        
+    </script> 
+  <script type="text/javascript" language="javascript" src="/includes/js/rave.js?version=1421093551884"></script> 
+  <script src="/includes/js/head.min.js"></script> 
+ </head> 
+ <body> 
+  <script type="text/javascript">
+
+var confirmFocusElement;
+var cancelConfirmFocusElement;
+
+function raveModalConfirm(header, message, buttonLabel, confirmAction, cancelAction, messageType, confirmFocusOnReturn, cancelConfirmFocusOnReturn)
+{
+    raveModalConfirmWithOptions({
+        scrollToTop: true,
+        header: header,
+        message: message,
+        confirmButtonLabel: buttonLabel,
+        confirmButtonAction: confirmAction,
+        confirmButtonFocus: confirmFocusOnReturn,
+        cancelButtonAction: cancelAction,
+        cancelButtonFocus: cancelConfirmFocusOnReturn,
+        messageType: messageType,
+        popupModalClass: ''
+    });
+}
+
+function raveModalAlert(header, message, buttonLabel, messageType, focusOnReturn)
+{
+    raveModalConfirmWithOptions({
+        scrollToTop: true,
+        header: header,
+        message: message,
+        confirmButtonLabel: buttonLabel,
+        confirmButtonAction: "_raveModalConfirmCancelAction()",
+        confirmButtonFocus: focusOnReturn,
+        cancelButtonAction: "_raveModalConfirmCancelAction()",
+        cancelButtonFocus: focusOnReturn,
+        messageType: messageType,
+        popupModalClass: ''
+    });
+}
+
+function raveModalConfirmWithOptions(options)
+{
+    if ( options.scrollToTop) $("html, body").animate({ scrollTop: 0 }, "fast");
+
+    $('#_raveModalBackground').css({height: $('BODY').height()});
+
+    if ("DIRE_WARNING" == options.messageType)
+    {
+        $('#_raveModalConfirm').attr('class', 'popupModal direWarning ' + options.popupModalClass);
+        $('#_raveModalConfirmButton').attr('class', 'btn');
+        $('#_raveModalCancelButton').attr('class', 'btn fright');
+        $('#_raveModalConfirmCancelIcon').attr('class', 'ico diePale x24');
+    }
+    else
+    {
+        $('#_raveModalConfirm').attr('class', 'popupModal ' + options.popupModalClass);
+    }
+    $('#_raveModalConfirmHeader').html(options.header);
+    $('#_raveModalConfirmMessage').html(options.message);
+    $('#_raveModalConfirmButton').html(options.confirmButtonLabel);
+    $('#_raveModalConfirmButton').attr('href', "javascript:_raveModalConfirmAction('"+options.confirmButtonAction+"')");
+    $('#_raveModalConfirmButton').show();
+
+    $('#_raveModalConfirmCancel').attr('href', "javascript: _raveModalConfirmCancelAction('"+options.cancelButtonAction+"')");
+    $('#_raveModalBackground').show();
+    $('#_raveModalConfirm').show();
+    $('#_raveModalCancelButton').hide();
+
+    // optional second button
+    if( options.cancelButtonLabel != '' && options.cancelButtonLabel != undefined)
+    {
+        $('#_raveModalCancelButton').html(options.cancelButtonLabel);
+        $('#_raveModalCancelButton').attr('href', "javascript: _raveModalConfirmCancelAction('"+options.cancelButtonAction+"')");
+        $('#_raveModalCancelButton').show();
+    }
+
+    var actualWidth = parseInt($('#_raveModalConfirm').width(), 10);
+    $('#_raveModalConfirm').css({marginLeft: "-"+(actualWidth/2)+"px"});
+
+    $('#_raveModalConfirmMessage').css('width', (actualWidth - 45)+'px');
+    var messageWidth = parseInt($('#_raveModalConfirmMessage').width(), 10);
+
+    if ($('#_raveModalConfirmHeader').val().length < 1)
+    {
+        $('#_raveModalConfirmMessage').css('margin-top', '25px');
+    }
+
+    confirmFocusElement = options.confirmButtonFocus;
+    cancelConfirmFocusElement = options.cancelButtonFocus;
+
+    $('#_raveModalConfirm').focus();
+    $('#_raveModalConfirmCancel').focusout( function() {
+        $('#_raveModalConfirmButton').focus();
+    });
+    $('#_raveModalConfirmButton').focusout( function() {
+        $('#_raveModalConfirmCancel').focus();
+    });
+}   /* raveModalConfirm() */
+
+function _raveModalConfirmAction(func)
+{
+    $('#_raveModalConfirm').hide();
+    $('#_raveModalBackground').hide();
+    eval(func);
+    if ((confirmFocusElement != null) && !$('#'+cancelConfirmFocusElement).is(':disabled'))
+        $('#'+confirmFocusElement).focus();
+}
+
+function _raveModalConfirmCancelAction(func)
+{
+    $('#_raveModalConfirm').hide();
+    $('#_raveModalBackground').hide();
+    if ((cancelConfirmFocusElement != null) && !$('#'+cancelConfirmFocusElement).is(':disabled'))
+        $('#'+cancelConfirmFocusElement).focus();
+    eval(func);
+}
+
+var focusElement;
+
+function _raveModalAJAXGenericContainerOpen(payLoad, className)
+{
+    // Backward compatible
+    _raveModalAJAXGenericContainerOpen(payLoad, className, false);
+}
+
+function _raveModalAJAXGenericContainerOpen(payLoad, className, snapToTop)
+{
+    if ( snapToTop )
+    {
+        // Snap to the top
+        $("html, body").animate({ scrollTop: 0 }, "fast");
+    }
+    $('#_raveModalAJAXBackground').show();
+
+    if (payLoad != null)
+        $('#_raveModalAJAXGenericContainer').html(payLoad);
+
+    if (className != null)
+        $('#_raveModalAJAXGenericContainer').attr('class', className);
+
+    $('#_raveModalAJAXGenericContainer').show();
+    var actualWidth = parseInt($('#_raveModalAJAXGenericContainer').width(), 10);
+    $('#_raveModalAJAXGenericContainer').css({marginLeft: "-"+(actualWidth/2)+"px"});
+
+}
+
+function _raveModalAJAXGenericContainerClose(callBack)
+{
+    $('#_raveModalAJAXGenericContainer').hide();
+    $('#_raveModalAJAXBackground').hide();
+    if (callBack != null) callBack();
+
+}
+
+</script> 
+  <style>
+
+#_raveModalConfirmCancel {
+/*
+    position: absolute;
+    right: 20px;
+    top: 10px;
+*/
+    text-decoration: none;
+}
+
+</style> 
+  <div id="_raveModalConfirm" class="popupModal" tabindex="1000"> 
+   <div class="popupModalHeader"> 
+    <span id="_raveModalConfirmHeader">Header Missing</span> 
+    <a class="closeModal" id="_raveModalConfirmCancel" href="javascript: _raveModalConfirmCancelAction()" tabindex="1001"></a> 
+   </div> 
+   <div class="popupModalContent"> 
+    <div id="_raveModalConfirmMessage" class="popupModalMessage">
+     Message Missing
+    </div> 
+    <a tabindex="1002" id="_raveModalConfirmButton" href="javascript: _raveModalConfirmCancelAction()" class="btn error fcenter fno">Button Label Missing</a> 
+    <a tabindex="1002" id="_raveModalCancelButton" href="javascript: _raveModalConfirmCancelAction()" class="btn error fcenter fno">Button Label Missing</a> 
+    <div class="clearMe"></div> 
+   </div> 
+  </div> 
+  <div id="_raveModalAJAXGenericContainer" class="popupModal"> 
+  </div> 
+  <div id="_raveModalBackground" class="disabledBackground" onclick="$('#_raveModalConfirm').focus()"> 
+  </div> 
+  <div id="_raveModalAJAXBackground" class="disabledBackground2" onclick="$('#_raveModalConfirm').focus()"> 
+  </div> 
+  <div id="container"> 
+   <!-- START /WEB-INF/jsp/login/header.jsp --> 
+   <div id="registrationHeader"> 
+    <a href="/loginRedirect.do?selectSchool=true&amp;rst=JUE0JTNFJUQ1JUQ0JTQwJUM0JTAzOCVDOSVFMCUxOFolREQlQTNVJUIxJTJDZiUwMiVEMiVEOSVCRSVBOWUlQTElMUElMUZIMyVBNCVCMCVDNCVFNiVDOSVDRSUxQSVGOCVFRiUyMyVFNSVFRiVGRiUyNiU4NSUxNyU1QiUyM1MlQUElOEMlOEMlNUJEJTBCJUE3JUZCJTk1JThDJTNDJTk1dVklNDAlRkZ3JUE3JTE3JUM3eiVCNnIlRUElQ0UlQzQlQjYlMDhwJUNDJTEzJTE1JUU4JTk5JUNCJUNCJTEyJUVFJUZBZSVDQyVFMiUxOXklQjElMkIlODZaJTAwJTkyJUM5JTg1JUE4JTk3WCVDMyU1QiU4OCVENCUxOCVERiVGNiU1QklXaCVFQSVEMyUwRiU5NyUwRSVCMCVFQSVBOSVFNSU1QyUxMiU5QmwlODVPJUFDbSVBNkolRTYlRjAlM0UlOUMlQzQlODklOTJ1JTlCJTg5JTEwJThGJTE0JUMzJTAzQyVFMSolM0ElOTElODglOTFiciVFNVYlQ0UlQjQlREElN0UlRTUlMjklRUIlQkQlQUIlQkMlRDAlMjYlRjAlMTElRDNBJUE1JUUyJTlGViVFRiVGOSVFRiVDNCVFQyVCMUglMjF6QiUzQSU3RSVBNyVDNXglOUElQTUlQkIlMTYlREElRTklQzklMDAlQjUlQTAlRTRRJUQxJUQ1JTAxJTNGOCUyNiUxNloxJUIzJTNEJUU1SCVFRiVGRSU3QyU1QyVCMyVEOSVBMCU4QyU5OCU4REslMjluJTk0NyVENyVDQyU3RSUwNCVDQiVGNSU4NyUxRiU4QzElN0UlQ0IlMDRldSVCOSU4RCpfJUQ3JTlEQjUlMDglOTAlRjElQkUlQzglQzIlRDMlNURWJTQweCU5QiU4QyVEMW9QJUQwJUZBJTE0OSVDRWlsJUQ0JUQ5JUI4JTAwJTg3JURDTiU5MnolQUQlQzQlQjUlM0UlQTIlQUYlMTJzVyVCNyU5RCVCNyVBOCUyQi0lQjQlRUY1JUU5JUREJUUwJTA2ZyUwQU12JTkzRnlYJUJBJUE2JTEyJTlDMiUxMCVDMyUxQmIlRjklQ0UlRDJFJUJCJUFDJTJDJTQwJUEyJTNFVSVCQmElRDUlQTUlQUUlRkYlQTElREUxJUYxYyU4QmolODlIZ08lMEYlMUMlM0UlMEUlQ0FzJTE2JThDJTk2NSU3QyVCRSVCRCU5OUYlMDIlNUMlOUMlMTElMjklQ0UlOTIlREUlQ0YlMUQlQjExTyU5MkIlMEMlMTZEJTJDJUNFJTYwZSUxRiVGNyVDOUslREMzJThG" tabindex="2" id="wrongSiteButton" style="float: right; margin: 0" class="btn">Change Site</a> 
+    <img id="headerMinHeight" src="/images/sp.gif" alt="spacer" style="width: 1px;"> 
+    <a tabindex="1" href="#" style="margin: -0 !important; padding: 0 !important"> <img src="/getDomainImage?id=33579&amp;size=1&amp;imageId=6647598&amp;imageFormat=PNG" alt="University of Wyoming" title="University of Wyoming"></a> 
+    <div class="clearMe">
+     &nbsp;
+    </div> 
+   </div> 
+   <!-- END /WEB-INF/jsp/login/header.jsp --> 
+   <!-- START /WEB-INF/jsp/login/credentialsEntryForm.jsp --> 
+   <script>
+var usernameFirstTime = true;
+
+
+function initUsername()
+{
+    if (usernameFirstTime) document.getElementById("uid").value = "";
+    usernameFirstTime = false;
+}   /* initUsername() */
+
+
+
+var passwordFirstTime = true;
+
+function initPassword()
+{
+    if (passwordFirstTime)
+    {
+        $('#pswd').val("");
+        if (!$.browser.msie)
+            document.getElementById("pswd").type = "password";
+    }
+    passwordFirstTime = false;
+}   /* initPassword() */
+
+
+
+
+var localUserLabel = "";
+
+function init()
+{
+	localUserLabel = $('#uid').val();
+    if (!$.browser.msie)
+        document.getElementById("pswd").type = "text";
+}   /* init() */
+
+var forgotMode = "";
+
+function forgotUserName()
+{
+	$(':focus').die();
+    $('#usernamePasswordLabel').text('Phone number / Email address');
+    _setLabelErrorStyleClass(document.getElementById("usernamePasswordLabel"), true);
+	forgotMode = "USERNAME";
+	if($.browser.msie && parseInt($.browser.version, 10) < 9) $('embed').hide();
+
+	document.getElementById("forgotUserNameHeader").style.display = "inline";
+    document.getElementById("forgotPasswordHeader").style.display = "none";
+    document.getElementById("forgotUserNameInstructions").style.display = "block";
+    document.getElementById("forgotPasswordInstructions").style.display = "none";
+    document.getElementById("forgotUsernamePasswordForm").action = "/ForgotUsernamePost.do";
+    
+
+    document.getElementById("forgotUserNamePasswordBackground").style.height = document.body.offsetHeight+"px";
+    document.getElementById("forgotUserNamePasswordBackground").style.display = "block";
+    document.getElementById("forgotUserNamePasswordPopupBox").style.display = "block";
+    var actualWidth = parseInt(document.getElementById("forgotUserNamePasswordPopupBox").offsetWidth, 10);
+    document.getElementById("forgotUserNamePasswordPopupBox").style.marginLeft = "-"+(actualWidth/2)+"px";
+
+    $('#forgotUserNamePasswordPopupBox').focus();
+
+    setforgotUserNamePasswordFocusEvents();
+
+    $('#username').focusout( function() {
+        $('#forgotUserNameSubmitButton').focus();
+    });
+
+    $('#username').click( function() {
+        $('#username').focus();
+    });
+    
+    
+    $('#forgotUserNamePasswordBackground').click( function() {
+        $('#forgotUserNamePasswordPopupBox').focus();
+    });
+}   /* forgotUserName() */
+
+
+
+function setforgotUserNamePasswordFocusEvents()
+{
+    $('#forgotUserNameCancelButton').focusout( function() {
+        $('#forgotUserNameCancelIcon').focus();
+    });
+    
+    $('#forgotUserNameCancelIcon').focusout( function() {
+        $('#username').focus();
+    });
+
+}
+
+
+
+
+function forgotUserNamePasswordCancel()
+{
+    document.getElementById("forgotUserNamePasswordBackground").style.display = "none";
+    document.getElementById("forgotUserNamePasswordPopupBox").style.display = "none";
+    clearState();
+
+    if($.browser.msie && parseInt($.browser.version, 10) < 9) $('embed').show();
+
+    if (($('#uid').val().length > 0) && ($('#uid').val() != localUserLabel))
+        $('#pswd').focus();
+    else
+        $('#uid').focus();
+    $('#forgotUserNamePasswordBackground').unbind('click');
+}   /* forgotUserNamePasswordCancel() */
+
+
+
+
+function forgotUserNamePasswordPost()
+{
+	var errMsg = "";
+    errMsg += validateNotEmpty_IdentifyOnError("usernamePasswordLabel", "username");
+    if (errMsg.length > 0)
+    {
+        _setLabelErrorStyleClass(document.getElementById("usernamePasswordLabel"), false);
+	    raveModalAlert("", errMsg, "Continue", "DIRE_WARNING", "username");
+	    return;
+    }
+
+    var nameStr = document.getElementById("username").value;
+    var possiblePhoneNumber = "";
+    if (nameStr.match(/\d/g) != null)
+    {
+        possiblePhoneNumber =  extractNumericalString(nameStr);
+        if ((possiblePhoneNumber.length == 10) && (nameStr.indexOf("@") < 0))
+        	document.getElementById("username").value = possiblePhoneNumber;
+    }
+    
+    var successMsg = "";
+    jQuery.ajax({
+        url: document.getElementById("forgotUsernamePasswordForm").action,
+        data: { username: document.getElementById("username").value,
+            innocuous: document.getElementById("innocuous").value },
+        dataType: 'html',
+        complete: function(xhr, textStatus) {
+            if (xhr.responseText.indexOf("securityViolation") >= 0)
+            {
+                location.href="/accessViolation.do";
+                return;
+            }
+            else if (xhr.responseText.indexOf("userNotFound") >= 0)
+                errMsg += "User not found";
+            else if (xhr.responseText.indexOf("usernameSent") >= 0)
+            {
+                document.getElementById("forgotUserNamePasswordPopupBox").style.display = "none";
+                userNameSent();
+                return;
+            }
+            else if (xhr.responseText.indexOf("userForPasswordNotFound") >= 0)
+                errMsg += "User not found";
+            else if (xhr.responseText.indexOf("passwordResetRequestSent") >= 0)
+            {
+                document.getElementById("forgotUserNamePasswordPopupBox").style.display = "none";
+            	passwordResetRequestSent();
+            	return;
+            }
+            else
+                errMsg += "Unknown error.";
+            
+            if (errMsg.length == 0)
+            {
+                raveModalAlert("", successMsg, "Continue", "", "username");
+                return
+            }
+            else
+            {
+                _setLabelErrorStyleClass(document.getElementById("usernamePasswordLabel"), false);
+                raveModalConfirm("", errMsg, "Continue", "", "", "DIRE_WARNING",
+                        "username", "username");
+            }
+        }
+    });
+
+}   /* forgotUserNamePasswordPost() */
+
+
+function restoreBackground()
+{
+    document.getElementById("_raveModalBackground").style.height = document.body.offsetHeight+"px";
+    document.getElementById("_raveModalBackground").style.display = "block";
+}
+
+
+function userNameSent()
+{
+	if ($.browser.msie && parseInt($.browser.version, 10) < 9) $('embed').hide();
+
+    document.getElementById("forgotUserNamePasswordBackground").style.height = document.body.offsetHeight+"px";
+    document.getElementById("forgotUserNamePasswordBackground").style.display = "block";
+    document.getElementById("userNameSentPopupBox").style.display = "block";
+    var actualWidth = parseInt(document.getElementById("userNameSentPopupBox").offsetWidth, 10);
+    document.getElementById("userNameSentPopupBox").style.marginLeft = "-"+(actualWidth/2)+"px";
+
+    $('#userNameSentPopupBox').focus();
+    
+    $('#forgotUserNamePasswordBackground').click( function() {
+        $('#userNameSentPopupBox').focus();
+    });
+
+    $('#userNameSentContinueButton').focusout( function() {
+        $('#userNameSentContinueCancel').focus();
+    });
+
+    $('#userNameSentContinueCancel').focusout( function() {
+        $('#userNameSentContinueButton').focus();
+    });
+
+}   /* userNameSent() */
+
+
+
+function userNameSentClose()
+{
+    document.getElementById("forgotUserNamePasswordBackground").style.display = "none";
+    document.getElementById("userNameSentPopupBox").style.display = "none";
+    clearState();
+
+    if ($.browser.msie && parseInt($.browser.version, 10) < 9) $('embed').show();
+}   /* userNameSentClose() */
+
+
+
+
+function forgotPassword()
+{
+    $('#usernamePasswordLabel').text('User name');
+    _setLabelErrorStyleClass(document.getElementById("usernamePasswordLabel"), true);
+	forgotMode = "PASSWORD";
+	
+    if($.browser.msie && parseInt($.browser.version, 10) < 9) $('embed').hide();
+
+    document.getElementById("forgotUserNameHeader").style.display = "none";
+    document.getElementById("forgotPasswordHeader").style.display = "inline";
+    document.getElementById("forgotUserNameInstructions").style.display = "none";
+    document.getElementById("forgotPasswordInstructions").style.display = "block";
+    document.getElementById("forgotUsernamePasswordForm").action = "/ForgotPasswordPost.do";
+    
+    document.getElementById("forgotUserNamePasswordBackground").style.height = document.body.offsetHeight+"px";
+    document.getElementById("forgotUserNamePasswordBackground").style.display = "block";
+    document.getElementById("forgotUserNamePasswordPopupBox").style.display = "block";
+    var actualWidth = parseInt(document.getElementById("forgotUserNamePasswordPopupBox").offsetWidth, 10);
+    document.getElementById("forgotUserNamePasswordPopupBox").style.marginLeft = "-"+(actualWidth/2)+"px";
+
+    document.getElementById("username").focus();
+}   /* forgotPassword() */
+
+
+function forgotPasswordCancel()
+{
+    document.getElementById("forgotUserNamePasswordBackground").style.display = "none";
+    document.getElementById("forgotPasswordPopupBox").style.display = "none";
+
+    if($.browser.msie && parseInt($.browser.version, 10) < 9) $('embed').show();
+}   /* forgotPasswordCancel() */
+
+
+
+function forgotPasswordPost()
+{
+    var errMsg = validateNotEmpty_IdentifyOnError("forgotPasswordUsernameLabel", "forgotPasswordUsername");
+    if (errMsg.length == 0)
+           document.getElementById("forgotPasswordForm").submit();
+    document.getElementById("forgotPasswordUsername").focus();
+}   /* forgotPasswordPost() */
+
+
+
+
+
+function passwordResetRequestSent()
+{
+    if ($.browser.msie && parseInt($.browser.version, 10) < 9) $('embed').hide();
+
+    document.getElementById("forgotUserNamePasswordBackground").style.height = document.body.offsetHeight+"px";
+    document.getElementById("forgotUserNamePasswordBackground").style.display = "block";
+    document.getElementById("passwordResetRequestSentPopupBox").style.display = "block";
+    var actualWidth = parseInt(document.getElementById("passwordResetRequestSentPopupBox").offsetWidth, 10);
+    document.getElementById("passwordResetRequestSentPopupBox").style.marginLeft = "-"+(actualWidth/2)+"px";
+
+    $('#passwordResetRequestSentPopupBox').focus();
+    
+    $('#forgotUserNamePasswordBackground').click( function() {
+        $('#passwordResetRequestSentPopupBox').focus();
+    });
+
+    $('#passwordResetRequestSentContinueButton').focusout( function() {
+        $('#passwordResetRequestSentContinueCancel').focus();
+    });
+
+    $('#passwordResetRequestSentContinueCancel').focusout( function() {
+        $('#passwordResetRequestSentContinueButton').focus();
+    });
+
+}   /* passwordResetRequestSent() */
+
+
+
+
+function passwordResetRequestSentClose()
+{
+    document.getElementById("forgotUserNamePasswordBackground").style.display = "none";
+    document.getElementById("passwordResetRequestSentPopupBox").style.display = "none";
+    clearState();
+
+    if($.browser.msie && parseInt($.browser.version, 10) < 9) $('embed').show();
+
+    if (($('#uid').val().length > 0) && ($('#uid').val() != localUserLabel))
+        $('#pswd').focus();
+    else
+        $('#uid').focus();
+
+}   /* passwordResetRequestSentClose() */
+
+
+
+
+
+function clearState()
+{
+    document.getElementById("username").value = "";
+    
+	jQuery.ajax({
+		type: 'GET',
+		url: '/ClearForgottenState.do'
+	});
+}   /* clearState() */
+
+</script> 
+   <style>
+
+#registerButton {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+}
+
+</style> 
+   <div id="credentialsEntryBar" style="padding: 10px 10px 0 10px; position: relative"> 
+    <form id="theForm" method="post" action="/ssoLogin.do" style="margin: 0; padding: 0;"> 
+     <div style="text-align: center; padding-left: 50%; *padding-left: 200px"> 
+      <div style="margin-left: -50%; *margin-left: 0"> 
+       <div style="float: left; text-align: left; margin-right: 10px;"> 
+        <label for="uid" class="invisibleLabel">User Name</label> 
+        <input class="r4" style="width: 175px" type="text" id="uid" name="uid" tabindex="11" value="Username" autocomplete="off"> 
+        <br> 
+        <span style="font-size: 0.7em"> <a href="javascript: forgotUserName()" style="line-height: 2.0em" tabindex="13">Forgot your username?</a> </span> 
+       </div> 
+       <div style="float: left; text-align: left; margin-right: 10px;"> 
+        <label for="pswd" class="invisibleLabel">Password</label> 
+        <input class="r4" style="width: 175px;" type="password" id="pswd" name="pswd" tabindex="12" value="Password" autocomplete="off"> 
+        <br> 
+        <span style="font-size: 0.7em"> <a href="javascript: forgotPassword()" style="line-height: 2.0em" tabindex="14">Forgot your password?</a> </span> 
+       </div> 
+       <a href="javascript: document.getElementById('theForm').submit()" tabindex="15" id="loginButton" style="margin-top: 2px" class="btn carbon" title="Login">
+        <!-- 
+
+
+
+
+
+
+
+<b  data-icon="U" class="ico-l user"  title="User" ></b>
+
+
+-->Log in</a> 
+      </div> 
+     </div> &nbsp; 
+     <!-- This is for IE otherwise IE7 and IE8 (and maybe 9) won't render the Register button.  WTF? --> 
+     <a href="/alerts/register/remoteAuthenticationForm.do?rst=cSVFMGwlOUUlQTctJTg1JTIyJUFGUTAlQTJTSyVCRTUlREMlQTElNUQ4aXklOEZweCUxOU5PJTNFJTkxJTBGJUFEa2IlOTYlMDBoTlglMkMlQTglMUYlMUNxMkIlMkYlMjQlQUJNaSVCNSVDQyVENiU1RFUlQ0UlRUN0JTg5JTI3JTgxJTk0JUJEJTkzJTI1JUVEJTkzJUQ3JUI3UiU4OCU4QiUwQiU0MCU4MCUxNCUxQ24lMUElQjJhJUIzJTI3JTVEJTgwJUQ5JTA5JThGJUUzJTdDJTVFJTIxJUExJTBGJUVCWCU5NCVCOCUwNFhVJTJCOCU1QnglMjkweiUxQiU4QnUlQjczJTFFJUZEJTA3JUQ5JTA1aSslMjh3JThCJTVFJUM4JTk4cCUwNCVCRSUyNyVGMiVBQyU3RCVDNyUyNCVCRiVENC4lMEIlMUMlRjNiUCVCNSVBMSU4OCU3RSUzQSUxMSUxNUYlQkYlRjglREZGJTNBJTFCJTJGJUI2JUZEJTlGJTNGJTdFZyVCRlclQjQlRTIlRkZ2JTI4VEElMTklMDclQjIlRTglRTMlOTglRURVJTE1JUIzJTNBJTA2MiUwQTglRUMlOTUlRTclMTAxJTAzXyVBMiUyOCUwNUFDJURBJUE3JUJEJTI3JUFBJUI4JTI4QiUxNUolQjMlQzJQJUI0LmglMTUlMEMlRUElRDhfSiVCNSU4NyU4Q1olMjIlODAlQUIlRjBnJTJDJUU5JUU3JTE2JTEzJTNEJUYyYyVDOSVCRCUxRiVCQiU5MSUwMyVCNSVFNFUlODMlMTYlRjRCUiUxM0QlQUElMDQlMTQlRjglRTRaJUFEJTg0JTg0JUVCJUU4KiUxRiUwQUZ3" id="registerButton" class="btn carbon" title="Register">
+      <!-- 
+
+
+
+
+
+
+
+<b  data-icon="W" class="ico-l compose"  title="Register" ></b>
+
+
+-->Register</a> 
+     <div class="clearMe">
+      &nbsp;
+     </div> 
+     <input type="hidden" name="rst" value="JTExJUE5JTE5JUM0a1QlREIlN0UubmMlOUVKOSU5N1UlOEUlRkElMTAlQ0MlM0F1JTYwJUI5SyUyQiVERSolQjElMjglOEQlMDhoJThFJURGJTkyJUU1JUJEJTEweWY1JUI0aV8lMThZJTlEJUU0JTdEJTlCSSVDOSVCOSUyNSVDNiVENyVDOCU4RXQlQ0QlN0UlMEYlMjZGJTJGJTFEJUEzSiolQzIlREUlQjAlMDQlQ0MlMEQlOUVKJTg2JTYwJUJEJTFCdlElRTElRjAlM0YlMTElQTklRkElMUUlQzIlQTAlQTF3ai0lMkYlOUYlOTUlQjglMkNpJTdDJUY3JUYwJTE0JTg1QUUlQUYlODklQTdwJUU1dyUyQiVCMiU5MSU1RWslMUQlRDUlMTklMEQlODElNUQlQkRTJUJGJUFEJUI0JUQzJUExVyUwQSUyOSUxQ18lQzQlNDByJUFEJTI4WCVBMCVGOCVENSVBQiVDRSVGOEUlMjQlMUElQTYlM0UlRDklQzdGUCVCMCVCOCVDMiVFMCU4NyVCOWUlMEUlMENvJUEwWSVEMEYlMUM3Ym4lRTglMTFyJUIwJUY3JTVCJUNDJUI2JTlEZDMlRUQlQkJFJUZDJUVCdiVBRCVCOSVEMiU5Q00lOTglMEYlRTglN0IlRjlqJUQzJTEzWFglOEElOEYlMjIlM0UlMTlmJUFGdyU5NSVFQyVEOU4lODMlQTAlRjI2JUQ5JUEwVyUyNSU4NTElOEErJTkyQS4lMkZDeiUyQyVEMiU5RSUxMCUxRCUzRHorJTNBJTdDRWNyR2ElNUM="> 
+    </form> 
+    <div class="clearMe">
+     &nbsp;
+    </div> 
+   </div> 
+   <div id="tattle"></div> 
+   <div id="forgotUserNamePasswordPopupBox" tabindex="2000" class="popupModal popupModalAlertDelivery" style="display: none; z-index: 6;"> 
+    <!-- START - /WEB-INF/jsp/logon/forgotUserName.jsp --> 
+    <div id="_raveModalAlertHeader" class="popupModalHeader"> 
+     <a class="closeModal" id="forgotUserNameCancelIcon" href="javascript: forgotUserNamePasswordCancel()"></a> 
+     <span id="forgotUserNameHeader">FORGOT YOUR USERNAME?</span> 
+     <span id="forgotPasswordHeader">FORGOT YOUR PASSWORD?</span> 
+    </div> 
+    <div class="popupModalContent"> 
+     <form id="forgotUsernamePasswordForm" method="post" action="/ForgotUsernamePost.do" style="margin: 0; padding: 0"> 
+      <div style="text-align: left; margin-bottom: 10px"> 
+       <p id="forgotUserNameInstructions">To retrieve your Username, please enter your registered phone number or Email address.</p> 
+       <p id="forgotPasswordInstructions">To change your password, please enter your Rave Username.</p> 
+       <div id="passwordLabel" style="display: none">
+        User name
+       </div> 
+       <div id="usernameLabel" style="display: none">
+        Phone number / Email address
+       </div> 
+       <label class="r4 invisibleLabel" for="username" id="usernamePasswordLabel"></label> 
+       <input type="text" name="username" tabindex="2001" value="" id="username" style="width: 200px;" class="r4"> 
+       <div class="clearMe">
+        &nbsp;
+       </div> 
+       <div class="hide"> 
+        <label for="innocuous">UID</label> 
+        <input type="text" name="innocuous" id="innocuous" value=""> 
+       </div> 
+      </div> 
+      <a tabindex="2002" id="forgotUserNameSubmitButton" href="javascript: forgotUserNamePasswordPost()" class="btn">Submit</a> 
+      <a tabindex="2003" id="forgotUserNameCancelButton" href="javascript: forgotUserNamePasswordCancel()" class="btn carbon">Cancel</a> 
+      <input type="hidden" name="rst" value="OCVEOSVDNSVDNSVEMSVGQyVEMiVGMiVGNiU3RiVBOCUwMCU2MCVDMSUxQSVFRG0lODElREFyWiU5RiUwMCU3QyVBNSVGQyUyOSU5RDhWJTAyJUVCdVolOURPQSVDQSUwMnVaJUY1JTgzJTg3JTFDJUIwJTg5JTAwJTFBJUQwJTAwJUE3JTNBJTFCWXMlQzYlOERiWHMlM0NndiU0MCU1RSVDMiVFOCU5RCVCRCUzQiVCNiVEMCVENiU4NCVDMyVEOCUxNSVBN28lQ0ElQzUlQjBaYSVFNiVCMCUxRCUyMSUxQyUxOVolQUElN0RiJTEyJTgxJTExJTkyJTk5JTE3JTIxJUQ3biU4Nk1nJTJDJUY2JUQ4aUclQURacCUyQiVBQiU5RSUxOSUxMHIlMDIlRDFHJURDMiVFMCVDNSUxRlklRDklMTIlOUMlQkIlOThsJTk1R0NSJUUxJThEJUNDJTVCJTA3JUM4JTI4SCVEQiVCOSU4NiU5MyUyM0olRUFzZSVBMkklQzIlQTVoJTlDJUI4QyU4OSUxMiVGNiVGNXUlRTVvSyUyMyUxN2glMTElREYlQkElMTclOTNSJUQ3JTE3JTdFJTBEJTk4JTE1bCUxM2clOEYlMDglMDIlREUlM0YlRjIlQjklQUMlOEQlQ0QlQjElODIlRkE1JTA0diVCMiUwNSU4MCU4NiU3RSVBNWstJThGJUJEJTlFJTAxamslQkQlM0MlMDQlQUYlOTIlRTMlRjElQzIlODAlQzklOTAlQTQlQUQlRkYlQ0FfJTA4JUE5eU8lMEUlMjU5JTNCJUEyJTE2JUY2SyVCNSUyNiUxRSVCQiUxMSU5QiU1RSUzRSVFRDQlOTMlRkQlMUVxJTFDJUY3cCUzQSVDRCU5NCVCRGRjJThETSUxOUhOJUZFYiVFQU1SJUQ2JUJFJTdEZiU5QjQlQjglOTYlQkRMeCVFQiU5MkYlMUQlQTIlMTUlMURpWiVCOUIlMTglRjJxJUQ2JTExJUMzNyUzQSUyNGxUJThGRyU5RlIlMjYlM0IlMjElOTMlMTYlQTUlOTglQkEyJUNGJTNBJTk4eSUwRiUwQzQlQTAlMEYlQUIlREJ1JTlFJTg3JUEzOSVFQm0lMTElMDUlMTclRkElMDYlQTclQTElMDUlM0QlQzdOWWIlMTclRkQlMUElQTElREUlMEJQJUQ0JUM3JTFBMCVCRiVEMiVDMiVFRCUwMCUxMiU5Mm4tOSUxRiVEQzQlODM="> 
+     </form> 
+     <div class="clearMe"></div> 
+    </div> 
+    <!-- END - /WEB-INF/jsp/logon/forgotUserName.jsp --> 
+   </div> 
+   <div id="userNameSentPopupBox" tabindex="2010" class="popupModal popupModalAlertDelivery" style="display: none; z-index: 6;"> 
+    <a class="close" tabindex="2012" id="userNameSentContinueCancel" href="javascript: userNameSentClose()"> <b id="userNameSentContinueCancelCancelIcon" data-icon="D" class="ico die x24" title="Close"></b> </a> 
+    <div id="userNameSentContinueHeader" class="popupModalHeader">
+     SUCCESS
+    </div> 
+    <p style="text-align: left;">We have sent email to your site email address with Rave Username.</p> 
+    <a tabindex="2011" id="userNameSentContinueButton" href="javascript: userNameSentClose();" class="btn carbon">Continue</a> 
+   </div> 
+   <div id="passwordResetRequestSentPopupBox" tabindex="2020" class="popupModal popupModalAlertDelivery" style="display: none; z-index: 6;"> 
+    <a class="close" tabindex="2022" id="passwordResetRequestSentContinueCancel" href="javascript: passwordResetRequestSentClose()"> <b id="passwordResetRequestSentContinueCancelIcon" data-icon="D" class="ico die x24" title="Close"></b> </a> 
+    <div id="passwordResetRequestSentContinueHeader" class="popupModalHeader">
+     SUCCESS
+    </div> 
+    <p style="text-align: left;">We have sent email to your site email address.<br><br>Click on the link in the message. You will be taken to the Rave website and permitted to change your password.</p> 
+    <a tabindex="2021" id="passwordResetRequestSentContinueButton" href="javascript: passwordResetRequestSentClose();" class="btn carbon">Continue</a> 
+   </div> 
+   <div id="forgotUserNamePasswordBackground" class="disabledBackground" style="z-index: 5" onclick=""> 
+   </div> 
+   <script>
+
+$(document).ready(function()
+{
+	init();
+	$('body').keydown(function(e)
+	{
+		if (!usernameFirstTime)
+		{
+			var keyCode = e.which;
+			var focusedId = $(':focus').attr('id');
+			if ((keyCode == 13) && ((focusedId == 'uid') || (focusedId == 'pswd'))) document.getElementById('theForm').submit();
+		}
+	});
+
+    $('#uid').keyup(function(e)
+    {
+        if (e.which == 9) initUsername()
+    });
+    	    
+    $('#pswd').keyup(function(e)
+	{
+	    if (e.which == 9) initPassword();
+	});
+    	    
+    $('#uid').click(function()
+	{
+	    initUsername()
+	});
+
+    $('#pswd').click(function()
+    {
+        initPassword()
+    });
+    $('#pswd').focus(function()
+    {
+        initPassword()
+    });
+
+/*
+    $('#forgotUserNameCancelButton').focusout( function()
+    {
+        $('#username').focus();
+    });
+    	            
+    $('#userNameSentContinueButton').focusout( function()
+    {
+        $('#userNameSentContinueCancel').focus();
+    });
+    	            
+    $('#passwordResetRequestSentContinueButton').focusout( function()
+    {
+        $('#passwordResetRequestSentContinueCancel').focus();
+    });
+*/    	            
+});
+
+
+</script> 
+   <!-- END /WEB-INF/jsp/login/credentialsEntryForm.jsp --> 
+   <!-- START /WEB-INF/jsp/common/errors.jsp --> 
+   <script>
+
+function clearISWMessages(id)
+{
+    $('#'+id).hide();
+}
+
+function clearClientSideErrors()
+{
+    clearISWMessages("clientSideErrorMessages");
+}
+
+function clearClientSideSuccess()
+{
+    clearISWMessages("clientSideSuccessMessages");
+}
+
+function clearClientSideNotice()
+{
+    clearISWMessages("clientSideNoticeMessages");
+}
+
+function clearAllClientSideMessages()
+{
+    clearClientSideNotice();
+    clearClientSideSuccess();
+    clearClientSideErrors();
+}
+
+function showClientSideNotice(msg)
+{
+    $('#clientSideNotice').html('Notice: ' + msg);
+    $('#clientSideNoticeMessages').show();
+}
+
+function showClientSideSuccess(msg)
+{
+    $('#clientSideSuccess').html('Success: ' + msg);
+    $('#clientSideSuccessMessages').show();
+}
+
+function showClientSideError(msg)
+{
+    $('#clientSideError').html('Error: ' + msg);
+    $('#clientSideErrorMessages').show();
+    $('#errorList').hide();
+}
+
+function displayClientSideErrors(errorMessageList)
+{
+	var errorMessages = "", i=0;
+	for (i = 0; i < errorMessageList.length; i++)
+	{
+		 errorMessages = "<li>"+errorMessageList[i]+"</li>\n";
+	}
+    $('#errorList').html(errorMessages);
+    $('#errorList').show();
+    $('#clientSideErrorMessages').show();
+}
+</script> 
+   <div id="clientSideErrorMessages" class="systemMessage errorMessages hide"> 
+    <h4> <b data-icon=":" class="ico-l alert" title="Error"></b> <strong id="clientSideError">The following errors occurred:</strong> 
+     <ul id="errorList"></ul> </h4> 
+   </div> 
+   <div id="clientSideSuccessMessages" class="systemMessage successMessages hide"> 
+    <a href="javascript: clearClientSideSuccess()" class="nolink fright" style="background-color: transparent"> <b data-icon="D" class="ico die" title="Close"></b> </a> 
+    <h4> <b data-icon="2" class="ico-l check" title="Success"></b> <strong id="clientSideSuccess">The following successes occurred:</strong> </h4> 
+   </div> 
+   <div id="clientSideNoticeMessages" class="systemMessage notices hide"> 
+    <a href="javascript: clearClientSideNotice()" class="nolink fright" style="background-color: transparent"> <b data-icon="D" class="ico die" title="Close"></b> </a> 
+    <h4> <b data-icon="i" class="ico-l info" title="Notice"></b> <strong id="clientSideNotice">The following notices occurred:</strong> </h4> 
+   </div> 
+   <!-- END /WEB-INF/jsp/common/errors.jsp --> 
+   <!-- START /WEB-INF/jsp/login/content.jsp --> 
+   <div id="loginContent" style="text-align: left"> 
+    <div class="mceContentBody"> 
+     <p> This is the login page to access the University of Wyoming's UW Alert emergency text notification system. </p> 
+     <p> We recommend that you enter the numbers&nbsp;<strong>67283</strong> and <strong>226787</strong> into your cell phone's contact list as UW Alert.&nbsp; These are the numbers that our notications come from and having them listed in your contacts can help you identify alerts as&nbsp;they are received.&nbsp; &nbsp; </p> 
+     <p> &nbsp;More information on the UW Alert system can be found at: </p> 
+     <p> <a href="http://www.uwyo.edu/uwalert">http://www.uwyo.edu/uwalert</a> </p> 
+    </div> 
+   </div> 
+   <!-- END /WEB-INF/jsp/login/content.jsp --> 
+  </div> 
+  <!-- START /WEB-INF/jsp/common/rave4/footer.jsp --> 
+  <div id="footer"> 
+   <div class="footerContent"> 
+    <b data-icon="?" class="querycircle" style="float: left;" title="web3.web.raveu.net"></b> 
+    <a href="http://ravemobilesafety.com" class="corp"></a> 
+    <div style="float: right; text-align: left;"> 
+     <!-- START /WEB-INF/jsp/common/rave4/footerLinks.jsp --> 
+     <a href="/help/Privacy.do" target="_HELP">Privacy Policy</a> &nbsp; 
+     <a href="/help/Terms.do" target="_HELP">Terms of Use</a> &nbsp; 
+     <a href="/unauthenticatedHelp.do" target="_HELP">Help</a> 
+     <br> 
+     <!-- END /WEB-INF/jsp/common/rave4/footerLinks.jsp --> © 2014 Rave Wireless Inc. All rights reserved. 
+    </div> 
+   </div> 
+   <div class="clearMe">
+    &nbsp;
+   </div> 
+  </div> 
+  <!-- END /WEB-INF/jsp/common/rave4/footer.jsp --> 
+  <script type="text/javascript">
+    
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-19263693-1']);
+      _gaq.push(['_trackPageview']);
+    
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    
+    </script>   
+ </body>
+</html>

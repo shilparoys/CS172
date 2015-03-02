@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+ <head>
+  <meta http-equiv="X-UA-Compatible" content="IE=9,10">
+  <meta charset="utf-8">
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info = {"agent":"js-agent.newrelic.com/nr-536.min.js","beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"b5bcf2eba4","applicationID":"4638183","applicationTime":1162.233829,"transactionName":"cRxFQANKSwkWGXVwZBtL","queueTime":0,"agentToken":null,"ttGuid":""}; (window.NREUM||(NREUM={})).loader_config={xpid:"UgMFV1FVGwcGV1lTDwI="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=s(e),f=c.length,u=i(a,o,r),d=0;f>d;d++)c[d].apply(u,n);return u}function a(t,e){f[t]=s(t).concat(e)}function s(t){return f[t]||[]}function c(){return n(e)}var f={};return{on:a,emit:e,create:c,listeners:s,_events:f}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],3:[function(t){function e(t,e,n,i,s){try{c?c-=1:r("err",[s||new UncaughtException(t,e,n)])}catch(f){try{r("ierr",[f,(new Date).getTime(),!0])}catch(u){}}return"function"==typeof a?a.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(5),i=t("ee"),a=window.onerror,s=!1,c=0;t("loader").features.err=!0,window.onerror=e;try{throw new Error}catch(f){"stack"in f&&(t(1),t(4),"addEventListener"in window&&t(2),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&t(3),s=!0)}i.on("fn-start",function(){s&&(c+=1)}),i.on("fn-err",function(t,e,r){s&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){s&&!this.thrown&&c>0&&(c-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:8,2:5,3:9,4:7,5:22,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],4:[function(t){function e(){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var n=t("ee"),r=t("handle"),o=t(1);t("loader").features.stn=!0,t(2),n.on("fn-start",function(t){var e=t[0];e instanceof Event&&(this.bstStart=Date.now())}),n.on("fn-end",function(t,e){var n=t[0];n instanceof Event&&r("bst",[n,e,this.bstStart,Date.now()])}),o.on("fn-start",function(t,e,n){this.bstStart=Date.now(),this.bstType=n}),o.on("fn-end",function(t,e){r("bstTimer",[e,this.bstStart,Date.now(),this.bstType])}),n.on("pushState-start",function(){this.time=Date.now(),this.startPath=location.pathname+location.hash}),n.on("pushState-end",function(){r("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),"addEventListener"in window.performance&&(window.performance.addEventListener("webkitresourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.webkitClearResourceTimings()},!1),window.performance.addEventListener("resourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.clearResourceTimings()},!1)),document.addEventListener("scroll",e,!1),document.addEventListener("keypress",e,!1),document.addEventListener("click",e,!1)}},{1:8,2:6,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],5:[function(t,e){function n(t){i.inPlace(t,["addEventListener","removeEventListener"],"-",r)}function r(t){return t[1]}var o=(t(1),t("ee").create()),i=t(2)(o),a=t("gos");if(e.exports=o,n(window),"getPrototypeOf"in Object){for(var s=document;s&&!s.hasOwnProperty("addEventListener");)s=Object.getPrototypeOf(s);s&&n(s);for(var c=XMLHttpRequest.prototype;c&&!c.hasOwnProperty("addEventListener");)c=Object.getPrototypeOf(c);c&&n(c)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&n(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t){if(t[1]){var e=t[1];"function"==typeof e?this.wrapped=t[1]=a(e,"nr@wrapped",function(){return i(e,"fn-",null,e.name||"anonymous")}):"function"==typeof e.handleEvent&&i.inPlace(e,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:22,2:23,ee:"QJf3ax",gos:"7eSDFh"}],6:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window.history,["pushState"],"-")},{1:23,2:22,ee:"QJf3ax"}],7:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=r(t[0],"fn-")})},{1:23,2:22,ee:"QJf3ax"}],8:[function(t,e){function n(t,e,n){var r=t[0];"string"==typeof r&&(r=new Function(r)),t[0]=o(r,"fn-",null,n)}var r=(t(2),t("ee").create()),o=t(1)(r);e.exports=r,o.inPlace(window,["setTimeout","setInterval","setImmediate"],"setTimer-"),r.on("setTimer-start",n)},{1:23,2:22,ee:"QJf3ax"}],9:[function(t,e){function n(){c.inPlace(this,d,"fn-")}function r(t,e){c.inPlace(e,["onreadystatechange"],"fn-")}function o(t,e){return e}var i=t("ee").create(),a=t(1),s=t(2),c=s(i),f=s(a),u=window.XMLHttpRequest,d=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];e.exports=i,window.XMLHttpRequest=function(t){var e=new u(t);try{i.emit("new-xhr",[],e),f.inPlace(e,["addEventListener","removeEventListener"],"-",function(t,e){return e}),e.addEventListener("readystatechange",n,!1)}catch(r){try{i.emit("internal-error",[r])}catch(o){}}return e},window.XMLHttpRequest.prototype=u.prototype,c.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",o),i.on("send-xhr-start",r),i.on("open-xhr-start",r)},{1:5,2:23,ee:"QJf3ax"}],10:[function(t){function e(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function n(t){var n=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;c>i;i++)t.removeEventListener(s[i],this.listener,!1);if(!n.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){n.status=t.status;var a=t.responseType,f="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,u=e(f);if(u&&(r.rxSize=u),this.sameOrigin){var d=t.getResponseHeader("X-NewRelic-App-Data");d&&(n.cat=d.split(", ").pop())}}else n.status=0;r.cbTime=this.cbTime,o("xhr",[n,r,this.startTime])}}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}if(window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)){t("loader").features.xhr=!0;var o=t("handle"),i=t(2),a=t("ee"),s=["load","error","abort","timeout"],c=s.length,f=t(1);t(4),t(3),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=n,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,n){var r=this.metrics,o=t[0],i=this;if(r&&o){var f=e(o);f&&(r.txSize=f)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof n.onload))&&i.end(n)}catch(e){try{a.emit("internal-error",[e])}catch(r){}}};for(var u=0;c>u;u++)n.addEventListener(s[u],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof XMLHttpRequest&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&&a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{1:"XL7HBI",2:11,3:9,4:5,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],11:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&&e.port===n.port&&e.protocol===n.protocol,r}},{}],12:[function(t,e){function n(t){return function(){r(t,[(new Date).getTime()].concat(i(arguments)))}}var r=t("handle"),o=t(1),i=t(2);"undefined"==typeof window.newrelic&&(newrelic=window.NREUM);var a=["setPageViewName","trackUserAction","finished","traceEvent","inlineHit","noticeError"];o(a,function(t,e){window.NREUM[e]=n("api-"+e)}),e.exports=window.NREUM},{1:21,2:22,handle:"D5DuLP"}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):(o[t]||(o[t]=[]),void o[t].push(e))}var r=t("ee").create(),o={};e.exports=n,n.ee=r,r.q=o},{ee:"QJf3ax"}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],G9z0Bl:[function(t,e){function n(){var t=l.info=NREUM.info;if(t&&t.licenseKey&&t.applicationID&&f&&f.body){s(h,function(e,n){e in t||(t[e]=n)}),l.proto="https"===p.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var e=f.createElement("script");e.src=l.proto+t.agent,f.body.appendChild(e)}}function r(){"complete"===f.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=t(1),c=(t(2),window),f=c.document,u="addEventListener",d="attachEvent",p=(""+location).split("?")[0],h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-536.min.js"},l=e.exports={offset:i(),origin:p,features:{}};f[u]?(f[u]("DOMContentLoaded",o,!1),c[u]("load",n,!1)):(f[d]("onreadystatechange",r),c[d]("onload",n)),a("mark",["firstbyte",i()])},{1:21,2:12,handle:"D5DuLP"}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],21:[function(t,e){function n(t,e){var n=[],o="",i=0;for(o in t)r.call(t,o)&&(n[i]=e(o,t[o]),i+=1);return n}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],22:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],23:[function(t,e){function n(t){return!(t&&"function"==typeof t&&t.apply&&!t[i])}var r=t("ee"),o=t(1),i="nr@wrapper",a=Object.prototype.hasOwnProperty;e.exports=function(t){function e(t,e,r,a){function nrWrapper(){var n,i,s,f;try{i=this,n=o(arguments),s=r&&r(n,i)||{}}catch(d){u([d,"",[n,i,a],s])}c(e+"start",[n,i,a],s);try{return f=t.apply(i,n)}catch(p){throw c(e+"err",[n,i,p],s),p}finally{c(e+"end",[n,i,f],s)}}return n(t)?t:(e||(e=""),nrWrapper[i]=!0,f(t,nrWrapper),nrWrapper)}function s(t,r,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<r.length;c++)s=r[c],a=t[s],n(a)||(t[s]=e(a,f?s+o:o,i,s,t))}function c(e,n,r){try{t.emit(e,n,r)}catch(o){u([o,e,n,r])}}function f(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){u([r])}for(var o in t)a.call(t,o)&&(e[o]=t[o]);return e}function u(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=r),e.inPlace=s,e.flag=i,e}},{1:22,ee:"QJf3ax"}]},{},["G9z0Bl",3,10,4]);</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="canonical" href="http://www.nytimes.com/">
+  <meta name="canonicalURL" content="http://www.nytimes.com/">
+  <meta property="og:url" content="http://www.nytimes.com/?nytmobile=0">
+  <meta name="twitter:card" value="summary">
+  <meta name="twitter:site" value="@nytimes">
+  <meta property="twitter:url" content="http://www.nytimes.com/?nytmobile=0">
+  <meta property="twitter:title" content="The New York Times">
+  <meta property="twitter:description" content="">
+  <meta property="twitter:image" content="">
+  <meta name="sourceApp" content="mobileWeb">
+  <meta name="CG" content="Homepage">
+  <meta name="SCG" content="">
+  <meta name="articleid" content="">
+  <meta name="PT" content="Homepage">
+  <meta name="PST" content="">
+  <meta name="PSST" content="">
+  <meta name="pdate" content="">
+  <meta name="byl" content="">
+  <meta name="WT.z_hdl" content="">
+  <meta name="SLUG" content="">
+  <meta name="apple-mobile-web-app-title" content="NYTimes">
+  <meta name="apple-itunes-app" content="app-id=284862083, affiliate-data=at=10lIEQ&amp;ct=MWSmartBanneriPhone, app-argument=http://nytimes.com?fromSmartAppBanner=1">
+  <link rel="author" href="/humans.txt">
+  <link rel="shortcut icon" href="http://css.nyt.com/images/icons/nyt.ico">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/public/images/touch-icon-iphone-114.4863fa8f.png">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/public/images/touch-icon-ipad-144.498cc670.png">
+  <title>The New York Times</title>
+  <link href="/static/public/stylesheets/bundles/main.d914b899.css" rel="stylesheet" type="text/css">
+  <script>(function(){MWR={"assets":"/static/public","TAGX_URL":"http://graphics8.nytimes.com/bi/js/tagx/tagx.js"};MWR.dfpAdUnitPath="/29390238/NYT/homepage/us";MWR.dfpCorrelator = Math.floor(Math.random() * 999999999);function f(){}if(!window.console)console={log:f,warn:f,error:f,assert:f}})();</script>
+  <script async src="http://www.googletagservices.com/tag/js/gpt.js"></script>
+  <script>var googletag = googletag || {};googletag.cmd = googletag.cmd || [];googletag.cmd.push(function() {googletag.pubads().enableSingleRequest();googletag.pubads().disableInitialLoad();googletag.pubads().setCentering(true);googletag.enableServices();});</script>
+  <script async src="http://c.amazon-adsystem.com/aax2/amzn_ads.js"></script>
+  <script>var _sf_startpt=(new Date()).getTime();</script>
+  <script id="nyt-features" type="application/json">{"useAmazonDirectMatch":true,"showMeter":true,"magazineRedesign":true,"screenreadAds":false}</script> 
+  <script>!function(e,n){"function"==typeof define&&define.amd?define(n):(e.NYTD||(e.NYTD={})).Features=n()}(this,function(){"use strict";function e(){n(),t()}function n(){try{var e=document.getElementById("nyt-features");if(!e)throw new Error("#nyt-features missing");var n=e.textContent||e.innerText;if(!n)throw new Error("#nyt-features empty");r=JSON.parse(n)}catch(t){try{console.warn("can't read features config: "+t.message)}catch(a){}}r=r||{}}function t(){var e,n,t=document.getElementsByTagName("html")[0];for(e in r)n=e.replace(/[^a-zA-Z0-9_]+/g,"_"),t.className+=" flag-"+n+(a.isEnabled(e)?"-on":"-off")}var r=null,a={isEnabled:function(e,n){return e in r?!!r[e]:!!n},areEnabled:function(){for(var e=[].concat(Array.prototype.slice.call(arguments)),n=0;n<e.length;n++)if(!a.isEnabled(e[n]))return!1;return!0}};return e(),a});</script> 
+  <script type="application/json" id="nytd-abtest-config-v4">{"cigNamespace":"MobileWeb_","tests":{"AokWave2":{"variants":[{"weight":"5%","cigId":0},{"weight":"5%","value":"fourAds","cigId":2},{"weight":"90%","value":"fourAds"}],"cigModule":"Ad","setHTMLClass":true},"ShareToolsPosition":{"variants":[{"weight":"90%","cigId":0},{"weight":"10%","value":"fixedBottom","cigId":1}],"setHTMLClass":true},"AppSteering":{"variants":[{"value":"breaking","cigId":0,"weight":"0%"},{"value":"faster","cigId":1,"weight":"0%"},{"value":"free","cigId":2,"weight":"0%"}]}}}</script> 
+  <script>var NYTD=NYTD||{};NYTD.ABTest=function(t){"use strict";function e(t,e){var a,r;return c.tests&&c.tests[t]?t in l?l[t]:(r=n(t,c.tests[t].variants),r&&(a=r.value),null==a&&(a=null),e||(l[t]=a,r&&null!=r.cigId&&(NYTD.etw=NYTD.etw||[],NYTD.etw.push({subject:"adx-ab-allocation",testName:(c.cigNamespace||"")+t,module:c.tests[t].cigModule,treatment:r.cigId}))),a):null}function a(){for(var t in c.tests)c.tests[t].setHTMLClass&&e(t)&&(document.documentElement.className+=" ab-"+t.replace(/[^a-zA-Z0-9_]+/g,"_")+"-"+e(t).replace(/[^a-zA-Z0-9_]+/g,"_"))}function n(t,e){if(e){var a,n,r,c,l=o(t+"."+s),i=0;for(a=0;n=e[a];a++)if(r=n.weight,"string"==typeof r&&((c=r.match(/^([0-9.]+)%$/))?r=+c[1]/100:(c=r.match(/^(\d+)\/(\d+)$/))&&(r=+c[1]/+c[2])),"number"!=typeof r&&(r=1/e.length),i+=4294967296*r,i>l)return n}}function r(){var e,n,r;try{if(l={},e=document.getElementById("nytd-abtest-config-v4"),c=JSON.parse(e.textContent||e.innerText),s=t.localStorage["NYT.AB"],!s){try{t.crypto.getRandomValues(r=new Uint32Array(2)),s=r[0]+"-"+r[1]}catch(o){s=""+Date.now()+Math.random()+Math.random()}t.localStorage["NYT.AB"]=s}n=t.localStorage["NYT.AB.F"],n&&(l=JSON.parse(n)),a()}catch(o){c={};try{console.error("can't init ABTest",o)}catch(i){}}}function o(t){for(var e,a,n,r,o,c,s,l=0,i=0,u=[],f=[e=1732584193,a=4023233417,~e,~a,3285377520],d=[],g=t.length;g>=i;)d[i>>2]|=(t.charCodeAt(i)||128)<<8*(3-i++%4);for(d[s=(g+8>>6<<4)+15]=g<<3;s>=l;l+=16){for(e=f,i=0;80>i;e=[0|[(c=((t=e[0])<<5|t>>>27)+e[4]+(u[i]=16>i?~~d[l+i]:c<<1|c>>>31)+1518500249)+((a=e[1])&(n=e[2])|~a&(r=e[3])),o=c+(a^n^r)+341275144,c+(a&n|a&r|n&r)+882459459,o+1535694389][0|i++/20],t,a<<30|a>>>2,n,r])c=u[i-3]^u[i-8]^u[i-14]^u[i-16];for(i=5;i;)f[--i]=f[i]+e[i]|0}return f[0]>>>0}var c,s,l;return r(),e.variantFor=e,e}(this);</script> 
+  <script>NYTD.AdConfig={fourAds:{firstPosition:6,frequency:12,maxAds:4,topBanner:!0}};</script> 
+  <script id="fontScript"></script>
+  <script>(function(w, d){if ('querySelector' in d && 'addEventListener' in w && 'localStorage' in w && 'sessionStorage' in w && 'bind' in Function && (('XMLHttpRequest' in w && 'withCredentials' in new XMLHttpRequest()) || 'XDomainRequest' in w)) {if (localStorage.getItem("fonts") != null && JSON.parse(localStorage.getItem("fonts"))["version"] == 1){st = d.createElement("style");st.appendChild(d.createTextNode(JSON.parse(localStorage.getItem("fonts")).d));d.getElementsByTagName("head")[0].appendChild(st);}else {d.getElementById("fontScript").setAttribute("src", "/static/public/js/externals/core_fonts.1a1e6b53.js");}d.getElementsByTagName("html")[0].className += " custom-fonts";}})(window, document);</script>
+ </head>
+ <body class=" nojs Homepage" data-view="body">
+  <script type="text/javascript">var c = function(i,v) {return document.cookie.indexOf(i+"="+(v||"")) > -1};var existingClasses = document.body.className;if (c("isFFApp","1")) {existingClasses += " ffApp"} else if (!c("isFFApp","0") && navigator.mozApps && navigator.mozApps.getSelf) {var ffrequest = navigator.mozApps.getSelf();ffrequest.onsuccess = function() {if (ffrequest.result) existingClasses += " ffApp"};};var ua = navigator.userAgent;window.BBDevice = {isOldBB: false,indexOfVersion: ua.indexOf("Version/"),indexOfBB: ua.indexOf("BlackBerry"),fullVersion: null,version: null};if(window.BBDevice.indexOfBB >= 0) {existingClasses = document.body.className = existingClasses + " bb";if (ua.indexOf("WebKit") < 0) {existingClasses = document.body.className = existingClasses + " oldbb";window.BBDevice.isOldBB = true;window.BBDevice.fullVersion = ua.substr(window.BBDevice.indexOfBB);window.BBDevice.fullVersion = window.BBDevice.fullVersion.substr(window.BBDevice.fullVersion.indexOf("/")+1, window.BBDevice.fullVersion.indexOf(" "));window.BBDevice.version = window.BBDevice.fullVersion.substr(0,window.BBDevice.fullVersion.indexOf("."));} else {if(window.BBDevice.indexOfVersion >= 0) {window.BBDevice.indexOfVersion = window.BBDevice.indexOfVersion + 8;window.BBDevice.fullVersion = ua.substr(window.BBDevice.indexOfVersion);window.BBDevice.fullVersion = window.BBDevice.fullVersion.substr(0,window.BBDevice.fullVersion.indexOf(" "));window.BBDevice.version = window.BBDevice.fullVersion.substr(0,window.BBDevice.fullVersion.indexOf("."));}}} else if (ua.indexOf("MSIE 9.0") >= 0 || ua.indexOf("IEMobile/9.0") >= 0) {existingClasses = document.body.className = existingClasses + " win75";window.WMDevice = true;} else if (ua.indexOf("MSIE 10.0") >= 0 || ua.indexOf("IEMobile/10.0") >= 0) {window.WMDevice = true;} else if (ua.indexOf("Opera Mini") >= 0) {window.OperaMiniDevice = true;}window.loginCheck = function() {existingClasses = existingClasses.replace(/(^|\s)nojs(\s|$)/, ' ');var classNames = ["hasjs"];classNames.push(c("subLevel") ? "loggedin" : "loggedout");if (c("subLevel","2")) classNames.push("subscribed");if (c("NYT-Edition","edition|GLOBAL") || window.location.pathname.indexOf("/international") == 0) classNames.push("global");fontDefault = "small";var fontSize = /fontSize=(medium|large)/.exec(document.cookie);if (fontSize) {fontDefault = fontSize[1];}if (/(?:iPhone|iPod)/.exec(navigator.userAgent) != null) {classNames.push("iOS");}if (typeof(document.body.style.backgroundSize) != "undefined")  {classNames.push("hasBackgroundSize");}classNames.push("text-" + fontDefault);if (window.BBDevice && window.BBDevice.version && window.BBDevice.version < 10 && fontDefault === 'large') {classNames.push("text-xlarge");}readModeDefault = "day";var readMode = /readMode=(night)/.exec(document.cookie);if (readMode) {readModeDefault = 'dark ' + readMode[1];};try {var promoSaved = window.sessionStorage.getItem("promo-" + window.location.pathname);if (promoSaved && promoSaved > new Date().valueOf() - (1000 * 60 * 20)) {classNames.push("hasPaidPromo");};} catch (e) {};classNames.push(readModeDefault);document.body.className = existingClasses + " " + classNames.join(" ");};if (!window.BBDevice.isOldBB && !window.OperaMiniDevice) {window.loginCheck();}try {document.domain = "nytimes.com";} catch (e) {};window.promoResizer = function(frame) {frame.style.height = frame.contentDocument.body.offsetHeight + "px"};</script>
+  <a name="top"></a>
+  <div class="ad top " data-view="advert" data-position="top" aria-hidden="true"></div>
+  <header id="main-header" class="main-header border-t " role="banner" data-view="header">
+   <div class="main-header-container">
+    <div id="main-nav" class="btn nav-button main-nav" data-button="header-nav" aria-controls="sections-nav">
+     <span class="nojs"><a href="#sections" class="btn-link"><i class="icon icon-main-nav">Main Menu</i></a></span>
+     <span class="hasjs"><a href="javascript:;" class="btn-link"><i class="icon icon-main-nav">Main Menu</i></a></span>
+    </div>
+    <nav id="sections-nav" class="sects-nav" role="navigation" aria-hidden="true" aria-expanded="false" data-view-el="header-nav-menu">
+     <div id="navLinks" class="navLinks">
+      <form class="edition-selector" action="/switch-edition" method="GET" data-view="edition-selector">
+       <input type="submit" class="first-item isUs" value="U.S. Edition" name="us" data-button="us">
+       <input type="submit" class="isGlobal" value="International Edition" name="global" data-button="global">
+      </form>
+      <div id="header_nav_sections"></div>
+      <div class="sect-nav-group grid border-t">
+       <ul class="settings" data-view="settings">
+        <li class="setting">
+         <div class="setting-title">
+          Type Size:
+         </div>
+         <div class="setting-option">
+          <span class="font-size small"><a href="/font-size?size=small&amp;redirect=/" data-text-size="small">A</a></span>
+          <span class="font-size medium"><a href="/font-size?size=medium&amp;redirect=/" data-text-size="medium">A</a></span>
+          <span class="font-size large"><a href="/font-size?size=large&amp;redirect=/" data-text-size="large">A</a></span>
+         </div></li>
+        <li class="setting">
+         <div class="setting-title">
+          Night Mode:
+         </div>
+         <div class="setting-option">
+          <div data-button="settings-day" class="settings-day">
+           <a href="/read-mode?mode=day&amp;redirect=/">Disable</a>
+          </div>
+          <div data-button="settings-night" class="settings-night">
+           <a href="/read-mode?mode=night&amp;redirect=/">Enable</a>
+          </div>
+         </div></li>
+        <li data-view="user-account" class="setting hidden">
+         <div class="setting-title">
+          Account:
+         </div>
+         <div class="setting-option">
+          <span data-view="user-name" class="user-name"></span>
+         </div></li>
+        <li class="setting">
+         <div class="sub-statusbar text-center" data-view="substatusbar">
+          <ul class="text-center">
+           <li><a href="http://www.nytimes.com/mowweb/ftnotlog?EXIT_URI=http%3A%2F%2Fmobile.nytimes.com%2FloginReturn%3Furl%3D%252F" class="link padding-tblr" data-title="sub">Subscribe</a></li>
+           <li><a class="link padding-tblr" href="https://myaccount.nytimes.com/mobile/login/smart/index.html?EXIT_URI=http%3A%2F%2Fmobile.nytimes.com%2FloginReturn%3Furl%3D%252F" data-title="login">Log in</a></li>
+          </ul>
+         </div></li>
+       </ul>
+      </div>
+      <div class="clearfix"></div>
+     </div>
+    </nav>
+    <div class="sect-nav-shim"></div>
+    <h1 class="logo"><a href="/"><i class="icon icon-logo">The New York Times</i></a></h1>
+    <div class="ihtlogo logo">
+     <a href="/international"><i class="icon icon-logo">International New York Times</i></a>
+    </div>
+    <div id="main-search" class="main-search btn" data-button="header-search" aria-controls="search-nav">
+     <a href="javascript:;" class="btn-link"><i class="icon icon-main-search">Search</i></a>
+    </div>
+    <div id="search-nav" class="search-nav" role="search" aria-hidden="true" aria-expanded="false" data-view-el="header-search">
+     <div id="nav-search-container" class="nav-search-container " data-search-container="">
+      <div class="search-nav-shim"></div>
+      <form action="/search" name="search-form" class="search-form " method="get" data-view="search-form">
+       <div class="search-container">
+        <div class="btn form-input search-input" data-view-el="search-input-container">
+         <input type="text" name="query" class="t-search" placeholder="Search" data-view="search-input" autocomplete="off">
+         <input type="hidden" name="sort" value="rel">
+         <i class="icon icon-search-reset invisible" data-view="search-reset"><a href="javascript:;"></a></i>
+        </div>
+        <button type="submit" data-view="search-submit" class="btn search-submit">Go</button>
+        <ul id="toolbarAutosuggestions" class="autoSuggest-list"></ul>
+       </div>
+      </form>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div id="fixed-nav-placeholder"></div>
+  <h2 class="header-bar hp">
+   <div id="header-login" class="header-login" data-view="header-login">
+    <div class="subscribe">
+     <span class="hasjs"><a href="http://www.nytimes.com/mowweb/hdr?EXIT_URI=http%3A%2F%2Fmobile.nytimes.com%2FloginReturn%3Furl%3D%252F" id="lnkSubscribe">Subscribe</a></span>
+     <span class="nojs"><a href="https://myaccount.nytimes.com/mobile/wall/call/index.html?EXIT_URI=">Subscribe</a></span>
+    </div>
+    <div class="nojs loggedout loginbox">
+     <a class="myaccountlink" href="https://myaccount.nytimes.com/mobile/login/call/index.html?EXIT_URI=http%3A%2F%2Fmobile.nytimes.com%2FloginReturn%3Furl%3D%252F" id="lnkLogin">My account</a>
+    </div>
+    <div class="hasjs loggedout loginbox">
+     <a class="loginlink" href="https://myaccount.nytimes.com/mobile/login/smart/index.html?EXIT_URI=http%3A%2F%2Fmobile.nytimes.com%2FloginReturn%3Furl%3D%252F" id="lnkLogin">Log in</a>
+    </div>
+   </div>
+   <div class="header-timestamp" data-view="header-timestamp">
+    <span class="date" data-localize="date" data-raw="2015-03-02T06:23:02-05:00">March 2, 2015</span>Updated
+    <span class="updated" data-localize="time" data-raw="Mon Mar 02 2015 06:15:14 GMT-0500 (EST)">6:15 AM ET</span>
+   </div></h2>
+  <div class="sect" role="main">
+   <ul class="bna-alerts"></ul>
+   <div id="package-articles" class="pkg-arts" data-view="package-article-repeater">
+    <ol data-view="package" class="headlines pkg touchstates ">
+     <li class="highlighted lede border-b"><a href="/2015/03/02/world/middleeast/kerry-is-pushing-for-agreement-in-iran-nuclear-talks.html"><img class="highlighted-thumb" src="http://graphics8.nytimes.com/images/2015/03/02/world/JP-KERRY/JP-KERRY-thumbLarge.jpg"><span class="title">Kerry Is Pushing for Agreement in Iran Nuclear Talks</span><p>With so much at stake in the Iranian nuclear talks, Secretary of State John Kerry’s relentless negotiating style and repeated meetings with Iran’s foreign minister have become part of the debate.</p></a></li>
+     <li class="border-b highlighted "><a href="/2015/03/02/us/politics/israeli-leaders-visit-brings-uninvited-problems-for-jewish-democrats.html"><img src="http://graphics8.nytimes.com/images/2015/03/02/world/CONG1/CONG1-thumbLarge-v2.jpg" class="highlighted-thumb" width="150" height="150"><span class="title">Netanyahu’s Visit Bringing Uninvited Problems for Jewish Democrats</span><p>The division caused by the Israeli prime minister’s coming speech to Congress is keenly felt among the Jewish members of Congress — all but one of them Democratic — and seems to reflect the dismay of American Jews.</p> </a></li>
+     <li class="border-b highlighted "><a href="/2015/03/03/world/middleeast/white-house-and-netanyahu-aipac-conference.html"><span class="title">White House and Netanyahu Are Set to Make Dueling Cases in Washington</span><p><span class="updated-timestamp" data-localize="time" data-raw="2015-03-02T05:00:03-05:00">5:00 AM ET</span>A day before Prime Minister Benjamin Netanyahu’s speech to Congress, the verbal sparring over an American deal with Iran is likely to continue.</p> </a></li>
+    </ol>
+   </div>
+   <script type="text/javascript"></script>
+   <div id="articles">
+    <ol data-view="results" class="headlines touchstates hp">
+     <li class="border-b highlighted  item-0"><a href="/2015/03/02/nytnow/latest-news-netanyahu-ferguson-report-sound-of-music.html"><img src="http://graphics8.nytimes.com/images/2015/03/02/business/02nytnow-ukraine3/02nytnow-ukraine3-thumbLarge-v2.jpg" class="highlighted-thumb" width="150" height="150"><span class="title">Your Monday Briefing</span><p><span class="updated-timestamp" data-localize="time" data-raw="2015-03-02T06:13:53-05:00">6:13 AM ET</span>Here’s what you need to know to start your day.</p></a></li>
+     <li class="border-b highlighted  item-1"><a href="/2015/03/02/us/justice-department-report-to-fault-police-in-ferguson.html"><img src="http://graphics8.nytimes.com/images/2015/03/02/us/02ferguson-JP-01/02ferguson-JP-01-thumbLarge.jpg" class="highlighted-thumb" width="150" height="150"><span class="title">Justice Department to Fault Ferguson Police, Seeing Racial Bias in Traffic Stops</span><p>A Justice Department report will accuse the police in Ferguson, Mo., of making discriminatory traffic stops of African-Americans that created racial animosity leading up to an officer’s shooting of a black teenager, law enforcement officials said.</p></a></li>
+     <li class="border-b highlighted  item-2"><a href="/2015/03/02/business/dealbook/wells-fargo-puts-a-ceiling-on-subprime-auto-loans.html"><img src="http://graphics8.nytimes.com/images/2015/03/02/business/02subprime2/02subprime2-thumbLarge.jpg" class="highlighted-thumb" width="150" height="150"><span class="title">Wells Fargo Puts a Ceiling on Subprime Auto Loans</span><p>Fearing increased risk and slipping standards, Wells Fargo will keep new subprime car loans to no more than 10 percent of its total auto loans.</p></a></li>
+     <li class="border-b highlighted  item-3"><a href="/2015/03/02/us/psychiatric-drug-overuse-is-cited-by-federal-study.html"><span class="title">Psychiatric Drug Overuse Is Cited by Federal Study</span><p>Investigators are recommending that Medicare officials take immediate action to reduce unnecessary prescriptions to older Americans with dementia.</p></a></li>
+     <li class="border-b highlighted  item-4"><a href="/2015/03/02/science/most-doctors-give-in-to-requests-by-parents-to-alter-vaccine-schedules.html"><img src="http://graphics8.nytimes.com/images/2015/03/02/us/02vaccine/02vaccine-thumbLarge.jpg" class="highlighted-thumb" width="150" height="150"><span class="title">Most Doctors Give In to Requests by Parents to Alter Vaccine Schedules</span><p>A majority of pediatricians acquiesce to parents who wish to delay vaccinating their children, a new survey has found.</p></a></li>
+     <li class="border-b highlighted  item-5"><a href="/2015/03/02/business/dealbook/dennis-kozlowskis-path-from-infamy-to-obscurity.html"><img src="http://graphics8.nytimes.com/images/2015/03/02/business/02kozlowskijp1/02kozlowskijp1-thumbLarge.jpg" class="highlighted-thumb" width="150" height="150"><span class="title">Tyco’s ‘Piggy,’ Out of the Pen and Living Small</span><p>Convicted in 2005 of looting nearly $100 million from Tyco, L. Dennis Kozlowski was the face of Wall Street gluttony. Now a free man, he speaks for the first time of his more modest life.</p></a></li>
+     <li class="border-b highlighted  item-6"><a href="/2015/03/02/arts/television/julian-fellowes-on-twists-in-the-downton-abbey-season-finale.html">
+       <div class="kicker">
+        A Word With: Julian Fellowes
+       </div><img src="http://graphics8.nytimes.com/images/2015/03/02/arts/02DOWNTON/02DOWNTON-thumbLarge.jpg" class="highlighted-thumb" width="150" height="150"><span class="title">Julian Fellowes on Twists in the ‘Downton Abbey’ Season Finale</span><p>Mr. Fellowes discusses developments on the past season and what the future might hold for “Downton” and its characters.</p></a></li>
+     <li class="border-b highlighted  item-7"><a href="/2015/03/02/sports/baseball/yankees-eager-to-retire-numbers-subtract-options-for-current-players.html"><img src="http://graphics8.nytimes.com/images/2015/03/02/sports/02YANKEESjp/02YANKEESjp-thumbLarge-v2.jpg" class="highlighted-thumb" width="150" height="150"><span class="title">2=Jeter, 3=Ruth, 4=Gehrig. ... In the Bronx, Numbers Are Finite.</span><p>The Yankees retire numbers with gusto, 18 to date and three more soon, but this zest also limits options when it comes to assigning numbers to current players.</p></a></li>
+     <li class="border-b highlighted  item-8"><a href="/blogs/cityroom/2015/03/02/new-york-today-welcome-to-march/"><img src="http://graphics8.nytimes.com/images/2015/03/02/nyregion/newyorktoday/02nytoday-1/02nytoday-1-thumbLarge.jpg" class="highlighted-thumb" width="150" height="150"><span class="title">New York Today: Welcome to March</span><p><span class="updated-timestamp" data-localize="time" data-raw="2015-03-02T06:10:42-05:00">6:10 AM ET</span>Monday: Digging out, a weather rollercoaster with more snow, and a makeover for a South Bronx park.</p></a></li>
+     <li class="paidpostholder">
+      <div class="ad mid1 " data-view="advert" data-position="mid1" aria-hidden="true"></div></li>
+     <li class="border-b highlighted  item-9"><a href="/2015/03/03/world/europe/un-report-faults-russia-for-escalating-conflict-in-ukraine.html"><img src="http://graphics8.nytimes.com/images/2014/02/27/world/europe/ukraine-divisions-crimea-1393526983251/ukraine-divisions-crimea-1393526983251-thumbLarge-v40.png" class="highlighted-thumb" width="150" height="150"><span class="title">U.N. Report Faults Russia for Escalating Conflict in Ukraine</span><p><span class="updated-timestamp" data-localize="time" data-raw="2015-03-02T05:46:50-05:00">5:46 AM ET</span>An influx of troops and heavy weapons were cited as undermining prospects for peace and causing a significant rise in casualties.</p></a></li>
+     <li class="border-b highlighted  item-10"><a href="/aponline/2015/03/02/world/middleeast/ap-ml-iraq-islamic-state.html"><span class="title">Iraq State TV: Operation to Retake Tikrit Begins</span><p>Backed by allied Shiite and Sunni fighters, Iraqi security forces on Monday began a large-scale military operation to recapture Saddam Hussein's hometown from the Islamic State extremist group, state TV said, a major step in a campaign to reclaim a large swath of territory in northern Iraq controlled by the militants.</p></a></li>
+     <li class="border-b highlighted  item-11"><a href="/2015/03/03/world/middleeast/iran-allows-jason-rezaian-to-hire-lawyer-after-7-months-in-jail.html"><img src="http://graphics8.nytimes.com/images/2015/01/15/world/IRAN/IRAN-thumbLarge.jpg" class="highlighted-thumb" width="150" height="150"><span class="title">After 7 Months in Jail, U.S. Journalist in Iran Is Allowed to Hire Lawyer</span><p><span class="updated-timestamp" data-localize="time" data-raw="2015-03-02T02:30:15-05:00">2:30 AM ET</span>The obstruction of Jason Rezaian’s right to counsel has been one of many questions shrouding the Washington Post reporter’s prosecution on undisclosed charges.</p></a></li>
+     <li class="border-b highlighted  item-12"><a href="/2015/03/03/world/asia/north-korea-launches-2-missiles-into-sea-to-protest-us-war-games-with-south.html"><span class="title">North Korea Launches 2 Missiles Into Sea to Protest U.S. War Games With South</span><p>South Korea condemned the North Korean missile tests as a “saber-rattling provocation” and a violation of United Nations resolutions.</p></a></li>
+     <li class="border-b highlighted  item-13"><a href="/2015/03/02/us/los-angeles-police-kill-man-in-confrontation-caught-on-video.html"><span class="title">Los Angeles Police Kill Man in Confrontation Caught on Video</span><p>The fatal shooting occurred Sunday in a homeless encampment downtown, where officers had gone in response to a robbery report.</p></a></li>
+     <li class="border-b highlighted  item-14"><a href="/blogs/bits/2015/03/02/microsoft-presents-low-cost-phones-and-windows-10-for-mobile/">
+       <div class="kicker">
+        Bits Blog
+       </div><img src="http://graphics8.nytimes.com/images/2015/03/02/technology/02bits-microsoft-lumia/02bits-microsoft-lumia-thumbLarge.jpg" class="highlighted-thumb" width="150" height="150"><span class="title">Microsoft Presents <span class="nobr">Low-Cost</span> Phones and Windows 10 for Mobile</span><p><span class="updated-timestamp" data-localize="time" data-raw="2015-03-02T05:10:46-05:00">5:10 AM ET</span>At the Mobile World Congress, the company for the first time showed off the operating system for phones and continued its evolving strategy of delivering low-cost Lumia devices.</p></a></li>
+     <li class="border-b highlighted  item-15"><a href="/blogs/bits/2015/03/01/mobile-world-congress-samsungs-galaxy-6-s-and-galaxy-6-edge-offer-the-best-of-the-iphone-and-more/">
+       <div class="kicker">
+        Bits Blog
+       </div><img src="http://graphics8.nytimes.com/images/2015/03/02/technology/02Samsung-Edge/02Samsung-Edge-thumbLarge.jpg" class="highlighted-thumb" width="150" height="150"><span class="title">Samsung Galaxy S 6 and Galaxy S 6 Edge, Unveiled at Mobile World Congress, Offer Best of iPhone and More</span><p>Samsung has been accused of being a copycat, but after adding its own design twists to popular features borrowed from the competition, its new flagship phone feels like a real flagship.</p></a></li>
+     <li class="border-b highlighted  item-16"><a href="/2015/03/02/world/asia/afghan-policewomen-struggle-against-culture.html"><img src="http://graphics8.nytimes.com/images/2015/02/27/world/02POLICEWOMEN-WEB1/02POLICEWOMEN-WEB1-thumbLarge.jpg" class="highlighted-thumb" width="150" height="150"><span class="title">Afghan Policewomen Struggle Against Culture</span><p>In a clash between Western ideals and Afghan realities, an effort to elevate the status of women by recruiting them to the police force has often backfired.</p></a></li>
+     <li class="border-b highlighted  item-17"><a href="/2015/03/02/business/media/news-corp-set-to-rehire-rebekah-brooks-acquitted-executive.html"><img src="http://graphics8.nytimes.com/images/2015/03/02/business/02Brooks/02Brooks-thumbLarge-v2.jpg" class="highlighted-thumb" width="150" height="150"><span class="title">News Corp. Set to Rehire Rebekah Brooks, Acquitted Executive</span><p>After being acquitted in a British phone hacking scandal, Ms. Brooks is expected to take an executive role seeking ways to expand the company’s digital endeavors, people familiar with its plans said.</p></a></li>
+     <li class="border-b highlighted  item-18"><a href="/2015/03/02/technology/apples-new-job-selling-a-smartwatch-to-an-uninterested-public.html"><img src="http://graphics8.nytimes.com/images/2015/03/01/business/02applewatch/02applewatch-thumbLarge.jpg" class="highlighted-thumb" width="150" height="150"><span class="title">Apple’s New Job: Selling a Smartwatch to an Uninterested Public</span><p>The Apple Watch is scheduled to debut in April, a bit later than the company had hoped, because of technology challenges.</p></a></li>
+     <li class="border-b highlighted  item-19"><a href="/2015/03/02/sports/basketball/anthony-mason-fulfilled-a-dream-that-all-too-many-have.html">
+       <div class="kicker">
+        Sports of The Times
+       </div><img src="http://graphics8.nytimes.com/images/2015/03/02/sports/02RHODEN/02RHODEN-thumbLarge-v2.jpg" class="highlighted-thumb" width="150" height="150"><span class="title">Anthony Mason Fulfilled a Dream That All Too Many Have</span><p>Mason, who died Saturday at 48, had the tenacity and talent that made him one of the select few to achieve the dream of becoming a professional athlete.</p></a></li>
+     <li class="border-b highlighted  item-20"><a href="/2015/03/02/nyregion/doubling-up-on-long-johns-and-gloves-to-keep-tappan-zee-bridge-project-going.html"><img src="http://graphics8.nytimes.com/images/2015/03/02/nyregion/sub-tappanzee-1/sub-tappanzee-1-thumbLarge-v2.jpg" class="highlighted-thumb" width="150" height="150"><span class="title">Doubling Up on Long Johns and Gloves to Keep Tappan Zee Bridge Project Going</span><p>Even during a winter that feels historic in its unrelenting bite, work on the $3.9 billion replacement for the bridge is proceeding.</p></a></li>
+     <li class="border-b highlighted  item-21"><a href="/2015/03/02/sports/football/in-los-angeles-stadiums-battle-heats-up.html">
+       <div class="kicker">
+        On Pro Football
+       </div><img src="http://graphics8.nytimes.com/images/2015/03/02/sports/BELSON/BELSON-thumbLarge.jpg" class="highlighted-thumb" width="150" height="150"><span class="title">In Los Angeles, Stadiums Battle Heats Up </span><p>With three N.F.L. teams vying to move to the same city, studies criticize one proposal for a stadium in Inglewood, Calif.</p></a></li>
+     <li class="border-b highlighted  item-22"><a href="/2015/03/02/nyregion/marching-in-one-st-patricks-parade-de-blasio-vows-to-keep-skipping-another.html"><img src="http://graphics8.nytimes.com/images/2015/03/02/nyregion/sub-mayor2-y/sub-mayor2-y-thumbLarge.jpg" class="highlighted-thumb" width="150" height="150"><span class="title">Marching in One St. Patrick’s Parade, de Blasio Spurns Another</span><p>At the inclusive St. Pat’s for All parade in Queens, Mayor Bill de Blasio vowed to continue to boycott the city’s marquee parade, saying its admission of one gay group this year was “too small a change.”</p></a></li>
+     <li class="border-b highlighted  item-23"><a href="/2015/03/02/nyregion/a-forgotten-park-in-the-south-bronx-gets-a-small-boost.html"><img src="http://graphics8.nytimes.com/images/2015/02/26/nyregion/STMARYPARKweb1/STMARYPARKweb1-thumbLarge.jpg" class="highlighted-thumb" width="150" height="150"><span class="title">Poor and Forgotten, a South Bronx Park Gets a Small Boost</span><p>St. Mary’s Park, which got a grant from the City Council speaker, was too large to be included in the mayor’s initiative to renovate parks in rundown communities.</p></a></li>
+     <li class="border-b highlighted  item-24"><a href="/2015/03/02/books/review-in-olen-steinhauers-all-the-old-knives-exes-recall-love-and-blood.html">
+       <div class="kicker">
+        Books of The Times
+       </div><img src="http://graphics8.nytimes.com/images/2015/03/02/arts/02BOOKJP/02BOOKJP-thumbLarge.jpg" class="highlighted-thumb" width="150" height="150"><span class="title">Review: In Olen Steinhauer’s ‘All the Old Knives,’ Exes Recall Love and Blood</span><p>In this thriller, former lovers and colleagues in espionage meet at a California restaurant to recall a tryst and resurrect memories of a hostage crisis.</p></a></li>
+     <li class="border-b highlighted  item-25"><iframe src="http://www.nytimes.com/interactive/2014/feeds/100000003131092.embedded.html" frameborder="0" scrolling="no" onload="window.promoResizer(this)">&lt;a href="http://www.nytimes.com/interactive/2014/feeds/100000003131092.embedded.html"&gt;&lt;span class="title"&gt;&lt;/span&gt;&lt;p&gt;&lt;/p&gt;&lt;/a&gt;</iframe></li>
+    </ol>
+   </div>
+   <div class="subsects">
+    <div class="subsect">
+     <h3><a href="/business/markets/">Markets</a></h3>
+     <div class="mkts hp">
+      <div class="mkt-form">
+       <form action="/business/markets/quote" method="get" id="mkt-search-form" class="mkt-search-form" data-view="market-search">
+        <div class="btn form-input search-input">
+         <input type="text" name="symbols" class="symbols t-mkt-search" placeholder="Get Quotes - Up to 5" alt="Get Quotes - Up to 5" id="t-mkt-search" data-view="market-search-input">
+         <i class="icon icon-search-reset invisible" data-view="market-search-reset"><a href="javascript:;"></a></i>
+        </div>
+        <button type="submit" id="mkt-search-submit" class="btn mkt-search-submit" align="right" data-button="market-search">Go</button>
+       </form>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="subsect">
+    <h3><a href="/opinion/" class="">Opinion</a></h3>
+    <ol class="headlines">
+     <li class="border-b"><a href="/2015/03/02/opinion/congresss-critical-role-on-trade.html"><span class="ikicker">Editorial: </span><span class="title">Congress’s Critical Role on Trade </span></a></li>
+     <li class="border-b"><a href="/2015/03/02/opinion/in-king-v-burwell-the-plaintiffs-misread-obamacare.html"><span class="ikicker">Op-Ed Contributor: </span><span class="title">Hello, Justices? It’s Reality Calling</span></a></li>
+     <li class="border-b"><a href="/2015/03/02/opinion/charles-blow-cpac-hackneyed-and-hollow.html"><span class="ikicker">Charles M. Blow: </span><span class="title">CPAC: Hackneyed and Hollow</span></a></li>
+     <li class="border-b"><a href="/2015/03/02/opinion/paul-krugman-walmarts-visible-hand.html"><span class="ikicker">Paul Krugman: </span><span class="title">Walmart’s Visible Hand</span></a></li>
+    </ol>
+   </div>
+   <div class="subsects">
+    <div class="subsect">
+     <h3><a href="/world/" class="">World</a></h3>
+     <ol class="headlines">
+      <li class="border-b"><a href="/2015/03/02/world/middleeast/netanyahus-speech-opens-political-divisions-in-israel-too.html"><span class="title">Speech by Netanyahu Opens Political Divisions in Israel, Too</span></a></li>
+      <li class="border-b"><a href="/2015/03/02/world/middleeast/kerry-and-netanyahu-hold-phone-conversation-amid-tensions.html"><span class="title">Kerry Welcoming, but Wary of Netanyahu </span></a></li>
+      <li class="border-b"><a href="/2015/03/02/world/europe/march-in-moscow-to-honor-putin-critic-boris-nemtsov.html"><span class="title">Remembering Slain Critic of Putin, Tens of Thousands March in Moscow </span></a></li>
+     </ol>
+    </div>
+    <div class="subsect">
+     <h3><a href="/national/" class="US">U.S.</a><a href="/national/" class="international">U.S. News</a></h3>
+     <ol class="headlines">
+      <li class="border-b"><a href="/2015/03/02/us/frozen-fishing-from-a-new-england-port.html"><span class="title">Icy Stillness and Muted Fishing in a New England Port</span></a></li>
+      <li class="border-b"><a href="/2015/03/02/us/colorado-yogis-chafe-at-state-regulation-of-teacher-training.html"><span class="title">Colorado Yogis Balk at State Regulation of Teacher Training</span></a></li>
+      <li class="border-b"><a href="/2015/03/02/us/politics/10-questions-for-senator-orrin-hatch.html"><span class="title">10 Questions for Senator Orrin Hatch</span></a></li>
+     </ol>
+    </div>
+    <div class="subsect">
+     <h3><a href="/politics/" class="US">Politics</a><a href="/politics/" class="international">U.S. Politics</a></h3>
+     <ol class="headlines">
+      <li class="border-b"><a href="/2015/03/02/nyregion/anthony-r-cucci-jersey-city-mayor-dies-at-92.html"><span class="title">Anthony R. Cucci, Jersey City Mayor, Dies at 92</span></a></li>
+      <li class="border-b"><a href="/2015/03/01/us/politics/gop-race-starts-in-lavish-haunts-of-rich-donors.html"><span class="title">G.O.P. Race Starts in Lavish Haunts of Rich Donors</span></a></li>
+      <li class="border-b"><a href="/2015/03/01/us/politics/martin-omalley-in-veiled-jab-at-hillary-clinton-derides-politics-of-triangulation.html"><span class="title">Martin O’Malley, in Veiled Jab at Hillary Clinton, Derides Politics of ‘Triangulation’</span></a></li>
+     </ol>
+    </div>
+    <div class="subsect">
+     <h3><a href="/nyregion/" class="">New York</a></h3>
+     <ol class="headlines">
+      <li class="border-b"><a href="/2015/03/02/nyregion/as-common-core-testing-is-ushered-in-parents-and-students-opt-out.html"><span class="title">As Common Core Testing Is Ushered In, Parents and Students Opt Out</span></a></li>
+      <li class="border-b"><a href="/2015/03/02/nyregion/american-ballet-theater-and-fired-worker-to-go-to-trial-over-his-temper.html"><span class="ikicker">The Working Life: </span><span class="title">American Ballet Theater and Fired Worker to Go to Trial Over His Temper</span></a></li>
+      <li class="border-b"><a href="/2015/03/02/nyregion/a-graffiti-artist-turns-a-subway-car-into-a-gallery-until-the-end-of-the-line.html"><span class="ikicker">Side Street: </span><span class="title">Turning a Subway Car Into a Gallery, Until the Last Stop </span></a></li>
+     </ol>
+    </div>
+    <div class="subsect">
+     <h3><a href="/business/" class="">Business Day</a></h3>
+     <ol class="headlines">
+      <li class="border-b"><a href="/2015/03/02/business/international/chinas-long-food-chain-plugs-in.html"><span class="title">China’s Long Food Chain Plugs In </span></a></li>
+      <li class="border-b"><a href="/2015/03/03/business/international/european-prices-unemployment-rate.html"><span class="title">European Prices Continue to Fall, Fueling Concerns</span></a></li>
+      <li class="border-b"><a href="/2015/03/02/business/media/industry-issuesintrude-in-blurred-lines-case.html"><span class="title">Industry Issues Intrude in ‘Blurred Lines’ Case</span></a></li>
+     </ol>
+    </div>
+    <div class="subsect">
+     <h3><a href="/technology/" class="">Technology</a></h3>
+     <ol class="headlines">
+      <li class="border-b"><a href="/2015/03/02/business/dealbook/data-security-is-becoming-the-sparkle-in-bitcoin.html"><span class="title">Data Security Is Becoming the Sparkle in Bitcoin</span></a></li>
+      <li class="border-b"><a href="/2015/03/02/technology/how-superfishs-security-compromising-adware-came-to-inhabit-lenovos-pcs.html"><span class="title">How Superfish’s <span class="nobr">Security-Compromising</span> Adware Came to Inhabit Lenovo’s PCs</span></a></li>
+      <li class="border-b"><a href="/2015/03/02/business/chip-makers-will-merge-in-deal-worth-11-8-billion.html"><span class="title">Chip Makers Will Merge in Deal Worth $11.8 Billion</span></a></li>
+     </ol>
+    </div>
+    <div class="subsect">
+     <h3><a href="/sports/" class="">Sports</a></h3>
+     <ol class="headlines">
+      <li class="border-b"><a href="/2015/03/02/sports/minnie-minoso-dies-treasured-white-sox-ballplayer.html"><span class="title">Minnie Minoso Is Dead; Helped Integrate Baseball in Career Across 5 Decades</span></a></li>
+      <li class="border-b"><a href="/2015/03/02/sports/hockey/the-nashville-predators-are-hockeys-improbable-steamroller.html"><span class="title">Nashville Predators Are Hockey’s Improbable Steamroller</span></a></li>
+      <li class="border-b"><a href="/2015/03/02/sports/baseball/derek-jeters-lessons-live-on-with-blue-jays.html"><span class="title">Derek Jeter’s Lessons Live On ... With Blue Jays</span></a></li>
+     </ol>
+    </div>
+   </div>
+   <div class="subsects hidden" data-view="rec-home">
+    <div class="subsect">
+     <h3><a href="/recommendations">Recommendations</a></h3>
+     <ol class="headlines touchstates"></ol>
+    </div>
+   </div>
+   <div class="subsects hidden" data-view="most-emailed-home">
+    <div class="subsect">
+     <h3><a href="/recommendations">Recommendations</a></h3>
+     <ol data-view-el="most-emailed-list" class="headlines touchstates"></ol>
+    </div>
+   </div>
+  </div>
+  <div class="hr-grayL"></div>
+  <div class="footer" data-view="footer">
+   <footer id="main-footer" class="main-footer" role="contentinfo">
+    <div class="ad bottom " data-view="advert" data-position="bottom" aria-hidden="true"></div>
+    <div class="hr-grayL2"></div>
+    <div class="footer-content">
+     <div class="nav-tools">
+      <div class="nav-tools-btn">
+       <a href="#top" data-button="footer-back-to-top"><i class="icon icon-back-to-top"></i>Back to top</a>
+      </div>
+      <div class="nav-tools-btn">
+       <a href="/redirect?to-www=/" id="full-www"><i class=""></i>View desktop version</a>
+      </div>
+     </div>
+    </div>
+    <a name="sections"></a>
+    <nav id="sections-nav-tier1" class="sects-nav sects-nav-footer" role="navigation" data-view-el="footer-nav-menu">
+     <div class="btn nav-button footer-nav" id="footer-nav">
+      <a href="#top" class="btn-link"><i class="icon icon-main-nav">Main Menu</i></a>
+     </div>
+     <form class="edition-selector" action="/switch-edition" method="GET" data-view="edition-selector">
+      <input type="submit" class="first-item isUs" value="U.S. Edition" name="us" data-button="us">
+      <input type="submit" class="isGlobal" value="International Edition" name="global" data-button="global">
+     </form>
+     <div class="navLinks">
+      <div class="sect-nav-list section-links highlight grid" data-view="section-links">
+       <ul class="col col-split">
+        <li class="US"><a href="/" class="active"><span>Home</span></a></li>
+        <li class="international"><a href="/international/"><span>Home</span></a></li>
+        <li><a href="/world/"><span>World</span></a></li>
+        <li><a href="/national/" class=" US"><span>U.S.</span></a><a href="/national/" class=" international "><span>U.S. News</span></a></li>
+        <li><a href="/politics/" class=" US"><span>Politics</span></a><a href="/politics/" class=" international "><span>U.S. Politics</span></a></li>
+        <li><a href="/upshot/"><span>The Upshot</span></a></li>
+        <li><a href="/nyregion/"><span>New York</span></a></li>
+        <li class="international"><a href="/international/business/" class=" US"><span>Business</span></a><a href="/international/business/" class=" international "><span>Business</span></a></li>
+        <li class="US"><a href="/business/"><span>Business Day</span></a></li>
+        <li><a href="/technology/"><span>Technology</span></a></li>
+        <li class="international"><a href="/international/sports/"><span>Sports</span></a></li>
+        <li class="US"><a href="/sports/"><span>Sports</span></a></li>
+       </ul>
+       <ul class="col col-split">
+        <li class="international"><a href="/international/opinion/"><span>Opinion</span></a></li>
+        <li class="US"><a href="/opinion/"><span>Opinion</span></a></li>
+        <li><a href="/science/"><span>Science</span></a></li>
+        <li><a href="/health/"><span>Health</span></a></li>
+        <li class="US"><a href="/arts/"><span>Arts</span></a></li>
+        <li class="international"><a href="/international/arts/"><span>Arts</span></a></li>
+        <li class="US"><a href="/style/"><span>Style</span></a></li>
+        <li class="international"><a href="/international/style/"><span>Style</span></a></li>
+        <li><a href="/photos/"><span>Photos</span></a></li>
+        <li><a href="/video/"><span>Video</span></a></li>
+        <li><a href="/most-emailed/"><span>Most Emailed</span></a></li>
+        <li data-subscription-level="SBS" class="subscriberOnly"><a href="/times-insider/"><span>Times Premier</span></a></li>
+       </ul>
+      </div>
+      <div style="clear:both"></div>
+     </div>
+    </nav>
+    <div class="sects-nav expandable-container sections-nav-tier2plus" data-view="sections-nav-tier2plus">
+     <div class="expandable-title more-sections" data-button="expand">
+      <a href="javascript:;" class="expand">More Sections</a>
+     </div>
+     <div class="navLinks expandable-content">
+      <div class="sect-nav-list section-links  grid" data-view="section-links">
+       <ul class="col col-split">
+        <li><a href="/automobiles/"><span>Automobiles</span></a></li>
+        <li><a href="/blogs/"><span>Blogs</span></a></li>
+        <li><a href="/books/"><span>Books</span></a></li>
+        <li class="US"><a href="/dining/"><span>Food</span></a></li>
+        <li class="international"><a href="/international/dining/" class=" US"><span>Food</span></a><a href="/international/dining/" class=" international "><span>Food</span></a></li>
+        <li><a href="/education/"><span>Education</span></a></li>
+        <li><a href="/garden/"><span>Home &amp; Garden</span></a></li>
+        <li><a href="/magazine/"><span>Magazine</span></a></li>
+        <li><a href="/movies/"><span>Movies</span></a></li>
+        <li><a href="/music/"><span>Music</span></a></li>
+        <li><a href="/business/media/"><span>Media &amp; Advertising</span></a></li>
+        <li><a href="/obituaries/"><span>Obituaries</span></a></li>
+       </ul>
+       <ul class="col col-split">
+        <li><a href="/publiceditor/"><span>Public Editor</span></a></li>
+        <li class="international"><a href="/international/greathomes/"><span>Great Homes and Destinations</span></a></li>
+        <li class="US"><a href="/realestate/"><span>Real Estate</span></a></li>
+        <li><a href="/opinion/sundayreview/"><span>Sunday Review</span></a></li>
+        <li><a href="/tmagazine/"><span>T Magazine</span></a></li>
+        <li><a href="/television/"><span>Television</span></a></li>
+        <li><a href="/theater/"><span>Theater</span></a></li>
+        <li><a href="/timeswire/"><span>Times Wire</span></a></li>
+        <li><a href="/travel/"><span>Travel</span></a></li>
+        <li><a href="/weddings/"><span>Weddings</span></a></li>
+        <li><a href="/corrections/"><span>Corrections</span></a></li>
+       </ul>
+      </div>
+      <div class="sect-nav-list section-links  grid" data-view="section-links">
+       <ul class="col col-split">
+        <li><a href="/recommendations/"><span>Recommendations</span></a></li>
+       </ul>
+       <ul class="col col-split">
+        <li><a href="/saved/"><span>Saved</span></a></li>
+       </ul>
+      </div>
+      <div style="clear:both"></div>
+     </div>
+    </div>
+    <div class="sects-nav expandable-container footer-settings" data-view="footer-settings">
+     <div class="expandable-title" data-button="expand">
+      <a href="javascript:;" class="expand">Settings</a>
+     </div>
+     <div class="expandable-content">
+      <ul class="settings" data-view="settings">
+       <li class="setting">
+        <div class="setting-title">
+         Edition:
+        </div>
+        <div class="setting-option">
+         <form class="edition-selector" action="/switch-edition" method="GET" data-view="edition-selector">
+          <input type="submit" class="first-item isUs" value="U.S." name="us" data-button="us">
+          <input type="submit" class="isGlobal" value="International" name="global" data-button="global">
+         </form>
+        </div></li>
+       <li class="setting">
+        <div class="setting-title">
+         Type Size:
+        </div>
+        <div class="setting-option">
+         <span class="font-size small"><a href="/font-size?size=small&amp;redirect=/" data-text-size="small">A</a></span>
+         <span class="font-size medium"><a href="/font-size?size=medium&amp;redirect=/" data-text-size="medium">A</a></span>
+         <span class="font-size large"><a href="/font-size?size=large&amp;redirect=/" data-text-size="large">A</a></span>
+        </div></li>
+       <li class="setting">
+        <div class="setting-title">
+         Night Mode:
+        </div>
+        <div class="setting-option">
+         <div data-button="settings-day" class="settings-day">
+          <a href="/read-mode?mode=day&amp;redirect=/">Disable</a>
+         </div>
+         <div data-button="settings-night" class="settings-night">
+          <a href="/read-mode?mode=night&amp;redirect=/">Enable</a>
+         </div>
+        </div></li>
+       <li data-view="user-account" class="setting hidden">
+        <div class="setting-title">
+         Account:
+        </div>
+        <div class="setting-option">
+         <span data-view="user-name" class="user-name"></span>
+        </div></li>
+       <li class="setting">
+        <div class="sub-statusbar text-center" data-view="substatusbar">
+         <ul class="text-center">
+          <li><a href="http://www.nytimes.com/mowweb/ftnotlog?EXIT_URI=http%3A%2F%2Fmobile.nytimes.com%2FloginReturn%3Furl%3D%252F" class="link padding-tblr" data-title="sub">Subscribe</a></li>
+          <li><a class="link padding-tblr" href="https://myaccount.nytimes.com/mobile/login/smart/index.html?EXIT_URI=http%3A%2F%2Fmobile.nytimes.com%2FloginReturn%3Furl%3D%252F" data-title="login">Log in</a></li>
+         </ul>
+        </div></li>
+      </ul>
+     </div>
+    </div>
+    <div class="sects-nav sects-nav-footer app-links-iphone">
+     <h3>Download Our Apps</h3>
+     <div class="sect-nav-list grid">
+      <ul class="col col-split">
+       <li><a href="http://64658.api-01.com/serve?action=click&amp;publisher_id=64658&amp;site_id=50290&amp;offer_id=279698&amp;advertiser_sub_keyword=nytm_core" id="download-app-main-iphone" class="nav-link"><i class="icon download-app"></i>NYTimes</a></li>
+      </ul>
+      <ul class="col col-split">
+       <li><a href="http://64658.api-01.com/serve?action=click&amp;publisher_id=64658&amp;site_id=55314&amp;offer_id=290940&amp;advertiser_sub_keyword=nytm_now" id="download-app-nytnow" class="nav-link"><i class="icon download-app-nytnow"></i>NYT Now</a></li>
+      </ul>
+     </div>
+     <div style="clear:both"></div>
+    </div>
+    <div class="footer-content app-links">
+     <div class="footer-link">
+      <a href="http://www.nytimes.com/services/mobile/index.html" id="download-nytimes-app-link" class="nav-link"><i class="icon download-app"></i>Download the NYTimes app</a>
+     </div>
+    </div>
+    <div class="footer-content">
+     <ul class="footer-links">
+      <li><a href="/help">Help</a></li>
+      <li class="subscribe"><a href="http://www.nytimes.com/mowweb/siteftnonregi?EXIT_URI=http%3A%2F%2Fmobile.nytimes.com%2FloginReturn%3Furl%3D%252F">Subscribe</a></li>
+      <li><a class="feedback-email" href="mailto:nytmobile@nytimes.com?subject=NYT%20Mobile%20Web%20Feedback">Feedback</a></li>
+      <li><a href="http://www.nytimes.com/content/help/rights/terms/terms-of-service.html?nytmobile=0" target="_blank">Terms of Service</a></li>
+      <li><a href="http://www.nytimes.com/content/help/rights/privacy/policy/privacy-policy.html?nytmobile=0" target="_blank">Privacy</a></li>
+     </ul>
+     <div class="footer-copyright">
+      <a href="http://www.nytimes.com/content/help/rights/copyright/copyright-notice.html?nytmobile=0" target="_blank">© 2015</a> 
+      <span class="nytc">The New York Times Company</span>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <a id="backbutton" href="javascript:window.history.go(-1)"></a>
+  <script type="text/javascript">if (!window.BBDevice.isOldBB && !window.OperaMiniDevice) {document.write('<script src=\"/static/public/js/app-min.ac6e6ae3.js\"><\/script>');}</script>
+  <script>if (typeof define == "undefined") {/* Do tracking even when we don't have JS */document.write('<img alt="DCSIMG" id="DCSIMG" width="1" height="1" src="http://wt.o.nytimes.com/dcsga5emk0000000gky4w6o4m_7t4c/njs.gif?dcsuri=/mobile/nojavascript&amp;WT.js=No&amp;WT.tv=10.2.55&amp;WT.z_gpt=NoJavaScript&amp;WT.cg_n=Homepage&amp;WT.cg_s="/>');}</script>
+  <noscript>
+   <div>
+    <img alt="DCSIMG" id="DCSIMG" width="1" height="1" src="http://wt.o.nytimes.com/dcsga5emk0000000gky4w6o4m_7t4c/njs.gif?dcsuri=/mobile/nojavascript&amp;WT.js=No&amp;WT.tv=10.2.55&amp;WT.z_gpt=NoJavaScript&amp;WT.cg_n=Homepage&amp;WT.cg_s=">
+   </div>
+  </noscript>
+  <div>
+   <img alt="DCSIMG" id="DCSIMG" width="1" height="1" src="http://wt.o.nytimes.com/dcse9n3rf00000s5j4umphv6p_1d1j/njs.gif?dcsuri=/mobile/MWRnoJavaScriptTest&amp;WT.js=No&amp;WT.tv=10.2.55&amp;WT.cg_n=Homepage&amp;WT.cg_s=">
+  </div>
+  <script>var _sf_async_config={};/** CONFIGURATION START **/_sf_async_config.uid = 16698;_sf_async_config.domain = (/edition[|]GLOBAL/.test(document.cookie)) ? 'international.nytimes.com' : 'nytimes.com';_sf_async_config.path = "http:\/\/www.nytimes.com\/";_sf_async_config.path = _sf_async_config.path.replace(/\/\/www\./,'//');_sf_async_config.sections = "Homepage";_sf_async_config.authors = "";/** CONFIGURATION END **/(function(){function loadChartbeat() {window._sf_endpt=(new Date()).getTime();var e = document.createElement("script");e.setAttribute("language", "javascript");e.setAttribute("type", "text/javascript");e.setAttribute('src', '//static.chartbeat.com/js/chartbeat.js');document.body.appendChild(e);}var oldonload = window.onload;window.onload = (typeof window.onload != "function") ?loadChartbeat : function() { oldonload(); loadChartbeat(); };})();</script>
+ </body>
+</html>

@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="lt-ie9"> <![endif]-->
+<!--[if IE]>           <html class="ie"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html>
+ <!--<![endif]-->
+ <head> 
+  <title>UCLA » Give to UCLA</title> 
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1,width=device-width, user-scalable=no"> 
+  <link rel="shortcut icon" href="http://giveto.ucla.edu/wp-content/themes/ucla/static/img/favicon.ico" type="image/x-icon"> 
+  <link rel="icon" href="http://giveto.ucla.edu/wp-content/themes/ucla/static/img/favicon.ico" type="image/x-icon"> 
+  <!-- This site is optimized with the Yoast WordPress SEO plugin v1.5.3 - https://yoast.com/wordpress/plugins/seo/ --> 
+  <link rel="canonical" href="http://giveto.ucla.edu/"> 
+  <!-- / Yoast WordPress SEO plugin. --> 
+  <link rel="alternate" type="application/rss+xml" title="UCLA » Feed" href="http://giveto.ucla.edu/feed/"> 
+  <link rel="alternate" type="application/rss+xml" title="UCLA » Comments Feed" href="http://giveto.ucla.edu/comments/feed/"> 
+  <link rel="stylesheet" id="ucla-core.min.css-css" href="http://giveto.ucla.edu/wp-content/themes/ucla/static/css/ucla-core.min.css?ver=4.0.1" type="text/css" media="all"> 
+  <link rel="stylesheet" id="ucla-home.min.css-css" href="http://giveto.ucla.edu/wp-content/themes/ucla/static/css/ucla-home.min.css?ver=4.0.1" type="text/css" media="all"> 
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js?ver=4.0.1"></script> 
+  <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://giveto.ucla.edu/wp-includes/wlwmanifest.xml"> 
+  <!--[if lt IE 9]>
+			<script src="http://giveto.ucla.edu/wp-content/themes/ucla/static/js/lib/html5shiv.js"></script>
+			<link rel="stylesheet" href="http://giveto.ucla.edu/wp-content/themes/ucla/static/css/ie-main.css" />
+		<![endif]--> 
+  <script>
+
+(function(){
+
+	function getViewport() {
+
+		var viewPortWidth;
+		var viewPortHeight;
+
+		// the more standards compliant browsers (mozilla/netscape/opera/IE7) use window.innerWidth and window.innerHeight
+		if (typeof window.innerWidth != 'undefined') {
+		viewPortWidth = window.innerWidth,
+		viewPortHeight = window.innerHeight
+		}
+
+		// IE6 in standards compliant mode (i.e. with a valid doctype as the first line in the document)
+		else if (typeof document.documentElement != 'undefined'
+		&& typeof document.documentElement.clientWidth !=
+		'undefined' && document.documentElement.clientWidth != 0) {
+		viewPortWidth = document.documentElement.clientWidth,
+		viewPortHeight = document.documentElement.clientHeight
+		}
+
+		// older versions of IE
+		else {
+		viewPortWidth = document.getElementsByTagName('body')[0].clientWidth,
+		viewPortHeight = document.getElementsByTagName('body')[0].clientHeight
+		}
+		return [viewPortWidth, viewPortHeight];
+	}
+
+	function addHandler(obj,htype,fn){
+	    if (obj.addEventListener){
+	     obj.addEventListener(htype, fn);
+	    } else {
+	     obj.attachEvent('on'+htype,fn);
+	    }
+	}
+
+	function debounceFn(theFn){
+		var wait = false;
+		return function(){
+			if(wait){
+				return;
+			}
+			wait = true;
+			theFn();
+			setTimeout(function(){
+				wait = false;
+			},100);
+		};
+	}
+
+	addBreakpointClasses = function(){
+		var html = document.getElementsByTagName('html')[0];
+		return function(){
+			var className = html.className.split(/\s+/), len = className.length;
+			while(len--){
+				if(className[len].indexOf('brk-')===0){
+					className.splice(len,1);
+				}
+			};
+
+			var width = getViewport()[0];
+			if(width >= 1200){ 
+				className.push("brk-ge1200");
+			}
+			if(width >= 1400){ 
+				className.push("brk-ge1400");
+			}
+			html.className = className.join(" ");
+
+		};
+	}();
+
+	addHandler(window, 'resize', debounceFn(addBreakpointClasses));
+
+	addBreakpointClasses();
+
+})();
+
+</script> 
+  <script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+			ga('create', 'UA-9067969-1', 'auto', {'allowLinker': true});
+			ga('require', 'displayfeatures');
+			ga('require', 'ecommerce', 'ecommerce.js'); 
+			ga('require', 'linker');
+			ga('linker:autoLink', ['ipay.com'] );
+			ga('send', 'pageview');
+			$(document).ready(function() {
+			    $("#nav-logo a, #nav-main-left li a, a.give_now_btn, a.icon-search, a.icon-contact, .causes li a, #college-and-schools a, #campus-areas a, #causes a").each(function() {
+				        $(this).click(function(event) {
+				           var link_text = $(this).text();
+				           var link_class = $(this).attr("class");
+				           var parent_div = $(this).closest("div").attr("id");
+				           var parent_class = $(this).closest("div").attr("class");
+				           
+				           //TAKE CARE OF SEARCH AND CONTACT LINKS
+				           //link_class RETURNS CLASSES FOR TWO SPECIAL BUTTONS WITH ADDITIONAL SPACE AT THE END
+				           if(link_class == "iconFont icon-search "){
+					           link_text = "Search";
+				           } else if(link_class == "iconFont icon-contact ") {
+					           link_text = "Contact Us";
+				           }
+				           //DETERMINE EVENT CATEGORY
+				           if(parent_div == "college-and-schools" || parent_div == "campus-areas"){
+					           var event_category = "top_header_schools";
+				           } else if(parent_class == "visible_nav causes"){
+					           var event_category = "top_header_causes";
+				           } else {
+					           var event_category = "top_header";
+				           }
+				           //FOR DEBUG
+				           //console.log('clicked on '+ link_text + ' with ' + event_category + ' and class ' + parent_class + ' parent div ' + parent_div + ' link class ' + link_class);
+				           //event.preventDefault();
+				           ga('send', 'event', event_category, 'click', link_text); 
+				        });
+			    });
+			    
+			    //Parses the Url Query strings and returns an array 
+				var getUrlParam = function(url) {
+					
+					var tmp;
+					var tmp_u   = url.split('?');
+					
+					if(typeof tmp_u[1] === 'undefined') return null;
+					
+					var tmp_p   = tmp_u[1].split('&');
+					var param   = {};
+					
+					for(var i=0; i<tmp_p.length; i++) {
+						
+						tmp = tmp_p[i].split('=');
+						param[tmp[0]] = tmp[1];
+					}
+					
+					return param;
+				}
+				
+				//send ga user id
+				var sendID = function(id) {
+					
+					ga('set', 'dimension1', String(id) );
+					ga('send', 'event', 'User ID', id);
+				}
+
+				//grab the parameters from the url query string
+				var params = getUrlParam(document.URL);
+				
+				//send the id to google
+				if( params !== null && params.uclaid !== null )
+					sendID(params.uclaid);
+			});             
+		</script> 
+  <script type="text/javascript" src="//use.typekit.net/pij7dhn.js"></script> 
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script> 
+ </head> 
+ <body class="home blog ucla"> 
+  <div style="display:none"> 
+   <script type="text/javascript">
+		var ebRand = Math.random()+'';
+		ebRand = ebRand * 1000000;
+		//<![CDATA[ 
+		document.write('<scr'+'ipt src="HTTP://bs.serving-sys.com/Serving/ActivityServer.bs?cn=as&amp;ActivityID=488004&amp;rnd=' + ebRand + '"></scr' + 'ipt>');
+		//]]>
+	</script> 
+   <noscript> 
+    <img width="1" height="1" style="border:0" src="HTTP://bs.serving-sys.com/Serving/ActivityServer.bs?cn=as&amp;ActivityID=488004&amp;ns=1"> 
+   </noscript> 
+   <!--
+		Start of DoubleClick Floodlight Tag: Please do not remove
+		Activity name of this tag: O3 Giving Site
+		URL of the webpage where the tag is expected to be placed: http://giveto.ucla.edu
+		This tag must be placed between the <body> and </body> tags, as close as possible to the opening tag.
+		Creation Date: 09/24/2014
+		--> 
+   <script type="text/javascript">
+		var axel = Math.random() + "";
+		var a = axel * 10000000000000;
+		document.write('<iframe src="http://4393665.fls.doubleclick.net/activityi;src=4393665;type=actio0;cat=O3Giv0;ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
+		</script> 
+   <noscript> 
+    <iframe src="http://4393665.fls.doubleclick.net/activityi;src=4393665;type=actio0;cat=O3Giv0;ord=1?" width="1" height="1" frameborder="0" style="display:none"></iframe> 
+   </noscript> 
+   <!-- End of DoubleClick Floodlight Tag: Please do not remove --> 
+  </div> 
+  <div id="site_menu_displacer"> 
+   <div id="headerMobile"> 
+    <div id="headerMobileNavMain" class="headerMobileScroll"> 
+     <div id="searchFundsContainer"> 
+      <form action="http://giveto.ucla.edu"> 
+       <label for="searchFundsInput">Search funds</label> 
+       <input type="text" id="searchFundsInput" name="s" maxlength="40"> 
+       <input type="submit" id="searchFundsSubmit" value="GO"> 
+      </form> 
+     </div> 
+     <div class="menu-menu-1-container">
+      <ul class="menuLinks">
+       <li id="menu-item-23" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23 menu-item-find-funds"><a href="http://giveto.ucla.edu/find-funds/">Find Funds</a></li> 
+       <li id="menu-item-366" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-366 menu-item-schools"><a>Schools</a></li> 
+       <li id="menu-item-367" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-367 menu-item-causes"><a>Causes</a></li> 
+       <li id="menu-item-1404" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1404 menu-item-why-give"><a href="http://giveto.ucla.edu/why-give/">Why Give</a></li> 
+       <li id="menu-item-1405" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1405 menu-item-centennial-campaign"><a href="http://giveto.ucla.edu/the-centennial-campaign/">Centennial Campaign</a></li> 
+      </ul>
+     </div> 
+     <h3>CONNECT WITH US</h3> 
+     <a href="tel://310-794-2345" class="contact">310.794.2345</a> 
+     <a href="mailto:giveto@UCLA.edu" class="contact email">giveto@UCLA.edu</a> 
+    </div> 
+    <div id="headerMobileNavSchools" class="headerMobileScroll headerMobileSubNav"> 
+     <a href="#" class="mobileSubNavBack">Schools</a> 
+     <ul class="menuLinks"> 
+      <li> <a href="http://giveto.ucla.edu/school/anderson-school-of-management">Anderson School of Management</a> </li> 
+      <li> <a href="http://giveto.ucla.edu/school/david-geffen-school-of-medicine">David Geffen School of Medicine</a> </li> 
+      <li> <a href="http://giveto.ucla.edu/school/fielding-school-of-public-health">Fielding School of Public Health</a> </li> 
+      <li> <a href="http://giveto.ucla.edu/school/graduate-school-of-education-and-information-studies">Graduate School of Education and Information Studies</a> </li> 
+      <li> <a href="http://giveto.ucla.edu/school/henry-samueli-school-of-engineering-and-applied-science">Henry Samueli School of Engineering and Applied Science</a> </li> 
+      <li> <a href="http://giveto.ucla.edu/school/luskin-school-of-public-affairs">Luskin School of Public Affairs</a> </li> 
+      <li> <a href="http://giveto.ucla.edu/school/school-of-dentistry">School of Dentistry</a> </li> 
+      <li> <a href="http://giveto.ucla.edu/school/school-of-law">School of Law</a> </li> 
+      <li> <a href="http://giveto.ucla.edu/school/school-of-nursing">School of Nursing</a> </li> 
+      <li> <a href="http://giveto.ucla.edu/school/school-of-the-arts-and-architecture">School of the Arts and Architecture</a> </li> 
+      <li> <a href="http://giveto.ucla.edu/school/school-of-theater-film-and-television">School of Theater, Film and Television</a> </li> 
+      <li> <a href="http://giveto.ucla.edu/school/college-of-letters-and-science">The College</a> </li> 
+      <a href="#" class="mobileSubNavBack">Areas</a> 
+      <ul class="menuLinks"> 
+       <li> <a href="http://giveto.ucla.edu/area/athletics">Athletics</a> </li> 
+       <li> <a href="http://giveto.ucla.edu/area/centers-and-institutes">Centers and Institutes</a> </li> 
+       <li> <a href="http://giveto.ucla.edu/area/graduate-programs">Graduate Programs</a> </li> 
+       <li> <a href="http://giveto.ucla.edu/area/health-sciences">Health Sciences</a> </li> 
+       <li> <a href="http://giveto.ucla.edu/area/libraries">Libraries</a> </li> 
+       <li> <a href="http://giveto.ucla.edu/area/museums">Museums</a> </li> 
+       <li> <a href="http://giveto.ucla.edu/area/scholarships">Scholarships</a> </li> 
+       <li> <a href="http://giveto.ucla.edu/area/student-affairs">Student Affairs</a> </li> 
+       <li> <a href="http://giveto.ucla.edu/area/ucla-extension-and-continuing-education">UCLA Extension and Continuing Education</a> </li> 
+      </ul> 
+     </ul> 
+    </div> 
+    <div id="headerMobileNavCauses" class="headerMobileScroll headerMobileSubNav"> 
+     <a href="#" class="mobileSubNavBack">Causes</a> 
+     <ul class="menuLinks"> 
+      <li class="arts"> <a href="http://giveto.ucla.edu/cause/arts"> <span class="icon-container arts ?>"> <span class="icon icon-cause-arts ?>"></span> <span class="badge icon-cause-badge"></span> </span> <span class="linkText">Arts</span> </a> </li> 
+      <li class="athletics"> <a href="http://giveto.ucla.edu/cause/athletics"> <span class="icon-container athletics ?>"> <span class="icon icon-cause-athletics ?>"></span> <span class="badge icon-cause-badge"></span> </span> <span class="linkText">Athletics</span> </a> </li> 
+      <li class="business"> <a href="http://giveto.ucla.edu/cause/business"> <span class="icon-container business ?>"> <span class="icon icon-cause-business ?>"></span> <span class="badge icon-cause-badge"></span> </span> <span class="linkText">Business</span> </a> </li> 
+      <li class="community"> <a href="http://giveto.ucla.edu/cause/community"> <span class="icon-container community ?>"> <span class="icon icon-cause-community ?>"></span> <span class="badge icon-cause-badge"></span> </span> <span class="linkText">Community</span> </a> </li> 
+      <li class="environment"> <a href="http://giveto.ucla.edu/cause/environment"> <span class="icon-container environment ?>"> <span class="icon icon-cause-environment ?>"></span> <span class="badge icon-cause-badge"></span> </span> <span class="linkText">Environment</span> </a> </li> 
+      <li class="faculty-support"> <a href="http://giveto.ucla.edu/cause/faculty-support"> <span class="icon-container faculty-support ?>"> <span class="icon icon-cause-faculty-support ?>"></span> <span class="badge icon-cause-badge"></span> </span> <span class="linkText">Faculty Support</span> </a> </li> 
+      <li class="global-impact"> <a href="http://giveto.ucla.edu/cause/global-impact"> <span class="icon-container global-impact ?>"> <span class="icon icon-cause-global-impact ?>"></span> <span class="badge icon-cause-badge"></span> </span> <span class="linkText">Global Impact</span> </a> </li> 
+      <li class="health"> <a href="http://giveto.ucla.edu/cause/health"> <span class="icon-container health ?>"> <span class="icon icon-cause-health ?>"></span> <span class="badge icon-cause-badge"></span> </span> <span class="linkText">Health</span> </a> </li> 
+      <li class="humanities"> <a href="http://giveto.ucla.edu/cause/humanities"> <span class="icon-container humanities ?>"> <span class="icon icon-cause-humanities ?>"></span> <span class="badge icon-cause-badge"></span> </span> <span class="linkText">Humanities</span> </a> </li> 
+      <li class="law"> <a href="http://giveto.ucla.edu/cause/law"> <span class="icon-container law ?>"> <span class="icon icon-cause-law ?>"></span> <span class="badge icon-cause-badge"></span> </span> <span class="linkText">Law</span> </a> </li> 
+      <li class="research"> <a href="http://giveto.ucla.edu/cause/research"> <span class="icon-container research ?>"> <span class="icon icon-cause-research ?>"></span> <span class="badge icon-cause-badge"></span> </span> <span class="linkText">Research</span> </a> </li> 
+      <li class="sciences"> <a href="http://giveto.ucla.edu/cause/sciences"> <span class="icon-container sciences ?>"> <span class="icon icon-cause-sciences ?>"></span> <span class="badge icon-cause-badge"></span> </span> <span class="linkText">Sciences</span> </a> </li> 
+      <li class="student-support"> <a href="http://giveto.ucla.edu/cause/student-support"> <span class="icon-container student-support ?>"> <span class="icon icon-cause-student-support ?>"></span> <span class="badge icon-cause-badge"></span> </span> <span class="linkText">Student Support</span> </a> </li> 
+      <li class="technology-innovation"> <a href="http://giveto.ucla.edu/cause/technology"> <span class="icon-container technology-innovation ?>"> <span class="icon icon-cause-technology-innovation ?>"></span> <span class="badge icon-cause-badge"></span> </span> <span class="linkText">Technology</span> </a> </li> 
+     </ul> 
+    </div> 
+    <div id="headerMobileNavAreas" class="headerMobileScroll headerMobileSubNav"> 
+     <a href="#" class="mobileSubNavBack">Areas</a> 
+     <ul class="menuLinks"> 
+      <li class="athletics"> <a href="http://giveto.ucla.edu/cause/athletics"> <span class="icon-container athletics ?>"> <span class="icon icon-cause-athletics ?>"></span> <span class="badge icon-cause-badge"></span> </span> <span class="linkText">Athletics</span> </a> </li> 
+      <li class=""> <a href="http://giveto.ucla.edu/cause/centers-and-institutes"> <span class="icon-container  ?>"> <span class="icon icon-cause- ?>"></span> <span class="badge icon-cause-badge"></span> </span> <span class="linkText">Centers and Institutes</span> </a> </li> 
+      <li class=""> <a href="http://giveto.ucla.edu/cause/graduate-programs"> <span class="icon-container  ?>"> <span class="icon icon-cause- ?>"></span> <span class="badge icon-cause-badge"></span> </span> <span class="linkText">Graduate Programs</span> </a> </li> 
+      <li class=""> <a href="http://giveto.ucla.edu/cause/health-sciences"> <span class="icon-container  ?>"> <span class="icon icon-cause- ?>"></span> <span class="badge icon-cause-badge"></span> </span> <span class="linkText">Health Sciences</span> </a> </li> 
+      <li class=""> <a href="http://giveto.ucla.edu/cause/libraries"> <span class="icon-container  ?>"> <span class="icon icon-cause- ?>"></span> <span class="badge icon-cause-badge"></span> </span> <span class="linkText">Libraries</span> </a> </li> 
+      <li class=""> <a href="http://giveto.ucla.edu/cause/museums"> <span class="icon-container  ?>"> <span class="icon icon-cause- ?>"></span> <span class="badge icon-cause-badge"></span> </span> <span class="linkText">Museums</span> </a> </li> 
+      <li class=""> <a href="http://giveto.ucla.edu/cause/scholarships"> <span class="icon-container  ?>"> <span class="icon icon-cause- ?>"></span> <span class="badge icon-cause-badge"></span> </span> <span class="linkText">Scholarships</span> </a> </li> 
+      <li class=""> <a href="http://giveto.ucla.edu/cause/student-affairs"> <span class="icon-container  ?>"> <span class="icon icon-cause- ?>"></span> <span class="badge icon-cause-badge"></span> </span> <span class="linkText">Student Affairs</span> </a> </li> 
+      <li class=""> <a href="http://giveto.ucla.edu/cause/ucla-extension-and-continuing-education"> <span class="icon-container  ?>"> <span class="icon icon-cause- ?>"></span> <span class="badge icon-cause-badge"></span> </span> <span class="linkText">UCLA Extension and Continuing Education</span> </a> </li> 
+     </ul> 
+    </div> 
+   </div> 
+   <div id="site_container"> 
+    <div id="header"> 
+     <nav id="navMain" role="navigation"> 
+      <a id="mobileMenuOpen" href="#"><span><span></span></span></a> 
+      <div id="nav-logo"> 
+       <a href="/">Give To UCLA</a> 
+      </div> 
+      <div class="menu-menu-1-container">
+       <ul id="nav-main-left">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23 menu-item-find-funds">
+         <div>
+          <div>
+           <a href="http://giveto.ucla.edu/find-funds/">Find Funds</a>
+          </div>
+         </div></li> 
+        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-366 menu-item-schools">
+         <div>
+          <div>
+           <a>Schools</a>
+          </div>
+         </div></li> 
+        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-367 menu-item-causes">
+         <div>
+          <div>
+           <a>Causes</a>
+          </div>
+         </div></li> 
+        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1404 menu-item-why-give">
+         <div>
+          <div>
+           <a href="http://giveto.ucla.edu/why-give/">Why Give</a>
+          </div>
+         </div></li> 
+        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1405 menu-item-centennial-campaign">
+         <div>
+          <div>
+           <a href="http://giveto.ucla.edu/the-centennial-campaign/">Centennial Campaign</a>
+          </div>
+         </div></li> 
+       </ul>
+      </div> 
+      <ul id="nav-main-right"> 
+       <li id="nav-givenow"> <a href="https://giving.ucla.edu/campaign/Donate.aspx?SiteNum=690&amp;Fund=63161O" data-tracking-label="home_top_header" class="give_now_btn centennial"> <span></span> </a> </li> 
+       <li id="nav-search"> <a href="#" class="iconFont icon-search "></a> </li> 
+       <li id="nav-support"> <a href="/contact-us" class="iconFont icon-contact "></a> </li> 
+      </ul> 
+     </nav> 
+    </div> 
+    <div id="navDropdownContainer"> 
+     <nav class="schools"> 
+      <div id="college-and-schools"> 
+       <h3>College and Professional Schools</h3> 
+       <ul> 
+        <li class=""> <a href="http://giveto.ucla.edu/school/anderson-school-of-management">Anderson School of Management</a> </li> 
+        <li class="even"> <a href="http://giveto.ucla.edu/school/david-geffen-school-of-medicine">David Geffen School of Medicine</a> </li> 
+        <li class=""> <a href="http://giveto.ucla.edu/school/fielding-school-of-public-health">Fielding School of Public Health</a> </li> 
+        <li class="even"> <a href="http://giveto.ucla.edu/school/graduate-school-of-education-and-information-studies">Graduate School of Education and Information Studies</a> </li> 
+        <li class=""> <a href="http://giveto.ucla.edu/school/henry-samueli-school-of-engineering-and-applied-science">Henry Samueli School of Engineering and Applied Science</a> </li> 
+        <li class="even"> <a href="http://giveto.ucla.edu/school/luskin-school-of-public-affairs">Luskin School of Public Affairs</a> </li> 
+        <li class=""> <a href="http://giveto.ucla.edu/school/school-of-dentistry">School of Dentistry</a> </li> 
+        <li class="even"> <a href="http://giveto.ucla.edu/school/school-of-law">School of Law</a> </li> 
+        <li class=""> <a href="http://giveto.ucla.edu/school/school-of-nursing">School of Nursing</a> </li> 
+        <li class="even"> <a href="http://giveto.ucla.edu/school/school-of-the-arts-and-architecture">School of the Arts and Architecture</a> </li> 
+        <li class=""> <a href="http://giveto.ucla.edu/school/school-of-theater-film-and-television">School of Theater, Film and Television</a> </li> 
+        <li class="even"> <a href="http://giveto.ucla.edu/school/college-of-letters-and-science">The College</a> </li> 
+       </ul> 
+      </div> 
+      <div id="campus-areas"> 
+       <h3>Campus Areas</h3> 
+       <ul> 
+        <li> <a href="http://giveto.ucla.edu/area/athletics">Athletics</a> </li> 
+        <li> <a href="http://giveto.ucla.edu/area/centers-and-institutes">Centers and Institutes</a> </li> 
+        <li> <a href="http://giveto.ucla.edu/area/graduate-programs">Graduate Programs</a> </li> 
+        <li> <a href="http://giveto.ucla.edu/area/health-sciences">Health Sciences</a> </li> 
+        <li> <a href="http://giveto.ucla.edu/area/libraries">Libraries</a> </li> 
+        <li> <a href="http://giveto.ucla.edu/area/museums">Museums</a> </li> 
+        <li> <a href="http://giveto.ucla.edu/area/scholarships">Scholarships</a> </li> 
+        <li> <a href="http://giveto.ucla.edu/area/student-affairs">Student Affairs</a> </li> 
+        <li> <a href="http://giveto.ucla.edu/area/ucla-extension-and-continuing-education">UCLA Extension and Continuing Education</a> </li> 
+       </ul> 
+      </div> 
+     </nav> 
+     <nav class="causes"> 
+      <ul> 
+       <li class="arts"> <a href="http://giveto.ucla.edu/cause/arts"> <span class="icon-container arts"> <span class="icon icon-cause-arts"></span> <span class="badge icon-cause-badge"></span> </span> <span class="linkText">Arts</span> </a> </li> 
+       <li class="athletics"> <a href="http://giveto.ucla.edu/cause/athletics"> <span class="icon-container athletics"> <span class="icon icon-cause-athletics"></span> <span class="badge icon-cause-badge"></span> </span> <span class="linkText">Athletics</span> </a> </li> 
+       <li class="business"> <a href="http://giveto.ucla.edu/cause/business"> <span class="icon-container business"> <span class="icon icon-cause-business"></span> <span class="badge icon-cause-badge"></span> </span> <span class="linkText">Business</span> </a> </li> 
+       <li class="community"> <a href="http://giveto.ucla.edu/cause/community"> <span class="icon-container community"> <span class="icon icon-cause-community"></span> <span class="badge icon-cause-badge"></span> </span> <span class="linkText">Community</span> </a> </li> 
+       <li class="environment"> <a href="http://giveto.ucla.edu/cause/environment"> <span class="icon-container environment"> <span class="icon icon-cause-environment"></span> <span class="badge icon-cause-badge"></span> </span> <span class="linkText">Environment</span> </a> </li> 
+       <li class="faculty-support"> <a href="http://giveto.ucla.edu/cause/faculty-support"> <span class="icon-container faculty-support"> <span class="icon icon-cause-faculty-support"></span> <span class="badge icon-cause-badge"></span> </span> <span class="linkText">Faculty Support</span> </a> </li> 
+       <li class="global-impact"> <a href="http://giveto.ucla.edu/cause/global-impact"> <span class="icon-container global-impact"> <span class="icon icon-cause-global-impact"></span> <span class="badge icon-cause-badge"></span> </span> <span class="linkText">Global Impact</span> </a> </li> 
+       <li class="health"> <a href="http://giveto.ucla.edu/cause/health"> <span class="icon-container health"> <span class="icon icon-cause-health"></span> <span class="badge icon-cause-badge"></span> </span> <span class="linkText">Health</span> </a> </li> 
+       <li class="humanities"> <a href="http://giveto.ucla.edu/cause/humanities"> <span class="icon-container humanities"> <span class="icon icon-cause-humanities"></span> <span class="badge icon-cause-badge"></span> </span> <span class="linkText">Humanities</span> </a> </li> 
+       <li class="law"> <a href="http://giveto.ucla.edu/cause/law"> <span class="icon-container law"> <span class="icon icon-cause-law"></span> <span class="badge icon-cause-badge"></span> </span> <span class="linkText">Law</span> </a> </li> 
+       <li class="research"> <a href="http://giveto.ucla.edu/cause/research"> <span class="icon-container research"> <span class="icon icon-cause-research"></span> <span class="badge icon-cause-badge"></span> </span> <span class="linkText">Research</span> </a> </li> 
+       <li class="sciences"> <a href="http://giveto.ucla.edu/cause/sciences"> <span class="icon-container sciences"> <span class="icon icon-cause-sciences"></span> <span class="badge icon-cause-badge"></span> </span> <span class="linkText">Sciences</span> </a> </li> 
+       <li class="student-support"> <a href="http://giveto.ucla.edu/cause/student-support"> <span class="icon-container student-support"> <span class="icon icon-cause-student-support"></span> <span class="badge icon-cause-badge"></span> </span> <span class="linkText">Student Support</span> </a> </li> 
+       <li class="technology-innovation"> <a href="http://giveto.ucla.edu/cause/technology"> <span class="icon-container technology-innovation"> <span class="icon icon-cause-technology-innovation"></span> <span class="badge icon-cause-badge"></span> </span> <span class="linkText">Technology</span> </a> </li> 
+      </ul> 
+     </nav> 
+    </div> 
+    <div id="searchBar" class="header-search-bar "> 
+     <div id="searchInnerContainer"> 
+      <div id="searchInner"> 
+       <label id="searchInputLabel" for="searchInput">Search Funds...</label> 
+       <form action="http://giveto.ucla.edu"> 
+        <input type="text" id="searchInput" name="s" maxlength="40"> 
+        <a href="javascript:void(0);" id="searchClear">Clear</a> 
+        <input type="submit" value="GO"> 
+       </form> 
+      </div> 
+      <div id="searchBarCarrot"></div> 
+     </div> 
+    </div> 
+    <div id="hero-main" class="hero"> 
+     <div class="flex-container"> 
+      <div class="flexslider"> 
+       <ul class="slides"> 
+        <li> <img class="banner" src="http://giveto.ucla.edu/wp-content/themes/ucla/static/img/banner/1-image.jpg"> <span class="link-container"> <span class="text"> <span class="main two-line">Let There Be a First Kiss</span> <span class="caption">Alysia Padilla-Vaccaro, mother of daughter with Severe Combined Immune Deficiency</span> <span class="cta"><a href="http://stage.giveto.ucla.edu/fund/broad-stem-cell-research-center/"><img src="http://giveto.ucla.edu/wp-content/themes/ucla/static/img/banner/1-yellow-button-up.png" data-over="1-yellow-button-over" data-up="1-yellow-button-up"></a></span> </span> <a href="http://www.youtube.com/embed/PBh29QTW4SY?autoplay=1" class="play fancybox"><img src="http://giveto.ucla.edu/wp-content/themes/ucla/static/img/banner/play-arrow.png"></a> </span> <span class="mobile-container"> <span class="main">Let There Be a First Kiss</span><br> <span class="main"><a href="http://giveto.ucla.edu/cause/health/">Click Here: Give to the Broad Stem Cell Research Center</a></span> </span> </li> 
+        <li> <img class="banner" src="http://giveto.ucla.edu/wp-content/themes/ucla/static/img/banner/2-image.jpg"> <span class="link-container"> <span class="text"> <span class="main">Let There Be A Place For Every Passion</span> <span class="caption">As a public university, we were created to serve the people of California and the world.</span> <span class="cta"><a href="https://giving.ucla.edu/campaign/Donate.aspx?SiteNum=690&amp;Fund=63161O"><img src="http://giveto.ucla.edu/wp-content/themes/ucla/static/img/banner/2-yellow-button-up.png" data-over="2-yellow-button-over" data-up="2-yellow-button-up"></a></span> </span> <a href="http://www.youtube.com/embed/j6QM7Bgundo?autoplay=1" class="play fancybox"><img src="http://giveto.ucla.edu/wp-content/themes/ucla/static/img/banner/play-arrow.png"></a> </span> <span class="mobile-container"> <span class="main">Let There Be A Place For Every Passion</span><br> <span class="main"><a href="https://giving.ucla.edu/campaign/?&amp;amount=100&amp;OrgType=&amp;OrgNum=&amp;fund=00440G">Click Here: Give to the Broad Stem Cell Research Center</a></span> </span> </li> 
+        <li> <img class="banner" src="http://giveto.ucla.edu/wp-content/themes/ucla/static/img/banner/3-image.jpg"> <span class="link-container"> <span class="text"> <span class="main">Let there be Problem Solvers</span> <span class="caption">Imagine a Los Angeles completely self-sufficient and sustainable.</span> <span class="cta"><a href="http://giveto.ucla.edu/fund/ucla-grand-challenges/"><img src="http://giveto.ucla.edu/wp-content/themes/ucla/static/img/banner/3-yellow-button-up.png" data-over="3-yellow-button-over" data-up="3-yellow-button-up"></a></span> </span> <a href="http://www.youtube.com/embed/DITouRhKW80?autoplay=1" class="play fancybox"><img src="http://giveto.ucla.edu/wp-content/themes/ucla/static/img/banner/play-arrow.png"></a> </span> <span class="mobile-container"> <span class="main">Let there be Problem Solvers</span><br> <span class="main"><a href="http://giveto.ucla.edu/fund/ucla-grand-challenges/">Click Here: Give to the Centennial Campaign Fund</a></span> </span> </li> 
+        <li> <img class="banner" src="http://giveto.ucla.edu/wp-content/themes/ucla/static/img/banner/4-image.jpg"> <span class="link-container"> <span class="text"> <span class="main two-line">Let there be Superheroes</span> <span class="caption">More than 100 critically ill children are treated at Mattel Children's Hospital UCLA every day.</span> <span class="cta"><a href="http://giveto.ucla.edu/fund/mattel-childrens-hospital-ucla/"><img src="http://giveto.ucla.edu/wp-content/themes/ucla/static/img/banner/4-yellow-button-up.png" data-over="4-yellow-button-over" data-up="4-yellow-button-up"></a></span> </span> </span> <span class="mobile-container"> <span class="main">Let there be Superheroes</span><br> <span><a href="http://giveto.ucla.edu/fund/mattel-childrens-hospital-ucla/">Click Here: Give to UCLA Grand Challenges Fund</a></span> </span> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="categoriesBar"> 
+     <div class="whereToGive"> 
+      <div> 
+       <h2> <a href="/find-funds"> WHAT MATTERS <br> MOST TO YOU? </a> </h2> 
+      </div> 
+     </div> 
+     <div class="categoriesListScrollContainer"> 
+      <ul class="categoriesList"> 
+       <li class="arts"> 
+        <div> 
+         <a href="http://giveto.ucla.edu/cause/arts"> <span class="icon icon-cause-arts"></span> <span class="text">Arts</span> </a> 
+        </div> </li> 
+       <li class="athletics"> 
+        <div> 
+         <a href="http://giveto.ucla.edu/cause/athletics"> <span class="icon icon-cause-athletics"></span> <span class="text">Athletics</span> </a> 
+        </div> </li> 
+       <li class="business"> 
+        <div> 
+         <a href="http://giveto.ucla.edu/cause/business"> <span class="icon icon-cause-business"></span> <span class="text">Business</span> </a> 
+        </div> </li> 
+       <li class="community"> 
+        <div> 
+         <a href="http://giveto.ucla.edu/cause/community"> <span class="icon icon-cause-community"></span> <span class="text">Community</span> </a> 
+        </div> </li> 
+       <li class="environment"> 
+        <div> 
+         <a href="http://giveto.ucla.edu/cause/environment"> <span class="icon icon-cause-environment"></span> <span class="text">Environment</span> </a> 
+        </div> </li> 
+       <li class="faculty-support"> 
+        <div> 
+         <a href="http://giveto.ucla.edu/cause/faculty-support"> <span class="icon icon-cause-faculty-support"></span> <span class="text">Faculty Support</span> </a> 
+        </div> </li> 
+       <li class="global-impact"> 
+        <div> 
+         <a href="http://giveto.ucla.edu/cause/global-impact"> <span class="icon icon-cause-global-impact"></span> <span class="text">Global Impact</span> </a> 
+        </div> </li> 
+       <li class="health"> 
+        <div> 
+         <a href="http://giveto.ucla.edu/cause/health"> <span class="icon icon-cause-health"></span> <span class="text">Health</span> </a> 
+        </div> </li> 
+       <li class="humanities"> 
+        <div> 
+         <a href="http://giveto.ucla.edu/cause/humanities"> <span class="icon icon-cause-humanities"></span> <span class="text">Humanities</span> </a> 
+        </div> </li> 
+       <li class="law"> 
+        <div> 
+         <a href="http://giveto.ucla.edu/cause/law"> <span class="icon icon-cause-law"></span> <span class="text">Law</span> </a> 
+        </div> </li> 
+       <li class="research"> 
+        <div> 
+         <a href="http://giveto.ucla.edu/cause/research"> <span class="icon icon-cause-research"></span> <span class="text">Research</span> </a> 
+        </div> </li> 
+       <li class="sciences"> 
+        <div> 
+         <a href="http://giveto.ucla.edu/cause/sciences"> <span class="icon icon-cause-sciences"></span> <span class="text">Sciences</span> </a> 
+        </div> </li> 
+       <li class="student-support"> 
+        <div> 
+         <a href="http://giveto.ucla.edu/cause/student-support"> <span class="icon icon-cause-student-support"></span> <span class="text">Student Support</span> </a> 
+        </div> </li> 
+       <li class="technology-innovation"> 
+        <div> 
+         <a href="http://giveto.ucla.edu/cause/technology"> <span class="icon icon-cause-technology-innovation"></span> <span class="text">Technology</span> </a> 
+        </div> </li> 
+      </ul> 
+     </div>
+     <!-- categoriesListScrollContainer --> 
+     <div class="categoriesArrow categoriesArrowLeft"></div> 
+     <div class="categoriesArrow categoriesArrowRight"></div> 
+    </div> 
+    <div id="close" class="iconFont icon-x_small"></div> 
+    <div id="loading"></div> 
+    <div id="hexagons"> 
+     <h2 class="toggle"> <span id="toggle_featured"> Featured <span class="iconFont icon-arrow_small_down carrot"></span> </span> 
+      <div class="divider"></div> <span id="toggle_trending"> Trending <span class="iconFont icon-arrow_small_down carrot"></span> </span> </h2> 
+     <div class="hexagon-grid-container"> 
+      <!-- This needs to find the taxonomies and the percentage of funding --> 
+      <div class="hex_container health stateThree "> 
+       <div class="item health" data-percentage="98"> 
+        <div class="hexagon"> 
+         <div class="hexagon-in1"> 
+          <div class="hexagon-in2"> 
+           <div class="backfill"></div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="front-content"> 
+        <div class="icon icon-cause-health-b"></div> 
+        <h3>Broad Stem Cell Research Center</h3> 
+        <p>The UCLA Broad Stem Cell Research Center is working to transform patient care through the...</p> 
+        <div class="info"></div> 
+       </div> 
+       <div class="back-content"> 
+        <canvas width="126" height="126"></canvas> 
+        <span class="numberContainer"><span class="number">98</span>%</span> 
+        <div class="donors"> 
+         <ul> 
+          <li><img src="https://graph.facebook.com/588403899/picture?width=50&amp;height=50" alt=""></li> 
+          <li><img src="https://graph.facebook.com/1434956733/picture?width=50&amp;height=50" alt=""></li> 
+          <li><span><span class="iconFont icon-default_male"></span></span></li> 
+         </ul> 
+        </div> 
+        <p><a href="http://giveto.ucla.edu/fund/broad-stem-cell-research-center/">Learn More <span class="iconFont icon-mobile_arrow_small_right"></span></a></p> 
+       </div> 
+      </div> 
+      <!-- This needs to find the taxonomies and the percentage of funding --> 
+      <div class="hex_container environment stateOne "> 
+       <div class="item environment" data-percentage="0"> 
+        <div class="hexagon"> 
+         <div class="hexagon-in1"> 
+          <div class="hexagon-in2"> 
+           <img class="main" src="http://giveto.ucla.edu/wp-content/uploads/2014/07/280x325_GrandChallenges-280x325-gradient_hex.jpg" data-type="environment" alt=""> 
+           <div class="backfill"></div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="front-content"> 
+        <div class="icon icon-cause-environment-b"></div> 
+        <h3>UCLA Grand Challenges</h3> 
+        <p>Answering the White House’s call to solve major societal problems with breakthroughs in...</p> 
+        <div class="info"></div> 
+       </div> 
+       <div class="back-content"> 
+        <span class="numberContainer stateOne"><span class="number">#1</span></span> 
+        <h3>Be the first to give <br> to this fund!</h3> 
+        <p><a href="http://giveto.ucla.edu/fund/ucla-grand-challenges/">Learn More <span class="iconFont icon-mobile_arrow_small_right"></span></a></p> 
+       </div> 
+      </div> 
+      <!-- This needs to find the taxonomies and the percentage of funding --> 
+      <div class="hex_container health stateThree "> 
+       <div class="item health" data-percentage="67"> 
+        <div class="hexagon"> 
+         <div class="hexagon-in1"> 
+          <div class="hexagon-in2"> 
+           <div class="backfill"></div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="front-content"> 
+        <div class="icon icon-cause-health-b"></div> 
+        <h3>Mattel Children's Hospital</h3> 
+        <p>Mattel Children's Hospital UCLA places children at the center of a holistic approach to...</p> 
+        <div class="info"></div> 
+       </div> 
+       <div class="back-content"> 
+        <canvas width="126" height="126"></canvas> 
+        <span class="numberContainer"><span class="number">67</span>%</span> 
+        <div class="donors"> 
+         <ul> 
+          <li><span><span class="iconFont icon-default_male"></span></span></li> 
+          <li><span><span class="iconFont icon-default_male"></span></span></li> 
+          <li><span><span class="iconFont icon-default_male"></span></span></li> 
+         </ul> 
+        </div> 
+        <p><a href="http://giveto.ucla.edu/fund/mattel-childrens-hospital-ucla/">Learn More <span class="iconFont icon-mobile_arrow_small_right"></span></a></p> 
+       </div> 
+      </div> 
+      <!-- This needs to find the taxonomies and the percentage of funding --> 
+      <div class="hex_container community stateOne centennial"> 
+       <div class="item community" data-percentage="19"> 
+        <div class="hexagon"> 
+         <div class="hexagon-in1"> 
+          <div class="hexagon-in2"> 
+           <img class="main" src="http://giveto.ucla.edu/wp-content/uploads/2014/12/centennial_final-280x325-gradient_hex-280x325-gradient_hex.jpg" data-type="community" alt=""> 
+           <div class="backfill"></div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="front-content"> 
+        <div class="icon icon-cause-community-b"></div> 
+        <h3>The Centennial Campaign Fund</h3> 
+        <p>No matter where your passion or interest lies, when you invest in UCLA, you effect real...</p> 
+        <div class="info"></div> 
+       </div> 
+       <div class="back-content"> 
+        <span class="numberContainer stateOne"><span class="number"></span></span> 
+        <h3>A place for <br> every passion</h3>
+        <br>
+        <br>
+        <br> 
+        <div class="donors"> 
+         <ul> 
+          <li><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfa1/v/t1.0-1/c0.14.172.172/s50x50/34390_482709727779_7734195_n.jpg?oh=1884b06a36ac8b7e31c8e2cccfe4d168&amp;oe=5512A40F&amp;__gda__=1427351725_e87c541a91f37d38d0b60341055daf0a" alt=""></li> 
+          <li><span><span class="iconFont icon-default_male"></span></span></li> 
+          <li><span><span class="iconFont icon-default_male"></span></span></li> 
+         </ul> 
+        </div> 
+        <p><a href="http://giveto.ucla.edu/fund/centennial-campaign-fund/">Learn More <span class="iconFont icon-mobile_arrow_small_right"></span></a></p> 
+       </div> 
+      </div> 
+      <!-- This needs to find the taxonomies and the percentage of funding --> 
+      <div class="hex_container business stateThree "> 
+       <div class="item business" data-percentage="47"> 
+        <div class="hexagon"> 
+         <div class="hexagon-in1"> 
+          <div class="hexagon-in2"> 
+           <div class="backfill"></div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="front-content"> 
+        <div class="icon icon-cause-business-b"></div> 
+        <h3>The Anderson School Dean's Fund</h3> 
+        <p>UCLA Anderson School of Management ranks among the top-tier business schools in the world,...</p> 
+        <div class="info"></div> 
+       </div> 
+       <div class="back-content"> 
+        <canvas width="126" height="126"></canvas> 
+        <span class="numberContainer"><span class="number">47</span>%</span> 
+        <div class="donors"> 
+         <ul> 
+          <li><span><span class="iconFont icon-default_male"></span></span></li> 
+          <li><span><span class="iconFont icon-default_male"></span></span></li> 
+          <li><span><span class="iconFont icon-default_male"></span></span></li> 
+         </ul> 
+        </div> 
+        <p><a href="http://giveto.ucla.edu/fund/ucla-anderson-school-of-management-deans-fund/">Learn More <span class="iconFont icon-mobile_arrow_small_right"></span></a></p> 
+       </div> 
+      </div> 
+      <!-- This needs to find the taxonomies and the percentage of funding --> 
+      <div class="hex_container community stateThree "> 
+       <div class="item community" data-percentage="88"> 
+        <div class="hexagon"> 
+         <div class="hexagon-in1"> 
+          <div class="hexagon-in2"> 
+           <img class="main" src="http://giveto.ucla.edu/wp-content/uploads/2014/04/280x325_PublicHealth_FSPH-UCLA-Fielding-School-280x325-gradient_hex.jpg" data-type="community" alt=""> 
+           <div class="backfill"></div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="front-content"> 
+        <div class="icon icon-cause-community-b"></div> 
+        <h3>Fielding School of Public Health Innovation Fund</h3> 
+        <p>The Public Health Innovation Fund allows the dean of the Fielding School to act quickly to...</p> 
+        <div class="info"></div> 
+       </div> 
+       <div class="back-content"> 
+        <canvas width="126" height="126"></canvas> 
+        <span class="numberContainer"><span class="number">88</span>%</span> 
+        <div class="donors"> 
+         <ul> 
+          <li><span><span class="iconFont icon-default_male"></span></span></li> 
+          <li><span><span class="iconFont icon-default_male"></span></span></li> 
+          <li><span><span class="iconFont icon-default_male"></span></span></li> 
+         </ul> 
+        </div> 
+        <p><a href="http://giveto.ucla.edu/fund/ucla-fielding-school-of-public-health/">Learn More <span class="iconFont icon-mobile_arrow_small_right"></span></a></p> 
+       </div> 
+      </div> 
+      <!-- This needs to find the taxonomies and the percentage of funding --> 
+      <div class="hex_container community stateThree "> 
+       <div class="item community" data-percentage="31"> 
+        <div class="hexagon"> 
+         <div class="hexagon-in1"> 
+          <div class="hexagon-in2"> 
+           <div class="backfill"></div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="front-content"> 
+        <div class="icon icon-cause-community-b"></div> 
+        <h3>Luskin School of Public Affairs: Dean's Innovation...</h3> 
+        <p>Changing the world one person, one project, one place at a time.</p> 
+        <div class="info"></div> 
+       </div> 
+       <div class="back-content"> 
+        <canvas width="126" height="126"></canvas> 
+        <span class="numberContainer"><span class="number">31</span>%</span> 
+        <div class="donors"> 
+         <ul> 
+          <li><span><span class="iconFont icon-default_male"></span></span></li> 
+          <li><span><span class="iconFont icon-default_male"></span></span></li> 
+          <li><span><span class="iconFont icon-default_male"></span></span></li> 
+         </ul> 
+        </div> 
+        <p><a href="http://giveto.ucla.edu/fund/luskin-school-of-public-affairs-deans-fund/">Learn More <span class="iconFont icon-mobile_arrow_small_right"></span></a></p> 
+       </div> 
+      </div> 
+      <!-- This needs to find the taxonomies and the percentage of funding --> 
+      <div class="hex_container student-support stateTwo "> 
+       <div class="item student-support" data-percentage="86"> 
+        <div class="hexagon"> 
+         <div class="hexagon-in1"> 
+          <div class="hexagon-in2"> 
+           <img class="main" src="http://giveto.ucla.edu/wp-content/uploads/2014/04/280x325_UndergradEducation-280x325-gradient_hex.jpg" data-type="student-support" alt=""> 
+           <div class="backfill"></div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="front-content"> 
+        <div class="icon icon-cause-student-support-b"></div> 
+        <h3>Division of Undergraduate Education</h3> 
+        <p>Enriching the student academic experience at UCLA through first-year seminars, cluster...</p> 
+        <div class="info"></div> 
+       </div> 
+       <div class="back-content"> 
+        <canvas width="126" height="126"></canvas> 
+        <span class="numberContainer"><span class="number">86</span>%</span> 
+        <p class="no-donors"><a href="http://giveto.ucla.edu/fund/division-of-undergraduate-education/">Learn More <span class="iconFont icon-mobile_arrow_small_right"></span></a></p> 
+       </div> 
+      </div> 
+      <!-- This needs to find the taxonomies and the percentage of funding --> 
+      <div class="hex_container environment stateTwo "> 
+       <div class="item environment" data-percentage="12"> 
+        <div class="hexagon"> 
+         <div class="hexagon-in1"> 
+          <div class="hexagon-in2"> 
+           <div class="backfill"></div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="front-content"> 
+        <div class="icon icon-cause-environment-b"></div> 
+        <h3>Institute of the Environment and Sustainability</h3> 
+        <p>IoES provides top-flight research, teaching and outreach to address issues related to...</p> 
+        <div class="info"></div> 
+       </div> 
+       <div class="back-content"> 
+        <canvas width="126" height="126"></canvas> 
+        <span class="numberContainer"><span class="number">12</span>%</span> 
+        <p class="no-donors"><a href="http://giveto.ucla.edu/fund/ucla-institute-of-the-environment-and-sustainability/">Learn More <span class="iconFont icon-mobile_arrow_small_right"></span></a></p> 
+       </div> 
+      </div> 
+      <!-- This needs to find the taxonomies and the percentage of funding --> 
+      <div class="hex_container community stateTwo "> 
+       <div class="item community" data-percentage="78"> 
+        <div class="hexagon"> 
+         <div class="hexagon-in1"> 
+          <div class="hexagon-in2"> 
+           <img class="main" src="http://giveto.ucla.edu/wp-content/uploads/2014/04/280x325_GSEISLabSchool-280x325-gradient_hex.jpg" data-type="community" alt=""> 
+           <div class="backfill"></div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="front-content"> 
+        <div class="icon icon-cause-community-b"></div> 
+        <h3>UCLA Lab School...</h3> 
+        <p>An innovative school for children ages 4–12 where teachers encourage a child’s natural...</p> 
+        <div class="info"></div> 
+       </div> 
+       <div class="back-content"> 
+        <canvas width="126" height="126"></canvas> 
+        <span class="numberContainer"><span class="number">78</span>%</span> 
+        <p class="no-donors"><a href="http://giveto.ucla.edu/fund/ucla-lab-school/">Learn More <span class="iconFont icon-mobile_arrow_small_right"></span></a></p> 
+       </div> 
+      </div> 
+      <!-- This needs to find the taxonomies and the percentage of funding --> 
+      <div class="hex_container student-support stateThree "> 
+       <div class="item student-support" data-percentage="67"> 
+        <div class="hexagon"> 
+         <div class="hexagon-in1"> 
+          <div class="hexagon-in2"> 
+           <div class="backfill"></div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="front-content"> 
+        <div class="icon icon-cause-student-support-b"></div> 
+        <h3>Alumni Scholarships General Fund</h3> 
+        <p>Helping UCLA remain competitive with top-tier institutions for the most promising young...</p> 
+        <div class="info"></div> 
+       </div> 
+       <div class="back-content"> 
+        <canvas width="126" height="126"></canvas> 
+        <span class="numberContainer"><span class="number">67</span>%</span> 
+        <div class="donors"> 
+         <ul> 
+          <li><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xaf1/v/t1.0-1/c15.0.60.60/p60x60/424551_10200518356345281_430694457_n.jpg?oh=c8da3e9eb6244938a0b89170e42d55da&amp;oe=5508FA3A&amp;__gda__=1426114950_751aa6d25fbe779e51c0b72817efa2e7" alt=""></li> 
+          <li><span><span class="iconFont icon-default_male"></span></span></li> 
+          <li><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfp1/v/t1.0-1/c0.2.695.695/s50x50/10710860_10103723155882586_548362810185245922_n.jpg?oh=675b4aeb066ef59e653a4f8ebe223967&amp;oe=5540FCB4&amp;__gda__=1425827035_076f4537b9bb92efe122e5d1ee8c0dbd" alt=""></li> 
+         </ul> 
+        </div> 
+        <p><a href="http://giveto.ucla.edu/fund/alumni-scholarships-general-fund/">Learn More <span class="iconFont icon-mobile_arrow_small_right"></span></a></p> 
+       </div> 
+      </div> 
+      <div class="hex_container featured arts stateTwo"> 
+       <div class="item" data-percentage="38"> 
+        <div class="hexagon"> 
+         <div class="hexagon-in1"> 
+          <div class="hexagon-in2"> 
+           <div class="backfill"></div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="front-content"> 
+        <div class="icon icon-cause-arts-b"></div> 
+        <h3>Center for the Art of Performance at UCLA</h3> 
+        <p>Support The Arts</p> 
+        <div class="info"></div> 
+       </div> 
+       <div class="back-content"> 
+        <canvas width="126" height="126"></canvas> 
+        <span class="numberContainer"><span class="number">38</span>%</span> 
+        <!-- only show this if this fund has donors --> 
+        <p class="no-donors"><a href="http://giveto.ucla.edu/fund/ucla-arts-center-for-the-art-of-performance/">Learn More <span class="iconFont icon-mobile_arrow_small_right"></span></a></p> 
+       </div> 
+      </div> 
+      <div class="hex_container featured  stateThree"> 
+       <div class="item" data-percentage="53"> 
+        <div class="hexagon"> 
+         <div class="hexagon-in1"> 
+          <div class="hexagon-in2"> 
+           <div class="backfill"></div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="front-content"> 
+        <div class="icon icon-cause--b"></div> 
+        <h3>Chancellor’s Greatest Needs Fund</h3> 
+        <p>Fund Of The Month</p> 
+        <div class="info"></div> 
+       </div> 
+       <div class="back-content"> 
+        <canvas width="126" height="126"></canvas> 
+        <span class="numberContainer"><span class="number">53</span>%</span> 
+        <!-- only show this if this fund has donors --> 
+        <div class="donors"> 
+         <ul> 
+          <li><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpa1/v/t1.0-1/c0.0.50.50/p50x50/10410356_10152360750028922_7334163271013803787_n.jpg?oh=2318b10d320ef30dc60d3646fc66595e&amp;oe=54CD8D0C&amp;__gda__=1422747584_aaf8a037881849b05d5f2cf8ab0023f1" alt=""></li> 
+          <li><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpa1/v/t1.0-1/p50x50/10639564_10154557189750417_6115402429879916892_n.jpg?oh=87e5335398291a0bdfd57f51434b204a&amp;oe=551E4C12&amp;__gda__=1423426223_dc3491532e0e4e4ed77cbb86351b14ee" alt=""></li> 
+          <li><img src="" alt=""></li> 
+         </ul> 
+        </div> 
+        <p><a href="http://giveto.ucla.edu/fund/chancellors-greatest-needs-fund/">Learn More <span class="iconFont icon-mobile_arrow_small_right"></span></a></p> 
+       </div> 
+      </div> 
+      <div class="hex_container featured health stateThree"> 
+       <div class="item" data-percentage="19"> 
+        <div class="hexagon"> 
+         <div class="hexagon-in1"> 
+          <div class="hexagon-in2"> 
+           <div class="backfill"></div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="front-content"> 
+        <div class="icon icon-cause-health-b"></div> 
+        <h3>UCLA Alzheimer's Disease Center</h3> 
+        <p>Your Help Needed</p> 
+        <div class="info"></div> 
+       </div> 
+       <div class="back-content"> 
+        <canvas width="126" height="126"></canvas> 
+        <span class="numberContainer"><span class="number">19</span>%</span> 
+        <!-- only show this if this fund has donors --> 
+        <div class="donors"> 
+         <ul> 
+          <li><img src="https://graph.facebook.com/100005307872143/picture?width=50&amp;height=50" alt=""></li> 
+          <li><img src="https://graph.facebook.com/100001015678430/picture?width=50&amp;height=50" alt=""></li> 
+          <li><img src="" alt=""></li> 
+         </ul> 
+        </div> 
+        <p><a href="http://giveto.ucla.edu/fund/ucla-alzheimer-disease-center/">Learn More <span class="iconFont icon-mobile_arrow_small_right"></span></a></p> 
+       </div> 
+      </div> 
+     </div> 
+    </div>
+    <!-- hexagons --> 
+    <div class="socialFooter"> 
+     <div class="container"> 
+      <div class="heading">
+       Giving To What Matters
+      </div> 
+      <div id="socialFooterFlexslider" class="flexslider"> 
+       <ul class="slides"> 
+        <li> 
+         <div class="donor-quote-item-container"> 
+          <div class="donor-quote-img-container"> 
+           <img src="https://graph.facebook.com/100001015678430/picture?width=150&amp;height=150" alt=""> 
+          </div> 
+          <div class="cause-center"> 
+           <div class="cause">
+            <a href="http://giveto.ucla.edu/fund/ucla-alzheimer-disease-center/">UCLA Alzheimer's Disease Center</a>
+           </div> 
+           <div class="quote">
+            I give so Alzheimer's will be a memory before my mother loses hers. 
+           </div> 
+           <div class="cause-fact"> 
+            <span class="iconFont icon-donor"></span>63 DONORS 
+           </div> 
+          </div> 
+          <a class="give-now-button" href="https://giving.ucla.edu/campaign/?&amp;amount=100&amp;OrgType=C&amp;OrgNum=10800&amp;fund=61611O" data-tracking-label="home_footer"><span>GIVE<br>NOW</span></a> 
+         </div> </li> 
+        <li> 
+         <div class="donor-quote-item-container"> 
+          <div class="donor-quote-img-container"> 
+           <img src="https://graph.facebook.com/538518334/picture?width=150&amp;height=150" alt=""> 
+          </div> 
+          <div class="cause-center"> 
+           <div class="cause">
+            <a href="http://giveto.ucla.edu/fund/division-of-digestive-diseases/">Division of Digestive Diseases</a>
+           </div> 
+           <div class="quote">
+            The hospital at UCLA was there for me in my time of need. 
+           </div> 
+           <div class="cause-fact"> 
+            <span class="iconFont icon-donor"></span>22 DONORS 
+           </div> 
+          </div> 
+          <a class="give-now-button" href="https://giving.ucla.edu/campaign/?&amp;amount=100&amp;OrgType=C&amp;OrgNum=10800&amp;fund=90297E" data-tracking-label="home_footer"><span>GIVE<br>NOW</span></a> 
+         </div> </li> 
+        <li> 
+         <div class="donor-quote-item-container"> 
+          <div class="donor-quote-img-container"> 
+           <img src="https://graph.facebook.com/563945248/picture?width=150&amp;height=150" alt=""> 
+          </div> 
+          <div class="cause-center"> 
+           <div class="cause">
+            <a href="http://giveto.ucla.edu/fund/the-tft-fund/">The TFT Fund</a>
+           </div> 
+           <div class="quote">
+            I donate because I believe in the Arts and what UCLA stands for.
+           </div> 
+           <div class="cause-fact"> 
+            <span class="iconFont icon-donor"></span>228 DONORS 
+           </div> 
+          </div> 
+          <a class="give-now-button" href="https://giving.ucla.edu/campaign/?&amp;amount=100&amp;OrgType=S&amp;OrgNum=1300&amp;fund=60142O" data-tracking-label="home_footer"><span>GIVE<br>NOW</span></a> 
+         </div> </li> 
+        <li> 
+         <div class="donor-quote-item-container"> 
+          <div class="donor-quote-img-container"> 
+          </div> 
+          <div class="cause-center"> 
+           <div class="cause">
+            <a href="http://giveto.ucla.edu/fund/wooden-athletic-fund/">Wooden Athletic Fund</a>
+           </div> 
+           <div class="quote">
+            We've supported the Bruins for over 60 years
+           </div> 
+           <div class="cause-fact"> 
+            <span class="iconFont icon-donor"></span>961 DONORS 
+           </div> 
+          </div> 
+          <a class="give-now-button" href="https://giving.ucla.edu/campaign/?&amp;amount=100&amp;OrgType=C&amp;OrgNum=10200&amp;fund=63110O" data-tracking-label="home_footer"><span>GIVE<br>NOW</span></a> 
+         </div> </li> 
+        <li> 
+         <div class="donor-quote-item-container"> 
+          <div class="donor-quote-img-container"> 
+          </div> 
+          <div class="cause-center"> 
+           <div class="cause">
+            <a href="http://giveto.ucla.edu/fund/ucla-college-of-letters-and-sciences-physiological-science/">The College: Integrative Biology and Physiology</a>
+           </div> 
+           <div class="quote">
+            I donate because UCLA prepared me for my career and helped me build lifelong friendships.
+           </div> 
+           <div class="cause-fact"> 
+            <span class="iconFont icon-donor"></span>54 DONORS 
+           </div> 
+          </div> 
+          <a class="give-now-button" href="https://giving.ucla.edu/campaign/?&amp;amount=100&amp;OrgType=S&amp;OrgNum=1400&amp;fund=61589O" data-tracking-label="home_footer"><span>GIVE<br>NOW</span></a> 
+         </div> </li> 
+        <li> 
+         <div class="donor-quote-item-container"> 
+          <div class="donor-quote-img-container"> 
+          </div> 
+          <div class="cause-center"> 
+           <div class="cause">
+            <a href="http://giveto.ucla.edu/fund/college-history/">The College: History</a>
+           </div> 
+           <div class="quote">
+            UCLA provides superb education while shaping a better tomorrow.
+           </div> 
+           <div class="cause-fact"> 
+            <span class="iconFont icon-donor"></span>253 DONORS 
+           </div> 
+          </div> 
+          <a class="give-now-button" href="https://giving.ucla.edu/campaign/?&amp;amount=100&amp;OrgType=S&amp;OrgNum=1400&amp;fund=60297O" data-tracking-label="home_footer"><span>GIVE<br>NOW</span></a> 
+         </div> </li> 
+        <li> 
+         <div class="donor-quote-item-container"> 
+          <div class="donor-quote-img-container"> 
+          </div> 
+          <div class="cause-center"> 
+           <div class="cause">
+            <a href="http://giveto.ucla.edu/fund/world-arts-and-cultures-dance/">UCLA Arts: World Arts and Cultures &amp; Dance</a>
+           </div> 
+           <div class="quote">
+            UCLA changed my life
+           </div> 
+           <div class="cause-fact"> 
+            <span class="iconFont icon-donor"></span>69 DONORS 
+           </div> 
+          </div> 
+          <a class="give-now-button" href="https://giving.ucla.edu/campaign/?&amp;amount=100&amp;OrgType=S&amp;OrgNum=1200&amp;fund=61422O" data-tracking-label="home_footer"><span>GIVE<br>NOW</span></a> 
+         </div> </li> 
+        <li> 
+         <div class="donor-quote-item-container"> 
+          <div class="donor-quote-img-container"> 
+          </div> 
+          <div class="cause-center"> 
+           <div class="cause">
+            <a href="http://giveto.ucla.edu/fund/california-nanosystems-institute-at-ucla/">California NanoSystems Institute at UCLA</a>
+           </div> 
+           <div class="quote">
+            Love and care of community
+           </div> 
+           <div class="cause-fact"> 
+            <span class="iconFont icon-donor"></span>4 DONORS 
+           </div> 
+          </div> 
+          <a class="give-now-button" href="https://giving.ucla.edu/campaign/?&amp;amount=100&amp;OrgType=C&amp;OrgNum=11400&amp;fund=62118O" data-tracking-label="home_footer"><span>GIVE<br>NOW</span></a> 
+         </div> </li> 
+        <li> 
+         <div class="donor-quote-item-container"> 
+          <div class="donor-quote-img-container"> 
+           <img src="https://graph.facebook.com/588403899/picture?width=150&amp;height=150" alt=""> 
+          </div> 
+          <div class="cause-center"> 
+           <div class="cause">
+            <a href="http://giveto.ucla.edu/fund/broad-stem-cell-research-center/">Broad Stem Cell Research Center</a>
+           </div> 
+           <div class="quote">
+            I give to unlock the power of healing for future generations. 
+           </div> 
+           <div class="cause-fact"> 
+            <span class="iconFont icon-donor"></span>24 DONORS 
+           </div> 
+          </div> 
+          <a class="give-now-button" href="https://giving.ucla.edu/campaign/?&amp;amount=100&amp;OrgType=C&amp;OrgNum=10800&amp;fund=62016O" data-tracking-label="home_footer"><span>GIVE<br>NOW</span></a> 
+         </div> </li> 
+        <li> 
+         <div class="donor-quote-item-container"> 
+          <div class="donor-quote-img-container"> 
+           <img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash3/t1.0-1/c65.65.816.816/s160x160/5778_10151377948165098_932688825_n.jpg" alt=""> 
+          </div> 
+          <div class="cause-center"> 
+           <div class="cause">
+            <a href="http://giveto.ucla.edu/fund/henry-samueli-school-of-engineering-and-applied-science-bioengineering/">Bioengineering</a>
+           </div> 
+           <div class="quote">
+            I want UCLA to remain a place that pushes people to strive for greatness in all aspects of life.
+           </div> 
+           <div class="cause-fact"> 
+            <span class="iconFont icon-donor"></span>48 DONORS 
+           </div> 
+          </div> 
+          <a class="give-now-button" href="https://giving.ucla.edu/campaign/?&amp;amount=100&amp;OrgType=S&amp;OrgNum=700&amp;fund=60998O" data-tracking-label="home_footer"><span>GIVE<br>NOW</span></a> 
+         </div> </li> 
+        <li> 
+         <div class="donor-quote-item-container"> 
+          <div class="donor-quote-img-container"> 
+           <img src="https://graph.facebook.com/566283011/picture?width=150&amp;height=150" alt=""> 
+          </div> 
+          <div class="cause-center"> 
+           <div class="cause">
+            <a href="http://giveto.ucla.edu/fund/college-history/">The College: History</a>
+           </div> 
+           <div class="quote">
+            Few universities of UCLA's stature are public enterprises designed and operated for the public good.
+           </div> 
+           <div class="cause-fact"> 
+            <span class="iconFont icon-donor"></span>253 DONORS 
+           </div> 
+          </div> 
+          <a class="give-now-button" href="https://giving.ucla.edu/campaign/?&amp;amount=100&amp;OrgType=S&amp;OrgNum=1400&amp;fund=60297O" data-tracking-label="home_footer"><span>GIVE<br>NOW</span></a> 
+         </div> </li> 
+        <li> 
+         <div class="donor-quote-item-container"> 
+          <div class="donor-quote-img-container"> 
+           <img src="https://graph.facebook.com/1434956733/picture?width=150&amp;height=150" alt=""> 
+          </div> 
+          <div class="cause-center"> 
+           <div class="cause">
+            <a href="http://giveto.ucla.edu/fund/broad-stem-cell-research-center/">Broad Stem Cell Research Center</a>
+           </div> 
+           <div class="quote">
+            The work they are doing truly inspires me and it's great to be able to support them.
+           </div> 
+           <div class="cause-fact"> 
+            <span class="iconFont icon-donor"></span>24 DONORS 
+           </div> 
+          </div> 
+          <a class="give-now-button" href="https://giving.ucla.edu/campaign/?&amp;amount=100&amp;OrgType=C&amp;OrgNum=10800&amp;fund=62016O" data-tracking-label="home_footer"><span>GIVE<br>NOW</span></a> 
+         </div> </li> 
+        <li> 
+         <div class="donor-quote-item-container"> 
+          <div class="donor-quote-img-container"> 
+           <img alt="" src="http://1.gravatar.com/avatar/b7567d5172ae1db238d18d58b7289010?s=150&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D150&amp;r=G" class="avatar avatar-150 photo" height="150" width="150"> 
+          </div> 
+          <div class="cause-center"> 
+           <div class="cause">
+            <a href="http://giveto.ucla.edu/fund/fielding-global-student-fieldwork-fund/">Fielding Global Student Fieldwork Fund</a>
+           </div> 
+           <div class="quote">
+            Every woman who was present that day changed me ... Despite difficult life circumstances, they care deeply about their health. They showed me what a passion for prevention really means.
+           </div> 
+           <div class="cause-fact"> 
+            <span class="iconFont icon-donor"></span>0 DONORS 
+           </div> 
+          </div> 
+          <a class="give-now-button" href="https://giving.ucla.edu/campaign/?&amp;amount=100&amp;OrgType=S&amp;OrgNum=400&amp;fund=63038O" data-tracking-label="home_footer"><span>GIVE<br>NOW</span></a> 
+         </div> </li> 
+       </ul> 
+      </div> 
+      <div class="iconFont arrow-left icon-arrow_big_left"></div> 
+      <div class="iconFont arrow-right icon-arrow_big_right"></div> 
+     </div> 
+    </div> 
+    <script type="text/javascript" src="http://a.adtpix.com/px/?id=104885"></script> 
+    <footer> 
+     <div class="footer-info-container container"> 
+      <ul> 
+       <li class="odd-item"> <h3>Email Sign Up</h3> 
+        <form class="enter-email-wrapper" action="http://uclacrm.mkt5658.com/give-to-ucla-email-signup/" method="post" pageid="19122748" siteid="388360" parentpageid="19122747"> 
+         <p>Want to receive more<br>information from UCLA?</p> 
+         <input type="text" placeholder="Enter Email" maxlength="50" class="enter-email" name="Email"> 
+         <a id="email-submit-btn" class="iconFont icon-mobile_arrow_small_right" href="http://giveto.ucla.edu/email-sign-up"></a> 
+         <input type="submit" value=""> 
+         <!-- DO NOT REMOVE HIDDEN FIELD sp_exp --> 
+         <input type="hidden" name="formSourceName" value="StandardForm"> 
+         <input type="hidden" name="sp_exp" value="yes"> 
+        </form> </li> 
+       <li class="even-item"> <h3>FAQ</h3> <p>Still have questions?<br>Check out our FAQ<br>for assistance.</p> <a class="footer-link view-faq" href="http://giveto.ucla.edu/faq">View The FAQ</a> </li> 
+       <li class="odd-item"> <h3>More Ways To Give</h3> <p> <a href="http://legacy.ucla.edu/?pageID=1010" target="_blank">Stocks, Bonds &amp; Annuities <span class="iconFont icon-mobile_arrow_small_right"></span></a><br> <a href="http://legacy.ucla.edu/?pageID=1007" target="_blank">Planned Giving <span class="iconFont icon-mobile_arrow_small_right"></span></a><br> <a href="http://legacy.ucla.edu/?pageID=1009" target="_blank">Bequests <span class="iconFont icon-mobile_arrow_small_right"></span></a><br> <a href="https://ucla.giftlegacy.com/?DID=1956&amp;pageID=37" target="_blank">Donor Advised Funds <span class="iconFont icon-mobile_arrow_small_right"></span></a> </p> <a class="footer-link learn-more" href="http://www.legacy.ucla.edu" target="_blank">Learn More</a> </li> 
+       <li class="even-item"> <h3>Contact Us</h3> <p>Can't find the fund you're looking for or have other questions?<br><br>Contact us at <a class="lowercase-link" href="mailto:gifts@support.ucla.edu">gifts@support.ucla.edu</a> or <a href="tel:310-794-2345">(310) 794-2345</a></p> <a class="footer-link contact-detail" href="http://giveto.ucla.edu/contact-us">Contact Details</a> </li> 
+      </ul> 
+     </div> 
+     <div class="footer-links-container"> 
+      <ul> 
+       <li> <a href="http://www.ucla.edu/" target="_blank">UCLA.edu</a> </li> 
+       <li> <a href="http://www.ucla.edu/external-affairs/development" target="_blank">UCLA Development</a> </li> 
+       <li> <a href="https://www.uclafoundation.org/" target="_blank">UCLA Foundation</a> </li> 
+       <li> <a href="http://giveto.ucla.edu/privacy-policy/" target="_blank">Privacy Policy</a> </li> 
+       <li> © 2015 UCLA </li> 
+      </ul> 
+     </div> 
+    </footer> 
+   </div>
+   <!-- /site_container --> 
+  </div>
+  <!-- /site_menu_displacer --> 
+  <script type="text/javascript">
+/* <![CDATA[ */
+var wp_vars = {"home_url":"http:\/\/giveto.ucla.edu","site_url":"http:\/\/giveto.ucla.edu","theme_url":"http:\/\/giveto.ucla.edu\/wp-content\/themes\/ucla"};
+/* ]]> */
+</script> 
+  <script type="text/javascript" src="http://giveto.ucla.edu/wp-content/themes/ucla/static/js/ucla-core.min.js?ver=1"></script> 
+  <script type="text/javascript">
+/* <![CDATA[ */
+var wp_vars = {"home_url":"http:\/\/giveto.ucla.edu","site_url":"http:\/\/giveto.ucla.edu","theme_url":"http:\/\/giveto.ucla.edu\/wp-content\/themes\/ucla"};
+/* ]]> */
+</script> 
+  <script type="text/javascript" src="http://giveto.ucla.edu/wp-content/themes/ucla/static/js/home/ucla-home.min.js?ver=1"></script>   
+ </body>
+</html>

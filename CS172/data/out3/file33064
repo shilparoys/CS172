@@ -1,0 +1,1921 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <link href="App_Themes/Midnight/cssColorization.css" type="text/css" rel="stylesheet">
+  <link href="App_Themes/Midnight/midnight/jquery-ui-1.8.13.custom.css" type="text/css" rel="stylesheet">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="google-site-verification" content="y0HobRJ6RJXPP7dnMsZwtkPNB8PsRnAhhj5lUm910CQ">
+  <title>
+	Illinois | Online and Continuing Education Homepage
+</title>
+  <link rel="stylesheet" href="/style/jquery.qtip.min.css">
+  <link rel="stylesheet" href="/style/jquery.validity.css"> 
+  <script language="javascript" src="/Scripts/jquery-1.7.1.min.js" type="text/javascript"></script> 
+  <script language="javascript" src="/Scripts/jquery-ui-1.8.5.min.js" type="text/javascript"></script> 
+  <script language="javascript" src="/Scripts/jquery.qtip.min.js" type="text/javascript"></script> 
+  <script language="javascript" src="/Scripts/jquery.validate.min.js" type="text/javascript"></script> 
+  <script language="javascript" src="/Scripts/jquery.validity.min.js" type="text/javascript"></script> 
+  <script language="javascript" src="/Scripts/date.format.js" type="text/javascript"></script> 
+  <script type="text/javascript" src="scripts/jquery.easing.1.3.js"></script> 
+  <script type="text/javascript" src="Scripts/slides.oceDelayMod.jquery.js"></script> 
+  <style type="text/css">
+    
+    body {width:100%;}	
+    button.shadowed 
+    {
+        border-width:0px;
+        font-weight:bold;
+        font-family:"Myriad Pro",trebuchet MS;
+        font-size:13px;
+        color:#ccd;
+        position: relative;
+        padding: 0;
+        cursor: pointer;
+        overflow: visible; /* removes extra side padding in IE */
+    }    
+    button.shadowed::-moz-focus-inner {
+        border: none;padding:0;margin:0;  /* overrides extra padding in Firefox */
+    }
+
+    @media screen and (-webkit-min-device-pixel-ratio:0) {
+        /* Safari and Google Chrome only - fix margins */
+        button.shadowed  span {
+            margin-top: -1px;
+        }
+    }
+
+    button.shadowed span  
+    {
+        border-width:0px;
+        padding:0px;
+        position: relative;
+        display: block; 
+        white-space: nowrap;
+        height:36px;
+        padding:2px 5px 0 25px;
+        margin-right:17px;
+        line-height:30px;
+        background: transparent url(images/styleElements/ButtonSlider3.png) no-repeat left top;	
+    }
+    button.shadowed:hover span 
+    {
+        background: transparent url(images/styleElements/ButtonSlider3.png) no-repeat left -50px;	
+    }
+    button.shadowed  
+    {
+        background: transparent url(images/styleElements/ButtonSlider3.png) no-repeat right -100px; 
+    }
+    button.shadowed:hover 
+    {
+        color:#fff;
+        background: transparent url(images/styleElements/ButtonSlider3.png) no-repeat right -150px; 
+    }
+
+    /* Columns */
+
+    .columnOf3 {
+        float: left;
+        width: 33%;
+    }
+    .columnOf3 .content {
+        margin: 0 10px;
+    }
+    .columnOf3 h3.title {
+        font-family: "Myriad Pro", "Gill Sans", "Gill Sans MT", Calibri, sans-serif; /*"Adobe Garamond Pro","Palatino Linotype","Book Antiqua",Palatino,serif;*/
+        font-size: 16px;
+        font-weight: normal;
+        margin: 0;
+    }
+
+    .sidebarImageList .footerLink {
+        background-color: inherit;
+        border: medium none;
+        color: #C56B19;
+        font-family: Arial,Geneva,sans-serif;
+        font-size: 12px;
+        font-weight: bold;
+        text-align: right;
+    }
+
+    /* News Items */
+
+    .sidebarImageList .newsItem .image {
+        background-image: url("Images/news/news_almaMater.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        border: 1px solid #CCCCCC;
+        float: left;
+        height: 58px;
+        width: 82px;
+    }
+    .sidebarImageList .newsItem .title {
+        font-family: Arial,Geneva,sans-serif;
+        font-size: 12px;
+        font-weight: bold;
+        margin-left: 90px;
+    }
+    .sidebarImageList .newsItem .description {
+        font-family: Arial,Geneva,sans-serif;
+        font-size: 12px;
+        margin-left: 90px;
+    }
+    .sidebarImageList .newsItem .link {
+        color: #C56B19;
+        font-family: Arial,Geneva,sans-serif;
+        font-size: 12px;
+        margin: 6px 0 0 0;
+        text-align: left;
+    }
+
+    /* OCE Event Items */
+
+    .sidebarImageList .oceEventItem .image {
+        background-image: url("Images/news/news_almaMater.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        border: 1px solid #CCCCCC;
+        float: left;
+        height: 58px;
+        width: 82px;
+    }
+    .sidebarImageList .oceEventItem .title {
+        font-family: Arial,Geneva,sans-serif;
+        font-size: 12px;
+        font-weight: bold;
+
+    }
+    .sidebarImageList .oceEventItem .description {
+        font-family: Arial,Geneva,sans-serif;
+        font-size: 12px;
+
+    }
+    .sidebarImageList .oceEventItem .link {
+        color: #C56B19;
+        font-family: Arial,Geneva,sans-serif;
+        font-size: 12px;
+        margin: 6px 0 0 0;
+        text-align: left;
+    }
+
+    #xOceDestinationID_00001 {
+        background-image: url("Images/destinations/destination_studentSpotlight.png");
+        background-position: left top;
+        background-repeat: no-repeat;
+    }
+
+    #xOceDestinationID_00002 {
+        background-image: url("Images/destinations/destination_currentOfferings.png");
+        background-position: left top;
+        background-repeat: no-repeat;
+    }
+
+    .layoutBreadcrumbs {display:none;}
+    x.layoutPopupMenu {border-top-color:transparent;}
+
+    /* Quick Links */
+
+    .quicklinks ul { margin:0; padding:0;}
+    .quicklinks li {font-size:12px; list-style-type:none;border:0px solid green;margin:0; padding:0px 0 0px 0;margin-bottom:0.2em;}
+    .quicklinks h4 {margin-bottom:0.2em;color:#2569a8;}
+    .quicklinks a {text-decoration: none; color:#333333;font-family:"Segoe UI", Segoe, Tahoma, Geneva, sans-serif;}
+    .quicklinks a:hover {text-decoration: underline; color:#0000cc;}
+
+     /* Request Info Form */
+
+    .requestInfo {width:95%;}
+    .requestInfo .fieldName,
+    .requestInfo .fieldEmail,
+    .requestInfo .fieldSubject,
+    .requestInfo .fieldComment {margin-bottom:0.5em;margin-top:0.75em;}
+
+    .requestInfo ul { margin:0; padding:0;}
+    .requestInfo li {font-size:12px; list-style-type:none;border:0px solid green;margin:0; padding:0px 0 0px 0;margin-bottom:0.2em;width:48%; float:left;}
+    .requestInfo h4 {margin-bottom:0.2em;color:#2569a8;}
+    .requestInfo input.txtName,
+    .requestInfo input.txtEmail {width:68%;float:right; font-size:0.85em;font-family: Trebuchet MS}
+    .requestInfo label {width:28%; float:left;font-size:0.85em; padding-top:0.2em;}
+    .requestInfo .fieldSubject label, 
+    .requestInfo .fieldComment label
+    { font-size:0.85em; padding-top:0.2em;padding-bottom:0.2em;width:100%;}
+    .requestInfo textarea {width:98%;font-family: Trebuchet MS;font-size:0.85em;}
+    .requestInfo li input {width:auto;}
+
+    .requestInfo #frmContactUs-status {border:1px solid #555; background-color:#fff4bb; padding:0.5em; margin:1em 0em;display:none;font-size:11px;}
+
+       
+    .validity-tooltip2,
+    .oce-tooltip
+    {
+        border: 1px solid #555555;
+        color:#333;
+
+        font-size:12px;
+        line-height:20px;
+        padding:0px 0 0px 26px;
+        background: url("/images/styleelements/alert14.png") no-repeat scroll 4px 3px #ffee99;
+        position:relative;
+        margin-bottom:6px;
+                 
+    }
+
+    .validity-tooltip2 .validity-tooltip-outer,
+    .oce-tooltip .oce-tooltip-outer 
+    {
+        position:absolute;
+        z-index:1003;
+        top:20px;
+        right:6px;
+        height:9px;
+        width:13px;
+        background: url("/images/styleelements/calloutarrow.png") no-repeat scroll left -3px transparent;
+    }
+
+    .validity-tooltip2 .validity-tooltip-inner,
+    .oce-tooltip2 .oce-tooltip-inner
+     {border-right-color:#ffee99;}
+
+
+
+
+    UL.sidebarImageList  { margin:0; padding:0;}
+
+    UL.sidebarImageList LI {list-style-type:none;border:0px solid green;margin:0; padding:4px 0 4px 0;margin-bottom:6px;}
+
+    .sidebarImageList img {border:none; border: 0px solid red;}
+
+    .sidebarImageList a.destinationItem 
+    {
+        text-align:center;
+        background-image: url("/Images/Destinations/Destination-DropShadow.png");
+        background-repeat:no-repeat;
+        background-position: 0px 50%;
+        padding:0px 0px 0px 0px;
+        border: 0px solid red;
+        display:block;
+        width:293px;
+        height:119px;
+        display:block;
+
+    }
+
+    .sidebarImageList a.destinationItem img {margin:auto;display:block;padding-top:6px;}
+
+
+    .pageContent {
+        margin: 20px 0 72px;
+        width: 100%;
+        font-size:100%;
+    }
+
+
+    x.layoutPopupMenu {position:absolute; z-index:50; width:100%;margin:auto;background-color:#f2f2f2;opacity:1.0;/* xfilter:alpha(opacity=95) */ }
+    x.layoutPopupMenu .container {position:relative;  xwidth:1000px;}
+    /*#dropDownMenu {margin:0px 20px;} */
+    x.layoutPopupMenu LI A {font-weight:normal !important; font-family: arial !important; font-size:11px !important}
+
+
+    x.popupMenu .column {padding-bottom:36px;}
+
+    x.layoutPopupMenu .sectionLabel {font-size:1.1em; font-weight:normal;color:#083258;padding-bottom:0.5em;}
+
+
+    .layoutFeature .container { overflow: visible}
+
+    .columnOf3 .content p {line-height:normal;}
+    .newsColumn h4 a {color:#006; font-weight:bold;} 
+
+    /* Event Calendar */
+    .events UL {list-style-type:none; margin:0;padding:0; border-bottom:1px dotted #888;margin-bottom:1em;}
+    .events UL LI  {padding:0; margin:0; margin-bottom:1em; color:#666;}
+    .events  #pc-3552 #edu-il-ws-3552-1-wrapper .edu-il-ws-3552-1-function a {color:#666; font-size:10px;}
+    .events LI a {color:#006; font-weight:bold; font-size:14px; text-decoration:none; font-family: Arial,Helvetica,sans-serif;}
+    .events .edu-il-ws-3552-1-time {margin-bottom:0 !important;}
+    .events #calendarItems li {font-size:1.0em;}
+    .events #calendarItems li a {font-size:1.0em;}
+    .events #calendarItems li a:hover {color:#00f}
+
+
+    .subjectList a {color:#333;}
+    .subjectList a:hover {color:#00c;}
+
+    .subjectList {padding-bottom:2em;margin-bottom:0em;float:left; width:100%;xmargin-top:-2em;padding-top:10px;}
+    .subjectList p {line-height:1.5em;}
+    .subjectList a {text-decoration:none;}
+    .subjectList a:hover {text-decoration:underline;}
+
+    .subjectList h2 {
+        font-family: "Myriad Pro", "Gill Sans", "Gill Sans MT", Calibri, sans-serif; /*"Adobe Garamond Pro","Palatino Linotype","Book Antiqua",Palatino,serif;*/
+        font-size:16px;
+        font-weight:normal;
+        margin-bottom:0.5em;
+        margin-top:0px;
+    }
+
+
+
+
+    /* Simple Search Form*/
+    .simpleSearchForm-fieldset    
+    {
+        xbackground: url("/Images/Midnight/opaque_10.png") repeat scroll 0 0 transparent;
+        background:#fff;
+        margin-bottom: 1em;
+        border:1px solid #ccc;
+        margin:0px 4px ;
+        padding:0;
+    }
+    
+    .simpleSearchForm-input {
+        background: url("/Images/Midnight/search_off.png") no-repeat scroll 0.4em 0.4em transparent;
+        margin: 0;
+        outline: medium none;
+        padding: 0.4em 0 0.3em 2.5em;
+        border:medium none;
+        xbackground-color:Red;
+    }
+    
+    .simpleSearchForm-buttonRow 
+    {
+        text-align:right;
+        padding-right:10px;}
+    
+    .simpleSearchForm-button 
+    {
+        height:26px;
+        background-image: url("/Images/Midnight/search_button_off.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        xfloat: right;
+        text-indent: -300em;
+        width: 60px;
+        background-color: #0C477D;
+        border: medium none;
+    }
+    
+    .simpleSearchForm-button:hover 
+    {
+        background-color: #FD5300;
+    }
+
+    .simpleSearchFormContainer{width:220px;padding:10px;border-right:1px solid #ccc; xbackground-color:#f2f2f2;}
+    .simpleSearchForm {} 
+
+    .simpleSearchForm p {line-height: 1.35em;} 
+    .simpleSearchForm h2 { color:#1C6CAB;font-size:1.2em;margin:0 0 .5em 0px; font-family:"Myriad Pro", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;}
+    .simpleSearchForm h2 .subtitle { color:#666;font-size:16px;font-style: normal;font-weight:normal;}
+    .simpleSearchForm .instructions {color: #666;font-size:0.85em;margin:22px 4px 8px 4px} 
+    .simpleSearchForm .filters {color: #666;font-size:0.85em;margin:8px 4px} 
+    .simpleSearchForm .caption {color: #999;font-style: italic;font-size:0.7em;margin:0px 6px;} 
+    .simpleSearchForm .simpleSearchForm-input {width:168px;}
+
+
+
+</style> 
+  <!--[if IE]>
+<style type="text/css">
+    .layoutPopupMenu {filter:alpha(opacity=95);}
+</style>
+<![endif]--> 
+  <script type="text/javascript">
+    (function ($) {
+
+        // private variables
+        var pluginName = "requestInformationManager";
+        
+        // private instance constructor
+        function requestInformationManager(element, customOptions) {
+            
+            // plug-in common fields
+            var domElement = element;      
+            var $domElement = $(element);
+            var pluginId = "plugin_" + pluginName;
+            var options = $.extend({}, $.fn.requestInformationManager.defaultOptions, customOptions);
+            
+            // private fields
+            var isActive = false;
+            var instanceId = options.instanceId;
+            var requestForm = element;
+          
+            
+            function init() {
+                // Add any initialization logic here...
+
+                // bind event handlers
+                console.log(instanceId + ": init binding event handlers.");
+
+                // wire-up elements that invoke validation on blur
+                $(options.fieldIdentifiers.causesValidation, requestForm)
+                    .on("blur.requestInformationManager", function() {
+                        console.log(instanceId + ": onValidationRequired event; isActive: " + isActive);
+                        if (isActive)
+                            validateFormFields();
+                    });
+
+                // wire-up elements that invoke submission on click
+                $(options.fieldIdentifiers.causesSubmission, requestForm)
+                    .on("click.requestInformationManager", function() {
+                        console.log(instanceId + ": onSubmissionRequested event.");
+                        sendMail();
+                    });
+
+                //override tooltip handling
+                $.validity.outputs.tooltip.start = function() {
+                    onTooltipStart();
+                };
+
+                $.validity.outputs.tooltip.raise = function($obj, msg) {
+                    onTooltipRaise($obj, msg);
+                };
+
+
+                hook('onInit');
+            }
+            
+            function option(key, val) {
+                if (val) {
+                    options[key] = val;
+                } else {
+                    return options[key];
+                }
+            }
+            
+            function hook(hookName) {
+                if (options[hookName] !== undefined) {
+                    // Call the user defined function.
+                    // Scope is set to the jQuery element we are operating on.
+                    options[hookName].call(domElement);
+                }
+            }
+
+            function destroy() {
+                // Iterate over each matching element.
+                $domElement.each(function() {
+                    var domElement = this;
+                    var $domElement = $(this);
+
+                    // Add code to restore the element to its original state...
+
+                    hook('onDestroy');
+                    // Remove plug-in instance from the element.
+                    $domElement.removeData(pluginId);
+                });
+            }
+            
+            /*===================================================
+            /*  Public Methods
+            /*===================================================*/
+            
+            function sendMail() {
+                console.log(instanceId + "::sendMail");
+                isActive = true;
+                
+                // check for spam
+                if (spamCheck()) {
+                    showStatusMessage(true, 'Sorry, we are unable to process your request at this time');
+                    console.log(options.instanceId + ": sendMail failed spam check -- abort");
+                    isActive = false;
+                    return this; 
+                }
+                console.log(options.instanceId + ": sendMail passed spam check");
+
+                // validate input
+                var validationResult = validateFormFields();
+                if (!validationResult.valid) {
+                    console.log(instanceId + ": sendMail failed form validation -- abort");
+                    return this;
+                }
+                console.log(instanceId + ": sendMail passed form validation");
+
+                // create message
+                var message = generateMessage();
+
+                // post message
+                var result = postMessage(message);
+
+
+                console.log(instanceId + ": sendMail complete");
+
+
+                return this;
+            }
+
+
+            function validateFormFields() { 
+                console.log(instanceId + "::validateFormFields");
+                
+                var fieldIdentifiers = options.fieldIdentifiers;
+                var messages = options.validityMessageTemplates;
+
+                $.validity.start();
+
+                $(fieldIdentifiers.senderName, requestForm)
+                    .require(messages.missingName);
+
+                console.log(instanceId + "validated for pattern " + fieldIdentifiers.senderName);
+
+                $(fieldIdentifiers.senderEmail, requestForm)
+                    .require(messages.missingEmail)
+                    .match('email', messages.invalidEmail);
+                
+                console.log(instanceId + "validated for pattern " + fieldIdentifiers.senderEmail);
+
+                $(fieldIdentifiers.messageBody, requestForm)
+                    .require(messages.missingQuestionTest);
+                
+                console.log(instanceId + "validated for pattern " + fieldIdentifiers.messageBody);
+
+                var result = $.validity.end();
+
+                console.log(instanceId + ": validateFormFields complete");
+                return result;
+            }
+            
+            /*===================================================
+            /*  Private Methods
+            /*===================================================*/
+            
+          
+            
+            function spamCheck() {
+                if ($(options.fieldIdentifiers.recipientEmail, requestForm).val() != "") {
+                    // a spam agent has put data in the form -- abort processing: log error
+                    showStatusMessage(true, options.statusMessageTemplates.failedSpamCheck);
+                    return true;
+                }
+                return false;
+            }
+            
+            function generateMessage() {
+                var formValues = {
+                    name: $('input[name="Name"]', requestForm).val(),
+                    email: $('input[name="EmailAddress"]', requestForm).val(),
+                    topic: $('input[name="rbSubject"]:checked', requestForm).val(),
+                    comment: $('textarea[name="Comment"]', requestForm).val()
+                };
+
+                var messageElements = {
+                    sender: formValues.email,
+                    subject: options.requestTemplates.subject
+                        .replace(/\{topic\}/g, formValues.topic),
+                    body: options.requestTemplates.body
+                        .replace(/\{senderName\}/g, formValues.name)
+                        .replace(/\{senderEmail\}/g, formValues.email)
+                        .replace(/\{messageText\}/g, formValues.comment)
+                };
+
+                console.log(instanceId + ": message generated");
+                return messageElements;
+            }
+            
+
+            // (chainable)
+            function postMessage(message) { 
+                var messageHandlerUrl = options.messageHandlerUrl;
+
+                var postData = "{\"sender\":" + JSON.stringify(message.sender)
+                    + ", \"subject\":" + JSON.stringify(message.subject)
+                    + ", \"body\":" + JSON.stringify(message.body) + "}";
+
+                showStatusMessage(true, options.statusMessageTemplates.sending, "/images/styleElements/mail_sent.png");
+
+                $.ajax({
+                    type: 'POST',
+                    url: messageHandlerUrl,
+                    data: postData,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    cache: false,
+                    success: onSuccess,
+                    error: onError
+                });
+
+                console.log(options.instanceId + ": message posted (async)");
+
+                return this;
+            }
+
+            // (chainable)
+            function showStatusMessage(visible, text, icon) {
+
+                var status = $('.oce-requestInfo-status', requestForm);
+
+                if (!visible) {
+                    status.fadeOut();
+                }
+
+                if (typeof text !== "undefined") {
+                    var htmlMessageTemplate = "<div>{text}</div>";
+                    var htmlMessage = htmlMessageTemplate.replace(/\{icon\}/, icon).replace(/\{text\}/, text);
+
+                    if (typeof icon !== "undefined") {
+                        // /images/styleElements/mail_sent.png
+                        htmlMessageTemplate = "<img src=\"{icon}\" style=\"float:left;\" /><div style=\"margin-left:40px;\">{text}</div>";
+                        htmlMessage = htmlMessageTemplate.replace(/\{icon\}/, icon).replace(/\{text\}/, text);
+                    }
+
+                    status.html(htmlMessage);
+                }
+
+                if (visible) {
+                    status.fadeIn();
+                }
+
+                console.log(instanceId + ": status message set");
+                return this;
+
+            }
+            
+            // success handler for async ajax call
+            // chainable
+            function onSuccess(response) {
+                console.log(instanceId + ": onSuccess");
+
+                // process response
+                var data = (typeof response.d) == 'string' ? JSON.parse('(' + response.d + ')') : response.d;
+                var timestamp = new Date(+data.Timestamp.replace(/\/Date\((-?\d+)\)\//gi, "$1"));
+                var timestring = timestamp.format("h:MM tt mm/dd/yyyy");
+                var safeRecipient = escapeHtml(data.Recipient);
+                var safeTimestring = escapeHtml(timestring);
+                var safeReplyTo = escapeHtml(data.ReplyTo);
+
+                if (data.Success) {
+                    //show status (success)
+                    var successMessage = options.statusMessageTemplates.success
+                        .replace(/\{recipient\}/, safeRecipient)
+                        .replace(/\{datetime\}/, safeTimestring)
+                        .replace(/\{replyto\}/, safeReplyTo);
+                    showStatusMessage(true, successMessage, "/images/styleElements/mail_sent.png");
+
+                    // clear text area
+                    $('textarea[name="Comment"]', requestInformationManager.requestForm).val("");
+
+                } else {
+
+                    // show status (server error sending mail)
+                    var errorMessage = options.statusMessageTemplates.postofficeError
+                        .replace(/\{recipient\}/, safeRecipient)
+                        .replace(/\{datetime\}/, safeTimestring);
+                    showStatusMessage(true, errorMessage, "/images/styleElements/mail_sent.png");
+                }
+
+                return this;
+            }
+
+            // error handler for async ajax call
+            // chainable
+            function onError(data) {
+                console.log(instanceId + ": onError");
+
+                var msgError = options.statusMessageTemplates.error;
+                showStatusMessage(true, msgError + ':' + data);
+
+                return this;
+            }
+
+            // event handler for tooltip
+            // chainable
+            function onTooltipStart() {
+                // clear tooltips
+                $(".oce-tooltip", requestForm).remove();
+
+                return this;
+            }
+            
+            // chainable
+            function onTooltipRaise($obj, msg) {
+                // create message html
+                var tooltipHtmlTemplate = "<div class=\"oce-tooltip\">{tooltipText}<div class=\"oce-tooltip-outer\"><div class=\"oce-tooltip-inner\"></div></div></div>";
+                var tooltipHtml = tooltipHtmlTemplate.replace(/\{tooltipText\}/, msg);
+
+                $(tooltipHtml)                                      // create tooltip node
+                    .click(function () { $obj.focus(); })           // tooltip onClick focuses on associated form element
+                    .hide()                                         // hide tooltip
+                    .prependTo($obj.parent())                       // insert tooltip node into document
+                    .fadeIn();                                      // reveal tooltip
+
+                return this;
+            }
+            
+            // static string function
+            function escapeHtml(text) {
+                var entityMap = {
+                    "&": "&amp;",
+                    "<": "&lt;",
+                    ">": "&gt;",
+                    '"': '&quot;',
+                    "'": '&#39;',
+                    "/": '&#x2F;'
+                };
+
+                return String(text).replace(/[&<>"'\/]/g, function (s) {
+                    return entityMap[s];
+                });
+            }
+
+            init();
+            
+            // expose public methods
+            return {
+                option: option,
+                destroy: destroy,
+                sendMail: sendMail,
+                validateFormFields: validateFormFields
+            };
+        }
+        
+        /***********************************************************************
+        *   jQuery Plug-in: requestInformationManager
+        *
+        *   "$.fn.[class_name]" is shortcut for "jQuery.protoype.[class_name]"
+        ************************************************************************/
+        $.fn.requestInformationManager = function (args) {
+
+            var pluginId = "plugin_" + pluginName;
+
+            if (typeof arguments[0] === 'string') {
+
+                // this is a method call
+                var methodName = arguments[0];
+                var methodArgs = Array.prototype.slice.call(arguments, 1);
+                var returnValue;
+
+                this.each(function() {
+                    // very plug-in exists for element and supports requested method
+                    if ($.data(this, pluginId) && typeof $.data(this, pluginId)[methodName] === 'function') {
+                        console.log("requestInformationManager plug-in: executing method [" + methodName + ']');
+                        returnValue = $.data(this, pluginId)[methodName].apply(this, methodArgs);
+                    } else {
+                        throw new Error('Method [' + methodName + '] does not exist in jQuery.' + pluginName);
+                    }
+                });
+
+                if (returnValue !== 'undefined') {
+                    return returnValue;
+                } else {
+                    return this;
+                }
+            
+            } else if (typeof args === "object" || !args) {
+
+                // this is an instantiation request 
+                return this.each(function() {
+                    if (!$.data(this, pluginId)) {
+                        console.log("requestInformationManager plug-in: instantiating instance");
+                        $.data(this, pluginId, new requestInformationManager(this, args));
+                    } else {
+                        console.log("requestInformationManager plug-in: plug-in already present at target");
+                        //the plug-in already attached to object;
+                    }
+                });
+                
+            } else {
+                // unrecognized argument
+                throw new Error('Unexpected argument type for requestInformationManager.  Expected object, null, or string.');
+            }
+        };
+
+        /***********************************************************************
+        *   jQuery Plug-in Defaults: requestInformationManager
+        *
+        *   
+        ************************************************************************/
+        $.fn.requestInformationManager.defaultOptions = {
+
+            // event handlers
+            onInit: function () {},
+            onDestroy: function () {},
+
+            instanceId: "RIM",
+            messageHandlerUrl: "/utilities/sendMail.aspx/SendMessage",
+            tooltipTemplate: "<div class=\"oce-tooltip\">{tooltipText}<div class=\"oce-tooltip-outer\"><div class=\"oce-tooltip-inner\"></div></div></div>",
+            
+            validityMessageTemplates: {
+                missingName: "Please provide your name.",
+                missingEmail: "Please provide an email address.",
+                invalidEmail: "Please provide a valid email address.",
+                missingQuestionTest: "How may we help you?"
+            },
+            
+            statusMessageTemplates: {
+                sending: "Sending your message",
+                success: "Your message was sent to {recipient} at {datetime}.  We'll get back to you at '{replyto}' as soon as we can.",
+                error: "An error occurred sending your message.",
+                postofficeError: "An error occurred sending your message to {recipient} at {datetime}.  We'll check into it.",
+                failedSpamCheck: "Sorry, we are unable to process your request at this time."
+            },
+            
+            fieldIdentifiers: {
+                senderName: ".oce-requestInfo-name",
+                senderEmail: ".oce-requestInfo-email",
+                recipientEmail: ".oce-requestInfo-recipient",
+                messageBody: ".oce-requestInfo-message",
+                subject: "input[name=\"rbSubject\"]:checked",
+                causesValidation: ".oce-requestInfo-validateOnBlur",
+                causesSubmission: "button"
+            },
+            
+            requestTemplates: {
+                subject: "[oce.illinois.edu] Request for {topic} information",
+                body: "FROM: \t{senderName}\r\n"
+                        + "EMAIL: \t{senderEmail}\r\n"
+                        + "QUESTION/COMMENT:\r\n{messageText}\r\n"
+            }
+        };
+    })(jQuery);
+</script> 
+  <script type="text/javascript">
+    $(document).ready(function () {
+        // prepare request form
+        var rimOptions = {instanceId: "[RIM 001]"};
+        var rim = $(".requestInfo").requestInformationManager(rimOptions);
+    });
+</script> 
+  <style type="text/css">
+        #slides { width: 955px;height: 370px;position: relative;padding-top: 2px; padding-bottom:10px;margin-left: 3px;}
+        .slides_container { width: 955px;height: 345px;background-color: #ccc;overflow: hidden;}
+        .slides_container div { width: 955px;height: 350px;display: block;}
+        #slides .prev {display:none;visibility: hidden; position: absolute;left: 0;top: 185px;z-index: 25;margin-left: -24px;margin-top: -24px;}
+        #slides .next {display:none;visibility: hidden;  position: absolute;right: 0;top: 185px;z-index: 25;margin-right: -24px;margin-top: -24px;}
+    
+        .pagination {
+            margin: 8px auto 8px auto;
+            width:120px;
+        }
+
+        .pagination li {
+            float:left;
+            margin:0 1px;
+            list-style:none;
+        }
+
+        .pagination li a {
+            display:block;
+            width:18px;
+            height:0;
+            padding-top:16px;
+            background-image:url(../images/features/pagination_revised.png);
+            background-position:center 0;
+            background-repeat: no-repeat;
+            float:left;
+            overflow:hidden;
+        }
+
+        .pagination li.current a {
+            background-position:center -15px;
+        }
+    
+    </style> 
+ </head> 
+ <body class="responsive threeBandMaster default" id=""> 
+  <form name="aspnetForm" method="post" action="" id="aspnetForm"> 
+   <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTU2MjA3ODI5N2QYAQUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgIFIGN0bDAwJGNwaExlYWRlciRsZWFkZXIkY21kU2VhcmNoBTxjdGwwMCRjcGhQYWdlQ29udGVudCRfc2ltcGxlQ291cnNlU2VhcmNoMSRjYk9wZW5TZWN0aW9uc09ubHmg88gMhEKC3dg0ktRTm/Xfz10Va1Y76qWPGOBmxgdfHQ=="> 
+   <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="CA0B0334"> 
+   <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAYpjZ94+d4AltXeyDeaikNa0vZJ++VS1azyWikMgV1HvcN+8YHYB8NXITBKmtGw3/RYmK0SVYMMpdm5QGs7/Rs1L5yRcZcqW8yTFJefGBXsGcAaTTEA8+gCgkZvLIp+J0DYqSSK2vcnxXi9stvJ22DWydhfWP72X7a4HCSNOEIdsA=="> 
+   <div id="wrap"> 
+    <div id="main"> 
+     <div class="layoutBand layoutLeader "> 
+      <div class="container"> 
+       <div class="leader"> 
+        <div class="midnightLeader"> 
+         <div class="leaderIMark"> 
+          <a href="http://illinois.edu"><span class="linkText">University of Illinois</span></a> 
+         </div> 
+         <div class="leaderMenu  hide-from-phone"> 
+          <h2 style="display:none;">Site Navigation</h2> 
+          <ul class="leaderLinks"> 
+           <li><a href="http://www.ao.uiuc.edu/support/source/" target="_blank">Student Resource Center</a></li> 
+           <li><a href="https://www-s.continuinged.uiuc.edu/ao/ServiceCenter/Login/" target="_blank">Service Center</a></li> 
+           <li><a href="/Catalog">Course Search</a></li> 
+           <li><a href="http://illinois.edu/calendar/grid/3552?skinId=4833">Calendar</a></li> 
+           <!--
+        <li><a href="/sitemap.aspx">Site Map</a></li>
+        <li><a href="mailto:oceinfo@illinois.edu">Contact</a></li>
+           --> 
+          </ul> 
+         </div> 
+         <div class="leaderSearch  hide-from-phone"> 
+          <div id="ctl00_cphLeader_leader_pnlSearch"> 
+           <input name="ctl00$cphLeader$leader$txtSearch" type="text" id="ctl00_cphLeader_leader_txtSearch" title="Search the OCE website" class="txtSearch"> 
+           <input type="image" name="ctl00$cphLeader$leader$cmdSearch" id="ctl00_cphLeader_leader_cmdSearch" class="cmdSearch" src="images/midnight/searchButton.png" alt="Search" align="absbottom" border="0"> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="narrow-fix"></div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="layoutBand layoutBanner hide-from-phone"> 
+      <div class="container"> 
+       <div class="layoutBannerMenu"> 
+        <div class="bannerMenu"> 
+         <div class="oceLogo"> 
+          <a href="/" title="Online and Continuing Education Homepage"><span class="linkText">Online &amp; Continuing Education</span></a> 
+         </div> 
+         <div class="horizontalMenu"> 
+          <h2 style="display:none;">OCE Main Menu</h2> 
+          <ul> 
+           <li class="tabCloser"><a href="/AboutUs" class="tabOpener" data-tab="cat_AboutUs"><span class="linkText">About Us</span></a></li> 
+           <li class="tabCloser"><a href="/Programs" class="tabOpener" data-tab="cat_Programs"><span class="linkText">Programs &amp; Courses</span></a></li> 
+           <li class="tabCloser"><a href="/Registration" class="tabOpener" data-tab="cat_Registration"><span class="linkText">Registration</span></a></li> 
+           <li class="tabCloser"><a href="/Services" class="tabOpener" data-tab="cat_Services"><span class="linkText">Services</span></a></li> 
+           <li class="tabCloser"><a href="/Resources" class="tabOpener" data-tab="cat_Resources"><span class="linkText">Resources</span></a></li> 
+          </ul> 
+         </div> 
+        </div> 
+        <div class="narrow-fix"></div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="layoutBand layoutPopupMenu  hide-from-phone"> 
+      <div class="container"> 
+       <!-- PLACEHOLDER FOR DROP-DOWN MENU--> 
+       <div id="dropDownMenu"></div> 
+       <div class="narrow-fix"></div> 
+      </div> 
+     </div> 
+     <div class="layoutBand layoutFeature  hide-from-phone"> 
+      <div class="container"> 
+       <!-- THIS IS THE FEATURE ELEMENT: SIZE SHOULD BE 957px wide x 339px tall --> 
+       <!-- When changing the feature image, be sure to change the URL, too --> 
+       <!--
+<a href="/Catalog/Sections/2012/Spring" ><img alt="Register for Spring Online Courses" border="0" style="border-width:0;padding:40px 0px;" src="Images/Features/SpringOnlineCourses2012.jpg" /></a>
+--> 
+       <!-- This could be moved to ascx, with default link and image driven by web.config --> 
+       <!-- END FEATURE ELEMENT --> 
+       <div id="slides"> 
+        <div class="slides_container"> 
+         <div class="feature-CitlAnnounce"> 
+          <a href="http://citl.illinois.edu"><img alt="Announcing the Center for Innovation in Teaching and Learning" border="0" style="border-width:0;padding:0px 0px;" src="Images/Features/CITLAnnounce.jpg"></a> 
+         </div> 
+         <!--
+    <div class="feature-FallRegistration2013" >
+        <a href="/Catalog/Sections/2013/Fall" ><img alt="Register for Fall Online Courses" border="0" style="border-width:0;padding:0px 0px;" src="Images/Features/FallOnlineCourses2013.jpg" /></a>
+    </div>
+     --> 
+         <!--
+    <div class="feature-SummerRegistration2013" >
+        <a href="/Registration/Summer2013" ><img alt="Register for Summer Online Courses" border="0" style="border-width:0;padding:0px 0px;" src="Images/Features/SummerOnlineCourses2013.jpg" /></a>
+    </div>
+	--> 
+         <!--
+	<div class="feature-SummitOnOnlineEducation2012">
+        <a href="/Programs/SummitOnOnlineEducation2012" ><img alt="Summit on Online Education" border="0" style="border-width:0;padding:0px 0px;" src="/Images/Features/Summit2012.jpg" /></a>
+    </div> 
+	--> 
+         <div class="feature-ConferenceCoordination"> 
+          <a href="/Services/ConferenceCoordination"><img alt="Learn about our Conference Coordination Service" border="0" style="border-width:0;padding:0px 0px;" src="Images/Features/ConferenceServices.jpg"></a> 
+         </div> 
+         <!--
+	<div class="feature-SummitOnOnlineEducation2012LiveStream">
+        <a href="/Programs/SummitOnOnlineEducation2012/livestream" ><img alt="2012 Summit on Online Education" border="0" style="border-width:0;padding:0px 0px;" src="Images/Features/Summit2012Videos.jpg" /></a>
+    </div>
+	--> 
+         <!--
+	<div class="feature-FacultySummerInstitute2013">
+        <a href="http://www.conferences.uiuc.edu/facultysummerinstitute" ><img alt="2013 Faculty Summer Institute" border="0" style="border-width:0;padding:0px 0px;" src="Images/Features/FacultySummerInstitute2013.jpg" /></a>
+    </div>
+	--> 
+         <div class="feature-videoTips"> 
+          <a href="http://mooc.illinois.edu/resources/ "><img alt="Tips for Developing High Quality Video for Online Courses" border="0" style="border-width:0;padding:0px 0px;" src="Images/Features/VideoTips2013.jpg"></a> 
+         </div> 
+         <!--
+	<div class="feature-PublicEngagementSymposium2013">
+        <a href="http://www.conferences.illinois.edu/engagementsymposium/" ><img alt="2013 Public Engagement Symposium" border="0" style="border-width:0;padding:0px 0px;" src="Images/Features/2013PublicEngagement.jpg" /></a>
+    </div>
+	--> 
+         <!--
+	<div class="feature-IllinoisHighSchoolTheatreFestival2013">
+        <a href="http://www.illinoistheatrefest.org/" ><img alt="2013 Illinois High School Theatre Festival" border="0" style="border-width:0;padding:0px 0px;" src="Images/Features/TheatreFest2013.jpg" /></a>
+    </div>
+	--> 
+         <!--
+    <div class="feature-OnlineTeachingFacultyTestimonial">
+        <a href="/News/video/TeachingOnline-altaner" ><img alt="Teaching Online: Faculty Testimonials" border="0" style="border-width:0;padding:0px 0px;" src="/Images/Features/altaner.jpg" /></a>
+    </div> 
+	--> 
+         <!-- 
+    <div class="feature-SampleOnlineClass">
+        <a href="/Programs/Courses/Examples" ><img alt="See how OCE uses online video" border="0" style="border-width:0;padding:0px 0px;" src="/Images/Features/atms120.jpg" /></a>
+    </div>
+	--> 
+         <!--
+    <div class="feature-OpportunitiesForVeterans">
+        <a href="/Programs/Military" ><img alt="Learn about Education Opportunities for Veterans" border="0" style="border-width:0;padding:0px 0px;" src="/Images/Features/military.jpg" /></a>
+    </div> 
+	--> 
+        </div> 
+        <a href="#" class="prev"><img src="images/features/arrow-prev.png" width="24" height="43" alt="Arrow Prev"></a> 
+        <a href="#" class="next"><img src="images/features/arrow-next.png" width="24" height="43" alt="Arrow Next"></a> 
+       </div> 
+       <script type="text/javascript" id="rotatorScript">
+	    $(document).ready(function () {
+	        $('#slides').slides({
+	            preload: true,
+	            preloadImage: 'images/features/horizontalPreloader.gif',
+	            play: 7000,
+	            pause: 7000,
+	            hoverPause: true,
+	            effect: 'fade, fade',
+	            fadeSpeed: 350,
+	            crossfade:true,
+	            firstSlideExtraTime: 7000
+	        });
+
+
+	    });
+
+       
+	</script> 
+       <div class="narrow-fix"></div> 
+      </div> 
+     </div> 
+     <div class="layoutBand layoutBreadcrumbs hide-from-phone"> 
+      <div class="container"> 
+       <div class="narrow-fix"></div> 
+      </div> 
+     </div> 
+     <div class="layoutBand layoutContentRegion"> 
+      <div class="container"> 
+       <!--
+			    <div style="width:80%; margin:1em auto; border:1px solid #999;padding:1em;background-color:#ffffcc"><b>Notice:</b> [Alert text goes here].</div>
+			--> 
+       <!-- START PAGE CONTENT --> 
+       <div class="pageContent oce-homepage"> 
+        <!--
+<div style="position:relative;width:545px; margin: 0em auto 1em auto; padding:0.5em 0.5em 0.5em 72px; border:1px solid #ccc; background-color:#f4f4d0; text-align:center">
+<div style="position:absolute;height:72px; width:72px; z-index:100; background-image:url('images/icons/videoCamera72px.png'); top:-20px; left:12px;"></div>
+View a <a href="http://citl.illinois.edu/events">live stream of the opening proceedings of the 2013 Summit on Online Education</a>.
+</div>--> 
+        <div class="ui-helper-clearfix sectionInfo-row" style="background:url(&quot;/Images/Midnight/subjectListBackground.png&quot;) repeat-x scroll bottom left transparent;border-bottom:1px dotted #ccc;margin-bottom:2em; "> 
+         <div style="width:25%; float:left" class="panel-courseSearch"> 
+          <div class="simpleSearchFormContainer"> 
+           <div class="simpleSearchForm"> 
+            <div id="ctl00_cphPageContent__simpleCourseSearch1_pnlSimpleSearch"> 
+             <h2>Get Started » <span class="subtitle">Find a Course</span></h2> 
+             <fieldset class="simpleSearchForm-fieldset"> 
+              <div> 
+               <input name="ctl00$cphPageContent$_simpleCourseSearch1$txtSearchText" type="text" value="math" id="ctl00_cphPageContent__simpleCourseSearch1_txtSearchText" class="simpleSearchForm-input"> 
+              </div> 
+             </fieldset> 
+             <div class="caption">
+              e.g ACES 179, Calculus, Weather
+             </div> 
+             <div> 
+              <div class="filters ui-helper-clearfix"> 
+               <div style="width:26px;float:left;">
+                <input id="ctl00_cphPageContent__simpleCourseSearch1_cbOpenSectionsOnly" type="checkbox" name="ctl00$cphPageContent$_simpleCourseSearch1$cbOpenSectionsOnly">
+               </div> 
+               <div style="margin-left:26px;">
+                <label for="ctl00_cphPageContent__simpleCourseSearch1_cbOpenSectionsOnly">show only sections open for registration</label>
+               </div> 
+              </div> 
+              <div class="simpleSearchForm-buttonRow"> 
+               <button onclick="__doPostBack('ctl00$cphPageContent$_simpleCourseSearch1$cmdSimpleSearchStyled','')" id="ctl00_cphPageContent__simpleCourseSearch1_cmdSimpleSearchStyled" class="shadowed"><span>SEARCH</span></button> 
+              </div> 
+             </div> 
+             <div class="instructions"> 
+              <!--<p>What courses are available now? Use the search above to quickly find courses.</p>--> 
+              <p>You can also find courses using our advanced <a href="/Catalog">course search</a>, or by browsing <a href="/Catalog">offerings by semester</a>.</p>
+             </div> 
+            </div> 
+           </div> 
+          </div> 
+         </div> 
+         <div class="subjectList panel-subjectList" style="width:70%;float:left;padding-left:5%;"> 
+          <h2>Browse by Subject Area</h2> 
+          <div style="margin:0;font-size:11px;font-family:Tahoma, Verdana, Segoe, sans-serif;"> 
+           <div class="subjectListing" style="float:left;width:100%;"> 
+            <div class="subjectColumn" style="width:33%;float:left;"> 
+             <div class="subjectEntry">
+              <a href="/Catalog/Subjects/AE">Aerospace Engineering</a>
+             </div>
+             <div class="subjectEntry">
+              <a href="/Catalog/Subjects/AFRO">African American Studies</a>
+             </div>
+             <div class="subjectEntry">
+              <a href="/Catalog/Subjects/AGED">Agricultural Education</a>
+             </div>
+             <div class="subjectEntry">
+              <a href="/Catalog/Subjects/ANSC">Animal Sciences</a>
+             </div>
+             <div class="subjectEntry">
+              <a href="/Catalog/Subjects/CHEM">Chemistry</a>
+             </div>
+             <div class="subjectEntry">
+              <a href="/Catalog/Subjects/CEE">Civil and Environ Engineering</a>
+             </div>
+             <div class="subjectEntry">
+              <a href="/Catalog/Subjects/CLCV">Classical Civilization</a>
+             </div>
+             <div class="subjectEntry">
+              <a href="/Catalog/Subjects/CMN">Communication</a>
+             </div>
+             <div class="subjectEntry">
+              <a href="/Catalog/Subjects/CS">Computer Science</a>
+             </div>
+             <div class="subjectEntry">
+              <a href="/Catalog/Subjects/CPSC">Crop Sciences</a>
+             </div>
+             <div class="subjectEntry">
+              <a href="/Catalog/Subjects/CI">Curriculum and Instruction</a>
+             </div>
+             <div class="subjectEntry">
+              <a href="/Catalog/Subjects/ESE">Earth, Society, &amp; Environment</a>
+             </div>
+             <div class="subjectEntry">
+              <a href="/Catalog/Subjects/EOL">Educ Organization &amp; Leadership</a>
+             </div> 
+            </div> 
+            <div class="subjectColumn" style="width:33%;float:left;"> 
+             <div class="subjectEntry">
+              <a href="/Catalog/Subjects/EPS">Educational Policy Studies</a>
+             </div>
+             <div class="subjectEntry">
+              <a href="/Catalog/Subjects/EPSY">Educational Psychology</a>
+             </div>
+             <div class="subjectEntry">
+              <a href="/Catalog/Subjects/ENG">Engineering</a>
+             </div>
+             <div class="subjectEntry">
+              <a href="/Catalog/Subjects/EIL">English as an Intl Language</a>
+             </div>
+             <div class="subjectEntry">
+              <a href="/Catalog/Subjects/GEOG">Geography &amp; Geographic Information Science</a>
+             </div>
+             <div class="subjectEntry">
+              <a href="/Catalog/Subjects/HNDI">Hindi</a>
+             </div>
+             <div class="subjectEntry">
+              <a href="/Catalog/Subjects/HIST">History</a>
+             </div>
+             <div class="subjectEntry">
+              <a href="/Catalog/Subjects/HORT">Horticulture</a>
+             </div>
+             <div class="subjectEntry">
+              <a href="/Catalog/Subjects/HRD">Human Resource Development</a>
+             </div>
+             <div class="subjectEntry">
+              <a href="/Catalog/Subjects/IE">Industrial Engineering</a>
+             </div>
+             <div class="subjectEntry">
+              <a href="/Catalog/Subjects/IB">Integrative Biology</a>
+             </div>
+             <div class="subjectEntry">
+              <a href="/Catalog/Subjects/ITAL">Italian</a>
+             </div>
+             <div class="subjectEntry">
+              <a href="/Catalog/Subjects/LER">Labor and Employment Relations</a>
+             </div> 
+            </div> 
+            <div class="subjectColumn" style="width:33%;float:left;"> 
+             <div class="subjectEntry">
+              <a href="/Catalog/Subjects/LAST">Latin American &amp; Caribbean St</a>
+             </div>
+             <div class="subjectEntry">
+              <a href="/Catalog/Subjects/LIS">Library &amp; Information Science</a>
+             </div>
+             <div class="subjectEntry">
+              <a href="/Catalog/Subjects/MSE">Materials Science &amp; Engr</a>
+             </div>
+             <div class="subjectEntry">
+              <a href="/Catalog/Subjects/MATH">Mathematics</a>
+             </div>
+             <div class="subjectEntry">
+              <a href="/Catalog/Subjects/ME">Mechanical Engineering</a>
+             </div>
+             <div class="subjectEntry">
+              <a href="/Catalog/Subjects/NRES">Natural Resources &amp; Environ Sc</a>
+             </div>
+             <div class="subjectEntry">
+              <a href="/Catalog/Subjects/RST">Recreation, Sport, and Tourism</a>
+             </div>
+             <div class="subjectEntry">
+              <a href="/Catalog/Subjects/RUSS">Russian</a>
+             </div>
+             <div class="subjectEntry">
+              <a href="/Catalog/Subjects/SOCW">Social Work</a>
+             </div>
+             <div class="subjectEntry">
+              <a href="/Catalog/Subjects/SPED">Special Education</a>
+             </div>
+             <div class="subjectEntry">
+              <a href="/Catalog/Subjects/STAT">Statistics</a>
+             </div>
+             <div class="subjectEntry">
+              <a href="/Catalog/Subjects/TRST">Translation Studies</a>
+             </div> 
+            </div> 
+           </div> 
+           <div style="display:none;text-align:right;padding-right:2em;color:#aaa;font-size:0.8em;">
+            10:32:45
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+        <!-- TITLE BLOCK --> 
+        <div class="titleblock" style="display:none;">
+         <h1>Online and Continuing Education Homepage</h1>
+        </div> 
+        <h2 style="display:none;">About Our Programs</h2> 
+        <div class="newsInfo-row"> 
+         <!-- CONTACT COLUMN --> 
+         <div class="columnOf3"> 
+          <div class="content requestInfo"> 
+           <h3 class="title">Request <strong>Information</strong></h3> 
+           <div class="ui-helper-clearfix fieldName"> 
+            <label for="Name">Your Name:</label> 
+            <input class="txtName oce-requestInfo-name oce-requestInfo-validateOnBlur" name="Name" id="Name"> 
+           </div> 
+           <div class="ui-helper-clearfix fieldEmail"> 
+            <label for="EmailAddress">Your E-mail:</label> 
+            <input class="txtEmail oce-requestInfo-email oce-requestInfo-validateOnBlur" name="EmailAddress" id="EmailAddress"> 
+           </div> 
+           <div class="ui-helper-clearfix fieldSubject"> 
+            <label for="rbSubject">Subject:</label> 
+            <ul> 
+             <li><input type="radio" name="rbSubject" value="degree programs">Degree Programs</li> 
+             <li><input type="radio" name="rbSubject" value="services">Services</li> 
+             <li><input type="radio" name="rbSubject" value="courses">Courses</li> 
+             <li><input type="radio" name="rbSubject" value="conference planning">Conference Planning</li> 
+             <li><input type="radio" name="rbSubject" value="course registration">Course Registration</li> 
+             <li><input type="radio" name="rbSubject" value="other">Other</li> 
+            </ul> 
+           </div> 
+           <div class="ui-helper-clearfix fieldComment"> 
+            <label for="Comment">Your question or comment (the more specific you are, the better we can serve you):</label> 
+            <textarea class="textComment oce-requestInfo-message  oce-requestInfo-validateOnBlur" name="Comment" id="Comment" cols="24" rows="6"></textarea> 
+           </div> 
+           <div class="ui-helper-clearfix fieldSubmit"> 
+            <button type="button" id="cmdRequestInfo" class="shadowed"><span>SUBMIT</span></button> 
+            <!-- this next line is a botcheck: if the element has data, the form was not submitted by a human and should be rejected --> 
+            <input type="text" class="oce-requestInfo-recipient" data-purpose="botcheck" name="txtTo" id="txtTo" value="" style="display: none;" width="1"> 
+            <!-- end bot check --> 
+            <div id="frmContactUs-status" class="oce-requestInfo-status"></div> 
+            <div style="font-size: 0.85em; margin-top: 1em;">
+             If you prefer to call, our number is 
+             <a href="tel:+12173331462">217-333-1462</a>.
+            </div> 
+           </div> 
+          </div> 
+         </div> 
+         <!-- EVENTS COLUMN --> 
+         <div class="columnOf3"> 
+          <div class="content"> 
+           <div class="content events"> 
+            <h3 class="title">Calendar of <strong>Events</strong></h3> 
+            <div id="calendarItems"></div> 
+            <script type="text/javascript">
+            $(document).ready(function () {
+                // delayed to after page load
+                $.getJSON("/Calendar/Events/5?output=text", function (data) { $('#calendarItems').html(data); });
+            });
+        </script> 
+            <div style="text-align: center; border-top: 0px dotted #999999; padding-top: 13px;"> 
+             <a href="http://illinois.edu/calendar/month/3552" style="color: #666666; font-size: 10px;">view all</a> 
+            </div> 
+           </div> 
+          </div> 
+         </div> 
+         <!-- DESTINATIONS COLUMN --> 
+         <div class="columnOf3"> 
+          <div class="content"> 
+           <div class="quicklinks"> 
+            <h3 class="title">Quick <strong>Links</strong></h3> 
+            <h4>What do we offer?</h4> 
+            <ul> 
+             <!--<li><a href="/Catalog/Sections/2013/Fall">Fall 2013 Online Courses</a></li>--> 
+             <li><a href="/Programs/GraduateDegrees">Graduate Degrees</a></li> 
+             <li><a href="/Programs/GraduateCertificates">Graduate Certificates</a></li> 
+             <li><a href="/Programs/UndergraduateDegrees">Undergraduate Degrees</a></li> 
+             <li><a href="/Programs/UndergraduateCertificates">Undergraduate Certificates</a></li> 
+            </ul> 
+            <h4>How much does it cost?</h4> 
+            <ul> 
+             <li><a href="/Registration/SemesterBasedCourses/TuitionAndFinancialAid">Semester-based Course</a></li> 
+             <li><a href="/Registration/SelfPacedCourses/TuitionAndFinancialAid">Self-paced Course</a></li> 
+             <li><a href="/Registration/NonCreditCourses/TuitionAndFinancialAid">Noncredit Course</a></li> 
+            </ul> 
+            <h4>Register now</h4> 
+            <ul> 
+             <li><a href="https://apps.uillinois.edu/selfservice/">Degree Student (Semester-based courses)</a></li> 
+             <li><a href="https://www-s.continuinged.uiuc.edu/ServiceCenter/NonDegreeRegistration/Login/Login.cfm">Nondegree Student (Semester-based courses)</a></li> 
+             <li><a href="https://www-s.continuinged.uiuc.edu/ServiceCenter/NonDegreeRegistration/Login/Login.cfm">Self-paced Courses</a></li> 
+             <li><a href="https://www-s.continuinged.uiuc.edu/ao/ncregistration/student/index.cfm">Noncredit Courses</a></li> 
+            </ul> 
+           </div> 
+          </div> 
+         </div> 
+         <br clear="all"> 
+        </div> 
+        <!-- END PAGE CONTENT --> 
+        <div class="narrow-fix"></div> 
+       </div> 
+      </div> 
+     </div> 
+     <!-- //stickyFooterMain --> 
+    </div> 
+    <!-- //stickyFooterWrap --> 
+    <div id="footer"> 
+     <!-- //stickyFooterFooter --> 
+     <div class="layoutBand layoutFooter"> 
+      <!-- sticky footer --> 
+      <div class="container"> 
+       <div class="footerMenu" style="display:none;"> 
+        <ul class="horizontalMenu"> 
+         <li><a href="/AboutUs">About Us</a></li> 
+         <li><a href="/Programs">Programs &amp; Courses</a></li> 
+         <li><a href="/Registration">Registration</a></li> 
+         <li><a href="/Services">Services</a></li> 
+         <li><a href="/Resources">Resources</a></li> 
+        </ul> 
+       </div> 
+       <div class="footerMenu" style="display:none;">
+        <h2 style="display:none;">Useful Links</h2> 
+        <div class="column1"> 
+         <h3>Quick Links</h3> 
+         <ul> 
+          <li><a href="/Catalog">Course Search</a></li> 
+          <li><a href="https://apps.uillinois.edu/selfservice/">Degree Student Registration</a></li> 
+          <li><a href="https://www-s.continuinged.uiuc.edu/ServiceCenter/NonDegreeRegistration/Login/Login.cfm">Nondegree Student Registration</a></li> 
+          <li><a href="https://www-s.continuinged.uiuc.edu/ao/ncregistration/student/index.cfm">Noncredit Student Registration</a></li> 
+          <li><a href="/Registration/SemesterBasedCourses/TuitionAndFinancialAid">Tuition and Financial Aid</a></li> 
+          <li><a href="/Resources/Forms">Forms for Students</a></li> 
+          <li><a href="/Resources/NetIdAndEnterpriseId">Net ID/Enterprise ID</a></li> 
+         </ul> 
+        </div> 
+        <div class="column2"> 
+         <h3 class="invisible">Quick Links</h3> 
+         <ul> 
+          <li><a href="/Resources/LoginAndPasswordInformation">Login/Password</a></li> 
+          <li><a href="/Services/Facilities">Off-Campus Teaching Facilities</a></li> 
+          <li><a href="http://www.grad.uiuc.edu/">Graduate College</a></li> 
+          <li><a href="http://www.osfa.uiuc.edu/">Office of Financial Aid</a></li> 
+          <li><a href="http://www.usfsco.uillinois.edu/">Student Accounts</a></li> 
+          <li><a href="http://www.registrar.illinois.edu/">Office of the Registrar</a></li> 
+         </ul> 
+        </div> 
+        <div class="column3"> 
+         <h3 class="invisible">Quick Links</h3> 
+         <ul> 
+          <li><a href="http://brilliantfutures.illinois.edu/" class="cmdBrilliantFutures"><span class="linkText">Brilliant Futures</span></a></li> 
+          <li><a href="https://www-s.continuinged.uiuc.edu/ao/ServiceCenter/Login" class="cmdServiceCenterLogin" target="_blank"><span class="linkText">Service Center Login</span></a></li> 
+         </ul> 
+        </div> 
+        <div class="column4"> 
+         <h3>Contact Us</h3> 
+         <ul> 
+          <li> 
+           <!--Online and Continuing Education<br />
+University of Illinois at Urbana-Champaign<br />--> 901 West University Avenue<br> Urbana, IL 61801<br> </li> 
+          <li><a href="mailto:citl-info@illinois.edu">citl-info@illinois.edu</a></li> 
+          <li>217-333-1462 | 800-252-1360</li> 
+          <li> <h4 class="hidden">Social Media</h4> 
+           <ul class="list-socialmedia ui-helper-clearfix"> 
+            <li><a href="http://www.facebook.com/CITLatIllinois" class="cmdFacebook" title="Visit CITL on Facebook"><span class="linkText">Facebook</span></a></li> 
+            <li><a href="http://twitter.com/CITLIllinois" class="cmdTwitter" title="Follow CITL on Twitter"><span class="linkText">Twitter</span></a></li> 
+           </ul> </li> 
+         </ul> 
+         <!--
+<h3>EMAIL FORM:</h3>
+<div></div>
+--> 
+        </div> 
+       </div> 
+       <div class="narrow-fix"></div> 
+      </div> 
+     </div> 
+     <div class="layoutBand layoutSubFooter"> 
+      <!-- sticky footer --> 
+      <div class="container"> 
+       <div class="footerBar"> 
+        <div style="width:100px;float:right;"> 
+         <h4 class="hidden">Social Media</h4> 
+         <ul class="list-socialmedia ui-helper-clearfix"> 
+          <li><a href="http://www.facebook.com/CITLAtIllinois" class="cmdFacebook" title="Visit CITL on Facebook"><span class="linkText">Facebook</span></a></li> 
+          <li><a href="http://twitter.com/CITLIllinois" class="cmdTwitter" title="Follow CITL on Twitter"><span class="linkText">Twitter</span></a></li> 
+         </ul> 
+        </div> 
+        <div style="text-align:left;font-size:12px; font-family:tahoma;margin:1em 1em 3em 1em; line-height:140%;"> 
+         <!--<div><strong>Center for Innovation in Teaching and Learning</strong></div>---> 
+         <div style="margin-top:0.25em;">
+          <a href="http://maps.google.com/maps?q=901+West+University+Avenue,+Urbana,+IL+61801&amp;hl=en&amp;sll=40.120353,-88.221803&amp;sspn=0.025039,0.051627&amp;vpsrc=0&amp;hnear=901+W+University+Ave,+Urbana,+Illinois+61801&amp;t=m&amp;z=16">901 West University Avenue, Urbana, IL 61801</a>
+         </div> 
+         <div style="">
+          <a href="tel:+12173331462">217-333-1462</a> | 
+          <a href="tel:+18002521360 ">1-800-252-1360</a> | 
+          <a href="mailto:citl-info@illinois.edu">citl-info@illinois.edu</a>
+         </div> 
+         <div style="font-size:0.9em;margin-top:0.5em;">
+          © Copyright 2013 University of Illinois Board of Trustees | 
+          <a href="/Policy/PrivacyAndCopyright">Web Privacy Statement</a>
+         </div> 
+        </div> 
+        <!--
+
+
+    <ul class="horizontalMenu">
+    <li><a href="/AboutUs">About Us</a></li>
+    <li><a href="/Programs">Programs &amp; Courses</a></li>
+    <li><a href="/Registration">Registration</a></li>
+    <li><a href="/Services">Services</a></li>
+    <li><a href="/Resources">Resources</a></li>
+    </ul>
+
+    --> 
+        <!--
+<div class="smallText">
+&copy; Copyright 2011 University of Illinois Board of Trustees | <a href="/Policy/PrivacyAndCopyright">Web Privacy Statement</a>
+</div>
+--> 
+       </div> 
+       <div class="narrow-fix"></div> 
+      </div> 
+     </div> 
+     <div class="layoutBand layoutFixedFooter hide-from-phone"> 
+      <div class="container"> 
+       <div class="narrow-fix"></div> 
+      </div> 
+     </div> 
+    </div>
+    <!-- //stickyFooterFooter --> 
+    <!-- jumbotron menu start ---> 
+    <div class="popupMenu tabCloser"> 
+     <div class="popupMenuContainer"> 
+      <div> 
+       <!-- ABOUT US MENU --> 
+       <div class="cat_AboutUs category"> 
+        <div class="pointer"></div> 
+        <div class="leader"></div> 
+        <div class="column column1"> 
+         <h3><a href="/AboutUs">About Us</a></h3> 
+         <ul class="dataList"> 
+          <li><a href="/AboutUs/OurMission">Our Mission</a><span class="detail">To work with faculty and units to extend the reach of the University of Illinois.</span></li> 
+          <li><a href="/AboutUs/Experiences">Experiences</a><span class="detail">Testimonials from students who’ve taken our courses and faculty who’ve worked with us. </span></li> 
+         </ul> 
+        </div> 
+        <div class="column column2"> 
+         <h3 class="invisible">About Us</h3> 
+         <ul class="dataList"> 
+          <li><a href="/AboutUs/StaffDirectory">Staff Directory</a><span class="detail">Contact information for OCE employees.</span></li> 
+         </ul> 
+        </div> 
+        <div class="column column3"> 
+         <h3 class="invisible">About Us</h3> 
+         <ul class="dataList"> 
+          <li><a href="http://illinois.edu/lb/iList/3888">News</a><span class="detail">Announcements and press releases .</span></li> 
+         </ul> 
+        </div> 
+        <div class="column column3"> 
+         <h3 class="invisible">About Us</h3> 
+         <ul class="dataList"> 
+          <li><a href="/AboutUs/Employment">Employment</a><span class="detail">Become a part of the OCE team.</span></li> 
+         </ul> 
+        </div> 
+       </div>
+       <!-- end cat_AboutUs --> 
+       <!-- PROGRAMS MENU --> 
+       <div class="cat_Programs category"> 
+        <div class="pointer"></div> 
+        <div class="leader"></div> 
+        <div class="column column1"> 
+         <h3><a href="/Programs/DegreePrograms">Degrees</a></h3> 
+         <ul class="linkList"> 
+          <li><a href="/Programs/GraduateDegrees">Graduate Degrees</a></li> 
+          <li><a href="/Programs/UndergraduateDegrees">Undergraduate Degrees</a></li> 
+         </ul> 
+        </div> 
+        <div class="column column2"> 
+         <h3><a href="/Programs/CertificatePrograms">Certificates</a></h3> 
+         <ul class="linkList"> 
+          <li><a href="/Programs/GraduateCertificates">Graduate Certificates</a></li> 
+          <li><a href="/Programs/UndergraduateCertificates">Undergraduate Certificates</a></li> 
+          <li><a href="/Programs/CertificatesOfAdvancedStudy">Certificates of Advanced Study</a></li> 
+         </ul> 
+        </div> 
+        <div class="column column3"> 
+         <h3><a href="/Programs/Courses">Courses</a></h3> 
+         <ul class="linkList"> 
+          <li><a href="/Programs/SemesterBasedCourses">Semester-based</a></li> 
+          <li><a href="/Programs/SelfPacedCourses">Self-paced</a></li> 
+          <li><a href="/Programs/NonCreditCourses">Noncredit</a></li> 
+          <li><a href="/Programs/Courses/CurrentOfferings">Current Offerings</a></li> 
+          <li><a href="/Catalog">Course Search</a></li> 
+         </ul> 
+        </div> 
+        <div class="column column4"> 
+         <h3><a href="/Programs/ConferencesAndEvents">Conferences &amp; Events</a></h3> 
+         <ul class="dataList"> 
+          <li> <span class="detail">Interact with your peers at one of our upcoming professional development events or participate in lifelong learning activities with Road Scholar.</span> </li> 
+         </ul> 
+        </div> 
+       </div>
+       <!-- end cat_progams --> 
+       <!-- REGISTRATION MENU --> 
+       <div class="cat_Registration category"> 
+        <div class="pointer"></div> 
+        <div class="leader"></div> 
+        <div class="column column1"> 
+         <h3><a href="/Registration/SemesterBasedCourses">Semester-based Courses</a></h3> 
+         <ul class="linkList"> 
+          <li>
+           <div class="sectionLabel">
+            Degree-Seeking Students
+           </div> 
+           <ul class="linkList"> 
+            <li><a href="/Registration/SemesterBasedCourses/RegistrationPolicies_Degree">Registration Policies</a></li> 
+            <li><a href="/Registration/SemesterBasedCourses/HowToRegister_Degree">How to Register</a></li> 
+           </ul> </li> 
+         </ul> 
+         <ul class="linkList"> 
+          <li>
+           <div class="sectionLabel">
+            Nondegree Seeking Students
+           </div> 
+           <ul class="linkList"> 
+            <li><a href="/Registration/SemesterBasedCourses/RegistrationPolicies_NonDegree">Registration Policies</a></li> 
+            <li><a href="/Registration/SemesterBasedCourses/HowToRegister_NonDegree">How to Register</a></li> 
+           </ul> </li> 
+         </ul> 
+         <ul class="linkList"> 
+          <li>
+           <div class="sectionLabel">
+            Costs &amp; Payments
+           </div> 
+           <ul class="linkList"> 
+            <li><a href="/Registration/SemesterBasedCourses/BillingAndAssessment">Billing &amp; Assessments</a></li> 
+            <li><a href="/Registration/SemesterBasedCourses/TuitionAndFinancialAid">Tuition &amp; Financial Aid</a></li> 
+           </ul> </li> 
+         </ul> 
+        </div> 
+        <div class="column column2"> 
+         <h3 class="invisible">Semester-based Courses</h3> 
+         <ul class="linkList"> 
+          <li>
+           <div class="sectionLabel">
+            Other Policies &amp; Procedures
+           </div> 
+           <ul class="linkList"> 
+            <li><a href="/Registration/SemesterBasedCourses/WithdrawalsAndRefunds">Cancellations &amp; Withdrawals</a></li> 
+            <li><a href="/Registration/SemesterBasedCourses/DroppingACourse">Dropping a Course</a></li> 
+            <li><a href="/Registration/SemesterBasedCourses/AddingACourse">Adding a Course</a></li> 
+            <li><a href="/Registration/SemesterBasedCourses/ExamsAndProctors">Exams &amp; Proctors</a></li> 
+            <li><a href="/Registration/SemesterBasedCourses/GradesAndTranscripts">Grades &amp; Transcripts</a></li> 
+            <li><a href="/Registration/SemesterBasedCourses/FAQs">FAQ's</a></li> 
+            <li><a href="/Registration/SemesterBasedCourses/ImportantInformation">Important Information</a></li> 
+           </ul> </li> 
+         </ul> 
+        </div> 
+        <div class="verticalDivider"></div> 
+        <div class="column column3"> 
+         <h3><a href="/Registration/SelfPacedCourses">Self-paced Courses</a></h3> 
+         <ul class="linkList"> 
+          <li><a href="/Registration/SelfPacedCourses/RegistrationPolicies">Registration Policies</a></li> 
+          <li><a href="/Registration/SelfPacedCourses/HowToRegister">How to Register</a></li> 
+          <li><a href="/Registration/SelfPacedCourses/TuitionAndFinancialAid">Tuition &amp; Financial Aid</a></li> 
+         </ul> 
+         <ul class="linkList"> 
+          <li>
+           <div class="sectionLabel">
+            Other Policies &amp; Procedures
+           </div> 
+           <ul class="linkList"> 
+            <li><a href="/Registration/SelfPacedCourses/Eligibility">Eligibility</a></li> 
+            <li><a href="/Registration/SelfPacedCourses/ExtensionsAndTransfers">Extensions &amp; Transfers</a></li> 
+            <li><a href="/Registration/SelfPacedCourses/WithdrawalsAndRefunds">Withdrawals &amp; Refunds</a></li> 
+            <li><a href="/Registration/SelfPacedCourses/SubmittingAssignments">Textbooks &amp; Assignments</a></li> 
+            <li><a href="/Registration/SelfPacedCourses/ExamsAndProctors">Exams &amp; Proctors</a></li> 
+            <li><a href="/Registration/SelfPacedCourses/GradesAndTranscripts">Grades &amp; Transcripts</a></li> 
+            <li><a href="/Registration/SelfPacedCourses/ImportantInformation">Important Information</a></li> 
+           </ul> </li> 
+         </ul> 
+        </div> 
+        <div class="verticalDivider"></div> 
+        <div class="column column4"> 
+         <h3><a href="/Registration/NonCreditCourses">Noncredit Courses</a></h3> 
+         <ul class="linkList"> 
+          <li><a href="/Registration/NonCreditCourses/RegistrationPolicies">Registration Policies</a></li> 
+          <li><a href="/Registration/NonCreditCourses/HowToRegister">How to Register</a></li> 
+          <li><a href="/Registration/NonCreditCourses/TuitionAndFinancialAid">Tuition &amp; Financial Aid</a></li> 
+          <li><a href="/Registration/NonCreditCourses/OtherPolicies">Other Policies</a></li> 
+         </ul> 
+         <h3 class="subtopic">Conferences</h3> 
+         <ul class="linkList">
+          <li><a href="http://illinois.edu/calendar/grid/3552?skinId=4833">Register for one of our upcoming conferences.</a></li>
+         </ul> 
+         <!--
+        <ul class="linkList">
+        <li><a href='/Registration/Conferences/Registration'>Registration</a></li>
+        <li><a href='/Registration/Conferences/Search'>Search Upcoming Events</a></li>
+        <li><a href='/Registration/Conferences/ViewCalendar'>View Calendar</a></li>
+        </ul> 
+        --> 
+        </div> 
+       </div> 
+       <!-- SERVICES MENU --> 
+       <div class="cat_Services category"> 
+        <div class="pointer"></div> 
+        <div class="leader"></div> 
+        <div class="column column1"> 
+         <h3><a href="/Services">Services</a></h3> 
+         <ul class="dataList"> 
+          <li><a href="/Services/Accessibility">Accessibility</a><span class="detail">Disability services in partnership with DRES.</span></li> 
+          <li><a href="/Services/BusinessServices">Business &amp;<br>Data Reporting</a><span class="detail">Reporting, tracking, fee assessments, and more.</span></li> 
+          <li><a href="/Services/ConferenceCoordination">Conference Coordination</a><span class="detail">Expert assistance with conference and event planning.</span></li> 
+         </ul> 
+        </div> 
+        <div class="verticalDivider"></div> 
+        <div class="column column2"> 
+         <h3 class="invisible">Services</h3> 
+         <ul class="dataList"> 
+          <li><a href="/Services/DigitalMedia">Digital Media</a><span class="detail">Video and audio production in partnership with ATLAS.</span></li> 
+          <li><a href="/Services/Facilities">Facilities</a><span class="detail">Access to off-campus teaching facilities and conference facilities.</span></li> 
+          <li><a href="/Services/InstructionalDesign">Instructional Design</a><span class="detail">Design and creation of effective online courses.</span></li> 
+         </ul> 
+        </div> 
+        <div class="verticalDivider"></div> 
+        <div class="column column3"> 
+         <h3 class="invisible">Services</h3> 
+         <ul class="dataList"> 
+          <li><a href="/Services/CopyrightAndLibrary">Library &amp; Copyright</a><span class="detail">Distance library services and copyright assistance.</span></li> 
+          <li><a href="/Services/Marketing">Marketing &amp; Research</a><span class="detail">Research, strategy, and production of marketing materials.</span></li> 
+          <li><a href="/Services/Noncredit">Noncredit Program Support</a><span class="detail">Support for noncredit courses and programs.</span></li> 
+         </ul> 
+        </div> 
+        <div class="verticalDivider"></div> 
+        <div class="column column4"> 
+         <h3 class="invisible">Services</h3> 
+         <ul class="dataList"> 
+          <li><a href="/Services/ProgramCoordination">Program Coordination<br>&amp; Development</a><span class="detail">Program management and liaison between your unit and our office.</span></li> 
+          <li><a href="/Services/Technology">Technology</a><span class="detail">Access to and training on the best learning technologies.</span></li> 
+          <li><a href="/Services/TestingAndProctoring">Testing/Proctoring</a><span class="detail">In-house testing facility; scheduling and proctoring of exams for students.</span></li> 
+         </ul> 
+        </div> 
+       </div> 
+       <!-- RESOURCES MENU --> 
+       <div class="cat_Resources category"> 
+        <div class="pointer"></div> 
+        <div class="leader"></div> 
+        <div class="column column1"> 
+         <div class="sectionLabel">
+          <h3>Students</h3>
+         </div> 
+         <ul class="linkList"> 
+          <li><a href="http://www.ao.uiuc.edu/support/source/" target="_blank">Student Resource Center</a></li> 
+          <li><a href="/Resources/Forms">Forms</a></li> 
+         </ul> 
+        </div> 
+        <div class="column column2"> 
+         <h3 class="invisible">Students</h3> 
+         <ul class="linkList"> 
+          <li> 
+           <div class="sectionLabel">
+            Useful Links
+           </div> 
+           <ul class="linkList"> 
+            <li><a href="http://admin.illinois.edu/policy/code/">Student Code</a></li> 
+            <li><a href="http://www.grad.illinois.edu/gradhandbook/">Graduate Student Handbook </a></li> 
+            <li><a href="https://www-s.continuinged.uiuc.edu/ao/library/iCard.cfm">Photoless I-cards</a></li> 
+            <li><a href="mailto:selfpaced@illinois.edu">E-mail help for self-paced courses</a></li> 
+            <li><a href="mailto:citl-info@illinois.edu">E-mail help for other courses</a></li> 
+            <li><a href="/Resources/StudentLinks">» more useful links</a></li> 
+           </ul> </li> 
+         </ul> 
+        </div> 
+        <div class="verticalDivider"></div> 
+        <div class="column column3"> 
+         <div class="sectionLabel">
+          <h3>Faculty &amp; Staff</h3>
+         </div> 
+         <ul class="linkList"> 
+          <li><a href="/Resources/ServiceCenter">Service Center</a></li> 
+          <li><a href="/Resources/TeachingOffCampus">Teaching at an off-campus site</a></li> 
+         </ul> 
+        </div> 
+        <div class="column column4"> 
+         <h3 class="invisible">Faculty &amp; Staff</h3> 
+         <ul class="linkList"> 
+          <li> 
+           <div class="sectionLabel">
+            Travel Resources
+           </div> 
+           <ul class="linkList"> 
+            <li><a href="/Forms/PDF/TravelExpenseForm_2012.pdf">Travel Expense Form</a></li> 
+            <li><a href="/Forms/PDF/TravelExpenseInstructions_2012.pdf">Travel Expense Instructions</a></li> 
+           </ul> </li> 
+          <li> 
+           <div class="sectionLabel">
+            ICES Online Tutorials
+           </div> 
+           <ul class="linkList"> 
+            <li><a href="http://cte.illinois.edu/teacheval/ices_on/tutorial/instructor/instructor-create1.html">Creating an Evaluation Form</a></li> 
+            <li><a href="http://cte.illinois.edu/teacheval/ices_on/tutorial/instructor-results/instructor-results.html">How to view Results</a></li> 
+           </ul> </li> 
+         </ul> 
+        </div> 
+       </div> 
+       <!-- ADMIN MENU --> 
+       <div class="cat_ResAdmin category ui-helper-clearfix"> 
+        <div class="pointer"></div> 
+        <div class="leader"></div> 
+        <div class="column column1"> 
+         <div class="sectionLabel">
+          <h3>Students</h3>
+         </div> 
+         <ul class="linkList"> 
+          <li><a href="/Resources/Forms">Forms</a></li> 
+          <li><a href="/Resources/NetIdAndEnterpriseId">NetID/Enterprise ID Information</a></li> 
+          <li><a href="/Resources/LoginAndPasswordInformation">Login/Password Information</a></li> 
+         </ul> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <!-- jumbotron menu end ---> 
+    <script type="text/javascript">
+//<![CDATA[
+
+
+var menuCloseTimer; //tabCloser countdown
+var menuOpenerTimer; //tabCloser countdown
+
+( function($) {
+$(document).ready(function() {
+
+    $.easing.PopupMenuEasing = function(x, t, b, c, d) {
+        return c * ((t = t / d - 1) * t * t + 1) + b;
+    }
+    
+
+    var menuCloseTimeout = 400; // time in ms before menu disappears on mouseout
+    var menuOpenTimeout = 100; // time in ms before menu appears on mouseenter
+
+    //move popup menu html into position
+    var popupMenu = $(".popupMenu").detach();
+    popupMenu.appendTo("#dropDownMenu");
+							   
+	// on entering a tabOpener stop the countdown to close the menu and show the selected tab
+	$(".tabOpener").mouseenter(function(event) {
+        var selectedTab = $(this); 
+		event.preventDefault();
+        cancelCloseTab();
+
+        cancelOpenTab();
+        initOpenTab(menuOpenTimeout, selectedTab);
+
+        logPopupMenuEvent("MOUSEENTER OPENER;");
+		//showTab(selectedTab);
+	});
+
+	$(".tabOpener").mouseleave(function(event) {
+        cancelOpenTab();
+	});
+	
+	
+    // on leaving a tabCloser restart the countdown to close the menu
+	$(".tabCloser").mouseleave(function(event) {
+		event.preventDefault();
+        cancelCloseTab();
+        initCloseTab(menuCloseTimeout);
+        logPopupMenuEvent("MOUSELEAVE CLOSER;");
+	});
+
+    // on entering a tabCloser stop the countdown to close the menu
+	$(".tabCloser").mouseenter(function(event) {
+        //stop the countdown to close the menu
+        event.preventDefault();
+		cancelCloseTab();
+        logPopupMenuEvent("MOUSEENTER CLOSER;");
+	});
+						   
+	//alert("hooked-up");					   
+						   
+});
+} ) ( jQuery );
+
+
+
+
+	
+showTab = function (el) {
+( function($) {
+
+	// read desired tab from elements 'tab' attribute
+    var tabTitle = el.attr("data-tab");
+    var objPopupMenu = $(".popupMenu");
+
+    logPopupMenuEvent("SHOWTAB '" + tabTitle + "';");
+    
+    // find previously selected tab opener and deselect
+    var previousTab = $(".tabOpener", ".selected");
+	$(".tabOpener").removeClass("selected");
+	
+    // set selected tab opener as selected
+	el.addClass("selected");
+
+    //find desired popup menu panel
+    selectedTabPanel = objPopupMenu.find("." + tabTitle);    
+
+    // hide all popup menu panels
+    objPopupMenu.find(".category").hide();
+    
+	
+	if (selectedTabPanel.length) {
+		//popup panel exists
+        selectedTabPanel.hide();
+
+        if (previousTab.length) {
+            // a tab was previously selected
+            selectedTabPanel.show();
+            objPopupMenu.slideDown(500,'PopupMenuEasing');
+            } else {
+            // no tab was previously selected
+            selectedTabPanel.show();
+            objPopupMenu.slideDown(500,'PopupMenuEasing');    
+            }
+    
+
+		} else {
+            // no selected menu
+		    objPopupMenu.slideUp(500,'PopupMenuEasing');
+		}
+		} ) ( jQuery );
+	};	
+
+
+initCloseTab = function (delay) {
+    logPopupMenuEvent("InitCloseTab;");
+    menuCloseTimer = setTimeout(closeTab, delay);
+    ;}
+
+closeTab = function () {
+( function($) {
+    logPopupMenuEvent("CloseTab;");
+    $(".tabOpener").removeClass("selected");
+    $(".popupMenu").slideUp(500,'PopupMenuEasing');
+			} ) ( jQuery );
+    ;}
+
+cancelCloseTab = function () {
+    logPopupMenuEvent("CancelCloseTab;");
+    clearTimeout(menuCloseTimer);
+    ;}
+
+
+
+initOpenTab = function (delay, selectedTab) {
+    logPopupMenuEvent("InitCloseTab;");
+    menuOpenerTimer = setTimeout(function() {openTab(selectedTab);}, delay);
+    //document.title =  ("initOpenTab");
+    ;}
+
+openTab = function (selectedTab) {
+    logPopupMenuEvent("OpenTab;");
+    showTab(selectedTab);
+    //document.title = ("OpenTab");
+    ;}
+
+cancelOpenTab = function () {
+    logPopupMenuEvent("cancelOpenTab;");
+    clearTimeout(menuOpenerTimer);
+    //document.title =  ("cancelOpenTab");
+    ;}
+
+
+logPopupMenuEvent = function(msg) {
+    //$("#lblDebug").append(msg + '<br/>');
+}
+
+
+//]]>
+</script>  
+    <script type="text/javascript" id="ewasScriptPlaceHolder">
+      (function () {
+          var ewas = document.createElement('script');
+          ewas.type = 'text/javascript';
+          ewas.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'emergency.webservices.illinois.edu/illinois.js';
+          ewas.async = true;
+          var target = document.getElementById('ewasScriptPlaceHolder');
+          target.parentNode.insertBefore(ewas, target);
+      })();
+</script> 
+    <script type="text/javascript">
+     var _gaq = _gaq || [];
+     _gaq.push(['_setAccount', 'UA-21812836-1']);
+     _gaq.push(['_setDomainName', 'oce.illinois.edu']);
+     _gaq.push(['_setAllowLinker', true]);
+     _gaq.push(['_setAllowHash', false]);
+     _gaq.push(['_setSiteSpeedSampleRate', 100]);
+     _gaq.push(['_trackPageview']);
+
+     (function () {
+         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+     })();
+</script>   
+   </div>
+  </form>
+ </body>
+</html>

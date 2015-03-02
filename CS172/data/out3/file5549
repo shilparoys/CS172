@@ -1,0 +1,190 @@
+<html>
+ <head>
+  <script language="JavaScript">
+function fucValidate(){
+  //case 00045103
+  var invalidname=false;
+  var filteredValues = "}{|^%#&";
+    //var filteredValues = "}{|+^%#";	
+  if(document.frmEmail.EmailAdd.value==""){
+    alert("Please enter email address!");
+    document.frmEmail.EmailAdd.focus();
+    return false;
+  }
+    else    
+    {
+        var strEmail = document.frmEmail.EmailAdd.value;
+        if (strEmail.indexOf("\"") > -1)
+        {
+          alert('Email cannot contains double quote (\").\n');
+          document.frmEmail.EmailAdd.focus();
+        return false;
+        }
+        
+        //case 00045103
+        if (document.frmEmail.EmailAdd.value.length!=0){
+      for (i = 0; i < document.frmEmail.EmailAdd.value.length; i++) {  // Search through string and append to unfiltered values to returnString.
+        var c = document.frmEmail.EmailAdd.value.charAt(i);
+        if (filteredValues.indexOf(c) != -1) invalidname=true;
+      }
+      
+      if (invalidname==true){
+        alert('Email is invalid (no special character is allowed).\n');
+        document.frmEmail.EmailAdd.focus();
+        return false;
+      }
+    }
+        
+    }       
+  
+  return true;
+}
+    </script> 
+  <script language="javascript">
+function tutorial(){ 
+	window.open("/toolbox/mydtWO/mdtutorial/Tutorial_Requester_Home_1.asp","tutorial","width=660,height=480,left=0,right=0,toolbar=no,directories=no,menubar=no,status=no,location=no,scrollbars=yes,resizable=no")
+	}
+function emailafriend(){ 
+	window.open("/includes/emailafriend.asp?page=/myschoolbuilding/msbdefault_email.asp&default=md&title='Welcome to MaintenanceDirect'","emailafriend","width=500,height=340,left=100,right=100")
+	}	
+function help(){ 
+	window.open("/myschoolbuilding/MyHelp.asp","helppage","width=750,height=500,left=0,right=0,toolbar=no,directories=no,menubar=no,status=no,location=no,scrollbars=yes,resizable=no")
+	}
+
+function MM_jumpMenu(targ,selObj,restore){ //v3.0
+  //eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
+  eval("location='"+selObj.options[selObj.selectedIndex].value+"'");
+  if (restore) selObj.selectedIndex=0;
+}	
+</script>   
+  <meta http-equiv="Cache-Control" content="must-revalidate"> 
+  <meta http-equiv="Pragma" content="no-cache"> 
+  <meta http-equiv="Expires" content="0"> 
+  <meta name="ROBOTS" content="NOINDEX, NOFOLLOW, NOARCHIVE"> 
+  <meta name="GOOGLEBOT" content="NOSNIPPET, NOARCHIVE"> 
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+  <link href="portal.css" type="text/css" rel="stylesheet"> 
+  <!--20467, RR, 1/25/08, Added favorite icon meta tags --> 
+  <link rel="icon" href="favicon.ico" type="image/x-icon"> 
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> 
+  <!-- end of 20467 --> 
+  <script type="text/javascript">
+// Incident 19601 
+function toggleBox(szDivID, iState) // 1 visible, 0 hidden
+{
+    if(document.layers)	   //NN4+
+    {
+       document.layers[szDivID].visibility = iState ? "show" : "hide";
+    }
+    else if(document.getElementById(szDivID))	  //gecko(NN6) + IE 5+
+    {
+        var obj = document.getElementById(szDivID);
+        obj.style.visibility = iState ? "visible" : "hidden";
+    }
+}
+</script> 
+  <style type="text/css" media="screen">@import url(tabmenu.css);</style> 
+  <title>Welcome to MySchoolBuilding</title> 
+ </head>
+ <body leftmargin="0" bottommargin="0" rightmargin="0" topmargin="0" marginheight="0" marginwidth="0" onload=""> 
+  <style type="text/css" media="screen"></style> 
+  <div id="headNavcontainer"> 
+   <div id="headNavOrgName"> 
+    <span class="normal12"><b>University of Wyoming-Residence Life and Dining Services</b></span>
+    <br> 
+    <img src="/upload/1727114240/SchoolLogo/8-15-2013 9-42-51 PM.jpg" width="150" height="50"> 
+   </div>
+   <!-- headNavOrgName --> 
+   <div id="headNavOrgQLinks"> 
+    <a href="https://login.schooldude.com/?productid=md"><img src="/myschoolbuilding/graphics/btn_mdlogin.gif" width="76" height="20" border="0" align="absmiddle" alt="Login to MaintenanceDirect"></a> 
+   </div>
+   <!-- headNavOrgQLinks --> 
+   <div id="headNavClear">
+    <!-- -->
+   </div> 
+  </div>
+  <!-- headNavcontainer --> 
+  <!-- end msbheader --> 
+  <table width="760" border="0" cellspacing="0" cellpadding="0"> 
+   <tbody>
+    <tr align="left" valign="top"> 
+     <td> 
+      <form name="frmEmail" action="msbdefault_email_action.asp" method="post"> 
+       <input type="hidden" name="frompage" value="myrequest.asp"> 
+       <input type="hidden" name="pageid" value=""> 
+       <table width="760" border="0" cellspacing="0" cellpadding="3"> 
+        <tbody>
+         <tr> 
+          <td width="20%">&nbsp;</td> 
+          <td colspan="2" align="left" valign="top"><span class="head"></span></td> 
+         </tr> 
+         <tr> 
+          <td width="20%">&nbsp;</td> 
+          <td colspan="2" class="normal" align="left">Welcome! To begin, please enter your email address below.<p></p></td> 
+         </tr> 
+         <tr align="left" valign="top"> 
+          <td width="20%">&nbsp;</td> 
+          <td width="20%" align="right"><span class="normal12"><b>Email Address</b></span></td> 
+          <td align="left"><input type="text" value="" name="EmailAdd" maxlength="255" size="30" class="normal"></td> 
+         </tr> 
+         <!--Case 73804 Redirect to 'msbdefault_user.asp' as new user if enter incorrect email, not allow to select Last Name--> 
+         <tr align="left" valign="top"> 
+          <td width="20%">&nbsp;</td> 
+          <td width="20%">&nbsp;</td> 
+          <td align="left"><input type="submit" name="Submit" value="Submit" onclick="return fucValidate(document.frmEmail)" class="normal"></td> 
+         </tr> 
+         <tr> 
+          <td colspan="3">&nbsp;</td> 
+         </tr> 
+        </tbody>
+       </table> 
+      </form> </td> 
+    </tr> 
+    <tr> 
+     <td align="left" valign="top">&nbsp; </td> 
+    </tr> 
+    <tr> 
+     <td align="left" valign="top">&nbsp;</td> 
+    </tr> 
+    <tr> 
+     <td width="150" align="left" valign="top">&nbsp;</td> 
+     <td align="left" valign="top">&nbsp;</td> 
+    </tr> 
+   </tbody>
+  </table> 
+  <p class="NormalBold">&nbsp;</p>    
+  <table width="100%" border="0" cellspacing="0" cellpadding="3"> 
+   <tbody>
+    <tr> 
+     <!-- 52824 remove logo --> 
+     <td align="center" valign="bottom" rowspan="4" width="115"></td> 
+     <td align="center" valign="top"><img src="/graphics/shim_gray.gif" width="98%" height="1"></td> 
+     <td align="center" valign="top" width="115">&nbsp;</td> 
+    </tr> 
+    <tr> 
+     <td align="center" valign="top"> </td> 
+     <td align="center" valign="top" width="115">&nbsp;</td> 
+    </tr> 
+    <tr> 
+     <td> 
+      <div align="center">
+       <span class="Normal"><a href="javascript:void(0)" onclick="window.open('/toolbox/mydtwo/WO_CondOfUse_p.asp','condofuse','width=680,height=500,left=0,right=0,toolbar=no,directories=no,menubar=no,status=no,location=no,scrollbars=yes,resizable=no')">Conditions of Use</a> | <a href="javascript:void(0)" onclick="window.open('/toolbox/mydtwo/WO_CondOfUse_p.asp#privacypolicy','privacy','width=680,height=500,left=0,right=0,toolbar=no,directories=no,menubar=no,status=no,location=no,scrollbars=yes,resizable=no')">Privacy Policy</a> </span>
+      </div> </td> 
+     <td width="115">&nbsp;</td> 
+    </tr> 
+    <tr> 
+     <td align="center" valign="top"> <span class="Normal"><a href="javascript:void(0)" onclick="window.open('/toolbox/mydtwo/md_copyright.asp','copy','width=680,height=500,left=0,right=0,toolbar=no,directories=no,menubar=no,status=no,location=no,scrollbars=yes,resizable=no')" onmouseover="window.status='Copyright'; return true;">Copyright</a> © 1999-2015 SchoolDude.com, Inc. All Rights Reserved. </span></td> 
+     <td align="center" valign="top" width="115"> 
+      <div class="ft-usermetrics" style="text-align: left;padding-top: 4px; font: normal 11px Verdana, Geneva, Arial, Helvetica, sans-serif; color: #000080 !important;">
+        CIP:104.52.231.160 
+       <br> SID:MSB24 
+       <br> DID:9 
+       <br> 
+       <!-- CUA: goes here --> CUA:unknown 
+      </div> </td> 
+    </tr> 
+   </tbody>
+  </table> 
+  <meta http-equiv="PRAGMA" content="NO-CACHE">   
+ </body>
+</html>

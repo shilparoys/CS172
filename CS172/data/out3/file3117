@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <title>
+						Home - LibGuides at University of Wyoming
+						</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="stylesheet" href="/web/jquery/css/1.8.24_themes_base_jquery-ui.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> 
+  <link rel="stylesheet" href="/web/css1.4.0/springshare.public.css"> 
+  <!--[if lt IE 9]> 
+								<link rel="stylesheet" href="/web/css1.4.0/springshare.public.ie8hacks.css" /> 
+						<![endif]--> 
+  <link rel="stylesheet" href="/web/css1.4.0/springshare.common.css"> 
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css"> 
+  <script type="text/javascript" src="/web/jquery/js/1.10.0_jquery.min.js"></script> 
+  <script type="text/javascript" src="/web/jquery/js/1.9.2_jquery-ui.min.js"></script>
+  <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> 
+  <script type="text/javascript" src="/web/js1.4.0/springshare.common.min.js"></script> 
+  <script type="text/javascript" src="/web/js1.4.0/springshare.public.min.js"></script> 
+  <!-- BEGIN: CUSTOM HEAD JS/CSS --> 
+  <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <meta name="description" content="Research Launchpad">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <!-- <META NAME="GOOGLEBOT" CONTENT="NOARCHIVE" />  -->
+  <!-- <META NAME="ROBOTS" CONTENT="NONE" />  -->
+  <meta name="keywords" content="UW, Libraries, Wyoming, University, Laramie, library, research, starting place, launchpad">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" media="screen" type="text/css">
+  <link rel="stylesheet" href="https://www-lib.uwyo.edu/css/guides_uw.css" media="screen" type="text/css"> 
+  <!-- BEGIN: CUSTOM HEAD JS/CSS --> 
+  <script>
+                    springSpace.publicObj = new springSpace.public.Public({
+                        constant: {
+                            PROCESSING: {
+                                
+                            },
+                            CONTENT: {
+                            }
+                        }
+                    });
+                </script>
+  <script src="sa.php?site_id=235"></script> 
+  <script>
+                    springSpace.Common = springSpace.Common || { };
+                        
+                    springSpace.Common.constant = {
+                            PROCESSING: {
+                                ACTION_DISPLAY_POLL: 159
+                            }
+                    };
+                    
+                    springSpace.publicObj.loadGuideCounts=function(config) {
+                        xhr = jQuery.ajax({
+                            url: "index_process.php?action=" + config.action + "&site_id=" + config.site_id + "&group_id=" + config.group_id + "&key=" + key,
+                            type: "GET",
+                            dataType: "json",
+                            success: function(response, textStatus, jqXHR) {
+                                if ( response.errCode == 200 ) {
+                                    var count_type = "";
+										switch (config.action) {
+											case 176:
+												count_type = "guidetype";
+												break;
+											case 177:
+												count_type = "group";
+												break;
+											case 178:
+												count_type = "owner";
+												break;
+										}
+										
+                                    jQuery.each(response.data, function(idx, elt) {
+											jQuery("#s-lg-index-" + count_type + "-" + elt.id).show();
+											jQuery("#s-lg-index-" + count_type + "-count-" + elt.id).html(elt.count);
+                                    });
+                                } else {
+                                    // Show error message.
+                                    
+                                }
+                            },
+                            error: function (jqXHR, textStatus, errorThrown) {
+                                // error
+                                alert("Oops, sorry! Something unexpected happened: " + errorThrown + " \n\nThat might not mean much to you, but it probably does to the Springy Techs...you can let them know at support@springshare.com.");
+                            }
+                        });
+                    }
+                                            
+                    springSpace.homepage = springSpace.homepage || {
+                        default_list_order: 0,
+                        current_list: 172,
+                        current_btn_id: "s-lg-index-subject-btn",
+                        current_num_cols: 3,
+                        current_type_label: ""
+                    };
+                    
+                    jQuery(function() {
+						// Clear out the search term from previous search/back button.
+						jQuery("#s-lg-guide-search").val("");
+						
+						// Load guide list.
+						springSpace.publicObj.loadHomepageList({
+                            action: 172,
+                            group_id: "0",
+                            order: springSpace.homepage.default_list_order,
+                            num_cols: 3,
+                            elt_id: "s-lg-index-list",
+                            button_id: "s-lg-index-subject-btn",
+                            type_label: "Subjects",
+							display_sort: true
+                        });
+
+                        // Select default dropdown option.
+                        jQuery("#s-lg-guide-order > option[value=" + springSpace.homepage.default_list_order + "]").prop("selected",true);
+                        
+                        // Load guide type counts.
+                        springSpace.publicObj.loadGuideCounts({
+                            action: 176,
+                            site_id: 235,
+                            group_id: 0
+                        });
+                        
+                        // Load group guides counts.
+                        springSpace.publicObj.loadGuideCounts({
+                            action: 177,
+                            site_id: 235
+                        });
+						
+						   // Load owner group counts.
+                        springSpace.publicObj.loadGuideCounts({
+                            action: 178,
+                            site_id: 235,
+							   group_id: 0
+                        }	);
+						
+                    });springTrack.init({_st_site_id: '235'});
+                        jQuery(function() {springTrack.trackPage({_st_type_id: '11'});
+                        });
+                </script> 
+ </head>
+ <body class="s-lib-public-body"> 
+  <!-- BEGIN: Page Header --> 
+  <!-- start skipnav --> 
+  <div id="skipnav" class="sr-only"> 
+   <a href="#content">Skip to page content.</a> 
+  </div> 
+  <!-- end skipnav --> 
+  <!--[if lt IE 7]>            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="https://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>        <![endif]--> 
+  <header id="head"> 
+   <a href="http://www.uwyo.edu/"> <img src="https://www-lib.uwyo.edu/img/tn-uw.png" width="126" height="60" alt="University of Wyoming logo" title="University of Wyoming" class="pull-left img-responsive uwlogo"></a> 
+   <section> 
+    <nav class="navbar navbar-default navbar-static-top"> 
+     <div class="navbar-header"> 
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle hot links</span> <span class="glyphicon glyphicon-arrow-down"></span>Show </button> 
+      <div class="navbar-brand ptitle">
+       <span class="sr-only">University of Wyoming</span> LIBRARIES
+      </div> 
+     </div>
+     <!--/ navbar-header --> 
+     <div class="navbar-collapse collapse topb"> 
+      <ul class="nav navbar-nav navbar-right"> 
+       <li><a href="http://www-lib.uwyo.edu/about/hours/">
+         <figure> 
+          <img src="https://www-lib.uwyo.edu/img/tn-hour.png" width="44" height="44" alt="libraries hours icon/link" title="See when UW library branches are open"> 
+          <figcaption>
+           Hours
+          </figcaption> 
+         </figure></a></li> 
+       <li><a href="https://www-lib.uwyo.edu/reservearoom/">
+         <figure> 
+          <img src="https://www-lib.uwyo.edu/img/tn-room.png" width="44" height="44" alt="reserve a study room icon/link" title="Study rooms reservations here online"> 
+          <figcaption>
+           Rooms
+          </figcaption> 
+         </figure></a></li> 
+       <li><a href="http://www-lib.uwyo.edu/services/logsin.cfm">
+         <figure> 
+          <img src="https://www-lib.uwyo.edu/img/tn-login.png" width="44" height="44" alt="login icon/link" title="Login to your library accounts to check on loan status and renewals"> 
+          <figcaption>
+           Login
+          </figcaption> 
+         </figure></a></li> 
+      </ul> 
+     </div>
+     <!--/.nav-collapse --> 
+    </nav>
+    <!--/navbar --> 
+    <div id="openhoursNOTUSED">
+     <div class="containerNOTUSED"></div>
+    </div> 
+   </section> 
+  </header>
+  <nav id="unav" role="navigation"> 
+   <h2 class="sr-only">UW navigation bar</h2> 
+   <ul> 
+    <li><a href="http://www.uwyo.edu">UW Home</a></li> 
+    <li><a href="http://wyoweb.uwyo.edu/">WyoWeb</a></li> 
+    <li><a href="http://www-lib.uwyo.edu/">Libraries</a></li> 
+    <li><a href="http://www-lib.uwyo.edu/about/">About</a></li> 
+    <li><a href="https://uwlibblogs.uwyo.edu/libadmin/welcome-to-the-university-of-wyoming-libraries/giving-to-uw-libraries/">Donate</a></li> 
+    <li><a href="http://www-lib.uwyo.edu/about/atoz/">Libraries A - Z</a></li> 
+   </ul> 
+  </nav>
+  <!-- /unav -->
+  <div class="clearfix"></div>
+  <nav id="lnav" role="navigation"> 
+   <h3 class="sr-only">Libraries navigation menu</h3> 
+   <div class="container"> 
+    <div class="row"> 
+     <div class="col-lg-3 col-sm-3"> 
+      <ul class="nav navbar-nav"> 
+       <li class="dropdown"> <a id="drop1" role="button" class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="http://www-lib.uwyo.edu/find/"> <span class="glyphicon"><img src="https://www-lib.uwyo.edu/img/ln-find.png" class="lnavicon" width="54" height="48" alt="find + research icon link" title="list of tools to aid in research discovery"> </span> <span class="lnav-menu">Find + Research</span></a> 
+        <ul class="dropdown-menu" role="menu" aria-labelledby="drop1"> 
+         <li role="presentation"><a role="menuitem" href="http://www-lib.uwyo.edu/find/">See all</a></li> 
+         <li class="divider" role="presentation"></li> 
+         <li role="presentation"><a role="menuitem" href="http://uwyo.summon.serialssolutions.com/?summonVersion=2.0#!/"><span>Super search: discovery tool</span></a></li> 
+         <li role="presentation"><a role="menuitem" href="http://uwcatalog.uwyo.edu/"><span>Catalog: books, DVDs, music, journals</span></a></li> 
+         <li role="presentation"><a role="menuitem" href="http://www-lib.uwyo.edu/find/articles.cfm"><span>Articles: databases by subjects, titles</span></a></li> 
+         <li role="presentation"><a role="menuitem" href="http://www-lib.uwyo.edu/find/efiles.cfm"><span>eBooks &amp; audio books</span></a></li> 
+         <li role="presentation"><a role="menuitem" href="http://vh7qx3xe2p.search.serialssolutions.com/?L=VH7QX3XE2P&amp;tab=JOURNALS"><span>eJournals</span></a></li> 
+         <li role="presentation"><a role="menuitem" href="https://ill.uwyo.edu/logon.html"><span>Request It: Interlibrary loan</span></a></li> 
+         <li role="presentation"><a role="menuitem" href="http://prospector.coalliance.org/search~S0"><span>Prospector: Regional borrowing</span></a></li> 
+        </ul> </li> 
+      </ul> 
+     </div>
+     <!--/end col 1--> 
+     <div class="col-lg-3 col-sm-3"> 
+      <ul class="nav navbar-nav"> 
+       <li class="dropdown"> <a id="drop2" role="button" class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="http://www-lib.uwyo.edu/services/"> <span class="glyphicon"><img src="https://www-lib.uwyo.edu/img/ln-ser.png" class="lnavicon" width="54" height="48" alt="services + people icon link" title="What services we offer"> </span> <span class="lnav-menu">Services + People</span></a> 
+        <ul class="dropdown-menu" role="menu" aria-labelledby="drop2"> 
+         <li role="presentation"><a role="menuitem" href="http://www-lib.uwyo.edu/services/">See all</a></li> 
+         <li class="divider" role="presentation"></li> 
+         <li role="presentation"><a role="menuitem" href="http://www-lib.uwyo.edu/about/dir/index.cfm"><span>Directory + Contacts</span></a></li> 
+         <li role="presentation"><a role="menuitem" href="http://www-lib.uwyo.edu/services/logsin.cfm"><span>Login + Accounts</span></a></li> 
+         <li role="presentation"><a role="menuitem" href="http://uwcatalog.uwyo.edu/search/p"><span>Course Reserves</span></a></li> 
+         <li role="presentation"><a role="menuitem" href="http://www-lib.uwyo.edu/services/study.cfm"><span>Study Rooms</span></a></li> 
+         <li role="presentation"><a role="menuitem" href="https://www-lib.uwyo.edu/reservearoom/"><span>Reserve a Study Room</span></a></li> 
+         <li role="presentation"><a role="menuitem" href="http://www-lib.uwyo.edu/services/tech.cfm"><span>Computer + Print</span></a></li> 
+         <li role="presentation"><a role="menuitem" href="http://www-lib.uwyo.edu/services/cirpolicies.cfm"><span>Policies</span></a></li> 
+        </ul> </li> 
+      </ul> 
+     </div>
+     <!--/end col 2--> 
+     <div class="col-lg-3 col-sm-3"> 
+      <ul class="nav navbar-nav"> 
+       <li class="dropdown"> <a id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="http://www-lib.uwyo.edu/about/branches/"> <span class="glyphicon"><img src="https://www-lib.uwyo.edu/img/ln-col.png" class="lnavicon" width="54" height="48" alt="collectionks + branches icon link" title="Explore beyond"> </span> <span class="lnav-menu">Collections + Libraries</span></a> 
+        <ul class="dropdown-menu" role="menu" aria-labelledby="drop3"> 
+         <li role="presentation"><a role="menuitem" href="http://www-lib.uwyo.edu/about/branches/">See all</a></li> 
+         <li class="divider" role="presentation"></li> 
+         <li role="presentation"><a role="menuitem" href="http://libguides.uwyo.edu/chisum"><span>Emmett D. Chisum Special Collections</span></a></li> 
+         <li role="presentation"><a role="menuitem" href="http://libguides.uwyo.edu/MEDIA"><span>Media Collection</span></a></li> 
+         <li role="presentation"><a role="menuitem" href="http://uwlibblogs.uwyo.edu/digitized-collections/"><span>Digitized Collections</span></a></li> 
+         <li role="presentation"><a role="menuitem" href="http://repository.uwyo.edu/"><span>Wyoming Scholars Repository</span></a></li> 
+         <li><a href="http://libguides.uwyo.edu/content.php?pid=211989&amp;sid=1764633"><span>U.S. Government Documents</span></a></li> 
+         <li class="divider" role="presentation"></li> 
+         <li><a href="http://www-lib.uwyo.edu/about/branches">Libraries</a></li> 
+        </ul> </li> 
+      </ul> 
+     </div>
+     <!--/end col 3--> 
+     <div class="col-lg-3 col-sm-3"> 
+      <ul class="nav navbar-nav"> 
+       <li class="dropdown"> <a id="drop4" role="button" class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="http://uwyo.libanswers.com/"> <span class="glyphicon"><img src="https://www-lib.uwyo.edu/img/ln-help.png" class="lnavicon" width="58" height="48" alt="Help + Ask a Librarian icon link" title="Get help here"> </span> <span class="lnav-menu">Help + Ask a Librarian</span></a> 
+        <ul class="dropdown-menu" role="menu" aria-labelledby="drop4"> 
+         <li role="presentation"><a role="menuitem" href="http://uwyo.libanswers.com/">See all help options</a></li> 
+         <li class="divider" role="presentation"></li> 
+         <!-- <li role="presentation"><a role="menuitem" href="#"><span>Live Chat + IM a Librarian</span></a></li>  --> 
+         <li role="presentation"><a role="menuitem" href="#"><span>Text us: (307) 460-4336</span></a></li> 
+         <li role="presentation"><a role="menuitem" href="http://uwyo.libanswers.com/"><span>FAQ + Knowledgebase</span></a></li> 
+         <li role="presentation"><a role="menuitem" href="#" onclick="u=location.href;x=window;e=x.encodeURIComponent;w=open('http://uwyo.libanswers.com/askr.php?i=314&amp;uri='+e(u),'add','width=520,height=600,location=0,menubar=0,toolbar=0,status=0,scrollbars,resizable');return false"><span>Email a Librarian</span></a></li> 
+         <li role="presentation"><a role="menuitem" href="http://libguides.uwyo.edu/content.php?pid=533405&amp;sid=4387697"><span>Phone a Librarian</span></a></li> 
+         <li role="presentation"><a role="menuitem" href="http://www-lib.uwyo.edu/about/dir/"><span>Contacts + Directory</span></a></li> 
+         <li role="presentation"><a role="menuitem" href="http://www-lib.uwyo.edu/about/atoz/"><span>A to Z libraries website</span></a></li> 
+        </ul> </li> 
+      </ul>
+     </div>
+     <!--/end col 4--> 
+    </div>
+    <!--/end row--> 
+   </div>
+   <!--/end container--> 
+  </nav> 
+  <script> var libchat_659afa4c2e356f59b8ccd06612d4c6a0 = { iid:314, key:'891bb8ebf6b6d24', width:230 }</script> 
+  <script type="text/javascript" src="//uwyo.libanswers.com/load_chat.php?hash=659afa4c2e356f59b8ccd06612d4c6a0&amp;options=libchat_659afa4c2e356f59b8ccd06612d4c6a0"></script>
+  <div class="pagetitle find">
+   <div class="container">
+    <h2><span class="glyphicon glyphicon-chevron-right"></span> Find + Research</h2>
+   </div>
+   <!--/ container -->
+  </div>
+  <!--/ pagetitle --> 
+  <!-- END: Page Header --> 
+  <!-- BEGIN: Content Header --> 
+  <div id="s-lib-public-header" class="s-lib-header container s-lib-side-borders"> 
+   <div id="s-lib-bc"> 
+    <ol id="s-lib-bc-list" class="breadcrumb"> 
+     <li id="s-lib-bc-customer"> <a title="Libraries @ University of Wyoming" href="http://www-lib.uwyo.edu/">Libraries @ University of Wyoming </a> </li> 
+     <li id="s-lib-bc-site"> <a title="LibGuides" href="http://libguides.uwyo.edu">LibGuides </a> </li> 
+     <li id="s-lib-bc-page" class="active">Home </li> 
+    </ol> 
+   </div> 
+   <h1 id="s-lib-public-header-title"> </h1> 
+   <div id="s-lib-public-header-desc">
+    <h3>Guides + Tutorials</h3>
+    <a href="http://libguides.uwyo.edu/tutorials" class="btn btn-success btn-md">Tutorials</a> 
+    <a href="http://libguides.uwyo.edu/citation?hs=a" class="btn btn-success btn-md">Citation &amp; Style Guides</a> 
+   </div> 
+  </div> 
+  <!-- END: Content Header --> 
+  <!-- BEGIN: Nav Bar --> 
+  <div id="s-lib-public-nav" class="container s-lib-side-borders"> 
+  </div> 
+  <!-- END: Nav Bar --> 
+  <!-- BEGIN: content --> 
+  <div id="s-lib-public-main" class="s-lib-main container s-lib-side-borders"> 
+   <div id="s-lg-index-cols" class="row"> 
+    <div id="col1" class="col-md-8 center"> 
+     <div class="clearfix"> 
+      <div id="s-lg-hp-nav"> 
+       <ul> 
+        <li> 
+         <ul class="nav nav-pills"> 
+          <li id="s-lg-index-all-btn" class="s-lg-index-nav-btn active"> <a href="javascript: void(0);" onclick="springSpace.publicObj.loadHomepageList({
+									action: 170,
+									group_id: 0,
+									order: jQuery('#s-lg-guide-order').val(),
+									num_cols: 3,
+									elt_id: 's-lg-index-list',
+									button_id: 's-lg-index-all-btn',
+									display_sort: true
+								});">ALL GUIDES</a> </li> 
+          <li id="s-lg-index-group-btn" class="s-lg-index-nav-btn"> <a href="javascript: void(0);" onclick="springSpace.publicObj.loadHomepageList({
+                                action: 171,
+								group_id: 0,
+								num_cols: 3,
+								type_label: 'Groups',
+                                elt_id: 's-lg-index-list',
+                                button_id: 's-lg-index-group-btn',
+                      		});">BY GROUP</a> </li> 
+          <li id="s-lg-index-subject-btn" class="s-lg-index-nav-btn"> <a href="javascript: void(0);" onclick="springSpace.publicObj.loadHomepageList({
+                                action: 172,
+								group_id: 0,
+								num_cols: 3,
+								type_label: 'Subjects',
+                                elt_id: 's-lg-index-list',
+                                button_id: 's-lg-index-subject-btn',
+                      		});">BY SUBJECT</a> </li> 
+          <li id="s-lg-index-guidetype-btn" class="s-lg-index-nav-btn"> <a href="javascript: void(0);" onclick="springSpace.publicObj.loadHomepageList({
+								action: 173,
+								group_id: 0,
+								num_cols: 3,
+								type_label: 'Guide Types',
+								elt_id: 's-lg-index-list',
+								button_id: 's-lg-index-guidetype-btn',
+							});">BY TYPE</a> </li> 
+          <li id="s-lg-index-owner-btn" class="s-lg-index-nav-btn"> <a href="javascript: void(0);" onclick="springSpace.publicObj.loadHomepageList({
+								action: 174,
+								group_id: 0,
+								num_cols: 3,
+								type_label: 'Guide Owners',
+								elt_id: 's-lg-index-list',
+								button_id: 's-lg-index-owner-btn',
+							});">BY OWNER</a> </li> 
+         </ul> </li> 
+        <li id="s-lg-hp-nav-bottom"> 
+         <div class="clearfix"> 
+          <form role="search" class="form-inline pull-right" action="srch.php"> 
+           <span> Search: </span> 
+           <div class="form-group"> 
+            <div class="s-lg-public-search-field"> 
+             <label class="control-label sr-only" for="s-lg-guide-search">Guide Search Terms</label> 
+             <input type="text" placeholder="Enter Search Words" class="form-control" id="s-lg-guide-search" name="q"> 
+            </div> 
+           </div> 
+           <button class="btn btn-default" type="submit">Go</button> 
+          </form> 
+         </div> </li> 
+       </ul> 
+      </div> 
+      <div id="s-lg-guide-list-controls"> 
+       <div class="pull-left"> 
+        <h4 class="muted">Showing <span id="s-lg-index-count"></span> <span id="s-lg-index-label"></span></h4> 
+       </div> 
+       <div class="pull-right form-horizontal muted"> 
+        <div id="form-group-s-lg-guide-order" class="form-group margin-bottom-none"> 
+         <label class="control-label col-md-3" style="" for="s-lg-guide-order">Display: </label> 
+         <div class="col-md-9"> 
+          <select id="s-lg-guide-order" name="s-lg-guide-order" class="form-control" onchange="springSpace.publicObj.loadHomepageList({
+								action: 170,
+								group_id: 0,
+								order: jQuery('#s-lg-guide-order').val(),
+								num_cols: 3,
+								elt_id: 's-lg-index-list',
+								button_id: 's-lg-index-all-btn',
+								display_sort: true,
+								type_label: springSpace.homepage.current_type_label
+							})"> <option value="0">Alphabetically</option> <option value="3">By Popularity</option> <option value="2">Most Recent</option> </select> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div id="s-lg-index-list" class="">
+       Loading... 
+     </div> 
+    </div> 
+    <div id="col2" class="col-md-4 center"> 
+     <div class="margin-bottom-xlg"> 
+      <div class="s-lib-public-side-header"> 
+       <div class="pad-bottom-sm">
+        Ask a Librarian 
+       </div> 
+      </div> 
+      <div class="txt pad-top-sm"> 
+       <div id="s-lib-profile-13559" class="s-lib-profile-container"> 
+        <div id="s-lib-profile-image-13559" class="s-lib-profile-div s-lib-profile-center s-lib-profile-image">
+         <a href="http://libguides.uwyo.edu/prf.php?account_id=17161"> <img src="//s3.amazonaws.com/libapps/accounts/17161/profiles/13559/wallofwindowsatpoint.jpg" alt="Profile Image"></a> 
+        </div> 
+        <div id="s-lib-profile-name-13559" class="s-lib-profile-div s-lib-profile-center s-lib-profile-name">
+         Coe Reference 
+        </div> 
+        <div id="s-lib-profile-email-13559" class="s-lib-profile-div s-lib-profile-center s-lib-profile-email">
+         <a title="coeref@uwyo.edu" href="mailto:coeref@uwyo.edu" class="label label-info" style="font-size:1.6em;">Email Me</a> 
+        </div> 
+        <div id="s-lib-profile-widget-la-13559" class="s-lib-profile-div s-lib-profile-widget-la"> 
+         <div class="s-lib-profile-widget">
+          <!-- Springshare Chat code //-->
+          <div id="chatbox">
+           <div id="libchat_inline_widget"></div>
+           <script type="text/javascript"> var libchat_inline = {   iid: "314",   key: "891bb8ebf6b6d24",   domain: "uwyo.libanswers.com",   color_backg: "#F3F3F3",   color_border: "#FEC80F",   color_heading: "#593D2B",   splash: "LibChat is online!",   width: "180px",   offline: "Ask Us IM",   star_ratings: false,   file_upload: false,   la_hide: true,   la_hide_msg: "Sorry, chat is offline. <p><a href=\" http://www-lib.uwyo.edu/services/ask.cfm\">Ask Us options</a> or <a href=\"http://uwyo.libanswers.com\">Search the Knowledge Base</a> or <a href=\"http://uwyo.libanswers.com/q.php\">Email your Question</a></p>",   depart_id: "0" };</script>
+           <script type="text/javascript" src="//libanswers.com/js/chat_load_client_in.js"></script>
+          </div>
+          <!-- End Springshare Chat code //--> 
+         </div> 
+        </div> 
+        <div id="s-lib-profile-widget-lc-13559" class="s-lib-profile-div s-lib-profile-widget-lc"> 
+         <div class="s-lib-profile-widget"> 
+         </div> 
+        </div> 
+        <div id="s-lib-profile-widget-other-13559" class="s-lib-profile-div s-lib-profile-widget-other"> 
+         <div class="s-lib-profile-widget"> 
+         </div> 
+        </div> 
+        <div id="s-lib-profile-contact-13559" class="s-lib-profile-div s-lib-profile-contact">
+         <strong>Contact:</strong>
+         <div>
+          Phone: 307-766-2070
+          <br> Toll-free: 800-442-6757
+          <br> Text: 307-460-4336
+         </div>
+         <a title="Website / Blog" href="http://www-lib.uwyo.edu/"><i class="fa fa-bookmark fa-lg"><span class="sr-only">Website / Blog Page</span></i></a> 
+        </div> 
+        <div id="s-lib-profile-social-13559" class="s-lib-profile-div s-lib-profile-social"> 
+        </div> 
+        <div id="s-lib-profile-subjects-13559" class="s-lib-profile-div s-lib-profile-subjects"> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="margin-bottom-xlg"> 
+      <div class="s-lib-public-side-header"> 
+       <div class="pad-bottom-sm">
+        Guide Rankings 
+       </div> 
+      </div> 
+      <div class="txt pad-top-sm"> 
+       <div id="s-lg-content-6350266" class="s-lg-widget ">
+        <script>
+springshare_widget_config_1416593432951 = { path: 'guides' };
+</script> 
+        <div id="s-lg-widget-1416593432951"></div> 
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://lgapi.libapps.com/widgets.php?site_id=235&widget_type=1&search_terms=&search_match=2&search_type=0&sort_by=count_hit&list_format=1&drop_text=Select+a+Guide...&output_format=2&load_type=2&enable_description=0&enable_group_search_limit=0&enable_subject_search_limit=0&widget_title=Most+Popular+Guides&widget_height=250&widget_width=100%25&widget_link_color=%232954d1&widget_embed_type=1&num_results=15&enable_more_results=0&window_target=2&config_id=1416593432951";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","s-lg-widget-script-1416593432951");</script> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <!-- END: content --> 
+  <!-- BEGIN: Page Footer --> 
+  <div id="s-lib-footer-public" class="s-lib-footer footer container  s-lib-side-borders"> 
+   <div> 
+    <div id="s-lib-footer-brand">
+      Powered by 
+     <a href="http://www.springshare.com">Springshare</a>. 
+    </div> 
+    <div id="s-lib-footer-rights">
+      All rights reserved. 
+    </div> 
+    <div id="s-lib-footer-login-link"> 
+     <a href="https://uwyo.libapps.com/libapps/login.php?site_id=235
+">Login to LibApps</a>. 
+    </div> 
+   </div> 
+   <div> 
+    <div id="s-lib-footer-print-link">
+      View this page in a format suitable for 
+     <a href="#">printers and screen-readers</a>. 
+    </div> 
+    <div id="s-lib-footer-support-link"> 
+     <a href="mailto:coeref@uwyo.edu">Report a problem</a>. 
+    </div> 
+   </div> 
+  </div> 
+  <!-- END: Page Footer --> 
+  <div id="s-lib-alert" title=""> 
+   <div id="s-lib-alert-content"></div> 
+  </div> 
+  <div id="s-lib-popover-title" class="hide"> 
+   <span class="text-info"><strong>title</strong></span> 
+   <button type="button" id="popclose" class="close" onclick="jQuery('.s-lib-popover').popover('hide')">×</button> 
+  </div> 
+  <div id="s-lib-popover-content" class="hide">
+   <i class="fa fa-refresh fa-spin"></i> Loading... 
+   <button class="btn btn-default btn-sm popclose" type="button">Close</button> 
+  </div> 
+  <div id="s-lib-scroll-top" title="Back to Top"> 
+   <span class="fa-stack fa-lg"> <i class="fa fa-square-o fa-stack-2x"></i> <i class="fa fa-angle-double-up fa-stack-1x" style="position:relative; bottom:2px;"></i> </span> 
+  </div> 
+  <!-- BEGIN: Custom Footer --> 
+  <footer class="site-footer"> 
+   <div class="container"> 
+    <a href="http://www-lib.uwyo.edu/"><img src="https://www-lib.uwyo.edu/img/logocolortext166x94.png" class="img-responsive pull-left" alt="University of Wyoming Libraries" width="120" height=""></a> 
+    <div class="links"> 
+     <img src="https://www-lib.uwyo.edu/img/govico.png" class="pull-right" width="30" height="27" alt="U.S. Government Depository"> 
+     <hr> 
+     <div class="link-group"> 
+      <h3 class="links-heading">University of Wyoming Libraries</h3> 
+      <p>Dept. 3334<br>1000 E. University Ave.<br>Laramie, WY 82071<br>(307) 766-3190<br>(800) 442-6757</p> 
+     </div> 
+     <div class="link-group"> 
+      <h3 class="links-heading">Launchpad Links<span></span></h3> 
+      <div> 
+       <ul> 
+        <li><a href="http://www-lib.uwyo.edu/about/">About the libraries</a></li> 
+        <li><a href="http://www-lib.uwyo.edu/find/">Find + Research</a></li> 
+        <li><a href="http://www-lib.uwyo.edu/services/">Services + People</a></li> 
+        <li><a href="http://www-lib.uwyo.edu/about/branches/">Collections + Libraries</a></li> 
+        <li><a href="http://uwyo.libanswers.com/index.php">Ask a librarian + Help</a></li> 
+       </ul> 
+      </div> 
+     </div> 
+     <div class="link-group"> 
+      <h3 class="links-heading">Libraries Social<span></span></h3> 
+      <div> 
+       <ul> 
+        <li><a href="https://www.facebook.com/CoeLibrary">Facebook</a></li> 
+        <li><a href="https://twitter.com/Coe_Library">Twitter</a></li> 
+        <li><a href="http://www.youtube.com/user/coeref">Youtube</a></li> 
+       </ul> 
+      </div> 
+     </div> 
+     <div class="link-group"> 
+      <h3 class="links-heading"><span>Popular</span></h3> 
+      <div> 
+       <ul> 
+        <li><a href="http://uwyo.summon.serialssolutions.com/?#!/">Supersearch</a></li> 
+        <li><a href="http://uwcatalog.uwyo.edu/">Catalog</a></li> 
+        <li><a href="http://www-lib.uwyo.edu/find/articles.cfm">Articles</a></li> 
+        <li><a href="https://uwlibblogs.uwyo.edu/libadmin/welcome-to-the-university-of-wyoming-libraries/giving-to-uw-libraries/">Giving</a></li> 
+       </ul> 
+      </div> 
+     </div>
+    </div>
+    <!--/links -->
+   </div>
+   <!--/container -->
+  </footer>
+  <!--/site-footer --> 
+  <!-- END: Custom Footer --> 
+  <!-- BEGIN: Analytics code -->
+  <script>  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');  ga('create', 'UA-52979602-1', 'auto');  ga('send', 'pageview');</script>
+  <!-- END: Analytics code -->
+ </body>
+</html>

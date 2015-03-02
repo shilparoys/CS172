@@ -1,0 +1,484 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 TRansitional//EN">
+<html>
+ <head> 
+  <title>WCTCS Login</title> 
+  <meta content="Microsoft Visual Studio 7.0" name="GENERATOR"> 
+  <meta content="C#" name="CODE_LANGUAGE"> 
+  <meta content="JavaScript" name="vs_defaultClientScript"> 
+  <meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema"> 
+  <link href="style.css" type="text/css" rel="stylesheet"> 
+  <!--
+************************************************************************************************************			
+File  :				ErrorHandling.htm
+Purpose:			This file contains the logic for the Handling Errors that occurs in the Browser.
+Author:				
+Created On:			 
+Modification History:
+***************************************************************************************************
+* SL.No * Modification Description 							* Modified By	*	Modified Date     *
+***************************************************************************************************
+<< To be Filled by the developer upon modification of this file>> 
+
+
+
+***************************************************************************************************
+--> 
+  <script language="javascript">
+
+	//To Trap the Error occurs in the Web Page. onError Event is set with the handler ErrorHandler.
+	document.onerror = ErrorHandler;
+	
+/************************************************************************************************************			
+Method :			ErrorHandler
+Purpose:			This method display the Error Message with the Error Type, Error URL, Error Line Number in the windows status bar.
+Parameters:			Error Type, Error URL, Error Line Number. These are the parameters passed by the browser when set to the onError Event. 
+Output:				Flag to indicate that the Error is handled here. 
+Revision History:	
+/************************************************************************************************************/									
+function ErrorHandler( strErrType, strErrURL,strErrLineNum )
+{
+	var blnResult = false; 
+	try
+	{
+		//Display the Error Details in the Status bar.
+		window.status = "Error: " + strErrType + " on line " + strErrLineNum  + " of " + strErrURL;
+		blnResult = true;
+	}
+	catch(e)
+	{
+		//Display the Error message in the Windows status bar.
+		DisplayStatus(e,"Error Handling Failed. Please reload the page.");	
+	}
+	
+	//If no error then display the Done Message. This is to set the status bar to the default state.
+	if (!e)
+		DisplayDone(); 
+	
+	return blnResult;
+}
+
+/************************************************************************************************************			
+Method :			DisplayStatus
+Purpose:			This method display the Error Message in the windows status bar.
+Parameters:			Error Object, Error Message.
+Output:				None. 
+Revision History:	
+/************************************************************************************************************/									
+function DisplayStatus(objError, strMessage)
+{
+	try
+	{
+		window.status = strMessage;
+	
+	}
+	catch(e)
+	{
+		window.status = "Error occured. Please reload the page."; 
+	}
+}
+
+/************************************************************************************************************			
+Method :			DisplayDone
+Purpose:			This method display the "Done" in the windows status bar. This is set the status bar to the default.
+Parameters:			None.
+Output:				None. 
+Revision History:	
+/************************************************************************************************************/									
+function DisplayDone()
+{
+	window.status = "Done";
+}
+
+</script>
+  <!--
+************************************************************************************************************			
+File  :				KeyTrap
+Purpose:			This file contains the logic for the Event handling for the Key press 
+					in the Web Page both for the Internet Explorer and Netscape Navigator.
+					The IE and Netscape versions considered for CIS Re-Hosting Project is above 5.5 and 6.0 repectively.
+					This file will be included as the Server Side Include file.
+Author:				
+Created On:			 
+Modification History:
+***************************************************************************************************
+* SL.No * Modification Description 							* Modified By	*	Modified Date     *
+***************************************************************************************************
+<< To be Filled by the developer upon modification of this file>> 
+
+
+
+***************************************************************************************************
+--> 
+  <script language="javascript">
+
+	//Check the Browser in which the application is ruuning. 
+	//Use the navigator object to get the Browser information.
+	//if Netscape found, Check whether the version is 6 and above.
+
+    var blnNS6andUp = false; //(navigator.appName == "Netscape" && parseInt(navigator.appVersion, 10) >= 5)? true : false; //boolean to indicate it is Netscape 6 and above or not .
+    var blnIE = false;  //(navigator.appVersion.search(/MSIE/) != -1)? true : false;										//boolean to indicate it is IE .	
+	var intfkey;	
+	
+	var __pageSubmitted = false;
+		
+	//Check browser and invoke the appropriate event handler functionality.  
+	if(blnNS6andUp){
+		//Attach the keyPress Event handler for the Key press Event for Netscape using the Window AddEvent Listener Delegate. 
+		window.addEventListener("keypress", keyPressCheck,true);
+	}
+	else if(blnIE){
+		//Attach the Key press Event handler for the IE using the document.onkeydown delegate.  
+		document.onkeydown = keyPressCheck;
+	}
+	
+	/************************************************************************************************************			
+	Method :			window.onhelp handler
+	Purpose:			To disable the help launch in the IE on the F1 press.
+	Parameters:			None
+	Output:				false. To indicate the disable of the help launch.
+	Author:				
+	Created On:			 
+	Revision History: 
+	/************************************************************************************************************/
+	window.onhelp = function() {
+	    return false;
+	};
+	
+		
+	/************************************************************************************************************			
+	Method :			keyPressCheck
+	Purpose:			Event Handler for the Key press in the screen.
+	Parameters:			Event Object.  
+	Output:				false. To indicate the disable of the help launch.
+	Author:				
+	Created On:			 
+	Revision History: 
+	/************************************************************************************************************/
+	function keyPressCheck(pobjEvent){
+		
+		
+		//Get the Event object for different browsers.	
+		var objEvent = (blnIE)? event : pobjEvent;
+		
+		//Get the Key code from the Event object.
+		var intKeyCode = objEvent.keyCode;
+		//alert (" intKeyCode "  + intKeyCode);
+		
+		if (__pageSubmitted)
+		//if the page is already submitted then dont do any thing 
+		
+		{
+			if(blnNS6andUp)
+			{
+				//NN
+				window.event.keyCode=0;
+				window.event.cancelBubble=true;
+				window.event.returnValue = false; 
+				objEvent.keyCode = 0;
+				return false;
+			}
+			//IE
+			return false;
+		
+		}	
+
+		//ALT KEY disabling
+		if(objEvent.altKey)
+		{
+			if(blnNS6andUp)
+			{
+				//NN
+				window.event.keyCode=0;
+				window.event.cancelBubble=true;
+				window.event.returnValue = false; 
+				objEvent.keyCode = 0;
+				return false;
+			}
+			//IE
+			return false;
+		}
+		//CONTROL KEY disabling
+		if(blnNS6andUp)
+		{
+			//NN
+			if(pobjEvent.ctrlKey)
+			{
+				//allow only ctrl+C ctrl+P ctrl+V ctrl+X 
+				if((pobjEvent.which!=99) && (pobjEvent.which!=112) && 
+							(pobjEvent.which!=118) && (pobjEvent.which!=120))
+				{
+					window.event.keyCode=0;
+					window.event.cancelBubble=true;
+					window.event.returnValue = false; 
+					objEvent.keyCode = 0;
+					return false;
+				}
+			}
+		}
+		else
+		{
+			//IE
+			if (event.ctrlKey)
+			{
+				//allow only ctrl+C ctrl+P ctrl+V ctrl+X 
+				if((event.keyCode!=67) && (event.keyCode!=80) && 
+							(event.keyCode!=86) && (event.keyCode!=88))
+				{
+					return false;	
+				}
+			}
+		}	
+		//disable backspace on form level
+		if (blnIE)
+		{
+			
+			if (((window.event.keyCode == 8)&& window.event.srcElement.form == null) || (window.event.srcElement.isTextEdit == false || (window.event.srcElement.type == "button" && window.event.keyCode == 8)))
+			{
+				
+				window.event.keyCode=0;
+				window.event.cancelBubble=true;
+				window.event.returnValue = false; 
+				objEvent.keyCode = 0;
+				return false;  
+			}
+		}
+		else if(blnNS6andUp)
+		{	
+			if (objEvent.keyCode == 8 && objEvent.target.type == "text" )
+			{
+				return true;
+			}
+			else if (objEvent.keyCode == 8 && objEvent.target.type != "text")
+			{
+				
+				objEvent.keyCode=0;
+				window.event.cancelBubble=true;
+				window.event.returnValue = false; 
+				objEvent.keyCode = 0;
+				return false;  
+			}
+		
+		}
+		//The Regular Expression will have the hardcoded numbers for the keys from F1 to F8, and Enter Key.        
+		var objRegExp = new RegExp(/112|113|114|115|116|117|118|119|120|121|122|123|13|17/);		
+		
+		//This is to indentify whether the application is running in the IE or Netscape Browsers.
+		//Initilized to false.
+		var blnIEorNetscape = false; 
+		
+		//Check to match the key code with the Regular Expression. 
+		if(objRegExp.test(intKeyCode))
+		{
+			if (blnIE)
+			{
+				//This is to disable the Key Code in IE.
+				window.event.keyCode=0;
+				window.event.cancelBubble=true;
+				window.event.returnValue = false;
+				//blnIEorNetscape = true;
+			    blnIEorNetscape = false;
+			}
+			else if(blnNS6andUp)
+			{
+				
+
+				////This is to disable the default Key Press Event in the Netscape Browser.
+				objEvent.preventDefault();
+				//blnIEorNetscape = true;
+				blnIEorNetscape = false;
+			}
+			
+			//If IE or Netscape is detected then handle the Key press other wise do nothing.  
+			if (blnIEorNetscape)
+			{
+			//Check the Key Code and invoke the appropriate handler function.	
+				switch (intKeyCode)
+				{ 
+					//Matches the Case and calls the respective Java script functions for the function key Press.
+					case 112:	intfkey = 1;	HandleF1(); break;
+					case 113:	intfkey = 2;	HandleF2(); break;
+					case 114:	intfkey = 3;	HandleF3(); break;
+					case 115:	intfkey = 4;	HandleF4(); break;
+					case 116:	intfkey = 5;	HandleF5(); break;
+					case 117:	intfkey = 6;	HandleF6(); break;
+					case 118:	intfkey = 7;	HandleF7(); break;
+					case 119:	intfkey = 8;	HandleF8(); break;
+					case 13:	intfkey = 0;    HandleEnter(); break;  
+				}
+			}
+		}
+	};	
+
+
+	function DisplayHelpPage(strHelpFile)
+	{
+		var intScreenWidth = screen.availWidth;
+		var intScreenHeight = screen.availHeight;
+		var strParam2 = '_blank';
+		var strParam3 = 'menubar=no,scrollbars=yes,toolbar=no,directories=no,width=' + intScreenWidth + ',height=' + intScreenHeight + ',parent=no,left=0,top=0';
+		window.open(strHelpFile,strParam2, strParam3);
+		
+	
+	}
+</script> 
+  <script language="javascript">
+		
+
+		//This is incorporated to disable the Right Click of the mouse button. 
+		//var strmessage="Function Disabled!";
+
+		//function clickIE() {if (document.all) {alert(strmessage);return false;}}
+		
+		//function clickNS(e) {if 
+		//(document.layers||(document.getElementById&&!document.all)) {
+		//if (e.which==2||e.which==3) {alert(message);return false;}}}
+		//if (document.layers) 
+		//{document.captureEvents(Event.MOUSEDOWN);document.onmousedown=clickNS;}
+		//else{document.onmouseup=clickNS;document.oncontextmenu=clickIE;}
+		
+		//Disables the Right Click of the mouse. 
+		//document.oncontextmenu=new Function("return false")	
+</script> 
+  <script language="javascript">
+		    /************************************************************************************************************			
+		    Purpose:	To validate the user name and password field in the form.
+		    /************************************************************************************************************/
+		    function ValidateKeyFields() {
+		        var strUserId = document.LOGIN.elements["txtUserId"].value;
+		        var strPassword = document.LOGIN.elements["txtPassword"].value;
+		        var strXmlMsg = "";
+
+		        if (strUserId == "") {
+		            strXmlMsg = document.getElementById("txtUserIdEmpty").getAttribute("value");   //Get Xmlmsg.
+		            DisplayMessage(strXmlMsg, "txtUserId");
+		            return false;
+		        }
+		        if (strPassword == "") {
+		            strXmlMsg = document.getElementById("txtPasswordEmpty").getAttribute("value");   //Get Xmlmsg.
+		            DisplayMessage(strXmlMsg, "txtPassword");
+		            return false;
+		        }
+
+		        return true;
+		    }
+		    function DisplayMessage(strMessage, strFieldName) {
+		        document.getElementById("lblErrorPanel").innerHTML = strMessage;
+		        document.LOGIN.elements[strFieldName].focus();
+		    }
+		    /************************************************************************************************************			
+		    Purpose:	This contains the functionality for the Enter Key Press in the Screen. 
+		    /************************************************************************************************************/
+		    function HandleEnter() {
+
+		        try {
+		            document.LOGIN.hdnBtnVal.value = "0";
+		            if (!ValidateKeyFields()) return false;
+		            document.LOGIN.submit();
+		        }
+		        catch (e) {
+		            DisplayStatus(e, 'Handling Enter Falied. Please reload the page.')
+		        }
+		        if (!e) {
+		            DisplayDone();
+		        }
+
+		    }
+		    /************************************************************************************************************			
+		    Purpose: This contains the functionality for the Cancel Key Press in the Screen. 
+		    /************************************************************************************************************/
+		    function HandleCancel() {
+
+		        try {
+		            document.LOGIN.hdnBtnVal.value = "C";
+		            document.LOGIN.submit();
+		        }
+		        catch (e) {
+		            DisplayStatus(e, 'Handling Enter Falied. Please reload the page.')
+		        }
+		        if (!e) {
+		            DisplayDone();
+		        }
+
+		    }	
+		
+		</script> 
+ </head> 
+ <body> 
+  <form name="LOGIN" method="post" action="Login.aspx" id="LOGIN"> 
+   <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTc2NDAyMDUxMg9kFgJmD2QWAgINDw8WAh4EVGV4dAU/RW50ZXIgVXNlciBJRCBhbmQgUGFzc3dvcmQuIFByZXNzIHRoZSBhcHByb3ByaWF0ZSBmdW5jdGlvbiBrZXkuZGRkcMIKkF1KP5ryAui7naKSMLrtU7U="> 
+   <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="9A8975A1"> 
+   <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWBgKk7bS/DQKf0e2vDwKz8dy8BQK1qbSRCwLdkpmPAQKQ9M/rBdA/wRb8TEdIakbTwVRCFvde8iCE"> 
+   <input name="hdnBtnVal" type="hidden" id="hdnBtnVal"> 
+   <!--Outer Table Starts here---> 
+   <table height="100%" cellspacing="2" cellpadding="2" width="100%" border="0"> 
+    <tbody> 
+     <tr valign="top"> 
+      <td class="Headerhighlight" align="center" colspan="9">LOGIN SCREEN </td> 
+     </tr> 
+     <tr valign="top"> 
+      <td align="center" colspan="9"> 
+       <table style="WIDTH: 300px; HEIGHT: 117px" cellspacing="3" cellpadding="3" align="center" border="0"> 
+        <tbody> 
+         <tr> 
+          <td class="bodytext" nowrap align="right">Account Name</td> 
+          <td class="bodytext" nowrap align="left"><input name="txtUserId" type="text" maxlength="30" id="txtUserId" class="logintextbox" size="30" style="WIDTH: 190px; HEIGHT: 22px"></td> 
+         </tr> 
+         <tr> 
+          <td class="bodytext" nowrap align="right">Password</td> 
+          <td class="bodytext" nowrap align="left"><input name="txtPassword" type="password" id="txtPassword" class="password" style="WIDTH: 190px; HEIGHT: 22px" size="30"></td> 
+         </tr> 
+         <tr> 
+          <td class="bodytext" nowrap align="right">&nbsp;</td> 
+          <td class="bodytext" nowrap align="center" colspan="2"><p align="left"><input name="btnOK" type="submit" id="btnOK" class="button" style="WIDTH: 85px; HEIGHT: 25px" value="OK">&nbsp;&nbsp; <input onclick="__doPostBack('btnCancel','')" name="btnCancel" type="button" id="btnCancel" class="button" style="WIDTH: 85px; HEIGHT: 25px" value="Cancel"></p> </td> 
+         </tr> 
+        </tbody> 
+       </table> 
+       <!-- Header Table Ends here ---></td> 
+     </tr> 
+     <!-- This adjustment is made for the Netscape for the template sake to span the Table to the full screen---> 
+     <tr> 
+      <td> <p align="center"> <font color="#ff3300" size="2" style="FONT-FAMILY: Microsoft Sans Serif, Arial"> 
+         <noscript> 
+          <b>WARNING: </b>Your browser doesn't support JavaScript or JavaScript support has been disabled. 
+         </noscript> <script language="javascript">
+									    if (navigator.appName.indexOf("Netscape") != -1) {
+									        if (parseInt(navigator.appVersion, 10) < 5) {
+									            document.write("<B>WARNING :</B> The browser you are using is not officially supported. For best results,  we recommend you use Netscape 6 or newer, or IE6.0 or newer.");
+									        }
+									    }
+									    else if (navigator.appName.indexOf("Microsoft") != -1) {
+									        if (parseInt(navigator.appVersion, 10) < 4) {
+									            document.write("<B>WARNING :</B> The browser you are using is not officially supported. For best results,  we recommend you use Netscape 6 or newer, or IE6.0 or newer.");
+									        }
+									    }
+									    else {
+									        document.write("<B>WARNING :</B> The browser you are using is not officially supported. For best results,  we recommend you use Netscape 6 or newer, or IE6.0 or newer.");
+									    }
+									</script> </font> </p> </td> 
+     </tr> 
+     <tr> 
+      <td class="Headerhighlight" nowrap align="left" width="100%" colspan="9">
+       <!-- Use the server side logic to change the Error description for this ASP label 'lblErrorPanel'--> <span id="lblErrorPanel" style="display:inline-block;">Enter User ID and Password. Press the appropriate function key.</span> </td>
+     </tr>
+     <tr valign="bottom"> 
+      <!-- First Four keys are placed here---> 
+      <td nowrap align="center" colspan="9">&nbsp;&nbsp;&nbsp; </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+   <script language="JavaScript">document.LOGIN.txtUserId.focus();</script>
+  </form> 
+  <span id="txtUserIdEmpty" value="User Id cannot be blank - Enter  valid UserId."></span>
+  <span id="txtPasswordEmpty" value="Password cannot be blank -Enter valid password."></span>
+  <span id="txtOldPasswordEmpty" value="OLD Password cannot be blank.  Enter valid password."></span>
+  <span id="txtNewPasswordEmpty" value="NEW Password cannot be blank.  Enter valid password."></span>
+  <span id="txtCnfrmPasswordEmpty" value="Confirm Password cannot be blank.  Enter valid password."></span>
+  <span id="txtPasswordNotMatch" value="NEW Password does not match CONFIRM NEW Password."></span>
+  <span id="ChangePasswordWait" value="*CHANGING PASSWORD* Please Wait..."></span>
+  <span id="UndMsg" value="Undefined Function key"></span> 
+  <script language="javascript">
+		         document.LOGIN.btnOK.onclick = HandleEnter;
+		         document.LOGIN.btnCancel.onclick = HandleCancel;
+		</script>    
+ </body>
+</html>

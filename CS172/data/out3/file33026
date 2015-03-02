@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+ <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+ <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+ <!--[if gt IE 8]><!-->
+ <!--<![endif]-->
+ <head> 
+  <meta charset="utf-8"> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no"> 
+  <title>University Library, University of Illinois</title> 
+  <link rel="stylesheet" href="./assets/css/normalize.css"> 
+  <link rel="stylesheet" href="./assets/css/main.css"> 
+  <link rel="stylesheet" href="./assets/css/bootstrap.min.css"> 
+  <link rel="stylesheet" href="./assets/css/jquery-ui.min.css"> 
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"> 
+  <link rel="stylesheet" href="./assets/css/bootstrap-accessibility.css" type="text/css"> 
+  <link rel="stylesheet" href="./assets/css/homepage_layouts.css" type="text/css"> 
+  <link rel="stylesheet" href="./assets/css/homepage_colors_fonts.css" type="text/css"> 
+  <link rel="stylesheet" href="./assets/css/columnselect.css" type="text/css"> 
+  <link rel="stylesheet" href="http://cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css"> 
+  <link rel="stylesheet" href="./assets/css/guides.css" type="text/css"> 
+  <link rel="stylesheet" href="//cdn.datatables.net/1.10.3/css/jquery.dataTables.min.css"> 
+  <link rel="icon" href="./assets/favicon.png" type="image/png"> 
+  <script src="./assets/js/modernizr-2.6.2.min.js"></script> 
+  <script src="//cdn.jsdelivr.net/g/jquery@2.1,bootstrap@3.2"></script> 
+  <script>window.jQuery || document.write('<script src="./assets/js/jquery-1.10.2.min.js"><\/script>')</script> 
+  <script src="./assets/js/respond.min.js"></script> 
+  <script type="text/javascript" src="./assets/js/utilities.js"></script> 
+  <!--[if lt IE 9]>
+<script src="./assets/js/html5shiv.js"></script>
+<script src="./assets/js/css_browser_selector.js"></script>
+<![endif]--> 
+  <!--[if gte IE 8]>
+<link href="./assets/css/ie.css" rel="stylesheet" type="text/css" />
+<![endif]--> 
+ </head> 
+ <body> 
+  <!--[if lte IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]--> 
+  <div style="background-color:#fff; box-shadow: 0px 0px 10px 2px  #858585;" class="container"> 
+   <div class="row"> 
+    <header id="first-navbar" role="banner"> 
+     <div class="container" aria-labelledby="bannerHeading" aria-label="university of illinois library banner"> 
+      <h1 class="sr-only">University Library, University of Illinois at Urbana-Champaign</h1> 
+      <div class="row"> 
+       <div class="col-md-12" id="header-full-width-column"> 
+        <div class="row"> 
+         <div class="col-sm-6 col-md-7"> 
+          <div> 
+           <img id="library-brand-img" alt="University of Illinois libary" class="img-responsive" src="assets/university_libraries_wordmark_with_imark_reverse.png" usemap="#bannermap"> 
+           <map name="bannermap"> <area id="imark-img-area" shape="rect" coords="0,0,36,47" href="http://illinois.edu/" alt="University of Illinois"> <area id="library-banner-area" shape="rect" coords="37,0,472,47" href="index.php" alt="University Library, University of Illinois at Urbana-Champaign"> </map> 
+          </div> 
+         </div> 
+         <div id="site-header-controls-medium"> 
+          <div class="col-sm-6 col-md-5"> 
+           <span class="pull-right" style="padding-top:5px;"> 
+            <form id="sitesearch" class="search form-inline " method="get" action="search.php" role="search" aria-label="Search Library Webpages" style="display:inline; padding-top:2px;"> 
+             <div class="form-group"> 
+              <input name="hl" value="en" type="hidden"> 
+              <input value="off" name="safe" type="hidden"> 
+              <input name="filter" value="0" type="hidden"> 
+              <div class="input-group"> 
+               <input id="searchQuery" class="form-control input-sm" maxlength="1000" size="25" name="q" placeholder="Search Library Webpages" type="text" aria-required="true" aria-label="Enter key words to search library web pages.  Press enter to submit."> 
+               <span class="input-group-btn"> <button type="submit" class="btn btn-default btn-sm" alt="submit"> <span class="fa fa-search"><span class="sr-only">Search</span></span> </button> </span> 
+              </div> 
+              <label class="sr-only" for="searchQuery">Search Library Webpages</label> 
+             </div> 
+            </form> <a id="myaccount" class="btn btn-default btn-sm" href="https://vufind.carli.illinois.edu/vf-uiu/MyResearch/Home"><span class="fa fa-user" aria-labelledby="my account"></span> My Account</a> </span> 
+          </div> 
+         </div> 
+        </div> 
+        <div id="site-header-controls-small" class="text-center"> 
+         <div class="btn-group btn-group-xs"> 
+          <a type="button" class="btn btn-default site-header-control-group " href="https://vufind.carli.illinois.edu/vf-uiu/MyResearch/Home">My Account</a> 
+          <a class="btn btn-default site-header-control-group " onclick="open('http://www.library.illinois.edu/iwonder/index.php', 'chat', 'width=400,height=440,resizable=yes');return false;" href="http://www.library.illinois.edu/iwonder" target="_blank">Ask A Librarian</a> 
+          <a class="btn btn-default site-header-control-group " data-toggle="collapse" data-parent="#site-header-controls-small" href="#site_search_collapse_mobile">Site Search</a> 
+         </div> 
+         <div id="site_search_collapse_mobile" class="collapse site-header-control-group"> 
+          <form id="sitesearch" class="search form-inline" method="get" action="search.php" role="search"> 
+           <div class="form-group"> 
+            <input name="hl" value="en" type="hidden"> 
+            <input value="off" name="safe" type="hidden"> 
+            <input name="filter" value="0" type="hidden"> 
+            <input id="searchQuery_mobile" class="form-control input-sm" maxlength="1000" size="25" name="q" placeholder="Search Library Webpages" type="text" aria-required="true" aria-label="Enter key words to search library web pages.  Press enter to submit."> 
+            <label class="sr-only" for="searchQuery_mobile">Site Search</label> 
+           </div> 
+          </form> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </header> 
+    <nav class="navbar navbar-default" role="presentation"> 
+     <div id="top-navbar-small-container" class="container"> 
+      <div class="panel-group" id="accordion"> 
+       <div class="panel panel-default"> 
+        <div class="panel-heading"> 
+         <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"> <span class="sr-only">Site Navigation</span> <span class="fa fa-bars"></span> </a> </h4> 
+        </div> 
+        <div id="collapseOne" class="panel-collapse collapse"> 
+         <div class="panel-body" role="navigation" aria-label="main navigation of library website"> 
+          <div class="btn-group-vertical"> 
+           <div class="btn-group"> 
+            <button id="navbar-vertical-about-library" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"> About <span class="caret"></span> </button> 
+            <ul class="dropdown-menu"> 
+             <li><a href="http://www.library.illinois.edu/administration/librarian/">Welcome from the University Librarian</a></li> 
+             <li><a href="http://www.library.illinois.edu/administration/">Library Administration</a></li> 
+             <li><a href="http://www.library.illinois.edu/friends/index.html">Library Friends</a></li> 
+             <li><a href="http://www.library.illinois.edu/geninfo/history.html">About the Collections</a> </li>
+             <li><a href="http://www.library.illinois.edu/administration/human/positions/employment.html">Library Employment</a></li> 
+             <li><a href="http://www.library.illinois.edu/diversity/">Diversity &amp; Multicultural Information</a></li> 
+             <li><a href="http://www.library.illinois.edu/administration/services/policies/">Library Policies</a></li> 
+            </ul> 
+           </div> 
+           <div class="btn-group"> 
+            <button id="navbar-vertical-special-collections" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"> Special Collections <span class="caret"></span> </button> 
+            <ul class="dropdown-menu"> 
+             <li role="presentation" class="dropdown-header">Special Collections Units</li> 
+             <li><a href="http://www.library.illinois.edu/ihx/index.html ">Illinois History &amp; Lincoln Collections</a></li> 
+             <li><a href="http://www.library.illinois.edu/max/ ">Map Library</a></li> 
+             <li><a href="http://www.library.illinois.edu/rbx/">Rare Book &amp; Manuscript Library</a></li> 
+             <li><a href="http://www.library.illinois.edu/sousa/">Sousa Archives &amp; Center for American Music</a></li> 
+             <li><a href="http://archives.library.illinois.edu/slc/">Student Life and Culture Archives</a></li> 
+             <li><a href="http://archives.library.illinois.edu/">University Archives</a></li> 
+             <li role="presentation" class="divider"></li> 
+             <li role="presentation" class="dropdown-header">Other Special Collections</li> 
+             <li><a href="http://www.library.illinois.edu/sshel/s-coll/index.htm ">Children's Books (Social Sciences, Health, and Education Library)</a></li> 
+             <li><a href="http://www.library.illinois.edu/cmx/darcy/index.html">D'Arcy Advertising Collection (Communications Library)</a></li> 
+             <li><a href="http://imagesearchnew.library.illinois.edu/cdm/">Digital Image Collections</a></li> 
+             <li><a href="http://www.library.illinois.edu/kolbp/">Kolb-Proust Archive for Research (Rare Books &amp; Manuscript Library)</a></li> 
+             <li><a href="http://www.law.illinois.edu/library/rare-books-collection">Law Rare Book Collection (Law Library)</a></li> 
+             <li><a href="http://www.library.illinois.edu/mux/about/collections/specialcollections/index.html"> Music Special Collections (Music and Performing Arts Library)</a></li> 
+             <li><a href="http://www.library.illinois.edu/hpnl/">Newspapers (History, Philosophy, and Newspaper Library)</a></li> 
+            </ul> 
+           </div> 
+           <div class="btn-group"> 
+            <button id="navbar-vertical-services" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"> Services <span class="caret"></span> </button> 
+            <ul class="dropdown-menu"> 
+             <li><a href="http://www.library.illinois.edu/bix/">Biology Virtual Library</a></li> 
+             <li><a href="http://www.library.illinois.edu/bis/">Business Information Services</a></li> 
+             <li><a href="http://www.library.illinois.edu/gex/">Geology Virtual Library</a></li> 
+             <li><a href="http://www.library.illinois.edu/doc/">Government Information Services</a></li> 
+             <li><a href="http://www.library.illinois.edu/irrc/">Interlibrary Loan</a></li> 
+             <li><a href="http://www.library.illinois.edu/lis/">LIS Virtual Library</a></li> 
+             <li><a href="http://www.library.illinois.edu/ugl/mc/">Media Commons</a></li> 
+             <li><a href="http://www.library.illinois.edu/phx/">Physics &amp; Astronomy Virtual Library</a></li> 
+             <li><a href="http://www.library.illinois.edu/prescons/">Preservation and Conservation</a></li> 
+             <li><a href="http://researchdataservice.illinois.edu/">Research Data Service</a></li> 
+             <li><a href="http://www.library.illinois.edu/sc/">Scholarly Commons</a></li> 
+            </ul> 
+           </div> 
+           <div class="btn-group"> 
+            <button id="navbar-vertical-contact-us" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"> Contact <span class="caret"></span> </button> 
+            <ul class="dropdown-menu"> 
+             <li><a href="http://www.library.illinois.edu/people/directory.html">Departmental Directory</a></li> 
+             <li><a href="http://www.library.illinois.edu/people/phone.php">Employee Directory</a></li> 
+             <li><a href="http://www.library.illinois.edu/secondary/contactUs.html">General contact information</a></li> 
+             <li><a aria-label="Submit your feedback and suggestions" href="https://illinois.edu/fb/sec/1454867">Feedback and suggestions</a></li> 
+            </ul> 
+           </div> 
+           <div class="btn-group"> 
+            <button id="navbar-vertical-help" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"> Help <span class="caret"></span> </button> 
+            <ul class="dropdown-menu"> 
+             <li><a href="http://www.library.illinois.edu/askus/">Ask a Librarian</a></li> 
+             <li><a id="resourceGuidesAmobile" href="#helpli-mobile">Resource Guides</a></li> 
+             <li><a href="http://illinois.edu/calendar/list/4068">Workshops</a></li> 
+             <li role="presentation" class="divider"></li> 
+             <li role="presentation" class="dropdown-header">LEARN links</li> 
+             <li><a href="http://library.illinois.edu/learn">LEARN to use the Library</a></li> 
+             <li><a href="http://www.library.illinois.edu/learn/intro/index.html">Introduction to the Library</a></li> 
+             <li><a href="http://www.library.illinois.edu/learn/find/index.html">Find books, articles and more</a></li> 
+             <li><a href="http://www.library.illinois.edu/learn/research/citation/index.html">Cite a source</a></li> 
+             <li><a href="http://www.library.illinois.edu/learn/intro/faq.html">FAQ</a></li> 
+            </ul> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+      <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-navbar-collapse" id="navigation-collapse-btn">
+            <div class="navigation-collapse-text"><span class="fa fa-bars"></span></div>        
+            <span class="sr-only">Toggle navigation</span>
+          </button>--> 
+     </div> 
+     <div id="top-navbar-large-container" class="container" role="navigation" aria-label="main navigation"> 
+      <div class="collapse navbar-collapse" id="navigation-navbar-collapse"> 
+       <ul class="nav navbar-nav"> 
+        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a> 
+         <ul class="dropdown-menu"> 
+          <li><a href="http://www.library.illinois.edu/administration/librarian/">Welcome from the University Librarian</a></li> 
+          <li><a href="http://www.library.illinois.edu/administration/">Library Administration</a></li> 
+          <li><a href="http://www.library.illinois.edu/friends/index.html">Library Friends</a></li> 
+          <li><a href="http://www.library.illinois.edu/geninfo/history.html">About the Collections</a> </li>
+          <li><a href="http://www.library.illinois.edu/administration/human/positions/employment.html">Library Employment</a></li> 
+          <li><a href="http://www.library.illinois.edu/diversity/">Diversity &amp; Multicultural Information</a></li> 
+          <li><a href="http://www.library.illinois.edu/administration/services/policies/">Library Policies</a></li> 
+         </ul> </li> 
+        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Find a <span class="navbar-medium-wrap">Library <b class="caret"></b></span></a> 
+         <ul class="dropdown-menu"> 
+          <li><a id="hoursloca" href="#hoursloc">Libraries and Hours</a></li> 
+         </ul> </li> 
+        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Special <span class="navbar-medium-wrap">Collections <b class="caret"></b></span></a> 
+         <ul class="dropdown-menu"> 
+          <li role="presentation" class="dropdown-header">Special Collections Units</li> 
+          <li><a href="http://www.library.illinois.edu/ihx/index.html ">Illinois History &amp; Lincoln Collections</a></li> 
+          <li><a href="http://www.library.illinois.edu/max/ ">Map Library</a></li> 
+          <li><a href="http://www.library.illinois.edu/rbx/">Rare Book &amp; Manuscript Library</a></li> 
+          <li><a href="http://www.library.illinois.edu/sousa/">Sousa Archives &amp; Center for American Music</a></li> 
+          <li><a href="http://archives.library.illinois.edu/slc/">Student Life and Culture Archives</a></li> 
+          <li><a href="http://archives.library.illinois.edu/">University Archives</a></li> 
+          <li role="presentation" class="divider"></li> 
+          <li role="presentation" class="dropdown-header">Other Special Collections</li> 
+          <li><a href="http://www.library.illinois.edu/sshel/s-coll/index.htm ">Children's Books (Social Sciences, Health, and Education Library)</a></li> 
+          <li><a href="http://www.library.illinois.edu/cmx/darcy/index.html">D'Arcy Advertising Collection (Communications Library)</a></li> 
+          <li><a href="http://imagesearchnew.library.illinois.edu/cdm/">Digital Image Collections</a></li> 
+          <li><a href="http://www.library.illinois.edu/kolbp/">Kolb-Proust Archive for Research (Rare Books &amp; Manuscript Library)</a></li> 
+          <li><a href="http://www.law.illinois.edu/library/rare-books-collection">Law Rare Book Collection (Law Library)</a></li> 
+          <li><a href="http://www.library.illinois.edu/mux/about/collections/specialcollections/index.html"> Music Special Collections (Music and Performing Arts Library)</a></li> 
+          <li><a href="http://www.library.illinois.edu/hpnl/">Newspapers (History, Philosophy, and Newspaper Library)</a></li> 
+         </ul> </li> 
+        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Services <b class="caret"></b></a> 
+         <ul class="dropdown-menu"> 
+          <li><a href="http://www.library.illinois.edu/bix/">Biology Virtual Library</a></li> 
+          <li><a href="http://www.library.illinois.edu/bis/">Business Information Services</a></li> 
+          <li><a href="http://www.library.illinois.edu/gex/">Geology Virtual Library</a></li> 
+          <li><a href="http://www.library.illinois.edu/doc/">Government Information Services</a></li> 
+          <li><a href="http://www.library.illinois.edu/irrc/">Interlibrary Loan</a></li> 
+          <li><a href="http://www.library.illinois.edu/lis/">LIS Virtual Library</a></li> 
+          <li><a href="http://www.library.illinois.edu/ugl/mc/">Media Commons</a></li> 
+          <li><a href="http://www.library.illinois.edu/phx/">Physics &amp; Astronomy Virtual Library</a></li> 
+          <li><a href="http://www.library.illinois.edu/prescons/">Preservation and Conservation</a></li> 
+          <li><a href="http://researchdataservice.illinois.edu/">Research Data Service</a></li> 
+          <li><a href="http://www.library.illinois.edu/sc/">Scholarly Commons</a></li> 
+         </ul> </li> 
+        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contact <b class="caret"></b></a> 
+         <ul class="dropdown-menu"> 
+          <li><a href="http://www.library.illinois.edu/people/directory.html">Departmental Directory</a></li> 
+          <li><a href="http://www.library.illinois.edu/people/phone.php ">Employee Directory</a></li> 
+          <li><a href="http://www.library.illinois.edu/secondary/contactUs.html">General contact information</a></li> 
+          <li><a href="https://illinois.edu/fb/sec/1454867">Feedback and suggestions</a></li> 
+         </ul> </li> 
+        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Help <b class="caret"></b></a> 
+         <ul class="dropdown-menu"> 
+          <li><a href="http://www.library.illinois.edu/askus/">Ask a Librarian</a></li> 
+          <li><a id="resourceGuidesA" href="#helpli">Resource Guides</a></li> 
+          <li><a href="http://illinois.edu/calendar/list/4068">Workshops</a></li> 
+          <li role="presentation" class="divider"></li> 
+          <li role="presentation" class="dropdown-header">LEARN links</li> 
+          <li><a href="http://library.illinois.edu/learn">LEARN to use the Library</a></li> 
+          <li><a href="http://www.library.illinois.edu/learn/intro/index.html">Introduction to the Library</a></li> 
+          <li><a href="http://www.library.illinois.edu/learn/find/index.html">Find books, articles and more</a></li> 
+          <li><a href="http://www.library.illinois.edu/learn/research/citation/index.html">Cite a source</a></li> 
+          <li><a href="http://www.library.illinois.edu/learn/intro/faq.html">FAQ</a></li> 
+         </ul> </li> 
+        <li class="dropdown hidden-xs"> <a id="donate_navbar_link" href="http://www.library.illinois.edu/friends/gift.html"><span class="fa fa-gift fa-1x"></span> Make a Gift</a> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </nav>
+    <div id="alert-div"> 
+     <!--
+	<div class="alert alert-danger" role="alert">
+		<span class="alert-item-line show">
+		<span class="fa fa-exclamation-circle" aria-hidden="true"> </span>
+		<span class="sr-only">Warning:</span>
+		<span class="alert-item-title">
+		<strong>ITEM TITLE GOES HERE</strong>
+		</span>
+		,
+		<span class="alert-item-desc">ITEM CONTENT GOES HERE</span>
+		</span>
+	</div>
+	--> 
+    </div>
+    <!--container and row that are closed at end of dynamic.php to allow for proper aria landmark role=main application--> 
+    <!--mobile view for light blue box links starts here--> 
+    <div class="container" role="main" aria-label="main of the site including libray catalogs, ask a librarian, library hours and location, room servervation, news and event"> 
+     <div class="row"> 
+      <div class="container"> 
+       <div class="visible-xs-block push right"> 
+        <div class="dropdown"> 
+         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuforlinks" data-toggle="dropdown" aria-expanded="true"> Useful Resources and links <span class="caret"></span> </button> 
+         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuforlinks" style="padding:.4em; background-color:#eeeeee; border:#000000 solid 1px;"> 
+          <h5>Catalogs</h5> 
+          <li class="list-group-item"> 
+           <ul class="list-unstyled"> 
+            <li style="line-height:2em;"><a href="http://vufind.carli.illinois.edu/vf-uiu/">U of I Catalog</a></li> 
+            <li style="line-height:2em;"><a href="https://vufind.carli.illinois.edu/all/vf/">I-Share Catalog</a></li> 
+            <li style="line-height:2em;"><a href="http://sfx.carli.illinois.edu/sfxuiu?rft.object_id=63750000000000325">WorldCat</a></li> 
+            <li style="line-height:2em;"><a href="http://www.library.illinois.edu/catalog/">All Catalogs</a></li> 
+           </ul> </li> 
+          <h5> Course Reserves</h5> 
+          <li class="list-group-item"> 
+           <ul class="list-unstyled"> 
+            <li style="line-height:2em;"><a href="https://i-share.carli.illinois.edu/uiu/cgi-bin/Pwebrecon.cgi?DB=local&amp;PAGE=rbSearch">All Reserves (Print, Media, Electronic)</a></li> 
+            <li style="line-height:2em;"><a href="https://reserves.library.illinois.edu/ares/ares.dll">Electronic Reserves Only</a></li> 
+            <li role="presentation" class="divider"></li> 
+            <li role="presentation" class="dropdown-header">Reserves Help</li> 
+            <li style="line-height:2em;"><a href="http://www.library.illinois.edu/ugl/howdoi/reserves.html">Searching Reserves</a></li> 
+            <li style="line-height:2em;"><a href="http://uiuc.libguides.com/reserves">Guide to Electronic Reserves</a></li> 
+            <li style="line-height:2em;"><a href="http://www.library.illinois.edu/cmservices/reserve.html">Placing Physical Materials on Reserve</a></li> 
+           </ul> </li> 
+          <h5>Databases and Journals</h5> 
+          <li class="list-group-item"> 
+           <ul class="list-unstyled"> 
+            <li style="line-height:2em;"><a href="http://search.grainger.uiuc.edu/linker/">Journal and Article Locator</a></li> 
+            <li style="line-height:2em;"><a href="http://openurl.library.uiuc.edu/sfxlcl3/az">Online Journals &amp; Databases</a></li> 
+            <li style="line-height:2em;"><a href="http://www.library.illinois.edu/catalog/vufind/dbsubject.html">Databases by Subject</a></li> 
+           </ul> </li> 
+          <h5>Reference Resources</h5> 
+          <li class="list-group-item"> 
+           <ul class="list-unstyled"> 
+            <li style="line-height:2em;"><a href="http://www.library.illinois.edu/eref/">Online Reference Collection</a></li> 
+            <li role="presentation" class="divider"></li> 
+            <li style="line-height:2em;"><a href="http://www.library.illinois.edu/eref/formats/biography.html">Biography</a></li> 
+            <li style="line-height:2em;"><a href="http://www.library.illinois.edu/eref/formats/bookreviews.html">Book Reviews</a></li> 
+            <li style="line-height:2em;"><a href="http://www.library.illinois.edu/eref/formats/dictionaries.html">Dictionaries</a></li> 
+            <li style="line-height:2em;"><a href="http://www.library.illinois.edu/eref/formats/encyclopedias.html">Encyclopedias</a></li> 
+           </ul> </li> 
+          <h5>Specialized Resources</h5> 
+          <li class="list-group-item"> 
+           <ul class="list-unstyled"> 
+            <li style="line-height:2em;"><a href="https://ideals.illinois.edu/">IDEALS</a></li> 
+            <li style="line-height:2em;"><a href="http://www.library.illinois.edu/eref/formats/dissertations.html">Dissertations</a></li> 
+            <li style="line-height:2em;"><a href="http://www.library.illinois.edu/doc/">Government Documents</a></li> 
+           </ul> </li> 
+         </ul> 
+        </div> 
+       </div> 
+       <!--mobile view end here--> 
+       <h2 class="sr-only">Easy Search(library catalog searh)</h2> 
+       <div class="row"> 
+        <div class="col-md-9"> 
+         <div id="easy-search-panel-tabs" class="panel panel-default blank-panel"> 
+          <div style="float:left; color:black; font-size:1.25em; font-weight:500; padding:.33em;">
+           <span style="display:inline-block; vertical-align:middle">Search for</span>
+          </div> 
+          <!-- Nav tabs --> 
+          <ul class="nav nav-tabs easysearch-tab" role="tablist" id="easysearch-tab-list" aria-label="easy search"> 
+           <!--<li><div role="tab" id="searchForAnchor"><span style="color:black; padding-left:9px; padding-right:5px; font-size:18px; font-weight:500;"> Search for</span></div></li>--> 
+           <li class="active"><a class="easysearch_tab_font" href="#everythingTab" role="tab" data-toggle="tab" aria-label="everything">Everything</a></li> 
+           <li><a class="easysearch_tab_font" href="#booksTab" role="tab" data-toggle="tab" aria-label="books">Books</a></li> 
+           <li><a class="easysearch_tab_font" href="#articlesTab" role="tab" data-toggle="tab" aria-label="articles">Articles</a></li> 
+           <li><a class="easysearch_tab_font" href="#journalsTab" role="tab" data-toggle="tab" aria-label="journals">Journals</a></li> 
+           <li><a class="easysearch_tab_font" href="#mediaTab" role="tab" data-toggle="tab" aria-label="media">Media</a></li> 
+          </ul> 
+          <!-- Tab panes --> 
+          <div class="tab-content easysearch-tab"> 
+           <div class="tab-pane" id="searchTab">
+            disabled search div
+           </div> 
+           <div class="tab-pane active" id="everythingTab"> 
+            <!-- begin easy search content--> 
+            <div class="panel-body" id="search-panel-body"> 
+             <div class="row"> 
+              <span style="display:block; float:right;"><a class="searchlinks" href="http://search.grainger.illinois.edu/searchaid2/searchassist.asp">Advanced Search</a></span>
+              <span style="display:block; float:left; margin-top: 0;"><h3 class="h3-inverse"><span class="fa fa-search"></span> Easy Search</h3></span> 
+             </div> 
+             <div class="row"> 
+              <form class="form-inline" role="form" method="get" action="http://search.grainger.illinois.edu/searchaid2/saresultsug.asp" id="search_everything"> 
+               <div class="col-md-6"> 
+                <div class="col-md-12 input-group" id="search-box-group"> 
+                 <label for="keyword" class="sr-only">Enter search terms</label> 
+                 <input type="text" class="form-control easy_search_tab_text" id="keyword" name="keyword" maxlength="255" size="25" placeholder="Enter search terms" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter search terms'" aria-required="true"> 
+                 <input type="hidden" alt="submit" value="direct" name="s2"> 
+                </div> 
+                <span class="help-block">Search by title, author, or keyword in a broad selection of sources. <a class="searchlinks" href="http://search.grainger.illinois.edu/searchaid2/what_searching.htm"> What am I searching?</a></span> 
+               </div> 
+               <div class="col-md-6"> 
+                <label for="dropdown" class="sr-only">Subject Selection</label> 
+                <select id="dropdown" class="form-control" name="selection" style="max-width:205px;" aria-required="true"> <option value="gen">Multi-Subject Resources</option> <option value="news">Current News Sources</option> <option value="ArHu">Arts &amp; Humanities</option> <option value="Bus">Business</option> <option value="Educ">Education</option> <option value="EngRes">Engineering</option> <option value="health">Health Sciences</option> <option value="images">Images</option> <option value="ias">International &amp; Area Studies</option> <option value="LIS">Library &amp; Information Science</option> <option value="lifesci">Life Sciences</option> <option value="music">Music &amp; Performing Arts</option> <option value="Physsci">Physical Sciences/Math</option> <option value="Socsci">Social Sciences</option> </select> 
+                <input type="hidden" alt="submit" value="gateway" name="project"> 
+                <input type="hidden" alt="submit" value="opac" name="selection"> 
+                <input type="hidden" alt="submit" value="web" name="selection"> 
+                <label class="sr-only" for="easy-search-all-full">Search</label> 
+                <input id="easy-search-all-full" class="btn btn-primary" type="submit" alt="submit" value="Search" name="searchbutton"> 
+               </div> 
+              </form> 
+             </div> 
+            </div> 
+            <!-- end easy search content--> 
+           </div> 
+           <div class="tab-pane" id="booksTab"> 
+            <!--begin books panel--> 
+            <div class="panel-body" id="search-panel-body"> 
+             <div class="row"> 
+              <span style="display:block; float:right;"><a class="searchlinks" href="http://search.grainger.illinois.edu/searchaid2/searchassist.asp">Advanced Search</a></span>
+              <span style="display:block; float:left; margin-top: 0;"><h3 class="h3-inverse"><span class="fa fa-search"></span> Easy Search</h3></span> 
+             </div> 
+             <div class="row"> 
+              <form class="form-inline" id="search_books" action="http://search.grainger.illinois.edu/searchaid2/saresultsug.asp" method="get"> 
+               <div class="col-md-6"> 
+                <div class="col-md-12 input-group"> 
+                 <label class="sr-only" for="Search_Argument">Enter Search Terms</label> 
+                 <input id="Search_Argument" class="form-control easy_search_tab_text" type="text" placeholder="Enter search terms" maxlength="255" size="25" name="keyword" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter search terms'"> 
+                 <input type="hidden" alt="submit" value="direct" name="s2"> 
+                 <input type="hidden" alt="submit" value="gatewayopac" name="project"> 
+                 <input type="hidden" alt="submit" value="opac" name="selection"> 
+                </div> 
+                <span class="help-block">Find books by keyword, title, or author.<br><a class="searchlinks" href="http://search.grainger.illinois.edu/searchaid2/what_searching.htm">What am I searching?</a></span> 
+               </div> 
+               <div class="col-md-6"> 
+                <label class="sr-only" for="booksSearch_Code">Book Search</label> 
+                <select id="booksSearch_Code" class="form-control" name="booksSearch_Code" aria-required="true"> <option value="FT*">Keyword</option> <option value="TALL">Title words</option> <option value="NAME+">Author (last name, first)</option> </select> 
+                <input type="submit" class="btn btn-primary" alt="submit" value="Search" name="searchbutton"> 
+                <p style="display:inline;"></p> 
+               </div> 
+              </form> 
+             </div> 
+            </div> 
+            <!--end books panel--> 
+           </div> 
+           <div class="tab-pane" id="articlesTab"> 
+            <!--begin articles panel--> 
+            <div class="panel-body" id="search-panel-body"> 
+             <div class="row"> 
+              <span style="display:block; float:right;"><a class="searchlinks" href="http://search.grainger.illinois.edu/searchaid2/searchassist.asp">Advanced Search</a></span>
+              <span style="display:block; float:left; margin-top: 0;"><h3 class="h3-inverse"><span class="fa fa-search"></span> Easy Search</h3></span> 
+             </div> 
+             <div class="row"> 
+              <form id="search_articles" class="form-inline" action="http://search.grainger.illinois.edu/searchaid2/saresultsug.asp" method="get"> 
+               <div class="col-md-6"> 
+                <div class="col-md-12 input-group"> 
+                 <label for="artclSubject" class="sr-only">article</label> 
+                 <input id="artclSubject" class="form-control easy_search_tab_text" type="text" placeholder="Enter article subject" maxlength="255" size="25" name="keyword" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter article subject'"> 
+                 <input type="hidden" alt="submit" value="direct" name="s2"> 
+                 <input type="hidden" alt="submit" value="gatewayjnlarticle" name="project"> 
+                </div> 
+                <span class="help-block">Search for articles on a specific topic in magazines and journals. <a class="searchlinks" href="http://search.grainger.illinois.edu/searchaid2/what_searching.htm">What am I searching?</a></span> 
+               </div> 
+               <div class="col-md-6"> 
+                <!--<div class="form-group col-md-12">--> 
+                <label for="selection2" class="sr-only">choose the subject</label> 
+                <select id="selection2" class="form-control" name="selection" style="max-width:205px;" aria-required="true"> <option value="gen">Multi-Subject Resources</option> <option value="news">Current News Sources</option> <option value="ArHu">Arts &amp; Humanities</option> <option value="Bus">Business</option> <option value="Educ">Education</option> <option value="EngRes">Engineering</option> <option value="health">Health Sciences</option> <option value="ias">International &amp; Area Studies</option> <option value="LIS">Library &amp; Information Science</option> <option value="lifesci">Life Sciences</option> <option value="music">Music &amp; Performing Arts</option> <option value="Physsci">Physical Sciences/Math</option> <option value="Socsci">Social Sciences</option> </select> 
+                <input type="submit" class="btn btn-primary" alt="submit" value="Search" name="searchbutton"> 
+                <!--<input class="btn btn-primary" type="submit" alt="submit" value="SEARCH" name="searchbutton">--> 
+                <p style="display:inline"> </p> 
+                <!--</div>--> 
+               </div> 
+              </form> 
+             </div> 
+            </div> 
+            <!--begin articles panel--> 
+           </div> 
+           <!--begin journals panel--> 
+           <div class="tab-pane" id="journalsTab"> 
+            <div class="panel-body" id="search-panel-body"> 
+             <div class="row"> 
+              <span style="display:block; float:right;"><a class="searchlinks" href="http://search.grainger.illinois.edu/linker/">Advanced Search</a></span>
+              <span style="display:block; float:left; margin-top: 0;"><h3 class="h3-inverse"><span class="fa fa-search"></span> Easy Search</h3></span> 
+             </div> 
+             <div class="row"> 
+              <form id="search_journals" action="http://search.grainger.illinois.edu/linker/resolve88.asp" method="get"> 
+               <div class="col-md-6"> 
+                <div class="col-md-12 input-group"> 
+                 <label for="jnltitle" class="sr-only">Journal Title</label> 
+                 <input id="jnltitle" class="form-control easy_search_tab_text" type="text" placeholder="Enter journal title" maxlength="255" size="25" name="jnltitle" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter journal title'" aria-required="true"> 
+                 <input type="hidden" alt="submit" value="gatewayjnltitle" name="project"> 
+                </div> 
+                <span class="help-block">Search for specific journal titles both in print and electronic format. <a class="searchlinks" href="http://search.grainger.illinois.edu/searchaid2/what_searching.htm">What am I searching?</a></span> 
+               </div> 
+               <div class="col-md-6"> 
+                <!--<div class="form-group col-md-12">--> 
+                <input type="submit" class="btn btn-primary" alt="submit" value="Search" name="searchbutton"> 
+                <!--<input class="btn btn-primary" type="submit" alt="submit" value="SEARCH" name="searchbutton">--> 
+                <p style="display:inline"> </p> 
+                <!--</div>--> 
+               </div> 
+              </form> 
+             </div> 
+            </div> 
+            <!--end journals panel--> 
+           </div> 
+           <div class="tab-pane" id="mediaTab"> 
+            <!--begin media panel content--> 
+            <div class="panel-body" id="search-panel-body"> 
+             <div class="row"> 
+              <span style="display:block; float:right;"></span>
+              <span style="display:block; float:left; margin-top: 0;"> <h3 class="h3-inverse"><span class="fa fa-search"></span> Easy Search</h3></span> 
+             </div> 
+             <div class="row"> 
+              <form id="search_media" class="form-inline" action="http://vufind.carli.illinois.edu/vf-uiu/Search/Home?" method="get"> 
+               <div class="col-md-6"> 
+                <div class="col-md-12 input-group"> 
+                 <label class="sr-only" for="vumedia">Media Search</label> 
+                 <input id="vuMedia" class="form-control easy_search_tab_text" type="text" placeholder="Enter media title" maxlength="255" size="15" name="lookfor[]" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter media title'" aria-required="true"> 
+                 <input type="hidden" name="type[]" value="all"> 
+                 <input type="hidden" name="bool[]" value="AND"> 
+                 <input type="hidden" name="specDate" value="YYYY"> 
+                 <input type="hidden" name="version" value="any"> 
+                 <input type="hidden" name="format[]" value="Music Recording"> 
+                 <input type="hidden" name="format[]" value="Spoken Word Recording"> 
+                 <input type="hidden" name="format[]" value="Audio CD"> 
+                 <input type="hidden" name="format[]" value="Audiocassette"> 
+                 <input type="hidden" name="format[]" value="Vinyl LP"> 
+                 <input type="hidden" name="format[]" value="Movie"> 
+                 <input type="hidden" name="format[]" value="Blu-ray"> 
+                 <input type="hidden" name="format[]" value="DVD"> 
+                 <input type="hidden" name="format[]" value="VHS"> 
+                 <input type="hidden" name="format[]" value="Film"> 
+                 <input type="hidden" name="format[]" value="Software / Computer File"> 
+                 <input type="hidden" name="gPub" value=""> 
+                 <input type="hidden" name="start_over" value="1"> 
+                 <input type="hidden" name="submit" value="Find"> 
+                </div> 
+                <span class="help-block">Find CDs, DVDs, videocassettes, and games for computers and game consoles.<br></span> 
+               </div> 
+               <div class="col-md-6"> 
+                <input type="submit" class="btn btn-primary" alt="submit" value="Search" name="searchbutton"> 
+               </div> 
+              </form> 
+             </div> 
+            </div> 
+            <!--end media panel content--> 
+           </div> 
+          </div> 
+          <!-- MARIA ADD --> 
+          <br> 
+          <!-- END MARIA ADD --> 
+          <nav class="navbar-options" role="navigation" aria-label="links to the library catalog, course reserve, journal database, reference collection"> 
+           <div class="container-fluid"> 
+            <ul class="nav navbar-nav pull-left"> 
+             <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><br>Catalogs<b class="caret"></b><br></a> 
+              <ul class="dropdown-menu"> 
+               <li><a href="http://vufind.carli.illinois.edu/vf-uiu/">U of I Catalog</a></li> 
+               <li><a href="https://vufind.carli.illinois.edu/all/vf/">I-Share Catalog</a></li> 
+               <li><a href="http://sfx.carli.illinois.edu/sfxuiu?rft.object_id=63750000000000325">WorldCat</a></li> 
+               <li><a href="http://www.library.illinois.edu/catalog/">All Catalogs</a></li> 
+              </ul> </li> 
+             <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><br>Course Reserves<b class="caret"></b><br></a> 
+              <ul class="dropdown-menu"> 
+               <li><a href="https://i-share.carli.illinois.edu/uiu/cgi-bin/Pwebrecon.cgi?DB=local&amp;PAGE=rbSearch">All Reserves (Print, Media, Electronic)</a></li> 
+               <li><a href="https://reserves.library.illinois.edu/ares/ares.dll">Electronic Reserves Only</a></li> 
+               <li role="presentation" class="divider"></li> 
+               <li role="presentation" class="dropdown-header">Reserves Help</li> 
+               <li><a href="http://www.library.illinois.edu/ugl/howdoi/reserves.html">Searching Reserves</a></li> 
+               <li><a href="http://uiuc.libguides.com/reserves">Guide to Electronic Reserves</a></li> 
+               <li><a href="http://www.library.illinois.edu/cmservices/reserve.html">Placing Physical Materials on Reserve</a></li> 
+              </ul> </li> 
+             <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Databases <br>and Journals<b class="caret"></b></a> 
+              <ul class="dropdown-menu"> 
+               <li><a href="http://search.grainger.uiuc.edu/linker/">Journal and Article Locator</a></li> 
+               <li><a href="http://openurl.library.uiuc.edu/sfxlcl3/az">Online Journals &amp; Databases</a></li> 
+               <li><a href="http://www.library.illinois.edu/catalog/vufind/dbsubject.html">Databases by Subject</a></li> 
+              </ul> </li> 
+             <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reference <br>Resources<b class="caret"></b></a> 
+              <ul class="dropdown-menu"> 
+               <li><a href="http://www.library.illinois.edu/eref/">Online Reference Collection</a></li> 
+               <li role="presentation" class="divider"></li> 
+               <li><a href="http://www.library.illinois.edu/eref/formats/biography.html">Biography</a></li> 
+               <li><a href="http://www.library.illinois.edu/eref/formats/bookreviews.html">Book Reviews</a></li> 
+               <li><a href="http://www.library.illinois.edu/eref/formats/dictionaries.html">Dictionaries</a></li> 
+               <li><a href="http://www.library.illinois.edu/eref/formats/encyclopedias.html ">Encyclopedias</a></li> 
+              </ul> </li> 
+             <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Specialized <br>Resources<b class="caret"></b></a> 
+              <ul class="dropdown-menu"> 
+               <li><a href="https://ideals.illinois.edu/">IDEALS</a></li> 
+               <li><a href="http://www.library.illinois.edu/eref/formats/dissertations.html">Dissertations</a></li> 
+               <li><a href="http://www.library.illinois.edu/doc/">Government Documents</a></li> 
+               <!--<li><a
+                                        href="http://imagesearchnew.library.illinois.edu/cdm/"
+                                        >Digital Image Collections</a></li>--> 
+              </ul> </li> 
+            </ul> 
+           </div> 
+          </nav> 
+         </div> 
+        </div> 
+        <div class="col-md-3 light-area" id="ask-lib-col"> 
+         <div id="ask-lib-collapse"> 
+          <div class="ask-lib-box"> 
+           <div id="chatbox" class="span6"> 
+            <iframe title="Ask A Librarian" id="iwonder_client" height="440px" width="100%" frameborder="0" src=""></iframe> 
+            <script type="text/javascript">var iwonder_css="http://chat.library.illinois.edu/widgeta/css/homepage.css"</script> 
+            <script src="http://chat.library.illinois.edu/widgeta/scripts/iwonder_clienta.js" type="text/javascript"></script> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="row"> 
+        <div class="col-md-12"> 
+         <div id="easy-search-panel-mobile"> 
+          <div class="row"> 
+           <div class="col-xs-8"> 
+            <h3 class="h3-inverse" aria-labelledby="searchLabel"><span class="fa fa-search"></span> Easy Search</h3> 
+           </div> 
+           <div class="col-xs-4"> 
+            <span><a class="searchlinks" href="http://search.grainger.illinois.edu/searchaid2/searchassist.asp">Advanced Search</a></span> 
+           </div> 
+          </div> 
+          <div class="row"> 
+           <div class="col-md-12"> 
+            <form class="form-inline" method="get" action="http://search.grainger.illinois.edu/searchaid2/saresultsug.asp" role="search"> 
+             <div class="col-md-12 input-group" id="search-box-group"> 
+              <label for="keyword_mobile" class="sr-only">Enter search terms</label> 
+              <input type="text" class="form-control" id="keyword_mobile" name="keyword" maxlength="255" size="25" placeholder="Search by title, author, or keyword" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search by title, author, or keyword'" aria-required="true"> 
+              <input type="hidden" alt="submit" value="direct" name="s2"> 
+              <input type="hidden" value="gen" name="selection"> 
+              <input type="hidden" alt="submit" value="gateway" name="project"> 
+              <input type="hidden" alt="submit" value="opac" name="selection"> 
+              <input type="hidden" alt="submit" value="web" name="selection"> 
+              <span class="input-group-btn"> <button class="btn btn-primary" type="submit" alt="submit" value="Search" name="searchbutton">Search</button> </span> 
+             </div> 
+            </form> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div>
+      <div class="container light-area"> 
+       <div class="row" id="dynamictabs"> 
+        <div class="col-md-12"> 
+         <div class="panel panel-default"> 
+          <div id="orange-bar-div-all" class="navbar-inverse" role="navigation"> 
+           <div class="hidden-xs" id="info-tabs-navbar-collapse"> 
+            <ul class="nav nav-tabs nav-justified" id="info-tab-list" aria-label="navigation menu for library hours and location, room reservation, loanable technology and news"> 
+             <li id="hoursloc" class="active"><a href="#hours" aria-label="Libraries and Hours" data-toggle="tab"><span class="fa fa-clock-o fa-3x"></span> 
+               <div class="tab_label">
+                Libraries 
+                <br>and Hours
+               </div></a></li> 
+             <li id="helpli"><a href="#help" aria-label="Resource Guides" data-toggle="tab"><span class="fa fa-question fa-3x"></span>
+               <div class="tab_label">
+                Resource 
+                <br>Guides
+               </div></a></li> 
+             <li id="techli"><a href="#tech" aria-label="Library Technology" data-toggle="tab"><span class="fa fa-laptop fa-3x"></span>
+               <div class="tab_label">
+                Library 
+                <br>Technology
+               </div></a></li> 
+             <li id="roomresli"><a href="#roomres" aria-label="Study Rooms" data-toggle="tab"><span class="fa fa-pencil-square-o fa-3x"></span>
+               <div class="tab_label">
+                Study 
+                <br>Rooms
+               </div></a></li> 
+             <li id="newsli"><a href="#news" aria-label="News and Events" data-toggle="tab"><span class="fa fa-calendar fa-3x"></span>
+               <div class="tab_label">
+                News and
+                <br>Events
+               </div></a></li> 
+            </ul> 
+           </div> 
+           <!--   mobile view start  --> 
+           <div class="visible-xs" aria-label="navigation menu for mobile view"> 
+            <div class="mobiletabview "> 
+             <ul class="nav nav-tabs" id="info-menu-list" aria-label="navigation menu for library hours and location, room reservation, loanable technology and news"> 
+              <li id="hoursloc-mobile" class="active"><a href="#hours" aria-label="Libraries and Hours" data-toggle="tab"><span class="fa fa-clock-o fa-1x"></span> Libraries and Hours</a></li> 
+              <li id="helpli-mobile"><a href="#help" aria-label="Resource Guides" data-toggle="tab"><span class="fa fa-question fa-1x"></span> Resource Guides</a></li> 
+              <li id="techli-mobile"><a href="#tech" aria-label="Library Technology" data-toggle="tab"><span class="fa fa-laptop fa-1x"></span> Library Technology</a></li> 
+              <li id="roomresli-mobile"><a href="#roomres" aria-label="Study Rooms" data-toggle="tab"><span class="fa fa-pencil-square-o fa-1x"></span> Study Rooms</a></li> 
+              <li id="newsli-mobile"><a href="#news" aria-label="News and Events" data-toggle="tab"><span class="fa fa-calendar fa-1x"></span> News and Events</a></li> 
+             </ul> 
+            </div> 
+           </div> 
+           <!--   mobile view end  --> 
+          </div> 
+          <div id="orange_bar_content_panel" class="tab-content" aria-labelledby="mainContentLabel"> 
+           <!--<div id="orange_bar_content_panel" class="tab-content" aria-labelledby="mainContentLabel" role="main">--> 
+           <!-- TAB: HOURS AND LOCATION --> 
+           <div class="tab-pane active" id="hours" role="tabpanel" aria-label="LIBRARIES AND HOURS"> 
+            <div class="container-fluid"> 
+             <!-- TAB TITLE --> 
+             <div class="row"> 
+              <div class="col-sm-12 col-xs-12"> 
+               <h3>LIBRARIES AND HOURS</h3> 
+               <hr class="orange-line"> 
+              </div> 
+             </div> 
+             <!-- END TAB TITLE --> 
+             <div class="row"> 
+              <div class="col-md-12" id="library-links-hours-loc-row"> 
+               <span class="pull-right"> <a style="padding-right:7px;" href="http://www.library.illinois.edu/services/find.php">Show All (Including virtual libraries) | </a> <a href="http://www.library.illinois.edu/bycollege/">By Subject</a> </span> 
+              </div> 
+             </div> 
+             <div class="row" id="library_search_row" role="search"> 
+              <div class="col-md-12" id="library_search_input_div"> 
+               <div id="library-hours-filter-box"> 
+                <div class="row"> 
+                 <form class="form-inline"> 
+                  <div class="col-md-4"> 
+                   <label for="search-field" class="sr-only">Filter libraries by name</label> 
+                   <input style="width:100%;" type="text" class="form-control" id="search-field" placeholder="Filter libraries by name" aria-required="false"> 
+                  </div> 
+                  <div class="col-md-2"> 
+                   <label id="show-open-lib-label"> <input id="open-filter-checkbox" type="checkbox" name="show-open-checkbox" value="open">Show only open libraries </label> 
+                  </div> 
+                 </form> 
+                 <div class="col-md-6 vertical-center" id="library_search_additional_links_div"> 
+                  <a href="./hours/">Weekly Hours View</a> 
+                 </div> 
+                </div> 
+               </div> 
+              </div> 
+              <!--<div class="col-md-6" id="library_search_additional_links_div">	
+					<a href="http://gateway-dev.library.illinois.edu/weathrs2/hours_page/" class="pull-right">Search All Hours</a>
+				</div>--> 
+             </div> 
+             <div class="row"> 
+              <div class="col-md-12"> 
+               <div id="library-location-panel" style="height: 400px; overflow-y: scroll;"> 
+                <ul class="list-group" id="libs"> 
+                </ul> 
+               </div> 
+              </div> 
+             </div> 
+             <!-- end row --> 
+            </div>
+            <!-- end container --> 
+           </div>
+           <!-- end tab pane --> 
+           <!-- END TAB: HOURS AND LOCATION --> 
+           <!-- TAB: HELP --> 
+           <div class="tab-pane" id="help"> 
+            <div class="container-fluid"> 
+             <!-- TAB TITLE --> 
+             <div class="row"> 
+              <div class="col-sm-12"> 
+               <h3 aria-labelledby="resource guides">RESOURCE GUIDES</h3> 
+               <hr class="orange-line" role="presentation"> 
+              </div> 
+             </div> 
+             <!-- TAB TITLE --> 
+             <div class="row-fluid"> 
+              <!--begin Resource Guides column --> 
+              <div class="col-sm-6"> 
+               <h4>Resource Guides:</h4> 
+               <ul id="libguidelist" class="nav nav-tabs libguides" role="tablist"> 
+                <li class="active"> <a href="#all" role="tab" data-toggle="tab">All</a> </li> 
+                <li> <a href="#popular" role="tab" data-toggle="tab">Popular</a> </li> 
+                <li> <a href="#subject" role="tab" data-toggle="tab">Subject</a> </li> 
+                <li> <a href="#librarian" role="tab" data-toggle="tab">Librarians</a> </li> 
+               </ul> 
+               <!-- Resource Guides Tab panes --> 
+               <div class="tab-content libguides"> 
+                <div class="tab-pane" id="all"> 
+                 <div id="api_box_iid28_bid18829943"></div> 
+                 <script type="text/javascript" src="http://api.libguides.com/api_box.php?iid=28&amp;target=_self&amp;bid=18829943&amp;context=object&amp;format=js&amp;css=0"></script> 
+                </div> 
+                <div class="tab-pane" id="popular"> 
+                 <div id="api_box_iid28_bid18828737"></div> 
+                 <script type="text/javascript" src="http://api.libguides.com/api_box.php?iid=28&amp;target=_self&amp;bid=18828737&amp;context=object&amp;format=js&amp;css=0"></script> 
+                </div> 
+                <div class="tab-pane active" id="subject"> 
+                 <ul> 
+                  <div id="api_subjects_iid28"></div> 
+                  <script type="text/javascript" src="http://api.libguides.com/api_subjects.php?iid=28&amp;target=_self&amp;break=li&amp;incempty=false&amp;context=object&amp;format=js"> </script> 
+                 </ul> 
+                </div> 
+                <div class="tab-pane" id="librarian"> 
+                 <ul> 
+                  <div id="api_users_iid28"></div> 
+                  <script type="text/javascript" src="http://api.libguides.com/api_users.php?iid=28&amp;target=_self&amp;break=li&amp;incempty=false&amp;context=object&amp;format=js"> </script> 
+                 </ul> 
+                </div> 
+               </div> 
+              </div> 
+              <!-- end Resource Guides column --> 
+              <!--begin Search Resource Guides column --> 
+              <div class="col-sm-6"> 
+               <h4>Search Resource Guides:</h4> 
+               <div class="panel panel-default"> 
+                <div class="panel-heading" role="search" aria-label="Search resource guides"> 
+                 <form class="form-inline" id="libSearchForm"> 
+                  <div class="form-group"> 
+                   <div class="input-group"> 
+                    <label for="resource-guide-search-button" class="sr-only">Search Resource Guides</label> 
+                    <input id="resource-guide-search-button" type="text" class="form-control input-sm" name="search" maxlength="250" placeholder="Search Guides" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Guides'"> 
+                    <input name="type" value="guides" type="hidden"> 
+                    <input name="iid" value="28" type="hidden"> 
+                    <input name="sortby" value="relevance" type="hidden"> 
+                    <input name="break" value="li" type="hidden"> 
+                    <input name="target" value="_self" type="hidden"> 
+                    <span class="input-group-btn"> <button id="guidesearch" type="submit" class="btn btn-primary btn-sm"></button>Search </span> 
+                   </div> 
+                  </div> 
+                 </form> 
+                </div> 
+                <div class="panel-body" id="libsearchpanel"> 
+                 <div> 
+                  <div id="libGuideSearch">
+                   Search results...
+                  </div> 
+                 </div> 
+                </div> 
+               </div> 
+              </div> 
+              <!--end Search Resource Guides column --> 
+             </div> 
+            </div>
+            <!-- ends container --> 
+           </div>
+           <!-- ends tab-pane "help" --> 
+           <!-- END TAB: HELP --> 
+           <!-- TAB: TECH --> 
+           <div class="tab-pane" id="tech"> 
+            <div class="container-fluid"> 
+             <!-- TAB TITLE --> 
+             <div class="row"> 
+              <div class="col-sm-12"> 
+               <h3>LIBRARY TECHNOLOGY</h3> 
+               <hr class="orange-line"> 
+              </div> 
+             </div> 
+             <!-- END TAB TITLE --> 
+             <div class="row-fluid"> 
+              <!-- begin Computers and Equipment column --> 
+              <div class="col-sm-6"> 
+               <h4>Computers and Equipment</h4> 
+               <div class="col-sm-12"> 
+                <h5>Information about:</h5> 
+                <a href="http://www.library.illinois.edu/services/librarycomputing.html"> <span style="padding-right: 10px; margin-left: 30px;" class="fa fa-desktop fa-2x fa-fw"></span>Computers</a> 
+               </div> 
+               <div class="col-sm-12"> 
+                <a href="http://www.library.illinois.edu/services/librarycomputing.html"> <span style="padding-right: 10px; padding-top: 7px; margin-left: 30px;" class="fa fa-print fa-2x fa-fw"></span>Printing</a> 
+               </div> 
+               <div class="col-sm-12"> 
+                <a href="http://www.library.illinois.edu/services/librarycomputing.html"> <span style="padding-right: 10px; padding-top: 7px; margin-left: 30px;" class="fa fa-files-o fa-2x fa-fw"></span>Scanning/Copying</a> 
+                <hr> 
+               </div> 
+               <!--<table>
+                                <tr>
+                                    <td><span style="padding-right: 10px; margin-left: 30px;" class="fa fa-desktop fa-2x fa-fw"></span></td>
+                                    <td style="vertical-align:center;"><a href="http://www.library.illinois.edu/services/librarycomputing.html">Computers</a></td>
+                                </tr>
+                                <tr>
+                                	<td><span style="padding-right: 10px; padding-top: 7px; margin-left: 30px;" class="fa fa-print fa-2x fa-fw"></span></td> 
+                                    <td style="vertical-align:center;"><a href="http://www.library.illinois.edu/services/librarycomputing.html">Printing</a></td>
+                                </tr>
+                                <tr>
+                                    <td><span style="padding-right: 10px; padding-top: 7px; margin-left: 30px;" class="fa fa-files-o fa-2x fa-fw"></span></td>
+                                    <td style="vertical-align:center;"><a href="http://www.library.illinois.edu/services/librarycomputing.html">Scanning/Copying</a></td>                     
+                                </tr>
+                            </table>--> 
+               <div class="col-sm-12"> 
+                <h5>Media Commons</h5> 
+                <p>The <a href="http://www.library.illinois.edu/ugl/mc/">Media Commons</a> at the Undergrad Library includes equipment for: </p> 
+               </div> 
+               <div class="col-md-6"> 
+                <a href="http://www.library.illinois.edu/ugl/mc/zones/audioProduction.html"> <span style="padding-right: .4em;" class="fa fa-microphone fa-2x fa-fw"></span>Audio production</a> 
+               </div> 
+               <div class="col-md-6"> 
+                <a href="http://www.library.illinois.edu/export/ugl/mc/zones/mediaEditing.html"> <span style="padding-right: .4em;" class="fa fa-scissors fa-2x fa-fw"></span>Media editing</a> 
+               </div> 
+               <div class="col-md-6"> 
+                <a href="http://www.library.illinois.edu/export/ugl/mc/zones/production.html"> <span style="padding-right: .4em;" class="fa fa-video-camera fa-2x fa-fw"></span>Video production</a> 
+               </div> 
+               <div class="col-md-6"> 
+                <a href="http://www.library.illinois.edu/ugl/mc/zones/mobile.html"> <span style="padding-right: .4em;" class="fa fa-mobile fa-2x fa-fw"></span>Mobile prototyping</a> 
+               </div> 
+               <div class="col-md-6"> 
+                <a href="http://www.library.illinois.edu/export/ugl/mc/zones/gaming.html"> <span style="padding-right: .4em;" class="fa fa-gamepad fa-2x fa-fw"></span>Gaming</a>
+                <a></a> 
+               </div> 
+               <div class="col-md-6"> 
+                <a href="http://www.library.illinois.edu/ugl/mc/loanable.html"> <span style="padding-right: .4em;" class="fa fa-laptop fa-2x fa-fw"></span>Loanable technology</a> 
+               </div> 
+               <div class="col-md-12"> 
+                <hr> 
+                <h5>Scholarly Commons</h5> 
+                <p>The <a href="http://www.library.illinois.edu/sc/">Scholarly Commons</a> offers resources, <a href="http://www.library.illinois.edu/it/helpdesk/groupspaces/main306sc.html">software</a>, and expert consultations for data analysis, digitization, copyright, usability, and scholarly communication. They also have <a href="http://www.library.illinois.edu/sc/resources/resources_hardware">hardware</a> available for use on site.</p> 
+               </div> 
+              </div> 
+              <!-- end Computers and Equipment column --> 
+              <!-- begin Loanable Technology column --> 
+              <div class="col-sm-6"> 
+               <h4>Loanable Technology</h4> 
+               <p>Technology and equipment sorted by popularity and currrently available at the following libraries:</p> 
+               <ul class="nav nav-tabs libguides" role="tablist"> 
+                <li class="active"> <a href="#uglTech" role="tab" data-toggle="tab">UGL</a> </li> 
+                <li> <a href="#mpalTech" role="tab" data-toggle="tab">MPAL</a> </li> 
+               </ul> 
+               <!-- Loanable Technology Tab panes --> 
+               <div class="tab-content libguides"> 
+                <div class="tab-pane active" id="uglTech" role="tabpanel"> 
+                 <div> 
+                  <ul style="padding: 0;"> 
+                   <div id="uglTechItem"> 
+                   </div> 
+                  </ul> 
+                 </div> 
+                </div> 
+                <div class="tab-pane" id="mpalTech" role="tabpanel"> 
+                 <div> 
+                  <ul> 
+                   <div id="mpalTechItem"> 
+                    <li> <p>See <a href="http://www.library.illinois.edu/mux/">Music and Performing Arts Library site</a> for details on availability</p> </li> 
+                   </div> 
+                  </ul> 
+                 </div> 
+                </div> 
+               </div> 
+               <br> 
+               <p><a target="_blank" href="http://www.library.illinois.edu/ugl/about/LoanableTechnology/campusequipment.html">Other campus units with loanable technology</a> </p> 
+               <p><a role="button" class="fancybox" href="#softsearch">Search for software across campus</a> </p> 
+              </div> 
+              <!-- end Loanable Technology column --> 
+             </div> 
+             <!-- end fluid row --> 
+             <!-- begin Software Search column --> 
+             <div id="softsearch"> 
+              <h4>Search for Software</h4> 
+              <div id="softwareitem"> 
+               <table id="example" class="stripe row-border order-column compact" cellspacing="0" width="100%" aria-label="sortable campus-wide software table"> 
+                <thead> 
+                 <tr> 
+                  <th role="button">Software</th> 
+                  <th role="button">Location</th> 
+                 </tr> 
+                </thead> 
+                <!--<tfoot class="sr-only">
+                                        <tr>
+                                            <th>Software</th>
+                                            <th>Location</th>
+                                        </tr>
+                                    </tfoot>--> 
+               </table> 
+              </div> 
+             </div> 
+             <!-- end Software Search column --> 
+            </div>
+            <!-- should be end container-fluid --> 
+           </div>
+           <!-- should be end tab pane --> 
+           <!-- END TAB: TECH --> 
+           <!-- TAB: STUDY ROOMS --> 
+           <div class="tab-pane" id="roomres"> 
+            <div class="container-fluid"> 
+             <!-- TAB TITLE --> 
+             <div class="row"> 
+              <div class="col-sm-12"> 
+               <h3>STUDY ROOM RESERVATION</h3> 
+               <hr class="orange-line"> 
+              </div> 
+             </div> 
+             <!-- END TAB TITLE --> 
+             <div class="row-fluid"> 
+              <!-- begin Loanable Technology column --> 
+              <!-- placeholder for any instruction or description content --> 
+             </div> 
+             <div class="row"> 
+              <!--  mobile phone view--> 
+              <div class="mobilephonehide"> 
+               <div class="panel panel-default mobile"> 
+                <div class="panel-heading">
+                 Reserve the Study Room
+                </div> 
+                <div class="panel-body"> 
+                 <p class="">University net ID login is required for the reservation.</p> 
+                 <p> <a type="button" class="btn btn-primary btn-lg btn-block" href=" http://uiuc.evanced.info/Dibs">Make a Reservation</a> </p>
+                </div> 
+               </div> 
+               <div class="panel panel-default mobile"> 
+                <div class="panel-heading">
+                 Reservation Process
+                </div> 
+                <div class="panel-body"> 
+                 <ol class="list-group"> 
+                  <li class="list-group-item">How many people? How long? What date?(2 active reservations, 2 reservations per day)</li> 
+                  <li class="list-group-item">Pick library location to reserve a room.</li> 
+                  <li class="list-group-item">Pick the available time slots.(Each slot has 30 min and you can pick 4 maximum, 2 hours)</li> 
+                  <li class="list-group-item">Pick the room. (It will show room features and the picture)</li> 
+                  <li class="list-group-item">Confirm the registration. (You will get email confirmation for the registration. Text confirmation is optional)</li> 
+                 </ol> 
+                </div> 
+               </div> 
+              </div> 
+              <!-- CLOSING mobile phone view--> 
+              <div class="col-md-8"> 
+               <div id="buildc">
+                <h4>Study Room Location</h4>
+               </div> 
+              </div> 
+              <div class="col-md-4 col-xs-12"> 
+               <h4>Schedule the room</h4> 
+               <div id="calenc"></div> 
+               <div class="calc"> 
+                <div class="calcinitial">
+                 Please choose a building location to the left to start the reservation process.
+                </div> 
+               </div> 
+               <div id="additional-room-reserve-info"> 
+                <p> </p>
+                <ul> 
+                 <li>Other places to study on campus: <a href="https://illinispaces.illinois.edu/">IlliniSpaces.</a></li> 
+                 <li><a href="http://uiuc.libguides.com/roomreserve"> Library Room Reservation Policy and Guidelines</a></li> 
+                </ul> 
+                <p></p> 
+               </div> 
+              </div> 
+             </div> 
+             <!--closing for row--> 
+            </div>
+            <!-- should end container --> 
+           </div>
+           <!-- should end roomres tab --> 
+           <!-- END TAB: STUDY ROOMS --> 
+           <!-- TAB: NEWS and EVENTS --> 
+           <div class="tab-pane" id="news"> 
+            <div class="container-fluid"> 
+             <!-- TAB TITLE --> 
+             <div class="row"> 
+              <div class="col-sm-12"> 
+               <h3>NEWS AND EVENTS</h3> 
+               <hr class="orange-line"> 
+              </div> 
+             </div> 
+             <!-- TAB TITLE --> 
+             <div class="row-fluid"> 
+              <!-- begin news column --> 
+              <div class="col-sm-6"> 
+               <h4 class="news">News</h4> 
+               <div class="viewall">
+                <a href="http://www.library.illinois.edu/news/" class="btn btn-primary btn-xs">View All News</a>
+               </div> 
+               <div class="panel panel-default"> 
+                <div class="panel-body" id="libnewsli" style="height:400px; overflow-y: scroll;"> 
+                 <ul> 
+                  <li> 
+                   <div class="row"> 
+                    <div id="news_feat_img" class="col-md-6"></div> 
+                    <div id="news_feat_cont" class="col-md-6"></div> 
+                   </div> </li> 
+                  <li role="presentation" class="divider"></li> 
+                  <div id="libnews"></div> 
+                  <li><a href="http://www.library.illinois.edu/news/">More Library News...</a></li> 
+                  <br> 
+                 </ul> 
+                </div> 
+               </div> 
+              </div> 
+              <!-- end news column --> 
+              <!-- begin events column --> 
+              <div class="col-sm-6"> 
+               <h4 class="news">Upcoming Events</h4> 
+               <div class="viewall">
+                <a href="http://illinois.edu/calendar/list/4092?cal=20141104&amp;skinId=1977" class="btn btn-primary btn-xs">View All Events</a>
+               </div> 
+               <div class="panel panel-default"> 
+                <div id="libevents" class="panel-body" style="height:400px; overflow-y: scroll;"> 
+                 <script type="text/javascript" src="http://illinois.edu/calendar/pc/4092/1.js"></script> 
+                </div> 
+               </div> 
+              </div> 
+              <!-- end events column --> 
+             </div> 
+            </div> 
+           </div> 
+           <!-- END TAB: NEWS and EVENTS --> 
+          </div>
+         </div>
+        </div>
+       </div>
+      </div> 
+      <!-- END div id="dynamictabs" --> 
+      <!-- closes container and row divs opened in content.php --> 
+     </div>
+    </div> 
+    <div class="container" style="background-color: #eee;"> 
+     <div class="row" role="complementary" style="padding-bottom:20px;"> 
+      <h2 class="sr-only">library Website footer information</h2> 
+      <div class="col-md-3 col-sm-3 col-xs-12" role="region" aria-label="contact us"> 
+       <div class="dropdown" aria-labelledby="address"> 
+        <a href="#" class="dropdown-toggle footer-link" data-toggle="dropdown" aria-label="contact us"><h3 class="footerheading">Contact Us:<b class="caret"></b></h3></a> 
+        <ul class="dropdown-menu"> 
+         <li><a href="http://www.library.illinois.edu/people/phone.php" aria-labelledby="Employee Directory">Employee Directory</a></li> 
+         <li><a href="http://www.library.illinois.edu/secondary/contactUs.html" aria-labelledby="General contact information">General contact information</a></li> 
+         <li><a aria-label="Submit your feedback and suggestions" href="https://illinois.edu/fb/sec/1454867" aria-labelledby="Feedback and suggestions">Feedback and suggestions</a></li> 
+        </ul> 
+       </div> University Library
+       <br> University of Illinois at Urbana-Champaign
+       <br> 1408 W. Gregory Dr. | Urbana, IL 61801
+       <br> 217.333.2291 
+       <br> 
+       <br> 
+       <a class="footer-link" href="https://www.facebook.com/universitylibrary"> <span class="fa fa-facebook fa-lg" aria-label="facebook" style="border:1px solid #BCBCBC; padding:.2em; min-width:25px; margin-bottom:.2em"></span><small> Find us on Facebook</small></a> 
+       <br> 
+       <a class="footer-link" href="http://www.library.illinois.edu/friends/gift.html"> <span class="fa fa-gift fa-lg" aria-label="make a gift" style="border:1px solid #BCBCBC; padding:.2em;"></span><small> Make a Gift</small></a> 
+      </div> 
+      <div class="col-md-3 col-sm-3 col-xs-12" role="region" aria-label="information for"> 
+       <h3 class="footerheading">Information for:</h3> 
+       <div class="row"> 
+        <div class="col-md-6"> 
+         <a class="footer-link" href="http://www.library.illinois.edu/ugl/">Undergraduates</a>
+         <br> 
+         <a class="footer-link" href="http://www.library.illinois.edu/learn/users/gradstudents.html">Graduate Students</a>
+         <br> 
+         <a class="footer-link" href="http://www.library.illinois.edu/learn/users/faculty.html">Faculty</a>
+         <br> 
+         <a class="footer-link" href="http://www.library.illinois.edu/learn/users/alumni.html">Alumni</a>
+         <br> 
+         <a class="footer-link" href="http://www.library.illinois.edu/learn/users/visitors.html">Visitors</a> 
+        </div> 
+        <div class="col-md-6"> 
+         <a class="footer-link" href="http://www.library.illinois.edu/learn/users/affiliates.html">Affiliated Organizations</a>
+         <br> 
+         <a class="footer-link" href="http://www.library.illinois.edu/learn/users/usersdisabilities.html">Users with Disabilities</a>
+         <br> 
+         <a class="footer-link" href="http://www.library.illinois.edu/distance/">Distance Learners</a>
+         <br> 
+         <a class="footer-link" href="http://www.library.illinois.edu/staff/">Library Staff</a>
+         <br> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="col-md-3 col-sm-3 col-xs-12" role="region" aria-label="feedback"> 
+       <h3 class="footerheading">Feedback</h3> 
+       <a class="footer-link" href="https://illinois.edu/fb/sec/887006">Suggest an item for purchase</a>
+       <br> 
+       <a aria-label="Submit your feedback and suggestions" class="footer-link" href="https://illinois.edu/fb/sec/1454867">Give us feedback/suggestions</a> 
+      </div> 
+      <div class="col-md-3 col-sm-3 col-xs-12" id="vertical" role="region" aria-label="about the site"> 
+       <h3 class="footerheading">About this site</h3> 
+       <a class="footer-link" href="http://www.vpaa.uillinois.edu/policies/web_privacy.cfm">Privacy</a>
+       <br> 
+      </div> 
+     </div> 
+     <div class="row" role="contentinfo" aria-label="university library copyright info" style="text-align:center"> 
+      <div id="copyright-footer"> 
+       <p>© 2014 University of Illinois Board of Trustees</p> 
+       <br> 
+       <p><a href="http://www.library.illinois.edu/doc/" aria-label="Federal Depository Library Program website link"><img src="./assets/fdlp-emblem-logo-text-bw.png" alt="Federal Depository Library Program logo"></a></p> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <!--closing for container-->  
+   <!--[if lt IE 9]>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/g/bootstrap@3.2,underscorejs@1.6,backbonejs@1.1,fancybox,xdate"></script>
+  <![endif]--> 
+   <script type="text/javascript" src="//cdn.jsdelivr.net/g/underscorejs@1.6,backbonejs@1.1,fancybox,xdate"></script> 
+   <script type="text/javascript" src="./assets/js/jquery-ui.min.js"></script> 
+   <script type="text/javascript" src="//cdn.datatables.net/1.10.3/js/jquery.dataTables.min.js"></script> 
+   <script type="text/javascript">
+        //libguides search function
+        //event handler for submit button on libSearchForm
+        $( "#libSearchForm" ).submit(function( event ) {
+        //create query string variable before event.preventDefault(); is invoked
+            var libstring = $('#libSearchForm').serialize();
+            //prevent default behavior of form
+            event.preventDefault();
+            //ajax call to proxy at libguidessearch.php?
+                $.ajax({
+                     url: "libguidessearch.php?",
+                     dataType: 'html',
+                     data: libstring,
+                     success: function(data) {
+                        $("#libGuideSearch").html( data );
+                     }
+                });
+        });
+</script> 
+   <script type="text/javascript">
+//library technology, ugl loanable technology function
+$(document).ready(function () {
+    $.getJSON(window.location.origin + "/api/tech/list",
+    //using this proxy until gateway tech api is corrected 
+    //$.getJSON("techlistproxy.php",
+        function processData(jsonData) {
+
+        // Loop through each data block
+        $.each(jsonData, function (object, objectData) {
+			var vdesc = objectData.name.replace('<','&lt;').replace('>', '&gt;');
+            $('#uglTechItem').append("<li><a href='http://vufind.carli.illinois.edu/vf-uiu/Record/" + objectData.bibId + "/Holdings'>" + " <img alt="+ vdesc +" src='" + objectData.thumbnail + "'style='margin-left: -20px; padding-right:7px;' width='20px' height='20px' />" + "<span style='display:inline-block;'></span>" + vdesc + "</a>" + "<span class='badge'>" + objectData.count + "</span></li>");
+
+        });
+    });
+});
+</script> 
+   <script type="text/javascript">
+//dynamic tab news and events content
+$(document).ready(function()
+{
+//ajax call for library rss FEATURED news feeds, full and summary.  
+//full for img and headline link, summary for description
+  $.ajax({
+    type: "GET",
+    url: "libnewsfeatured.php",
+    dataType: "html",
+    success: parseFeatured
+  });
+    //parsing featured rss feeds, full and summary
+    function parseFeatured(xml)
+        {
+        var imgLoc = xml.search("src=&quot;/cms/");
+        var indQuo = xml.indexOf('&quot;', (imgLoc + 6));
+        var subImg = xml.substring(imgLoc + 14, indQuo);
+        var titleLoc = xml.search("img title=");
+        var titQuo = xml.indexOf('&quot;', (titleLoc + 13));
+        var subTit = xml.substring(titleLoc + 16, titQuo);
+          $(xml).find("item").each(function()
+          {
+            //console.log($(this).find("guid").text());
+            $("#news_feat_img").append('<img id="library_featured_news" alt="'+subTit+'" title="' + subTit + '" src="http://www.library.illinois.edu' + subImg + '"/>');
+            $("#news_feat_cont").append('<span class="libnewsdate">' + $(this).find("pubDate").text().substr(0,5) + $(this).find("pubDate").text().substr(8,4) + $(this).find("pubDate").text().substr(5,3) + $(this).find("pubDate").text().substr(12,4) + "</span></br><a href='" + $(this).find("guid").text() + "'>" + $(this).find("title").text() + "</a></br>");
+          });
+            
+            //call to summary featured rss for summary of article
+            //nested within full function to preserve order
+            $.ajax({
+                type: "GET",
+                url: "libnewsfeaturedsum.php",
+                dataType: "xml",
+                success: parseFeatSum
+            });
+            function parseFeatSum(xml)
+            {
+              //find the one item and iterate through to find the one description element. 
+              $(xml).find("item").each(function() {
+                $("#news_feat_cont").append($(this).find("description").text() + '</li>');
+              });
+            }
+        }
+    //ajax call for library rss news feed
+    $.ajax({
+        type: "GET",
+        url: "libnewsproxy.php?",
+        dataType: "xml",
+        success: parseXml
+    });
+    function parseXml(xml)
+    {
+      //find every item and iterate through
+      $(xml).find("item").each(function(index)
+      {
+        $("#libnews").append('<li><span class="libnewsdate">' + $(this).find("pubDate").text().substr(0,5) + $(this).find("pubDate").text().substr(8,4) + $(this).find("pubDate").text().substr(5,3) + $(this).find("pubDate").text().substr(12,4) + "</span></br><a href='" + $(this).find("link").text() + "'>" + $(this).find("title").text() + "</a></br>" + $(this).find("description").text() + "</li><li role='presentation' class='divider'></li>");
+        if ( index == 3 ){
+            return false;
+        }
+      });
+    }
+})
+</script> 
+   <script type="text/javascript">
+//campuswide software search using datatables.net
+    $(document).ready(function() {
+        $('#example').dataTable( {
+            ordering: true,
+            paging: false,
+            scrollY: 400,
+            scrollCollapse: true,
+            "ajax": "./assets/campus_software2col.txt",
+            "columns": [
+                { "data": "software" },
+                { "data": "location" }
+            ],
+			"fnInitComplete": function(){
+				$("#example").removeAttr("role");
+				$("#example td").removeAttr("role");
+				$("#example th").removeAttr("colspan rowspan");
+				$("#example tr").removeAttr("role");
+				$(".dataTables_scrollHead table, .dataTables_scrollHead table tr").removeAttr("aria-label role");
+				 // below line is a, brute force fix, will not work if additional datatables added to page. 
+				$(".dataTables_scrollHead table, .dataTables_scrollHead table tr").attr("aria-label", "sort options for software table"); 
+				$(".dataTables_scrollFoot table, .dataTables_scrollFoot table tr").removeAttr("aria-label role");
+			}
+        } );
+    } );
+</script> 
+   <!-- UNDERSCORE TEMPLATES --> 
+   <script type="text/html" id="buildtemplate">
+
+    <div class="build" id="<%= id %>">
+      
+      <div class="buildinfo">
+        
+                <div class="imagec">
+          <img src="<%= picurl %>" width="90px" height="60px" class="hidden-xs" alt="<%= name %>"></img>
+        </div>
+                <span id="badge-and-button">Rooms: <span class="badge-green badge"><%= numOfRooms %></span> <a aria-controls="build_<%= id %>" class="btn btn-primary btn-xs">Select</a></span>
+
+                
+      
+        <div class="buildtext">
+          <h4><%= name %></h4>
+          <div id="building-desc-text"><p class="hidden-xs"><%= desc %></p></div>
+          <a aria-label="map of <%= name %>" class="fancybox fancybox.iframe btn btn-primary btn-xs" href="http://maps.google.com/maps?q=+(<%= name %>)&z=16&ll=<%= lat %>,<%= lon %>&output=embed&iwloc=near">Map</a>
+        </div>
+  
+      </div>  
+      
+      <div id="build_<%= id %>" class="roomc">
+        <hr />
+
+      </div>
+        
+    </div>
+
+  </script> 
+   <script type="text/html" id="roomtemplate">
+
+    <div class="room" id="<%= roomID %>">
+    
+      
+      <div class="roomtext">
+		<a href="#calenc" class="cschedule btn btn-info visible-sm-block visible-xs-block">See the schedule</a>
+        <h5 class="rname"><%= name %></h5>
+        
+                <img class="roompic hidden-xs" src="<%= picurl %>" alt="<%= desc %>" width="60px" height="40px"><p class="rdesc"><%= desc %><br><a class="fancybox fancybox.iframe btn btn-primary btn-xs hidden-xs" id="<%= roomID %>" href="<%= mapurl %>">Floor Plan</a></p>
+        <p></p>       
+      </div>
+      
+      
+    <!--  <div class="greenbox">Reserve</div>-->
+    </div>
+          
+  </script> 
+   <script type="text/html" id="caltemplate">
+  
+    <div class="calc">
+    
+      <h4 class="roomname"></h4>
+      <hr class="divider">
+    
+      <p class="rhowto">Click to select a date (limited to a 2-week period):</p>
+
+    
+      <h6 class="headerdate"></h6>
+      <ul class="boxes"></ul>
+      
+      <p class="rhowto">Drag downward to select a consecutive block of time (up to 2 hours):</p>
+      
+      <table class="daycal" rules="all">
+      <tbody></tbody>
+      </table>
+      
+      <br />
+      <center><a class="btn btn-primary btn-xs button">Make Reservation  <i class="fa fa-external-link"></i></a></center>
+    </div>
+  </script> 
+   <script type="text/javascript" src="./assets/js/roomreserve.js"></script> 
+   <script type="text/javascript" src="./assets/js/alert.js"></script> 
+   <script src="./assets/js/hours.js" type="text/javascript"></script> 
+   <script type="text/javascript" src="./assets/js/get_time.php"></script> 
+   <script type="text/javascript" src="./assets/js/orange_bar_scroll.js"></script> 
+   <script type="text/javascript" src="./assets/js/jquery.fracs-0.15.0.min.js"></script> 
+   <script type="text/javascript" src="./assets/js/easy_search_text.js"></script> 
+   <script type="text/javascript" src="./assets/js/banner_resize_map.js"></script> 
+   <script type="text/javascript" src="./assets/js/bootstrap-accessibility.js"></script> 
+   <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+    ga('create', 'UA-55158287-1', 'auto');
+    ga('send', 'pageview');
+    </script> 
+   <script src="./assets/js/ga/gaelt.js" type="text/javascript"></script> 
+   <script type="text/javascript">
+    add_GA_Events(window.location.host);
+  </script> 
+  </div>
+ </body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+ <head> 
+  <!-- This for virtual keyboard --> 
+  <script language="javascript" type="text/javascript" src="/js/jquery-fafsa.js"></script> 
+  <script type="text/javascript" src="/js/keyboard.js" charset="UTF-8"></script> 
+  <style type="text/css">
+	    #keyTables
+	    {
+	      _border-collapse: collapse;
+	       margin: auto;
+	    }
+	
+	    #keyTables tbody tr td
+	    {
+	      -moz-user-select: none;
+	    }
+	
+	    #headerBody
+	    {
+	      float: right;
+	    }
+	
+	    #clearCell
+	    {
+	      -moz-user-select: none;
+	    }
+	  </style> 
+  <script type="text/javascript">
+		
+	      
+	    function virtualKeyboardEnter()
+	    {
+	    }
+
+	</script> 
+  <!-- End virtual keyboard --> 
+  <script language="javascript" type="text/javascript" src="/js/jquery-fafsa.js"></script> 
+  <!--TOPIC PIN--> 
+  <title>Request A Duplicate PIN
+	- Federal Student Aid	</title> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+  <style type="text/css">@import url(/css/main.css);</style> 
+  <style type="text/css">@import url(/css/fafsa.css);</style> 
+  <style type="text/css">@import url(/css/fafsa-student.css);</style> 
+  <!--[if gte IE 5]>
+<style type="text/css">@import url(/css/main-ie.css);</style>
+<![endif]--> 
+  <script language="javascript" type="text/javascript" src="/js/fsa.js"></script> 
+  <script language="javascript" type="text/javascript" src="/js/pin.js"></script> 
+  <script language="javascript" type="text/javascript" src="/js/agen.js"></script> 
+  <script language="javascript" type="text/javascript" src="/js/amessages.js"></script> 
+  <!--  $(document).ready(function()
+	{
+		setupKeyboard();
+	})
+--> 
+  <!-- This for virtual keyboard --> 
+  <script type="text/javascript">
+            // for virtual keyboard   
+             $(document).ready(function()
+				{
+					setupKeyboard();
+				})
+
+            function setupKeyboard()
+            {
+ 			// setup the PII fields on this page 
+         	var elemArr = new Array() ;
+          
+          	// this page may not have all the PII fields
+          	elemArr[0] = "ssn";
+          	elemArr[1] = "dateofbirth";
+          	
+            configVkElements(elemArr);
+
+            // setup initial keyboard focus in the first PII field
+            buildKeyboard("keyboard", elemArr[0]);
+            document.getElementById(elemArr[0]).focus();
+              
+            }
+        
+            function virtualKeyboardEnter()
+            {
+            }
+  
+  function clear_form()
+	    {
+	  	  // this page may not have all the PII fields
+	      if (document.PIN.szREQUESTSSN != null) {
+	          document.PIN.szREQUESTSSN.value='';
+	      }
+	      
+	      if (document.PIN.szREQUESTDOB != null) {
+	          document.PIN.szREQUESTDOB.value='';
+	      }
+	      
+		  return false;
+	    }          
+        
+        </script> 
+  <!-- End virtual keyboard --> 
+ </head> 
+ <body id="fafsa-noside" onload="RefreshSession();InitForm(null, '', true)"> 
+  <div id="main"> 
+   <form name="FAFSA" method="post" action="/PINWebApp/PINServlet" autocomplete="OFF"> 
+    <input type="hidden" name="dowhat" value="next"> 
+    <input type="hidden" name="phase" value="10"> 
+    <input type="hidden" name="state" value="100"> 
+    <input type="hidden" name="historyid" value="1"> 
+    <input type="hidden" name="pageid" value="100"> 
+    <input type="hidden" name="faamode" value=""> 
+    <input type="hidden" name="confirmErr" value=""> 
+    <input type="hidden" name="locale" value="en_US"> 
+    <input type="hidden" name="pinsessiontoken" value="e74ef847-9348-404a-bce5-a6e7ec5e5169"> 
+    <div id="logo"> 
+     <map name="logomap"> <area shape="rect" coords="0,0,1,50" href="#skiplinks" alt="Skip the navigation bars"> </map> 
+     <img src="/images/fsa_logo.gif" usemap="#logomap" alt="U.S. Department of Education and Federal Student Aid logo (Proud Sponsor of the American Mind)"> 
+    </div> 
+    <div id="title"> 
+     <img src="/images/pin_header.gif" alt="Federal Student Aid PIN"> 
+    </div> 
+    <div id="menu1"> 
+     <div>
+      <a id="homelink" href="/PINWebApp/pinindex.jsp"></a>PIN Home
+     </div> 
+     <div>
+      <a href="JavaScript:Help('pintoc00.html','','/help/')">Help</a>
+     </div> 
+     <div>
+      <a href="javascript:popWindow('/PINWebApp/contact.jsp',800,600, 1)">Contact Us</a>
+     </div> 
+     <div>
+      <a href="javascript:popWindow('/pinfaqs.htm',800,600, 1)"></a>FAQs
+     </div> 
+     <div>
+      <a href="http://studentaid.ed.gov/about" target="_blank">About Us</a>
+     </div> 
+    </div> 
+    <div id="leftside"> 
+     <div id="content"> 
+      <a name="skiplinks" tabindex="-1"></a> 
+      <h1><img src="/images/request_duplicate_pin_lg.gif" alt="Request A Duplicate PIN"></h1> 
+      <p>A virtual keyboard is provided below for increased security when entering personally identifiable information.</p> 
+      <div id="copy"> 
+       <h2>Request A Duplicate PIN</h2> 
+       <p>To request a duplicate copy of your PIN, answer the questions below and select <a href="JavaScript:submission('next');">Submit Request</a> to continue. By providing this information, you certify that you are the person identified by these items. If you are not that person, you are not authorized to proceed and you should exit this form now by selecting <a href="JavaScript:submission('exit');">PIN Home</a>. If you purposely certify to false or misleading information, you may be fined $20,000, sent to prison, or both.</p> 
+       <p></p> 
+       <table class="tabletype1" border="0" cellspacing="0" cellpadding="0"> 
+        <tbody>
+         <tr> 
+          <td width="70%"> <label for="ssn"> What is your Social Security Number?<br> <small>Enter the SSN that is printed on your Social Security Card. Enter this number without dashes. For example, enter 123456789.</small> </label> </td> 
+          <td width="30%"> 
+           <!-- ERROR szREQUESTSSN --> <input type="text" name="szREQUESTSSN" size="9" maxlength="9" id="ssn" value=""> </td> 
+         </tr> 
+         <tr> 
+          <td> <label for="nameid"> What are the first two (2) letters of your last name? </label> </td> 
+          <td> 
+           <!-- ERROR szREQUESTNAMEID --> <input type="text" name="szREQUESTNAMEID" size="2" maxlength="2" id="nameid" value=""> </td> 
+         </tr> 
+         <tr> 
+          <td> <label for="dateofbirth"> What is your date of birth?<br> <small> Enter this date in "mmddyyyy" format. For example, 08171975 for August 17, 1975.</small> </label> </td> 
+          <td> 
+           <!-- ERROR szREQUESTDOB --> <input type="text" name="szREQUESTDOB" size="8" maxlength="8" id="dateofbirth" value=""> </td> 
+         </tr> 
+        </tbody>
+       </table> 
+       <!-- Virtual Keyboard --> 
+       <div id="keyboard_area">
+        <br> 
+        <table id="keyboard" style="text-align: center; width: 300px;"></table> 
+       </div> 
+       <!-- End Virtual Keyboard --> 
+       <p>You may use the virtual keyboard when entering your Social Security Number and your Date of Birth. The virtual keyboard will help prevent a malicious source from capturing your keystrokes and then later accessing your personal information. The value can be entered by clicking on the virtual keyboard character with your mouse or when the cursor is held over the key for 2 seconds.</p> 
+       <p>&nbsp;</p> 
+       <p></p> 
+       <div id="prevnext"> 
+        <a href="javascript:submission('exit');"><img onmouseover="imgIn(this, 'off');" onmouseout="imgOut(this, 'off');" id="btn_pinhome" src="/images/btn_pinhome_wh.gif" alt="PIN Home"></a> 
+        <a href="javascript:submission('next');"><img onmouseover="imgIn(this, 'on');" onmouseout="imgOut(this, 'on');" id="btn_subrequest" src="/images/btn_subrequest_cl.gif" alt="Submit Request"></a> 
+       </div>
+      </div> 
+      <div id="bottombar_lg"> 
+       <div class="sublinks_left"> 
+        <a href="javascript:Help('pinhrt03.html', 'en_US', '/help/');"><img onmouseover="imgIn(this, '');" onmouseout="imgOut(this, '');" id="needhelp" src="/images/btn_needhelp_wh.gif" alt="Need Help?"></a> 
+       </div>
+       <div class="sublinks_right"> 
+        <!--BB_EXCEPTION--> 
+       </div> 
+      </div> 
+     </div>
+     <!-- end content --> 
+     <div id="datestamp">
+      Site Last Updated: Sunday, December 28, 2014
+     </div> 
+    </div>
+    <!-- end rightside or leftside --> 
+    <div id="footer"> 
+     <div class="sideleft"> 
+      <a href="javascript:popWindow('/priact.htm',800,600,1);">Privacy</a> 
+     </div> 
+    </div> 
+   </form>
+  </div> 
+  <!-- end of div "main" --> 
+  <p class="noprint">End of Page</p>   
+ </body>
+</html>

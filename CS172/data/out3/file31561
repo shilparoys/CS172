@@ -1,0 +1,489 @@
+<html>
+ <head>
+  <meta http-equiv="Expires" content="0"> 
+  <!--<meta http-equiv="Cache-Control" CONTENT="no-cache">---> 
+  <meta http-equiv="Cache-Control" content="no-store"> 
+  <meta http-equiv="Pragma" content="no-cache"> 
+  <script language="JavaScript">
+	function printEvent(ID)
+	{
+			var displayWindow = "Print Event"
+			var page = "print.asp?ID="+ID+"&LangType=0";
+			msgWindow=window.open(page,'displayWindow','height=600,width=600,menubar=no,resizable=yes,scrollbars=auto')
+			msgWindow.opener = self
+	}
+
+	function emailEvent(action, ID)
+	{
+
+			if (action=="Notify")
+			{
+				height = 400;
+				width = 300;
+			}
+			else
+			{
+				height= 450;
+				width=500;
+			}
+			var displayWindow = action+" Me "
+			var page = "emailevent.asp?action="+action+"&ID="+ID+"&LangType=0";
+			msgWindow=window.open(page,'displayWindow','height='+height+',width='+width+',menubar=no,resizable=yes,scrollbars=yes')
+			msgWindow.opener = self
+	}
+
+	function email(action)
+	{
+		var displayWindow = "Bulk Action"
+		var page = "pubarchrange.asp?actionMode="+action;
+		msgWindow=window.open(page,'displayWindow','height=200,width=375,menubar=no,resizable=yes,scrollbars=auto')
+		msgWindow.opener = self
+	}
+</script> 
+  <script language="JavaScript">
+
+	function getdays(sName) {
+
+		var iMonth;
+		var iDays;
+		var iYear;
+		var iSelectDay;
+
+		//Save Selected Day
+		for (var x = 0; x < document.getElementById(sName + 'Day').options.length-1; x++) {
+			if (document.getElementById(sName + 'Day').options[x].selected)
+				break;
+		}
+		iSelectDay = parseInt(document.getElementById(sName + 'Day').options[x].value);
+
+		//Get Selected Year
+		for (var x = 0; x < document.getElementById(sName + 'Year').options.length-1; x++) {
+			if (document.getElementById(sName + 'Year').options[x].selected)
+				break;
+		}
+		iYear = parseInt(document.getElementById(sName + 'Year').options[x].value);
+
+		//Clear Start Day Selection List
+		document.getElementById(sName + 'Day').length = 0;
+
+		//Get the Month Selected and Determine Days in Month
+		for (var x = 0; x < document.getElementById(sName + 'Month').options.length-1; x++) {
+			if (document.getElementById(sName + 'Month').options[x].selected)
+				break;
+		}
+
+		iMonth = document.getElementById(sName + 'Month').options[x].value;
+		switch (iMonth) {
+			case '1':
+				iDays = 31;
+				break;
+			case '2':
+				if ((iYear%4 == 0) && (iYear%100 != 0) || (iYear%400 == 0))
+					iDays = 29;
+				else
+					iDays = 28;
+					if (document.getElementById(sName + 'Day').options[29] != null){
+						if (document.getElementById(sName + 'Day').options[29].selected)
+							iSelectDay = 28;
+					}
+				break;
+			case '3':
+				iDays = 31;
+				break;
+			case '4':
+				iDays = 30;
+				break;
+			case '5':
+				iDays = 31;
+				break;
+			case '6':
+				iDays = 30;
+				break;
+			case '7':
+				iDays = 31;
+				break;
+			case '8':
+				iDays = 31;
+				break;
+			case '9':
+				iDays = 30;
+				break;
+			case '10':
+				iDays = 31;
+				break;
+			case '11':
+				iDays = 30;
+				break;
+			case '12':
+				iDays = 31;
+				break;
+			case '':
+				iDays = 31;
+				break;
+		}
+
+		//Option to keep Blank spaces or eliminate blank spaces (eventcalendar vs. events PR)
+		if (document.getElementById(sName + 'Month').options[0].value == '') {
+			blankVal = 0;
+			document.getElementById(sName + 'Day').options[0] = new Option('', '');
+			if (iSelectDay == null)
+				document.getElementById(sName + 'Day').options[0].selected = true;
+		} else
+			blankVal = 1;
+		
+		for (var x=1; x<= iDays; x++) {
+			index = x-blankVal;
+			{
+				document.getElementById(sName + 'Day').options[index] = new Option(x.toString(), x.toString());
+			}
+			if (x == iSelectDay)
+				document.getElementById(sName + 'Day').options[index].selected = true;
+		}
+	}
+
+</script> 
+  <style type="text/css">
+.highlight_paging {
+	font-weight:bold;
+	border: solid #000000;
+	border-width:1px 1px 1px 1px;
+}
+</style>  
+  <meta property="og:url" content="http://fl.evanced.info/sclibs/lib/eventsignup.asp?ID=75611"> 
+  <meta property="og:type" content="website"> 
+  <meta property="og:title" content="Cleaning Attics and Closets, Downsizing and Rightsizing: an Experts Tips"> 
+  <meta property="og:description" content="presented by Wendy Wicks, CEO, TLC Senior Move Experts.
+This program is part of Sarasota County Libraries One Book Sarasota series."> 
+  <meta property="fb:admins" content="681857558"> 
+  <meta property="og:image" content="http://ev.evanced.info/events_fb2.jpg"> 
+  <title>Event Information</title> 
+  <link rel="stylesheet" type="text/css" href="dynamicsheet.asp?st=public"> 
+ </head> 
+ <body> 
+  <div id="header"> 
+   <table border="0" width="100%"> 
+    <tbody>
+     <tr> 
+      <td width="10%">&nbsp;</td> 
+      <td width="80%" align="center">
+       <div class="title">
+        Event Information
+       </div></td> 
+      <td width="10%"> <script type="text/javascript" src="common/cookies.js"></script> <script language="JavaScript">
+	function change_text(x)
+	{
+		var new_val = 0;
+		if (getCookieValue("evancedSizeShift"))
+		{
+			deleteCookie("evancedSizeShift");
+		}
+		writeSessionCookie ("evancedSizeShift", x);
+	//	writePersistentCookie ("evancedSizeShift", x, "months", 1);
+
+		if (document.forms[0] && !document.regform && !document.patronsched && !document.search && !document.evententry && !document.RoomView && !document.fmSearch)
+		{
+				if (!document.forms[0].notextsizesubmit)
+					document.forms[0].submit();
+				else
+					location.reload();
+		}
+		else
+		{
+			location.reload();
+		}
+	}
+
+	</script> 
+       <!--<span style="background-color:yellow;font-weight:bold;">BETA</span>--> 
+       <table style="border:1px solid #333333;background-color:#FAFAFA;border-collapse:collapse;font-family:arial;"> 
+        <tbody>
+         <tr> 
+          <td colspan="3" style="background-color:#FFFFFF;font-weight:bold;border:1px solid #333333;text-align:center;font-size:11px;vertical-align:bottom;">Text Size</td> 
+         </tr> 
+         <tr> 
+          <td style="color:#FAFAFA;background-color:#999999;cursor:pointer;width:27px;border:1px solid #333333;text-align:center;vertical-align:bottom;" onclick="change_text('regular')"><a style="font-size:10px;" onclick="change_text('regular')" title="Change Text Size" name="reg_text">T</a></td> 
+          <td style="cursor:pointer;width:27px;border:1px solid #333333;text-align:center;vertical-align:bottom;" onclick="change_text('larger')"><a style="font-size:12px;" onclick="change_text('larger')" title="Change Text Size" name="med_text">T</a></td> 
+          <td style="cursor:pointer;width:27px;border:1px solid #333333;text-align:center;vertical-align:bottom;" onclick="change_text('largest')"><a style="font-size:16px;" onclick="change_text('largest')" title="Change Text Size" name="largest_text">T</a></td> 
+         </tr> 
+        </tbody>
+       </table> </td> 
+     </tr> 
+    </tbody>
+   </table> 
+  </div> 
+  <style type="text/css">
+<!--
+.noreghighlight   {background-color: yellow}
+-->
+</style> 
+  <script language="JavaScript" src="common/validateform.js"></script> 
+  <script language="JavaScript">
+<!--
+
+	function GetDate(DateVal)
+	{
+		var datePat = /^(\d{1,2})(\/|-)(\d{1,2})(\/|-)(\d{4})$/;
+
+		thisMonth = '';
+		thisDay = '';
+
+		var DatePad = DateVal;
+		var matchArray = DatePad.match(datePat); // is the format ok?
+
+		dateformat = "";
+		if (dateformat == "DD/MM/YYYY")
+		{
+			tempMonth = new Number(matchArray[3]); // p@rse date into variables
+			tempDay = parseInt(matchArray[1]);
+		}
+		else
+		{
+			tempMonth = new Number(matchArray[1]); // p@rse date into variables
+			tempDay = parseInt(matchArray[3]);
+		}
+
+		tempYear = new String(matchArray[5]);
+
+		if (tempMonth <= 9)
+			thisMonth = '0';
+		thisMonth += tempMonth;
+
+		if (tempDay <= 9)
+			thisDay = '0';
+		thisDay += tempDay;
+
+		return tempYear + thisMonth + thisDay;
+	}
+	
+	function ValidateInput()
+	{
+		sErrMsg = '';
+		iErrCount = 0;
+
+		validateForm();
+	
+		//Do addtional validation
+		
+		//Validate Min and Max Age Stipulations
+		if (parseInt(document.forms[0].AgeCheck.value) > 0 && document.forms[0].Age.value != '')
+		{
+			AgeVal = parseFloat(document.forms[0].Age.value);
+			AgeMin = parseFloat(document.forms[0].MinAge.value);
+			AgeMax = parseFloat(document.forms[0].MaxAge.value); 
+			
+			switch(parseInt(document.forms[0].AgeCheck.value))
+			{
+			case 1:
+				if (AgeVal > AgeMax)
+					sErrMsg = sErrMsg + ++iErrCount + ". You did not meet the required age stipulation.\n";
+				break;
+			case 2:
+				if (AgeVal < AgeMin)
+					sErrMsg = sErrMsg + ++iErrCount + ". You did not meet the required age stipulation.\n";
+				break;
+			case 3:
+				if ( (AgeVal < AgeMin) || (AgeVal > AgeMax) )
+					sErrMsg = sErrMsg + ++iErrCount + ". You did not meet the required age stipulation\n";
+				break;
+			}
+		}			
+
+		if (parseInt(document.forms[0].GradeCheck.value) > 0 && document.forms[0].Grade.value != '')
+		{
+			GradeVal = parseFloat(document.forms[0].Grade.value);
+			GradeMin = parseFloat(document.forms[0].MinGrade.value);
+			GradeMax = parseFloat(document.forms[0].MaxGrade.value); 
+
+			switch(parseInt(document.forms[0].GradeCheck.value))
+			{
+			case 1:
+				if (GradeVal > GradeMax)
+					sErrMsg = sErrMsg + ++iErrCount + ". You did not meet the required grade stipulation.\n";
+				break;
+			case 2:
+				if (GradeVal < GradeMin)
+					sErrMsg = sErrMsg + ++iErrCount + ". You did not meet the required grade stipulation.\n";
+				break;
+			case 3:
+				if ( (GradeVal < GradeMin) || (GradeVal > GradeMax) )
+					sErrMsg = sErrMsg + ++iErrCount + ". You did not meet the required grade stipulation\n";
+				break;
+			}
+		}
+
+		if (parseInt(document.forms[0].BirthDateCheck.value) > 0)
+		{
+			if(document.forms[0].BirthDateMonth.value != '' && document.forms[0].BirthDateDay.value != '' &&  document.forms[0].BirthDateYear.value != '')
+			{
+
+				thisMonth = '';
+				thisDay = '';
+
+				tempMonth = document.getElementById('BirthDateMonth').value;
+				tempDay = document.getElementById('BirthDateDay').value;
+				tempYear = document.forms[0].BirthDateYear.value;
+
+				if (tempMonth <= 9)
+					thisMonth = '0';
+				thisMonth += tempMonth;
+
+				if (tempDay <= 9)
+					thisDay = '0';
+				thisDay += tempDay;
+
+				var BirthDateVal = tempYear + thisMonth + thisDay;
+
+				if (document.getElementById('MinBirthDate').value != null)
+					var BirthDateMin = GetDate(document.getElementById('MinBirthDate').value);
+
+				if (document.getElementById('MaxBirthDate').value != null)
+					var BirthDateMax = GetDate(document.getElementById('MaxBirthDate').value);
+
+				switch(parseInt(document.forms[0].BirthDateCheck.value))
+				{
+				case 1:
+					if (BirthDateVal > BirthDateMax)
+						sErrMsg = sErrMsg + ++iErrCount + ". You did not meet the required birth date stipulation.\n";
+					break;
+				case 2:
+					if (BirthDateVal < BirthDateMin)
+						sErrMsg = sErrMsg + ++iErrCount + ". You did not meet the required birth date stipulation.\n";
+					break;
+				case 3:
+					if ( (BirthDateVal < BirthDateMin) || (BirthDateVal > BirthDateMax) )
+						sErrMsg = sErrMsg + ++iErrCount + ". You did not meet the required birth date stipulation\n";
+					break;
+				}
+			}
+		}
+
+		if (document.forms[0].RecievePaymentOnSite)
+		{
+			FieldPtr = eval("document.forms[0].RecievePaymentOnSite");
+			for (var i = 0;i < FieldPtr.length; i++)
+			{
+				valid = FieldPtr[i].checked;
+				disabled = FieldPtr[i].disabled;
+				if (valid || disabled)
+					break;
+			}
+			if(!valid && !disabled)
+				sErrMsg = sErrMsg + ++iErrCount + ". You must select whether payment was recieved.\n";
+		}
+
+		validateGroup();
+
+		if (sErrMsg != '')
+		{
+			window.alert('The following errors have occurred:\n\n' + sErrMsg);
+			return false;
+		}
+		else
+			return true;
+	}
+	
+	function ViewAttendanceSheet(id)
+	{
+		window.open('attendance.asp?ID=' + id + '&noheader=1&windowmode=1&noregistration=1','Attendance','height=550,width=750,menubar=no,resizable=yes,scrollbars=yes');
+	}
+	
+	function ViewAttendanceInfo(eventid, attendanceid)
+	{
+		window.open('eventattendeeinfo.asp?EventID=' + eventid + '&AttendanceID=' + attendanceid + '&windowmode=1','AttendanceInfo','height=550,width=850,menubar=no,resizable=yes,scrollbars=yes');
+	}
+	
+	
+		var phone_field_length=0;
+		function TabNext(obj,event,len,next_field) {
+			
+			if (event == "down") {
+				phone_field_length=obj.value.length;
+			}
+			else if (event == "up") {
+				if (obj.value.length != phone_field_length) {
+					phone_field_length=obj.value.length;
+					if (phone_field_length == len) {
+						next_field.focus();
+					}
+				}
+			}
+		}
+	
+//-->
+</script> 
+  <script language="JavaScript">
+    function validateGroup()
+    {
+
+        if (document.forms[0].Group)
+        {
+            var groupNum = document.forms[0].Group.value;
+
+            if (groupNum != "")
+            {
+                var MaxPeople = document.forms[0].MaxPeople.value;
+                var MaxWaitList = document.forms[0].MaxWaitList.value;
+                var NoWait = document.forms[0].NoWait.value;
+                var MainCount = document.forms[0].MainCount.value;
+                var WaitCount = document.forms[0].WaitCount.value;
+                var AvailSpace = MaxPeople - MainCount;
+                var AvailWaitSpace = MaxWaitList - WaitCount;
+                var TotalAvailSpace = AvailSpace + AvailWaitSpace
+
+                if (NoWait == 1)
+                {
+                    if (groupNum > AvailSpace)
+                        sErrMsg = sErrMsg + ++iErrCount + ". Cannot complete registration, only " + AvailSpace + " spaces available. Waiting list is disabled.\n";
+                }
+                else if (NoWait == 0 && MaxWaitList != "")
+                {
+                    if (groupNum > TotalAvailSpace)
+                        sErrMsg = sErrMsg + ++iErrCount + ". Cannot complete registration, only " + AvailSpace + " spaces available on the main list and " + AvailWaitSpace + " spaces available on the wait list.\n";
+                }
+            }
+        }
+
+    }
+</script> 
+  <br>&nbsp;&nbsp;&nbsp;
+  <input class="maintbtn backbtn" type="button" onclick="javascript:location.href='eventcalendar.asp?pointer=&amp;num=0&amp;rts=&amp;kw=&amp;dt=&amp;ds=&amp;de=&amp;sd=&amp;mo=&amp;df=&amp;nopw=&amp;pub=&amp;nopub=&amp;page=&amp;pgdisp=&amp;EventType=&amp;Lib=&amp;AgeGroup=&amp;LangType=0'" value=" Back ">
+  <br>
+  <div style="padding:4px 0px 2px 10px;border:0px" class="requestconfirm"></div> 
+  <div style="margin:10px 10px 10px 10px;"> 
+   <table style="width:600px;" class="entryform"> 
+    <tbody>
+     <tr> 
+      <td colspan="2"><img src="common/cal_tools/spacer.gif" width="600" height="1" border="0" alt="spacer"></td> 
+     </tr> 
+     <tr> 
+      <td colspan="2" class="title" style="color:;background-color:;"> Cleaning Attics and Closets, Downsizing and Rightsizing: an Expert's Tips </td> 
+     </tr> 
+     <tr> 
+      <td colspan="2" class="event_values"> <img src="common/cal_tools/spacer.gif" height="0" width="400"> 
+       <div class="list_utils_text"> 
+        <a href="javascript:emailEvent('Email',75611)" title="Email this event"><img alt="Email this event" src="common/cal_tools/email_small.gif" border="0">&nbsp;Email a friend&nbsp;</a> 
+        <a href="javascript:emailEvent('Notify',75611)" title="Notify me about similar events"><img alt="Notify me about similar events" src="common/cal_tools/notify_small.gif" border="0">&nbsp;Notify me&nbsp;</a> 
+        <a href="javascript:printEvent(75611)" title="Print this event"><img alt="Print this event" src="common/cal_tools/print_small.gif" border="0">&nbsp;Print&nbsp;</a> 
+        <a target="_blank" href="calsync.asp?id=75611&amp;system=event" title="Download this event to my calendar"><img alt="Download this event to my calendar" src="common/cal_tools/download_small.gif" border="0">Download to calendar&nbsp;</a> 
+        <a href="javascript:emailEvent('Remind',75611)" title="Remind me about this event"><img alt="Remind me about this event" src="common/cal_tools/remind_small.gif" border="0">&nbsp;Remind Me&nbsp;</a> 
+        <span style="position:relative;top:2px;"> <iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Ffl%2Eevanced%2Einfo%2Fsclibs%2Flib%2Feventsignup%2Easp%3FID%3D75611&amp;send=false&amp;layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowtransparency="true"></iframe> </span> 
+       </div> <br> </td> 
+     </tr> 
+     <tr> 
+      <td colspan="1" class="event_values"> <b>Event Type: </b>One Book<br><b>Age Group(s): </b>Adults<br> <b>Date:</b> 2/25/2015<br> <b>Start Time:</b> 4:00 PM<br> <b>End Time:</b> 5:30 PM<br> 
+       <div style="float:left;">
+        <b>Description:</b>
+       </div>
+       <div style="margin-left:20px">
+        &nbsp;presented by Wendy Wicks, CEO, TLC Senior Move Experts.
+        <br>This program is part of Sarasota County Libraries' One Book Sarasota series.
+       </div> <b>Library:</b> Selby Library &nbsp;&nbsp;&nbsp;<a target="_blank" href="http://maps.google.com/maps?f=q&amp;hl=en&amp;geocode=&amp;q=1331+First+Street,Sarasota,FL,34236">(Click for a map to Selby Library.)</a> <br> <b>Location:</b> Jack J. Geldbart Auditorium<br> <b>Contact:</b> <a href="mailto:libraryinfo@scgov.net">Brian</a><br> <b>Contact Number:</b> (941) 861-5000<br> <br>
+       <div class="centertext">
+        <input class="maintbtn backbtn" type="button" onclick="javascript:location.href='eventcalendar.asp?pointer=&amp;num=0&amp;rts=&amp;kw=&amp;dt=&amp;ds=&amp;de=&amp;sd=&amp;mo=&amp;df=&amp;EventType=&amp;Lib=&amp;AgeGroup=&amp;pub=&amp;nopub=&amp;page=&amp;pgdisp=&amp;returnToSearch=&amp;LangType=0'" value="Back">
+       </div><br>    </td>
+     </tr>
+    </tbody>
+   </table>
+  </div>
+ </body>
+</html>

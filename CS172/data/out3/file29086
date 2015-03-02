@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta charset="utf-8"> 
+  <title>ILCC Live Video Player</title> 
+  <style type="text/css">
+html, body {
+	margin: 0;
+    padding: 0;
+}
+body {
+    background-color: #000c1c;
+    background-image: url("http://www.iowalakes.edu/images/main_bg.jpg");
+    background-position: center top;
+    background-repeat: repeat-x;
+    color: #000000;
+    font-family: Trebuchet MS,Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 16px;
+}
+.sustainer {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1008px;
+}
+.left_shadow {
+    background-image: url("http://www.iowalakes.edu/images/left_shadow.png");
+    background-position: center top;
+    background-repeat: no-repeat;
+    float: left;
+    height: 805px;
+    line-height: 0;
+    width: 9px;
+}
+.main_wrapper {
+    float: left;
+    width: 990px;
+}
+.right_shadow {
+    background-image: url("http://www.iowalakes.edu/images/right_shadow.png");
+    background-position: center top;
+    background-repeat: no-repeat;
+    float: right;
+    height: 805px;
+    line-height: 0;
+    width: 9px;
+}
+.top_bar {
+    background-image: url("http://www.iowalakes.edu/images/top_bar.gif");
+    background-repeat: repeat-x;
+    float: left;
+    height: 10px;
+    line-height: 0;
+    width: 990px;
+}
+.content_frame {
+    float: left;
+    width: 990px;
+	text-align: center;
+	background-color:#FFFFFF;
+	min-height: 700px;
+}
+.footer_wrapper {
+    background-image: url("http://www.iowalakes.edu/images/footer_bg.gif");
+    background-repeat: no-repeat;
+    float: left;
+    padding: 45px 4px 0 12px;
+    width: 974px;
+}
+
+h2 {
+    color: #000000;
+    font-family: Trebuchet MS,Arial,Helvetica,sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 17px;
+    margin: 0;
+    padding: 0;
+	margin-bottom:3px;
+}
+</style> 
+  <script type="text/javascript">
+    var downloadwindow;
+    function OpenDownLoadWindow(pid) {
+        var u = "http://www.radiop1.com/p1player/downloadprogram.asp?prgid=" + pid;
+        downloadwindow = window.open(u, 'MediaPlayer4', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=550,height=300');
+        if (window.focus) { downloadwindow.focus() }
+    }
+</script> 
+  <script src="http://jwpsrv.com/library/r6T8BhHoEeSVQiIACtqXBA.js"></script> 
+ </head> 
+ <body> 
+  <div class="sustainer"> 
+   <div class="left_shadow png">
+    &nbsp;
+   </div> 
+   <div class="main_wrapper"> 
+    <div style="text-align:center"> 
+     <img src="ILCCHeader.jpg" alt="" width="990" height="131" usemap="#Map" border="0"> 
+     <map name="Map"> <area shape="rect" coords="772,8,987,46" href="http://www.iowalakes.edu/"> </map> 
+    </div> 
+    <div class="top_bar">
+     &nbsp;
+    </div> 
+    <div class="content_frame"> 
+     <h1>Iowa Lakes Community College Live and On-Demand Video Player</h1> 
+     <div style="margin-top:15px;" align="center"> 
+      <div id="pnlNextLiveStream"> 
+      </div>
+      <table cellpadding="0" cellspacing="0" border="0" style="border:1px solid #000000; padding:5px;"> 
+       <tbody>
+        <tr> 
+         <td width="25">&nbsp;</td> 
+         <td valign="top"> <h2>Next Scheduled Livestream:</h2> 
+          <div>
+           ILCC Convocation
+          </div> 
+          <div>
+           3/4/2015 8:45:00 PM to 10:15 PM (times approximate)
+          </div> 
+          <div></div> </td>  
+        </tr> 
+       </tbody>
+      </table> 
+     </div> 
+     <div style="margin-top:5px;">
+       (
+      <strong>If video is buffering frequently please <a href="Default.aspx?videoformat=httpabr">click here</a></strong>) 
+     </div> 
+     <div style="margin-top:8px;" align="center"> 
+      <div id="playerebkCbAzIcreP"></div> 
+      <div id="btnPlayAndroid" style="display:none"> 
+      </div> 
+      <script>
+                    if (navigator.userAgent.match(/android/i) != null){
+						//since Android has horrible live video support for HLS/etc... show direct link to rtsp stream
+						document.getElementById("playerebkCbAzIcreP").style.display = "none";
+						document.getElementById("btnPlayAndroid").style.display = "";
+                    } else {
+						document.getElementById("btnPlayAndroid").style.display = "none";
+
+						jwplayer('playerebkCbAzIcreP').setup({
+                            playlist: [{
+                                sources: [
+                            { file: "http://162.244.81.208:1935/liveTrans/smil:ILCCLive.smil/playlist.m3u8" }
+                            ,{ file: "rtsp://162.244.81.208:1935/liveTrans/ilcclive_240p" }
+                            
+                            ]
+                            }],
+                            title: "ILCC Live Stream",
+                            width: "640",
+                            height: "360",
+                            autostart: "true",
+                            ga: "{}",
+                            sharing: "{}",
+                            androidhls: "false",
+                            primary: "flash",
+							skin: "bekle"
+                        });
+                    }
+                    </script> 
+     </div> 
+     <div>
+       (Video will start a couple minutes before the scheduled event begins - move mouse over video to show controls) 
+     </div> 
+     <iframe id="ifrSchedule" name="ifrSchedule" src="/views/stationschedule.aspx?StationID=33&amp;tabid=266&amp;embedid=1&amp;ltype=refresh&amp;ltarg=parent&amp;lpath=http%3a%2f%2fwww.radiop1.com%2fILCCLive%2fLiveVideoPlayer%2fDefault.aspx" frameborder="0" scrolling="no" style="margin:0;" width="640" height="600"> This site requires the use of IFrames to present content. Your browser does not support IFrames or you have them disabled. &lt;br /&gt;&lt;br /&gt; Click here for instructions on enabling IFrames &lt;br /&gt;&lt;br /&gt; We recommend using the following browsers: &lt;br /&gt;&lt;br /&gt; Microsoft Internet Explorer &lt;br /&gt;&lt;br /&gt; FireFox </iframe> 
+     <div style="margin-top:8px;"> 
+      <a target="_blank" href="http://www.radiop1.com"><img border="0" alt="Powered by RadioP1 streaming services" src="http://dfq1ooi5p88xw.cloudfront.net/images/poweredbyRadioP1Logo.jpg"></a> 
+     </div> 
+    </div> 
+    <div class="footer_wrapper"></div> 
+   </div> 
+   <div class="right_shadow png">
+    &nbsp;
+   </div> 
+  </div>   
+ </body>
+</html>

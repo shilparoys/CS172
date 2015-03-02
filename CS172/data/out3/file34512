@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head profile="http://www.w3.org/1999/xhtml/vocab"> 
+  <meta charset="utf-8"> 
+  <link rel="apple-touch-icon" href="apple-touch-icon.png"> 
+  <link rel="shortcut icon" href="http://www.stern.nyu.edu/sites/all/themes/stern/favicon.ico" type="image/vnd.microsoft.icon"> 
+  <link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad.png"> 
+  <meta name="google-site-verification" content="pPWCUbZMbRrRmfXTDpqKj6IO_JO6wUPfI4AqBey5yUo"> 
+  <meta property="twitter:account_id" content="4503599627424370"> 
+  <meta name="p:domain_verify" content="29eed00a963f7fb0a937e6bf1cdea54d"> 
+  <meta name="generator" content="Drupal 7 (http://drupal.org)"> 
+  <link rel="canonical" href="http://www.stern.nyu.edu/"> 
+  <link rel="shortlink" href="http://www.stern.nyu.edu/"> 
+  <title>NYU Stern | NYU Stern</title> 
+  <link type="text/css" rel="stylesheet" href="http://www.stern.nyu.edu/sites/default/files/css/css_xE-rWrJf-fncB6ztZfd2huxqgxu4WO-qwma6Xer30m4.css" media="all"> 
+  <link type="text/css" rel="stylesheet" href="http://www.stern.nyu.edu/sites/default/files/css/css_0iY8LPAG0mrBQgIASujL1MNerPX_cf-2kBHRp94Fxz8.css" media="all"> 
+  <link type="text/css" rel="stylesheet" href="http://www.stern.nyu.edu/sites/default/files/css/css_uHf4Jfry1oEnmrrhjGx_fXwVpo1JaZzZgENAn5ZRMg8.css" media="all"> 
+  <link type="text/css" rel="stylesheet" href="//cloud.typography.com/7436432/619702/css/fonts.css" media="all"> 
+  <!--[if lte IE 7]>
+<link type="text/css" rel="stylesheet" href="http://www.stern.nyu.edu/sites/default/files/css/css_coJCqLZ_8Vo8vIL1E5RqhFqZnBnVklDM-MPR884X420.css" media="all" />
+<![endif]--> 
+  <link type="text/css" rel="stylesheet" href="http://fast.fonts.com/cssapi/bbf65fbf-c823-48bc-9223-fceac51b58d1.css" media="all"> 
+  <link type="text/css" rel="stylesheet" href="http://www.stern.nyu.edu/sites/default/files/css/css_PNL8htRw0W4-0K0cUxwTTb9mcQnbQdllLLohj8mg-4o.css" media="all"> 
+  <link type="text/css" rel="stylesheet" href="http://www.stern.nyu.edu/sites/default/files/css/css_2bL2IIm4JeKE35SGaoNdlVWLiqYXGj-GJKc9LZ0-ilQ.css" media="print"> 
+  <link type="text/css" rel="stylesheet" href="http://www.stern.nyu.edu/sites/default/files/css/css_6-ML4eGhHrXJmBaNN7X9WouayilSXK3gNCbdrsSg2Uc.css" media="screen"> 
+  <script type="text/javascript" src="http://www.stern.nyu.edu/sites/default/files/js/js_zzcIWOou_jnX0ZWAIA4sb6Xy_p5a8FZNA0GySvuWjPU.js"></script> 
+  <script type="text/javascript">
+<!--//--><![CDATA[//><!--
+(function ($) {
+  Drupal.behaviors.nyuSternMobile = {
+    attach: function (context, settings) {
+      var cdfUserAgentList =  new Array();
+      fillCdfUserAgentList();
+
+      var redirectMainUrl = "";
+
+      //must be done immediately and not on page load
+      checkMobileRedirect();
+
+
+      //if no redirect was performed use main redirect
+      checkMainRedirect();
+
+      function checkMobileRedirect(){
+        //check if cookie exists
+        var mobileRedirectCookieValue = getMobileRedirectCookie();
+        //alert("Mobile cookie: " + mobileRedirectCookieValue);
+        //if yes, redirect or not
+        //if no, checkMobile
+        if(mobileRedirectCookieValue != undefined && mobileRedirectCookieValue.length > 0){
+          //set mobile redirect if mobile nodeId property present
+          if(mobileRedirectCookieValue == "mobile"){
+            redirectMobile();
+          }
+        }else{
+          checkMobile();
+        }
+      }
+
+      function getMobileRedirectCookie(){
+        //cookie name - site type
+        var c_name = "nyus_sttyp";
+        var i,x,y,ARRcookies=document.cookie.split(";");
+        for (i=0;i<ARRcookies.length;i++)
+        {
+          x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+          y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+          x=x.replace(/^\s+|\s+$/g,"");
+          if (x==c_name)
+            {
+            return unescape(y);
+            }
+          }
+
+      }
+      function checkMobile(){
+        if(checkUserAgent() == 1){
+          setMobileCookie(1);
+        }else if(jQuery.browser.mobile != undefined ){
+          if(jQuery.browser.mobile === false){
+            //NYUS:not all touch devices needs to get redirected;disable Modernizr
+            //checkModernizr();
+            checkScreenWidth();
+          }else{
+            setMobileCookie(1);
+          }
+        }else{
+        //if detection libraries are not present, set to Main site
+          setMobileCookie(0);
+        }
+      }
+
+      function checkModernizr(){
+        if (Modernizr.touch){
+          setMobileCookie(1);
+        } else {
+          checkScreenWidth();
+        }
+      }
+
+      function checkScreenWidth(){
+        //NYUS: redirect all under 700px; was 1100
+        //if(screen.width < 1100){
+
+        if(screen.width < 700){
+          setMobileCookie(1);
+        }else{
+          setMobileCookie(0);
+        }
+      }
+
+      function setMobileCookie(isMobile){
+        if(isMobile == 1){
+          //alert("MOBILE");
+          document.cookie = "nyus_sttyp=mobile;path=/;domain=cons-priv.stern.nyu.edu";
+          //set mobile redirect if mobile nodeId property present
+          redirectMobile();
+        }else{
+          document.cookie = "nyus_sttyp=main;path=/;domain=cons-priv.stern.nyu.edu";
+          //alert("NOT MOBILE");
+        }
+      }
+
+      function redirectMobileArticle(){
+        var currentDomain = location.host;
+        var targetDomain = "";
+
+        switch(currentDomain){
+          case "www-dev-aq.stern.nyu.edu":
+            targetDomain = "http://m-dev-aq.stern.nyu.edu/";
+            break;
+          case "www-stg-aq.stern.nyu.edu":
+            targetDomain = "http://m-stg-aq.stern.nyu.edu/";
+            break;
+          case "www.stern.nyu.edu":
+            targetDomain = "http://m.stern.nyu.edu/";
+            break;
+          default:
+            alert("Domain info unavailable. Please contact system administrator.");
+        }
+
+        var nodeUrl = "";
+
+
+
+        var currentUrl = window.location.href;
+        var contentName = currentUrl.substr(currentUrl.lastIndexOf('/') + 1);
+        window.location = targetDomain + nodeUrl + contentName;
+        //alert(targetDomain + nodeUrl + contentName);
+      }
+
+      function checkMainRedirect(){
+        if(redirectMainUrl.length > 0){
+          window.location = redirectMainUrl;
+        }
+      }
+
+      function fillCdfUserAgentList(){
+
+          cdfUserAgentList.push("");
+
+      }
+
+      function checkUserAgent(){
+        var isMobile = 0;
+        var currentUserAgent = navigator.userAgent;
+
+        for (var i = 0; i < cdfUserAgentList.length; i++) {
+          if(currentUserAgent == cdfUserAgentList[i]){
+            isMobile = 1;
+          }
+        }
+        //alert(isMobile);
+        return isMobile;
+      }
+
+    }
+  };
+})(jQuery);
+function redirectMobile(){
+        var redirectMobileUrl = "http://m.stern.nyu.edu/";
+        window.location = redirectMobileUrl;
+      }
+//--><!]]>
+</script> 
+  <script type="text/javascript" src="http://www.stern.nyu.edu/sites/default/files/js/js_aR_bHS2sRqJqDBYgNK6vKHiN3lwjf6nj2RXPbfDazVE.js"></script> 
+  <script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var json_url = '/jsonxsfile?filename=json.json&callback=';
+//--><!]]>
+</script> 
+  <script type="text/javascript" src="http://vjs.zencdn.net/c/video.js"></script> 
+  <script type="text/javascript">
+<!--//--><![CDATA[//><!--
+(function ($) {
+
+// Tabbed content.
+$(document).ready(function(){
+  $("#tabbed-block a").click(function(event){
+    var href =  $(this).attr('href').toLowerCase();
+    $("#tabbed-block li[id^=tab-]").each(function(){
+      var linkHref =  $(this).find('a').attr('href').toLowerCase();
+      if(linkHref == href){
+         $(this).trigger('click');
+         event.preventDefault();
+      }
+    });
+  });
+});
+
+// iOS fixes.
+$(document).ready(function(){
+  if(navigator.platform == 'iPad' || navigator.platform == 'iPhone' || navigator.platform == 'iPod') {
+   // $("#footer-global").css("position", "static");
+    $("#footer-global").css("position", "absolute");
+    $("#footer-global").css("bottom", "-340px");
+    //alert("Platform6:" + navigator.platform);
+  };
+});
+
+})(jQuery);
+
+//--><!]]>
+</script> 
+  <script type="text/javascript" src="http://www.stern.nyu.edu/sites/default/files/js/js_UEWf10LmkRzEzc5DIfJqyEdOFk4F3ILr-y9sNH-Bj60.js"></script> 
+  <script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"stern","theme_token":"oURLniF_f0GQB3Gj2JG12cbNa7qXmcEgXHFHOnniwHs","js":{"0":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/jquery\/1.5\/jquery.min.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"1":1,"sites\/all\/modules\/custom\/stern_ga\/ga_base_code.js":1,"sites\/all\/modules\/custom\/stern_ga\/jquery_nyu.js":1,"2":1,"http:\/\/vjs.zencdn.net\/c\/video.js":1,"3":1,"sites\/all\/themes\/stern\/scripts\/nyusm_detectmobile.js":1,"sites\/all\/themes\/stern\/scripts\/js_nyus_asw.js":1,"sites\/all\/themes\/stern\/scripts\/js_nyus_audio_flowplayer.js":1,"sites\/all\/themes\/stern\/scripts\/js_nyus_audio_flowp_controls.js":1,"sites\/all\/themes\/stern\/scripts\/js_nyus_audio_jplayer.js":1,"sites\/all\/themes\/stern\/scripts\/js_nyus_fancybox.js":1,"sites\/all\/themes\/stern\/scripts\/js_nyus_jquery_plugins.js":1,"sites\/all\/themes\/stern\/scripts\/js_nyus_main.js":1,"sites\/all\/themes\/stern\/scripts\/js_nyus_swfobject.js":1,"sites\/all\/themes\/stern\/scripts\/js_nyus_webfonts.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"sites\/all\/modules\/contrib\/ldap\/ldap_user\/ldap_user.css":1,"sites\/all\/modules\/contrib\/date\/date_api\/date.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/contrib\/views\/css\/views.css":1,"sites\/all\/modules\/contrib\/ckeditor\/css\/ckeditor.css":1,"profiles\/acquia\/modules\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/contrib\/ldap\/ldap_servers\/ldap_servers.admin.css":1,"sites\/all\/modules\/contrib\/asset\/css\/assets.css":1,"\/\/cloud.typography.com\/7436432\/619702\/css\/fonts.css":1,"sites\/all\/themes\/stern\/stylesheets\/css_nyus_legacy.css":1,"http:\/\/fast.fonts.com\/cssapi\/bbf65fbf-c823-48bc-9223-fceac51b58d1.css":1,"sites\/all\/themes\/stern\/stylesheets\/reset.css":1,"sites\/all\/themes\/stern\/stylesheets\/css_nyus_screen_print.css":1,"sites\/all\/themes\/stern\/stylesheets\/added.css":1,"sites\/all\/themes\/stern\/date.css":1,"sites\/all\/themes\/stern\/stylesheets\/css_nyus_print.css":1,"sites\/all\/themes\/stern\/stylesheets\/css_nyus_video.css":1}}});
+//--><!]]>
+</script> 
+ </head> 
+ <body class="html front not-logged-in one-sidebar sidebar-second page-node page-node- page-node-28 node-type-home domain-desktop"> 
+  <div class="JumpLink" id="PageTop">
+   <a href="#bodywrapper">Skip to Main Content</a>
+  </div> 
+  <!-- BEGIN: pagewrapper --> 
+  <div id="pagewrapper" class="home-page"> 
+   <!-- BEGIN: header-global --> 
+   <div class="header" id="header-global"> 
+    <div id="logo-stern"> 
+     <a href="/"><img src="/sites/all/themes/stern/logo.png" alt="NYU Stern"></a> 
+    </div> 
+    <div class="nav" id="nav-main"> 
+     <ul> 
+      <li id="nav-experience"> <a href="/experience-stern"> <b>Experience Stern</b> <span class="tagline">Research, Faculty, Social, News</span> </a> 
+       <div class="menu"> 
+        <div class="col-7"> 
+         <div class="submenu"> 
+          <div class="title">
+           <a href="/experience-stern/faculty-research" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="">Faculty &amp; Research</a>
+          </div> 
+          <ul> 
+           <li><a href="/experience-stern/faculty-research?refine=catg-books" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="">Books</a></li> 
+           <li><a href="/experience-stern/faculty-research?refine=catg-opinion" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="">Opinion</a></li> 
+           <li><a href="/experience-stern/faculty-research?refine=catg-researchhighlights" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="">Research Highlights</a></li> 
+           <li><a href="/experience-stern/faculty-research?refine=catg-researchinthenews" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="">Research in the News</a></li> 
+           <li><a href="/experience-stern/faculty-research?refine=catg-blogs" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="">Blogs</a></li> 
+           <li><a href="/experience-stern/faculty-research/archive" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="">Archive</a></li> 
+           <li><a href="http://www.stern.nyu.edu/faculty/search_name_form" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="">Faculty Directory</a></li> 
+          </ul> 
+         </div> 
+         <div class="submenu"> 
+          <div class="title">
+           <a href="/experience-stern/social" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Social@Stern">Social@Stern</a>
+          </div> 
+         </div> 
+         <div class="submenu"> 
+          <div class="title">
+           <a href="/experience-stern/tales-in-possible" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="">Tales in Possible</a>
+          </div> 
+         </div> 
+         <div class="submenu"> 
+          <div class="title">
+           <a href="/experience-stern/global" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="">Global</a>
+          </div> 
+          <ul> 
+           <li><a href="/experience-stern/global?refine=catg-businessacrossborders" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="">Business Across Borders</a></li> 
+           <li><a href="/experience-stern/global?refine=catg-globalstudy" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="">Global Study</a></li> 
+           <li><a href="/experience-stern/global?refine=catg-voicesfromabroad" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="">Voices from Abroad</a></li> 
+           <li><a href="/experience-stern/global/archive" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="">Archive</a></li> 
+          </ul> 
+         </div> 
+         <div class="submenu"> 
+          <div class="title">
+           <a href="/experience-stern/network" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Network">Network</a>
+          </div> 
+         </div> 
+         <div class="submenu"> 
+          <div class="title">
+           <a href="/experience-stern/news-events" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="">News &amp; Events</a>
+          </div> 
+          <ul> 
+           <li><a href="/experience-stern/news-events?refine=facultynews" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="">Faculty News</a></li> 
+           <li><a href="/experience-stern/news-events?refine=pressreleases" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="">Press Releases</a></li> 
+           <li><a href="/experience-stern/news-events?refine=schoolnews" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="">School News</a></li> 
+           <li><a href="/experience-stern/news-events/events" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="">Events</a></li> 
+          </ul> 
+         </div> 
+         <div class="submenu"> 
+          <div class="title">
+           <a href="/experience-stern/about" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="About Stern">About Stern</a>
+          </div> 
+          <ul> 
+           <li><a href="/experience-stern/about/values" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="An Education in Possible">Values</a></li> 
+           <li><a href="/experience-stern/about/key-facts" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Key Facts: Academic Year 2014-2015">Key Facts</a></li> 
+           <li><a href="/experience-stern/about/history" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="History">History</a></li> 
+           <li><a href="/experience-stern/about/leadership" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Leadership">Leadership</a></li> 
+           <li><a href="/experience-stern/about/departments-centers-initiatives" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Departments, Centers &amp; Initiatives">Departments, Centers &amp; Initiatives</a></li> 
+           <li><a href="/experience-stern/about/working-at-stern" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Working at Stern">Working at Stern</a></li> 
+           <li><a href="/experience-stern/about/visit-stern" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Visit Stern">Visit Stern</a></li> 
+           <li><a href="/experience-stern/about/contact" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Contact NYU Stern">Contact</a></li> 
+          </ul> 
+         </div> 
+        </div> 
+       </div> </li> 
+      <li id="nav-programs"> <a href="/programs-admissions"> <b>Programs &amp; Admissions</b> <span class="tagline">Degrees &amp; Executive Education</span> </a> 
+       <div class="menu"> 
+        <div class="col-8"> 
+         <div class="submenu"> 
+          <div class="title">
+           <a href="/programs-admissions/undergraduate" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Undergraduate Program">Undergraduate</a>
+          </div> 
+          <ul> 
+           <li><a href="/programs-admissions/undergraduate/stern-advantage" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="The Stern Advantage">The Stern Advantage</a></li> 
+           <li><a href="/programs-admissions/undergraduate/academics" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Academics">Academics</a></li> 
+           <li><a href="/programs-admissions/undergraduate/global-study" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Stern Around the World">Stern Around the World</a></li> 
+           <li><a href="/programs-admissions/undergraduate/social-impact" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Social Impact">Social Impact</a></li> 
+           <li><a href="/programs-admissions/undergraduate/dynamic-community" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Dynamic Community">Dynamic Community</a></li> 
+           <li><a href="/programs-admissions/undergraduate/future-success" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Future Success">Future Success</a></li> 
+           <li><a href="/programs-admissions/undergraduate/admissions" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Admissions">Admissions</a></li> 
+          </ul> 
+         </div> 
+         <div class="submenu"> 
+          <div class="title">
+           <a href="/programs-admissions/full-time-mba" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Full-time MBA">Full-time MBA</a>
+          </div> 
+          <ul> 
+           <li><a href="/programs-admissions/full-time-mba/the-stern-advantage" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="An Education in Possible">The Stern Advantage</a></li> 
+           <li><a href="/programs-admissions/full-time-mba/academics" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="">Academics</a></li> 
+           <li><a href="/programs-admissions/full-time-mba/students" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="">Students</a></li> 
+           <li><a href="/programs-admissions/full-time-mba/career" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="">Career</a></li> 
+           <li><a href="/programs-admissions/full-time-mba/financial-aid" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="">Financial Aid</a></li> 
+           <li><a href="/programs-admissions/full-time-mba/admissions" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Take the next step toward your goals">Admissions</a></li> 
+           <li><a href="/programs-admissions/full-time-mba/meet-with-us" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="">Meet With Us</a></li> 
+          </ul> 
+         </div> 
+         <div class="submenu"> 
+          <div class="title">
+           <a href="/programs-admissions/part-time-mba-nyc" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Part-time MBA Manhattan">Part-time MBA Manhattan&nbsp;&nbsp;&nbsp;&nbsp;</a>
+          </div> 
+          <ul> 
+           <li><a href="/programs-admissions/part-time-mba-nyc/stern-advantage" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="The Stern Advantage">The Stern Advantage</a></li> 
+           <li><a href="/programs-admissions/part-time-mba-nyc/academics" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="">Academics</a></li> 
+           <li><a href="/programs-admissions/part-time-mba-nyc/community" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="">Community</a></li> 
+           <li><a href="/programs-admissions/part-time-mba-nyc/career" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Effectively Manage Your Career">Career</a></li> 
+           <li><a href="/programs-admissions/part-time-mba-nyc/financial-aid" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="">Financial Aid</a></li> 
+           <li><a href="/programs-admissions/part-time-mba-nyc/admissions" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Take the next step toward your goals">Admissions</a></li> 
+           <li><a href="/programs-admissions/part-time-mba-nyc/meet-with-us" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="">Meet With Us</a></li> 
+          </ul> 
+         </div> 
+         <div class="submenu"> 
+          <div class="title">
+           <a href="/programs-admissions/part-time-mba-westchester" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Part-time MBA Westchester">Part-time MBA Westchester</a>
+          </div> 
+          <ul> 
+           <li><a href="/programs-admissions/part-time-mba-westchester/stern-advantage" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="The Stern Advantage">The Stern Advantage</a></li> 
+           <li><a href="/programs-admissions/part-time-mba-westchester/academics" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="">Academics</a></li> 
+           <li><a href="/programs-admissions/part-time-mba-westchester/community" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="">Community</a></li> 
+           <li><a href="/programs-admissions/part-time-mba-westchester/career" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Career">Career</a></li> 
+           <li><a href="/programs-admissions/part-time-mba-westchester/financial-aid" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="">Financial Aid</a></li> 
+           <li><a href="/programs-admissions/part-time-mba-westchester/admissions" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Take the next step toward your goals">Admissions</a></li> 
+           <li><a href="/programs-admissions/part-time-mba-westchester/meet-with-us" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="">Meet With Us</a></li> 
+          </ul> 
+         </div> 
+         <div class="submenu"> 
+          <div class="title">
+           <a href="/programs-admissions/executive-mba" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Executive MBA Program">Executive MBA</a>
+          </div> 
+          <ul> 
+           <li><a href="/programs-admissions/executive-mba/the-stern-advantage" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="A Different Degree of Experience">The Stern Advantage</a></li> 
+           <li><a href="/programs-admissions/executive-mba/academics" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Academics">Academics</a></li> 
+           <li><a href="/programs-admissions/executive-mba/community" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Community">Community</a></li> 
+           <li><a href="/programs-admissions/executive-mba/career-development" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Career Development">Career Development</a></li> 
+           <li><a href="/programs-admissions/executive-mba/sponsorship" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Sponsorship">Sponsorship</a></li> 
+           <li><a href="/programs-admissions/executive-mba/admissions" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Admissions">Admissions</a></li> 
+           <li><a href="/programs-admissions/executive-mba/contact-us" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Contact the Admissions Office">Contact Us</a></li> 
+          </ul> 
+         </div> 
+         <div class="submenu"> 
+          <div class="title">
+           <a href="/programs-admissions/dual-degrees" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Dual Degrees">Dual Degrees</a>
+          </div> 
+          <ul> 
+           <li><a href="/programs-admissions/dual-degrees/md-mba" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="MD/MBA">MD/MBA</a></li> 
+           <li><a href="/programs-admissions/dual-degrees/jd-mba" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="JD/MBA">JD/MBA</a></li> 
+           <li><a href="/programs-admissions/dual-degrees/mba-mfa" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="MBA/MFA">MBA/MFA</a></li> 
+           <li><a href="/programs-admissions/dual-degrees/mba-ms-in-mathematics" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="MS in Mathematics in Finance/MBA">MS in Mathematics/ MBA</a></li> 
+           <li><a href="/programs-admissions/dual-degrees/mba-mpa" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="MBA/MPA">MBA/MPA</a></li> 
+           <li><a href="/programs-admissions/dual-degrees/mba-ma-in-french-studies" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="MBA/MA in French Studies">MBA/MA in French Studies</a></li> 
+           <li><a href="/programs-admissions/dual-degrees/mba-ma-in-politics" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="MBA/MA in Politics">MBA/MA in Politics</a></li> 
+           <li><a href="/programs-admissions/dual-degrees/mba-ms-in-biology" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="MS in Biology/MBA">MS in Biology/MBA</a></li> 
+           <li><a href="/programs-admissions/dual-degrees/dual-mba-with-hec-school-of-management" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Dual MBA with HEC School of Management">Dual MBA with HEC School of Management</a></li> 
+          </ul> 
+         </div> 
+         <div class="submenu"> 
+          <div class="title">
+           <a href="/programs-admissions/global-degrees" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Degree Programs for Global Managers">Global Degrees</a>
+          </div> 
+          <ul> 
+           <li><a href="http://www.triumemba.org" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="_blank">TRIUM EMBA</a></li> 
+           <li><a href="http://www.globalfinancemaster.com/" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="_blank">MS in Global Finance</a></li> 
+           <li><a href="/programs-admissions/global-degrees/ms-risk-management-executives" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Master of Science in Risk Management for Executives">MS in Risk Management</a></li> 
+           <li><a href="/programs-admissions/global-degrees/business-analytics" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Master of Science in Business Analytics">MS in Business Analytics</a></li> 
+          </ul> 
+         </div> 
+         <div class="submenu"> 
+          <div class="title">
+           <a href="/programs-admissions/phd" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="PhD">PhD</a>
+          </div> 
+          <ul> 
+           <li><a href="/programs-admissions/phd/the-stern-advantage" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="An Education in Possible">The Stern Advantage</a></li> 
+           <li><a href="/programs-admissions/phd/academics" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Intellectual Rigor and Creative Collaboration">Academics</a></li> 
+           <li><a href="/programs-admissions/phd/job-placement" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Placement Success">Job Placement</a></li> 
+           <li><a href="/programs-admissions/phd/student-life" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title=" A Vibrant &amp; Collaborative Environment">Student Life</a></li> 
+           <li><a href="/programs-admissions/phd/admissions" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="">Admissions</a></li> 
+          </ul> 
+         </div> 
+         <div class="submenu"> 
+          <div class="title">
+           <a href="/programs-admissions/executive-education" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Executive Education">Executive Education</a>
+          </div> 
+          <ul> 
+           <li><a href="/programs-admissions/executive-education/short-courses" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Executive Education • Short Courses">Short Courses</a></li> 
+           <li><a href="/programs-admissions/executive-education/custom-programs" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Executive Education • Custom Programs">Custom Programs</a></li> 
+          </ul> &nbsp; 
+          <div class="title">
+           <a href="/programs-admissions/advanced-professional-certificates" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Advanced Professional Certificates">Advanced Professional Certificates</a>
+          </div> 
+          <ul> 
+           <li><a href="/programs-admissions/advanced-professional-certificates/certificate-options/finance" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Advanced Professional Certificate: Finance">Finance</a></li> 
+           <li><a href="/programs-admissions/advanced-professional-certificates/certificate-options/marketing" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Advanced Professional Certificate: Marketing">Marketing</a></li> 
+           <li><a href="/programs-admissions/advanced-professional-certificates/certificate-options/general-business" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Advanced Professional Certificate: General Business">General Business</a></li> 
+          </ul> 
+         </div> 
+        </div> 
+       </div> </li> 
+      <li id="nav-portal"> <a href="/portal-partners"> <b>Portal &amp; Partners</b> <span class="tagline">Alumni, Recruiters, Student Login</span> </a> 
+       <div class="menu"> 
+        <div class="col-4"> 
+         <div class="submenu"> 
+          <div class="title">
+           <a class="secure" href="/portal-partners/current-students" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="">Current Students</a>
+          </div> 
+          <a href="http://sternlife.stern.nyu.edu" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="_blank">SternLinks</a>
+          <br> 
+          <a href="/portal-partners/current-students/student-jobs" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Student Jobs">Student Jobs</a>
+          <br> &nbsp; 
+          <h2 style="font-size: 1em"><a href="/portal-partners/current-students/undergraduate" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Undergraduate Current Students">Undergraduate Current Students</a></h2> &nbsp; 
+          <h2 style="font-size: 1em">MBA &amp; Graduate Students</h2> 
+          <ul> 
+           <li><a href="/AcademicAffairs" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="">Academic Affairs and Advising</a></li> 
+           <li><a href="/Registrar" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="">Records &amp; Registration</a></li> 
+           <li><a href="/AcademicAffairs/International" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="">International Programs</a></li> 
+           <li><a href="/portal-partners/bursar" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Full-time Graduate Students">Bursar</a></li> 
+           <li><a href="/portal-partners/financial-aid" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="&nbsp;NYU Stern Graduate Financial Aid">Financial Aid</a></li> 
+           <li><a href="/portal-partners/student-engagement" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Office of Student Engagement">Office of Student Engagement</a></li> 
+           <li><a href="/portal-partners/leadership-development" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Leadership Development">Leadership Development</a></li> 
+           <li><a href="/portal-partners/career-center-working-professionals" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Career Center for Working Professionals">Career Center for Working Professionals</a></li> 
+           <li><a class="secure" href="https://shibboleth-stern-nyu-csm.symplicity.com/sso/" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="_blank">Career Account</a></li> 
+          </ul> 
+          <div class="more">
+           <a href="http://sternlife.stern.nyu.edu" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="_blank">SternLinks</a>
+          </div> 
+         </div> 
+         <div class="submenu"> 
+          <div class="title">
+           <a class="secure" href="/portal-partners/faculty-staff" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="">Faculty &amp; Staff</a>
+          </div> 
+          <ul> 
+           <li><a href="/experience-stern/about/working-at-stern/join-sterns-faculty" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Faculty Opportunities">Join Stern's Faculty</a></li> 
+           <li><a href="/experience-stern/about/leadership" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Leadership">Leadership</a></li> 
+           <li><a href="/portal-partners/faculty-staff/new-faculty-information" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Information for New Faculty">New Faculty Resources</a></li> 
+           <li><a href="/portal-partners/center-innovation-teaching-learning" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Center for Innovation in Teaching and Learning">CITL</a></li> 
+           <li><a href="http://scrc.stern.nyu.edu/" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="">Center for Research Computing</a></li> 
+           <li><a href="/portal-partners/faculty-staff/behavior-lab" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Center for Behavioral Research">Center for Behavioral Research</a></li> 
+          </ul> 
+          <div class="more">
+           <a href="http://sternlife.stern.nyu.edu" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="_blank">Log in to SternLinks</a>
+          </div> 
+         </div> 
+         <div class="submenu"> 
+          <div class="title">
+           <a href="/portal-partners/alumni" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Alumni">Alumni</a>
+          </div> 
+          <ul> 
+           <li><a href="/portal-partners/alumni/events" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Events Calendar">Attend an Event</a></li> 
+           <li><a href="/portal-partners/career-center-working-professionals/alumni" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Explore Lifelong Career Development Resources and Programming">Career Center for Working Professionals</a></li> 
+           <li><a href="https://securelb.imodules.com/s/1068/GroupBus/index.aspx?sid=1068&amp;gid=2&amp;pgid=7232&amp;returnurl=http%3a%2f%2fwww.stern.nyu.edu%2fportal-partners%2falumni" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="_blank">Log in to SternConnect</a></li> 
+           <li><a href="/portal-partners/alumni/sternconnect" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="SternConnect">Network with Alumni</a></li> 
+           <li><a href="/sternbusiness" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="STERNbusiness">SternBusiness Alumni Magazine</a></li> 
+          </ul> 
+          <div class="more">
+           <a href="/portal-partners/alumni/support-stern" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Invest in Stern">Support Stern</a>
+          </div> 
+         </div> 
+         <div class="submenu"> 
+          <div class="title">
+           <a href="/portal-partners/recruiters" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Recruiters">Recruiters</a>
+          </div> 
+          <ul> 
+           <li><a href="/portal-partners/recruiters/stern-advantage/your-relationship-manager" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Get to Know Your Relationship Manager">Contact Your Relationship Manager</a></li> 
+           <li><a href="/portal-partners/recruiters/recruit-experienced-talent" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Recruit Experienced Level Talent">Recruit Experienced Talent</a></li> 
+           <li><a href="/portal-partners/recruiters/recruit-on-campus" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Recruit On-Campus">Recruit on Campus</a> (MBA)</li> 
+           <li><a href="http://www.nyu.edu/careerdevelopment/" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="_blank">Recruit on Campus</a> (Undergraduate)</li> 
+          </ul> 
+          <div class="more">
+           <a href="/portal-partners/recruiters" onclick="_gaq.push(['_trackEvent', 'MegaMenuLink', 'Click', this.innerHTML+' | '+this.href]);" target="" title="Recruiters">Get Started</a>
+          </div> 
+         </div> 
+        </div> 
+       </div> </li> 
+     </ul> 
+    </div> 
+    <div id="site-search-form"> 
+     <form method="get" action="http://google.nyu.edu/search"> 
+      <fieldset> 
+       <input type="hidden" name="site" value="stern_collection"> 
+       <input type="hidden" name="client" value="stern_frontend"> 
+       <input type="hidden" name="output" value="xml_no_dtd"> 
+       <!--<input type="hidden" name="proxyreload" value="1">--> 
+       <input type="hidden" name="proxystylesheet" value="stern_frontend"> 
+       <!--<input type="hidden" name="sitesearch" value="www.stern.nyu.edu">--> 
+       <label for="site-search">Search</label> 
+       <div class="field"> 
+        <input type="search" name="q" value="" id="site-search"> 
+        <input type="image" src="/sites/all/themes/stern/images/btn.site-search.png" alt="Search"> 
+       </div> 
+      </fieldset> 
+     </form> 
+    </div> 
+    <div id="floater"> 
+    </div> 
+   </div> 
+   <!-- END: header-global --> 
+   <!-- BEGIN: bodywrapper --> 
+   <div id="bodywrapper"> 
+    <div id="contentwrapper"> 
+     <div id="hometheater"> 
+      <div id="hometheaterrow"> 
+       <div id="prev">
+        <a href="">&lt;</a>
+       </div> 
+       <div id="rowwrapper"> 
+        <ul id="row"> 
+         <li class="first"> <h2><a href="">lead</a><span>/</span></h2> <p>The NYU Leadership Initiative and NYU Stern hosted "Global Leadership in the 21st Century," a conversation with Lloyd C. Blankfein, chairman &amp; CEO of Goldman Sachs, and NYU President John Sexton. <a href="http://www.stern.nyu.edu/experience-stern/news-events/global-leadership-blankfein-sexton?src=homepage_feature">Read more&gt;&gt;</a></p> <img src="http://www.stern.nyu.edu/sites/default/files/assets/images/Global-Leadership_option-2.jpg" width="1200" height="750" alt="Tales in Possible | Lead Possible | Global Leadership Webcast"></li> 
+         <li class="first"> <h2><a href="">impact</a><span>/</span></h2> <p>Steve Forbes, Chairman and Editor-In-Chief of Forbes Media, addresses the undergraduate freshmen class in Stern's Business and Its Publics course. <a href="http://www.stern.nyu.edu/programs-admissions/undergraduate/stern-advantage/news/knowledge-through-experimentation?src=homepage_feature">Learn more&gt;&gt;</a></p> <img src="http://www.stern.nyu.edu/sites/default/files/assets/images/mock1.jpg" width="1200" height="750" alt="Tales in Possible | Impact Possible | Steve Forbes"></li> 
+         <li class="first"> <h2><a href="">advance</a><span>/</span></h2> <p>Working professionals who want to build knowledge quickly in a specific area can now apply to take graduate-level courses at NYU Stern through new Advanced Professional Certificate (APC) programs. <a href="http://www.stern.nyu.edu/experience-stern/news-events/nyu-stern-launches-apcs?src=homepage_feature">Learn more&gt;&gt;</a></p> <img src="http://www.stern.nyu.edu/sites/default/files/assets/images/con_036166.jpg" width="1200" height="750" alt="NYU Stern School of Business Establishes Loan Assistance Program for MBAs"></li> 
+         <li class="first"> <h2><a href="">brave</a><span>/</span></h2> <p>Stern alumnus and Executive Board member Mark Patterson encouraged the newest class of Langone MBAs to embrace risk at <a href="http://www.stern.nyu.edu/experience-stern/tales-possible/brave-possible-langone-lab?src=homepage_feature">Langone Lab</a>, an orientation program for Stern’s working professionals.</p> <img src="http://www.stern.nyu.edu/sites/default/files/assets/images/langone2.jpg" width="1200" height="750" alt="Tales in Possible | Brave Possible | Langone Lab Spring 2015"></li> 
+         <li class="first"> <h2><a href="">accelerate</a><span>/</span></h2> <p>Hulu Account Manager Gabriela Martinez earned her degree in two years in NYU Stern’s Langone Part-time MBA Program. <a href="/experience-stern/tales-in-possible/accelerate-possible?src=homepage_feature" title="Accelerate Possible">Learn more &gt;&gt;</a></p> <img src="http://www.stern.nyu.edu/sites/default/files/assets/images/hulu4.jpg" width="1200" height="750" alt="Tales in Possible | Accelerate Possible | Gabriela Martinez"></li> 
+         <li class="first"> <h2><a href="">discover</a><span>/</span></h2> <p>Undergraduate students met with&nbsp;farmers, cow herders, women's groups and corporate social workers at the local temple in an Indian village outside&nbsp;of Chennai&nbsp;during a Stern Around the World immersion program. <a href="http://www.stern.nyu.edu/programs-admissions/undergraduate/global-study/short-term-immersions?src=homepage_feature">Learn more</a>&nbsp;&gt;&gt;</p> <img src="http://www.stern.nyu.edu/sites/default/files/assets/images/saw2.jpg" width="1200" height="750" alt="Discover Possible | Stern Around the World | India"></li> 
+         <li class="first"> <h2><a href="">cultivate</a><span>/</span></h2> <p>Frank Blake, Chairman of Home Depot, joined MBA students and alumni for a 2014-2015 Langone Speaker Series event. <a href="/experience-stern/tales-in-possible/cultivate-possible-frank-blake?src=homepage_feature" title="Cultivate Possible">Learn more &gt;&gt;</a></p> <img src="http://www.stern.nyu.edu/sites/default/files/assets/images/blake_0.jpg" width="1200" height="750" alt="Tales in Possible | Cultivate Possible | Langone Speaker Series | Home Depot"></li> 
+        </ul> 
+       </div> 
+       <div id="next">
+        <a href="">&gt;</a>
+       </div> 
+       <div id="bg"></div> 
+       <div id="hometheatercopy"> 
+        <h2>POSSIBLE</h2> 
+        <p>NYU Stern</p> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <!-- END: bodywrapper --> 
+   <!-- BEGIN: footer-global --> 
+   <div id="footer-global"> 
+    <div id="footer-menu"> 
+     <div id="footer-news"> 
+      <h4>News</h4> 
+      <ul> 
+       <li><a href="/experience-stern/news-events/fpa-award-peter-henry" onclick="_gaq.push(['_trackEvent', 'FooterLink', 'Click', this.href]);" target="_blank" title="Foreign Policy Association Awards Medal to Peter Henry, Economist and Dean of NYU Stern School of Business">Foreign Policy Association Awards Medal to Dean Peter Henry</a></li> 
+       <li><a href="/experience-stern/news-events/nyu-stern-launches-apcs" onclick="_gaq.push(['_trackEvent', 'FooterLink', 'Click', this.href]);" target="_blank" title="NYU Stern Launches Advanced Professional Certificates in Finance, Marketing and General Business">NYU Stern Launches Advanced Professional Certificates in Finance, Marketing and General Business</a></li> 
+       <li>Follow <a href="http://twitter.com/#!/NYUStern" onclick="_gaq.push(['_trackEvent', 'FooterLink', 'Click', this.href]);" target="_blank">@NYUStern on Twitter</a> and <a href="http://www.facebook.com/nyustern" onclick="_gaq.push(['_trackEvent', 'FooterLink', 'Click', this.href]);">like NYU Stern on Facebook</a></li> 
+      </ul> 
+     </div> 
+     <div id="footer-basics"> 
+      <h4>Basics</h4> 
+      <ul> 
+       <li><a href="/experience-stern/about/visit-stern" onclick="_gaq.push(['_trackEvent', 'FooterLink', 'Click', this.href]);" target="" title="Visit Stern">Directions &amp; Maps</a></li> 
+       <li><a href="http://www.stern.nyu.edu/faculty/search_name_form" onclick="_gaq.push(['_trackEvent', 'FooterLink', 'Click', this.href]);" target="">Faculty Directory</a></li> 
+       <li><a href="/experience-stern/about/contact" onclick="_gaq.push(['_trackEvent', 'FooterLink', 'Click', this.href]);" target="" title="Contact NYU Stern">Contact Us</a></li> 
+      </ul> 
+     </div> 
+     <div id="footer-media"> 
+      <ul> 
+       <li><a href="/experience-stern/social" onclick="_gaq.push(['_trackEvent', 'FooterLink', 'Click', this.href]);" target="" title="Social@Stern"><img alt="NYU Stern on Twitter" src="/sites/all/themes/stern/images/uat_026322.png"></a></li> 
+       <li><a href="/experience-stern/social" onclick="_gaq.push(['_trackEvent', 'FooterLink', 'Click', this.href]);" target="" title="Social@Stern"><img alt="NYU Stern on Facebook" src="/sites/all/themes/stern/images/uat_026323.png"></a></li> 
+       <li><a href="/experience-stern/social" onclick="_gaq.push(['_trackEvent', 'FooterLink', 'Click', this.href]);" target="" title="Social@Stern"><img alt="NYU Stern on YouTube" src="/sites/all/themes/stern/images/uat_026325.png"></a></li> 
+       <li><a href="/experience-stern/about/social-media" onclick="_gaq.push(['_trackEvent', 'FooterLink', 'Click', this.href]);" target="" title="Social Media Directory"><img alt="NYU Stern on LinkedIn" src="/sites/all/themes/stern/images/uat_026324.png"></a></li> 
+      </ul> 
+     </div> 
+     <div id="footer-feature"> 
+      <h4>FACULTY OPINIONS</h4> 
+      <p><img alt="NYU Stern Faculty Opinions" src="/sites/all/themes/stern/images/uat_026329.png" style="vertical-align: top; float: left; padding: 4px;"><a href="/experience-stern/faculty-research/index.htm?refine=catg-opinion" onclick="_gaq.push(['_trackEvent', 'FooterLink', 'Click', this.href]);" target="">Read Stern faculty opinions on<br> relevant business topics</a></p> 
+     </div> 
+    </div> 
+    <div id="footer"> 
+     <p><a href="/sitemap">Sitemap</a> &nbsp;|&nbsp; <a href="/privacy">Privacy</a> &nbsp;|&nbsp; © 2015 Leonard N. Stern School of Business</p> 
+     <div class="logo"> 
+      <a href="http://www.nyu.edu"><img src="/sites/all/themes/stern/images/logo.foot.nyu.gif" width="160" height="20" alt="New York University"></a> 
+     </div> 
+    </div> 
+    <div style="display:none;"> 
+     <script type="text/javascript">
+var ut_params = ut_params || [];ut_params.push("UT-311171073");//version:0.4
+(function() {var ut = document.createElement('script'); ut.type = 'text/javascript'; ut.async = true;
+ut.src = (("https:" == document.location.protocol) ? "https://" : "http://") + 'app.ubertags.com/javascripts/ubertags.js';
+var script = document.getElementsByTagName('script')[0]; script.parentNode.insertBefore(ut, script);})();
+</script> 
+    </div> 
+   </div> 
+   <!-- END: footer-global --> 
+   <script type="text/javascript">
+<!--//--><![CDATA[//><!--
+(function ($) {
+
+// Activate promos (may need to be placed inline in body).
+function outerHTML(theNode){
+  // if IE, Chrome take the internal method otherwise build one
+  return theNode.outerHTML || (
+  function(n){
+  var div = document.createElement('div'), h;
+  div.appendChild( n.cloneNode(true) );
+  h = div.innerHTML;
+  div = null;
+  return h;
+  })(theNode);
+}
+var objExplorePossibleBody = $("#explore-possible .body");
+var objExplorePossibleBodyHtml = [];
+objExplorePossibleBodyHtml[objExplorePossibleBodyHtml.length] = "<ul>";
+objExplorePossibleBody.find("a").each(function(count, item){
+    objExplorePossibleBodyHtml[objExplorePossibleBodyHtml.length] = "<li>" + outerHTML($(this).get(0)) + "</li>";
+});
+objExplorePossibleBodyHtml[objExplorePossibleBodyHtml.length] = "</ul>";
+objExplorePossibleBody.html(objExplorePossibleBodyHtml.join(""));
+
+})(jQuery);
+
+//--><!]]>
+</script> 
+   <div class="JumpLink">
+    <a href="#PageTop">Back to Top</a>
+   </div>   
+  </div>
+ </body>
+</html>

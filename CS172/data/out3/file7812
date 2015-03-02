@@ -1,0 +1,335 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <script type="text/javascript">
+<!--
+	function checkDlg()
+	{
+		if (getOpener() && getOpener().location)
+			ResizeWindow();
+	}
+// -->
+</script>   
+  <!-- JavaScript & DHTML Code Copyright &copy; 1998-2013, PaperThin, Inc. All Rights Reserved. --> 
+  <!-- Page generated 2015-03-01 21:24:43 by CommonSpot Build 8.0.2.221 (2013-04-16 14:15:45) (server: 1) -->  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+  <title>Invalid Call</title>
+  <script type="text/javascript" src="/commonspot/javascript/browser-all.js"></script>
+  <link rel="stylesheet" href="/commonspot/commonspot.css" type="text/css" id="cs_maincss"> 
+  <!-- Style Sheets --> 
+  <link href="/commonspot/dashboard/css/default.css" rel="stylesheet" type="text/css"> 
+  <link href="/commonspot/dashboard/css/dialog.css" rel="stylesheet" type="text/css" id="dialogcss"> 
+  <link href="/commonspot/dashboard/css/pagelist.css" rel="stylesheet" type="text/css"> 
+  <link href="/commonspot/dashboard/css/formdialog.css" rel="stylesheet" type="text/css"> 
+  <link href="/commonspot/dashboard/css/util.css" rel="stylesheet" type="text/css"> 
+  <link rel="stylesheet" type="text/css" href="/commonspot/javascript/lightbox/proxy_buttons.css"> 
+  <script type="text/javascript" src="/commonspot/javascript/lightbox/window_ref.js"></script> 
+  <link href="/commonspot/dlgcontrols/legacy-dialog.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript">
+<!--
+var lightboxStackPos = '';
+var gMenuControlID=0;
+var cdTailIsPresent=0;
+
+// these vars used by ResizeWindow() in Netscape, or if 'MainTable' is not defined
+var cdMainTableWidth = "450";
+var cdDlgHeight = 250;
+
+if (top.commonspot)
+	lightboxStackPos = top.commonspot.lightbox.stack.length - 1;
+
+var cdXOffset = 0;var cdYOffset = 0; 
+var restoringSize = 0;
+	
+var js_gvPageID = 0;
+var cd_scrollTop = 0;
+var cd_scrollLeft = 0;
+var ResizeWindowSafe = 0;			// flag to determine wher
+var ResizeWindowCalledCount = 0;
+// -->
+</script> 
+  <script type="text/javascript">
+<!--
+function DoHelp(id,strLoader,SiteID,SubSiteID)
+{
+	var strUrl=strLoader + '?csModule=help/openhelp&CSHelpID=' + id;
+	newWindow('help',strUrl,'toolbar=no,scrollbars=yes,resizable=yes,menubar=no,location=no');
+}
+var gvDialogError = 0;
+function DoFocus(wnd)
+{
+	if (parseInt(navigator.appVersion) >= 4)
+		wnd.focus(); // force to front
+	// don't set DoFocusDone here!!
+}
+
+function ResizeWindow()
+{
+	// + restoringSize + ' found cookie: '  + blnSizeCookieFound);
+
+	width = cdMainTableWidth;
+	height = cdDlgHeight;
+
+	// furniture is already accounted for by Netscape...
+	width += 50; // allowance for window furniture
+	height += 60;
+	scrnHeight = window.screen.availHeight;
+	if(!scrnHeight)
+		scrnHeight = window.screen.height;
+	scrnWidth = window.screen.availWidth;
+	if(!scrnWidth)
+		scrnWidth = window.screen.width;
+	if (height > scrnHeight - 150)
+		height = scrnHeight - 150;
+	if (width > scrnWidth - 30)
+		width = scrnWidth - 30;
+
+	x = (scrnWidth - width) / 2;
+	y = (scrnHeight - height) / 2;
+	
+	if(!hasLightbox()){
+		window.resizeTo(width, height);
+		window.moveTo(x, y);
+		doResizeFix(height-70);
+	}
+	DoFocus(window); // force to front
+	DoFocusDone=1;
+}
+
+function CloseWindow()
+{
+	DoFocusDone=1;	// not done, but we don't want the focus
+	var wnd = getOpener();		
+	if (wnd)
+	{
+		DoFocus(wnd);
+		window.close();
+	}
+}
+
+function DoSubmit()
+{
+	if (gvDialogError)
+		ResizeWindow();
+	else
+		RefreshAndCloseWindow();
+}
+
+function RefreshAndCloseWindow()
+{
+	var wnd = getOpener();	
+	if (wnd)
+	{
+		DoFocus(wnd);
+		wnd.location.reload();
+	}
+	setTimeout('window.close()', 500);
+	DoFocusDone=1;	// not done, but we don't want the focus
+}
+
+function RefreshParentWindow()
+{
+	var wnd = getOpener();	
+	if (wnd)
+	{
+		DoFocus(wnd);
+		wnd.location.reload();
+	}
+	DoFocus(self);
+	DoFocusDone=1;
+}
+
+	
+function doResizeFix(ht)
+{
+	var divNodes = document.getElementsByTagName('DIV');
+	var rootDiv = divNodes[0];
+	window.document.body.style.overflow = 'auto';
+
+}
+// -->
+</script> 
+  <script src="/commonspot/dlgcontrols/dlgcommon-validation.js" type="text/javascript"></script> 
+  <script type="text/javascript" src="/commonspot/javascript/lightbox/overrides.js"></script> 
+  <script type="text/javascript">
+<!--
+var DoFocusDone = 0;	 // set to block DoFocus() call in CommonDlgOnLoad()
+
+function CommonDlgOnLoad()
+{
+	// Make the dialog visible
+	var mainTable = document.getElementById('MainTable');
+	if(mainTable)
+	{
+		mainTable.style.visibility = 'visible';
+	}
+	if((self != top) && (typeof(top.commonspot.lightbox)!= "undefined") && 1)
+	{
+		top.commonspot.lightbox.initCurrentServerDialog();
+	}
+
+
+	  	if (cdTailIsPresent==1)
+	  	{
+	  		checkDlg()
+	  	}
+		else
+		{
+			if(window.top && top.commonspot && top.commonspot.lightbox)
+				top.commonspot.lightbox.getCurrent().showCrash();
+			else
+				ResizeWindow();
+		}
+		
+}
+
+function cp__onUnload()
+{
+	
+}
+
+function rememberWindowSize()
+{
+	tbl = window.document.getElementById("MainTable");
+
+	if (tbl)
+	{
+		
+			width = window.outerWidth;
+			height = window.outerHeight;
+		
+
+		if (height > window.screen.height - 30)
+			height = window.screen.height - 30;
+
+		x = Math.max( (window.screen.width - width) / 2, 0);
+		y = Math.max( (window.screen.height - height) / 2, 0);
+
+		if (cdXOffset)
+			x = x + cdXOffset;
+		if (cdYOffset)
+			y = y + cdYOffset;
+
+	
+		cookiestr = "cp=" + x + "-" + y + "-" + tbl.offsetWidth + "-" + tbl.offsetHeight;
+	
+		
+		document.cookie = cookiestr;
+  }
+}
+// -->
+</script>
+ </head>
+ <body onunload="cp__onUnload();" onload="CommonDlgOnLoad();" bgcolor="#FFFFFF">
+  <div id="cs_commondlg" align="center"> 
+   <script type="text/javascript">
+<!--
+	function doLogin()
+	{
+		newWindow('userlogindlg','/academics/departments/ESL/loader.cfm?csModule=security/login&amp;bNewWindow=1&wantReload=1&amp;postCustomLoginURL=' + encodeURIComponent(top.document.location));
+	}
+// -->
+</script> 
+   <link rel="stylesheet" type="text/css" href="/commonspot/javascript/lightbox/proxy_buttons.css"> 
+   <link rel="stylesheet" type="text/css" href="/commonspot/dlgcontrols/login-styles.css"> 
+   <link href="/commonspot/dashboard/css/dialog.css" rel="stylesheet" type="text/css" id="dialogcss"> 
+   <link href="/commonspot/dlgcontrols/legacy-dialog.css" rel="stylesheet" type="text/css"> 
+   <!--cs_error:Your login session has expired.:cs_error--> 
+   <div align="center"> 
+    <form name="viewsubmitted" target="viewsubmitted" id="viewsubmitted" action="/academics/departments/ESL/loader.cfm" method="post"> 
+     <input name="csModule" type="hidden" value="security/display-submitted-content">
+     <input name="referby" type="hidden" value="44550">
+     <input name="REALTARGET" type="hidden" value="unspecified">
+     <table id="MainTable" border="0" class="hideReload" cellpadding="0" cellspacing="0" width="450" summary=""> 
+      <tbody>
+       <tr> 
+        <td class="cs_dlgTitle">CommonSpot Security Exception</td> 
+       </tr> 
+       <tr> 
+        <td class="cs_dlgNormal"> 
+         <table width="100%" class="fields" cellpadding="0" cellspacing="0"> 
+          <tbody>
+           <tr> 
+            <td style="text-align:center; color:#ff0000; padding-bottom:10px;" class="cs_dlgNormal"><strong>This operation requires that you be authenticated.<br>You are not currently logged in.</strong></td> 
+           </tr> 
+           <tr> 
+            <td class="cs_dlgNormal">
+             <div style="padding:0 10px;"> 
+              <ul> 
+               <li>You may have waited too long before submitting your changes.</li> 
+               <li>The Application Server may have been restarted.</li> 
+               <li>Your browser cookies may have been deleted or corrupted.</li> 
+              </ul>
+              <center>
+               <hr width="90%">
+              </center> Submitted content has been recovered. 
+              <ul> 
+               <li>Click the 'View Recovered Content' button below to view your changes.</li> 
+               <li>Please follow the steps out-lined in the 'Recovered Content' dialog to continue editing this element.</li> 
+               <li>In a new window or tab, login (use the 'login' button below).</li> 
+               <li>When you've logged back in successfully, close that window, and come back here to resubmit your changes.</li> 
+              </ul>
+             </div></td>
+           </tr>
+          </tbody>
+         </table> </td> 
+       </tr> 
+      </tbody>
+     </table> 
+     <div id="clsPushButtonsDiv">
+      <table width="100%" cellpadding="0" cellspacing="0" summary="" id="clsPushButtonsTable">
+       <input name="OldSpellCheckOn" type="hidden" value="1">
+       <tbody>
+        <tr>
+         <td style="text-align:center" nowrap><input class="clsViewButton" name="ButtonAction" onclick="" style="" title="" type="submit" value="View Recovered Content...">&nbsp;<input class="clsLoginButton" onclick="doLogin();" style="" title="" type="button" value="Login...">&nbsp;<input class="clsCancelButton" name="ButtonAction" onclick="self.close();" style="" title="" type="button" value="Cancel">&nbsp;</td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <input name="parentHelpId" type="hidden" value="">
+    </form>
+   </div> 
+   <script type="text/javascript">
+<!--
+	if (typeof parent.commonspot == 'undefined' || typeof parent.commonspot.lview == 'undefined')
+		loadNonDashboardFiles();
+	else if (parent.commonspot && typeof newWindow == 'undefined')
+	{
+		var arrFiles = 
+				[
+					{fileName: '/commonspot/javascript/lightbox/overrides.js', fileType: 'script', fileID: 'cs_overrides'},
+					{fileName: '/commonspot/javascript/lightbox/window_ref.js', fileType: 'script', fileID: 'cs_windowref'}
+				];
+		
+		loadDashboardFiles(arrFiles);
+	}	
+//-->
+</script> 
+   <script type="text/javascript">
+<!--
+	cdTailIsPresent=1;
+	ResizeWindowSafe = 1; 	
+	if( typeof ResizeWindowCalledCount != 'undefined' && ResizeWindowCalledCount > 0 )	
+		setTimeout( ResizeWindow_Meat, 500 );		
+	
+// -->
+</script>
+  </div>
+  <div> 
+   <script type="text/javascript" src="/commonspot/javascript/lib/prototype.js"></script> 
+   <script type="text/javascript" src="/commonspot/javascript/lightbox/overrides.js"></script> 
+  </div> 
+  <script type="text/javascript">
+<!--
+	cdTailIsPresent=1;
+	ResizeWindowSafe = 1; 	
+	if( typeof ResizeWindowCalledCount != 'undefined' && ResizeWindowCalledCount > 0 )	
+		setTimeout( ResizeWindow_Meat, 500 );		
+	
+// -->
+</script>
+  <div> 
+   <script type="text/javascript" src="/commonspot/javascript/lib/prototype.js"></script> 
+   <script type="text/javascript" src="/commonspot/javascript/lightbox/overrides.js"></script> 
+  </div> 
+ </body>
+</html>

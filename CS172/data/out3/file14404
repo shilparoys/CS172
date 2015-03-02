@@ -1,0 +1,946 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es-ES">
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"UwYHUVdVGwAJXVNSBQc="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=s(e),u=c.length,f=i(a,o,r),d=0;u>d;d++)c[d].apply(f,n);return f}function a(t,e){u[t]=s(t).concat(e)}function s(t){return u[t]||[]}function c(){return n(e)}var u={};return{on:a,emit:e,create:c,listeners:s,_events:u}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],3:[function(t){function e(t,e,n,i,s){try{c?c-=1:r("err",[s||new UncaughtException(t,e,n)])}catch(u){try{r("ierr",[u,(new Date).getTime(),!0])}catch(f){}}return"function"==typeof a?a.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(4),i=t("ee"),a=window.onerror,s=!1,c=0;t("loader").features.err=!0,window.onerror=e,NREUM.noticeError=n;try{throw new Error}catch(u){"stack"in u&&(t(5),t(3),"addEventListener"in window&&t(1),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&t(2),s=!0)}i.on("fn-start",function(){s&&(c+=1)}),i.on("fn-err",function(t,e,r){s&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){s&&!this.thrown&&c>0&&(c-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:4,2:7,3:5,4:19,5:6,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],4:[function(t,e){function n(t){i.inPlace(t,["addEventListener","removeEventListener"],"-",r)}function r(t){return t[1]}var o=(t(1),t("ee").create()),i=t(2)(o),a=t("gos");if(e.exports=o,n(window),"getPrototypeOf"in Object){for(var s=document;s&&!s.hasOwnProperty("addEventListener");)s=Object.getPrototypeOf(s);s&&n(s);for(var c=XMLHttpRequest.prototype;c&&!c.hasOwnProperty("addEventListener");)c=Object.getPrototypeOf(c);c&&n(c)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&n(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t){if(t[1]){var e=t[1];"function"==typeof e?this.wrapped=t[1]=a(e,"nr@wrapped",function(){return i(e,"fn-",null,e.name||"anonymous")}):"function"==typeof e.handleEvent&&i.inPlace(e,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:19,2:20,ee:"QJf3ax",gos:"7eSDFh"}],5:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=r(t[0],"fn-")})},{1:20,2:19,ee:"QJf3ax"}],6:[function(t,e){function n(t,e,n){var r=t[0];"string"==typeof r&&(r=new Function(r)),t[0]=o(r,"fn-",null,n)}var r=(t(2),t("ee").create()),o=t(1)(r);e.exports=r,o.inPlace(window,["setTimeout","setInterval","setImmediate"],"setTimer-"),r.on("setTimer-start",n)},{1:20,2:19,ee:"QJf3ax"}],7:[function(t,e){function n(){c.inPlace(this,d,"fn-")}function r(t,e){c.inPlace(e,["onreadystatechange"],"fn-")}function o(t,e){return e}var i=t("ee").create(),a=t(1),s=t(2),c=s(i),u=s(a),f=window.XMLHttpRequest,d=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];e.exports=i,window.XMLHttpRequest=function(t){var e=new f(t);try{i.emit("new-xhr",[],e),u.inPlace(e,["addEventListener","removeEventListener"],"-",function(t,e){return e}),e.addEventListener("readystatechange",n,!1)}catch(r){try{i.emit("internal-error",[r])}catch(o){}}return e},window.XMLHttpRequest.prototype=f.prototype,c.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",o),i.on("send-xhr-start",r),i.on("open-xhr-start",r)},{1:4,2:20,ee:"QJf3ax"}],8:[function(t){function e(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function n(t){var n=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;c>i;i++)t.removeEventListener(s[i],this.listener,!1);if(!n.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){n.status=t.status;var a=t.responseType,u="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,f=e(u);if(f&&(r.rxSize=f),this.sameOrigin){var d=t.getResponseHeader("X-NewRelic-App-Data");d&&(n.cat=d.split(", ").pop())}}else n.status=0;r.cbTime=this.cbTime,o("xhr",[n,r,this.startTime])}}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}if(window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)){t("loader").features.xhr=!0;var o=t("handle"),i=t(2),a=t("ee"),s=["load","error","abort","timeout"],c=s.length,u=t(1);t(4),t(3),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=n,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,n){var r=this.metrics,o=t[0],i=this;if(r&&o){var u=e(o);u&&(r.txSize=u)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof n.onload))&&i.end(n)}catch(e){try{a.emit("internal-error",[e])}catch(r){}}};for(var f=0;c>f;f++)n.addEventListener(s[f],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+u(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+u(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof XMLHttpRequest&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&&a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{1:"XL7HBI",2:9,3:7,4:4,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],9:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&&e.port===n.port&&e.protocol===n.protocol,r}},{}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):(o[t]||(o[t]=[]),void o[t].push(e))}var r=t("ee").create(),o={};e.exports=n,n.ee=r,r.q=o},{ee:"QJf3ax"}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],G9z0Bl:[function(t,e){function n(){var t=l.info=NREUM.info;if(t&&t.licenseKey&&t.applicationID&&u&&u.body){s(h,function(e,n){e in t||(t[e]=n)}),l.proto="https"===p.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var e=u.createElement("script");e.src=l.proto+t.agent,u.body.appendChild(e)}}function r(){"complete"===u.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=t(1),c=window,u=c.document,f="addEventListener",d="attachEvent",p=(""+location).split("?")[0],h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-515.min.js"},l=e.exports={offset:i(),origin:p,features:{}};u[f]?(u[f]("DOMContentLoaded",o,!1),c[f]("load",n,!1)):(u[d]("onreadystatechange",r),c[d]("onload",n)),a("mark",["firstbyte",i()])},{1:18,handle:"D5DuLP"}],18:[function(t,e){function n(t,e){var n=[],o="",i=0;for(o in t)r.call(t,o)&&(n[i]=e(o,t[o]),i+=1);return n}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],19:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],20:[function(t,e){function n(t){return!(t&&"function"==typeof t&&t.apply&&!t[i])}var r=t("ee"),o=t(1),i="nr@wrapper",a=Object.prototype.hasOwnProperty;e.exports=function(t){function e(t,e,r,a){function nrWrapper(){var n,i,s,u;try{i=this,n=o(arguments),s=r&&r(n,i)||{}}catch(d){f([d,"",[n,i,a],s])}c(e+"start",[n,i,a],s);try{return u=t.apply(i,n)}catch(p){throw c(e+"err",[n,i,p],s),p}finally{c(e+"end",[n,i,u],s)}}return n(t)?t:(e||(e=""),nrWrapper[i]=!0,u(t,nrWrapper),nrWrapper)}function s(t,r,o,i){o||(o="");var a,s,c,u="-"===o.charAt(0);for(c=0;c<r.length;c++)s=r[c],a=t[s],n(a)||(t[s]=e(a,u?s+o:o,i,s,t))}function c(e,n,r){try{t.emit(e,n,r)}catch(o){f([o,e,n,r])}}function u(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){f([r])}for(var o in t)a.call(t,o)&&(e[o]=t[o]);return e}function f(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=r),e.inPlace=s,e.flag=i,e}},{1:19,ee:"QJf3ax"}]},{},["G9z0Bl",3,8]);</script> 
+  <!-- **Favicon** --> 
+  <link href="http://www.educacionline.com/wp-content/uploads/2014/02/favicon1.ico" rel="shortcut icon" type="image/x-icon"> 
+  <!--
+Insercion manual de tipos google
+--> 
+  <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700" rel="stylesheet" type="text/css"> 
+  <!-- **CSS - stylesheets** --> 
+  <link id="default-css" href="http://www.educacionline.com/wp-content/themes/ultimate/style.css" rel="stylesheet" type="text/css" media="all"> 
+  <link id="shortcodes-css" href="http://www.educacionline.com/wp-content/themes/ultimate/shortcodes.css" rel="stylesheet" type="text/css" media="all"> 
+  <link id="skin-css" href="http://www.educacionline.com/wp-content/themes/ultimate/skins/white/style.css" rel="stylesheet" type="text/css" media="all"> 
+  <link id="responsive-css" href="http://www.educacionline.com/wp-content/themes/ultimate/responsive.css" rel="stylesheet" type="text/css" media="all"> 
+  <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.educacionline.com/feed/"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> 
+  <style type="text/css">@media only screen and (max-width:320px), (max-width: 479px), (min-width: 480px) and (max-width: 767px), (min-width: 768px) and (max-width: 959px),
+		 (max-width:1200px) { div#home-slider { display:none !important; } 	}</style>
+  <!--[if IE 9]>
+	<link rel="stylesheet" type="text/css" href="http://www.educacionline.com/wp-content/themes/ultimate/css/ie9_es.css" />
+<![endif]--> 
+  <!--[if lt IE 9]>
+	<link rel="stylesheet" type="text/css" href="http://www.educacionline.com/wp-content/themes/ultimate/css/ie8-and-down.css" />
+<![endif]--> 
+  <!--[if IE 7]>
+	<link rel="stylesheet" type="text/css" href="http://www.educacionline.com/wp-content/themes/ultimate/css/ie7.css" />
+<![endif]--> 
+  <script type="text/javascript"> var mytheme_urls = {
+	 theme_base_url:'http://www.educacionline.com/wp-content/themes/ultimate/'
+ 	,framework_base_url:'http://www.educacionline.com/wp-content/themes/ultimate/framework/'};
+ </script>
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-7882174-1', 'educacionline.com');
+ga('set', 'anonymizeIp', true);
+ga('require', 'displayfeatures');
+ga('require', 'linkid', 'linkid.js');
+  ga('send', 'pageview');
+
+
+
+</script> 
+  <!-- This site is optimized with the Yoast WordPress SEO plugin v1.7.3.3 - https://yoast.com/wordpress/plugins/seo/ --> 
+  <title>Curso de Acceso a la Universidad para mayores 25 añosCurs d'Accés a la Universitat per a més grans de 25 anys - cursos de formacion superior | EducaciOnline</title> 
+  <meta name="description" content="Formacion on-line. Curso de Acceso a la Universidad para mayores 25 años"> 
+  <link rel="canonical" href="http://www.educacionline.com/acceso-universidad-mayores-25/"> 
+  <!-- / Yoast WordPress SEO plugin. --> 
+  <link rel="alternate" type="application/rss+xml" title="cursos de formacion superior | EducaciOnline » Feed" href="http://www.educacionline.com/feed/"> 
+  <link rel="alternate" type="application/rss+xml" title="cursos de formacion superior | EducaciOnline » RSS de los comentarios" href="http://www.educacionline.com/comments/feed/"> 
+  <!-- JM Twitter Cards by Julien Maury 5.4.2 --> 
+  <meta name="twitter:card" content="summary"> 
+  <meta name="twitter:creator" content="@TweetPressFr"> 
+  <meta name="twitter:site" content="@TweetPressFr"> 
+  <meta name="twitter:title" content="Curso de Acceso a la Universidad para mayores 25 años"> 
+  <meta name="twitter:description" content="&nbsp;"> 
+  <meta name="twitter:image:src" content="https://g.twimg.com/Twitter_logo_blue.png"> 
+  <!-- /JM Twitter Cards 5.4.2 --> 
+  <link rel="alternate" type="application/rss+xml" title="cursos de formacion superior | EducaciOnline » Curso de Acceso a la Universidad para mayores 25 años RSS de los comentarios" href="http://www.educacionline.com/acceso-universidad-mayores-25/feed/"> 
+  <!-- This site is powered by Shareaholic - https://shareaholic.com --> 
+  <script type="text/javascript" data-cfasync="false">
+  //<![CDATA[
+    (function() {
+      var shr = document.createElement('script');
+      shr.setAttribute('data-cfasync', 'false');
+      shr.src = '//dsms0mj1bbhn4.cloudfront.net/assets/pub/shareaholic.js';
+      shr.type = 'text/javascript'; shr.async = 'true';
+      shr.onload = shr.onreadystatechange = function() {
+        var rs = this.readyState;
+        if (rs && rs != 'complete' && rs != 'loaded') return;
+        var site_id = '14b084a3b2138562c038a0e672c1bfe1';
+        var page_config = {"apps":{"share_buttons":{"get_share_counts":  function(url, services, cb) {
+    Shareaholic.Utils.ajax({
+      cache: true,
+      cache_ttl: '1 minute',
+      url: 'http://www.educacionline.com/wp-admin/admin-ajax.php',
+      data: { action: 'shareaholic_share_counts_api', url: url, services: services },
+      success: function(res) {
+        if(res && res.data) {
+          cb(res.data, true);
+        }
+      }
+    })
+  }}},"endpoints":{"local_recs_url":"http:\/\/www.educacionline.com\/wp-admin\/admin-ajax.php?action=shareaholic_permalink_related","share_counts_url":"http:\/\/www.educacionline.com\/wp-admin\/admin-ajax.php?action=shareaholic_share_counts_api"},"user":[]};
+        try { Shareaholic.init(site_id, page_config); } catch (e) {}
+      };
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(shr, s);
+    })();
+  //]]>
+</script> 
+  <!-- Shareaholic Content Tags --> 
+  <meta name="shareaholic:site_name" content="cursos de formacion superior | EducaciOnline"> 
+  <meta name="shareaholic:language" content="es-ES"> 
+  <meta name="shareaholic:url" content="http://www.educacionline.com/acceso-universidad-mayores-25/"> 
+  <meta name="shareaholic:article_published_time" content="2013-04-09T12:01:14+00:00"> 
+  <meta name="shareaholic:article_modified_time" content="2015-02-24T08:54:03+00:00"> 
+  <meta name="shareaholic:shareable_page" content="true"> 
+  <meta name="shareaholic:article_author_name" content="admin"> 
+  <meta name="shareaholic:site_id" content="14b084a3b2138562c038a0e672c1bfe1"> 
+  <meta name="shareaholic:wp_version" content="7.6.0.2"> 
+  <meta name="shareaholic:image" content="http://www.educacionline.com/wp-content/uploads/2013/03/FichaCurso.jpg"> 
+  <!-- Shareaholic Content Tags End --> 
+  <!-- Shareaholic Open Graph Tags --> 
+  <meta property="og:image" content="http://www.educacionline.com/wp-content/uploads/2013/03/FichaCurso.jpg"> 
+  <!-- Shareaholic Open Graph Tags End --> 
+  <link rel="stylesheet" id="colorbox-theme5-css" href="http://www.educacionline.com/wp-content/plugins/jquery-colorbox/themes/theme5/colorbox.css?ver=4.6" type="text/css" media="screen"> 
+  <link rel="stylesheet" id="prettyphoto-css" href="http://www.educacionline.com/wp-content/themes/ultimate/framework/js/public/prettyphoto/prettyPhoto.css?ver=4.1.1" type="text/css" media="all"> 
+  <link rel="stylesheet" id="fmslideshow-css-css" href="http://www.educacionline.com/wp-content/themes/ultimate/css/fmslideshow.min.css?ver=4.1.1" type="text/css" media="all"> 
+  <link rel="stylesheet" id="rs-settings-css" href="http://www.educacionline.com/wp-content/plugins/revslider/rs-plugin/css/settings.css?rev=4.1.4&amp;ver=4.1.1" type="text/css" media="all"> 
+  <link rel="stylesheet" id="rs-captions-css" href="http://www.educacionline.com/wp-content/plugins/revslider/rs-plugin/css/dynamic-captions.css?rev=4.1.4&amp;ver=4.1.1" type="text/css" media="all"> 
+  <link rel="stylesheet" id="rs-plugin-static-css" href="http://www.educacionline.com/wp-content/plugins/revslider/rs-plugin/css/static-captions.css?rev=4.1.4&amp;ver=4.1.1" type="text/css" media="all"> 
+  <link rel="stylesheet" id="contact-text-css-css" href="http://www.educacionline.com/wp-content/plugins/contact-text/css/contact-text.css?ver=4.1.1" type="text/css" media="all"> 
+  <link rel="stylesheet" id="formulario-solicitud-cursos-css-css" href="http://www.educacionline.com/wp-content/plugins/formulario-solicitud-cursos/css/formulario-solicitud-cursos.css?ver=4.1.1" type="text/css" media="all"> 
+  <link rel="stylesheet" id="smc-widget-style-css" href="http://www.educacionline.com/wp-content/plugins/social-media-icons/styles/smc_front.css?ver=1.2.5" type="text/css" media="all"> 
+  <link rel="stylesheet" id="tpv-css-css" href="http://www.educacionline.com/wp-content/plugins/tpv-educacionline/css/estilo.css?ver=4.1.1" type="text/css" media="all"> 
+  <link rel="stylesheet" id="jquery-validate-css-css" href="http://www.educacionline.com/wp-content/themes/ultimate/css/validate.css?ver=4.1.1" type="text/css" media="all"> 
+  <!--[if IE]>
+	<style type="text/css" media="screen">
+		.button, #top-menu ul.menu li ul li.current_page_item, #top-menu ul.menu li ul li:hover, #top-menu ul.menu-rounded li, #top-menu ul.menu-rounded li ul, #top-menu ul.menu-rounded li ul ul, .home-slider-bg, .welcome-text, .read-more-text span, .image-overlay, .readmore, .readmore:hover, .clients-skin-carousel, .breadcrumb-bg, .pagination ul li a, .pagination .next-post, .pagination .prev-post, .pagination ul li a:hover, .pagination .next-post:hover, .pagination .prev-post:hover, .pricing-table table tr.buttons td a.button.black, .dropcap.dropcap-circle, .dropcap.dropcap-bordered-circle, ul.tabs-frame li a, ul.tabs-vertical-frame li a, ul.tabs-vertical-frame li.first a, ul.tabs-vertical-frame li.last a, .toggle-frame, #ultimate-style-picker, #ultimate-style-picker h2 {
+			behavior: url(http://www.educacionline.com/wp-content/themes/ultimate/PIE.htc);
+		}
+	</style>
+	<![endif]-->
+  <script type="text/javascript" src="http://www.educacionline.com/wp-content/themes/ultimate/eo-framework/js/funciones.js?ver=4.1.1"></script> 
+  <script type="text/javascript" src="http://www.educacionline.com/wp-includes/js/jquery/jquery.js?ver=1.11.1"></script> 
+  <script type="text/javascript" src="http://www.educacionline.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1"></script> 
+  <script type="text/javascript">
+/* <![CDATA[ */
+var jQueryColorboxSettingsArray = {"jQueryColorboxVersion":"4.6","colorboxInline":"false","colorboxIframe":"false","colorboxGroupId":"","colorboxTitle":"","colorboxWidth":"false","colorboxHeight":"false","colorboxMaxWidth":"false","colorboxMaxHeight":"false","colorboxSlideshow":"false","colorboxSlideshowAuto":"false","colorboxScalePhotos":"false","colorboxPreloading":"false","colorboxOverlayClose":"false","colorboxLoop":"true","colorboxEscKey":"true","colorboxArrowKey":"true","colorboxScrolling":"true","colorboxOpacity":"0.55","colorboxTransition":"elastic","colorboxSpeed":"350","colorboxSlideshowSpeed":"2500","colorboxClose":"cerrar","colorboxNext":"siguiente","colorboxPrevious":"anterior","colorboxSlideshowStart":"comenzar slideshow","colorboxSlideshowStop":"parar slideshow","colorboxCurrent":"{current} de {total} im\u00e1genes","colorboxXhrError":"This content failed to load.","colorboxImgError":"This image failed to load.","colorboxImageMaxWidth":"false","colorboxImageMaxHeight":"false","colorboxImageHeight":"false","colorboxImageWidth":"false","colorboxLinkHeight":"false","colorboxLinkWidth":"false","colorboxInitialHeight":"100","colorboxInitialWidth":"300","autoColorboxJavaScript":"","autoHideFlash":"","autoColorbox":"true","autoColorboxGalleries":"","addZoomOverlay":"","useGoogleJQuery":"","colorboxAddClassToLinks":""};
+/* ]]> */
+</script> 
+  <script type="text/javascript" src="http://www.educacionline.com/wp-content/plugins/jquery-colorbox/js/jquery.colorbox-min.js?ver=1.3.21"></script> 
+  <script type="text/javascript" src="http://www.educacionline.com/wp-content/plugins/jquery-colorbox/js/jquery-colorbox-wrapper-min.js?ver=4.6"></script> 
+  <script type="text/javascript" src="http://www.educacionline.com/wp-content/themes/ultimate/framework/js/public/jquery.validate.min.js?ver=4.1.1"></script> 
+  <script type="text/javascript" src="http://www.educacionline.com/wp-content/themes/ultimate/framework/js/public/sendmail.js?ver=4.1.1"></script> 
+  <script type="text/javascript" src="http://www.educacionline.com/wp-content/plugins/formulario-solicitud-cursos/js/formulario-solicitud-cursos-common.js?ver=4.1.1"></script> 
+  <script type="text/javascript" src="http://www.educacionline.com/wp-content/plugins/revslider/rs-plugin/js/jquery.themepunch.plugins.min.js?rev=4.1.4&amp;ver=4.1.1"></script> 
+  <script type="text/javascript" src="http://www.educacionline.com/wp-content/plugins/revslider/rs-plugin/js/jquery.themepunch.revolution.min.js?rev=4.1.4&amp;ver=4.1.1"></script> 
+  <script type="text/javascript" src="http://www.educacionline.com/wp-content/plugins/tpv-educacionline/js/funciones.js?ver=4.1.1"></script> 
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.educacionline.com/xmlrpc.php?rsd"> 
+  <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.educacionline.com/wp-includes/wlwmanifest.xml"> 
+  <link rel="shortlink" href="http://www.educacionline.com/?p=2467"> 
+  <meta http-equiv="Content-Language" content="es-ES"> 
+  <style type="text/css" media="screen">
+.qtrans_flag span { display:none }
+.qtrans_flag { height:12px; width:18px; display:block }
+.qtrans_flag_and_text { padding-left:20px }
+.qtrans_flag_es { background:url(http://www.educacionline.com/wp-content/plugins/qtranslate/flags/es.png) no-repeat }
+.qtrans_flag_ca { background:url(http://www.educacionline.com/wp-content/plugins/qtranslate/flags/ca.alt.png) no-repeat }
+</style> 
+  <link hreflang="ca" href="http://www.educacionline.com/ca/acceso-universidad-mayores-25/" rel="alternate"> 
+  <style type="text/css" media="screen">body{position:relative}#dynamic-to-top{display:none;overflow:hidden;width:auto;z-index:90;position:fixed;bottom:20px;right:20px;top:auto;left:auto;font-family:sans-serif;font-size:1em;color:#fff;text-decoration:none;padding:17px 16px;border:1px solid #000;background:#272727;-webkit-background-origin:border;-moz-background-origin:border;-icab-background-origin:border;-khtml-background-origin:border;-o-background-origin:border;background-origin:border;-webkit-background-clip:padding-box;-moz-background-clip:padding-box;-icab-background-clip:padding-box;-khtml-background-clip:padding-box;-o-background-clip:padding-box;background-clip:padding-box;-webkit-box-shadow:0 1px 3px rgba( 0, 0, 0, 0.4 ), inset 0 0 0 1px rgba( 0, 0, 0, 0.2 ), inset 0 1px 0 rgba( 255, 255, 255, .4 ), inset 0 10px 10px rgba( 255, 255, 255, .1 );-ms-box-shadow:0 1px 3px rgba( 0, 0, 0, 0.4 ), inset 0 0 0 1px rgba( 0, 0, 0, 0.2 ), inset 0 1px 0 rgba( 255, 255, 255, .4 ), inset 0 10px 10px rgba( 255, 255, 255, .1 );-moz-box-shadow:0 1px 3px rgba( 0, 0, 0, 0.4 ), inset 0 0 0 1px rgba( 0, 0, 0, 0.2 ), inset 0 1px 0 rgba( 255, 255, 255, .4 ), inset 0 10px 10px rgba( 255, 255, 255, .1 );-o-box-shadow:0 1px 3px rgba( 0, 0, 0, 0.4 ), inset 0 0 0 1px rgba( 0, 0, 0, 0.2 ), inset 0 1px 0 rgba( 255, 255, 255, .4 ), inset 0 10px 10px rgba( 255, 255, 255, .1 );-khtml-box-shadow:0 1px 3px rgba( 0, 0, 0, 0.4 ), inset 0 0 0 1px rgba( 0, 0, 0, 0.2 ), inset 0 1px 0 rgba( 255, 255, 255, .4 ), inset 0 10px 10px rgba( 255, 255, 255, .1 );-icab-box-shadow:0 1px 3px rgba( 0, 0, 0, 0.4 ), inset 0 0 0 1px rgba( 0, 0, 0, 0.2 ), inset 0 1px 0 rgba( 255, 255, 255, .4 ), inset 0 10px 10px rgba( 255, 255, 255, .1 );box-shadow:0 1px 3px rgba( 0, 0, 0, 0.4 ), inset 0 0 0 1px rgba( 0, 0, 0, 0.2 ), inset 0 1px 0 rgba( 255, 255, 255, .4 ), inset 0 10px 10px rgba( 255, 255, 255, .1 );-webkit-border-radius:30px;-moz-border-radius:30px;-icab-border-radius:30px;-khtml-border-radius:30px;border-radius:30px}#dynamic-to-top:hover{background:#4e9c9c;background:#272727 -webkit-gradient( linear, 0% 0%, 0% 100%, from( rgba( 255, 255, 255, .2 ) ), to( rgba( 0, 0, 0, 0 ) ) );background:#272727 -webkit-linear-gradient( top, rgba( 255, 255, 255, .2 ), rgba( 0, 0, 0, 0 ) );background:#272727 -khtml-linear-gradient( top, rgba( 255, 255, 255, .2 ), rgba( 0, 0, 0, 0 ) );background:#272727 -moz-linear-gradient( top, rgba( 255, 255, 255, .2 ), rgba( 0, 0, 0, 0 ) );background:#272727 -o-linear-gradient( top, rgba( 255, 255, 255, .2 ), rgba( 0, 0, 0, 0 ) );background:#272727 -ms-linear-gradient( top, rgba( 255, 255, 255, .2 ), rgba( 0, 0, 0, 0 ) );background:#272727 -icab-linear-gradient( top, rgba( 255, 255, 255, .2 ), rgba( 0, 0, 0, 0 ) );background:#272727 linear-gradient( top, rgba( 255, 255, 255, .2 ), rgba( 0, 0, 0, 0 ) );cursor:pointer}#dynamic-to-top:active{background:#272727;background:#272727 -webkit-gradient( linear, 0% 0%, 0% 100%, from( rgba( 0, 0, 0, .3 ) ), to( rgba( 0, 0, 0, 0 ) ) );background:#272727 -webkit-linear-gradient( top, rgba( 0, 0, 0, .1 ), rgba( 0, 0, 0, 0 ) );background:#272727 -moz-linear-gradient( top, rgba( 0, 0, 0, .1 ), rgba( 0, 0, 0, 0 ) );background:#272727 -khtml-linear-gradient( top, rgba( 0, 0, 0, .1 ), rgba( 0, 0, 0, 0 ) );background:#272727 -o-linear-gradient( top, rgba( 0, 0, 0, .1 ), rgba( 0, 0, 0, 0 ) );background:#272727 -ms-linear-gradient( top, rgba( 0, 0, 0, .1 ), rgba( 0, 0, 0, 0 ) );background:#272727 -icab-linear-gradient( top, rgba( 0, 0, 0, .1 ), rgba( 0, 0, 0, 0 ) );background:#272727 linear-gradient( top, rgba( 0, 0, 0, .1 ), rgba( 0, 0, 0, 0 ) )}#dynamic-to-top,#dynamic-to-top:active,#dynamic-to-top:focus,#dynamic-to-top:hover{outline:none}#dynamic-to-top span{display:block;overflow:hidden;width:14px;height:12px;background:url( http://www.educacionline.com/wp-content/plugins/dynamic-to-top/css/images/up.png )no-repeat center center}</style>
+  <script type="text/javascript">
+(function(url){
+if(/(?:Chrome\/26\.0\.1410\.63 Safari\/537\.31|WordfenceTestMonBot)/.test(navigator.userAgent)){ return; }
+var wfscr = document.createElement('script');
+wfscr.type = 'text/javascript';
+wfscr.async = true;
+wfscr.src = url + '&r=' + Math.random();
+(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(wfscr);
+})('//www.educacionline.com/wp-admin/admin-ajax.php?action=wordfence_logHuman&hid=46FB9A0CCA321FC914FC23CF91F7A694'); 
+</script> 
+  <script type="text/javascript">
+	jQuery(document).ready(function(){
+		jQuery("#loginForm").validate({
+			rules: {
+				l:  {
+					required: true,
+					defaultInvalid_login: "Usuario"
+				},
+				p:  {
+					required: true,
+					defaultInvalid_login: "Clave"
+				}
+			}
+		}),
+		jQuery.validator.addMethod('defaultInvalid_login', function(value,element){
+			switch(element.name){
+				case "l":
+					if(value == "Usuario"){
+						return false;
+					}
+				case "p":
+					if(value == "Clave"){
+						return false;
+					}
+				default:
+					return true;
+			}
+		}),
+		jQuery(".login_campus_opener a").click(function(){
+//			jQuery('#login_campus_div').css("display","block");
+			if(jQuery('#login_campus_div').css("display")=="none"){
+				jQuery('#login_campus_div').fadeIn('slow', function() {
+				// Animation complete
+				});
+			}else{
+				jQuery('#login_campus_div').fadeOut('slow', function() {
+				// Animation complete
+				});
+			}
+//			alert("OK");
+		}),
+		jQuery(".login_campus_closer").click(function (){
+			jQuery('#login_campus_div').fadeOut('slow', function() {
+			// Animation complete
+			});		
+		}),
+		jQuery(".show_videos").colorbox({iframe:true, innerWidth:425, innerHeight:344});
+		jQuery(".show_videos_testimonios").colorbox({
+			iframe:true,
+			href:jQuery(".show_videos_testimonios").attr("data-link"),
+			innerWidth:850,
+			innerHeight:600
+		});
+//		alert("h = "+jQuery(window).height()+" - w = "+jQuery(window).width());
+	});
+</script> 
+ </head> 
+ <body class="page page-id-2467 page-template page-template-tpl-cursos25 page-template-tpl-cursos25-php"> 
+  <!-- BBar --> 
+  <!-- BBar End --> 
+  <!-- **Wrapper** --> 
+  <div id="wrapper"> 
+   <!--  ################ HEADER SECTION ################ --> 
+   <!-- **Header** --> 
+   <div id="header"> 
+    <!-- **Header Container** --> 
+    <div class="container"> 
+     <!-- **Logo** --> 
+     <div id="logo"> 
+      <a href="http://www.educacionline.com" title="cursos de formacion superior | EducaciOnline"> <img src="http://www.educacionline.com/wp-content/uploads/2013/05/logoeohoriz_es.png" alt="cursos de formacion superior | EducaciOnline" title="cursos de formacion superior | EducaciOnline"> </a> 
+     </div>
+     <!-- **Logo - End** --> 
+     <div class="top_elements"> 
+      <div class="top_idiomas"> 
+       <a href="http://www.educacionline.com/ca/acceso-universidad-mayores-25/">Català</a> 
+      </div> 
+      <div style="clear:both; height:50px;"></div> 
+      <img src="http://www.educacionline.com/wp-content/uploads/2013/04/UOC_Color.jpg" alt="UOC">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      <img style="height:30px;" src="http://www.educacionline.com/wp-content/uploads/2013/05/ec_color.png" alt="Enciclopedia Catalana"> 
+     </div> 
+    </div>
+    <!-- **Header Container** --> 
+   </div>
+   <!-- **Header - End** --> 
+   <!--  ################ HEADER SECTION END ################ --> 
+   <!--  ################ TOP MENU SECTION ################ --> 
+   <!-- **Top-Menu** --> 
+   <div id="top-menu"> 
+    <div class="container"> 
+     <ul id="menu-header-menu" class="menu">
+      <li id="menu-item-2323" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children first-menu-item"><span class="hoverL"> <span class="hoverR"> </span> </span><a href="http://www.educacionline.com/cursos/">Cursos de formación superior</a> 
+       <ul class="sub-menu"> 
+        <li id="menu-item-4637" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item"><a href="http://www.educacionline.com/cursos/">Todos los estudios</a></li> 
+        <li id="menu-item-4687" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.educacionline.com/cursos/cursos-de-administracion/">Área Administración</a></li> 
+        <li id="menu-item-4569" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.educacionline.com/cursos/cursos-de-marketing/">Cursos área Marketing</a></li> 
+        <li id="menu-item-7324" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.educacionline.com/cursos/cursos-marketing-online/">Área Marketing Online</a></li> 
+        <li id="menu-item-4822" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.educacionline.com/cursos/cursos-de-directivos/">Área Programas directivos</a></li> 
+        <li id="menu-item-5043" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.educacionline.com/cursos/cursos-de-gestion-economica/">Área Gestión económica</a></li> 
+        <li id="menu-item-5275" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.educacionline.com/cursos/cursos-de-relaciones-publicas/">Área Publicidad y RRPP</a></li> 
+        <li id="menu-item-5306" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.educacionline.com/cursos/cursos-de-energias-renovables/">Área Energias renovables</a></li> 
+        <li id="menu-item-5569" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.educacionline.com/cursos/cursos-de-recursos-humanos/">Cursos Recursos humanos</a></li> 
+        <li id="menu-item-3883" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.educacionline.com/cursos/cursos-de-calidad/">Área de Calidad ISO</a></li> 
+        <li id="menu-item-5578" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.educacionline.com/cursos/cursos-de-salud/">Área Salud</a></li> 
+        <li id="menu-item-5599" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.educacionline.com/cursos/cursos-de-produccion-y-logistica/">Área Producción y logística</a></li> 
+        <li id="menu-item-5602" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item"><a href="http://www.educacionline.com/cursos/cursos-de-turismo/">Área Turismo</a></li> 
+       </ul> </li> 
+      <li id="menu-item-7526" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-2467 current_page_item"><span class="hoverL"> <span class="hoverR"> </span> </span><a href="http://www.educacionline.com/acceso-universidad-mayores-25/">Acceso a la Universidad</a></li> 
+      <li id="menu-item-5890" class="menu-item menu-item-type-post_type menu-item-object-page"><span class="hoverL"> <span class="hoverR"> </span> </span><a href="http://www.educacionline.com/modelo-pedagogico/">Como se estudia</a></li> 
+      <li id="menu-item-2119" class="menu-item menu-item-type-post_type menu-item-object-page"><span class="hoverL"> <span class="hoverR"> </span> </span><a href="http://www.educacionline.com/quienes-somos/">EducaciOnline</a></li> 
+      <li id="menu-item-5895" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children"><span class="hoverL"> <span class="hoverR"> </span> </span><a href="#">Blogs</a> 
+       <ul class="sub-menu"> 
+        <li id="menu-item-5523" class="menu-item menu-item-type-custom menu-item-object-custom first-menu-item"><a target="_blank" href="http://blogdecalidadiso.es/">Blog Calidad ISO</a></li> 
+        <li id="menu-item-5525" class="menu-item menu-item-type-custom menu-item-object-custom"><a target="_blank" href="http://blogdedirectivos.es/">Blog Directivos</a></li> 
+        <li id="menu-item-5526" class="menu-item menu-item-type-custom menu-item-object-custom"><a target="_blank" href="http://blogdeeconomia.es/">Blog Economía</a></li> 
+        <li id="menu-item-5528" class="menu-item menu-item-type-custom menu-item-object-custom"><a target="_blank" href="http://blogdeenergiasrenovables.es/">Blog Energías renovables</a></li> 
+        <li id="menu-item-5531" class="menu-item menu-item-type-custom menu-item-object-custom"><a target="_blank" href="http://blogdelogistica.es/">Blog Logística</a></li> 
+        <li id="menu-item-5533" class="menu-item menu-item-type-custom menu-item-object-custom"><a target="_blank" href="http://elblogdemarketing.es/">Blog Marketing</a></li> 
+        <li id="menu-item-5521" class="menu-item menu-item-type-custom menu-item-object-custom"><a target="_blank" href="http://blogderecursoshumanos.es/">Blog Recursos humanos</a></li> 
+        <li id="menu-item-5534" class="menu-item menu-item-type-custom menu-item-object-custom"><a target="_blank" href="http://elblogdeturismo.es/">Blog Turismo</a></li> 
+        <li id="menu-item-5520" class="menu-item menu-item-type-custom menu-item-object-custom last-menu-item"><a target="_blank" href="http://www.educacionline.com/blog/">Blog EducaciOnline</a></li> 
+       </ul> </li> 
+      <li id="menu-item-2166" class="login_campus_opener menu-item menu-item-type-custom menu-item-object-custom last-menu-item"><span class="hoverL"> <span class="hoverR"> </span> </span><a href="#">Acceso campus</a></li> 
+     </ul> 
+     <div class="login_campus" id="login_campus_div"> 
+      <form action="https://cv.uoc.edu/cgi-bin/uoc" method="post" name="loginForm" id="loginForm"> 
+       <h4>Campus virtual:</h4> 
+       <div style="width:150px; float:left;"> 
+        <input type="text" name="l" id="l" value="Usuario" onfocus="if(this.value=='Usuario'){this.value='';}" onblur="if(this.value==''){this.value='Usuario';}"> 
+        <input type="password" name="p" id="p" value="Clave" onfocus="if(this.value=='Clave'){this.value='';}" onblur="if(this.value==''){this.value='Clave';}"> 
+        <input type="hidden" value="EOBCAS" name="appid"> 
+        <input type="hidden" value="http://cv.uoc.edu/" name="url"> 
+        <input type="hidden" value="XXXXXX" name="nil"> 
+        <input type="hidden" value="b" name="lb"> 
+       </div> 
+       <div style="width:60px; float:left; margin-top:23px;"> 
+        <input type="submit" name="acceder" id="acceder" value="Entra" onclick="javascript: pageTracker._trackPageview ('ESP/outgoing/ACCESO_CAMPUS');"> 
+       </div> 
+       <div style="clear:both;"></div> 
+       <div style="width:100%; text-align:center;"> 
+        <a href="http://cv.uoc.edu/webapps/recuperacioPassword/captcha!input.do?appId=EOB&amp;l=b" onclick="javascript: pageTracker._trackPageview ('ESP/outgoing/OLVIDO_CONTRASENYA');" target="_blank">¿Has olvidado tu clave?</a> 
+        <!-- - <a href="#" class="login_campus_closer">cerrar</a> --> 
+       </div> 
+      </form> 
+     </div> 
+    </div> 
+   </div>
+   <!-- **Top-Menu - End** --> 
+   <!--  ################ TOP MENU SECTION END ################ --> 
+   <!--  ################ MAIN SECTION ################ --> 
+   <!-- ** Main** --> 
+   <div id="main" class="cursos"> 
+    <!-- **Container** --> 
+    <div class="container"> 
+     <!-- **Content** --> 
+     <div class="content with-right-sidebar"> 
+      <div class="breadcrumbs"> 
+       <a title="Ir a cursos de formacion superior | EducaciOnline." href="http://www.educacionline.com" class="home">Inicio</a>&nbsp;»&nbsp; 
+      </div> 
+      <!-- THE LOOP --> 
+      <h1>Curso de acceso a la Universidad mayores de 25 años</h1> 
+      <div style="clear:both; height:13px;"></div> 
+      <!-- INSERCION DEL SLIDESHOW --> 
+      <div class="column two-fifth "> 
+       <a href="http://www.youtube.com/embed/zZbOSD8YUxk/?autoplay=1" class="show_videos"> <img src="http://www.educacionline.com/wp-content/uploads/2013/06/VideoM25ESP.jpg" width="300" height="168"> </a> 
+      </div> 
+      <div class="column three-fifth  last"> 
+       <div class="variables_cursos"> 
+        <!--
+                <p>Área: <span class="valor"></span></p>
+                <p>Horas: <span class="valor"></span></p>
+				<p>Créditos ECTS: <span class="valor"></span></p>
+                --> 
+        <p>Tipología: <span class="valor"></span></p> 
+        <p>Material: <span class="valor"> Papel impreso y multimedia</span></p> 
+        <p>Duración: <span class="valor">Con la finalidad de conseguir los objetivos planteados en este curso, se ha establecido un programa que tiene una duración en función de la convocatoria.</span></p> 
+        <p>Metodología: <span class="valor">E-learning</span></p> 
+        <p>Evaluación: <span class="valor">Contínua</span></p> 
+        <!--
+                <p>Estudios: <span class="valor"></span></p>
+                --> 
+       </div> 
+      </div> 
+      <div style="clear:both; height:18px;"></div> 
+      <!-- FIN INSERCION DEL SLIDESHOW --> 
+      <style>
+	.cursos div.tabs-frame-content{
+		background-image:url(http://www.educacionline.com/wp-content/themes/ultimate/images/logo_uoc_esp.png);
+	}
+</style> 
+      <div id="post-2467" class="post-2467 page type-page status-publish hentry"> 
+       <div class="tabs-container">
+        <ul class="tabs-frame">
+         <li><a href="#">Presentación</a></li>
+         <li><a href="#">Plan de estudios</a></li>
+         <li><a href="#">Requisitos de acceso y titulación</a></li>
+         <li><a href="#">Pruebas de acceso</a></li>
+        </ul>
+        <div class="tabs-frame-content">
+         <h2>Presentación</h2> 
+         <p><a href="http://www.educacionline.com/wp-content/uploads/2014/12/Acceso-Universidad-mayores-de-25.pdf"><img class="alignleft size-full wp-image-2511 colorbox-2467" src="http://www.educacionline.com/wp-content/uploads/2013/03/FichaCurso.jpg" alt="PDF Curso Acceso a la Universidad mayores 25" width="100" height="163"></a>Te ofrecemos un curso de preparación para <b>superar con garantías</b> la prueba de acceso a los estudios universitarios a las personas mayores de 25 años en las diferentes carreras que ofrecen las universidades públicas y privadas españolas. Además de facilitar que los alumnos alcancen los conocimientos y habilidades necesarios para superar los exámenes oficiales, el curso para mayores de 25 años te permitirá <b>adquirir unos hábitos de estudio</b> que te ayudaran a&nbsp; integrarte con éxito en la comunidad universitaria. &nbsp;</p>
+        </div> 
+        <div class="tabs-frame-content">
+         <h2>Plan de estudios</h2> 
+         <p>El plan de estudios se estructura según las especialidades en que se organiza la prueba de acceso. Se distingue entre <b>materias comunes</b> a todos los estudios y <b>materias específicas</b> de la especialidad elegida.</p> 
+         <ul style="list-style-type: square;"> 
+          <li><strong>Materias comunes:</strong> 
+           <ul> 
+            <li>&nbsp;<a href="http://www.educacionline.com/wp-content/uploads/2013/06/Lengua_esp.pdf">Lengua española</a></li> 
+            <li><a href="http://www.educacionline.com/wp-content/uploads/2013/06/Ingles.pdf">Lengua extranjera (inglés)</a></li> 
+            <li><a href="http://www.educacionline.com/wp-content/uploads/2013/06/Tecnicas_Estudio.pdf">Técnicas de estudio*</a> *Se trata de una asignatura adicional, cuyo objetivo es dar las herramientas básicas para facilitar el aprendizaje tanto de las asignaturas de la prueba de acceso como de los estudios universitarios.</li> 
+           </ul> </li> 
+          <li><strong>&nbsp;Materias específicas:</strong></li> 
+         </ul> 
+         <p>Dependen de los estudios y la universidad a que se quiera acceder, y pueden variar en número y obligatoriedad u optatividad. Nuestro servicio de asesoría personalizada, ampliará la información específica de cada comunidad autónoma. Oferta de asignaturas específicas:</p> 
+         <ul style="padding-left: 30px;"> 
+          <ul style="padding-left: 30px;"> 
+           <li><strong>Artes y Humanidades</strong></li> 
+          </ul> 
+         </ul> 
+         <p style="padding-left: 30px;">- <a href="http://www.educacionline.com/wp-content/uploads/2013/06/Filosofia.pdf">Filosofía</a></p> 
+         <p style="padding-left: 30px;">- <a href="http://www.educacionline.com/wp-content/uploads/2013/06/Historia_Contemporanea.pdf">Historia contemporánea</a></p> 
+         <p style="padding-left: 30px;">- <a href="http://www.educacionline.com/wp-content/uploads/2013/06/Literatura_espanola.pdf">Literatura Española</a></p> 
+         <p style="padding-left: 30px;">- <a href="http://www.educacionline.com/wp-content/uploads/2013/06/Geografia.pdf">Geografia</a></p> 
+         <ul style="padding-left: 30px;"> 
+          <ul style="padding-left: 30px;"> 
+           <li><strong>Ciencias y Ciencias de la Salud</strong></li> 
+          </ul> 
+         </ul> 
+         <p style="padding-left: 30px;">- <a href="http://www.educacionline.com/wp-content/uploads/2013/06/Biologia.pdf">Biología</a></p> 
+         <p style="padding-left: 30px;">- <a href="http://www.educacionline.com/wp-content/uploads/2013/06/Fisica.pdf">Física</a></p> 
+         <p style="padding-left: 30px;">- <a href="http://www.educacionline.com/wp-content/uploads/2013/06/Matematicas.pdf">Matemáticas</a></p> 
+         <p style="padding-left: 30px;">- <a href="http://www.educacionline.com/wp-content/uploads/2013/06/Quimica.pdf">Química</a></p> 
+         <ul style="padding-left: 30px;"> 
+          <ul style="padding-left: 30px;"> 
+           <li><strong>Ciencias Sociales y Jurídicas</strong></li> 
+          </ul> 
+         </ul> 
+         <p style="padding-left: 30px;">- <a href="http://www.educacionline.com/wp-content/uploads/2013/06/Matematicas.pdf">Matemáticas</a></p> 
+         <p style="padding-left: 30px;">- <a href="http://www.educacionline.com/wp-content/uploads/2013/06/Historia_Contemporanea.pdf">Historia contemporánea</a></p> 
+         <p style="padding-left: 30px;">- <a href="http://www.educacionline.com/wp-content/uploads/2013/06/Geografia.pdf">Geografia</a></p> 
+         <ul style="padding-left: 30px;"> 
+          <ul style="padding-left: 30px;"> 
+           <li><strong>Ingeniería y Arquitectura</strong></li> 
+          </ul> 
+         </ul> 
+         <p style="padding-left: 30px;">- <a href="http://www.educacionline.com/wp-content/uploads/2013/06/Fisica.pdf">Física</a></p> 
+         <p style="padding-left: 30px;">- <a href="http://www.educacionline.com/wp-content/uploads/2013/06/Matematicas.pdf">Matemáticas</a></p> 
+         <p style="padding-left: 30px;">- <a href="http://www.educacionline.com/wp-content/uploads/2013/06/Quimica.pdf">Química</a></p>
+        </div> 
+        <div class="tabs-frame-content">
+         <h2>Requisitos de acceso</h2> 
+         <p>Pueden presentarse a las pruebas de acceso a la universidad para mayores de 25 años todas las personas que cumplan los requisitos siguientes:</p> 
+         <ul> 
+          <li>a)&nbsp;Tener 25 años en el año natural en que se realizan las pruebas</li> 
+          <li>b) No tener superadas las PAU (o equivalente)</li> 
+          <li>c) No estar en posesión de un título de técnico superior de formación profesional, de artes plásticas y diseño, o de deportes (o equivalente).</li> 
+          <li>d) No tener ninguna titulación universitaria.</li> 
+         </ul> 
+         <h3>Titulación</h3> 
+         <p>Los estudiantes obtendrán un certificado de aprovechamiento, otorgado por la Dirección Académica de EducaciOnline. <strong>Certificado de EducaciOnline</strong> del Curso de acceso a la universidad para personas mayores de 25 años. &nbsp;</p>
+        </div> 
+        <div class="tabs-frame-content">
+         <h2>Pruebas de acceso</h2> 
+         <p>Las personas mayores de 25 años de edad podrán acceder a las enseñanzas universitarias oficiales de Grado mediante la superación de una prueba de acceso. Las universidades son quienes organizan las pruebas de acceso, en el marco establecido por las Administraciones educativas. </p>
+         <h5 class="toggle"><a href="#">¿Cuándo se realizan las pruebas?</a></h5>
+         <div class="toggle-content" style="display: none;">
+          <div class="block">
+           Las universidades realizan una vez al año una convocatoria de prueba de acceso para mayores de 25 años, para cada uno de los estudios que ofertan. El candidato deberá formalizar la inscripción a la prueba en la universidad donde desee cursar estudios, según lo establecido por la Administración educativa de la comunidad autónoma correspondiente. La fecha de celebración de la prueba de acceso depende de cada universidad o comunidad autónoma, pero habitualmente tienen lugar entre los meses de febrero a mayo.
+          </div>
+         </div> 
+         <h5 class="toggle"><a href="#">¿Quién se puede presentar? </a></h5>
+         <div class="toggle-content" style="display: none;">
+          <div class="block">
+           Puede presentarse a las pruebas de acceso a la universidad para mayores de 25 años quien cumpla los siguientes requisitos: a) Tener 25 años en el año natural en que se realizan las pruebas. b) No tener superadas las PAU (o equivalente). c) No estar en posesión de un título de técnico superior de formación profesional, de artes plásticas y diseño, o de deportes (o equivalente). d) No tener ninguna titulación universitaria.
+          </div>
+         </div> 
+         <h5 class="toggle"><a href="#">¿Cómo es la prueba?</a></h5>
+         <div class="toggle-content" style="display: none;">
+          <div class="block">
+           Consta de dos fases: una general y otra específica, cuyo contenido varía según las titulaciones a las que se quiere acceder. La fase general de la prueba tendrá como objetivo apreciar la madurez e idoneidad de los candidatos para seguir con éxito estudios universitarios, así como su capacidad de razonamiento y de expresión escrita. Comprenderá tres ejercicios referidos a los siguientes ámbitos: a) Comentario de texto. b) Lengua castellana. c) Lengua extranjera. En el caso de que la prueba se celebre en universidades dependientes de comunidades autónomas con otra lengua cooficial, podrá establecerse por la comunidad autónoma competente la obligatoriedad de un cuarto ejercicio referido a la lengua cooficial. La fase específica de la prueba tiene por finalidad valorar las habilidades, capacidades y aptitudes de los candidatos para cursar con éxito los estudios universitarios vinculados a los títulos universitarios oficiales. Se estructurará en cinco opciones vinculadas con las cinco ramas de conocimiento: opción A (artes y humanidades); opción B (ciencias); opción C (ciencias de la salud); opción D (ciencias sociales y jurídicas) y opción E (ingeniería y arquitectura). Dependiendo de los estudios y la universidad a que se quiera acceder, las asignaturas específicas pueden variar en número y obligatoriedad u optatividad. Nuestro servicio de asesoría personalizada, ampliará la información específica de cada comunidad autónoma.
+          </div>
+         </div> 
+         <h5 class="toggle"><a href="#">¿Cómo se evalúan? </a></h5>
+         <div class="toggle-content" style="display: none;">
+          <div class="block">
+           La universidad convocante otorga la calificación de la prueba de acceso, de conformidad con los criterios y fórmulas de valoración establecidos por la Administración educativa. El candidato deberá obtener un mínimo de cinco puntos en la calificación final para superar la prueba. En ningún caso se puede hacer el promedio si no se obtiene una puntuación mínima de cuatro puntos tanto en la fase general como en la fase específica.
+          </div>
+         </div> 
+         <h5 class="toggle"><a href="#">¿Una vez superadas las pruebas?</a></h5>
+         <div class="toggle-content" style="display: none;">
+          <div class="block">
+           Los candidatos podrán presentarse de nuevo en sucesivas convocatorias, con la finalidad de mejorar su calificación. Se tomará en consideración la calificación obtenida en la nueva convocatoria, siempre que ésta sea superior a la anterior. El candidato deberá formalizar la inscripción a la carrera en la universidad donde desee cursar estudios, según lo establecido por la Administración educativa de la comunidad autónoma correspondiente.
+          </div>
+         </div>
+        </div>
+       </div> 
+       <!--                   
+        <div style="float:right; margin:0 -30px 0 0;">
+	        <img src="" alt="UOC" />
+        </div>    
+        <div class="social-bookmark">
+                                                                        </div>
+		--> 
+      </div>
+      <!-- #post-2467 --> 
+      <div style="clear:both; height:1px;"></div> 
+      <div class="sharecolics_porter"> 
+       <div class="shareaholic-canvas" data-app-id="" data-app="share_buttons" data-title="Curso de Acceso a la Universidad para mayores 25 años" data-link="http://www.educacionline.com/acceso-universidad-mayores-25/" data-summary=""></div> 
+      </div> 
+      <div style="clear:both; height:48px;"></div> 
+      <div class="curos_contenido_vinculado_portadora"> 
+       <div class="column one-third " style="height:270px;"> 
+        <div style="position:relative; vertical-align: bottom; height:35px;"> 
+         <div style="position:relative; vertical-align: bottom;"> 
+          <input type="button" style="max-width:225px;" value="Modelo pedagógico" title="ver contenido" onclick="document.location='http://www.educacionline.com/modelo-pedagogico/'"> 
+          <!--
+                <h4>Modelo pedagógico</h4>
+                --> 
+         </div> 
+        </div> 
+        <a href="http://www.youtube.com/embed/i5tkjewEHrs/?autoplay=1" class="show_videos cboxElement"> 
+         <div class="cv_img_porter"> 
+          <div class="cv_img"> 
+           <img width="217" height="195" src="http://www.educacionline.com/wp-content/uploads/2013/03/Metodología_705_3537472.jpg" class="attachment-full colorbox-2467  wp-post-image" alt="Ver vídeo Metodología"> 
+          </div> 
+          <div class="cv_img_play_button"> 
+          </div> 
+         </div> </a> 
+       </div> 
+       <div class="column one-third " style="height:270px;"> 
+        <div style="position:relative; vertical-align: bottom; height:35px;"> 
+         <div style="position:relative; vertical-align: bottom;"> 
+          <input type="button" style="max-width:225px;" value="Ventajas" title="ver contenido" onclick="document.location='http://www.educacionline.com/ventajas/'"> 
+          <!--
+                <h4>Ventajas</h4>
+                --> 
+         </div> 
+        </div> 
+        <a href="http://www.youtube.com/embed/3OiC217mlT8/?autoplay=1" class="show_videos cboxElement"> 
+         <div class="cv_img_porter"> 
+          <div class="cv_img"> 
+           <img width="217" height="195" src="http://www.educacionline.com/wp-content/uploads/2013/03/Ventajas_775_3921738.jpg" class="attachment-full colorbox-2467  wp-post-image" alt="Ver vídeo Ventajas"> 
+          </div> 
+          <div class="cv_img_play_button"> 
+          </div> 
+         </div> </a> 
+       </div> 
+       <div class="column one-third last" style="height:270px;"> 
+        <div style="position:relative; vertical-align: bottom; height:35px;"> 
+         <div style="position:relative; vertical-align: bottom;"> 
+          <input type="button" style="max-width:225px;" value="Todos los cursos" title="ver contenido" onclick="document.location='http://www.educacionline.com/todos-los-cursos/'"> 
+          <!--
+                <h4>Todos los cursos</h4>
+                --> 
+         </div> 
+        </div> 
+        <a href="http://www.educacionline.com/todos-los-cursos/"> 
+         <div class="cv_img_porter"> 
+          <div class="cv_img"> 
+           <img width="217" height="195" src="http://www.educacionline.com/wp-content/uploads/2013/04/OtrosCursos_775_3975153.jpg" class="attachment-full colorbox-2467  wp-post-image" alt="OtrosCursos_775_3975153"> 
+          </div> 
+         </div> </a> 
+       </div> 
+      </div> 
+     </div> 
+     <!-- **Content - End** --> 
+     <!-- FIN THE LOOP --> 
+     <!-- **Sidebar** --> 
+     <div class="sidebar "> 
+      <script language="javascript" src="http://www.educacionline.com/wp-content/plugins/formulario-solicitud-cursos/js/formulario-solicitud-cursos-widget.js"></script>
+      <div id="formulario-solicitud-cursos-2" class="widget titled-box eo-style widget_formulario-solicitud-cursos">
+       <h6 class="titled-box-title color-corportaivo degradado4"></h6>
+       <div class="contenido_widget"> 
+        <form id="frm" name="frm" action="" method="post"> 
+         <div style="font-size:18px; border-bottom-style:none; color:white;background-color:#9F161D">
+          Pídenos información al
+         </div> 
+         <div style="border-bottom-style:none; background-color:#9F161D; font-size:26px; color:white;">
+          (+34) 934 969 202
+         </div> 
+         <div style="font-size:16px; border-bottom-style:none; color:white;background-color:#9F161D">
+          o rellena tus datos:
+         </div> 
+         <input type="hidden" name="menu" id="menuParam" value=""> 
+         <fieldset style="margin-left:0px;"> 
+          <div class="fila"> 
+           <label for="nom"></label> 
+           <input type="text" name="nom" id="nom" value="Nombre/Nom" class="input" maxlength="200" onblur="if(this.value==''){this.value='Nombre/Nom';}" onfocus="if(this.value =='Nombre/Nom') {this.value=''; }"> 
+          </div> 
+          <div class="fila"> 
+           <label for="cog1"></label> 
+           <input type="text" name="cog1" id="cog1" value="Apellido 1/Cognom 1" class="input" maxlength="200" onblur="if(this.value==''){this.value='Apellido 1/Cognom 1';}" onfocus="if(this.value =='Apellido 1/Cognom 1') {this.value=''; }"> 
+          </div> 
+          <div class="fila"> 
+           <label for="cog2"></label> 
+           <input type="text" name="cog2" id="cog2" value="Apellido 2/Cognom 2" class="input" maxlength="200" onblur="if(this.value==''){this.value='Apellido 2/Cognom 2';}" onfocus="if(this.value =='Apellido 2/Cognom 2') {this.value=''; }"> 
+          </div> 
+          <div class="fila"> 
+           <label for="tel"></label> 
+           <input type="text" name="tel" id="tel" value="Teléfono/Telèfon" class="input" maxlength="20" onblur="if(this.value==''){this.value='Teléfono/Telèfon';}" onfocus="if(this.value =='Teléfono/Telèfon') {this.value=''; }"> 
+          </div> 
+          <div class="fila"> 
+           <label for="mai"></label> 
+           <input type="text" name="mai" id="mai" value="E-mail" class="input" maxlength="200" onblur="if(this.value==''){this.value='E-mail';}" onfocus="if(this.value =='E-mail') {this.value=''; }"> 
+          </div> 
+          <div class="fila"> 
+           <select name="pais" class="combo" onchange="show_provincias(this.value)"> <option value="">Pais</option><option value="AF">Afganistán</option> <option value="AL">Albania</option> <option value="D">Alemania</option> <option value="DZ">Algeria</option> <option value="AG">Alts del Golan</option> <option value="AND">Andorra</option> <option value="AO">Angola</option> <option value="ANG">Anguilla</option> <option value="AB">Antigua i Barbuda</option> <option value="NA">Antillas Holandesas</option> <option value="ASA">Arabia Saudí</option> <option value="RA">Argentina</option> <option value="AR">Armenia</option> <option value="AUS">Australia</option> <option value="A">Austria</option> <option value="AZ">Azerbaidjan</option> <option value="BS">Bahamas</option> <option value="BRN">Bahrain</option> <option value="BD">Bangla Desh</option> <option value="BDS">Barbados</option> <option value="B">Bélgica</option> <option value="BH">Belize</option> <option value="DY">Benín</option> <option value="BHU">Bhutan</option> <option value="BIE">Bielorúsia</option> <option value="BO">Bolívia</option> <option value="BOH">Bosnia i Hercegovina</option> <option value="RB">Botswana</option> <option value="BR">Brasil</option> <option value="BRU">Brunei</option> <option value="BG">Bulgaria</option> <option value="HV">Burkina Faso</option> <option value="RU">Burundi</option> <option value="K">Cambodja</option> <option value="CA">Camerun</option> <option value="CDN">Canadá</option> <option value="CV">Cap Verd</option> <option value="RCH">Chile</option> <option value="CJ">Cisjordania</option> <option value="CO">Colombia</option> <option value="CAM">Comores</option> <option value="RCB">Congo</option> <option value="CI">Costa d'Ivori</option> <option value="CR">Costa Rica</option> <option value="CRO">Croacia</option> <option value="C">Cuba</option> <option value="DK">Dinamarca</option> <option value="DJ">Djibouti</option> <option value="WD">Dominica</option> <option value="EC">Ecuador</option> <option value="ET">Egipte</option> <option value="SA">El Salvador</option> <option value="EA">Emiratos árabes unidos</option> <option value="CS">Eslovaquia</option> <option value="ESL">Eslovenia</option> <option value="E">España</option> <option value="USA">Estados Unidos</option> <option value="ES">Estonia</option> <option value="EP">Etiopía</option> <option value="FJI">Fiji</option> <option value="PI">Filipinas</option> <option value="SF">Finlandia</option> <option value="F">Francia</option> <option value="FG">Franja de Gaza</option> <option value="GA">Gabón</option> <option value="WAG">Gambia</option> <option value="G">Georgia</option> <option value="GH">Ghana</option> <option value="GBZ">Gibraltar</option> <option value="GB">Gran Bretaña (Reino Unido)</option> <option value="WG">Granada</option> <option value="GR">Grecia</option> <option value="GUF">Guaiana Francesa</option> <option value="GCA">Guatemala</option> <option value="GU">Guinea</option> <option value="GUP">Guinea Bissau</option> <option value="GUE">Guinea Equatorial</option> <option value="GUY">Guyana</option> <option value="RH">Haití</option> <option value="NL">Holanda</option> <option value="HD">Hondures</option> <option value="HK">Hong Kong</option> <option value="H">Hungria</option> <option value="YE">Iemen</option> <option value="IND">Índia</option> <option value="RI">Indonesia</option> <option value="IR">Irán</option> <option value="IRQ">Iraq</option> <option value="IRL">Irlanda</option> <option value="IS">Islandia</option> <option value="IL">Israel</option> <option value="I">Italia</option> <option value="YU">Iugoslavia</option> <option value="JA">Jamaica</option> <option value="J">Japón</option> <option value="JR">Jerusalen</option> <option value="HKJ">Jordania</option> <option value="KAZ">Kazakhstan</option> <option value="EAK">Kenya</option> <option value="KIR">Kirguizistan</option> <option value="KI">Kiribati</option> <option value="KWT">Kuwait</option> <option value="LAO">Laos</option> <option value="LS">Lesotho</option> <option value="LT">Letonia</option> <option value="RL">Libano</option> <option value="LEB">Liberia</option> <option value="LAR">Líbia</option> <option value="FL">Liechtenstein</option> <option value="LIT">Lituania</option> <option value="L">Luxemburgo</option> <option value="MCO">Macau</option> <option value="RM">Madagascar</option> <option value="MAL">Malasia</option> <option value="MW">Malawi</option> <option value="MAD">Maldives</option> <option value="RMM">Mali</option> <option value="M">Malta</option> <option value="MA">Marruecos</option> <option value="MS">Mauricio</option> <option value="RIM">Mauritania</option> <option value="MEX">Mexico</option> <option value="MOL">Moldavia</option> <option value="MC">Mónaco</option> <option value="MG">Mongolia</option> <option value="MZ">Mozambique</option> <option value="SWA">Namíbia</option> <option value="NU">Nauru</option> <option value="NP">Nepal</option> <option value="NIC">Nicaragua</option> <option value="NIG">Níger</option> <option value="WAN">Nigeria</option> <option value="N">Noruega</option> <option value="NZ">Nueva Zelanda</option> <option value="OM">Omán</option> <option value="PAK">Pakistán</option> <option value="PA">Panamà</option> <option value="PN">Papua Nova Guinea</option> <option value="PY">Paraguay</option> <option value="PE">Perú</option> <option value="PL">Polonia</option> <option value="P">Portugal</option> <option value="PR">Puerto Rico</option> <option value="Q">Qatar</option> <option value="RCA">República Centroafricana</option> <option value="COR">República de Corea</option> <option value="ZA">República de Sudáfrica</option> <option value="ROK">República Democrática Popular</option> <option value="DOM">República Dominicana</option> <option value="R">Rumania</option> <option value="RUS">Rusia</option> <option value="RWA">Rwanda</option> <option value="SH">Sáhara Occidental</option> <option value="SCN">Saint Christopher i Nevis</option> <option value="WL">Saint Lucia</option> <option value="VS">Saint Vincent i les Grenadines</option> <option value="SL">Salomó</option> <option value="WS">Samoa Occidental</option> <option value="RSM">San Marino</option> <option value="ST">Sao Tomé i Príncipe</option> <option value="SN">Senegal</option> <option value="SY">Seychelles</option> <option value="WAL">Sierra Leone</option> <option value="SGP">Singapur</option> <option value="SYR">Síria</option> <option value="SP">Somalia</option> <option value="CL">Sri Lanka</option> <option value="SDN">Sudan</option> <option value="S">Suecia</option> <option value="CH">Suiza</option> <option value="SME">Surinam</option> <option value="SD">Swazilàndia</option> <option value="TAD">Tadjikistan</option> <option value="T">Tailandia</option> <option value="RC">Taiwan</option> <option value="EAT">Tanzania</option> <option value="TG">Togo</option> <option value="TNG">Tonga</option> <option value="TT">Trinitat y Tobago</option> <option value="TN">Tunez</option> <option value="TUR">Turkmenistan</option> <option value="TR">Turquia</option> <option value="TVL">Tuvalu</option> <option value="TD">Txad</option> <option value="UKR">Ucraina</option> <option value="EAU">Uganda</option> <option value="SU">Unión Sovietica</option> <option value="U">Uruguai</option> <option value="UZ">Uzbekistan</option> <option value="VNT">Vanuatu</option> <option value="V">Vaticano</option> <option value="YV">Venezuela</option> <option value="VN">Vietnam</option> <option value="RPC">Xina</option> <option value="CY">Xipre</option> <option value="ZR">Zaire</option> <option value="Z">Zambia</option> <option value="RSR">Zimbabwe</option> </select> 
+          </div> 
+          <div class="fila" id="prv_div_porter"> 
+           <select name="prv" id="prv" class="combo"> <option value="0">Provincia/Província</option><option value="15"> A Coruña </option> <option value="01"> Alava </option> <option value="02"> Albacete </option> <option value="03"> Alicante </option> <option value="04"> Almería </option> <option value="33"> Asturias </option> <option value="05"> Ávila </option> <option value="06"> Badajoz </option> <option value="08"> Barcelona </option> <option value="09"> Burgos </option> <option value="10"> Cáceres </option> <option value="11"> Cádiz </option> <option value="39"> Cantabria </option> <option value="12"> Castellón </option> <option value="51"> Ceuta </option> <option value="13"> Ciudad Real </option> <option value="14"> Córdoba </option> <option value="16"> Cuenca </option> <option value="17"> Girona </option> <option value="18"> Granada </option> <option value="19"> Guadalajara </option> <option value="20"> Guipúzcoa </option> <option value="21"> Huelva </option> <option value="22"> Huesca </option> <option value="07"> Illes Balears </option> <option value="23"> Jaén </option> <option value="26"> La Rioja </option> <option value="35"> Las Palmas de Gran Canaria </option> <option value="24"> León </option> <option value="25"> Lleida </option> <option value="27"> Lugo </option> <option value="28"> Madrid </option> <option value="29"> Málaga </option> <option value="52"> Melilla </option> <option value="30"> Múrcia </option> <option value="31"> Navarra </option> <option value="32"> Orense </option> <option value="34"> Palencia </option> <option value="36"> Pontevedra </option> <option value="37"> Salamanca </option> <option value="38"> Santa Cruz de Tenerife </option> <option value="40"> Segovia </option> <option value="41"> Sevilla </option> <option value="42"> Soria </option> <option value="43"> Tarragona </option> <option value="44"> Teruel </option> <option value="45"> Toledo </option> <option value="46"> Valencia </option> <option value="47"> Valladolid </option> <option value="48"> Vizcaya </option> <option value="49"> Zamora </option> <option value="50"> Zaragoza </option> </select> 
+          </div> 
+          <div style="clear:both; height:4px;"></div> 
+          <div class="fila"> 
+           <label id="valida_checko" name="valida_checko"><input type="checkbox" name="accept_terms" id="accept_terms" value="Accept terms"></label> 
+           <label for="accept_terms" style="color:white;">Acepto los <a href="http://www.educacionline.com/wp-content/plugins/formulario-solicitud-cursos/tyc_es.html" style="color:white;">terminos y condiciones</a>.</label> 
+          </div> 
+          <div class="fila boto"> 
+           <input type="submit" name="submiton" id="submiton" value="Más información sin compromiso" style="background-color:orange;color:black;font-size:14px;font-weight:bold;padding:6px 10px 7px"> 
+          </div> 
+          <input type="hidden" id="formualrio_enviado" name="formualrio_enviado" value=""> 
+          <input type="hidden" id="captcha_valido" name="captcha_valido" value=""> 
+          <input type="hidden" id="accom" name="accom" value="0"> 
+          <input type="hidden" id="cur" name="cur" value="3"> 
+         </fieldset> 
+        </form>
+       </div>
+      </div>
+      <div id="search-5" class="widget titled-box eo-style widget_search">
+       <h6 class="titled-box-title color-corportaivo degradado4">Encuentra tu curso</h6>
+       <div class="contenido_widget">
+        <!-- **Searchform** --> 
+        <form method="get" id="searchform" name="searchform" action="http://www.educacionline.com/"> 
+         <fieldset> 
+          <input id="s" name="s" type="text" value="Palabra clave" class="text_input" onblur="if(this.value==''){this.value='Palabra clave';}" onfocus="if(this.value =='Palabra clave') {this.value=''; }"> 
+          <input name="submit" type="submit" value="Buscar"> 
+         </fieldset> 
+        </form>
+        <!-- **Searchform - End** -->
+       </div>
+      </div>
+      <div id="smcwidget-4" class="widget titled-box eo-style SMCWidget">
+       <h6 class="titled-box-title color-corportaivo degradado4">Síguenos</h6>
+       <div class="contenido_widget">
+        <!-- BEGIN SOCIAL MEDIA CONTACTS --> 
+        <div id="socialmedia-container"> 
+         <div id="social-facebook" class="smc_icon_container Default">
+          <a href="https://www.facebook.com/pages/EducaciOnline/380370255347093" target="_blank" title="Link to my Facebook Page"><img alt="Link to my Facebook Page" src="http://www.educacionline.com/wp-content/plugins/social-media-icons/images/iconset/Default/facebook.png"></a>
+         </div>
+         <div id="social-twitter" class="smc_icon_container Default">
+          <a href="https://twitter.com/Educacionline1" target="_blank" title="Link to my Twitter Page"><img alt="Link to my Twitter Page" src="http://www.educacionline.com/wp-content/plugins/social-media-icons/images/iconset/Default/twitter.png"></a>
+         </div>
+         <div id="social-linkedin" class="smc_icon_container Default">
+          <a href="http://www.linkedin.com/company/educacionline" target="_blank" title="Link to my Linkedin Page"><img alt="Link to my Linkedin Page" src="http://www.educacionline.com/wp-content/plugins/social-media-icons/images/iconset/Default/linkedin.png"></a>
+         </div>
+         <div id="social-googleplus" class="googleplus smc_icon_container Default"> 
+          <div class="googlehider"> 
+           <g:plusone annotation="none"></g:plusone> 
+           <!-- Place this render call where appropriate --> 
+           <script type="text/javascript">
+window.___gcfg = {lang: 'en-GB'};
+
+(function() {
+var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+po.src = 'https://apis.google.com/js/plusone.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+})();
+</script> 
+          </div> 
+          <img alt="Recomienda esta página!" title="Recomienda esta página!" src="http://www.educacionline.com/wp-content/plugins/social-media-icons/images/iconset/Default/googleplus.png" class="mygoogle"> 
+         </div> 
+         <div id="social-rss" class="smc_icon_container Default">
+          <a href="http://www.cursodemarketing.com/feed/" target="_blank" title="Link to my Rss Page"><img alt="Link to my Rss Page" src="http://www.educacionline.com/wp-content/plugins/social-media-icons/images/iconset/Default/rss.png"></a>
+         </div>
+        </div> 
+        <!-- END SOCIAL MEDIA CONTACTS --> 
+       </div>
+      </div>
+      <div id="rss-4" class="widget titled-box eo-style widget_rss">
+       <h6 class="titled-box-title color-corportaivo degradado4"><a class="rsswidget" href="http://www.educacionline.com/blog/feed/"><img style="border:0" width="14" height="14" src="http://www.educacionline.com/wp-includes/images/rss.png" alt="RSS"></a> <a class="rsswidget" href="http://www.educacionline.com/blog">Noticias Actualidad</a></h6>
+       <div class="contenido_widget">
+        <ul>
+         <li><a class="rsswidget" href="http://www.educacionline.com/blog/13-consejos-para-mejorar-tu-salud-en-2015/">13 consejos para mejorar tu salud en 2015</a></li>
+         <li><a class="rsswidget" href="http://www.educacionline.com/blog/acceso-la-universidad-para-mayores-de-25-anos/">Acceso a la universidad para mayores de 25 años</a></li>
+        </ul>
+       </div>
+      </div>
+      <div id="rev-slider-widget-2" class="widget titled-box eo-style widget_revslider">
+       <!-- START REVOLUTION SLIDER 4.1.4 fullwidth mode --> 
+       <div id="rev_slider_26_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container" style="margin:0px auto;background-color:#E9E9E9;padding:5px;margin-top:0px;margin-bottom:0px;max-height:230px;"> 
+        <div id="rev_slider_26_1" class="rev_slider fullwidthabanner" style="display:none;max-height:230px;height:230;"> 
+         <ul> 
+          <!-- SLIDE  --> 
+          <li data-transition="3dcurtain-horizontal" data-slotamount="7" data-masterspeed="400" data-link="http://testimonis.educacionline.com" data-target="_blank"> 
+           <!-- MAIN IMAGE --> <img src="http://www.educacionline.com/wp-content/uploads/2014/03/VídeoTestimoniosTurismo.jpg" alt="VídeoTestimoniosTurismo" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat"> 
+           <!-- LAYERS --> </li> 
+          <!-- SLIDE  --> 
+          <li data-transition="3dcurtain-horizontal" data-slotamount="7" data-masterspeed="400" data-link="http://testimonis.educacionline.com/" data-target="_blank"> 
+           <!-- MAIN IMAGE --> <img src="http://www.educacionline.com/wp-content/uploads/2014/03/VídeoTestimoniosAssDIR.jpg" alt="VídeoTestimoniosAssDIR" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat"> 
+           <!-- LAYERS --> </li> 
+          <!-- SLIDE  --> 
+          <li data-transition="3dcurtain-horizontal" data-slotamount="7" data-masterspeed="300" data-link="http://testimonis.educacionline.com/" data-target="_blank"> 
+           <!-- MAIN IMAGE --> <img src="http://www.educacionline.com/wp-content/uploads/2014/03/VídeoTestimoniosPublicidad.jpg" alt="VídeoTestimoniosPublicidad" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat"> 
+           <!-- LAYERS --> </li> 
+          <!-- SLIDE  --> 
+          <li data-transition="3dcurtain-horizontal" data-slotamount="7" data-masterspeed="400" data-link="http://testimonis.educacionline.com/" data-target="_blank"> 
+           <!-- MAIN IMAGE --> <img src="http://www.educacionline.com/wp-content/uploads/2014/03/VídeoTestimoniosEnergía-Solar.jpg" alt="VídeoTestimoniosEnergía-Solar" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat"> 
+           <!-- LAYERS --> </li> 
+          <!-- SLIDE  --> 
+          <li data-transition="3dcurtain-horizontal" data-slotamount="7" data-masterspeed="400" data-link="http://testimonis.educacionline.com/" data-target="_blank"> 
+           <!-- MAIN IMAGE --> <img src="http://www.educacionline.com/wp-content/uploads/2014/03/VídeoTestimoniosLogística.jpg" alt="VídeoTestimoniosLogística" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat"> 
+           <!-- LAYERS --> </li> 
+          <!-- SLIDE  --> 
+          <li data-transition="3dcurtain-horizontal" data-slotamount="7" data-masterspeed="400" data-link="http://testimonis.educacionline.com/" data-target="_blank"> 
+           <!-- MAIN IMAGE --> <img src="http://www.educacionline.com/wp-content/uploads/2014/03/VídeoTestimoniosRRHH.jpg" alt="VídeoTestimoniosRRHH" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat"> 
+           <!-- LAYERS --> </li> 
+         </ul> 
+         <div class="tp-bannertimer"></div> 
+        </div> 
+       </div> 
+       <script type="text/javascript">
+
+				var tpj=jQuery;				
+				tpj.noConflict();				
+				var revapi26;
+				
+				tpj(document).ready(function() {
+								
+				if(tpj('#rev_slider_26_1').revolution == undefined)
+					revslider_showDoubleJqueryError('#rev_slider_26_1');
+				else
+				   revapi26 = tpj('#rev_slider_26_1').show().revolution(
+					{
+						dottedOverlay:"none",
+						delay:5000,
+						startwidth:230,
+						startheight:230,
+						hideThumbs:200,
+						
+						thumbWidth:100,
+						thumbHeight:50,
+						thumbAmount:5,
+						
+						navigationType:"none",
+						navigationArrows:"nexttobullets",
+						navigationStyle:"round",
+						
+						touchenabled:"on",
+						onHoverStop:"off",
+						
+						navigationHAlign:"center",
+						navigationVAlign:"bottom",
+						navigationHOffset:0,
+						navigationVOffset:20,
+
+						soloArrowLeftHalign:"left",
+						soloArrowLeftValign:"center",
+						soloArrowLeftHOffset:20,
+						soloArrowLeftVOffset:0,
+
+						soloArrowRightHalign:"right",
+						soloArrowRightValign:"center",
+						soloArrowRightHOffset:20,
+						soloArrowRightVOffset:0,
+								
+						shadow:2,
+						fullWidth:"on",
+						fullScreen:"off",
+
+						stopLoop:"off",
+						stopAfterLoops:-1,
+						stopAtSlide:-1,
+
+						
+						shuffle:"off",
+						
+						autoHeight:"off",						
+						forceFullWidth:"off",						
+												
+												
+						hideThumbsOnMobile:"off",
+						hideBulletsOnMobile:"off",
+						hideArrowsOnMobile:"off",
+						hideThumbsUnderResolution:0,
+						
+						hideSliderAtLimit:0,
+						hideCaptionAtLimit:0,
+						hideAllCaptionAtLilmit:0,
+						startWithSlide:0,
+						videoJsPath:"http://www.educacionline.com/wp-content/plugins/revslider/rs-plugin/videojs/",
+						fullScreenOffsetContainer: ""	
+					});
+				
+				});	//ready
+				
+			</script> 
+       <!-- END REVOLUTION SLIDER -->
+      </div>
+     </div> 
+    </div>
+    <!-- **Sidebar - End** --> 
+   </div>
+   <!-- **Container - End** --> 
+   <div id="navigation-new" style="width: 1px; height: 1px; overflow: auto;"> 
+   </div> 
+  </div>
+  <!-- **Main - End**--> 
+  <!--  ################ MAIN SECTION END ################ --> 
+  <!--  ################ FOOTER SECTION ################ --> 
+  <!-- ** Footer ** --> 
+  <div id="footer"> 
+   <!-- ** Footer BG **--> 
+   <div class="footer-bg"> 
+    <!-- ** Footer Container ** --> 
+    <div class="container"> 
+     <div class="column one-third ">
+      <div id="nav_menu-6" class="widget widget_nav_menu">
+       <h3 class="widgettitle">Conoce EducaciOnline</h3>
+       <div class="menu-menu_footer_corporativas-container">
+        <ul id="menu-menu_footer_corporativas" class="menu">
+         <li id="menu-item-4925" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children first-menu-item menu-item-4925"><a href="http://www.educacionline.com/quienes-somos/">Quienes somos</a> 
+          <ul class="sub-menu"> 
+           <li id="menu-item-4926" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-4926"><a href="http://www.educacionline.com/quienes-somos/ambito-de-los-cursos/">Ámbito de los cursos</a></li> 
+           <li id="menu-item-4932" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4932"><a href="http://www.educacionline.com/quienes-somos/te-asesoramos/">Te asesoramos</a></li> 
+           <li id="menu-item-7674" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7674"><a href="http://www.educacionline.com/pagos/">Área de Pagos</a></li> 
+           <li id="menu-item-4933" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4933"><a href="http://www.educacionline.com/quienes-somos/danos-tu-opinion/">Danos tu opinión</a></li> 
+           <li id="menu-item-4951" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4951"><a href="http://www.educacionline.com/quienes-somos/subvencion-empresas/">Subvención Empresas</a></li> 
+           <li id="menu-item-5885" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5885"><a href="http://www.educacionline.com/quienes-somos/biblioteca-virtual/">Biblioteca virtual</a></li> 
+           <li id="menu-item-5886" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5886"><a href="http://www.educacionline.com/quienes-somos/trabaja-con-nosotros/">Trabaja en EducaciOnline</a></li> 
+           <li id="menu-item-5887" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-5887"><a href="http://www.educacionline.com/quienes-somos/noticias-educacionline/">Noticias EducaciOnline</a></li> 
+          </ul> </li> 
+         <li id="menu-item-4962" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children last-menu-item menu-item-4962"><a href="http://www.educacionline.com/modelo-pedagogico/">Como se estudia</a> 
+          <ul class="sub-menu"> 
+           <li id="menu-item-4963" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-4963"><a href="http://www.educacionline.com/modelo-pedagogico/">Modelo pedagógico</a></li> 
+           <li id="menu-item-4964" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4964"><a href="http://www.educacionline.com/eees/">Espacio Europeo de Educación Superior (EEES)</a></li> 
+           <li id="menu-item-4965" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4965"><a href="http://www.educacionline.com/campus-virtual/">Campus Virtual</a></li> 
+           <li id="menu-item-4966" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4966"><a href="http://www.educacionline.com/profesorado/">Profesorado</a></li> 
+           <li id="menu-item-4967" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4967"><a href="http://www.educacionline.com/materiales-didacticos/">Materiales didácticos</a></li> 
+           <li id="menu-item-5888" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5888"><a href="http://www.educacionline.com/evaluacion-continua/">Evaluación continúa</a></li> 
+           <li id="menu-item-5974" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-5974"><a href="http://www.educacionline.com/resultados-de-la-docencia/">Resultados de la docencia</a></li> 
+          </ul> </li> 
+        </ul>
+       </div>
+      </div>
+     </div>
+     <div class="column one-third ">
+      <div id="nav_menu-7" class="widget widget_nav_menu">
+       <h3 class="widgettitle">Areas cursos</h3>
+       <div class="menu-menu_footer_cursos-container">
+        <ul id="menu-menu_footer_cursos" class="menu">
+         <li id="menu-item-4973" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-4973"><a href="http://www.educacionline.com/area-curso-de-acceso-a-la-universidad/">Acceso a la Universidad</a></li> 
+         <li id="menu-item-4972" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children last-menu-item menu-item-4972"><a href="http://www.educacionline.com/cursos/">Estudios de formación superior</a> 
+          <ul class="sub-menu"> 
+           <li id="menu-item-6994" class="menu-item menu-item-type-custom menu-item-object-custom first-menu-item menu-item-6994"><a href="http://www.educacionline.com/todos-los-cursos/">Todos los estudios</a></li> 
+           <li id="menu-item-4735" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4735"><a href="http://www.educacionline.com/cursos/cursos-de-administracion/">Área Administración</a></li> 
+           <li id="menu-item-4737" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4737"><a href="http://www.educacionline.com/cursos/cursos-de-calidad/">Área de Calidad ISO</a></li> 
+           <li id="menu-item-5609" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5609"><a href="http://www.educacionline.com/cursos/cursos-de-gestion-economica/">Área Gestión económica</a></li> 
+           <li id="menu-item-5607" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5607"><a href="http://www.educacionline.com/cursos/cursos-de-energias-renovables/">Área Energias renovables</a></li> 
+           <li id="menu-item-4734" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4734"><a href="http://www.educacionline.com/cursos/cursos-de-marketing/">Área Marketing</a></li> 
+           <li id="menu-item-7341" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7341"><a href="http://www.educacionline.com/cursos/cursos-marketing-online/">Área Marketing Online</a></li> 
+           <li id="menu-item-5604" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5604"><a href="http://www.educacionline.com/cursos/cursos-de-produccion-y-logistica/">Área Producción y logística</a></li> 
+           <li id="menu-item-4733" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4733"><a href="http://www.educacionline.com/cursos/cursos-de-directivos/">Área Programas directivos</a></li> 
+           <li id="menu-item-5608" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5608"><a href="http://www.educacionline.com/cursos/cursos-de-relaciones-publicas/">Área Publicidad y RRPP</a></li> 
+           <li id="menu-item-5606" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5606"><a href="http://www.educacionline.com/cursos/cursos-de-recursos-humanos/">Cursos Recursos humanos</a></li> 
+           <li id="menu-item-5605" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5605"><a href="http://www.educacionline.com/cursos/cursos-de-salud/">Área Salud</a></li> 
+           <li id="menu-item-5603" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-5603"><a href="http://www.educacionline.com/cursos/cursos-de-turismo/">Área Turismo</a></li> 
+          </ul> </li> 
+        </ul>
+       </div>
+      </div>
+     </div>
+     <div class="column one-third last">
+      <div id="nav_menu-8" class="widget widget_nav_menu">
+       <h3 class="widgettitle">El mundo EducaciOnline</h3>
+       <div class="menu-menu_footer_blogs-container">
+        <ul id="menu-menu_footer_blogs" class="menu">
+         <li id="menu-item-4974" class="menu-item menu-item-type-custom menu-item-object-custom first-menu-item menu-item-4974"><a href="http://blogderecursoshumanos.es/">Blog Recursos humanos</a></li> 
+         <li id="menu-item-4975" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4975"><a href="http://blogdecalidadiso.es/">Blog Calidad ISO</a></li> 
+         <li id="menu-item-4976" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4976"><a href="http://blogdedirectivos.es/">Blog Directivos</a></li> 
+         <li id="menu-item-4979" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4979"><a href="http://blogdeeconomia.es/">Blog Economía</a></li> 
+         <li id="menu-item-4981" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4981"><a href="http://blogdeenergiasrenovables.es/">Blog Energias renovables</a></li> 
+         <li id="menu-item-4984" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4984"><a href="http://blogdelogistica.es/">Blog Logística</a></li> 
+         <li id="menu-item-4985" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4985"><a href="http://elblogdemarketing.es/">Blog Marketing</a></li> 
+         <li id="menu-item-4986" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4986"><a href="http://elblogdeturismo.es/">Blog Turismo</a></li> 
+         <li id="menu-item-4989" class="menu-item menu-item-type-custom menu-item-object-custom last-menu-item menu-item-4989"><a href="http://www.educacionline.com/blog/">Blog EducaciOnline</a></li> 
+        </ul>
+       </div>
+      </div>
+      <div id="nav_menu-9" class="widget widget_nav_menu">
+       <div class="menu-menu_footer_otras_paginas-container">
+        <ul id="menu-menu_footer_otras_paginas" class="menu">
+         <li id="menu-item-5737" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item last-menu-item menu-item-5737"><a href="http://www.educacionline.com/aviso-legal/">Aviso Legal</a></li> 
+        </ul>
+       </div>
+      </div>
+     </div> 
+    </div>
+    <!-- ** Footer Container End** --> 
+   </div>
+   <!-- ** Footer BG End **--> 
+  </div>
+  <!-- **Footer - End** --> 
+  <!--  ################ FOOTER SECTION END ################ --> 
+  <!--  ################ FOOTER COPYRIGHT SECTION ################ --> 
+  <!-- **Footer Copyright** --> 
+  <!--
+    <div class="footer-copyright">
+    	<div class="container">
+        
+        	<div class="copyright-content">
+            <ul id="menu-menu_footer_cursos-1" class=""><li class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-4973"><a href="http://www.educacionline.com/area-curso-de-acceso-a-la-universidad/">Acceso a la Universidad</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children last-menu-item menu-item-4972"><a href="http://www.educacionline.com/cursos/">Estudios de formación superior</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-custom menu-item-object-custom first-menu-item menu-item-6994"><a href="http://www.educacionline.com/todos-los-cursos/">Todos los estudios</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4735"><a href="http://www.educacionline.com/cursos/cursos-de-administracion/">Área Administración</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4737"><a href="http://www.educacionline.com/cursos/cursos-de-calidad/">Área de Calidad ISO</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5609"><a href="http://www.educacionline.com/cursos/cursos-de-gestion-economica/">Área Gestión económica</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5607"><a href="http://www.educacionline.com/cursos/cursos-de-energias-renovables/">Área Energias renovables</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4734"><a href="http://www.educacionline.com/cursos/cursos-de-marketing/">Área Marketing</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7341"><a href="http://www.educacionline.com/cursos/cursos-marketing-online/">Área Marketing Online</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5604"><a href="http://www.educacionline.com/cursos/cursos-de-produccion-y-logistica/">Área Producción y logística</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4733"><a href="http://www.educacionline.com/cursos/cursos-de-directivos/">Área Programas directivos</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5608"><a href="http://www.educacionline.com/cursos/cursos-de-relaciones-publicas/">Área Publicidad y RRPP</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5606"><a href="http://www.educacionline.com/cursos/cursos-de-recursos-humanos/">Cursos Recursos humanos</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5605"><a href="http://www.educacionline.com/cursos/cursos-de-salud/">Área Salud</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-5603"><a href="http://www.educacionline.com/cursos/cursos-de-turismo/">Área Turismo</a></li>
+</ul>
+</li>
+</ul>                
+                            </div>
+            
+                        
+        </div>
+    </div>
+    --> 
+  <!--  ################ FOOTER COPYRIGHT SECTION ################ --> 
+  <!-- **Wrapper - End** --> 
+  <script type="text/javascript" src="http://www.educacionline.com/wp-includes/js/comment-reply.min.js?ver=4.1.1"></script> 
+  <script type="text/javascript" src="http://www.educacionline.com/wp-content/themes/ultimate/framework/js/public/jquery.tabs.min.js?ver=4.1.1"></script> 
+  <script type="text/javascript" src="http://www.educacionline.com/wp-content/themes/ultimate/framework/js/public/tinynav.min.js?ver=4.1.1"></script> 
+  <script type="text/javascript" src="http://www.educacionline.com/wp-content/themes/ultimate/framework/js/public/isotope.js?ver=4.1.1"></script> 
+  <script type="text/javascript" src="http://www.educacionline.com/wp-content/themes/ultimate/framework/js/public/prettyphoto/jquery.prettyPhoto.js?ver=4.1.1"></script> 
+  <script type="text/javascript" src="http://www.educacionline.com/wp-content/themes/ultimate/framework/js/public/jquery.smartresize.js?ver=4.1.1"></script> 
+  <script type="text/javascript" src="http://www.educacionline.com/wp-content/themes/ultimate/framework/js/public/jquery.jcarousel.min.js?ver=4.1.1"></script> 
+  <script type="text/javascript" src="http://www.educacionline.com/wp-content/themes/ultimate/framework/js/public/jquery.cycle.all.js?ver=4.1.1"></script> 
+  <script type="text/javascript" src="http://www.educacionline.com/wp-content/themes/ultimate/framework/js/public/nivo/jquery.nivo.slider.js?ver=4.1.1"></script> 
+  <script type="text/javascript" src="http://www.educacionline.com/wp-content/themes/ultimate/framework/js/public/fmslider/fmslideshow.min.js?ver=4.1.1"></script> 
+  <script type="text/javascript" src="http://www.educacionline.com/wp-content/themes/ultimate/framework/js/public/jquery.tipTip.minified.js?ver=4.1.1"></script> 
+  <script type="text/javascript" src="http://www.educacionline.com/wp-content/themes/ultimate/framework/js/public/common.js?ver=4.1.1"></script> 
+  <script type="text/javascript" src="http://www.educacionline.com/wp-content/themes/ultimate/framework/js/public/shortcodes.js?ver=4.1.1"></script> 
+  <script type="text/javascript" src="http://www.educacionline.com/wp-content/plugins/dynamic-to-top/js/libs/jquery.easing.js?ver=1.3"></script> 
+  <script type="text/javascript">
+/* <![CDATA[ */
+var mv_dynamic_to_top = {"text":"0","version":"0","min":"200","speed":"1000","easing":"easeInOutExpo","margin":"20"};
+/* ]]> */
+</script> 
+  <script type="text/javascript" src="http://www.educacionline.com/wp-content/plugins/dynamic-to-top/js/dynamic.to.top.min.js?ver=3.4.2"></script> 
+  <script type="text/javascript">  jQuery(document).ready(function() {  jQuery("#top-menu ul.menu").tinyNav({  active: "current_page_item" });  }); </script> 
+  <!-- Google Code para etiquetas de remarketing --> 
+  <!--
+Es posible que las etiquetas de remarketing todavía no estén asociadas a la información de identificación personal o que estén en páginas relacionadas con las categorías delicadas. Para obtener más información e instrucciones sobre cómo configurar la etiqueta, consulte http://google.com/ads/remarketingsetup.
+---------------------------------------------------> 
+  <script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1067810139;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script> 
+  <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script> 
+  <noscript> 
+   <div style="display:inline;"> 
+    <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1067810139/?value=0&amp;guid=ON&amp;script=0"> 
+   </div> 
+  </noscript> 
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"beacon-1.newrelic.com","licenseKey":"1a4716e585","applicationID":"3992026","transactionName":"NgdQbERQVkIAVkFZWw9Nc1tCWFdfTkFFXBkCF0BLWUITA1Q=","queueTime":0,"applicationTime":983,"ttGuid":"","agentToken":"","atts":"GkBTGgxKRUw=","errorBeacon":"bam.nr-data.net","agent":"js-agent.newrelic.com\/nr-515.min.js"}</script> 
+ </body>
+</html>

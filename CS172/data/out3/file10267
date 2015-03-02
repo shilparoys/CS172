@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"XAYAVVVRGwYGVVVaAgU="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=s(e),f=c.length,u=i(a,o,r),d=0;f>d;d++)c[d].apply(u,n);return u}function a(t,e){f[t]=s(t).concat(e)}function s(t){return f[t]||[]}function c(){return n(e)}var f={};return{on:a,emit:e,create:c,listeners:s,_events:f}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],3:[function(t){function e(t,e,n,i,s){try{c?c-=1:r("err",[s||new UncaughtException(t,e,n)])}catch(f){try{r("ierr",[f,(new Date).getTime(),!0])}catch(u){}}return"function"==typeof a?a.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(5),i=t("ee"),a=window.onerror,s=!1,c=0;t("loader").features.err=!0,window.onerror=e,NREUM.noticeError=n;try{throw new Error}catch(f){"stack"in f&&(t(1),t(4),"addEventListener"in window&&t(2),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&t(3),s=!0)}i.on("fn-start",function(){s&&(c+=1)}),i.on("fn-err",function(t,e,r){s&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){s&&!this.thrown&&c>0&&(c-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:8,2:5,3:9,4:7,5:21,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],4:[function(t){function e(){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var n=t("ee"),r=t("handle"),o=t(2);t("loader").features.stn=!0,t(1),n.on("fn-start",function(t){var e=t[0];e instanceof Event&&(this.bstStart=Date.now())}),n.on("fn-end",function(t,e){var n=t[0];n instanceof Event&&r("bst",[n,e,this.bstStart,Date.now()])}),o.on("fn-start",function(t,e,n){this.bstStart=Date.now(),this.bstType=n}),o.on("fn-end",function(t,e){r("bstTimer",[e,this.bstStart,Date.now(),this.bstType])}),n.on("pushState-start",function(){this.time=Date.now(),this.startPath=location.pathname+location.hash}),n.on("pushState-end",function(){r("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),"addEventListener"in window.performance&&(window.performance.addEventListener("webkitresourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.webkitClearResourceTimings()},!1),window.performance.addEventListener("resourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.clearResourceTimings()},!1)),document.addEventListener("scroll",e,!1),document.addEventListener("keypress",e,!1),document.addEventListener("click",e,!1)}},{1:6,2:8,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],5:[function(t,e){function n(t){i.inPlace(t,["addEventListener","removeEventListener"],"-",r)}function r(t){return t[1]}var o=(t(1),t("ee").create()),i=t(2)(o),a=t("gos");if(e.exports=o,n(window),"getPrototypeOf"in Object){for(var s=document;s&&!s.hasOwnProperty("addEventListener");)s=Object.getPrototypeOf(s);s&&n(s);for(var c=XMLHttpRequest.prototype;c&&!c.hasOwnProperty("addEventListener");)c=Object.getPrototypeOf(c);c&&n(c)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&n(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t){if(t[1]){var e=t[1];"function"==typeof e?this.wrapped=t[1]=a(e,"nr@wrapped",function(){return i(e,"fn-",null,e.name||"anonymous")}):"function"==typeof e.handleEvent&&i.inPlace(e,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:21,2:22,ee:"QJf3ax",gos:"7eSDFh"}],6:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window.history,["pushState"],"-")},{1:22,2:21,ee:"QJf3ax"}],7:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=r(t[0],"fn-")})},{1:22,2:21,ee:"QJf3ax"}],8:[function(t,e){function n(t,e,n){var r=t[0];"string"==typeof r&&(r=new Function(r)),t[0]=o(r,"fn-",null,n)}var r=(t(2),t("ee").create()),o=t(1)(r);e.exports=r,o.inPlace(window,["setTimeout","setInterval","setImmediate"],"setTimer-"),r.on("setTimer-start",n)},{1:22,2:21,ee:"QJf3ax"}],9:[function(t,e){function n(){c.inPlace(this,d,"fn-")}function r(t,e){c.inPlace(e,["onreadystatechange"],"fn-")}function o(t,e){return e}var i=t("ee").create(),a=t(1),s=t(2),c=s(i),f=s(a),u=window.XMLHttpRequest,d=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];e.exports=i,window.XMLHttpRequest=function(t){var e=new u(t);try{i.emit("new-xhr",[],e),f.inPlace(e,["addEventListener","removeEventListener"],"-",function(t,e){return e}),e.addEventListener("readystatechange",n,!1)}catch(r){try{i.emit("internal-error",[r])}catch(o){}}return e},window.XMLHttpRequest.prototype=u.prototype,c.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",o),i.on("send-xhr-start",r),i.on("open-xhr-start",r)},{1:5,2:22,ee:"QJf3ax"}],10:[function(t){function e(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function n(t){var n=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;c>i;i++)t.removeEventListener(s[i],this.listener,!1);if(!n.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){n.status=t.status;var a=t.responseType,f="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,u=e(f);if(u&&(r.rxSize=u),this.sameOrigin){var d=t.getResponseHeader("X-NewRelic-App-Data");d&&(n.cat=d.split(", ").pop())}}else n.status=0;r.cbTime=this.cbTime,o("xhr",[n,r,this.startTime])}}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}if(window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)){t("loader").features.xhr=!0;var o=t("handle"),i=t(2),a=t("ee"),s=["load","error","abort","timeout"],c=s.length,f=t(1);t(4),t(3),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=n,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,n){var r=this.metrics,o=t[0],i=this;if(r&&o){var f=e(o);f&&(r.txSize=f)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof n.onload))&&i.end(n)}catch(e){try{a.emit("internal-error",[e])}catch(r){}}};for(var u=0;c>u;u++)n.addEventListener(s[u],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof XMLHttpRequest&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&&a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{1:"XL7HBI",2:11,3:9,4:5,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],11:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&&e.port===n.port&&e.protocol===n.protocol,r}},{}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):(o[t]||(o[t]=[]),void o[t].push(e))}var r=t("ee").create(),o={};e.exports=n,n.ee=r,r.q=o},{ee:"QJf3ax"}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],G9z0Bl:[function(t,e){function n(){var t=l.info=NREUM.info;if(t&&t.licenseKey&&t.applicationID&&f&&f.body){s(h,function(e,n){e in t||(t[e]=n)}),l.proto="https"===p.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var e=f.createElement("script");e.src=l.proto+t.agent,f.body.appendChild(e)}}function r(){"complete"===f.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=t(1),c=window,f=c.document,u="addEventListener",d="attachEvent",p=(""+location).split("?")[0],h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-515.min.js"},l=e.exports={offset:i(),origin:p,features:{}};f[u]?(f[u]("DOMContentLoaded",o,!1),c[u]("load",n,!1)):(f[d]("onreadystatechange",r),c[d]("onload",n)),a("mark",["firstbyte",i()])},{1:20,handle:"D5DuLP"}],20:[function(t,e){function n(t,e){var n=[],o="",i=0;for(o in t)r.call(t,o)&&(n[i]=e(o,t[o]),i+=1);return n}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],21:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],22:[function(t,e){function n(t){return!(t&&"function"==typeof t&&t.apply&&!t[i])}var r=t("ee"),o=t(1),i="nr@wrapper",a=Object.prototype.hasOwnProperty;e.exports=function(t){function e(t,e,r,a){function nrWrapper(){var n,i,s,f;try{i=this,n=o(arguments),s=r&&r(n,i)||{}}catch(d){u([d,"",[n,i,a],s])}c(e+"start",[n,i,a],s);try{return f=t.apply(i,n)}catch(p){throw c(e+"err",[n,i,p],s),p}finally{c(e+"end",[n,i,f],s)}}return n(t)?t:(e||(e=""),nrWrapper[i]=!0,f(t,nrWrapper),nrWrapper)}function s(t,r,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<r.length;c++)s=r[c],a=t[s],n(a)||(t[s]=e(a,f?s+o:o,i,s,t))}function c(e,n,r){try{t.emit(e,n,r)}catch(o){u([o,e,n,r])}}function f(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){u([r])}for(var o in t)a.call(t,o)&&(e[o]=t[o]);return e}function u(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=r),e.inPlace=s,e.flag=i,e}},{1:21,ee:"QJf3ax"}]},{},["G9z0Bl",3,10,4]);</script> 
+  <title>IRIS - News From the Field</title> 
+  <meta name="google-site-verification" content="7EaJTY_aGsxE5WHtWuLRnxXWpGYdFg4pp-fUs5MJmTw"> 
+  <meta name="keywords" content="seismology, seismological data, earthquakes, iris dmc"> 
+  <meta name="description" content="IRIS is a consortium of universities dedicated to the operation of science facilities for the acquisition, management, and distribution of seismological data."> 
+  <!--[if lt IE 9]>
+                                <script src='//www.iris.edu/hq/_js/html5shiv' type="text/javascript"></script>
+                <![endif]--> 
+  <link rel="stylesheet" type="text/css" href="/hq/bootstrap/css/bootstrap.min.css"> 
+  <link rel="stylesheet" type="text/css" href="//www.iris.edu/hq/?css=_css/2012.v.1420756926"> 
+  <link rel="stylesheet" type="text/css" href="//www.iris.edu/hq/?css=_css/hq-styles.v.1420757079"> 
+  <link rel="stylesheet" type="text/css" href="//www.iris.edu/hq/?css=_css/megamenu.v.1394725346"> 
+  <link rel="stylesheet" type="text/css" href="//www.iris.edu/hq/?css=_css/nivo-slider.v.1395952396"> 
+  <link rel="stylesheet" type="text/css" href="//www.iris.edu/hq/?css=_css/consortium-page.v.1420757131"> 
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"> 
+  <script src="//code.jquery.com/jquery-1.8.0.min.js" type="text/javascript"></script> 
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js" type="text/javascript"></script> 
+  <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script> 
+  <script src="//www.iris.edu/hq/_js/megamenu_plugins" type="text/javascript"></script> 
+  <script src="//www.iris.edu/hq/_js/megamenu.min" type="text/javascript"></script> 
+  <script src="//www.iris.edu/hq/_js/cookie.jquery" type="text/javascript"></script> 
+  <script src="//www.iris.edu/hq/_js/jquery.tools.min" type="text/javascript"></script> 
+  <script src="//www.iris.edu/hq/_js/jquery.tablesorter.min" type="text/javascript"></script> 
+  <script>
+                        $(document).ready(function($) {
+                            $('.megamenu').megaMenuCompleteSet({
+                                menu_speed_show: 300, // Time (in milliseconds) to show a drop down
+                                menu_speed_hide: 200, // Time (in milliseconds) to hide a drop down
+                                menu_speed_delay: 0, // Time (in milliseconds) before showing a drop down
+                                menu_effect: 'hover_slide', // Drop down effect, choose between 'hover_fade', 'hover_slide', etc.
+                                menu_click_outside: 1, // Clicks outside the drop down close it (1 = true, 0 = false)
+                                menu_show_onload: 0 // Drop down to show on page load (type the number of the drop down, 0 for none)
+                                });
+                        });
+                </script> 
+ </head> 
+ <body> 
+  <div class="resource-wrapper"> 
+   <div class="resources"> 
+    <div class="row-fluid"> 
+     <div class="span8"> 
+      <a href="//www.iris.edu/hq/contact" title="Contact Us">Contact Us</a> 
+      <a href="//www.iris.edu/hq/staff" title="Staff">Staff</a> 
+      <a href="//www.iris.edu/hq//calendar">Calendar</a> 
+     </div> 
+     <div class="span4"> 
+      <div class="search"> 
+       <form action="/hq/search" method="get"> 
+        <input type="hidden" name="cx" value="000587591391783241528:dsb0_jo9rjy"> 
+        <input type="hidden" name="cof" value="FORID:9"> 
+        <input type="hidden" name="ie" value="UTF-8"> 
+        <div class="input-append"> 
+         <input class="span10" name="q" type="text"> 
+         <button class="btn" type="submit"><i class="icon-search"></i></button> 
+        </div> 
+       </form> 
+      </div>
+      <!-- .search --> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <div id="site-container"> 
+   <header> 
+    <div id="header-container"> 
+     <div id="header"> 
+      <div id="header-left"> 
+       <div id="logo"> 
+        <a href="//www.iris.edu/hq/" title="IRIS"> <img src="/hq/images/layout/logos/header-logo.png" alt="IRIS"> </a> 
+       </div> 
+       <div id="logo-name"> 
+        <img src="/hq/images/layout/logos/HomeText_bold.png" alt="Incorporated Research Institutions for Seismology"> 
+       </div> 
+      </div>
+      <!-- #header-left --> 
+      <div id="header-right"> 
+       <ul id="top-menu"> 
+        <!--                                                        <li>
+                                                                                                                                <a href="//www.iris.edu/hq/contact" title="Contact Us">Contact Us</a>
+                                                                                                                        </li>
+                                                                                                                        <li>
+                                                                                                                                <a href="//www.iris.edu/hq/staff" title="Staff">Staff</a>
+                                                                                                                        </li>--> 
+        <li> <a href="" title="Resources" id="resources">Resources/Search</a> </li> 
+        <li> <a href="//www.iris.edu/hq/programs/education_and_outreach/social_media" title="Social Media"> <img src="/hq/images/layout/buttons/social-top.png" alt="Social Media"> </a> </li> 
+       </ul> 
+       <script type="text/javascript">
+                                                                $('a#resources').on('click', function(e) {
+
+                                                                e.preventDefault();
+                                                                $('div.resource-wrapper').slideToggle('300');
+                                                                });
+                                                        </script> 
+       <div id="nsf-logo"> 
+        <a href="http://www.nsf.gov/" title="The National Science Foundation" target="_blank"> <img src="/hq/images/layout/logos/nsf.png" alt="The National Science Foundation"> </a> 
+       </div> 
+       <div id="nsf"> 
+        <!--                                                                <div id="nsf-text">A university consortium dedicated to the operation of science facilities for the acquisition, management, and distribution of freely available seismic data.</div>--> 
+       </div>
+       <!-- #nsf --> 
+      </div>
+      <!-- #header-right --> 
+      <div class="clear"></div> 
+     </div>
+     <!-- #header --> 
+    </div>
+    <!-- #header-container --> 
+   </header> 
+   <div class="container"> 
+   </div> 
+   <nav> 
+    <div class="megamenu_container"> 
+     <ul class="megamenu"> 
+      <li id="first-menu-item"><a href="//www.iris.edu/hq/" title="Home">Home</a></li> 
+      <li><a href="//www.iris.edu/hq/about_iris" title="About IRIS" class="drop">About IRIS</a> 
+       <div class="drop3columns dropcontent"> 
+        <ul class="mega-submenu"> 
+         <!--<li><a href="//www.iris.edu/hq/key_announcements" title="Key Announcements">Key Announcements</a></li> --> 
+         <li><a href="//www.iris.edu/hq/about_iris#mission-statement" title="Mission Statement">Mission Statement</a></li> 
+         <li><a href="//www.iris.edu/hq/staff" title="Staff">Staff</a></li> 
+         <li><a href="//www.iris.edu/hq/about_iris/governance" title="Governance">Governance</a></li> 
+         <li><a href="//www.iris.edu/hq/about_iris/membership" title="Membership">Membership</a></li> 
+         <li><a href="//www.iris.edu/hq/news" title="IRIS Consortium News">IRIS Consortium News</a></li> 
+         <li><a href="//www.iris.edu/hq/employment" title="">Employment</a></li> 
+         <li><a href="//www.iris.edu/hq/about_iris/faqs" title="Frequently Asked Questions">Frequently Asked Questions</a></li> 
+         <li><a href="//www.iris.edu/hq/about_iris/travel_tips" title="Travel Tips/Forms">Travel Tips/Forms</a></li> 
+         <li><a href="http://www.iris.edu/gallery3" title="Image Gallery">Image Gallery</a></li> 
+         <li><a href="//www.iris.edu/hq/contact" title="Contact Us">Contact Us</a></li> 
+        </ul> 
+       </div>
+       <!-- .drop3columns .dropcontent --> </li> 
+      <li><a href="//www.iris.edu/hq/programs" title="Programs" class="drop">Programs</a> 
+       <div class="drop9columns dropcontent"> 
+        <div id="menu-programs"> 
+         <h4>Instrumentation Services</h4> 
+         <div class="menu-col-left"> 
+          <div class="menu-box"> 
+           <div class="menu-box-photo">
+            <img src="/hq/images/layout/menu/GSN.jpg" alt="">
+           </div> 
+           <div class="menu-box-contents"> 
+            <ul> 
+             <li><a href="//www.iris.edu/hq/programs/gsn" title="Global Seismographic Network">Global Seismographic Network</a> 
+              <ul> 
+               <li><a href="//www.iris.edu/hq/programs/gsn/maps" title="GSN Stations">GSN Stations</a></li> 
+               <li><a href="//www.iris.edu/hq/programs/gsn/instrumentation" title="GSN Instrumentation">GSN Instrumentation</a></li> 
+              </ul> </li> 
+            </ul> 
+           </div>
+           <!-- .menu-box-contents --> 
+           <div class="clear"></div> 
+          </div>
+          <!-- .menu-box --> 
+          <div class="menu-box"> 
+           <div class="menu-box-photo">
+            <img src="/hq/images/layout/menu/PASSCAL.jpg" alt="">
+           </div> 
+           <div class="menu-box-contents"> 
+            <ul> 
+             <li><a href="//www.iris.edu/hq/programs/passcal" title="Portable Networks (PASSCAL)">Portable Networks (PASSCAL)</a> 
+              <ul> 
+               <li><a href="http://www.passcal.nmt.edu/maps/funded" title="PASSCAL/Flex Array Experiments" target="_blank">PASSCAL/Flex Array Experiments</a></li> 
+               <li><a href="//www.iris.edu/hq/programs/passcal/instrumentation" title="PASSCAL Instrumentation">PASSCAL Instrumentation</a></li> 
+               <li><a href="//www.iris.edu/hq/programs/passcal/active" title="Active Source Support">Active Source Support</a></li> 
+              </ul> </li> 
+            </ul> 
+           </div>
+           <!-- .menu-box-contents --> 
+           <div class="clear"></div> 
+          </div>
+          <!-- .menu-box --> 
+          <div class="menu-box"> 
+           <div class="menu-box-photo">
+            <img src="/hq/images/layout/menu/USArray.jpg" alt="">
+           </div> 
+           <div class="menu-box-contents"> 
+            <ul> 
+             <li><a href="http://www.usarray.org/" title="EarthScope USArray" target="_blank">EarthScope USArray</a> 
+              <ul> 
+               <li><a href="http://www.usarray.org/status" title="Deployment Status" target="_blank">Deployment Status</a></li> 
+               <li><a href="http://www.usarray.org/researchers/instrumentation" title="Instrumentation" target="_blank">Instrumentation</a></li> 
+              </ul> </li> 
+            </ul> 
+           </div>
+           <!-- .menu-box-contents --> 
+           <div class="clear"></div> 
+          </div>
+          <!-- .menu-box --> 
+          <div class="menu-box"> 
+           <div class="menu-box-photo">
+            <img src="/hq/images/layout/menu/OBSIP.jpg" alt="">
+           </div> 
+           <div class="menu-box-contents"> 
+            <ul> 
+             <li><a href="//www.iris.edu/hq/The-OBSIP" title="Ocean Bottom Seismograph Instrumentation Pool">Ocean Bottom Seismograph Instrumentation Pool</a></li> 
+            </ul> 
+           </div>
+           <!-- .menu-box-contents --> 
+           <div class="clear"></div> 
+          </div>
+          <!-- .menu-box --> 
+          <div class="menu-box"> 
+           <div class="menu-box-photo">
+            <img src="/hq/images/layout/menu/Polar.jpg" alt="">
+           </div> 
+           <div class="menu-box-contents"> 
+            <ul> 
+             <li><span>Polar</span> 
+              <ul> 
+               <li><a href="//www.iris.edu/hq/programs/glisn" title="Greenland Ice Sheet Monitoring Network">Greenland Ice Sheet Monitoring Network</a></li> 
+              </ul> </li> 
+            </ul> 
+           </div>
+           <!-- .menu-box-contents --> 
+           <div class="clear"></div> 
+          </div>
+          <!-- .menu-box --> 
+         </div>
+         <!-- .menu-col-left --> 
+         <div class="menu-col-right"> 
+          <div class="menu-box"> 
+           <div class="menu-box-photo">
+            <img src="/hq/images/layout/menu/DMS.jpg" alt="">
+           </div> 
+           <div class="menu-box-contents"> 
+            <ul> 
+             <li><a href="//www.iris.edu/hq/programs/ds" title="Data Services">Data Services</a> 
+              <ul> 
+               <li><a href="//www.iris.edu/hq/programs/education_and_outreach/visualizations" title="Ground Motion Visualizations">Ground Motion Visualizations</a></li> 
+              </ul> </li> 
+            </ul> 
+           </div>
+           <!-- .menu-box-contents --> 
+           <div class="clear"></div> 
+          </div>
+          <!-- .menu-box --> 
+          <div class="menu-box"> 
+           <div class="menu-box-photo">
+            <img src="/hq/images/layout/menu/EPO.jpg" alt="">
+           </div> 
+           <div class="menu-box-contents"> 
+            <ul> 
+             <li><a href="//www.iris.edu/hq/programs/epo" title="Education and Public Outreach">Education and Public Outreach</a> 
+              <ul> 
+               <li><a href="//www.iris.edu/hq/programs/epo/distinguished_lectureship" title="Distinguished Lectureship">Distinguished Lectureship</a></li> 
+               <li><a href="//www.iris.edu/hq/internship" title="Summer Internships">Summer Internships</a></li> 
+              </ul> </li> 
+            </ul> 
+           </div>
+           <!-- .menu-box-contents --> 
+           <div class="clear"></div> 
+          </div>
+          <!-- .menu-box --> 
+          <div class="menu-box"> 
+           <div class="menu-box-photo">
+            <img src="/hq/images/layout/menu/IDS.jpg" alt="">
+           </div> 
+           <div class="menu-box-contents"> 
+            <ul> 
+             <li><a href="//www.iris.edu/hq/about_iris/governance/ids" title="International Development Seismology">International Development Seismology</a></li> 
+            </ul> 
+           </div>
+           <!-- .menu-box-contents --> 
+           <div class="clear"></div> 
+          </div>
+          <!-- .menu-box --> 
+          <div class="menu-box"> 
+           <div class="menu-box-photo">
+            <img src="/hq/images/GRGOC/grgoc_scaled.jpg" alt="">
+           </div> 
+           <div class="menu-box-contents"> 
+            <ul> 
+             <li><span><a href="//www.iris.edu/hq/chile" title="IRIS Community Instrument Development in Chlle">IRIS Community Instrument Development in Chlle</a></span> </li> 
+            </ul> 
+           </div>
+           <!-- .menu-box-contents --> 
+           <div class="clear"></div> 
+          </div>
+          <!-- .menu-box --> 
+         </div>
+         <!-- .menu-col-right --> 
+         <div class="clear"></div> 
+        </div>
+        <!-- #menu-programs --> 
+       </div> </li> 
+      <li><a href="//www.iris.edu/hq/programs/epo" title="Educational Resources" class="drop">Educational Resources</a> 
+       <div class="drop4columns dropcontent"> 
+        <ul class="mega-submenu"> 
+         <li><a href="http://ds.iris.edu/seismon/" title="Seismic Monitor">Seismic Monitor</a></li> 
+         <li><a href="//www.iris.edu/hq/retm" title="Recent Earthquake Teachable Moments">Recent Earthquake Teachable Moments</a></li> 
+         <li><a href="http://ds.iris.edu/ieb" title="Interactive Earthquake Map">Interactive Earthquake Map</a></li> 
+         <li><a href="//www.iris.edu/hq/programs/education_and_outreach/resources" title="Lessons and Resources">Lessons and Resources</a></li> 
+         <li><a href="//www.iris.edu/hq/programs/education_and_outreach/animations" title="Animations">Animations</a></li> 
+         <li><a href="//www.iris.edu/hq/programs/education_and_outreach/museum_displays" title="Active Earth Monitor and Public Displays">Active Earth Monitor and Public Displays</a></li> 
+         <li><a href="//www.iris.edu/hq/sis" title="Seismographs in Schools">Seismographs in Schools</a></li> 
+         <li><a href=" http://rev.seis.sc.edu/" title="View seismograms">View seismograms</a></li> 
+         <li><a href="//www.iris.edu/hq/programs/education_and_outreach/visualizations" title="Transportable Array Ground Motion Visualizations">Transportable Array Ground Motion Visualizations</a></li> 
+         <li><a href="//www.iris.edu/hq/internship" title="Summer Internships">Summer Internships</a></li> 
+         <li><a href="//www.iris.edu/hq/inclass/search/software-web-app" title="Software">Software</a></li> 
+        </ul> 
+       </div>
+       <!-- .drop4columns .dropcontent --> </li> 
+      <li><a href="//www.iris.edu/hq/data_and_software" title="Data &amp; Software" class="drop">Data &amp; Software</a> 
+       <div class="drop3columns dropcontent"> 
+        <ul class="mega-submenu"> 
+         <li><a href="//www.iris.edu/hq/inclass/search/software-web-app" title="Educational Software">Education</a> </li> 
+         <li><a href="http://ds.iris.edu/ds/nodes/dmc/" title="Research">Research</a> 
+          <ul> 
+           <li><a href="http://ds.iris.edu/ds/nodes/dmc/data/types/" title="Time Series Data">Time Series Data</a></li> 
+           <li><a href="http://ds.iris.edu/ds/nodes/dmc/tools/events/" title="Event Data">Event Data</a></li> 
+           <li><a href="http://ds.iris.edu/gmap" title="Stations">Stations</a></li> 
+           <li><a href="http://ds.iris.edu/mda" title="Metadata">Metadata</a></li> 
+           <li><a href="http://ds.iris.edu/ds/products/" title="Data Products">Products</a></li> 
+           <li><a href="http://ds.iris.edu/ds/nodes/dmc/services/" title="Services">Services</a></li> 
+           <li><a href="http://ds.iris.edu/ds/nodes/dmc/software/downloads/" title="Software">Software</a></li> 
+           <li><a href="http://ds.iris.edu/ds/nodes/dmc/tools/" title="Tools">Tools</a></li> 
+           <li><a href="http://ds.iris.edu/ds/nodes/dmc/support/" title="Support">Support</a></li> 
+          </ul> </li> 
+        </ul> 
+       </div>
+       <!-- .drop3columns .dropcontent --> </li> 
+      <li><a href="//www.iris.edu/hq/multimedia" title="Multimedia" class="drop">Multimedia</a> 
+       <div class="drop3columns dropcontent"> 
+        <ul class="mega-submenu"> 
+         <li><a href="//www.iris.edu/hq/publications" title="Publications">Publications</a> 
+          <ul> 
+           <li><a href="//www.iris.edu/hq/publications/annual_reports" title="Annual Reports">Annual Reports</a></li> 
+          </ul> 
+          <ul> 
+           <li><a href="//www.iris.edu/hq/publications/brochures_and_onepagers" title="Brochures and Information Sheets">Brochures and Information Sheets</a></li> 
+          </ul> 
+          <ul> 
+           <li><a href="//www.iris.edu/hq/publications/newsletters/iris" title="Newsletters">Newsletters</a></li> 
+          </ul> 
+          <ul> 
+           <li><a href="//www.iris.edu/hq/publications/proposals_and_reviews" title="Proposals and Reviews">Proposals and Reviews</a></li> 
+          </ul> 
+          <ul> 
+           <li><a href="http://www.usarray.org/researchers/pubs" title="Annual Reports">USArray and EarthScope Publications</a></li> 
+          </ul> </li> 
+         <li><a href="//www.iris.edu/hq/educational_resources" title="Educational Resources">Educational Resources</a> 
+          <ul> 
+           <li><a href="//www.iris.edu/hq/programs/education_and_outreach/animations" title="Animations">Animations</a></li> 
+          </ul> 
+          <ul> 
+           <li><a href="//www.iris.edu/hq/programs/education_and_outreach/visualizations" title="Ground Motion Visualizations">Ground Motion Visualizations</a></li> 
+          </ul> 
+          <ul> 
+           <li><a href="//www.iris.edu/hq/programs/education_and_outreach/resources" title="Classroom Lessons and Demonstrations">Classroom Lessons and Demonstrations</a></li> 
+          </ul> 
+          <ul> 
+           <li><a href="//www.iris.edu/hq/inclass/search/poster" title="Posters">Posters</a></li> 
+          </ul> 
+          <ul> 
+           <li><a href="http://www.youtube.com/user/IRISEnO" title="Annual Reports">YouTube Channel</a></li> 
+          </ul> </li> 
+         <li><a href="http://www.iris.edu/gallery3" title="Image Gallery">Image Gallery</a></li> 
+         <li><a href="//www.iris.edu/hq/publications/meeting_materials" title="Meeting and Workshop Materials">Meeting and Workshop Materials</a></li> 
+         <li><a href="//www.iris.edu/hq/inclass/search/poster" title="Posters">Posters</a></li> 
+         <li><a href="//www.iris.edu/hq/webinar" title="Webinars">Webinars</a></li> 
+         <li><a href="//www.iris.edu/hq/software" title="Software">Software</a></li> 
+         <li><a href="//www.iris.edu/hq/iris_citations" title="How to Cite IRIS">How to Cite IRIS</a></li> 
+        </ul> 
+       </div>
+       <!-- .drop2columns .dropcontent --> </li> 
+      <li id="last-menu-item"><a href="//www.iris.edu/hq/community" title="IRIS Community">IRIS Community</a></li> 
+     </ul> 
+     <div class="clear"></div> 
+    </div>
+    <!-- #menu --> 
+   </nav>
+   <!--new--> 
+   <div class="wrapper"> 
+    <div id="page"> 
+     <div id="breadcrumbs"> 
+      <ul class="breadcrumbs"> 
+       <li><a href="//www.iris.edu/hq/">Home</a> <span class="divider">/</span> </li>
+       <li><a href="//www.iris.edu/hq/chile">Chile</a> <span class="divider">/</span> </li>
+       <li>News</li> 
+      </ul> 
+     </div> 
+     <div id="col-left"> 
+      <div id="submenu"> 
+       <ul>
+        <li><a href="/hq/about_iris">About IRIS</a>
+         <ul>
+          <li><a href="/hq/about_iris#mission-statement">Mission Statement</a></li>
+          <li><a href="http://www.iris.edu/hq/staff">Staff</a></li>
+          <li><a href="/hq/about_iris/governance">Governance</a></li>
+          <li><a href="/hq/about_iris/membership">Membership</a></li>
+          <li><a href="http://www.iris.edu/hq/news">IRIS Consortium News</a></li>
+          <li><a href="/hq/employment">Employment</a></li>
+          <li><a href="/hq/about_iris/faqs">Frequently Asked Questions</a></li>
+          <li><a href="/hq/about_iris/travel_tips">Travel Tips</a></li>
+          <li><a href="http://www.iris.edu/gallery3">Image Gallery</a></li>
+          <li><a href="/hq/contact">Contact Us</a></li>
+          <li><a href="/hq/about_iris/committee">Committee</a></li>
+         </ul></li>
+        <li><a href="/hq/programs/gsn">Programs</a>
+         <ul>
+          <li><a href="/hq/programs/gsn">Global Seismographic Network</a></li>
+          <li><a href="/hq/programs/passcal">Portable Networks (PASSCAL)</a></li>
+          <li><a href="http://www.usarray.org/">EarthScope USArray</a></li>
+          <li><a href="/hq/The-OBSIP/">The Ocean Bottom Seismograph Instrument Pool</a></li>
+          <li><a href="/hq/programs/glisn">Polar</a></li>
+          <li><a href="/hq/programs/ds">Data Services</a></li>
+          <li><a href="/hq/programs/education_and_outreach">Education and Public Outreach</a></li>
+          <li><a href="/hq/about_iris/governance/ids">International Development Seismology</a></li>
+          <li><a href="/hq/chile/">IRIS Community Instrument Deployment in Chile</a></li>
+         </ul></li>
+        <li><a href="/hq/programs/education_and_outreach">Educational Resources</a>
+         <ul>
+          <li><a href="http://www.iris.edu/seismon/">Seismic Monitor</a></li>
+          <li><a href="http://www.iris.edu/hq/retm">Earthquake Teachable Moment</a></li>
+          <li><a href="/hq/programs/education_and_outreach/museum_displays/active_earth">Active Earth Monitor and Other Displays</a></li>
+          <li><a href="/hq/programs/education_and_outreach/resources">Lessons and Resources</a></li>
+          <li><a href="/hq/programs/education_and_outreach/animations">Animations</a></li>
+          <li><a href="/hq/programs/education_and_outreach/visualizations">Transportable Array Ground Motion Visualizations</a></li>
+          <li><a href="/hq/sis">Seismographs in Schools</a></li>
+          <li><a href="http://www.iris.edu/hq/internship">Summer Internships</a></li>
+          <li><a href="/hq/programs/education_and_outreach/software">Software</a></li>
+         </ul></li>
+        <li><a href="data_and_software">Data &amp; Software</a>
+         <ul>
+          <li><a href="/hq/programs/education_and_outreach/software">Education</a></li>
+          <li><a href="http://www.iris.edu/dms/nodes/dmc/">Research</a></li>
+         </ul></li>
+        <li><a href="/hq/multimedia">Multimedia</a>
+         <ul>
+          <li><a href="/hq/publications">Publications</a></li>
+          <li><a href="/hq/educational_resources">Educational Resources</a></li>
+          <li><a href="http://www.iris.edu/hq/gallery3">Image Gallery</a></li>
+          <li><a href="/hq/publications/meeting_materials">Meeting and Workshop Materials</a></li>
+          <li><a href=" /hq/inclass/search/poster">Posters</a></li>
+          <li><a href="/hq/webinar">Webinars</a></li>
+          <li><a href="/hq/software">Software</a></li>
+          <li><a href="/hq/iris_citations">How to Cite IRIS</a></li>
+         </ul></li>
+       </ul> 
+      </div> 
+     </div> 
+     <div id="col-right"> 
+      <div id="page-content"> 
+       <h1>IRIS Community Instrument Deployment in Chile<br>News From the Field</h1> 
+       <div id="content"> 
+        <!--BEGIN CONTENT AREA--> 
+        <img src="http://www.iris.edu/hq/images/avatars/uploads/avatar_40.png" alt="{author" }="" class="photoRight"> 
+        <h2>Preparing to Collect Data from CHAMP Stations</h2> 
+        <p><em>By <a href="http://www.passcal.nmt.edu/users/george" target="_blank">George Slad</a> on <strong>July 17th, 2010</strong></em></p> 
+        <div style="border: 1px solid grey;padding: 10px;clear: right;background: #e0f7fd;margin-bottom: 30px"> 
+         <p>We are looking forward to collecting data from the most recent events, including the Mw=6.5 aftershock of July 14th near Bio-Bio, Chile. We had the good fortune of sunny weather during training and we all hope it continues into the main effort of collecting data from the stations. Our Chilean colleagues at the University of Chile in Santiago gave us a head start with respect to field preparations, allowing team members to concentrate on last minute packing and training. The servicing effort to collect data from the sites is truly an international team effort. 
+          <meta content="text/html; charset=utf-8" http-equiv="Content-Type"> 
+          <meta content="Word.Document" name="ProgId"> 
+          <meta content="Microsoft Word 11" name="Generator"> 
+          <meta content="Microsoft Word 11" name="Originator"> 
+          <link href="file:///C:DOCUME~1PERLED~1LOCALS~1Tempmsohtml1�1clip_filelist.xml" rel="File-List"> 
+          <!--[if gte mso 9]><xml> <o:OfficeDocumentSettings> <o:AllowPNG /> </o:OfficeDocumentSettings> </xml><![endif]-->
+          <!--[if gte mso 9]><xml> <w:WordDocument> <w:View>Normal</w:View> <w:Zoom>0</w:Zoom> <w:PunctuationKerning /> <w:ValidateAgainstSchemas /> <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid> <w:IgnoreMixedContent>false</w:IgnoreMixedContent> <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText> <w:Compatibility> <w:BreakWrappedTables /> <w:SnapToGridInCell /> <w:WrapTextWithPunct /> <w:UseAsianBreakRules /> <w:DontGrowAutofit /> </w:Compatibility> </w:WordDocument> </xml><![endif]-->
+          <!--[if gte mso 9]><xml> <w:LatentStyles DefLockedState="false" LatentStyleCount="156"> </w:LatentStyles> </xml><![endif]-->
+          <!--[if !mso]> <span class="mceItemObject"   classid="clsid:38481807-CA0E-42D2-BF39-B33AF135CC4D" id=ieooui> </span> <mce:style><!  st1:*{behavior:url(#ieooui) } --> 
+          <!--[endif]--> <style><!--
+&lt;! 
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ &gt;
+--></style> 
+          <!--[if gte mso 10]> <mce:style><!   /* Style Definitions */  table.MsoNormalTable 	{mso-style-name:"Table Normal"; 	mso-tstyle-rowband-size:0; 	mso-tstyle-colband-size:0; 	mso-style-noshow:yes; 	mso-style-parent:""; 	mso-padding-alt:0in 5.4pt 0in 5.4pt; 	mso-para-margin:0in; 	mso-para-margin-bottom:.0001pt; 	mso-pagination:widow-orphan; 	font-size:10.0pt; 	font-family:"Times New Roman"; 	mso-ansi-language:#0400; 	mso-fareast-language:#0400; 	mso-bidi-language:#0400;} --> 
+          <!--[endif]--><span style="font-size: 11pt; font-family: Arial;"></span></p> 
+         <p> </p>
+         <table align="center" border="0" style="height: 225px; width: 600px;"> 
+          <tbody> 
+           <tr style="height: 175px;" valign="top"> 
+            <td style="width: 340px; height: 225px;"><img height="229" src="/hq/files/chile_blog/Curacavi_U75B-July2010-web.jpg" width="332"></td> 
+            <td> <p><em><span style="font-size: small;"><br>On-the-job training at CHAMP station U75B, near Curacavi, Chile, about an hour's drive west of Santiago. Nicolás Bettini Arriagada (left), a student at the Universidad Católica de Chile, receives training and Carl Ebeling (center) a Ph.D student at Northwestern University, gets a refresher on servicing PASSCAL stations from George Slad (right) of the PASSCAL Instrument Center before heading south to service the CHAMP network.</span></em></p> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
+         <p></p> 
+        </div> 
+        <div style="clear: both"> 
+        </div> 
+        <img src="http://www.iris.edu/hq/images/avatars/uploads/avatar_33.png" alt="{author" }="" class="photoRight"> 
+        <h2>US Team #3 Arrives in Chile to Collect Data</h2> 
+        <p><em>By <a href="http://www.iris.edu/hq/staff/employee/simpson" target="_blank">David Simpson</a> on <strong>July 14th, 2010</strong></em></p> 
+        <div style="border: 1px solid grey;padding: 10px;clear: right;background: #e0f7fd;margin-bottom: 30px"> 
+         <p>Carl Ebeling from Northwestern University and George Slad from the PASSCAL instrument Center arrived in Chile this week to work with the staff of the University of Chile to start a service run to collect the last two months of data from all of our stations. This will be the final service run before the instruments are removed at the end of September.</p> 
+         <p>We have been able to install real-time cell phone telemetry at four of the IRIS stations. An example of data for the magnitude 6.5 aftershock on July 14 from three of these stations are shown under the "Data" tab on the left. The real time data can be retrieved from the IRIS DMC via the BUD system. All of the archived data from earlier data collections are also available through the DMC . See the "Data" tab on the left for details.</p> 
+         <p>We have been notified by the GFZ group in Potsdam that, as agreed, they are releasing the first three months of data from their portable deployment. This is a wonderful example of open data sharing. The coordinated sharing of data will greatly benefit all of the groups who deployed instruments following the February earthquake. During the AGU meeting in Brazil in August, Susan Beck will meet with representatives from the University of Chile and others involved in the international aftershock deployments to further coordinate on developing unified data distribution.</p> 
+         <p>The following was received from Frederik Tilmann regarding the German network in Chile:</p> 
+         <p>The GFZ Potsdam Maule aftershock network data is now available up to the last service run at the end of May through <a href="http://geofon.gfz-potsdam.de" target="_blank">GEOFON</a> (<a href="http://geofon.gfz-potsdam.de" target="_blank">http://geofon.gfz-potsdam.de</a>).</p> 
+         <ul> 
+          <li>Period for which there is data: 03/17/2010 - 06/02/2010</li> 
+          <li>Access is through <a href="http://www.webdc.eu" target="_blank">WebDC</a>: <a href="http://www.webdc.eu" target="_blank">http://www.webdc.eu</a></li> 
+          <li>The network code is ZE</li> 
+         </ul> 
+         <p>Note that there is a limit of 5 GB per request for requests via the Web interface or other ArcLink requests (e.g. via ObsPy). If you want to download the whole time period, each station has to be requested separately. You can fire off (separate) requests for all stations during one session, though. For technical issues with data requests, please contact <a href="mailto:hemmleb@gfz-potsdam.de">Susanne Hemmleb</a>.</p> 
+         <p>BREQ_FAST requests are (currently) limited to 500 MB per request. We are planning to upgrade this shortly, but for now BREQ_FAST requests are not encouraged for this reason.</p> 
+         <p><a href="#GFZ_Stations">Station list</a> is below.</p> 
+         <p>Project page (in German): <a href="http://www.geo-x.net/forschung/gemeinsame-forschungsprojekte/feldexperiment-chile/forschung.html" target="_blank">http://www.geo-x.net/forschung/gemeinsame-forschungsprojekte/feldexperiment-chile/forschung.html</a><br><br>You are encouraged to contact one of the GFZ seismologists involved in this project (<a href="mailto:tilmann@gfz-potsdam.de">Frederik Tilmann</a>, <a href="mailto:schurr@gfz-potsdam.de">Bernd Schurr</a>, <a href="mailto:haber@gfz-potsdam.de">Christian Haberland</a>) if you would like to make use of this dataset.<br><br>Regards,<br>Frederik<br>-- <br>Frederik Tilmann<br>Helmholtz-Zentrum Potsdam, Deutsches GeoForschungsZentrum<br>Sektion 2.4, Seismologie<br>Telegrafenberg, Haus A3<br>14473 Potsdam<br>&nbsp;<br>Tel.: +49 331-288 1240<br>Fax: +49 331-288 1277<br>E-mail: <a href="mailto:tilmann@gfz-potsdam.de">tilmann@gfz-potsdam.de</a></p> 
+         <p> </p>
+         <table border="0" style="height: 250px; width: 550px;"> 
+          <tbody> 
+           <tr valign="top"> 
+            <td style="text-align: left; width: 350px;"><a href="/hq/files/chile_blog/GFZ Potsdam Maule Network.pdf" target="_blank"><img height="249" src="/hq/files/chile_blog/GFZ Potsdam Maule Network.png" style="border: 1px solid black;" width="350"></a></td> 
+            <td> <p><a name="GFZ_Stations"></a></p> <p><em><span style="font-size: small;">Click on the image to view larger version.</span></em></p> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
+         <p></p> 
+        </div> 
+        <div style="clear: both"> 
+        </div> 
+        <img src="http://www.iris.edu/hq/images/avatars/uploads/avatar_43.jpg" alt="{author" }="" class="photoRight"> 
+        <h2>US Team #2 Arrives in Chile</h2> 
+        <p><em>By <a href="http://www.geo.utep.edu/faculty_staff/velasco.htm" target="_blank">Aaron Velasco</a> on <strong>May 20th, 2010</strong></em></p> 
+        <div style="border: 1px solid grey;padding: 10px;clear: right;background: #e0f7fd;margin-bottom: 30px"> 
+         <p>Noel, George, and I arrived safely in Chile and have been greeted with open arms! After arriving this morning, we went directly to the University of Chile (UC) where we have laid out our tentative plans for servicing the seismic stations. Diana Comte has been phenomenal in helping us, especially given that we want to get out into the field tomorrow - and then find out that tomorrow is a holiday (the UC and many businesses will be closed)! Diana was able to get us access to the UC tomorrow, and Ismael Ortega (UC) will join our group. Tomorrow (Friday), we plan to service two stations as one team, carefully looking at data quality. We will then return to Santiago to regroup, and then begin our service run on Saturday to the south by splitting into two teams. The extra solar panels have not arrived (stuck in US Customs) and we hope that they are not required in the north. The first couple of evenings (Sat. and Sun.), the two teams plan to meet at the end of the day to touch base and further strategize if there are issues. From there, we will likely send a team to begin a service run in the south, and have them work their way to the north.</p> 
+         <p><br>That's it for now!</p> 
+        </div> 
+        <div style="clear: both"> 
+        </div> 
+        <img src="http://www.iris.edu/hq/images/avatars/uploads/avatar_36.png" alt="{author" }="" class="photoRight"> 
+        <h2>Installations Completed?</h2> 
+        <p><em>By <a href="http://cas.lehigh.edu/casweb/Content/default.aspx?pageid=142" target="_blank">Anne Meltzer</a> on <strong>April 2nd, 2010</strong></em></p> 
+        <div style="border: 1px solid grey;padding: 10px;clear: right;background: #e0f7fd;margin-bottom: 30px"> 
+         <p>George, Mouse, Brian, and I are in Santiago. We're expecting Ray, Mario, and Bob any time now. If they were successful today, all the stations will be installed.</p> 
+         <p>George and I installed T6, PTN2, and T8 yesterday.</p> 
+         <p>Our luck with wonderful hospitality and good food continued. At our last station, which we installed as the sun was setting, the folks at the house invited us to sit on the porch with them when we were done. They served us sprite, tea, bread with avocados, and warm fresh homemade doughnuts - I am not making this up. A very nice way to finish up our installations.<br> <br>I fly back to the US tomorrow. I'll work on my accounting now and make sure the directions for all the stations are clear on the installation sheets, at least as clear as "turn left at the gravel road" can be.</p> 
+         <p>Ciao!</p> 
+        </div> 
+        <div style="clear: both"> 
+        </div> 
+        <img src="http://www.iris.edu/hq/images/avatars/uploads/avatar_36.png" alt="{author" }="" class="photoRight"> 
+        <h2>Wrapping Up Soon</h2> 
+        <p><em>By <a href="http://cas.lehigh.edu/casweb/Content/default.aspx?pageid=142" target="_blank">Anne Meltzer</a> on <strong>March 31st, 2010</strong></em></p> 
+        <div style="border: 1px solid grey;padding: 10px;clear: right;background: #e0f7fd;margin-bottom: 30px"> 
+         <p>On Tuesday, we installed the stations in Hualane and Duao. The stations in Peralillo and Pichilemu were installed today.</p> 
+         <p>We didn't get to T6 today. We'll do that tomorrow along with T8 and PNT2. It took us a bit of time to find a site at Pichilemu, but we did find a nice site at a small school. Six kids, ranging in age from 6 to 10 or 11, got a lesson in broadband seismology! We'll forward a photo.</p> 
+         <p>Also, the empanadas in Pichilemu are very good. You'll recall that at Hualane, we received coca cola and a homemade Easter cake to take with us when our installation was completed. Today at Peralillo, George and I each received two bottles of wine compliments of the general manager of Los Vascos Winery where U67B is installed.</p> 
+         <p>We plan to install T6, T8, and PTN2 tomorrow (Thursday). If they're up for it, we'll send Ray, Mario, and Bob on a coastal run to install Navida, T5, PTN1, and T7. That should take two days. By Friday all the stations should be in.</p> 
+        </div> 
+        <div style="clear: both"> 
+        </div> 
+        <img src="http://www.iris.edu/hq/images/avatars/uploads/avatar_31.png" alt="{author" }="" class="photoRight"> 
+        <h2>Another Team Member Arrives in Chile!</h2> 
+        <p><em>By <a href="http://www.geo.arizona.edu/web/Beck/SB_page.html" target="_blank">Susan Beck</a> on <strong>March 31st, 2010</strong></em></p> 
+        <div style="border: 1px solid grey;padding: 10px;clear: right;background: #e0f7fd;margin-bottom: 30px"> 
+         <p>Ray Russo arrived in Santiago on Monday. Steve Roecker brought Ray up to speed on the current field activities before he returned to the US.</p> 
+         <p>We now have an <a href="/hq/chile/maps" target="_blank">updated deployment map</a> showing the locations of all the installed instruments. Thank you, Ray!</p> 
+        </div> 
+        <div style="clear: both"> 
+        </div> 
+        <img src="http://www.iris.edu/hq/images/avatars/uploads/avatar_34.png" alt="{author" }="" class="photoRight"> 
+        <h2>32 Stations Now Operating</h2> 
+        <p><em>By <a href="http://gretchen.geo.rpi.edu/roecker/roecker.html" target="_blank">Steven Roecker</a> on <strong>March 28th, 2010</strong></em></p> 
+        <div style="border: 1px solid grey;padding: 10px;clear: right;background: #e0f7fd;margin-bottom: 30px"> 
+         <p>As of this morning we have 32 stations operating. The loaner sensors in all but three of the original 8 sites have been replaced with sensors that arrived from the U.S. last week.</p> 
+         <p>Also note that we are installing Episensors at some sites with 6-channel data acquisition systems. I don't know how we want to do the nomenclature for multi-sensor sites (maybe count them as two stations?).</p> 
+         <p>Finally, we will be doing a short term (overnight) deployment of 6 Episensors in the Concepcion area tonight (Sunday).</p> 
+         <p>We should finish the southern part of the deployment by Tuesday. The remainder of our work will be between Curico and Santiago.</p> 
+         <p>Cheers,<br>Steve</p> 
+         <p>PS. Just felt a pretty good sized event here in Chillan as I typed that signoff - I'm going to guess magnitude 5.3.</p> 
+        </div> 
+        <div style="clear: both"> 
+        </div> 
+        <img src="http://www.iris.edu/hq/images/avatars/uploads/avatar_34.png" alt="{author" }="" class="photoRight"> 
+        <h2>Equipment Has Arrived!</h2> 
+        <p><em>By <a href="http://gretchen.geo.rpi.edu/roecker/roecker.html" target="_blank">Steven Roecker</a> on <strong>March 22nd, 2010</strong></em></p> 
+        <div style="border: 1px solid grey;padding: 10px;clear: right;background: #e0f7fd;margin-bottom: 30px"> 
+         <p>Shipment with equipment arrived last night about 8:30PM, too late for the Chileans to unload it.</p> 
+         <p>We got to the airport this morning about 10 AM, too early for the Americans to show up to open up the plane.</p> 
+         <p>Finally got eveyone in the same place about 1PM. Unloaded, trucked to the university, and offloaded.<br> <br>We are ready to go. With any luck, the equipment heads south tomorrow with our first deployment team.<br> <br>So far so good.</p> 
+         <p> </p>
+         <table border="0" style="width: 600px;"> 
+          <tbody> 
+           <tr> 
+            <td style="width: 300px;" valign="middle"><img height="216" src="/hq/files/chile_blog/EquipTarmac-web.jpg" style="border: 1px solid black;" width="288"></td> 
+            <td><span style="font-size: small;"><em>Pallets of equipment are inspected after arriving in Chile. (Photo by Steve Roecker)</em></span></td> 
+           </tr> 
+          </tbody> 
+         </table> 
+         <p></p> 
+         <p>&nbsp;</p> 
+        </div> 
+        <div style="clear: both"> 
+        </div> 
+        <img src="http://www.iris.edu/hq/images/avatars/uploads/avatar_31.png" alt="{author" }="" class="photoRight"> 
+        <h2>Eight Stations Deployed</h2> 
+        <p><em>By <a href="http://www.geo.arizona.edu/web/Beck/SB_page.html" target="_blank">Susan Beck</a> on <strong>March 21st, 2010</strong></em></p> 
+        <div style="border: 1px solid grey;padding: 10px;clear: right;background: #e0f7fd;margin-bottom: 30px"> 
+         <p>Steve, Bob, and Mario arrived back in Santiago last night and have 8 stations deployed in the southern part of the rupture area.</p> 
+         <p>Anne Meltzer arrived this morning!</p> 
+         <p>Based on Steve and Bob's experience, we are meeting this afternoon to update our plans for station locations, logistics, materials needed etc. It was good to have this experience installing the initial eight stations as it will make the main deployment go better. One small issue is where to get sand. It is a large volume to take in the trucks but the ground is pretty much clay so there is no local source (of course we can buy the sand and transport it or buy it in Concepcion and transport it). The equipment should arrive today and clear customs tomorrow. Steve and Diana will go to the airport in the morning.</p> 
+         <p>Steve and Bob tried google earth maps but it does not work that well in the field (lots of vegetation and gaps in the coverage) so we have some road maps electronically that Sergio got for us that we may try to print out. We are still not sure how well they will work.</p> 
+         <p>Sergio and I filmed with the Discovery Channel for several hours yesterday at the University. I have no idea how much if any they will use. The program is about how lessons learned about the Chile earthquake can be used for understanding the Pacific Northwest earthquake that is expected.</p> 
+         <p>That is it for today. I leave tonight. Updates will continue but not as often as the teams will be in the field.</p> 
+        </div> 
+        <div style="clear: both"> 
+        </div> 
+        <img src="http://www.iris.edu/hq/images/avatars/uploads/avatar_31.png" alt="{author" }="" class="photoRight"> 
+        <h2>Making Progress</h2> 
+        <p><em>By <a href="http://www.geo.arizona.edu/web/Beck/SB_page.html" target="_blank">Susan Beck</a> on <strong>March 19th, 2010</strong></em></p> 
+        <div style="border: 1px solid grey;padding: 10px;clear: right;background: #e0f7fd;margin-bottom: 30px"> 
+         <ol> 
+          <li> Mouse Reusch arrived this morning! </li> 
+          <li> Steve, Bob and Mario have 5 stations installed and hope to have 3 more installed today and then return to Santiago on Saturday. Steve will probably send an update tonight. They have been putting in very long days. They met with the Discovery Channel people for one of the station installs yesterday and Steve said that it seemed to go well. </li> 
+          <li> Discussions about site response continue. There is a building that collapsed in Concepcion and no one knows why as it was built like many others that did well. A strong ground motion sensor there could help to see if there are amplifications or not. Steve can talk to others to see if there is a way to put a few stations out for 24 hours. The southern part of the rupture only has 3 accelerometers so we should put all of ours in the south. </li> 
+          <li> Ray suggested google earth maps on the laptops, which is a great idea. I am finding that paper topo maps are very out of date and most people are telling me the tourist maps are the best. </li> 
+          <li> Data coordination is going very well. We had another meeting this afternoon (nearly 3 hours). The French, Chileans, University of Liverpool have agreed to combine the data into a completely open data product. GFZ said they will contribute most of their data (with the exception of a couple of small arrays with 250 m spacing). This is very good news as they were thinking of their deployment as a PASSCAL type project. They have some students that are going to work on the array data that need time to publish on the arrays. The group has asked if IRIS can help with the archive and distribution of this large data set. We are working on details but this is fantastic! It may be the first international immediately open data set! There is much to do but I am sure with Tim's help we can make this work. One of the new Chilean faculty members, Sophia Peyrat, is collecting coordinates of stations as they go in and distributing them to the group. She has also been put forward for the IRIS DMS workshop in Brazil in August. Sophie just arrived in Chile March 1 for her new job. She will also coordinate archiving of Chilean continuous permanent network data. The French have offered additional support to the Chileans to make this happen as it is a big job. We are having another meeting tomorrow morning at 9 to continue our discussions. </li> 
+          <li> The IPGP group are recording on 4 GB flash cards and they think given the high rate of seismicity that they will only get about 45 days of data per station at these sites. Their compression may be much different than ours as they are using nanometric recorders but we should double check on our estimates. The seismicity is very high. The aftershocks continue. I felt a couple of magnitude 5 events just off the coast of near Valpariso but they were very minor in Santiago. </li> 
+          <li> After Steve returns on Sunday (before I leave), we will have a group discussion about how it is going. Steve and Bob will probably have some ideas on how we need to modify our plan and I will pass on all the information I have. </li> 
+          <li> Sergio is having all the international groups that are in town over to his house tonight for a party. </li> 
+         </ol> 
+        </div> 
+        <div style="clear: both"> 
+        </div> 
+        <img src="http://www.iris.edu/hq/images/avatars/uploads/avatar_31.png" alt="{author" }="" class="photoRight"> 
+        <h2>Deploying Stations Today</h2> 
+        <p><em>By <a href="http://www.geo.arizona.edu/web/Beck/SB_page.html" target="_blank">Susan Beck</a> on <strong>March 18th, 2010</strong></em></p> 
+        <div style="border: 1px solid grey;padding: 10px;clear: right;background: #e0f7fd;margin-bottom: 30px"> 
+         <p>Steve, Bob and Mario got 2 stations deployed yesterday and almost got a third, but a bridge was out. Today they were in contact with Mark Miller from the Discovery Channel and had a plan to meet for him to film them deploying a station.</p> 
+         <p>I am working on a way to get part of the equipment to Talca and stored at the University of Talc with Felipe Leyton (a former student of Keith Koper's at St. Louis and now a faculty member at the University of Talc), and part of the equipment sent to Concepcion so that it is distributed. This will cut down on driving time as it would not be easy to constantly go back to Santiago for equipment. It is too expensive to get a truck to shadow the deployment teams.</p> 
+         <p>As we discussed earlier, Sergio would really like some site response data for the basin around Concepcion. We plan to put the strong ground motion sensors there (the recorder with 6 channels). Sergio asked if we would consider putting a few other stations around the city for 24 hours for site response. Even one day of data would make a huge difference. I will talk to Steve about the details. Felipe can help us find sites etc. for this.</p> 
+         <p>Walter Mooney is back in Santiago and is at the Embassy for a briefing this afternoon. He leaves tonight. He gave accelerometers to the engineers and they are deployed.</p> 
+         <p>I have arranged for the Discovery Channel to come to the Department of Geophysics on Saturday morning to talk and film with Sergio. They have been all over Chile but have not talked to any Chileans. We will see if it works out.</p> 
+         <p>I am looking into better maps for the field. Most groups are using tourist road maps but Steve said that more detailed maps would help. I hope to be able to get them tomorrow.</p> 
+         <p>Still no reports of ground rupture for the shallow normal fault aftershock. The GFZ group is in the region today deploying stations. They said they would be looking.</p> 
+         <p> </p>
+         <table border="0" style="width: 600px;"> 
+          <tbody> 
+           <tr> 
+            <td align="center" style="width: 300px;"><img height="216" src="/hq/files/chile_blog/Installation-1-web.jpg" style="border: 1px solid black;" width="288"></td> 
+            <td><span style="font-size: small;"><em>Bob Greschke, IRIS PASSCAL, and Mario Pardo, University of Chile, installing one of the first stations. (Photo by Steve Roecker)</em></span></td> 
+           </tr> 
+          </tbody> 
+         </table> 
+         <p></p> 
+        </div> 
+        <div style="clear: both"> 
+        </div> 
+        <img src="http://www.iris.edu/hq/images/avatars/uploads/avatar_31.png" alt="{author" }="" class="photoRight"> 
+        <h2>Official Visits</h2> 
+        <p><em>By <a href="http://www.geo.arizona.edu/web/Beck/SB_page.html" target="_blank">Susan Beck</a> on <strong>March 17th, 2010</strong></em></p> 
+        <div style="border: 1px solid grey;padding: 10px;clear: right;background: #e0f7fd;margin-bottom: 30px"> 
+         <p>I just returned from my visit to the Embassy. I met with Ambassador Simons for 30 minutes along with Mary Brett Rogers-Springs (Environment, Science, Technology &amp; Health Officer) and Dinah Arnett. I thanked them and we discussed the earthquake and the need for collaboration. The Ambassador was interested in the kinds of things that we would learn from the deployment.</p> 
+         <p>I also met some of the military team that were sent to Chile right after the earthquake. It turns out that the person in charge of the Unit (Matheson, not sure his rank) is stationed in Tucson at the Air Force base and got one of his degrees from the University of Michigan. He is going to bring his 13-year-old son by my office later this spring when he gets back to Tucson.</p> 
+         <p>I also met Sidney Velado, the regional Advisor for USAID/OFDA who is familiar with seismology and works works with Estella Minya, my contact in Bolivia.</p> 
+         <p>I thanked everyone for their help and continued support and explained our project a little more to them. Dinah wants to follow up in May when the AGU Chapman conference is in Valpriso, Chile. Everyone was extremely helpful.</p> 
+         <p>Steve Roecker and his team made it to Concepcion last night without any problems. I should be getting an update tonight from him. I will spend the next two days at the University of Chile working with the Chileans and others on coordinating.</p> 
+        </div> 
+        <div style="clear: both"> 
+        </div> 
+        <img src="http://www.iris.edu/hq/images/avatars/uploads/avatar_31.png" alt="{author" }="" class="photoRight"> 
+        <h2>Initial Report from Santiago</h2> 
+        <p><em>By <a href="http://www.geo.arizona.edu/web/Beck/SB_page.html" target="_blank">Susan Beck</a> on <strong>March 16th, 2010</strong></em></p> 
+        <div style="border: 1px solid grey;padding: 10px;clear: right;background: #e0f7fd;margin-bottom: 30px"> 
+         <p>A brief update from Susan Beck in Santiago.<br> <br>Susan and Steve Roecker arrived in Santiago on Sunday and met with representatives from the University of Chile, French and German teams. There was a meeting at the University on Monday led by Sergio Barrientos with the international teams to discuss deployment and siting plans and data coordination. The Chileans are strongly encouraging open sharing of data. The French and German teams have already installed a number of stations in the aftershock zones (a mixture of short period, broadband and accelerometers). A total of ~140 stations (including our 60 and existing Chilean stations) is anticipated. Another group meeting is planned for Friday.</p> 
+         <p>There was a magnitude 6.7 event on Monday night.<br> <br>Steve Roecker, Bob Greschke (PASSCAL) and Mario Pardo (U Chile) travelled to Concepcion on Tuesday to collect eight PASSCAL instruments that had arrived in Chile just before the earthquake for an experiment at Villarrica volcano led by Greg Waite (Michigan Tech). Waite has agreed to have the instruments installed in the Concepcion region by our team this week, to be replaced with our equipment after it arrives this weekend.<br> <br>The shipment of 60 PASSCAL/USArray instruments is expected to arrive in Santiago this Sunday, March 21 and installation will begin next week. The initial deployment teams will be Steve Roecker, Anne Meltzer (Lehigh), Angela Reusch (N Carolina A&amp;T) along with Bob Greschke, Bruce Bonnett and George Slad from the PASSCAL Instrument Center. The University of Chile group is being very supportive of our effort in providing people, lab space, vehicles, accommodations and other resources. Members of their staff intend to join our install teams during deployment.<br> <br>Dinah Arnett (our main contact at the embassy) has arranged for Susan Beck to meet with Ambassador Simons and ESTH officer Mary Brett Rogers-Springs on Wednesday morning. Susan has been in contact with Walter Mooney of the USGS. A roundtable discussion on the earthquake is planned at the Embassy on Thursday afternoon.<br> <br>Susan promises more details soon.</p> 
+         <p>&nbsp;</p> 
+        </div> 
+        <div style="clear: both"> 
+        </div> 
+        <!--END CONTENT AREA--> 
+       </div> 
+      </div> 
+     </div>
+    </div>
+    <!--end-->
+    <div id="footer"> 
+     <div class="row-fluid"> 
+      <div class="span4"> 
+       <ul> 
+        <li class="footer-link-heading">Quick Links</li> 
+        <li><a href="//www.iris.edu/hq/programs/education_and_outreach/distinguished_lectureship" title="Distinguished Lectureship">Distinguished Lectureship</a></li> 
+        <li><a href="//www.iris.edu/hq/about_iris/mailing_lists" title="Mailing Lists">Mailing Lists</a></li> 
+        <li><a href="//www.iris.edu/hq/employment" title="Employment">Employment</a></li> 
+        <li><a href="//www.iris.edu/hq/about_iris/faqs" title="Frequently Asked Questions">Frequently Asked Questions</a></li> 
+        <li><a href="http://www.iris.edu/gallery3/" title="Image Gallery">Image Gallery</a></li> 
+        <li><a href="http://www.youtube.com/user/IRISEnO" title="YouTube Channel" target="_blank">YouTube Channel</a></li> 
+       </ul> 
+       <ul> 
+        <li><a href="//www.iris.edu/hq/sitemap" title="Site Map">Site Map</a></li> 
+        <li><a href="//www.iris.edu/hq/contact" title="Contact Us">Contact Us</a></li> 
+       </ul> 
+      </div>
+      <!-- .footer-links-box --> 
+      <div class="span4"> 
+       <ul> 
+        <li class="footer-link-heading">Programs</li> 
+        <li> 
+         <ul> 
+          <li><a href="//www.iris.edu/hq/programs/gsn" title="Global Seismic Network">Global Seismic Network</a></li> 
+          <li><a href="//www.iris.edu/hq/programs/passcal" title="Portable (PASSCAL)">Portable (PASSCAL)</a></li> 
+          <li><a href="http://www.usarray.org/" title="USArray" target="_blank">USArray</a></li> 
+          <li><a href="//www.iris.edu/hq//The-OBSIP" title="Ocean Bottom Seismograph Instrumentation Pool">Ocean Bottom Seismograph Instrumentation Pool</a></li> 
+          <li> 
+           <ul> 
+            <li><a href="//www.iris.edu/hq/programs/glisn" title="Greenland Ice Sheet Monitoring Network">Greenland Ice Sheet Monitoring Network</a></li> 
+           </ul> </li> 
+          <li><a href="//www.iris.edu/hq//chile" title="IRIS Community Instrument Development in Chlle">IRIS Community Instrument Development in Chile</a></li> 
+         </ul> </li> 
+        <li><a href="//www.iris.edu/hq/programs/ds" title="Data Services">Data Services</a></li> 
+        <li><a href="//www.iris.edu/hq/programs/education_and_outreach" title="Education and Public Outreach">Education and Public Outreach</a></li> 
+        <li><a href="//www.iris.edu/hq/about_iris/governance/ids" title="International Development Seismology">International Development Seismology</a></li> 
+       </ul> 
+      </div>
+      <!-- .footer-links-box --> 
+      <div class="span4"> 
+       <ul> 
+        <li class="footer-link-heading"><a href="http://www.earthscope.org/" title="EarthScope" target="_bank">EarthScope</a></li> 
+        <li><a href="http://www.earthscope.org/observatories/safod" title="SAFOD" target="_bank">SAFOD</a></li> 
+        <li><a href="http://www.usarray.org/" title="USArray" target="_bank">USArray</a></li> 
+        <li><a href="http://pbo.unavco.org/" title="Plate Boundary Observatory" target="_bank">Plate Boundary Observatory</a></li> 
+       </ul> 
+       <ul> 
+        <li class="footer-link-heading">Research</li> 
+        <li><a href="http://www.passcal.nmt.edu/maps/funded" title="Portable (PASSCAL) Experiments" target="_bank">Portable (PASSCAL) Experiments</a></li> 
+        <li><a href="http://ds.iris.edu/data/" title="Data">Data</a></li> 
+        <li><a href="http://ds.iris.edu/ds/nodes/dmc/software/" title="Software">Software</a></li> 
+        <li><a href="http://www.iris.edu/hq/instrumentation" title="Instrumentation">Instrumentation</a></li> 
+       </ul> 
+       <div class="search"> 
+        <form action="/hq/search" method="get"> 
+         <input type="hidden" name="cx" value="000587591391783241528:dsb0_jo9rjy"> 
+         <input type="hidden" name="cof" value="FORID:9"> 
+         <input type="hidden" name="ie" value="UTF-8"> 
+         <div class="input-append"> 
+          <input class="span10" name="q" type="text"> 
+          <button class="btn" type="submit"><i class="icon-search"></i></button> 
+         </div> 
+        </form> 
+       </div>
+       <!-- .search --> 
+      </div>
+      <!-- .footer-links-box --> 
+     </div> 
+     <div id="footer-bottom"> 
+      <ul> 
+       <li><span><a href="//www.iris.edu/hq/" title="IRIS"><img src="//www.iris.edu/hq//images/layout/logos/URL_TXT.png"></a></span></li> 
+       <li><em><a href="http://www.nsf.gov/" title="The National Science Foundation" target="_blank">Sponsored by the National Science Foundation</a></em></li> 
+       <li><a href="//www.iris.edu/hq/" title="IRIS">© Copyright 2015 IRIS</a></li> 
+       <li>1200 New York Avenue NW, Suite 400, Washington, DC 20005, 202-682-2220</li> 
+       <li><a href="mailto:info@iris.edu">info@iris.edu</a></li> 
+      </ul> 
+     </div>
+     <!-- #footer-bottom --> 
+    </div>
+    <!-- #footer --> 
+   </div>
+   <!-- #site-container --> 
+   <script type="text/javascript">
+        (function(){
+
+
+        $("a#dismiss-alert").on('click', function(e) {
+                e.preventDefault();
+                console.log($(this));
+                $(this).parent().alert('close');
+
+                document.cookie = $(this).data('id') + "=closed;";
+
+                var cook = document.cookie;
+
+                cookArray = cook.split(';');
+
+
+                console.log(cookArray);
+
+
+        });
+
+        var cook = document.cookie;
+
+        cookArray = cook.split(';');
+        
+        console.log(cookArray);
+        
+        for(var i = 0; i < cookArray.length; i++) {
+                cookieVals = cookArray[i].split('=');
+                
+                cookieKey  = cookieVals[0].replace(" ", "");
+                
+                console.log(cookieVals);
+                
+                $('#' + cookieKey).hide();
+        }
+
+
+        })();
+</script> 
+   <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-1860730-1', 'auto');
+  ga('send', 'pageview');
+
+  // Send event on nav menu link
+  $(function() {
+    $("nav a").click(function() {
+      var href = this.href;
+      var nav_done = false;
+      var do_nav = function() { if (!nav_done) { document.location = href; nav_done = true; } };
+      setTimeout(do_nav, 100);
+      ga('send', 'event', 'nav_menu', 'click', href, { hitCallback: do_nav });
+      return false;
+    });
+  });
+
+</script> 
+   <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"beacon-5.newrelic.com","licenseKey":"a0c27f55c0","applicationID":"5614854","transactionName":"MQNUbUAAW0UAVEwKVwhJdUxBFVpbTlRQClQDSVhcRRI=","queueTime":0,"applicationTime":94,"atts":"HURXGwgaSEs=","errorBeacon":"bam.nr-data.net","agent":"js-agent.newrelic.com\/nr-515.min.js"}</script> 
+  </div>
+ </body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head> 
+  <title>Alfred State | Donate</title> 
+  <link href="css/main.css" type="text/css" rel="stylesheet"> 
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script> 
+  <script src="../common/jquery-mask/jquery.mask.min.js"></script> 
+  <script type="application/javascript" src="includes/validation.js"></script> 
+  <script type="application/javascript" src="scripts/validation.js"></script> 
+  <script type="application/javascript">
+		$(function() {
+			$('#brickInfo').hide();
+			$('#presidentSociety').hide();
+			$('#other').hide();
+			$("#phone").mask("(999) 999-9999");
+			$("#cell").mask("(999) 999-9999");
+			$('#getBrick').change(function() {
+				var temp = $("#getBrick").val();							
+				if(temp == "1") {
+					$('#brickInfo').show('fast');
+					$("#getBrick").val(0);
+				} else {
+					$('#brickInfo').hide('fast');
+					$("#getBrick").val(1);
+				}
+		  	});
+			$('#amount').change(function() {
+				if($('#amount option:selected').val() == "Other") {
+					$('#other').show();
+				} else {
+					$('#other').hide();	
+					$('#otherAmount').val('');					
+				}
+				if($('#amount option:selected').val() == "1000") {
+					$('#presidentSociety').show();
+				} else {
+					$('#presidentSociety').hide();					
+				}
+			});
+			$('#frmDonate').validate({
+				errorPlacement: function(error, element) {}
+			});
+		});
+	</script> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+ </head> 
+ <body> 
+  <div id="header"> 
+   <div id="headerTop"></div> 
+   <div id="headerMiddle"> 
+    <div id="headerLogo"> 
+     <img src="../common/images/header.jpg"> 
+    </div> 
+   </div> 
+   <div id="headerBottom"></div> 
+   <div id="wrapper"> 
+    <h1>Support Alfred State - Make a Gift Online</h1> 
+    <p>Thank you for supporting Alfred State! The generosity of donors like you helps Alfred State carry out its mission of providing a career-focused education enriched by the liberal arts to produce job and transfer-ready graduates. If you have any questions about giving, please call us at (607) 587-3930.</p> 
+    <form name="frmDonate" id="frmDonate" method="post" action="/support/index.php"> 
+     <input type="hidden" id="validateEmail" value="email" disabled> 
+     <input type="hidden" id="validateZipCode" value="zip" disabled> 
+     <input style="display:none;" type="text" id="botStopper" name="botStopper" value=""> 
+     <input type="hidden" id="fieldDescription" value="email(Email),zip(Zip)" disabled> 
+     <input type="hidden" name="support" id="support" value="J8023c6ctrgMfvSepB3H3FHzXIjpMkTfBd7s4N1l1wIGLe3hQSWHx9bsYlpyYRhTzPbnm8U2Cmek9Z7GbmoyWzD2g61h99VRend6kkFOX4Jh1eZRv5thmWhOviBo94C28zkqKhRbG3gAo9jdMqpug4" readonly> 
+     <fieldset id="gInfo"> 
+      <legend>Gift Information</legend> 
+      <table width="745"> 
+       <tbody>
+        <tr> 
+         <td width="353"><span class="title">Gift Amount:</span> 
+          <!--<span class="small">($1,000+ qualifies for the <a href="http://www.alfredstate.edu/support-alfred-state/presidents-society">President's Society)</a></span>--></td> 
+        </tr> 
+        <tr> 
+         <td> 
+          <!--<input type="text" id="amount" name="amount" class="required" />--> 
+          <table> 
+           <tbody>
+            <tr> 
+             <td colspan="2"><input type="checkbox" name="amount[]" value="35">$35.00</td> 
+            </tr> 
+            <tr> 
+             <td colspan="2"><input type="checkbox" name="amount[]" value="75">$75.00</td> 
+            </tr> 
+            <tr> 
+             <td colspan="2"><input type="checkbox" name="amount[]" value="100">$100.00</td> 
+            </tr> 
+            <tr> 
+             <td colspan="2"><input type="checkbox" name="amount[]" value="250">$250.00</td> 
+            </tr> 
+            <tr> 
+             <td colspan="2"><input type="checkbox" name="amount[]" value="500">$500.00</td> 
+            </tr> 
+            <tr> 
+             <td valign="top" width="90"><input type="checkbox" name="amount[]" value="1000">$1000.00</td> 
+             <td> The President's Society celebrates and honors donors who support the college through minimum contributions of $1,000. Their vision and generosity will lead Alfred State students into the future. Help sustain vital programs throughout the college – join the <a href="http://www.alfredstate.edu/make-a-gift/presidents-society" target="_blank">President's Society</a>. </td> 
+            </tr> 
+            <tr> 
+             <td colspan="2"><input type="text" id="otherAmount" name="otherAmount" maxlength="10"> Other Amount ($10 minimum)</td> 
+            </tr> 
+           </tbody>
+          </table> 
+          <!--<select name="amount" id="amount" class="required">
+                        <option value="35">$35.00</option> 
+                        <option value="75">$75.00</option> 
+                        <option value="100">$100.00</option> 
+                        <option value="250">$250.00</option> 
+                        <option value="500">$500.00</option> 
+                        <option value="1000">$1000.00</option>
+                        <option value="Other">Other Amount ($10 minimum)</option> 
+                    </select>--> </td> 
+        </tr> 
+        <tr> 
+         <td> 
+          <!--<span id="presidentSociety" class="small">The President's Society celebrates and honors donors who support the college through minimum contributions of $1,000.  Their vision and generosity will lead Alfred State students into the future.  Help sustain vital programs throughout the college – join the <a href="http://www.alfredstate.edu/support-alfred-state/presidents-society">President's Society</a>.</span>--> </td> 
+        </tr> 
+        <tr> 
+         <td class="title">Gift Designation:</td> 
+        </tr> 
+        <tr> 
+         <td> <input type="checkbox" value="Please use my gift where most needed (ASC Development Fund)" name="whereNeeded">Please use my gift where most needed<br> </td> 
+        </tr> 
+        <tr> 
+         <td> <select name="campaign" id="campaign"><option value="">-- Select a Progam --</option><option value="Academics">Academics</option><option value="Athletic Pioneer Pride Society">Athletic Pioneer Pride Society</option><option value="BAJA Student Competition">BAJA Student Competition</option><option value="Student Leadership Civic Engagement Programs">Civic Engagement/Leadership Programs</option><option value="Construction Workforce Development Center">Construction Workforce Development Center</option><option value="Cyber Security Competition">Cyber Security Competition</option><option value="Financial Planning Program">Financial Planning Program</option><option value="Fire Fighting Robot Competition">Fire Fighting Robot Competition</option><option value="Haiti Trip Fund">Haiti Trip Fund</option><option value="COSA">Institute for Sustainability/COSA</option><option value="Scholarships/Endowments">Scholarships/Endowments</option><option value="Sorrento Study Abroad">Sorrento Study Abroad</option><option value="Student Affairs">Student Affairs</option><option value="Student Leadership Center">Student Leadership Center</option></select> </td> 
+        </tr> 
+        <tr> 
+         <td valign="top"> Other: <input type="text" name="otherDonate" id="otherDonate" size="35" value="" maxlength="250"> </td> 
+        </tr> 
+        <tr> 
+         <td> <input type="checkbox" name="willMail" id="willMail" value="Yes"> I would like to make a pledge in the amount noted above and will mail in my gift. (Please make checks payable to the Alfred State College Development Fund and mail it to Alfred State Office of Institutional Advancement, 10 Upper College Dr, Alfred, NY 14802) </td> 
+        </tr> 
+        <tr> 
+         <td><br> <input type="checkbox" name="getBrick" id="getBrick" value="1"> <b>Click here if you want to purchase a brick.</b> </td> 
+        </tr> 
+       </tbody>
+      </table> 
+      <div id="brickInfo"> 
+       <fieldset id="brick"> 
+        <legend>Brick Campaign</legend> 
+        <p>Bricks may have up to three lines of wording with a maximum of 25 characters per line (including spaces). If you would like to purchase a personalized brick, please fill out the following:</p> 
+        <table width="745"> 
+         <tbody>
+          <tr> 
+           <td colspan="3"> <input type="radio" value="Alfred Brick Campaign" name="campusBrick" id="campusBrick">Alfred Campus<br> <input type="radio" value="Wellsville Brick Campaign" name="campusBrick" id="campusBrick">Wellsville<br> </td> 
+          </tr>
+          <tr> 
+           <td width="395" class="title">Inscription Line 1:</td> 
+           <td width="338" rowspan="6" valign="top"> 
+            <ul> 
+             <li>$65 for one line</li> 
+             <li>$75 for two lines</li> 
+             <li>$85 for three lines</li> 
+            </ul> </td> 
+          </tr> 
+          <tr> 
+           <td><input type="text" name="brick1" id="brick1" size="45" maxlength="25"></td> 
+          </tr> 
+          <tr> 
+           <td class="title">Inscription Line 2:</td> 
+          </tr> 
+          <tr> 
+           <td><input type="text" name="brick2" id="brick2" size="45" maxlength="25"></td> 
+          </tr> 
+          <tr> 
+           <td class="title">Inscription Line 3:</td> 
+          </tr> 
+          <tr> 
+           <td><input type="text" name="brick3" id="brick3" size="45" maxlength="25"></td> 
+          </tr> 
+         </tbody>
+        </table> 
+       </fieldset> 
+      </div> 
+      <!--<table width="745">
+              <tr>
+                <td width="437" class="title">What prompted your gift today?</td>
+                <td width="44">&nbsp;</td>
+                <td width="245">&nbsp;</td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                    <textarea name="prompt" id="prompt" cols="65" rows="6"></textarea>
+                </td>
+              </tr>
+                    </table>--> 
+     </fieldset> 
+     <fieldset id="cInfo"> 
+      <legend>Contact Information</legend> 
+      <p>Please enter all of your personal contact information.</p> 
+      <table width="600px"> 
+       <tbody>
+        <tr> 
+         <td width="228" class="title">First Name:</td> 
+         <td width="10">&nbsp;</td> 
+         <td width="228" class="title">Last Name:</td> 
+        </tr> 
+        <tr> 
+         <td class="title"><input type="text" id="fName" name="fName" class="required" maxlength="65"></td> 
+         <td>&nbsp;</td> 
+         <td class="title"><input type="text" id="lName" name="lName" class="required" maxlength="65"></td> 
+        </tr> 
+        <tr> 
+         <td class="title"> Address:</td> 
+         <td>&nbsp;</td> 
+         <td><span class="title">City:</span></td> 
+        </tr> 
+        <tr> 
+         <td class="title"><input type="text" id="address" name="address" class="required" maxlength="75"></td> 
+         <td>&nbsp;</td> 
+         <td><input type="text" id="city" name="city" class="required" maxlength="45"></td> 
+        </tr> 
+        <tr class="title"> 
+         <td>State:</td> 
+         <td>&nbsp;</td> 
+         <td>Zip Code:</td> 
+        </tr> 
+        <tr> 
+         <td> <select id="state" name="state" class="required"> <option value="">&lt;-- Select State --&gt;</option> <option value="AL">Alabama</option> <option value="AK">Alaska</option> <option value="AZ">Arizona</option> <option value="AR">Arkansas</option> <option value="CA">California</option> <option value="CO">Colorado</option> <option value="CT">Connecticut</option> <option value="DE">Delaware</option> <option value="FL">Florida</option> <option value="GA">Georgia</option> <option value="HI">Hawaii</option> <option value="ID">Idaho</option> <option value="IL">Illinois</option> <option value="IN">Indiana</option> <option value="IA">Iowa</option> <option value="KS">Kansas</option> <option value="KY">Kentucky</option> <option value="LA">Louisiana</option> <option value="ME">Maine</option> <option value="MD">Maryland</option> <option value="MA">Massachusetts</option> <option value="MI">Michigan</option> <option value="MN">Minnesota</option> <option value="MS">Mississippi</option> <option value="MO">Missouri</option> <option value="MT">Montana</option> <option value="NE">Nebraska</option> <option value="NV">Nevada</option> <option value="NH">New Hampshire</option> <option value="NJ">New Jersey</option> <option value="NM">New Mexico</option> <option value="NY">New York</option> <option value="NC">North Carolina</option> <option value="ND">North Dakota</option> <option value="OH">Ohio</option> <option value="OK">Oklahoma</option> <option value="OR">Oregon</option> <option value="PA">Pennsylvania</option> <option value="RI">Rhode Island</option> <option value="SC">South Carolina</option> <option value="SD">South Dakota</option> <option value="TN">Tennessee</option> <option value="TX">Texas</option> <option value="UT">Utah</option> <option value="VT">Vermont</option> <option value="VA">Virginia</option> <option value="WA">Washington</option> <option value="WV">West Virginia</option> <option value="WI">Wisconsin</option> <option value="WY">Wyoming</option> </select> 
+          <!--<input type="text" id="state" name="state" maxlength="2" size="2" class="required"/>
+                    <span class="small">* Two digit abbreviation </span> --> </td> 
+         <td>&nbsp;</td> 
+         <td><span class="title"> <input type="text" id="zip" name="zip" class="required" maxlength="12"> </span></td> 
+        </tr> 
+        <tr class="title"> 
+         <td>Home Phone:</td> 
+         <td>&nbsp;</td> 
+         <td>Cell Phone:</td> 
+        </tr> 
+        <tr> 
+         <td> <input type="text" id="phone" name="phone" class="required" maxlength="15"> </td> 
+         <td>&nbsp;</td> 
+         <td> <input type="text" id="cell" name="cell" maxlength="15"> </td> 
+        </tr> 
+        <tr> 
+         <td class="title">E-mail:</td> 
+         <td>&nbsp;</td> 
+         <td>&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td><span class="title"> <input type="text" id="email" name="email" class="required email" maxlength="75"> </span></td> 
+         <td>&nbsp;</td> 
+         <td>&nbsp;</td> 
+        </tr> 
+       </tbody>
+      </table> 
+     </fieldset> 
+     <fieldset> 
+      <legend>Matching Gifts</legend> 
+      <table width="745"> 
+       <tbody>
+        <tr> 
+         <td class="title">My employer will match my gift</td> 
+         <td>&nbsp;</td> 
+         <td class="title">If yes, please provide your Employer's name</td> 
+        </tr> 
+        <tr> 
+         <td> <input type="radio" name="match[]" value="no"> No <input type="radio" name="match[]" value="yes"> Yes </td> 
+         <td>&nbsp;</td> 
+         <td><input type="text" name="employer" id="employer" size="45" maxlength="150"></td> 
+        </tr> 
+        <tr> 
+         <td colspan="3"> <p>Not sure if your employer has a matching gift program? Enter your employer's name in <a href="http://matchfinderonline.blackbaud.com/MatchGiftInquiry.aspx?cid=2017" target="_blank">Blackbaud's matching gift database</a> then click the search button.</p> </td> 
+        </tr>
+       </tbody>
+      </table> 
+     </fieldset> 
+     <table> 
+      <tbody>
+       <tr> 
+        <td><input type="submit" value="Continue" name="submit" id="submit" onclick="return ValidateForm(this.form);"></td> 
+        <td>&nbsp;</td> 
+        <td>&nbsp;</td> 
+       </tr> 
+      </tbody>
+     </table> 
+    </form> 
+   </div> 
+  </div>  
+ </body>
+</html>

@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie10 lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie10 lt-ie9"> <![endif]-->
+<!--[if IE 9]>         <html class="no-js lt-ie10"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-js">
+ <!--<![endif]-->
+ <head profile="http://www.w3.org/1999/xhtml/vocab"> 
+  <meta charset="utf-8">
+  <script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"UAADV1FWGwEGVFJSDwE="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=s(e),u=c.length,f=i(a,o,r),d=0;u>d;d++)c[d].apply(f,n);return f}function a(t,e){u[t]=s(t).concat(e)}function s(t){return u[t]||[]}function c(){return n(e)}var u={};return{on:a,emit:e,create:c,listeners:s,_events:u}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],3:[function(t){function e(t,e,n,i,s){try{c?c-=1:r("err",[s||new UncaughtException(t,e,n)])}catch(u){try{r("ierr",[u,(new Date).getTime(),!0])}catch(f){}}return"function"==typeof a?a.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(4),i=t("ee"),a=window.onerror,s=!1,c=0;t("loader").features.err=!0,window.onerror=e,NREUM.noticeError=n;try{throw new Error}catch(u){"stack"in u&&(t(5),t(3),"addEventListener"in window&&t(1),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&t(2),s=!0)}i.on("fn-start",function(){s&&(c+=1)}),i.on("fn-err",function(t,e,r){s&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){s&&!this.thrown&&c>0&&(c-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:4,2:7,3:5,4:19,5:6,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],4:[function(t,e){function n(t){i.inPlace(t,["addEventListener","removeEventListener"],"-",r)}function r(t){return t[1]}var o=(t(1),t("ee").create()),i=t(2)(o),a=t("gos");if(e.exports=o,n(window),"getPrototypeOf"in Object){for(var s=document;s&&!s.hasOwnProperty("addEventListener");)s=Object.getPrototypeOf(s);s&&n(s);for(var c=XMLHttpRequest.prototype;c&&!c.hasOwnProperty("addEventListener");)c=Object.getPrototypeOf(c);c&&n(c)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&n(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t){if(t[1]){var e=t[1];"function"==typeof e?this.wrapped=t[1]=a(e,"nr@wrapped",function(){return i(e,"fn-",null,e.name||"anonymous")}):"function"==typeof e.handleEvent&&i.inPlace(e,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:19,2:20,ee:"QJf3ax",gos:"7eSDFh"}],5:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=r(t[0],"fn-")})},{1:20,2:19,ee:"QJf3ax"}],6:[function(t,e){function n(t,e,n){var r=t[0];"string"==typeof r&&(r=new Function(r)),t[0]=o(r,"fn-",null,n)}var r=(t(2),t("ee").create()),o=t(1)(r);e.exports=r,o.inPlace(window,["setTimeout","setInterval","setImmediate"],"setTimer-"),r.on("setTimer-start",n)},{1:20,2:19,ee:"QJf3ax"}],7:[function(t,e){function n(){c.inPlace(this,d,"fn-")}function r(t,e){c.inPlace(e,["onreadystatechange"],"fn-")}function o(t,e){return e}var i=t("ee").create(),a=t(1),s=t(2),c=s(i),u=s(a),f=window.XMLHttpRequest,d=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];e.exports=i,window.XMLHttpRequest=function(t){var e=new f(t);try{i.emit("new-xhr",[],e),u.inPlace(e,["addEventListener","removeEventListener"],"-",function(t,e){return e}),e.addEventListener("readystatechange",n,!1)}catch(r){try{i.emit("internal-error",[r])}catch(o){}}return e},window.XMLHttpRequest.prototype=f.prototype,c.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",o),i.on("send-xhr-start",r),i.on("open-xhr-start",r)},{1:4,2:20,ee:"QJf3ax"}],8:[function(t){function e(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function n(t){var n=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;c>i;i++)t.removeEventListener(s[i],this.listener,!1);if(!n.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){n.status=t.status;var a=t.responseType,u="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,f=e(u);if(f&&(r.rxSize=f),this.sameOrigin){var d=t.getResponseHeader("X-NewRelic-App-Data");d&&(n.cat=d.split(", ").pop())}}else n.status=0;r.cbTime=this.cbTime,o("xhr",[n,r,this.startTime])}}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}if(window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)){t("loader").features.xhr=!0;var o=t("handle"),i=t(2),a=t("ee"),s=["load","error","abort","timeout"],c=s.length,u=t(1);t(4),t(3),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=n,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,n){var r=this.metrics,o=t[0],i=this;if(r&&o){var u=e(o);u&&(r.txSize=u)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof n.onload))&&i.end(n)}catch(e){try{a.emit("internal-error",[e])}catch(r){}}};for(var f=0;c>f;f++)n.addEventListener(s[f],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+u(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+u(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof XMLHttpRequest&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&&a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{1:"XL7HBI",2:9,3:7,4:4,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],9:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&&e.port===n.port&&e.protocol===n.protocol,r}},{}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):(o[t]||(o[t]=[]),void o[t].push(e))}var r=t("ee").create(),o={};e.exports=n,n.ee=r,r.q=o},{ee:"QJf3ax"}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],G9z0Bl:[function(t,e){function n(){var t=l.info=NREUM.info;if(t&&t.licenseKey&&t.applicationID&&u&&u.body){s(h,function(e,n){e in t||(t[e]=n)}),l.proto="https"===p.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var e=u.createElement("script");e.src=l.proto+t.agent,u.body.appendChild(e)}}function r(){"complete"===u.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=t(1),c=window,u=c.document,f="addEventListener",d="attachEvent",p=(""+location).split("?")[0],h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-515.min.js"},l=e.exports={offset:i(),origin:p,features:{}};u[f]?(u[f]("DOMContentLoaded",o,!1),c[f]("load",n,!1)):(u[d]("onreadystatechange",r),c[d]("onload",n)),a("mark",["firstbyte",i()])},{1:18,handle:"D5DuLP"}],18:[function(t,e){function n(t,e){var n=[],o="",i=0;for(o in t)r.call(t,o)&&(n[i]=e(o,t[o]),i+=1);return n}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],19:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],20:[function(t,e){function n(t){return!(t&&"function"==typeof t&&t.apply&&!t[i])}var r=t("ee"),o=t(1),i="nr@wrapper",a=Object.prototype.hasOwnProperty;e.exports=function(t){function e(t,e,r,a){function nrWrapper(){var n,i,s,u;try{i=this,n=o(arguments),s=r&&r(n,i)||{}}catch(d){f([d,"",[n,i,a],s])}c(e+"start",[n,i,a],s);try{return u=t.apply(i,n)}catch(p){throw c(e+"err",[n,i,p],s),p}finally{c(e+"end",[n,i,u],s)}}return n(t)?t:(e||(e=""),nrWrapper[i]=!0,u(t,nrWrapper),nrWrapper)}function s(t,r,o,i){o||(o="");var a,s,c,u="-"===o.charAt(0);for(c=0;c<r.length;c++)s=r[c],a=t[s],n(a)||(t[s]=e(a,u?s+o:o,i,s,t))}function c(e,n,r){try{t.emit(e,n,r)}catch(o){f([o,e,n,r])}}function u(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){f([r])}for(var o in t)a.call(t,o)&&(e[o]=t[o]);return e}function f(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=r),e.inPlace=s,e.flag=i,e}},{1:19,ee:"QJf3ax"}]},{},["G9z0Bl",3,8]);</script> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+  <link rel="shortcut icon" href="http://college.harvard.edu/sites/all/themes/harvard/css/images/favicon.ico" type="image/vnd.microsoft.icon"> 
+  <link rel="shortlink" href="/node/127836"> 
+  <link rel="canonical" href="/home-harvard"> 
+  <meta name="Generator" content="Drupal 7 (http://drupal.org)"> 
+  <title>Harvard College | Harvard College </title> 
+  <link type="text/css" rel="stylesheet" href="http://college.harvard.edu/sites/default/files/css/css_kShW4RPmRstZ3SpIC-ZvVGNFVAi0WEMuCnI0ZkYIaFw.css" media="all"> 
+  <link type="text/css" rel="stylesheet" href="http://college.harvard.edu/sites/default/files/css/css_uJq4i_pXk1UmtbCovdeCsAhlfvrAFcmFexwn2c_hQDQ.css" media="all"> 
+  <link type="text/css" rel="stylesheet" href="http://college.harvard.edu/sites/default/files/css/css_3-TRZPb5NlE6qBnacCXvG--Vyjenu6oat5fFLqNiK-o.css" media="all"> 
+  <link type="text/css" rel="stylesheet" href="http://college.harvard.edu/sites/default/files/css/css_xtGPOy2qjBvWJjUPqDFyEUCmART58XS3n-C_um1i1YM.css" media="all"> 
+  <link type="text/css" rel="stylesheet" href="http://college.harvard.edu/sites/default/files/css/css_sg6OiPELa0B76Z-ieUUnJ7DQ_HTPDi0DEFoesjouP_M.css" media="print"> 
+  <link type="text/css" rel="stylesheet" href="http://college.harvard.edu/sites/default/files/css/css_wLG1p8O5saybNX_i9DF49k9UGlKfMTaWJC6dR_cpI7w.css" media="all"> 
+  <!--[if lt IE 9]>
+<link type="text/css" rel="stylesheet" href="http://college.harvard.edu/sites/default/files/css/css_D1F8M0HPrw-Ed2Y8ZNSNEI63xndusfNN4DnwKctBxqg.css" media="all" />
+<![endif]--> 
+  <!--[if lt IE 8]>
+<link type="text/css" rel="stylesheet" href="http://college.harvard.edu/sites/default/files/css/css_Hj9fXY775g2eA7RUp7hysigbxUIt5lX4nXdeRHMLbrY.css" media="all" />
+<![endif]--> 
+  <link type="text/css" rel="stylesheet" href="http://college.harvard.edu/sites/all/themes/harvard/css/screen.css?nkfur5" media="screen"> 
+  <script type="text/javascript" src="http://college.harvard.edu/sites/default/files/js/js_oCVMDTeSNt-_QxknevWyf6yO5OzmME3AhRz3ggZgNtg.js"></script> 
+  <script type="text/javascript" src="http://college.harvard.edu/sites/default/files/js/js_t9FRBwsSC1c62xAq5Dd59T0TFOgTthQhXb2foCe__Ec.js"></script> 
+  <script type="text/javascript" src="http://college.harvard.edu/sites/default/files/js/js_Dlk5937NzwEkx4n2sdg2VQp7t34LYRAPwIRmds1DA58.js"></script> 
+  <script type="text/javascript" src="http://college.harvard.edu/sites/default/files/js/js_5tZoinf97rE3Fwb7AX7eXy6G4apdodwnumrRphR4gjc.js"></script> 
+  <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script> 
+  <script type="text/javascript" src="http://college.harvard.edu/sites/default/files/js/js_lgAAOlplEun7p_8Pb-8dM079wtvnfwLZ0hAK0mH7Dto.js"></script> 
+  <script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var _gaq = _gaq || [];_gaq.push(["_setAccount", "UA-42906607-5"]);_gaq.push(["_trackPageview"]);(function() {var ga = document.createElement("script");ga.type = "text/javascript";ga.async = true;ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(ga, s);})();
+//--><!]]>
+</script> 
+  <script type="text/javascript" src="http://college.harvard.edu/sites/default/files/js/js_No08qGjFWLyFevnAYs2tqaUS1GLlU9kXijyR244djQI.js"></script> 
+  <script type="text/javascript" src="http://college.harvard.edu/sites/default/files/js/js_djaVeq4ixtFFBsQVMG4A9u5sVpVtKRGP0CWA_avv1Hk.js"></script> 
+  <script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"harvard","theme_token":"ovwCrKAOzsXkRUBBIOeoGw1HbpQPG6kgfpn42FY0JGU","jquery_version":"1.10","js":{"sites\/all\/modules\/contrib\/flexslider\/assets\/js\/flexslider.load.js":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/jquery\/1.10\/jquery.min.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/ui\/ui\/minified\/jquery.ui.core.min.js":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/ui\/ui\/minified\/jquery.ui.widget.min.js":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/ui\/external\/jquery.cookie.js":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/misc\/jquery.form.min.js":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/ui\/ui\/minified\/jquery.ui.tabs.min.js":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/misc\/1.9\/jquery.ba-bbq.min.js":1,"misc\/ajax.js":1,"sites\/all\/modules\/contrib\/jquery_update\/js\/jquery_update.js":1,"sites\/all\/modules\/custom\/harvard_icons\/harvard_icons.js":1,"sites\/all\/modules\/contrib\/extlink\/extlink.js":1,"misc\/form.js":1,"misc\/collapse.js":1,"sites\/all\/modules\/contrib\/views\/js\/base.js":1,"misc\/progress.js":1,"sites\/all\/modules\/contrib\/views\/js\/ajax_view.js":1,"sites\/all\/libraries\/flexslider\/jquery.flexslider-min.js":1,"\/\/platform.twitter.com\/widgets.js":1,"sites\/all\/modules\/contrib\/google_analytics\/googleanalytics.js":1,"0":1,"sites\/all\/modules\/contrib\/google_analytics_et\/js\/google_analytics_et.js":1,"sites\/all\/modules\/contrib\/quicktabs\/js\/qt_ui_tabs.js":1,"sites\/all\/themes\/harvard\/js\/plugins\/chart.js":1,"sites\/all\/themes\/harvard\/js\/plugins\/detect.js":1,"sites\/all\/themes\/harvard\/js\/plugins\/matchMedia.js":1,"sites\/all\/themes\/harvard\/js\/plugins\/matchMedia.addListener.js":1,"sites\/all\/themes\/harvard\/js\/plugins\/enquire.min.js":1,"sites\/all\/themes\/harvard\/js\/plugins\/jquery.chosen.js":1,"sites\/all\/themes\/harvard\/js\/plugins\/jquery.datepicker.js":1,"sites\/all\/themes\/harvard\/js\/plugins\/jquery.equalheights.js":1,"sites\/all\/themes\/harvard\/js\/plugins\/jquery.masonry.js":1,"sites\/all\/themes\/harvard\/js\/plugins\/jquery.royalslider.min.js":1,"sites\/all\/themes\/harvard\/js\/plugins\/jquery.select.js":1,"sites\/all\/themes\/harvard\/js\/plugins\/jquery.waypoints.js":1,"sites\/all\/themes\/harvard\/js\/plugins\/jquery.sticky.js":1,"sites\/all\/themes\/harvard\/js\/plugins\/modernizr.js":1,"sites\/all\/themes\/harvard\/js\/script.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"misc\/ui\/jquery.ui.core.css":1,"misc\/ui\/jquery.ui.theme.css":1,"misc\/ui\/jquery.ui.tabs.css":1,"sites\/all\/modules\/contrib\/calendar\/css\/calendar_multiday.css":1,"modules\/comment\/comment.css":1,"sites\/all\/modules\/contrib\/date\/date_api\/date.css":1,"sites\/all\/modules\/contrib\/date\/date_popup\/themes\/datepicker.1.7.css":1,"sites\/all\/modules\/contrib\/date\/date_repeat_field\/date_repeat_field.css":1,"modules\/field\/theme\/field.css":1,"sites\/all\/modules\/contrib\/field_collection_ajax\/css\/field-collection-ajax.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/contrib\/extlink\/extlink.css":1,"sites\/all\/modules\/contrib\/views\/css\/views.css":1,"sites\/all\/modules\/contrib\/flickr\/flickr.css":1,"sites\/all\/modules\/contrib\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/contrib\/panels\/css\/panels.css":1,"sites\/all\/modules\/contrib\/typogrify\/typogrify.css":1,"sites\/all\/themes\/harvard\/layouts\/harvard_threecol_33_34_33_stacked\/harvard_threecol_33_34_33_stacked.css":1,"sites\/all\/modules\/contrib\/flexslider\/assets\/css\/flexslider_img.css":1,"sites\/all\/libraries\/flexslider\/flexslider.css":1,"sites\/all\/modules\/contrib\/twitter\/twitter.css":1,"sites\/all\/modules\/contrib\/panels\/plugins\/layouts\/twocol\/twocol.css":1,"sites\/all\/themes\/harvard\/css\/print.css":1,"sites\/all\/themes\/harvard\/css\/patchwork.css":1,"sites\/all\/themes\/harvard\/css\/ie.css":1,"sites\/all\/themes\/harvard\/css\/ie--lt8.css":1,"sites\/all\/themes\/harvard\/css\/screen.css":1}},"quicktabs":{"qt_upcoming_events":{"name":"upcoming_events","active_tab":0,"history":0}},"flexslider":{"optionsets":{"landing_page_carousel":{"namespace":"flex-","selector":".slides \u003E li","easing":"swing","direction":"horizontal","reverse":false,"smoothHeight":false,"startAt":0,"animationSpeed":600,"initDelay":0,"useCSS":true,"touch":true,"video":false,"keyboard":true,"multipleKeyboard":false,"mousewheel":0,"controlsContainer":".flex-control-nav-container","sync":"","asNavFor":"","itemWidth":0,"itemMargin":0,"minItems":0,"maxItems":0,"move":0,"animation":"fade","slideshow":true,"slideshowSpeed":"7000","directionNav":true,"controlNav":true,"prevText":"Previous","nextText":"Next","pausePlay":true,"pauseText":"Pause","playText":"Play","randomize":false,"thumbCaptions":false,"thumbCaptionsBoth":false,"animationLoop":true,"pauseOnAction":true,"pauseOnHover":false,"manualControls":""}},"instances":{"flexslider-1":"landing_page_carousel"}},"extlink":{"extTarget":"_blank","extClass":0,"extLabel":"(link is external)","extImgClass":0,"extIconPlacement":0,"extSubdomains":0,"extExclude":"(www\\.youvisit\\.com)","extInclude":"","extCssExclude":"","extCssExplicit":"","extAlert":0,"extAlertText":"This link will take you to an external web site.","mailtoClass":0,"mailtoLabel":"(link sends e-mail)"},"googleanalytics":{"trackOutbound":1,"trackMailto":1,"trackDownload":1,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls|xml|z|zip"},"googleAnalyticsETSettings":{"selectors":[{"event":"click","selector":".pane-fpid-606 form[action*=\u0022net-price-calculator\u0022] button[type=\u0022submit\u0022]","category":"NPC","action":"click","label":"module_large","value":0,"noninteraction":false},{"event":"mousedown","selector":".pane-fpid-636 a[href*=\u0022net-price\u0022]","category":"NPC","action":"click","label":"module_small","value":0,"noninteraction":false},{"event":"mousedown","selector":".pane-fpid-251 a[href*=\u0022application-tips\u0022]","category":"module","action":"click","label":"tips","value":0,"noninteraction":false},{"event":"mousedown","selector":".pane-fpid-246 a[href*=\u0022what-we-look\u0022]","category":"module","action":"click_look","label":"apply","value":0,"noninteraction":false},{"event":"mousedown","selector":".pane-fpid-246 a[href*=\u0022application-timeline\u0022]","category":"module","action":"click_when","label":"apply","value":0,"noninteraction":false},{"event":"mousedown","selector":".pane-fpid-246 a[href*=\u0022application-requirements\u0022]","category":"module","action":"click_submit","label":"apply","value":0,"noninteraction":false},{"event":"mousedown","selector":"#block-system-main.block .pane-fpid-866 a[href*=\u0022admissions\/apply\u0022]","category":"module","action":"click_apply","label":"belong","value":0,"noninteraction":false},{"event":"mousedown","selector":"#block-system-main.block .pane-fpid-866 a[href*=\u0022coming-home\u0022]","category":"module","action":"click_watchvideo","label":"belong","value":0,"noninteraction":false},{"event":"mousedown","selector":"#block-system-main.block .pane-fpid-866 a[href*=\u0022hear-students\/video\u0022]","category":"module","action":"click_allvideos","label":"belong","value":0,"noninteraction":false},{"event":"mousedown","selector":"#block-system-main.block .pane-fpid-71 a","category":"module","action":"click","label":"aid","value":0,"noninteraction":false},{"event":"mousedown","selector":"#block-system-main.block .content .page-content .container .carousel .carousel-viewport a","category":"carousel","action":"click","label":"!href","value":0,"noninteraction":false},{"event":"mousedown","selector":"#block-system-main.block .content .page-content .container .carousel .carousel-viewport a+a","category":"carousel","action":"click","label":"!href","value":0,"noninteraction":false},{"event":"mousedown","selector":"a[href^=\u0022https:\/\/itunes.apple.com\/us\/app\/\u0022]","category":"Appdownload","action":"offsiteclick","label":"iTunes","value":0,"noninteraction":false},{"event":"mousedown","selector":"a[href^=\u0022https:\/\/play.google.com\/store\/apps\/\u0022]","category":"Appdownload","action":"offsiteclick","label":"Googleplay","value":0,"noninteraction":false},{"event":"mousedown","selector":"a[href$=\u0022.pdf\u0022]","category":"download","action":"pdf","label":"!href","value":0,"noninteraction":false},{"event":"mousedown","selector":"a[href$=\u0022.doc\u0022]","category":"download","action":"doc","label":"!href","value":0,"noninteraction":false},{"event":"change","selector":"select[name=\u0022submitted[faq_topic]\u0022]","category":"Contactus","action":"submit","label":"!text","value":0,"noninteraction":false},{"event":"change","selector":"select[name=\u0022submitted[email_form][subject]\u0022]","category":"Contactus","action":"selectsubject","label":"!text","value":0,"noninteraction":false},{"event":"mousedown","selector":"#webform-client-form-846--2 input#edit-submit--2","category":"Contactus","action":"submit","label":"topic_subject","value":0,"noninteraction":false},{"event":"mousedown","selector":"form#webform-client-form-846--2.webform-client-form div fieldset#webform-component-email-form.webform-component-fieldset div.fieldset-wrapper div#webform-component-email-form--subject.form-item div#s2id_edit-submitted-email-form-subject--2.select2-container","category":"Contactus","action":"selectsubject","label":"!text","value":0,"noninteraction":false},{"event":"mousedown","selector":"a[href^=\u0022http\u0022]:not(a[href*=\u0022college.harvard.edu\u0022])","category":"offsitelink","action":"offsiteclick","label":"!href","value":0,"noninteraction":false},{"event":"mousedown","selector":"a[href*=\u0022user\/login\u0022]","category":"Login","action":"click","label":"!currentPage","value":0,"noninteraction":false},{"event":"mousedown","selector":"a[href*=\u0022\/about\/news-announcements\/\u0022]","category":"News","action":"click","label":"!currentPage","value":0,"noninteraction":false},{"event":"mousedown","selector":"a[href*=\u0022\/college-events\/\u0022]","category":"Events","action":"click","label":"!href","value":0,"noninteraction":false},{"event":"mousedown","selector":"#block-menu-menu-primary-menu li a","category":"nav_main","action":"click","label":"!text","value":0,"noninteraction":false},{"event":"mousedown","selector":"#block-harvard-site-harvard-audience-links ul li a","category":"nav_audience","action":"click","label":"!text","value":0,"noninteraction":false},{"event":"mousedown","selector":"ul.first-level.in li.last.expanded.active-trail.menu-level-2 ul.second-level li.leaf.menu-level-3","category":"Reply","action":"action","label":"label","value":0,"noninteraction":false},{"event":"mousedown","selector":"a[href^=\u0022http:\/\/news.harvard.edu\/gazette\u0022]","category":"Gazette","action":"offsiteclick","label":"!href","value":0,"noninteraction":false},{"event":"mousedown","selector":".pane-fpid-176 form[action*=\u0022net-price-calculator\u0022] button[type=\u0022submit\u0022]","category":"NPC","action":"click","label":"module_FAO","value":0,"noninteraction":false}]}});
+//--><!]]>
+</script> 
+  <!-- BEGIN inc/meta.php --> 
+  <meta name="description" content=""> 
+  <meta name="keywords" content=""> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="apple-touch-icon" href="/a/apple-touch/apple-touch-icon.png"> 
+  <link rel="apple-touch-icon" sizes="72x72" href="/a/apple-touch/apple-touch-icon-72.png"> 
+  <link rel="apple-touch-icon" sizes="114x114" href="/a/apple-touch/apple-touch-icon-114.png"> 
+  <link rel="apple-touch-icon" sizes="144x144" href="/a/apple-touch/apple-touch-icon-144.png"> 
+  <!-- END inc/meta.php --> 
+  <!-- BEGIN inc/cssReference.php (conditional js only) --> 
+  <!--[if lt IE 9]>
+  <script type="text/javascript" src="/sites/all/themes/harvard/js/plugins/html5shiv.js"></script>
+  <script type="text/javascript" src="/sites/all/themes/harvard/js/plugins/ie8.js"></script>
+  <![endif]--> 
+  <!-- END inc/cssReference.php --> 
+ </head> 
+ <body class="html front not-logged-in no-sidebars page-node page-node- page-node-127836 node-type-landing-page front "> 
+  <!-- BEGIN inc/skip.php --> 
+  <p class="nodisplay"><a href="#skip">Skip to main content</a></p> 
+  <!-- END inc/skip.php --> 
+  <!-- BEGIN inc/page-header.php --> 
+  <header class="page-header" role="banner"> 
+   <nav id="people-menu" class="nav people-nav"> 
+    <div class="wrap"> 
+     <p class="zeta in">For <i class="icon-caret-right"></i></p> 
+     <div class="region region-audience-links"> 
+      <div id="block-harvard-site-harvard-audience-links" class="block block-harvard-site"> 
+       <div class="content"> 
+        <ul class="row in">
+         <div class="split-left">
+          <li class="first leaf menu-level-1"><a href="/alumni" title="">Alumni</a></li> 
+          <li class="leaf menu-level-1"><a href="/current-students" title="">Current Students</a></li> 
+          <li class="leaf menu-level-1"><a href="/faculty" title="">Faculty</a></li> 
+         </div>
+         <div class="split-right">
+          <li class="leaf menu-level-1"><a href="/parents" title="">Parents</a></li> 
+          <li class="leaf menu-level-1"><a href="/prospective-students" title="">Prospective Students</a></li> 
+          <li class="leaf menu-level-1"><a href="/school-counselors" title="">School Counselors</a></li> 
+          <li class="last leaf menu-level-1"><a href="/informacion-en-espanol" title="">Información en Español</a></li> 
+         </div>
+        </ul> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </nav> 
+   <div class="high-level"> 
+    <div class="wrap"> 
+     <strong class="title"><a href="http://www.harvard.edu" class="logo ir">Harvard University</a></strong> 
+     <span class="url in"><a href="http://www.harvard.edu">harvard.edu</a></span> 
+    </div> 
+   </div> 
+   <div class="top-level"> 
+    <div class="sticky-background"></div> 
+    <div class="wrap"> 
+     <div class="title bk3-1of3"> 
+      <div class="in"> 
+       <strong><a href="/" class="logo ir ">Harvard College Admissions &amp; Financial Aid</a></strong> 
+      </div> 
+     </div> 
+     <div class="header-toolbar right-align in bk4-2of3"> 
+      <ul class="header-toolbar-triggers row"> 
+       <li><a href="#search" data-target="search-global" class="search"><span class="icon-search"></span><span class="nodisplay">Search</span></a></li> 
+       <li><a href="#global-menu" data-target="nav" class="menu"><span class="icon-menu"></span><span class="nodisplay">Menu</span></a></li> 
+      </ul> 
+      <div class="header-toolbar-window"> 
+       <div class="in"> 
+        <div class="region region-utility-links"> 
+         <div id="block-menu-menu-utility-links" class="block block-menu"> 
+          <div class="content"> 
+           <ul class="utility-links">
+            <li class="first leaf menu-level-1"><a href="http://my.harvard.edu" title="">my.harvard</a></li> 
+            <li class="leaf menu-level-1"><a href="/frequently-asked-questions" title="">FAQs</a></li> 
+            <li class="leaf menu-level-1"><a href="https://www.directory.harvard.edu/phonebook/" title="">Directory</a></li> 
+            <li class="last leaf menu-level-1"><a href="/college-events" title="">College Events</a></li> 
+           </ul> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="search-wrapper"> 
+         <form action="/search-results" method="get" id="search" class="search search-global"> 
+          <div class="search-wrap"> 
+           <label for="searchtext">Search:</label> 
+           <div class="form-input-search"> 
+            <input type="text" name="searchtext"> 
+           </div> 
+           <div class="form-input-submit"> 
+            <button type="submit" class="icon-search"></button> 
+           </div> 
+          </div> 
+         </form> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <nav id="global-menu" class="global-nav nav" role="navigation"> 
+    <div class="wrap"> 
+     <div class="in"> 
+      <div class="region region-header"> 
+       <div id="block-menu-menu-primary-menu" class="block block-menu"> 
+        <div class="content"> 
+         <ul class="menu">
+          <li class="first leaf"><a href="/about" title="">About</a></li> 
+          <li class="leaf"><a href="/admissions" title="">Admissions</a></li> 
+          <li class="leaf"><a href="/financial-aid" title="">Financial Aid</a></li> 
+          <li class="leaf"><a href="/academics" title="">Academics</a></li> 
+          <li class="last leaf"><a href="/student-residentiallife" title="">Student &amp; Residential Life</a></li> 
+         </ul> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </nav> 
+  </header> 
+  <!-- END inc/page-header.php --> 
+  <div> 
+   <div id="page-wrapper">
+    <div id="page"> 
+     <div id="main-wrapper">
+      <div id="main" class="clearfix"> 
+       <div id="content" class="column">
+        <div class="section"> 
+         <a id="main-content"></a> 
+         <div class="region region-content"> 
+          <div id="block-system-main" class="block block-system"> 
+           <div class="content"> 
+            <div class="panel-panel panel-col-alert"> 
+             <div class="inside">
+              <div class="panel-pane pane-entity-field pane-node-field-landing-page-alert page-title"> 
+               <div class="pane-content"> 
+                <div class="field field-name-field-landing-page-alert field-type-entityreference field-label-hidden"> 
+                 <div class="field-items"> 
+                  <div class="field-item harvard-box even">
+                   <div class="fieldable-panels-pane"> 
+                    <header class="page-callout-header"> 
+                     <h1 class="gamma"></h1> 
+                    </header> 
+                    <div class="page-callout-body theta"> 
+                    </div> 
+                   </div> 
+                  </div> 
+                 </div> 
+                </div> 
+               </div> 
+              </div> 
+             </div> 
+            </div> 
+            <div class="panel-display panel-3col-33-stacked  clearfix"> 
+             <div class="panel-panel panel-col-top"> 
+              <div class="inside">
+               <div class="panel-pane pane-entity-field pane-node-field-carousel-items"> 
+                <div class="pane-content"> 
+                 <div class="field field-name-field-carousel-items field-type-field-collection field-label-hidden"> 
+                  <div class="field-items"> 
+                   <div class="field-item even">
+                    <div id="flexslider-1" class="flexslider"> 
+                     <ul class="slides">
+                      <li>
+                       <div class="entity entity-field-collection-item field-collection-item-field-carousel-items clearfix" about="/field-collection/field-carousel-items/296" typeof=""> 
+                        <div class="content"> 
+                         <div class="carousel-container"> 
+                          <div class="carousel-image"> 
+                           <a href="http://news.harvard.edu/gazette/story/2015/02/with-music-as-his-muse/">
+                            <div class="field field-name-field-image field-type-image field-label-hidden"> 
+                             <div class="field-items"> 
+                              <div class="field-item even">
+                               <img typeof="foaf:Image" src="http://college.harvard.edu/sites/default/files/_landing_carousel/barker.jpg" alt="Barker Center">
+                              </div> 
+                             </div> 
+                            </div> </a> 
+                          </div> 
+                          <div class="carousel-overlay"> 
+                           <div class="carousel-fields"> 
+                            <div class="slide-title"> 
+                             <a href="http://news.harvard.edu/gazette/story/2015/02/with-music-as-his-muse/">
+                              <div class="field field-name-field-title field-type-text field-label-hidden"> 
+                               <div class="field-items"> 
+                                <div class="field-item even">
+                                 A local hub for artistic expression
+                                </div> 
+                               </div> 
+                              </div> </a> 
+                            </div> 
+                            <div class="slide-description"> 
+                             <div class="field field-name-field-body-text field-type-text-long field-label-hidden"> 
+                              <div class="field-items"> 
+                               <div class="field-item even">
+                                The newly renovated Barker Arts Café aims to be a place for student activity and conversation.
+                               </div> 
+                              </div> 
+                             </div> 
+                            </div> 
+                           </div> 
+                          </div> 
+                         </div> 
+                        </div> 
+                       </div> </li> 
+                      <li>
+                       <div class="entity entity-field-collection-item field-collection-item-field-carousel-items clearfix" about="/field-collection/field-carousel-items/301" typeof=""> 
+                        <div class="content"> 
+                         <div class="carousel-container"> 
+                          <div class="carousel-image"> 
+                           <a href="/node/96/">
+                            <div class="field field-name-field-image field-type-image field-label-hidden"> 
+                             <div class="field-items"> 
+                              <div class="field-item even">
+                               <img typeof="foaf:Image" src="http://college.harvard.edu/sites/default/files/_landing_carousel/carousel_banner2.jpg" alt="View of Harvard">
+                              </div> 
+                             </div> 
+                            </div> </a> 
+                          </div> 
+                          <div class="carousel-overlay"> 
+                           <div class="carousel-fields"> 
+                            <div class="slide-title"> 
+                             <a href="/node/96/">
+                              <div class="field field-name-field-title field-type-text field-label-hidden"> 
+                               <div class="field-items"> 
+                                <div class="field-item even">
+                                 Past, present and future
+                                </div> 
+                               </div> 
+                              </div> </a> 
+                            </div> 
+                            <div class="slide-description"> 
+                             <div class="field field-name-field-body-text field-type-text-long field-label-hidden"> 
+                              <div class="field-items"> 
+                               <div class="field-item even">
+                                Explore the mission, vision and history of Harvard College.
+                               </div> 
+                              </div> 
+                             </div> 
+                            </div> 
+                           </div> 
+                          </div> 
+                         </div> 
+                        </div> 
+                       </div> </li> 
+                      <li>
+                       <div class="entity entity-field-collection-item field-collection-item-field-carousel-items clearfix" about="/field-collection/field-carousel-items/306" typeof=""> 
+                        <div class="content"> 
+                         <div class="carousel-container"> 
+                          <div class="carousel-image"> 
+                           <a href="http://news.harvard.edu/gazette/story/2015/01/exploration-transformation/">
+                            <div class="field field-name-field-image field-type-image field-label-hidden"> 
+                             <div class="field-items"> 
+                              <div class="field-item even">
+                               <img typeof="foaf:Image" src="http://college.harvard.edu/sites/default/files/_landing_carousel/Wintersession_01.png" alt="Wintersession">
+                              </div> 
+                             </div> 
+                            </div> </a> 
+                          </div> 
+                          <div class="carousel-overlay"> 
+                           <div class="carousel-fields"> 
+                            <div class="slide-title"> 
+                             <a href="http://news.harvard.edu/gazette/story/2015/01/exploration-transformation/">
+                              <div class="field field-name-field-title field-type-text field-label-hidden"> 
+                               <div class="field-items"> 
+                                <div class="field-item even">
+                                 Exploration, transformation
+                                </div> 
+                               </div> 
+                              </div> </a> 
+                            </div> 
+                            <div class="slide-description"> 
+                             <div class="field field-name-field-body-text field-type-text-long field-label-hidden"> 
+                              <div class="field-items"> 
+                               <div class="field-item even">
+                                Wintersession offered creative and practical classes alike during January break.
+                               </div> 
+                              </div> 
+                             </div> 
+                            </div> 
+                           </div> 
+                          </div> 
+                         </div> 
+                        </div> 
+                       </div> </li> 
+                     </ul>
+                    </div> 
+                   </div> 
+                  </div> 
+                 </div> 
+                </div> 
+               </div> 
+               <div class="panel-separator"></div>
+               <div class="panel-pane pane-node-links link-wrapper"> 
+                <div class="pane-content"> 
+                </div> 
+               </div> 
+              </div> 
+             </div> 
+             <div class="center-wrapper"> 
+              <div class="container"> 
+               <div class="row"> 
+                <div class="college-page-title"> 
+                 <div class="inside">
+                  <div class="panel-pane pane-entity-field pane-node-field-on-page-title"> 
+                   <div class="pane-content"> 
+                    <div class="field field-name-field-on-page-title field-type-text field-label-hidden"> 
+                     <div class="field-items"> 
+                      <div class="field-item even">
+                       Home at Harvard
+                      </div> 
+                     </div> 
+                    </div> 
+                   </div> 
+                  </div> 
+                 </div> 
+                </div> 
+               </div> 
+               <div class="row"> 
+                <div class="harvard-grid-wrapper clearfix"> 
+                 <div class="inside">
+                  <div class="panel-pane pane-entity-field pane-node-field-grid-items"> 
+                   <div class="pane-content"> 
+                    <div class="field field-name-field-grid-items field-type-entityreference field-label-hidden"> 
+                     <div class="field-items"> 
+                      <div class="field-item landing-page-recent-instagram even">
+                       <div class="fieldable-panels-pane"> 
+                        <div class="field field-name-field-instagram-account field-type-drupagram-last-pic field-label-hidden"> 
+                         <div class="field-items"> 
+                          <div class="field-item even">
+                           <div class="instagram-media">
+                            <a href="https://instagram.com/deankhurana"><img typeof="foaf:Image" src="http://scontent.cdninstagram.com/hphotos-xaf1/t51.2885-15/e15/11023224_1408215196151441_1468297216_n.jpg" alt=""></a>
+                           </div> 
+                           <div class="instagram-caption">
+                            <div>
+                             <a href="https://instagram.com/deankhurana">Follow<br>@deankhurana<br>on Instagram</a>
+                            </div>
+                           </div> 
+                          </div> 
+                         </div> 
+                        </div> 
+                       </div> 
+                      </div> 
+                      <div class="field-item landing-page-curated-photo odd">
+                       <div class="fieldable-panels-pane"> 
+                        <h2></h2> 
+                        <div class="field field-name-field-image field-type-image field-label-hidden"> 
+                         <div class="field-items"> 
+                          <div class="field-item even">
+                           <a href="http://www.youvisit.com/tour/harvard"><img typeof="foaf:Image" src="http://college.harvard.edu/sites/default/files/_landing_page_curated_photo/youVisit.png" alt="View of Cambridge" title="Explore campus with our online guided tour"></a>
+                          </div> 
+                         </div> 
+                        </div> 
+                        <div class="field field-name-field-body-text field-type-text-long field-label-hidden"> 
+                         <div class="field-items"> 
+                          <div class="field-item even">
+                           <a href="http://www.youvisit.com/tour/harvard">Explore campus with our online guided tour</a>
+                          </div> 
+                         </div> 
+                        </div> 
+                       </div> 
+                      </div> 
+                      <div class="field-item landing-page-recent-feed even">
+                       <div class="fieldable-panels-pane"> 
+                        <div class="field field-name-field-feed-to-show field-type-last-feed field-label-hidden"> 
+                         <div class="field-items"> 
+                          <div class="field-item even">
+                           <div id="node-126891" class="node node-college-events node-promoted clearfix" about="/college-events/furious-cinema-70-77-3" typeof="sioc:Item foaf:Document"> 
+                            <h2><a href="/college-events/furious-cinema-70-77-3">Furious Cinema '70 - '77</a></h2> 
+                            <span property="dc:title" content="Furious Cinema '70 - '77" class="rdf-meta element-hidden"></span>
+                            <span property="sioc:num_replies" content="0" datatype="xsd:integer" class="rdf-meta element-hidden"></span> 
+                            <div class="submitted"> 
+                             <span property="dc:date dc:created" content="2015-02-19T00:10:01-05:00" datatype="xsd:dateTime" rel="sioc:has_creator">Submitted by <span class="username" xml:lang="" typeof="sioc:UserAccount" property="foaf:name" datatype="">Anonymous (not verified)</span> on Thu, 2015-02-19 00:10</span> 
+                            </div> 
+                            <div class="content"> 
+                             <div class="field field-name-body field-type-text-with-summary field-label-hidden"> 
+                              <div class="field-items"> 
+                               <div class="field-item even" property="content:encoded">
+                                Where: Harvard Film Archive What: “Nobody knows anything.” That’s...
+                               </div> 
+                              </div> 
+                             </div> 
+                            </div> 
+                           </div> 
+                          </div> 
+                         </div> 
+                        </div> 
+                        <div class="field field-name-field-fpp-category field-type-text field-label-hidden"> 
+                         <div class="field-items"> 
+                          <div class="field-item even">
+                           Event
+                          </div> 
+                         </div> 
+                        </div> 
+                       </div> 
+                      </div> 
+                      <div class="field-item landing-page-curated-photo odd">
+                       <div class="fieldable-panels-pane"> 
+                        <h2><a href="https://www.facebook.com/HCOSL">Harvard College Office of Student Life</a></h2> 
+                        <div class="field field-name-field-image field-type-image field-label-hidden"> 
+                         <div class="field-items"> 
+                          <div class="field-item even">
+                           <a href="https://www.facebook.com/HCOSL"><img typeof="foaf:Image" src="http://college.harvard.edu/sites/default/files/_landing_page_curated_photo/grid_fb.jpg" alt="Student sitting with John Harvard Statue"></a>
+                          </div> 
+                         </div> 
+                        </div> 
+                        <div class="field field-name-field-body-text field-type-text-long field-label-hidden"> 
+                         <div class="field-items"> 
+                          <div class="field-item even">
+                           <a href="https://www.facebook.com/HCOSL">Visit the Office of Student Life on Facebook</a>
+                          </div> 
+                         </div> 
+                        </div> 
+                       </div> 
+                      </div> 
+                      <div class="field-item landing-page-curated-photo even">
+                       <div class="fieldable-panels-pane"> 
+                        <h2><a href="http://news.harvard.edu/gazette/story/2015/02/playing-the-envelope-game/">Playing the ‘envelope game’</a></h2> 
+                        <div class="field field-name-field-image field-type-image field-label-hidden"> 
+                         <div class="field-items"> 
+                          <div class="field-item even">
+                           <a href="http://news.harvard.edu/gazette/story/2015/02/playing-the-envelope-game/"><img typeof="foaf:Image" src="http://college.harvard.edu/sites/default/files/_landing_page_curated_photo/grid_gazette.jpg" alt="Harvard Professor Martin Nowak (from right), Moshe Hoffman, and Erez Yoeli "></a>
+                          </div> 
+                         </div> 
+                        </div> 
+                        <div class="field field-name-field-body-text field-type-text-long field-label-hidden"> 
+                         <div class="field-items"> 
+                          <div class="field-item even">
+                           <a href="http://news.harvard.edu/gazette/story/2015/02/playing-the-envelope-game/">Research helps to explain how people’s motives can guide their willingness to cooperate</a>
+                          </div> 
+                         </div> 
+                        </div> 
+                       </div> 
+                      </div> 
+                      <div class="field-item landing-page-curated-logo odd">
+                       <div class="fieldable-panels-pane"> 
+                        <h2><a href="http://harvardregistrar.tumblr.com/">Follow the Office of the Registrar on Tumblr</a></h2> 
+                        <div class="field field-name-field-image field-type-image field-label-hidden"> 
+                         <div class="field-items"> 
+                          <div class="field-item even">
+                           <a href="http://harvardregistrar.tumblr.com/"><img typeof="foaf:Image" src="http://college.harvard.edu/sites/default/files/_landing_page_curated_logo/tumblr.png" alt="Tumblr Logo"></a>
+                          </div> 
+                         </div> 
+                        </div> 
+                        <h3><a href="http://harvardregistrar.tumblr.com/">Follow the Office of the Registrar on Tumblr</a></h3> 
+                       </div> 
+                      </div> 
+                      <div class="field-item landing-page-curated-photo even">
+                       <div class="fieldable-panels-pane"> 
+                        <h2></h2> 
+                        <div class="field field-name-field-image field-type-image field-label-hidden"> 
+                         <div class="field-items"> 
+                          <div class="field-item even">
+                           <img typeof="foaf:Image" src="http://college.harvard.edu/sites/default/files/_landing_page_curated_photo/housing_day.png" alt="Students on Housing Day">
+                          </div> 
+                         </div> 
+                        </div> 
+                        <div class="field field-name-field-body-text field-type-text-long field-label-hidden"> 
+                         <div class="field-items"> 
+                          <div class="field-item even">
+                           March 12 is Housing Day #HousingDay2015
+                          </div> 
+                         </div> 
+                        </div> 
+                       </div> 
+                      </div> 
+                      <div class="field-item landing-page-recent-feed odd">
+                       <div class="fieldable-panels-pane"> 
+                        <div class="field field-name-field-feed-to-show field-type-last-feed field-label-hidden"> 
+                         <div class="field-items"> 
+                          <div class="field-item even">
+                           <div id="node-126781" class="node node-college-events node-promoted clearfix" about="/college-events/entertainment-i-was-showbiz-intern" typeof="sioc:Item foaf:Document"> 
+                            <h2><a href="/college-events/entertainment-i-was-showbiz-intern">Entertainment | "I Was a Showbiz Intern"</a></h2> 
+                            <span property="dc:title" content="Entertainment | &quot;I Was a Showbiz Intern&quot;" class="rdf-meta element-hidden"></span>
+                            <span property="sioc:num_replies" content="0" datatype="xsd:integer" class="rdf-meta element-hidden"></span> 
+                            <div class="submitted"> 
+                             <span property="dc:date dc:created" content="2015-02-19T00:10:01-05:00" datatype="xsd:dateTime" rel="sioc:has_creator">Submitted by <span class="username" xml:lang="" typeof="sioc:UserAccount" property="foaf:name" datatype="">Anonymous (not verified)</span> on Thu, 2015-02-19 00:10</span> 
+                            </div> 
+                            <div class="content"> 
+                             <div class="field field-name-body field-type-text-with-summary field-label-hidden"> 
+                              <div class="field-items"> 
+                               <div class="field-item even" property="content:encoded">
+                                Where: 54 Dunster St, Cambridge, MA 02138 ( OCS Reading Room) What: Hoping...
+                               </div> 
+                              </div> 
+                             </div> 
+                            </div> 
+                           </div> 
+                          </div> 
+                         </div> 
+                        </div> 
+                        <div class="field field-name-field-fpp-category field-type-text field-label-hidden"> 
+                         <div class="field-items"> 
+                          <div class="field-item even">
+                           Event
+                          </div> 
+                         </div> 
+                        </div> 
+                       </div> 
+                      </div> 
+                      <div class="field-item landing-page-curated-photo even">
+                       <div class="fieldable-panels-pane"> 
+                        <h2></h2> 
+                        <div class="field field-name-field-image field-type-image field-label-hidden"> 
+                         <div class="field-items"> 
+                          <div class="field-item even">
+                           <a href="http://honor.fas.harvard.edu/honor-code"><img typeof="foaf:Image" src="http://college.harvard.edu/sites/default/files/_landing_page_curated_photo/honor_grid.png" alt="Harvard Gates"></a>
+                          </div> 
+                         </div> 
+                        </div> 
+                        <div class="field field-name-field-body-text field-type-text-long field-label-hidden"> 
+                         <div class="field-items"> 
+                          <div class="field-item even">
+                           <a href="http://honor.fas.harvard.edu/honor-code">Strengthening a culture of academic integrity</a>
+                          </div> 
+                         </div> 
+                        </div> 
+                       </div> 
+                      </div> 
+                      <div class="field-item landing-page-curated-text odd">
+                       <div class="fieldable-panels-pane"> 
+                        <h2><a href="http://college.harvard.edu/about/dean-harvard-college/messages-students/join-me-wednesday-student-town-hall">Event</a></h2> 
+                        <div class="field field-name-field-body-text field-type-text-long field-label-hidden"> 
+                         <div class="field-items"> 
+                          <div class="field-item even">
+                           <a href="http://college.harvard.edu/about/dean-harvard-college/messages-students/join-me-wednesday-student-town-hall">Student Town Hall with Dean Khurana Wednesday, March 4, 5-6 p.m. PBHA Parlor Room </a>
+                          </div> 
+                         </div> 
+                        </div> 
+                        <div class="field field-name-field-fpp-category field-type-text field-label-hidden"> 
+                         <div class="field-items"> 
+                          <div class="field-item even">
+                           Event
+                          </div> 
+                         </div> 
+                        </div> 
+                       </div> 
+                      </div> 
+                      <div class="field-item landing-page-curated-photo even">
+                       <div class="fieldable-panels-pane"> 
+                        <h2></h2> 
+                        <div class="field field-name-field-image field-type-image field-label-hidden"> 
+                         <div class="field-items"> 
+                          <div class="field-item even">
+                           <a href="http://news.harvard.edu/gazette/story/2015/02/grasping-a-rung-on-the-ladder/"><img typeof="foaf:Image" src="http://college.harvard.edu/sites/default/files/_landing_page_curated_photo/grid_walton.png" alt="The Rev. Jonathan Walton took part in the Mamelodi Initiative, an education and community-enrichment program."></a>
+                          </div> 
+                         </div> 
+                        </div> 
+                        <div class="field field-name-field-body-text field-type-text-long field-label-hidden"> 
+                         <div class="field-items"> 
+                          <div class="field-item even">
+                           <a href="http://news.harvard.edu/gazette/story/2015/02/grasping-a-rung-on-the-ladder/">Students and Reverend Walton help South African students learn to climb toward college</a>
+                          </div> 
+                         </div> 
+                        </div> 
+                       </div> 
+                      </div> 
+                      <div class="field-item landing-page-curated-video odd">
+                       <div class="fieldable-panels-pane"> 
+                        <h2>Explore the Arts and Humanities</h2> 
+                        <div class="field field-name-field-video-url field-type-url field-label-hidden"> 
+                         <div class="field-items"> 
+                          <div class="field-item even">
+                           <iframe class="youtube-player" type="text/html" width="640" height="360" src="//www.youtube.com/embed/fJDIedxF24Y?wmode=transparent&amp;rel=0" frameborder="0"></iframe>
+                          </div> 
+                         </div> 
+                        </div> 
+                        <div class="field field-name-field-image field-type-image field-label-hidden"> 
+                         <div class="field-items"> 
+                          <div class="field-item even">
+                           <img typeof="foaf:Image" src="http://college.harvard.edu/sites/default/files/styles/grid_video_thumb/public/_landing_page_curated_video/test_video.jpg?itok=fRqH8t9j" alt="Student  studying">
+                          </div> 
+                         </div> 
+                        </div> 
+                        <div class="field field-name-field-body-text field-type-text-long field-label-hidden"> 
+                         <div class="field-items"> 
+                          <div class="field-item even">
+                           Explore the Arts and Humanities
+                          </div> 
+                         </div> 
+                        </div> 
+                       </div> 
+                      </div> 
+                     </div> 
+                    </div> 
+                   </div> 
+                  </div> 
+                 </div> 
+                </div> 
+               </div> 
+               <div class="panel-panel panel-col-first"> 
+                <div class="inside">
+                 <div class="panel-pane pane-entity-field pane-node-field-landing-page-callout-image"> 
+                  <div class="pane-content"> 
+                   <div class="field field-name-field-landing-page-callout-image field-type-image field-label-hidden"> 
+                    <div class="field-items"> 
+                     <div class="field-item even">
+                      <img typeof="foaf:Image" src="http://college.harvard.edu/sites/default/files/test_image.jpg" alt="Dean Khurana">
+                     </div> 
+                    </div> 
+                   </div> 
+                  </div> 
+                 </div> 
+                 <div class="panel-separator"></div>
+                 <div class="panel-pane pane-entity-field pane-node-field-landing-page-callout-title"> 
+                  <div class="pane-content"> 
+                   <div class="field field-name-field-landing-page-callout-title field-type-text field-label-hidden"> 
+                    <div class="field-items"> 
+                     <div class="field-item even">
+                      Messages from the Dean
+                     </div> 
+                    </div> 
+                   </div> 
+                  </div> 
+                 </div> 
+                 <div class="panel-separator"></div>
+                 <div class="panel-pane pane-entity-field pane-node-field-landing-page-callout-body"> 
+                  <div class="pane-content"> 
+                   <div class="field field-name-field-landing-page-callout-body field-type-text-long field-label-hidden"> 
+                    <div class="field-items"> 
+                     <div class="field-item even">
+                      <p>“We want to ensure we are providing students a deeply transformative experience – intellectually, socially and personally – that will prepare them for a life of service and leadership. Harvard College should and will set the standard for liberal arts and sciences education for the next hundred years. This is who we are. Our students leave here and exert ripples across the&nbsp;world.”</p> 
+                     </div> 
+                    </div> 
+                   </div> 
+                  </div> 
+                 </div> 
+                 <div class="panel-separator"></div>
+                 <div class="panel-pane pane-entity-field pane-node-field-landing-page-callout-link iota"> 
+                  <div class="pane-content"> 
+                   <div class="field field-name-field-landing-page-callout-link field-type-link-field field-label-hidden"> 
+                    <div class="field-items"> 
+                     <div class="field-item even">
+                      <a href="http://college.harvard.edu/about/dean-harvard-college/messages-dean">See all messages</a>
+                     </div> 
+                    </div> 
+                   </div> 
+                  </div> 
+                 </div> 
+                </div> 
+               </div> 
+               <div class="panel-panel panel-col"> 
+                <div class="inside">
+                 <div class="panel-pane pane-views-panes pane-news-improved-panel-pane-1 news-improved"> 
+                  <h2 class="module-title zeta"><span class="pane-title">News &amp; Announcements</span></h2> 
+                  <div class="pane-content"> 
+                   <div class="view view-news-improved view-id-news_improved view-display-id-panel_pane_1 view-dom-id-56f47c65926525ec0716ef66061e2706"> 
+                    <div class="view-content"> 
+                     <div class="views-row views-row-1 views-row-odd views-row-first"> 
+                      <div class="views-field views-field-nid"> 
+                       <span class="field-content">
+                        <article class="news-item-beta row"> 
+                         <div class="field field-name-field-image field-type-image field-label-hidden thumbnail"> 
+                          <div class="field-items"> 
+                           <div class="field-item even"> 
+                            <img typeof="foaf:Image" src="http://college.harvard.edu/sites/default/files/styles/60x60/public/news/Alzheimers_NEURONS-IMAGE-2_140_0.jpg?itok=YgkAiboa" alt=""> 
+                           </div> 
+                          </div> 
+                         </div> 
+                         <div class="in"> 
+                          <h1 class="lambda" datatype="" property="title"><a href="http://news.harvard.edu/gazette/story/2015/02/a-new-understanding-of-alzheimers/">A new understanding of Alzheimer’s</a></h1> 
+                          <p class="created_date iota">February 25, 2015 </p> 
+                          <div class="content news-item-body theta"> 
+                           <div class="field field-name-body field-type-text-with-summary field-label-hidden"> 
+                            <div class="field-items"> 
+                             <div property="encoded" class="field-item even">
+                              <p> Although natural selection is often thought of as a force that determines the...</p>
+                             </div> 
+                            </div> 
+                           </div> 
+                          </div> 
+                         </div> 
+                        </article></span> 
+                      </div> 
+                     </div> 
+                     <div class="views-row views-row-2 views-row-even"> 
+                      <div class="views-field views-field-nid"> 
+                       <span class="field-content">
+                        <article class="news-item-beta row"> 
+                         <div class="field field-name-field-image field-type-image field-label-hidden thumbnail"> 
+                          <div class="field-items"> 
+                           <div class="field-item even"> 
+                            <img typeof="foaf:Image" src="http://college.harvard.edu/sites/default/files/styles/60x60/public/news/Memorial-Drive-Elevation-Slide_140.jpg?itok=-Vzs5tVm" alt=""> 
+                           </div> 
+                          </div> 
+                         </div> 
+                         <div class="in"> 
+                          <h1 class="lambda" datatype="" property="title"><a href="http://news.harvard.edu/gazette/story/2015/02/renewing-winthrop-house/">Renewing Winthrop House</a></h1> 
+                          <p class="created_date iota">February 11, 2015 </p> 
+                          <div class="content news-item-body theta"> 
+                           <div class="field field-name-body field-type-text-with-summary field-label-hidden"> 
+                            <div class="field-items"> 
+                             <div property="encoded" class="field-item even">
+                              <p> When Harvard’s Gore and Standish halls were built more than a century ago as...</p>
+                             </div> 
+                            </div> 
+                           </div> 
+                          </div> 
+                         </div> 
+                        </article></span> 
+                      </div> 
+                     </div> 
+                     <div class="views-row views-row-3 views-row-odd"> 
+                      <div class="views-field views-field-nid"> 
+                       <span class="field-content">
+                        <article class="news-item-beta row"> 
+                         <div class="field field-name-field-image field-type-image field-label-hidden thumbnail"> 
+                          <div class="field-items"> 
+                           <div class="field-item even"> 
+                            <img typeof="foaf:Image" src="http://college.harvard.edu/sites/default/files/styles/60x60/public/news/MassHall_140.jpg?itok=KS3JC8tm" alt=""> 
+                           </div> 
+                          </div> 
+                         </div> 
+                         <div class="in"> 
+                          <h1 class="lambda" datatype="" property="title"><a href="http://news.harvard.edu/gazette/story/2015/02/record-37305-apply-to-college/">Record 37,305 apply to College</a></h1> 
+                          <p class="created_date iota">February 6, 2015 </p> 
+                          <div class="content news-item-body theta"> 
+                           <div class="field field-name-body field-type-text-with-summary field-label-hidden"> 
+                            <div class="field-items"> 
+                             <div property="encoded" class="field-item even">
+                              <p> A record 37,305 students have applied for admission to Harvard College’s Class...</p>
+                             </div> 
+                            </div> 
+                           </div> 
+                          </div> 
+                         </div> 
+                        </article></span> 
+                      </div> 
+                     </div> 
+                     <div class="views-row views-row-4 views-row-even views-row-last"> 
+                      <div class="views-field views-field-nid"> 
+                       <span class="field-content">
+                        <article class="news-item-beta row"> 
+                         <div class="field field-name-field-image field-type-image field-label-hidden thumbnail"> 
+                          <div class="field-items"> 
+                           <div class="field-item even"> 
+                            <img typeof="foaf:Image" src="http://college.harvard.edu/sites/default/files/styles/60x60/public/news/013014_Peanuts_021_140.jpg?itok=yh-6eVVo" alt=""> 
+                           </div> 
+                          </div> 
+                         </div> 
+                         <div class="in"> 
+                          <h1 class="lambda" datatype="" property="title"><a href="http://news.harvard.edu/gazette/story/2015/02/unlocking-fat/">Unlocking fat</a></h1> 
+                          <p class="created_date iota">February 4, 2015 </p> 
+                          <div class="content news-item-body theta"> 
+                           <div class="field field-name-body field-type-text-with-summary field-label-hidden"> 
+                            <div class="field-items"> 
+                             <div property="encoded" class="field-item even">
+                              <p> Have you ever wondered why it’s so tough to put down that last slice of bacon...</p>
+                             </div> 
+                            </div> 
+                           </div> 
+                          </div> 
+                         </div> 
+                        </article></span> 
+                      </div> 
+                     </div> 
+                     <a href="/about/news-announcements" class="kappa see-more is_front bk4-module-top icon-caret-right">See all</a> 
+                    </div> 
+                   </div> 
+                  </div> 
+                 </div> 
+                </div> 
+               </div> 
+               <div class="panel-panel panel-col-last"> 
+                <div class="inside">
+                 <div class="panel-pane pane-custom pane-1"> 
+                  <div class="pane-content"> 
+                   <p><a class="kappa see-more bk4-module-top icon-caret-right" href="http://college.harvard.edu/college-events">See&nbsp;all</a></p> 
+                  </div> 
+                 </div> 
+                 <div class="panel-separator"></div>
+                 <div class="panel-pane pane-block pane-quicktabs-upcoming-events upcoming-events"> 
+                  <h2 class="pane-title"> Upcoming Events </h2> 
+                  <div class="pane-content"> 
+                   <div id="quicktabs-upcoming_events" class="quicktabs-ui-wrapper">
+                    <ul>
+                     <li><a href="#qt-upcoming_events-ui-tabs1">Today</a></li>
+                     <li><a href="#qt-upcoming_events-ui-tabs2">Tomorrow</a></li>
+                     <li><a href="#qt-upcoming_events-ui-tabs3">Wednesday</a></li>
+                    </ul>
+                    <div id="qt-upcoming_events-ui-tabs1"> 
+                     <div class="view view-upcoming-events view-id-upcoming_events view-display-id-panel_pane_today view-dom-id-570c79b55a26025257e5ccc190e55b27"> 
+                      <div class="view-content"> 
+                       <div class="views-row views-row-1 views-row-odd views-row-first"> 
+                        <article class="news-item-beta"> 
+                         <h1 class="theta"><span class="field-content"><a href="/college-events/brain-imaging-research-study-hearing-and-tinnitus-40">Brain Imaging Research Study of Hearing and Tinnitus</a></span></h1> 
+                         <div class="iota">
+                          <div class="field-content">
+                           (All day)
+                          </div>
+                         </div> 
+                        </article> 
+                       </div> 
+                       <div class="views-row views-row-2 views-row-even"> 
+                        <article class="news-item-beta"> 
+                         <h1 class="theta"><span class="field-content"><a href="/college-events/biofabrication-success-story-mushrooms-packingbuilding-materials">A BioFabrication Success Story: From Mushrooms to Packing/Building Materials</a></span></h1> 
+                         <div class="iota">
+                          <div class="field-content">
+                           10:00am
+                          </div>
+                         </div> 
+                        </article> 
+                       </div> 
+                       <div class="views-row views-row-3 views-row-odd"> 
+                        <article class="news-item-beta"> 
+                         <h1 class="theta"><span class="field-content"><a href="/college-events/hds-episcopalanglican-fellowship-weekly-worship-20">HDS Episcopal/Anglican Fellowship Weekly Worship</a></span></h1> 
+                         <div class="iota">
+                          <div class="field-content">
+                           12:00pm
+                          </div>
+                         </div> 
+                        </article> 
+                       </div> 
+                       <div class="views-row views-row-4 views-row-even views-row-last"> 
+                        <article class="news-item-beta"> 
+                         <h1 class="theta"><span class="field-content"><a href="/college-events/open-meetings-digital-futures-consortium-0">Open Meetings: Digital Futures Consortium</a></span></h1> 
+                         <div class="iota">
+                          <div class="field-content">
+                           3:00pm
+                          </div>
+                         </div> 
+                        </article> 
+                       </div> 
+                      </div> 
+                      <div class="view-footer"> 
+                       <div class="iota">
+                        <a href="http://college.harvard.edu/college-events">All events today</a>
+                       </div> 
+                      </div> 
+                     </div>
+                    </div>
+                    <div id="qt-upcoming_events-ui-tabs2"> 
+                     <div class="view view-upcoming-events view-id-upcoming_events view-display-id-panel_pane_tomorrow view-dom-id-5f670c4ba12e5747eaa20b94e120d3ac"> 
+                      <div class="view-content"> 
+                       <div class="views-row views-row-1 views-row-odd views-row-first"> 
+                        <article class="news-item-beta"> 
+                         <h1 class="theta"><span class="field-content"><a href="/college-events/brain-imaging-research-study-hearing-and-tinnitus-41">Brain Imaging Research Study of Hearing and Tinnitus</a></span></h1> 
+                         <div class="iota">
+                          <div class="field-content">
+                           <span class="date-display-single" property="dc:date" datatype="xsd:dateTime" content="2015-03-03T00:00:00-05:00">Tuesday, March 3, 2015 (All day)</span>
+                          </div>
+                         </div> 
+                        </article> 
+                       </div> 
+                       <div class="views-row views-row-2 views-row-even"> 
+                        <article class="news-item-beta"> 
+                         <h1 class="theta"><span class="field-content"><a href="/college-events/r-buckminster-fuller-pattern-thinking-daniel-lopez-perez-and-hanif-kara">"R. Buckminster Fuller, Pattern Thinking", with Daniel Lopez-Perez and Hanif Kara</a></span></h1> 
+                         <div class="iota">
+                          <div class="field-content">
+                           <span class="date-display-single" property="dc:date" datatype="xsd:dateTime" content="2015-03-03T12:00:00-05:00">Tuesday, March 3, 2015 - 12:00pm</span>
+                          </div>
+                         </div> 
+                        </article> 
+                       </div> 
+                       <div class="views-row views-row-3 views-row-odd"> 
+                        <article class="news-item-beta"> 
+                         <h1 class="theta"><span class="field-content"><a href="/college-events/r-buckminster-fullers-pattern-thinking-daniel-lopez-perez-and-hanif-kara">R. Buckminster Fuller's "Pattern Thinking," with Daniel Lopez-Perez and Hanif Kara</a></span></h1> 
+                         <div class="iota">
+                          <div class="field-content">
+                           <span class="date-display-single" property="dc:date" datatype="xsd:dateTime" content="2015-03-03T12:00:00-05:00">Tuesday, March 3, 2015 - 12:00pm</span>
+                          </div>
+                         </div> 
+                        </article> 
+                       </div> 
+                       <div class="views-row views-row-4 views-row-even views-row-last"> 
+                        <article class="news-item-beta"> 
+                         <h1 class="theta"><span class="field-content"><a href="/college-events/social-enterprise-and-global-health-seminar">Social Enterprise and Global Health Seminar</a></span></h1> 
+                         <div class="iota">
+                          <div class="field-content">
+                           <span class="date-display-single" property="dc:date" datatype="xsd:dateTime" content="2015-03-03T12:00:00-05:00">Tuesday, March 3, 2015 - 12:00pm</span>
+                          </div>
+                         </div> 
+                        </article> 
+                       </div> 
+                      </div> 
+                     </div>
+                    </div>
+                    <div id="qt-upcoming_events-ui-tabs3"> 
+                     <div class="view view-upcoming-events view-id-upcoming_events view-display-id-panel_pane_day_after_tomorrow view-dom-id-f874194595ef8a49e6b152cf20403d48"> 
+                      <div class="view-content"> 
+                       <div class="views-row views-row-1 views-row-odd views-row-first"> 
+                        <article class="news-item-beta"> 
+                         <h1 class="theta"><span class="field-content"><a href="/college-events/brain-imaging-research-study-hearing-and-tinnitus-42">Brain Imaging Research Study of Hearing and Tinnitus</a></span></h1> 
+                         <div class="iota">
+                          <div class="field-content">
+                           <span class="date-display-single" property="dc:date" datatype="xsd:dateTime" content="2015-03-04T00:00:00-05:00">Wednesday, March 4, 2015 (All day)</span>
+                          </div>
+                         </div> 
+                        </article> 
+                       </div> 
+                       <div class="views-row views-row-2 views-row-even"> 
+                        <article class="news-item-beta"> 
+                         <h1 class="theta"><span class="field-content"><a href="/college-events/tsai-lecture">Tsai Lecture</a></span></h1> 
+                         <div class="iota">
+                          <div class="field-content">
+                           <span class="date-display-single" property="dc:date" datatype="xsd:dateTime" content="2015-03-04T00:00:00-05:00">Wednesday, March 4, 2015 (All day)</span>
+                          </div>
+                         </div> 
+                        </article> 
+                       </div> 
+                       <div class="views-row views-row-3 views-row-odd"> 
+                        <article class="news-item-beta"> 
+                         <h1 class="theta"><span class="field-content"><a href="/college-events/goldsmith-seminar-investigative-reporting-0">Goldsmith Seminar on Investigative Reporting</a></span></h1> 
+                         <div class="iota">
+                          <div class="field-content">
+                           <span class="date-display-single" property="dc:date" datatype="xsd:dateTime" content="2015-03-04T09:00:00-05:00">Wednesday, March 4, 2015 - 9:00am</span>
+                          </div>
+                         </div> 
+                        </article> 
+                       </div> 
+                       <div class="views-row views-row-4 views-row-even views-row-last"> 
+                        <article class="news-item-beta"> 
+                         <h1 class="theta"><span class="field-content"><a href="/college-events/policeman-elbow-neuroscience-addiction-self-control-and-criminal-responsibility">The Policeman at the Elbow: The Neuroscience of Addiction, Self-Control, and Criminal Responsibility</a></span></h1> 
+                         <div class="iota">
+                          <div class="field-content">
+                           <span class="date-display-single" property="dc:date" datatype="xsd:dateTime" content="2015-03-04T12:00:00-05:00">Wednesday, March 4, 2015 - 12:00pm</span>
+                          </div>
+                         </div> 
+                        </article> 
+                       </div> 
+                      </div> 
+                     </div>
+                    </div>
+                   </div> 
+                  </div> 
+                 </div> 
+                </div> 
+               </div> 
+              </div> 
+             </div> 
+            </div> 
+           </div> 
+          </div> 
+          <div id="block-block-21" class="block block-block"> 
+           <div class="content"> 
+            <script type="text/javascript">
+      var addthis_config = {
+         data_ga_property: 'UA-42906607-5'
+      }; 
+</script> 
+           </div> 
+          </div> 
+          <div id="block-block-16" class="block block-block"> 
+           <div class="content"> 
+            <script type="text/javascript"> 
+/* PREVIOUS */
+$('#block-system-main.block .carousel-nav li.prev a').click(function(){    
+     //_gaq.push(['_trackEvent', 'carousel', 'previous', $('.carousel .carousel-viewport .panel-pane article.carousel-active-slide a[href*="a"]').attr("href")]);
+    });
+    
+/* POSITION DOT */
+$('#block-system-main.block .carousel-nav li.dot a').click(function(){    
+     //_gaq.push(['_trackEvent', 'carousel', 'position', $('.carousel .carousel-viewport .panel-pane article.carousel-active-slide a[href*="a"]').attr("href")]);
+    });
+    
+/* NEXT */
+$('#block-system-main.block .carousel-nav li.next a').click(function(){    
+     //_gaq.push(['_trackEvent', 'carousel', 'next', $('.carousel .carousel-viewport .panel-pane article.carousel-active-slide a[href*="a"]').attr("href")]);
+    });
+</script> 
+           </div> 
+          </div> 
+         </div> 
+        </div>
+       </div> 
+       <!-- /.section, /#content --> 
+      </div>
+     </div> 
+     <!-- /#main, /#main-wrapper --> 
+    </div>
+   </div> 
+   <!-- /#page, /#page-wrapper --> 
+   <div class="region region-footer"> 
+    <div id="block-panels-mini-footer-main" class="block block-panels-mini"> 
+     <div class="content"> 
+      <div class="panel-display panel-2col clearfix" id="mini-panel-footer_main"> 
+       <div class="panel-panel panel-col-first"> 
+        <div class="inside">
+         <div class="panel-pane pane-block pane-menu-menu-quick-links"> 
+          <h2 class="pane-title"> College Quick Links </h2> 
+          <div class="pane-content"> 
+           <ul class="quick-links row">
+            <li class="first leaf menu-level-1"><a href="https://apply.college.harvard.edu/status" title="">Applicant Login</a></li> 
+            <li class="leaf menu-level-1"><a href="/contact-us" title="">Contact Us</a></li> 
+            <li class="leaf menu-level-1"><a href="http://www.fas.harvard.edu/home/" title="">Faculty of Arts &amp; Sciences</a></li> 
+            <li class="leaf menu-level-1"><a href="http://www.harvard.edu" title="">Harvard.edu</a></li> 
+            <li class="leaf menu-level-1"><a href="http://map.harvard.edu/" title="">Maps &amp; Directions</a></li> 
+            <li class="last leaf menu-level-1"><a href="http://www.registrar.fas.harvard.edu/" title="">Registrar</a></li> 
+           </ul> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="panel-panel panel-col-last"> 
+        <div class="inside">
+         <div class="panel-pane pane-harvard-icons"> 
+          <div class="pane-content"> 
+           <div class="harvard_icons">
+            <a href="https://twitter.com/Harvard" class="harvard-icons-twitter">twitter</a>
+            <a href="https://www.facebook.com/harvardadmissions" class="harvard-icons-facebook">facebook</a>
+            <a href="http://harvard.tumblr.com/" class="harvard-icons-tumblr">tumblr</a>
+            <a href="https://plus.google.com/+harvard" class="harvard-icons-googleplus">googleplus</a>
+            <a href="http://www.youtube.com/user/Harvard" class="harvard-icons-youtube">youtube</a>
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <!-- /.page-content -->  
+  <div id="modal-container"> 
+   <div class="modal-window"> 
+    <a href="#" class="modal-close icon-remove"></a> 
+    <div class="modal-target"></div> 
+   </div> 
+  </div> 
+  <footer class="page-footer" role="contentinfo"> 
+   <div class="wrap"> 
+    <div class="in"> 
+     <p>Copyright © 2015 The President and Fellows of Harvard College | <a href="http://www.harvard.edu/privacy-statement">Privacy</a> | <a href="http://dmca.harvard.edu/pages/annual-copyright-disclosure">Copyright Disclosure</a> | <a href="http://accessibility.harvard.edu/">Accessibility</a></p> 
+    </div> 
+   </div> 
+  </footer> 
+  <script type="text/javascript" src="http://college.harvard.edu/sites/default/files/js/js_5idECjjAo-X5YdkT65CaIiodkWmZlZv-WjSkHlWhoYk.js"></script> 
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"beacon-2.newrelic.com","licenseKey":"3be4154ace","applicationID":"2603080","transactionName":"bwZWYEQHVkJXVERaXVZMdVdCD1dfGUdRVFdnDlVaVwFdQ2lZX1dXZxVdUUE5SFBRUg==","queueTime":0,"applicationTime":1070,"ttGuid":"","agentToken":"","atts":"Q0FVFgwdRUw=","errorBeacon":"bam.nr-data.net","agent":"js-agent.newrelic.com\/nr-515.min.js"}</script>  
+ </body>
+</html>

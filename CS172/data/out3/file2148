@@ -1,0 +1,684 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+ <head>
+  <script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"UQABVVdaGwAFVFhQBAQ="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=s(e),f=c.length,u=i(a,o,r),d=0;f>d;d++)c[d].apply(u,n);return u}function a(t,e){f[t]=s(t).concat(e)}function s(t){return f[t]||[]}function c(){return n(e)}var f={};return{on:a,emit:e,create:c,listeners:s,_events:f}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],3:[function(t){function e(t,e,n,i,s){try{c?c-=1:r("err",[s||new UncaughtException(t,e,n)])}catch(f){try{r("ierr",[f,(new Date).getTime(),!0])}catch(u){}}return"function"==typeof a?a.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(5),i=t("ee"),a=window.onerror,s=!1,c=0;t("loader").features.err=!0,window.onerror=e;try{throw new Error}catch(f){"stack"in f&&(t(1),t(4),"addEventListener"in window&&t(2),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&t(3),s=!0)}i.on("fn-start",function(){s&&(c+=1)}),i.on("fn-err",function(t,e,r){s&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){s&&!this.thrown&&c>0&&(c-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:8,2:5,3:9,4:7,5:22,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],4:[function(t){function e(){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var n=t("ee"),r=t("handle"),o=t(1);t("loader").features.stn=!0,t(2),n.on("fn-start",function(t){var e=t[0];e instanceof Event&&(this.bstStart=Date.now())}),n.on("fn-end",function(t,e){var n=t[0];n instanceof Event&&r("bst",[n,e,this.bstStart,Date.now()])}),o.on("fn-start",function(t,e,n){this.bstStart=Date.now(),this.bstType=n}),o.on("fn-end",function(t,e){r("bstTimer",[e,this.bstStart,Date.now(),this.bstType])}),n.on("pushState-start",function(){this.time=Date.now(),this.startPath=location.pathname+location.hash}),n.on("pushState-end",function(){r("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),"addEventListener"in window.performance&&(window.performance.addEventListener("webkitresourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.webkitClearResourceTimings()},!1),window.performance.addEventListener("resourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.clearResourceTimings()},!1)),document.addEventListener("scroll",e,!1),document.addEventListener("keypress",e,!1),document.addEventListener("click",e,!1)}},{1:8,2:6,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],5:[function(t,e){function n(t){i.inPlace(t,["addEventListener","removeEventListener"],"-",r)}function r(t){return t[1]}var o=(t(1),t("ee").create()),i=t(2)(o),a=t("gos");if(e.exports=o,n(window),"getPrototypeOf"in Object){for(var s=document;s&&!s.hasOwnProperty("addEventListener");)s=Object.getPrototypeOf(s);s&&n(s);for(var c=XMLHttpRequest.prototype;c&&!c.hasOwnProperty("addEventListener");)c=Object.getPrototypeOf(c);c&&n(c)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&n(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t){if(t[1]){var e=t[1];"function"==typeof e?this.wrapped=t[1]=a(e,"nr@wrapped",function(){return i(e,"fn-",null,e.name||"anonymous")}):"function"==typeof e.handleEvent&&i.inPlace(e,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:22,2:23,ee:"QJf3ax",gos:"7eSDFh"}],6:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window.history,["pushState"],"-")},{1:23,2:22,ee:"QJf3ax"}],7:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=r(t[0],"fn-")})},{1:23,2:22,ee:"QJf3ax"}],8:[function(t,e){function n(t,e,n){var r=t[0];"string"==typeof r&&(r=new Function(r)),t[0]=o(r,"fn-",null,n)}var r=(t(2),t("ee").create()),o=t(1)(r);e.exports=r,o.inPlace(window,["setTimeout","setInterval","setImmediate"],"setTimer-"),r.on("setTimer-start",n)},{1:23,2:22,ee:"QJf3ax"}],9:[function(t,e){function n(){c.inPlace(this,d,"fn-")}function r(t,e){c.inPlace(e,["onreadystatechange"],"fn-")}function o(t,e){return e}var i=t("ee").create(),a=t(1),s=t(2),c=s(i),f=s(a),u=window.XMLHttpRequest,d=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];e.exports=i,window.XMLHttpRequest=function(t){var e=new u(t);try{i.emit("new-xhr",[],e),f.inPlace(e,["addEventListener","removeEventListener"],"-",function(t,e){return e}),e.addEventListener("readystatechange",n,!1)}catch(r){try{i.emit("internal-error",[r])}catch(o){}}return e},window.XMLHttpRequest.prototype=u.prototype,c.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",o),i.on("send-xhr-start",r),i.on("open-xhr-start",r)},{1:5,2:23,ee:"QJf3ax"}],10:[function(t){function e(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function n(t){var n=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;c>i;i++)t.removeEventListener(s[i],this.listener,!1);if(!n.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){n.status=t.status;var a=t.responseType,f="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,u=e(f);if(u&&(r.rxSize=u),this.sameOrigin){var d=t.getResponseHeader("X-NewRelic-App-Data");d&&(n.cat=d.split(", ").pop())}}else n.status=0;r.cbTime=this.cbTime,o("xhr",[n,r,this.startTime])}}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}if(window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)){t("loader").features.xhr=!0;var o=t("handle"),i=t(2),a=t("ee"),s=["load","error","abort","timeout"],c=s.length,f=t(1);t(4),t(3),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=n,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,n){var r=this.metrics,o=t[0],i=this;if(r&&o){var f=e(o);f&&(r.txSize=f)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof n.onload))&&i.end(n)}catch(e){try{a.emit("internal-error",[e])}catch(r){}}};for(var u=0;c>u;u++)n.addEventListener(s[u],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof XMLHttpRequest&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&&a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{1:"XL7HBI",2:11,3:9,4:5,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],11:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&&e.port===n.port&&e.protocol===n.protocol,r}},{}],12:[function(t,e){function n(t){return function(){r(t,[(new Date).getTime()].concat(i(arguments)))}}var r=t("handle"),o=t(1),i=t(2);"undefined"==typeof window.newrelic&&(newrelic=window.NREUM);var a=["setPageViewName","trackUserAction","finished","traceEvent","inlineHit","noticeError"];o(a,function(t,e){window.NREUM[e]=n("api-"+e)}),e.exports=window.NREUM},{1:21,2:22,handle:"D5DuLP"}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):(o[t]||(o[t]=[]),void o[t].push(e))}var r=t("ee").create(),o={};e.exports=n,n.ee=r,r.q=o},{ee:"QJf3ax"}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],G9z0Bl:[function(t,e){function n(){var t=l.info=NREUM.info;if(t&&t.licenseKey&&t.applicationID&&f&&f.body){s(h,function(e,n){e in t||(t[e]=n)}),l.proto="https"===p.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var e=f.createElement("script");e.src=l.proto+t.agent,f.body.appendChild(e)}}function r(){"complete"===f.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=t(1),c=(t(2),window),f=c.document,u="addEventListener",d="attachEvent",p=(""+location).split("?")[0],h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-536.min.js"},l=e.exports={offset:i(),origin:p,features:{}};f[u]?(f[u]("DOMContentLoaded",o,!1),c[u]("load",n,!1)):(f[d]("onreadystatechange",r),c[d]("onload",n)),a("mark",["firstbyte",i()])},{1:21,2:12,handle:"D5DuLP"}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],21:[function(t,e){function n(t,e){var n=[],o="",i=0;for(o in t)r.call(t,o)&&(n[i]=e(o,t[o]),i+=1);return n}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],22:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],23:[function(t,e){function n(t){return!(t&&"function"==typeof t&&t.apply&&!t[i])}var r=t("ee"),o=t(1),i="nr@wrapper",a=Object.prototype.hasOwnProperty;e.exports=function(t){function e(t,e,r,a){function nrWrapper(){var n,i,s,f;try{i=this,n=o(arguments),s=r&&r(n,i)||{}}catch(d){u([d,"",[n,i,a],s])}c(e+"start",[n,i,a],s);try{return f=t.apply(i,n)}catch(p){throw c(e+"err",[n,i,p],s),p}finally{c(e+"end",[n,i,f],s)}}return n(t)?t:(e||(e=""),nrWrapper[i]=!0,f(t,nrWrapper),nrWrapper)}function s(t,r,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<r.length;c++)s=r[c],a=t[s],n(a)||(t[s]=e(a,f?s+o:o,i,s,t))}function c(e,n,r){try{t.emit(e,n,r)}catch(o){u([o,e,n,r])}}function f(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){u([r])}for(var o in t)a.call(t,o)&&(e[o]=t[o]);return e}function u(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=r),e.inPlace=s,e.flag=i,e}},{1:22,ee:"QJf3ax"}]},{},["G9z0Bl",3,10,4]);</script> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+  <meta http-equiv="Content-Language" content=""> 
+  <title>Hotels Laramie Wyoming | UW Conference Center at the Hilton</title> 
+  <meta name="description" content="Experience incomparable service, elegant meeting space and outstanding hotel accommodations at the UW Conference Center at Hilton Garden Inn Laramie."> 
+  <meta name="copyright" content=""> 
+  <meta name="publisher" content=""> 
+  <meta name="google-site-verification" content="P8IHFOftlGlNKJqeNT1GYAT1FTESao_iWl4VnL9cj_w"> 
+  <meta http-equiv="Content-Style-Type" content="text/css"> 
+  <meta http-equiv="Content-Script-Type" content="text/javascript"> 
+  <script type="text/javascript">if(window.top.location!=document.location)window.top.location.href=document.location.href;</script> 
+  <link href="http://fonts.googleapis.com/css?family=Brawler" rel="stylesheet" type="text/css"> 
+  <link href="http://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet" type="text/css"> 
+  <link href="http://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet" type="text/css"> 
+  <!-- BEGIN: ADDED HEADER CONTENT --> 
+  <script type="text/javascript" src="http://www.uwconferencecenter.com/condor/js/essentials.js"></script> 
+  <script type="text/javascript">
+			//<![CDATA[
+				condor.siteBaseHREF     = 'http://www.uwconferencecenter.com/';
+				condor.templateBaseHREF = 'http://www.uwconferencecenter.com/templates/main/';
+				condor.condorBaseHREF   = 'http://www.uwconferencecenter.com/condor/';
+				condor.currentLanguage  = 'en';
+				condor.dataSection      = 'uwconferencecenter';
+			//]]>
+			</script> 
+  <link type="text/css" rel="stylesheet" href="http://www.uwconferencecenter.com/d/uwconferencecenter/merged/global_f6_2013-09-18-18-35_1440552920.css"> 
+  <link type="text/css" rel="stylesheet" href="http://www.uwconferencecenter.com/d/uwconferencecenter/merged/home_f1_2013-08-21-14-11_110878900.css"> 
+  <link type="text/css" rel="stylesheet" href="http://www.uwconferencecenter.com/d/uwconferencecenter/merged/none_f1_2013-08-22-07-43_202279790.css"> 
+  <link type="text/css" rel="stylesheet" href="http://www.uwconferencecenter.com/d/uwconferencecenter/merged/widget_styles_f13_2014-10-11-00-31_1533654225.css"> 
+  <script type="text/javascript" src="http://www.uwconferencecenter.com/d/uwconferencecenter/merged/global_f7_2013-08-21-14-11_2235044846.js"></script> 
+  <script type="text/javascript" src="http://www.uwconferencecenter.com/templates/main/libs/jquery/jscrollpane/jquery.jscrollpane.js"></script> 
+  <script type="text/javascript" src="http://www.uwconferencecenter.com/templates/main/libs/jquery/jscrollpane/jquery.mousewheel.js"></script> 
+  <script type="text/javascript" src="http://www.uwconferencecenter.com/templates/main/libs/jquery/jquery-datepicker/lang/jquery.ui.datepicker-en-GB.js"></script> 
+  <script type="text/javascript" src="http://www.uwconferencecenter.com/condor/modules/imageSwitch/javascript.imageSwitch.js"></script> 
+  <link rel="stylesheet" type="text/css" href="http://www.uwconferencecenter.com/condor/modules/imageSwitch/style.imageSwitch.css"> 
+  <script type="text/javascript" src="http://www.uwconferencecenter.com/condor/modules/googleAnalytics/javascript.googleAnalytics.js"></script> 
+  <script type="text/javascript">
+		// <![CDATA[
+			function leadingZero(n) {
+				return (n>9) ? n : '0'+n;
+			}
+			
+			function digitalClockFormat(oDate, format, sep, sec, hz) {
+				var hour = oDate.getUTCHours();
+				var minutes = sep + leadingZero(oDate.getUTCMinutes());
+				var seconds = sec ? sep+leadingZero(oDate.getUTCSeconds()) : '';
+				switch (format)
+				{
+					case 'long':
+						var str = oDate.toUTCString();
+						return str.substring(0, str.length - 4);
+						break;
+					case '12':
+						var ampm = "&nbsp;" + (hour<12 ? "am" : "pm");
+						hour = 1 + (hour+11)%12;
+						return (hz ? leadingZero(hour) : hour) + minutes + seconds + ampm;
+						break;
+					default:
+						return (hz ? leadingZero(hour) : hour) + minutes + seconds;
+						break;
+				}
+			}
+			
+			function digitalClockSet(wdco) {
+				setTimeout(function(){digitalClockSet(wdco)}, wdco.sec ? 1000 : 60000);
+				var oDate = new Date();
+				var afterLoadMS = oDate.getTime() - wdco.initLocalTime;
+				oDate.setTime(wdco.initOffsetTime + afterLoadMS);
+				wdco.elem.innerHTML = digitalClockFormat(oDate, wdco.format, wdco.sep, wdco.sec, wdco.hz);
+			}
+			
+			function digitalClockInit(wdco) {
+				HTTP.getText(prepSocketCall('templateHelpers', 'timestamp', {
+					tz: wdco.tz
+				}), function(timestamp){
+						var oDate = new Date();
+						wdco.initOffsetTime = timestamp*1000;
+						wdco.initLocalTime = oDate.getTime();
+						setTimeout(function(){digitalClockSet(wdco)}, 0);
+			
+				});
+			}
+		// ]]>
+		</script> 
+  <script type="text/javascript">
+		/* <![CDATA[ */
+			function weatherInit(wObj) {
+				HTTP.getText(prepSocketCall('templateHelpers', 'weather2', { f: 0, s: wObj.s, l: wObj.l, d: wObj.d, i: wObj.id, f: wObj.f}), function(html) {
+					document.getElementById(wObj.id).innerHTML = html;
+				});
+			}
+		/* ]]> */
+		</script> 
+  <!-- END: ADDED HEADER CONTENT --> 
+  <script type="text/javascript">
+//<![CDATA[
+	jQuery(document).ready(function(){
+		// BEGIN: onLoadScript
+		gaTracking.tagHyperlinks('default', 'hilton.com');
+			gaTracking.tagForms('default', 'hilton.com');			gaTracking.tagDownloads('default', 'http://www.uwconferencecenter.com');		
+
+		digitalClockInit({
+			tz : 'America/Denver',
+			elem : document.getElementById('digital-clock'),
+			format : '12',
+			sep : ':',
+			sec : false,
+			hz : false
+		});
+		
+
+weatherInit({id:'weather1', s:'accuweather', l:'cityId:336576', d:'0', f:''})
+		// END: onLoadScript
+
+		// fancybox PNG file location fix - Please Do NOT remove the below line.
+		fancyboxIEPngLocationFix.fix("http://www.uwconferencecenter.com/templates/main/libs/jquery/fancybox/");
+
+		if(jQuery().fancybox){ //namespace check
+
+			var fancyBoxConf = {
+				'transitionIn'	: 'elastic',
+				'transitionOut'	: 'elastic',
+			/*	'easingIn'      : 'easeOutQuint',
+				'easingOut'     : 'easeInQuint',	*/
+				'speedIn':500,
+				'speedOut':500
+			};
+
+			jQuery(
+				"#mod_pukkaGalleries .picture a," +
+				"#mod_pukkaPictures .picture a," +
+				"#mod_pukkaSimpleRooms a[rel^='lightbox']"
+			).fancybox(fancyBoxConf);
+
+			jQuery(".groupLinks .viewImagesLink").click(function(){
+				jQuery(jQuery(this).parent().parent().find(".mediaImagesRooms")[0]).trigger('click');
+
+				return false;
+			});
+
+		}
+
+		if(jQuery().cycle){ //check if cycle plugin is available
+			//init any custom cycle implementations here
+		}
+		 jQuery(".fieldBlock.type_date input").datepicker({ dateFormat: 'mm/dd/yy', minDate:0 });
+        jQuery('#date-in').datepicker({dateFormat: 'mm/dd/yy', minDate:0});
+        jQuery(".flexInputDate").datepicker({ dateFormat: 'mm/dd/yy', minDate:0 });
+
+
+		// accordion
+		$(".carousel").hide();
+		$(".selected .carousel").show();
+		$(".itemPreviewTitle").click(function(){
+			if($(this).parent().hasClass("selected")) return;
+
+			$(".carousel").slideUp().parent().removeClass("selected");
+			$(this).nextAll(".carousel").slideDown().parent().addClass("selected");
+		});
+
+		$('.reservations a')
+  .attr("target", "_blank");
+
+	});
+
+	jQuery(window).load(slideshowResize);
+	jQuery(window).resize(slideshowResize);
+	function slideshowResize (){
+		$slideshow=$("[id^='slideshow'].slideshow");
+		$slide=$("[id^='slideshow'].slideshow > *");
+		if ( ($slide.width()/$slide.height()) < ($slideshow.width()/$slideshow.height()) ) {
+			// slide is narrowish and tallish, while viewport is widish and shortish, so slide width needs to be the same width as the viewport, and height needs to be auto
+			$slide.height("auto").width($slideshow.width());
+			// should the slide height spill out of the viewport, lets vertically center it
+			$imgTop=-(($slide.height()-$slideshow.height() )/2);
+			$slideshow.css("top",$imgTop).css("left","0").animate({opacity: 1}, 400);
+		} else {
+			// slide is widish and shortish, while viewport is narrowish and tallish, so slide height needs to be the same height as the viewport, and width needs to be auto
+			$slide.width("auto").height($slideshow.height());
+			// should the slide width spill out of the viewport, lets horizontally center it
+			$imgLeft=-(($slide.width()-$slideshow.width() )/2);
+			$slideshow.css("left",$imgLeft).css("top","0").animate({opacity: 1}, 400);
+		}
+	}
+
+//]]>
+</script> 
+  <script type="text/javascript">
+	//<![CDATA[
+	var _gaq = _gaq || [];
+	_gaq.push(['default._setAccount', 'UA-45333118-1']
+	, ['default._setDomainName', 'uwconferencecenter.com']
+	, ['default._setAllowLinker', true]
+	, ['default._setCustomVar', 5, 'tc', 'ih_______-Toolbox 1443-cty_XXXXX-ctr_XXXXX-typ_XXXXX-cat_XXXXX', 3]
+	, ['default._trackPageview', '/']
+	);
+	
+	if(!window._masterAnalytics){
+			_gaq.push(
+			['master._setAccount', 'UA-32962968-1'],
+			['master._setDomainName', 'uwconferencecenter.com'],
+			['master._setAllowLinker', true],
+						['master._setCustomVar', 5, 'tc', 'ih_______-Toolbox 1443-cty_XXXXX-ctr_XXXXX-typ_XXXXX-cat_XXXXX', 3],
+			['master._trackPageview']
+		);
+			window._masterAnalytics = true;
+	}
+	
+	(function() {
+		if (!window._gaScriptLoaded) {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+					ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+					var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			window._gaScriptLoaded = true;
+		}
+	})();
+	//]]>
+</script> 
+  <!-- ANTI-MSIE FEATURES --> 
+  <meta name="MSSmartTagsPreventParsing" content="true"> 
+  <meta http-equiv="imagetoolbar" content="no"> 
+  <script type="text/javascript">
+var reachlocalTRKDOM="rtsys.rtrk.com";
+(function() {
+var rlocal_load = document.createElement("script");
+rlocal_load.type = "text/javascript";
+rlocal_load.src = document.location.protocol+"//rtsys.rtrk.com/campaign_images/d1105/1105973/rltrk1.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild (rlocal_load);
+})();  </script> 
+ </head> 
+ <body id="page_home"> 
+  <!-- DoubleClick Floodlight Tag --> 
+  <script type="text/javascript">
+ var axel = Math.random() + "";
+ var a = axel * 10000000000000;
+ document.write('<iframe src="http://2013561.fls.doubleclick.net/activityi;src=2013561;type=micro372;cat=allpr459;u18=EN;u11=US;u10=Laramie, WY;u3=GI;u2=Hilton Garden Inn Laramie;u1=LARLAGI;ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
+ </script> 
+  <noscript> 
+   <iframe src="http://2013561.fls.doubleclick.net/activityi;src=2013561;type=micro372;cat=allpr459;u18=EN;u11=US;u10=Laramie, WY;u3=GI;u2=Hilton Garden Inn Laramie;u1=LARLAGI;ord=1?" width="1" height="1" frameborder="0" style="display:none"></iframe> 
+  </noscript> 
+  <!-- End of DoubleClick Floodlight Tag: Please do not remove --> 
+  <div id="wrapper"> 
+   <div id="headerwrap"> 
+    <div id="header"> 
+     <!--branding--> 
+     <div id="branding"> 
+      <div class="jw-widget jw-widget-1col jw-logotype-1col-flex"> 
+       <img class="logo" src="http://www.uwconferencecenter.com/templates/main/../jw/_common/images/logo.png?54f2e9d1ac2b2" width="100%" height="53" lang="en" alt="UW Conference Center at the Hilton Garden Inn Laramie">
+      </div>
+      <!-- jw-widget --> 
+     </div> 
+     <!--END branding--> 
+     <div id="time"> 
+      <div id="clock"> 
+       <div class="jw-widget jw-widget-1col jw-clock-1col-sm jw-widgedName3"> 
+        <div class="jw-clock"> 
+         <span class="jw-clock-label">Current TIME</span>
+         <span id="digital-clock">--:--:--</span> 
+        </div> 
+       </div> 
+      </div> 
+      <div id="weather-widget"> 
+       <div class="jw-widget jw-widget-1col jw-weather-1col-sm jw-weather-days0"> 
+        <em>Current Weather</em> 
+        <dfn></dfn> 
+        <span class="jw-weather-city"></span> 
+        <div id="weather1" class="weather"> 
+         <h2><a href="http://www.accuweather.com/Quick-Look.aspx?p=travelclick&amp;loc=#weatherLocation" target="_blank"></a></h2> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="clearfloat"></div> 
+     <div id="availability-checker"> 
+      <script type="text/javascript">
+$(document).ready(function(){
+	$(".jw-booking-mask-button").click(function() {
+	datein=$("input[name=dateIn]").val();
+	//alert(datein)
+	//dateout=$("input[name=dateout]").val();
+	//document.getElementByID('checkInDate').value=datein;
+	var element=datein.split("/");
+	$(".checkInDate").val(element[1]);
+	arrivalmonth=element[0] - 1;
+	if(arrivalmonth<10)
+	{
+		arrivalmonth='0'+arrivalmonth;
+	}
+
+	$(".checkInMonthYear").val(arrivalmonth+element[2]);
+
+
+
+		var newDate = new Date(datein);
+		var moreNights = parseInt(jQuery('#jw-booking-mask-nights5').val());
+
+		newDate.setDate(newDate.getDate() +moreNights);
+		//alert(newDate)
+		day = newDate.getDate();
+		month = newDate.getMonth();
+		month = parseInt(month)+1;
+		year = newDate.getFullYear();
+		//M-dd-yy
+
+		if(day<10)
+		{
+			day = '0'+day;
+		}
+		if(month<10)
+		{
+			month = '0'+month;
+		}
+		dateout = month+'/'+day+'/'+year;
+		//alert("dateout="+dateout);
+		//return false;
+		$("input[name=dateOut]").attr("value",dateout);
+		//return false;
+		});
+});
+</script> 
+      <div class="jw-widget jw-widget-4col jw-booking-mask-4col-sm"> 
+       <form action="http://www.uwconferencecenter.com/redirect.php" method="post" target="_blank" class="jw-booking-mask-fields2"> 
+        <fieldset> 
+         <h3></h3> 
+         <input type="hidden" name="hotel" value="LARLAGI">
+         <!-- change this value for the correct hotel --> 
+         <input type="hidden" name="CTYHOCN" value="LARLAGI">
+         <!-- change this value for the correct hotel --> 
+         <div class="jw-booking-mask-date date-in"> 
+          <label for="jw-booking-mask-date-in5">Check-in</label> 
+          <input id="jw-booking-mask-date-in5" type="text" class="jw-booking-mask-datepicker" name="arrivalDate"> 
+          <label class="date-format-helper" for="jw-booking-mask-datesendin5"></label> 
+          <input type="hidden" name="dateIn" id="jw-booking-mask-datesendin5"> 
+          <input type="hidden" name="dateOut" id="jw-booking-mask-datesendin5"> 
+         </div> 
+         <div class="jw-booking-mask-nights choose"> 
+          <label for="jw-booking-mask-nights5">Nights</label> 
+          <select id="jw-booking-mask-nights5" name="Length"> <option value="1" selected>1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option> </select> 
+         </div> 
+         <div class="jw-booking-mask-rooms choose"> 
+          <label for="jw-booking-mask-rooms5">rooms</label> 
+          <select id="jw-booking-mask-rooms5" name="numRooms"> <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option>10+</option> </select> 
+         </div> 
+         <button name="submit" type="submit" class="jw-booking-mask-button" title="">Book Now</button> 
+        </fieldset> 
+       </form> 
+       <script type="text/javascript">
+/* <![CDATA[ */
+
+	setTimeout(function(){
+		var calIn = jQuery( "#jw-booking-mask-date-in5" ).datepicker({ disabled: false, altField: "#jw-booking-mask-datesendin5", altFormat: 'mm/dd/yy', minDate:0, onSelect: checkCalendarDates});
+		calIn.datepicker('setDate', new Date());
+
+		var calOut = jQuery( "#jw-booking-mask-date-out5" ).datepicker({ disabled: false, altField: "#jw-booking-mask-datesendout5", altFormat: 'mm/dd/yy', minDate:1, onSelect: checkCalendarDates});
+		calOut.datepicker('setDate', new Date());
+
+		function checkCalendarDates(date, datePickerO)
+		{
+			var dateIn = calIn.datepicker("getDate");
+			var dateOut = calOut.datepicker("getDate");
+
+			if(dateIn >= dateOut && calIn.attr("id") === datePickerO.id)
+				calOut.datepicker('setDate', new Date( dateIn.getTime() + (24 * 60 * 60 * 1000) ));
+
+			if(dateOut <= dateIn && calOut.attr("id") === datePickerO.id)
+				calIn.datepicker('setDate', new Date( dateOut.getTime() - (24 * 60 * 60 * 1000) ));
+		}
+
+	},9);
+
+/* ]]> */
+</script> 
+      </div>
+      <!-- jw-widget --> 
+     </div> 
+     <!--MAIN MENU--> 
+     <div id="main-navigation"> 
+      <div id="jw_navigation-map_6" class="jw-widget jw-widget-4col jw-menu-4col-sm align-left no-items-separator items-background"> 
+       <ul class="jw-menu"> 
+        <li class="shortcut1 item1 itemr5 level1 reservations"><a href="http://hiltongardeninn3.hilton.com/en/hotels/wyoming/hilton-garden-inn-laramie-LARLAGI/index.html"><span class="menuItem">Reservations</span></a></li> 
+        <li class="shortcut2 item2 itemr4 level1 special-offers"><a href="http://www.uwconferencecenter.com/special-offers-en.html"><span class="menuItem">Specials &amp; packages</span></a></li> 
+        <li class="shortcut3 item3 itemr3 level1 gallery"><a href="http://www.uwconferencecenter.com/gallery-en.html"><span class="menuItem">Photo Gallery</span></a></li> 
+        <li class="shortcut4 item4 itemr2 level1 sign-up-for-offers"><a href="http://visitor.r20.constantcontact.com/d.jsp?llr=8a7995dab&amp;p=oi&amp;m=1103767629851" target="Array"><span class="menuItem">Sign up for Offers</span></a></li> 
+        <li class="shortcut5 item5 itemr1 level1 contact last"><a href="http://www.uwconferencecenter.com/contact-en.html"><span class="menuItem">Contact Us</span></a></li> 
+       </ul> 
+       <script type="text/javascript">
+		//<![CDATA[
+			condor.updatePageMenus = condor.updatePageMenus || function() {
+				var pageMenus = getElementsByClass('jw-menu', null, 'ul'), nojsList, i, j = pageMenus.length;
+				while(j--) {
+					nojsList = getElementsByClass('active-nojs', pageMenus[j]);
+					i = nojsList.length;
+					while(i--) {
+						removeClass(nojsList[i], 'active-nojs');
+					}
+				}
+			}
+			condor.updatePageMenus();
+		//]]>
+		</script>
+      </div>
+      <!-- jw-widget --> 
+     </div> 
+     <!--END MAIN MENU--> 
+     <div class="clearfloat"></div>
+     <!--clears all floats in a container while making the layout flexible - did not use :after call because this way it is easier for the dev to float all and any items within a container without having to remember to clear the last one--> 
+    </div> 
+    <!--END header--> 
+    <div id="container" style="width:964px; display:block;"> 
+     <div id="top-menu"> 
+      <div id="jw_menu-top_7" class="jw-widget jw-widget-1col jw-menu-1col-lg align-left items-separator"> 
+       <ul class="jw-menu"> 
+        <li class="shortcut1 item1 itemr9 level1 home active active-nojs"><a><span class="menuItem">HOME</span></a></li> 
+        <li class="shortcut2 item2 itemr8 level1 meeting-rooms has-submenu"><a href="http://www.uwconferencecenter.com/meeting-rooms/"><span class="menuItem">Conferences &amp; Meetings</span></a></li> 
+        <li class="shortcut3 item3 itemr7 level1 weddings-events has-submenu"><a href="http://www.uwconferencecenter.com/weddings-events/"><span class="menuItem">Wedding &amp; Events</span></a></li> 
+        <li class="shortcut4 item4 itemr6 level1 event-planning"><a href="http://www.uwconferencecenter.com/event-planning-en.html"><span class="menuItem">Planning Your Event</span></a></li> 
+        <li class="shortcut5 item5 itemr5 level1 accommodation-services"><a href="http://www.uwconferencecenter.com/accommodation-services-en.html"><span class="menuItem">Hotel Information</span></a></li> 
+        <li class="shortcut6 item6 itemr4 level1 attractions"><a href="http://www.uwconferencecenter.com/attractions-en.html"><span class="menuItem">Area Attractions</span></a></li> 
+        <li class="shortcut7 item7 itemr3 level1 university-of-wyoming"><a href="http://www.uwconferencecenter.com/university-of-wyoming-en.html"><span class="menuItem">University of Wyoming</span></a></li> 
+        <li class="shortcut8 item8 itemr2 level1 catering"><a href="http://www.uwconferencecenter.com/catering-en.html"><span class="menuItem">Outside Catering</span></a></li> 
+        <li class="shortcut9 item9 itemr1 level1 reviews last"><a href="http://www.uwconferencecenter.com/reviews-en.html"><span class="menuItem">Testimonials</span></a></li> 
+       </ul> 
+       <script type="text/javascript">
+		//<![CDATA[
+			condor.updatePageMenus = condor.updatePageMenus || function() {
+				var pageMenus = getElementsByClass('jw-menu', null, 'ul'), nojsList, i, j = pageMenus.length;
+				while(j--) {
+					nojsList = getElementsByClass('active-nojs', pageMenus[j]);
+					i = nojsList.length;
+					while(i--) {
+						removeClass(nojsList[i], 'active-nojs');
+					}
+				}
+			}
+			condor.updatePageMenus();
+		//]]>
+		</script>
+      </div>
+      <!-- jw-widget --> 
+     </div> 
+     <!--SOCIAL LINKS--> 
+     <div class="socialmedia clearfix"> 
+      <div class="jw-widget jw-widget-2col jw-socialmedia-2col-sm"> 
+       <ul class="socialmedia "> 
+        <li class="facebook"><a href="https://www.facebook.com/HGIUWCC" target="_blank"><img alt="" src="http://www.uwconferencecenter.com/templates/main/../jw/_common/images/media/facebook.png"></a></li>
+        <li class="twitter"><a href="https://twitter.com/search?q=Hilton%20Garden%20Inn%20Laramie&amp;src=typd" target="_blank"><img alt="" src="http://www.uwconferencecenter.com/templates/main/../jw/_common/images/media/twitter.png"></a></li>
+        <li class="blog"><a href="http://pinterest.com/hgiuwcc/" target="_blank"><img alt="" src="http://www.uwconferencecenter.com/templates/main/../jw/_common/images/media/blog.png"></a></li>
+        <li class="tripadvisor"><a href="http://www.tripadvisor.com/Hotel_Review-g60503-d778655-Reviews-Hilton_Garden_Inn_Laramie-Laramie_Wyoming.html" target="_blank"><img alt="" src="http://www.uwconferencecenter.com/templates/main/../jw/_common/images/media/tripadvisor.png"></a></li>
+        <li class="linkedin"><a href="http://www.linkedin.com/company/hilton-garden-inn-laramie-&amp;-uw-cnference-center?trk=company_name" target="_blank"><img alt="" src="http://www.uwconferencecenter.com/templates/main/../jw/_common/images/media/linkedin.png"></a></li> 
+       </ul> 
+      </div>
+      <!-- jw-widget --> 
+     </div> 
+     <!--END SOCIAL LINKS--> 
+    </div> 
+   </div> 
+   <!--END headerwrap--> 
+   <div class="clearfloat"></div> 
+   <div id="holder"> 
+    <!--SCROLLER--> 
+    <div class="jw-widget jw-widget-4col jw-scroller-4col-md-2items" id="jw-scroller_9"> 
+     <div class="offers-2col"> 
+      <ul> 
+       <li class="offer81"> <img src="http://www.uwconferencecenter.com/d/uwconferencecenter/media/Conference_and_Meetings/__thumbs_286_112_crop/DSC_3281.jpg?1377228581" width="286" height="112" lang="en" alt=""> 
+        <div class="offerIntro"> 
+         <h3>COMPLETE MEETING PACKAGE</h3> 
+         <dfn> Package includes: Room rental Podium…</dfn> 
+         <a class="jw-scroller-readmore" href="/special-offers-en.html">Read More</a> 
+        </div> </li> 
+       <li class="offer21"> <img src="http://www.uwconferencecenter.com/d/uwconferencecenter/media/Wedding_and_Events/__thumbs_286_112_crop/DSC_3374.jpg?1377847557" width="286" height="112" lang="en" alt=""> 
+        <div class="offerIntro"> 
+         <h3>SILVER WEDDING PACKAGE</h3> 
+         <dfn> Hors d’Oeuvres choice of two Seasonal…</dfn> 
+         <a class="jw-scroller-readmore" href="/special-offers-en.html">Read More</a> 
+        </div> </li> 
+       <li class="offer71"> <img src="http://www.uwconferencecenter.com/d/uwconferencecenter/media/__thumbs_286_112_crop/DSC_5413.jpg?1389709408" width="286" height="112" lang="en" alt=""> 
+        <div class="offerIntro"> 
+         <h3>GOLD WEDDING PACKAGE</h3> 
+         <dfn> Hors d’Oeuvres choice of three Asparagus…</dfn> 
+         <a class="jw-scroller-readmore" href="/special-offers-en.html">Read More</a> 
+        </div> </li> 
+       <li class="offer61"> <img src="http://www.uwconferencecenter.com/d/uwconferencecenter/media/__thumbs_286_112_crop/120230-large_jpg.jpg?1389709519" width="286" height="112" lang="en" alt=""> 
+        <div class="offerIntro"> 
+         <h3>PLATINUM WEDDING PACKAGE</h3> 
+         <dfn> Display Options choice of two Imported…</dfn> 
+         <a class="jw-scroller-readmore" href="/special-offers-en.html">Read More</a> 
+        </div> </li> 
+      </ul> 
+     </div> 
+     <script type="text/javascript">
+	/* <![CDATA[ */
+	$(document).ready(function(){
+		if(jQuery().jCarouselLite){
+			jQuery('#jw-scroller_9').append('<a class="prevButton"></a><a class="nextButton"></a>');
+			$('#jw-scroller_9 .offers-2col').jCarouselLite({
+				btnNext: "#jw-scroller_9 .nextButton",
+				btnPrev: "#jw-scroller_9 .prevButton",
+				circular:1,
+				visible:2,
+				auto: 2000,
+				speed: 4000 
+			});
+		}
+	});
+	/* ]]> */
+	</script> 
+    </div>
+    <!-- jw-widget --> 
+    <!--END SCROLLER--> 
+    <div id="content-container"> 
+     <div id="main-content"> 
+      <h2>Welcome to the University of Wyoming Conference Center</h2> 
+      <h1>Hotels Laramie Wyoming</h1> 
+      <p class="intro"></p> 
+      <div id="content"> 
+       <div class="jw-widget jw-widget-3col jw-text-box-3col-flex" style="height:90px"> 
+        <div class="jw-text-box-content" style="height:60px">
+         <div class="jw-text-box-content-wrapper"> 
+          <h3></h3> 
+          <p>Ideally located just across from the University of Wyoming’s War Memorial Stadium, and featuring a winning combination of <a href="meeting-rooms/default-en.html" target="_self">elegant event space</a>, modern technology and remarkable service, the University of Wyoming Conference Center is your premier destination for <a href="weddings-events/default-en.html" target="_self">weddings</a>, meetings, conferences and events of any size. Adjacent to the Hilton Garden Inn Laramie, this stunning location is also the premier in Laramie, Wyoming, hotels.<br><br>From start to finish, the UW Conference Center at the Hilton Garden Inn Laramie team will work closely with you to <a href="/event-planning-en.html" target="_self">plan your event</a>, diligently taking your every wish into consideration. Our talented staff can recommend a menu that perfectly complements the occasion, and our contemporary audiovisual services are arguably the best in the state. Best of all, with our comprehensive meeting and wedding specials, you can enjoy an all-inclusive event package at a discounted rate.<br><br>Laramie and its surroundings offer an abundance of <a href="attractions-en.html">enchanting attractions</a> – from outdoor activities to museums and eclectic boutiques – not to mention, of course, the University of Wyoming, which is right at our doorstep.<br><br>We invite you to visit us and experience the incomparable service that the University of Wyoming Conference Center at the Hilton Garden Inn Laramie hotel is pleased to offer each and every guest.</p> 
+         </div>
+        </div> 
+       </div>
+       <!--jw-widget--> 
+       <script type="text/javascript">
+//<![CDATA[
+$(document).ready(function(){
+	jQuery('.jw-widget .jw-text-box-content').jScrollPane();
+	
+	jQuery('.jw-widget .jspScrollable').jScrollPane({
+		verticalDragMinHeight: 20,
+		verticalDragMaxHeight: 20,
+		autoReinitialise:true
+	});
+});	
+//]]>	
+</script> 
+      </div> 
+     </div> 
+     <div id="content-sidebar"> 
+      <div id="callout"> 
+       <div class="jw-widget jw-widget-1col jw-feature-box-rollover-1col-md jw-feature-box2"> 
+        <div class="itemPreviewImageSection rollover"> 
+         <a href="/special-offers-en.html"> 
+          <div class="jw-feature-box-overlay details"> 
+           <span class="overlay-details"> <span class="jw-feature-box-title details-block">COMPLETE MEETING PACKAGE</span> <span class="jw-feature-box-intro details-block"></span> <span class="jw-feature-box-description details-block"></span> </span> 
+          </div> </a> 
+         <div class="jw-feature-box-bg-image" onmouseover="setOverlayDimensions(2,232,70);">
+          <img src="http://www.uwconferencecenter.com/d/uwconferencecenter/images/jw_feature-box_2.jpg?1380651946" width="232" height="70" lang="en" alt="">
+         </div> 
+         <div class="jw-feature-box-text background top left"> 
+          <a href="/special-offers-en.html"> <span class="header"><span class="innerText"></span></span> <span class="header"><span class="innerText"></span></span> </a> 
+         </div> 
+        </div> 
+       </div> 
+       <script type="text/javascript">
+	function setOverlayDimensions(id,width, height){
+		widget_id = "jw-feature-box" + id;
+		var activeTab = "." + widget_id + " .jw-feature-box-overlay";
+		jQuery(activeTab).css("width",width);
+		jQuery(activeTab).css("height",height);
+	}
+</script> 
+      </div> 
+      <div id="news"> 
+       <div class="jw-widget jw-widget-1col jw-callout-text-1col-sm"> 
+        <div class="jw-callout-text-content"> 
+         <h3><a href="http://visitor.r20.constantcontact.com/d.jsp?llr=8a7995dab&amp;p=oi&amp;m=1103767629851" target="_blank">SIGN UP FOR EMAIL OFFERS</a></h3>
+         <a class="go-link" href="http://visitor.r20.constantcontact.com/d.jsp?llr=8a7995dab&amp;p=oi&amp;m=1103767629851" target="_blank">Learn More</a> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div>
+    <!--END content-container--> 
+   </div>
+   <!--END holder--> 
+   <div id="footer-wrapper"> 
+    <div id="footer"> 
+     <div id="footer_top"> 
+      <div id="footer-menu"> 
+       <div id="jw_menu-footer_13" class="jw-widget jw-widget-2col jw-menu-2col-sm align-left no-items-separator"> 
+        <ul class="jw-menu"> 
+         <li class="shortcut1 item1 itemr2 level1 privacy-policy"><a href="http://www.uwconferencecenter.com/privacy-policy-en.html"><span class="menuItem">Privacy Policy</span></a></li> 
+         <li class="shortcut2 item2 itemr1 level1 sitemap last"><a href="http://www.uwconferencecenter.com/sitemap-en.html"><span class="menuItem">Site Map</span></a></li> 
+        </ul> 
+        <script type="text/javascript">
+		//<![CDATA[
+			condor.updatePageMenus = condor.updatePageMenus || function() {
+				var pageMenus = getElementsByClass('jw-menu', null, 'ul'), nojsList, i, j = pageMenus.length;
+				while(j--) {
+					nojsList = getElementsByClass('active-nojs', pageMenus[j]);
+					i = nojsList.length;
+					while(i--) {
+						removeClass(nojsList[i], 'active-nojs');
+					}
+				}
+			}
+			condor.updatePageMenus();
+		//]]>
+		</script>
+       </div>
+       <!-- jw-widget --> 
+       <div id="jw_menu-footer2_14" class="jw-widget jw-widget-2col jw-menu-2col-sm align-left no-items-separator"> 
+        <ul class="jw-menu"> 
+         <li class="shortcut1 item1 itemr3 level1 cookiesStatement"><a href="http://hhonors3.hilton.com/en/policy/cookies-statement/english.html" target="Array"><span class="menuItem">Cookies Statement (Updated January 2014)</span></a></li> 
+         <li class="shortcut2 item2 itemr2 level1 siteUsageAgreement"><a href="http://hhonors3.hilton.com/en_US/policy/site-usage-agreement/english.html" target="Array"><span class="menuItem">Site Usage Agreement</span></a></li> 
+         <li class="shortcut3 item3 itemr1 level1 globalPrivacy last"><a href="http://hhonors3.hilton.com/en/promotions/privacy-policy/english.html" target="Array"><span class="menuItem">Global Privacy Statement (Updated November 2013)</span></a></li> 
+        </ul> 
+        <script type="text/javascript">
+		//<![CDATA[
+			condor.updatePageMenus = condor.updatePageMenus || function() {
+				var pageMenus = getElementsByClass('jw-menu', null, 'ul'), nojsList, i, j = pageMenus.length;
+				while(j--) {
+					nojsList = getElementsByClass('active-nojs', pageMenus[j]);
+					i = nojsList.length;
+					while(i--) {
+						removeClass(nojsList[i], 'active-nojs');
+					}
+				}
+			}
+			condor.updatePageMenus();
+		//]]>
+		</script>
+       </div>
+       <!-- jw-widget --> 
+      </div> 
+     </div> 
+     <div class="clearfloat"></div> 
+     <div id="footer-bottom"> 
+      <div id="footer-bottom-left"> 
+       <div id="addrestext">
+         ©
+        <script type="text/javascript">var date = new Date(); document.write(date.getFullYear());</script>&nbsp;University of Wyoming Conference Center at the Hilton Garden Inn Laramie 
+        <br> 2229 Grand Ave., Laramie, Wyoming, 82070, USA 
+        <br> TEL: 1-307-745-5500 FAX: 1-307-745-4999 
+        <br> Email :
+        <a href="mailto:sales@uwconferencecenter.com">sales@uwconferencecenter.com</a> 
+       </div> 
+      </div> 
+      <div class="design-by-text">
+        Designed by&nbsp;
+       <a href="http://www.travelclick.com/" class="travel" title="TravelClick" target="_blank">TravelClick</a> 
+      </div> 
+      <!--<div id="fourdiamondlogo"><a href="" target="_blank"><img src="http://www.uwconferencecenter.com/templates/main/images/footer-logo.png" width="84px" height="76px" alt="" title="" /></a></div>--> 
+      <div class="logo-container"> 
+       <div id="logo1">
+        <a href="http://hiltongardeninn3.hilton.com/en/hotels/wyoming/hilton-garden-inn-laramie-LARLAGI/index.html" target="_blank"><img src="http://www.uwconferencecenter.com/templates/main/images/footer-logo-1.png" alt="HGI" title=""></a>
+       </div> 
+       <div id="logo-sep"></div> 
+       <div id="logo2">
+        <a href="http://www.his-corp.com/" target="_blank"><img src="http://www.uwconferencecenter.com/templates/main/images/footer-logo-2.png" alt="HIS" title=""></a>
+       </div>
+      </div> 
+     </div> 
+    </div>
+    <!--END footer-bottom--> 
+    <div class="clearfloat"></div>
+    <!--clears all floats in a container while making the layout flexible - did not use :after call because this way it is easier for the dev to float all and any items within a container without having to remember to clear the last one--> 
+   </div>
+   <!--END footer--> 
+   <div id="mainSlideshow"> 
+    <!--MAIN IMAGE ROTATOR--> 
+    <div id="slideshow54f2e9d15f038" class="slideshow"> 
+     <img class="slide" src="http://www.uwconferencecenter.com/d/uwconferencecenter/media/Conference_and_Meetings/__thumbs_1400_860_crop/DSC_2114-Edit.jpg?1377228364" width="1400" height="860" lang="en" alt=""> 
+     <script type="text/javascript">
+			//<![CDATA[
+				jQuery(document).ready(function(){
+					var slidesHtml = "<img class=\"slide\" src=\"http:\/\/www.uwconferencecenter.com\/d\/uwconferencecenter\/media\/Conference_and_Meetings\/__thumbs_1400_860_crop\/DSC_2114-Edit.jpg?1377228364\" width=\"1400\" height=\"860\" lang=\"en\" alt=\"\" \/>        <img class=\"slide\" src=\"http:\/\/www.uwconferencecenter.com\/d\/uwconferencecenter\/media\/UW_Pics\/__thumbs_1400_860_crop\/20120919_TCB9545.jpg?1378304350\" width=\"1400\" height=\"860\" lang=\"en\" alt=\"\" \/>        <img class=\"slide\" src=\"http:\/\/www.uwconferencecenter.com\/d\/uwconferencecenter\/media\/Conference_and_Meetings\/__thumbs_1400_860_crop\/DSC_2171-Edit.jpg?1377228396\" width=\"1400\" height=\"860\" lang=\"en\" alt=\"\" \/>        <img class=\"slide\" src=\"http:\/\/www.uwconferencecenter.com\/d\/uwconferencecenter\/media\/Conference_and_Meetings\/__thumbs_1400_860_crop\/larla-006.jpg?1377228729\" width=\"1400\" height=\"860\" lang=\"en\" alt=\"\" \/>        <img class=\"slide\" src=\"http:\/\/www.uwconferencecenter.com\/d\/uwconferencecenter\/media\/Conference_and_Meetings\/__thumbs_1400_860_crop\/DSC_2155-Edit.jpg?1377228382\" width=\"1400\" height=\"860\" lang=\"en\" alt=\"\" \/>";
+					jQuery('#slideshow54f2e9d15f038').html(slidesHtml).cycle(jQuery.extend({}, {slideResize: 0}));				});
+			//]]>
+			</script> 
+    </div> 
+    <!--END MAIN IMAGE ROTATOR--> 
+   </div> 
+  </div> 
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"e35b7bb30f","applicationID":"3509235","transactionName":"MldUY0FQDxZQARFaCQsddUJARQ4IHgYAVQcQXkI=","queueTime":0,"applicationTime":101,"ttGuid":"","agentToken":"","userAttributes":"","errorBeacon":"bam.nr-data.net","agent":"js-agent.newrelic.com\/nr-536.min.js"}</script> 
+  <!-- Served from Cache --> 
+  <!--24 Queries - 0.095278978347778 seconds -->
+ </body>
+</html>

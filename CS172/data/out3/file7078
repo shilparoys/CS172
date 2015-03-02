@@ -1,0 +1,1936 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=windows-1251"> 
+  <meta name="description" content="Российский университет дружбы народов (РУДН) предоставляет широкий комплекс образовательных услуг высшего профессионального образования и дополнительного образования. Реализует программы подготовки в бакалавриате и магистратуре"> 
+  <base href="/"> 
+  <meta name="keywords" content="Российский университет дружбы народов, РУДН, классический университет, высшее образование, бакалавриат, магистратура"> 
+  <link rel="stylesheet" type="text/css" href="style.css"> 
+  <script src="/js_css/jquery-1.9.1.js"></script> 
+  <script src="/js_css/jquery-migrate-1.2.1.js"></script> 
+  <script src="/js_css/jquery-ui.js"></script> 
+  <title>Главная|РУДН - Росcийский университет дружбы народов</title> 
+  <!--    <script type="text/javascript" src="jquery.js"></script>--> 
+  <script type="text/javascript" src="jquery.tooltip.js"></script> 
+  <!--    <script type="text/javascript" src="jquery.history.js"></script>--> 
+  <script type="text/javascript" src="jquery.address-1.5.min.js"></script> 
+  <script type="text/javascript" src="jquery.corner.js"></script> 
+  <link rel="stylesheet" type="text/css" href="simpletooltip.css"> 
+  <link rel="stylesheet" type="text/css" href="news.css"> 
+  <!--    <link rel="stylesheet" type="text/css" href="downClickMenu.css">--> 
+  <link rel="stylesheet" href="/js_css/jquery-ui.css"> 
+  <script>
+    var DIR = "";
+    </script> 
+  <script type="text/javascript" src="ajaxPage.js"></script> 
+  <script type="text/javascript" src="news.js">
+
+    <script type="text/javascript" src="vote.js"></script> 
+  <script type="text/javascript">
+        $(document).ready(function () {
+            $('.banner').simpletooltip();
+        });
+
+    </script> 
+  <link rel="stylesheet" type="text/css" href="downClickMenu.css"> 
+  <style>
+        .feedback_button
+        {
+            width:100%;
+            text-align: center;
+        }
+    </style> 
+ </head> 
+ <body bottommargin="10" leftmargin="10" rightmargin="10" topmargin="10"> 
+  <!--<link rel="stylesheet" type="text/css" href="downClickMenu.css">
+<script src="/js_css/jquery-1.9.1.js"></script>
+<script src="/js_css/jquery-migrate-1.2.1.js"></script>
+<script src="/js_css/jquery-ui.js"></script>
+<link rel="stylesheet" href="/js_css/jquery-ui.css">--> 
+  <script>
+
+
+    function feedback_ajax_question() {
+        var form_data = $('#feedback_question_form').serialize();
+
+
+//        var programm_id = $('#modal_form').data('id');
+//        if (programm_id.length == 0) {
+            programm_id = '1';
+//        }
+
+        form_data = form_data + '&programm_id=' + programm_id;
+
+
+        $.ajax({
+                type: 'POST',
+                url: './feedback/ajax.php',
+                data: form_data,
+                /*data: {
+
+                 num: num,
+                 new_man_id: new_man_id
+                 },*/
+                dataType: "json",
+                success: function (response) {
+                    if (response == 'ok') {
+//                        alert (response.echo);
+                        $('#feedback_question_form').trigger('reset');
+                        $('#feedback-dialog-message').dialog("destroy");
+                        alert('Вопрос отправлен');
+//                        $( this ).dialog( "destroy" );
+
+
+                    }
+                    else if (response == 'sql_error') {
+                        alert("Ошибка");
+
+                    }
+
+                    else if (response == 'empty') {
+                        alert("Поля не заполнены");
+
+                    }
+
+                    else {
+                        alert(response);
+                    }
+                }
+            }
+        );
+
+
+    }
+
+
+    function feedback_modal() {
+        var button1 = "ыварываолр";
+
+//$(function() {
+        $("#feedback-dialog-message").dialog({
+            modal: true,
+            width: 500,
+            autoOpen: true,
+            title:'Обратная связь',
+            closeOnEscape: false,
+            buttons: {
+
+                /* "Да, заполнить автоматически": function() {
+                 //unblock fields, заполнение (копирование файла паспорта, создание строки в новой таблице), появление кнопки загрузки старого скана серта
+                 $( this ).dialog( "close" );
+                 },*/
+
+                "Отправить": function () {
+//unblock fields
+                    feedback_ajax_question();
+//                    $( this ).dialog( "destroy" );
+                },
+
+                "Отмена": function () {
+                    $(this).dialog("destroy");
+                }
+
+
+            }
+        });
+    }
+    //});
+</script> 
+  <style>
+    .feedback_form th {
+        text-align: left;
+        width: 200px;
+    }
+
+    .feedback_form tr {
+        height: 30px;
+    }
+
+    .feedback_form input[type=text], textarea {
+        width: 300px;
+    }
+
+    /*    .feedback_form select
+        {
+           width: 305px;
+        }
+
+        .feedback_form textarea
+        {
+           width: 302px;
+        }*/
+
+</style> 
+  <div id="feedback-dialog-message" title="&nbsp;" style="display:none"> 
+   <form id="feedback_question_form"> 
+    <table class="feedback_form"> 
+     <tbody>
+      <tr> 
+       <th>ФИО</th> 
+       <td><input type="text" name="fio"></td> 
+      </tr> 
+      <tr> 
+       <th>Гражданство</th> 
+       <td> <input type="radio" name="citizen" value="1">РФ <input type="radio" name="citizen" value="2">другое 
+        <!--<select name="citizen">
+                        <option value='1'></option>
+                        <option value='0'>другое</option>
+                </select>--></td> 
+      </tr> 
+      <tr> 
+       <th>Высшее образование</th> 
+       <td> <input type="radio" name="higher_education" value="1">да <input type="radio" name="higher_education" value="2">нет 
+        <!--<select name="higher_education">
+                        <option value='1'>да</option>
+                        <option value='0'>нет</option>
+                </select>--></td> 
+      </tr> 
+      <tr> 
+       <th>E-mail для обратной связи</th> 
+       <td><input type="text" name="email"></td> 
+      </tr> 
+      <tr> 
+       <th>Ваш вопрос</th> 
+       <td><textarea name="question"></textarea></td> 
+      </tr> 
+     </tbody>
+    </table> 
+   </form> 
+  </div> 
+  <!--<input type="button" onclick="modal()" id="modal_form" data-id='' value="Задать вопрос">--> 
+  <!-- head  --> 
+  <table width="100%" height="110" border="0" cellpadding="0" cellspacing="0"> 
+   <tbody>
+    <tr> 
+     <td width="370" height="110"> 
+      <!-- {РУДН IMG --> <a href="./" class="rudn"> <img src="image/1.jpg" width="370" height="110" align="left" border="0" alt="На главную"> </a> 
+      <!--  РУДН IMG} --> </td> 
+     <td width="400" height="110" align="center"> 
+      <!-- { ссылки --> 
+      <table width="*%" border="0" cellspacing="0" cellpadding="0"> 
+       <tbody>
+        <tr> 
+         <td width="320"> 
+          <table> 
+           <tbody>
+            <tr> 
+             <td width="150" align="left"> <img src="image/3.gif" width="25" height="12" border="0"> <a href="./?pagec=2" class="menuleft top_sub_menu_link"><b>Абитуриенту</b></a> </td> 
+             <td width="170" align="left"><img src="image/3.gif" width="25" height="12" border="0"> <a href="./?pagec=162" class="menuleft"><b>Выпускнику</b></a></td> 
+            </tr> 
+            <tr height="30px"> 
+             <td align="left"> <img src="image/3.gif" width="25" height="12" border="0"> <a href="./?pagec=172" class="menuleft"><b>Студенту</b></a></td> 
+             <td align="left"> <img src="image/3.gif" width="25" height="12" border="0"> <a href="./?pagec=61" class="menuleft"><b>Аспиранту</b></a></td> 
+            </tr> 
+            <tr> 
+             <td colspan="2" align="left"><img width="25" height="12" border="0" src="image/3_2.gif"><a href="./?pagec=4184" class="menuleft"><b style="color:#CC0033; padding-left:3px">Текущая успеваемость студентов РУДН</b></a> </td> 
+            </tr> 
+           </tbody>
+          </table> </td> 
+        </tr> 
+       </tbody>
+      </table> 
+      <!-- ссылки}--> </td> 
+     <td width="256" height="110"> 
+      <!--{поиск и язык --> 
+      <table width="256" height="110" border="0" cellspacing="0" cellpadding="0"> 
+       <tbody>
+        <tr valign="bottom"> 
+         <td width="18" height="40" valign="bottom"> 
+          <div align="left">
+           <a href="./"> <img src="image/home.gif" alt="На главную" width="17" height="16" border="0"></a>
+          </div> </td> 
+         <td width="18" height="40" valign="bottom"> 
+          <div align="center">
+           <a href="map.php"><img src="image/map.gif" alt="Карта сайта" width="15" height="16" border="0"></a>
+          </div> </td> 
+         <td width="18" height="40" valign="bottom"> 
+          <div align="right"> 
+           <a href="mailto:site_s@mx.rudn.ru"><img src="image/mail.gif" alt="Почта" width="15" height="16" border="0"></a> 
+          </div> </td> 
+         <td width="25" height="40"> 
+          <div align="center">
+           <a href="./en"><img src="image/18.jpg" alt="English version" width="25" height="17" border="0"></a>
+          </div> </td> 
+         <td width="25" height="40"> 
+          <div align="center">
+           <a href="./fr"><img src="image/17.gif" alt="fran" width="25" height="17" border="0"></a>
+          </div> </td> 
+         <td width="25" height="40"> 
+          <div align="center">
+           <a href="./esp"><img src="image/esp.gif" alt="espaniol" width="25" height="17" border="0"></a>
+          </div> </td> 
+         <td width="25" height="40"> 
+          <div align="center">
+           <a href="/cn"><img src="image/chin.gif" alt="Chine" width="25" height="17" border="0"></a> 
+          </div></td>
+         <td width="25" height="40"> 
+          <div align="center">
+           <a href="/tr"><img src="image/turkey.png" alt="Turkish" width="25" height="17" border="0"></a>
+          </div> </td> 
+         <td width="25" height="40"> 
+          <div align="center">
+           <a href="/ar"><img src="image/arabsky.png" alt="Arabish" width="25" height="17" border="0"></a> 
+          </div> </td> 
+        </tr> 
+        <tr> 
+         <td colspan="9" scope="row" height="70"> 
+          <form method="POST" name="search" action="search.php"> 
+           <table width="100%" border="0" cellspacing="0" cellpadding="0"> 
+            <tbody>
+             <tr> 
+              <td width="156" align="right"><input class="submint" size="35" type="text" name="Value" value=""></td> 
+              <td width="100" align="left"><input type="image" src="image/submint.jpg" align="absmiddle" border="0" name="submit" value="submit" alt=""></td> 
+             </tr> 
+            </tbody>
+           </table> 
+          </form> </td> 
+        </tr> 
+       </tbody>
+      </table> 
+      <!-- поиск и язык}--> </td> 
+    </tr> 
+   </tbody>
+  </table> 
+  <!-- head  end --> 
+  <table width="100%" border="0" cellspacing="0" cellpadding="0"> 
+   <tbody>
+    <tr> 
+     <td valign="top" style="width:250px;"> 
+      <!-- {menu  --> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0"> 
+       <tbody>
+        <tr> 
+         <td width="10" valign="top"><img src="image/3_2.gif" style="padding-top:3px;" border="0"></td> 
+         <td align="left" valign="top"><a href="news.php" class="menuleft_news">Новости</a></td> 
+        </tr> 
+        <!--<tr>
+          <td  width="25" valign="top"></td>
+          <td  width="175" valign="top" align="left"><br></td>
+        </tr>--> 
+        <tr class="tr_menuleft downShift"> 
+         <td valign="top" width="10px"> <img src="/image/menu_arrow.gif" style="padding-top:3px;" border="0"> </td> 
+         <td align="left" valign="top"> 
+          <div class="downClick dsContainer"> 
+           <a href="./?pagec=12" onclick="" class="dsLink downClick">О РУДН</a> 
+           <div class="downClick dsMenu">
+            <div class="downClick dsElement">
+             <a href="./?pagec=13" class="dsMenuLink">История создания</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=4888" class="dsMenuLink">Адаптация и обеспечение комплексной безопасности в РУДН</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=4021" class="dsMenuLink">Нормативные документы</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=4265" class="dsMenuLink">Программа стратегического развития</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=2833" class="dsMenuLink">Музей РУДН</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=386" class="dsMenuLink">Традиции университета</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=17" class="dsMenuLink">Ежегодные мероприятия в университете</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=4903" class="dsMenuLink">Встречи с интересными людьми</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=4041" class="dsMenuLink">Фотогалерея</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=2920" class="dsMenuLink">Выдающиеся выпускники РУДН</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=15" class="dsMenuLink">Кадровый состав</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=14" class="dsMenuLink">Структура управления университетом</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=507" class="dsMenuLink">Преимущества РУДН</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=811" class="dsMenuLink">Миссия РУДН</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=2534" class="dsMenuLink">Почетные доктора РУДН</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=4057" class="dsMenuLink">Система качества РУДН</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=2738" class="dsMenuLink">Периодические издания РУДН</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=4940" class="dsMenuLink">Некролог</a>
+            </div>
+           </div>
+          </div></td>
+        </tr>
+        <tr class="tr_menuleft downShift"> 
+         <td valign="top" width="10px"> <img src="/image/menu_arrow.gif" style="padding-top:3px;" border="0"> </td> 
+         <td align="left" valign="top"> 
+          <div class="downClick dsContainer"> 
+           <a href="./?pagec=4841" onclick="" class="dsLink downClick">Основные сведения о РУДН</a> 
+          </div></td>
+        </tr>
+        <tr class="tr_menuleft downShift"> 
+         <td valign="top" width="10px"> <img src="/image/menu_arrow.gif" style="padding-top:3px;" border="0"> </td> 
+         <td align="left" valign="top"> 
+          <div class="downClick dsContainer"> 
+           <a href="./?pagec=4759" onclick="" class="dsLink downClick">Достижения РУДН</a> 
+          </div></td>
+        </tr>
+        <tr class="tr_menuleft downShift"> 
+         <td valign="top" width="10px"> <img src="/image/menu_arrow.gif" style="padding-top:3px;" border="0"> </td> 
+         <td align="left" valign="top"> 
+          <div class="downClick dsContainer"> 
+           <a href="./?pagec=4081" onclick="" class="dsLink downClick">Элита РУДН</a> 
+          </div></td>
+        </tr>
+        <tr class="tr_menuleft downShift"> 
+         <td valign="top" width="10px"> <img src="/image/menu_arrow.gif" style="padding-top:3px;" border="0"> </td> 
+         <td align="left" valign="top"> 
+          <div class="downClick dsContainer"> 
+           <a href="./?pagec=3538" onclick="" class="dsLink downClick">Страница Ректора</a> 
+          </div></td>
+        </tr>
+        <tr class="tr_menuleft downShift"> 
+         <td valign="top" width="10px"> <img src="/image/menu_arrow.gif" style="padding-top:3px;" border="0"> </td> 
+         <td align="left" valign="top"> 
+          <div class="downClick dsContainer"> 
+           <a href="./?pagec=4558" onclick="" class="dsLink downClick">Аккредитация РУДН</a> 
+          </div></td>
+        </tr>
+        <tr class="tr_menuleft downShift"> 
+         <td valign="top" width="10px"> <img src="/image/menu_arrow.gif" style="padding-top:3px;" border="0"> </td> 
+         <td align="left" valign="top"> 
+          <div class="downClick dsContainer"> 
+           <a href="./?pagec=25" onclick="" class="dsLink downClick">Учебные подразделения и центры</a> 
+           <div class="downClick dsMenu">
+            <div class="downClick dsElement">
+             <a href="./?pagec=26" class="dsMenuLink">Аграрный факультет</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=28" class="dsMenuLink">Медицинский институт</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=27" class="dsMenuLink">Инженерный факультет</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=29" class="dsMenuLink">Факультет физико-математических и естественных наук</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=30" class="dsMenuLink">Факультет гуманитарных и социальных наук</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=31" class="dsMenuLink">Филологический факультет</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=32" class="dsMenuLink">Факультет русского языка и общеобразовательных дисциплин</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=33" class="dsMenuLink">Экологический факультет</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=34" class="dsMenuLink">Экономический факультет</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=35" class="dsMenuLink">Юридический институт</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=36" class="dsMenuLink">Общеуниверситетские кафедры</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=37" class="dsMenuLink">Институт гостиничного бизнеса и туризма</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=38" class="dsMenuLink">Институт международных программ </a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=39" class="dsMenuLink">Институт иностранных языков</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=41" class="dsMenuLink">Учебно-научный институт гравитации и космологии</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=4647" class="dsMenuLink">Институт прикладных технико-экономических исследований и экспертиз</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=40" class="dsMenuLink">Институт мировой экономики и бизнеса (Международная школа бизнеса)</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=3858" class="dsMenuLink">Институт медико-биологических проблем</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=4704" class="dsMenuLink">Институт инновационно-образовательных программ в здравоохранении</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=42" class="dsMenuLink">Филиал РУДН в г. Перми</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=44" class="dsMenuLink">Филиал РУДН в г. Сочи Краснодарского края</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=45" class="dsMenuLink">Филиал РУДН в г. Якутске Республики Саха (Якутия)</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=46" class="dsMenuLink">Филиал университета в г. Белгород</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=47" class="dsMenuLink">Филиал РУДН в г. Ставрополь</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=1431" class="dsMenuLink">Филиал РУДН в г.Ессентуки Ставропольский край</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=49" class="dsMenuLink">Центры</a>
+            </div>
+           </div>
+          </div></td>
+        </tr>
+        <tr class="tr_menuleft downShift"> 
+         <td valign="top" width="10px"> <img src="/image/menu_arrow.gif" style="padding-top:3px;" border="0"> </td> 
+         <td align="left" valign="top"> 
+          <div class="downClick dsContainer"> 
+           <a href="./magistratura" onclick="" class="dsLink downClick">Магистратура в РУДН</a> 
+          </div></td>
+        </tr>
+        <tr class="tr_menuleft downShift"> 
+         <td valign="top" width="10px"> <img src="/image/menu_arrow.gif" style="padding-top:3px;" border="0"> </td> 
+         <td align="left" valign="top"> 
+          <div class="downClick dsContainer"> 
+           <a href="./?pagec=1868" onclick="" class="dsLink downClick">Довузовское образование</a> 
+           <div class="downClick dsMenu">
+            <div class="downClick dsElement">
+             <a href="./?pagec=4709" class="dsMenuLink">Профильные классы</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=4946" class="dsMenuLink">Программа "Приток"</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=4947" class="dsMenuLink">"IT школа SAMSUNG"</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=4948" class="dsMenuLink">Университетские субботы</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=4949" class="dsMenuLink">Программа "Одаренные дети"</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=4950" class="dsMenuLink"></a>
+             <a href="http://www.rudn.ru/?pagec=3461" target="_blank">Олимпиады</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=4953" class="dsMenuLink">Экскурсии в РУДН</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=4954" class="dsMenuLink">Выездные дни открытых дверей</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=4955" class="dsMenuLink">Ярмарка идей на Юго-Западе</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=1872" class="dsMenuLink">Подготовка к ЕГЭ и ГИА в ЦМДО «Уникум» </a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=1871" class="dsMenuLink">МБШ «Медик»</a>
+            </div>
+           </div>
+          </div></td>
+        </tr>
+        <tr class="tr_menuleft downShift"> 
+         <td valign="top" width="10px"> <img src="/image/menu_arrow.gif" style="padding-top:3px;" border="0"> </td> 
+         <td align="left" valign="top"> 
+          <div class="downClick dsContainer"> 
+           <a href="./?pagec=59" onclick="" class="dsLink downClick">Аспирантура, докторантура, ординатура, интернатура</a> 
+           <div class="downClick dsMenu">
+            <div class="downClick dsElement">
+             <a href="./Aspirantura" class="dsMenuLink">Аспирантура</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./Ordinatura" class="dsMenuLink">Ординатура</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=5029" class="dsMenuLink">Интернатура</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=5030" class="dsMenuLink">Докторантура</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=4936" class="dsMenuLink">Прикрепление для подготовки и защиты диссертации</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=2298" class="dsMenuLink">Советы по защите докторских и кандидатских диссертаций</a>
+            </div>
+           </div>
+          </div></td>
+        </tr>
+        <tr class="tr_menuleft downShift"> 
+         <td valign="top" width="10px"> <img src="/image/menu_arrow.gif" style="padding-top:3px;" border="0"> </td> 
+         <td align="left" valign="top"> 
+          <div class="downClick dsContainer"> 
+           <a href="./?pagec=64" onclick="" class="dsLink downClick">Дополнительное образование и повышение квалификации в РУДН</a> 
+           <div class="downClick dsMenu">
+            <div class="downClick dsElement">
+             <a href="./?pagec=539" class="dsMenuLink">Центры дополнительного профессионального образования</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=5002" class="dsMenuLink">Летние школы 2015</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=4874" class="dsMenuLink">Институт восточной медицины</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=4875" class="dsMenuLink">Факультет повышения квалификации медицинских работников</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=4882" class="dsMenuLink">Кафедра специального образования</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=4066" class="dsMenuLink">Высшая школа управления и экономической безопасности</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=3635" class="dsMenuLink">Целевые программы г. Москвы</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=1621" class="dsMenuLink">Программы обучения работе на инновационном оборудовании Центра Коллективного Пользования РУДН</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=551" class="dsMenuLink">Программы дополнительного профессионального образования на кафедрах РУДН</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=553" class="dsMenuLink">Факультеты повышения квалификации</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=4564" class="dsMenuLink">Основные направления деятельности </a>
+            </div>
+           </div>
+          </div></td>
+        </tr>
+        <tr class="tr_menuleft downShift"> 
+         <td valign="top" width="10px"> <img src="/image/menu_arrow.gif" style="padding-top:3px;" border="0"> </td> 
+         <td align="left" valign="top"> 
+          <div class="downClick dsContainer"> 
+           <a href="./?pagec=486" onclick="" class="dsLink downClick">Платное образование</a> 
+           <div class="downClick dsMenu">
+            <div class="downClick dsElement">
+             <a href="./?pagec=494" class="dsMenuLink">Коммерческое Управление</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=495" class="dsMenuLink">График приема посетителей</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=496" class="dsMenuLink">Ссылки на внешние ресурсы</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=4304" class="dsMenuLink">Документы, с которыми необходимо ознакомиться до заключения договора</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=4318" class="dsMenuLink">Образовательный кредит с государственной поддержкой</a>
+            </div>
+           </div>
+          </div></td>
+        </tr>
+        <tr class="tr_menuleft downShift"> 
+         <td valign="top" width="10px"> <img src="/image/menu_arrow.gif" style="padding-top:3px;" border="0"> </td> 
+         <td align="left" valign="top"> 
+          <div class="downClick dsContainer"> 
+           <a href="./?pagec=2664" onclick="" class="dsLink downClick">Языки в РУДН</a> 
+           <div class="downClick dsMenu">
+            <div class="downClick dsElement">
+             <a href="./?pagec=2665" class="dsMenuLink">Русский язык в РУДН</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=2666" class="dsMenuLink">Иностранные языки в РУДН</a>
+            </div>
+           </div>
+          </div></td>
+        </tr>
+        <tr class="tr_menuleft downShift"> 
+         <td valign="top" width="10px"> <img src="/image/menu_arrow.gif" style="padding-top:3px;" border="0"> </td> 
+         <td align="left" valign="top"> 
+          <div class="downClick dsContainer"> 
+           <a href="./?pagec=121" onclick="" class="dsLink downClick">Наука в РУДН</a> 
+           <div class="downClick dsMenu">
+            <div class="downClick dsElement">
+             <a href="./?pagec=4372" class="dsMenuLink">Научные семинары</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=4876" class="dsMenuLink">Журнал «Alma mater»</a>
+            </div>
+           </div>
+          </div></td>
+        </tr>
+        <tr class="tr_menuleft downShift"> 
+         <td valign="top" width="10px"> <img src="/image/menu_arrow.gif" style="padding-top:3px;" border="0"> </td> 
+         <td align="left" valign="top"> 
+          <div class="downClick dsContainer"> 
+           <a href="./?pagec=2734" onclick="" class="dsLink downClick">Трудоустройство</a> 
+           <div class="downClick dsMenu">
+            <div class="downClick dsElement">
+             <a href="./?pagec=2737" class="dsMenuLink">Департамент организации практик и трудоустройства обучающихся в РУДН</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=2735" class="dsMenuLink">Конкурс на замещение ППС и перечень вакансий Университета</a>
+            </div>
+            <div class="downClick dsElement">
+             <a href="./?pagec=3406" class="dsMenuLink">Перечень документов, необходимых при приеме на работу</a>
+            </div>
+           </div>
+          </div></td>
+        </tr>
+        <tr class="tr_menuleft downShift"> 
+         <td valign="top" width="10px"> <img src="/image/menu_arrow.gif" style="padding-top:3px;" border="0"> </td> 
+         <td align="left" valign="top"> 
+          <div class="downClick dsContainer"> 
+           <a href="./?pagec=138" onclick="" class="dsLink downClick">Международная деятельность</a> 
+          </div></td>
+        </tr>
+        <tr class="tr_menuleft downShift"> 
+         <td valign="top" width="10px"> <img src="/image/menu_arrow.gif" style="padding-top:3px;" border="0"> </td> 
+         <td align="left" valign="top"> 
+          <div class="downClick dsContainer"> 
+           <a href="./?pagec=158" onclick="" class="dsLink downClick">Контакты</a> 
+          </div></td>
+        </tr>  
+       </tbody>
+      </table> 
+      <!--{banner--> <br> <script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script> 
+      <div class="yashare-auto-init" data-yasharel10n="ru" data-yasharetype="button" data-yasharequickservices="yaru,vkontakte,facebook,twitter,odnoklassniki,moimir"></div> <br> <br> 
+      <!--<center><a href="http://www.rsr-online.ru/index.php" target="_blank"><img id="ban_rektor" src="image/sovet_rectorov.gif" border="0" width="88" title="Российский Союз ректоров"></a></center>
+                    <br>
+    --> 
+      <!--<center><a href="http://www.rudn.ru/iop/" target="_blank"><img  src="image/iop.gif" border="0" width="88"></a></center>
+    <br>--> 
+      <!--<center><a href="http://www.rudn.ru/?pagec=2296" target="_blank"><img src="image/bolon2.gif" border="0" width="88" ></a></center>
+    <br>--> 
+      <!--<center><a href="http://www.rudn.ru/?pagec=2624" target="_blank"><img src="image/rudn14.gif" border="0"
+                                                                          width="88"></a></center>
+    <br>--> 
+      <!--<center><a href="http://soveshanie2010.rudn.ru/" target="_blank"><img src="image/prorector.gif" border="0" width="88"></a>
+    </center>
+    <br>--> 
+      <!--<center><a href="http://www.rudn.ru/?pagec=3387&utm_source=rudn&utm_medium=banner&utm_campaign=mainpage" target="_blank"><img src="image/olimpiada.gif" border="0" width="88"></a>
+    </center>
+    <br>--> 
+      <!--<center><a href="http://confer.rudn.ru/" target="_blank"><img src="image/school_jur.gif" border="0" width="88"></a>
+    </center>
+    <br>--> 
+      <!--<center><a href="http://www.rudn.ru/?pagec=723" target="_blank"><img src="image/rud5.gif" border="0" width="88"></a>
+    </center>
+    <br>--> 
+      <!-- <center><a href="http://job.rudn.ru" target="_blank"><img src="image/trud_banner.gif" border="0" width="88"></a>
+    </center>
+    <br> --> 
+      <center>
+       <a href="http://www.dporudn.ru" target="_blank"><img src="images/dporudn.jpg" border="0" width="88"></a> 
+      </center> <br> 
+      <!--<center><a href="http://conf.rudn.ru/rg" target="_blank"><img src="image/ban_rg_conf.gif" border="0" width="88"></a>
+    </center>
+    <br>--> 
+      <center>
+       <a href="http://www.rudn.ru/?pagec=1872" target="_blank"><img src="image/rud4.gif" border="0" width="88"></a>
+      </center> <br> 
+      <center>
+       <a href="http://www.rudn.ru/?pagec=1871" target="_blank"><img src="image/rud3.gif" border="0" width="88"></a>
+      </center> <br> 
+      <!--<center><a href="http://business.rudn.ru/" target="_blank"><img src="image/busines.jpg" border="0"
+                                                                    width="88"></a></center>
+    <br>--> 
+      <center>
+       <a href="http://ccp.rudn.ru/" target="_blank"><img src="image/ccp.gif" border="0" width="88"></a> 
+      </center> <br> 
+      <center>
+       <a href="http://www.cmso.ru" target="_blank"><img class="banner" src="image/cmso.gif" border="0" width="88" title="Центр молодёжных студенческих отрядов РУДН"></a> 
+      </center> <br> 
+      <center>
+       <a href="index.php?pagec=2231" target="_blank"><img src="image/mba_all.gif" border="0" width="88"></a> 
+      </center> <br> 
+      <!--    <center><a href="http://www.cikrf.ru/" target="_blank"><img src="image/banner_cik.gif" border="0" width="88" ></a></center>
+   <br> --> 
+      <!--
+   <center><a href="http://www.eua.be" target="_blank"><img src="image/EUA.gif" border="0" width="88" ></a></center>
+   <br> --> 
+      <!--
+   <center><a href="http://www.russie.campusfrance.org/" target="_blank"><img src="image/campusfrance.gif" border="0" width="88" ></a></center>
+   <br> --> 
+      <!--  <center><a href="http://www.francomania.ru/" target="_blank"><img src="image/francomania.gif" border="0" width="88" ></a></center>
+   <br> --> 
+      <!--
+         <center><a href="http://www.cosmology.su/" target="_blank"><img src="image/cosm.jpg" border="0" width="88" ></a></center>
+   <br> --> 
+      <center>
+       <a href="http://www.rudn.ru/fpkp/" target="_blank"><img src="image/rki.gif" border="0" width="88"></a> 
+      </center> <br> 
+      <!-- <center><a href="http://www.rudn.ru/?pagec=952" target="_blank" title="Олимпиада по русскому языку 2007"><img src="image/banner_ru_olimp.gif" alt="Олимпиада по русскому языку 2007" border="1" style="border:1px #cccccc solid" width="88" ></a></center>
+    --> 
+      <!-- <center><a href="http://dporudn.com" target="_blank"><img src="image/dpo.gif" border="0" width="88"></a>
+    </center>
+    <br> --> 
+      <!-- <center><a href="http://conf.rudn.ru/internalization" target="_blank"><img src="image/banner_conf.gif" border="0" width="88"></a></center>
+   <br> --> 
+      <!-- <center><a href="http://conf.rudn.ru/unesco" target="_blank"><img src="image/banner-2010-2.gif" border="0" width="88"></a></center>
+   <br> --> 
+      <center>
+       <a href="http://alumnirudn.ru/" target="_blank"><img src="image/vipuskniki.jpg" border="0" width="88"></a>
+      </center> <br> 
+      <!--<center><a href="http://conf.rudn.ru/vice-rector/" target="_blank"><img src="images/PROREKTOR-konf-banner_1FIN.gif" border="0"
+                                                                              width="88"></a></center>    <br>--> 
+      <!--<center><a href="http://www.youthdiplomacy.com" target="_blank"><img src="images/baner_G8&G20YS.jpg" border="0"
+                                                                              width="88" title="Лига международной молодежной дипломатии" class="banner"></a></center>    <br>
+
+
+            <center><a href="http://iop.rudn.ru" target="_blank"><img src="image/iop.gif" border="0" width="88"></a>
+            </center>
+            <br>
+            --> 
+      <!-- <center><a href="http://www.rudn.ru/?pagec=2813" target="_blank"><img src="image/dac.gif" border="0" width="88"></a>
+    </center>
+    <br> --> 
+      <!--<center><a href="http://www.rudn.ru/?pagec=2971" target="_blank"><img src="image/sport.gif" border="0"
+                                                                          width="88"></a>
+    </center>
+    <br>--> 
+      <!-- <center><a href="http://www.rudn-avtoschool.ru" target="_blank"><img src="image/auto.gif" border="0" width="88"></a>
+    </center>
+    <br>
+    <center><a href="http://www.rudn.ru/?pagec=33" target="_blank"><img src="images/ushos.jpg" border="0" width="88"></a>
+    </center>
+    <br> --> 
+      <!-- <center><a href="http://moscowsummerschool.ru" target="_blank"><img src="images/moscow_summer_school.jpg" border="0"
+                                                                        width="88"></a>
+    </center>
+	 <br>--> 
+      <!-- <center><a href="http://www.dporudn.ru/france2013" target="_blank"><img src="images/france2013.png" border="0"
+                                                                            width="88"></a>
+    </center>
+    <br> --> 
+      <!--<center><a href="http://economist.rudn.ru/conference/" target="_blank"><img src="images/BRICS.jpg" border="0" width="88"></a>
+    </center>
+    <br>
+    --> 
+      <!--<center><a href="http://минобрнауки.рф/" target="_blank"><img src="images/minobrnauk.jpg" border="0" width="88"></a>
+    </center>--> 
+      <center>
+       <a href="http://www.mon.gov.ru" target="_blank"><img src="images/mon.gov.ru.png" border="0" width="88"></a> 
+      </center> <br> 
+      <center>
+       <a href=" http://www.edu.ru" target="_blank"><img src="images/edu.ru.png" border="0" width="88"></a> 
+      </center> <br> 
+      <center>
+       <a href="http://window.edu.ru" target="_blank"><img src="images/window.edu.ru.png" border="0" width="88"></a> 
+      </center> <br> 
+      <center>
+       <a href="http://school-collection.edu.ru" target="_blank"><img src="images/school-collection.edu.ru.png" border="0" width="88"></a> 
+      </center> <br> 
+      <center>
+       <a href="http://fcior.edu.ru" target="_blank"><img src="images/fcior.edu.ru.png" border="0" width="88"></a> 
+      </center> <br> 
+      <!--
+		<center><a href="http://ldkudryavtsev90.rudn.ru/" target="_blank"><img src="images/90.jpg" border="0" width="88"></a>
+        </center> 
+        <br>--> 
+      <!--
+   <center><a href="http://conf.rudn.ru/podfak/" target="_blank"><img src="images/banner_podfak.gif" border="0" width="88"></a>
+   </center>
+   <br>
+   <center><a href="http://conf.rudn.ru/vice-rector-2012/" target="_blank"><img src="images/5-7_12_12.gif" border="0" width="88"></a>
+   </center>
+   <br>--> 
+      <!--<center><a href="http://www.rad.pfu.edu.ru/u.m.n.i.k-v-rudn" target="_blank"><img src="image/banner-umnik.gif" border="0" width="88"></a>
+    </center>
+    <br>--> 
+      <!-- <center><a href="http://www.econ-rudn.ru/general_information/centr_latinoamerikanskih_issledovaniy/nauchno_prakticheskaya_konferenciya_rossiya_v_gruppe_brik_problemy_perspektivy_proekciya_na_vneshniy_mir_/index.htm" target="_blank"><img  src="image/brik3.gif" border="0" width="88"></a></center>
+   <br> --> 
+      <!--<center><a href="http://wwww.rudn.ru/?pagec=2691" target="_blank"><img src="images/proff_standart.png" border="0"
+                                                                           width="88"></a></center>
+																		   <br>--> 
+      <center>
+       <a href="http://nano.rudn.ru/" target="_blank"><img src="images/nano.rudn.jpg" border="0" width="88"></a>
+      </center> <br> 
+      <!-- <center><a href="http://www.rudn.cn" target="_blank"><img src="image/cn3.jpg" border="0" width="88"></a>
+    </center> <br>   --> 
+      <!--<center><a href="http://conf.sknow.ru/vice-rector-2014" target="_blank"><img src="image/vice-rector_2014.gif" border="0" width="88"></a>
+    </center>--> 
+      <!--<center><a href="http://elearn.rudn.ru" target="_blank"><img src="images/E-learn.png" border="0" width="88"></a>
+    </center>
+
+    <br>--> <br> 
+      <!--banner}--> </td> 
+     <!--{ counters  --> 
+     <td valign="top" width="*%" background="image/line_left.gif" rowspan="4"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" style=" height:180px;"> 
+       <tbody>
+        <tr style="height:180px;"> 
+         <td style="width:120px; height:180px; background:url('image/6.gif')  repeat-x;"><img src="image/5.jpg" width="10" height="180" border="0"></td> 
+         <td style="height:180px; background:url('image/6.gif') repeat-x;" align="right"><img src="image/top2.jpg" width="441" height="180"></td> 
+        </tr> 
+       </tbody>
+      </table> 
+      <!-- --> 
+      <!--{ content  --> 
+      <table width="100%" border="0" align="left" cellpadding="0" cellspacing="0"> 
+       <tbody>
+        <tr> 
+         <td bgcolor="#339504" width="10" valign="top"><img src="image/b_left.gif" width="10" height="35"> </td> 
+         <td width="*%" valign="bottom" align="left"> 
+          <div class="div_top" id="menu_map"> 
+           <font class="h1_HI">Добро пожаловать!</font>
+          </div> </td>
+        </tr> 
+        <tr style="height:1px;"> 
+         <td scope="row" height="1" width="10" style="height:1px;background-color:#339504;"></td> 
+         <td align="right" style="height:1px; background:url('image/line_top.gif') repeat-x;"></td> 
+        </tr> 
+        <!--       <tr style="height:1px;">
+       <td bgcolor="#339504" scope="row" height="1" width="10" style="height:1px;"></td>
+       <td background="image/line_top.gif" height="1" align="right" style="height:1px;">&nbsp;<img height="1" src="image/right_line_end.gif" ></td>
+   </tr>    --> 
+        <tr> 
+         <td scope="row" width="10">&nbsp;</td> 
+         <td width="*%"> 
+          <div class="div_content" id="div_content">
+           <br>
+           <h2 style="padding-bottom: 0px; text-align: center; padding-top: 0px; padding-left: 0px; margin: 0px; padding-right: 0px"> &nbsp;</h2> 
+           <h2 style="padding-bottom: 0px; text-align: center; padding-top: 0px; padding-left: 0px; margin: 0px; padding-right: 0px"> <a href="http://e-tour2011.rudn.ru" target="_blank"><img alt="" src="pictur.php?t_id=2572" style="border-top: 0px solid; height: 32px; border-right: 0px solid; border-bottom: 0px solid; border-left: 0px solid; width: 202px"></a></h2> 
+           <h2 style="padding-bottom: 0px; text-align: center; padding-top: 0px; padding-left: 0px; margin: 0px; padding-right: 0px"> <a href="http://e-tour.rudn.ru/" target="_blank"><img alt="" src="/pictur.php?t_id=3608" style="border-top: 0px solid; height: 32px; border-right: 0px solid; border-bottom: 0px solid; border-left: 0px solid; width: 202px"></a></h2> 
+           <h2 style="padding-bottom: 0px; text-align: center; padding-top: 0px; padding-left: 0px; margin: 0px; padding-right: 0px"> &nbsp;</h2> 
+           <table border="0" cellpadding="1" cellspacing="1" style="width: 100%;"> 
+            <tbody> 
+             <tr> 
+              <td style="text-align: center;"> &nbsp;</td> 
+              <td style="text-align: center;"> <a href="http://www.rudn.ru/?pagec=2"><span style="font-size: 14px;"><strong>Приемная комиссия:</strong></span></a> <span style="font-size: 14px;"> +7 (495) 787-38-27</span></td> 
+              <td style="text-align: center;"> &nbsp;</td> 
+             </tr> 
+            </tbody> 
+           </table> 
+           <div style="text-align: center;"> 
+            <a href=" index.php?pagec=5022"><span style="font-size:14px;">Телефоны горячей линии по вопросам прохождения экзамена по русскому языку, истории России и основам законодательства РФ</span></a>
+           </div> 
+           <div style="text-align: center;"> 
+            <p align="center"> <span style="color:#00f;"><span style="font-size: 14px;">Центр тестирования РУДН (ЦТУ): +7 (495) 648 49 28, +7 (499) 936 85 79</span></span></p> 
+           </div> 
+           <table align="center" border="0" cellpadding="1" cellspacing="1" height="1400" style="width: 100%;"> 
+            <tbody> 
+             <tr> 
+              <td height="113" style="vertical-align: middle; text-align: center"> <h2 style="padding-bottom: 0px; padding-top: 0px; padding-left: 0px; margin: 0px; padding-right: 0px"> <span style="font-family: tahoma,geneva,sans-serif"><span style="color: rgb(0,153,204)"><span style="font-size: 14px">Горячие новости:</span></span></span></h2> </td> 
+             </tr> 
+             <tr> 
+              <td height="113" style="vertical-align: middle; text-align: center"> <a href="http://55let.rudn.ru/" target="_blank"><img alt="" src="pictur.php?t_id=5143" style="width: 150px; height: 89px;"></a></td> 
+              <td style="text-align: center"> <p> <a href="https://www.youtube.com/watch?v=Wlza97vf55Y" target="_blank"><strong><span style="color: #0099ff"><span style="font-family: tahoma,geneva,sans-serif"><span style="font-size: 14px">«РУДН сегодня» - презентационный фильм к 55-летию Российского университета дружбы народов </span></span></span></strong></a></p> </td> 
+             </tr> 
+             <tr> 
+              <td height="113" style="vertical-align: middle; text-align: center"> <a href="http://55let.rudn.ru/" target="_blank"><img alt="" src="pictur.php?t_id=5142" style="width: 150px; height: 100px;"></a></td> 
+              <td style="text-align: center"> <p> <strong><span style="color: #0099ff"><span style="font-family: tahoma,geneva,sans-serif"><span style="font-size: 14px">7 февраля Российский университет дружбы народов отпраздновал свое 55-летие в Государственном Кремлевском Дворце!</span></span></span></strong></p> <p> <a href="http://55let.rudn.ru/" target="_blank"><strong><span style="color: #0099ff"><span style="font-family: tahoma,geneva,sans-serif"><span style="font-size: 14px">Подробности о праздновании и фоторепортажи мероприятий смотрите на официальном сайте, посвященном юбилею нашего университета</span></span></span></strong></a></p> </td> 
+             </tr> 
+             <tr> 
+              <td height="113" style="vertical-align: middle; text-align: center"> <img alt="" src="pictur.php?t_id=5141" style="width: 150px; height: 100px;"></td> 
+              <td style="text-align: center"> <p> <a href="file.php?id=4481" target="_blank"><strong><span style="color: #0099ff"><span style="font-family: tahoma,geneva,sans-serif"><span style="font-size: 14px">7 февраля в Государственном Кремлевском Дворце Председатель Совета Федерации Федерального Собрания РФ, Председатель Наблюдательного совета РУДН Валентина Ивановна Матвиенко поздравила Университет с 55-летием со дня его основания</span></span></span></strong></a></p> <p> <strong><span style="color: #0099ff"><span style="font-family: tahoma,geneva,sans-serif"><span style="font-size: 14px">Также были оглашены Приветствия <a href="http://55let.rudn.ru/file.php?id=149">Председателя Правительства Российской Федерации Д.А. Медведева</a> и <a href="file.php?id=4484">Председателя Государственной Думы С.Е. Нарышкина</a></span></span></span></strong></p> <p> <a href="http://55let.rudn.ru/?pagec=4197" target="_blank"><strong><span style="color: #0099ff"><span style="font-family: tahoma,geneva,sans-serif"><span style="font-size: 14px">РУДН благодарит государственных деятелей, руководителей международных организаций, посольства и своих партнеров за многочисленные поздравления, поступившие в адрес Университета</span></span></span></strong></a></p> </td> 
+             </tr> 
+             <tr> 
+              <td height="113" style="vertical-align: middle; text-align: center"> <img alt="" src="pictur.php?t_id=5144 " style="width: 150px; height: 100px;"></td> 
+              <td style="text-align: center"> <p> <a href="http://www.rudn.ru/index.php?pagec=4234"><strong><span style="color: rgb(0, 153, 255);"><span style="font-family: tahoma, geneva, sans-serif;"><span style="font-size: 14px;">Поздравляем сотрудников Российского университета дружбы народов, получивших высокие награды на Торжественном заседании, посвященном 55-летию Университета, в Государственном Кремлевском Дворце! </span></span></span></strong></a></p> </td> 
+             </tr> 
+             <tr> 
+              <td height="113" style="vertical-align: middle; text-align: center"> <img alt="" src="pictur.php?t_id=5161 " style="width: 150px; height: 100px;"></td> 
+              <td style="text-align: center"> <strong><span style="color: rgb(0, 153, 255);"><span style="font-family: tahoma, geneva, sans-serif;"><span style="font-size: 14px;">Опубликован <a href="http://euchamb.com/?page_id=344">рейтинг вузов Европейской промышленной палаты Academic Ranking of World Universities-European Standard ARES-2014</a>. РУДН занимает 19 место среди российских вузов, входя в категорию А+1. Категория А (AAA, AA+, AА, А+, А) - высокое качество преподавания, научной деятельности и востребованности выпускников работодателями (High quality performance)</span></span></span></strong></td> 
+             </tr> 
+             <tr> 
+              <td height="113" style="vertical-align: middle; text-align: center"> <img alt="" src="pictur.php?t_id=5165 " style="width: 150px; height: 208px;"></td> 
+              <td style="text-align: center"> <p> <strong><span style="color: #0099ff"><span style="font-family: tahoma,geneva,sans-serif"><span style="font-size: 14px">Поздравляем ассистента кафедры социологии факультета гуманитарных и социальных наук Ларину Татьяну Игоревну с победой в Конкурсе ВЦИОМ (Всероссийского Центра общественного мнения) «Исследователь 2015» за лучшую творческую и эмпирическую работу среди аспирантов и молодых исследователей! </span></span></span></strong></p> </td> 
+             </tr> 
+             <tr> 
+              <td height="113" style="vertical-align: middle; text-align: center"> <img alt="" src="pictur.php?t_id=4887" style="width: 150px; height: 123px;"></td> 
+              <td style="text-align: center"> <p> <a href="index.php?pagec=4790"><strong><span style="color: #0099ff"><span style="font-family: tahoma,geneva,sans-serif"><span style="font-size: 14px">Поздравляем победителей конкурса 2015 года с получением Грантов Президента РФ по государственной поддержке научных работ молодых российских ученых </span></span></span></strong></a></p> <p> <strong><span style="color: #0099ff"><span style="font-family: tahoma,geneva,sans-serif"><span style="font-size: 14px">Беликову Ксению Михайловну, доктора юридических наук, профессора кафедры гражданского и трудового права </span></span></span></strong></p> <p> <strong><span style="color: #0099ff"><span style="font-family: tahoma,geneva,sans-serif"><span style="font-size: 14px">Бадаеву Наталию Владимировну, кандидата юридических наук, доцента кафедры гражданского и трудового права</span></span></span></strong></p> </td> 
+             </tr> 
+             <tr> 
+              <td height="113" style="vertical-align: middle; text-align: center"> <img alt="" src="pictur.php?t_id=5099" style="width: 150px; height: 100px;"></td> 
+              <td style="text-align: center"> <p> <a href=" index.php?pagec=4786" target="_blank"><strong><span style="color: #0099ff"><span style="font-family: tahoma,geneva,sans-serif"><span style="font-size: 14px">Российский университет дружбы народов по данным Российского индекса научного цитирования по итогам с 2010 по 2014 гг. занимает <span style="font-size:16px;"><u>3 место</u></span> после МГУ им. Ломоносова и СПбГУ по количеству публикаций и <span style="font-size:16px;"><u>16 место</u></span> по количеству цитирований среди 10737 вузов и научных организаций РФ</span></span></span></strong></a></p> <p> <strong><span style="color: #0099ff"><span style="font-family: tahoma,geneva,sans-serif"><span style="font-size: 14px">Среди 1084 вузов и научных организаций г. Москвы - <span style="font-size:16px;"><u>2 место</u></span> по числу публикаций после МГУ им. Ломоносова и <span style="font-size:16px;"><u>6 место</u></span> по числу цитирований после МГУ им. Ломоносова, Института теоретической и экспериментальной физики им. А.И. Алиханова, Физического института им. П.Н. Лебедева РАН, Национального исследовательского ядерного университета МИФИ, Первого Московского государственного медицинского университета им. И.М. Сеченова </span></span></span></strong></p> </td> 
+             </tr> 
+             <tr> 
+              <td height="113" style="vertical-align: middle; text-align: center"> <img alt="" src="pictur.php?t_id=4978" style="width: 150px; height: 105px;"></td> 
+              <td style="text-align: center"> <p> <a href="http://www.rudn.ru/?pagec=4947"><strong><span style="color: #0099ff"><span style="font-family: tahoma,geneva,sans-serif"><span style="font-size: 14px">РУДН проводит набор учащихся 10-х классов в &nbsp;«IT ШКОЛУ SAMSUNG»</span></span></span></strong></a></p> <p> <strong><span style="color: #0099ff"><span style="font-family: tahoma,geneva,sans-serif"><span style="font-size: 14px">Первые слушатели уже зачислены! Следующий набор состоится в апреле 2015 года.</span></span></span></strong></p> </td> 
+             </tr> 
+             <tr> 
+              <td height="113" style="vertical-align: middle; text-align: center"> <img alt="" src="pictur.php?t_id=4768" style="width: 150px; height: 44px;"></td> 
+              <td style="text-align: center"> <a href="index.php?pagec=4948"><strong><span style="color: #0099ff"><span style="font-family: tahoma,geneva,sans-serif"><span style="font-size: 14px">Приглашаем принять участие в проекте «Университетские субботы» в РУДН</span></span></span></strong></a></td> 
+             </tr> 
+            </tbody> 
+           </table> 
+           <div id="newsPagenator">
+            <div class="menuClear"></div>
+           </div>
+           <div class="newsList">
+            <div class="newsItem"> 
+             <div class="newsHeader menuNewsColor10"> 
+              <div class="newsHeaderLeft">
+               28.02.2015 (Дата события: 01.03.2015)
+              </div> 
+              <div class="newsHeaderRight">
+               Анонсы
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+             <div class="newsContent newsClosed">
+              <b>Тренировки по мини-футболу студентов землячеств стран Азии, Латинской Америки, Европы, Африки, БСВ, СНГ</b>
+              <br>
+              <p> <strong>1 марта&nbsp;</strong>в ФК «Мегасфера» состоятся тренировки по мини-футболу студентов землячеств стран Азии, Латинской Америки, Европы, Африки, БСВ, СНГ. Расписание тренировок:</p> 
+              <p> Азия: 12.00-14.00 поле №1.</p> 
+              <p> Латинская Америка: 14.00-15.30 поле №2.</p> 
+              <p> Европа: 15.30-16.30 поле №2.</p> 
+              <p> Африка: 16.30-18.30 поле №1.</p> 
+              <p> БСВ: 14.00-16.00 поле №1.</p> 
+              <p> СНГ: 16.00-18.30 поле №2.</p>
+             </div> 
+             <div class="newsFooter"> 
+              <div class="newsFooterLeft">
+               <a href="http://" target="_blank"></a>
+              </div> 
+              <div class="newsFooterRight">
+               <a href="./news_reader.php?id=18748" class="newsReadNext">Читать далее&gt;&gt;</a>
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+            </div>
+            <div class="newsItem"> 
+             <div class="newsHeader menuNewsColor10"> 
+              <div class="newsHeaderLeft">
+               28.02.2015 (Дата события: 01.03.2015)
+              </div> 
+              <div class="newsHeaderRight">
+               Анонсы
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+             <div class="newsContent newsClosed">
+              <b>Дни культуры студентов из Ямайки</b>
+              <br>
+              <p> <strong>1-8 марта</strong> в Университете будут проходить Дни культуры студентов из Ямайки. В рамках Дней культуры будут проведены чемпионат по мини-футболу в СК «Мегасфера» ФОК РУДН 01.03.15 г. (начало – в 14.00) и 08.03.15 г. (начало – в 14.00), национальные выставки землячества в холле здания ЕГФ 02.03.15 г. (12.00-15.00), в холле Главного корпуса РУДН 03.03.15 г. (13.00-16.00), в холле здания на ул. Орджоникидзе, 3 05.03.15 г. (12.00-15.00), вечер-концерт в актовом зале Интерклуба РУДН 05.03.15 г. (начало – в 18.00), дискотека в диско-зале Интерклуба РУДН 07.03.15 г. (начало – в 18.00).</p>
+             </div> 
+             <div class="newsFooter"> 
+              <div class="newsFooterLeft">
+               <a href="" target="_blank"></a>
+              </div> 
+              <div class="newsFooterRight">
+               <a href="./news_reader.php?id=18741" class="newsReadNext">Читать далее&gt;&gt;</a>
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+            </div>
+            <div class="newsItem"> 
+             <div class="newsHeader menuNewsColor10"> 
+              <div class="newsHeaderLeft">
+               28.02.2015 (Дата события: 01.03.2015)
+              </div> 
+              <div class="newsHeaderRight">
+               Анонсы
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+             <div class="newsContent newsClosed">
+              <b>Сборные команды РУДН примут участие в Московских студенческих играх</b>
+              <br>
+              <p> <strong style="text-indent: 18.9333324432373px;"><span style="text-indent: 14.2pt;">1-31 марта</span></strong><span style="text-indent: 14.2pt;">&nbsp;сборные команды РУДН в различных видах спорта примут участие во втором круге Московских студенческих игр. Соревнования состоятся по расписаниям, которые можно уточнить в ФОК РУДН или у тренеров сборных команд.&nbsp;</span></p>
+             </div> 
+             <div class="newsFooter"> 
+              <div class="newsFooterLeft">
+               <a href="http://" target="_blank"></a>
+              </div> 
+              <div class="newsFooterRight">
+               <a href="./news_reader.php?id=18744" class="newsReadNext">Читать далее&gt;&gt;</a>
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+            </div>
+            <div class="newsItem"> 
+             <div class="newsHeader menuNewsColor10"> 
+              <div class="newsHeaderLeft">
+               28.02.2015 (Дата события: 01.03.2015)
+              </div> 
+              <div class="newsHeaderRight">
+               Анонсы
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+             <div class="newsContent newsClosed">
+              <b>Продолжают работу прокаты зимнего инвентаря: прокат лыж и прокат коньков</b>
+              <br>
+              <p> Несмотря на наступление весны, с <strong>1 по 31 марта </strong>продолжают свою работу прокаты лыж (Лыжная база ФОК РУДН) и коньков (каток «Универсальный стадион»). Часы работы с 8:00 до 22:00.</p>
+             </div> 
+             <div class="newsFooter"> 
+              <div class="newsFooterLeft">
+               <a href="http://" target="_blank"></a>
+              </div> 
+              <div class="newsFooterRight">
+               <a href="./news_reader.php?id=18746" class="newsReadNext">Читать далее&gt;&gt;</a>
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+            </div>
+            <div class="newsItem"> 
+             <div class="newsHeader menuNewsColor10"> 
+              <div class="newsHeaderLeft">
+               27.02.2015 (Дата события: 01.03.2015)
+              </div> 
+              <div class="newsHeaderRight">
+               Анонсы
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+             <div class="newsContent newsClosed">
+              <b>Женский блиц-турнир АССАФСТУ по мини-футболу</b>
+              <br>
+              <p> В ФК «Мегасфера» с 16.00 до 18.30 на поле №2 состоится женский блиц-турнир АССАФСТУ по мини-футболу. Приглашаем зрителей и болельщиков.</p>
+             </div> 
+             <div class="newsFooter"> 
+              <div class="newsFooterLeft">
+               <a href="http://" target="_blank"></a>
+              </div> 
+              <div class="newsFooterRight">
+               <a href="./news_reader.php?id=18736" class="newsReadNext">Читать далее&gt;&gt;</a>
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+            </div>
+            <div class="newsItem"> 
+             <div class="newsHeader menuNewsColor10"> 
+              <div class="newsHeaderLeft">
+               28.02.2015 (Дата события: 02.03.2015)
+              </div> 
+              <div class="newsHeaderRight">
+               Анонсы
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+             <div class="newsContent newsClosed">
+              <b>Национальные выставки землячеств студентов из Болгарии, Молдовы и Румынии</b>
+              <br>
+              <p> <strong>2 марта&nbsp;</strong>в холле Главного корпуса РУДН будут организованы национальные выставки землячеств студентов из Болгарии, Молдовы и Румынии. На выставках будут представлены национальные сувениры, национальные костюмы и прочие атрибуты культур народов Болгарии, Молдовы и Румынии. Открытие выставок – в 13.00.</p>
+             </div> 
+             <div class="newsFooter"> 
+              <div class="newsFooterLeft">
+               <a href="http://" target="_blank"></a>
+              </div> 
+              <div class="newsFooterRight">
+               <a href="./news_reader.php?id=18755" class="newsReadNext">Читать далее&gt;&gt;</a>
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+            </div>
+            <div class="newsItem"> 
+             <div class="newsHeader menuNewsColor10"> 
+              <div class="newsHeaderLeft">
+               28.02.2015 (Дата события: 03.03.2015)
+              </div> 
+              <div class="newsHeaderRight">
+               Анонсы
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+             <div class="newsContent newsClosed">
+              <b>Заседание студенческого научного кружка любителей итальянского языка и культуры</b>
+              <br>
+              <p> <strong>3 марта</strong> в ИИЯ на кафедре теории и практики иностранных языков состоится очередное заседание студенческого научного тему «Уроки древних историй».</p> 
+              <p> Руководитель – старший преподаватель кафедры теории и практики иностранных языков ИИЯ РУДН М.Е. Каскова.</p> 
+              <p> Начало: 14.00. Место проведения: аудитория 555, корпус №4 ИИЯ РУДН, ул. Миклухо-Маклая, д.7. Тел.: 8(495) 434-71-60. Е-mail: <a href="mailto:inyaz@rudn.ru">inyaz@pfur.ru</a>. <a href="http://www.inyaz.ru/">www.inyaz.ru</a>.</p>
+             </div> 
+             <div class="newsFooter"> 
+              <div class="newsFooterLeft">
+               <a href="http://" target="_blank"></a>
+              </div> 
+              <div class="newsFooterRight">
+               <a href="./news_reader.php?id=18758" class="newsReadNext">Читать далее&gt;&gt;</a>
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+            </div>
+            <div class="newsItem"> 
+             <div class="newsHeader menuNewsColor10"> 
+              <div class="newsHeaderLeft">
+               28.02.2015 (Дата события: 05.03.2015)
+              </div> 
+              <div class="newsHeaderRight">
+               Анонсы
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+             <div class="newsContent newsClosed">
+              <b>Школа инновационного развития-2015. Оценка эффективности инвестиционного проекта</b>
+              <br>
+              <p> <strong>5 марта&nbsp;</strong>в 16.00 в зале №1 Главного здания РУДН (ул. Миклухо-Маклая, д. 6) состоится очередное мероприятия Школы инновационного развития-2015.</p> 
+              <p> Организатор Школы: Совет по НИРС РУДН. Участники: студенты и аспиранты факультета физико-математических и естественных наук, инженерного, аграрного, экологического, экономического факультетов, медицинского института.</p> 
+              <p> Программа: Оценка эффективности инвестиционного проекта.Смаржевский Иван Александрович, к.э.н., доцент (кафедра экономико-математического моделирования, экономический факультет).</p>
+             </div> 
+             <div class="newsFooter"> 
+              <div class="newsFooterLeft">
+               <a href="http://" target="_blank"></a>
+              </div> 
+              <div class="newsFooterRight">
+               <a href="./news_reader.php?id=18763" class="newsReadNext">Читать далее&gt;&gt;</a>
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+            </div>
+            <div class="newsItem"> 
+             <div class="newsHeader menuNewsColor10"> 
+              <div class="newsHeaderLeft">
+               28.02.2015 (Дата события: 05.03.2015)
+              </div> 
+              <div class="newsHeaderRight">
+               Анонсы
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+             <div class="newsContent newsClosed">
+              <b>Студенческий конкурс “You’re simplу the best”</b>
+              <br>
+              <p> <strong><u>5 марта</u></strong> в актовом зале Главного корпуса РУДН ИИЯ проводит студенческий конкурс “You’resimplythebest”, приуроченный к Международному женскому дню 8 Марта.</p> 
+              <p> Начало: в 15.00.</p> 
+              <p> Контактные лица: зам. директора ИИЯ РУДН по воспитательной работе со студентами О.А. Сухомлин, руководитель очно-заочного отделения ИИЯ РУДН, преподаватель кафедры теории и практики иностранных языков ИИЯ РУДН Е.А. Дроздова. Тел. 8(495) 434-71-60. Е-mail: inyaz@pfur.ru.<a href="http://www.inyaz.ru/">www.inyaz.ru</a>.</p>
+             </div> 
+             <div class="newsFooter"> 
+              <div class="newsFooterLeft">
+               <a href="http://" target="_blank"></a>
+              </div> 
+              <div class="newsFooterRight">
+               <a href="./news_reader.php?id=18764" class="newsReadNext">Читать далее&gt;&gt;</a>
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+            </div>
+            <div class="newsItem"> 
+             <div class="newsHeader menuNewsColor10"> 
+              <div class="newsHeaderLeft">
+               28.02.2015 (Дата события: 06.03.2015)
+              </div> 
+              <div class="newsHeaderRight">
+               Анонсы
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+             <div class="newsContent newsClosed">
+              <b>Конференция и концерт АССАФСТУ РУДН, посвящённые Международному женскому дню</b>
+              <br>
+              <p> <strong>6 марта</strong> в 17.00 в актовом зале Интерклуба РУДН пройдут конференция и концерт АССАФСТУ РУДН, посвящённые Международному женскому дню.</p>
+             </div> 
+             <div class="newsFooter"> 
+              <div class="newsFooterLeft">
+               <a href="http://" target="_blank"></a>
+              </div> 
+              <div class="newsFooterRight">
+               <a href="./news_reader.php?id=18769" class="newsReadNext">Читать далее&gt;&gt;</a>
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+            </div>
+            <div class="newsItem"> 
+             <div class="newsHeader menuNewsColor10"> 
+              <div class="newsHeaderLeft">
+               28.02.2015 (Дата события: 06.03.2015)
+              </div> 
+              <div class="newsHeaderRight">
+               Анонсы
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+             <div class="newsContent newsClosed">
+              <b>Спектакль «Свадьба» по одноименному рассказу А.П. Чехова будет показан на ФРЯиОД</b>
+              <br>
+              <p> <strong>6 марта</strong>&nbsp;театр-студия представляет спектакль «Свадьба» по одноименному рассказу А.П. Чехова. В спектакле участвуют только студенты ФРЯиОД, которые играют его на чистом русском языке. Приглашаются все желающие!</p> 
+              <p> Ответственный за мероприятие: Лазуткин К., руководитель Театральной студии.</p> 
+              <p> Место проведения: конференц-зал, ФРЯиОД, ул. Миклухо-Маклая, д.10, к.3, 12.40.</p>
+             </div> 
+             <div class="newsFooter"> 
+              <div class="newsFooterLeft">
+               <a href="http://" target="_blank"></a>
+              </div> 
+              <div class="newsFooterRight">
+               <a href="./news_reader.php?id=18766" class="newsReadNext">Читать далее&gt;&gt;</a>
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+            </div>
+            <div class="newsItem"> 
+             <div class="newsHeader menuNewsColor10"> 
+              <div class="newsHeaderLeft">
+               28.02.2015 (Дата события: 08.03.2015)
+              </div> 
+              <div class="newsHeaderRight">
+               Анонсы
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+             <div class="newsContent newsClosed">
+              <b>Тренировки по мини-футболу студентов землячеств стран Азии, Латинской Америки, Европы, Африки, БСВ, СНГ</b>
+              <br>
+              <p> <strong>8 марта&nbsp;</strong>в ФК «Мегасфера» состоятся тренировки по мини-футболу студентов землячеств стран Азии, Латинской Америки, Европы, Африки, БСВ, СНГ. Расписание тренировок:</p> 
+              <p> Азия: 12.00-14.00 поле №1.</p> 
+              <p> Латинская Америка: 14.00-15.30 поле №2.</p> 
+              <p> Европа: 15.30-16.30 поле №2.</p> 
+              <p> Африка: 16.30-18.30 поле №1.</p> 
+              <p> БСВ: 14.00-16.00 поле №1.</p> 
+              <p> СНГ: 16.00-18.30 поле №2.</p>
+             </div> 
+             <div class="newsFooter"> 
+              <div class="newsFooterLeft">
+               <a href="http://" target="_blank"></a>
+              </div> 
+              <div class="newsFooterRight">
+               <a href="./news_reader.php?id=18749" class="newsReadNext">Читать далее&gt;&gt;</a>
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+            </div>
+            <div class="newsItem"> 
+             <div class="newsHeader menuNewsColor10"> 
+              <div class="newsHeaderLeft">
+               28.02.2015 (Дата события: 09.03.2015)
+              </div> 
+              <div class="newsHeaderRight">
+               Анонсы
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+             <div class="newsContent newsClosed">
+              <b>Запуск группы по программе «Английский для академических целей»</b>
+              <br>
+              <p> <strong>9 марта</strong> в 18.00 в каб. 903 здания ЕГФ ИППК РУДН запускает группу по направлению «Иностранные языки», по программе «Английский для академических целей».</p> 
+              <p> Программа специально разработана для преподавателей английского языка, а также студентов старших курсов, которые активно ведут научно-исследовательскую деятельность.</p>
+             </div> 
+             <div class="newsFooter"> 
+              <div class="newsFooterLeft">
+               <a href="http://" target="_blank"></a>
+              </div> 
+              <div class="newsFooterRight">
+               <a href="./news_reader.php?id=18771" class="newsReadNext">Читать далее&gt;&gt;</a>
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+            </div>
+            <div class="newsItem"> 
+             <div class="newsHeader menuNewsColor10"> 
+              <div class="newsHeaderLeft">
+               28.02.2015 (Дата события: 10.03.2015)
+              </div> 
+              <div class="newsHeaderRight">
+               Анонсы
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+             <div class="newsContent newsClosed">
+              <b>Студенческая научно-практическая конференция «Future Perfect»</b>
+              <br>
+              <p> <strong>10 и 11 марта</strong>&nbsp;в ИИЯ на кафедре теории и практики иностранных языков состоится студенческая научно-практическая конференция «Future Perfect», на которой будут подведены итоги учебно-производственной (психолого-педагогической) практики студентов бакалавриата по направлению «Лингвистика».</p> 
+              <p> Начало 10 марта в 15.00.</p> 
+              <p> Начало 11 марта в 11.00.</p> 
+              <p> Место проведения: лекционный зал корпус №4 ИИЯ РУДН, ул. Миклухо-Маклая, д.7.</p> 
+              <p> Контактное лицо: руководитель практики студентов по направлению «Лингвистика, преподаватель кафедры теории и практики иностранных языков ИИЯ РУДН Е.А. Дроздова. Тел. 8(495) 434-71-60. Е-mail:&nbsp;<a href="mailto:inyaz@pfur.ru">inyaz@pfur.ru</a>.&nbsp;<a href="http://www.inyaz.ru/">www.inyaz.ru</a>.</p>
+             </div> 
+             <div class="newsFooter"> 
+              <div class="newsFooterLeft">
+               <a href="http://" target="_blank"></a>
+              </div> 
+              <div class="newsFooterRight">
+               <a href="./news_reader.php?id=18773" class="newsReadNext">Читать далее&gt;&gt;</a>
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+            </div>
+            <div class="newsItem"> 
+             <div class="newsHeader menuNewsColor10"> 
+              <div class="newsHeaderLeft">
+               28.02.2015 (Дата события: 10.03.2015)
+              </div> 
+              <div class="newsHeaderRight">
+               Анонсы
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+             <div class="newsContent newsClosed">
+              <b>Дни культуры студентов из Кубы</b>
+              <br>
+              <p> <strong>10-13 марта</strong>&nbsp;в Университете будут проходить Дни культуры студентов из Кубы. В рамках Дней культуры будут проведены национальные выставки землячества в холле Главного корпуса РуДН 10.03.15 г. (13.00-16.00), в холле здания ЕГФ 11.03.15 г. (12.00-15.00) и в холле здания на ул. Орджоникидзе, 3 13.03.15 г. (12.00-15.00).</p>
+             </div> 
+             <div class="newsFooter"> 
+              <div class="newsFooterLeft">
+               <a href="http://" target="_blank"></a>
+              </div> 
+              <div class="newsFooterRight">
+               <a href="./news_reader.php?id=18774" class="newsReadNext">Читать далее&gt;&gt;</a>
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+            </div>
+            <div class="newsItem"> 
+             <div class="newsHeader menuNewsColor10"> 
+              <div class="newsHeaderLeft">
+               28.02.2015 (Дата события: 11.03.2015)
+              </div> 
+              <div class="newsHeaderRight">
+               Анонсы
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+             <div class="newsContent newsClosed">
+              <b>Вечер-концерт землячества студентов из Молдовы, посвящённый празднику «Мэрцишор»</b>
+              <br>
+              <p> <strong>11 марта</strong> в 17.30 в актовом зале Интерклуба РУДН пройдёт вечер-концерт землячества студентов из Молдовы, посвящённый празднику весны «Мэрцишор».</p>
+             </div> 
+             <div class="newsFooter"> 
+              <div class="newsFooterLeft">
+               <a href="http://" target="_blank"></a>
+              </div> 
+              <div class="newsFooterRight">
+               <a href="./news_reader.php?id=18777" class="newsReadNext">Читать далее&gt;&gt;</a>
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+            </div>
+            <div class="newsItem"> 
+             <div class="newsHeader menuNewsColor10"> 
+              <div class="newsHeaderLeft">
+               28.02.2015 (Дата события: 11.03.2015)
+              </div> 
+              <div class="newsHeaderRight">
+               Анонсы
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+             <div class="newsContent newsClosed">
+              <b>Фестиваль студенческих телефильмов, посвящённый 55-летию РУДН</b>
+              <br>
+              <p> <strong>11 марта</strong> в 15.00 в ИИЯ состоится Фестиваль студенческих телефильмов, посвящённый 55-летию РУДН.</p> 
+              <p> Место проведения: лекционный зал, корпус №4 ИИЯ РУДН, ул. Миклухо-Маклая, д.7.</p> 
+              <p> Контактное лицо: заместитель директора ИИЯ РУДН по воспитательной работе О.А. Сухомлин. Тел. 8(495) 434-71-60. Е-mail: <a href="mailto:inyaz@pfur.ru">inyaz@pfur.ru</a>. <a href="http://www.inyaz.ru/">www.inyaz.ru</a>.</p>
+             </div> 
+             <div class="newsFooter"> 
+              <div class="newsFooterLeft">
+               <a href="http://" target="_blank"></a>
+              </div> 
+              <div class="newsFooterRight">
+               <a href="./news_reader.php?id=18778" class="newsReadNext">Читать далее&gt;&gt;</a>
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+            </div>
+            <div class="newsItem"> 
+             <div class="newsHeader menuNewsColor10"> 
+              <div class="newsHeaderLeft">
+               28.02.2015 (Дата события: 12.03.2015)
+              </div> 
+              <div class="newsHeaderRight">
+               Анонсы
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+             <div class="newsContent newsClosed">
+              <b>Школа инновационного развития-2015. Молодёжная научная школа-конференция по естественным, медико-биологическим и техническим наукам и полуфинальный этап мероприятий конкурса УМНИК-2015</b>
+              <br>
+              <p> <strong>12 марта</strong>15.00-17.00, в зале № 3 Главного здания РУДН (ул. Миклухо-Маклая, д. 6) состоится очередное мероприятия Школы инновационного развития-2015.</p> 
+              <p> Организатор Школы: Совет по НИРС РУДН. Участники: студенты и аспиранты факультета физико-математических и естественных наук, инженерного, аграрного, экологического, экономического факультетов, медицинского института.</p> 
+              <p> Программа: Молодёжная научная школа-конференция по естественным, медико-биологическим и техническим наукам и полуфинальный этап мероприятий конкурса УМНИК – 2015.</p>
+             </div> 
+             <div class="newsFooter"> 
+              <div class="newsFooterLeft">
+               <a href="http://" target="_blank"></a>
+              </div> 
+              <div class="newsFooterRight">
+               <a href="./news_reader.php?id=18780" class="newsReadNext">Читать далее&gt;&gt;</a>
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+            </div>
+            <div class="newsItem"> 
+             <div class="newsHeader menuNewsColor10"> 
+              <div class="newsHeaderLeft">
+               28.02.2015 (Дата события: 13.03.2015)
+              </div> 
+              <div class="newsHeaderRight">
+               Анонсы
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+             <div class="newsContent newsClosed">
+              <b>Шахматный турнир на ФРЯиОД</b>
+              <br>
+              <p> <strong>13 марта</strong> в 14.15 на факультете русского языка и общеобразовательных дисциплин состоится очередной шахматный турнир. В турнире принимает участие 30 студентов факультета. Руководители: Маннянов Х.В., Селезнев А.И., Панченко А.М., Тугуши В.Д. Место сбора: холл ФРЯиОД, ул. Миклухо-Маклая, д.10, к.3.</p>
+             </div> 
+             <div class="newsFooter"> 
+              <div class="newsFooterLeft">
+               <a href="http://" target="_blank"></a>
+              </div> 
+              <div class="newsFooterRight">
+               <a href="./news_reader.php?id=18782" class="newsReadNext">Читать далее&gt;&gt;</a>
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+            </div>
+            <div class="newsItem"> 
+             <div class="newsHeader menuNewsColor10"> 
+              <div class="newsHeaderLeft">
+               28.02.2015 (Дата события: 13.03.2015)
+              </div> 
+              <div class="newsHeaderRight">
+               Анонсы
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+             <div class="newsContent newsClosed">
+              <b>Шахматный турнир на ФРЯиОД</b>
+              <br>
+              <p> <strong>13 марта</strong> в 14.15 на факультете русского языка и общеобразовательных дисциплин состоится очередной шахматный турнир. В турнире принимает участие 30 студентов факультета. Руководители: Маннянов Х.В., Селезнев А.И., Панченко А.М., Тугуши В.Д. Место сбора: холл ФРЯиОД, ул. Миклухо-Маклая, д.10, к.3.</p>
+             </div> 
+             <div class="newsFooter"> 
+              <div class="newsFooterLeft">
+               <a href="http://" target="_blank"></a>
+              </div> 
+              <div class="newsFooterRight">
+               <a href="./news_reader.php?id=18784" class="newsReadNext">Читать далее&gt;&gt;</a>
+              </div> 
+              <div class="menuClear"></div> 
+             </div> 
+            </div>
+           </div>
+           <div id="newsPagenator">
+            <div class="menuClear"></div>
+           </div>
+           <div class="menuNewsContainer"> 
+            <div class="menuClear"></div> 
+            <ul class="menuNews">
+             <li onclick="document.location.href='news.php?category=0'; return false;" class="menuElement  standartColor " rel="0">
+              <div>
+               <a href="news.php?category=0">Все новости</a>
+              </div></li>
+             <li onclick="document.location.href='news.php?category=1'; return false;" class="menuElement  standartColor " rel="1">
+              <div>
+               <a href="news.php?category=1">Новости от подразделений</a>
+              </div></li>
+             <li onclick="document.location.href='news.php?category=2'; return false;" class="menuElement  standartColor " rel="2">
+              <div>
+               <a href="news.php?category=2">Научный календарь</a>
+              </div></li>
+             <li onclick="document.location.href='news.php?category=3'; return false;" class="menuElement  standartColor " rel="3">
+              <div>
+               <a href="news.php?category=3">Культурная жизнь</a>
+              </div></li>
+             <li onclick="document.location.href='news.php?category=4'; return false;" class="menuElement  standartColor " rel="4">
+              <div>
+               <a href="news.php?category=4">Визиты и встречи</a>
+              </div></li>
+             <li onclick="document.location.href='news.php?category=5'; return false;" class="menuElement  standartColor " rel="5">
+              <div>
+               <a href="news.php?category=5">Спортивные события</a>
+              </div></li>
+             <li onclick="document.location.href='news.php?category=6'; return false;" class="menuElement  standartColor " rel="6">
+              <div>
+               <a href="news.php?category=6">Книжные новинки</a>
+              </div></li>
+             <li onclick="document.location.href='news.php?category=7'; return false;" class="menuElement  standartColor " rel="7">
+              <div>
+               <a href="news.php?category=7">Поздравления</a>
+              </div></li>
+             <li onclick="document.location.href='news.php?category=8'; return false;" class="menuElement  standartColor " rel="8">
+              <div>
+               <a href="news.php?category=8">Объявления</a>
+              </div></li>
+             <li onclick="document.location.href='news.php?category=10'; return false;" class="menuElement  menuNewsColor10 " rel="10">
+              <div>
+               <a href="news.php?category=10">Анонсы</a>
+              </div></li>
+             <li onclick="document.location.href='news.php?category=11'; return false;" class="menuElement  standartColor " rel="11">
+              <div>
+               <a href="news.php?category=11">Отчеты</a>
+              </div></li>
+             <div class="menuClear"></div> 
+            </ul>
+           </div>
+          </div> </td> 
+        </tr> 
+       </tbody>
+      </table> 
+      <!-- content }--> </td> 
+     <td width="241" rowspan="3" valign="top" background="image/13.gif"> 
+      <!-- --> <img src="image/top1.jpg" width="241" height="180"><br> 
+      <!-- --> 
+      <!-- инновации рудн--> <img src="image/vip_res.gif" width="241"><br> 
+      <table width="100%" border="0" cellspacing="1" cellpadding="1"> 
+       <tbody>
+        <tr> 
+         <td> 
+          <table border="0" cellpadding="1" cellspacing="1"> 
+           <tbody> 
+            <tr> 
+             <td style="background-color: white"> <a class="right" href="http://web-local.rudn.ru/" style="font-size: 14px" target="_blank"><img alt="" src="pictur.php?t_id=1365" style="border-top: 0px solid; height: 20px; border-right: 0px solid; vertical-align: middle; border-bottom: 0px solid; border-left: 0px solid; width: 26px"> Учебный портал РУДН</a></td> 
+            </tr> 
+            <tr> 
+             <td> <a class="right" href="http://lib.rudn.ru/" style="font-size: 14px" target="_blank"><img alt="" src="pictur.php?t_id=1362" style="border-top: 0px solid; height: 20px; border-right: 0px solid; vertical-align: middle; border-bottom: 0px solid; border-left: 0px solid; width: 57px"> Информационный библиотечный центр</a></td> 
+            </tr> 
+            <tr> 
+             <td style="background-color: white"> <a class="right" href="http://job.rudn.ru" style="font-size: 14px"><img alt="" src="pictur.php?t_id=2215" style="border-top: 0px solid; height: 16px; border-right: 0px solid; vertical-align: middle; border-bottom: 0px solid; border-left: 0px solid; width: 16px"> РУДН - практики и трудоустройство</a></td> 
+            </tr> 
+            <tr> 
+             <td style="background-color: white"> <a class="right" href="http://videoconf.rudn.ru" style="font-size: 14px"><img alt="" src="pictur.php?t_id=3097 " style="border-top: 0px solid; height: 16px; border-right: 0px solid; vertical-align: middle; border-bottom: 0px solid; border-left: 0px solid; width: 16px"> Видеотрансляции РУДН</a></td> 
+            </tr> 
+            <tr> 
+             <td style="background-color: white"> <a class="right" href="http://mx.pfur.ru" style="font-size: 14px"><img alt="" src="pictur.php?t_id=3748" style="border-top: 0px solid; height: 18px; border-right: 0px solid; vertical-align: middle; border-bottom: 0px solid; border-left: 0px solid; width: 82px"> Корпоративная почта</a></td> 
+            </tr> 
+            <tr> 
+             <td style="background-color: white"> <img alt="" src="pictur.php?t_id=3824 " style="height: 20px; width: 26px">&nbsp;<a href="http://dissovet.rudn.ru"><span style="font-size: 14px">Диссертационные советы</span> <span style="font-size: 14px">РУДН</span></a></td> 
+            </tr> 
+            <tr> 
+             <td style="background-color: white"> <a class="right" href="http://www.rudn.ru/prep_letters_alphabet.php" style="font-size: 14px"><img alt="" src="./pictur.php?t_id=4003" style="width: 30px; height: 17px; float: left;">&nbsp; Преподаватели РУДН</a></td> 
+            </tr> 
+            <tr> 
+             <td style="background-color: white"> <a class="right" href="http://uvedomleniefms.pfur.ru/" style="font-size:14px;"> <img src="./pictur.php?t_id=4044" style="border:0; height: 17px; float: left;">&nbsp; Заполнить уведомление в ФМС</a></td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
+        </tr> 
+       </tbody>
+      </table> <img src="image/rudninworld.gif" width="241"><br> 
+      <table width="100%" border="0" cellspacing="1" cellpadding="1"> 
+       <tbody>
+        <tr> 
+         <td> 
+          <table border="0" cellpadding="1" cellspacing="1" width="100%"> 
+           <tbody> 
+            <tr> 
+             <td> <a class="right" href="http://www.youtube.com/user/pfurrudn"><img alt="" src="pictur.php?t_id=1366" style="width: 35px; height: 20px; border-width: 0px; border-style: solid; vertical-align: middle;"> Youtube</a></td> 
+            </tr> 
+            <tr> 
+             <td> <a class="right" href="http://ru.wikipedia.org/wiki/РУДН"><img alt="" src="pictur.php?t_id=1361" style="width: 20px; height: 20px; border-width: 0px; border-style: solid; vertical-align: middle;"> Википедия (рус)</a></td> 
+            </tr> 
+            <tr> 
+             <td> <a class="right" href="http://en.wikipedia.org/wiki/RUDN"><img alt="" src="pictur.php?t_id=1361" style="width: 20px; height: 20px; border-width: 0px; border-style: solid; vertical-align: middle;"> Википедия (англ)</a></td> 
+            </tr> 
+            <tr> 
+             <td> <a class="right" href="http://vkontakte.ru/club1711"><img alt="" src="pictur.php?t_id=1364" style="width: 20px; height: 20px; border-width: 0px; border-style: solid; vertical-align: middle;"> Вконтакте</a></td> 
+            </tr> 
+            <tr> 
+             <td> <a class="right" href="http://www.facebook.com/pages/PFUR-%D0%A0%D0%A3%D0%94%D0%9D-%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B9%D1%81%D0%BA%D0%B8%D0%B9-%D0%A3%D0%BD%D0%B8%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%82%D0%B5%D1%82-%D0%B4%D1%80%D1%83%D0%B6%D0%B1%D1%8B-%D0%BD%D0%B0%D1%80%D0%BE%D0%B4%D0%BE%D0%B2/127818940624896"><img alt="" src="pictur.php?t_id=1363" style="width: 20px; height: 20px; border-width: 0px; border-style: solid; vertical-align: middle;"> Facebook</a></td> 
+            </tr> 
+            <tr> 
+             <td> <a class="right" href="http://twitter.com/#!/RudnPfur"><img alt="" src="pictur.php?t_id=2087" style="width: 20px; height: 20px; border-width: 0px; border-style: solid; vertical-align: middle;"> Twitter</a></td> 
+            </tr> 
+            <tr> 
+             <td> <a class="right" href="http://www.rudn.ru/?pagec=3014"><img alt="" src="pictur.php?t_id=1370" style="width: 20px; height: 20px; border-width: 0px; border-style: solid; vertical-align: middle;"> Пресс-служба сообщает</a></td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
+        </tr> 
+       </tbody>
+      </table> <img src="image/7.gif" width="241"><br> 
+      <table width="100%" border="0" cellspacing="1" cellpadding="1"> 
+       <tbody>
+        <tr> 
+         <td> 
+          <table></table>
+          <table border="0" cellpadding="1" cellspacing="1" width="100%"> 
+           <tbody> 
+            <tr> 
+             <td style="background-color: white;" width="*%"> <a class="right" href="index.php?pagec=1695">Инновационные услуги</a></td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
+        </tr> 
+       </tbody>
+      </table> <br> <img src="image/8.gif" width="241"><br> 
+      <table width="100%" border="0" cellspacing="1" cellpadding="3"> 
+       <tbody>
+        <tr> 
+         <td><a href="./?pagec=410#10" class="right">Существуют ли в РУДН подготовительные школы или курсы?</a></td> 
+        </tr> 
+       </tbody>
+      </table> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./?pagec=410" class="right">Другие вопросы&nbsp;<img src="image/11.gif" width="9" height="9" border="0" align="bottom"></a><br> <br> 
+      <!-- Web-проекты рудн--> <img src="image/9.gif" width="241"> 
+      <table width="100%" border="0" cellspacing="1" cellpadding="1"> 
+       <tbody>
+        <tr> 
+         <td> 
+          <table border="0" cellpadding="1" cellspacing="1" width="100%"> 
+           <tbody> 
+            <tr> 
+             <td> 
+              <table cellpadding="1" cellspacing="1"> 
+               <tbody> 
+                <tr> 
+                 <td style="background-color: white;"> <a class="right" href="http://55let.rudn.ru/" target="_blank">Сайт "55 лет РУДН"</a></td> 
+                </tr> 
+                <tr> 
+                 <td style="background-color: white;"> <a class="right" href="http://forum-vipusknikov.ru/" target="_blank">Сайт Всемирного форума выпускников</a></td> 
+                </tr> 
+                <!--<tr>
+							<td style="background-color: white;">
+								<a class="right" href="http://web-local.rudn.ru/">УЧЕБНЫЙ ПОРТАЛ РУДН</a></td>
+						</tr>--> 
+                <tr> 
+                 <td style="background-color: white;"> <a class="right" href="/index.php?pagec=2237">В РУДН с визитом</a></td> 
+                </tr> 
+                <tr> 
+                 <td style="background-color: white;"> <a class="right" href="http://www.rudn.ru/?pagec=2971">Здоровый образ жизни</a></td> 
+                </tr> 
+                <tr> 
+                 <td style="background-color: white;"> <a class="right" href="http://www.rad.pfu.edu.ru/">Управление по науке и инновациям&nbsp;</a></td> 
+                </tr> 
+                <tr> 
+                 <td style="background-color: white;"> <a class="right" href="http://ippkrudn.ru/">Институт повышения квалификации и переподготовки кадров (ИППК)</a></td> 
+                </tr> 
+                <tr> 
+                 <td style="background-color: white;"> <a class="right" href="http://vestnik.rudn.ru/">"Вестник РУДН" - электронная версия</a></td> 
+                </tr> 
+                <tr> 
+                 <td style="background-color: white;"> <a class="right" href="http://www.humanities.edu.ru/">Портал Гуманитарное образование</a></td> 
+                </tr> 
+                <tr> 
+                 <td style="background-color: white;"> <a class="right" href="/fpkp/">Факультет повышения квалификации преподавателей русского языка как иностранного</a></td> 
+                </tr> 
+                <tr> 
+                 <td style="background-color: white;"> <a href="http://fpkmr.rudn.ru" target="_blank">Факультет повышения квалификации медицинских работников</a></td> 
+                </tr> 
+                <tr> 
+                 <td style="background-color: white;"> <a class="right" href="/test-comp/">Центр компьютерного обучения и тестирования - ТЕСТ-КОМП</a></td> 
+                </tr> 
+                <tr> 
+                 <td style="background-color: white;"> <a class="right" href="http://www.hepatocentre.ru/">Центр изучения печени медицинского факультета РУДН</a></td> 
+                </tr> 
+                <tr> 
+                 <td style="background-color: white;"> <a class="right" href="http://www.forum-rudn.info/">Студенческий форум РУДН</a></td> 
+                </tr> 
+                <!--<tr>
+							<td style="background-color: white;">
+								<a class="right" href="http://lib.rudn.ru/">Учебно-научный информационный библиотечный центр (НБ)</a></td>
+						</tr>--> 
+                <tr> 
+                 <td style="background-color: white;"> <a class="right" href="http://www.aitc.sci.pfu.edu.ru/">Центр прикладных информационных технологий</a></td> 
+                </tr> 
+                <tr> 
+                 <td style="background-color: white;"> <a class="right" href="http://imp.rudn.ru/su_sng/" target="_blank">Сетевой университет Содружества Независимых Государств</a></td> 
+                </tr> 
+                <tr> 
+                 <td style="background-color: white;"> <a href="http://tv.rudn.ru/">ТВ РУДН</a></td> 
+                </tr> 
+                <tr> 
+                 <td style="background-color: white;"> <a href=" http://web-local.rudn.ru/web-local/kaf/rj/index.php?id=64&amp;p=904" target="_blank">Автошкола РУДН </a></td> 
+                </tr> 
+                <tr> 
+                 <td style="background-color: white;"> <a href=" http://www.rudn.ru/?pagec=4887" target="_blank">Издательство РУДН </a></td> 
+                </tr> 
+                <tr> 
+                 <td style="background-color: white;"> <a href="http://business.rudn.ru/" target="_blank">Создай свой бизнес на базе РУДН</a></td> 
+                </tr> 
+                <tr> 
+                 <td style="background-color: white;"> <a href="http://www.rudn.ru/?pagec=2971">Здоровый образ жизни</a></td> 
+                </tr> 
+                <tr> 
+                 <td style="background-color: white;"> <a href="http://elearn.rudn.ru/" target="_blank">Дистанционное обучение (МООС курсы)</a></td> 
+                </tr> 
+               </tbody> 
+              </table> </td> 
+            </tr> 
+           </tbody> 
+          </table></td> 
+        </tr> 
+       </tbody>
+      </table> <img width="241" height="31" src="image/calendar.gif"> <script language="JavaScript" type="text/JavaScript">
+
+function jump_month(targ,selObj,restore)
+{
+  eval(targ+".location='?month="+selObj.options[selObj.selectedIndex].value+"&year=2015'");
+  if (restore) selObj.selectedIndex=0;
+}
+function jump_year(targ,selObj,restore)
+{
+  eval(targ+".location='?year="+selObj.options[selObj.selectedIndex].value+"&month=3'");
+  if (restore) selObj.selectedIndex=0;
+}
+
+</script> 
+      <table align="left" width="238" heith="220" border="0" cellpadding="3"> 
+       <tbody>
+        <tr>
+         <td width="228" height="42" valign="bottom"> 
+          <form name="" action="" method="Get"> 
+           <select name="month" onchange="jump_month('parent',this,0)"> <option value="1">Январь</option> <option value="2">Февраль</option> <option value="3" selected>Март</option> <option value="4">Апрель</option> <option value="5">Май</option> <option value="6">Июнь</option> <option value="7">Июль</option> <option value="8">Август</option> <option value="9">Сентябрь</option> <option value="10">Октябрь</option> <option value="11">Ноябрь</option> <option value="12">Декабрь</option> </select> 
+           <select size="1" name="year" onchange="jump_year('parent',this,0)"> <option value="2015" selected>2015</option> <option value="2014">2014</option> <option value="2013">2013</option></select> 
+          </form> </td>
+        </tr> 
+        <tr>
+         <td> 
+          <table align="center" valign="middle" border="0" width="230" heith="100%" cellpadding="5"> 
+           <tbody>
+            <tr> 
+             <td width="80" align="left">Понедельник</td> 
+             <td align="center">&nbsp;</td> 
+             <td align="center"><b><u><a href="news_date.php?date=2015-3-2">2</a></u></b></td> 
+             <td align="center"><b><u><a href="news_date.php?date=2015-3-9">9</a></u></b></td> 
+             <td align="center"><b><u><a href="news_date.php?date=2015-3-16">16</a></u></b></td> 
+             <td align="center"><b><u><a href="news_date.php?date=2015-3-23">23</a></u></b></td> 
+             <td align="center">30</td>
+            </tr> 
+            <tr> 
+             <td width="80" align="left">Вторник</td> 
+             <td align="center">&nbsp;</td> 
+             <td align="center"><b><u><a href="news_date.php?date=2015-3-3">3</a></u></b></td> 
+             <td align="center"><b><u><a href="news_date.php?date=2015-3-10">10</a></u></b></td> 
+             <td align="center"><b><u><a href="news_date.php?date=2015-3-17">17</a></u></b></td> 
+             <td align="center"><b><u><a href="news_date.php?date=2015-3-24">24</a></u></b></td> 
+             <td align="center">31</td>
+            </tr> 
+            <tr> 
+             <td width="80" align="left">Среда</td> 
+             <td align="center">&nbsp;</td> 
+             <td align="center">4</td> 
+             <td align="center"><b><u><a href="news_date.php?date=2015-3-11">11</a></u></b></td> 
+             <td align="center"><b><u><a href="news_date.php?date=2015-3-18">18</a></u></b></td> 
+             <td align="center"><b><u><a href="news_date.php?date=2015-3-25">25</a></u></b></td> 
+             <td align="center">&nbsp;</td>
+            </tr> 
+            <tr> 
+             <td width="80" align="left">Четверг</td> 
+             <td align="center">&nbsp;</td> 
+             <td align="center"><b><u><a href="news_date.php?date=2015-3-5">5</a></u></b></td> 
+             <td align="center"><b><u><a href="news_date.php?date=2015-3-12">12</a></u></b></td> 
+             <td align="center"><b><u><a href="news_date.php?date=2015-3-19">19</a></u></b></td> 
+             <td align="center"><b><u><a href="news_date.php?date=2015-3-26">26</a></u></b></td> 
+             <td align="center">&nbsp;</td>
+            </tr> 
+            <tr> 
+             <td width="80" align="left">Пятница</td> 
+             <td align="center">&nbsp;</td> 
+             <td align="center"><b><u><a href="news_date.php?date=2015-3-6">6</a></u></b></td> 
+             <td align="center"><b><u><a href="news_date.php?date=2015-3-13">13</a></u></b></td> 
+             <td align="center"><b><u><a href="news_date.php?date=2015-3-20">20</a></u></b></td> 
+             <td align="center"><b><u><a href="news_date.php?date=2015-3-27">27</a></u></b></td> 
+             <td align="center">&nbsp;</td>
+            </tr> 
+            <tr> 
+             <td width="80" align="left">Суббота</td> 
+             <td align="center">&nbsp;</td> 
+             <td align="center">7</td> 
+             <td align="center"><b><u><a href="news_date.php?date=2015-3-14">14</a></u></b></td> 
+             <td align="center"><b><u><a href="news_date.php?date=2015-3-21">21</a></u></b></td> 
+             <td align="center"><b><u><a href="news_date.php?date=2015-3-28">28</a></u></b></td> 
+             <td align="center">&nbsp;</td>
+            </tr> 
+            <tr> 
+             <td width="80" align="left">Воскресенье</td> 
+             <td align="center"><b><u><a href="news_date.php?date=2015-3-1">1</a></u></b></td> 
+             <td align="center"><b><u><a href="news_date.php?date=2015-3-8">8</a></u></b></td> 
+             <td align="center"><b><u><a href="news_date.php?date=2015-3-15">15</a></u></b></td> 
+             <td align="center"><b><u><a href="news_date.php?date=2015-3-22">22</a></u></b></td> 
+             <td align="center">29</td> 
+             <td align="center">&nbsp;</td>
+            </tr> 
+           </tbody>
+          </table> </td>
+        </tr> 
+       </tbody>
+      </table> 
+      <!-- --> </td> 
+    </tr> 
+    <tr> 
+     <td valign="top" align="center"> <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> </td> 
+    </tr> 
+    <tr> 
+     <td valign="bottom"> 
+      <div id="invcount"> 
+       <script type="text/javascript">
+                function drawCounterPage() {
+                    var randomNumber = Math.floor(Math.random() * 10000);
+                    document.write('<img alt="общий Счетчик" align="middle" ' +
+                        ' src="http://www.rudn.ru/counter/count.php?pagec=1&rnd=' + randomNumber + '" height="1" width="1">');
+                }
+
+                if (window.getPageRegExp) {
+                    if (getPageRegExp(window.location.hash)) {
+
+                    }
+                    else {
+                        drawCounterPage();
+                    }
+                }
+                else {
+                    drawCounterPage();
+                }
+
+            </script> 
+      </div> 
+      <table align="center" border="0" cellpadding="5"> 
+       <tbody>
+        <tr> 
+         <td> <img align="middle" src="http://www.rudn.ru/count/counter.php" id="img_counter" height="44" width="88" alt=""> </td> 
+        </tr> 
+        <!--counters}--> 
+       </tbody>
+      </table> </td> 
+    </tr> 
+   </tbody>
+  </table> 
+  <!--{foot --> 
+  <table width="100%" border="0" cellspacing="0" cellpadding="0"> 
+   <tbody>
+    <tr> 
+     <td width="13" height="71"><img src="image/15.gif" width="13" height="71"></td> 
+     <td width="*%" height="71" background="image/14.gif" valign="top"> 
+      <div align="left" class="foot">
+       <br>© 2006-2015 Все права защищены “Российский университет дружбы народов” 
+       <br> Поддержка сайта: site_s@mx.rudn.ru | 
+       <a href="./?pagec=158">Контактная информация</a> 
+       <br> 
+       <a href="http://www.rudn.ru/?pagec=2719">Разработано: ОВИТ РУДН</a> | 
+       <a href="http://www.rudn.ru/?pagec=2239">СТАТИСТИКА ПОСЕЩАЕМОСТИ САЙТА</a> 
+       <div class="rssLink">
+        <a target="_blank" href="./rss.php">Подписаться на новости</a>
+       </div> 
+      </div> </td> 
+    </tr> 
+   </tbody>
+  </table> 
+  <!--foot} --> 
+  <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script> 
+  <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-15299096-1");
+        pageTracker._trackPageview();
+    } catch (err) {
+    }</script> 
+  <!-- Yandex.Metrika counter --> 
+  <script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter26603889 = new Ya.Metrika({id:26603889,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true,
+                    trackHash:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script> 
+  <noscript>
+   <div>
+    <img src="//mc.yandex.ru/watch/26603889" style="position:absolute; left:-9999px;" alt="">
+   </div>
+  </noscript> 
+  <!-- /Yandex.Metrika counter -->   
+ </body>
+</html>

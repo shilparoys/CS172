@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="lv" class="no-js">
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+  <title>Latvijas Lauksaimniecības universitāte</title> 
+  <script> document.documentElement.className = 'js'; </script> 
+  <meta name="description" content="Latvijas Lauksaimniecības universitāte (LLU) ir Latvijas Republikas augstākās izglītības un zinātnes iestāde, kurā īsteno bakalaura, maģistra, doktora un profesionālas studiju programmas, kā arī nodarbojas ar zinātni un pētniecību. Augstskola tā darbojas, lai saglabātu, izkoptu, pētītu un nodotu nākamajām paaudzēm visu vērtīgo, ko laukiem devusi un var dot latviešu tauta."> 
+  <meta name="keywords" content="llu, universitāte, lauksaimniecības universitāte, studijas latvijā, lf, mf, meži, vmf, veti, tf, mehi, lif, ptf, ef, eki, szf, itf"> 
+  <meta name="author" content="LLU ISD"> 
+  <meta property="dr:say:url" content="llu"> 
+  <meta name="robots" content="NOINDEX, NOFOLLOW"> 
+  <link rel="shortcut icon" href="http://www.llu.lv/css/themes/llu_standart/img/favicon.png" type="image/png"> 
+  <link rel="shortcut icon" href="http://www.llu.lv/css/themes/llu_standart/img/favicon.ico" type="image/vnd.microsoft.icon"> 
+  <link rel="icon" href="http://www.llu.lv/css/themes/llu_standart/img/favicon.ico" type="image/vnd.microsoft.icon"> 
+  <link rel="stylesheet" href="http://www.llu.lv/css/themes/llu_standart/all.css"> 
+  <link rel="stylesheet" href="jquery/development-bundle/themes/smoothness/ui.all.css"> 
+  <link rel="stylesheet" href="jquery/development-bundle/themes/llu2/theme.css"> 
+  <link rel="stylesheet" type="text/css" href="http://www.llu.lv/fixed_style_print.css" media="print"> 
+  <link rel="alternate" type="application/rss+xml" title="LLU jaunākie raksti" href="http://www.llu.lv/rss_llu_raksti_xml.php"> 
+  <link rel="alternate" type="application/rss+xml" title="LLU tuvākie notikumi" href="http://www.llu.lv/rss_llu_notikumi_xml.php"> 
+  <link rel="alternate" type="application/rss+xml" title="ZPS projekti" href="http://www.llu.lv/rss_zps_projekti.php"> 
+  <script type="text/javascript" src="jquery/jquery-1.7.2.min.js"></script> 
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script> 
+  <script src="http://www.llu.lv/fancyzoom.js" type="text/javascript"></script> 
+  <script src="http://www.llu.lv/common_scripts.js" type="text/javascript"></script> 
+  <script type="text/javascript">
+        var lluURL = "http://www.llu.lv/";
+        $(document).ready(function(){
+          $(".anchor-link").click(function(){
+            goToByScroll($(this).attr('rel'));
+          });
+          $("input#search-term").click(function(){
+            var id = $("input[@name=search_what]:checked").attr('id');
+            if(id==undefined){
+              $("#search_articles").attr("checked","checked")
+            }
+          });
+          try {$('div.photo a').fancyZoom({scaleImg: true, closeOnClick: true});} catch (exception) { }
+          try {$('#medium_box_link').fancyZoom();} catch (exception) { }
+          try {$('#large_box_link').fancyZoom();} catch (exception) { }
+          try {$('#flash_box_link').fancyZoom();} catch (exception) { }
+          try {$('.rakstu_bilde_link').fancyZoom();} catch (exception) { }
+        });
+      </script> 
+  <script src="http://www.llu.lv/jquery/llu_dialog.js"></script>
+  <script>$(document).ready(function(){
+					showPopUpOnClick();
+				});</script> 
+ </head> 
+ <body> 
+  <style>
+div#popup-bg {
+	position:fixed;
+	top:0;
+	width:100%;
+	height:inherit;
+	background:rgba(0,0,0,.2);
+	z-index:9999;
+	display:none;
+}
+div#popup-win {
+	width:600px;
+	height:540px;
+	position:fixed;
+	z-index:10000;	
+	top: 50%;
+    left: 50%;
+    margin-left: -300px;
+	margin-top:-270px;
+	background-color:white;
+	border:solid 10px white;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
+div#popup-win a.popup-close {
+	width:30px;
+	height:30px;
+	float:right;
+	display:block;
+	position:absolute;
+	right:-20px;
+	top:-20px;
+	z-index:10001;
+	background-image:url('css_img/jquery/closebox.png');
+	background-size:30px, 30px;
+}
+div#popup-header {
+	width:580px;
+	height:40px;
+	padding:20px 10px 10px;
+}
+div#popup-header .mark-out-title {
+	text-transform:uppercase;
+	color:#3DB1C8;
+}
+div#popup-header h1 {
+	font-size:2.2em;
+	text-align:center;
+	color:#595959;
+	font-weight:200;
+	letter-spacing:-2px;
+	word-spacing:5px;
+	clear:both;
+}
+div#popup-content {
+	width:580px;
+	height:460px;
+	margin:0px 10px 10px;
+}
+div#popup-table {
+	width:536px;
+	height:416px;
+	padding:15px 20px;
+	border:solid 2px #999999;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	color:#B6D12C;
+}
+div#popup-table img{
+	max-width:80px;
+	max-height:80px;
+}
+div#popup-table a:hover img{
+	-ms-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+div#popup-table a.linki{
+	text-decoration:underline;
+	display:block;
+	text-align:right;
+	font-size:11pt;
+	line-height:0.5em;
+}
+div#centre-icon-llu {
+	position:absolute;
+	width:120px;
+	height:120px;
+	z-index:10002;
+	top: 50%;
+    left: 50%;
+    margin-left: -62px;
+	margin-top:-40px;
+	background-image:url('css_img/jquery/popup_icons/llu_icon_centre.jpg');
+	background-size:120px, 120px;
+	background-position:center, center;
+	background-repeat:no-repeat;
+}
+div#centre-icon-llu a{
+	display:block;
+	height:inherit;
+	width:inherit;
+}
+div#popup-table .small-block {
+	height:204px;
+	width:264px;
+	float:left;
+}
+div#popup-content .title-div {
+	height:92px;
+	width:152px;
+	float:left;
+}
+div#popup-content .img-div {
+	height:92px;
+	width:112px;
+	float:left;
+}
+div#popup-content .info-div {
+	height:102px;
+	width:264px;
+	float:left;
+	padding-top:10px;
+}
+div#popup-content .info-div a {
+	text-align:right;
+}
+div#tests-div {
+	border-bottom:solid 2px #999999;
+	border-right:solid 2px #999999;
+}
+div#katalogs-div {
+	border-bottom:solid 2px #999999;
+}
+div#izstade-div {
+	border-right:solid 2px #999999;
+}
+.info-div p{
+	color:black;
+	font-size:10pt;
+	font-weight:bold;
+}
+div#popup-content .info-div a{
+	color:#999999;
+	font-weight:bold;
+	text-decoration:underline;
+	display:block;
+	text-align:right;
+}
+div#popup-content .info-div a:hover{
+	background-size:
+}
+div#popup-content p.foreign {
+	color:#3DB1C8;
+	text-align:center;
+	font-size:11pt;
+	font-weight:bold;
+}
+div#popup-content a.foreign {
+	color:#999999;
+	text-decoration:underline;
+}
+</style> 
+  <div id="popup-bg"> 
+  </div> 
+  <div id="popup-win" style="display:none;"> 
+   <a class="popup-close" href="#" title="Aizvērt"></a> 
+   <div id="popup-header"> 
+    <h1><span class="mark-out-title">Īsti studenti</span> izvēlas Jelgavu!</h1> 
+   </div> 
+   <div id="popup-content"> 
+    <div id="popup-table"> 
+     <div id="centre-icon-llu"> 
+      <a href="#" title="LLU" class="close-button-popup"></a> 
+     </div> 
+     <div id="tests-div" class="small-block"> 
+      <div class="img-div"> 
+       <a title="Studiju izvēles tests" target="_blank" href="http://www.llu.lv/studiju-izveles-tests"><img src="css_img/jquery/popup_icons/cilveks.png" alt="Tests"></a> 
+      </div> 
+      <div class="title-div" style="text-align:right;width:122px;margin-right:30px;"> 
+       <p style="font-size:1.4em;font-weight:bold;line-height:0.7em;">Studiju </p> 
+       <p style="font-size:1.5em;font-weight:bold;line-height:0.7em;">izvēles</p> 
+       <p style="font-size:2.3em;font-weight:bold;line-height:0.5em;">tests</p> 
+      </div> 
+      <div class="info-div" style="margin-right:65px;width:199px;"> 
+       <p>Izpildi testu un noskaidro, kura LLU studiju programma Tev ir vispiemērotākā!</p> 
+       <a class="linki" title="Studiju izvēles tests" target="_blank" href="http://www.llu.lv/studiju-izveles-tests">Pildīt testu</a> 
+      </div> 
+     </div> 
+     <div id="katalogs-div" class="small-block"> 
+      <div class="title-div" style="text-align:left;width:122px;margin-left:30px;"> 
+       <p style="font-size:2.4em;font-weight:bold;line-height:0.7em;">LLU </p> 
+       <p style="font-size:1.4em;font-weight:bold;line-height:0.7em;">studiju</p> 
+       <p style="font-size:1.1em;font-weight:bold;line-height:0.7em;">programmas</p> 
+      </div> 
+      <div class="img-div" style="width:80px;padding-left:32px;"> 
+       <a href="http://www.llu.lv/studiju-programmas" target="_blank" title="LLU Studiju programmas katalogs"><img src="css_img/jquery/popup_icons/cepure.png" alt="Katalogs"></a> 
+      </div> 
+      <div class="info-div" style="margin-left:65px;width:199px;"> 
+       <p>Iepazīsti piedāvātās studiju programmas un uzzini, par ko Tu kļūsi, apgūstot kādu no tām!</p> 
+       <a class="linki" href="http://www.llu.lv/studiju-programmas" target="_blank" title="LLU Studiju programmas katalogs">Uz katalogu</a> 
+      </div> 
+     </div> 
+     <div id="izstade-div" class="small-block"> 
+      <div class="img-div" style="padding-top:15px;width:92px;height:74px;"> 
+       <a href="http://www.bt1.lv/skola" target="_blank" title="Izstāde 'Skola 2015'"><img src="css_img/jquery/popup_icons/abols.png" alt="Skola 2015"></a> 
+      </div> 
+      <div class="title-div" style="padding-top:10px;text-align:right;width:112px;padding-right:60px;height:84px;"> 
+       <p style="font-size:1.1em;font-weight:bold;line-height:0.7em;">LLU stends</p> 
+       <p style="font-size:1.7em;font-weight:bold;line-height:0.7em;">izstādē</p> 
+       <p style="font-size:1.6em;font-weight:bold;line-height:0.9em;">"SKOLA"</p> 
+      </div> 
+      <div class="info-div" style="margin-right:30px;width:234px;"> 
+       <p>Gaidīsim Tevi LLU informatīvajā stendā izstadē "Skola" no 27. februāra līdz 1.martam Starptautiskajā izstāžu centrā Ķīpsalā, Rīgā.</p> 
+       <a class="linki" href="http://www.bt1.lv/skola" target="_blank" title="Izstāde 'Skola 2015'">Par izstādi</a> 
+      </div> 
+     </div> 
+     <div id="fakti-div" class="small-block"> 
+      <div class="title-div" style="padding-top:10px;text-align:left;width:92px;padding-left:60px;height:84px;"> 
+       <p style="font-size:2.5em;font-weight:bold;line-height:0.7em;">20</p> 
+       <p style="font-size:0.9em;line-height:0.5em;">interesanti</p> 
+       <p style="font-size:1.5em;font-weight:bold;line-height:0.7em;">fakti</p> 
+      </div> 
+      <div class="img-div" style="padding-top:15px;padding-left:32px;width:80px;height:74px;"> 
+       <a href="http://www.llu.lv/getfile.php?id=80398" target="_blank" title="20 Interesanti fakti"><img src="css_img/jquery/popup_icons/pils.png" alt="20 Fakti"></a> 
+      </div> 
+      <div class="info-div" style="margin-left:40px;width:224px;"> 
+       <p>Pamatstudijās šogad būs 735 budžeta vietas, lekcijas notiks arī Jelgavas pilī, dzīvošana kopmītnēs maksā sākot no 27,75 € mēnesī.</p> 
+       <a class="linki" href="http://www.llu.lv/getfile.php?id=80398" target="_blank" title="20 Interesanti fakti">Skatīt infografiku</a> 
+      </div> 
+     </div> 
+    </div> 
+    <p class="foreign">Want to study at Latvia University of Agriculture? <a href="http://eng.llu.lv/?mi=514" target="_blank" class="foreign">Click here!</a></p> 
+   </div> 
+  </div>
+  <div id="header-wrapper"></div> 
+  <div id="site-wrapper" class="container_12"> 
+   <div class="grid_12" id="page-wrapper"> 
+    <div id="header-block"> 
+     <div class="header-replacement"></div> 
+     <div id="header-common"> 
+      <div class="grid_3 alpha"> 
+       <div id="logo-placeholder"> 
+        <a href="http://www.llu.lv/" id="site-link"> <h1 id="site-title"> Latvijas Lauksaimniecības universitāte </h1> </a> 
+       </div> 
+      </div> 
+      <div class="grid_6"> 
+       <div id="top-menu-wrapper"> 
+        <nav id="image-menu"> 
+         <ul class="top-menu-list"> 
+          <li> 
+           <div></div> <a href="http://www.llu.lv/studentiem">studentiem</a></li> 
+          <li> 
+           <div></div> <a href="http://www.llu.lv/darbiniekiem">darbiniekiem</a></li> 
+          <li> 
+           <div></div> <a href="http://www.llu.lv/zinatnieku-pakalpojumi">uzņēmējiem</a></li> 
+         </ul> 
+        </nav> 
+       </div> 
+      </div> 
+      <div class="grid_3 omega"> 
+       <div id="search-wrapper"> 
+        <form method="post" id="search-form" action="mekletajs"> 
+         <div class="search-what-wrapper"> 
+          <input type="radio" class="seach-type" name="search_what" value="search_articles" id="search_articles"> 
+          <label for="search_articles">Informācija</label> 
+          <input type="radio" class="seach-type" name="search_what" value="search_personell" id="search_personell"> 
+          <label for="search_personell">Darbinieki</label> 
+         </div> 
+         <input type="text" name="stringu_search" id="search-term" placeholder="Meklēt ..." required maxlength="75"> 
+         <input id="search-button" type="submit" name="submit_search" value=""> 
+        </form> 
+       </div> 
+       <div id="icons-wrapper"> 
+        <div id="social-icons" class="alpha"> 
+         <a href="link.php?r=e59f" class="social-network-link twitter-link" target="_blank" title="Twitter"></a> 
+         <a href="link.php?r=0e66" class="social-network-link draugiem-link" target="_blank" title="Draugiem.lv"></a> 
+         <a href="link.php?r=b667" class="social-network-link facebook-link" target="_blank" title="Facebook"></a> 
+         <a href="link.php?r=7a462" class="social-network-link youtube-link" target="_blank" title="Youtube"></a> 
+         <a href="?ri=1599" class="social-network-link rss-link" target="_blank" title="RSS"></a> 
+         <a href="plesums" class="social-network-link plesums-link" target="_blank" title="Plēsums"></a> 
+        </div> 
+        <div id="language-wrapper" class="omega"> 
+         <div id="language-icons"> 
+          <a href="http://www.llu.lv/" class="language-link" id="latvian-link" title="Latviski"></a> 
+          <a href="http://eng.llu.lv/" class="language-link" id="english-link" title="In English"></a> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div id="site-block"> 
+     <div class="grid_3 alpha"> 
+      <input type="hidden" id="sideMenuType" value="0"> 
+      <script type="text/javascript">
+    $(document).ready(function(){
+      activeMenu = "304";
+            $("li#menu-item-"+activeMenu).addClass("active-menu-item");
+      });
+    </script> 
+      <nav id="side-menu">
+       <ul id="sideNavLinks">
+        <li class="menu-item " id="menu-item-304"><a href="aktualitates">Aktualitātes</a>
+         <div class="popup-menu pop-up-1">
+          <div class="subNavMenu">
+           <div class="subNavArrow">
+            <div>
+             <ul class="subNavLinks">
+              <li class="column-1">
+               <ul>
+                <li class="second-level-menu" id="menu-item-617"><a href="zinas">Jaunumi</a></li>
+                <li class="second-level-menu" id="menu-item-618"><a href="notikumi">Notikumi</a></li>
+                <li class="second-level-menu" id="menu-item-292"><a href="foto">Foto galerija</a></li>
+                <li class="second-level-menu" id="menu-item-307"><a href="video">Video galerija</a></li>
+               </ul> </li>
+             </ul> 
+            </div> 
+           </div> 
+          </div> 
+         </div></li>
+        <li class="menu-item active-menu-item effect-menu" style="background-color:rgba(111, 33, 21, 0.8)!important;" id="menu-item-92"><a href="nac-studet">Nāc studēt!</a>
+         <div class="popup-menu pop-up-1" style="background-color:rgba(111, 33, 21, 0.8)!important;">
+          <div class="subNavMenu">
+           <div class="subNavArrow">
+            <div>
+             <ul class="subNavLinks">
+              <li class="column-1">
+               <ul>
+                <li class="second-level-menu" id="menu-item-321"><a href="studiju-programmas">Studiju programmas</a></li>
+                <li class="second-level-menu" id="menu-item-313"><a href="pamatstudijas">Pamatstudijas</a></li>
+                <li class="third-level-menu" id="menu-item-441"> <a href="ka-klut-par-llu-studentu">Kā kļūt par LLU studentu</a></li>
+                <li class="third-level-menu" id="menu-item-623"> <a href="studiju-izveles-tests">Studiju izvēles tests</a></li>
+                <li class="second-level-menu" id="menu-item-439"><a href="augstaka-limena-studijas">Maģistra studijas</a></li>
+                <li class="second-level-menu" id="menu-item-440"><a href="doktora-studijas">Doktora studijas</a></li>
+               </ul> </li>
+             </ul> 
+            </div> 
+           </div> 
+          </div> 
+         </div></li>
+        <li class="menu-item " id="menu-item-102"><a href="fakultates-un-filiales">Fakultātes un filiāles</a>
+         <div class="popup-menu pop-up-2">
+          <div class="subNavMenu">
+           <div class="subNavArrow">
+            <div>
+             <ul class="subNavLinks">
+              <li class="column-1">
+               <ul>
+                <li class="second-level-menu" id="menu-item-149"><a href="lf">Lauksaimniecības</a></li>
+                <li class="second-level-menu" id="menu-item-268"><a href="mf">Meža</a></li>
+                <li class="second-level-menu" id="menu-item-152"><a href="vmf">Veterinārmedicīnas</a></li>
+                <li class="second-level-menu" id="menu-item-332"><a href="lif-2">Lauku inženieru</a></li>
+                <li class="second-level-menu" id="menu-item-154"><a href="ptf">Pārtikas tehnoloģijas</a></li>
+                <li class="second-level-menu" id="menu-item-331"><a href="tf2">Tehniskā</a></li>
+                <li class="second-level-menu" id="menu-item-157"><a href="itf">Informācijas tehnoloģiju</a></li>
+                <li class="second-level-menu" id="menu-item-604"><a href="esaf">Ekonomikas un sabiedrības attīstības</a></li>
+                <li class="second-level-menu" id="menu-item-98"><a href="llu-filiales-novados">LLU pārstāvniecība Siguldā un filiāle Laidzē</a></li>
+                <li class="second-level-menu" id="menu-item-615"><a href="valodu-katedra">Valodu centrs</a></li>
+               </ul></li>
+              <li class="column-1">
+               <ul>
+                <li class="second-level-menu" id="menu-item-624"><a href="sporta-katedra">Sporta centrs</a></li>
+               </ul> </li>
+             </ul> 
+            </div> 
+           </div> 
+          </div> 
+         </div></li>
+        <li class="menu-item " id="menu-item-363"><a href="studentiem">Studijas</a>
+         <div class="popup-menu pop-up-3">
+          <div class="subNavMenu">
+           <div class="subNavArrow">
+            <div>
+             <ul class="subNavLinks">
+              <li class="column-1">
+               <ul>
+                <li class="second-level-menu" id="menu-item-323"><a href="studijas">Pamatstudijas un maģistrantūra</a></li>
+                <li class="third-level-menu" id="menu-item-147"> <a href="nodarbibas">Nodarbību grafiks</a></li>
+                <li class="third-level-menu" id="menu-item-271"> <a href="darba-piedavajumi">Darba un prakšu piedāvājumi</a></li>
+                <li class="third-level-menu" id="menu-item-96"> <a href="macibspeku-pienemsanas-laiki">Pieņemšanas laiki</a></li>
+                <li class="third-level-menu" id="menu-item-395"> <a href="studiju-prakses">Studiju prakses</a></li>
+                <li class="third-level-menu" id="menu-item-508"> <a href="studiju-noslegums">Studiju noslēgums</a></li>
+                <li class="third-level-menu" id="menu-item-544"> <a href="nepabeigtas-studijas">Nepabeigtas studijas</a></li>
+                <li class="third-level-menu" id="menu-item-90"> <a href="studiju-celvedis">Studiju ceļvedis</a></li>
+                <li class="second-level-menu" id="menu-item-350"><a href="doktorantura">Doktora studijas</a></li>
+                <li class="third-level-menu" id="menu-item-84"> <a href="doktoranti">Doktoranti</a></li>
+                <li class="third-level-menu" id="menu-item-682"> <a href="ddoktora-studiju-programmas">Doktora studiju programmas</a></li>
+               </ul></li>
+              <li class="column-1">
+               <ul>
+                <li class="third-level-menu" id="menu-item-661"> <a href="aktualitates-doktorantura">Aktuālā informācija</a></li>
+                <li class="third-level-menu" id="menu-item-677"> <a href="dteoretiskas-studijas">Teorētiskās studijas</a></li>
+                <li class="third-level-menu" id="menu-item-663"> <a href="dokumenti-un-veidlapas">Dokumenti un veidlapas</a></li>
+                <li class="third-level-menu" id="menu-item-665"> <a href="aizstavetie-promocijas-darbi">Aizstāvētie promocijas darbi</a></li>
+                <li class="third-level-menu" id="menu-item-666"> <a href="scientific-conference-research-for-rural-development">Scientific Conference "Research for Rural Development"</a></li>
+                <li class="second-level-menu" id="menu-item-428"><a href="studiju-finansejums">Studiju finansējums</a></li>
+                <li class="third-level-menu" id="menu-item-233"> <a href="studiju-un-studejosa-kredits">Studiju un studējošā kredīts</a></li>
+                <li class="third-level-menu" id="menu-item-148"> <a href="stipendijas">Stipendijas</a></li>
+                <li class="third-level-menu" id="menu-item-297"> <a href="citi-maksajumi">Citi maksājumi</a></li>
+                <li class="second-level-menu" id="menu-item-289"><a href="llu-is">LLU IS</a></li>
+                <li class="second-level-menu" id="menu-item-398"><a href="studiju-vide">Studiju vide</a></li>
+               </ul></li>
+              <li class="column-1">
+               <ul>
+                <li class="third-level-menu" id="menu-item-452"> <a href="jelgavas-un-pils-kartes">Jelgavas un pils kartes</a></li>
+                <li class="third-level-menu" id="menu-item-399"> <a href="llu-fundamentala-biblioteka">LLU bibliotēka</a></li>
+                <li class="third-level-menu" id="menu-item-100"> <a href="dienesta-viesnicas">Dienesta viesnīcas</a></li>
+                <li class="second-level-menu" id="menu-item-401"><a href="studentu-pasparvalde">Studējošo pašpārvalde</a></li>
+                <li class="third-level-menu" id="menu-item-481"> <a href="par-llu-sp">Par LLU SP</a></li>
+                <li class="third-level-menu" id="menu-item-486"> <a href="studenta-aplieciba">Studenta apliecība</a></li>
+                <li class="second-level-menu" id="menu-item-539"><a href="korporacijas">Korporācijas</a></li>
+                <li class="third-level-menu" id="menu-item-587"> <a href="fraternitas-imantica">Fraternitas Imantica</a></li>
+                <li class="third-level-menu" id="menu-item-588"> <a href="ventonia">Ventonia</a></li>
+                <li class="third-level-menu" id="menu-item-589"> <a href="varaviksne">Varavīksne</a></li>
+               </ul> </li>
+             </ul> 
+            </div> 
+           </div> 
+          </div> 
+         </div></li>
+        <li class="menu-item no-childs" id="menu-item-582"><a href="e-studijas">E-studijas</a></li>
+        <li class="menu-item " id="menu-item-34"><a href="zinatne">Zinātne</a>
+         <div class="popup-menu pop-up-2">
+          <div class="subNavMenu">
+           <div class="subNavArrow">
+            <div>
+             <ul class="subNavLinks">
+              <li class="column-1">
+               <ul>
+                <li class="second-level-menu" id="menu-item-347"><a href="petnieciba">Pētniecība</a></li>
+                <li class="third-level-menu" id="menu-item-593"> <a href="zinatnu-dala">Zinātnes un projektu attīstības centrs</a></li>
+                <li class="third-level-menu" id="menu-item-261"> <a href="patenti">Patenti</a></li>
+                <li class="third-level-menu" id="menu-item-262"> <a href="llu-raksti">LLU Raksti</a></li>
+                <li class="third-level-menu" id="menu-item-85"> <a href="publikaciju-iesniegsana">Publikāciju iesniegšana</a></li>
+                <li class="second-level-menu" id="menu-item-435"><a href="zinatniskie-instituti">Universitātes zinātniskie institūti</a></li>
+                <li class="second-level-menu" id="menu-item-260"><a href="zinatnieku-pakalpojumi">Zinātnieku pakalpojumi</a></li>
+                <li class="third-level-menu" id="menu-item-474"> <a href="zinatnieku-piedavajumi">Zinātnieku piedāvājumi</a></li>
+                <li class="third-level-menu" id="menu-item-434"> <a href="laboratoriju-inventars">Laboratoriju inventārs</a></li>
+                <li class="third-level-menu" id="menu-item-86"> <a href="laboratoriju-inventara-meklesana">Laboratoriju inventāra meklēšana</a></li>
+                <li class="second-level-menu" id="menu-item-653"><a href="aktualas-konferences">Aktuālās konferences LLU</a></li>
+               </ul></li>
+              <li class="column-1">
+               <ul>
+                <li class="second-level-menu" id="menu-item-668"><a href="konferences222">Konferences Latvijā un Pasaulē</a></li>
+                <li class="second-level-menu" id="menu-item-573"><a href="zinatniskas-laboratorijas">LLU zinātniskās laboratorijas</a></li>
+                <li class="third-level-menu" id="menu-item-595"> <a href="augu-skirnu-saimniecisko-ipasibu-novertesanas-laboratorija">Augu šķirņu saimniecisko īpašību novērtēšanas laboratorija</a></li>
+                <li class="third-level-menu" id="menu-item-574"> <a href="agronomisko-analizu-zinatniska-laboratorija">Agronomisko analīžu zinātniskā laboratorija</a></li>
+                <li class="third-level-menu" id="menu-item-575"> <a href="mezu-un-udens-resursu-zinatniska-laboratorija">Mežu un ūdens resursu zinātniskā laboratorija</a></li>
+                <li class="second-level-menu" id="menu-item-433"><a href="petijumu-datu-baze">Pētījumu datu bāze</a></li>
+                <li class="third-level-menu" id="menu-item-81"> <a href="projektu-apskate">Projektu apskate</a></li>
+                <li class="third-level-menu" id="menu-item-72"> <a href="projektu-pievienosana">Projektu pievienošana</a></li>
+               </ul> </li>
+             </ul> 
+            </div> 
+           </div> 
+          </div> 
+         </div></li>
+        <li class="menu-item no-childs" id="menu-item-686"><a href="muzizglitiba" target="_blank">Mūžizglītība</a></li>
+        <li class="menu-item no-childs" id="menu-item-612"><a href="projekti" target="_blank">Projekti</a></li>
+        <li class="menu-item " id="menu-item-252"><a href="starptautiska-sadarbiba">Starptautiskā sadarbība</a>
+         <div class="popup-menu pop-up-1">
+          <div class="subNavMenu">
+           <div class="subNavArrow">
+            <div>
+             <ul class="subNavLinks">
+              <li class="column-1">
+               <ul>
+                <li class="second-level-menu" id="menu-item-385"><a href="arvalstu-partneri">Ārvalstu partneri</a></li>
+                <li class="second-level-menu" id="menu-item-387"><a href="studijas-arzemes">Stipendiju iespējas un studijas ārzemēs</a></li>
+                <li class="second-level-menu" id="menu-item-391"><a href="prakse-arzemes">Prakse ārzemēs</a></li>
+                <li class="second-level-menu" id="menu-item-182"><a href="bova">BOVA</a></li>
+                <li class="second-level-menu" id="menu-item-683"><a href="erasmus">Erasmus+</a></li>
+                <li class="third-level-menu" id="menu-item-484"> <a href="erasmus-studentiem">ERASMUS+ studentiem</a></li>
+                <li class="third-level-menu" id="menu-item-301"> <a href="erasmus-darbiniekiem">ERASMUS+ darbiniekiem</a></li>
+                <li class="third-level-menu" id="menu-item-421"> <a href="harta">ERASMUS Harta</a></li>
+                <li class="third-level-menu" id="menu-item-480"> <a href="veiksmes-stasti">Veiksmes stāsti</a></li>
+               </ul> </li>
+             </ul> 
+            </div> 
+           </div> 
+          </div> 
+         </div></li>
+        <li class="menu-item " id="menu-item-369"><a href="sports">Sports</a>
+         <div class="popup-menu pop-up-1">
+          <div class="subNavMenu">
+           <div class="subNavArrow">
+            <div>
+             <ul class="subNavLinks">
+              <li class="column-1">
+               <ul>
+                <li class="second-level-menu" id="menu-item-491"><a href="sacensibas">Sacensības un sacensību rezultāti</a></li>
+                <li class="second-level-menu" id="menu-item-412"><a href="sports-pilsetniekiem">Sports pilsētniekiem un Jelgavas viesiem</a></li>
+                <li class="second-level-menu" id="menu-item-368"><a href="sports-studejosajiem">Sports studējošajiem un darbiniekiem</a></li>
+                <li class="second-level-menu" id="menu-item-684"><a href="llu-sporta-nama-piedavajums">LLU Sporta nama piedāvājums</a></li>
+                <li class="second-level-menu" id="menu-item-685"><a href="llu-sporta-centra-sporta-bazes-tervetes-iela-piedavajums">LLU sporta bāzes Tērvetes ielā piedāvājums</a></li>
+                <li class="second-level-menu" id="menu-item-495"><a href="sporta-bazes">Sporta bāzes</a></li>
+               </ul> </li>
+             </ul> 
+            </div> 
+           </div> 
+          </div> 
+         </div></li>
+        <li class="menu-item " id="menu-item-358"><a href="darbiniekiem">Darbiniekiem</a>
+         <div class="popup-menu pop-up-1">
+          <div class="subNavMenu">
+           <div class="subNavArrow">
+            <div>
+             <ul class="subNavLinks">
+              <li class="column-1">
+               <ul>
+                <li class="second-level-menu" id="menu-item-238"><a href="strukturvienibas">Struktūrvienības</a></li>
+                <li class="second-level-menu" id="menu-item-276"><a href="metodiskais-darbs-un-macibspeku-kvalifikacija">Metodiskais darbs un mācībspēku kvalifikācija</a></li>
+                <li class="second-level-menu" id="menu-item-420"><a href="darba-drosiba">Darba drošība</a></li>
+                <li class="second-level-menu" id="menu-item-123"><a href="veidlapas-un-paraugi">Veidlapas un paraugi</a></li>
+                <li class="second-level-menu" id="menu-item-512"><a href="veidlapas-darba-komandejumiem">Veidlapas darba komandējumiem</a></li>
+                <li class="second-level-menu" id="menu-item-83"><a href="parskats-par-arzemju-komandejumu">Pārskats par ārzemju komandējumu</a></li>
+                <li class="second-level-menu" id="menu-item-522"><a href="pieteiksanas-e-studiju-apmacibai">Pieteikšanās e-studiju apmācībai</a></li>
+                <li class="second-level-menu" id="menu-item-688"><a href="pieteiksanas-programmai-inovacijas-augstskolas-didaktika">Pieteikšanās programmai "Inovācijas augstskolas didaktikā"</a></li>
+                <li class="second-level-menu" id="menu-item-305"><a href="arodkomiteja">Arodkomiteja</a></li>
+                <li class="second-level-menu" id="menu-item-579"><a href="engures-atputas-baze">Engures atpūtas bāze</a></li>
+               </ul> </li>
+             </ul> 
+            </div> 
+           </div> 
+          </div> 
+         </div></li>
+        <li class="menu-item " id="menu-item-370"><a href="viesiem">Tūristiem un viesiem</a>
+         <div class="popup-menu pop-up-2">
+          <div class="subNavMenu">
+           <div class="subNavArrow">
+            <div>
+             <ul class="subNavLinks">
+              <li class="column-1">
+               <ul>
+                <li class="second-level-menu" id="menu-item-324"><a href="jelgavas-pils">Jelgavas pils</a></li>
+                <li class="third-level-menu" id="menu-item-552"> <a href="pirmaja-studiju-diena-staditie-koki">Pirmajā studiju dienā stādītie koki</a></li>
+                <li class="third-level-menu" id="menu-item-326"> <a href="muzejs">Pils muzejs</a></li>
+                <li class="third-level-menu" id="menu-item-327"> <a href="kurzemes-hercogu-kapenes">Kurzemes hercogu kapenes</a></li>
+                <li class="third-level-menu" id="menu-item-325"> <a href="pils-gadu-skaitlos">Pils gadu skaitļos</a></li>
+                <li class="third-level-menu" id="menu-item-330"> <a href="pils-stasti">Pils stāsti</a></li>
+                <li class="second-level-menu" id="menu-item-590"><a href="jelgavas-pils-sala">Jelgavas pils sala</a></li>
+                <li class="second-level-menu" id="menu-item-372"><a href="pakalpojumi">Karaliskie pakalpojumi</a></li>
+                <li class="third-level-menu" id="menu-item-459"> <a href="kazas-jelgavas-pili">Kāzas Jelgavas pilī</a></li>
+                <li class="third-level-menu" id="menu-item-460"> <a href="karsta-sokolade">Karstā šokolāde</a></li>
+                <li class="second-level-menu" id="menu-item-591"><a href="citi-pakalpojumi">Citi pakalpojumi</a></li>
+               </ul></li>
+              <li class="column-1">
+               <ul>
+                <li class="second-level-menu" id="menu-item-520"><a href="suveniri">Suvenīri</a></li>
+                <li class="second-level-menu" id="menu-item-625"><a href="llu-izire">LLU izīrē</a></li>
+               </ul> </li>
+             </ul> 
+            </div> 
+           </div> 
+          </div> 
+         </div></li>
+        <li class="menu-item " id="menu-item-103"><a href="par-llu">Par LLU</a>
+         <div class="popup-menu pop-up-3">
+          <div class="subNavMenu">
+           <div class="subNavArrow">
+            <div>
+             <ul class="subNavLinks">
+              <li class="column-1">
+               <ul>
+                <li class="second-level-menu" id="menu-item-377"><a href="vadiba-un-struktura">Vadība un struktūra</a></li>
+                <li class="third-level-menu" id="menu-item-105"> <a href="vadiba">Vadība</a></li>
+                <li class="third-level-menu" id="menu-item-473"> <a href="struktura">Struktūra</a></li>
+                <li class="third-level-menu" id="menu-item-471"> <a href="senats">Senāts</a></li>
+                <li class="third-level-menu" id="menu-item-564"> <a href="padomnieku-konvents">Padomnieku konvents</a></li>
+                <li class="third-level-menu" id="menu-item-381"> <a href="paklautibas-iestades">LLU pakļautības iestādes</a></li>
+                <li class="third-level-menu" id="menu-item-528"> <a href="amatpersonu-atalgojumi">Amatpersonu atalgojumi</a></li>
+                <li class="second-level-menu" id="menu-item-596"><a href="llu-150">LLU 150</a></li>
+                <li class="third-level-menu" id="menu-item-594"> <a href="vestures-atskats">Vēstures atskats</a></li>
+                <li class="third-level-menu" id="menu-item-598"> <a href="universitates-himna">Universitātes himna</a></li>
+                <li class="second-level-menu" id="menu-item-359"><a href="kulturas-tradicijas">Kultūras tradīcijas</a></li>
+               </ul></li>
+              <li class="column-1">
+               <ul>
+                <li class="second-level-menu" id="menu-item-170"><a href="pasdarbibas-kolektivi">Pašdarbības kolektīvi</a></li>
+                <li class="second-level-menu" id="menu-item-378"><a href="vesture-un-personibas">Vēsture</a></li>
+                <li class="second-level-menu" id="menu-item-547"><a href="statistika">Statistika</a></li>
+                <li class="second-level-menu" id="menu-item-472"><a href="konvents_-ta-skirejtiesa-un-revizijas-komisija">Konvents</a></li>
+                <li class="second-level-menu" id="menu-item-379"><a href="dokumenti-un-statistika">Dokumenti</a></li>
+                <li class="third-level-menu" id="menu-item-462"> <a href="llu-pamatdokumenti">LLU pamatdokumenti</a></li>
+                <li class="third-level-menu" id="menu-item-234"> <a href="studiju-dokumenti">Studiju dokumenti</a></li>
+                <li class="third-level-menu" id="menu-item-463"> <a href="nolikumi">Nolikumi</a></li>
+                <li class="third-level-menu" id="menu-item-464"> <a href="noteikumi">Noteikumi</a></li>
+                <li class="third-level-menu" id="menu-item-580"> <a href="parvaldes-noteikumi">Pārvaldes noteikumi</a></li>
+                <li class="third-level-menu" id="menu-item-465"> <a href="konventa-sedes">Konventa sēdes</a></li>
+               </ul></li>
+              <li class="column-1">
+               <ul>
+                <li class="third-level-menu" id="menu-item-467"> <a href="zinatnes-padomes-sedes">Zinātnes padomes sēdes</a></li>
+                <li class="second-level-menu" id="menu-item-479"><a href="kontakti">Kontakti</a></li>
+               </ul> </li>
+             </ul> 
+            </div> 
+           </div> 
+          </div> 
+         </div></li>
+        <li class="menu-item no-childs" id="menu-item-650"><a href="attistibas-fonds" target="_blank">Attīstības fonds</a></li>
+        <li class="menu-item " id="menu-item-121"><a href="valsts-iepirkumi">Iepirkumi</a>
+         <div class="popup-menu pop-up-1">
+          <div class="subNavMenu">
+           <div class="subNavArrow">
+            <div>
+             <ul class="subNavLinks">
+              <li class="column-1">
+               <ul>
+                <li class="second-level-menu" id="menu-item-536"><a href="precu_-pakalpojumu-iepirkumi">Preču, pakalpojumu iepirkumi</a></li>
+                <li class="second-level-menu" id="menu-item-537"><a href="buvdarbu-iepirkumi">Universitātes būvdarbu iepirkumi</a></li>
+                <li class="second-level-menu" id="menu-item-538"><a href="iepirkumu-rezultati">Iepirkumu rezultāti</a></li>
+                <li class="second-level-menu" id="menu-item-613"><a href="noslegtie-precu-pakalpojumu-ligumi">Noslēgtie preču, pakalpojumu līgumi</a></li>
+                <li class="second-level-menu" id="menu-item-614"><a href="noslegtie-buvdarbu-ligumi">Universitātes noslēgtie būvdarbu līgumi</a></li>
+               </ul> </li>
+             </ul> 
+            </div> 
+           </div> 
+          </div> 
+         </div></li>
+       </ul> 
+      </nav> 
+      <div id="left-banners" class="banners-wrapper"> 
+       <div class="papildraksts"> 
+        <h3>Ziņu lapa LLU studentiem </h3> 
+        <p><a href="http://www.llu.lv/getfile.php?id=80221" target="_blank"><img style="display: block; margin-left: auto; margin-right: auto;" src="getfile.php?id=80222" alt="Bildes_runa_5.jpg" width="222" height="242"></a></p> 
+       </div> 
+       <div class="papildraksts"> 
+        <h3>LLU Studentu zinātniskā konference </h3> 
+        <p style="text-align: center;">&nbsp;<a href="http://sws.llu.lv/" target="_blank"><embed type="application/x-shockwave-flash" width="180" height="130" src="getfile.php?id=80740" wmode="transparent"></a></p> 
+       </div> 
+       <div class="papildraksts"> 
+        <h3>PIESAKIES STIPENDIJĀM! </h3> 
+        <p>Līdz 13.martam <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11945" target="_blank">KĀVUŠU</a> stipendijai līdz 215 eiro apmērā</p> 
+        <p>Līdz 31.martam<a href="http://www.llu.lv/?ri=11722" target="_blank"> KĀRĻA ULMAŅA </a>stipendijai 1900 eiro apmērā</p> 
+        <p>Līdz 30.aprīlim <a href="http://www.llu.lv/?ri=8578" target="_blank">LLU SENĀTA </a>stipendijai 1600 eiro apmērā</p> 
+        <p>Līdz 30.aprīlim <a href="http://www.attistibasfonds.llu.lv/stipendijas/cakstes-stipendija/" target="_blank">JĀŅA ČAKSTES</a> stipendijai 2000 eiro apmērā</p> 
+       </div> 
+       <div class="papildraksts"> 
+        <h3>Piesakies Erasmus+ apmaiņai! </h3> 
+        <p><a href="http://www.llu.lv/getfile.php?id=80247" target="_blank"><img style="display: block; margin-left: auto; margin-right: auto;" src="getfile.php?id=80250" alt=""></a></p> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="grid_6 middle-column"> 
+      <div id="top-banners-wrapper">
+       <div class="top-banner"> 
+        <script> $(document).ready(function(){
+         $title = $("h3.active-faculty");
+         $class = '';
+         $(".faculties-banner .icon").hover(function(){
+           $this = $(this);
+           $class = $this.data('cl');
+           $title.attr('id',$class);
+           $title.text($this.data('f-name'));
+         },
+         function(){
+           $title.atrr('id', $class);
+         }
+         );
+         $(".faculties-banner").hover(function(){},
+         function(){
+           $title.html('&nbsp;');
+         });
+       });
+ 
+</script> 
+        <div class="faculties-banner"> 
+         <h3 id="lf" class="active-faculty" style="font-size: 12px;">&nbsp;</h3> 
+         <div class="clearfix"></div> 
+         <a target="_blank" class="icon lf" href="http://www.lf.llu.lv?utm_source=llu_lv&amp;utm_campaign=top_banner" data-f-name="Lauksaimniecības fakultāte" data-cl="lf"></a> 
+         <a target="_blank" class="icon mf" href="http://www.mf.llu.lv?utm_source=llu_lv&amp;utm_campaign=top_banner" data-f-name="Meža fakultāte" data-cl="mf"></a> 
+         <a target="_blank" class="icon vmf" href="http://www.vmf.llu.lv?utm_source=llu_lv&amp;utm_campaign=top_banner" data-f-name="Veterinārmedicīnas fakultāte" data-cl="vmf"></a> 
+         <a target="_blank" class="icon tf" href="http://www.tf.llu.lv?utm_source=llu_lv&amp;utm_campaign=top_banner" data-f-name="Tehniskā fakultāte" data-cl="tf"></a> 
+         <a target="_blank" class="icon ptf" href="http://www.ptf.llu.lv?utm_source=llu_lv&amp;utm_campaign=top_banner" data-f-name="Pārtikas tehnoloģijas fakultāte" data-cl="ptf"></a> 
+         <a target="_blank" class="icon lif" href="http://www.lif.llu.lv?utm_source=llu_lv&amp;utm_campaign=top_banner" data-f-name="Lauku inženieru fakultāte" data-cl="lif"></a> 
+         <a target="_blank" class="icon itf" href="http://www.itf.llu.lv?utm_source=llu_lv&amp;utm_campaign=top_banner" data-f-name="Informācijas tehnoloģiju fakultāte" data-cl="itf"></a> 
+         <a target="_blank" class="icon esaf" href="http://www.esaf.llu.lv?utm_source=llu_lv&amp;utm_campaign=top_banner" data-f-name="Ekonomikas un sabiedrības attīstības fakultāte" data-cl="esaf"></a> 
+        </div>
+       </div>
+      </div> 
+      <script>
+        var lluURL2 = lluURL;
+        var catString = "";
+    </script> 
+      <script type="text/javascript" src="http://www.llu.lv/js/importantNewsSlide.js"></script> 
+      <div id="important-wrapper"> 
+       <h3 class="section-title">Aktuālākais Latvijas Lauksaimniecības universitātē</h3> 
+       <div id="important-photo-outer"> 
+        <div id="important-photo-wrapper"> 
+         <ul id="important-photos"> 
+          <li data-img="80934"> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11987" class="active-article-link"> <h1 class="active-article-title"> LIF aicina skolēnus uz Jauno būvinženieru skolu </h1> </a> </li> 
+          <li data-img="80926"> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11973" class="active-article-link"> <h1 class="active-article-title"> Studentu folkfestivāla lielākais vakara pārsteigums un četru nomināciju ieguvēji – „Reaching Spain” </h1> </a> </li> 
+          <li data-img="80353"> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11915" class="active-article-link"> <h1 class="active-article-title"> LIF aicina skolēnus no visas Latvijas uz Jauno zemes ierīkotāju un mērnieku skolu </h1> </a> </li> 
+          <li data-img="80743"> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11964" class="active-article-link"> <h1 class="active-article-title"> Doktora grādu par siltumenerģijas patēriņa izpēti publiskās ēkās ieguvis Ēriks Krūmiņš </h1> </a> </li> 
+          <li data-img="80691"> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11958" class="active-article-link"> <h1 class="active-article-title"> LLU sadarbībā ar Leibnica institūta un Kembridžas zinātniekiem realizēs starptautisku projektu "SMARTPLANT" </h1> </a> </li> 
+         </ul> 
+        </div> 
+        <ul id="important-photo-list"> 
+         <li id="article-photo-1" data-image-index="1" class="active-article-image"> <a href="#" class="small-image" data-image-id="80934" style="background-image: url(http://www.llu.lv/getfile.php?id=80934);">&nbsp;</a> </li> 
+         <li id="article-photo-2" data-image-index="2" class=""> <a href="#" class="small-image" data-image-id="80926" style="background-image: url(http://www.llu.lv/getfile.php?id=80926);">&nbsp;</a> </li> 
+         <li id="article-photo-3" data-image-index="3" class=""> <a href="#" class="small-image" data-image-id="80353" style="background-image: url(http://www.llu.lv/getfile.php?id=80353);">&nbsp;</a> </li> 
+         <li id="article-photo-4" data-image-index="4" class=""> <a href="#" class="small-image" data-image-id="80743" style="background-image: url(http://www.llu.lv/getfile.php?id=80743);">&nbsp;</a> </li> 
+         <li id="article-photo-5" data-image-index="5" class=""> <a href="#" class="small-image" data-image-id="80691" style="background-image: url(http://www.llu.lv/getfile.php?id=80691);">&nbsp;</a> </li> 
+        </ul> 
+       </div> 
+       <p class="active-article-description"> Pirmo reizi LLU darbu sāks „Jauno būvdarbu vadītāju, būvuzraugu un projektētāju skola”, kas paredzēta 10. – 12. klašu skolēniem, lai iepazīstinātu ar darba iespējām būvniecībā un daudzveidīgajām profesijām šajā nozarē. Turklāt trīs labākie skolēni pēc dalības skolā iegūs iespēju studēt no valsts budžeta finansētā vietā studiju programmā „Būvniecība”. </p> 
+       <div id="read-more-wrapper"> 
+        <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11987" class="read-more">Lasi vairāk ...</a> 
+       </div> 
+       <div class="important-details"> 
+        <p id="title_80934" data-article-id="11987"> LIF aicina skolēnus uz Jauno būvinženieru skolu </p> 
+        <p id="descr_80934">Pirmo reizi LLU darbu sāks „Jauno būvdarbu vadītāju, būvuzraugu un projektētāju skola”, kas paredzēta 10. – 12. klašu skolēniem, lai iepazīstinātu ar darba iespējām būvniecībā un daudzveidīgajām profesijām šajā nozarē. Turklāt trīs labākie skolēni pēc dalības skolā iegūs iespēju studēt no valsts budžeta finansētā vietā studiju programmā „Būvniecība”.</p> 
+       </div> 
+       <div class="important-details"> 
+        <p id="title_80926" data-article-id="11973"> Studentu folkfestivāla lielākais vakara pārsteigums un četru nomināciju ieguvēji – „Reaching Spain” </p> 
+        <p id="descr_80926">24. februārī LLU Aulā izskanēja 26. Studentu folkfestivāls, kur uz trijām skatuvēm galveno balvu – skatītāju simpātiju saņēma dzejnieks Frīdis Walfrīdis, mūziķis Jānis Struķis, mūziķu grupa „Savējie” un grupa „Reaching Spain”. Šogad festivāls izskanēja kā īpašs veltījums Jelgavai 750 gadu jubilejā.</p> 
+       </div> 
+       <div class="important-details"> 
+        <p id="title_80353" data-article-id="11915"> LIF aicina skolēnus no visas Latvijas uz Jauno zemes ierīkotāju un mērnieku skolu </p> 
+        <p id="descr_80353">Pirmo reizi Latvijas Lauksaimniecības universitātē (LLU) darbu sāks Jauno zemes ierīkotāju un mērnieku skola, kas paredzēta 10. – 12. klašu skolēniem, lai iepazīstinātu ar zemes ierīcības speciālistu un mērnieku darbu. Turklāt trīs labākie skolēni pēc dalības skolā iegūs iespēju studēt no valsts budžeta finansētā vietā studiju programmā „Zemes ierīcība un mērniecība”.</p> 
+       </div> 
+       <div class="important-details"> 
+        <p id="title_80743" data-article-id="11964"> Doktora grādu par siltumenerģijas patēriņa izpēti publiskās ēkās ieguvis Ēriks Krūmiņš </p> 
+        <p id="descr_80743">23. februārī Latvijas Lauksaimniecības universitātē (LLU) notika promocijas padomes sēde būvzinātnes nozarē, kurā promocijas darbu „Siltumenerģijas patēriņš publiskās ēkās” aizstāvēja un doktora grādu inženierzinātnēs ieguva Ēriks Krūmiņš.</p> 
+       </div> 
+       <div class="important-details"> 
+        <p id="title_80691" data-article-id="11958"> LLU sadarbībā ar Leibnica institūta un Kembridžas zinātniekiem realizēs starptautisku projektu "SMARTPLANT" </p> 
+        <p id="descr_80691">Otrajā ERASynBio projektu uzsaukumā pieņemts lēmums piešķirt finansējumu projektam "SMARTPLANT" - Inženierēta meabolisma vadība ar ziedēšanas un temperatūras iniciētiem regulatorajiem mehānismiem. Tā realizācijā kopā ar Latvijas Lauksaimniecības universitātes (LLU) zinātniekiem piedalīsies kolēģi no Leibnica institūta un Kembridžas.</p> 
+       </div> 
+      </div> 
+      <div id="news-wrapper"> 
+       <div id="news" class="grid_6 alpha"> 
+        <a href="javacript:" id="latest-news-link"> <h3 class="news-block-title latest-news-title active-other-news"> Jaunākais </h3> </a> 
+        <a href="javacript:" id="popular-news-link"> <h3 class="news-block-title popular-news-title"> Lasītākais </h3> </a> 
+        <a href="lapas-arhivs?arhivs=304" id="archive-link"> <h3 class="news-block-title">Arhīvs</h3> </a> 
+        <ul class="other-news" id="latest-news" data-count="20" data-offset="20"> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11996"> Fotoziņa: Aulas foajē – „Magoņu tango” <span class="has-media media-photo" title="Apskatīt galeriju"></span> </a> </li> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11989"> LLU masu medijos (23.- 27.02.2015.) </a> </li> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11987"> LIF aicina skolēnus uz Jauno būvinženieru skolu </a> </li> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11973"> Studentu folkfestivāla lielākais vakara pārsteigums un četru nomināciju ieguvēji – „Reaching Spain” <span class="has-media media-photo" title="Apskatīt galeriju"></span> </a> </li> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11915"> LIF aicina skolēnus no visas Latvijas uz Jauno zemes ierīkotāju un mērnieku skolu </a> </li> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11964"> Doktora grādu par siltumenerģijas patēriņa izpēti publiskās ēkās ieguvis Ēriks Krūmiņš </a> </li> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11959"> RTU izsludina konkursu «ResearchSlam» maģistrantiem un doktorantiem </a> </li> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11958"> LLU sadarbībā ar Leibnica institūta un Kembridžas zinātniekiem realizēs starptautisku projektu "SMARTPLANT" </a> </li> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11957"> Lauksaimnieki un mežsaimnieki aicināti uz sanāksmi par klimata pārmaiņām un to ietekmi uz nozaru attīstību </a> </li> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11955"> Studentes aicinātas pieteikties LLU futbola komandā </a> </li> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11954"> ASV kultūras dienā studenti pārbauda savas zināšanas un iepazīst amerikāņu mūziku <span class="has-media media-photo" title="Apskatīt galeriju"></span> </a> </li> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11951"> Konvents atbalsta LLU nosaukuma saglabāšanu </a> </li> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11950"> Doktora grādu par vienotu dokumentu vadības sistēmas izpēti ieguvis Toms Leikums </a> </li> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11949"> LLU rektore: Jaunākajām zinātnes atziņām jāienāk studiju procesā un Latvijas laukos <span class="has-media media-photo" title="Apskatīt galeriju"></span> </a> </li> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11946"> LLU viesojas Zemgales plānošanas reģiona pašvaldību un izglītības pārvalžu vadītāji </a> </li> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11945"> Iegūsti Kāvušu stipendiju studiju mērķu īstenošanai ārvalstīs! </a> </li> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11938"> Pasniegtas Gada Balvas 2014! <span class="has-media media-photo" title="Apskatīt galeriju"></span> </a> </li> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11937"> Video: LIF studenti izveidojuši ainavas labiekārtojuma projektus parkiem Jēkabpilī </a> </li> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11939"> Gada dekāns: Dagnis Dubrovskis </a> </li> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11922"> Piedalies erudīcijas konkursā un dodies uz NATO Briselē! </a> </li> 
+        </ul> 
+        <ul class="other-news" id="popular-news" data-count="20" data-offset="20"> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11973"> Studentu folkfestivāla lielākais vakara pārsteigums un četru nomināciju ieguvēji – „Reaching Spain” <span class="has-media media-photo" title="Šim rakstam ir galerija"></span> </a> </li> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11987"> LIF aicina skolēnus uz Jauno būvinženieru skolu </a> </li> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11951"> Konvents atbalsta LLU nosaukuma saglabāšanu </a> </li> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11964"> Doktora grādu par siltumenerģijas patēriņa izpēti publiskās ēkās ieguvis Ēriks Krūmiņš </a> </li> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11955"> Studentes aicinātas pieteikties LLU futbola komandā </a> </li> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11958"> LLU sadarbībā ar Leibnica institūta un Kembridžas zinātniekiem realizēs starptautisku projektu "SMARTPLANT" </a> </li> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11957"> Lauksaimnieki un mežsaimnieki aicināti uz sanāksmi par klimata pārmaiņām un to ietekmi uz nozaru attīstību </a> </li> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11989"> LLU masu medijos (23.- 27.02.2015.) </a> </li> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11954"> ASV kultūras dienā studenti pārbauda savas zināšanas un iepazīst amerikāņu mūziku <span class="has-media media-photo" title="Šim rakstam ir galerija"></span> </a> </li> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11996"> Fotoziņa: Aulas foajē – „Magoņu tango” <span class="has-media media-photo" title="Šim rakstam ir galerija"></span> </a> </li> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11959"> RTU izsludina konkursu «ResearchSlam» maģistrantiem un doktorantiem </a> </li> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11950"> Doktora grādu par vienotu dokumentu vadības sistēmas izpēti ieguvis Toms Leikums </a> </li> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11915"> LIF aicina skolēnus no visas Latvijas uz Jauno zemes ierīkotāju un mērnieku skolu </a> </li> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11938"> Pasniegtas Gada Balvas 2014! <span class="has-media media-photo" title="Šim rakstam ir galerija"></span> </a> </li> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11949"> LLU rektore: Jaunākajām zinātnes atziņām jāienāk studiju procesā un Latvijas laukos <span class="has-media media-photo" title="Šim rakstam ir galerija"></span> </a> </li> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11858"> Izdotas jaunas Meža fakultātes mācībspēku sastādītas grāmatas <span class="has-media media-photo" title="Šim rakstam ir galerija"></span> </a> </li> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11945"> Iegūsti Kāvušu stipendiju studiju mērķu īstenošanai ārvalstīs! </a> </li> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11939"> Gada dekāns: Dagnis Dubrovskis </a> </li> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11946"> LLU viesojas Zemgales plānošanas reģiona pašvaldību un izglītības pārvalžu vadītāji </a> </li> 
+         <li> <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11937"> Video: LIF studenti izveidojuši ainavas labiekārtojuma projektus parkiem Jēkabpilī </a> </li> 
+        </ul> 
+        <div class="clearfix"></div> 
+        <div class="loading-div loading-articles"></div> 
+        <div class="more-articles-btn-wrap"> 
+         <button id="loading-articles" class="ui-icon-refresh">Ielādēt vairāk rakstus</button> 
+        </div> 
+        <div id="no-news"> 
+         <p>Pārējie raksti pieejami arhīvā</p> 
+         <a id="view-archive" class="ui-icon-clock" href="lapas-arhivs?arhivs=304">Skatīt arhīvu</a> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="grid_3 omega"> 
+      <div id="right-banners" class="banners-wrapper"> 
+       <div class="papildraksts"> 
+        <h3 class="galerijas-dati-header"> Jaunākā galerija <span class="has-media media-photo" title="Zigrīdas Cīrules gleznu izstāde &quot;Magoņu tango&quot;"></span> </h3>
+        <a title="Zigrīdas Cīrules gleznu izstāde &quot;Magoņu tango&quot;" href="foto?op=view_galerija&amp;id=715"><img src="getfile.php?id=80972" alt="img" width="200" border="0"></a> 
+       </div> 
+       <div class="papildraksts"> 
+        <h3 class="events-block-title">Tuvākie notikumi </h3> 
+        <div class="clearfix"></div> 
+        <div class="clearfix"></div> 
+        <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11990"> <span class="event-date"> 20. februāris - 16. marts </span> <span class="event-title">Jelgavas pils Aulas foajē Z.Cīrules gleznu izstāde "Magoņu tango"</span> </a> 
+        <div class="clearfix"></div> 
+        <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11870"> <span class="event-date"> 02. martā </span> <span class="event-title">Studentu korporācijas "Ventonia" viesu vakars</span> </a> 
+        <div class="clearfix"></div> 
+        <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11893"> <span class="event-date"> 03. martā </span> <span class="event-title">Jelgavas studentu teātra izrāde "Mežainis"</span> </a> 
+        <div class="clearfix"></div> 
+        <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11993"> <span class="event-date"> 04. martā </span> <span class="event-title">Latvijas Lauksaimniecības zinātnisko iestāžu Direktoru padomes sēde</span> </a> 
+        <div class="clearfix"></div> 
+        <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11967"> <span class="event-date"> 04. martā </span> <span class="event-title">Zinātnes pēcpusdiena</span> </a> 
+        <div class="clearfix"></div> 
+        <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11754"> <span class="event-date"> 07. martā </span> <span class="event-title">LLU tautas deju ansambļa "Kalve" salidojums</span> </a> 
+        <div class="clearfix"></div> 
+        <a href="http://www.llu.lv/aktualitates?op=raksts&amp;id=11977"> <span class="event-date"> 10. martā </span> <span class="event-title">Apliecību izsniegšana LLU Attīstības fonda stipendiātiem</span> </a> 
+        <div class="clearfix"></div> 
+        <a class="archive-link" href="aktualitates?op=notikumi&amp;rub=0">Skatīt visus</a> 
+        <div class="clearfix"></div> 
+       </div> 
+       <div class="papildraksts"> 
+        <h3>Attention! </h3> 
+        <p><a href="http://eng.llu.lv/?mi=514" target="_blank"><img style="display: block; margin-left: auto; margin-right: auto;" src="getfile.php?id=76149" alt="en student.JPG" width="130" height="81"></a></p> 
+       </div> 
+       <div class="papildraksts"> 
+        <h3>LLU suvenīri </h3> 
+        <p><a href="getfile.php?id=78777" target="_blank"><img style="display: block; margin-left: auto; margin-right: auto;" src="getfile.php?id=78776" alt="suveniru baneris_jauns.JPG" width="200" height="141"></a></p> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div id="footer-block" class="grid_12"> 
+     <footer> 
+      <nav id="footer-navigation"> 
+       <ul id="footer-links"> 
+        <li><a href="http://www.llu.lv/lapas-karte">lapas karte</a></li> 
+        <li><a href="http://www.llu.lv/kontakti">kontakti</a></li> 
+        <li><a href="http://www.llu.lv/portals">par portālu</a></li> 
+        <li><a href="http://www.llu.lv/biblioteka">bibliotēka</a></li> 
+        <li><a href="http://www.llu.lv/attistibas-fonds">attīstības fonds</a></li> 
+        <li><a href="http://www.llu.lv/e-pasts">e-pasts</a></li> 
+        <li><a href="http://www.llu.lv/estudijas">e-studijas</a></li> 
+        <li><a href="http://www.llu.lv/llu-is">LLU IS</a></li> 
+        <li><a href="http://www.llu.lv/studentu-pasparvalde">SP</a></li> 
+       </ul> 
+      </nav> 
+     </footer> 
+    </div> 
+   </div> 
+  </div> 
+  <!-- Piwik --> 
+  <script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.llu.lv/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', 1]);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+    g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script> 
+  <noscript>
+   <p><img src="http://piwik.llu.lv/piwik.php?idsite=1" style="border:0;" alt=""></p>
+  </noscript> 
+  <!-- End Piwik Code -->   
+ </body>
+</html>

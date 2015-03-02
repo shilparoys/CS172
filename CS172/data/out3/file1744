@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VgYHV1dVGwIBVFlVBQU="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=s(e),u=c.length,f=i(a,o,r),d=0;u>d;d++)c[d].apply(f,n);return f}function a(t,e){u[t]=s(t).concat(e)}function s(t){return u[t]||[]}function c(){return n(e)}var u={};return{on:a,emit:e,create:c,listeners:s,_events:u}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],3:[function(t){function e(t,e,n,i,s){try{c?c-=1:r("err",[s||new UncaughtException(t,e,n)])}catch(u){try{r("ierr",[u,(new Date).getTime(),!0])}catch(f){}}return"function"==typeof a?a.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(4),i=t("ee"),a=window.onerror,s=!1,c=0;t("loader").features.err=!0,window.onerror=e,NREUM.noticeError=n;try{throw new Error}catch(u){"stack"in u&&(t(5),t(3),"addEventListener"in window&&t(1),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&t(2),s=!0)}i.on("fn-start",function(){s&&(c+=1)}),i.on("fn-err",function(t,e,r){s&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){s&&!this.thrown&&c>0&&(c-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:4,2:7,3:5,4:18,5:6,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],4:[function(t,e){function n(t){i.inPlace(t,["addEventListener","removeEventListener"],"-",r)}function r(t){return t[1]}var o=(t(1),t("ee").create()),i=t(2)(o),a=t("gos");if(e.exports=o,n(window),"getPrototypeOf"in Object){for(var s=document;s&&!s.hasOwnProperty("addEventListener");)s=Object.getPrototypeOf(s);s&&n(s);for(var c=XMLHttpRequest.prototype;c&&!c.hasOwnProperty("addEventListener");)c=Object.getPrototypeOf(c);c&&n(c)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&n(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t){if(t[1]){var e=t[1];"function"==typeof e?this.wrapped=t[1]=a(e,"nr@wrapped",function(){return i(e,"fn-",null,e.name||"anonymous")}):"function"==typeof e.handleEvent&&i.inPlace(e,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:18,2:19,ee:"QJf3ax",gos:"7eSDFh"}],5:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=r(t[0],"fn-")})},{1:19,2:18,ee:"QJf3ax"}],6:[function(t,e){function n(t,e,n){var r=t[0];"string"==typeof r&&(r=new Function(r)),t[0]=o(r,"fn-",null,n)}var r=(t(2),t("ee").create()),o=t(1)(r);e.exports=r,o.inPlace(window,["setTimeout","setInterval","setImmediate"],"setTimer-"),r.on("setTimer-start",n)},{1:19,2:18,ee:"QJf3ax"}],7:[function(t,e){function n(){c.inPlace(this,d,"fn-")}function r(t,e){c.inPlace(e,["onreadystatechange"],"fn-")}function o(t,e){return e}var i=t("ee").create(),a=t(1),s=t(2),c=s(i),u=s(a),f=window.XMLHttpRequest,d=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];e.exports=i,window.XMLHttpRequest=function(t){var e=new f(t);try{i.emit("new-xhr",[],e),u.inPlace(e,["addEventListener","removeEventListener"],"-",function(t,e){return e}),e.addEventListener("readystatechange",n,!1)}catch(r){try{i.emit("internal-error",[r])}catch(o){}}return e},window.XMLHttpRequest.prototype=f.prototype,c.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",o),i.on("send-xhr-start",r),i.on("open-xhr-start",r)},{1:4,2:19,ee:"QJf3ax"}],8:[function(t){function e(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function n(t){var n=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;c>i;i++)t.removeEventListener(s[i],this.listener,!1);if(!n.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){n.status=t.status;var a=t.responseType,u="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,f=e(u);if(f&&(r.rxSize=f),this.sameOrigin){var d=t.getResponseHeader("X-NewRelic-App-Data");d&&(n.cat=d.split(", ").pop())}}else n.status=0;r.cbTime=this.cbTime,o("xhr",[n,r,this.startTime])}}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}if(window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)){t("loader").features.xhr=!0;var o=t("handle"),i=t(2),a=t("ee"),s=["load","error","abort","timeout"],c=s.length,u=t(1);t(4),t(3),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=n,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,n){var r=this.metrics,o=t[0],i=this;if(r&&o){var u=e(o);u&&(r.txSize=u)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof n.onload))&&i.end(n)}catch(e){try{a.emit("internal-error",[e])}catch(r){}}};for(var f=0;c>f;f++)n.addEventListener(s[f],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+u(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+u(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof XMLHttpRequest&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&&a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{1:"XL7HBI",2:9,3:7,4:4,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],9:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&&o[1]&&(r.port=o[1].split("/")[0].split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&&e.port===n.port&&e.protocol===n.protocol,r}},{}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):(o[t]||(o[t]=[]),void o[t].push(e))}var r=t("ee").create(),o={};e.exports=n,n.ee=r,r.q=o},{ee:"QJf3ax"}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],G9z0Bl:[function(t,e){function n(){var t=p.info=NREUM.info;if(t&&t.agent&&t.licenseKey&&t.applicationID&&c&&c.body){p.proto="https"===d.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var e=c.createElement("script");e.src=p.proto+t.agent,c.body.appendChild(e)}}function r(){"complete"===c.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=window,c=s.document,u="addEventListener",f="attachEvent",d=(""+location).split("?")[0],p=e.exports={offset:i(),origin:d,features:{}};c[u]?(c[u]("DOMContentLoaded",o,!1),s[u]("load",n,!1)):(c[f]("onreadystatechange",r),s[f]("onload",n)),a("mark",["firstbyte",i()])},{handle:"D5DuLP"}],18:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],19:[function(t,e){function n(t){return!(t&&"function"==typeof t&&t.apply&&!t[i])}var r=t("ee"),o=t(1),i="nr@wrapper",a=Object.prototype.hasOwnProperty;e.exports=function(t){function e(t,e,r,a){function nrWrapper(){var n,i,s,u;try{i=this,n=o(arguments),s=r&&r(n,i)||{}}catch(d){f([d,"",[n,i,a],s])}c(e+"start",[n,i,a],s);try{return u=t.apply(i,n)}catch(p){throw c(e+"err",[n,i,p],s),p}finally{c(e+"end",[n,i,u],s)}}return n(t)?t:(e||(e=""),nrWrapper[i]=!0,u(t,nrWrapper),nrWrapper)}function s(t,r,o,i){o||(o="");var a,s,c,u="-"===o.charAt(0);for(c=0;c<r.length;c++)s=r[c],a=t[s],n(a)||(t[s]=e(a,u?s+o:o,i,s,t))}function c(e,n,r){try{t.emit(e,n,r)}catch(o){f([o,e,n,r])}}function u(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){f([r])}for(var o in t)a.call(t,o)&&(e[o]=t[o]);return e}function f(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=r),e.inPlace=s,e.flag=i,e}},{1:18,ee:"QJf3ax"}]},{},["G9z0Bl",3,8]);</script> 
+  <meta name="description" content="Wyoming Public Radio is a commercial free station licensed to the University of Wyoming. WPR broadcasts to a majority of Wyoming."> 
+  <link rel="shortcut icon" href="http://mediad.publicbroadcasting.net/p/wpr/files/favicon_3.ico" type="image/vnd.microsoft.icon"> 
+  <link rel="shortcut icon" href="public://favicon_3.ico" type="image/vnd.microsoft.icon"> 
+  <link rel="alternate" type="application/rss+xml" title="Wyoming Public Media RSS" href="http://wyomingpublicmedia.org/rss.xml"> 
+  <meta name="Generator" content="Drupal 7 (http://drupal.org)"> 
+  <script type="text/javascript">var _sf_startpt=(new Date()).getTime();</script> 
+  <meta name="google-site-verification" content="ymn_v0k0DIKAEVkZC3nn6vfeMdktk3jb1hhQfJegORA"> 
+  <title>Wyoming Public Media | Inspires, Educates and Connects Wyoming</title> 
+  <link type="text/css" rel="stylesheet" href="http://wyomingpublicmedia.org/sites/wyomingpublicmedia.org/files/css/css_zXr1pRkjUmFHX10b6Pv5_DqzyewvdLNQ8QgccGQIRQQ.css" media="all"> 
+  <link type="text/css" rel="stylesheet" href="http://wyomingpublicmedia.org/sites/wyomingpublicmedia.org/files/css/css_ZFlaYqkiQzTmlBPX4mQeT33IFQX3nR-zpGlyqFhtTNM.css" media="all"> 
+  <link type="text/css" rel="stylesheet" href="http://wyomingpublicmedia.org/sites/wyomingpublicmedia.org/files/css/css_XHTm2cMU6sD6pzlNwtS19lgDRK8GjAz14nQaxKhle30.css" media="all"> 
+  <link type="text/css" rel="stylesheet" href="http://wyomingpublicmedia.org/sites/wyomingpublicmedia.org/files/css/css_zinPTEeY8mb31ereBTggncYvy33bkgAfGYCSRXgNlzo.css" media="all"> 
+  <style type="text/css" media="all">
+<!--/*--><![CDATA[/*><!--*/
+.header-region-outer{background-color:#FFFFFF;}@media screen and (min-width:1024px){.header-region-outer{background-image:url(http://mediad.publicbroadcasting.net/p/wpr/files/201502/Header-with-all-of-that-Large-Mountain.png);background-position:center;background-size:cover;background-repeat:no-repeat;}}.branding .tagline{color:#000066;}.branding .listen-live-toggle > a,.branding .header-utility > a,.branding .header-utility > a.trigger-nav{color:#FFFFFF;}@media screen and (min-width:641px){.branding .trigger-nav{background:#777777;}}@media screen and (max-width:640px){.branding .header-utility > a.trigger-nav,.active-menu .branding .header-utility > a.trigger-nav{color:#777777;}}#listen-live .listen-live-toggle{background-color:#213C94;}#listen-live .listen-live-btn{background-color:transparent;color:#FFFFFF;}@media screen and (min-width:640px){#listen-live .listen-live-btn{background-color:#213C94;}}.branding .give{background:#AE2512;}
+
+/*]]>*/-->
+</style> 
+  <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300,700,700italic,900,italic,regular&amp;subset=latin" media="all"> 
+  <link type="text/css" rel="stylesheet" href="http://wyomingpublicmedia.org/sites/wyomingpublicmedia.org/files/css/css_daEdpEyAJIa8b2VkCqSKcw8PaExcB6Qro80XNes_sHA.css" media="all"> 
+  <link type="text/css" rel="stylesheet" href="http://wyomingpublicmedia.org/sites/wyomingpublicmedia.org/files/css/css_P_j-vl9qulf6vlACYadr6lj2SoP9AeezqYLDH4TXuxg.css" media="all"> 
+  <script type="text/javascript" src="http://mediad.publicbroadcasting.net/p/wpr/files/js/js_xSpMA4ArVcBKOZ43sPqNRk0gxQZdDVifw27pIUCzWU0.js"></script> 
+  <script type="text/javascript" src="http://mediad.publicbroadcasting.net/p/wpr/files/js/js_y1ASX8GG1N8wZfsjpV-6bS2d5T56FunQPus3CyzS7Dw.js"></script> 
+  <script type="text/javascript" src="http://mediad.publicbroadcasting.net/p/wpr/files/js/js_-WcrGf3pH5GnSWA1Y-B28tyjknNjFr4asJklCZQ5NUA.js"></script> 
+  <script type="text/javascript" src="http://mediad.publicbroadcasting.net/p/wpr/files/js/js_WvruiZ0jjkXJSbEyQJ2_7hliso7xxozyTFHhB7WoZcM.js"></script> 
+  <script type="text/javascript" src="//www.googletagservices.com/tag/js/gpt.js"></script> 
+  <script type="text/javascript" src="http://mediad.publicbroadcasting.net/p/wpr/files/js/js_w9p4wVzJmnNlh-hLhQs15Kf46qMZKHl2kST0FJacvHo.js"></script> 
+  <script type="text/javascript">
+<!--//--><![CDATA[//><!--
+(function() {var ga = document.createElement("script");ga.type = "text/javascript";ga.async = true;ga.src="//stream.publicbroadcasting.net/analytics/aall.js";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(ga, s);})();
+//--><!]]>
+</script> 
+  <script type="text/javascript" src="http://mediad.publicbroadcasting.net/p/wpr/files/js/js_txrSF3Dd1fUAlTmSh9DFPoIBNEfX08MZKJopgUzq_OQ.js"></script> 
+  <script type="text/javascript" src="http://mediad.publicbroadcasting.net/p/wpr/files/js/js_Ckfe6Cu0HnG8Im6fiYyvV3qP7C0z-Yz4xRCN2IlwRnQ.js"></script> 
+  <script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"responso","theme_token":"pI_ygAUkSVE7A1GpXhgwBRCAVTZKDu7jwTpINHsM9X8","js":{"sites\/all\/modules\/contrib\/jquery_update\/replace\/jquery\/1.8\/jquery.min.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/libraries\/magnific-popup\/jquery.magnific-popup.js":1,"sites\/all\/modules\/contrib\/google_cse\/google_cse.js":1,"sites\/all\/modules\/custom\/pi_media_types\/pi_audio\/js\/pi-audio.js":1,"sites\/all\/modules\/custom\/pi_hull\/js\/pi-hull.js":1,"sites\/all\/modules\/custom\/pi_hull\/js\/jquery.innerfade.js":1,"sites\/all\/modules\/custom\/pi_hull\/jplayer\/js\/jquery.jplayer.min.js":1,"sites\/all\/modules\/custom\/pi_hull\/jplayer\/js\/main.js":1,"\/\/www.googletagservices.com\/tag\/js\/gpt.js":1,"sites\/all\/modules\/custom\/responsive_ads\/js\/main.js":1,"sites\/all\/modules\/custom\/pi_guide\/js\/pi_listenlive.js":1,"sites\/all\/modules\/custom\/npr_river\/npr-river.js":1,"0":1,"sites\/all\/modules\/custom\/block_factory\/treatments\/promotional-small\/promotional-small.js":1,"sites\/all\/themes\/responso\/js\/vendor\/modernizr.js":1,"sites\/all\/themes\/responso\/js\/vendor\/media.match.min.js":1,"sites\/all\/themes\/responso\/js\/vendor\/matchMedia.addListener.js":1,"sites\/all\/themes\/responso\/js\/vendor\/enquire.min.js":1,"sites\/all\/themes\/responso\/js\/mediaqueries.js":1,"sites\/all\/themes\/responso\/js\/vendor\/fastclick.js":1,"sites\/all\/themes\/responso\/foundation\/js\/foundation\/foundation.js":1,"sites\/all\/themes\/responso\/foundation\/js\/foundation\/foundation.topbar.js":1,"sites\/all\/themes\/responso\/foundation\/js\/foundation\/foundation.interchange.js":1,"sites\/all\/themes\/responso\/js\/scripts.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"sites\/all\/libraries\/magnific-popup\/magnific-popup.css":1,"sites\/all\/modules\/contrib\/date\/date_api\/date.css":1,"sites\/all\/modules\/contrib\/date\/date_popup\/themes\/datepicker.1.7.css":1,"modules\/field\/theme\/field.css":1,"sites\/all\/modules\/contrib\/google_cse\/google_cse.css":1,"modules\/node\/node.css":1,"sites\/all\/modules\/custom\/pi_hull\/pi_outrigger\/css\/pi_outrigger.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/contrib\/views\/css\/views.css":1,"sites\/all\/modules\/contrib\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/custom\/pi_guide\/css\/pi_guide.css":1,"sites\/all\/modules\/custom\/pi_hull\/jplayer\/css\/jplayer.npr.css":1,"sites\/all\/modules\/custom\/pi_npr_story\/css\/pi_npr_story.css":1,"sites\/all\/modules\/custom\/pi_views\/pi_reports_views\/css\/pi_reports.css":1,"sites\/all\/modules\/custom\/pi_menus\/css\/flexiMenu.css":1,"sites\/all\/modules\/custom\/responsive_footer\/responsive-footer.admin.css":1,"0":1,"http:\/\/fonts.googleapis.com\/css?family=Lato:300,700,700italic,900,italic,regular\u0026subset=latin":1,"sites\/all\/modules\/custom\/block_factory\/treatments\/promotional-large\/promotional-large.css":1,"sites\/all\/modules\/custom\/block_factory\/treatments\/promotional-small\/promotional-small.css":1,"sites\/all\/themes\/responso\/css\/icon-fonts.css":1,"sites\/all\/themes\/responso\/css\/screen.css":1}},"chartbeat":{"uid":33583,"domain":"wyomingpublicmedia.org"},"googleCSE":{"cx":"010251366440257945544:weunxhbduza","language":"","resultsWidth":600,"domain":"www.google.com"},"responsive_ads":{"networkCode":"10941247","placement":{"leaderboard_1":"main#content","medium_1":"#block-pi-responsive-ads-medium-1 .content","medium_2":".node-teaser:eq(0) .content","medium_3":".node-teaser:eq(3) .content","tablet_1":"main#content","mobile_1":"#block-pi-responsive-ads-mobile-1 .content"},"targeting":{"type":"agg","agg":"homepage"},"ads":{"leaderboard_1":{"type":"leaderboard","adUnit":"WPM_leaderboard_1","name":"leaderboard_1","width":728,"height":90},"medium_1":{"type":"medium","adUnit":"WPM_medium_1","name":"medium_1","width":300,"height":250},"medium_2":{"type":"medium","adUnit":"WPM_medium_2","name":"medium_2","width":300,"height":250},"medium_3":{"type":"medium","adUnit":"WPM_medium_3","name":"medium_3","width":300,"height":250},"tablet_1":{"type":"tablet","adUnit":"WPM_tablet_1","name":"tablet_1","width":728,"height":90},"mobile_1":{"type":"mobile","adUnit":"WPM_mobile_1","name":"mobile_1","width":320,"height":50}}},"streamCount":3,"streams":[{"stream_mp3":"http:\/\/wprhqstream1.uwyo.edu:8000\/wpr128.mp3","popup":"1","width":"","height":"","display":"1","weight":"-10","streamName":"wpr","description":"Wyoming Public Radio","ucs":"5187f617e1c8c26fe80558ab"},{"stream_mp3":"http:\/\/wprhqstream3.uwyo.edu:8000\/kuwy128.mp3","popup":"1","width":"","height":"","display":"1","weight":"-9","streamName":"wpr-hd2","description":"Classical Wyoming","ucs":"5187f624e1c8fe099bfe90d0"},{"stream_mp3":"http:\/\/wprhqstream4.uwyo.edu:8000\/kuwl128.mp3","popup":"1","width":"","height":"","display":"1","weight":"-8","streamName":"kuwl","description":"Jazz Wyoming","ucs":"5187f636e1c82d2a695ab3b9"},{"stream_mp3":"http:\/\/wprhqstream1.uwyo.edu:8000\/wpr128.mp3","popup":"1","width":"","height":"","display":"1","weight":"-10","streamName":"wpr","description":"Wyoming Public Radio","ucs":"5187f617e1c8c26fe80558ab"},{"stream_mp3":"http:\/\/wprhqstream3.uwyo.edu:8000\/kuwy128.mp3","popup":"1","width":"","height":"","display":"1","weight":"-9","streamName":"wpr-hd2","description":"Classical Wyoming","ucs":"5187f624e1c8fe099bfe90d0"},{"stream_mp3":"http:\/\/wprhqstream4.uwyo.edu:8000\/kuwl128.mp3","popup":"1","width":"","height":"","display":"1","weight":"-8","streamName":"kuwl","description":"Jazz Wyoming","ucs":"5187f636e1c82d2a695ab3b9"}]});
+//--><!]]>
+</script> 
+  <meta name="viewport" content="width=device-width"> 
+ </head> 
+ <body class="html front not-logged-in page-homepage fixed-header has-sidebar"> 
+  <div id="page-wrapper"> 
+   <div role="document" class="page"> 
+    <header role="banner" class="header"> 
+     <div class="skiptocontent">
+      <a href="#main-content">skip to main content</a>
+     </div> 
+     <div class="header-region-outer"> 
+      <section class="header-region-inner row"> 
+       <div class="branding large-12 columns"> 
+        <div class="brand-inner-wrapper"> 
+         <a href="/" rel="home" class="logo" title="Wyoming Public Media Home"><img typeof="foaf:Image" src="http://mediad.publicbroadcasting.net/p/wpr/files/201502/Bison_Blue_2.png" alt="Wyoming Public Media logo" title="Wyoming Public Media Home"></a> 
+         <div class="tagline">
+          Wyoming Public Media Statewide Network
+         </div> 
+        </div> 
+        <div class="header-utility"> 
+         <a class="trigger-nav" href="#"> <span class="icon-list"></span> <span class="icon-cross"></span> <span class="menu-text">Site Menu</span> </a> 
+         <a class="give" href="https://secure.publicbroadcasting.net/wpr/General/form.pledgemain"> Donate</a> 
+        </div> 
+       </div> 
+      </section> 
+     </div> 
+    </header> 
+    <div id="player" class="player"> 
+     <div id="listen-live" class="listen-live"> 
+      <div class="listen-live-toggle">
+       <a class="listen-live-btn" href="#"><span class="icon-arrow"></span>Listen Live </a>
+      </div> 
+      <ul id="on-air-items" class="no-bullet"> 
+       <li class="listen-live-streams"> <a target="_blank" id="now-on-0" href="http://wprhqstream1.uwyo.edu:8000/wpr128.mp3" class="xpopup"> 
+         <div class="stream_name">
+          Wyoming Public Radio
+         </div> 
+         <div class="program-text"></div> </a> </li> 
+       <li class="listen-live-streams"> <a target="_blank" id="now-on-1" href="http://wprhqstream3.uwyo.edu:8000/kuwy128.mp3" class="xpopup"> 
+         <div class="stream_name">
+          Classical Wyoming
+         </div> 
+         <div class="program-text"></div> </a> </li> 
+       <li class="listen-live-streams"> <a target="_blank" id="now-on-2" href="http://wprhqstream4.uwyo.edu:8000/kuwl128.mp3" class="xpopup"> 
+         <div class="stream_name">
+          Jazz Wyoming
+         </div> 
+         <div class="program-text"></div> </a> </li> 
+      </ul> 
+     </div> 
+    </div> 
+    <div class="nav-wrapper"> 
+     <nav> 
+      <div class="top-bar contain-to-grid" data-topbar=""> 
+       <ul class="title-area"> 
+        <li class="toggle-topbar menu-icon"> <a href="#">Menu</a> </li> 
+       </ul> 
+       <section class="top-bar-section"> 
+        <div class="region region-navigation"> 
+         <div id="block-pi-table-queue-fleximenu" class="block block-pi-table-queue"> 
+          <div class="content"> 
+           <div class="table-queue" id="table-queue-fleximenu"> 
+            <ul class="menu dropdown"> 
+             <li class="dd has-dropdown not-click"> <a href="http://wyomingpublicmedia.org/programs">Programs</a> 
+              <ul class="dropdown"> 
+               <li class="left"> <a href="http://www.wyomingpublicmedia.org/schedule">On Air Schedule </a> </li> 
+               <li class="left"> <a href="http://wyomingpublicmedia.org/programs">All Programs A-Z</a> </li> 
+               <li class="left"> <a href="http://wyomingpublicmedia.org/new-weekend-programs-wyoming-public-radio">New Weekend Programs </a> </li> 
+               <li class="left"> <a href="http://www.wyomingpublicmedia.org/programs/best-wyoming">Best of Wyoming</a> </li> 
+               <li class="left"> <a href="http://www.wyomingpublicmedia.org/programs/mountain-muse">Jackson!</a> </li> 
+               <li class="left"> <a href="http://wyomingpublicmedia.org/term/topic-week">Topic Of The Week</a> </li> 
+               <li class="left"> <a href="http://wyomingpublicmedia.org/programs/uw-highlights">UW Highlights</a> </li> 
+              </ul> </li> 
+             <li class="dd has-dropdown not-click"> <a href="http://wyomingpublicmedia.org/term/news">News</a> 
+              <ul class="dropdown"> 
+               <li class="left"> <a href="http://wyomingpublicmedia.org/term/business">Business</a> </li> 
+               <li class="left"> <a href="http://wyomingpublicmedia.org/programs/education-news">Education </a> </li> 
+               <li class="left"> <a href="http://wyomingpublicmedia.org/programs/strengthening-education-wyoming">Strengthening Education In Wyoming</a> </li> 
+               <li class="left"> <a href="http://wyomingpublicmedia.org/term/health-0">Health</a> </li> 
+               <li class="left"> <a href="http://wyomingpublicmedia.org/inside-energy-0">Inside Energy </a> </li> 
+               <li class="left"> <a href="http://www.wyomingpublicmedia.org/programs/natural-resourcesenergy-reporting-initiative">Natural Resources &amp; Energy</a> </li> 
+               <li class="left"> <a href="http://www.wyomingpublicmedia.org/programs/open-spaces-wyoming-public-radio">Open Spaces</a> </li> 
+               <li class="left"> <a href="http://wyomingpublicmedia.org/term/politics-1">Politics</a> </li> 
+               <li class="left"> <a href="http://wyomingpublicmedia.org/term/sports">Sports</a> </li> 
+               <li class="left"> <a href="http://www.wyomingpublicmedia.org/programs/stories-wind-river-reservation">Wind River Reservation</a> </li> 
+              </ul> </li> 
+             <li class="dd has-dropdown not-click"> <a href="http://wyomingpublicmedia.org/programs/features">Arts &amp; Culture</a> 
+              <ul class="dropdown"> 
+               <li class="left"> <a href="http://wyomingpublicmedia.org/programs/author-interviews">Author Interviews</a> </li> 
+               <li class="left"> <a href="http://wyomingpublicmedia.org/programs/features">Features</a> </li> 
+               <li class="left"> <a href="http://wyomingpublicmedia.org/programs/spoken-word">Spoken Words</a> </li> 
+               <li class="left"> <a href="http://wyomingpublicmedia.org/programs/wyomings-lincoln-highway">Wyoming's Lincoln Highway</a> </li> 
+               <li class="left"> <a href="http://wyomingpublicmedia.org/programs/wyoming-minute">Wyoming Minute</a> </li> 
+               <li class="left"> <a href="http://wyomingpublicmedia.org/programs/wyoming-stories">Wyoming Stories</a> </li> 
+              </ul> </li> 
+             <li class="dd has-dropdown not-click"> <a href="http://www.wyomingpublicmedia.org/search_playlists">Music</a> 
+              <ul class="dropdown"> 
+               <li class="left"> <a href="http://www.wyomingpublicmedia.org/programs/classical-24-classical-wyoming">Classical Wyoming Radio Service</a> </li> 
+               <li class="left"> <a href="http://www.wyomingpublicmedia.org/programs/jazzworks-jazz-wyoming">Jazz Wyoming Radio Service</a> </li> 
+               <li class="left"> <a href="http://www.wyomingpublicmedia.org/programs/morning-music-grady-kirkpatrick-wyoming-public-radio">Morning Music</a> </li> 
+               <li class="left"> <a href="http://wyomingpublicmedia.org/programs/ranch-breakfast-wyoming-public-radio">Ranch Breakfast</a> </li> 
+               <li class="left"> <a href="http://wyomingpublicmedia.org/programs/studio-sessions">Studio Sessions</a> </li> 
+               <li class="left"> <a href="http://wyomingpublicmedia.org/cheyenne-symphony-orchestra-fall-2014-2015-season">Cheyenne Symphony Orchestra 2014-15 Season</a> </li> 
+              </ul> </li> 
+             <li class="dd has-dropdown not-click"> <a href="http://wyomingpublicmedia.org/about-us">About </a> 
+              <ul class="dropdown"> 
+               <li class="left"> <a href="http://wyomingpublicmedia.org/programs/behind-scenes">Behind The Scenes</a> </li> 
+               <li class="left"> <a href="http://www.wyomingpublicmedia.org/contact-us">Contact Us</a> </li> 
+               <li class="left"> <a href="http://www.wyomingpublicmedia.org/how-listen">How To Listen</a> </li> 
+               <li class="left"> <a href="http://wyomingpublicmedia.org/wyoming-public-radio-internships">Internships</a> </li> 
+               <li class="left"> <a href="http://wyomingpublicmedia.org/programs/i-love-wyoming-public-radio">I Love Wyoming Public Radio</a> </li> 
+               <li class="left"> <a href="http://www.wyomingpublicmedia.org/people/capacity/staff">People</a> </li> 
+               <li class="left"> <a href="http://wyomingpublicmedia.org/roadmap-wyoming-public-radio">Coverage Roadmap</a> </li> 
+               <li class="left"> <a href="http://wyomingpublicmedia.org/social-media">Social Media</a> </li> 
+               <li class="left"> <a href="http://wyomingpublicmedia.org/gm-update">Station Activities</a> </li> 
+               <li class="left"> <a href="http://wyomingpublicmedia.org/travel-world-support-wyoming-public-radio">Travel The World </a> </li> 
+              </ul> </li> 
+             <li class="dd has-dropdown not-click"> <a href="http://www.wyomingpublicmedia.org/wyoming-public-media-membership">Support</a> 
+              <ul class="dropdown"> 
+               <li class="left"> <a href="http://wyomingpublicmedia.org/node/64622">Wyoming Public Radio's Fundraising Goal For 2014-2015 </a> </li> 
+               <li class="left"> <a href="http://wyomingpublicmedia.org/wyoming-public-media-spring-2015-membership-campaign">Gift Card Drawing Rules</a> </li> 
+               <li class="left"> <a href="http://wyomingpublicmedia.org/wyoming-public-radio-giving-tuesday">Giving Tuesday</a> </li> 
+               <li class="left"> <a href="https://secure.publicbroadcasting.net/wpr/General/form.pledgemain">Make A New Donation</a> </li> 
+               <li class="left"> <a href="https://secure.publicbroadcasting.net/wpr/Updatecard/form.pledgemain">Update Payment Info</a> </li> 
+               <li class="left"> <a href="http://www.wyomingpublicmedia.org/wyoming-public-media-membership">Membership</a> </li> 
+               <li class="left"> <a href="http://wyomingpublicmedia.org/underwriting-opportunities">Underwriting</a> </li> 
+               <li class="left"> <a href="http://wyomingpublicmedia.org/node/49452">Tax-Wise Options </a> </li> 
+               <li class="left"> <a href="http://wyomingpublicmedia.org/wait-wait-dont-show-me">Wait, Wait…Don't Show Me!</a> </li> 
+               <li class="left"> <a href="http://www.wyomingpublicmedia.org/day-dedication-guidelines">Day of Dedication</a> </li> 
+               <li class="left"> <a href="http://www.cartalkvdp.com/orgs?id=WPR">Vehicle Donation Program</a> </li> 
+              </ul> </li> 
+             <li class="dd has-dropdown not-click"> <a href="http://wyomingpublicmedia.org/about-us">Information</a> 
+              <ul class="dropdown"> 
+               <li class="left"> <a href="http://wyomingpublicmedia.org/current-job-openings">Employment Opportunities</a> </li> 
+               <li class="left"> <a href="http://wyomingpublicmedia.org/wpm-institutional-responsibilities-statement">Institutional Responsibilities Statement</a> </li> 
+               <li class="left"> <a href="http://wyomingpublicmedia.org/post/fy-2012-budget">Revenues &amp; Expenditures </a> </li> 
+               <li class="left"> <a href="http://www.wyomingpublicmedia.org/wpms-board-trustees-and-public-advisory-council">UW's Board of Trustees and Public Advisory Council</a> </li> 
+               <li class="left"> <a href="http://wyomingpublicmedia.org/station-activities-report">Station Activities Report</a> </li> 
+               <li class="left"> <a href="http://www.wyomingpublicmedia.org/audited-financial-statements">Audited Financial Statements </a> </li> 
+               <li class="left"> <a href="http://wyomingpublicmedia.org/post/terms-use">Terms Of Use</a> </li> 
+               <li class="left"> <a href="http://www.wyomingpublicmedia.org/privacy-policy">Donor Privacy Policy</a> </li> 
+               <li class="left"> <a href="http://www.codeofintegrity.org/">Public Media Code Of Integrity</a> </li> 
+              </ul> </li> 
+             <li class="dd has-dropdown not-click"> <a href="http://www.publicbroadcasting.net/wpr/events.eventsmain?__utma=170328742.1170615560.1402425558.1415828799.1415905813.259&amp;__utmb=">Events Calendar </a> 
+              <ul class="dropdown"> 
+               <li class="left"> <a href="http://www.publicbroadcasting.net/wpr/events.eventsmain?__utma=170328742.1170615560.1402425558.1415828799.1415905813.259&amp;__utmb=">View Upcoming Events</a> </li> 
+               <li class="left"> <a href="http://www.publicbroadcasting.net/wpr/events.eventsmain?action=submitEvent">Submit An Event</a> </li> 
+              </ul> </li> 
+             <li> <a href="/search">Search</a> </li> 
+            </ul> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+       </section> 
+      </div> 
+     </nav> 
+    </div> 
+    <div class="highlight"> 
+     <div class="region region-highlighted"> 
+      <div class="panel sitewide-alert-black">
+       <div id="block-pi-sitewide-alert-sitewide-alert" class="block block-pi-sitewide-alert"> 
+        <div class="content"> 
+         <a href="http://wyomingpublicmedia.org/post/reception-frequencies-weather-and-road-conditions" target="_blank">Reception, Frequencies, &amp; How To Listen</a> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="row"> 
+     <main id="content" role="main" class="main-content small-12 columns"> 
+      <article class="story"> 
+       <a id="main-content"></a> 
+       <div class="regions-ab-outer"> 
+        <div class="regions-ab-inner"> 
+         <div class="region-a"> 
+          <div class="region region-region-a"> 
+           <div id="block-block-factory-block-factory-546ceb46be2b3" class="block block-block-factory"> 
+            <h2 class="block-title">Top Stories</h2> 
+            <div class="content"> 
+             <div class="three-stories-treatment bf-outer-wrapper clearfix"> 
+              <div class="bf-inner-wrapper bf-hero"> 
+               <figure class="bf-image-wrapper  with-image contains-audio"> 
+                <a href="/post/some-call-it-disappointing-legislative-session"> </a>
+                <div class="card-image-container">
+                 <a href="/post/some-call-it-disappointing-legislative-session"> 
+                  <figure> 
+                   <a title="Bob Beck" href="/post/some-call-it-disappointing-legislative-session" class="noexit lightbox"> <img class="multiple" src="http://mediad.publicbroadcasting.net/p/wpr/files/styles/medium/public/201502/002.JPG"> </a> 
+                   <div class="image-meta"> 
+                    <figcaption> 
+                     <div class="credit">
+                       Bob Beck 
+                     </div> 
+                    </figcaption> 
+                   </div> 
+                  </figure></a> 
+                </div> 
+               </figure> 
+               <div class="bf-text-wrapper  with-image contains-audio"> 
+                <h2 class="bf-post-title"><a href="/post/some-call-it-disappointing-legislative-session">Some Call It A Disappointing Legislative Session</a></h2> 
+                <div class="bf-body"> 
+                 <div class="field field-name-body field-type-text-with-summary field-label-hidden">
+                  <div class="field-items">
+                   <div class="field-item even" property="content:encoded">
+                     The Wyoming legislative session is coming up on its last week. It’s a session that’s seen the defeat of Medicaid Expansion and some other key issues. Because of that, critics say they really haven’t accomplished much, and some legislators agree. After each legislative session lawmakers return home to speak to service groups about their accomplishments. Gillette Senator Michael Von Flatern isn’t sure what they did. “You know some days I really wonder (laughs), because I spent a whole week, at...
+                   </div>
+                  </div>
+                 </div> 
+                </div> 
+                <a href="/post/some-call-it-disappointing-legislative-session" class="bf-read-more">Read More</a> 
+               </div> 
+               <div class="content  with-image contains-audio"> 
+               </div> 
+              </div> 
+              <div class="bf-inner-wrapper bf-sidekick-group"> 
+               <div class="bf-sidekick"> 
+                <figure class="bf-image-wrapper  with-image contains-audio"> 
+                 <a href="/post/solar-economics-looking-sunnier-even-coal-country"> </a>
+                 <div class="card-image-container">
+                  <a href="/post/solar-economics-looking-sunnier-even-coal-country"> 
+                   <figure> 
+                    <a title="Creative Energies" href="/post/solar-economics-looking-sunnier-even-coal-country" class="noexit lightbox"> <img class="multiple" src="http://mediad.publicbroadcasting.net/p/wpr/files/styles/medium/public/201502/copelandsolar_creativeenergies.jpg"> </a> 
+                    <div class="image-meta"> 
+                     <figcaption> 
+                      <div class="credit">
+                        Creative Energies 
+                      </div> 
+                     </figcaption> 
+                    </div> 
+                   </figure></a> 
+                 </div> 
+                </figure> 
+                <h2 class="bf-post-title  with-image contains-audio"><a href="/post/solar-economics-looking-sunnier-even-coal-country">Solar Economics Looking Sunnier, Even In Coal Country</a></h2> 
+                <div class="content"> 
+                </div> 
+               </div> 
+               <div class="bf-sidekick"> 
+                <figure class="bf-image-wrapper  with-image contains-audio"> 
+                 <a href="/post/energy-companies-are-big-backers-stem-education"> </a>
+                 <div class="card-image-container">
+                  <a href="/post/energy-companies-are-big-backers-stem-education"> 
+                   <figure> 
+                    <a title="Aaron Schrank" href="/post/energy-companies-are-big-backers-stem-education" class="noexit lightbox"> <img class="multiple" src="http://mediad.publicbroadcasting.net/p/wpr/files/styles/medium/public/201502/FullSizeRender.jpg"> </a> 
+                    <div class="image-meta"> 
+                     <figcaption> 
+                      <div class="credit">
+                        Aaron Schrank 
+                      </div> 
+                     </figcaption> 
+                    </div> 
+                   </figure></a> 
+                 </div> 
+                </figure> 
+                <h2 class="bf-post-title  with-image contains-audio"><a href="/post/energy-companies-are-big-backers-stem-education">Energy Companies Are Big Backers Of STEM Education</a></h2> 
+                <div class="content"> 
+                </div> 
+               </div> 
+              </div> 
+             </div> 
+            </div> 
+           </div> 
+           <div id="block-block-factory-block-factory-54e78eab02634" class="block block-block-factory"> 
+            <div class="content"> 
+             <style type="text/css">#promo-large-54e78eab02634 .promo-large-treatment { background-color: #FFFFFF; } #promo-large-54e78eab02634 .promo-large-heading { color: #1F1F1F; } #promo-large-54e78eab02634 .promo-large-heading a { color: #1F1F1F; } #promo-large-54e78eab02634 .promo-large-teaser { color: #1F1F1F; } #promo-large-54e78eab02634 .promo-large-cta { border-color: #1F1F1F; color: #1F1F1F; opacity: 1; transition: all .15s ease; } #promo-large-54e78eab02634 .promo-large-cta:hover { color: #1F1F1F; opacity: 0.65; }</style>
+             <div id="promo-large-54e78eab02634"> 
+              <div class="promo-large-treatment clearfix"> 
+               <figure class="promo-large-image"> 
+                <a href="http://www.signupgenius.com/go/70a0e44afac29a31-2015" class="linked-image"><img typeof="foaf:Image" src="http://mediad.publicbroadcasting.net/p/wpr/files/styles/large/public/201502/1468566_652838061420587_904300975_n_0.jpg" alt=""></a> 
+               </figure> 
+               <div class="promo-large-text-wrapper"> 
+                <h2 class="promo-large-heading"><a href="http://www.signupgenius.com/go/70a0e44afac29a31-2015">Come Help Volunteer During Our Spring Membership Drive</a></h2> 
+                <p class="promo-large-teaser">Do you love listening to WPR? Do you like meeting new people? Volunteer for our Spring Membership Drive! We'll have bottomless cups of hot coffee, a cornucopia of snacks and great conversation.</p> 
+                <div class="promo-large-cta-wrapper"> 
+                 <a href="http://www.signupgenius.com/go/70a0e44afac29a31-2015" class="promo-large-cta">Sign Up</a> 
+                </div> 
+               </div> 
+               <div class="promo-cta-wrapper"> 
+               </div> 
+               <div class="promo-colorpicker-wrapper"> 
+               </div> 
+              </div> 
+             </div> 
+            </div> 
+           </div> 
+          </div> 
+         </div> 
+         <div class="region-b"> 
+          <div class="region region-region-b"> 
+           <div id="block-pi-responsive-ads-medium-1" class="block block-pi-responsive-ads"> 
+            <div class="content"> 
+            </div> 
+           </div> 
+           <div id="block-block-factory-block-factory-546cea121856b" class="block block-block-factory"> 
+            <div class="content"> 
+             <style type="text/css">#promo-small-546cea121856b .promo-small-treatment { background-color: #FFFFFF; } #promo-small-546cea121856b .promo-small-heading { color: #404040; } #promo-small-546cea121856b .promo-small-heading a { color: #404040; } #promo-small-546cea121856b .promo-small-teaser { color: #404040; } #promo-small-546cea121856b .promo-small-cta { border-color: #404040; color: #404040; opacity: 1; transition: all .15s ease; } #promo-small-546cea121856b .promo-small-cta:hover { color: #404040; opacity: 0.6; }</style>
+             <div id="promo-small-546cea121856b"> 
+              <div class="promo-small-treatment clearfix"> 
+               <figure class="promo-small-image"> 
+                <a href="http://wyomingpublicmedia.org/post/what-role-should-state-play-keeping-schools-teachers-accountable-educating-students" class="linked-image"><img typeof="foaf:Image" src="http://mediad.publicbroadcasting.net/p/wpr/files/styles/medium/public/201502/educationimg_0.jpg" alt=""></a> 
+               </figure> 
+               <div class="promo-small-text-wrapper"> 
+                <h2 class="promo-small-heading"><a href="http://wyomingpublicmedia.org/post/what-role-should-state-play-keeping-schools-teachers-accountable-educating-students">Topic Of The Week</a></h2> 
+                <p class="promo-small-teaser">What role should the state play in keeping schools &amp; teachers accountable for educating students? </p> 
+                <div class="promo-small-cta-wrapper"> 
+                 <a href="http://wyomingpublicmedia.org/post/what-role-should-state-play-keeping-schools-teachers-accountable-educating-students" class="promo-small-cta">Let Us Know</a> 
+                </div> 
+               </div> 
+               <div class="promo-cta-wrapper"> 
+               </div> 
+               <div class="promo-colorpicker-wrapper"> 
+               </div> 
+              </div> 
+             </div> 
+            </div> 
+           </div> 
+           <div id="block-block-factory-block-factory-54c2d19746295" class="block block-block-factory"> 
+            <div class="content"> 
+             <style type="text/css">#promo-large-54c2d19746295 .promo-large-treatment { background-color: #9E0000; } #promo-large-54c2d19746295 .promo-large-heading { color: #FFFFFF; } #promo-large-54c2d19746295 .promo-large-heading a { color: #FFFFFF; } #promo-large-54c2d19746295 .promo-large-teaser { color: #FFFFFF; } #promo-large-54c2d19746295 .promo-large-cta { border-color: #FFFFFF; color: #FFFFFF; opacity: 1; transition: all .15s ease; } #promo-large-54c2d19746295 .promo-large-cta:hover { color: #FFFFFF; opacity: 0.65; }</style>
+             <div id="promo-large-54c2d19746295"> 
+              <div class="promo-large-treatment clearfix"> 
+               <figure class="promo-large-image"> 
+                <a href="http://wyomingpublicmedia.org/wyoming-public-media-spring-2015-membership-campaign" class="linked-image"><img typeof="foaf:Image" src="http://mediad.publicbroadcasting.net/p/wpr/files/styles/large/public/201501/Red_BAK_Bison_Bird_1_0.jpg" alt=""></a> 
+               </figure> 
+               <div class="promo-large-text-wrapper"> 
+                <h2 class="promo-large-heading"><a href="http://wyomingpublicmedia.org/wyoming-public-media-spring-2015-membership-campaign">Want To Win A $1000 Visa Gift Card?</a></h2> 
+                <p class="promo-large-teaser">They say the early bird gets the worm. But what if the early bird got the cash? When you make a contribution to WPR between January 1st and March 23rd, you'll be entered in our early bird drawing.</p> 
+                <div class="promo-large-cta-wrapper"> 
+                 <a href="http://wyomingpublicmedia.org/wyoming-public-media-spring-2015-membership-campaign" class="promo-large-cta">Enter Now</a> 
+                </div> 
+               </div> 
+               <div class="promo-cta-wrapper"> 
+               </div> 
+               <div class="promo-colorpicker-wrapper"> 
+               </div> 
+              </div> 
+             </div> 
+            </div> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="region-c"> 
+        <div class="region region-region-c"> 
+         <div id="block-npr-river-npr-river-block-all" class="block block-npr-river"> 
+          <div class="content"> 
+           <div class="npr-river-all"> 
+            <div id="node-71674" class="node-teaser node node-post node-promoted npr_river_card row" about="/post/groundbreaking-first-mormon-temple-wyoming-announced" typeof="sioc:Item foaf:Document"> 
+             <div class="large-12 columns"> 
+              <div class="title-info"> 
+               <h2 property="dc:title" datatype="" itemprop="name"><a href="/post/groundbreaking-first-mormon-temple-wyoming-announced">Groundbreaking On First Mormon Temple In Wyoming Announced</a></h2> 
+               <div class="by-date"> 
+                <span class="submitted"><span class="submitted-label">By</span> <span class="name"><a href="/people/jordan-giese" rel="author">Jordan Giese </a></span></span> 
+                <i class="bullet">•</i> 
+                <span class="pub-date">22 hours ago</span> 
+               </div> 
+              </div> 
+              <div class="content"> 
+               <div class="card-image-container"> 
+                <figure> 
+                 <a title="Star Valley Chamber of Commerce" href="/post/groundbreaking-first-mormon-temple-wyoming-announced" class="noexit lightbox"> <img class="multiple" src="http://mediad.publicbroadcasting.net/p/wpr/files/styles/medium/public/201411/Elkhorn_Arch_Afton.jpg"> </a> 
+                 <div class="image-meta"> 
+                  <figcaption> 
+                   <div class="credit">
+                     Star Valley Chamber of Commerce 
+                   </div> 
+                  </figcaption> 
+                 </div> 
+                </figure> 
+               </div>
+               <div class="field field-name-body field-type-text-with-summary field-label-hidden">
+                <div class="field-items">
+                 <div class="field-item even" property="content:encoded">
+                  <p>The Church of Jesus Christ of Latter-day Saints will break ground on its first Wyoming temple this April. The new Star Valley Mormon Temple will be built just south of Afton near the Idaho border.</p> 
+                  <p>Unlike other church buildings, temples perform special services for members of the Mormon faith, like marriage and baptism ceremonies.</p> 
+                  <p>Jerry Hansen is an LDS spokesman for the Afton area. He says&nbsp;the temple is highly anticipated by local members.</p>
+                 </div>
+                </div>
+               </div> 
+              </div> 
+             </div> 
+            </div> 
+            <div id="node-71645" class="node-teaser node node-post node-promoted npr_river_card row" about="/post/house-debates-hospital-funding" typeof="sioc:Item foaf:Document"> 
+             <div class="large-12 columns"> 
+              <div class="title-info"> 
+               <h2 property="dc:title" datatype="" itemprop="name"><a href="/post/house-debates-hospital-funding">House Debates Hospital Funding</a></h2> 
+               <div class="by-date"> 
+                <span class="submitted"><span class="submitted-label">By</span> <span class="name"><a href="/people/bob-beck" rel="author">Bob Beck</a></span></span> 
+                <i class="bullet">•</i> 
+                <span class="pub-date">Feb 27, 2015 </span> 
+               </div> 
+              </div> 
+              <div class="content"> 
+               <div class="card-image-container"> 
+                <figure> 
+                 <a title="" href="/post/house-debates-hospital-funding" class="noexit lightbox"> <img class="multiple" src="http://mediad.publicbroadcasting.net/p/wpr/files/styles/medium/public/201502/BlakeSH39.jpg"> </a> 
+                </figure> 
+               </div>
+               <div class="field field-name-body field-type-text-with-summary field-label-hidden">
+                <div class="field-items">
+                 <div class="field-item even" property="content:encoded">
+                  <p>A bill that would help hospitals pay for charity care is making its way through the House of Representatives. It would give hospitals 5 million dollars to help cover the cost of unpaid medical bills.</p>
+                 </div>
+                </div>
+               </div> 
+              </div> 
+             </div> 
+            </div> 
+            <div id="node-71644" class="node-teaser node node-post node-promoted npr_river_card row" about="/post/senate-votes-against-veto-override" typeof="sioc:Item foaf:Document"> 
+             <div class="large-12 columns"> 
+              <div class="title-info"> 
+               <h2 property="dc:title" datatype="" itemprop="name"><a href="/post/senate-votes-against-veto-override">Senate Votes Against Veto Override</a></h2> 
+               <div class="by-date"> 
+                <span class="submitted"><span class="submitted-label">By</span> <span class="name"><a href="/people/bob-beck" rel="author">Bob Beck</a></span></span> 
+                <i class="bullet">•</i> 
+                <span class="pub-date">Feb 27, 2015 </span> 
+               </div> 
+              </div> 
+              <div class="content"> 
+               <div class="card-image-container"> 
+                <figure> 
+                 <a title="" href="/post/senate-votes-against-veto-override" class="noexit lightbox"> <img class="multiple" src="http://mediad.publicbroadcasting.net/p/wpr/files/styles/medium/public/201502/Sen_Ross.jpg"> </a> 
+                </figure> 
+               </div>
+               <div class="field field-name-body field-type-text-with-summary field-label-hidden">
+                <div class="field-items">
+                 <div class="field-item even" property="content:encoded">
+                  <p>&nbsp;The Wyoming Senate voted not to override Governor Matt Mead’s veto of a bill dealing with when law enforcement can seize property in a drug case.&nbsp;</p> 
+                  <p>Currently, money or property can be seized without someone being charged with a crime. The bill would have required someone to be convicted of a felony before property could be seized.</p> 
+                  <p>Senator Leland Christensen says it was about protecting personal property. He added that the current standard is too low.</p>
+                 </div>
+                </div>
+               </div> 
+              </div> 
+             </div> 
+            </div> 
+            <div id="node-71643" class="node-teaser node node-post node-promoted npr_river_card contains-audio row" about="/post/adventurer-mark-jenkins-expedition-caves-vietnam" typeof="sioc:Item foaf:Document"> 
+             <div class="large-12 columns"> 
+              <div class="title-info"> 
+               <h2 property="dc:title" datatype="" itemprop="name"><a href="/post/adventurer-mark-jenkins-expedition-caves-vietnam">Adventurer Mark Jenkins' Expedition To The Caves Of Vietnam</a></h2> 
+               <div class="by-date"> 
+                <span class="submitted"><span class="submitted-label">By</span> <span class="name"><a href="/people/melodie-edwards" rel="author">Melodie Edwards</a></span></span> 
+                <i class="bullet">•</i> 
+                <span class="pub-date">Feb 27, 2015 </span> 
+               </div> 
+              </div> 
+              <div class="content"> 
+               <div class="card-image-container"> 
+                <figure> 
+                 <a title="Mark Jenkins" href="/post/adventurer-mark-jenkins-expedition-caves-vietnam" class="noexit lightbox"> <img class="multiple" src="http://mediad.publicbroadcasting.net/p/wpr/files/styles/medium/public/201502/_-388.jpg"> 
+                  <div class="launch"> 
+                   <i class="icon-popup"></i> 
+                  </div> </a> 
+                 <div class="image-meta"> 
+                  <figcaption> 
+                   <div class="credit">
+                     Mark Jenkins 
+                   </div> 
+                  </figcaption> 
+                 </div> 
+                </figure> 
+               </div>
+               <div class="field field-name-body field-type-text-with-summary field-label-hidden">
+                <div class="field-items">
+                 <div class="field-item even" property="content:encoded">
+                  <p>Adventurer Mark Jenkins of Laramie gets assignments all over the world for <em>National Geographic, </em>the magazine he writes for. He’s climbed Mount Everest, bicycled across Siberia, and even skied in Central Asia with the world’s oldest ski culture. Now, he’s one-upped himself.</p> 
+                  <p>To find out more about his expedition to the caves of Vietnam, I met with Jenkins in his gear room, a very orderly nook in the basement of his house, stacked with well-labeled bins full of outdoor equipment. It’s here that all of his adventures begin.</p>
+                 </div>
+                </div>
+               </div> 
+              </div> 
+             </div> 
+            </div> 
+            <div id="node-71641" class="node-teaser node node-post node-promoted npr_river_card contains-audio row" about="/post/solar-economics-looking-sunnier-even-coal-country" typeof="sioc:Item foaf:Document"> 
+             <div class="large-12 columns"> 
+              <div class="title-info"> 
+               <h2 property="dc:title" datatype="" itemprop="name"><a href="/post/solar-economics-looking-sunnier-even-coal-country">Solar Economics Looking Sunnier, Even In Coal Country</a></h2> 
+               <div class="by-date"> 
+                <span class="submitted"><span class="submitted-label">By</span> <span class="name"><a href="/people/stephanie-joyce" rel="author">Stephanie Joyce</a></span></span> 
+                <i class="bullet">•</i> 
+                <span class="pub-date">Feb 27, 2015 </span> 
+               </div> 
+              </div> 
+              <div class="content"> 
+               <div class="card-image-container"> 
+                <figure> 
+                 <a title="Creative Energies" href="/post/solar-economics-looking-sunnier-even-coal-country" class="noexit lightbox"> <img class="multiple" src="http://mediad.publicbroadcasting.net/p/wpr/files/styles/medium/public/201502/copelandsolar_creativeenergies.jpg"> </a> 
+                 <div class="image-meta"> 
+                  <figcaption> 
+                   <div class="credit">
+                     Creative Energies 
+                   </div> 
+                  </figcaption> 
+                 </div> 
+                </figure> 
+               </div>
+               <div class="field field-name-body field-type-text-with-summary field-label-hidden">
+                <div class="field-items">
+                 <div class="field-item even" property="content:encoded"> 
+                  <p>&nbsp;&nbsp;&nbsp;&nbsp;</p> 
+                  <p>With its big blue skies and high altitude, Wyoming's solar potential is among the best in the nation, but even as residential rooftop solar has boomed recently in places like California, Colorado and New Jersey, it's barely made any inroads in the state. Economics and politics both play a role, but with the price of photovoltaics continuing to drop, some people are starting to ask whether momentum is building for solar in nation's largest coal-producing state.&nbsp;</p>
+                 </div>
+                </div>
+               </div> 
+              </div> 
+             </div> 
+            </div> 
+            <div id="node-71639" class="node-teaser node node-post node-promoted npr_river_card contains-audio row" about="/post/state-treasurer-says-change-investment-policy-good-idea" typeof="sioc:Item foaf:Document"> 
+             <div class="large-12 columns"> 
+              <div class="title-info"> 
+               <h2 property="dc:title" datatype="" itemprop="name"><a href="/post/state-treasurer-says-change-investment-policy-good-idea">State Treasurer Says Change In Investment Policy Is A Good Idea</a></h2> 
+               <div class="by-date"> 
+                <span class="submitted"><span class="submitted-label">By</span> <span class="name"><a href="/people/bob-beck" rel="author">Bob Beck</a></span></span> 
+                <i class="bullet">•</i> 
+                <span class="pub-date">Feb 27, 2015 </span> 
+               </div> 
+              </div> 
+              <div class="content"> 
+               <div class="card-image-container"> 
+                <figure> 
+                 <a title="facebook.com/markgordon4wyoming" href="/post/state-treasurer-says-change-investment-policy-good-idea" class="noexit lightbox"> <img class="multiple" src="http://mediad.publicbroadcasting.net/p/wpr/files/styles/medium/public/201502/1962807_722200691134993_1755628349_n.jpg"> </a> 
+                 <div class="image-meta"> 
+                  <figcaption> 
+                   <div class="credit">
+                     facebook.com/markgordon4wyoming 
+                   </div> 
+                  </figcaption> 
+                 </div> 
+                </figure> 
+               </div>
+               <div class="field field-name-body field-type-text-with-summary field-label-hidden">
+                <div class="field-items">
+                 <div class="field-item even" property="content:encoded">
+                  <p>&nbsp;</p> 
+                  <p>The Wyoming legislature is putting finishing touches on a proposed constitutional amendment that will allow the State Treasurer to invest money in equities or common stock. The idea is to enhance non-permanent state savings accounts. State Treasurer Mark Gordon joins Wyoming Public Radio's Bob Beck to explain why this is a good idea.</p> 
+                 </div>
+                </div>
+               </div> 
+              </div> 
+             </div> 
+            </div> 
+            <div id="node-71638" class="node-teaser node node-post node-promoted npr_river_card contains-audio row" about="/post/jose-gonzalez-aims-increase-hispanic-connection-outdoors" typeof="sioc:Item foaf:Document"> 
+             <div class="large-12 columns"> 
+              <div class="title-info"> 
+               <h2 property="dc:title" datatype="" itemprop="name"><a href="/post/jose-gonzalez-aims-increase-hispanic-connection-outdoors">Jose Gonzalez Aims To Increase Hispanic Connection With The Outdoors</a></h2> 
+               <div class="by-date"> 
+                <span class="submitted"><span class="submitted-label">By</span> <span class="name"><a href="/people/caroline-ballard" rel="author">Caroline Ballard </a></span></span> 
+                <i class="bullet">•</i> 
+                <span class="pub-date">Feb 27, 2015 </span> 
+               </div> 
+              </div> 
+              <div class="content"> 
+               <div class="card-image-container"> 
+                <figure> 
+                 <a title="Caroline Ballard" href="/post/jose-gonzalez-aims-increase-hispanic-connection-outdoors" class="noexit lightbox"> <img class="multiple" src="http://mediad.publicbroadcasting.net/p/wpr/files/styles/medium/public/201502/2015022695101036.jpg"> </a> 
+                 <div class="image-meta"> 
+                  <figcaption> 
+                   <div class="credit">
+                     Caroline Ballard 
+                   </div> 
+                  </figcaption> 
+                 </div> 
+                </figure> 
+               </div>
+               <div class="field field-name-body field-type-text-with-summary field-label-hidden">
+                <div class="field-items">
+                 <div class="field-item even" property="content:encoded"> 
+                  <p>Latino influence is growing in America across the board, including in conservation issues and outdoor recreation. One of the people leading this charge is Jose Gonzalez, the founder of Latino Outdoors, an organization that aims to increase the Hispanic community’s contact with the outdoors. </p>
+                 </div>
+                </div>
+               </div> 
+              </div> 
+             </div> 
+            </div> 
+            <div id="node-71631" class="node-teaser node node-post node-promoted npr_river_card contains-audio row" about="/post/energy-companies-are-big-backers-stem-education" typeof="sioc:Item foaf:Document"> 
+             <div class="large-12 columns"> 
+              <div class="title-info"> 
+               <h2 property="dc:title" datatype="" itemprop="name"><a href="/post/energy-companies-are-big-backers-stem-education">Energy Companies Are Big Backers Of STEM Education</a></h2> 
+               <div class="by-date"> 
+                <span class="submitted"><span class="submitted-label">By</span> <span class="name"><a href="/people/aaron-schrank" rel="author">Aaron Schrank</a></span></span> 
+                <i class="bullet">•</i> 
+                <span class="pub-date">Feb 27, 2015 </span> 
+               </div> 
+              </div> 
+              <div class="content"> 
+               <div class="card-image-container"> 
+                <figure> 
+                 <a title="Aaron Schrank" href="/post/energy-companies-are-big-backers-stem-education" class="noexit lightbox"> <img class="multiple" src="http://mediad.publicbroadcasting.net/p/wpr/files/styles/medium/public/201502/FullSizeRender.jpg"> </a> 
+                 <div class="image-meta"> 
+                  <figcaption> 
+                   <div class="credit">
+                     Aaron Schrank 
+                   </div> 
+                  </figcaption> 
+                 </div> 
+                </figure> 
+               </div>
+               <div class="field field-name-body field-type-text-with-summary field-label-hidden">
+                <div class="field-items">
+                 <div class="field-item even" property="content:encoded"> 
+                  <p>There’s a nationwide push to get more students involved in STEM education. That’s Science, Technology, Engineering and Math. But, despite enthusiasm—and Wyoming’s above average school funding— few K-12 schools in the state have been able to build the STEM programs they’d like. Many of those that have—have done so not with funding and support from the state—but from the energy industry. Wyoming Public Radio’s Aaron Schrank reports. </p>
+                 </div>
+                </div>
+               </div> 
+              </div> 
+             </div> 
+            </div> 
+            <div id="node-71624" class="node-teaser node node-post node-promoted npr_river_card contains-audio row" about="/post/some-call-it-disappointing-legislative-session" typeof="sioc:Item foaf:Document"> 
+             <div class="large-12 columns"> 
+              <div class="title-info"> 
+               <h2 property="dc:title" datatype="" itemprop="name"><a href="/post/some-call-it-disappointing-legislative-session">Some Call It A Disappointing Legislative Session</a></h2> 
+               <div class="by-date"> 
+                <span class="submitted"><span class="submitted-label">By</span> <span class="name"><a href="/people/bob-beck" rel="author">Bob Beck</a></span></span> 
+                <i class="bullet">•</i> 
+                <span class="pub-date">Feb 27, 2015 </span> 
+               </div> 
+              </div> 
+              <div class="content"> 
+               <div class="card-image-container"> 
+                <figure> 
+                 <a title="Bob Beck" href="/post/some-call-it-disappointing-legislative-session" class="noexit lightbox"> <img class="multiple" src="http://mediad.publicbroadcasting.net/p/wpr/files/styles/medium/public/201502/002.JPG"> </a> 
+                 <div class="image-meta"> 
+                  <figcaption> 
+                   <div class="credit">
+                     Bob Beck 
+                   </div> 
+                  </figcaption> 
+                 </div> 
+                </figure> 
+               </div>
+               <div class="field field-name-body field-type-text-with-summary field-label-hidden">
+                <div class="field-items">
+                 <div class="field-item even" property="content:encoded"> 
+                  <p>The Wyoming legislative session is coming up on its last week. It’s a session that’s seen the defeat of Medicaid Expansion and some other key issues. Because of that, critics say they really haven’t accomplished much, and some legislators agree.</p> 
+                  <p>After each legislative session lawmakers return home to speak to service groups about their accomplishments. Gillette Senator Michael Von Flatern isn’t sure what they did.</p> 
+                  <p>“You know some days I really wonder (laughs), because I spent a whole week, at least a week on Medicaid expansion that didn’t go anywhere.”</p>
+                 </div>
+                </div>
+               </div> 
+              </div> 
+             </div> 
+            </div> 
+            <div id="node-71473" class="node-teaser node node-post node-promoted npr_river_card contains-audio row" about="/post/inside-energy-even-oil-prices-drop-wastewater-keeps-flowing" typeof="sioc:Item foaf:Document"> 
+             <div class="large-12 columns"> 
+              <div class="title-info"> 
+               <h2 property="dc:title" datatype="" itemprop="name"><a href="/post/inside-energy-even-oil-prices-drop-wastewater-keeps-flowing">INSIDE ENERGY: Even As Oil Prices Drop, Wastewater Keeps Flowing</a></h2> 
+               <div class="by-date"> 
+                <span class="submitted"><span class="submitted-label">By</span> <span class="name"><a href="/people/leigh-paterson" rel="author">Leigh Paterson</a></span></span> 
+                <i class="bullet">•</i> 
+                <span class="pub-date">Feb 27, 2015 </span> 
+               </div> 
+              </div> 
+              <div class="content"> 
+               <div class="card-image-container"> 
+                <figure> 
+                 <a title="Leigh Paterson / Inside Energy" href="/post/inside-energy-even-oil-prices-drop-wastewater-keeps-flowing" class="noexit lightbox"> <img class="multiple" src="http://mediad.publicbroadcasting.net/p/wpr/files/styles/medium/public/201502/IMG_0478.jpg"> </a> 
+                 <div class="image-meta"> 
+                  <figcaption> 
+                   <div class="credit">
+                     Leigh Paterson / Inside Energy 
+                   </div> 
+                  </figcaption> 
+                 </div> 
+                </figure> 
+               </div>
+               <div class="field field-name-body field-type-text-with-summary field-label-hidden">
+                <div class="field-items">
+                 <div class="field-item even" property="content:encoded">
+                  <p>The American landscape is dotted with over 100,000 deep injection wells. They’re a key part of our energy infrastructure. Without them, you probably wouldn't be able to fill up your tank. Because for every barrel of oil that comes out of the ground, salty and sometimes chemically-laced fluid comes up with it. This so-called produced water has to go somewhere - and much of it injected back into the earth. In the first of a 2 part series, Inside Energy’s Leigh Paterson reports on one company’s bid to get in the game.</p>
+                 </div>
+                </div>
+               </div> 
+              </div> 
+             </div> 
+            </div> 
+           </div>
+           <h2 class="element-invisible">Pages</h2>
+           <div class="item-list">
+            <ul class="pager">
+             <li class="pager-current first">1</li> 
+             <li class="pager-item"><a href="/homepage?page=1" title="Go to page 2" class="active">2</a></li> 
+             <li class="pager-item"><a href="/homepage?page=2" title="Go to page 3" class="active">3</a></li> 
+             <li class="pager-item"><a href="/homepage?page=3" title="Go to page 4" class="active">4</a></li> 
+             <li class="pager-ellipsis">…</li> 
+             <li class="pager-next"><a href="/homepage?page=1" title="Go to next page" class="active">next ›</a></li> 
+             <li class="pager-last last"><a href="/homepage?page=5042" title="Go to last page" class="active">last »</a></li> 
+            </ul>
+           </div> 
+          </div> 
+         </div> 
+         <div id="block-block-factory-block-factory-546d29fd7db6d" class="block block-block-factory"> 
+          <div class="content"> 
+           <style type="text/css">#promo-small-546d29fd7db6d .promo-small-treatment { background-color: #FFFFFF; } #promo-small-546d29fd7db6d .promo-small-heading { color: #404040; } #promo-small-546d29fd7db6d .promo-small-heading a { color: #404040; } #promo-small-546d29fd7db6d .promo-small-teaser { color: #404040; } #promo-small-546d29fd7db6d .promo-small-cta { border-color: #404040; color: #404040; opacity: 1; transition: all .15s ease; } #promo-small-546d29fd7db6d .promo-small-cta:hover { color: #404040; opacity: 0.6; }</style>
+           <div id="promo-small-546d29fd7db6d"> 
+            <div class="promo-small-treatment clearfix"> 
+             <figure class="promo-small-image"> 
+              <a href="http://protectmypublicmedia.org/" class="linked-image"><img typeof="foaf:Image" src="http://mediad.publicbroadcasting.net/p/wpr/files/styles/medium/public/201411/PMPM_LogoHorizontal_Color_0.png" alt=""></a> 
+             </figure> 
+             <div class="promo-small-text-wrapper"> 
+              <h2 class="promo-small-heading"><a href="http://protectmypublicmedia.org/">Protect My Public Media</a></h2> 
+              <div class="promo-small-cta-wrapper"> 
+               <a href="http://protectmypublicmedia.org/" class="promo-small-cta">Find Out More</a> 
+              </div> 
+             </div> 
+             <div class="promo-cta-wrapper"> 
+             </div> 
+             <div class="promo-colorpicker-wrapper"> 
+             </div> 
+            </div> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </article> 
+     </main> 
+    </div> 
+    <section class="post-content"> 
+     <div> 
+      <div class="region region-post-content"> 
+       <div id="block-pi-responsive-ads-mobile-1" class="block block-pi-responsive-ads"> 
+        <div class="content"> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </section> 
+    <div class="bottom-ads"> 
+     <div class="bottom-ads-inner"></div> 
+    </div> 
+   </div> 
+   <footer class="footer" role="contentinfo"> 
+    <div class="row"> 
+     <div class="footer-affiliate-container small-centered columns"> 
+      <div class="region region-footer"> 
+       <div id="block-pi-table-queue-partnerfooter" class="block block-pi-table-queue"> 
+        <div class="content"> 
+         <div class="table-queue" id="table-queue-partnerfooter"> 
+          <p class="partnerslabel"> Our Partners</p> 
+          <div class="item-list">
+           <ul class="partner-logos">
+            <li class="first"><a href="http://www.uwyo.edu/outreach/" target="_blank"><img typeof="foaf:Image" src="http://mediad.publicbroadcasting.net/p/wpr/files/styles/partner_footer_logo/public/201502/UWYO_logo.png" alt="" title=""></a></li> 
+            <li><a href="http://www.npr.org/" target="_self"><img typeof="foaf:Image" src="http://mediad.publicbroadcasting.net/p/wpr/files/styles/partner_footer_logo/public/201502/npr-logo_0.png" alt="" title=""></a></li> 
+            <li><a href="http://www.americanpublicmedia.org/" target="_self"><img typeof="foaf:Image" src="http://mediad.publicbroadcasting.net/p/wpr/files/styles/partner_footer_logo/public/201502/apm-logo_0.png" alt="" title=""></a></li> 
+            <li><a href="http://www.pri.org/" target="_self"><img typeof="foaf:Image" src="http://mediad.publicbroadcasting.net/p/wpr/files/styles/partner_footer_logo/public/201502/pri-logo_0.png" alt="" title=""></a></li> 
+            <li><a href="http://www.bbc.com/" target="_self"><img typeof="foaf:Image" src="http://mediad.publicbroadcasting.net/p/wpr/files/styles/partner_footer_logo/public/201502/bbc-logo_0.png" alt="" title=""></a></li> 
+            <li><a href="http://insideenergy.org/" target="_self"><img typeof="foaf:Image" src="http://mediad.publicbroadcasting.net/p/wpr/files/styles/partner_footer_logo/public/201502/ie_logo_square_PNG.png" alt="" title=""></a></li> 
+            <li><a href="http://www.wyomingpbs.org/" target="_self"><img typeof="foaf:Image" src="http://mediad.publicbroadcasting.net/p/wpr/files/styles/partner_footer_logo/public/201502/Wyoming_PBS_logo.png" alt="" title=""></a></li> 
+            <li class="last"><a href="http://www.metopera.org/" target="_self"><img typeof="foaf:Image" src="http://mediad.publicbroadcasting.net/p/wpr/files/styles/partner_footer_logo/public/201502/themetopera.png" alt="" title=""></a></li> 
+           </ul>
+          </div>
+         </div> 
+        </div> 
+       </div> 
+       <div id="block-pi-table-queue-auxiliarylinksfooter" class="block block-pi-table-queue"> 
+        <div class="content"> 
+         <div class="table-queue" id="table-queue-auxiliarylinksfooter"> 
+          <div class="item-list">
+           <ul class="auxiliary-links">
+            <li class="first last"><span>© 2015 Wyoming Public Media</span></li> 
+           </ul>
+          </div>
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </footer> 
+   <script type="text/javascript">
+  var _sf_async_config=Drupal.settings.chartbeat;
+  (function(){
+    function loadChartbeat() {
+      window._sf_endpt=(new Date()).getTime();
+      var e = document.createElement('script');
+      e.setAttribute('language', 'javascript');
+      e.setAttribute('type', 'text/javascript');
+      e.setAttribute('src',
+         (("https:" == document.location.protocol) ? "https://s3.amazonaws.com/" : "http://") +
+         "static.chartbeat.com/js/chartbeat.js");
+      document.body.appendChild(e);
+    }
+    var oldonload = window.onload;
+    window.onload = (typeof window.onload != 'function') ?
+       loadChartbeat : function() { oldonload(); loadChartbeat(); };
+  })();
+</script> 
+  </div> 
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"beacon-6.newrelic.com","licenseKey":"15ba4da3e8","applicationID":"1108724","transactionName":"NlMBMhAECEZRAU1eDg8ZNhQLSg9bVAdBGREJRg==","queueTime":0,"applicationTime":11,"ttGuid":"","agentToken":"","atts":"GhQCRFgeG0g=","errorBeacon":"bam.nr-data.net","agent":"js-agent.newrelic.com\/nr-476.min.js"}</script>  
+ </body>
+</html>

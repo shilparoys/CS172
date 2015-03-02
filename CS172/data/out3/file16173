@@ -1,0 +1,56 @@
+<html>
+ <head></head>
+ <body> 
+  <form method="post" action="http://www.costore.com/wheelock/__.asp" id="frmStore" name="frmStore"> 
+   <input type="hidden" id="an" name="an"> 
+   <input type="hidden" id="av" name="av"> 
+   <input type="hidden" id="p" name="p"> 
+   <input type="hidden" id="ck" name="ck"> 
+   <input type="hidden" id="pt" name="pt"> 
+   <input type="hidden" id="sw" name="sw"> 
+   <input type="hidden" id="sh" name="sh"> 
+   <input type="hidden" id="ul" name="ul"> 
+   <input type="hidden" id="tz" name="tz"> 
+   <input type="hidden" id="utc" name="utc"> 
+   <input type="hidden" id="dt" name="dt"> 
+   <input type="hidden" id="tzz" name="tzz"> 
+   <input type="hidden" id="r" name="r"> 
+  </form>   
+  <script languague="javascript">
+	var f=document.frmStore; today=new Date();
+
+	function getUTCPlusMinus(d) {
+		var x, y, z;
+		x = d.getTimezoneOffset();
+		y = Math.abs(x) ;
+		z = y % 60 ; y = (y-z)/60 ;
+		z == 30 ? z=5 : z=0;
+	  	return parseFloat(((x>0?'-':'') + y + '.' + z));
+	}
+
+	f.an.value = navigator.appName;
+	f.av.value = navigator.appVersion;
+	f.p.value = navigator.platform;
+	f.ck.value = navigator.cookieEnabled == true ? 'Y':'N';
+
+	if (typeof(screen) == 'object') {
+		f.sw.value = screen.width;
+		f.sh.value = screen.height;
+	}
+	else {
+		f.sw.value = 0;
+		f.sh.value = 0;
+	}
+
+	f.pt.value = document.location.port==''? 80:document.location.port;
+	f.ul.value = navigator.appName=='Netscape' ? navigator.language : navigator.userLanguage;
+	f.tz.value = today.getTimezoneOffset();
+	f.utc.value = today.toUTCString();
+	f.dt.value = today;
+	f.tzz.value = getUTCPlusMinus(today);
+	f.r.value = document.referrer;
+
+	f.submit();
+</script>
+ </body>
+</html>

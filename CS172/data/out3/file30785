@@ -1,0 +1,1863 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head> 
+  <script type="text/javascript" src="http://media.nj.com/static/common/js/libs/modernizr-2.6.2.min.js"></script> 
+  <script>
+if( (Modernizr.touch) && (screen.width<600) ){
+	var ad_id = "";
+	var temp_type = "browse";
+	var category = "results";
+	var classification = "Garage-Yard and Estate Sales";
+	var tl = 1;
+	if ( ad_id !== "" && temp_type == "detail" && category == "detail" && classification == "Garage-Yard and Estate Sales" && tl=="1" ) {
+		window.location = 'http://garagesales.m.nj.com/details.php?listing_id=' + ad_id;
+	}
+}
+</script> 
+  <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,width=device-width"> 
+  <title>Garage-Yard and Estate-Sales classifieds Online - NJ.com</title> 
+  <meta name="description" content="Garage-Yard and Estate Sales local classifieds in New Jersey. Search our easy to use free online Garage-Yard and Estate Sales classifieds to find all kinds of Garage-Yard and Estate Sales listings online at NJ.com"> 
+  <meta name="msvalidate.01" content="DEED285EAEFADF4AB65769CE0E8DE106"> 
+  <script src="http://media.nj.com/static/common/js/jquery/jquery-1.8.2.min.js" type="text/javascript"></script> 
+  <script src="http://media.nj.com/static/classifieds/affiliate/nj/js/contactlink.js" type="text/javascript"></script> 
+  <script language="javascript">
+function classChange(id,newclass) {
+	var element = document.getElementById(id);
+	element.className = newclass;
+}
+
+
+function save_remove_ad(id) {
+	var adIds = readCookie('gs_id');
+	var thisObj = document.getElementById(id);
+	var wrd = thisObj.innerHTML;
+	if (adIds.indexOf(id) > -1) {
+		RemoveCookieItem ('gs_id',id);
+		wrd = "Save";
+		thisObj.className = "save_garage_loc";
+	} else {
+		AppendCookie ('gs_id',id);
+		 wrd = "Remove";
+		 thisObj.className = "remove_garage_loc";
+	}
+	thisObj.innerHTML = wrd;
+	see_saved_ads();
+}
+
+function check_saved_ads(id) {
+	var adIds = readCookie('gs_id');
+	var thisObj = document.getElementById(id);
+	var wrd = thisObj.innerHTML;
+	if (adIds.indexOf(id) > -1) {
+		 wrd = "Remove";
+		 thisObj.className = "remove_garage_loc";
+	} else {
+		wrd = "Save";
+		thisObj.className = "save_garage_loc";
+	}
+	thisObj.innerHTML = wrd;
+}
+
+
+function see_saved_ads(){
+	var w = document.getElementById('see_saved_ads_a');
+	var x = document.getElementById('see_saved_ads_img_a');
+	var y = document.getElementById('see_saved_ads_b');
+	var z = document.getElementById('see_saved_ads_img_b');
+	var adIds = readCookie('gs_id');
+	var buttonSeeSaveImgGrey = 'http://media.nj.com/static/classifieds/merchandise/images/seesave_listing_buttons_grey.gif';
+	var buttonSeeSaveImg = 'http://media.nj.com/static/classifieds/merchandise/images/seesave_listing_buttons2.gif';
+
+	if (adIds.length > 0) {		
+	 	if (x) x.src = buttonSeeSaveImg;
+		if (w) {
+			var wHref = '?property=nj.com&temp_type=clipboard&category=results&tp=ME_nj&classification=classifieds';
+				wHref += '&gsmylist=true';
+			w.href = wHref;
+		}
+	 	if (z) z.src = buttonSeeSaveImg;
+		if (y) y.href = "?property=nj.com&temp_type=clipboard&category=results&tp=ME_nj&classification=classifieds";
+	}else{
+	 	if (x) x.src = buttonSeeSaveImgGrey;
+		if (w) w.href = "javascript:void(0);";
+	 	if (z) z.src = buttonSeeSaveImgGrey;
+		if (y) y.href = "javascript:void(0);";
+	}
+}
+
+function verifyAdv(f) {
+	 var newPg = parseInt(f.page.value,10);
+	 var finalPg = parseInt(f.finalPg.value,10);
+	 if ((newPg > finalPg) || (newPg < 1) || (isNaN(newPg))) {
+	 	f.page.value = f.thisPg.value;
+	}else{
+		f.page.value = newPg;
+	}
+}
+$(document).ready(function() {
+	$('#keywordSubmit').click(function() {
+		var keywords = $('#keywords').val();
+		if (keywords == '') {
+			alert('Please enter a keyword and then hit the search button.');
+		} else {
+			$('#keywordFormID').submit();
+		}
+		return false;
+	});
+});
+</script> 
+  <link rel="stylesheet" type="text/css" href="http://media.nj.com/static/classifieds/merchandise/css/merchandise.css"> 
+  <link rel="stylesheet" type="text/css" href="http://media.nj.com/static/classifieds/merchandise/css/sendtofriend.css"> 
+  <script type="text/javascript" src="//tags.tiqcdn.com/utag/advancedigital/lib-common/prod/utag.sync.js"></script> 
+  <script src="http://media.nj.com/static/classifieds/shared/js/cookie.js" type="text/javascript"></script> 
+  <script language="javascript" type="text/javascript" src="http://media.nj.com/static/classifieds/merchandise/js/balloontip.js"></script> 
+  <script language="javascript">
+	//globals
+	var maj_count_is_one=false ;
+
+	$(document).ready(function() {
+		see_saved_ads();
+		if ($('#categ_col').length > 0){
+			var listring = '';
+			var print_once = 'false';
+			var cur_cat = '';
+			var minor_select = '';
+
+
+
+			jQuery.getJSON("/?property=nj.com&temp_type=browse&category=results&tp=ME_nj&classification=Garage-Yard and Estate Sales&AD_IMAGE_EXISTS=&cur_cat=&keywords=&date_created=&tl=3", function(jp) {
+				if(jp.properties.length > 1){
+					if('nj.com' =='nj.com'){		
+						$('#categ_col').append('<p class="major_cat_gold">All Sources</p>');
+					}else{
+						$('#categ_col').append('<p class="major_cat"><a href="?cur_cat=&orig_cat=&orig_prop=nj.com&property=nj.com&temp_type=browse&category=results&tp=ME_nj&classification=Garage-Yard and Estate Sales&orderby=feature_value(featured_listing):nl,date_created:d">All Sources</a></p>');
+					}	
+					listring = '';
+					$.each(jp.properties,function(i,item) {
+						if(item.property =='nj.com'){		
+							listring = "<li class='active'>"+item.name+"</li>" + listring;
+						}else{
+							listring = listring + "<li><a href='?cur_cat=&orig_cat=&orig_prop=nj.com&property="+item.property+"&temp_type=browse&category=results&tp=ME_nj&classification=Garage-Yard and Estate Sales&orderby=feature_value(featured_listing):nl,date_created:d'>"+item.name+"</a></li>";
+						}
+					});
+					$('#categ_col').append('<ul class="minor_cat">'+listring+'</ul>');
+					$('#categ_col').append('<hr/>');
+				}
+
+				var img_exists = '';
+					img_exists = readCookie('ad_image_exists' );
+				if(!img_exists){
+					$('#categ_col').append('<p class="major_cat_gold">Ads with Photos</p>');
+					listring = '';
+						listring = "<li><a title='Show only ads with photos' href='?property=nj.com&orig_prop=nj.com&temp_type=browse&category=results&tp=ME_nj&classification=Garage-Yard%20and%20Estate%20Sales&ad_image_exists=PHOTO1'>Show only ads with photos</a></li>";
+					$('#categ_col').append('<ul class="minor_cat">'+listring+'</ul>');
+				}
+			});
+			if($("#categ_col").children().length == 0){
+				$("#categ_col").remove();
+			}
+		}
+	});
+
+
+function changeSort(sorterId){
+	var sortElement = document.getElementById(sorterId);
+	var url = "?property=nj.com&orig_prop=nj.com&temp_type=browse&category=results&tp=ME_nj&classification=Garage-Yard%20and%20Estate%20Sales";
+	url += '&orderby=' + sortElement.options[sortElement.selectedIndex].value;
+	location.href=url;
+}
+
+function changeCount(countId){
+	var sortElement = document.getElementById(countId);
+	var url = "?property=nj.com&orig_prop=nj.com&temp_type=browse&category=results&tp=ME_nj&classification=Garage-Yard%20and%20Estate%20Sales";
+	if (sortElement.options[sortElement.selectedIndex].value > 10) {
+		url += '&ads_per_page=' + sortElement.options[sortElement.selectedIndex].value;
+	}
+	location.href=url;
+}
+
+function orig_search_button(){	
+		var img_exists = readCookie('ad_image_exists' );
+		var dt_created = readCookie('date_created');
+		//var adspp = readCookie('ads_per_page');
+		//var orderby = '';
+
+	if (((false) || maj_count_is_one) ||(false) || (false) || img_exists != '' || dt_created !='') {
+		var str = '<a href="?cur_cat=&orig_cat=&orig_prop=nj.com&property=nj.com&temp_type=browse&category=results&tp=ME_nj';
+			str += "&classification=Garage-Yard and Estate Sales";
+		if (img_exists) str += '&ad_image_exists=' + img_exists;
+		if (dt_created) str += '&date_created=' + dt_created;
+		str +=  '"><img align="absmiddle" alt="Return to original search results" src="http://media.nj.com/static/classifieds/merchandise/images/btn_backtooriginal.gif" /></a>';
+
+		document.getElementById('back_to_original').innerHTML = str;
+	}
+}
+
+$(document).ready(function() {
+		$('td.adIdTd > a').each( function() {
+			var listingId = this.id;
+			setDrivingTour(listingId);
+			check_saved_ads(listingId);
+		});
+});
+
+</script> 
+  <script type="text/javascript" src="http://m.burt.io/n/nj-com.js"></script> 
+  <script type="text/javascript" src="http://media.nj.com/static/common/js/burt/adv_burt_njo.js"></script> 
+  <link rel="shortcut icon" type="image/x-icon" href="http://www.nj.com/favicon.ico"> 
+  <meta property="og:image" content="http://media.nj.com/design/baseline/img/logo_njo.gif"> 
+  <!-- TOPRAIL --> 
+  <link rel="stylesheet" type="text/css" href="http://www.nj.com/static/common/css/adv_toprail_v002.css"> 
+  <link rel="stylesheet" type="text/css" href="http://www.nj.com/static/njo/static/css/affiliate_v002.css"> 
+  <script type="text/javascript" src="http://media.nj.com/static/common/js/adv-js-loader.js"></script> 
+  <script type="text/javascript">
+				AdvAsyncLoader.require('//fonts.advance.net/fwd2xaj.js', function(){try
+				{ Typekit.load({kitId: 'fwd2xaj'}); }
+				catch (e) {}});
+			</script> 
+  <script type="text/javascript" src="http://media.nj.com/static/common/js/plugins.js"></script> 
+  <script type="text/javascript">
+			//<![CDATA[<!--
+			var isSSF = true;
+			if (!blogURL) {
+        		var blogId = 0;
+        		var blogIdStr = "";
+        		var blogURL = "";
+        		var mediaURL = "http://media.nj.com/design/baseline";
+        		var advVersion = "baseline";
+        		var advAffiliate = "njo";
+        		var advDomain = "nj.com";
+        		var advEnvPrefix = "";
+       			var signinSubDomain = 'https://signup';
+        		var mtRegistrationAllowed = false;
+        		var mtRegistrationRequired = false;
+        		var mtRegisterCGIPath = signinSubDomain+".advance.net/";
+        		var mtRelativeCGIPath = "/cgi-bin/mte/";
+        		var mtCommunityScript = "community/";
+        		var mtUserSessionCookieName = "mt_blog_user";
+        		var mtUserSessionCookiePath = "/";
+        		var mtUserSessionCookieTimeout = 14400;
+        		var mtUserSessionCookieDomain = "." + advDomain;
+        		var mtAdminScript = "mt.cgi";
+        		var mtCaptchaFields = "";
+        		var mtAffiliate = advAffiliate;
+			}
+			if (jQuery.browser.msie) {
+        		var $html = jQuery('html');
+        		if (jQuery.browser.version < 9) $html.addClass('lt-ie9');
+        		if (jQuery.browser.version < 8) $html.addClass('lt-ie8');
+			}
+		//-->]]>
+		</script> 
+  <script type="text/javascript" src="http://media.nj.com/design/baseline/js/movabletype.min.js"></script> 
+  <script type="text/javascript" src="http://www.nj.com/static/common/js/adv_common.js"></script> 
+  <script type="text/javascript" src="http://www.nj.com/static/njo/static/js/adv_region.js"></script> 
+  <script type="text/javascript" defer src="http://www.nj.com/static/common/js/adv_toprail_v002.js"></script> 
+  <script type="text/javascript" defer src="http://www.nj.com/static/common/js/adv_queryly.js"></script> 
+  <script type="text/javascript" src="http://media.nj.com/static/common/js/ads/ads.js"></script> 
+  <script type="text/javascript">
+	AdManager.CONTEXT="www.nj.com/thirdparty/mdmerchandise";
+</script> 
+  <!-- END TOPRAIL --> 
+ </head> 
+ <body> 
+  <script type="text/javascript">
+var utag_data =
+{ page_name : "classifieds_nj /classifieds_nj /merch search results brief view", channel: "Classifieds - Merchandise" }
+;
+</script> 
+  <script type="text/javascript">
+(function(a,b,c,d)
+{ a='//tags.tiqcdn.com/utag/advancedigital/nj/prod/utag.js'; b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true; a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a); }
+)();
+</script> 
+  <div id="Page_Content"> 
+   <!-- toprail --> 
+   <section id="adv_network"> 
+    <div class="advWrapper"> 
+     <div class="Popup">
+      <div class="Popup adunit nomobilead" id="Popup"></div>
+     </div> 
+     <div class="adunit nomobilead" id="Leaderboard"></div> 
+     <div id="Tile1" class="Tile1 adunit nofullad"></div> 
+    </div> 
+   </section> 
+   <header id="adv_header"> 
+    <div id="adv_masthead"> 
+     <div id="adv_header_logo"> 
+      <div id="adv_logo"> 
+       <a id="adv_aff_link" href="http://www.nj.com/" title="NJ.com"><span class="ir">NJ.com</span></a> 
+       <div id="adv_header_text"></div> 
+      </div> 
+     </div> 
+    </div> 
+    <div id="adv_mast_left"> 
+     <nav id="adv_menu" class="advToprailBtn" data-state="1"> 
+      <span class="advToprailIcon"></span> 
+      <span class="advMenuText">Menu</span> 
+     </nav> 
+     <div id="adv_menu_dropdown" class="advDropdown advLayer"> 
+      <div class="advPanelArrow"></div> 
+      <div class="advDropdownOuter"> 
+       <div id="adv_menu_container"> 
+        <div class="advDropdownInner"> 
+         <ul id="adv_menu_top" class="advMenu"> 
+          <li><a href="http://www.nj.com/">Home</a></li> 
+          <li id="adv_mobi_weather" data-state="4"> 
+           <div class="advWeatherInner"> 
+            <span class="advGeoChoosen"></span> 
+            <span class="advConditions"> <span class="advTemp"></span> </span> 
+           </div> <span class="next"></span> </li> 
+         </ul> 
+         <ul id="adv_menu_main" class="advMenu"> 
+          <li><a href="http://www.nj.com/news/">News</a><span class="next" data-state="2" data-key="3503"></span></li>
+          <li><a href="http://www.nj.com/politics/">Politics</a><span class="next" data-state="2" data-key="3527"></span></li>
+          <li><a href="http://www.nj.com/sports/">Sports</a><span class="next" data-state="2" data-key="3505"></span></li>
+          <li><a href="http://highschoolsports.nj.com/">High School Sports</a><span class="next" data-state="2" data-key="hssports"></span></li>
+          <li><a href="http://www.nj.com/entertainment/">Entertainment</a><span class="next" data-state="2" data-key="3506"></span></li>
+          <li><span class="nolink" href="">Photos/Videos</span><span class="next" data-state="2" data-key="3538"></span></li>
+          <li><a href="http://autos.nj.com/">Autos</a><span class="none" data-state="2" data-key="6124"></span></li>
+          <li><a href="http://www.nj.com/jobs/">Jobs</a><span class="none" data-state="2" data-key="3550"></span></li>
+          <li><a href="http://realestate.nj.com/">Real Estate</a><span class="next" data-state="2" data-key="6130"></span></li>
+          <li><a href="http://realestate.nj.com/for-rent/">Rentals</a><span class="none" data-state="2" data-key="6147"></span></li>
+          <li><a href="http://www.nj.com/healthfit">Health</a><span class="none" data-state="2" data-key="6439"></span></li>
+          <li><a href="http://classifieds.nj.com/">Classifieds</a><span class="next" data-state="2" data-key="3509"></span></li>
+          <li><a href="http://businessfinder.nj.com/">Local Businesses</a><span class="next" data-state="2" data-key="6340"></span></li>
+          <li><a href="http://www.nj.com/placead/">Place An Ad</a><span class="none" data-state="2" data-key="6436"></span></li>
+          <li><a href="http://www.nj.com/opinion/">Opinion</a><span class="none" data-state="2" data-key="3526"></span></li>
+          <li><a href="http://www.nj.com/obituaries/">Obituaries</a><span class="none" data-state="2" data-key="3525"></span></li> 
+          <li data-state="2" data-key="follow"><span class="nolink">Follow Us</span> <span class="next" data-state="2" data-key="follow"></span> </li> 
+          <li id="adv_li_subscribe" data-state="2" data-key="subscribe"><span class="nolink">Subscribe</span> <span class="next" data-state="2" data-key="subscribe"></span> </li> 
+         </ul> 
+         <div class="SiteSponsor nomobilead injectedAd" id="SiteSponsor"></div> 
+         <ul class="advMenuSub advMenu" data-key="3503">
+          <li class="advMainMenuLink" data-state="2">
+           <div class="prev"></div>Back to Main Menu</li>
+          <li><a href="http://www.nj.com/news/">News</a></li>
+          <li class="advMenuExpansion" data-state="3" data-sub-key="3502" data-sub-parent="3503"><span class="nolink">News by County</span><span class="next" data-state="3" data-sub-key="3502" data-sub-parent="3503"></span></li>
+          <li class="advMenuExpansion" data-state="3" data-sub-key="6614" data-sub-parent="3503"><a href="http://www.nj.com/newspapers/">All Newspapers</a><span class="next" data-state="3" data-sub-key="6614" data-sub-parent="3503"></span></li>
+          <li><a href="http://www.nj.com/business/">Business</a></li>
+          <li><a href="http://www.nj.com/crime/">Crime</a></li>
+          <li><a href="http://www.nj.com/education/">Education</a></li>
+          <li><a href="http://www.nj.com/healthfit/">Health</a></li>
+          <li><a href="http://www.nj.com/lottery/">Lottery</a></li>
+          <li><a href="http://www.nj.com/newsflash/">Nation/World</a></li>
+          <li><a href="http://www.nj.com/obituaries/">Obituaries</a></li>
+          <li><a href="http://www.nj.com/politics/">Politics</a></li>
+         </ul>
+         <ul class="advMenuSub advMenu" data-key="3527">
+          <li class="advMainMenuLink" data-state="2">
+           <div class="prev"></div>Back to Main Menu</li>
+          <li><a href="http://www.nj.com/politics/">Politics Home</a></li>
+          <li><a href="http://www.nj.com/chris-christie/">Chris Christie</a></li>
+          <li><a href="http://www.nj.com/opinion/">Opinion</a></li>
+          <li><a href="http://topics.nj.com/tag/politifact-new-jersey/index.html">PolitiFact NJ</a></li>
+          <li><a href="http://connect.nj.com/staff/njoauditor/posts.html">The Auditor</a></li>
+         </ul>
+         <ul class="advMenuSub advMenu" data-key="3505">
+          <li class="advMainMenuLink" data-state="2">
+           <div class="prev"></div>Back to Main Menu</li>
+          <li><a href="http://www.nj.com/sports/">Sports Home</a></li>
+          <li><a href="http://www.nj.com/devils/">Devils</a></li>
+          <li><a href="http://www.nj.com/eagles/">Eagles</a></li>
+          <li><a href="http://www.nj.com/flyers/">Flyers</a></li>
+          <li><a href="http://www.nj.com/giants/">Giants</a></li>
+          <li><a href="http://www.nj.com/jets/">Jets</a></li>
+          <li><a href="http://www.nj.com/knicks/">Knicks</a></li>
+          <li><a href="http://www.nj.com/mets/">Mets</a></li>
+          <li><a href="http://www.nj.com/nets/">Nets</a></li>
+          <li><a href="http://www.nj.com/phillies/">Phillies</a></li>
+          <li><a href="http://www.nj.com/rangers/">Rangers</a></li>
+          <li><a href="http://www.nj.com/redbulls/">Red Bulls</a></li>
+          <li><a href="http://www.nj.com/rutgersbasketball/">Rutgers Basketball</a></li>
+          <li><a href="http://www.nj.com/rutgersfootball/">Rutgers Football</a></li>
+          <li><a href="http://www.nj.com/rutgers/">Rutgers Sports</a></li>
+          <li><a href="http://www.nj.com/setonhall/">Seton Hall</a></li>
+          <li><a href="http://www.nj.com/sixers/">Sixers</a></li>
+          <li><a href="http://www.nj.com/yankees/">Yankees</a></li>
+         </ul>
+         <ul class="advMenuSub advMenu" data-key="3506">
+          <li class="advMainMenuLink" data-state="2">
+           <div class="prev"></div>Back to Main Menu</li>
+          <li><a href="http://www.nj.com/entertainment/">Entertainment Home</a></li>
+          <li><a href="http://www.nj.com/atlantic-city-entertainment/">Atlantic City Entertainment</a></li>
+          <li><a href="http://www.nj.com/entertainment/celebrities/">Celebrities</a></li>
+          <li><a href="http://www.nj.com/comics/">Comics</a></li>
+          <li><a href="http://www.nj.com/events/">Events</a></li>
+          <li><a href="http://www.nj.com/food/">Food &amp; Dining</a></li>
+          <li><a href="http://www.nj.com/indulge/">Indulge</a></li>
+          <li><a href="http://www.nj.com/inside-jersey/">Inside Jersey</a></li>
+          <li><a href="http://www.nj.com/entertainment/movies/">Movies</a></li>
+          <li><a href="http://www.nj.com/entertainment/music/">Music</a></li>
+          <li><a href="http://www.nj.com/onlinegamblingnj/">Online Gambling Guide</a></li>
+          <li><a href="http://www.nj.com/puzzles-games/">Puzzles</a></li>
+          <li><a href="http://www.nj.com/shore/">Shore</a></li>
+          <li><a href="http://www.nj.com/travel/destinations/">Travel</a></li>
+          <li><a href="http://www.nj.com/entertainment/tv/">TV</a></li>
+         </ul>
+         <ul class="advMenuSub advMenu" data-key="3538">
+          <li class="advMainMenuLink" data-state="2">
+           <div class="prev"></div>Back to Main Menu</li>
+          <li><a href="http://photos.nj.com/hunterdon-photos/index.html">Hunterdon County Democrat Photos</a></li>
+          <li><a href="http://photos.nj.com/jersey-journal/index.html">Jersey Journal Photos</a></li>
+          <li><a href="http://photos.nj.com/njcom_photos/index.html">NJ.com Photos</a></li>
+          <li><a href="http://photos.nj.com/south-jersey-times/index.html">South Jersey Times Photos</a></li>
+          <li><a href="http://photos.nj.com/star-ledger/index.html">Star-Ledger Photos</a></li>
+          <li><a href="http://photos.nj.com/the-times/index.html">Times of Trenton Photos</a></li>
+          <li><a href="http://photos.nj.com/photogallery/upload.html">Submit your own photos</a></li>
+          <li><a href="http://videos.nj.com/nj/index.html">Videos</a></li>
+          <li><a href="http://videos.nj.com/index.html">Community Videos</a></li>
+         </ul>
+         <ul class="advMenuSub advMenu" data-key="6130">
+          <li class="advMainMenuLink" data-state="2">
+           <div class="prev"></div>Back to Main Menu</li>
+          <li><a href="http://www.nj.com/realestate/">Homes</a></li>
+          <li><a href="http://realestate.nj.com/new-homes/">New Homes</a></li>
+          <li><a href="http://realestate.nj.com/for-rent">Rentals</a></li>
+          <li><a href="http://foreclosures.nj.com/">Foreclosures</a></li>
+          <li><a href="http://www.cityfeet.com/nj/">Commercial</a></li>
+          <li><a href="http://www.nj.com/placead/">Place An Ad</a></li>
+         </ul>
+         <ul class="advMenuSub advMenu" data-key="3509">
+          <li class="advMainMenuLink" data-state="2">
+           <div class="prev"></div>Back to Main Menu</li>
+          <li><a href="http://www.nj.com/obituaries/">Obituaries</a></li>
+          <li><a href="http://realestate.nj.com/for-rent">Rentals</a></li>
+          <li><a href="http://classifieds.nj.com/?orig_cat=&amp;property=nj.com&amp;orig_prop=nj.com&amp;ads_per_page=20&amp;temp_type=browse&amp;category=results&amp;tp=ME_nj&amp;classification=Pets">Pets</a></li>
+          <li><a href="http://classifieds.nj.com/?orig_cat=&amp;property=nj.com&amp;orig_prop=nj.com&amp;temp_type=browse&amp;category=results&amp;tp=ME_nj&amp;classification=For+Sale">For Sale</a></li>
+          <li><a href="http://classifieds.nj.com/?orig_cat=&amp;property=nj.com&amp;orig_prop=nj.com&amp;temp_type=browse&amp;category=results&amp;tp=ME_nj&amp;classification=Garage-Yard+and+Estate+Sales">Garage Sales</a></li>
+          <li><a href="http://findnsave.nj.com/">Find n Save</a></li>
+          <li><a href="http://www.nj.com/placead/fraud_prevention/index.ssf">Fraud Prevention</a></li>
+          <li><a href="http://www.nj.com/placead/manage/index.ssf">Manage Your Ad</a></li>
+          <li><a href="http://www.nj.com/placead/">Place An Ad</a></li>
+         </ul>
+         <ul class="advMenuSub advMenu" data-key="6340">
+          <li class="advMainMenuLink" data-state="2">
+           <div class="prev"></div>Back to Main Menu</li>
+          <li><a href="http://businessfinder.nj.com/">Find A Business</a></li>
+          <li><a href="http://businessfinder.nj.com/NJ-New-Brunswick/Food-and-Dining">Food &amp; Dining</a></li>
+          <li><a href="http://businessfinder.nj.com/NJ-New-Brunswick/Retail-Shopping">Retail Shopping</a></li>
+          <li><a href="http://businessfinder.nj.com/NJ-New-Brunswick/Health-and-Medicine">Health &amp; Medicine</a></li>
+          <li><a href="http://businessfinder.nj.com/NJ-New-Brunswick/Personal-Care-and-Well-Being">Personal Care</a></li>
+          <li><a href="http://businessfinder.nj.com/NJ-New-Brunswick/Entertainment-and-Arts">Entertainment</a></li>
+          <li><a href="http://businessfinder.nj.com/NJ-New-Brunswick/Real-Estate">Real Estate</a></li>
+          <li><a href="http://businessfinder.nj.com/NJ-New-Brunswick/Automotive">Automotive</a></li>
+          <li><a href="http://businessfinder.nj.com/about/advertise.html">Claim Your Business</a></li>
+          <li><a href="http://www.nj.com/blogs/premium/">Sponsored Blogs</a></li>
+         </ul> 
+         <ul class="advMenuSub advMenu" data-key="hssports" data-sub-key="hssports"> 
+          <li class="advMainMenuLink" data-state="2">
+           <div class="prev"></div>Back to Main Menu</li> 
+          <li><a href="http://highschoolsports.nj.com/">High School Sports Home</a></li> 
+          <li><a href="http://highschoolsports.nj.com/football/">Football</a></li> 
+          <li><a href="http://highschoolsports.nj.com/wrestling/">Wrestling</a></li> 
+          <li><a href="http://highschoolsports.nj.com/boysbasketball/">Boys Basketball</a></li> 
+          <li><a href="http://highschoolsports.nj.com/girlsbasketball/">Girls Basketball</a></li> 
+          <li><a href="http://highschoolsports.nj.com/boysicehockey/">Boys Ice Hockey</a></li> 
+          <li><a href="http://highschoolsports.nj.com/boysswimming/">Boys Swimming</a></li> 
+          <li><a href="http://highschoolsports.nj.com/girlsswimming/">Girls Swimming</a></li> 
+          <li><a href="http://highschoolsports.nj.com/boyswintertrack/">Boys Winter Track</a></li> 
+          <li><a href="http://highschoolsports.nj.com/girlswintertrack/">Girls Winter Track</a></li> 
+          <li><a href="http://highschoolsports.nj.com/boysbowling/">Boys Bowling</a></li> 
+          <li><a href="http://highschoolsports.nj.com/girlsbowling/">Girls Bowling</a></li> 
+          <li><a href="http://highschoolsports.nj.com/boysfencing/">Boys Fencing</a></li> 
+          <li><a href="http://highschoolsports.nj.com/girlsfencing/">Girls Fencing</a></li> 
+          <li><a href="http://highschoolsports.nj.com/girlsicehockey/">Girls Ice Hockey</a></li> 
+          <li><a href="http://highschoolsports.nj.com/girlsskiing/">Girls Skiing</a></li> 
+          <li><a href="http://highschoolsports.nj.com/boysskiing/">Boys Skiing</a></li> 
+          <li class="advMenuExpansion" data-state="3" data-sub-key="hssports"> <span class="nolink">Off Season Sports</span> <span class="next" data-state="3" data-sub-key="hssports"></span> </li> 
+         </ul> 
+         <ul class="advMenuSub advMenu advMenuSub2" data-sub-key="hssports"> 
+          <li class="advMainMenuLink" data-state="3" data-sub-key="hssports">
+           <div class="prev"></div>Back to High School Sports Menu</li> 
+          <li><a href="http://highschoolsports.nj.com/girlsvolleyball/">Girls Volleyball</a></li> 
+          <li><a href="http://highschoolsports.nj.com/boystrackandfield/">Boys Track and Field</a></li> 
+          <li><a href="http://highschoolsports.nj.com/girlslacrosse/">Girls Lacrosse</a></li> 
+          <li><a href="http://highschoolsports.nj.com/boyslacrosse/">Boys Lacrosse</a></li> 
+          <li><a href="http://highschoolsports.nj.com/softball/">Softball</a></li> 
+          <li><a href="http://highschoolsports.nj.com/baseball/">Baseball</a></li> 
+          <li><a href="http://highschoolsports.nj.com/coedswimming/">Co-Ed Swimming</a></li> 
+          <li><a href="http://highschoolsports.nj.com/boysvolleyball/">Boys Volleyball</a></li> 
+          <li><a href="http://highschoolsports.nj.com/boystennis/">Boys Tennis</a></li> 
+          <li><a href="http://highschoolsports.nj.com/girlstennis/">Girls Tennis</a></li> 
+          <li><a href="http://highschoolsports.nj.com/girlscrosscountry/">Girls Cross Country</a></li> 
+          <li><a href="http://highschoolsports.nj.com/boyscrosscountry/">Boys Cross Country</a></li> 
+          <li><a href="http://highschoolsports.nj.com/girlsgymnastics/">Girls Gymnastics</a></li> 
+          <li><a href="http://highschoolsports.nj.com/girlsgolf/">Girls Golf</a></li> 
+          <li><a href="http://highschoolsports.nj.com/boysgolf/">Boys Golf</a></li> 
+          <li><a href="http://highschoolsports.nj.com/girlssoccer/">Girls Soccer</a></li> 
+          <li><a href="http://highschoolsports.nj.com/fieldhockey/">Field Hockey</a></li> 
+          <li><a href="http://highschoolsports.nj.com/boyssoccer/">Boys Soccer</a></li> 
+          <li><a href="http://highschoolsports.nj.com/girlstrackandfield/">Girls Track and Field</a></li> 
+         </ul> 
+         <ul id="adv_follow_menu" class="advMenuSub advMenu" data-key="follow"> 
+          <li class="advMainMenuLink" data-state="2">
+           <div class="prev"></div>Back to Main Menu</li> 
+          <li class="advMenuSoc" id="adv_follow_fb"><span><a href="http://www.facebook.com/NJ.com">Visit our Facebook Page</a></span></li> 
+          <li class="advMenuSoc" id="adv_follow_twitter"><span><a href="http://www.twitter.com/njdotcom/">Follow us on Twitter</a></span></li> 
+          <li class="advMenuSoc" id="adv_follow_gplus"><span><a href="https://plus.google.com/+njdotcom/">Visit us on Google Plus</a></span></li> 
+          <li class="advMenuSoc" id="adv_follow_instagram"><span><a href="http://www.instagram.com/njdotcompix">View our Instagram Photos</a></span></li> 
+          <li class="advMenuSoc" id="adv_follow_tumblr"><span><a href="http://njdotcom.tumblr.com/">See our Tumblr feed</a></span></li> 
+          <li class="advMenuSoc" id="adv_follow_pinterest"><span><a href="http://pinterest.com/njdotcom/">See our Pinterest page</a></span></li> 
+         </ul> 
+         <ul id="adv_subscribe_menu" class="advMenuSub advMenu" data-key="subscribe"> 
+          <li class="advMainMenuLink" data-state="2">
+           <div class="prev"></div>Back to Main Menu</li> 
+          <li value="" data-val=""><a href="http://www.nj.com/newsletters">Email newsletters</a></li> 
+          <li value="" data-val=""><a href="http://ads.advance.net/RealMedia/ads/click_lx.ads/www.nj.com/////ProxyLink/NJONLINE/CLICK_NJ10/SubLedgeClick.html/">The Star-Ledger</a></li> 
+          <li value="" data-val=""><a href="http://www.njtimes.com/subscribe">The Times of Trenton</a></li> 
+          <li value="" data-val=""><a href="http://www.jjournal.com/subscriptions/subscribe-today/">The Jersey Journal</a></li> 
+          <li value="" data-val=""><a href="http://www.nj.com/sjtsubscribe">South Jersey Times</a></li> 
+          <li value="" data-val=""><a href="http://www.nj.com/democratsubscribe/">Hunterdon County Democrat</a></li> 
+          <li value="" data-val=""><a href="http://www.nj.com/ccsubscribe/">Cranford Chronicle</a></li> 
+          <li value="" data-val=""><a href="http://www.nj.com/sgsubscribe/">Star Gazette</a></li> 
+         </ul> 
+         <div class="SiteSponsor nofullad injectedAd" id="SiteSponsor"></div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div id="adv_weather" data-state="4" class=""> 
+      <div class="advWeatherInner"> 
+       <span class="advConditions intermittent-clouds-04"> <span class="advTemp"></span> </span> 
+      </div> 
+     </div> 
+     <div id="adv_weather_main" class="advDropdown advLayer"> 
+      <div class="advPanelArrow"></div> 
+      <div class="advDropdownOuter"> 
+       <div class="advDropdownInner"> 
+        <div class="advMainMenuLink" data-state="1">
+         <div class="prev">
+          <a href="#"></a>
+         </div>Back to Main Menu
+        </div> 
+        <div id="adv_weather_inner"> 
+         <div class="advClose" data-state="4">
+          <span class="advToprailIcon ir">Close</span>
+         </div> 
+         <form id="adv_wlocation_form"> 
+          <div class="title">
+           Customize Your Weather
+          </div> 
+          <div> 
+           <label for="adv_wlocation_input">Set Your Location (Enter City and State or Zip Code)</label> 
+           <div class="errorMsg"></div> 
+          </div> 
+          <div class="advFrmInput">
+           <input name="adv_wlocation_input" id="adv_wlocation_input" type="text" value="" placeholder="Use My Current Location">
+          </div> 
+          <div class="advFrmBtn">
+           <input type="submit" value="Submit">
+          </div> 
+         </form> 
+         <div id="adv_wlocation_confirm"> 
+          <div class="title">
+           Congratulations!
+          </div> 
+          <div>
+           Your weather is set to 
+           <span class="advGeoChoosen"></span>. You can change the location at any time.
+          </div> 
+          <div class="advFrmBtn"> 
+           <input class="adv-tray_link" data-state="4" data-phase="phase3" type="button" value="Done"> 
+          </div> 
+         </div> 
+         <div id="adv_weather_data"> 
+          <div class="subtitle">
+           AccuWeather.com Quick Look
+          </div> 
+          <div class="title"></div> 
+          <div>
+           <a class="advTrayLink" data-state="2" data-phase="phase1">Change your current location »</a>
+          </div> 
+          <div class="advWeatherInner"></div> 
+          <div class="advFrmBtn">
+           <a class="advABtn" href="">View Full Weather Report</a>
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="adunit nomobilead" id="SponsorRight"></div> 
+    </div> 
+    <div id="adv_mast_right"> 
+     <div id="adv_search" class="advToprailBtn" data-state="6"> 
+      <span class="advToprailIcon ir">Search</span> 
+      <span class="advIconLabel">Search</span> 
+     </div> 
+     <div id="adv_search_main"> 
+      <div class="advPanelArrow"></div> 
+      <form id="adv_search_form" method="get" action="http://search.nj.com/sp" onsubmit=""> 
+       <div id="adv_search_panel"> 
+        <div class="advSearchBtn" data-state="6">
+         <input class="advSearchIcon" type="submit" value="Search">
+        </div> 
+        <div id="adv_search_bar" class="advLayer"> 
+         <input class="advTextbox" name="keywords" id="adv_search_input" placeholder="Search" type="text" autocomplete="off" autocorrect="off" autocapitalize="off">
+         <br> 
+        </div> 
+       </div> 
+       <div class="advSearchLink"> 
+        <h2>Search NJ.com</h2> 
+        <div class="next"></div> 
+       </div> 
+      </form> 
+     </div> 
+     <div id="adv_account" class="advToprailBtn" data-state="5"> 
+      <span class="advToprailIcon ir">Account</span> 
+      <span class="advIconLabel">Sign In</span> 
+     </div> 
+     <div id="adv_user_dropdown" class="advDropdown advLayer"> 
+      <div class="advPanelArrow"></div> 
+      <div class="advDropdownOuter"> 
+       <div class="advDropdownInner"> 
+        <div class="advClose" data-state="5">
+         <span class="advToprailIcon ir">Close</span>
+        </div> 
+        <div id="adv_user_main"> 
+         <div id="adv_user_signin"> 
+          <h2>Sign in to<br><span>NJ.com</span></h2> 
+          <div class="advRule"></div> 
+          <div id="adv_gigya_tr_container"></div> 
+          <form id="adv_signin" name="ToprailSignInForm" method="post" action="https://signup.nj.com/community/" onsubmit="document.getElementById('adv_login_return_url').value=top.document.location.href;return true;"> 
+           <input type="hidden" name="__mode" value="do_login"> 
+           <input type="hidden" name="return_to" id="adv_login_return_url" value=""> 
+           <input type="hidden" name="affiliate" id="adv-affiliate" value="njo"> 
+           <input type="hidden" name="v" id="adv-v" value="baseline"> 
+           <input id="adv_tr_login_author" class="advTextbox" name="username" placeholder="Enter Username" type="text" size="30" autocomplete="off" autocorrect="off" autocapitalize="off">
+           <br> 
+           <input id="adv_tr_login_password" class="advTextbox" name="password" placeholder="Enter Password" type="password" size="30">
+           <br> 
+           <input type="submit" value="Sign In"> 
+           <div class="advCheckbox"> 
+            <input id="adv_signin_checkbox" type="checkbox" name="remember" value="Sign In"> 
+            <label for="adv_signin_checkbox"><span class="advFormText">Remember me</span></label> 
+           </div> 
+           <input type="hidden" id="adv_tr_error_url" name="error_url" value="https://signup.nj.com/sign-in/"> 
+          </form> 
+          <a id="adv_pass_reset" href="https://signup.nj.com/remember/?">Forgot your username and password?</a> 
+          <div class="advRule"></div> 
+          <div class="advSocialLogin"> 
+           <div id="adv_signin_services"> 
+            <h3>Don't have an account?</h3> 
+            <p><a title="Register now!" id="adv_toprail_register" href="https://signup.nj.com/register/?">Register now for free</a>, or sign in with any of these services:</p> 
+            <span id="adv_signin_links"> <a class="adv-signin-fb" id="AdvTrSdFb" href="https://signup.nj.com/sign-in/?option=Facebook"><img src="http://media.nj.com/static/common/img/buttons/btn-signin-Facebook.png" alt="Facebook"></a> <a class="adv-signin-google" href="https://signup.nj.com/sign-in/?option=Google"><img src="http://media.nj.com/static/common/img/buttons/btn-signin-Google.png" alt="Google"></a> <a class="adv-signin-aim" href="https://signup.nj.com/sign-in/?option=AIM"><img src="http://media.nj.com/static/common/img/buttons/btn-signin-AOL.png" alt="AOL"></a> <a class="adv-signin-twitter" href="https://signup.nj.com/sign-in/?option=Twitter"><img src="http://media.nj.com/static/common/img/buttons/btn-signin-Twitter.png" alt="Twitter"></a> </span> 
+           </div> 
+          </div> 
+         </div> 
+         <div id="adv_user_snapshot"> 
+          <div id="adv_profile_menu"> 
+           <img id="adv_profile_img"> 
+           <div id="adv_profile_nameplate"> 
+            <span class="advSignInStatus">You are signed in as</span>
+            <br> 
+            <h2></h2> 
+           </div> 
+           <div id="adv_profile_btns"> 
+            <span class="advProfileBtn" id="adv_profile_edit"><a href="" title="Edit your profile">Edit</a></span> 
+            <span class="advProfileBtn" id="adv_profile_view"><a href="" title="View your public profile">Public Profile</a></span> 
+            <span class="advProfileBtn" id="adv_profile_exit"><a href="" title="Sign out">Sign Out</a></span> 
+           </div> 
+          </div> 
+          <div id="adv_gigya_tr_profile"></div> 
+          <div id="adv_user_favs"> 
+           <ul> 
+            <li id="user_fav_schools" class="advFavCat">
+             <div data-state="0">
+              <h2>Favorite Schools</h2>
+              <span class="advFeedBtn ir">expand</span>
+             </div> 
+             <ul class="advFeedSubList"></ul> </li> 
+            <li id="user_fav_teams" class="advFavCat">
+             <div data-state="0">
+              <h2>Favorite Teams</h2>
+              <span class="advFeedBtn ir">close</span>
+             </div> 
+             <ul class="advFeedSubList"></ul> </li> 
+           </ul> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div id="adv_subscribe" data-state="9" class=""> 
+      <span class="advArrow">Subscribe</span>
+      <br>
+      <strong></strong> 
+     </div> 
+     <div id="adv_subscribe_main" class="advDropdown advLayer"> 
+      <div class="advPanelArrow"></div> 
+      <div class="advDropdownOuter"> 
+       <div class="advDropdownInner"> 
+        <ul class="advMenu"> 
+         <li value="" data-val=""><a href="http://www.nj.com/newsletters">Email newsletters</a></li> 
+         <li value="" data-val=""><a href="http://ads.advance.net/RealMedia/ads/click_lx.ads/www.nj.com/////ProxyLink/NJONLINE/CLICK_NJ10/SubLedgeClick.html/">The Star-Ledger</a></li> 
+         <li value="" data-val=""><a href="http://www.njtimes.com/subscribe">The Times of Trenton</a></li> 
+         <li value="" data-val=""><a href="http://www.jjournal.com/subscriptions/subscribe-today/">The Jersey Journal</a></li> 
+         <li value="" data-val=""><a href="http://www.nj.com/sjtsubscribe">South Jersey Times</a></li> 
+         <li value="" data-val=""><a href="http://www.nj.com/democratsubscribe/">Hunterdon County Democrat</a></li> 
+         <li value="" data-val=""><a href="http://www.nj.com/ccsubscribe/">Cranford Chronicle</a></li> 
+         <li value="" data-val=""><a href="http://www.nj.com/sgsubscribe/">Star Gazette</a></li> 
+        </ul> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </header> 
+   <script type="text/javascript">
+function getComscorekwValue() {
+	
+        var empty_placeholder = 'empty_placeholder';
+        comscorekw=empty_placeholder;
+        return empty_placeholder;
+	
+}
+function getToprailMenuContext() {
+        return '';
+}
+</script> 
+   <!-- /toprail --> 
+   <div class="main_container"> 
+    <script type="text/javascript">
+	var listingStreet = new Array();
+	var listingCity= new Array();
+	var listingState = new Array();
+	var listingZip = new Array();
+
+	var listingAdId = new Array();
+	var listingAdIndex = new Array();
+	var listingAdNumber = new Array();
+	var listingImages = new Array();
+
+	var listingDateTime = new Array();
+	var listingText = new Array();
+
+	var listingLat = new Array();
+	var listingLng = new Array();
+	var listingDetailLink = new Array();
+	var listingAdPay = new Array();
+
+function addListing(adId,adIndex,adNumber,street,city,state,zip,adText,dateTime,lat,lng,detailLink,isAdPay,imageArray) {
+	listingAdId.push(adId);
+	listingAdIndex.push(adIndex);
+	listingAdNumber.push(adNumber);
+	listingStreet.push(street);
+	listingCity.push(city);
+	listingState.push(state);
+	listingZip.push(zip);
+	listingText.push(adText);
+	listingDateTime.push(dateTime);
+	listingLat.push(lat);
+	listingLng.push(lng);
+	listingDetailLink.push(detailLink);
+	listingAdPay.push(isAdPay);
+	listingImages.push(imageArray);
+}
+
+function buildTour() {
+	var tourCookieValue=readCookie('tour_id');
+	if (tourCookieValue) {
+		window.open('?property=nj.com&temp_type=clipboard&category=directions&tp=ME_nj&new=true','driving_tour','width=880,height=600,menubar=0,resizable=1,scrollbars=1,location=1');
+	} else {
+		alert('You must select at least one garage sale in order to build your driving tour.');
+	}
+}
+
+function setDrivingTour (adId,mode) {
+	var tourIds = readCookie('tour_id');
+	var resultsElement = document.getElementById('dt'+adId);
+	var popupElement = document.getElementById('dtp'+adId);
+	var detailImageElement = document.getElementById('dtImage');
+
+	var wrd = '';
+	var detailImageSrc = '';
+	var detailImageAlt = '';
+	var popupImageSrc = '';
+
+	var displayMode = '';
+
+	if (tourIds.indexOf(adId) > -1) {
+		if (mode == 'change') {
+			RemoveCookieItem ('tour_id',adId);
+			displayMode = 'add';
+		} else {
+			displayMode = 'remove';
+		}
+	} else {
+		if (mode == 'change') {
+			AppendCookie ('tour_id',adId);
+			displayMode = 'remove';
+		} else {
+			displayMode = 'add';
+		}
+	}
+	if (displayMode == 'remove') {
+		if (resultsElement) {
+			resultsElement.className = "drive_tour_remove";
+			resultsElement.innerHTML = 'Remove from Driving Tour';
+		}
+		if (popupElement) {
+			popupElement.src = 'http://media.nj.com/static/classifieds/merchandise/images/btn_remove_green_grey.gif';
+		}
+		if (detailImageElement) {
+			detailImageElement.src = 'http://media.nj.com/static/classifieds/merchandise/images/btn_remove_green_small3.gif';
+			detailImageElement.alt = 'Remove From Driving Tour';
+		}
+	} else {
+		if (resultsElement) {
+			resultsElement.className = "drive_tour_add";
+			resultsElement.innerHTML = 'Add to Driving Tour';
+		}
+		if (popupElement) {
+			popupElement.src = 'http://media.nj.com/static/classifieds/merchandise/images/btn_adddrivetour_green.gif';
+		}
+		if (detailImageElement) {
+			detailImageElement.src = 'http://media.nj.com/static/classifieds/merchandise/images/btn_adddrivetour_green_small.gif';
+			detailImageElement.alt = 'Add To Driving Tour';
+		}
+	}
+}
+</script> 
+    <div class="masthead"> 
+     <div class="mast_text"> 
+      <table> 
+       <tbody> 
+        <tr> 
+         <td height="55" valign="middle"> <h1>Garage-Yard and Estate Sales Classifieds<span class="tagline">Local NJ Classified Ads</span></h1> </td> 
+        </tr> 
+       </tbody> 
+      </table> 
+     </div> 
+     <div class="sponsor_bullet"> 
+      <!-- OAS AD 'SecSponsor' begin --> 
+      <div class="adSecSponsor adunit" id="SecSponsor"></div> 
+      <!-- OAS AD 'SecSponsor' end --> 
+     </div> 
+     <div class="clear"></div> 
+    </div> 
+    <div class="col"> 
+     <div class="result_nav"> 
+      <div class="garage_sort_fields_wrapper"> 
+       <select id="sortbyA" onchange="changeSort('sortbyA')"> <option selected value="">Sort Listings By: </option> <option value="date_created:d">Newest Ads First</option> <option value="date_created">Oldest Ads First</option> </select> &nbsp;&nbsp; 
+       <select id="countbyA" onchange="changeCount('countbyA')"> <option selected value="">Listings Per Page: </option> <option value="10">10</option> <option value="20">20</option> </select> 
+      </div> 
+      <div class="garage_result_count">
+       <b>16</b> listings match, 
+       <b>1-10</b> shown
+      </div> 
+      <div class="garage_result_pagination">
+        Page 1 
+       <a href="?property=nj.com&amp;orig_prop=nj.com&amp;temp_type=browse&amp;category=results&amp;tp=ME_nj&amp;classification=Garage-Yard%20and%20Estate%20Sales&amp;page=2" title="Page 2"> 2</a>&nbsp; &nbsp;
+       <a href="?property=nj.com&amp;orig_prop=nj.com&amp;temp_type=browse&amp;category=results&amp;tp=ME_nj&amp;classification=Garage-Yard%20and%20Estate%20Sales&amp;page=2" title="Next">Next&gt;</a> 
+      </div> 
+      <div class="clear"></div> 
+     </div> 
+     <div class="clear"></div> 
+     <div id="left_col"> 
+      <div class="viewmobile"> 
+       <img src="http://media.nj.com/static/classifieds/merchandise/images/icon_mobile.png" onclick="location.href='http://garagesales.m.nj.com';" title="View Mobile Site"> 
+       <a href="http://garagesales.m.nj.com">View Mobile Site</a> 
+      </div> 
+      <div id="advSearch_link"> 
+       <p>Can't find what you're looking for? Try our<br><a href="http://classifieds.nj.com/?category=search&amp;temp_type=browse&amp;tp=ME_nj&amp;property=nj.com" class="adv_link">Advanced Search</a></p> 
+      </div> 
+      <div id="categ_col"> 
+       <p class="narrow_by">Narrow Search By</p> 
+       <hr> 
+       <p class="major_cat_gold">Keyword/Web Id/City</p> 
+       <div style="margin: 6px" align="center"> 
+        <form id="keywordFormID" onsubmit="return validateKeywordForm(this);"> 
+         <input type="hidden" name="property" value="nj.com"> 
+         <input type="hidden" name="orig_prop" value="nj.com"> 
+         <input type="hidden" name="temp_type" value="browse"> 
+         <input type="hidden" name="category" value="results"> 
+         <input type="hidden" name="tp" value="ME_nj"> 
+         <input type="hidden" name="classification" value="Garage-Yard and Estate Sales"> 
+         <input id="keywords" name="keywords" size="19" type="text"> 
+         <br> 
+         <input id="keywordSubmit" type="image" src="http://media.nj.com/static/classifieds/merchandise/images/bizlisting_search_button.jpg" style="margin: 4px; padding: 0; height: 20px;"> 
+        </form> 
+       </div> 
+       <div class="bl_form_search"></div> 
+       <hr> 
+      </div> 
+     </div> 
+     <div id="middle_column"> 
+      <div id="listingview"> 
+       <img src="http://media.nj.com/static/classifieds/merchandise/images/icon_page_full.gif" width="20" height="27" id="icon_page"> 
+       <div id="garage_view_control">
+         Full Listing Details 
+        <br> 
+        <a href="?property=nj.com&amp;orig_prop=nj.com&amp;temp_type=browse&amp;category=results&amp;tp=ME_nj&amp;classification=Garage-Yard%20and%20Estate%20Sales&amp;brief_view=true" title="Brief View">Switch to brief listing details</a> 
+       </div> 
+       <div id="printer_holder_listings"> 
+        <img alt="Print This Page" onclick="window.open('?property=nj.com&amp;orig_prop=nj.com&amp;temp_type=browse&amp;category=results&amp;tp=ME_nj&amp;classification=Garage-Yard%20and%20Estate%20Sales&amp;tl=4','print_it','width=880,height=600,menubar=0,resizable=1,scrollbars=1,location=1'); return false;" src="http://media.nj.com/static/classifieds/merchandise/images/icon_printer.jpg">
+        <a title="Print This Page" onclick="window.open( '?property=nj.com&amp;orig_prop=nj.com&amp;temp_type=browse&amp;category=results&amp;tp=ME_nj&amp;classification=Garage-Yard%20and%20Estate%20Sales&amp;tl=4','print_it','width=880,height=600,menubar=0,resizable=1,scrollbars=1,location=1'); return false;" href="javascript:void(0)" rel="nofollow">Print This Page</a> 
+       </div> 
+       <div>
+        <a href="#map"><img src="http://media.nj.com/static/classifieds/merchandise/images/btn_viewmap.gif" style="float: right;"></a>
+       </div> 
+      </div> 
+      <div class="clear"></div> 
+      <table id="sortable" cellpadding="0" cellspacing="0"> 
+       <tbody>
+        <tr class="results_header"> 
+         <th class="h_address"><span class="addr">Address</span></th> 
+         <th class="h_city"> City <a href="?property=nj.com&amp;orig_prop=nj.com&amp;temp_type=browse&amp;category=results&amp;tp=ME_nj&amp;classification=Garage-Yard%20and%20Estate%20Sales&amp;citysort=asc"><img src="http://media.nj.com/static/classifieds/merchandise/images/btn_arrow_up.gif"></a> <a href="?property=nj.com&amp;orig_prop=nj.com&amp;temp_type=browse&amp;category=results&amp;tp=ME_nj&amp;classification=Garage-Yard%20and%20Estate%20Sales&amp;citysort=desc"><img src="http://media.nj.com/static/classifieds/merchandise/images/btn_arrow_down.gif"></a></th> 
+         <th class="h_datetime">Date/Time</th> 
+         <th class="h_send">Send</th> 
+         <th class="h_save">Save</th> 
+         <th class="h_map">Map</th> 
+        </tr> 
+        <tr class="data"> 
+         <td class="first"><p class="addr">43 Ridgeline Drive</p> <a href="javascript:void(0)" id="dt851544845" class="drive_tour_add" onclick="setDrivingTour('851544845','change');">Add to Driving Tour</a> </td> 
+         <td class="city">Long Valley</td> 
+         <td class="datetime">Date: 2/28 &amp; 3/1 Time: 9:30-3:30 pm</td> 
+         <td><a href="#" onclick="launcher('851544845'); return false;" title="Send This Page">Send</a></td> 
+         <td class="adIdTd"><a href="javascript:void(0)" id="851544845" class="save_garage_loc" onclick="save_remove_ad('851544845'); return false;">Save</a></td> 
+         <td> <a href="#map" onclick="showRollover ('851544845','yes');">Map</a> </td> 
+        </tr> 
+        <tr class="garage_description"> 
+         <td colspan="6"> 
+          <div class="featured_ribbon">
+           <img src="http://media.nj.com/static/classifieds/merchandise/images/ribbon_vertical.png">
+          </div> 
+          <div class="icon_camera"> 
+           <img src="http://media.nj.com/static/classifieds/merchandise/images/icon_camera.gif"> 
+          </div> 
+          <div class="garage_text">
+            Long Valley Estate Sale 43 Ridgeline Dr. 2/28 &amp; 3/1 9:30-3:30 pm Orientalia, Palace Sz Urn, Bombay Style Dresser &amp; Mirror, Iron Bed, Wrought Iron Coffee Table, DR set, Stereo,Telephone &amp; Exercise Equip., Art, chandelier &amp; sconces, Accent &amp; Decor Pieces, Rugs, High End Womens Clothing &amp; Shoes. www.estatesalesinnj.com Date: 2/28 &amp; 3/1 Time: 9:30-3:30 pm 
+           <a href="?property=nj.com&amp;orig_prop=nj.com&amp;temp_type=detail&amp;category=detail&amp;tp=ME_nj&amp;classification=Garage-Yard%20and%20Estate%20Sales&amp;ad_id=851544845" class="moreinfo"> More Info</a> 
+          </div> 
+          <div class="garage_pub_data">
+            Published in 
+           <i>The Star Ledger</i> 2/27. Updated 3/1. 
+          </div> </td>
+        </tr> 
+        <tr class="spacer">
+         <td colspan="6">&nbsp;</td>
+        </tr> 
+        <script language="javascript">
+	var imageArray = new Array('http://imgick.nj.com/classifieds/merch/njnews/map/img/ImageLoad/ImageFinal/2380-1-0003889333-02-1.jpg');
+	var isAdPay = 'no';
+
+addListing('851544845','1','0003889333','43 Ridgeline Drive',"Long Valley",'NJ','',
+"Long Valley Estate Sale 43 Ridgeline Dr. 2/28 &amp;  3/1 9:30-3:3...",'Date&#58; 2/28 & 3/1 Time&#58; 9&#58;30-3&#58;30 pm','40.795874','-74.728386','?property=nj.com&orig_prop=nj.com&temp_type=detail&category=detail&tp=ME_nj&classification=Garage-Yard%20and%20Estate%20Sales&ad_id=851544845',isAdPay,imageArray);
+</script> 
+        <tr class="data"> 
+         <td class="first"><p class="addr">15 Ann Street</p> <a href="javascript:void(0)" id="dt851544832" class="drive_tour_add" onclick="setDrivingTour('851544832','change');">Add to Driving Tour</a> </td> 
+         <td class="city">Bernardsville</td> 
+         <td class="datetime">Date: 02/28 Time: 9-3</td> 
+         <td><a href="#" onclick="launcher('851544832'); return false;" title="Send This Page">Send</a></td> 
+         <td class="adIdTd"><a href="javascript:void(0)" id="851544832" class="save_garage_loc" onclick="save_remove_ad('851544832'); return false;">Save</a></td> 
+         <td> <a href="#map" onclick="showRollover ('851544832','yes');">Map</a> </td> 
+        </tr> 
+        <tr class="garage_description"> 
+         <td colspan="6"> 
+          <div class="featured_ribbon">
+           <img src="http://media.nj.com/static/classifieds/merchandise/images/ribbon_vertical.png">
+          </div> 
+          <div class="icon_camera"> 
+          </div> 
+          <div class="garage_text">
+            MOVING SALE 15 Ann St. One day only. Furniture, Books, Music, Household Items, Paper Collectibles, Clothing, Small Appliances, Kitchenware, Barware, DVDs, CDs, LPs, tons of Books and much more. All priced to sell! From I-78/287, take 525N, left Pill Hill, 1st right Ann St. Date: 02/28 Time: 9-3 
+           <a href="?property=nj.com&amp;orig_prop=nj.com&amp;temp_type=detail&amp;category=detail&amp;tp=ME_nj&amp;classification=Garage-Yard%20and%20Estate%20Sales&amp;ad_id=851544832" class="moreinfo"> More Info</a> 
+          </div> 
+          <div class="garage_pub_data">
+            Published in 
+           <i>The Star Ledger</i> 2/27. Updated 3/1. 
+          </div> </td>
+        </tr> 
+        <tr class="spacer">
+         <td colspan="6">&nbsp;</td>
+        </tr> 
+        <script language="javascript">
+	var imageArray = new Array();
+	var isAdPay = 'no';
+
+addListing('851544832','2','0003889620','15 Ann Street',"Bernardsville",'NJ','',
+"MOVING SALE 15 Ann St. One day only. Furniture, Books, Music, Hou...",'Date&#58; 02/28 Time&#58; 9-3','40.708322','-74.569517','?property=nj.com&orig_prop=nj.com&temp_type=detail&category=detail&tp=ME_nj&classification=Garage-Yard%20and%20Estate%20Sales&ad_id=851544832',isAdPay,imageArray);
+</script> 
+        <tr class="data"> 
+         <td class="first"><p class="addr">30 ADDISON DRIVE</p> <a href="javascript:void(0)" id="dt851544814" class="drive_tour_add" onclick="setDrivingTour('851544814','change');">Add to Driving Tour</a> </td> 
+         <td class="city">Short Hills</td> 
+         <td class="datetime">Date: 2/28 &amp; 3/1 Time: 9:30-3:30</td> 
+         <td><a href="#" onclick="launcher('851544814'); return false;" title="Send This Page">Send</a></td> 
+         <td class="adIdTd"><a href="javascript:void(0)" id="851544814" class="save_garage_loc" onclick="save_remove_ad('851544814'); return false;">Save</a></td> 
+         <td> <a href="#map" onclick="showRollover ('851544814','yes');">Map</a> </td> 
+        </tr> 
+        <tr class="garage_description"> 
+         <td colspan="6"> 
+          <div class="featured_ribbon">
+           <img src="http://media.nj.com/static/classifieds/merchandise/images/ribbon_vertical.png">
+          </div> 
+          <div class="icon_camera"> 
+           <img src="http://media.nj.com/static/classifieds/merchandise/images/icon_camera.gif"> 
+          </div> 
+          <div class="garage_text">
+            Short Hills 30 Addison Dr, Sat 2/28 &amp; Sun. 3/1 9:30-3:30pm Mid-Cent. teak kidney shaped coffee table, Eskimo inuit art , soap stone extra large hawk, Pairpoint compote, Italian &amp; Portuguese porcelain, vintage Dansk enamel cookware, Wagner roaster, Mikasa and Villeroy &amp; Boch dinnerware, Baccarat, Sterling, fine &amp; costum jewelry, Tokisaka woodblocks, lucite lamp (poss. Carl Springer), HH, Schwinn exercise bike, arkwork, rattan DR set, white wicker round table &amp; chairs, white wickr rocker &amp; ottoman, custom made home office furnishings, books, quality women accessories, so MUCH MORE! see www.estatesalesinnj.com (908) 896-5943 Date: 2/28 &amp; 3/1 Time: 9:30-3:30 
+           <a href="?property=nj.com&amp;orig_prop=nj.com&amp;temp_type=detail&amp;category=detail&amp;tp=ME_nj&amp;classification=Garage-Yard%20and%20Estate%20Sales&amp;ad_id=851544814" class="moreinfo"> More Info</a> 
+          </div> 
+          <div class="garage_pub_data">
+            Published in 
+           <i>The Star Ledger</i> 2/27. Updated 3/1. 
+          </div> </td>
+        </tr> 
+        <tr class="spacer">
+         <td colspan="6">&nbsp;</td>
+        </tr> 
+        <script language="javascript">
+	var imageArray = new Array('http://imgick.nj.com/classifieds/merch/njnews/map/img/ImageLoad/ImageFinal/2379-1-0003889303-02-1.jpg');
+	var isAdPay = 'no';
+
+addListing('851544814','3','0003889303','30 ADDISON DRIVE',"Short Hills",'NJ','',
+"Short Hills 30 Addison Dr, Sat 2/28 &amp; Sun. 3/1 9:30-3:30pm Mi...",'Date&#58; 2/28 & 3/1 Time&#58; 9&#58;30-3&#58;30','40.733','-74.345899','?property=nj.com&orig_prop=nj.com&temp_type=detail&category=detail&tp=ME_nj&classification=Garage-Yard%20and%20Estate%20Sales&ad_id=851544814',isAdPay,imageArray);
+</script> 
+        <tr class="data"> 
+         <td class="first"><p class="addr">&nbsp;</p> </td> 
+         <td class="city">&nbsp;</td> 
+         <td class="datetime">&nbsp;</td> 
+         <td><a href="#" onclick="launcher('851544858'); return false;" title="Send This Page">Send</a></td> 
+         <td class="adIdTd"><a href="javascript:void(0)" id="851544858" class="save_garage_loc" onclick="save_remove_ad('851544858'); return false;">Save</a></td> 
+         <td> &nbsp; </td> 
+        </tr> 
+        <tr class="garage_description"> 
+         <td colspan="6"> 
+          <div class="icon_camera"> 
+           <img src="http://media.nj.com/static/classifieds/merchandise/images/icon_camera.gif"> 
+          </div> 
+          <div class="garage_text">
+            Estate Sale Toms River 8 Biscayne St Sat 2/28 Sun 3/1 9am-5pm Everything Must Go - Couches, TVs, Furniture, House Hold Items, Kitchen Appliances, Dishes, Ect. 
+           <a href="?property=nj.com&amp;orig_prop=nj.com&amp;temp_type=detail&amp;category=detail&amp;tp=ME_nj&amp;classification=Garage-Yard%20and%20Estate%20Sales&amp;ad_id=851544858" class="moreinfo"> More Info</a> 
+          </div> 
+          <div class="garage_pub_data">
+            Published in 
+           <i>The Star Ledger</i> 2/27. Updated 3/1. 
+          </div> </td>
+        </tr> 
+        <tr class="spacer">
+         <td colspan="6">&nbsp;</td>
+        </tr> 
+        <tr class="data"> 
+         <td class="first"><p class="addr">75 Old Farm Rd</p> <a href="javascript:void(0)" id="dt851544852" class="drive_tour_add" onclick="setDrivingTour('851544852','change');">Add to Driving Tour</a> </td> 
+         <td class="city">Bedminster</td> 
+         <td class="datetime">Date: 2/28,3/1 Time: 10-3</td> 
+         <td><a href="#" onclick="launcher('851544852'); return false;" title="Send This Page">Send</a></td> 
+         <td class="adIdTd"><a href="javascript:void(0)" id="851544852" class="save_garage_loc" onclick="save_remove_ad('851544852'); return false;">Save</a></td> 
+         <td> <a href="#map" onclick="showRollover ('851544852','yes');">Map</a> </td> 
+        </tr> 
+        <tr class="garage_description"> 
+         <td colspan="6"> 
+          <div class="icon_camera"> 
+          </div> 
+          <div class="garage_text">
+            Moving Sale-Bedminster 75 Old farm Rd. Off Lamington Rd. Sat 2/28, Sun 3/1 10am-3pm. Contents of decorater country home, lots of distressed, shabby white chic furniture, including table &amp; chairs, sofa &amp; decor. Burled Mahogany dining room table &amp; sideboard, leather sofa &amp; chairs, Farm Located on hill, need 4 wheel drive vehicle. All must be sold! Date: 2/28,3/1 Time: 10-3 
+           <a href="?property=nj.com&amp;orig_prop=nj.com&amp;temp_type=detail&amp;category=detail&amp;tp=ME_nj&amp;classification=Garage-Yard%20and%20Estate%20Sales&amp;ad_id=851544852" class="moreinfo"> More Info</a> 
+          </div> 
+          <div class="garage_pub_data">
+            Published in 
+           <i>The Star Ledger</i> 2/27. Updated 3/1. 
+          </div> </td>
+        </tr> 
+        <tr class="spacer">
+         <td colspan="6">&nbsp;</td>
+        </tr> 
+        <script language="javascript">
+	var imageArray = new Array();
+	var isAdPay = 'no';
+
+addListing('851544852','5','0003889105','75 Old Farm Rd',"Bedminster",'','07921',
+"Moving Sale-Bedminster 75 Old farm Rd. Off Lamington Rd. Sat 2/28...",'Date&#58; 2/28,3/1 Time&#58; 10-3','40.678533','-74.658524','?property=nj.com&orig_prop=nj.com&temp_type=detail&category=detail&tp=ME_nj&classification=Garage-Yard%20and%20Estate%20Sales&ad_id=851544852',isAdPay,imageArray);
+</script> 
+        <tr class="data"> 
+         <td class="first"><p class="addr">&nbsp;</p> </td> 
+         <td class="city">&nbsp;</td> 
+         <td class="datetime">&nbsp;</td> 
+         <td><a href="#" onclick="launcher('851544821'); return false;" title="Send This Page">Send</a></td> 
+         <td class="adIdTd"><a href="javascript:void(0)" id="851544821" class="save_garage_loc" onclick="save_remove_ad('851544821'); return false;">Save</a></td> 
+         <td> &nbsp; </td> 
+        </tr> 
+        <tr class="garage_description"> 
+         <td colspan="6"> 
+          <div class="icon_camera"> 
+          </div> 
+          <div class="garage_text">
+            JC Flea Market &amp; Collectible Fairs Sun. 3/1Lyndhurst HS-400 Weart Ave. 3/8 Clifton HS; 3/15 Bergenfield HS, 3/21 AJHS, Clark, 3/22 Berkeley Heights open 9-4PM/ for JC 2015 Events see www.jcpromotions.info 201.9981144 
+           <a href="?property=nj.com&amp;orig_prop=nj.com&amp;temp_type=detail&amp;category=detail&amp;tp=ME_nj&amp;classification=Garage-Yard%20and%20Estate%20Sales&amp;ad_id=851544821" class="moreinfo"> More Info</a> 
+          </div> 
+          <div class="garage_pub_data">
+            Published in 
+           <i>The Star Ledger</i> 2/27. Updated 3/1. 
+          </div> </td>
+        </tr> 
+        <tr class="spacer">
+         <td colspan="6">&nbsp;</td>
+        </tr> 
+        <tr class="data"> 
+         <td class="first"><p class="addr">418 West Ave.</p> <a href="javascript:void(0)" id="dt851392768" class="drive_tour_add" onclick="setDrivingTour('851392768','change');">Add to Driving Tour</a> </td> 
+         <td class="city">Pitman</td> 
+         <td class="datetime">Date: 02/28 Time: 8AM-1PM</td> 
+         <td><a href="#" onclick="launcher('851392768'); return false;" title="Send This Page">Send</a></td> 
+         <td class="adIdTd"><a href="javascript:void(0)" id="851392768" class="save_garage_loc" onclick="save_remove_ad('851392768'); return false;">Save</a></td> 
+         <td> <a href="#map" onclick="showRollover ('851392768','yes');">Map</a> </td> 
+        </tr> 
+        <tr class="garage_description"> 
+         <td colspan="6"> 
+          <div class="icon_camera"> 
+          </div> 
+          <div class="garage_text">
+            PITMAN 418 West Ave. Date: 02/28 Time: 8AM-1PM Sat. Feb. 28 8AM-1PM Indoor Moving Sale Date: 02/28 Time: 8AM-1PM Antiques, furniture, tools 
+           <a href="?property=nj.com&amp;orig_prop=nj.com&amp;temp_type=detail&amp;category=detail&amp;tp=ME_nj&amp;classification=Garage-Yard%20and%20Estate%20Sales&amp;ad_id=851392768" class="moreinfo"> More Info</a> 
+          </div> 
+          <div class="garage_pub_data">
+            Published in 
+           <i>South Jersey Times</i> 2/26. Updated 2/27. 
+          </div> </td>
+        </tr> 
+        <tr class="spacer">
+         <td colspan="6">&nbsp;</td>
+        </tr> 
+        <script language="javascript">
+	var imageArray = new Array();
+	var isAdPay = 'no';
+
+addListing('851392768','7','0003889635','418 West Ave.',"Pitman",'NJ','08071',
+"PITMAN  418 West Ave.   Date: 02/28 Time: 8AM-1PM         Sat. Fe...",'Date&#58; 02/28 Time&#58; 8AM-1PM','39.726996','-75.130542','?property=nj.com&orig_prop=nj.com&temp_type=detail&category=detail&tp=ME_nj&classification=Garage-Yard%20and%20Estate%20Sales&ad_id=851392768',isAdPay,imageArray);
+</script> 
+        <tr class="data"> 
+         <td class="first"><p class="addr">28 Heather Drive</p> <a href="javascript:void(0)" id="dt851356990" class="drive_tour_add" onclick="setDrivingTour('851356990','change');">Add to Driving Tour</a> </td> 
+         <td class="city">Ewing</td> 
+         <td class="datetime">02/28/15 9</td> 
+         <td><a href="#" onclick="launcher('851356990'); return false;" title="Send This Page">Send</a></td> 
+         <td class="adIdTd"><a href="javascript:void(0)" id="851356990" class="save_garage_loc" onclick="save_remove_ad('851356990'); return false;">Save</a></td> 
+         <td> <a href="#map" onclick="showRollover ('851356990','yes');">Map</a> </td> 
+        </tr> 
+        <tr class="garage_description"> 
+         <td colspan="6"> 
+          <div class="icon_camera"> 
+          </div> 
+          <div class="garage_text">
+            ESTATE SALES - Saturday Feb. 28th 9:00 AM 28 Heather Drive, Ewing Furniture: Bedroom and Living Room Set-Kitchen and Dining Items: Many Items Brand New- Housewares: Both New and Used- Home Decor: Antique and Modern 
+           <a href="?property=nj.com&amp;orig_prop=nj.com&amp;temp_type=detail&amp;category=detail&amp;tp=ME_nj&amp;classification=Garage-Yard%20and%20Estate%20Sales&amp;ad_id=851356990" class="moreinfo"> More Info</a> 
+          </div> 
+          <div class="garage_pub_data">
+            Published in 
+           <i>The Times of Trenton</i> 2/26. Updated 3/1. 
+          </div> </td>
+        </tr> 
+        <tr class="spacer">
+         <td colspan="6">&nbsp;</td>
+        </tr> 
+        <script language="javascript">
+	var imageArray = new Array();
+	var isAdPay = 'no';
+
+addListing('851356990','8','0003888842','28 Heather Drive',"Ewing",'NJ','08638',
+"ESTATE SALES - Saturday Feb. 28th 9:00 AM 28 Heather Drive, Ewing...",'02/28/15 9','40.277625','-74.764084','?property=nj.com&orig_prop=nj.com&temp_type=detail&category=detail&tp=ME_nj&classification=Garage-Yard%20and%20Estate%20Sales&ad_id=851356990',isAdPay,imageArray);
+</script> 
+        <tr class="data"> 
+         <td class="first"><p class="addr">&nbsp;</p> </td> 
+         <td class="city">&nbsp;</td> 
+         <td class="datetime">&nbsp;</td> 
+         <td><a href="#" onclick="launcher('851347271'); return false;" title="Send This Page">Send</a></td> 
+         <td class="adIdTd"><a href="javascript:void(0)" id="851347271" class="save_garage_loc" onclick="save_remove_ad('851347271'); return false;">Save</a></td> 
+         <td> &nbsp; </td> 
+        </tr> 
+        <tr class="garage_description"> 
+         <td colspan="6"> 
+          <div class="icon_camera"> 
+          </div> 
+          <div class="garage_text">
+            Garage Sale- 750 Blvd. Bayonne Sat, 2/28. 8a -?. Tons of Furniture, Linens, Jewerly, Appliances, Baby Items &amp; More 
+           <a href="?property=nj.com&amp;orig_prop=nj.com&amp;temp_type=detail&amp;category=detail&amp;tp=ME_nj&amp;classification=Garage-Yard%20and%20Estate%20Sales&amp;ad_id=851347271" class="moreinfo"> More Info</a> 
+          </div> 
+          <div class="garage_pub_data">
+            Published in 
+           <i>The Jersey Journal</i> 2/26. Updated 3/2. 
+          </div> </td>
+        </tr> 
+        <tr class="spacer">
+         <td colspan="6">&nbsp;</td>
+        </tr> 
+        <tr class="data"> 
+         <td class="first"><p class="addr">31 Oak Tavern Circle</p> <a href="javascript:void(0)" id="dt850976594" class="drive_tour_add" onclick="setDrivingTour('850976594','change');">Add to Driving Tour</a> </td> 
+         <td class="city">Branchburg</td> 
+         <td class="datetime">Date: 02/27 &amp; 02/28 Time: 9-1 &amp; 9-2</td> 
+         <td><a href="#" onclick="launcher('850976594'); return false;" title="Send This Page">Send</a></td> 
+         <td class="adIdTd"><a href="javascript:void(0)" id="850976594" class="save_garage_loc" onclick="save_remove_ad('850976594'); return false;">Save</a></td> 
+         <td> <a href="#map" onclick="showRollover ('850976594','yes');">Map</a> </td> 
+        </tr> 
+        <tr class="garage_description"> 
+         <td colspan="6"> 
+          <div class="icon_camera"> 
+          </div> 
+          <div class="garage_text">
+            BRANCHBURG MOVING/GARAGE SALE Date: 02/27 &amp; 02/28 Time: 9-1 &amp; 9-2 Fri. 2/27, 9am -1pm Sat. 2/28, 9 am - 2 pm 31 Oak Tavern Circle Date: 02/27 &amp; 02/28 Time: 9-1 &amp; 9-2 HH Items, Small Furniture, Wood Dinette Set, Bookcase, 8' Step Ladder, Grill, Lamps, Weights &amp; Bench, Singer Sewing Machine, PC Chair, Pictures, Oak Coffee &amp; End Table, Wheel Barrel, And More! Date: 02/27 &amp; 02/28 Time: 9-1 &amp; 9-2 
+           <a href="?property=nj.com&amp;orig_prop=nj.com&amp;temp_type=detail&amp;category=detail&amp;tp=ME_nj&amp;classification=Garage-Yard%20and%20Estate%20Sales&amp;ad_id=850976594" class="moreinfo"> More Info</a> 
+          </div> 
+          <div class="garage_pub_data">
+            Published in 
+           <i>The Hunterdon County Democrat</i> 2/25. Updated 2/25. 
+          </div> </td>
+        </tr> 
+        <script language="javascript">
+	var imageArray = new Array();
+	var isAdPay = 'no';
+
+addListing('850976594','10','0003888087','31 Oak Tavern Circle',"Branchburg",'NJ','08876',
+"BRANCHBURG  MOVING/GARAGE SALE      Date: 02/27 &amp; 02/28 Time:...",'Date&#58; 02/27 & 02/28 Time&#58; 9-1 & 9-2','40.564559','-74.713984','?property=nj.com&orig_prop=nj.com&temp_type=detail&category=detail&tp=ME_nj&classification=Garage-Yard%20and%20Estate%20Sales&ad_id=850976594',isAdPay,imageArray);
+</script> 
+       </tbody>
+      </table> 
+      <div class="clear"></div> 
+      <div class="result_nav_bottom"> 
+       <div class="garage_result_count">
+        <b>16</b> listings match, 
+        <b>1-10</b> shown
+       </div> 
+       <div class="garage_result_pagination">
+         Page 1 
+        <a href="?property=nj.com&amp;orig_prop=nj.com&amp;temp_type=browse&amp;category=results&amp;tp=ME_nj&amp;classification=Garage-Yard%20and%20Estate%20Sales&amp;page=2" title="Page 2"> 2</a>&nbsp; &nbsp;
+        <a href="?property=nj.com&amp;orig_prop=nj.com&amp;temp_type=browse&amp;category=results&amp;tp=ME_nj&amp;classification=Garage-Yard%20and%20Estate%20Sales&amp;page=2" title="Next">Next&gt;</a> 
+       </div> 
+      </div> 
+      <br class="clear"> 
+      <div class="garage_listings_util_wrapper"> 
+       <div style="float: left;"> 
+        <a href="javascript:void(0)" title="Build Driving Tour" onclick="buildTour(); return false;"><img src="http://media.nj.com/static/classifieds/merchandise/images/btn_builddrivingtour.gif" alt="Build Driving Tour" width="172" height="19"></a> 
+       </div> 
+       <div style="float: right;"> 
+        <a id="see_saved_ads_a" href="?property=nj.com&amp;temp_type=clipboard&amp;category=results&amp;tp=ME_nj&amp;classification=classifieds" title="See Saved Listings" rel="nofollow"> <img id="see_saved_ads_img_a" src="http://media.nj.com/static/classifieds/merchandise/images/seesave_listing_buttons_grey.gif" alt="See Saved Listings"></a> 
+       </div> 
+      </div> 
+      <br class="clear"> 
+      <style>
+.map_info_box { width: 210px; background-color: #5e5e5e; padding-bottom: 6px; min-height: 150px; height: auto !important; height: 150px; }
+
+.map_info_box .addy_bar { width: 100%; float: left; padding: 2px 0; background-color: Black; color: White; font-size: 11px; font-weight: bold; }
+.map_info_box .addy_bar .pop_addr { float: left; width: 185px; margin: 3px 0 3px 5px; }
+.map_info_box .more_details {  width: 210px; color: #c8c8c8; font-size: 11px; }
+.map_info_box .more_details .garage_details { float: left; margin: 3px 0 0 0; padding: 2px 1px 0 5px; width: 200px; color: White; font-size: 11px; }
+.map_info_box .more_details .garage_details IMG { margin: 2px 5px 0 2px; }
+.map_info_box .more_details .garage_pop_buttons { padding: 8px 0 0 4px; }
+.map_info_box .more_details .garage_pop_buttons IMG { margin: 0; padding: 2px 0; }
+</style> 
+      <script src="http://www.mapquestapi.com/sdk/js/v7.0.s/mqa.toolkit.js?key=Gmjtd%7Clu6y2gu7ng%2C80%3Do5-lwbsg"></script> 
+      <script type="text/javascript">
+	var myPoiCollection = new MQA.ShapeCollection();
+
+
+function startMap(){
+	var mapWindow = document.getElementById('mapWindow');
+	var options = {};
+	if (mapWindow) {
+		getResults();
+		if (!myPoiCollection.getSize()) {
+			options={
+				elt:document.getElementById('mapWindow'),
+				zoom:8,
+				latLng:{lat:40.281921, lng:-74.699203}
+			};
+		} else {
+			options={
+				elt:document.getElementById('mapWindow'),
+				collection: myPoiCollection,
+				bestFitMargin: 50
+			};
+		}
+		window.map = new MQA.TileMap(options);
+		MQA.withModule('viewoptions', function() {
+			map.addControl(
+				new MQA.ViewOptions()
+			);
+		});
+		MQA.withModule('largezoom', function() {
+			map.addControl(
+				new MQA.LargeZoom(),
+				new MQA.MapCornerPlacement(MQA.MapCorner.TOP_LEFT, new MQA.Size(5,5))
+			);
+		});
+	}
+}
+
+function getResults() {
+	if (listingAdId.length) {
+		for (var j=0; j < listingAdId.length; j++) {
+			poiAdId=listingAdId[j];
+			poiIndex=listingAdIndex[j];
+			poiStreet=listingStreet[j];
+			poiCity=listingCity[j];
+			poiState=listingState[j];
+			poiPostalcode=listingZip[j];
+			poiDateTime = listingDateTime[j];
+			poiText = listingText[j];
+			poiLat=listingLat[j] * 1;
+			poiLng=listingLng[j] * 1;
+			poiDetailLink=listingDetailLink[j];
+
+			if (poiLat != '' && poiLng != '' && !isNaN(poiLat) && !isNaN(poiLng)) {
+				poiLatLng = new MQA.LatLng();
+				poiLatLng.setLatLng(poiLat,poiLng);
+			} else {
+				continue;
+			}
+
+			imageCount=listingImages[j].length;
+			propertyDetails = poiDetailLink;
+
+			str = '<div class="map_info_box">';
+			str += '<div class="addy_bar">';
+			str += '<span class="pop_addr">' + poiStreet + '<br />' + poiCity + ', ' + poiState + ' ' + poiPostalcode + '</span>';
+			str += '</div>';
+
+			str += '<div class="more_details">';
+
+			str += '<div class="garage_details">';
+			str += '<span style="float: left; font-weight: bold;">Date/Time:</span>';
+			str += '<span style="float: right; color: #fcef22; width: 136px;">' + poiDateTime + '</span>';
+			str += '</div>';
+
+			str += '<div class="garage_details">';
+			str += '<span style="font-weight: bold;">Details: </span>';
+			str +='<span>';
+			if (imageCount > 0) {
+				str += '<img src="http://media.nj.com/static/classifieds/merchandise/images/icon_camera.gif" />';
+			}
+			str += poiText +'</span>';
+			str += '</div>';
+
+			str += '<div class="clear"></div>';
+			str += '<div class="garage_pop_buttons">';
+
+			str += '<a href="' + poiDetailLink + '"';
+			if (listingAdPay[j] == 'yes') str += ' target="_blank"';
+			str += '><img src="http://media.nj.com/static/classifieds/merchandise/images/btn_moreinfo_gray.gif" /></a>';
+			str += '<a href="#"><img id="dtp' + poiAdId + '" onclick="setDrivingTour(\''+poiAdId+'\',\'change\'); return false;" src="http://media.nj.com/static/classifieds/merchandise/images/btn_adddrivetour_green.gif" /></a>';
+			str += '</div>';
+			str += '</div>';
+			str += '</div>';
+
+			myMapIcon = new MQA.Icon('http://media.nj.com/static/classifieds/merchandise/images/icon_saletag.gif',44,58);
+			myShadowIcon = new MQA.Icon('http://www.nj.com/images/spacer.gif',0,0);
+
+			poi = new MQA.Poi(poiLatLng);
+
+			poi.setRolloverContent(str);
+			poi.setValue('key',poiAdId);
+			poi.setValue('icon',myMapIcon);
+			poi.setValue('shadow',myShadowIcon);
+
+			myPoiCollection.add(poi);
+			MQA.EventManager.addListener(poi, 'rolloveropen', doMouseOver);
+		}
+	}
+}
+function doMouseOver(e){
+	var adId=this.getValue('key');
+	setDrivingTour(adId);
+}
+
+function showRollover (adId) {
+	var poiCollectionSize = myPoiCollection.getSize();
+	for (var i=0; i < poiCollectionSize; i++) {
+		var poi = myPoiCollection.getAt(i);
+		if (poi.getValue('key') == adId) {
+			poi.toggleInfoWindowRollover();
+		}
+	}
+	setDrivingTour(adId);
+}
+
+$(document).ready(function() {
+	var mapWindow = document.getElementById('mapWindow');
+	if (mapWindow) startMap();
+});
+
+</script> 
+      <div id="mapquest_wrapper"> 
+       <a name="map"></a> 
+       <div id="mapWindow" style="width: 627px; height:600px; "></div> 
+      </div> 
+     </div> 
+    </div>
+    <!-- end col --> 
+    <!-- Right Rail --> 
+    <div class="right_rail_160"> 
+     <div class="fraudprev 160"> 
+      <div> 
+       <img width="160" height="18" border="0" alt="" src="http://media.nj.com/static/classifieds/merchandise/images/label_fraud_prevention_160.gif"> 
+      </div> 
+      <div class="content"> 
+       <p>Learn how to protect yourself from Internet scams. Read our online <a title="Fraud Prevention Tips" href="http://www.nj.com/placead/fraud_prevention/index.ssf">fraud prevention tips</a></p> 
+      </div> 
+     </div> 
+     <div class="info 160"> 
+      <div>
+       <img src="http://media.nj.com/static/classifieds/merchandise/images/label_place_ad_160.jpg" alt="" width="160" height="26" border="0">
+      </div> 
+      <div class="content"> 
+       <span>&#x2022; </span> 
+       <a href="http://www.nj.com/placead/" title="Place Your Ad Now">Place Your Ad Now</a>
+       <br> 
+       <span>&#x2022; </span> 
+       <a href="http://classifieds.nj.com/?category=search&amp;temp_type=browse&amp;tp=ME_nj&amp;property=nj.com" title="Search Classifieds">Search Classifieds</a>
+       <br> 
+       <span>&#x2022; </span>
+       <ul>
+        <li><a href="http://www.nj.com/classifieds/free/" title="Place Your Ad Now">New Jersey Free Classified Ads</a></li>
+       </ul> 
+      </div> 
+     </div> 
+     <div class="clear"></div> 
+     <div class="freeAds"> 
+      <a href="http://www.nj.com/classifieds/free/" onmouseover="this.firstChild.src='http://media.nj.com/static/classifieds/affiliate/nj/postfreeclassifieds160_mo.gif'" onmouseout="this.firstChild.src='http://media.nj.com/static/classifieds/affiliate/nj/postfreeclassifieds160.gif'"><img src="http://media.nj.com/static/classifieds/affiliate/nj/postfreeclassifieds160.gif" alt="Post Free Classifieds!" style="border-style: none;"></a> 
+     </div> 
+     <!-- OAS AD 'SkyScraper2' begin --> 
+     <div class="SkyScraper2 adunit" id="SkyScraper2"></div> 
+     <!-- OAS AD 'SkyScraper2' end --> 
+     <!-- OAS AD 'SkyScraper3' begin --> 
+     <div class="SkyScraper3 adunit" id="SkyScraper3"></div> 
+     <!-- OAS AD 'SkyScraper3' end --> 
+     <div class="narrow" id="bl_box"> 
+      <div class="bl_mast"> 
+       <img alt="Business Listings" src="http://media.nj.com/static/classifieds/merchandise/images/bizlistings_narrow_header.jpg"> 
+      </div> 
+      <script type="text/javascript">
+		function check_yellowbot() {
+			if ($("#yellowbot_q").val() == "Keyword or Category" || !$("#yellowbot_q").val()) {
+				$("#yellowbot_q").val("Business");
+			}
+			if ($("#yellowbot_place").val() == "City or Zip") {
+				$("#yellowbot_place").val("");
+			}
+			return true;
+		}
+	</script> 
+      <div class="bl_main"> 
+       <span>Find A Local Business</span> 
+       <div class="bl_form"> 
+        <form name="business_listing" onsubmit="check_yellowbot();" action="http://businessfinder.nj.com/search" method="get"> 
+         <input type="text" id="yellowbot_q" onfocus="$(this).val('');" value="Keyword or Category" name="q" class="bl_keyword_input"> 
+         <input type="text" id="yellowbot_place" onfocus="$(this).val('');" value="City or Zip" name="place" class="bl_location_input"> 
+         <div class="bl_form_search">
+          <input type="image" src="http://media.nj.com/static/classifieds/merchandise/images/bizlisting_search_button.jpg" onclick="check_yellowbot();document.business_listing.submit(); return false;">
+         </div> 
+        </form> 
+       </div> 
+      </div> 
+      <ul class="bl_footlink"> 
+       <li><a href="http://businessfinder.nj.com">Local Business Listings in New Jersey</a></li> 
+      </ul> 
+      <div class="clear"></div> 
+     </div> 
+    </div> 
+    <!-- End Right Rail --> 
+    <script type="text/javascript" src="http://media.nj.com/static/classifieds/merchandise/js/jquery.blockUI.js"></script> 
+    <script type="text/javascript">
+$(document).ready(function() { 
+
+$.blockUI.defaults.css.top= '25%'; 
+$.blockUI.defaults.css.textAlign= 'left'; 
+$.blockUI.defaults.css.border='none', 
+$.blockUI.defaults.css.backgroundColor='none', 
+$.blockUI.defaults.css.cursor='pointer';
+
+$('#s2fxclose').click($.unblockUI);
+$('#report_s2fxclose').click($.unblockUI);
+$('#s2fxclose_t').click($.unblockUI);
+$('.close_wrap .close').click($.unblockUI);	
+
+$("#sendForm").submit(function(event) {
+	event.preventDefault(); 
+	$('.error').css('visibility','hidden');
+
+	var submit = true;
+	var sender = $('#YOUR_NAME').val();
+	var email = $('#FROM').val();
+	var destination = $('#TO').val();
+	var code = $('#code').val();
+
+	if (sender == "") { 
+		$('#name_error').css('visibility','visible');
+		submit = false;
+	}
+	if (email.search(/^(\w([-._\w]*\w)*@(\w[-_\w]*\w\.)+\w{2,9})$/)  ) { 
+		$('#from_error').css('visibility','visible');
+		submit = false;
+	}
+	if (destination.search(/^(\w([-._\w]*\w)*@(\w[-_\w]*\w\.)+\w{2,9})$/)  ) { 
+		$('#email_error').css('visibility','visible');
+		submit = false;
+	}
+	if (code == "") { 
+		$('#captcha_error').css('visibility','visible');
+		submit = false;
+	}
+	if (submit) { 
+		url = '/forge/data_entry';
+		$.post( url, 
+			$("#sendForm").serialize(),
+			function( data ) {
+				if (data.status == 'success') {
+					$.unblockUI;
+					$.blockUI({message: $('#sendtofriend_thanks')});
+					utag.view({page_name:"classifieds_nj /merch send to a friend thank you page", "custom_page_url":"http://classifieds.nj.com/classifieds_send_to_friend_thanks"});
+				} else {
+					$('#captcha_error').css('visibility','visible');
+					getCaptcha();
+				}
+			},
+			'json'
+		);
+	} 
+});
+
+$("#reportForm").submit(function(event) {
+	event.preventDefault(); 
+	$('.error').css('visibility','hidden');
+
+	var submit = true;
+	var code = $('#report_code').val();
+
+	if (!$('input[name=report]:checked').val()) {
+    		$('#report_error').css('visibility','visible');
+		submit = false;
+	}
+	if (code == "") { 
+		$('#report_captcha_error').css('visibility','visible');
+		submit = false;
+	}
+	if (submit) { 
+		url = '/forge/data_entry';
+		$.post( url, 
+			$("#reportForm").serialize(),
+			function( data ) {
+				if (data.status == 'success') {
+					$.unblockUI;
+					$.blockUI({message: $('#sendtofriend_thanks')});
+				} else {
+					$('#report_captcha_error').css('visibility','visible');
+					getCaptcha();
+				}
+			},
+			'json'
+		);
+	} 
+});
+});
+
+function launcher(id) {
+	$('#send_ad_id').val(id);
+	getCaptcha();
+	$.blockUI({message: $('#sendtofriend')});
+	utag.view({page_name:"classifieds_nj /merch send to a friend", "custom_page_url":"http://classifieds.nj.com/classifieds_send_to_friend"});
+} 
+
+function launch_report(id) {
+	$('#report_ad_id').val(id);
+	getCaptcha();
+	$.blockUI({message: $('#reportad')});
+} 
+
+function getCaptcha() {
+	var date = new Date();
+	var time = date.getTime();
+	var captchaImgSrc = 'http://www.nj.com/cgi-bin/prxy/captcha/nph-captcha.cgi/captcha/img/get?key=' + time;
+	$('#captcha_id').val(time);
+	$('#captcha_img').attr('src',captchaImgSrc); 
+	$('#code').val('');
+	$('#report_captcha_id').val(time);
+	$('#report_captcha_img').attr('src',captchaImgSrc); 
+	$('#report_code').val('');
+}
+</script> 
+    <div id="sendtofriend" class="sendtofriend" style="display: none;"> 
+     <div class="topbar">
+      <span>Send this listing to a friend</span>
+      <img src="http://media.nj.com/static/classifieds/merchandise/images/send_to_friend/icon_x.gif" id="s2fxclose" class="xcloser" alt="Close">
+     </div> 
+     <div id="formBox"> 
+      <form id="sendForm" name="sendform" method="get"> 
+       <input type="hidden" name="category" value="Sendpage"> 
+       <input type="hidden" name="tp" value="mdMerchCore"> 
+       <input type="hidden" name="temp_type" value="include"> 
+       <input type="hidden" name="aff_tp" value="ME_nj"> 
+       <input type="hidden" id="send_ad_id" name="ad_id" value=""> 
+       <input type="hidden" id="captcha_id" name="captcha_key" value=""> 
+       <div> 
+        <label class="contact">Recipient's E-mail Address:</label> 
+        <input type="text" id="TO" name="TO" value=""> 
+        <span id="email_error" style="visibility: hidden" class="error">Please enter a valid e-mail address</span> 
+       </div> 
+       <table cellpadding="0" cellspacing="0" class="name_email"> 
+        <tbody>
+         <tr> 
+          <td width="185"> <label class="contact">Your Name:</label> <input type="text" id="YOUR_NAME" name="YOUR_NAME" value=""> <span id="name_error" style="visibility: hidden" class="error">Please enter your name</span></td> 
+          <td width="185"> <label class="contact">Your E-mail Address:</label> <input type="text" id="FROM" name="FROM" value=""> <span id="from_error" style="visibility: hidden" class="error">Please enter a valid e-mail address</span></td>
+         </tr> 
+        </tbody>
+       </table> 
+       <div class="message"> 
+        <label class="contact">Message: <span>(optional)</span></label> 
+        <textarea name="NOTE"></textarea> 
+       </div> 
+       <div class="carbon"> 
+        <label class="contact">CC Yourself:</label>&nbsp; 
+        <input type="radio" class="radio" checked name="ccself" value="yes"> 
+        <span class="smallgray">Yes</span> 
+        <input type="radio" class="radio" name="ccself" value="no"> 
+        <span class="smallgray">No</span> 
+       </div> 
+       <br> 
+       <label class="contact">Please enter the code in the box below:</label> 
+       <table cellpadding="0" cellspacing="0"> 
+        <tbody>
+         <tr> 
+          <td width="193"> 
+           <div class="captchawrap"> 
+            <img id="captcha_img" src=""> 
+           </div> <p class="smallgray">Can't read the code? <a href="javascript:void(0);" onclick="getCaptcha();">Get Another</a>.</p></td> 
+          <td width="170" class="captchacell"> <input type="text" id="code" name="code" value=""> <span id="captcha_error" style="visibility: hidden" class="error">There was an error. Please try entering the code again.</span></td>
+         </tr> 
+        </tbody>
+       </table> 
+       <div class="sendbar" align="center"> 
+        <center>
+         <input class="send" type="submit" value="SEND">
+        </center> 
+       </div> 
+      </form> 
+      <p class="tinygray">NJ.com is not responsible for the privacy practices of the person or company you are contacting with this form. Please review our <a href="http://www.nj.com/privacypolicy" target="_privacy" title="Privacy Policy">Privacy Policy</a>.</p> 
+     </div> 
+     <div>
+      <img src="http://media.nj.com/static/classifieds/merchandise/images/send_to_friend/bottombar_s2f_popup.gif" class="bottombar">
+     </div> 
+    </div> 
+    <div id="sendtofriend_thanks" class="sendtofriend thanks" style="display: none;"> 
+     <div class="topbar">
+      <img src="http://media.nj.com/static/classifieds/merchandise/images/send_to_friend/icon_x.gif" id="s2fxclose_t" class="xcloser" alt="Close">
+     </div> 
+     <div id="formBox"> 
+      <table cellspacing="0" cellpadding="0"> 
+       <tbody>
+        <tr> 
+         <td width="40"><img src="http://media.nj.com/static/classifieds/merchandise/images/send_to_friend/icon_check.png" class="check"></td> 
+         <td width="320"> <p class="contact bigthanks">Thanks!</p> <p class="contact sent">Your message has been sent.</p></td>
+        </tr> 
+       </tbody>
+      </table> 
+      <div class="close_wrap" align="center"> 
+       <center>
+        <a href="javascript:void(0)" class="close"></a>
+       </center> 
+      </div> 
+      <br> 
+     </div> 
+     <div class="bottombar_wrap">
+      <img src="http://media.nj.com/static/classifieds/merchandise/images/send_to_friend/bottombar_s2f_popup.gif" class="bottombar">
+     </div> 
+    </div> 
+    <div id="reportad" class="sendtofriend" style="display: none;"> 
+     <div class="topbar"> 
+      <span>Report this ad</span> 
+      <img src="http://media.nj.com/static/classifieds/merchandise/images/send_to_friend/icon_x.gif" id="report_s2fxclose" class="xcloser" alt="Close"> 
+     </div> 
+     <div id="formBox"> 
+      <form id="reportForm" name="sendform" method="get"> 
+       <input type="hidden" name="category" value="Sendpage"> 
+       <input type="hidden" name="tp" value="mdMerchCore"> 
+       <input type="hidden" name="temp_type" value="include"> 
+       <input type="hidden" name="aff_tp" value="ME_nj"> 
+       <input type="hidden" name="tl" value="2"> 
+       <input type="hidden" id="report_ad_id" name="ad_id" value=""> 
+       <input type="hidden" id="report_captcha_id" name="captcha_key" value=""> 
+       <div class="carbon"> 
+        <style>
+					#listing-abusive, #listing-inappropriate, #listing-miscategorized, #listing-scam { margin: 0; vertical-align: baseline; }
+				</style> 
+        <strong class="contact">Listing is:</strong> 
+        <input type="radio" class="radio" name="report" value="abusive" id="listing-abusive"> 
+        <label for="listing-abusive" style="font-weight:normal;font-size:10px;">Abusive</label> 
+        <input type="radio" class="radio" name="report" value="inappropriate" id="listing-inappropriate"> 
+        <label for="listing-inappropriate" style="font-weight:normal;font-size:10px;">Inappropriate</label> 
+        <input type="radio" class="radio" name="report" value="miscategorized" id="listing-miscategorized"> 
+        <label for="listing-miscategorized" style="font-weight:normal;font-size:10px;">Miscategorized</label> 
+        <input type="radio" class="radio" name="report" value="scam" id="listing-scam"> 
+        <label for="listing-scam" style="font-weight:normal;font-size:10px;">Possible Scam</label> 
+        <span id="report_error" style="visibility: hidden" class="error">Please indicate the issue with this listing</span> 
+       </div> 
+       <table cellpadding="0" cellspacing="0" class="name_email"> 
+        <tbody>
+         <tr> 
+          <td width="185"> <label class="contact">Your Name:<br><span>(optional)</span></label> <input type="text" id="report_YOUR_NAME" name="YOUR_NAME" value=""></td> 
+          <td width="185"> <label class="contact">Your E-mail Address:<br><span>(optional)</span></label> <input type="text" id="report_FROM" name="FROM" value=""></td>
+         </tr> 
+        </tbody>
+       </table> 
+       <div class="message"> 
+        <label class="contact">Message: <span>(optional)</span></label> 
+        <textarea name="NOTE"></textarea> 
+       </div> 
+       <br> 
+       <label class="contact">Please enter the code in the box below:</label> 
+       <table cellpadding="0" cellspacing="0"> 
+        <tbody>
+         <tr> 
+          <td width="193"> 
+           <div class="captchawrap"> 
+            <img id="report_captcha_img" src=""> 
+           </div> <p class="smallgray">Can't read the code? <a href="javascript:void(0);" onclick="getCaptcha();">Get Another</a>.</p></td> 
+          <td width="170" class="captchacell"> <input type="text" id="report_code" name="code" value=""> <span id="report_captcha_error" style="visibility: hidden" class="error">There was an error. Please try entering the code again.</span></td>
+         </tr> 
+        </tbody>
+       </table> 
+       <div class="sendbar" align="center"> 
+        <center>
+         <input class="send" type="submit" value="SEND">
+        </center> 
+       </div> 
+      </form> 
+     </div> 
+     <div>
+      <img src="http://media.nj.com/static/classifieds/merchandise/images/send_to_friend/bottombar_s2f_popup.gif" class="bottombar">
+     </div> 
+    </div> 
+    <div class="clear"></div> 
+    <div class="bread_b"> 
+     <a href="http://www.nj.com/classifieds/" title="Best Local Classifieds"><b>Best Local Classifieds:</b></a> 
+     <a href="http://www.nj.com/placead/" title="Place An Ad">Place An Ad</a> | 
+     <a href="http://www.nj.com/placead/index.ssf?managead" title="Manage Your Ad">Manage Your Ad</a> | 
+     <a class="bold_orange" href="http://www.nj.com/fraud_prevention/" title="Fraud Prevention Tips">Fraud Prevention Tips</a> | 
+     <a href="http://www.nj.com/classifieds" title="Start New Search">Start New Search</a> | 
+     <a href="?temp_type=toc&amp;category=index&amp;tp=ME_nj&amp;property=nj.com">Site Map</a> 
+    </div> 
+   </div> 
+   <link type="text/css" rel="stylesheet" href="http://media.nj.com/static/common/css/adv_footer.css"> 
+   <div id="footer"> 
+    <div class="wrapper clearfix"> 
+     <div id="footer-logos"> 
+      <h1 id="advNJfooterlogo"><a href="/" alt="nj.com"><img src="http://media.nj.com/static/njo/static/img/logo_v001.png"></a></h1> 
+     </div> 
+     <div id="about-us" class="footer-col"> 
+      <div class="cluster clearfix"> 
+       <h2>About Us</h2> 
+       <ul> 
+        <li><a href="http://www.nj.com/aboutus/">About NJ.com</a></li> 
+        <li><a href="http://www.njadvancemedia.com/?utmsource=nj.com&amp;utm_medium=link&amp;utm_campaign=footer">Advertise with us</a></li> 
+        <li><a href="http://www.nj.com/contactus/" title="Contact Us">Contact Us</a></li> 
+       </ul> 
+       <ul> 
+        <li><a href="http://jobs.nj.com/jobs/nj-advance-media-1116067-cd">Jobs at NJ Advance Media</a></li> 
+        <li><a href="http://www.nj.com/newsletters/">Newsletters</a></li> 
+        <li><a href="http://www.nj.com/rss/">RSS feeds</a></li> 
+       </ul> 
+      </div> 
+      <div class="cluster clearfix"> 
+       <h2>More on NJ.com</h2> 
+       <ul> 
+        <li><a href="http://www.nj.com/interact/">Interact</a></li> 
+        <li><a href="http://www.nj.com/weather/">Weather</a></li> 
+        <li><a href="http://www.nj.com/blogs/">Blogs</a></li> 
+        <li><a href="http://www.nj.com/blogs/premium/">Premium Blogs</a></li> 
+        <li><a href="http://www.nj.com/siteindex/">Site map</a></li> 
+        <li><a href="http://businessfinder.nj.com/about/advertise.html">Claim your free<br>business listing</a></li> 
+       </ul> 
+       <ul> 
+        <li><a href="http://search.nj.com/">Search</a></li> 
+        <li><a href="http://www.nj.com/placead/">Place an ad</a></li> 
+        <li><a href="http://www.nj.com/placead/">Sell your car</a></li> 
+        <li><a href="http://www.nj.com/placead/">Sell/rent your home</a></li> 
+        <li><a href="http://www.nj.com/jobs/products/index.ssf">Post a job</a></li> 
+        <li><a href="http://www.nj.com/classifieds/free/">Post a free classified ad</a></li> 
+        <li><a href="http://realestate.nj.com/for-rent">Apartments &amp; rentals</a></li> 
+       </ul> 
+      </div> 
+     </div>
+     <!-- /#about-us --> 
+     <div id="sections" class="footer-col"> 
+      <div class="cluster clearfix"> 
+       <h2>NJ.com Sections</h2> 
+       <ul> 
+        <li><a href="http://www.nj.com/news/">N.J. News</a></li> 
+        <li><a href="http://www.nj.com/local/">Local News</a></li> 
+        <li><a href="http://www.nj.com/politics/">N.J. Politics</a></li> 
+        <li><a href="http://www.nj.com/sports/">Sports</a></li> 
+        <li><a href="http://highschoolsports.nj.com/">High School Sports</a></li> 
+        <li><a href="http://www.nj.com/entertainment/">Entertainment</a></li> 
+        <li><a href="http://www.nj.com/food/">Food &amp; Recipes</a></li> 
+        <li><a href="http://www.nj.com/living/">Living</a></li> 
+        <li><a href="http://www.nj.com/business/">Business</a></li> 
+        <li><a href="http://www.nj.com/opinion/">Opinion</a></li> 
+        <li><a href="http://www.nj.com/inside-jersey">Inside Jersey</a></li> 
+       </ul> 
+       <ul> 
+        <li><a href="http://www.nj.com/shore/">Shore</a></li> 
+        <li><a href="http://www.nj.com/obituaries/">Obituaries</a></li> 
+        <li><a href="http://www.nj.com/jobs/">Jobs</a></li> 
+        <li><a href="http://autos.nj.com/">Autos</a></li> 
+        <li><a href="http://realestate.nj.com/">Real Estate</a></li> 
+        <li><a href="http://realestate.nj.com/for-rent/">Rentals</a></li> 
+        <li><a href="http://classifieds.nj.com/">Classifieds</a></li> 
+        <li><a href="http://findnsave.nj.com/">Shopping Good Deals</a></li> 
+        <li><a href="http://businessfinder.nj.com/">Local Businesses</a></li> 
+        <li><a href="http://sections.nj.com/SS/Tiles2.aspx">Special Sections</a></li> 
+       </ul> 
+      </div> 
+      <div class="clearfix cluster"> 
+       <h2>Contribute to NJ.com</h2> 
+       <ul> 
+        <li><a href="http://photos.nj.com/photogallery/upload.html">Submit your photos</a></li> 
+        <li><a href="http://videos.nj.com/upload.html">Submit your videos</a></li> 
+       </ul> 
+       <ul> 
+        <li><a href="http://www.nj.com/forums/">Forums</a></li> 
+        <li><a href="https://signup.nj.com/register/">Register for free with NJ.com</a></li> 
+        <li><a href="http://www.nj.com/myevent/">Submit an event</a></li> 
+       </ul> 
+      </div> 
+      <div class="cluster"> 
+       <h2>Follow Us</h2> 
+       <p> <a href="https://twitter.com/njdotcom" class="adv-icn-twitter icn-link">Twitter</a> | <a href="http://www.facebook.com/NJ.com" class="adv-icn-facebook icn-link">Facebook</a> <br> <a href="https://plus.google.com/u/0/b/103270407631392618549/103270407631392618549/posts" class="adv-icn-google icn-link">Google+</a> | <a href="https://foursquare.com/njdotcom" class="adv-icn-foursquare icn-link">foursquare</a> </p> 
+      </div> 
+     </div>
+     <!-- /#topics --> 
+     <div id="more" class="footer-col"> 
+      <div class="cluster clearfix"> 
+       <h2>Newspaper stories and photos</h2> 
+       <ul class="full-width"> 
+        <li><a href="http://www.nj.com/starledger/">The Star-Ledger</a> | <a href="http://ads.advance.net/RealMedia/ads/click_lx.ads/www.nj.com/////ProxyLink/NJONLINE/CLICK_NJ10/SubLedgeClick.html/">Subscribe</a></li> 
+        <li><a href="http://www.nj.com/times/">The Times of Trenton</a> | <a href="http://www.njtimes.com/subscribe">Subscribe</a></li> 
+        <li><a href="http://www.nj.com/jjournal/">The Jersey Journal</a> | <a href="http://www.jjournal.com/subscriptions/subscribe-today/">Subscribe</a></li> 
+        <li><a href="http://www.nj.com/southjerseytimes/">South Jersey Times</a> | <a href="http://www.nj.com/sjtsubscribe/">Subscribe</a></li> 
+        <li><a href="http://www.nj.com/hunterdon-county-democrat/">Hunterdon County Democrat</a> | <a href="http://www.nj.com/democratsubscribe/">Subscribe</a></li> 
+        <li><a href="http://www.nj.com/cranford/">Cranford Chronicle</a> | <a href="http://www.nj.com/ccsubscribe/">Subscribe</a></li> 
+        <li><a href="http://www.nj.com/warren/">Star Gazette</a> | <a href="http://www.nj.com/sgsubscribe/">Subscribe</a></li> 
+        <li><a href="http://www.nj.com/messenger-gazette/">The Messenger-Gazette</a></li> 
+        <li><a href="http://www.nj.com/warrenreporter/">The Warren Reporter</a></li> 
+        <li><a href="http://www.nj.com/independentpress/">Independent Press</a></li> 
+        <li><a href="http://www.nj.com/suburbannews/">Suburban News</a></li> 
+        <li><a href="http://www.nj.com/newspapers/">Learn more about our newspapers</a></li> 
+       </ul> 
+      </div> 
+      <div class="cluster"> 
+       <h2>Mobile</h2> 
+       <p> <a href="http://www.nj.com/mobile-device/">iPhone, Android apps</a> | <a href="http://www.nj.com/mobile-device/">Tablet apps</a> </p> 
+      </div> 
+     </div>
+     <!-- /#more --> 
+    </div>
+    <!--/.wrapper--> 
+    <div id="disclaimer"> 
+     <a href="http://www.advancedigital.com/" title="Advance Digital"><img src="http://media.nj.com/static/common/img/footer-logo-advance.png" alt="Advance Digital logo" id="AdvanceDigitalLogo"></a> 
+     <p>Registration on or use of this site constitutes acceptance of our <a href="http://www.nj.com/useragreement/" title="User Agreement">User Agreement</a> and <a href="http://www.nj.com/privacypolicy/" title="Privacy Policy">Privacy Policy</a></p> 
+     <p>© 2015 New Jersey On-Line LLC. All rights reserved (<a href="http://www.nj.com/aboutus/">About Us</a>).<br>The material on this site may not be reproduced, distributed, transmitted, cached or otherwise used, except with the prior written permission of New Jersey On-Line LLC.</p> 
+     <p><a href="http://www.nj.com/forums/index.ssf?rules.html" title="Community Rules">Community Rules</a> apply to all content you upload or otherwise submit to this site. <a href="http://www.nj.com/contactus/interactivity.ssf" title="Community Rules">Contact interactivity management.</a></p> 
+     <p><a href="http://www.advance.net/advancedigitalUserAgreementPP/#opt_out"><img src="http://media.nj.com/static/common/img/ad_choices_arrow_transparent.png"> Ad Choices</a></p> 
+    </div> 
+   </div> 
+   <img height="1" width="1" src="http://view.atdmt.com/action/MSFT_Advance_AE_ExtData/v3/atc1.NJ/atc2.merchandise"> 
+  </div>  
+ </body>
+</html>

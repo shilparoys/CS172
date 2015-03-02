@@ -1,0 +1,705 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/tr/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+ <head>
+  <meta http-equiv="refresh" content="300"> 
+  <title>Geomag Real Time Station Display</title> 
+  <!-- These line adds the RSS button to the address bar of the browser. --> 
+  <link rel="alternate" type="application/rss+xml" title="USGS Geomagnetic data from Today" href="http://geomag.usgs.gov/realtime/0_no_javascript.xml"> 
+  <link rel="alternate" type="application/rss+xml" title="USGS Geomagnetic data from Yesterday" href="http://geomag.usgs.gov/realtime/-1_no_javascript.xml"> 
+  <link rel="alternate" type="application/rss+xml" title="USGS Geomagnetic data from 2 days ago" href="http://geomag.usgs.gov/realtime/-2_no_javascript.xml"> 
+  <link rel="alternate" type="application/rss+xml" title="USGS Geomagnetic data from 3 days ago" href="http://geomag.usgs.gov/realtime/-3_no_javascript.xml"> 
+  <link rel="alternate" type="application/rss+xml" title="USGS Geomagnetic data from 4 days ago" href="http://geomag.usgs.gov/realtime/-4_no_javascript.xml"> 
+  <script type="text/javascript" src="gif/ranges.js"></script> 
+  <script type="text/javascript">
+var isIE = false; // global flag
+
+// BrowserDetect from: http://www.quirksmode.org/js/detect.html
+var BrowserDetect = {
+	init: function () {
+		this.browser = this.searchString(this.dataBrowser) || "An unknown browser";
+		this.version = this.searchVersion(navigator.userAgent) || this.searchVersion(navigator.appVersion) || "an unknown version";
+		this.OS = this.searchString(this.dataOS) || "an unknown OS";
+	},
+	searchString: function (data) {
+		for (var i=0;i<data.length;i++)	{
+			var dataString = data[i].string;
+			var dataProp = data[i].prop;
+			this.versionSearchString = data[i].versionSearch || data[i].identity;
+			if (dataString) {
+				if (dataString.indexOf(data[i].subString) != -1)
+					return data[i].identity;
+			}
+			else if (dataProp)
+				return data[i].identity;
+		}
+	},
+	searchVersion: function (dataString) {
+		var index = dataString.indexOf(this.versionSearchString);
+		if (index == -1) return;
+		return parseFloat(dataString.substring(index+this.versionSearchString.length+1));
+	},
+	dataBrowser: [
+		{ string: navigator.userAgent, subString: "OmniWeb", versionSearch: "OmniWeb/", identity: "OmniWeb"	},
+		{ string: navigator.vendor, subString: "Apple", identity: "Safari" },
+		{ prop: window.opera, identity: "Opera"	},
+		{ string: navigator.vendor,	subString: "iCab", identity: "iCab"	},
+		{ string: navigator.vendor,	subString: "KDE", identity: "Konqueror"	},
+		{ string: navigator.userAgent, subString: "Firefox", identity: "Firefox" },
+		{ string: navigator.vendor,	subString: "Camino", identity: "Camino"	},
+		{ string: navigator.userAgent, subString: "Netscape", identity: "Netscape" }, // for newer Netscapes (6+)
+		{ string: navigator.userAgent, subString: "MSIE", identity: "Explorer", versionSearch: "MSIE" },
+		{ string: navigator.userAgent, subString: "Gecko", identity: "Mozilla",	versionSearch: "rv"	},
+		{ string: navigator.userAgent, subString: "Mozilla", identity: "Netscape", versionSearch: "Mozilla"	} // for older Netscapes (4-)
+	],
+	dataOS : [
+		{ string: navigator.platform, subString: "Win",	identity: "Windows"	},
+		{ string: navigator.platform, subString: "Mac",	identity: "Mac"	},
+		{ string: navigator.platform, subString: "Linux", identity: "Linux"	}
+	]
+};
+BrowserDetect.init();
+
+//alert (BrowserDetect.browser + BrowserDetect.version);
+if (BrowserDetect.browser == "Explorer") { isIE = true; }
+
+// global request and XML document objects
+var req;     var day;     var scale;
+var num;     var dbdt;    var done = 0;
+
+function createCookie(name,value,days) {
+	if (days) {
+		var date = new Date();
+		date.setTime(date.getTime()+(days*24*60*60*1000));
+		var expires = "; expires="+date.toGMTString();
+	}
+	else var expires = "";
+	document.cookie = name+"="+value+expires+"; path=/";
+}
+
+function readCookie(name) {
+	var nameEQ = name + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+		var c = ca[i];
+		while (c.charAt(0)==' ') c = c.substring(1,c.length);
+		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+	}
+	return null;
+}
+
+function getDBDT() {
+	dbdt = document.radioform.dbdt.checked ? 1 : 0;
+
+	insertHTML();
+
+	createCookie("dbdt", dbdt, 180);
+}
+
+function insertHTML () {
+	// scale, num and day are global state variables
+    var item, content, div;
+
+	item = req.responseXML.getElementsByTagName("item")[num]; // not changing wave type num
+
+	content = getElementTextNS("content", "encoded", item, scale);
+
+ 	if ((dbdt == 1) || (dbdt == "1") || (dbdt == true) || (dbdt == "true")) {
+		content = content.replace(/_R0\./g,'_R0.dbdt.');
+	}
+
+	div = document.getElementById("details");
+	div.innerHTML = content; // blast new HTML content into "details" <div>
+
+	div2 = document.getElementById("detail_head");
+	div2.innerHTML = range[day];
+}
+
+function eraseCookie(name) { createCookie(name,"",-1); }
+initializeVariables();
+function refresh()
+{
+	// From: http://grizzlyweb.com/webmaster/javascripts/refresh.asp#meta-tag
+	// not using this; won''t work right on Safari -- meta refresh does better
+
+    //  This version of the refresh function will be invoked for browsers that support JavaScript version 1.2
+    //
+    //  The argument to the location.reload function determines if the browser should retrieve the document from the
+    //  web-server.  In our example all we need to do is cause the JavaScript block in the document body to be
+    //  re-evaluated.  If we needed to pull the document from the web-server again (such as where the document contents
+    //  change dynamically) we would pass the argument as 'true'.
+    window.location.reload( false );
+}
+
+// retrieve XML document (reusable generic function);
+// parameter is URL string (relative or complete) to an .xml file whose Content-Type is a valid XML
+// type, such as text/xml; XML source must be from same domain as HTML file
+function loadXMLDoc(url) {
+    // branch for native XMLHttpRequest object
+    if (window.XMLHttpRequest) {
+        req = new XMLHttpRequest();
+        req.open("GET", url, true);
+        req.send(null);
+    // branch for IE/Windows ActiveX version
+    } else if (window.ActiveXObject) {
+        req = new ActiveXObject("Microsoft.XMLHTTP");
+        if (req) {
+            req.open("GET", url, true);
+            req.send();
+        }
+    }
+}
+
+function nukeCookies(){
+	eraseCookie("num");	 eraseCookie("scale");  eraseCookie("day");
+	window.location.reload( true );
+}
+
+// handle onreadystatechange event of req object
+function processReqChange() {
+    if (req.readyState == 4) {    // only if req shows "loaded"
+        if (req.status == 200) {        // only if "OK"
+//            clearTopicList();
+//            buildTopicList();
+         } else {
+            alert("There was a problem retrieving the XML data:\n" +
+                req.statusText);
+         }
+    }
+}
+
+function pause(milliseconds) {
+	date = new Date();
+	var curDate = null;
+	do { var curDate = new Date(); }
+	while(curDate-date < milliseconds);
+}
+
+function initializeVariables() {
+	if (scale == undefined) {
+		scale = readCookie("scale");
+		if (scale == undefined) {
+			scale = 0;
+			createCookie("scale", scale, 180);
+		}
+	}
+	if (num == undefined) {
+		num = readCookie("num");
+		if (num == undefined) {
+			num = 4;
+			createCookie("num", num, 180);
+		}
+	}
+	if (day == undefined) {
+		day = readCookie("day");
+		if (day == undefined) {
+			day = 0;
+			createCookie("day", day, 180);
+		}
+	}
+	if (dbdt == undefined) {
+		dbdt = readCookie("dbdt");
+		if (dbdt == undefined) {
+			dbdt = 0;
+			createCookie("dbdt", dbdt, 180);
+		}
+	}
+}
+function CheckState() {
+  var state = req.readyState;
+  if (state == 4)
+  {
+	showDetailHardcode(num);
+	setScaleSelect(scale);
+	done = 1;
+   }
+}
+function loadDoc(evt) {
+	var xml_filename;
+	if (evt == "+"){
+		if (day < 0) { // 0 hard coded upper limit
+			day++;
+		}
+	} else if (evt == "-") {
+		if (day > -4) { // -4 hard coded lower limit
+			day--;
+		}
+	} 
+	if (day == -4) {
+		change('backward',1,-1);
+	} else {
+		change('backward',0,-1);
+	}
+	if (day == 0) {
+		change('forward',1,-1);
+	} else {
+		change('forward',0,-1); // better: only do if necessary
+	}
+
+	xml_filename = day + ".xml";  // xml now contains the xml filename.
+
+	loadXMLDoc(xml_filename); // sets result to 'req'
+	//var currentState = req.readyState; // in case it's null
+	if (req.readyState != 4) {
+		div = document.getElementById("details");
+		div.innerHTML = "Loading XML...";
+	}
+	createCookie("day", day, 180);
+	if (navigator.appName=="Microsoft Internet Explorer"){
+		done = 0;
+		req.onreadystatechange = new Function(CheckState());
+		// the above onreadystatechange is supposed to take care of this so we don't
+		// have to do this kludgy if/wait business. (we can't do a 'while', it'll kill the browser in an infinite loop)
+		if (!done) { 
+			window.setTimeout('IEsucks()', 100);
+			window.setTimeout('IEsucks()', 300);
+			window.setTimeout('IEsucks()', 500);
+			window.setTimeout('IEsucks()', 1000);
+			window.setTimeout('IEsucks()', 2000);
+			window.setTimeout('IEsucks()', 3000);
+			window.setTimeout('IEsucks()', 4000);
+			window.setTimeout('IEsucks()', 5000);
+			window.setTimeout('IEsucks()', 6000);
+			window.setTimeout('IEsucks()', 7000);
+			window.setTimeout('IEsucks()', 8000);
+			window.setTimeout('IEsucks()', 9000);
+			window.setTimeout('IEsucks()', 10000);
+			window.setTimeout('IEsucks()', 20000);
+			window.setTimeout('IEsucks()', 30000);
+		}
+	} else {
+		req.onreadystatechange = CheckState;
+	}
+}
+
+function IEsucks() { req.onreadystatechange = new Function(CheckState()); }
+
+// retrieve text of an XML document element, including elements using namespaces
+function getElementTextNS(prefix, local, parentElem, index) {
+    var result = "";
+    if ((prefix && (navigator.appName=="Microsoft Internet Explorer")) ||
+        (navigator.oscpu && document.getElementsByClassName)){ // Now Firefox 3 does it too, this syntax detects FF3
+        // IE/Windows way of handling namespaces, seems same for IE6 & 7 whether ie7 is using native xml or not
+		//alert("local = " + local + " index = " + index + "prefix = " + prefix);
+        result = parentElem.getElementsByTagName(prefix + ":" + local)[index];
+    } else {
+        // the namespace versions of this method (getElementsByTagNameNS()) operate
+        // differently in Safari and Mozilla, but both return value with just local name, provided
+        // there aren't conflicts with non-namespace element names
+        result = parentElem.getElementsByTagName(local)[index];
+    }
+    if (result) {
+        // get text, accounting for possible whitespace (carriage return) text nodes
+        if (result.childNodes.length > 1) {
+            return result.childNodes[1].nodeValue;
+        } else {
+          return result.firstChild.nodeValue;
+        }
+    } else {
+        return "n/a";
+ 	  alert("result.firstChild.nodeValue is: " + result.firstChild.nodeValue);
+   }
+}
+
+// add item to select element the less elegant, but compatible way.
+function appendToSelect(select, value, content) {
+    var opt;
+    opt = document.createElement("option");
+    opt.value = value;
+    opt.appendChild(content);
+    select.appendChild(opt);
+}
+
+function change(Image,No,Link,Msg) {
+  if (document.images) {
+    if (Link == -1) {
+      document.images[Image].src = eval(Image + No + '.src');
+    }
+    else {
+      if (
+        window.menu.document.links[Link].href != window.main.location.href
+      )
+      window.menu.document.images[Image].src = eval(Image + No + '.src');
+      if (Msg) self.status = eval(Image + '3');
+    }
+  }
+}
+
+// H E Z F delta F is the display order
+function reset(Image,No) {
+  if (document.images) {
+   if (Image.length < 3) {
+    if (Image != 'h') change('h',0,-1);
+    if (Image != 'f') change('f',0,-1);
+    if (Image != 'e') change('e',0,-1);
+    if (Image != 'z') change('z',0,-1);
+    if (Image != 'df') change('df',0,-1);
+   } else {
+    if (Image != 's1000nT') change('s1000nT',0,-1);
+    if (Image != 's100nT') change('s100nT',0,-1);
+    if (Image != 's2000nT') change('s2000nT',0,-1);
+    if (Image != 's200nT') change('s200nT',0,-1);
+    if (Image != 's20nT') change('s20nT',0,-1);
+    if (Image != 's2nT') change('s2nT',0,-1);
+    if (Image != 's500nT') change('s500nT',0,-1);
+    if (Image != 's50nT') change('s50nT',0,-1);
+    if (Image != 's10nT') change('s10nT',0,-1);
+    if (Image != 's1nT') change('s1nT',0,-1);
+    if (Image != 's5nT') change('s5nT',0,-1);
+    if (Image != 'auto') change('auto',0,-1);
+   }
+   change(Image,No,-1);
+  }
+}
+
+// display details retrieved from XML document
+function showDetailHardcode(numb) {
+    var item, content, div;
+	if (numb == "+"){
+		if (num < 4) {
+			numb = num + 1;
+		} else {
+			numb = num;
+		}
+	} else if (numb == "-") {
+		if (num > 0) {
+			numb = num - 1;
+		} else {
+			numb = num;
+		}
+	}
+	num = numb;
+
+	if (numb == 0){reset('df',2);}
+	if (numb == 1){reset('f',2);}
+	if (numb == 2){reset('z',2);}
+	if (numb == 3){reset('e',2);}
+	if (numb == 4){reset('h',2);}
+
+	insertHTML ();
+
+	createCookie("num", num, 180);
+	tt_Init();
+}
+
+// display details retrieved from XML document
+function showScale(scale_input) {
+	var item, content, div;
+	if (scale_input == "+"){
+		if (scale < 11) {
+			scale++;
+		} 
+	} else if (scale_input == "-") {
+		if (scale > 0) {
+			scale--;
+		}
+	} else {
+		scale = scale_input;
+	}
+
+	insertHTML ();
+
+	setScaleSelect(scale);
+	createCookie("scale", scale, 180);
+}
+
+function setScaleSelect(scale_input) {
+	if (scale == 0){reset('auto',2);}
+	if (scale == 1){reset('s1nT',2);}
+	if (scale == 2){reset('s2nT',2);}
+	if (scale == 3){reset('s5nT',2);}
+	if (scale == 4){reset('s10nT',2);}
+	if (scale == 5){reset('s20nT',2);}
+	if (scale == 6){reset('s50nT',2);}
+	if (scale == 7){reset('s100nT',2);}
+	if (scale == 8){reset('s200nT',2);}
+	if (scale == 9){reset('s500nT',2);}
+	if (scale == 10){reset('s1000nT',2);}
+	if (scale == 11){reset('s2000nT',2);}
+	tt_Init();
+}
+
+if (document.images) {
+  f0 = new Image();          f0.src  = 'images/f.gif';
+  f2 = new Image();          f2.src = 'images/f_.gif';
+
+  df0 = new Image();         df0.src  = 'images/delta-f.gif';
+  df2 = new Image();         df2.src = 'images/delta-f_.gif';
+
+  h0 = new Image();          h0.src  = 'images/h.gif';
+  h2 = new Image();          h2.src = 'images/h_.gif';
+
+  z0 = new Image();          z0.src  = 'images/z.gif';
+  z2 = new Image();          z2.src = 'images/z_.gif';
+
+  e0 = new Image();          e0.src  = 'images/e.gif';
+  e2 = new Image();          e2.src = 'images/e_.gif';
+
+  s1000nT0 = new Image();    s1000nT0.src  = 'images/1000nT.gif';
+  s1000nT2 = new Image();    s1000nT2.src = 'images/1000nT_.gif';
+  s100nT0 = new Image();     s100nT0.src  = 'images/100nT.gif';
+  s100nT2 = new Image();     s100nT2.src = 'images/100nT_.gif';
+  s10nT0 = new Image();      s10nT0.src  = 'images/10nT.gif';
+  s10nT2 = new Image();      s10nT2.src = 'images/10nT_.gif';
+  s1nT0 = new Image();       s1nT0.src  = 'images/1nT.gif';
+  s1nT2 = new Image();       s1nT2.src = 'images/1nT_.gif';
+
+  s2000nT0 = new Image();    s2000nT0.src  = 'images/2000nT.gif';
+  s2000nT2 = new Image();    s2000nT2.src = 'images/2000nT_.gif';
+  s200nT0 = new Image();     s200nT0.src  = 'images/200nT.gif';
+  s200nT2 = new Image();     s200nT2.src = 'images/200nT_.gif';
+  s20nT0 = new Image();      s20nT0.src  = 'images/20nT.gif';
+  s20nT2 = new Image();      s20nT2.src = 'images/20nT_.gif';
+  s2nT0 = new Image();       s2nT0.src  = 'images/2nT.gif';
+  s2nT2 = new Image();       s2nT2.src = 'images/2nT_.gif';
+
+  s500nT0 = new Image();     s500nT0.src  = 'images/500nT.gif';
+  s500nT2 = new Image();     s500nT2.src = 'images/500nT_.gif';
+  s50nT0 = new Image();      s50nT0.src  = 'images/50nT.gif';
+  s50nT2 = new Image();      s50nT2.src = 'images/50nT_.gif';
+  s5nT0 = new Image();       s5nT0.src  = 'images/5nT.gif';
+  s5nT2 = new Image();       s5nT2.src = 'images/5nT_.gif';
+  auto0 = new Image();       auto0.src  = 'images/auto.gif';
+  auto2 = new Image();       auto2.src = 'images/auto_.gif';
+
+  backward0 = new Image();   backward0.src = 'images/backward.gif';
+  backward1 = new Image();   backward1.src = 'images/backward_grey.gif';
+
+  forward0 = new Image();    forward0.src = 'images/forward.gif';
+  forward1 = new Image();    forward1.src = 'images/forward_grey.gif';
+}
+  </script> 
+  <link rel="stylesheet" type="text/css" href="gui_styles2.css"> 
+ </head> 
+ <body onload="loadDoc(1);" class="ss" bgcolor="#FFFFFF">
+  <!--light green #CCFFCC--> 
+  <table cellpadding="0" cellspacing="0" valign="top"> 
+   <tbody> 
+    <tr bgcolor="#d5ffea" valign="top">
+     <!-- light blue #99CCFF-->
+     <!-- USGS toolbar green #d5ffea --> 
+     <td valign="top"> 
+      <table bgcolor="#b5d8c6" cellpadding="0" cellspacing="0" valign="top" height="790">
+       <!-- purple #CC99FF--> 
+       <tbody>
+        <tr valign="top"> 
+         <td> 
+          <div align="center"> 
+           <a href="http://geomag.usgs.gov/"> <img alt="USGS science for a changing world" src="images/USGSlogoBWsmall.gif" width="135" height="52"><br><span class="larger">(<b>Geomagnetism Home</b>)</span> </a> 
+           <!-- Forward and back in time --> 
+           <table class="top-margin bottom-margin"> 
+            <tbody>
+             <tr> 
+              <td> 
+               <!-- Back in time arrow --> 
+               <div align="right"> 
+                <span onclick="loadDoc('-')" onkeypress="loadDoc('-')" onmouseover="this.style.cursor='default'"> <img alt="Back 1 Day." name="backward" src="images/backward.gif" height="18" width="10">&nbsp; </span> 
+               </div> </td> 
+              <td> 
+               <!-- UTC Range --> 
+               <table bgcolor="#000000" width="100px"> 
+                <tbody>
+                 <tr valign="top"> 
+                  <td bgcolor="#DDDDDD">
+                   <!--light grey--> 
+                   <center> 
+                    <span class="time_label">UTC&nbsp;Time</span> 
+                    <span class="smaller"><br></span>
+                    <span class="smaller"><span class="smaller"><br></span></span> 
+                    <font size="+0" face="Arial, Helvetica, sans-serif"> 
+                     <div class="time" id="detail_head"></div> </font> 
+                   </center> </td> 
+                 </tr> 
+                </tbody>
+               </table> </td> 
+              <td> 
+               <!-- Forward in time arrow --> 
+               <div align="left"> 
+                <span onclick="loadDoc('+')" onkeypress="loadDoc('+')" onmouseover="this.style.cursor='default'"> &nbsp;<img alt="Forward 1 Day." name="forward" src="images/forward.gif" height="18" width="10"> </span> 
+               </div> </td> 
+             </tr> 
+            </tbody>
+           </table> 
+           <!-- end forward and back in time --> 
+          </div>
+          <hr> </td> 
+        </tr> 
+        <tr valign="top"> 
+         <!-- nT Scaling choices --> 
+         <td> 
+          <center> 
+           <table align="center" class="top-margin bottom-margin-large"> 
+            <tbody>
+             <tr>
+              <td align="center"><a onclick="showScale('+')" onkeypress="showScale('+')"><img alt="up" src="images/up.gif" height="10" width="18"></a></td>
+             </tr> 
+             <tr>
+              <td align="center"><a onclick="showScale('11')" onkeypress="showScale('11')"><img name="s2000nT" alt="2000" src="images/2000nT.gif" width="58" height="17"></a></td>
+             </tr> 
+             <tr>
+              <td align="center"><a onclick="showScale('10')" onkeypress="showScale('10')"><img name="s1000nT" alt="1000" src="images/1000nT.gif" width="54" height="17"></a></td>
+             </tr> 
+             <tr>
+              <td align="center"><a onclick="showScale('9')" onkeypress="showScale('9')"><img name="s500nT" alt="500" src="images/500nT.gif" width="49" height="17"></a></td>
+             </tr> 
+             <tr>
+              <td align="center"><a onclick="showScale('8')" onkeypress="showScale('8')"><img name="s200nT" alt="200" src="images/200nT.gif" width="49" height="17"></a></td>
+             </tr> 
+             <tr>
+              <td align="center"><a onclick="showScale('7')" onkeypress="showScale('7')"><img name="s100nT" alt="100" src="images/100nT.gif" width="45" height="17"></a></td>
+             </tr> 
+             <tr>
+              <td align="center"><a onclick="showScale('6')" onkeypress="showScale('6')"><img name="s50nT" alt="50" src="images/50nT.gif" width="40" height="17"></a></td>
+             </tr> 
+             <tr>
+              <td align="center"><a onclick="showScale('5')" onkeypress="showScale('5')"><img name="s20nT" alt="20" src="images/20nT.gif" width="40" height="17"></a></td>
+             </tr> 
+             <tr>
+              <td align="center"><a onclick="showScale('4')" onkeypress="showScale('4')"><img name="s10nT" alt="10" src="images/10nT.gif" width="36" height="17"></a></td>
+             </tr> 
+             <tr>
+              <td align="center"><a onclick="showScale('3')" onkeypress="showScale('3')"><img name="s5nT" alt="5" src="images/5nT.gif" width="31" height="17"></a></td>
+             </tr> 
+             <tr>
+              <td align="center"><a onclick="showScale('2')" onkeypress="showScale('2')"><img name="s2nT" alt="2" src="images/2nT.gif" width="31" height="17"></a></td>
+             </tr> 
+             <tr>
+              <td align="center"><a onclick="showScale('1')" onkeypress="showScale('1')"><img name="s1nT" alt="1" src="images/1nT.gif" width="27" height="17"></a></td>
+             </tr> 
+             <tr>
+              <td align="center"><a onclick="showScale('0')" onkeypress="showScale('0')"><img name="auto" alt="auto" src="images/auto.gif" width="36" height="17"></a></td>
+             </tr> 
+             <tr>
+              <td align="center"><a onclick="showScale('-')" onkeypress="showScale('-')"><img alt="down" src="images/down.gif" height="10" width="18"></a></td>
+             </tr> 
+            </tbody>
+           </table> 
+          </center> </td> 
+        </tr> 
+        <!-- end nT Scaling choices --> 
+        <tr valign="top"> 
+         <td> 
+          <!-- dB/dt check box --> 
+          <center> 
+           <form name="radioform" id="radioform"> 
+            <span onclick="getDBDT();" onkeypress="getDBDT();"><input type="checkbox" name="dbdt" id="dbdt" alt="dB/dt">dB/dt</span> 
+           </form> 
+          </center> <script type="text/javascript">
+ 			    //dbdt = 0;
+                //alert(dbdt);
+ 			    if ((dbdt == 1) || (dbdt == "1") || (dbdt == true) || (dbdt == "true")) {
+	 			    document.radioform.dbdt.checked = true;
+	 		    } else {
+	 		  	    document.radioform.dbdt.checked = false;
+	 		    }
+			    createCookie("dbdt", dbdt, 180);
+ 			  </script> 
+          <!-- end dB/dt check box --> </td> 
+        </tr> 
+        <tr> 
+         <td> 
+          <!-- Wave Type selection --> 
+          <center> 
+           <table align="center" class="bottom-margin"> 
+            <tbody>
+             <tr>
+              <td align="center"><a onclick="showDetailHardcode('+')" onkeypress="showDetailHardcode('+')><img alt=" up"="" src="images/up.gif" height="10" width="18"></a></td>
+             </tr> 
+             <tr>
+              <td align="center"><a onclick="showDetailHardcode(4)" onkeypress="showDetailHardcode(4)"><img name="h" alt="h" src="images/h.gif" height="18" width="17"></a></td>
+             </tr> 
+             <tr>
+              <td align="center"><a onclick="showDetailHardcode(3)" onkeypress="showDetailHardcode(3)"><img name="e" alt="e" src="images/e.gif" height="18" width="17"></a></td>
+             </tr> 
+             <tr>
+              <td align="center"><a onclick="showDetailHardcode(2)" onkeypress="showDetailHardcode(2)"><img name="z" alt="z" src="images/z.gif" height="18" width="17"></a></td>
+             </tr> 
+             <tr>
+              <td align="center"><a onclick="showDetailHardcode(1)" onkeypress="showDetailHardcode(1)"><img name="f" alt="f" src="images/f.gif" height="18" width="17"></a></td>
+             </tr> 
+             <tr>
+              <td align="center"><a onclick="showDetailHardcode(0)" onkeypress="showDetailHardcode(0)"><img name="df" alt="df" src="images/delta-f.gif" height="18" width="33"></a></td>
+             </tr> 
+             <tr>
+              <td align="center"><a onclick="showDetailHardcode('-')" onkeypress="showDetailHardcode('-')><img alt=" down"="" src="images/down.gif" height="10" width="18"></a></td>
+             </tr> 
+            </tbody>
+           </table> 
+          </center> 
+          <!-- end Wave Type selection --> 
+          <hr> </td> 
+        </tr> 
+        <tr valign="top"> 
+         <td valign="top"> 
+          <!-- Plot key --> 
+          <table cellpadding="0" cellspacing="0" class="top-margin bottom-margin-large"> 
+           <tbody>
+            <tr valign="top"> 
+             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+             <td><img alt="black" src="images/black.gif"></td> 
+             <td><font face="Arial, Helvetica, sans-serif"><font size="-2">&nbsp;Normal plot</font></font></td> 
+            </tr> 
+            <tr valign="top"> 
+             <td>&nbsp;</td> 
+             <td><img alt="blue" src="images/blue.gif"></td> 
+             <td><font face="Arial, Helvetica, sans-serif"><font size="-2">&nbsp;Top wrap</font></font></td> 
+            </tr> 
+            <tr valign="top"> 
+             <td>&nbsp;</td> 
+             <td><img alt="purple" src="images/purple.gif"></td> 
+             <td><font face="Arial, Helvetica, sans-serif"><font size="-2">&nbsp;Bottom wrap</font></font></td> 
+            </tr> 
+            <tr valign="top"> 
+             <td>&nbsp;</td> 
+             <td><img alt="red" src="images/red.gif"></td> 
+             <td><font face="Arial, Helvetica, sans-serif"><font size="-2">&nbsp;Spike</font></font></td> 
+            </tr> 
+            <tr valign="top"> 
+             <td>&nbsp;</td> 
+             <td><img alt="yellow" src="images/yellow.gif"></td> 
+             <td><font face="Arial, Helvetica, sans-serif"><font size="-2">&nbsp;Gap/ No data</font></font></td> 
+            </tr> 
+           </tbody>
+          </table> 
+          <!-- end Plot key --> 
+          <hr> 
+          <!-- Time Stamp --> 
+          <div align="center"> 
+           <font face="Arial, Helvetica, sans-serif"><font size="-2"> UTC 24hr Time of <br>last update: <script language="JavaScript" src="gif/lastUpdate.js"></script> </font></font> 
+           <hr> 
+           <div class="bottom-margin-large"> 
+            <a onclick="nukeCookies()" onkeypress="nukeCookies()" onmouseover="this.style.cursor='default'"> <font face="Arial, Helvetica, sans-serif"><font size="-2">Click here to return <br>to default settings.</font> </font></a>
+            <font face="Arial, Helvetica, sans-serif"> </font>
+           </div>
+           <font face="Arial, Helvetica, sans-serif"> </font>
+          </div><font face="Arial, Helvetica, sans-serif"> 
+           <!-- end Time Stamp --> </font></td> 
+        </tr> 
+       </tbody>
+      </table> </td> 
+     <td valign="top"> 
+      <div id="details"></div>
+      <!-- Div 'details' is where the AJAX XML reading gets output --> </td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <div id="tOoLtIp1942" style="position:absolute;z-index:1010;left:0px;top:0px;width:35px;visibility:hidden;filter:Alpha(opacity=80);"> 
+   <font color="#000066" face="arial,helvetica,sans-serif" style="color:#000066;font-family:arial,helvetica,sans-serif;font-size:11px;font-weight:normal;"> 
+    <form name="f1942" id="f1942"> 
+     <input type="text" name="t" size="4" alt="Submission"> 
+    </form> </font> 
+  </div> 
+  <iframe id="TTiEiFrM" src="javascript:false" scrolling="no" frameborder="0" title="TTiE iFrame" style="filter:Alpha(opacity=0);position:absolute;top:0px;left:0px;display:none;">Your browser doesn't support iframes.</iframe> 
+  <script type="text/javascript" src="wz_tooltip.js"></script> 
+  <noscript> 
+   <div> 
+    <ul> 
+     <li>Data from <a href="0_no_javascript.xml">Today</a></li> 
+     <li>Data from <a href="-1_no_javascript.xml">Yesterday</a></li> 
+     <li>Data from <a href="-2_no_javascript.xml">2 days ago</a></li> 
+     <li>Data from <a href="-3_no_javascript.xml">3 days ago</a></li> 
+     <li>Data from <a href="-4_no_javascript.xml">4 days ago</a></li> 
+    </ul> With most browsers you can also access this data via RSS feeds, otherwise you can directly view the XML files. 
+   </div> 
+  </noscript>   
+ </body>
+</html>

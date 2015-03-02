@@ -1,0 +1,603 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+ <head> 
+  <title></title> 
+  <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1"> 
+  <meta http-equiv="Content-Language" content="es"> 
+  <meta http-equiv="Content-Style-Type" content="text/css"> 
+  <meta http-equiv="Content-Script-Type" content="text/javascript"> 
+  <meta http-equiv="Set-Cookie" content="uocLanguage=es;expires=Friday, 26-Sep-30 14:18:41 GMT; path=/"> 
+  <meta name="robots" content="all"> 
+  <meta name="author" content="Universitat Oberta de Catalunya"> 
+  <meta name="keywords" content="secretaría, becas, ayudas, bolsa trabajo, carnet estudiante, convalidaciones"> 
+  <meta name="description" content="Servicios, herramientas y espacios de relación para estudiantes: Secretaría Virtual (becas, ayudas, formas de pago...); bolsa de trabajo, biblioteca, carné de estudiante..."> 
+  <link type="image/x-icon" rel="shortcut icon" href="http://www.uoc.edu/favicon.ico"> 
+  <meta content="width=device-width; initial-scale=1.0; maximum-scale=2.0; user-scalable=1;" name="viewport"> 
+  <meta name="viewport" content="width=device-width"> 
+  <link type="text/css" rel="stylesheet" href="/estudiant/system/modules/edu.uoc.secretaria.presentacions/resources/css/portal/jquery.bxslider.css" media="all"> 
+  <link type="text/css" rel="stylesheet" href="/estudiant/system/modules/edu.uoc.secretaria.presentacions/resources/css/portal/portal_estudiant.css" media="all"> 
+  <link type="text/css" rel="stylesheet" href="/estudiant/system/modules/edu.uoc.secretaria.presentacions/resources/css/portal/finestra.css" media="all"> 
+  <link type="text/css" rel="stylesheet" href="http://www.uoc.edu/portal/system/modules/edu.uoc.portal.presentations/resources/css/portal-uoc-min-v2.css" medial="all"> 
+  <link type="text/css" rel="stylesheet" href="/estudiant/system/modules/edu.uoc.secretaria.presentacions/resources/css/portal/portal_estudiant_ot.css" media="all"> 
+  <link type="text/css" rel="stylesheet" href="/estudiant/system/modules/edu.uoc.secretaria.presentacions/resources/css/portal/popup_content.css" media="all"> 
+  <!--[if gte IE 9]>
+	  <style type="text/css"> .gradient { filter: none; }
+	  </style>
+	<![endif]--> 
+  <!--[if lt IE 9]>
+	<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script> 
+	<![endif]--> 
+  <script src="/estudiant/system/modules/edu.uoc.secretaria.presentacions/resources/js/serveiAtencio/jquery-1.7.1.min.js" type="text/javascript"></script> 
+  <script src="/estudiant/system/modules/edu.uoc.secretaria.presentacions/resources/js/portal/jquery-ui-1.9.2.custom.min.js" type="text/javascript"></script> 
+  <script src="/estudiant/system/modules/edu.uoc.secretaria.presentacions/resources/js/portal/jquery.form.min.js" type="text/javascript"></script> 
+  <script src="/estudiant/system/modules/edu.uoc.secretaria.presentacions/resources/js/portal/jquery.browser.js" type="text/javascript"></script> 
+  <script src="/estudiant/system/modules/edu.uoc.secretaria.presentacions/resources/js/portal/portal-uoc-bundle-v3.js" type="text/javascript"></script> 
+  <script src="/estudiant/system/modules/edu.uoc.secretaria.presentacions/resources/js/portal/jquery.bxslider.min.js" type="text/javascript"></script> 
+  <script src="/estudiant/system/modules/edu.uoc.secretaria.presentacions/resources/js/portal/jquery.resoluciones.js" type="text/javascript"></script> 
+  <script src="/estudiant/system/modules/edu.uoc.secretaria.presentacions/resources/js/portal/jquery.accordion.js" type="text/javascript"></script> 
+  <script src="/estudiant/system/modules/edu.uoc.secretaria.presentacions/resources/js/portal/jquery.finestra.js" type="text/javascript"></script> 
+  <script type="text/javascript" src="/estudiant/system/modules/edu.uoc.secretaria.presentacions/resources/js/portal/form_estudiants.js_2063069294.js"></script> 
+  <script type="text/javascript">
+	(function(doc) {
+		var addEvent = 'addEventListener',
+		    type = 'gesturestart',
+		    qsa = 'querySelectorAll',
+		    scales = [1, 1],
+		    meta = qsa in doc ? doc[qsa]('meta[name=viewport]') : [];
+	
+		function fix() {
+			meta.content = 'width=device-width,minimum-scale=' + scales[0] + ',maximum-scale=' + scales[1];
+			doc.removeEventListener(type, fix, true);
+		}
+	
+		if ((meta = meta[meta.length - 1]) && addEvent in doc) {
+			fix();
+			scales = [.25, 1.6];
+			doc[addEvent](type, fix, true);
+		}
+	 
+	}(document));
+	</script> 
+  <script type="text/javascript">
+	$(document).ready(function() {
+							   
+	
+	$('#destacats_slider').bxSlider({
+	  controls: true, auto:true, pause: 8000
+	});
+	$('#destacats_slider2').bxSlider({
+	  controls: true, auto:false 
+	});
+	
+	var ie7 = ( BrowserDetect.browser == "Explorer" && BrowserDetect.version <= 7 );
+	if (ie7){
+		$('div.bx-viewport').append("<div class='rect_blanco'></div>");
+		$('#principal > div.bx-wrapper div.bx-controls').append("<div class='rect_blanco'></div>");
+	}	
+	
+	
+	});// JavaScript Document
+	
+	</script> 
+  <script type="text/javascript">
+		/*<![CDATA[*/var switchTo5x=true;/*]]>*/
+	</script> 
+  <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script> 
+  <script type="text/javascript">
+		/*<![CDATA[*/stLight.options({publisher:"ur-64945339-6e33-a06f-1974-c174af3bb060"});/*]]>*/
+	
+		function googleTranslateElementInit(){
+			new google.translate.TranslateElement({
+		    	pageLanguage: 'es',
+		    	autoDisplay: false,
+		    	layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+		  	}, 'google_translate_element');
+		}
+	</script> 
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> 
+ </head> 
+ <body id="" class="ctype-portal_layout body-subportal ">
+  <script type="text/javascript"> 
+var _gaq = _gaq || []; 
+/* 
+* ConfiguraciÃ³n bÃ¡sica 
+*/ 
+_gaq.push(['_setAccount', 'UA-1571980-1']); 
+_gaq.push(['_setDomainName', 'uoc.edu']); 
+_gaq.push(['_setCampaignCookieTimeout', 2592000000]); 
+_gaq.push(['_addIgnoredRef', 'uoc.edu']); 
+_gaq.push(['_trackPageview']); 
+/* 
+* CÃ³digo bÃ¡sico de Google Analytics. NO EDITAR. 
+*/ 
+(function() { 
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; 
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; 
+var s = document.getElementsByTagName('script')[0]; 
+s.parentNode.insertBefore(ga, s); 
+})(); 
+</script> 
+  <script type="text/javascript">
+  var js = document.createElement('script');
+  js.type = 'text/javascript';
+  js.src = ('https:' == document.location.protocol ? 'https://wwws' : 'http://www') + '.uoc.edu/portal/system/modules/edu.uoc.portal.presentations/resources/js/cookiesUOC.js';
+  var first = document.getElementsByTagName('script')[0];
+  first.parentNode.insertBefore(js, first);
+</script> 
+  <div style="opacity:0.5; filter: alpha(opacity=50); display:none; width:100%; height:100%; z-index: 150; position:fixed; top:0; left:0; background-color: black" id="fondo_pantalla">
+   &nbsp;
+  </div> 
+  <div style="position: fixed; top: 0pt; left: 0pt; display: none; width: 100%; height: 100%; z-index: 9999; background-color: rgb(0, 0, 0); opacity: 0.5;" class="csspopup-overlay"></div> 
+  <div style="float: left; z-index: 9999; position: absolute; top: 50%; left: 50%; display: none;" class="csspopup-content"></div> 
+  <div id="layout"> 
+   <div id="top"> 
+    <div id="top-access-menu" class="top-access-menu"> 
+     <div class="top-access-menu-container"> 
+      <form id="search" class="top-search" action="" method="get" name="searchForm" enctype="application/x-www-form-urlencoded"> 
+       <label class="hidden" for="searchWords">palabras a buscar</label> 
+       <input id="search_txt" class="input search-text" type="text" name="searchWords" tabindex="14" value="" placeholder="Introduce el texto a buscar"> 
+       <input onclick="_gaq.push(['_trackEvent', 'Cercador', 'cercar', 'header']);" type="submit" class="submit inner-button ie-round" value="&nbsp;" id="search_sbm" name="search_sbm" title="Buscar"> 
+      </form> 
+      <ul id="top-languages" class="top-languages"> 
+       <li class=""><a href="/estudiant/portal/ca/index.html" title="Català" target="_self" onclick="_gaq.push(['_trackEvent','Canvi Idioma','ca']);">ca</a></li>
+       <li class="active"><a href="/estudiant/portal/es/index.html" title="Español" target="_self" onclick="_gaq.push(['_trackEvent','Canvi Idioma','es']);">es</a></li>
+       <li class=""><a href="/estudiant/portal/en/index.html" title="English" target="_self" onclick="_gaq.push(['_trackEvent','Canvi Idioma','en']);">en</a></li> 
+      </ul> 
+     </div> 
+    </div> 
+    <div id="header" class="container"> 
+     <div id="top-content" class="top-content"> 
+      <a href="http://www.uoc.edu" target="_self" id="top-logo" class="top-logo" title="logo UOC"> <img src="http://www.uoc.edu/portal/_resources/common/imatges/uoc-logo-fase3.png" alt="logo UOC"> <span class="top-logo-container"></span> </a> 
+      <div class="top-lema"> 
+       <p><a href="/estudiant/portal/es/index.html" target="_self">Estudiantes</a></p> 
+      </div> 
+      <div class="form-campus-container"> 
+       <span class="form-campus-title">Campus virtual</span> 
+       <form id="form-campus" class="form-campus" name="loginForm" method="post" action="https://cv.uoc.edu/cgi-bin/uoc"> 
+        <label for="l">Nombre</label> 
+        <input type="text" tabindex="1" accesskey="L" name="l" maxlength="250" value="" class="text-search text-user" placeholder="Nombre"> 
+        <label for="p">Clave</label> 
+        <input type="password" tabindex="2" accesskey="P" name="p" maxlength="10" alt="Clave" value="" class="text-search text-password" placeholder="Clave"> 
+        <input type="submit" tabindex="3" class="submit inner-button" value="&nbsp;" id="campus_sbm" name="campus_sbm" title="??? campus.enter ???"> 
+        <input type="hidden" value="WUOC" name="appid"> 
+        <input type="hidden" value="XXXXXX" name="nil"> 
+        <input type="hidden" value="b" name="lb"> 
+        <input type="hidden" value="http://cv.uoc.edu" name="url"> 
+        <a href="http://www.uoc.edu/web/esp/password_olvidado.html" target="_self">¿Has olvidado tu contraseña?</a> 
+       </form> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="wrapper_shadow"> 
+    <div id="middle"> 
+     <div id="container_a"> 
+      <div id="container_b"> 
+       <div id="container_c" class="global_contents"> 
+        <div class="container container_middle"> 
+         <h1 class="hidden">Estudiantes - Universitat Oberta de Catalunya (UOC)</h1> 
+         <div id="top_tools" class="topTools"> 
+          <ul id="middle_options"> 
+           <li> <a id="share_1" class="comparteix addthis_button" href="http://www.addthis.com/bookmark.php?v=250&amp;username=uocuniversitat">Compartir</a> <script type="text/javascript">
+		   var addthis_config = {
+				ui_language: 'es'
+		      //data_ga_tracker: pageTracker
+		   };
+		</script> <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=uocuniversitat"></script> </li> 
+           <li id="readspeaker-container" class="readspeaker-container"> <a id="rs_button1" class="escolta" accesskey="L" href="http://app.readspeaker.com/cgi-bin/rsent?customerid=5178&amp;lang=es&amp;readid=section&amp;url=null" onclick="readpage(this.href, 'xp1', 'rs_button1'); return false;">Escuchar</a> <span id="xp1"></span> </li> 
+           <li><a id="share_3" class="imprimeix" href="javascript:print()" target="_self" title="Imprimir">Imprimir</a></li> 
+           <li id="google_translate_element" class="idioma option_translate"></li> 
+          </ul> 
+         </div> 
+         <div class="limpia"></div> 
+         <div id="main" class="main column current_contents ctype-portal_layout-main"> 
+          <div id="section_content" class="sectionContent"> 
+           <div class="row row_0"> 
+            <div class="column column3 columnLast"> 
+             <div class="item-content item-content_0 firstNoHide"> 
+              <div class="col-block col-block-1  element destacatModul"> 
+               <ul id="destacats_slider" class="bxslider"> 
+                <li> <img width="200" title="" class="" src="/estudiant/_resources/img/portal/banner_gran/xarxessocials.gif" longdesc="" alt="Conecta, participa, comparte..."> 
+                 <div class="box_info_widget"> 
+                  <h3>Conecta, participa, comparte...</h3> 
+                  <p class="primer"></p> 
+                  <p class="segon"></p>
+                  <p>En los espacios de participación podrás crear redes, intercambiar ideas y proyectos, poner anuncios o plantear dudas.</p>
+                  <p></p> 
+                  <p class="llegeix-mes"><a href="javascript:finestra('finestra','finestra','/estudiant/portal/es/acollida/campus/pindoles/participacio.html');" class="link" target="_self">+ información</a></p> 
+                 </div> </li> 
+                <li> <img width="200" title="" class="" src="/estudiant/_resources/img/portal/banner_gran/tutor.gif" longdesc="" alt="En la UOC no estarás nunca solo..."> 
+                 <div class="box_info_widget"> 
+                  <h3>En la UOC no estarás nunca solo...</h3> 
+                  <p class="primer"></p> 
+                  <p class="segon"></p>
+                  <p>Tu tutor te acompañará y te asesorará durante toda tu vida académica.</p>
+                  <p></p> 
+                  <p class="llegeix-mes"><a href="javascript:finestra('finestra','finestra','/estudiant/portal/es/acollida/grau/pindoles/tutor.html');" class="link" target="_self">+ información</a></p> 
+                 </div> </li> 
+                <li> <img width="200" title="" class="" src="/estudiant/_resources/img/portal/banner_gran/13_preguntes_i_respostes.jpg" longdesc="" alt="Preguntas y respuestas"> 
+                 <div class="box_info_widget"> 
+                  <h3>Preguntas y respuestas</h3> 
+                  <p class="primer"></p> 
+                  <p class="segon"></p>
+                  <p>Más de&nbsp;2.000 compañeros están dispuestos a ayudarte.</p>
+                  <p></p> 
+                  <p class="llegeix-mes"><a href="javascript:finestra('finestra','finestra','/estudiant/portal/es/acollida/campus/pindoles/preguntes.html');" class="link" target="_self">+ información</a></p> 
+                 </div> </li> 
+               </ul> 
+              </div> 
+             </div> 
+             <div class="divclear"></div> 
+            </div> 
+           </div> 
+           <div class="row row_1"> 
+            <div class="column column3 columnLast"> 
+             <div class="item-content item-content_0 firstNoHide"> 
+              <div class="col-block col-block-1 element destacatBlock"> 
+               <div class="block portal-layout-block">
+                <h2>¿Quieres conocernos mejor?</h2>
+               </div> 
+              </div> 
+             </div> 
+             <div class="divclear"></div> 
+            </div> 
+           </div> 
+           <div class="row row_2"> 
+            <div class="column column1b"> 
+             <div class="item-content item-content_0 firstNoHide"> 
+              <div class="col-block col-block-1  element destacatModul"> 
+               <div class="columna"> 
+                <ul id="destacats_slider2" class="bxslider"> 
+                 <li> <h4><a href="#">¿Cómo se estudia en la UOC?</a></h4> <iframe width="320" height="200" frameborder="0" allowfullscreen src="http://www.youtube-nocookie.com/embed/Tl6guTOeCoo?wmode=transparent&amp;rel=0" class="video" style="width: 322px; height: 201.25px;"></iframe><p></p><p>La UOC es una universidad en línea reconocida internacionalmente, que ofrece un aprendizaje centrado en el estudiante con las ventajas de unos estudios personalizados, flexibilidad, accesibilidad y colaboración.&nbsp;</p><p></p> </li> 
+                 <li> <h4><a href="#">¿Cómo puedo convalidar los estudios que he hecho?</a></h4> <iframe width="320" height="200" frameborder="0" allowfullscreen src="http://www.youtube-nocookie.com/embed/mxhWepYM6qg?wmode=transparent&amp;rel=0 " class="video" style="width: 322px; height: 201.25px;"></iframe><p></p><p>Si habéis cursado estudios universitarios en otra universidad o en la propia UOC, los&nbsp;podéis convalidar por medio del trámite de evaluación de estudios previos (EEP).</p><p></p> </li> 
+                </ul> 
+               </div> 
+              </div> 
+             </div> 
+             <div class="divclear"></div> 
+            </div> 
+            <div class="column column1b columnLast"> 
+             <div class="item-content item-content_0 firstNoHide"> 
+              <div class="col-block col-block-2  element destacatModul"> 
+               <div class="block_roundborder_6"> 
+                <div class="block_degrad cercador"> 
+                 <h4 class="sub">Busca por palabra clave...</h4> 
+                 <form name="searchForm" action="/webapps/campus/estudiant/estudiant/portal/es/cercador.html" method="post" enctype="application/x-www-form-urlencoded"> 
+                  <label class="hidden" for="paraules">Palabra clave</label> 
+                  <input id="paraules" class="input valrep autocomplete" type="text" onclick="borracampo(this,'Qué te gustaría encontrar?');" onblur="restauracampo(this,'Qué te gustaría encontrar?');" value="Qué te gustaría encontrar?" name="paraules" maxlength="250"> 
+                  <input id="study_submit" class="submit" type="submit" value="Busca"> 
+                 </form> 
+                </div> 
+                <div class="descobreix"> 
+                 <h4 class="sub">... o descubre nuestros servicios</h4> 
+                 <ul> 
+                  <li><a class="tagcloud" href="javascript:finestra(&quot;finestra&quot;, &quot;finestra&quot;, &quot;/estudiant/portal/es/acollida/campus/pindoles/equip.html&quot;);">equipo informático</a></li> 
+                  <li><a class="tagcloud" href="javascript:finestra(&quot;finestra&quot;, &quot;finestra&quot;, &quot;/estudiant/portal/es/acollida/campus/pindoles/aules.html&quot;);">aula virtual</a></li> 
+                  <li><a class="tagcloud" href="javascript:finestra(&quot;finestra&quot;, &quot;finestra&quot;, &quot;/estudiant/portal/es/acollida/campus/pindoles/secretaria.html&quot;);">secretaría virtual</a></li> 
+                  <li><a class="tagcloud" href="javascript:finestra(&quot;finestra&quot;, &quot;finestra&quot;, &quot;/estudiant/portal/es/acollida/grau/pindoles/tutor.html&quot;);">tutor</a></li> 
+                  <li><a class="tagcloud" href="javascript:finestra(&quot;finestra&quot;, &quot;finestra&quot;, &quot;/estudiant/portal/es/acollida/campus/pindoles/biblioteca.html&quot;);">biblioteca virtual</a></li> 
+                  <li><a class="tagcloud" href="javascript:finestra(&quot;finestra&quot;, &quot;finestra&quot;, &quot;/estudiant/portal/es/acollida/campus/pindoles/servei_atencio.html&quot;);">servicio de atención</a></li> 
+                  <li><a class="tagcloud" href="javascript:finestra(&quot;finestra&quot;, &quot;finestra&quot;, &quot;/estudiant/portal/es/acollida/grau/pindoles/raep.html&quot;);">reconocimiento de la experiencia profesional</a></li> 
+                  <li><a class="tagcloud" href="javascript:finestra(&quot;finestra&quot;, &quot;finestra&quot;, &quot;/estudiant/portal/es/acollida/grau/pindoles/convalidacio.html&quot;);">evaluación de estudios previos (convalidaciones)</a></li> 
+                  <li><a class="tagcloud" href="javascript:finestra(&quot;finestra&quot;, &quot;finestra&quot;, &quot;/estudiant/portal/es/acollida/campus/pindoles/expedient.html&quot;);">expediente académico</a></li> 
+                  <li><a class="tagcloud" href="javascript:finestra(&quot;finestra&quot;, &quot;finestra&quot;, &quot;/estudiant/portal/es/acollida/institucional/pindoles/carnet_uoc.html&quot;);">carné de estudiante</a></li> 
+                  <li><a class="tagcloud" href="javascript:finestra(&quot;finestra&quot;, &quot;finestra&quot;, &quot;/estudiant/portal/es/acollida/institucional/pindoles/xarxa_territorial.html&quot;);">sedes UOC</a></li> 
+                  <li><a class="tagcloud" href="javascript:finestra(&quot;finestra&quot;, &quot;finestra&quot;, &quot;/estudiant/portal/es/acollida/grau/pindoles/recursos.html&quot;);">recursos de aprendizaje</a></li> 
+                  <li><a class="tagcloud" href="javascript:finestra(&quot;finestra&quot;, &quot;finestra&quot;, &quot;/estudiant/portal/es/acollida/campus/pindoles/perfil.html&quot;);">mi perfil</a></li> 
+                  <li><a class="tagcloud" href="javascript:finestra(&quot;finestra&quot;, &quot;finestra&quot;, &quot;/estudiant/portal/es/acollida/campus/pindoles/bustia.html&quot;);">buzón de correo</a></li> 
+                  <li><a class="tagcloud" href="javascript:finestra(&quot;finestra&quot;, &quot;finestra&quot;, &quot;/estudiant/portal/es/acollida/campus/pindoles/mobil.html&quot;);">navegar desde dispositivos móviles</a></li> 
+                  <li><a class="tagcloud" href="javascript:finestra(&quot;finestra&quot;, &quot;finestra&quot;, &quot;/estudiant/portal/es/acollida/campus/pindoles/actualitat.html&quot;);">actualidad</a></li> 
+                 </ul> 
+                </div> 
+               </div> 
+              </div> 
+             </div> 
+             <div class="divclear"></div> 
+            </div> 
+           </div> 
+           <div class="row row_3"> 
+            <div class="column column1b"> 
+             <div class="item-content item-content_0 firstNoHide"> 
+              <div class="col-block col-block-1  element destacatModul"> 
+               <div class="modul-info modul-info-basic"> 
+                <div class="columna"> 
+                 <div class="block_roundborder_6 block_checker"> 
+                  <div class="block_degrad"> 
+                   <p class="modul_info_imatge" style="background: url(/estudiant/_resources/img/portal/ico_normativa.png) left center no-repeat;">¿Quieres conocer la normativa? <br> Visita la <a href="https://seu-electronica.uoc.edu/portal/es/seu-electronica/index.html" title="" class="" target="_self" id="">sede electrónica de la UOC </a> </p> 
+                  </div> 
+                 </div> 
+                </div> 
+               </div> 
+              </div> 
+             </div> 
+             <div class="divclear"></div> 
+            </div> 
+           </div> 
+           <div class="row row_4"> 
+            <div class="column column1b"> 
+             <div class="item-content item-content_0 firstNoHide"> 
+              <div class="col-block col-block-1  element destacatModul"> 
+               <div class="modul-info modul-info-basic"> 
+                <div class="columna"> 
+                 <div class="block_roundborder_6 block_checker"> 
+                  <div class="block_degrad"> 
+                   <p class="modul_info_imatge" style="background: url(/estudiant/_resources/img/portal/ico_guia.png) left center no-repeat;">Accede a toda la información que necesitas mediante la <a href="/estudiant/_resources/docs/acollida/Guiaestudiant_2014_15_interactiva.pdf" title="" class="" target="_blank" id="">Guía del estudiante</a> </p> 
+                  </div> 
+                 </div> 
+                </div> 
+               </div> 
+              </div> 
+             </div> 
+             <div class="divclear"></div> 
+            </div> 
+           </div> 
+          </div> 
+         </div> 
+         <div id="sidebar"> 
+          <ul id="nav-menu-secondary"> 
+          </ul> 
+          <div class="lateral-content"> 
+           <script>
+$(document).ready(function(){
+		
+	initConsts('', 'ca', 'http://www.uoc.edu/atencioPortal/rest/atencio/request_file', 'http://cv.uoc.edu/atencio/','1');
+	
+	estilsCombosFormEstudiants();
+	
+       
+});
+
+
+var dadesForm = {};
+
+</script> 
+           <div id="ok_form" class="dialog-modal" title="¿Quieres contactar con nosotros?">
+            Te hemos enviado un mensaje electrónico con un enlace para confirmar tu consulta.
+           </div> 
+           <div id="error_form" class="dialog-modal" title="¿Quieres contactar con nosotros?"></div> 
+           <div id="execute_form" class="dialog-modal" title="¿Quieres contactar con nosotros?">
+            Enviando consulta...
+           </div> 
+           <div id="form_estudiants"> 
+            <h3>¿Quieres contactar con nosotros?</h3> 
+            <div class="informacio more_info add_img formulari"> 
+             <p class="omple_form">Rellena el formulario...</p> 
+             <p>Te responderemos en 24 horas los 365 días del año.</p> 
+             <form target="_blank" action="" name="dades" method="post" class="reset form formstyle relative" id="formEstudiants" accept-charset="utf-8"> 
+              <label class="label hidden" for="nom">Nombre</label> 
+              <input class="input" name="nom" type="text" size="26" maxlength="30" onblur="if(this.value=='')this.value='Nombre';" onfocus="if(this.value=='Nombre') this.value='';" value=""> 
+              <label class="label hidden" for="cognom1">Primer apellido</label> 
+              <input class="input" name="cognom1" type="text" size="26" maxlength="30" onblur="if(this.value=='')this.value='Primer apellido';" onfocus="if(this.value=='Primer apellido') this.value='';" value=""> 
+              <label class="label hidden" for="cognom2">Segundo apellido</label> 
+              <input class="input" name="cognom2" type="text" size="26" maxlength="30" onblur="if(this.value=='')this.value='Segundo apellido';" onfocus="if(this.value=='Segundo apellido') this.value='';" value=""> 
+              <label class="label" for="sexe">Sexo</label> 
+              <input class="radioGrup" type="radio" name="sexe" value="F">
+              <div class="contentRadioGrup">
+               Femenino
+              </div> 
+              <input class="radioGrup" type="radio" name="sexe" value="M">
+              <div class="contentRadioGrup">
+               Masculino
+              </div> 
+              <label class="label" for="dia">Fecha nacimiento</label> 
+              <input class="input grup dia" maxlength="2" size="2" name="dia" onblur="if(this.value=='')this.value='dd';" onfocus="if(this.value=='dd') this.value='';" value="">
+              <span class="separa_input">/</span>
+              <input class="input grup mes" maxlength="2" size="2" name="mes" onblur="if(this.value=='')this.value='mm';" onfocus="if(this.value=='mm') this.value='';" value="">
+              <span class="separa_input">/</span>
+              <input class="input grup any" maxlength="4" size="4" name="any" onblur="if(this.value=='')this.value='aaaa';" onfocus="if(this.value=='aaaa') this.value='';" value="">
+              <br class="limpia"> 
+              <label class="label hidden" for="prefix">Pref. Int./Teléfono</label> 
+              <input class="input grup prefix" maxlength="4" size="1" value="34" name="prefix">
+              <span class="separa_input"></span>
+              <input class="input grup telefon" maxlength="17" size="17" name="telefon" onblur="if(this.value=='')this.value='Teléfono';" onfocus="if(this.value=='Teléfono') this.value='';" value=""> 
+              <label class="label hidden" for="mail">e-mail</label> 
+              <input class="input" name="mail" type="text" maxlength="100" size="26" onblur="if(this.value=='')this.value='e-mail';" onfocus="if(this.value=='e-mail') this.value='';" value=""> 
+              <label class="label" for="motiu">Motivo de tu consulta</label>
+              <select class="selectSub motiu" name="txtOpcion" id="motiu" onchange="canviaMotiuName();"> <option value="">Selecciona</option> <option value="80#00#00#5285">Matriculación</option> <option value="71#00#00#5290">Acceso</option> <option value="73#00#00#5301">Convalidaciones</option> <option value="75#00#00#5296">Becas</option> <option value="74#00#00#5297">Evaluación</option> <option value="83#00#00#5298">Recursos de aprendizaje</option> <option value="84#00#00#5299">Títulos</option> <option value="77#00#00#5300">Contacto y sedes</option> <option value="86#02#00#5284">Otros</option> </select> 
+              <div class="limpia"></div> 
+              <input type="hidden" name="txtOpcion" id="motiu-name" value=""> 
+              <label class="label hidden" for="text_area">Limitación de 2.500 carácteres.</label> 
+              <textarea class="input" name="ENTRADA" id="ENTRADA" rows="3" cols="40" type="text" maxlength="2500" size="2500" onblur="if(this.value=='')this.value='Limitación de 2.500 carácteres.';" onfocus="if(this.value=='Limitación de 2.500 carácteres.') this.value='';" value=""></textarea> 
+              <div class="fileinputs" id="file-input1"> 
+               <input class="inputfile" name="file" id="file-test1" value="" type="file" multiple title="Selecciona adjunto..."> 
+               <div class="fakefile"> 
+                <input type="text" class="input inputfake"> 
+                <span class="adjunts">Adjunta...</span> 
+               </div> 
+               <span class="borrar-adjunt" title="Elimina adjunto">x</span> 
+              </div> 
+              <div class="fileinputs" id="file-input2" style="display:none"> 
+               <input class="inputfile" name="file" id="file-test2" value="" type="file" multiple title="Selecciona adjunto..."> 
+               <div class="fakefile"> 
+                <input type="text" class="input inputfake"> 
+                <span class="adjunts">Adjunta...</span> 
+               </div> 
+               <span class="borrar-adjunt" title="Elimina adjunto">x</span> 
+              </div> 
+              <div class="fileinputs" id="file-input3" style="display:none"> 
+               <input class="inputfile" name="file" id="file-test3" value="" type="file" multiple title="Selecciona adjunto..."> 
+               <div class="fakefile"> 
+                <input type="text" class="input inputfake"> 
+                <span class="adjunts">Adjunta...</span> 
+               </div> 
+               <span class="borrar-adjunt" title="Elimina adjunto">x</span> 
+              </div> 
+              <div id="condicions_legals" class="condicions_legals">
+               <input class="condicions_legals" type="checkbox" value="1" name="rebre_inf">
+               <div class="condicions_legals_text">
+                Acceptas los 
+                <a class="formInfoCheck" target="_blank" href="http://www.uoc.edu/portal/es/_peu/avis_legal/politica_confidencialitat.html">términos y condiciones legales.</a>
+               </div>
+              </div> 
+              <div id="custom_captcha"> 
+               <label for="recaptcha_response_field" class="label captcha_label">Comprobación captcha</label> 
+               <label for="recaptcha_challenge_field"></label> 
+               <div id="recaptcha_widget"> 
+                <div class="image_zone"> 
+                 <div id="recaptcha_image"></div> 
+                 <div class="options"> 
+                  <div class="reload option_captcha">
+                   <a href="javascript:Recaptcha.reload()"><img width="25" height="18" alt="Obteniu una prova nova" id="recaptcha_reload" src="http://www.google.com/recaptcha/api/img/clean/refresh.png"></a>
+                  </div> 
+                  <div class="recaptcha_only_if_image option_captcha">
+                   <a href="javascript:Recaptcha.switch_type('audio')"><img width="25" height="15" alt="Obteniu una prova d'Ã&nbsp;udio" id="recaptcha_switch_audio" src="http://www.google.com/recaptcha/api/img/clean/audio.png"></a>
+                  </div> 
+                  <div class="recaptcha_only_if_audio option_captcha">
+                   <a href="javascript:Recaptcha.switch_type('image')"><img width="25" height="15" alt="ObtÃ©n un repte visual" id="recaptcha_switch_img" src="http://www.google.com/recaptcha/api/img/clean/text.png"></a>
+                  </div> 
+                  <div class="help option_captcha">
+                   <a href="javascript:Recaptcha.showhelp()"><img width="25" height="16" id="recaptcha_whatsthis" src="http://www.google.com/recaptcha/api/img/clean/help.png" alt="Ajuda"></a>
+                  </div> 
+                 </div> 
+                </div> 
+                <div class="recaptcha_only_if_incorrect_sol">
+                 El texto de verificación es incorrecto. Por favor, inténtalo de nuevo.
+                </div> 
+                <span class="recaptcha_only_if_image">Introduce las palabras anteriores:</span> 
+                <span class="recaptcha_only_if_audio">Introduce los números que oyes:</span> 
+                <input class="input" type="text" id="recaptcha_response_field" name="recaptcha_response_field"> 
+               </div> 
+               <script type="text/javascript" src="http://www.google.com/recaptcha/api/challenge?k=6LdFHtkSAAAAAMiQNz6tbzYZMklgjXIeXVis7Nsp"></script> 
+               <noscript> 
+                <iframe src="http://www.google.com/recaptcha/api/noscript?k=6LdLHtkSAAAAAIISQpH_PeFs0sbNa3ih8jhbhy9u" height="300" width="195" frameborder="0"></iframe>
+                <br> 
+                <!-- 			       <textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea> --> 
+                <input class="input" type="text" name="recaptcha_response_field" id="recaptcha_response_field"> 
+               </noscript> 
+              </div> 
+              <div id="loading" style="display:none;"> 
+               <h5>Cargando ...</h5> 
+              </div> 
+              <div class="limpia"></div> 
+              <div id="submitFormEstudiants" class="submit">
+               <div>
+                <input id="form_estudiants" type="button" value=" Envía la consulta " name="form_estudiants" class="submit">
+               </div>
+              </div> 
+             </form> 
+            </div> 
+           </div> 
+           <div class="twitter_block" data-twttr-id="twttr-sandbox-0"> 
+            <a href="https://twitter.com/search?q=UOCestudiant" target="_blank"><h3 class="titolCaixa">...o envíanos un tuit</h3></a> 
+            <a class="twitter-timeline" data-dnt="true" height="300" data-tweet-limit="2" data-chrome="noheader nofooter transparent noscrollbar" href="https://twitter.com/search?q=UOCestudiant" data-widget-id="344727147308527616">Tweets sobre "UOCestudiant"</a> 
+            <script>!function(d,s,id)
+		{var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script> 
+            <style>.timeline.var-chromeless {    background-color: #F8F8F3;	} </style> 
+           </div> 
+          </div> 
+         </div> 
+         <div class="limpia"></div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div id="foot"> 
+     <h3>Explora la UOC</h3> 
+     <ul class="footer"> 
+      <li> <h4>Contacto y comunidades</h4> 
+       <ul> 
+        <li> <a title="Contacto y sedes" target="_blank" href="http://www.uoc.edu/portal/es/universitat/contacte-seus/index.html"> Contacto y sedes </a> </li> 
+        <li> <a title="Red Territorial" target="_blank" href="http://www.uoc.edu/portal/es/territorial/index.html"> Red Territorial </a> </li> 
+        <li> <a title="Vive la UOC" target="_blank" href="http://www.uoc.edu/portal/es/viu-la-uoc/index.html"> Vive la UOC </a> </li> 
+        <li> <a title="Alumni" target="_blank" href="http://alumni.uoc.edu/opencms_alumni/opencms/es/index.html"> Alumni </a> </li> 
+        <li> <a title="Agenda UOC" target="_blank" href="http://www.uoc.edu/opencms_portal2/opencms/ES/viu-la-uoc/agenda/list.html"> Agenda UOC </a> </li> 
+       </ul> </li> 
+      <li> <h4>Estudia en la UOC</h4> 
+       <ul> 
+        <li> <a title="Grados" target="_blank" href="http://estudios.uoc.edu/es/grados-2-ciclo"> Grados </a> </li> 
+        <li> <a title="Másters universitarios" target="_blank" href="http://estudios.uoc.edu/es/masters-universitarios"> Másters universitarios </a> </li> 
+        <li> <a title="Másters, posgrados y especializaciones" target="_blank" href="http://estudios.uoc.edu/es/masters-posgrados-especializaciones"> Másters, posgrados y especializaciones </a> </li> 
+        <li> <a title="Cursos y seminarios" target="_blank" href="http://www.uoc.edu/portal/es/institut_internacional_postgrau/programes_oberts/index.html"> Cursos y seminarios </a> </li> 
+       </ul> </li> 
+      <li> 
+       <ul> 
+        <li> <a title="Cursos de lenguas" target="_blank" href="http://www.uoc.edu/portal/es/escuela-de-lenguas/index.html"> Cursos de lenguas </a> </li> 
+        <li> <a title="Programas de doctorado" target="_blank" href="http://estudios.uoc.edu/es/doctorado"> Programas de doctorado </a> </li> 
+        <li> <a title="Business School" target="_blank" href="http://www.uoc.edu/portal/es/business-school/index.html"> Business School </a> </li> 
+        <li> <a title="Todos los estudios" target="_self" href="http://www.uoc.edu/portal/es/estudis/tots-els-estudis/index.html"> Todos los estudios </a> </li> 
+       </ul> </li> 
+      <li> <h4>Recursos y servicios</h4> 
+       <ul> 
+        <li> <a title="Biblioteca Virtual" target="_self" href="http://biblioteca.uoc.edu/esp/index.html"> Biblioteca Virtual </a> </li> 
+        <li> <a title="Bolsa de Trabajo" target="_self" href="http://www.uoc.edu/portal/es/empreses-associades/borsa-de-treball/index.html"> Bolsa de Trabajo </a> </li> 
+        <li> <a title="Nuestras APPs" target="_self" href="http://www.uoc.edu/portal/es/viu-la-uoc/uoc-apps/index.html"> Nuestras APPs </a> </li> 
+        <li> <a title="Política de galletas" target="_blank" href="http://www.uoc.edu/portal/es/_peu/avis_legal/politica-galetes.html"> Política de galletas </a> </li> 
+       </ul> </li> 
+     </ul> 
+     <div class="limpia"></div> 
+     <p style="text-align: center">&nbsp;</p> 
+     <p style="text-align: center"><img src="http://www.uoc.edu/portal/_resources/common/imatges/marca_UOC/logo-uoc-20anys-blau_es.png"></p> 
+    </div> 
+    <div id="foot-mobile" class="mobile"> 
+     <p> <a title="Contacto y sedes" target="_blank" href="http://www.uoc.edu/portal/es/universitat/contacte-seus/index.html"> Contacto y sedes </a> &#x2022; <a title="Nuestras APPs" target="_self" href="http://www.uoc.edu/portal/es/viu-la-uoc/uoc-apps/index.html"> Nuestras APPs </a> </p> 
+    </div> 
+   </div> 
+   <div class="limpia"></div> 
+  </div> 
+  <!--BLOCS PER DETECTAR RESOLUCIÓ AMB CSS --> 
+  <div class="mobile" id="ismobile">
+   .
+  </div> 
+  <script type="text/javascript">
+		
+			(function(w){
+			
+			// This fix addresses an iOS bug, so return early if the UA claims it's something else.
+			var ua = navigator.userAgent;
+			if( !( /iPhone|iPad|iPod/.test( navigator.platform ) && /OS [1-5]_[0-9_]* like Mac OS X/i.test(ua) && ua.indexOf( "AppleWebKit" ) > -1 ) ){
+			return;
+			}
+			
+			    var doc = w.document;
+			
+			    if( !doc.querySelector ){ return; }
+			
+			    var meta = doc.querySelector( "meta[name=viewport]" ),
+			        initialContent = meta && meta.getAttribute( "content" ),
+			        disabledZoom = initialContent + ",maximum-scale=1",
+			        enabledZoom = initialContent + ",maximum-scale=10",
+			        enabled = true,
+			x, y, z, aig;
+			
+			    if( !meta ){ return; }
+			
+			    function restoreZoom(){
+			        meta.setAttribute( "content", enabledZoom );
+			        enabled = true;
+				//	alert("restore");
+			    }
+			
+			    function disableZoom(){
+			      meta.setAttribute( "content", disabledZoom );
+			      //  enabled = false;
+				//	alert("disable zoom");
+				
+				setTimeout(function() {  enabled = false;  },1000);
+				
+			    }
+			
+			    function checkTilt( e ){
+			aig = e.accelerationIncludingGravity;
+			x = Math.abs( aig.x );
+			y = Math.abs( aig.y );
+			z = Math.abs( aig.z );
+			
+			// If portrait orientation and in one of the danger zones
+			        if( (!w.orientation || w.orientation === 180) && ( x > 7 || ( ( z > 6 && y < 8 || z < 8 && y > 6 ) && x > 5 ) ) ){
+			if( enabled ){
+			disableZoom();
+			}
+			        }
+			else if( !enabled ){
+			restoreZoom();
+			        }
+			    }
+			
+			w.addEventListener( "orientationchange", restoreZoom, false );
+			w.addEventListener( "devicemotion", checkTilt, false );
+			
+			})( this );
+		</script>  
+ </body>
+</html>

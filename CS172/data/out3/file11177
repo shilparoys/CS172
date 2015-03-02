@@ -1,0 +1,632 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" lang="en-US">
+ <head> 
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> 
+  <title>uLogin</title> 
+  <link rel="shortcut icon" href="https://www.drew.edu/wp-content/themes/Drew-v8-r/favicon.ico"> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+  <!--[if lt IE 9]><script src='https://www.drew.edu/wp-content/themes/Drew-v8-r/scripts/respond.min.js'></script><![endif]--> 
+  <link href="/nidp/images/hf_menu.css" rel="stylesheet"> 
+  <link href="/nidp/images/HF_message.css" rel="stylesheet"> 
+  <link href="/nidp/images/HF_obj_list_table.css" rel="stylesheet"> 
+  <style>
+@font-face {
+	font-family: "Swift W01 Regular";
+	font-weight: normal;
+	font-style: normal;
+	src: url("https://www.drew.edu/wp-content/themes/Drew-v8-r/fonts/swift.eot");
+	src: url("https://www.drew.edu/wp-content/themes/Drew-v8-r/fonts/swift.eot?#iefix") format("embedded-opentype"), url("https://www.drew.edu/wp-content/themes/Drew-v8-r/fonts/swift.woff") format("woff"), url("https://www.drew.edu/wp-content/themes/Drew-v8-r/fonts/swift.ttf") format("truetype"), url("https://www.drew.edu/wp-content/themes/Drew-v8-r/fonts/swift.svg#Swift W01 Regular") format("svg");
+}
+@font-face {
+	font-family: "Swift W01 Bold";
+	font-weight: normal;
+	font-style: normal;
+	src: url("https://www.drew.edu/wp-content/themes/Drew-v8-r/fonts/swift-bold.eot");
+	src: url("https://www.drew.edu/wp-content/themes/Drew-v8-r/fonts/swift-bold.eot?#iefix") format("embedded-opentype"), url("https://www.drew.edu/wp-content/themes/Drew-v8-r/fonts/swift-bold.woff") format("woff"), url("https://www.drew.edu/wp-content/themes/Drew-v8-r/fonts/swift-bold.ttf") format("truetype"), url("https://www.drew.edu/wp-content/themes/Drew-v8-r/fonts/swift-bold.svg#Swift W01 Bold") format("svg");
+}
+@font-face {
+	font-family: "FuturaW01-BoldCondensed 774890";
+	font-weight: normal;
+	font-style: normal;
+	src: url("https://www.drew.edu/wp-content/themes/Drew-v8-r/fonts/futura.eot");
+	src: url("https://www.drew.edu/wp-content/themes/Drew-v8-r/fonts/futura.eot?#iefix") format("embedded-opentype"), url("https://www.drew.edu/wp-content/themes/Drew-v8-r/fonts/futura.woff") format("woff"), url("https://www.drew.edu/wp-content/themes/Drew-v8-r/fonts/futura.ttf") format("truetype"), url("https://www.drew.edu/wp-content/themes/Drew-v8-r/fonts/futura.svg#FuturaW01-BoldCondensed 774890") format("svg");
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	background: #dfe0dc;
+}
+#header {
+	background-color: #fff;
+}
+#header:after {
+	content: '';
+	display: block;
+	height: 7px;
+	width: 100%;
+	background: #AFB0A5;
+	margin: 10px 0 0 0;
+}
+#logoholder {
+	max-width: 1366px;
+	margin: 0 auto;
+}
+#logoholder a img{border:0;}
+#thelogo {
+	padding: 20px 0 15px 10%;
+}
+#logo {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}
+#title {
+	display: none;
+	position: absolute;
+	font-size: 1.2em;
+	color: white;
+	top: 13px;
+	left: 55px;
+}
+#subtitle {
+	position: relative;
+	font-size: .9em;
+	color: black;
+	white-space: nowrap;
+	left: -5px;
+	top: 25px;
+	text-align: left;
+	font-size: 1em;
+	
+	
+	line-height: 0;
+	font-size: 1.8em;
+	letter-spacing: 1px;
+	color: #3d3d3d;
+	font-family: 'FuturaW01-BoldCondensed 774890';
+	font-weight: normal;	
+	
+}
+article {
+	max-width: 1366px;
+	font-size: 16px;
+	margin: 0 auto;
+}
+#contentbody {
+	max-width: 400px;
+	width: 45%;
+	background: #fff;
+	float: left;
+}
+#articlebody {
+	padding: 2em 10% 2em;
+	margin: 0 auto;
+	background: #fff;
+	font-size: 16px;
+	font-family: arial, sans-serif;
+}
+#mcontent {
+	position: relative;
+ background-color: #fff;
+	padding: 0;
+}
+#content table #msg {
+	background: #fff;
+	white-space: normal;
+}
+#iframecontent{
+	width: 100%;
+	height: 325px;
+	border: 0;
+	margin: 0;
+	padding: 0 0 30px 0;
+	line-height: 1.6;
+	}
+#content {
+	width: 100%;
+	height: auto;
+	border: 0;
+	margin: 0;
+	padding: 0;
+	overflow: none;
+	/*height: 376px;*/
+	background-color: #fff;
+}
+#logoutbut {
+	position: absolute;
+	top: -37px;
+	left: 165px;
+}
+#helpbutlogin {
+	position: absolute;
+	top: -37px;
+	left: 135px;
+	display: block;
+}
+#loggingbut {
+	position: absolute;
+	color: blue;
+	top: 25px;
+	right: 65px;
+}
+.NLtab .tab1s {
+	display: none;
+ background-color: #fff;
+	padding-left: 3px;
+	padding-right: 8px;
+	text-align: center;
+	white-space: nowrap;
+}
+.NLtab .tab1s a {
+	text-decoration: none;
+}
+.NLtab span.tab1s {
+	padding: 5;
+	color: white;
+	font-size: 0.9em;
+	font-weight: bold;
+	line-height: 17px;
+	background-color: transparent;
+	background-image: none;
+	text-decoration: none;
+}
+.NLtab .tab1u {
+	display: none;
+ background-color: #fff;
+	padding-left: 3px;
+	padding-right: 3px;
+	text-align: center;
+	white-space: nowrap;
+ border-left: 1px solid #bbbbb9;
+ border-right: 1px solid #bbbbb9;
+ border-top: 1px solid #bbbbb9;
+}
+.NLtab span.tab1u {
+	border: none;
+	padding: 5;
+	color: black;
+	font-size: 0.8em;
+	font-weight: bold;
+	line-height: 17px;
+	text-decoration: none;
+	background-color: transparent;
+}
+.NLtab tr.subtab td {
+	color: white;
+	padding: 2px
+}
+.NLtab tr.subtab a {
+	font-size: .8em;
+	color: white;
+	text-decoration: none;
+	padding: 2px 5px 2px 5px
+}
+.selx {
+	display: none;
+	border: 1px solid rgb(239, 238, 236);
+	font-size: 1em;
+	font-weight: bolder;
+	background-repeat: repeat-x;
+	background-position: 0pt bottom;
+}
+.unselx {
+	border: 0px;
+	font-size: .9em;
+	font-weight: normal;
+	background-image: none;
+}
+/*	Drew CSS	*/
+
+
+article h1 {
+	line-height: 1;
+	color: #234f74;
+	font-size: 2.4em;
+	padding-bottom: .25em;
+	padding-top:.5em;
+	margin: 0;
+	font-family: 'Swift W01 Bold';
+	color: #3d3d3d;
+	font-weight: normal;
+}
+article h2 {
+	display: block;
+	clear: left;
+	line-height: 1;
+	font-size: 1.8em;
+	letter-spacing: 1px;
+	margin: 0 0 .25em 0;
+	color: #3d3d3d;
+	padding: 0 0 10px 0;
+	font-family: 'FuturaW01-BoldCondensed 774890';
+	font-weight: normal;
+}
+article h3 {
+	line-height: 1;
+	font-size: 1.4em;
+	font-family: 'Swift W01 Regular', serif;
+	color: #3d3d3d;
+	margin: 1.5em 0 10px 0;
+	padding: 0;
+	font-weight: normal;
+}
+article p {
+	padding: .5em 0;
+}
+article ul {
+	padding: .5em 0 .5em 2.5em;
+	list-style: disc outside none;
+}
+article ol {
+	padding: .5em 0 .5em 2.5em;
+	list-style: decimal outside none;
+}
+article li {
+	padding: .25em 0;
+	margin: 0;
+}
+article strong, article b {
+	font-weight: bold;
+}
+aside {
+	font-size: .9em;
+	line-height: 1.6;
+	box-shadow: -2px 2px 3px rgba(0,0,0,0.1);
+	-moz-box-shadow: -2px 2px 3px rgba(0,0,0,0.1);
+	-khtml-box-shadow: -2px 2px 3px rgba(0,0,0,0.1);
+	-webkit-box-shadow: -2px 2px 3px rgba(0,0,0,0.1);
+	background-color: white;
+	width: 50%;
+	float: right;
+	margin: -10px 0 50px 5%;
+}
+article aside header {
+	line-height: 1;
+	font-weight: normal;
+	text-decoration: none;
+	display: block;
+	background: #90a632;
+	color: white;
+	font-family: 'FuturaW01-BoldCondensed 774890';
+	font-size: 1.5em;
+	letter-spacing: 1px;
+	padding: .5em 7%;
+}
+article aside .section {
+	padding: .5em 7%;
+	border: 1px solid #ddd;
+}
+article aside ul, article aside ol {
+	list-style: disc;
+	margin: 10px;
+	padding: 1;
+	margin-top: -15px;
+	margin-bottom: -15px;
+}
+article aside li {
+	margin: .7em 0;
+	margin-bottom: -17px;
+}
+
+/* Big green buttons */
+
+*.navbutton {
+	text-decoration: none;
+	background: #90a632;
+	border: 1px solid #90a632;
+	border-radius: 10em;
+	padding: .35em 2em;
+	line-height: 1;
+	color: #fff;
+	font-size: .95em;
+	position: relative;
+	outline: none;
+	cursor: pointer;
+	white-space: nowrap;
+	font-weight: bold;
+	-webkit-appearance: none;
+}
+ .navbutton::-moz-focus-inner {
+	/* Thanks FF */
+    border: none;
+}
+ *.navbutton .lt-ie9 & {
+ width: auto;
+ overflow: visible;
+}
+*.navbutton:hover {
+	color: #fff;
+	background: #5f614b;
+	border-color: #5f614b;
+}
+*.navbutton:active {
+	color: #fff;
+	background: #aaa;
+	border-color: #000;
+}
+#footertext {
+	font-size:.9em;
+	line-height: 1.6;
+	margin-top:20px;
+}
+
+/*	Responsive	*/
+ @media screen and (max-width: 650px) {
+body>header {
+	height: 70px;
+	position: fixed;
+	width: 100%;
+	height: 45px;
+	min-height: 45px;
+	background: #224f74;
+	z-index: 1000;
+}
+body>header:after {
+	display: none;
+}
+body>header>section {
+	background: none;
+	display: block;
+}
+body>header h1 a {
+	padding: none;
+	margin: 0 auto;
+	padding: 7px 0 0 0;
+	width: 125px;
+}
+body>header h1 a img {
+	height: 30px;
+	width: 125px;
+}
+body>header h1 a #logoblue {
+	display: none;
+}
+body>header h1 a #logowhite {
+	display: block;
+}
+article header h1 {
+	margin-top: 50px;
+}
+#iframecontent{
+	height: 325px;
+}
+article aside {
+	clear: both;
+	margin: .5em 0;
+	background: #eee;
+	float: none;
+	width: 100%;
+}
+article aside header {
+	padding: 10px .5em 10px 1em;
+}
+article aside section {
+	padding: .5em .5em .5em 1em;
+}
+article #contentbody {
+	width: 95%;
+}
+article ul {
+	padding: 0;
+	list-style-type: none;
+}
+article li {
+	padding: .5em 0;
+}
+}
+</style> 
+  <!--[if IE 8]>
+<style>
+#header {
+	width: 1024px;
+	margin: 0 auto;
+    padding: 0;
+    overflow:hidden;
+}
+#logoholder{
+    overflow:hidden;
+        padding:0 50px;
+        margin:20px 0;
+
+}
+#thelogo{padding:0 0 0 0px;margin:0;}
+#articlebody {
+	padding: 0;
+    width:924px;
+    margin: 0 auto;
+	padding:30px 50px 50px 50px;
+}
+article aside {
+	clear: both;
+	margin: -50px .5em 0 0;
+	float: none;
+	width: 100%;
+    max-width: 60%;
+}
+article aside header {
+	padding: .5em 3%;
+}
+article aside .section {
+	padding: .5em 3%;
+}
+article #contentbody {
+	max-width: 60%;
+    min-width:320px;
+	width: 100%;
+	float: none;
+}
+#iframecontent{
+	height: 325px;
+}
+</style>
+<![endif]--> 
+  <script>
+	       var g_curCard = null; 		// initial displayed card
+		 var g_cardContainer = null; 	// div that holds all the authentication cards
+		 var g_curSubtab = null; 	// subtab currently displayed
+		 var g_curTab = null; 		// tab currently displayed
+
+	    	 var menuItem = 0;
+             function showHide(i)
+             {
+                 document.getElementById('menu1').style.display='none';
+                 document.getElementById('menu2').style.display='none';
+                 document.getElementById('submenu1').style.display='none';
+                 document.getElementById('submenu2').style.display='none';
+                 document.getElementById('menu' + i).style.display='block';
+                 document.getElementById('submenu' + i).style.display='block';
+		     if (i == 1)
+		         switchContentPage("/nidp/jsp/content.jsp?sid=0");
+		     else 
+		         switchContentPage("/nidp/jsp/IdentityEditor.jsp?sid=0");
+             }
+
+		 function switchContentPage(newSrc)
+		 {
+	  	     parent.document.getElementById("content").src = newSrc;
+		 }  
+
+		 function onloadhandler()
+		 {
+		     g_cardContainer = document.getElementById("cardcontainer");
+		     g_curSubtab	   = document.getElementById("loginsubtab");
+		     g_curTab        = document.getElementById("authtab");
+		     g_curCard       = document.getElementById("selectedCard0");
+		 }	
+
+	 	 function showhideTab(divid)
+		 {
+		     var element1 = document.getElementById(divid);	
+			
+		     if(element1.style.display == "none")
+		     {
+		         element1.style.display = "block";
+			   g_curTab.style.display = "none";
+					
+		         g_curTab = element1;
+		     }
+		 }
+
+		 function subtabchange(divid)
+	 	 {
+		     var element1 = document.getElementById(divid);
+		     var element2 = g_curSubtab;
+		     element1.className = "selx";
+		     if (element1.id != element2.id)
+		     {
+		         element2.className = "unselx";
+		     }
+		     g_curSubtab = element1;	
+		 }
+			
+		 function showHelp()
+	 	 {
+		     var helpURL = "login.html";
+                 if (g_curSubtab.id == "fedsubtab")
+		         helpURL = "/nidp/html/help/en/federations.html";
+
+                 else if (g_curSubtab.id == "myprofile")
+			   helpURL = "/nidp/html/help/en/myprofile.html";
+
+                 else if (g_curSubtab.id == "sharing")
+ 			   helpURL = "/nidp/html/help/en/sharing.html";
+
+                 else if (g_curSubtab.id == "loginsubtab")
+			   helpURL = "/nidp/html/help/en/userlogin.html";
+
+                 else if (g_curSubtab.id == "newcardsubtab")
+			   helpURL = "/nidp/html/help/en/newcard.html";
+
+               else if (g_curSubtab.id == "logTicketsubtab")
+    			   helpURL = "/nidp/html/help/en/logticket.html";
+
+    		     var w;
+    		     w = window.open(helpURL, "nidsPopupHelp", "toolbar=no,location=no,directories=no,menubar=no,scrollbars=yes,resizable=yes,width=500,height=500");
+    		     if (w != null)
+    		     {
+        		  w.focus();
+    		     }
+		 }
+ document.createElement('header');
+ document.createElement('hgroup');
+ document.createElement('nav');
+ document.createElement('menu');
+ document.createElement('section');
+ document.createElement('article');
+ document.createElement('aside');
+ document.createElement('footer');		 
+        </script> 
+ </head> 
+ <body onload="onloadhandler()"> 
+  <div id="header"> 
+   <div id="logoholder"> 
+    <a href="http://www.drew.edu"><img id="thelogo" src="https://www.drew.edu/wp-content/themes/Drew-v8-r/images/drew.png"></a> 
+   </div> 
+  </div> 
+  <article> 
+   <div id="articlebody"> 
+    <h1>uLogin</h1> 
+    <table id="contentbody" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;"> 
+     <tbody>
+      <tr> 
+       <td> 
+        <table cellspacing="5" width="100%"> 
+         <tbody>
+          <tr> 
+           <td> 
+            <div id="mcontent"> 
+             <div id="statustab" style="display: block;"> 
+              <table class="NLtab" width="99%" border="0" cellspacing="0" cellpadding="0"> 
+               <tbody>
+                <tr> 
+                 <td width="5"><img src="/nidp/images/spacer.gif" height="1" width="5" border="0"></td> 
+                 <td class="tab1s"><span class="tab1s">Service Provider Authentication</span></td> 
+                 <td width="100%">&nbsp;</td> 
+                </tr> 
+                <tr height="5" class="subtab"> 
+                 <td class="tab2u" colspan="11" height="5" style="background-color: #fff"><img src="/nidp/images/1px_spacer.gif" alt="" height="5" width="20" border="0"><span id="loginsubtab" class="selx"><a href="#">User Login</a></span> &nbsp;|&nbsp;<span id="fedsubtab" class="unselx"><a href="/nidp/saml2/sso?option=credential&amp;Cancel.x=true&amp;sid=0">Cancel</a></span> </td> 
+                </tr> 
+               </tbody>
+              </table> 
+             </div> 
+            </div> </td> 
+          </tr> 
+         </tbody>
+        </table> </td> 
+      </tr> 
+      <tr> 
+       <td>
+        <table cellspacing="0" border="0" width="100%" style="border-collapse: collapse;"> 
+         <tbody>
+          <tr> 
+           <td><iframe scrolling="no" id="iframecontent" src="/nidp/jsp/content.jsp?sid=0&amp;id=DuoProxyADFS&amp;sid=0&amp;SAMLRequest=fVLJTsMwEL0j8Q%2BW79laISGrCSqgikoFIppy4OY609TCS%2FA4Dfw9blpEkYDr85u3jGdy9a4V2YFDaU1OszilBIywtTRNTlfVLLqkV8X52QS5Vi2bdn5rnuCtA%2FQkTBpkw0NOO2eY5SiRGa4BmRdsOb1fsFGcstZZb4VVlMxvc7q1a7VZt5pr%2B8oDDNy2BvQrr7laC9lAu21000pKnr9ijfax5ogdzA16bnyA0uwiSsdROqrSMRuN2Th7oaQ8Ol1Lc2jwX6z1gYTsrqrKqHxcVoPATtbgHgI7p421jYJYWL23Lzmi3AV4wxUCJVNEcD4EvLEGOw1uCW4nBayeFqGl9y2yJOn7Pv6WSXhSO%2BhjqLuEC6TFsFc2VHMnC%2F0%2FOP8ypsWv0pPkRLU4ft2%2B0fy2tEqKDzJVyvY3DrgPdbzrQpuZdZr7v42zOBsQWUebgco6gy0IuZFQU5IUB9efNxIu5xM%3D&amp;RelayState=https%3A%2F%2Fwww.google.com%2Fa%2Fdrew.edu%2FServiceLogin%3Fservice%3Dmail%26passive%3Dtrue%26rm%3Dfalse%26continue%3Dhttps%253A%252F%252Fmail.google.com%252Fa%252Fdrew.edu%252F%26ss%3D1%26ltmpl%3Ddefault%26ltmplcache%3D2%26emr%3D1" frameborder="0"></iframe></td> 
+          </tr> 
+         </tbody>
+        </table></td> 
+      </tr> 
+     </tbody>
+    </table> 
+    <aside> 
+     <header>
+      About uLogin Accounts
+     </header> 
+     <div class="section"> 
+      <p>uLogin accounts are available for all Drew students, faculty, staff, and alumni. If you are a new member of the Drew community, please activate your account online before use: </p>
+      <ul> 
+       <li><a href="https://www.drew.edu/activate">Activate my account</a> - Students, Faculty, Staff, and Affiliates.</li> 
+       <li><a href="https://apply.drew.edu/alumni-account/">Activate my account</a> - Alumni</li> 
+       <li><a href="http://www.drew.edu/accounts/">Learn more about uLogin accounts</a></li>
+      </ul>
+      <p></p> 
+      <h3>Forgot your password?</h3> 
+      <p>If you have forgotten your password and have set up your security questions, you may <a href="https://cas.drew.edu/pwm/public/ForgottenPassword">reset your password online</a>, otherwise please contact the UT Service Center at 973-408-HELP (4357) for assistance.</p> 
+     </div> 
+    </aside> 
+    <div style="clear:both;"></div> 
+    <p id="footertext">uLogin is a service of University Technology. Questions/Comments? Email <a href="mailto:helpdesk@drew.edu">helpdesk@drew.edu</a>.</p> 
+   </div> 
+  </article>   
+ </body>
+</html>

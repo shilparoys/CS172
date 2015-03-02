@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE"> 
+  <meta property="fb:admins" content="100007041548570"> 
+  <title>StudentLoans.gov</title> 
+  <link rel="icon" href="images/doed.ico" type="image/x-icon"> 
+  <script type="text/javascript" src="dwr/interface/FieldValidator.js"></script> 
+  <script type="text/javascript" src="dwr/engine.js"></script> 
+  <script type="text/javascript" src="js/jquery/jquery-1.7.1.min.js"></script> 
+  <!-- By default this will load -  we don't want to load this JS for parent plus applications until that accordion is retrofit to work with this version --> 
+  <script type="text/javascript" src="js/jquery/jquery-ui-1.8.16.custom.min.js"></script> 
+  <script type="text/javascript" src="js/jquery/jquery.numeric.js"></script> 
+  <script type="text/javascript" src="js/jquery/jquery.tools.min.js"></script> 
+  <script type="text/javascript" src="js/jquery/popup.js"></script> 
+  <script type="text/javascript" src="js/jquery/jquery.livequery.js"></script> 
+  <script type="text/javascript" src="js/dialog.js"></script> 
+  <script type="text/javascript" src="js/mydl.js"></script> 
+  <script type="text/javascript" src="js/scrollTo.js"></script> 
+  <script type="text/javascript" src="js/divSelect.js"></script> 
+  <script type="text/javascript" src="js/tooltip.js"></script> 
+  <script type="text/javascript" src="dwr/interface/TimestampHandler.js"></script> 
+  <script>
+	dwr.engine.defaultErrorHandler = function(message, ex) {}//dwr will default an annoying alert - just ignore it
+	
+	function timeoutMessageText(){ return "Your session will end in: <div style='padding-top:10px; text-align:center;' class='timer'> <span class='minutesAnd'><span class='minutes'></span>&nbsp;minutes and</span> <span class='seconds'></span>&nbsp;seconds </div>"; }
+	function loggedInMessage(){ return "Stay Signed In"; }
+	function loggedOutMessage(){ return "Log Out"; }
+</script> 
+  <script type="text/javascript" src="resources/web/ui/js/timeout.js"></script> 
+  <!-- START OF SmartSource Data Collector TAG --> 
+  <!-- Copyright (c) 1996-2007 WebTrends Inc.  All rights reserved. --> 
+  <!-- Version: 1.1.0 --> 
+  <!-- Created: 12/17/2007--> 
+  <!-- dynamically load js file depending on environment --> 
+  <script type="text/javascript">
+	var url = location.href;
+	var jsrc="";
+	if(url.substring(0,15) == "https://student" || url.substring(0,15) == "https://www.stu"){
+		jsrc="js/webtrends_studentloans.js";
+		
+	} else{ jsrc="js/webtrends_studentloans_test.js";}
+	
+	function loadjsfile(filename){
+	  var fileref = document.createElement("script");
+	  fileref.setAttribute("type","text/javascript");
+	  fileref.setAttribute("src", filename);
+	  document.getElementsByTagName("head")[0].appendChild(fileref);
+	}
+	
+	loadjsfile(jsrc); //dynamically load and add this .js file  
+	
+	function notifyError(element,after){
+		var notifier = $(".notify_error"); 
+		var notifierExists = notifier.length;
+		
+	 	if(!notifierExists){  		
+	 		if(shouldNotify()){  		
+	 			var errorDiv = buildErrorDiv();
+	 	  		if(!after){
+	 				var html = element.html();
+	 				element.prepend(errorDiv)[0].focus();
+	 	  		}else{
+	  			element.append(errorDiv)[0].focus();
+	 	  		}
+	 		}
+	 	 }else if(notifierExists && !shouldNotify()){
+	 		notifier.remove();
+	 	 }
+	 }
+	 
+	 function shouldNotify(){	   
+	  return $(".tooltip:visible").length || $("span[id$='.errors']").length;
+	 }
+	 
+	 function notificationShowing(){
+	  return $(".notify_error").length > 0;	
+	 }
+	 
+	 function buildErrorDiv(){
+	  return  $("<div class='notify_error'>").html("There are one or more errors on this page");
+	 }
+	
+	 function yesButtonText() {
+	  return "Yes";
+	 }
+	
+	 function noButtonText() {
+	  return "No";
+	 }
+	 
+	 function deletSchoolMessageText() {
+	 	  return "Are you sure you want to delete <school_name>?";
+	 }
+	 
+	 function getLoanAmountReqText() {
+	 	  return "Loan Amount Requested:";
+	 }
+	 
+	 function getTotalLoanAmountReqText() {
+	 	  return "Total Loan Amount Requested:";
+	 }
+	
+	 function getModifyLoanAmountText() {
+	 	  return "I would like to specify a loan amount.";
+	 }
+	
+	 function getModifyLoanAmountTextTotal() {
+	 	  return "I would like to specify a new total loan amount.";
+	 }
+	
+	 function getPleaseSelectText() {
+	  return "-- Select --";
+	 }
+	 
+	 function getSelectStudentText() {
+	 	  return "-- Select Student --";
+	 }
+	 
+	 function getEmailAltText() {
+	 	  return 'Because you receive correspondence electronically, an email address is required.  If you prefer to receive correspondence through the U.S. Postal Service, return to "My Preferences" at https://studentloans.gov/myDirectLoan/preferences.action to change your option.';
+	 }
+	 
+	 function getHeaderCollapsedAltText() {
+	 	  return 'Collapse Section Button. Press enter twice to open this section.';
+	 }
+	 
+	 function getHeaderExpandedAltText() {
+	 	  return 'Expand Section Button. Press enter twice to access the content in this section.';
+	 }
+	 
+	 function getCheckMarkAltText() {
+	 	  return 'Checkmark';
+	 }
+	 
+	 function getConsolidatedWarning() {
+	 	  return 'You are choosing to remove this loan from the &#39;Loans You Want to Consolidate&#39; section.  Are you sure you want to do this?';
+	 }
+	 
+	 function getNotConsolidatedWarning() {
+	 	  return '<p>You are choosing to add this loan to &#39;Loans You Want to Consolidate&#39; section.</p>You may <b>not</b> consolidate loans that are<br/><ul><li>Already held by the U.S. Department of Education; </li><li>In default; </li><li>Loans you are seeking to have discharged in bankruptcy through an adversary proceeding; or</li><li>Loans in an &#39;in-school&#39; status.</li></ul>Are you sure you want to do this?';
+	 }
+	 
+	 function getConsolidate() {
+	 	  return 'Consolidate This Loan';
+	 }	 
+	 
+	 function getDoNotConsolidate() {
+	 	  return 'Do Not Consolidate This Loan';
+	 }
+	 
+	 function getUpdateAltText() {
+		 return 'Click here to update';
+	 }
+	 
+	 function getToggleTableViewAll() {
+		 return '<b>Displaying <span>' + arguments[0] + '</span> of  ' + arguments[1] + ' loans.</b> Click <a href="#">here</a> to view all of your student loans.';
+	 }
+	 
+	 function getToggleTableViewFewer() {
+		 return '<b>Displaying <span>' + arguments[0] + '</span> of  ' + arguments[1] + ' loans.</b> Click <a href="#">here</a> to view fewer of your student loans.';
+	 }
+	 
+	 function getExpandIconAltText() {
+		 return 'Expand Icon';
+	 }
+	 
+	 function getCollapseIconAltText() {
+		 return 'Collapse Icon';
+	 }
+	 
+	 //this function selects the proper spring message to return for error icon alt text
+	 //should only be called when the error icon alt text contains an <a href="...">
+	 //NOTE: additional cases will need to be added to the switch statement in the future
+	 function getErrorAltText(pathName) {
+	 	  pathName = pathName.substring(pathName.lastIndexOf('.') + 1);
+	 	  
+	 	  switch(pathName) {
+	 	  	case 'emailAddress':
+	 	  		return getEmailAltText();
+	 	  		break;
+	 		default:
+	 			alert('get____AltText() function not implemented');
+	 	  		return;
+	 	  }
+	 }
+</script> 
+  <link rel="stylesheet" href="css/financialAwarenessCounseling/redmond/jquery-ui-1.8.16.custom.css" type="text/css"> 
+  <link rel="stylesheet" href="css/dl.css" type="text/css"> 
+  <link rel="stylesheet" href="css/effects.css" type="text/css"> 
+  <link rel="stylesheet" href="css/multilineSelect.css" type="text/css"> 
+  <!--[if lte IE 8]>
+	<link rel="stylesheet" href="css/internetExplorerOverrides.css" type="text/css" />
+<![endif]--> 
+  <!--[if IE 9]>
+	<link rel="stylesheet" href="css/internetExplorer9Overrides.css" type="text/css" />
+<![endif]--> 
+ </head> 
+ <body class="homepage en"> 
+  <div id="empty_body" style="float: left;"> 
+   <script>
+	var timeout    = 5000;
+	var closetimer = 0;
+	var dropMenu = 0;
+	
+	function dropMenuOpen(e) {  
+		dropMenuCancelTimer(); 
+		dropMenuClose();
+		
+		dropMenu = $(this).find('ul').css("visibility","visible"); 
+	}
+	
+	
+	function dropMenuClose(e)
+	{
+		dropMenuCloseWithKey();
+	}
+	
+	function dropMenuTime()
+	{
+		closetimer = window.setTimeout(dropMenuClose, timeout);
+	}
+	
+	function dropMenuCancelTimer()
+	{  if(closetimer)
+	   {  window.clearTimeout(closetimer);
+	      closetimer = null;}}
+	
+	$(document).ready(function(){
+		$('#drop_menu > li').bind('mouseover', dropMenuOpen);
+		$('#drop_menu > li').bind('mouseout', dropMenuClose);
+				
+	});
+	
+	document.onclick = dropMenuClose;
+	
+	
+	function dropMenuOpenWithKey(event, theID){	
+		
+			dropMenuCancelTimer(); 
+			dropMenuClose();
+			var thisID='ID_'+theID;
+			dropMenuCloseWithKey();
+			document.getElementById(thisID).style.visibility='visible';	
+			dropMenu = $(this).find('ul').css("visibility","visible");
+
+			$("#"+thisID).find("a").css("height","auto");
+	}
+	
+	function dropMenuCloseWithKey(){
+		document.getElementById("ID_under").style.visibility='hidden';
+		document.getElementById("ID_before").style.visibility='hidden';
+		document.getElementById("ID_follow").style.visibility='hidden';
+	}
+</script> 
+   <div class="header"> 
+    <a href="#content" alt="skip navigation" style="float: left">&nbsp;</a> 
+    <table border="0" cellpadding="0" cellspacing="0" id="page_header" style="height:83px;"> 
+     <tbody>
+      <tr> 
+       <td valign="bottom"> <a href="index.action" alt="StudentLoans.gov Home Page"><img src="images/page/main_header_background.gif" alt="StudentLoans.gov Home Page" style="position: absolute; top: 0; left: 0;"></a> 
+        <div class="localeContainer"> 
+         <span class="currLocale"> English</span> 
+         <span class="locales">|</span> 
+         <a class="locales" id="es-es" href="#">Español</a> 
+        </div> </td> 
+      </tr> 
+     </tbody>
+    </table> 
+    <div id="menu"> 
+     <ul id="drop_menu"> 
+      <li style="width: 115px;"><a href="index.action?bypassSigninButton=true" onfocus="dropMenuCloseWithKey()"> <img src="images/page/tab_myaccount.gif" alt="My Account"></a></li> 
+      <li style="width: 120px;"><a href="javascript:void(0)" onfocus="dropMenuOpenWithKey(event,'under')"> <img src="images/page/tab_learnmore.gif" alt="Learn More" id="learn"></a> 
+       <ul id="ID_under" style="z-index:5"> 
+        <li><a id="learn" href="http://studentaid.ed.gov/PORTALSWebApp/students/english/index.jsp" target="new">Find Information about Student Aid Programs</a></li> 
+        <li><a id="learn" href="http://studentaid.ed.gov/About/announcements/interest-rate" target="new">Interest Rate for New Direct Subsidized Loans</a></li> 
+        <li><a id="learn" href="http://www2.ed.gov/offices/OSFAP/DirectLoan/index.html" target="new">Direct Loan Overview</a></li> 
+        <li><a id="learn" href="whatYouNeed.action?page=siteReq">What You Need</a></li> 
+        <li><a id="learn" href="whatToExpect.action?page=expectCounseling">What To Expect</a></li> 
+        <li><a id="learn" href="glossary.action">Glossary</a></li> 
+       </ul> </li> 
+      <li style="width: 160px;"><a href="javascript:void(0)" onfocus="dropMenuOpenWithKey(event,'before')"> <img src="images/page/tab_toolsandresources.gif" alt="Tools and Resources" id="tools"></a> 
+       <ul id="ID_before" style="z-index:5"> 
+        <li><a id="tools" href="http://www.pin.ed.gov/PINWebApp/pinindex.jsp" target="new">Apply for PIN</a></li> 
+        <li><a id="tools" href="http://www.fafsa.ed.gov" target="new">FAFSA<sup>®</sup></a></li> 
+        <li><a id="tools" href="counselingInstructions.action"></a>Counseling Demo</li> 
+        <li><a id="tools" href="consolidationPaper.action">Direct Consolidation Loan Application (paper)</a></li> 
+        <li><a id="tools" href="http://www.nslds.ed.gov/nslds_SA/" target="new">My Financial Aid History</a></li> 
+        <li><a class="large" href="https://teach-ats.ed.gov/ats/index.action" target="new">TEACH Grant-Initial and Subsequent Counseling</a></li> 
+        <li><a class="large" href="https://teach-ats.ed.gov/ats/index.action" target="new">TEACH Grant-Agreement To Serve (ATS)</a></li> 
+        <li><a class="large" href="http://www.nslds.ed.gov/nslds_SA/SaEcWelcome.do" target="new">TEACH Grant-Exit Counseling</a></li> 
+       </ul> </li> 
+      <li style="width: 160px;"><a href="javascript:void(0)" onfocus="dropMenuOpenWithKey(event,'follow')"> <img src="images/page/tab_managingrepayment.gif" alt="Managing Repayment" id="managing"></a> 
+       <ul id="ID_follow" style="z-index:5"> 
+        <li><a id="managing" href="http://studentaid.ed.gov/PORTALSWebApp/students/english/repaying.jsp" target="new">Repaying Your Loans</a></li> 
+        <li><a id="managing" href="http://studentaid.gov/repay-loans/understand/plans/ " target="new">Repayment Plans &amp; Calculators</a></li> 
+        <li><a id="managing" href="http://studentaid.ed.gov/repay-loans/default/avoid" target="new">Trouble Making Payments?</a></li> 
+        <li><a id="managing" href="http://studentaid.ed.gov/PORTALSWebApp/students/english/discharges.jsp?tab=repaying/" target="new">Loan Discharge</a></li> 
+        <li><a id="managing" href="http://studentaid.ed.gov/PORTALSWebApp/students/english/PSF.jsp" target="new">Public Service Loan Forgiveness</a></li> 
+        <li><a id="managing" href="http://studentaid.ed.gov/PORTALSWebApp/students/english/cancelstaff.jsp?tab=repaying/" target="new">Teacher Loan Forgiveness</a></li> 
+        <li><a id="managing" href="additionalInformation.action">Loan Servicers</a></li> 
+       </ul> </li> 
+      <li style="width: 143px;"><a href="faqs.action" onfocus="dropMenuCloseWithKey()"> <img src="images/page/tab_faqs.gif" alt="FAQs"></a></li> 
+      <li style="width: 97px;" id="try_hide"><a href="contactUs.action" onfocus="dropMenuCloseWithKey()"> <img src="images/page/tab_contact.gif" alt="Contact Us"></a></li> 
+     </ul> 
+    </div> 
+    <!--  dont add sub menu, but try to fill the gap between the  drop down menu and the main header menu (only for IE6) --> 
+    <div id="sub_menu" style="height:1px;"></div> 
+   </div> 
+   <script>
+	$(".locales").click(function(event){
+		event.stopPropagation();
+		changeLocale(this.id);
+	});
+
+	function logoutMessage(){
+		return "Are you sure you want to log out?";	
+	}
+
+	String.prototype.endsWith = function(str)
+	{return (this.match(str+"$")==str)}
+</script> 
+   <form id="credentials" action="/myDirectLoan/index.action" method="post"> 
+    <div class="empty_inner_background" style="padding-left: 58px; padding-top: 25px;"> 
+     <div style="width: 70%; padding-left: 35px; font-size: 13px; font-weight:bold;font-family:verdana;color:red;width:800px;word-wrap:break-word;"> 
+     </div> 
+     <div class="error_div" style="width: 93%; padding-left:35px; font-size:13px; font-weight:bold;font-family:verdana;width:800px;"> 
+     </div> 
+     <div class="manage_area_login" style="margin-left: 2px; display:none"> 
+      <div class="module signin"> 
+       <h2><img src="images/home/home_signin_header.gif" alt="Sign In"></h2> 
+       <div class="content"> 
+        <div class="leftSide"> 
+         <span style="display:none"> <label style="display:none" for="monthInput">Month</label> <label style="display:none" for="dayInput">Day</label> <label style="display:none" for="yearInput">Year</label> </span>
+         <table id="index_form" class="form" cellpadding="0" cellspacing="0" style="margin-left: -30px;"> 
+          <tbody>
+           <tr class="validation_row" id="ssnId-row"> 
+            <th> <label for="ssnId" id="ssnIdTextLabel" class="wrappedLabel"> Social Security Number </label> </th> 
+            <td class=""> <input id="ssnId" name="ssn" class="loginInputs" type="password" value="" size="10" maxlength="9" autocomplete="off"> </td> 
+            <td class="error"> <span class="error_span" id="ssnId-wrapper"> </span> </td> 
+           </tr> 
+           <script>
+	var input = assignFieldValidation(
+				{
+ 					bindingFunction:'blur',
+					inputId:'ssnId',
+					command: 'credentials',
+					flowName:  '',
+					flowKey: '',
+					displayError: '',
+					errorTarget: '',
+					locale: 'en-us'
+				});
+</script> 
+           <tr class="validation_row" id="lastNameId-row"> 
+            <th> <label for="lastNameId" id="lastNameIdTextLabel" class="wrappedLabel"> First Two (2) Characters<br>of Last Name </label> </th> 
+            <td class=""> <input id="lastNameId" name="firstTwoCharsLastName" class="loginInputs" showpassword="false" value="" size="10" maxlength="2" autocomplete="off"> </td> 
+            <td class="error"> <span class="error_span" id="lastNameId-wrapper"> </span> </td> 
+           </tr> 
+           <script>
+	var input = assignFieldValidation(
+				{
+ 					bindingFunction:'blur',
+					inputId:'lastNameId',
+					command: 'credentials',
+					flowName:  '',
+					flowKey: '',
+					displayError: '',
+					errorTarget: '',
+					locale: 'en-us'
+				});
+</script> 
+           <tr id="dob" class="validation_row"> 
+            <th> <span id="dobTextLabel" class="wrappedLabel"> Date of Birth<br>(mm/dd/yyyy) </span> </th>  
+            <td class=""> <input id="monthInput" name="dob.month" style="width:14px;margin-left:0px;" title="Month" class="inputs" textjump="true" type="password" value="" size="20" maxlength="2" autocomplete="off"> / <input id="dayInput" name="dob.day" style="width:14px" title="Day" class="inputs" type="password" value="" size="20" maxlength="2" autocomplete="off"> / <input id="yearInput" name="dob.year" style="width:27px" title="Year" class="inputs" type="password" value="" size="20" maxlength="4" autocomplete="off"> </td> 
+            <td class="error"> <span class="error_span" id="dob-wrapper"> </span> </td> 
+           </tr> 
+           <script type="text/javascript" src="js/jquery.autotab-1.1b.js"></script> 
+           <script>
+	var input = assignFieldValidation(
+			{
+				bindingFunction:"blur", 
+				onBlurId: "yearInput",
+				inputId:'dob',
+				command: 'credentials',
+				flowName:  '',
+				flowKey: '',
+				displayError: '',
+				errorTarget: '',
+				locale: 'en-us',
+				ignoreLabel: true
+			});
+</script> 
+           <script type="text/javascript">
+
+$(document).ready(function() {
+
+    $('#monthInput, #dayInput, #yearInput').autotab_magic().autotab_filter('numeric');
+
+});
+
+</script> 
+           <tr class="validation_row" id="pinId-row"> 
+            <th> <label for="pinId" id="pinIdTextLabel" class="wrappedLabel"> PIN </label> </th> 
+            <td class=""> <input id="pinId" name="pin" class="loginInputs" type="password" value="" size="10" maxlength="6" autocomplete="off"> </td> 
+            <td class="error"> <span class="error_span" id="pinId-wrapper"> </span> </td> 
+           </tr> 
+           <script>
+	var input = assignFieldValidation(
+				{
+ 					bindingFunction:'blur',
+					inputId:'pinId',
+					command: 'credentials',
+					flowName:  '',
+					flowKey: '',
+					displayError: '',
+					errorTarget: '',
+					locale: 'en-us'
+				});
+</script> 
+          </tbody>
+         </table> 
+         <div style="width:245px;">
+          <input style="float:right;" type="image" id="Sign In" name="Sign In" value="submit" src="images/home/but_signin.gif" alt="Sign In">
+         </div> 
+         <p id="no_pin_div" class="no_pin"> If you do not have a Federal Student Aid PIN, visit <a href="http://www.pin.ed.gov/PINWebApp/pinindex.jsp" target="new" style="color:#006699; text-decoration:none;">www.pin.ed.gov</a>. </p> 
+        </div> 
+        <div class="rightSide"> 
+         <div id="text"> 
+          <p>Anyone signing in to this Web site must use his/her own Federal Student Aid PIN to sign in and complete the following processes:</p>
+          <ul>
+           <li>Counseling (Entrance, Financial Awareness, Exit)</li>
+           <li>Master Promissory Notes (MPNs)</li>
+           <li>Direct PLUS Loan Requests</li>
+           <li>Direct PLUS Loan Endorser Addendums</li>
+           <li>Direct Consolidation Loan Applications</li>
+           <li>Income-Based (IBR)/Pay As You Earn/Income-Contingent (ICR) Repayment Plan Requests</li>
+           <li>Co-sign Spouse's Income-Driven Repayment Plan Request</li>
+           <li>Repayment Estimator</li>
+          </ul>
+          <p><b>Use of another person's PIN constitutes fraud. Use only your own PIN information.</b></p> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="manage_area" style="z-index:1; display: "> 
+      <div class="module" style="width: 305px; float: left; padding-left: 4px;"> 
+       <h2 style="height: 27px;"><img src="images/home/bar_managemydl.gif" alt="Manage My Direct Loan(s)"></h2> 
+       <div class="content" id="signInBox"> 
+        <div class="but_sign_in"> 
+         <a href="#" onclick="change_divs();" title="Access loan tools and resources"> <img src="images/home/but_sign_in_new2.gif" alt="Sign In"> </a> 
+        </div> 
+        <p> Use your PIN to sign in <br> <a href="whySignIn.action" title="Sign in to complete activities that contain privacy information"> <u>Why am I signing in?</u> </a> </p> 
+        <div class="homePageBullets"> 
+         <ul> 
+          <li> Complete Counseling <br> <p id="counselingSub" style="font-weight:normal;">(Entrance, Financial Awareness, and Exit)</p> </li> 
+          <li> Sign Master Promissory Note </li> 
+          <li> Complete PLUS Request Process </li> 
+          <li> Endorse Direct PLUS Loan </li> 
+          <li> Income-Driven Repayment Plan Request </li> 
+          <li> Direct Consolidation Loan Application </li> 
+         </ul> 
+         <div class="bulletFooter"> 
+          <i>Visit the <a href="http://www.pin.ed.gov/PINWebApp/pinindex.jsp" target="new" style="color:#006699; text-decoration:none;">PIN site</a> if you are a new user or have forgotten your PIN.</i> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+      <img src="images/home/bar_mainimage.jpg" alt="StudentLoans.gov. This site is your source for information from the U.S. Department of Education about how to manage your federal student loans." style="float: left; margin: 9px 0px 0px 12px;"> 
+     </div> 
+     <a name="nav"></a> 
+     <div class="learn_bar"> 
+      <img src="images/home/bar_learn_more_header.gif" alt="Learn More"> 
+      <div class="homepage_bar_contents"> 
+       <div class="index_links"> 
+        <ul class="index_bullets"> 
+         <li> <a class="large" href="http://studentaid.ed.gov/PORTALSWebApp/students/english/index.jsp" target="new" title="Find information about Federal Student Aid Programs"> Find Information about Student Aid Programs </a> </li> 
+         <li> <a class="large" href="http://studentaid.ed.gov/About/announcements/interest-rate" target="new" title="Interest Rate for New Direct Subsidized Loans"> Interest Rate for New Direct Subsidized Loans </a> </li> 
+         <li> <a class="large" href="http://studentaid.ed.gov/about/announcements/sequestration" title="Impact of Sequestration on Federal Student Aid Programs" target="_blank"> Impact of Sequestration on Federal Student Aid Programs </a> </li> 
+         <li> <a class="large" href="http://www2.ed.gov/offices/OSFAP/DirectLoan/index.html" target="new" title="Information about the Direct Loan Program"> Direct Loan Overview </a> </li> 
+         <li> <a class="large" href="whatYouNeed.action?page=siteReq" title="Prepare for the Direct Loan process"> What You Need </a> </li> 
+         <li> <a class="large" href="whatToExpect.action?page=expectCounseling" title="Learn about the Direct Loan activities"> What To Expect </a> </li> 
+         <li style="border: none;"> <a class="large" href="glossary.action" title="Financial Literacy Terms"> Glossary </a> </li> 
+        </ul> 
+       </div> 
+       <div class="bar-footer"></div> 
+      </div> 
+     </div> 
+     <div class="tools_bar"> 
+      <img src="images/home/bar_tools_header.gif" alt="Tools and Resources"> 
+      <div class="homepage_bar_contents"> 
+       <div class="index_links"> 
+        <ul class="index_bullets"> 
+         <li> <a class="large" href="http://www.pin.ed.gov/PINWebApp/pinindex.jsp" target="new" title="For students and parents who want to apply for a Federal Student Aid PIN"> Apply for PIN </a> </li> 
+         <li> <a class="large" href="http://www.fafsa.ed.gov" target="new" title="Complete a Free Application for Federal Student Loan"> FAFSA<sup>®</sup> </a> </li> 
+         <li> <a class="large" href="counselingInstructions.action" title="Counseling Demo">Counseling Demo</a> </li> 
+         <li> <a class="large" href="consolidationPaper.action" title=""> Direct Consolidation Loan Application (paper) </a> </li> 
+         <li> <a class="large" href="http://www.nslds.ed.gov/nslds_SA/" target="new" title="Access to your Title IV loans and/or grant data"> My Financial Aid History </a> </li> 
+         <li style="border: none;"> <a class="large"> TEACH Grant </a> 
+          <ul> 
+           <li> <a class="large" href="https://teach-ats.ed.gov/ats/index.action" target="new" title="Initial and Subsequent Counseling"> Initial and Subsequent Counseling </a> </li> 
+           <li> <a class="large" href="https://teach-ats.ed.gov/ats/index.action" target="new" title="Agreement To Serve (ATS)"> Agreement To Serve (ATS) </a> </li> 
+           <li> <a class="large" href="http://www.nslds.ed.gov/nslds_SA/SaEcWelcome.do" target="new" title="Exit Counseling"> Exit Counseling </a> </li> 
+          </ul> </li> 
+        </ul> 
+       </div> 
+       <div class="bar-footer"> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="repay_bar"> 
+      <img src="images/home/bar_repay_header.gif" alt="Managing Repayment"> 
+      <div class="homepage_bar_contents"> 
+       <div class="index_links"> 
+        <ul class="index_bullets"> 
+         <li> <a class="large" href="http://studentaid.ed.gov/PORTALSWebApp/students/english/repaying.jsp" target="new" title="What you need to know about repaying student loans"> Repaying Your Loans </a> </li> 
+         <li> <a class="large" href="http://studentaid.gov/repay-loans/understand/plans/ " target="new" title="Learn about the different plans you can choose from to repay your student loan"> Repayment Plans &amp; Calculators </a> </li> 
+         <li> <a class="large" href="http://studentaid.ed.gov/repay-loans/default/avoid" target="new" title="What to do if you have trouble making your education loan payments"> Trouble Making Payments? </a> </li> 
+         <li> <a class="large" href="http://studentaid.ed.gov/PORTALSWebApp/students/english/discharges.jsp?tab=repaying/" target="new" title="Criteria for having your student loan canceled or reduced"> Loan Discharge </a> </li> 
+         <li> <a class="large" href="http://studentaid.ed.gov/PORTALSWebApp/students/english/PSF.jsp" target="new" title="Learn about loan forgiveness for employees of government and many not-for-profit organizations"> Public Service Loan Forgiveness </a> </li> 
+         <li> <a class="large" href="http://studentaid.ed.gov/PORTALSWebApp/students/english/cancelstaff.jsp?tab=repaying/" target="new" title="Check eligibility requirements and learn how to apply to the Stafford Loan Forgiveness Program for Teachers"> Teacher Loan Forgiveness </a> </li> 
+         <li style="border: none;"> <a class="large" href="additionalInformation.action" title="Loan Servicers"> Loan Servicers </a> </li> 
+        </ul> 
+       </div> 
+       <div class="bar-footer"> 
+       </div> 
+      </div> 
+     </div> 
+    </div>
+    <!-- /.empty_inner_background --> 
+   </form> 
+   <div class="clear"></div> 
+   <div id="page_footer"> 
+    <table style="height: 27px; width: 100%; border-collapse: separate; border-spacing: 0px;"> 
+     <tbody>
+      <tr> 
+       <td> <a href="http://www.ed.gov/policy/gen/leg/foia/foiatoc.html" target="new">FOIA</a> <a href="privacy.action">Privacy </a> <a href="security.action">Security</a> <a href="notices.action">Notices</a> </td> 
+       <td style="text-align: right"> 
+        <div>
+          Stay Connected: 
+         <a style="border: none;" href="http://www.facebook.com/FederalStudentAid" target="new"><img style="vertical-align:text-bottom;" src="/myDirectLoan/images/icons/facebook_icon.png" alt="Visit the Facebook page for Federal Student Aid"></a> 
+         <a style="border: none" href="http://www.twitter.com/fafsa" target="new"><img style="vertical-align:text-bottom;" src="/myDirectLoan/images/icons/twitter_icon.png" alt="Visit the Twitter page for Federal Student Aid"></a> 
+         <a style="border: none" href="http://www.youtube.com/federalstudentaid" target="new"><img style="vertical-align:text-bottom;" src="/myDirectLoan/images/icons/youtube_icon.gif" alt="Visit the Youtube channel for Federal Student Aid"></a> 
+        </div> </td> 
+       <td style="text-align: right"> <a href="http://www.whitehouse.gov" target="new">WhiteHouse.gov</a> <a href="http://www.usa.gov" target="new">USA.gov</a> <a href="http://www.ed.gov" target="new">ED.gov</a> </td> 
+      </tr> 
+     </tbody>
+    </table> 
+   </div> 
+   <!-- #page_footer --> 
+   <!-- START OF SmartSource Data Collector TAG --> 
+   <!-- Copyright (c) 1996-2010 WebTrends Inc.  All rights reserved. --> 
+   <!-- Version: 9.3.0 --> 
+   <!-- Tag Builder Version: 3.1  --> 
+   <!-- Created: 10/28/2010 3:42:48 PM --> 
+   <!-- ----------------------------------------------------------------------------------- --> 
+   <!-- Warning: The two script blocks below must remain inline. Moving them to an external --> 
+   <!-- JavaScript include file can cause serious problems with cross-domain tracking.      --> 
+   <!-- ----------------------------------------------------------------------------------- --> 
+   <script type="text/javascript">
+//<![CDATA[
+var _tag=new WebTrends();
+_tag.dcsGetId();
+//]]>
+</script> 
+   <script type="text/javascript">
+//<![CDATA[
+_tag.dcsCustom=function(){
+// Add custom parameters here.
+//_tag.DCSext.param_name=param_value;
+}
+_tag.dcsCollect();
+//]]>
+</script> 
+   <noscript> 
+    <div>
+     <img alt="DCSIMG" id="DCSIMG" width="1" height="1" src="http://statse.webtrendslive.com/dcst23eu310000oqgxxj4omeg_8y6k/njs.gif?dcsuri=/nojavascript&amp;WT.js=No&amp;WT.tv=9.3.0&amp;WT.dcssip=www.cod.ed.gov">
+    </div> 
+   </noscript> 
+   <!-- END OF SmartSource Data Collector TAG --> 
+   <script>
+
+if (typeof(add508ToolTips) == typeof(Function)) {
+	add508ToolTips ("terminology");
+}
+
+$("a.uline").hover(function(){
+	$(this).css("text-decoration","underline");
+},function(){
+	$(this).css("text-decoration","none");
+
+});
+
+var element = null; 
+
+errorNotification();
+
+dwr.engine.defaultErrorHandler = function(message, ex) {};
+dwr.engine._errorHandler = function(message, ex) {};
+dwr.engine._handleError = function(message,ex){};
+</script> 
+  </div>  
+  <script>	
+
+if(shouldNotify()){
+	var errorDiv = buildErrorDiv();
+	var element =$(".error_div");
+	var html = element.html();
+	element.html(errorDiv.html()).append(html).css("color","red");
+}
+
+if("" == 'true') {
+	var toClear = $(".error_div"); 
+	var toKeep = $("[id^='credentials.errors']");		
+	toClear.empty().append(toKeep);
+}
+ 
+
+$(document).ready(function() {
+	if('false' == 'true')
+		$('#ssnId').focus();
+});
+
+$(document).ready(function() {
+   $("#ssnId,#monthInput,#dayInput,#yearInput").restrictInput();
+});
+</script> 
+ </body>
+</html>

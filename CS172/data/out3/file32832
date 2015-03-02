@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7" > <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js lt-ie9 lt-ie8" > <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js lt-ie9" > <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" class="no-js">
+ <!--<![endif]-->
+ <head> 
+  <meta charset="utf-8"> 
+  <!--
+	==============================================================================================
+	This site was implemented by the TYPO3 experts at Cast Iron Coding - http://castironcoding.com
+	==============================================================================================
+	This website is powered by TYPO3 - inspiring people to share!
+	TYPO3 is a free open source Content Management Framework initially created by Kasper Skaarhoj
+	licensed under GNU/GPL. TYPO3 is copyright 1998-2011 of Kasper Skaarhoj. Extensions are
+	copyright of their respective owners. Information and contribution at http://typo3.com/ and
+	http://typo3.org/
+	==============================================================================================
+	--> 
+  <base href="http://hammer.ucla.edu/"> 
+  <meta name="generator" content="TYPO3 6.2 CMS"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0"> 
+  <meta name="format-detection" content="telephone=no"> 
+  <meta name="title" content="Provocations: The Architecture and Design of Heatherwick Studio - Hammer Museum"> 
+  <meta name="date" content="2015-01-22"> 
+  <title>Provocations: The Architecture and Design of Heatherwick Studio - Hammer Museum</title> 
+  <link rel="stylesheet" type="text/css" href="typo3temp/stylesheet_e22901c43f.css?1411766490" media="all"> 
+  <link rel="stylesheet" type="text/css" href="typo3conf/ext/t3site/Sites/Main/Resources/Public/Stylesheets/styles.css?1424979828" media="all"> 
+  <script src="typo3conf/ext/t3site/Sites/Main/Resources/Public/Javascript/Libs/Modernizr/modernizr.js?1424979828" type="text/javascript"></script> 
+  <script src="//use.typekit.net/vtf7fab.js" type="text/javascript"></script> 
+  <link rel="shortcut icon" href="typo3conf/ext/t3site/Sites/Main/Resources/Public/Images/icons/favicon.ico?c=1"> 
+  <link rel="apple-touch-icon" sizes="57x57" href="typo3conf/ext/t3site/Sites/Main/Resources/Public/Images/icons/apple-touch-icon-57x57.png?c=1"> 
+  <link rel="apple-touch-icon" sizes="114x114" href="typo3conf/ext/t3site/Sites/Main/Resources/Public/Images/icons/apple-touch-icon-114x114.png?c=1"> 
+  <link rel="apple-touch-icon" sizes="72x72" href="typo3conf/ext/t3site/Sites/Main/Resources/Public/Images/icons/apple-touch-icon-72x72.png?c=1"> 
+  <link rel="apple-touch-icon" sizes="144x144" href="typo3conf/ext/t3site/Sites/Main/Resources/Public/Images/icons/apple-touch-icon-144x144.png?c=1"> 
+  <link rel="apple-touch-icon" sizes="60x60" href="typo3conf/ext/t3site/Sites/Main/Resources/Public/Images/icons/apple-touch-icon-60x60.png"> 
+  <link rel="apple-touch-icon" sizes="120x120" href="typo3conf/ext/t3site/Sites/Main/Resources/Public/Images/icons/apple-touch-icon-120x120.png?c=1"> 
+  <link rel="apple-touch-icon" sizes="76x76" href="typo3conf/ext/t3site/Sites/Main/Resources/Public/Images/icons/apple-touch-icon-76x76.png?c=1"> 
+  <link rel="icon" type="image/png" href="typo3conf/ext/t3site/Sites/Main/Resources/Public/Images/icons/favicon-96x96.png?c=1" sizes="96x96"> 
+  <link rel="icon" type="image/png" href="typo3conf/ext/t3site/Sites/Main/Resources/Public/Images/icons/favicon-16x16.png?c=1" sizes="16x16"> 
+  <link rel="icon" type="image/png" href="typo3conf/ext/t3site/Sites/Main/Resources/Public/Images/icons/favicon-32x32.png?c=1" sizes="32x32"> 
+  <meta name="msapplication-TileColor" content="#2d89ef"> 
+  <meta name="msapplication-TileImage" content="typo3conf/ext/t3site/Sites/Main/Resources/Public/Images/icons/mstile-144x144.png?c=1"> 
+  <meta name="msapplication-config" content="typo3conf/ext/t3site/Sites/Main/Resources/Public/Images/icons/browserconfig.xml?c=1">
+  <script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-51806540-1', 'ucla.edu');
+	ga('send', 'pageview');
+	</script>
+  <meta property="og:image" content="http://hammer.ucla.edu/fileadmin/_processed_/csm_791_01_HR_UKPavilion_CREDIT_IwanBaan_ec1325484a.jpg">
+  <meta property="og:site_name" content="The Hammer Museum"> 
+  <script>window.t3site={};window.t3site.fbAppId='700788076646983';</script> 
+ </head> 
+ <body class=""> 
+  <div id="fb-root"></div> 
+  <header class="page-header" data-class="header"> 
+   <a href="/" class="logo"><img src="/typo3conf/ext/t3site/Sites/Main/Resources/Public/Images/logo-hammer.png" alt="Hammer"></a> 
+   <aside class="header-status"> 
+    <strong>Admission is Free</strong> 
+    <div data-class="hours"></div> 
+   </aside> 
+   <nav class="meta-nav"> 
+    <ul> 
+     <li> <a class="map-toggle" data-class="map-toggle" href="http://maps.apple.com/?q=Hammer%20Museum%20Los%20Angeles%2C%20CA"></a> <a class="map-dropdown hidden" data-dropdown="map" href="https://www.google.com/maps/place/Hammer+Museum/@34.05945,-118.443531,17z/data=!3m1!4b1!4m2!3m1!1s0x80c2bc81df6323f5:0xa95f949dab44e71c" target="_blank"> 
+       <div class="map--far"></div> 
+       <div class="map--close"></div> </a> </li> 
+     <li><a class="search-toggle" data-class="search-toggle" href="#"></a>
+      <div class="search-dropdown hidden" data-dropdown="search"> 
+       <form action="search-results/" method="get"> 
+        <input class="search-input" data-class="search-input" type="text" name="tx_hammer_search[query]" autocomplete="off" data-placeholder-narrow="Enter something" data-placeholder-default="Enter something and press return" placeholder="Enter something and press return"> 
+        <input class="search-submit" type="submit"> 
+       </form> 
+      </div></li>
+     <li><a class="nav-toggle" data-class="nav-toggle" href="#"></a></li> 
+    </ul> 
+   </nav> 
+   <nav class="header-nav"> 
+    <ul>
+     <li><a href="visit/">Visit</a></li>
+     <li><a href="exhibitions/">Exhibitions</a></li>
+     <li><a href="collections/">Collections</a></li>
+     <li><a href="programs-events/">Programs</a></li>
+     <li><a href="support/">Support</a></li>
+    </ul> 
+   </nav> 
+  </header> 
+  <nav class="primary-nav"> 
+   <ul>
+    <li class="primary"><a href="/">Home</a></li>
+    <li class="primary"><a href="visit/">Visit</a></li>
+    <li class="primary"><a href="exhibitions/">Exhibitions</a></li>
+    <li class="primary"><a href="collections/">Collections</a></li>
+    <li class="primary"><a href="programs-events/">Programs</a></li>
+    <li class="primary"><a href="support/">Support</a></li>
+    <li class="secondary"><a href="about-us/">About Us</a></li>
+    <li class="secondary"><a href="support/membership/">Membership</a></li>
+    <li class="secondary"><a href="store/">Store</a></li>
+    <li class="secondary"><a href="visit/ammo-at-the-hammer/">Cafe</a></li>
+    <li class="secondary"><a href="edu/">EDU</a></li>
+    <li class="secondary"><a href="edu/hammer-kids/">Hammer Kids</a></li>
+    <li class="secondary"><a href="nc/blog/">Blog</a></li>
+    <li class="secondary"><a href="watch-and-listen/">Watch + Listen</a></li>
+    <li class="tertiary"><a href="press/">Press</a></li>
+   </ul> 
+  </nav> 
+  <div class="nav-overlay" data-class="nav-overlay"></div> 
+  <div class="container"> 
+   <figure class="hero share-right tall-image"> 
+    <div class="r hero--image" style="background-image: url(/fileadmin/_processed_/csm_791_01_HR_UKPavilion_CREDIT_IwanBaan_fe95f6f34e.jpg); background-position: 55.02% 52.19%;"> 
+     <img src="fileadmin/_processed_/csm_791_01_HR_UKPavilion_CREDIT_IwanBaan_fe95f6f34e.jpg" data-img-src="" data-src-narrow="fileadmin/_processed_/csm_791_01_HR_UKPavilion_CREDIT_IwanBaan_fe95f6f34e.jpg" data-src-medium="fileadmin/_processed_/csm_791_01_HR_UKPavilion_CREDIT_IwanBaan_5b06c692a4.jpg" data-src-wide="fileadmin/_processed_/csm_791_01_HR_UKPavilion_CREDIT_IwanBaan_431176c7ee.jpg" alt="Provocations: The Architecture and Design of Heatherwick Studio"> 
+    </div> 
+    <figcaption class="hero--caption"> 
+     <div class="hero--caption-container"> 
+      <div class="hero--caption-column"> 
+       <header> 
+        <div class="header-table"> 
+         <div class="header-group"> 
+          <h2 class="title"><strong>Provocations</strong>: The Architecture and Design of Heatherwick Studio</h2> 
+          <div class="details"> 
+           <aside class="status">
+             Now until May 24 
+           </aside> 
+          </div> 
+         </div> 
+        </div> 
+       </header> 
+       <script type="text/template" data-template-page-sharing="">
+					<nav class="share">
+					<ul>
+						<li><a data-share-facebook class="share-facebook" href="{{links.facebook}}"></a></li>
+						<li><a data-share class="share-twitter" href="{{links.twitter}}"></a></li>
+						<li><a class="share-youtube" target="_blank" href="https://www.youtube.com/user/hammermuseum"></a></li>
+					</ul>
+					</nav>
+					</script> 
+      </div> 
+     </div> 
+    </figcaption> 
+   </figure> 
+   <main class="page-content"> 
+    <div class="group"> 
+     <!--TYPO3SEARCH_begin--> 
+     <script type="text/template" data-auxiliary-triggers-template="">
+				<nav class="adjunct-nav vertical only-narrow">
+				<ul>
+					<% if(typeof gallery !== 'undefined' && gallery !== null) { %>
+					<li class="adjunct-nav--item">
+					<a data-trigger-gallery class="slideshow adjunct-nav--link" href="#">{{gallery.text}}</a>
+					</li>
+					<% } %>
+					<% if (typeof window.sidebarNewsletter !== 'undefined' && window.sidebarNewsletter === 1) { %>
+					<li class="adjunct-nav--item">
+					<a class="adjunct-nav--link newsletter" target="_blank" href="http://eepurl.com/WegZP">Get our newsletter</a>
+					</li>
+					<% } %>
+					<% if(typeof audio !== 'undefined' && audio !== null) { %>
+					<li class="adjunct-nav--item">
+					<a data-trigger-audio class="audio adjunct-nav--link" href="#">{{audio.text}}</a>
+					</li>
+					<% } %>
+					<% if(typeof timeline !== 'undefined' && timeline !== null) { %>
+					<li class="adjunct-nav--item">
+					<a class="adjunct-nav--link shortcut" href="{{location}}#timeline">Jump to timeline</a>
+					</li>
+					<% } %>
+				</ul>
+				</nav>
+				</script> 
+     <!--TYPO3SEARCH_end--> 
+     <!--TYPO3SEARCH_begin--> 
+     <div class="content-main "> 
+      <div id="c8187" class="csc-default csc-typography">
+       <p class="p1">British designer Thomas Heatherwick has been hailed as a genius for the uniquely inventive nature of his work. Trained at London's Royal College of Art, Heatherwick's practice encompasses projects ranging in scale from very small to monumental, from products to public sculpture to architecture.</p> 
+       <p class="p1"><em>Provocations: The Architecture and Design of Heatherwick Studio</em>&nbsp;examines the astonishing range of&nbsp;<span class="s2">the studio’s </span>practice by focusing on the design concepts behind small<span class="s1">&nbsp;</span>products such as the handbag designed for Longchamp and his<span class="s1">&nbsp;</span>rotation-molded "Spun" chairs, as well as large public and private architectural projects in the U.K.<span class="s1">, </span><span class="s2">U.S.,&nbsp;</span><span class="s2">Abu Dhabi, South Africa, </span>Singapore<span class="s1">, </span>and&nbsp;China. <span class="s2">These include</span><span class="s1">&nbsp;</span>the U.K. Pavilion—known as the Seed Cathedral at the 2010&nbsp;World Expo<span class="s1">; </span>a new distillery for Bombay Sapphire <span class="s2">gin</span>; a<span class="s1">&nbsp;</span><span class="s2">Learning Hub </span>for Nanyang Technological University <span class="s4">in Singapore</span>; and<span class="s1">&nbsp;</span><span class="s2">a contemporary art museum created within a historic grain silo</span>, among many other exciting projects. Heatherwick <span class="s2">Studio</span> is recognized for&nbsp;<span class="s2">its</span> inventive approach to design, often combining novel engineering with new materials and innovative technology to create unusual, often sculptural, building forms.</p> 
+       <p>Organized by the Nasher Sculpture Center, Dallas, <em>Provocations</em> is curated by Brooke Hodge, deputy director of Cooper Hewitt, Smithsonian Design Museum. The Hammer’s presentation is overseen by curator Aram Moshayedi.</p>
+      </div>
+      <div id="c8188" class="csc-default"> 
+       <div class="gallery" data-gallery="8188" data-gallery-obey-external-triggers=""> 
+        <ul> 
+         <li data-gallery-link=""> <a href="fileadmin/media/exhibitions/2015/Heatherwick/143_01_HR_RollingBridge_CREDIT_SteveSpeller.jpg"> 
+           <figure class="gallery--item"> 
+            <div class="mat"> 
+             <div class="image" style="background-image: url('fileadmin/_processed_/csm_143_01_HR_RollingBridge_CREDIT_SteveSpeller_69d3683da3.jpg');" data-gallery-large="fileadmin/media/exhibitions/2015/Heatherwick/143_01_HR_RollingBridge_CREDIT_SteveSpeller.jpg"></div> 
+            </div> 
+           </figure> </a> </li> 
+         <li data-gallery-link=""> <a href="fileadmin/media/exhibitions/2015/Heatherwick/198_02_HR_EastBeachCafe_CREDIT_AndyStagg.jpg"> 
+           <figure class="gallery--item"> 
+            <div class="mat"> 
+             <div class="image" style="background-image: url('fileadmin/_processed_/csm_198_02_HR_EastBeachCafe_CREDIT_AndyStagg_9c3b671f3c.jpg');" data-gallery-large="fileadmin/media/exhibitions/2015/Heatherwick/198_02_HR_EastBeachCafe_CREDIT_AndyStagg.jpg"></div> 
+            </div> 
+           </figure> </a> </li> 
+         <li data-gallery-link=""> <a href="fileadmin/media/exhibitions/2015/Heatherwick/311_04_in-use_CREDIT_Susan_Smart_HR.jpg"> 
+           <figure class="gallery--item"> 
+            <div class="mat"> 
+             <div class="image" style="background-image: url('fileadmin/_processed_/csm_311_04_in-use_CREDIT_Susan_Smart_HR_1e06f6d4d5.jpg');" data-gallery-large="fileadmin/media/exhibitions/2015/Heatherwick/311_04_in-use_CREDIT_Susan_Smart_HR.jpg"></div> 
+            </div> 
+           </figure> </a> </li> 
+         <li data-gallery-link=""> <a href="fileadmin/media/exhibitions/2015/Heatherwick/471_01_HR_NewBusforLondon_CREDIT_IwanBaan.jpg"> 
+           <figure class="gallery--item"> 
+            <div class="mat"> 
+             <div class="image" style="background-image: url('fileadmin/_processed_/csm_471_01_HR_NewBusforLondon_CREDIT_IwanBaan_75721829e3.jpg');" data-gallery-large="fileadmin/media/exhibitions/2015/Heatherwick/471_01_HR_NewBusforLondon_CREDIT_IwanBaan.jpg"></div> 
+            </div> 
+           </figure> </a> </li> 
+         <li data-gallery-link=""> <a href="fileadmin/media/exhibitions/2015/Heatherwick/551_03_HR_AlFayahPark_Oasis_CREDIT_HeatherwickStudio__1_.jpg"> 
+           <figure class="gallery--item"> 
+            <div class="mat"> 
+             <div class="image" style="background-image: url('fileadmin/_processed_/csm_551_03_HR_AlFayahPark_Oasis_CREDIT_HeatherwickStudio__1__b18db8b1f9.jpg');" data-gallery-large="fileadmin/media/exhibitions/2015/Heatherwick/551_03_HR_AlFayahPark_Oasis_CREDIT_HeatherwickStudio__1_.jpg"></div> 
+            </div> 
+           </figure> </a> </li> 
+         <li data-gallery-link=""> <a href="fileadmin/media/exhibitions/2015/Heatherwick/591_01_HR_OlympicCauldron_CREDIT_EdmundSumner.jpg"> 
+           <figure class="gallery--item"> 
+            <div class="mat"> 
+             <div class="image" style="background-image: url('fileadmin/_processed_/csm_591_01_HR_OlympicCauldron_CREDIT_EdmundSumner_f0b483b895.jpg');" data-gallery-large="fileadmin/media/exhibitions/2015/Heatherwick/591_01_HR_OlympicCauldron_CREDIT_EdmundSumner.jpg"></div> 
+            </div> 
+           </figure> </a> </li> 
+         <li data-gallery-link=""> <a href="fileadmin/media/exhibitions/2015/Heatherwick/666_01_HR_LearningHub_CREDIT_HeatherwickStudio.jpg"> 
+           <figure class="gallery--item"> 
+            <div class="mat"> 
+             <div class="image" style="background-image: url('fileadmin/_processed_/csm_666_01_HR_LearningHub_CREDIT_HeatherwickStudio_5ab407bd28.jpg');" data-gallery-large="fileadmin/media/exhibitions/2015/Heatherwick/666_01_HR_LearningHub_CREDIT_HeatherwickStudio.jpg"></div> 
+            </div> 
+           </figure> </a> </li> 
+         <li data-gallery-link=""> <a href="fileadmin/media/exhibitions/2015/Heatherwick/776_01_HR_ZeitzMOCAA_Exterior_CREDIT_HeatherwickStudio.jpg"> 
+           <figure class="gallery--item"> 
+            <div class="mat"> 
+             <div class="image" style="background-image: url('fileadmin/_processed_/csm_776_01_HR_ZeitzMOCAA_Exterior_CREDIT_HeatherwickStudio_5a41861e4c.jpg');" data-gallery-large="fileadmin/media/exhibitions/2015/Heatherwick/776_01_HR_ZeitzMOCAA_Exterior_CREDIT_HeatherwickStudio.jpg"></div> 
+            </div> 
+           </figure> </a> </li> 
+         <li data-gallery-link=""> <a href="fileadmin/media/exhibitions/2015/Heatherwick/791_01_HR_UKPavilion_CREDIT_IwanBaan.jpg"> 
+           <figure class="gallery--item"> 
+            <div class="mat"> 
+             <div class="image" style="background-image: url('fileadmin/_processed_/csm_791_01_HR_UKPavilion_CREDIT_IwanBaan_fe8173f96b.jpg');" data-gallery-large="fileadmin/media/exhibitions/2015/Heatherwick/791_01_HR_UKPavilion_CREDIT_IwanBaan.jpg"></div> 
+            </div> 
+           </figure> </a> </li> 
+         <li data-gallery-link=""> <a href="fileadmin/media/exhibitions/2015/Heatherwick/816__01_HR_GardenBridge_CREDIT_Arup.jpg"> 
+           <figure class="gallery--item"> 
+            <div class="mat"> 
+             <div class="image" style="background-image: url('fileadmin/_processed_/csm_816__01_HR_GardenBridge_CREDIT_Arup_972430350f.jpg');" data-gallery-large="fileadmin/media/exhibitions/2015/Heatherwick/816__01_HR_GardenBridge_CREDIT_Arup.jpg"></div> 
+            </div> 
+           </figure> </a> </li> 
+        </ul> 
+        <script type="text/template" data-gallery-template="">
+							<div class="lightbox-container">
+								<div class="lightbox">
+									<a class="lightbox--previous" data-gallery-prev href="#"></a>
+									<a class="lightbox--next" data-gallery-next href="#"></a>
+									<a class="lightbox--close" data-gallery-close href="#"></a>
+									<% _.each(items, function(item) { %>
+									<figure data-gallery-item-id="{{item.identifier_hash}}">
+									<% if(item.vimeo) { %>
+									<div class="lightbox--image" data-has-vimeo>
+										<iframe
+										id="{{item.vimeoId}}"
+										src="{{item.vimeo}}"
+										width="100%"
+										height="100%"
+										frameborder="0"
+										webkitallowfullscreen
+										mozallowfullscreen
+										allowfullscreen>
+										</iframe>
+									</div>
+									<% } else { %>
+									<div class="lightbox--image" style="background-image: url('/{{item.largeImage}}');"></div>
+									<% } %>
+									<figcaption>
+									<div class="lightbox--caption">
+										<header>
+											<div class="name">{{item.creator}}</div>
+											<div class="title">{{item.title}}</div>
+										<% if(item.tx_t3site_year) { %><time datetime="">{{item.tx_t3site_year}}</time><% if(item.description) { %>. <% }} %><div class="description">{{item.description}}</div>
+										</header>
+										<nav class="share">
+										<ul>
+											<li><a data-gallery-fb-share target="_blank" class="share-facebook" href="http://www.facebook.com/sharer/sharer.php?s=100&p[title]={{encodeURIComponent(item.getShareTitle())}}&p[url]={{encodeURIComponent(item.getGalleryUrl())}}&p[images][0]={{encodeURIComponent(item.getImageUrl())}}"></a></li>
+											<li><a data-gallery-tweet target="_blank" class="share-twitter" href="https://twitter.com/intent/tweet?source=tweetbutton&text={{encodeURIComponent(item.getShareTitle())}}&url={{encodeURIComponent(item.getGalleryUrl())}}"></a></li>
+											<% if(item.canOfferDownload()) { %>
+											<li><a data-gallery-download target="_blank" class="share-download" href="/{{item.url}}"></a></li>
+											<% } %>
+										</ul>
+										</nav>
+									</div>
+									</figcaption>
+									</figure>
+									<% }); %>
+								</div>
+							</div>
+							</script> 
+        <script>var gallery_8188_data = [{"largeImage":"fileadmin\/_processed_\/csm_143_01_HR_RollingBridge_CREDIT_SteveSpeller_552cfbe969.jpg","vimeo":null,"title":"Rolling Bridge, London ","uid":"10694","description":"Photo: Steve Speller","creator":"Heatherwick Studio","tx_t3site_year":"2002-2004","identifier":"\/media\/exhibitions\/2015\/Heatherwick\/143_01_HR_RollingBridge_CREDIT_SteveSpeller.jpg","identifier_hash":"4131ca784390060b6b5921eee15d964ffbcd5ec0","offer_download":"0"},{"largeImage":"fileadmin\/media\/exhibitions\/2015\/Heatherwick\/198_02_HR_EastBeachCafe_CREDIT_AndyStagg.jpg","vimeo":null,"title":"East Beach Caf\u00e9, Littlehampton, UK ","uid":"10695","description":"Photo: Andy Stagg","creator":"Heatherwick Studio","tx_t3site_year":"2005-2007","identifier":"\/media\/exhibitions\/2015\/Heatherwick\/198_02_HR_EastBeachCafe_CREDIT_AndyStagg.jpg","identifier_hash":"672b2558082b54bfdc85f9c6ec42508700978967","offer_download":"0"},{"largeImage":"fileadmin\/media\/exhibitions\/2015\/Heatherwick\/311_04_in-use_CREDIT_Susan_Smart_HR.jpg","vimeo":null,"title":"Spun Chair","uid":"10696","description":"Photo: Susan Smart","creator":"Heatherwick Studio","tx_t3site_year":"2007-11","identifier":"\/media\/exhibitions\/2015\/Heatherwick\/311_04_in-use_CREDIT_Susan_Smart_HR.jpg","identifier_hash":"f5391a6dfa36682c66cd0bd47c12b0bc30d91c53","offer_download":"0"},{"largeImage":"fileadmin\/_processed_\/csm_471_01_HR_NewBusforLondon_CREDIT_IwanBaan_a5b21d7573.jpg","vimeo":null,"title":"New Bus for London","uid":"10697","description":"Photo: Iwan Baan","creator":"Heatherwick Studio","tx_t3site_year":"2010-12","identifier":"\/media\/exhibitions\/2015\/Heatherwick\/471_01_HR_NewBusforLondon_CREDIT_IwanBaan.jpg","identifier_hash":"34aee47cb0f4908e8e6a0f0489d095fbaab62b1d","offer_download":"0"},{"largeImage":"fileadmin\/_processed_\/csm_551_03_HR_AlFayahPark_Oasis_CREDIT_HeatherwickStudio__1__c706225cd6.jpg","vimeo":null,"title":"Al Fayah Park, Abu Dhabi","uid":"10698","description":"Rendering: Heatherwick Studio","creator":"Heatherwick Studio","tx_t3site_year":"2010\u2013","identifier":"\/media\/exhibitions\/2015\/Heatherwick\/551_03_HR_AlFayahPark_Oasis_CREDIT_HeatherwickStudio__1_.jpg","identifier_hash":"394c8f6e56f64ac205f425ed8640437bf0e69051","offer_download":"0"},{"largeImage":"fileadmin\/_processed_\/csm_591_01_HR_OlympicCauldron_CREDIT_EdmundSumner_6ac702de94.jpg","vimeo":null,"title":"Olympic Cauldron, London ","uid":"10699","description":"Photo: Edmund Sumner","creator":"Heatherwick Studio","tx_t3site_year":"2012","identifier":"\/media\/exhibitions\/2015\/Heatherwick\/591_01_HR_OlympicCauldron_CREDIT_EdmundSumner.jpg","identifier_hash":"4875ccdec921ba9459df2ebb569b97770dcac19d","offer_download":"0"},{"largeImage":"fileadmin\/_processed_\/csm_666_01_HR_LearningHub_CREDIT_HeatherwickStudio_3cb7683eda.jpg","vimeo":null,"title":"Learning Hub, Nanyang Technological University, Singapore ","uid":"10700","description":"Rendering: Heatherwick Studio","creator":"Heatherwick Studio","tx_t3site_year":"2011-14","identifier":"\/media\/exhibitions\/2015\/Heatherwick\/666_01_HR_LearningHub_CREDIT_HeatherwickStudio.jpg","identifier_hash":"b50db6deada7ff3326ee84c430d333aa92284f42","offer_download":"0"},{"largeImage":"fileadmin\/_processed_\/csm_776_01_HR_ZeitzMOCAA_Exterior_CREDIT_HeatherwickStudio_2ebf5bed79.jpg","vimeo":null,"title":"Zeitz MOCAA, Cape Town ","uid":"10701","description":"Rendering: Heatherwick Studio","creator":"Heatherwick Studio","tx_t3site_year":"2005\u2013","identifier":"\/media\/exhibitions\/2015\/Heatherwick\/776_01_HR_ZeitzMOCAA_Exterior_CREDIT_HeatherwickStudio.jpg","identifier_hash":"67a1f78651f79c1826234af4da497cb6cc6a9b41","offer_download":"0"},{"largeImage":"fileadmin\/_processed_\/csm_791_01_HR_UKPavilion_CREDIT_IwanBaan_a73233a752.jpg","vimeo":null,"title":"U.K. Pavilion, Shanghai World Expo","uid":"10702","description":"Photo: Iwan Baan","creator":"Heatherwick Studio","tx_t3site_year":"2007-10","identifier":"\/media\/exhibitions\/2015\/Heatherwick\/791_01_HR_UKPavilion_CREDIT_IwanBaan.jpg","identifier_hash":"389b793ea0bd3e9af7251a8c5f39b33e7c17044a","offer_download":"0"},{"largeImage":"fileadmin\/_processed_\/csm_816__01_HR_GardenBridge_CREDIT_Arup_0c6b50b37a.jpg","vimeo":null,"title":"Garden Bridge, London","uid":"10703","description":"Rendering: Arup","creator":"Heatherwick Studio","tx_t3site_year":"2012\u2013","identifier":"\/media\/exhibitions\/2015\/Heatherwick\/816__01_HR_GardenBridge_CREDIT_Arup.jpg","identifier_hash":"2f2c1e592a79b741fb3eb09fd906d76e90fb69f7","offer_download":"0"}];</script> 
+       </div> 
+      </div>
+      <div id="c9286" class="csc-default csc-typography">
+       <p class="p1 small">The Hammer Museum's presentation is made possible in partnership with Burberry. Additional support is provided by The Brotman Foundation of California, Lewis Baskerville, Ronnie Sassoon, and Helen and Sam Zell. Media sponsorship is provided by KCRW 89.9FM. Special thanks to Herman Miller and Bombay Sapphire Gin.</p> 
+       <p class="p1 small"><img src="uploads/RTEmagicC_Burberry.png.png" alt="" width="250" height="19" style=""></p>
+      </div> 
+     </div> 
+     <!--TYPO3SEARCH_end--> 
+     <div class="content-sidebar"> 
+      <script type="text/template" data-auxiliary-triggers-template="">
+				<nav class="adjunct-nav vertical no-narrow">
+				<ul>
+					<% if(typeof gallery !== 'undefined' && gallery !== null) { %>
+					<li class="adjunct-nav--item">
+					<a data-trigger-gallery class="slideshow adjunct-nav--link" href="#">{{gallery.text}}</a>
+					</li>
+					<% } %>
+					<% if (typeof window.sidebarNewsletter !== 'undefined' && window.sidebarNewsletter === 1) { %>
+					<li class="adjunct-nav--item">
+					<a class="adjunct-nav--link newsletter" target="_blank" href="http://eepurl.com/WegZP">Get our newsletter</a>
+					</li>
+					<% } %>
+					<% if(typeof audio !== 'undefined' && audio !== null) { %>
+					<li class="adjunct-nav--item">
+					<a data-trigger-audio class="audio adjunct-nav--link" href="#">{{audio.text}}</a>
+					</li>
+					<% } %>
+					<% if(typeof timeline !== 'undefined' && timeline !== null) { %>
+					<li class="adjunct-nav--item">
+					<a class="adjunct-nav--link shortcut" href="{{location}}#timeline">Jump to timeline</a>
+					</li>
+					<% } %>
+				</ul>
+				</nav>
+				</script> 
+      <h4 data-timeline="" class="heading-epsilon-alt" id="timeline">Timeline</h4> 
+      <ul class="plate-list"> 
+       <li> <h5 class="plate-list--heading">2015</h5> </li> 
+       <li> 
+        <figure class="plate"> 
+         <figcaption> 
+          <div class="left"> 
+           <time datetime=""> <strong class="end"> May 24 </strong> </time> 
+          </div> 
+          <div class="right"> 
+           <h5 class="title"><strong class="caps">Closing</strong></h5> 
+          </div> 
+         </figcaption> 
+        </figure> </li> 
+       <li> 
+        <figure class="plate"> 
+         <figcaption> 
+          <div class="left"> 
+           <time datetime=""> <strong> <a href="programs-events/2015/05/close-encounters-make-take-a-seat/"> May 10 </a> </strong> </time> 
+          </div> 
+          <div class="right"> 
+           <h5 class="title"> <a href="programs-events/2015/05/close-encounters-make-take-a-seat/"> Hammer Kids <strong>Close Encounters: Make &amp; Take a Seat</strong> </a> </h5> 
+          </div> 
+         </figcaption> 
+        </figure> </li> 
+       <li> 
+        <figure class="plate"> 
+         <figcaption> 
+          <div class="left"> 
+           <time datetime=""> <strong> <a href="programs-events/2015/04/artist-talk-thomas-heatherwick/"> Apr 30 </a> </strong> </time> 
+          </div> 
+          <div class="right"> 
+           <h5 class="title"> <a href="programs-events/2015/04/artist-talk-thomas-heatherwick/"> Hammer Lectures <strong>Artist Talk: Thomas Heatherwick</strong> </a> </h5> 
+          </div> 
+         </figcaption> 
+        </figure> </li> 
+       <li> 
+        <figure class="plate"> 
+         <figcaption> 
+          <div class="left"> 
+           <time datetime=""> <strong> <a href="programs-events/2015/03/close-encounters-build-a-bike/"> Mar 1 </a> </strong> </time> 
+          </div> 
+          <div class="right"> 
+           <h5 class="title"> <a href="programs-events/2015/03/close-encounters-build-a-bike/"> Hammer Kids <strong>Close Encounters: Build-A-Bike</strong> </a> </h5> 
+          </div> 
+         </figcaption> 
+        </figure> </li> 
+       <li> 
+        <figure class="plate"> 
+         <figcaption> 
+          <div class="left"> 
+           <time datetime=""> <strong> <a href="programs-events/2015/02/exhibition-tours-provocations/"> Feb 22 </a> </strong> </time> 
+          </div> 
+          <div class="right"> 
+           <h5 class="title"> <a href="programs-events/2015/02/exhibition-tours-provocations/"> <strong>Exhibition Tours: Provocations</strong> </a> </h5> 
+          </div> 
+         </figcaption> 
+        </figure> </li> 
+       <li> 
+        <figure class="plate"> 
+         <figcaption> 
+          <div class="left"> 
+           <time datetime=""> <strong class="begin"> Feb 20 </strong> </time> 
+          </div> 
+          <div class="right"> 
+           <h5 class="title"><strong class="caps">Opening</strong></h5> 
+          </div> 
+         </figcaption> 
+        </figure> </li> 
+      </ul> 
+      <a class="more-link" href="/timeline/exhibitions">See Museum Timeline</a> 
+      <div id="c205" class="csc-default"> 
+       <aside class="card teal"> 
+        <div class="content"> 
+         <h5 class="title">Join Us.</h5> 
+         <div class="description"> 
+          <p class="p1"><br>HAMMER PLUS gives you special access to public programs, opening parties, and puts you in the mix of L.A.’s vibrant art scene.</p> 
+          <p class="p1"><span style="font-size: 1em; line-height: 1.555;">Free for everyone, </span><em style="font-size: 1em; line-height: 1.555;">more</em><span style="font-size: 1em; line-height: 1.555;"> for you.</span></p> 
+         </div> 
+        </div> 
+        <a href="support/membership/" class="button">Learn More</a> 
+       </aside>
+      </div> 
+     </div> 
+    </div> 
+    <div class="group"> 
+     <!--TYPO3SEARCH_begin--> 
+     <div class="content-main flush dropcap"> 
+     </div> 
+     <!--TYPO3SEARCH_end--> 
+    </div> 
+    <footer class="page-footer">
+     <div class="footer-first"> 
+      <ul> 
+       <li><strong class="caps">Hammer Museum</strong></li> 
+       <li><strong class="semi">Free for good</strong></li> 
+       <li>10899 Wilshire Blvd. <br>Los Angeles, CA <br>90024</li> 
+       <li>&nbsp;</li> 
+       <li><a href="tel:13104437000">(310) 443-7000</a></li> 
+       <li><a href="mailto:info@hammer.ucla.edu">info@hammer.ucla.edu</a></li> 
+      </ul>
+     </div>
+     <div class="footer-second"> 
+      <ul> 
+       <li>Monday: <strong>Closed</strong></li> 
+       <li>Tuesday: <b>11am - 8pm</b></li> 
+       <li>Wednesday: <b>11am - 8pm</b></li> 
+       <li>Thursday: <b>11am - 8pm</b></li> 
+       <li>Friday: <b>11am - 8pm</b></li> 
+       <li>Saturday: <b>11am - 5pm</b></li> 
+       <li>Sunday: <b>11am - 5pm</b></li> 
+      </ul>
+     </div>
+     <div class="footer-matrix">
+      <div class="footer-third">
+       <ul>
+        <li><b><a href="/">Home</a></b></li>
+        <li><b><a href="visit/">Visit</a></b></li>
+        <li><b><a href="exhibitions/">Exhibitions</a></b></li>
+        <li><b><a href="collections/">Collections</a></b></li>
+        <li><b><a href="programs-events/">Programs</a></b></li>
+        <li><b><a href="support/">Support</a></b></li>
+       </ul>
+      </div>
+      <div class="footer-fourth">
+       <ul>
+        <li><a href="about-us/">About Us</a></li>
+        <li><a href="support/membership/">Membership</a></li>
+        <li><a href="store/">Store</a></li>
+        <li><a href="visit/ammo-at-the-hammer/">Cafe</a></li>
+        <li><a href="edu/">EDU</a></li>
+        <li><a href="edu/hammer-kids/">Hammer Kids</a></li>
+        <li><a href="nc/blog/">Blog</a></li>
+        <li><a href="watch-and-listen/">Watch + Listen</a></li>
+        <li><a href="press/">Press</a></li>
+       </ul>
+      </div>
+     </div>
+     <div class="footer-logo-container">
+      <a href="/" class="footer-logo"> <img src="/typo3conf/ext/t3site/Sites/Main/Resources/Public/Images/logo-hammer.png" alt="Hammer"></a>
+     </div>
+     <nav class="social-nav"> 
+      <ul> 
+       <li><a class="social-facebook" target="_blank" href="https://www.facebook.com/HammerMuseum"></a></li> 
+       <li><a class="social-twitter" target="_blank" href="https://twitter.com/hammer_museum"></a></li> 
+       <li><a class="social-instagram" target="_blank" href="http://instagram.com/hammer_museum"></a></li> 
+       <li><a class="social-tumblr" target="_blank" href="http://thehammermuseum.tumblr.com/"></a></li> 
+       <li><a class="social-pinterest" target="_blank" href="http://www.pinterest.com/thehammermuseum/"></a></li> 
+       <li><a class="social-vimeo" target="_blank" href="https://vimeo.com/hammermuseum"></a></li> 
+       <li><a class="social-youtube" target="_blank" href="https://www.youtube.com/user/hammermuseum"></a></li> 
+      </ul>
+      <div class="social-mail"> 
+       <div class="mail-icon"></div> 
+       <form action="http://ucla.us8.list-manage1.com/subscribe/post?u=43b966711a7dc4332bff03676&amp;id=7fbdd70951" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" novalidate> 
+        <input class="email" type="email" value="" name="EMAIL" id="mce-EMAIL" placeholder="Subscribe for news" required> 
+        <div style="position: absolute; left: -50000px;">
+         <input type="text" name="b_43b966711a7dc4332bff03676_7fbdd70951" tabindex="-1" value="">
+        </div> 
+        <div style="position: absolute; left: -50000px;">
+         <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+        </div> 
+       </form>
+      </div>
+     </nav>
+     <div class="copyright">
+      <div class="copyright--text">
+       <strong>© Hammer Museum 2000-2015.</strong> Don't steal, share!
+      </div>
+      <div class="copyright--credit">
+       <strong><a href="http://onelonghouse.com" target="_blank">Site by One Long House</a></strong>
+      </div>
+     </div>
+    </footer> 
+   </main> 
+  </div> 
+  <!-- This element reports the current responsive breakpoint to the javascript --> 
+  <b data-viewport=""></b> 
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" type="text/javascript"></script> 
+  <script src="typo3conf/ext/t3site/Sites/Main/Resources/Public/Javascript/Site.js?1424979828" type="text/javascript"></script>  
+ </body>
+</html>

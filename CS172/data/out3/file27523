@@ -1,0 +1,434 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+  <title>Ayuda - FAFSA on the Web - Oficina de Ayuda Federal para Estudiantes </title> 
+  <link type="text/css" rel="stylesheet" href="../css/staticNav.css"> 
+  <link type="text/css" rel="stylesheet" href="../css/fafsaButtons.css"> 
+  <link type="text/css" rel="stylesheet" href="../css/staticLayout.css"> 
+  <link type="text/css" rel="stylesheet" media="print" href="../css/print.css"> 
+  <link type="text/css" rel="stylesheet" href="../css/form-service.css"> 
+  <!--[if lte IE 7]>
+	<style type="text/css">
+		@import url(../css/static-ie-fix.css);
+	</style>
+<![endif]--> 
+  <script type="text/javascript" src="../js/fsa.js"></script> 
+  <script type="text/javascript" src="../js/amessages.js"></script> 
+  <script type="text/javascript" src="../js/agen.js"></script> 
+  <script type="text/javascript" src="../js/help.js"></script> 
+  <script type="text/javascript" src="../js/index/agenindex.js"></script> 
+  <script type="text/javascript" src="../js/webdemo.js"></script> 
+  <script type="text/javascript" src="../js/jQuery/jquery-1.8.3.min.js"></script> 
+  <script type="text/javascript" src="../js/helpPage.js"></script> 
+  <script type="text/javascript" src="../js/jQuery/jquery.namespace.js"></script> 
+  <script type="text/javascript" src="../js/index/dependency.loader.js"></script> 
+  <script type="text/javascript" src="../js/index/shutdown.js"></script> 
+  <script type="text/javascript" src="../js/externalLinks.js"></script> 
+  <script type="text/javascript" src="../js/analytics/jquery.analytics.js"></script> 
+  <script type="text/javascript" src="../js/analytics/jquery.webtrends.js"></script> 
+  <script type="text/javascript" src="../js/jQuery/jquery.help.js"></script> 
+  <script type="text/javascript">
+
+jQuery.noConflict();
+jQuery(document).ready(function($) {
+	help.loadAnswerText();
+	help.qaHideShow();
+	help.sectionHideShow();
+	help.sectionPrint();
+	
+    //sets topnav icon to green/active
+   	setCurrentIcon("Ayuda");
+	
+	// Handle the ENTER key in the Search box on the page (not the top navigation Search box)
+	jQuery("#pageQuery").keypress(function(event) {
+		if (event.keyCode == 13) {
+			JavaScript:Search('page'); 
+			return false;
+		}
+	});
+	
+	// Handle clicking the Search button on the page (not the top navigation Search button)
+    jQuery("#pageSearchRef").click(function() {
+    	JavaScript:Search('page');
+    	return false;
+    });
+    
+    // Tracking the search on the page
+	jQuery("#pageSearchRef").webtrends.assignSearchButton();
+	jQuery("#pageQuery").webtrends.assignSearchInputBox();
+	
+	// Tracking clicks on Trending Questions section
+	jQuery("#trendingQuestionsList .helpQuestion").webtrends.assignTrendingLinks();
+	// Tracking clicks on Browse FAQ section
+	jQuery("#helpPageBody .helpQuestion").webtrends.assignFaqLinks();
+	
+	jQuery("#pageQuery").help.addHelpSearchInputBehaviors();
+	
+}); // end jQuery(document).ready
+
+</script> 
+  <style type="text/css">
+
+    div#copyBox {display: none;}
+	div#errorbox {display: none;}
+	div#searchVal { display: none; }	
+	.alerts { display: none; }
+
+</style> 
+  <script type="text/javascript">
+//<![CDATA[
+			
+	function showTA(divID)
+    {
+    	 if ($(divID).is(':hidden')) {
+        	jQuery(divID).show();
+    	 }else{
+        	jQuery(divID).hide();
+    	 }
+    }  
+
+    // OVERRIDE help.js version of HelpLink()...) and change behavior to open help links in a new window
+	// This functionality is duplicated in the English/Spanish page too and needs to be kept in sync.
+    function HelpLink(szHelp, szLocale, szPath) {
+	    var szFile = buildHelpLinkHref(szHelp, szLocale, szPath);
+	    Help(szHelp, szLocale, szPath);
+    }
+//]]>
+</script> 
+  <style type="text/css">
+
+#containerforiframe{
+    width:600px;
+    height:200px;
+    overflow:hidden;
+    
+}
+#container iframe {
+    width:600px;
+    height:475px;
+    margin-left:-190px;
+    margin-top:20px;   
+    border:0;
+ }
+ 
+</style> 
+ </head> 
+ <body> 
+  <div id="container" class="help"> 
+   <div id="header"> 
+    <map name="logomap"> <area alt="Saltar las barras de navegación" href="#skiplinks" coords="0,0,1,50" shape="rect"> </map> 
+    <a href="index.htm" id="logo"> <img src="../images/fsa_logo.gif" alt="Sello del Departamento de Educación de EE.UU. y de la Oficina de Ayuda Federal para Estudiantes (Proud Sponsor of the American Mind)"> </a> 
+    <img id="titleImg" usemap="#logomap" src="/es_ES/images/fafsa_header.gif" alt="FAFSA: Solicitud Gratuita de Ayuda Federal para Estudiantes"> 
+   </div>  
+   <input type="hidden" name="numresults" value="10"> 
+   <input type="hidden" name="site" value=""> 
+   <input type="hidden" name="requiredfields" value="searchType:SPANISH"> 
+   <input type="hidden" id="q" value=""> 
+   <div id="topNav"> 
+    <script type="text/javascript">
+//<![CDATA[
+
+	jQuery.noConflict();
+	jQuery(document).ready(function($) {
+		
+		// Handle the ENTER key in the Search box
+    	jQuery("#navQuery").keypress(function(event) {
+			if (event.keyCode == 13) {
+				JavaScript:Search('nav'); 
+				return false;
+			}
+    	});
+    	
+    	// Handle clicking the Search button
+    	jQuery("#navSearchRef").click(function() {
+    		JavaScript:Search('nav');
+    		return false;
+    	});
+    	
+    	// Add Webtrends functionality on Search box and button
+       	jQuery("#navQuery").webtrends.assignSearchInputBox();
+       	jQuery("#navSearchRef").webtrends.assignSearchButton();
+    	
+       	jQuery("#navQuery").help.addHelpSearchInputBehaviors();
+
+	}); // end jQuery(document).ready
+	//]]>
+</script> 
+    <div id="menuContainer"> 
+     <div class="leftSide_top"></div> 
+     <div class="rightSide_top"></div> 
+     <div class="leftSide_mid"> 
+      <div class="rightSide_mid"> 
+       <div class="botGrad"> 
+        <ul class="topGrad"> 
+         <li> <a href="index.htm"> <span><img src="../images/icon_home.gif" alt="Inicio"></span><strong>Inicio<br><br></strong> </a> </li> 
+         <li> <a href="Javascript:externalLinks.openExtURL(externalLinks.aboutUs_ES);"> <span><img src="../images/icon_about_us.gif" alt="Acerca de nosotros"></span><strong>Acerca de <br> nosotros</strong> </a> </li> 
+         <li> <a href="http://www.pin.ed.gov/PINWebApp/es_ES/pinindex.jsp" target="_blank"> <span><img src="../images/icon_pin_site.gif" alt="Sistema PIN"></span><strong>Sistema <br> PIN</strong> </a> </li> 
+         <li> <a href="Javascript:externalLinks.openExtURL(externalLinks.studentAid_ES);"> <span><img src="../images/icon_student_aid.gif" alt="StudentAid.gov"></span><strong>StudentAid.gov<br><br></strong> </a> </li> 
+         <li> <a href="help.htm"> <span><img src="../images/icon_browse_help.gif" alt="Ayuda"></span><strong>Ayuda<br><br></strong> </a> </li> 
+         <li id="search" class="twoLineSearch"> 
+          <div id="searchInputs"> 
+           <input type="text" name="q" maxlength="100" id="navQuery" title="Ingrese el término de búsqueda"> 
+           <label for="navQuery"> <input type="image" id="navSearchRef" alt="Buscar" src="/es_ES/images/btn_search_wh.gif" onmouseout="imgOut(this, 'off');" onmouseover="imgIn(this, 'off');"> </label> 
+          </div> 
+          <div id="language" style="display: none;"> 
+           <a id="englishLink" href="../index.htm">English</a>
+           <a id="spanishLink" href="index.htm" class="noBorder active">Español</a> 
+          </div> </li> 
+        </ul> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="leftSide_bot"></div> 
+     <div class="rightSide_bot"></div> 
+    </div> 
+   </div> 
+   <!-- End #topNav --> 
+   <div id="formBody"> 
+    <a name="skiplinks"></a> 
+    <img src="../images/iconHelpPage.gif" alt="Ayuda" id="helpPageIcon" class="right"> 
+    <h1>Ayuda con la FAFSA</h1> 
+    <div id="copyBox" class="helpErrorMessage"> 
+     <span id="FAFSA:globalmessages" class="globalmessages"> 
+      <div id="errorbox" class="globalBox"> 
+       <div id="formhead_error_left"></div> 
+       <div id="formhead_error_right"></div> 
+       <div id="formhead_error_mid"></div> 
+       <div id="FAFSA:j_id68" class="fs-gm-errormessagescontainer"> 
+        <img id="msgerrgraphic" src="../images/icon_error.gif" alt="Error:"> 
+        <span id="msgerrtext" class="fs-gm-textError">Se han detecto los siguientes errores:</span> 
+        <ul id="msgerrmessage"> 
+         <div id="alerts-searchVal" class="alerts">
+          <li>Es obligatorio introducir alguna palabra clave.</li>
+         </div> 
+        </ul> 
+       </div> 
+       <div id="formbottom_error_left"></div> 
+       <div id="formbottom_error_right"></div> 
+       <div id="formbottom_error_mid"></div> 
+      </div> </span>
+     <br> 
+    </div> ﻿
+    <div id="helpPageTQ"> 
+     <h2>Preguntas de última hora</h2> 
+     <ul id="trendingQuestionsList" class="helpPageQA padding1"> 
+      <li> <h3> 
+        <!-- A sequential ID is required on this anchor tag for Webtrends functionality --> <a href="#/" class="helpQuestion" id="trendingQuestion1"> <span class="closed"></span>¿Cuál versión de la FAFSA debo llenar, la de 2014-2015 o la de 2015-2016? </a> </h3> 
+       <div class="helpAnswer"> 
+        <p> Si usted desea recibir ayuda económica federal durante el año de concesión 2014-2015 (1 de julio del 2014 al 30 de junio del 2015), debe presentar la versión 2014-2015 de la FAFSA. </p> 
+        <p> En cambio, si desea recibir ayuda federal durante el año de concesión 2015-2016 (1 de julio del 2015 al 30 de junio del 2016), debe presentar la versión 2015-2016 de la FAFSA. </p> 
+        <p> Si usted tiene previsto estudiar en el verano, pregunte en la oficina de asistencia económica de su institución si debe llenar la FAFSA 2014-2015 o la FAFSA 2015-2016. </p> 
+        <div class="center"> 
+         <span class="btn print"> <a href="#">Imprimir</a> </span> 
+        </div> 
+       </div> </li> 
+      <li> <h3> 
+        <!-- A sequential ID is required on this anchor tag for Webtrends functionality --> <a href="#/" class="helpQuestion" id="trendingQuestion2"> <span class="closed"></span>¿Tengo que presentar la solicitud cada año? </a> </h3> 
+       <div class="helpAnswer"> 
+        <p> La solicitud de ayuda federal para estudiantes no mantiene su vigencia de un año de concesión a otro. Por lo tanto, hay que volver a llenar y presentar la correspondiente <i>Solicitud Gratuita de Ayuda Federal para Estudiantes</i> (FAFSA) cada año de concesión. Si usted desea recibir ayuda económica federal durante el año de concesión 2015-2016 (1 de julio del 2015 al 30 de junio del 2016), debe presentar la versión 2015-2016 de la FAFSA. </p> 
+        <div class="center"> 
+         <span class="btn print"> <a href="#">Imprimir</a> </span> 
+        </div> 
+       </div> </li> 
+      <li> <h3> 
+        <!-- A sequential ID is required on this anchor tag for Webtrends functionality --> <a href="#/" class="helpQuestion" id="trendingQuestion3"> <span class="closed"></span>Si lleno mi FAFSA y luego me decido por cambiar de institución educativa o darme de baja de la universidad, ¿qué debo hacer? </a> </h3> 
+       <div class="helpAnswer"> 
+        <p> Si usted cambia de institución educativa, su derecho al otorgamiento de ayuda federal no necesariamente mantiene su vigencia en la nueva institución. Tendrá que agregar el código federal de la nueva institución a su<i> Solicitud Gratuita de Ayuda Federal para Estudiantes</i> (FAFSA). </p> 
+        <p> Si desea añadir instituciones educativas después de presentar su FAFSA, pulse el botón <b>Regresar a la FAFSA</b> en la página de inicio (<a href="http://www.fafsa.gov/es_ES" target="_blank">www.fafsa.gov/es_ES</a>) de <i>FAFSA on the Web</i> (FOTW). Pulse <b>Corregir la FAFSA</b> y luego diríjase hasta la página «Selección de las instituciones educativas». </p> 
+        <p> <b>Nota:</b> Para averiguar el monto de ayuda financiera que podrá recibir al cambiar de institución educativa, consulte con la oficina de asistencia económica de la nueva institución. </p> 
+        <p> Si usted recibe ayuda federal para sus estudios y se retira de sus estudios, es posible que usted o su institución tengan que devolver una parte de los fondos recibidos (excepto en el caso del Programa Federal de Estudio y Trabajo). </p> 
+        <p> Para obtener más información sobre las normas establecidas por su institución educativa para regir la devolución de ayuda económica, comuníquese con la oficina de asistencia económica de la institución. </p> 
+        <div class="center"> 
+         <span class="btn print"> <a href="#">Imprimir</a> </span> 
+        </div> 
+       </div> </li> 
+      <li> <h3> 
+        <!-- A sequential ID is required on this anchor tag for Webtrends functionality --> <a href="#/" class="helpQuestion" id="trendingQuestion4"> <span class="closed"></span>Si se me olvida el PIN, ¿qué hago? </a> </h3> 
+       <div class="helpAnswer"> 
+        <p> Si usted ha perdido u olvidado su PIN, deberá pedir copia del mismo. Para hacerlo, visite la página de <a href="http://www.pin.ed.gov/PINWebApp/es_ES/pinindex.jsp" target="_blank">Inicio del Sistema PIN</a> y elija <b>Pedir copia del PIN</b> de la lista de opciones a la izquierda de la página. Si quiere pedir copia de su PIN, tendrá que proporcionar la respuesta a su pregunta de seguridad. </p> 
+        <p> Al solicitar la copia del PIN, puede optar por ver el PIN en la pantalla en ese mismo momento o recibir inmediatamente un correo electrónico con un enlace a su PIN. </p> 
+        <p> Si cree que otra persona conoce su PIN, no debe pedir copia del mismo, sino que lo debe cambiar. Usted mismo puede crear uno nuevo o pedir que nosotros lo hagamos. Para cambiar su PIN, elija la opción <b> Cambiar mi PIN</b> de la lista ubicada a la izquierda de la página de <a href="http://www.pin.ed.gov/PINWebApp/es_ES/pinindex.jsp" target="_blank">inicio del Sistema PIN</a>. </p> 
+        <div class="center"> 
+         <span class="btn print"> <a href="#">Imprimir</a> </span> 
+        </div> 
+       </div> </li> 
+     </ul> 
+    </div> 
+    <div id="helpPageMain"> 
+     <div class="helpPageMenu"> 
+      <ul> 
+       <li><h2>Temas de ayuda</h2></li> 
+       <li><a href="#help1Content" id="help1" class="currentHelp">Preguntas generales <img src="../images/iconHelpMenu.gif" alt="Icono para demostrar sección"><span class="iconHelpMenu"></span></a></li> 
+       <li><a href="#help2Content" id="help2">Antes de comenzar <img src="../images/iconHelpMenu.gif" alt="Icono para demostrar sección"><span class="iconHelpMenu"></span></a></li> 
+       <li><a href="#help3Content" id="help3" class="arrow2">Herramienta de consulta y traspaso de datos del IRS <img src="../images/iconHelpMenu.gif" alt="Icono para demostrar sección"><span class="iconHelpMenu"></span></a></li> 
+       <li><a href="#help4Content" id="help4">Cómo corregir los datos <img src="../images/iconHelpMenu.gif" alt="Icono para demostrar sección"><span class="iconHelpMenu"></span></a></li> 
+       <li><a href="#help5Content" id="help5">Próximos pasos <img src="../images/iconHelpMenu.gif" alt="Icono para demostrar sección"><span class="iconHelpMenu"></span></a></li> 
+       <li><a href="#help6Content" id="help6">Comunicarse con nosotros <img src="../images/iconHelpMenu.gif" alt="Icono para demostrar sección"><span class="iconHelpMenu"></span></a></li> 
+      </ul> 
+      <div class="subSearch"> 
+       <p>¿No encontró lo que busca? <br>Busque en la sección de ayuda.</p> 
+       <input type="text" maxlength="30" size="30" name="pageQuery" id="pageQuery" style="width: 100%;">
+       <label for="pageQuery" class="btn color"><button id="pageSearchRef" role="button">Buscar</button></label> 
+      </div> 
+     </div> 
+     <div id="helpPageBody"> 
+      <div id="help1Content"> 
+       <h2>Preguntas generales</h2> 
+       <p>Información general sobre la ayuda federal para estudiantes, los requisitos de participación, el paquete de ayuda económica y más. </p> 
+       <ul class="helpPageQA"> 
+        <li> <h3><a href="help/fftoc02b.htm" class="helpQuestion"><span class="closed"></span>¿Qué es la FAFSA?</a></h3> </li> 
+        <li> <h3><a href="help/fftoc03a.htm" class="helpQuestion"><span class="closed"></span>¿Reúno los requisitos para recibir ayuda económica?</a></h3> </li> 
+        <!--XXX: ROLLOVER: Update the cycle-specific file path for the Help Topic below.--> 
+        <li> <h3><a href="fotw1516/help/typesofAid.htm" class="helpQuestion"><span class="closed"></span>¿Cuáles tipos de ayuda se ofrecen?</a></h3> </li> 
+        <li> <h3><a href="help/fotwfaq23.htm" class="helpQuestion"><span class="closed"></span>¿Cuánta ayuda económica puedo recibir?</a></h3> </li> 
+        <li> <h3><a href="help/fftoc03b.htm" class="helpQuestion"><span class="closed"></span>¿Cómo solicito ayuda?</a></h3> </li> 
+        <li> <h3><a href="help/fftoc05l.htm" class="helpQuestion"><span class="closed"></span>¿Dónde puedo encontrar más información sobre la ayuda federal para estudiantes?</a></h3> </li> 
+        <li> <h3><a href="help/whyApply.htm" class="helpQuestion"><span class="closed"></span>¿Por qué debo llenar la FAFSA?</a></h3> </li> 
+        <!--XXX: ROLLOVER: Update the cycle-specific file path for the Help Topic below.--> 
+        <li> <h3><a href="fotw1516/help/deadlines.htm" class="helpQuestion"><span class="closed"></span>¿Cuáles son los plazos para llenar la FAFSA?</a></h3> </li> 
+        <li> <h3><a href="help/fotwfaq58.htm" class="helpQuestion"><span class="closed"></span>¿Tengo que llenar la FAFSA cada año?</a></h3> </li> 
+       </ul> 
+      </div> 
+      <!-- End #help1Content Section --> 
+      <div id="help2Content"> 
+       <h2>Antes de comenzar</h2> 
+       <p>Lo que usted necesita antes de comenzar la FAFSA y lo que puede esperar.</p> 
+       <ul class="helpPageQA"> 
+        <li> <h3><a href="help/before003.htm" id="#1" class="helpQuestion"><span class="closed"></span>¿Qué necesito para llenar la FAFSA?</a></h3> </li> 
+        <li> <h3><a href="help/fotwfaq59.htm" class="helpQuestion"><span class="closed"></span>¿Cuánto tiempo se tarda en llenar la FAFSA?</a></h3> </li> 
+        <li> <h3><a href="help/fotwfaq60.htm" class="helpQuestion"><span class="closed"></span>¿Cuál FAFSA necesito llenar?</a></h3> </li> 
+        <!--XXX: ROLLOVER: Update the cycle-specific file path for the Help Topic below.--> 
+        <li> <h3><a href="fotw1516/help/fftoc02k.htm" class="helpQuestion"><span class="closed"></span>¿Voy a necesitar la información de mis padres?</a></h3> </li> 
+        <li> <h3><a href="help/pinfaq01.htm" class="helpQuestion"><span class="closed"></span>¿Qué es un PIN, y lo necesito para llenar la FAFSA?</a></h3> </li> 
+        <li> <h3><a href="help/pinfaq12.htm" class="helpQuestion"><span class="closed"></span>Si se me olvida el PIN, ¿qué hago?</a></h3> </li> 
+        <li> <h3><a href="help/pinfaq13.htm" class="helpQuestion"><span class="closed"></span>Si mi PIN está dehabilitado o bloqueado, ¿qué hago?</a></h3> </li> 
+        <!--XXX: ROLLOVER: Update the cycle-specific file path for the Help Topic below.--> 
+        <li> <h3><a href="fotw1516/help/fotwfaq68.htm" class="helpQuestion"><span class="closed"></span>Si todavía no he preparado mi declaración de impuestos, o mis padres aún no han preparado la suya, ¿qué hago?</a></h3> </li> 
+       </ul> 
+      </div> 
+      <!-- End #help2Content Section --> 
+      <div id="help3Content"> 
+       <h2>Herramienta de consulta y traspaso de datos del IRS</h2> 
+       <p>Preguntas frecuentes sobre la transferencia de información financiera con la Herramienta de consulta y traspaso de datos del IRS. </p> 
+       <ul class="helpPageQA"> 
+        <li> <h3><a href="help/irshlp8.htm" class="helpQuestion"><span class="closed"></span>¿Cómo funciona la Herramienta de consulta y traspaso de datos del IRS?</a></h3> </li> 
+        <li> <h3><a href="help/irshlp10.htm" class="helpQuestion"><span class="closed"></span>¿Puedo usar la Herramienta de consulta y traspaso de datos del IRS?</a></h3> </li> 
+        <li> <h3><a href="help/irshlp11.htm" class="helpQuestion"><span class="closed"></span>¿Necesito usar la Herramienta de consulta y traspaso de datos del IRS para llenar la FAFSA?</a></h3> </li> 
+        <li> <h3><a href="help/irshlp12.htm" class="helpQuestion"><span class="closed"></span>¿Por qué no se me presentó la opción de usar la Herramienta de consulta y traspaso de datos del IRS?</a></h3> </li> 
+        <li> <h3><a href="help/irshlp13.htm" class="helpQuestion"><span class="closed"></span>¿Por qué no funciona la Herramienta de consulta y traspaso de datos del IRS?</a></h3> </li> 
+        <li> <h3><a href="help/irshlp14.htm" class="helpQuestion"><span class="closed"></span>¿Cuándo puedo acceder a mi declaración de impuestos con la Herramienta de consulta y traspaso de datos del IRS?</a></h3> </li> 
+       </ul> 
+      </div> 
+      <!-- End #help3Content Section --> 
+      <div id="help4Content"> 
+       <h2>Cómo corregir los datos</h2> 
+       <p>¿Ya presentó su FAFSA y necesita corregirla? Obtenga orientación sobre cómo corregir la solicitud, añadir instituciones educativas, ver o imprimir el Informe de Ayuda Estudiantil y más. </p> 
+       <ul class="helpPageQA"> 
+        <li> <h3><a href="help/fotwfaq61.htm" class="helpQuestion"><span class="closed"></span>¿Cómo hago para corregir mi FAFSA?</a></h3> </li> 
+        <li> <h3><a href="help/fotwfaq62.htm" class="helpQuestion"><span class="closed"></span>¿Cuánto tarda la corrección en tramitarse?</a></h3> </li> 
+        <li> <h3><a href="help/fotwfaq63.htm" class="helpQuestion"><span class="closed"></span>¿Cómo hago para añadir una institución educativa?</a></h3> </li> 
+        <li> <h3><a href="help/fotwfaq64.htm" class="helpQuestion"><span class="closed"></span>¿Cómo firmo mi FAFSA?</a></h3> </li> 
+       </ul> 
+      </div> 
+      <!-- End #help4Content Section --> 
+      <div id="help5Content"> 
+       <h2>Próximos pasos</h2> 
+       <p>Si ya presentó su FAFSA, ¿qué pasa ahora? Conozca el aporte familiar previsto, el Informe de Ayuda Estudiantil y los próximos pasos. </p> 
+       <ul class="helpPageQA"> 
+        <li> <h3><a href="help/fotwfaq65.htm" class="helpQuestion"><span class="closed"></span>Ya presenté mi FAFSA. ¿Qué pasa ahora?</a></h3> </li> 
+        <li> <h3><a href="help/fotwfaq69.htm" class="helpQuestion"><span class="closed"></span>¿Qué es el Informe de Ayuda Estudiantil?</a></h3> </li> 
+        <li> <h3><a href="help/fotwfaq66.htm" class="helpQuestion"><span class="closed"></span>¿Cómo puedo saber si dieron trámite a mi FAFSA?</a></h3> </li> 
+        <li> <h3><a href="help/achk08hlp.htm" class="helpQuestion"><span class="closed"></span>¿Cómo hago para consultar el estado de mi FAFSA?</a></h3> </li> 
+        <li> <h3><a href="help/fotwfaq67.htm" class="helpQuestion"><span class="closed"></span>Las instituciones educativas que me interesan, ¿cuándo me van a informar sobre mi paquete de ayuda económica?</a></h3> </li> 
+       </ul> 
+      </div> 
+      <!-- End #help5Content Section --> 
+      <div id="help6Content"> 
+       <h2>Comunicarse con nosotros</h2> 
+       <h2>Más opciones de ayuda</h2> 
+       <p>¿No encontró la respuesta a su pregunta? Comuníquese con el Centro de Información sobre Ayuda Federal para Estudiantes. </p> 
+       <div id="containerforiframe"> 
+        <iframe src="https://fafsalivehelp01.ed.gov/Hours_ES.htm" scrolling="no" width="600" height="200" title="Horario de atención"></iframe> 
+       </div> 
+       <div class="helpIconCol"> 
+        <img src="../images/iconLiveHelp.gif" alt="Chatear con nosotros"> 
+        <h3>Chatear con nosotros:</h3> 
+        <p>Chatee en vivo con un representante de atención al cliente, en una sesión segura de charla por Internet. </p> 
+       </div> 
+       <p class="helpIconCol center"><span class="btn"><a href="https://fafsalivehelp01.ed.gov/FSAICWebAPI-ES/Chat/HtmlChatFrameSet.jsp?sourceApp=fotw" target="_blank">AYUDA EN VIVO</a></span> </p> 
+       <div class="helpIconCol"> 
+        <img src="../images/iconCall.gif" alt="Teléfono"> 
+        <h3>Teléfono:</h3> 
+        <p>Hable por teléfono con un representante de atención al cliente. Nuestro servicio automatizado está disponible en cualquier momento. </p> 
+        <p class="center"> (1-800-433-3243) o 319-337-5665 <br> ¿Tiene problemas de audición? Llame al número de teletipo: 
+         <nobr>
+          1-800-730-8913
+         </nobr> </p> 
+       </div> 
+       <div class="helpIconCol"> 
+        <img src="../images/iconE-mail.gif" alt="Correo electrónico"> 
+        <h3>Correo electrónico:</h3> 
+        <p>Puede utilizar el formulario electrónico para hacernos llegar sus consultas, comentarios y observaciones. También puede usarlo para informar sobre problemas técnicos. Nuestro servicio de atención al cliente responderá por correo electrónico. O puede enviarnos un correo electrónico a: <a href="mailto:FederalStudentAidCustomerService@ed.gov">FederalStudentAidCustomerService@ed.gov</a>. Le responderemos dentro de un día hábil. </p> 
+       </div> 
+       <p class="helpIconCol center"><span class="btn"><a href="/FAFSA/cycleNeutral/faces/Email.faces?locale=es_ES">CORREO ELECTRÓNICO</a></span> </p> 
+      </div> 
+      <!-- End #help6Content Section --> 
+     </div> 
+     <!-- End #helpPageBody --> 
+    </div> 
+    <!-- End #helpPageMain --> 
+   </div> 
+   <!-- End #formBody --> 
+   <div id="footer"> 
+    <div id="datestamp"> 
+     <span id="dateStampLinks">Descargar <a href="http://www.adobe.com/products/reader.html" target="_blank">Adobe Reader</a></span> Última actualización de la página: viernes, 23 de enero de 2015 
+    </div> 
+    <div class="footerLinks"> 
+     <ul class="foot_left"> 
+      <li> <a href="Javascript:externalLinks.openExtURL(externalLinks.FOIA);">FOIA</a>| </li> 
+      <li> <a href="privacy.htm" target="_blank">Confidencialidad</a>| </li> 
+      <li> <a href="security.htm" target="_blank">Seguridad</a>| </li> 
+      <li> <a href="security.htm" target="_blank">Avisos</a> </li> 
+     </ul> 
+     <ul class="foot_right"> 
+      <li> <a href="Javascript:externalLinks.openExtURL(externalLinks.whiteHouse_ES);">WhiteHouse.gov</a>| </li> 
+      <li> <a href="Javascript:externalLinks.openExtURL(externalLinks.usaGov_ES);">GobiernoUSA.gov</a>| </li> 
+      <li> <a href="Javascript:externalLinks.openExtURL(externalLinks.edGov_ES);">ED.gov</a> </li> 
+     </ul> 
+    </div> 
+   </div> 
+   <!-- End #footer --> 
+  </div> 
+  <!-- START OF SmartSource Data Collector TAG --> 
+  <!-- Copyright (c) 1996-2013 Webtrends Inc.  All rights reserved. --> 
+  <!-- Version: 9.4.0 --> 
+  <!-- Tag Builder Version: 4.1  --> 
+  <!-- Created: 4/4/2013 5:13:40 PM --> 
+  <script src="/js/webtrends/webtrends.js" type="text/javascript"></script> 
+  <!-- ----------------------------------------------------------------------------------- --> 
+  <!-- Warning: The two script blocks below must remain inline. Moving them to an external --> 
+  <!-- JavaScript include file can cause serious problems with cross-domain tracking.      --> 
+  <!-- ----------------------------------------------------------------------------------- --> 
+  <script type="text/javascript">
+//<![CDATA[
+var _tag=new WebTrends();
+//]]>
+</script> 
+  <script type="text/javascript">
+//<![CDATA[
+_tag.dcsCustom=function(){
+// Add custom parameters here.
+//_tag.DCSext.param_name=param_value;
+}
+_tag.dcsCollect();
+//]]>
+</script> 
+  <noscript> 
+   <div>
+    <img alt="DCSIMG" id="DCSIMG" width="1" height="1" src="//statse.webtrendslive.com/dcsp8mg3h10000wkhcw35vmeg_3q5c/njs.gif?dcsuri=/nojavascript&amp;WT.js=No&amp;DCS.dcscfg=1&amp;WT.tv=9.4.0&amp;dcssip=www.fafsa.ed.gov">
+   </div> 
+  </noscript> 
+  <!-- END OF SmartSource Data Collector TAG -->  
+ </body>
+</html>

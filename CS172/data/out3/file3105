@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head> 
+  <link rel="stylesheet" type="text/css" href="/scripts/ProStyles.css"> 
+  <link rel="stylesheet" type="text/css" href="/screens/styles.css"> 
+  <script type="text/javascript" src="/scripts/elcontent.js"></script> 
+  <script type="text/javascript" src="/scripts/common.js"></script> 
+  <link rel="stylesheet" type="text/css" href="/scripts/iiiStyles.css"> 
+  <link rel="stylesheet" type="text/css" href="/screens/styles.css"> 
+  <script language="JavaScript" type="text/javascript" src="/scripts/common.js"></script> 
+  <title>Prospector</title> 
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+  <link rel="stylesheet" href="/screens/styles.css" type="TEXT/CSS"> 
+  <script type="text/javascript">
+        $(document).ready(function(){
+			$("#nav ul li").hover(function(){
+				$(this).addClass("hover");
+				$(".searchSelect").addClass("invisible");
+			}, function(){
+				$(this).removeClass("hover");
+				$(".searchSelect").removeClass("invisible");
+			});
+			$("div.searchSection:eq(0)").show();
+			$("ul#searchNav a:first").addClass("current");
+			$("ul#searchNav a").click(function(){
+				$("ul#searchNav a").removeClass("current");
+				$(this).addClass("current");
+				$("div.searchSection").hide();
+				var showsearch = $(this).attr("href");
+				$(showsearch).show();
+				return false;
+			});
+			$("div.exhibit").hide();
+			var promocount = $("div.exhibit").length;
+			var randomnumber=Math.floor(Math.random()*promocount);
+			$("div.exhibit:eq(" + randomnumber +")").show();
+			var importanttext = $("#important .content").text();
+			if (importanttext.length > 10) {
+				$("#important").show();
+			}
+			
+		});
+        </script>
+  <script language="JavaScript" type="text/JavaScript">
+
+function pageInit() {
+	document.catalogsearch.searchtype.selectedIndex=0;
+ 	document.forms[0].elements[1].focus();
+	var catalogform = document.catalogsearch;
+ 	if (catalogform) {
+    	change_action('catalogsearch', catalogform.selectedIndex);
+  }
+}
+window.onload = pageInit;
+
+</script>
+ </head> 
+ <!--<script type="text/javascript" src="/ssi/jquery/jquery-latest.pack.js"></script>-->   
+ <body onload="document.forms[0].elements[1].focus();">
+  <span id="searchscope01">&nbsp;&nbsp;&nbsp;&nbsp; </span>  
+  <!-- Create Image map for tabs --> 
+  <!-- Begin a wrapper table to hold it all together --> 
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center"> 
+   <tbody>
+    <tr> 
+     <td>
+      <!-- Content Cell for Wrapper Table --> 
+      <!-- Begin top navigation table; Should match toplogo.html --> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="2" align="center"> 
+       <tbody>
+        <tr> 
+         <td bgcolor="#524842" colspan="2"><img src="/screens/spacer.gif" height="2" width="1" alt=""></td> 
+        </tr> 
+        <tr valign="middle"> 
+         <td width="50%" align="left" class="pageNavArea"><a href="/screens/opacmenu.html"><img src="/screens/prospector_name5.gif" alt="Prospector Home" width="282" height="42" border="0"></a> 
+          <!--Beginning navigation bar at the top of the page--> 
+          <!--End of the top navigation bar--> </td> 
+         <td width="50%" align="right" class="pageNavArea"> 
+          <!-- Beginning of library logo area --> <a href="/screens/opacmenu.html"><img src="/screens/home.gif" width="80" height="40" border="0"></a><a href="http://prospectorhome.coalliance.org/"><img src="/screens/newhome.gif" width="80" height="40" border="0"></a><a href="/screens/help_index.html"><img src="/screens/help.gif" width="80" height="40" border="0"></a> 
+          <!-- End of library logo area --> <a href="https://www.google.com/maps/d/viewer?mid=zSz-rWFZke_8.ktzAuTTP0gEc"><img src="/screens/mapicon.gif" width="80" height="40" border="0"></a> <a href="http://prospectorhome.coalliance.org/prospectornews/about"><img src="/screens/about.gif" width="80" height="40" border="0"></a></td> 
+        </tr> 
+       </tbody>
+      </table> 
+      <!-- End of top navigation bar table --> <br> <map name="m_tabs_keyword"> <area shape="rect" coords="586,9,703,47" href="/screens/srchhelp_i.html" alt=""> <area shape="rect" coords="470,9,587,47" href="/screens/srchhelp_d.html" alt=""> <area shape="rect" coords="351,9,468,47" href="/screens/srchhelp_s.html" alt=""> <area shape="rect" coords="235,9,352,47" href="/screens/srchhelp_t.html" alt=""> <area shape="rect" coords="118,9,235,47" href="/screens/srchhelp_a.html" alt=""> </map> 
+      <table width="100%" border="0" cellpadding="0" cellspacing="0"> 
+       <tbody>
+        <tr>
+         <!-- Search Tab Row --> 
+         <td height="45"><img class="imgNoMargin" src="/screens/tabs_keyword.gif" alt="" name="tabs_keyword" width="703" height="50" border="0" usemap="#m_tabs_keyword"></td> 
+        </tr> 
+        <tr> 
+         <td valign="top"> 
+          <table width="100%" border="0" cellpadding="0" cellspacing="0"> 
+           <tbody>
+            <tr> 
+             <td width="50%" valign="top" class="pageMainArea">
+              <!-- Column 1; Search Form --> 
+              <table width="100%" border="0" cellpadding="2" cellspacing="0"> 
+               <tbody>
+                <tr> 
+                 <td colspan="2" class="pageMainAreaHeader"> Search Prospector </td> 
+                </tr> 
+                <tr> 
+                 <form class="unpadded" action="/search/" name="search" id="search"></form> 
+                 <td width="57%"> <select name="searchtype"> <option value="X" selected>Keyword</option> <option value="a">Author</option> <option value="t">Title</option> <option value="s">Journal Title</option> <option value="">------------------</option> <option value="d">LC Subject</option> <option value="m">Medical Subject</option> <option value="b">Children's Subject</option> <option value="">------------------</option> <option value="c">LC Call Number</option> <option value="g">Gov Doc Number</option> <option value="i">ISSN/ISBN</option> <option value="e">Dewey Call Number</option> <option value="n">Medical Call Number</option> <option value="o">OCLC Number</option> </select> <input maxlength="75" name="searcharg" size="25"> <input type="hidden" name="SORT" value="D"> </td> 
+                 <td width="43%" align="center"> <input name="imageField" type="image" src="/screens/searchnow.gif" width="80" height="40" border="0"> <a href="/screens/srchhelp_Y.html"><img src="/screens/advancedsearch.gif" width="80" height="40" border="0"></a></td>   
+                </tr> 
+                <tr> 
+                 <td colspan="2" class="usagenote"><p> Select a search type, enter a word or phrase to search for, and click the "Search Now" button.</p> <p> Or click the "Advanced Search" button for more options.</p></td> 
+                </tr> 
+               </tbody>
+              </table> </td>
+             <!-- End Column 1; Search Form --> 
+             <td width="50%" align="center" valign="top" class="pageMainArea">
+              <!-- Column 2; Announcements --> 
+              <table width="100%" border="0" cellspacing="0" cellpadding="2"> 
+               <tbody>
+                <tr> 
+                 <td valign="top"> 
+                  <table border="0" cellpadding="0" cellspacing="0" width="400"> 
+                   <!-- fwtable fwsrc="P_news_bkgd.png" fwbase="P_news_bkgd.gif" fwstyle="Dreamweaver" fwdocid = "1123664930" fwnested="0" --> 
+                   <tbody>
+                    <tr> 
+                     <td><img src="/screens/spacer.gif" alt="" name="undefined_2" width="114" height="1" border="0"></td> 
+                     <td><img src="/screens/spacer.gif" alt="" name="undefined_2" width="286" height="1" border="0"></td> 
+                    </tr> 
+                    <tr> 
+                     <td background="/screens/P_news_bkgd_r1_c1.gif" class="pnews" height="300"></td> 
+                     <td valign="top" background="/screens/P_news_bkgd_r1_c2.gif" class="pnews" height="300"> <p> 
+                       <!-- Change press release links below here ---> <img class="imgNoMargin" src="/screens/spacer.gif" alt="" width="286" height="35" border="0"><br> </p> <br> <br> <p> <font face="Arial" weight="bold" size="3"> <a href="http://prospectorhome.coalliance.org/">New Prospector Home</a></font></p><font face="Arial" weight="bold" size="3"> <a href="http://prospectorhome.coalliance.org/prospectornews">Prospector News</a><p></p> </font></td> 
+                    </tr> 
+                    <!--<tr>
+    <td class="limitlabel" bgcolor="#efe9dc">&nbsp;</td>
+    <td align="right"><a href="http://www.coalliance.org/prospector/p_news/index.html">Old Press Releases...</a></td>
+    </tr>
+</table>--> 
+                    <!-- Column 2; Announcements -->  
+                   </tbody>
+                  </table> </td> 
+                </tr> 
+               </tbody>
+              </table> </td> 
+            </tr>
+            <!-- End Search Form/Announcements Row --> 
+           </tbody>
+          </table> <p>&nbsp;</p> 
+          <!-- Begin Bottom Navigation Table; Should match botlogo.html --> 
+          <table width="100%" border="0" cellspacing="0" cellpadding="2" align="center"> 
+           <tbody>
+            <tr> 
+             <td colspan="2" bgcolor="#524842"><img src="/screens/spacer.gif" height="1" width="1" alt=""></td> 
+            </tr> 
+            <tr valign="middle"> 
+             <td width="50%" align="center" class="pageNavArea"> &nbsp;<a href="/screens/opacmenu.html"><img src="/screens/home.gif" width="80" height="40" border="0"></a><a href="http://prospector.coalliance.org"><img src="/screens/newhome.gif" width="80" height="40" border="0"></a><a href="/screens/help_index.html"><img src="/screens/help.gif" width="80" height="40" border="0"></a><a href="/screens/about_prospector.html"><img src="/screens/about.gif" width="80" height="40" border="0"></a> </td> 
+             <td width="50%" align="center" class="InnovativeCredit">Brought to you by <a href="http://www.coalliance.org/">The Colorado Alliance</a><br> Powered by <a href="http://www.iii.com" target="_blank">Innovative Interfaces, Inc.</a> 2010 <p></p> </td> 
+            </tr> 
+            <tr> 
+             <td colspan="2" bgcolor="#524842"><img src="/screens/spacer.gif" height="1" width="1" alt=""></td> 
+            </tr> 
+           </tbody>
+          </table> 
+          <!-- End bottom navigation table --> 
+          <!-- End Wrapper Table --> </td> 
+        </tr> 
+       </tbody>
+      </table> <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18060232-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script> <span style="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; visibility: visible; font-size: 85%; text-align: center; display: block; ">WebPAC PRO © Innovative Interfaces, Inc.</span>   
+      <!--this is customized <screens/mainmenu.html>--> 
+      <!--this is customized <screens/opacmenu.html>--> </td>
+    </tr>
+   </tbody>
+  </table>
+ </body>
+</html>

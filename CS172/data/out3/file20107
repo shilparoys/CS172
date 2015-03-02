@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
+ <head> 
+  <title>Log In | Phi Theta Kappa Honor Society</title> 
+  <meta http-equiv="CACHE-CONTROL" content="NO-CACHE"> 
+  <meta http-equiv="EXPIRES" content="0"> 
+  <meta http-equiv="PRAGMA" content="NO-CACHE"> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1; charset=UTF-8"> 
+  <meta name="description" content="Single sign-on portal for sites powered by Phi Theta Kappa."> 
+  <meta name="author" content="Phi Theta Kappa Honor Society"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"> 
+  <link rel="shortcut icon" href="/images/sso/favicon.ico"> 
+  <link rel="stylesheet" href="/css/sso/normalize.css" type="text/css"> 
+  <link rel="stylesheet" href="/css/sso/fonts.css" type="text/css"> 
+  <link rel="stylesheet" href="/css/sso/sso.css" type="text/css"> 
+  <link type="text/css" href="/css/jquery/smoothness/jquery-ui-1.7.2.custom.css" rel="stylesheet"> 
+  <link type="text/css" href="/css/sso/responsive/720.css" rel="stylesheet" media="all and (max-width: 720px)"> 
+  <link type="text/css" href="/css/sso/responsive/530.css" rel="stylesheet" media="all and (max-width: 530px)"> 
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script> 
+  <script>window.jQuery || document.write('<script src="/scripts/jquery.min.js"><\/script>')</script> 
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script> 
+  <script>window.jQuery.ui || document.write('<script src="/scripts/jquery-ui.min.js"><\/script>')</script> 
+  <script type="text/javascript" src="/scripts/sso/modernizr-1.6.min.js"></script> 
+  <script type="text/javascript" src="/scripts/sso/respond.min.js"></script> 
+  <script type="text/javascript" src="scripts/facebookIntegration.js"></script> 
+  <script type="text/javascript" src="scripts/casIntegration.js"></script> 
+  <script type="text/javascript" src="scripts/loginmanagerval.js"></script> 
+  <script type="text/javascript" src="scripts/common.js"></script> 
+  <script type="text/javascript" src="scripts/jquery.pngFix.js"></script> 
+  <script type="text/javascript">
+        function validateAndSubmit(username,password) {
+
+                jQuery("#submitBtn").hide();
+                jQuery("#workingBtn").show();
+                jQuery.ajax({
+                    type:"POST",
+                    url:"login",
+                    data:"username=" + username + "&password=" + password,
+                    dataType:"text",
+                    success:function (response) {
+                        if (response == "success")
+                            doCAS(username,password);
+                        else if (response == "registrationRequired")
+                            doRegistration();
+                        else if (response != "falseFacebookLogin") {
+                            if (response == "messageLoginInvalid")
+                                jQuery("#errorMessage").text("Invalid username or password.");
+                            else if (response == "messageLoginSynch")
+                                jQuery("#errorMessage").text("Your Phi Theta Kappa account has not been synchronized with CollegeFish. Please contact Key Services at 800.946.9995 or ptk.org/contact.");
+                            else if (response == "messageLoginLocked")
+                                jQuery("#errorMessage").text("Your account has been locked. Please use the Forgot Password link to reset your password.");
+                            else if (response == "unameOrPassInvalidPatternMbr") {
+                                jQuery("#errorMessage").empty();
+                                jQuery("#errorMessage").append("Special characters are not allowed in usernames or passwords. Please click <a href=  'https://www.ptk.org/loginmanager/?action=change&backLink=https://www.collegefish.org/transferfish/login.do'  >here</a> to change your log in.");
+                            }
+                            else if (response == "unameOrPassInvalidPatternNonMbr") {
+                                jQuery("#errorMessage").empty();
+                                jQuery("#errorMessage").append("Special characters are not allowed in usernames or passwords. Please click <a href='forgottenUsernamePassword.vm'>here</a> to change your log in.");
+                            }
+                            jQuery("#errorDialog").dialog("open");	//non-blocking
+                            jQuery("#submitBtn").show();
+                            jQuery("#workingBtn").hide();
+                        }
+                    },
+                    error:function () {
+                        jQuery("#errorMessage").text("Oops. An error occurred. Please try your request again.");
+                        jQuery("#errorDialog").dialog("open");	//non-blocking
+                        jQuery("#submitBtn").show();
+                        jQuery("#workingBtn").hide();
+                    }
+                });
+            
+            return false;	//ajax callback will submit the form after retrieving the login ticket (assuming no errors)
+        }
+
+        // forward to registration process for additional information
+        function doRegistration() {
+            window.location.href = "/loginmanager/registration";
+        }
+
+        function doFalseLogin() {
+            jQuery("#form1").get(0).setAttribute('action', '/loginmanager/new.go');
+            jQuery("#form1").submit();
+        }
+
+        function initDialogs() {
+            jQuery("#errorDialog").dialog({
+                autoOpen:false,
+                modal:true,
+                buttons:{
+                    'OK':function () {
+                        jQuery(this).dialog("close");
+                    }
+                }
+            });
+        }
+
+        function init() {
+            initDialogs();
+  			            jQuery("#formTable").show();
+        }
+    </script> 
+ </head> 
+ <body onload="init();"> 
+  <div id="fb-root"></div> 
+  <!-- including the asyn init in the body of the page is a facebook best practice - provides most efficient load --> 
+  <script type="text/javascript">
+    window.fbAsyncInit = function () {
+        FB.init({appId:'141146519362770', version:'v2.2', status:true, cookie:true, xfbml:true});
+		    };
+    
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script> 
+  <div id="page-wrapper"> 
+   <div id="wrapper"> 
+    <div id="header"> 
+     <a href="#powered-sites" class="show-dialog" id="ptk">Phi Theta Kappa Honor Society</a> 
+     <div id="loginbar"> 
+      <div class="section clearfix"> 
+       <p><a href="#powered-sites" class="show-dialog">View sites powered by Phi Theta Kappa</a></p> 
+       <div id="powered-sites" title="Powered by Phi Theta Kappa" style="display: none"> 
+        <p>The following sites are powered by Phi Theta Kappa:</p> 
+        <ul class="default"> 
+         <li><a href="http://www.ptk.org" class="external" target="_blank">ptk.org</a></li> 
+         <li><a href="http://store.ptk.org" class="external" target="_blank">store.ptk.org</a></li> 
+         <li><a href="http://my.ptk.org" class="external" target="_blank">my.ptk.org</a></li> 
+         <li><a href="http://www.collegefish.org" class="external" target="_blank">CollegeFish.org</a></li> 
+        </ul> 
+       </div> 
+      </div> 
+     </div> 
+     <!-- /.section, /#login_bar --> 
+    </div> 
+    <!-- end #header --> 
+    <!-- BEGIN CONTENT --> 
+    <div id="page_content" class="clearfix"> 
+     <noscript> 
+      <div class="error"> 
+       <p><strong>JavaScript is not currently enabled in your browser but is required to access this application.</strong><br> Not sure how to enable JavaScript? <a href="http://www.activatejavascript.org" target="_blank">Find out how.</a></p> 
+       <img src="/images/sso/noscript.png" alt=""> 
+      </div> 
+     </noscript> 
+     <div id="errorDialog" title="Error"> 
+      <p id="errorMessage"></p> 
+     </div> 
+     <!-- MAIN COLUMN --> 
+     <div id="fullcol" class="clearfix"> 
+      <div id="login-wrapper"> 
+       <h3>Log in </h3> 
+       <form id="form1" name="form1" method="post" action="/cas/login" onsubmit="return validateAndSubmit(document.forms.form1.username.value,document.forms.form1.password.value);"> 
+        <fieldset id="formTable" style="display: none;"> 
+         <input type="hidden" name="lt" value=""> 
+         <input type="hidden" name="service" value=""> 
+         <input type="hidden" name="execution" value=""> 
+         <input type="hidden" name="_eventId" value="submit"> 
+         <div class="wrapper clearfix"> 
+          <div class="fields clearfix"> 
+           <div class="form-row clearfix"> 
+            <label for="username">Username:</label> 
+            <div class="field"> 
+             <input id="username" class="show-info" name="username" type="text" maxlength="60" value=""> 
+             <span class="info-text">(usually your email address)</span> 
+            </div> 
+           </div> 
+           <div class="form-row clearfix"> 
+            <label for="password">Password:</label> 
+            <div class="field"> 
+             <input id="password" name="password" type="password" maxlength="40" value=""> 
+            </div> 
+           </div> 
+          </div> 
+          <div class="submit-wrapper clearfix"> 
+           <div class="submit left"> 
+            <div class="form-row"> 
+             <input id="submitBtn" name="submitBtn" type="image" src="/images/sso/spacer.gif" class="login-btn"> 
+             <input class="transparent" type="image" id="workingBtn" title="Working" style="display: none; padding-left: 15px;" src="/images/processing-32.gif"> 
+            </div> 
+           </div> 
+           <div class="links left"> 
+            <ul> 
+             <li class="first"><a href="registration?emailAddress=&amp;firstName=&amp;lastName=&amp;birthDate=">Create an Account</a></li> 
+             <li class="last"><a href="forgot">Reset Password</a></li> 
+            </ul> 
+           </div> 
+          </div> 
+          <div class="links-wrapper clear"> 
+           <div class="links"> 
+            <p>Received an Invitation? <a href="http://www.ptk.org/accept-membership">Accept Phi Theta Kappa Membership</a></p> 
+           </div> 
+          </div> 
+         </div> 
+        </fieldset> 
+       </form> 
+      </div> 
+      <div id="or-wrapper"> 
+       <img src="/images/sso/sso_or.png"> 
+      </div> 
+      <div id="other-wrapper"> 
+       <h3>Use other log in methods</h3> 
+       <div class="wrapper"> 
+        <a href="#" class="fb-login-btn" onclick="doFacebook(); return false;"> <p>Log In with Facebook</p> </a> 
+       </div> 
+      </div> 
+     </div> 
+     <!-- end .fullcol --> 
+    </div> 
+    <!-- END PAGE CONTENT --> 
+    <div class="copyright clear"> 
+     <p class="large">Have Questions? <a href="http://www.ptk.org/login/faq" target="_blank">Read the FAQ</a> or <a href="http://www.ptk.org/contact" target="_blank">Contact Us</a></p> 
+     <p>Copyright 2015, Phi Theta Kappa Honor Society. All rights reserved. 1625 Eastover Drive | Jackson, MS 39211 | 800.946.9995</p> 
+    </div> 
+   </div> 
+   <!-- end #wrapper --> 
+   <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-1979351-19']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+</script>  
+  </div>
+ </body>
+</html>

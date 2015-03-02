@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta charset="utf-8"> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Westmont Connect</title> 
+  <meta name="description" content=""> 
+  <meta name="author" content=""> 
+  <link href="/assets/application-cf9b4c1cfc4419a112a5b56d3e3f5899.css" media="screen" rel="stylesheet" type="text/css"> 
+  <script src="/assets/application-bfd67403d6380c58894a0ead3bd0fcc2.js" type="text/javascript"></script> 
+  <meta content="authenticity_token" name="csrf-param"> 
+  <meta content="Uqj0Qwp1IpttT9Qwmv8ZNVgdJO7YnIxUyTEZXQQlRgA=" name="csrf-token"> 
+  <style>
+
+    /* GLOBAL STYLES
+    -------------------------------------------------- */
+    /* Padding below the footer and lighter body text */
+
+    body {
+      background-color: #fff;
+      padding-bottom: 40px;
+      color: #5a5a5a;
+    }
+
+    h2 {
+      margin: 0px;
+    }
+
+  .wrapper {
+    min-width: 700px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .block_holder {
+    padding: 7px;
+    background: #f6f6f6;
+    width: 210px;
+    height: 210px;
+    box-shadow: 0 0 3px 1px rgba(0,0,0,0.15);
+    float:left;
+    margin:15px;
+  }
+
+  .block {
+    width: 210px;
+    height: 210px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .block .hover_info {
+    opacity: 0;
+    transition: opacity 200ms ease-in-out;
+    background: rgba(256,256,256,0.8);
+    width: 210px;
+    height: 210px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+
+  .block:hover .hover_info {
+    opacity: 1;
+  }
+
+  .hover_info h4, .hover_info p {
+    position: absolute;
+    top:110px;
+    left: 5%;
+    width: 95%;
+  }
+
+  .hover_info p {
+    top: 145px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+  .hover_info:hover .hover_info:active {
+    opacity: 1;
+  }
+
+  .hover_info.two_lines h4 {
+    top:90px;
+  }
+
+
+    /* CUSTOMIZE THE NAVBAR
+    -------------------------------------------------- */
+
+    /* Special class on .container surrounding .navbar, used for positioning it into place. */
+    .navbar-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      margin-top: 20px;
+      margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
+    }
+    .navbar-wrapper .navbar {
+
+    }
+
+    /* Remove border and change up box shadow for more contrast */
+    .navbar .navbar-inner {
+      border: 0;
+      -webkit-box-shadow: 0 2px 10px rgba(0,0,0,.25);
+         -moz-box-shadow: 0 2px 10px rgba(0,0,0,.25);
+              box-shadow: 0 2px 10px rgba(0,0,0,.25);
+    }
+
+    /* Downsize the brand/project name a bit */
+    .navbar .brand {
+      padding: 14px 20px 16px; /* Increase vertical padding to match navbar links */
+      font-size: 16px;
+      font-weight: bold;
+      text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+    }
+
+    /* Navbar links: increase padding for taller navbar */
+    .navbar .nav > li > a {
+      padding: 15px 20px;
+    }
+
+    /* Offset the responsive button for proper vertical alignment */
+    .navbar .btn-navbar {
+      margin-top: 10px;
+    }
+
+
+
+    /* CUSTOMIZE THE CAROUSEL
+    -------------------------------------------------- */
+
+    /* Carousel base class */
+    .carousel {
+      margin-bottom: 0px;
+      margin-left: auto;
+      margin-right: auto;
+      display:block;
+    }
+
+    .carousel .container {
+      position: relative;
+      z-index: 9;
+    }
+
+    .carousel-control {
+      height: 80px;
+      margin-top: 0;
+      font-size: 120px;
+      text-shadow: 0 1px 1px rgba(0,0,0,.4);
+      background-color: transparent;
+      border: 0;
+      z-index: 10;
+    }
+
+    .carousel .item {
+      height: auto;
+
+    }
+    .carousel img {
+/*       position: absolute; */
+    display: block;
+      margin-top: auto;
+      margin-left: auto;
+      margin-right: auto;
+      min-width: auto;
+      height: auto;
+            border:1px solid #888;
+    }
+
+    .carousel-caption {
+      background-color: transparent;
+      position: static;
+      max-width: 550px;
+      padding: 0 20px;
+      margin-top: 200px;
+    }
+    .carousel-caption h1,
+    .carousel-caption .lead {
+      margin: 0;
+      line-height: 1.25;
+      color: #fff;
+      text-shadow: 0 1px 1px rgba(0,0,0,.4);
+    }
+    .carousel-caption .btn {
+      margin-top: 10px;
+    }
+
+
+
+    /* MARKETING CONTENT
+    -------------------------------------------------- */
+
+    /* Center align the text within the three columns below the carousel */
+    .marketing .span4 {
+      text-align: center;
+    }
+    .marketing h2 {
+      font-weight: normal;
+    }
+    .marketing .span4 p {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+
+    /* Featurettes
+    ------------------------- */
+
+    .featurette-divider {
+      margin: 40px 0; /* Space out the Bootstrap <hr> more */
+    }
+    .featurette {
+      padding-top: 0px; /* Vertically center images part 1: add padding above and below text. */
+      overflow: hidden; /* Vertically center images part 2: clear their floats. */
+    }
+    .featurette-image {
+      /* margin-top: -120px; */ /* Vertically center images part 3: negative margin up the image the same amount of the padding to center it. */
+      display: block; margin-left: auto; margin-right: auto;
+            border:1px solid #888;
+    }
+
+    /* Give some space on the sides of the floated elements so text doesn't run right into it. */
+    .featurette-image.pull-left {
+      margin-right: 40px;
+    }
+    .featurette-image.pull-right {
+      margin-left: 40px;
+    }
+
+    /* Thin out the marketing headings */
+    .featurette-heading {
+      font-size: 35px;
+      font-weight: 300;
+      line-height: 1.2;
+      letter-spacing: -1px;
+      text-align: center;
+    }
+
+    .featurette .lead {
+      margin:0 auto;
+      text-align: center;
+      color: #999;
+      width:450px;
+      padding: 25px;
+        font-size: 18px;
+        line-height: 1.5;
+    }
+
+    .featurette .alumni_heads {
+      width:762px;
+      margin:0 auto;
+    }
+
+  .featurette .alumni_heads img {
+/*    display: inline; */
+    text-align: center;
+    width: 210px;
+    height: 210px;
+  }
+
+
+    /* RESPONSIVE CSS
+    -------------------------------------------------- */
+
+    @media (max-width: 979px) {
+
+      .container.navbar-wrapper {
+        margin-bottom: 0;
+        width: auto;
+      }
+      .navbar-inner {
+        border-radius: 0;
+        margin: -20px 0;
+      }
+
+      .carousel .item {
+        height: 500px;
+      }
+      .carousel img {
+        width: auto;
+        height: 500px;
+      }
+
+      .featurette {
+        height: auto;
+        padding: 20px 0 0 0;
+      }
+      .featurette-image.pull-left,
+      .featurette-image.pull-right {
+        display: block;
+        float: none;
+        max-width: 40%;
+        margin: 0 auto 20px;
+      }
+    }
+
+
+    @media (max-width: 767px) {
+
+      .navbar-inner {
+        margin: -20px;
+      }
+
+      .carousel {
+        margin-left: -20px;
+        margin-right: -20px;
+      }
+      .carousel .container {
+
+      }
+      .carousel .item {
+        height: 300px;
+      }
+      .carousel img {
+        height: 300px;
+      }
+      .carousel-caption {
+        width: 65%;
+        padding: 0 70px;
+        margin-top: 100px;
+      }
+      .carousel-caption h1 {
+        font-size: 30px;
+      }
+      .carousel-caption .lead,
+      .carousel-caption .btn {
+        font-size: 18px;
+      }
+
+      .marketing .span4 + .span4 {
+        margin-top: 40px;
+      }
+
+      .featurette-heading {
+        font-size: 30px;
+      }
+
+    }
+
+    </style> 
+ </head> 
+ <body class="welcome"> 
+  <div id="landing"> 
+   <div class="wrapper"> 
+    <div class="featurette"> 
+     <img alt="Westmont-connect-rgb" src="/assets/Westmont-Connect-RGB-75b99367f0dcff8b22126c241cdaff10.png" style="margin:auto auto;display:block;padding-top:50px;width:800px;"> 
+     <h2 class="featurette-heading" style="padding-top:50px;">A Community for Life</h2> 
+     <p class="lead" style="width:600px;"><span class="muted">An exclusive alumni resource designed to help you<br>discover and develop connections throughout the Westmont world.</span></p> 
+     <div style="text-align:center;padding-bottom:50px"> 
+      <a data-toggle="modal" href="#createAccount" class="btn btn-info btn-large">Sign up</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      <button data-toggle="modal" data-target="#signin_modal" class="btn btn-primary btn-large">Log in</button> 
+     </div> 
+     <div id="myCarousel" class="carousel slide"> 
+      <div class="carousel-inner"> 
+       <div class="item active"> 
+        <img alt="Wc_connections" src="/assets/WC_Connections-3c4f1017c8ffc9d403df1b4d193b2d4f.png"> 
+       </div> 
+       <div class="item"> 
+        <img alt="Wc_home" src="/assets/WC_Home-d34ac6c76501bbd22dd0a753d916e7d8.png"> 
+       </div> 
+       <div class="item"> 
+        <img alt="Wc_jobs" src="/assets/WC_Jobs-49b0dd9df8dfd72b4e20c0a9f7c1b998.png"> 
+       </div> 
+       <div class="item"> 
+        <img alt="Wc_search" src="/assets/WC_Search-b4fa5d4589ac269dc77088de4ceba6e7.png"> 
+       </div> 
+       <div class="item"> 
+        <img alt="Wc_searchfilters" src="/assets/WC_SearchFilters-9eb44e2004d4a1753b138ba4876840c5.png"> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <hr class="featurette-divider"> 
+    <div class="featurette"> 
+     <h2 class="featurette-heading">Find Alumni Who Share Your Interests <br><span class="muted">There is something for everyone.</span></h2> 
+     <p class="lead">Interested in travel? A reading club? Need advice on finding a church in a new city? Find fellow Westmont alums with similar interests and start sharing ideas.</p> 
+     <img alt="Wc_searchfilters" class="featurette-image" src="/assets/WC_SearchFilters-9eb44e2004d4a1753b138ba4876840c5.png"> 
+    </div> 
+    <hr class="featurette-divider"> 
+    <div class="featurette"> 
+     <h2 class="featurette-heading">Connect with Westmont professionals in your field <br><span class="muted">Boost your Career.</span></h2> 
+     <p class="lead">We all need a leg–up, a perspective from someone who has “been there, done that." Connect here with other Westmont alums who have pursued similar professional interests and see where it leads you!</p> 
+     <div class="alumni_heads"> 
+      <!-- blockholder --> 
+      <div class="block_holder"> 
+       <div class="block"> 
+        <img alt="Alexbakerpic7.11" src="/assets/AlumniImages/AlexBakerPic7.11-27c1e7ca724fc31da610d88cc9e5319e.JPG"> 
+        <div class="hover_info"> 
+         <h4>Alexis Baker '08</h4> 
+         <p><strong>Manager of Donor Relations<br> State Policy Network<br> Arlington, VA</strong></p> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="block_holder"> 
+       <div class="block"> 
+        <img alt="Danehoward" src="/assets/AlumniImages/DaneHoward-5c11dd23a0ac7fdfb5a90ef3a5afb64a.jpg"> 
+        <div class="hover_info"> 
+         <h4>Dane Howard '94</h4> 
+         <p><strong>Director of Global Marketing Experience<br> eBay<br> San Jose, CA</strong></p> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="block_holder"> 
+       <div class="block"> 
+        <img alt="Davidjay" src="/assets/AlumniImages/DavidJay-0742f55fae622fae9753367f942cca7d.jpg"> 
+        <div class="hover_info"> 
+         <h4>David Jay '02</h4> 
+         <p><strong>CEO<br> Showitfast, Inc.<br> Santa Barbara, CA</strong></p> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="alumni_heads"> 
+      <div class="block_holder"> 
+       <div class="block"> 
+        <img alt="Denisejackson2_000" src="/assets/AlumniImages/DeniseJackson2_000-6efcbbe08738592a1b122abbd865bb72.jpg"> 
+        <div class="hover_info"> 
+         <h4>Denise Jackson '78</h4> 
+         <p><strong>Employee Relations Director<br> Career Education Corporation<br> Los Angeles, CA</strong></p> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="block_holder"> 
+       <div class="block"> 
+        <img alt="Johngriesinger9.11_000" src="/assets/AlumniImages/JohnGriesinger9.11_000-58c7303edcae9d5a000f2d2bc0d6eed6.JPG"> 
+        <div class="hover_info"> 
+         <h4>John Griesinger '87</h4> 
+         <p><strong>Consultant<br> First Financial Consulting<br> Los Angeles, CA</strong></p> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="block_holder"> 
+       <div class="block"> 
+        <img alt="Sergiohernandez" src="/assets/AlumniImages/SergioHernandez-c351c85f0ecc8b59182a9acfe164ae33.png"> 
+        <div class="hover_info"> 
+         <h4>Sergio Hernandez '07</h4> 
+         <p><strong>Coordinator of Student and Young Alumni Programs<br> Westmont College<br> Summerland, CA</strong></p> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="alumni_heads"> 
+      <div class="block_holder"> 
+       <div class="block"> 
+        <img alt="Mindywolfe" src="/assets/AlumniImages/MindyWolfe-7058b516f6a059a104251c784102eedf.jpg"> 
+        <div class="hover_info"> 
+         <h4>Mindy Wolfe '94</h4> 
+         <p><strong>Attorney/Owner<br> Santa Barbara, CA</strong></p> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="block_holder"> 
+       <div class="block"> 
+        <img alt="Tamaraerickson" src="/assets/AlumniImages/TamaraErickson-ec4ab42d583e1e485c35efdb1c769d04.jpg"> 
+        <div class="hover_info two_lines"> 
+         <h4>Tamara Erickson '79</h4> 
+         <p><strong>Managing Director<br> Vero Enterprises<br> Santa Barbara, CA</strong></p> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="block_holder"> 
+       <div class="block"> 
+        <img alt="Valeriekushnerov" src="/assets/AlumniImages/ValerieKushnerov-b72b4d0180d0de318f8299df0dcf658d.jpg"> 
+        <div class="hover_info two_lines"> 
+         <h4>Valerie Kushnerov '92</h4> 
+         <p><strong>Public Information Officer<br> City of Goleta<br> Goleta, CA</strong></p> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <hr class="featurette-divider"> 
+    <div class="featurette"> 
+     <h2 class="featurette-heading">Search for Jobs offered by Fellow Alumni <br><span class="muted">Warriors want to help Warriors!</span></h2> 
+     <p class="lead">Take advantage of connecting with alumni who know about job opportunities or who want nothing more than to hire a Westmont alum. We are also working to create new partnerships with other job sources to connect you with just the right company.</p> 
+     <img alt="Wc_jobs" class="featurette-image" src="/assets/WC_Jobs-49b0dd9df8dfd72b4e20c0a9f7c1b998.png"> 
+    </div> 
+    <hr class="featurette-divider"> 
+    <div class="featurette"> 
+     <h2 class="featurette-heading">Find your Westmont classmates <br><span class="muted">Local. National. Global.</span></h2> 
+     <p class="lead">Westmont alums are literally around the world. Use Westmont Connect to find that classmate who made a huge difference in your life. Find out just how close you might be to a fellow alum.</p> 
+     <img alt="Wc_search" class="featurette-image" src="/assets/WC_Search-b4fa5d4589ac269dc77088de4ceba6e7.png"> 
+    </div> 
+    <!-- /END THE FEATURETTES --> 
+    <hr class="featurette-divider"> 
+    <div style="text-align:center;"> 
+     <a data-toggle="modal" href="#createAccount" class="btn btn-info btn-large">Sign up</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+     <button data-toggle="modal" data-target="#signin_modal" class="btn btn-primary btn-large">Log in</button> 
+    </div> 
+    <hr class="featurette-divider"> 
+   </div> 
+   <script>
+!function ($) {
+  $(function(){
+// carousel demo
+$('#myCarousel').carousel()
+})
+}(window.jQuery)
+
+document.addEventListener("touchstart", function(){}, true);
+
+$().ready(function() {
+  var login_failure = ;
+  
+  if (login_failure) {
+    $('#signin_modal').modal('show')
+  }
+
+})
+
+</script> 
+  </div>   
+  <footer> 
+   <p>Copyright 2015. Westmont College. All rights reserved. <span class="pull-right"> <a href="/contact">Contact</a> | <a href="/privacy">Privacy</a> </span></p> 
+  </footer> 
+  <div id="createAccount" class="modal hide fade"> 
+   <div class="modal-header"> 
+    <a class="close" data-dismiss="modal">×</a> 
+    <h3>Create an account</h3> 
+   </div> 
+   <div class="modal-body"> 
+    <div class="row" id="using_facebook"> 
+     <div class="span3" style="border-right:1px solid #d2d2d2;padding-right:30px;"> 
+      <a href="/users/auth/facebook"><img alt="Signinwithfacebook" src="/assets/social_icons/SignInWithFacebook-989a58f824806d5735d016de53f03f17.png" style="width: 202px"></a> 
+      <p style="padding-top: 10px;">You can use your Facebook login credentials to join Westmont Connect. You'll have one less login and password to remember and we'll use your Facebook profile picture initially. We will never post anything to your Facebook account. </p> 
+     </div> 
+     <div class="span3"> 
+      <a href="#"><img alt="Signupwithemail" class="toggle_fb_create" src="/assets/social_icons/SignUpWithEmail-eb5fd111bd79f2b4aebcb88acf961a20.png" style="width: 202px"></a> 
+      <p style="padding-top: 10px;">Create your Westmont Connect account using your email address and a password. You'll use this information to log in. </p> 
+     </div> 
+    </div> 
+    <div id="create_account_wrapper" class="span3" style="display:none;"> 
+     <img alt="Signupwithemail" src="/assets/social_icons/SignUpWithEmail-eb5fd111bd79f2b4aebcb88acf961a20.png" style="width: 202px;padding-bottom:10px;"> 
+     <form accept-charset="UTF-8" action="/users" class="new_user" id="new_user" method="post">
+      <div style="margin:0;padding:0;display:inline">
+       <input name="utf8" type="hidden" value="✓">
+       <input name="authenticity_token" type="hidden" value="Uqj0Qwp1IpttT9Qwmv8ZNVgdJO7YnIxUyTEZXQQlRgA=">
+      </div> 
+      <table> 
+       <tbody> 
+        <tr> 
+         <td> <label>Email Address:</label><input id="user_email" name="user[email]" placeholder="jdoe@westmont.edu" size="30" type="email" value=""> </td> 
+        </tr> 
+        <tr> 
+         <td> <label>Password:</label><input id="user_password" name="user[password]" placeholder="Password" size="30" type="password"> </td> 
+        </tr> 
+        <tr> 
+         <td> <label>Re-enter password:</label><input id="user_password_confirmation" name="user[password_confirmation]" placeholder="Re-enter Password" size="30" type="password"> </td> 
+        </tr> 
+       </tbody> 
+      </table> 
+      <div class="alert alert-error hide" id="createError"> 
+       <p><strong>Wrong email/password combination.</strong> Change a few things up and try submitting again.</p> 
+      </div> 
+     </form>
+    </div>
+    <!-- close create_account_form --> 
+   </div>
+   <!-- modal body --> 
+   <div class="modal-footer hide"> 
+    <button class="btn toggle_fb_create">Back</button> 
+    <button class="btn" data-dismiss="modal">Close</button> 
+    <input class="btn btn-success" name="commit" type="submit" value="Create Account"> 
+   </div> 
+  </div>
+  <!-- close modal --> 
+  <form accept-charset="UTF-8" action="/users/sign_in" class="new_user" id="signin_form" method="post">
+   <div style="margin:0;padding:0;display:inline">
+    <input name="utf8" type="hidden" value="✓">
+    <input name="authenticity_token" type="hidden" value="Uqj0Qwp1IpttT9Qwmv8ZNVgdJO7YnIxUyTEZXQQlRgA=">
+   </div> 
+   <div id="signin_modal" class="modal hide fade"> 
+    <div class="modal-header"> 
+     <a class="close" data-dismiss="modal">×</a> 
+     <h3>Log in</h3> 
+    </div> 
+    <div class="modal-body"> 
+     <div class="row" style="margin: auto;" id="using_facebook_signin"> 
+      <div class="row"> 
+       <div class="span6"> 
+        <p>Log in using <strong>whichever method you signed up</strong> with.</p> 
+       </div> 
+      </div> 
+      <div class="span3" style="border-right:1px solid #d2d2d2;margin: 10px 0 25px 45px"> 
+       <a href="/users/auth/facebook"><img alt="Loginwithfacebook" src="/assets/social_icons/LogInWithFacebook-09ca934948e3a14b42f115e128c01216.png" style="width: 202px"></a> 
+       <!--       <p style="padding-top: 10px;"> </p> --> 
+      </div> 
+      <div class="span3" style="margin-top:10px;"> 
+       <img alt="Loginwithemail" src="/assets/social_icons/LogInWithEmail-ed8c0b56c0dad051f298f282c95a3f7a.png" style="width: 202px; padding-bottom:10px"> 
+       <!--     	<div id="account_form_signin" > --> 
+       <table> 
+        <tbody> 
+         <tr> 
+          <td> <label>Email Address:</label><input id="user_email" name="user[email]" placeholder="Email Address" size="30" type="email" value=""> </td> 
+         </tr> 
+         <tr> 
+          <td> <label>Password:</label><input id="user_password" name="user[password]" placeholder="Password" size="30" type="password"> </td> 
+         </tr> 
+        </tbody> 
+       </table> 
+       <p><a href="/users/password/new">Forgot your password?</a></p> 
+       <div class="alert alert-error hide" id="error_flash"> 
+        <p></p> 
+       </div> 
+      </div> 
+     </div> 
+    </div>
+    <!-- modal body --> 
+    <div class="modal-footer"> 
+     <!--       <button class="btn toggle_fb_login">Back</button> --> 
+     <a class="btn" data-dismiss="modal">Close</a> 
+     <input class="btn btn-success" name="commit" type="submit" value="Log in"> 
+    </div>  
+   </div>
+  </form> 
+  <!-- close modal --> 
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-37976513-1']);
+  _gaq.push(['_setDomainName', 'westmontconnect.org']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>   
+ </body>
+</html>

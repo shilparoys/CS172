@@ -1,0 +1,312 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head> 
+  <link id="StyleSheet" rel="stylesheet" type="text/css" href="/StyleSheet.css"> 
+  <link id="favicon" rel="shortcut icon" type="image/x-icon" href="/favicon.ico"> 
+  <script type="text/javascript">
+         // Function retrieved from: http://cass- hacks.com/articles/code/js_url_encode_decode/  
+         function URLEncode (clearString) {  
+           var output = '';  
+           var x = 0;  
+           clearString = clearString.toString();  
+           var regex = /(^[a-zA-Z0-9_.]*)/;  
+           while (x < clearString.length) {  
+             var match = regex.exec(clearString.substr(x));  
+             if (match != null && match.length > 1 && match[1] != '') {  
+                 output += match[1];  
+               x += match[1].length;  
+             } else {  
+               if (clearString[x] == ' ')  
+                 output += '+';  
+               else {  
+                 var charCode = clearString.charCodeAt(x);  
+                 var hexVal = charCode.toString(16);  
+                 output += '%' + ( hexVal.length < 2 ? '0' : '' ) + hexVal.toUpperCase();  
+               }  
+               x++;  
+             }  
+           }  
+           return output;  
+         }  
+         // Retrieved from: http://www.htmlcodetutorial.com/forms/index_famsupp_157.html  
+         function SubmitOnEnter(myfield, e)  
+         {  
+             var keycode;  
+             if (window.event)  
+                 keycode = window.event.keyCode;  
+             else if (e)  
+                 keycode = e.which;  
+             else  
+                 return true;  
+             if (keycode == 13)  
+             {  
+                 SearchSite();  
+                 return false;  
+             }  
+             else  
+                 return true;  
+         } 
+        function SearchSite()  
+        {
+            document.location.href = "/Search.aspx?cx=012426112557600078809:d0zcqhdf3so&cof=FORID:11&ie=UTF-8&q=" + document.getElementById('q').value + '&sa=Search';  
+        }  
+    </script> 
+  <script type="text/javascript" src="/js/jquery-1.4.2.min.js"></script> 
+  <script type="text/javascript"> 
+    $(document).ready(function() {	
+	    $("#menu ul li").hover(function(){
+		$(this).addClass('hover');
+		$(this).children().addClass('hover');
+		}, function() {
+		$(this).removeClass('hover');
+		$(this).children().removeClass('hover');
+	    });
+    });
+    </script> 
+  <meta name="description" content="The Office of Public Engagement at the University of Illinois Urbana-Champaign"> 
+  <meta name="keywords" content="Public Engagement, Engagement, Illinois"> 
+  <meta name="author" content="Public Engagement"> 
+  <meta name="email" content="Public Engagement, Engagement, Illinois"> 
+  <title>Public Engagement- Home- University of Illinois</title> 
+  <link type="text/css" rel="Stylesheet" href="StyleSheet-Home.css"> 
+  <script type="text/javascript">
+        jQuery(function(){
+
+        $(".main_image .desc").show(); //Show Banner
+        $(".main_image .block").animate({ opacity: 0.65 }, 1 ); //Set Opacity
+        $(".image_thumb ul li:first").addClass('active'); //Add the active class (highlights the very first list item by default)
+
+        //runs function on click
+        //$(".image_thumb ul li").click(function () {
+        //$active = $(this);
+        //slideSwitchClick();
+        //})
+        $(".image_thumb ul li").hover(function(){ //Hover effects on list-item
+        $(this).addClass('hover'); //Add class "hover" on hover
+        }, function() {
+        $(this).removeClass('hover'); //Remove class "hover" on hover out
+        });
+
+        //runs function, set timer here
+        $(function() {
+        setInterval( 'slideSwitchTimed()', 6000 );
+        });
+
+        });
+
+        function slideSwitchTimed() {
+        $active = $('.image_thumb ul li.active').next();
+        if ( $active.length == 0 ) $active = $('.image_thumb ul li:first'); //goes back to start when finishes
+        slideSwitch();
+        }
+
+        function slideSwitchClick() {
+        slideSwitch();
+        }
+
+        function slideSwitch() {
+        var $prev = $('.image_thumb ul li.active');
+
+        //Show active list-item
+        $prev.removeClass('active');
+        $active.addClass('active');
+
+        //Set Variables
+        var imgAlt = $active.find('img').attr("alt"); //Get Alt Tag of Image
+        var imgTitle = $active.find('span').attr("id"); //Get Main Image URL
+        var imgDesc = $active.find('.block').html(); //Get HTML of the "block" container
+        var imgDescHeight = $(".main_image").find('.block').height(); //Find the height of the "block"
+
+        if ($(this).is(".active")) { //If the list item is active/selected, then…
+        return false; // Don't click through – Prevents repetitive animations on active/selected list-item
+        } else { //If not active then…
+        //Animate the Description
+        $(".main_image img").animate({ opacity: 0}, 500 );
+        $(".main_image .block").animate({ opacity: 0, marginBottom: -imgDescHeight }, 500 , function() {
+        $(".main_image .block").html(imgDesc).animate({ opacity: 0.85, marginBottom: "0" }, 500 );
+        $(".main_image img").attr({ src: imgTitle , alt: imgAlt}).animate({ opacity: 1}, 500 );
+        });
+        }
+        return false;
+        }
+    </script> 
+ </head> 
+ <body> 
+  <form method="post" action="" id="form1"> 
+   <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTEwNjI3MjE5NzIPZBYCZg9kFgICAQ9kFgYCAQ8PFgIeB1Zpc2libGVoZGQCBA9kFgpmDxYCHgtfIUl0ZW1Db3VudAIFFgpmD2QWAmYPFQQtQ2hhbmNlbGxvcnMtUHVibGljLUVuZ2FnZW1lbnQtU3R1ZGVudC1GZWxsb3dzIkNBRVBFMjAxMGFubm91bmNlbWVudGhpZ2hsaWdodC5qcGcuQ2hhbmNlbGxvcidzIFB1YmxpYyBFbmdhZ2VtZW50IFN0dWRlbnQgRmVsbG93cx5BcHBsaWNhdGlvbnMgZHVlIE1hcmNoIDYsIDIwMTVkAgEPZBYCZg8VBCRDYXJuZWdpZS1DbGFzc2lmaWNhdGlvbi1Bbm5vdW5jZW1lbnQbc3R1ZGVudGZlbGxvd3NoaWdobGlnaHQuanBnJENhcm5lZ2llIENsYXNzaWZpY2F0aW9uIEFubm91bmNlbWVudABkAgIPZBYCZg8VBCAyMDE1LVB1YmxpYy1FbmdhZ2VtZW50LVN5bXBvc2l1bRQyMDEzcGVzaGlnaGxpZ2h0LmpwZyAyMDE1IFB1YmxpYyBFbmdhZ2VtZW50IFN5bXBvc2l1bQ5NYXJjaCAxMCwgMjAxNWQCAw9kFgJmDxUEEU1vbmV5LVNtYXJ0LVdlZWstDkJhY2tncm91bmQuYm1wEU1vbmV5IFNtYXJ0IFdlZWsgEUFwcmlsIDE4LTI1LCAyMDE1ZAIED2QWAmYPFQQbRmFiTGFiLUdlbmVyYXRlcy1FeGNpdGVtZW50CkZBQkxBQi5qcGcbRmFiTGFiIEdlbmVyYXRlcyBFeGNpdGVtZW50AGQCAQ8WAh8BAgMWBmYPZBYCZg8VCCAyMDE1LVB1YmxpYy1FbmdhZ2VtZW50LVN5bXBvc2l1bSAyMDE1IFB1YmxpYyBFbmdhZ2VtZW50IFN5bXBvc2l1bQkzLzEwLzIwMTUMIC0gMy8xMC8yMDE1CiB8IDM6MDAgcG0KIC0gNjowMCBwbQAcQWxpY2UgQ2FtcGJlbGwgQWx1bW5pIENlbnRlcmQCAQ9kFgJmDxUIBlBJLURheQZQSSBEYXkJMy8xNC8yMDE1DCAtIDMvMTQvMjAxNQogfCA5OjI2IGFtCiAtIDU6MzUgcG0ADEFsdGdlbGQgSGFsbGQCAg9kFgJmDxUIH0NhbXB1cy1Db21tdW5pdHktRGF5LW9mLVNlcnZpY2UfQ2FtcHVzIENvbW11bml0eSBEYXkgb2YgU2VydmljZQk0LzExLzIwMTUMIC0gNC8xMS8yMDE1AAAKIHwgQWxsIERheRBNZW1vcmlhbCBTdGFkaXVtZAICDw8WAh4EVGV4dAXsBzx0YWJsZSBhbGlnbj0ibGVmdCIgd2lkdGg9IjEwMCUiIGNlbGxzcGFjaW5nPSIxIiBjZWxscGFkZGluZz0iNSIgYm9yZGVyPSIwIiBzdHlsZT0iIj4NCiAgICA8dGJvZHk+DQogICAgICAgIDx0cj4NCiAgICAgICAgICAgIDx0ZD48YnIgLz4NCiAgICAgICAgICAgIDxiciAvPg0KICAgICAgICAgICAgPHN0cm9uZz48YnIgLz4NCiAgICAgICAgICAgIDwvc3Ryb25nPjwvdGQ+DQogICAgICAgICAgICA8dGQ+PHN0cm9uZz48c3BhbiBzdHlsZT0iY29sb3I6IHJnYigyNDQsIDEyNSwgNjkpOyI+RW5nYWdpbmcgSWxsaW5vaXMmcnNxdW87IEludGVsbGVjdHVhbCBhbmQgQ3VsdHVyYWwgUmVzb3VyY2VzPC9zcGFuPjwvc3Ryb25nPjxiciAvPg0KICAgICAgICAgICAgPGJyIC8+DQogICAgICAgICAgICBBIGxhbmQgZ3JhbnQgaW5zdGl0dXRpb24sIHRoZSBVbml2ZXJzaXR5IG9mIElsbGlub2lzIGhhcyBhIGxvbmcgcmVjb3JkIG9mIGNvbW1pdG1lbnQgdG8gcHVibGljIGVuZ2FnZW1lbnQgYW5kIHRvIHRoZSBkaXNjb3ZlcnkgYW5kIGFwcGxpY2F0aW9uIG9mIGtub3dsZWRnZS4gSXRzIGZhY3VsdHksIHN0YWZmIGFuZCBzdHVkZW50cyBjb2xsYWJvcmF0ZSB3aXRoIGV4dGVybmFsIGF1ZGllbmNlcyBhbmQgcGFydG5lcnMgdG8gYWRkcmVzcyB0aGUgbmVlZHMgYW5kIG9wcG9ydHVuaXRpZXMgb2Ygc29jaWV0eS4gVGhyb3VnaCB0aGVzZSBwYXJ0bmVyc2hpcHMsIGNyaXRpY2FsIHNvY2lldGFsIGlzc3VlcyBhcmUgZW1iZWRkZWQgaW4gdGhlIHJlc2VhcmNoIGFuZCBlZHVjYXRpb25hbCBtaXNzaW9ucyBvZiB0aGUgVW5pdmVyc2l0eS4gVGhlIE9mZmljZSBvZiBQdWJsaWMgRW5nYWdlbWVudCBpbml0aWF0ZXMgYW5kIHN1cHBvcnRzIGEgYnJvYWQgYW5kIGRpdmVyc2Ugc2V0IG9mIHB1YmxpYyBlbmdhZ2VtZW50IGFjdGl2aXRpZXMgdGhhdCBsaW5rIHRoZSBjYW1wdXMgdG8gc29jaWV0eS48L3RkPg0KICAgICAgICA8L3RyPg0KICAgIDwvdGJvZHk+DQo8L3RhYmxlPg0KPGJyIC8+ZGQCAw8PFgIfAgW8AzxzcGFuIGNsYXNzPSJtb2QtaGVhZGluZyI+UEUgTGlzdHNlcnY8L3NwYW4+PGJyIC8+DQo8YnIgLz4NCkpvaW4gdGhlIFB1YmxpYyBFbmdhZ2VtZW50IExpc3RzZXJ2IGJ5IGVtYWlsaW5nIHVzIDxhIGhyZWY9Im1haWx0bzpsaXN0c2VydkBsaXN0c2Vydi5pbGxpbm9pcy5lZHU/c3ViamVjdD1zdWJzY3JpYmUlMjBWQ1BFLVBVQkxJQ0VOR0FHRS1MJmFtcDtib2R5PXN1YnNjcmliZSUyMFZDUEUtUFVCTElDRU5HQUdFLUwiPmhlcmU8L2E+LiA8YnIgLz4NCjxiciAvPg0KPGJyIC8+DQo8YSBocmVmPSJodHRwOi8vd3d3LmZhY2Vib29rLmNvbS8jIS9wYWdlcy9QdWJsaWMtRW5nYWdlbWVudC1hdC1JbGxpbm9pcy8xMTA0NjQ2NjU2NTQzNTYiPjxpbWcgd2lkdGg9IjE5NCIgaGVpZ2h0PSI1OCIgYWx0PSIiIHNyYz0iL3VzZXJmaWxlcy9pbWFnZS9QRV9GQi5naWYiIC8+PC9hPjxiciAvPmRkAgQPDxYCHwIFiQM8c3BhbiBjbGFzcz0ibW9kLWhlYWRpbmciPlZpZGVvczwvc3Bhbj48YnIgLz4NCjxiciAvPg0KTGVhcm4gbW9yZSBhYm91dCB0aGUgcHVibGljIGVuZ2FnZW1lbnQgY29tbWl0bWVudCBvZiB0aGUgIFVuaXZlcnNpdHkgb2YgIElsbGlub2lzIGF0IFVyYmFuYS1DaGFtcGFpZ24gCQl0aHJvdWdoIDxhIGhyZWY9IlZpZGVvcy5hc3B4Ij50aGlzIGNvbGxlY3Rpb24gb2YgdmlkZW9zPC9hPi4gPGJyIC8+DQo8YnIgLz4NCjxhIGhyZWY9Imh0dHA6Ly93d3cueW91dHViZS5jb20vdXNlci9VSXB1YmxpY2VuZ2FnZW1lbnQiPjxpbWcgc3JjPSIvdXNlcmZpbGVzL2ltYWdlL3lvdXR1YmVfbG9nby5qcGciIHN0eWxlPSJ3aWR0aDogMTEzcHg7IGhlaWdodDogNTRweDsiIGFsdD0iIiAvPjwvYT48YnIgLz5kZAIFDxYCHwECCxYWAgEPZBYCZg8VA0cvUGFnZS5hc3B4P3NpdGU9RW5nYWdlbWVudC1hdC1JbGxpbm9pcyZwYWdlPUVuZ2FnZW1lbnQtYXQtSWxsaW5vaXMtSG9tZQAWRW5nYWdlbWVudCBhdCBJbGxpbm9pc2QCAg9kFgJmDxUDGmh0dHA6Ly9lbmdhZ2UuaWxsaW5vaXMuZWR1Bl9ibGFuaxFFbmdhZ2VtZW50IFBvcnRhbGQCAw9kFgJmDxUDZmh0dHA6Ly9lbmdhZ2VtZW50LmlsbGlub2lzLmVkdS9QYWdlLmFzcHg/c2l0ZT1FbmdhZ2VtZW50LWF0LUlsbGlub2lzJnBhZ2U9UHVibGljLUVuZ2FnZW1lbnQtQ29sbG9xdWl1bQVfc2VsZhxQdWJsaWMgRW5nYWdlbWVudCBDb2xsb3F1aXVtZAIED2QWAmYPFQMABV9zZWxmIVB1YmxpYyBFbmdhZ2VtZW50IFN0dWRlbnQgRmVsbG93c2QCBQ9kFgJmDxUDHGh0dHA6Ly93d3cuY2NmZC5pbGxpbm9pcy5lZHUGX2JsYW5rBENDRkRkAgYPZBYCZg8VA0kvUGFnZS5hc3B4P3NpdGU9QXdhcmRzLWFuZC1SZWNvZ25pdGlvbnMmcGFnZT1Bd2FyZHMtYW5kLVJlY29nbml0aW9ucy1Ib21lABdBd2FyZHMgYW5kIFJlY29nbml0aW9uc2QCBw9kFgJmDxUDPS9QYWdlLmFzcHg/c2l0ZT1Zb3V0aC1Qcm9ncmFtbWluZyZwYWdlPVlvdXRoLVByb2dyYW1taW5nLUhvbWUAEVlvdXRoIFByb2dyYW1taW5nZAIID2QWAmYPFQNCL1BhZ2UuYXNweD9zaXRlPUFsbGllZE9yZ2FuaXphdGlvbnMmcGFnZT1BbGxpZWQtT3JnYW5pemF0aW9ucy1Ib21lB19wYXJlbnQUQWxsaWVkIE9yZ2FuaXphdGlvbnNkAgkPZBYCZg8VAyZodHRwOi8vY29ycG9yYXRlcmVsYXRpb25zLmlsbGlub2lzLmVkdQVfc2VsZhNDb3Jwb3JhdGUgUmVsYXRpb25zZAIKD2QWAmYPFQMYaHR0cDovL2Jpcy5pbGxpbm9pcy5lZHUvBl9ibGFuaxxCdXNpbmVzcyBJbm5vdmF0aW9uIFNlcnZpY2VzZAILD2QWAmYPFQMLL3N0YWZmLmFzcHgABVN0YWZmZGTksOrTJgcmSFcxZzQPMUJLUA9fgFrm5beNjdtLQgJc7A=="> 
+   <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="CA0B0334"> 
+   <div id="sitecontainer"> 
+    <div id="shadow-left"> 
+     <div id="shadow-right"> 
+      <div id="siteborder-left"> 
+       <div id="siteborder-right"> 
+        <div id="siteheader"> 
+         <div id="i-logo" style="position: absolute; top: 70px; left: 16px;">
+          <a href="http://illinois.edu/"><img src="/images/i_logo.jpg" border="0"></a>
+         </div> 
+         <a href="/"><img src="/images/site-header.jpg" width="915" height="123" border="0"></a> 
+        </div> 
+        <div id="topmenu"> 
+         <div class="gray-button">
+          <a href="/">HOME</a>
+         </div> 
+         <div class="button">
+          <a href="http://engage.illinois.edu/" target="_blank">CALENDAR</a>
+         </div> 
+         <div class="button">
+          <a href="/Page.aspx?site=Engagement-at-Illinois&amp;page=Public-Engagement-Listserv">PE LISTERV</a>
+         </div> 
+         <div class="button">
+          <a href="/Videos.aspx">VIDEOS</a>
+         </div> 
+         <div class="button">
+          <a href="/SiteMap.aspx">SITE MAP</a>
+         </div> 
+         <div style="float: right;"> 
+          <div class="search-button">
+           SEARCH&nbsp;&nbsp;
+           <input type="text" id="q" name="q" size="16" style="height: 15px; line-height: 15px;">&nbsp;&nbsp;
+           <img src="/images/search_arrow.gif" alt="Go" onclick="SearchSite();" style="cursor: pointer;">
+           <script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=en"></script>
+          </div> 
+          <div class="gray-button">
+           <a href="/staff.aspx">Contact Us</a>
+          </div> 
+         </div> 
+        </div> 
+        <div id="maincontent"> 
+         <div id="home-rotator"> 
+          <div class="image_thumb"> 
+           <ul> 
+            <li> 
+             <div class="block"> 
+              <a href="News.aspx?title=Chancellors-Public-Engagement-Student-Fellows"><span id="userfiles/news/CAEPE2010announcementhighlight.jpg"><h2>Chancellor's Public Engagement Student Fellows</h2></span>Applications due March 6, 2015</a>
+             </div> </li> 
+            <li> 
+             <div class="block"> 
+              <a href="News.aspx?title=Carnegie-Classification-Announcement"><span id="userfiles/news/studentfellowshighlight.jpg"><h2>Carnegie Classification Announcement</h2></span></a>
+             </div> </li> 
+            <li> 
+             <div class="block"> 
+              <a href="News.aspx?title=2015-Public-Engagement-Symposium"><span id="userfiles/news/2013peshighlight.jpg"><h2>2015 Public Engagement Symposium</h2></span>March 10, 2015</a>
+             </div> </li> 
+            <li> 
+             <div class="block"> 
+              <a href="News.aspx?title=Money-Smart-Week-"><span id="userfiles/news/Background.bmp"><h2>Money Smart Week </h2></span>April 18-25, 2015</a>
+             </div> </li> 
+            <li> 
+             <div class="block"> 
+              <a href="News.aspx?title=FabLab-Generates-Excitement"><span id="userfiles/news/FABLAB.jpg"><h2>FabLab Generates Excitement</h2></span></a>
+             </div> </li> 
+           </ul> 
+           <div id="home-rotating-viewall">
+            <a href="News.aspx">view all</a>
+           </div> 
+          </div> 
+          <div class="main_image"> 
+           <img id="image" src="userfiles/news/CAEPE2010announcementhighlight.jpg" alt="Banner"> 
+           <div class="desc" style="display: none;"> 
+            <div class="block" style="display: none;"></div> 
+           </div> 
+          </div> 
+         </div> 
+         <div id="home-bottom"> 
+          <div id="home-events"> 
+           <div id="home-events-header">
+            <img src="images/home-events-header.png" alt="Upcoming Events" title="Upcoming Events" border="0">
+           </div> 
+           <div id="home-events-event"> 
+            <a href="EventDetail.aspx?ID=2015-Public-Engagement-Symposium">2015 Public Engagement Symposium</a>
+            <br>
+            <br style="line-height:10px;">3/10/2015 - 3/10/2015 | 3:00 pm - 6:00 pm
+            <br>Alice Campbell Alumni Center
+            <br>
+            <br> 
+            <a href="EventDetail.aspx?ID=PI-Day">PI Day</a>
+            <br>
+            <br style="line-height:10px;">3/14/2015 - 3/14/2015 | 9:26 am - 5:35 pm
+            <br>Altgeld Hall
+            <br>
+            <br> 
+            <a href="EventDetail.aspx?ID=Campus-Community-Day-of-Service">Campus Community Day of Service</a>
+            <br>
+            <br style="line-height:10px;">4/11/2015 - 4/11/2015 | All Day
+            <br>Memorial Stadium
+            <br>
+            <br> 
+           </div> 
+           <div id="home-events-viewall">
+            <a href="Events.aspx">view all</a>
+           </div> 
+           <div id="home-give">
+            <a href="http://issuu.com/tmparish/docs/11_1634_public_engmnt_book_" target="_blank"><img src="/images/PublicEngagement_highlights_lo.jpg" border="0" width="265"></a>
+            <br>
+            <br>
+            <a href="http://inclusiveillinois.illinois.edu/index.html" target="_blank"><img src="images/InclusiveIllinois.jpg" alt="Make your gift!"></a>
+           </div> 
+          </div> 
+          <div id="home-bottom-right"> 
+           <div id="home-message"> 
+            <span id="ContentPlaceholderMain_lblZone1">
+             <table align="left" width="100%" cellspacing="1" cellpadding="5" border="0" style=""> 
+              <tbody> 
+               <tr> 
+                <td><br> <br> <strong><br> </strong></td> 
+                <td><strong><span style="color: rgb(244, 125, 69);">Engaging Illinois’ Intellectual and Cultural Resources</span></strong><br> <br> A land grant institution, the University of Illinois has a long record of commitment to public engagement and to the discovery and application of knowledge. Its faculty, staff and students collaborate with external audiences and partners to address the needs and opportunities of society. Through these partnerships, critical societal issues are embedded in the research and educational missions of the University. The Office of Public Engagement initiates and supports a broad and diverse set of public engagement activities that link the campus to society.</td> 
+               </tr> 
+              </tbody> 
+             </table> <br></span> 
+           </div> 
+           <div id="home-getconnected">
+            <img src="images/home-connected-header.png" alt="Get Connected" title="Get Connected">
+           </div> 
+           <div id="home-listserv">
+            <span id="ContentPlaceholderMain_lblZone2"><span class="mod-heading">PE Listserv</span><br> <br> Join the Public Engagement Listserv by emailing us <a href="mailto:listserv@listserv.illinois.edu?subject=subscribe%20VCPE-PUBLICENGAGE-L&amp;body=subscribe%20VCPE-PUBLICENGAGE-L">here</a>. <br> <br> <br> <a href="http://www.facebook.com/#!/pages/Public-Engagement-at-Illinois/110464665654356"><img width="194" height="58" alt="" src="/userfiles/image/PE_FB.gif"></a><br></span>
+           </div> 
+           <div id="home-videos">
+            <span id="ContentPlaceholderMain_lblZone3"><span class="mod-heading">Videos</span><br> <br> Learn more about the public engagement commitment of the University of Illinois at Urbana-Champaign through <a href="Videos.aspx">this collection of videos</a>. <br> <br> <a href="http://www.youtube.com/user/UIpublicengagement"><img src="/userfiles/image/youtube_logo.jpg" style="width: 113px; height: 54px;" alt=""></a><br></span>
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+        <div id="menu" class="MatchHeight"> 
+         <ul style="margin-top: 5px;"> 
+          <li><a href="/Page.aspx?site=Engagement-at-Illinois&amp;page=Engagement-at-Illinois-Home" target="">Engagement at Illinois</a></li> 
+          <li><a href="http://engage.illinois.edu" target="_blank">Engagement Portal</a></li> 
+          <li><a href="http://engagement.illinois.edu/Page.aspx?site=Engagement-at-Illinois&amp;page=Public-Engagement-Colloquium" target="_self">Public Engagement Colloquium</a></li> 
+          <li><a href="" target="_self">Public Engagement Student Fellows</a></li> 
+          <li><a href="http://www.ccfd.illinois.edu" target="_blank">CCFD</a></li> 
+          <li><a href="/Page.aspx?site=Awards-and-Recognitions&amp;page=Awards-and-Recognitions-Home" target="">Awards and Recognitions</a></li> 
+          <li><a href="/Page.aspx?site=Youth-Programming&amp;page=Youth-Programming-Home" target="">Youth Programming</a></li> 
+          <li><a href="/Page.aspx?site=AlliedOrganizations&amp;page=Allied-Organizations-Home" target="_parent">Allied Organizations</a></li> 
+          <li><a href="http://corporaterelations.illinois.edu" target="_self">Corporate Relations</a></li> 
+          <li><a href="http://bis.illinois.edu/" target="_blank">Business Innovation Services</a></li> 
+          <li><a href="/staff.aspx" target="">Staff</a></li> 
+         </ul> 
+        </div> 
+       </div> 
+      </div> 
+      <div id="footer">
+       <span style="font-size: smaller;">330 Illini Union Bookstore // 807 South Wright Street, MC-319 // Champaign, IL 61820 // T: 217.333.9525 // F: 217.333.9898 // E: </span>
+       <a href="mailto:publicengagement@illinois.edu"><span style="font-size: smaller;">publicengagement@illinois.edu</span></a>
+      </div> 
+     </div> 
+    </div> 
+    <div id="shadow-bottom">
+     &nbsp;
+    </div> 
+   </div> 
+   <input type="text" name="__spDummyText1" style="display:none;" size="1"> 
+   <input type="text" name="__spDummyText2" style="display:none;" size="1"> 
+  </form> 
+  <script type="text/javascript" src="https://emergency.webservices.illinois.edu/illinois.js"></script> 
+  <script type="text/javascript"> 
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script> 
+  <script type="text/javascript"> 
+var pageTracker = _gat._getTracker("UA-5790943-1");
+pageTracker._trackPageview();
+</script>   
+ </body>
+</html>

@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge"> 
+  <meta charset="utf-8"> 
+  <title></title> 
+  <!-- <meta name="viewport" content="target-densitydpi=326, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> --> 
+  <meta name="viewport" content="width=device-width, mimimal-ui, initial-scale=1, maximum-scale=1, user-scalable=no"> 
+  <meta name="description" content="Photo Gallery Player"> 
+  <meta name="author" content="Derek Fitzer"> 
+  <meta name="apple-mobile-web-app-capable" content="yes"> 
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+  <link href="http://grfx.cstv.com/scripts/_assets/css/bootstrap/bootstrap-gallery.css" rel="stylesheet" type="text/css"> 
+  <link href="http://grfx.cstv.com/scripts/_assets/css/bootstrap/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
+  <!--BOOTSTRAP RESPONSIVE--> 
+  <link href="http://fonts.googleapis.com/css?family=Abel" rel="stylesheet" type="text/css"> 
+  <link href="http://grfx.cstv.com/scripts/_assets/css/foto.css" rel="stylesheet" type="text/css"> 
+  <style>
+/*--DIV DIMENSIONS--*/
+#container {width: 970px;}
+#gallery-header, #gallery-nav, #index, #collapseTwo, #collapseFour, #a-two, #a-three, #a-two ul, #a-three ul, .indy {
+	width: 670px;
+}
+.indy-silo, .indy {
+	width: 325px;	
+}
+.indy-silo {
+	float: left;
+}
+#container, #accordion2 {
+	height: 600px;
+}
+#a-two ul, #a-three ul {
+	width: 325px;
+	min-height: 10px;
+	margin-left: 15px;
+}
+#a-two li {
+	width: 300px;
+	height: 180px;
+}
+#a-three li {width: 162px;}
+#index ul li {
+    padding: 10px 0px 10px 0;
+}
+#more, #basic-index, #gallery-nav h3, #gallery-nav h3 a {
+	width: 100%;
+}
+
+/* POSITION */
+#container {
+	position: relative;
+}
+#a-two, #a-three, #gallery-header {
+	position: absolute;
+}
+/* POSITIONING */
+#gallery-header {
+	top: 0;
+	left: 0;
+}
+#a-two, #a-three {
+	top: 83px;
+	left: 0;
+}
+/* MARGIN AND PADDING */
+#gallery-header {
+	margin-top: 0;
+}
+#container {
+	padding-top: 41px;
+}
+#a-two li {
+	margin: 0;
+}
+
+/* FLOAT */
+#a-two li {
+	float: left;
+}
+
+/* OVERFLOW */
+#collapseTwo, #collapseFour, #index {
+
+	overflow-x: hidden;
+	overflow-y: scroll !important;
+
+	-webkit-overflow-scrolling: touch;
+}
+.galDescription {
+	overflow: visible;
+}
+
+/* DISPLAY */
+.missing {
+	display: none !important;
+}
+.hideall {
+	display: none !important;
+}
+
+#gal-modal li {
+	border-bottom: 1px solid #262626;
+	border-top: 1px solid #262626;
+}
+/*----------TEXT PROPERTIES----------*/
+.gal-year-header {
+	text-align: center;
+	display: block;
+	
+}
+#gallery-nav a {
+	color: #f4f4f4;
+}
+#gallery-nav a:hover {
+	color: #f4f4f4;
+}
+#collapseTwo > h4, #collapseFour h4 {
+	font-size: 21px;
+	line-height: 40px;
+	text-align: center;
+}
+#collapseTwo > h4 {
+	text-transform: uppercase;
+}
+#a-two, #a-three {
+	-webkit-overflow-scrolling: touch;
+}
+#index {
+	background: none;
+}
+.indy li, #a-two li, #a-three li {
+	border-top: 1px solid transparent;
+	border-bottom: 1px solid transparent;
+}
+:hover {
+  transition: all 0.2s ease-in;
+}
+#coach-zook {
+	display: none !important;
+}
+.hideall {
+	display: none !important;
+}
+
+#recent-index .hiderecent {
+	display: none !important;
+}
+
+#story-ad,
+#sponsor-ad {
+	display: none;
+}
+#holder-story-ad #story-ad,
+#holder-sponsor-ad #sponsor-ad {
+	display: block;
+}
+
+
+@media (min-width: 1025px) {
+	#a-two, #a-three, #collapseTwo, #collapseFour {
+		height: 558px;
+		width: 670px;
+	}
+	#gallery-menu {
+		width: 670px;
+	}
+	#a-two ul {
+	width: 640px;
+	min-height: 10px;
+	margin-left: 15px;
+}
+
+}
+
+@media (max-width: 1024px) {
+	#gallery-nav {width: 100%;}
+	#a-two, #a-three {width: 100%;}	
+	#a-two li {	
+		width: 580px;
+		height: auto;	
+	}
+	#a-two ul{
+		min-height: 10px;
+		margin-left: 0px;
+	}
+	
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+	#container, #gallery-header, #a-two, #collapseTwo, #collapseFour, .indy, #index {
+		width: 600px;
+	}
+	.indy-silo, .indy {
+		width: 290px;
+	}
+	#a-two ul, #a-three ul {
+		width: 290px;
+	}	
+	#index ul li {	
+		width: 290px;
+		padding-left: 0;
+		text-align: center;
+		display: block;
+	}
+	#a-two, #a-three, #collapseTwo, #collapseFour {
+		height: 558px;
+	}
+	#a-three ul {
+		min-height: 10px;
+		margin-left: 0px;
+	}
+
+}
+
+@media (max-width: 600px) {
+	html, body, #container, #gallery-header, #a-two, #a-three, #a-two ul, #collapseTwo, #collapseFour, #index, #a-three ul, .indy {
+		width: 100%;
+	}
+	.indy-silo, .indy {
+		width: 100%;
+	}
+	#collapseTwo, #collapseFour {
+		padding-bottom: 100px;
+		overflow: scroll;
+	}	
+	#a-two li {	
+		height: auto;
+	}
+
+}
+
+@media (max-device-height: 568px) and (orientation: portrait) {
+	#a-two li {
+		width: 300px;
+	}
+	#index li {
+		width: 150px;
+	}
+	#index, #a-two, #a-three {
+		height: 423px;
+	}
+}
+
+@media (max-device-height: 568px) and (orientation: landscape) {
+	html, body, #container {
+		height: 321px;
+	}
+	#gallery-header {
+		margin-top: 0px !important;
+	}
+	#index, #a-two, #a-three {
+		height: 240px;
+	}
+	#container, #a-two, #a-two ul, #collapseTwo, #collapseFour, #index {
+		width: 100%;
+	}
+	#a-two, #a-three {
+		top: 90px;
+	}
+	#a-two li {
+		width: 548px;	
+		height: auto;
+	}
+	#a-three li {
+		width: 31%;
+	}
+	#a-two, #a-three {
+		height: 420px;
+	}	
+}
+
+@media (max-device-height: 480px) and (orientation: portrait) {
+  	html, body, #container {
+    	height: 417px;
+	}
+	#index, #a-two, #a-three {
+		height: 335px;
+	}
+	#gal-list {
+		height: auto;
+	}
+	#a-two li {
+		width: 300px;
+	}
+	#index li {
+		width: 150px;
+	}
+}
+
+@media (max-device-height: 480px) and (orientation: landscape){
+	html, body, #container {
+		height: 321px;
+	}
+	#index, #a-two, #a-three {
+		height: 240px;
+	}
+	#a-two li {
+		width: 460px;
+	}
+}
+
+
+</style> 
+  <style id="desktop">
+</style> 
+  <style>
+		#mobile-ad {
+			display: none;
+		}
+		@media (max-width: 320px) {
+		#container {
+			/* height: 2000px; */
+			/* height: 480px; */
+			margin-top: 50px;
+		}
+		#holder-sponsor-ad {
+			display: none;
+		}
+		#mobile-ad {
+			display: block;
+			width: 320px;
+			height: 50px;
+			overflow: hidden;
+			position: absolute;
+			top: 0;
+			right: 0;
+			
+			z-index: 9999;
+			background: black;
+		}
+		}
+	</style> 
+  <!--MY CSS--> 
+  <!--[if IE]>
+<style type="text/css">
+.imgInfo {
+    filter: alpha(opacity=70);
+  opacity: 0.7;
+ }
+.imgInfo p {
+    filter: alpha(opacity=100);
+  opacity: 1;
+ }
+#flip-wrapper{
+	display:none;
+	}
+
+</style>
+<![endif]-->
+  <!--ALTERNATE CSS FOR IE--> 
+  <script src="http://grfx.cstv.com/scripts/_assets/js/modernizr.js"></script> 
+  <script src="//grfx.cstv.com/scripts/_assets/js/jquery-1.10.1.js"></script> 
+  <!-- <script LANGUAGE="JavaScript" src="http://widget.fotomoto.com/stores/script/[% fm_store_id %].js?aid=[% fm_affiliate_id %]&api=true"></script> --> 
+  <script>
+var docUrl = document.URL; 
+var schoolCode = docUrl.replace("http://" + window.location.host + window.location.pathname + "?school=", "").split("&")[0];
+var sportCode = docUrl.replace("http://" + window.location.host + window.location.pathname + "?school=" + schoolCode + "&sport=", "").replace("&", "");
+var ord = Math.random();
+var colorScript = document.createElement('script');
+var showIndex;
+colorScript.src = "http://grfx.cstv.com/library/photogalleries/" + schoolCode + "-photogallery-settings.js";
+$("head").append(colorScript);
+
+if(sportCode == ""){
+sportCode = "genrel";
+showIndex = "showIndex";
+}
+
+</script> 
+ </head> 
+ <body id="body"> 
+  <script>
+var cssLink = $('<link rel="stylesheet" type="text/css" href="http://grfx.cstv.com/schools/'+schoolCode+'/library/css/'+schoolCode+'-foto.css">');
+     $("head").append(cssLink); 
+</script> 
+  <script>
+// Begin postprocad_gtag.js
+// SET THINGS UP
+var procad_vp_width = 3000;
+var superleader_pos = 'superleader';
+var gtPos = "pg970x90";
+
+var superleader_size = [[970,66],[970,90]];
+var googletag = googletag || {};
+// SHRINK SUPERLEADERS IN RESPONSIVE SMALL VIEW
+if(procad_vp_width == 3000){
+        procad_vp_width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+}
+if(procad_vp_width < 468){
+	gtPos = "pg320x50";
+	superleader_pos = '320x50m';  
+	superleader_size = [320,50];
+}
+
+
+ (function() {
+   var useSSL = "https:" == document.location.protocol;
+   var src = (useSSL ? "https:" : "http:") + "//www.googletagservices.com/tag/js/gpt.js";
+   document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>'); 
+  })();
+// End postprocad_gtag.js
+
+</script> 
+  <div id="holder-sponsor-ad"> 
+   <div id="sponsor-ad"> 
+    <script type="text/javascript">
+		googletag.cmd.push(function() { 
+			googletag.defineSlot('/4177/CSTV.'+schoolCode.toUpperCase() + '/GALLERY.', superleader_size, 'sponsor-ad')
+			.addService(googletag.pubads())
+			.setTargeting("pos", gtPos).setTargeting("sect", sportCode.replace("-",""))
+			.setTargeting("dc_ref", encodeURIComponent(location.href)); 
+			googletag.pubads().enableSyncRendering(); 
+			googletag.enableServices(); 
+			googletag.display('sponsor-ad'); 
+		});
+		</script> 
+   </div> 
+  </div> 
+  <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> 
+   <div class="modal-header close" data-dismiss="modal"> 
+    <div class="clearfix"></div> 
+    <button id="gal-close" type="button">×</button> 
+    <h4 id="myModalLabel"></h4> 
+    <div class="clearfix"></div> 
+   </div> 
+   <div id="gal-modal" class="modal-body"> 
+    <ul id="gal-list"></ul> 
+   </div> 
+  </div> 
+  <div id="container" class="rad1"> 
+   <div id="gallery-header" class="text-center"> 
+    <h1 id="title"></h1> 
+    <div id="logo" class="hidden-phone"></div> 
+   </div> 
+   <div id="gallery-nav" class=""> 
+    <div id="gallery-menu" class="oneSection"> 
+     <h3 class=""> <a id="more" class="missing"> <span class="visible-phone" href="#" data-toggle="tooltip" data-placement="bottom" data-animation="true" title="Click here to view the latest galleries.">Tap for Latest Galleries</span> <span class="tipsy hidden-phone" href="#" data-toggle="tooltip" data-placement="bottom" data-animation="true" title="Click here to view the latest galleries.">Click for Latest Galleries
+        <!-- <span class="shown">Latest</span><span class="hovered">Galleries</span> --></span> </a> <a id="basic-index" class=""> <span class="visible-phone" href="#" data-toggle="tooltip" data-placement="bottom" data-animation="true" title="Click here to see our full list of galleries.">Tap for Gallery Index</span> <span class="tipsy hidden-phone" href="#" data-toggle="tooltip" data-placement="bottom" data-animation="true" title="Click here to see our full list of galleries.">Click for Gallery Index
+        <!-- <span class="shown">Index</span><span class="hovered">All Galleries</span> --></span> </a> </h3> 
+    </div> 
+   </div> 
+   <div id="story-ad-container"> 
+    <div id="story-ad-image" class=""></div> 
+    <div id="holder-story-ad" class="ad-index"> 
+     <div id="story-ad"> 
+      <script type="text/javascript">
+								googletag.cmd.push(function() { 
+									googletag.defineSlot('/4177/CSTV.'+schoolCode.toUpperCase() + '/GALLERY.', [300,250], 'story-ad')
+									.addService(googletag.pubads())
+									.setTargeting("pos", "pg300x250").setTargeting("sect", sportCode.replace("-",""))
+									.setTargeting("dc_ref", encodeURIComponent(location.href)); 
+									googletag.pubads().enableSyncRendering(); 
+									googletag.enableServices(); 
+									googletag.display('story-ad'); 
+								});
+								</script> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="a-two" class="clearfix"> 
+    <div id="collapseTwo"> 
+     <h4 id="elGal">Latest Galleries</h4> 
+     <ul id="latest"></ul> 
+     <div class="clearfix"></div> 
+     <h4 id="rIndex">Other Recent Galleries</h4> 
+     <div class="clearfix"></div> 
+     <ul id="recent-index"></ul> 
+     <div class="clearfix"></div> 
+    </div> 
+   </div> 
+   <div id="a-three" class="missing"> 
+    <div id="collapseFour"> 
+     <div id="index"></div> 
+    </div> 
+   </div> 
+  </div> 
+  <div id="mobile-ad"></div> 
+  <!--[if (gte IE 9) | (!IE)]><!--> 
+  <script>
+/*-- Marquee JS 2/20/13 --*/
+;(function($){$.fn.marquee=function(options){return this.each(function(){var o=$.extend({},$.fn.marquee.defaults,options),$this=$(this),$marqueeWrapper,containerWidth,animationCss,elWidth;o=$.extend({},o,$this.data());o.gap=o.duplicated?o.gap:0;$this.wrapInner('<div class="js-marquee"></div>');var $el=$this.find('.js-marquee').css({'margin-right':o.gap,'float':'left'});if(o.duplicated){$el.clone().appendTo($this)}$this.wrapInner('<div style="width:100000px" class="js-marquee-wrapper"></div>');elWidth=$this.find('.js-marquee:first').width()+o.gap;$marqueeWrapper=$this.find('.js-marquee-wrapper');containerWidth=$this.width();o.speed=((parseInt(elWidth,10)+parseInt(containerWidth,10))/parseInt(containerWidth,10))*o.speed;if(o.duplicated){o.speed=o.speed/2}function pause(){if($.fn.pause){$marqueeWrapper.pause();$this.trigger('paused')}}function resume(){if($.fn.resume){$marqueeWrapper.resume();$this.trigger('resumed')}}var animate=function(){if(!o.duplicated){$marqueeWrapper.css('margin-left',o.direction=='left'?containerWidth:'-'+elWidth+'px');animationCss={'margin-left':o.direction=='left'?'-'+elWidth+'px':containerWidth}}else{$marqueeWrapper.css('margin-left',o.direction=='left'?0:'-'+elWidth+'px');animationCss={'margin-left':o.direction=='left'?'-'+elWidth+'px':0}}$this.trigger('beforeStarting');$marqueeWrapper.animate(animationCss,o.speed,'linear',function(){$this.trigger('finished');if(o.pauseOnCycle){setTimeout(animate,o.delayBeforeStart)}else{animate()}})};$this.on('pause',pause);$this.on('resume',resume);if(o.pauseOnHover){$this.hover(pause,resume)}setTimeout(animate,o.delayBeforeStart)})};$.fn.marquee.defaults={speed:5000,gap:20,delayBeforeStart:0,direction:'left',duplicated:false,pauseOnHover:false,pauseOnCycle:false}})(jQuery);
+</script> 
+  <script src="http://grfx.cstv.com/scripts/_assets/js/jquery.swipe.min.js"></script> 
+  <script>
+/**
+ * StyleFix 1.0.3 & PrefixFree 1.0.7
+ * @author Lea Verou
+ * MIT license
+ */(function(){function t(e,t){return[].slice.call((t||document).querySelectorAll(e))}if(!window.addEventListener)return;var e=window.StyleFix={link:function(t){try{if(t.rel!=="stylesheet"||t.hasAttribute("data-noprefix"))return}catch(n){return}var r=t.href||t.getAttribute("data-href"),i=r.replace(/[^\/]+$/,""),s=(/^[a-z]{3,10}:/.exec(i)||[""])[0],o=(/^[a-z]{3,10}:\/\/[^\/]+/.exec(i)||[""])[0],u=/^([^?]*)\??/.exec(r)[1],a=t.parentNode,f=new XMLHttpRequest,l;f.onreadystatechange=function(){f.readyState===4&&l()};l=function(){var n=f.responseText;if(n&&t.parentNode&&(!f.status||f.status<400||f.status>600)){n=e.fix(n,!0,t);if(i){n=n.replace(/url\(\s*?((?:"|')?)(.+?)\1\s*?\)/gi,function(e,t,n){return/^([a-z]{3,10}:|#)/i.test(n)?e:/^\/\//.test(n)?'url("'+s+n+'")':/^\//.test(n)?'url("'+o+n+'")':/^\?/.test(n)?'url("'+u+n+'")':'url("'+i+n+'")'});var r=i.replace(/([\\\^\$*+[\]?{}.=!:(|)])/g,"\\$1");n=n.replace(RegExp("\\b(behavior:\\s*?url\\('?\"?)"+r,"gi"),"$1")}var l=document.createElement("style");l.textContent=n;l.media=t.media;l.disabled=t.disabled;l.setAttribute("data-href",t.getAttribute("href"));a.insertBefore(l,t);a.removeChild(t);l.media=t.media}};try{f.open("GET",r);f.send(null)}catch(n){if(typeof XDomainRequest!="undefined"){f=new XDomainRequest;f.onerror=f.onprogress=function(){};f.onload=l;f.open("GET",r);f.send(null)}}t.setAttribute("data-inprogress","")},styleElement:function(t){if(t.hasAttribute("data-noprefix"))return;var n=t.disabled;t.textContent=e.fix(t.textContent,!0,t);t.disabled=n},styleAttribute:function(t){var n=t.getAttribute("style");n=e.fix(n,!1,t);t.setAttribute("style",n)},process:function(){t('link[rel="stylesheet"]:not([data-inprogress])').forEach(StyleFix.link);t("style").forEach(StyleFix.styleElement);t("[style]").forEach(StyleFix.styleAttribute)},register:function(t,n){(e.fixers=e.fixers||[]).splice(n===undefined?e.fixers.length:n,0,t)},fix:function(t,n,r){for(var i=0;i<e.fixers.length;i++)t=e.fixers[i](t,n,r)||t;return t},camelCase:function(e){return e.replace(/-([a-z])/g,function(e,t){return t.toUpperCase()}).replace("-","")},deCamelCase:function(e){return e.replace(/[A-Z]/g,function(e){return"-"+e.toLowerCase()})}};(function(){setTimeout(function(){t('link[rel="stylesheet"]').forEach(StyleFix.link)},10);document.addEventListener("DOMContentLoaded",StyleFix.process,!1)})()})();(function(e){function t(e,t,r,i,s){e=n[e];if(e.length){var o=RegExp(t+"("+e.join("|")+")"+r,"gi");s=s.replace(o,i)}return s}if(!window.StyleFix||!window.getComputedStyle)return;var n=window.PrefixFree={prefixCSS:function(e,r,i){var s=n.prefix;n.functions.indexOf("linear-gradient")>-1&&(e=e.replace(/(\s|:|,)(repeating-)?linear-gradient\(\s*(-?\d*\.?\d*)deg/ig,function(e,t,n,r){return t+(n||"")+"linear-gradient("+(90-r)+"deg"}));e=t("functions","(\\s|:|,)","\\s*\\(","$1"+s+"$2(",e);e=t("keywords","(\\s|:)","(\\s|;|\\}|$)","$1"+s+"$2$3",e);e=t("properties","(^|\\{|\\s|;)","\\s*:","$1"+s+"$2:",e);if(n.properties.length){var o=RegExp("\\b("+n.properties.join("|")+")(?!:)","gi");e=t("valueProperties","\\b",":(.+?);",function(e){return e.replace(o,s+"$1")},e)}if(r){e=t("selectors","","\\b",n.prefixSelector,e);e=t("atrules","@","\\b","@"+s+"$1",e)}e=e.replace(RegExp("-"+s,"g"),"-");e=e.replace(/-\*-(?=[a-z]+)/gi,n.prefix);return e},property:function(e){return(n.properties.indexOf(e)?n.prefix:"")+e},value:function(e,r){e=t("functions","(^|\\s|,)","\\s*\\(","$1"+n.prefix+"$2(",e);e=t("keywords","(^|\\s)","(\\s|$)","$1"+n.prefix+"$2$3",e);return e},prefixSelector:function(e){return e.replace(/^:{1,2}/,function(e){return e+n.prefix})},prefixProperty:function(e,t){var r=n.prefix+e;return t?StyleFix.camelCase(r):r}};(function(){var e={},t=[],r={},i=getComputedStyle(document.documentElement,null),s=document.createElement("div").style,o=function(n){if(n.charAt(0)==="-"){t.push(n);var r=n.split("-"),i=r[1];e[i]=++e[i]||1;while(r.length>3){r.pop();var s=r.join("-");u(s)&&t.indexOf(s)===-1&&t.push(s)}}},u=function(e){return StyleFix.camelCase(e)in s};if(i.length>0)for(var a=0;a<i.length;a++)o(i[a]);else for(var f in i)o(StyleFix.deCamelCase(f));var l={uses:0};for(var c in e){var h=e[c];l.uses<h&&(l={prefix:c,uses:h})}n.prefix="-"+l.prefix+"-";n.Prefix=StyleFix.camelCase(n.prefix);n.properties=[];for(var a=0;a<t.length;a++){var f=t[a];if(f.indexOf(n.prefix)===0){var p=f.slice(n.prefix.length);u(p)||n.properties.push(p)}}n.Prefix=="Ms"&&!("transform"in s)&&!("MsTransform"in s)&&"msTransform"in s&&n.properties.push("transform","transform-origin");n.properties.sort()})();(function(){function i(e,t){r[t]="";r[t]=e;return!!r[t]}var e={"linear-gradient":{property:"backgroundImage",params:"red, teal"},calc:{property:"width",params:"1px + 5%"},element:{property:"backgroundImage",params:"#foo"},"cross-fade":{property:"backgroundImage",params:"url(a.png), url(b.png), 50%"}};e["repeating-linear-gradient"]=e["repeating-radial-gradient"]=e["radial-gradient"]=e["linear-gradient"];var t={initial:"color","zoom-in":"cursor","zoom-out":"cursor",box:"display",flexbox:"display","inline-flexbox":"display",flex:"display","inline-flex":"display",grid:"display","inline-grid":"display","min-content":"width"};n.functions=[];n.keywords=[];var r=document.createElement("div").style;for(var s in e){var o=e[s],u=o.property,a=s+"("+o.params+")";!i(a,u)&&i(n.prefix+a,u)&&n.functions.push(s)}for(var f in t){var u=t[f];!i(f,u)&&i(n.prefix+f,u)&&n.keywords.push(f)}})();(function(){function s(e){i.textContent=e+"{}";return!!i.sheet.cssRules.length}var t={":read-only":null,":read-write":null,":any-link":null,"::selection":null},r={keyframes:"name",viewport:null,document:'regexp(".")'};n.selectors=[];n.atrules=[];var i=e.appendChild(document.createElement("style"));for(var o in t){var u=o+(t[o]?"("+t[o]+")":"");!s(u)&&s(n.prefixSelector(u))&&n.selectors.push(o)}for(var a in r){var u=a+" "+(r[a]||"");!s("@"+u)&&s("@"+n.prefix+u)&&n.atrules.push(a)}e.removeChild(i)})();n.valueProperties=["transition","transition-property"];e.className+=" "+n.prefix;StyleFix.register(n.prefixCSS)})(document.documentElement);
+</script> 
+  <!--<![endif]--> 
+  <script src="http://grfx.cstv.com/scripts/_assets/js/bootstrap/lazy-bootstrap.js"></script>
+  <!--LAZY BOOTSTRAP--> 
+  <script src="http://grfx.cstv.com/scripts/_assets/js/jquery.cookie.js"></script> 
+  <script>
+
+//AJAX CODE
+var getXML = function(url) { 
+	var xmlDoc = null; 
+	$.ajax({ 
+		type: "GET", 
+		url: url, 
+		dataType: "xml",
+		async: false, 
+		success: function(xml) { 
+			xmlDoc = $(xml); 
+			}, 
+			error: function(jqXHR, text, errorMsg) { 
+			/* alert("Unable to access XML file."); */
+			} 
+	}); 
+	return xmlDoc; 
+}
+</script> 
+  <script>
+//AJAX CODE
+
+// RECENT INDEX CODE
+$(document).ready(function(){
+	var link = "/gallerylink/indexes/" + schoolCode + "/recent_index.xml?c=" + (new Date().getTime() + "").slice(0,-5);
+	var xmlDoc = getXML(link);	
+	var xGal = $(xmlDoc).find('gallery');
+	$($(xGal).get().reverse()).each(function(x){ 
+		var hideGallery = $(this).find('hide').text();
+		var popup = $(this).find("popup_js").text();
+		var newLink = popup.replace("window.open('http://onlyfans.cstv.com/schools/" + schoolCode + "/", "http://" + window.location.host + "/");
+		newLink = newLink.substring(0, newLink.indexOf("'"));
+
+		var thumb = $(this).find('thumb_url').text();
+		var date = $(this).find('create_date').text();
+		var description = $(this).find('description').text();
+		var title = $(this).find('title').text();
+		$("<li class=hide" + hideGallery + "><a href=\"" + newLink + "\" id=\"\" class=\"\">" + "<img class=\"pull-right\" src=\"" + thumb + "\">" + "<h4>" + date + "</h4>" + "<p class='galTitle'>" + title + "</p>" + "<p class='hidden-phone galDescription'>" + description + "</p>" + "</a><div class='clearfix'></div></li>").appendTo("#recent-index");
+	});
+});
+var sCode;
+var sNode;
+var sName;
+var iLink;
+var subNode; 
+var nodeVal; 
+var nuNode;
+
+// INDEX CODE
+$(document).ready(function() { 
+	var link = "/gallerylink/indexes/" + schoolCode + "/master_index.xml?c=" + (new Date().getTime() + "").slice(0,-5);
+	var xmlDoc = getXML(link); 
+	xmlDoc.find('summary').each(function(){
+		$(this).children().each(function(x){
+			sCode = this.nodeName;
+			var nameNode = $(this).find('full_name').text();
+			
+			var season="";
+			$(this).find('seasons').each(function(){ 
+				$($(this).children().get().reverse()).each(function(){
+					a = 1;
+					sNode = this.nodeName.replace("season_", "");
+					subNode = sNode.replace("20", "");
+					nodeVal = parseInt(subNode, 10);
+					nuNode = nodeVal + 1;
+					if(nuNode < 10){ nuNode = "0" + nuNode;}					 
+						if($(this).find("none").text() == "0"){
+						"";
+					}else if($(this).find("none").text() == "1"){						
+						season+= "<li href='#myModal' onclick='indexList(this.id)' id='/gallerylink/indexes/" + schoolCode + "/" + sCode + "-" + sNode + ".xml' data-toggle='modal'><span>" + sNode + "</span>-" + nuNode + " | " +  $(this).find("none").text() + " Gallery" + "</li>";						
+					}
+					else{						
+						season+= "<li href='#myModal' onclick='indexList(this.id)' id='/gallerylink/indexes/" + schoolCode + "/" + sCode + "-" + sNode + ".xml' data-toggle='modal'><span>" + sNode + "</span>-" + nuNode + " | " + $(this).find("none").text() +  " Galleries" + "</li>";						
+					}
+				}); 
+			});season+=""
+			
+			$('#index').append("<div id=" + sCode + "  class='indy'><h4 class='gal-year-header btn btn-link' data-toggle='collapse' data-target='#" + sCode + (x+1) + "'>" + nameNode + "</h4>" + 
+			"<div id='" + sCode + (x+1) + "'class='collapse'><ul id='gal-by-year" + (x+1) + "' class='gal-by-year'>" + season + "<div class='clearfix'></div></ul></div>" + 
+			"</div>");			
+		});	
+	});
+});
+
+// MODAL GALLERY CODE
+function indexList(id) {
+	var link = id;
+	var xmlDoc = getXML(link);
+	var xGal = $(xmlDoc).find('gallery');
+	$($(xGal).get().reverse()).each(function(x){
+	var hideGallery = $(this).find('hide').text();
+	var popup = $(this).find("popup_js").text();
+	var newLink = popup.replace("window.open('http://onlyfans.cstv.com/schools/" + schoolCode + "/", "http://" + window.location.host + "/");
+	newLink = newLink.substring(0, newLink.indexOf("'"));
+	var thumb = $(this).find('thumb_url').text();
+	var date = $(this).find('create_date').text();
+	var description = $(this).find('description').text();
+	var title = $(this).find('title').text();
+	if(thumb < 1){
+		"";
+	}else{
+	$("<li class=hide" + hideGallery + "><a href=\"" + newLink + "\" id=\"\" class=\"\">" + "<img class=\"pull-right\" src=\"" + thumb + "\">" + "<h4>" + date + "</h4>" + "<p class='galTitle'>" + title + "</p>" + "<p class='hidden-phone galDescription'>" + description + "</p>" + "</a><div class='clearfix'></div></li>").appendTo("#gal-list");
+	} 		
+	});
+};
+// Latest CODE
+$(document).ready(function(){
+	var link = "/gallerylink/indexes/" + schoolCode + "/" + sportCode + "-" + ny + ".xml?c=" + (new Date().getTime() + "").slice(0,-5);
+	var	xmlDoc = getXML(link);
+	var xGal = $(xmlDoc).find('gallery');
+	$($(xGal).get().reverse()).each(function(x){ 
+	var hideGallery = $(this).find('hide').text();
+	var popup = $(this).find("popup_js").text();
+		var newLink = popup.replace("window.open('http://onlyfans.cstv.com/schools/" + schoolCode + "/", "http://" + window.location.host + "/");
+		newLink = newLink.substring(0, newLink.indexOf("'"));
+
+	var thumb = $(this).find('thumb_url').text();
+	var date = $(this).find('create_date').text();
+	var description = $(this).find('description').text();
+	var title = $(this).find('title').text();
+	$("<li class=hide" + hideGallery + "><a href=\"" + newLink + "\" id=\"\" class=\"\">" + "<img class=\"pull-right\" src=\"" + thumb + "\">" + "<h4>" + date + "</h4>" + "<p class='galTitle'>" + title + "</p>" + "<p class='hidden-phone galDescription'>" + description + "</p>" + "</a><div class='clearfix'></div></li>").appendTo("#latest");
+	});
+	
+});
+setTimeout(function(){
+if($('#latest').is(':empty')){
+    	var link = "/gallerylink/indexes/" + schoolCode + "/" + sport + "-" + ly + ".xml?c=" + (new Date().getTime() + "").slice(0,-5);
+    	var	xmlDoc = getXML(link);
+	var xGal = $(xmlDoc).find('gallery');
+	$($(xGal).get().reverse()).each(function(x){ 
+		var hideGallery = $(this).find('hide').text();
+    	var popup = $(this).find("popup_js").text();
+		var newLink = popup.replace("window.open('http://onlyfans.cstv.com/schools/" + schoolCode + "/", "http://" + window.location.host + "/");
+		newLink = newLink.substring(0, newLink.indexOf("'"));
+
+    	var thumb = $(this).find('thumb_url').text();
+    	var date = $(this).find('create_date').text();
+    	var description = $(this).find('description').text();
+    	var title = $(this).find('title').text();
+    	$("<li class=hide" + hideGallery + "><a href=\"" + newLink + "\" id=\"\" class=\"\">" + "<img class=\"pull-right\" src=\"" + thumb + "\">" + "<h4>" + date + "</h4>" + "<p class='galTitle'>" + title + "</p>" + "<p class='hidden-phone galDescription'>" + description + "</p>" + "</a><div class='clearfix'></div></li>").appendTo("#latest");
+    	});
+		
+	}
+}, 1000);
+setTimeout(function(){
+if($('#latest').is(':empty')){
+    	var link = "/gallerylink/indexes/" + schoolCode + "/" + sport + "-" + ybl + ".xml?c=" + (new Date().getTime() + "").slice(0,-5);
+    	var	xmlDoc = getXML(link);
+	var xGal = $(xmlDoc).find('gallery');
+	$($(xGal).get().reverse()).each(function(x){ 
+		var hideGallery = $(this).find('hide').text();
+    	var popup = $(this).find("popup_js").text();
+		var newLink = popup.replace("window.open('http://onlyfans.cstv.com/schools/" + schoolCode + "/", "http://" + window.location.host + "/");
+		newLink = newLink.substring(0, newLink.indexOf("'"));
+
+    	var thumb = $(this).find('thumb_url').text();
+    	var date = $(this).find('create_date').text();
+    	var description = $(this).find('description').text();
+    	var title = $(this).find('title').text();
+    	$("<li class=hide" + hideGallery + "><a href=\"" + newLink + "\" id=\"\" class=\"\">" + "<img class=\"pull-right\" src=\"" + thumb + "\">" + "<h4>" + date + "</h4>" + "<p class='galTitle'>" + title + "</p>" + "<p class='hidden-phone galDescription'>" + description + "</p>" + "</a><div class='clearfix'></div></li>").appendTo("#latest");
+    	});
+		
+	}
+}, 2000);
+//END 
+$(document).ready(function() {
+    if( $.cookie('showOnlyOne') ){
+        $('#cooked').hide();
+    } else {
+        $.cookie('showOnlyOne', 'showOnlyOne', { expires: 1,  path: '/'  });
+        $('#cooked').show(); 
+    }
+});
+
+$(window).load(function(){
+	favIcon = document.createElement('link');
+	favIcon.rel = 'shortcut icon';
+	favIcon.href = "http://grfx.cstv.com/graphics/school-logos/" + schoolCode + "-lg.png";
+	$("head").append(favIcon);
+	appleIcon = document.createElement('link');
+	appleIcon.rel = 'apple-touch-icon';
+	appleIcon.href = "http://grfx.cstv.com/graphics/school-logos/" + schoolCode + "-lg.png";
+	$("head").append(appleIcon);
+	if(fotoSource == 'AP'){$('.picStore').css('visibility', 'hidden');}
+	
+	setTimeout(function(){
+			if(fotoSource == 'AP'){$('.picStore').hide();}
+			$('.picLink').each(function(e){
+	    	var href = $(this).attr('href');
+	    		if(sellPartner == 'printroom'){	    			
+		    		$(this).attr('href', href.replace('http://webservices.cstv.com/', 'http://webservices.cstv.com/printroom').replace("zz", ""));
+		    	}else{		    		
+			    	$(this).attr('href', href.replace('http://webservices.cstv.com/?rtype=CBS-BuyNow&main=', "http://www.replayphotos.com/" + sellPartner +"/purchase.cfm?rM=" + sport).replace("zz", ""));	
+			    }
+			});
+		},100);
+	setTimeout(function(){
+		$('#header').marquee({
+			speed: 12000,
+			gap: 0,
+			delayBeforeStart: 0,
+			direction: 'left',
+			duplicated: false
+		});
+		}, 7700);
+	var order = 'w-wrestl,m-wrestl,w-volley,m-volley,w-svolley,m-svolley,c-svolley,c-varsitys,ucats,w-track,m-track,c-track,terrierpride,w-tennis,m-tennis,w-swim,m-swim,c-swim,m-sprintfb,w-softbl,w-soccer,m-soccer,w-crew,w-rowing,m-rowing,c-rowing,w-rifle,m-rifle,c-rifle,c-psuac,marketing,c-lionclub,w-lacros,m-lacros,w-hockey,m-hockey,w-gym,m-gym,w-golf,m-golf,genrel,w-fieldh,w-fenc,m-fenc,w-equest,m-equest,c-equest,w-dance,m-dance,c-dance,w-xc,m-xc,c-xc,m-crew,w-cheer,m-cheer,c-cheer,w-bowl,m-bowl,c-bowl,athletics,acad-services,academics,m-basebl,w-baskbl,m-baskbl,m-footbl'.split(',');
+	var divIndex = $('div#index');
+	$.each(order, function (index, sort) {
+    	$('#' + sort).prependTo(divIndex);
+	});
+	var items = $(".indy");
+	var itemsSplit = Math.ceil(items.length/2);
+	for(var i = 0; i < items.length; i+=itemsSplit) {
+		items.slice(i, i+itemsSplit).wrapAll("<div class='indy-silo'></div>");
+	}
+	
+	$('#footer-links').append("<a href='http://" + window.location.host + "/feedback/" + schoolCode + "-feedback.html' class='csdisclaimerlink'>Feedback</a> | <a class='capitalize' href='http://" + window.location.host + "'>" + pg_settings.domain + "</a>");
+	
+	if(location.host == "www.fightingillini.com"){
+		$("#varsity").remove();
+		$("#m-xc").remove();
+	}
+
+});
+	$(document).ready(function(){
+		var width = $(window).width();
+		var header = $('#header').width;
+		var galHeader = $('#gallery-header').width;
+		if(width <= 1024){
+    		$('.take').click(function(){$('#collapseOne').collapse('hide')});
+    		$('#collapseOne').removeClass('in'); 
+    	}
+    });
+	$('.info-icon').click(function(){
+		$('.imgInfo').toggleClass('vacay');	
+		$('.heidi').toggleClass('hide');
+		$('.shoo').toggleClass('hide');
+	});
+	var picTot = 0;
+	setTimeout(function(){
+		var all = $('.pic-count');
+		for (var i=0, max=all.length; i < max; i++) {
+    		if(max > picTot){
+	    		picTot = max;
+	    	}
+	    }
+	    $('.pic-count').append(picTot);
+	    $(".gal-by-year li").click(function(){
+			var gName = $(this).parent().parent().siblings(".gal-year-header").text();
+			var gYear = $(this).text().substr(0,7);
+			$("#myModalLabel").append("<span id='modalLabelInner'>" + gName + " &nbsp; " + gYear + "</span>");
+		});
+		if(sellPartner == 'fotomoto'){
+			/* $('.picLink').prop("href", null); */
+			$('.picLink').removeAttr('href');
+		}
+	},1000);
+	function fotoLaser(id){
+		fotoLink = id;
+		FOTOMOTO.API.showWindow(FOTOMOTO.API.BUY, fotoLink);
+	}
+		$('#gal-close').click(function(){
+			$('#gal-list li').remove();
+		});
+		$('.modal-header').click(function(){
+			$('#gal-list li').remove();
+			$("#modalLabelInner").remove();
+		});
+	var containerWidth = $("#container").width();
+	var containerHeight = $("#container").height();
+	var bootyHeight = $('body').height();
+	$(window).load(function(){
+		$.fn.carousel.defaults = {
+			interval: false,
+		    pause: 'click'
+		}
+		setTimeout(function(){
+			$(".carousel").carousel({interval: 5000});
+
+		}, 4000);
+		$("#car-outer").click(function(){ 
+			$('#myCarousel').carousel('pause');  
+		}); 
+		$('.take').click(function(){
+			setTimeout(function(){
+			$(".carousel").carousel('pause');
+			}, 1000);
+		});
+		$("#pic-pause").click(function(){ 
+			$('#myCarousel').carousel('pause');  
+		});
+		$("#pic-play").click(function(){ 
+			$('#myCarousel').carousel({interval: 5000});  
+		});		
+		$(".right").click(function(){ 
+			$(".carousel").carousel('next');
+			setTimeout(function(){
+			$(".carousel").carousel('pause');
+			}, 1000);
+		});	
+		$(".left").click(function(){ 
+			$(".carousel").carousel('prev');
+			setTimeout(function(){
+			$(".carousel").carousel('pause');
+			}, 1000);
+		});
+	});
+
+	// Window height divs
+	$('body').height(function(){return $(window).height() * 1;});
+	setInterval(function() {
+	    if(containerWidth < 970) {
+	    	if($("#collapseOne").hasClass("in") || $("#collapseTwo").hasClass("in") || $("#collapseFour").hasClass("in")) {
+	    		$(".picStore").hide();
+	    		$(".pic-control").hide();
+	    		$(".info-icon").hide();
+	    		$(".pic-count").hide();
+	    		
+	    	}else{
+	    		$(".picStore").show();
+	    		$(".pic-control").show();
+	    		$(".info-icon").show();
+	    		$(".pic-count").show();
+	    	}
+	    }
+		headerWidth = $("#header").width();
+		if(headerWidth > 460){$("#logo").fadeOut({'visibility': 'hidden'}, 400);}
+		
+	}, 200);
+	if (Modernizr.touch){
+	   $('.carousel-control').css('display', 'none');
+	   $('#collapseTwo li:hover, #gal-modal li:hover, #index li:hover').css('color', '#f4f4f4');
+	   $(document).ready(function() {
+	   		$(".carousel").each(function(){
+				$self = $(this);
+				$self.swiperight(function(){$self.carousel('prev');});  
+				$self.swipeleft(function(){$self.carousel('next');}); 
+				  
+				$self.swipeleft(function(){setTimeout(function(){
+					$(".carousel").carousel('pause');
+					}, 1000);});	
+				$self.swiperight(function(){setTimeout(function(){
+					$(".carousel").carousel('pause');
+					}, 1000);});	
+			});
+	   }); 
+	   $( "#myCarousel" ).on("swipeleft", function() { $(this).carousel({interval: false}); } );
+	   $(".pic-control").hide();
+	   $("#holder-story-ad").hide();
+	   $(window).load(function(){	   		
+	   		setTimeout(function(){
+	   			$(".swiped").fadeOut(500, function(){
+		   			var tapped = $("<p class='tapped'>&#9757; Tap to pause &#9759;<p>").hide();
+		   			$(this).replaceWith(tapped);
+		   			$('.tapped').fadeIn(500);
+	   			});
+	   		},2500);	
+	   		setTimeout(function(){
+	   			$("#swipe-scroll").fadeOut({'visibility': 'hidden'}, 500);
+	   		},5000);
+	   });
+	   $(document).ready(function() {
+	    	if($.cookie('showOnlyOnce')){ 
+	        	$('#swipe-scroll').hide();
+	        }else {
+	        	$.cookie('showOnlyOnce', 'showOnlyOnce', { expires: 1,  path: '/'  });
+	        	$('#swipe-scroll').show();
+	        }
+	    });
+	    $(window).resize(function() {
+			setTimeout(function(){	
+				window.scrollTo(0,1);
+			},1000);		
+		});
+		$('#car-thumb li').css('opacity', '1');
+	}else{
+		$('#swipe-scroll').css('display', 'none');
+         /* document.write('<script language="JavaScript" src="http://ad.doubleclick.net/N4177/adj/CSTV.TACO/GALLERY.GENREL;sect=genrel;pos=pgskin;sz=1600x1000;tile=3;ord=0.9014585702680051?" type="text/javascript"><\/script>'); */
+         // document.write('<script language="JavaScript" src="http://ad.doubleclick.net/N4177/adj/CSTV.'+schoolCode.toUpperCase() + '/GALLERY.' + sportCode.toUpperCase() + ';sect=' + sportCode + ';pos=pgskin;sz=1600x1000;tile=3;dc_ref='+encodeURIComponent(location.href)+';ord=' + ord + '?" type="text/javascript"><\/script>');
+		setInterval(function() {
+		if($('body').width() >= 1025 && !$("#collapseOne").hasClass("in") && !$("#collapseTwo").hasClass("in") && !$("#collapseFour").hasClass("in")) {
+			$("#collapseOne").addClass("in");
+			$("#thumbnails").removeClass("collapsed");
+			$("#collapseOne").css('height', 'auto');
+			}
+		}, 1000);
+		$(window).resize(function() {
+			if($('body').width() <= 1024){
+    		$('#collapseOne').removeClass('in');
+    		$("#collapseOne").css('height', '0');
+    		$("#thumbnails").addClass("collapsed");
+    		$('.take').click(function(){$('#collapseOne').collapse('hide')});
+			}
+			if($('body').width() >= 1025){
+    		$('#collapseOne').addClass('in');
+    		$("#collapseOne").css('height', 'auto');
+    		$("#thumbnails").removeClass("collapsed");
+			}
+			if($('body').width() > 728){
+			$('body').height(function(){return $(window).height() * 1;});
+			}
+		});
+
+		$('#container').fadeIn(1000);
+	}
+	window.onload = function(){window.scrollTo(0,1);};
+
+</script> 
+  <script>
+	      googletag.cmd.push(function() { 
+			googletag.defineSlot('/4177/CSTV.'+schoolCode.toUpperCase() + '/GALLERY.', [1600,1000], 'body')
+			.addService(googletag.pubads())
+			.setTargeting("pos", "pgskin").setTargeting("sect", sportCode.replace("-",""))
+			.setTargeting("dc_ref", encodeURIComponent(location.href)); 
+			googletag.pubads().enableSyncRendering(); 
+			googletag.enableServices(); 
+			googletag.display('body'); 
+		});
+
+	  </script> 
+  <script>
+var indexId = docUrl.replace("http://" + window.location.host + window.location.pathname + "?id=", "").split("&")[0];
+// END INDEX CODE
+$(document).ready(function () {
+    	var test = sportCode;
+		var link = "/gallerylink/indexes/" + schoolCode + "/master_index.xml";
+		var xmlDoc = getXML(link); 
+		xmlDoc.find('summary').each(function(){
+			$(this).children().each(function(x){
+				sCode = this.nodeName;
+				
+				if(sCode == sportCode){
+					$('#elGal').replaceWith("<h4>" + $(this).find('full_name').text() + " " + ny + "-" + subYear + "</h4>");
+					/* $('#elGal').replaceWith("<h4>Latest " + $(this).find('full_name').text() + " Galleries</h4>"); */
+					$('#rIndex').hide();
+					$('#recent-index').hide();	
+					
+				}		
+			});	
+		});
+    
+});
+
+$('#gallery-menu').click(function(){
+	$('.missing').fadeIn(400);
+	$('#more, #basic-index, #a-two, #a-three').toggleClass('missing');
+});
+
+if(showIndex == "showIndex"){
+	$('#more, #basic-index, #a-two, #a-three').toggleClass('missing');
+}
+
+$('#logo').append("<a href='http://" + window.location.host + "'><img src='http://grfx.cstv.com/graphics/school-logos/" + schoolCode + "-sm.png' width='40' height='40'></a>");
+$('#story-ad-image').append("<a href='http://" + window.location.host + "'><img src='http://grfx.cstv.com/graphics/school-logos/" + schoolCode + "-lg.png' width='120' height='120'></a>");
+
+</script> 
+  <!-- SiteCatalyst code --> 
+  <script type="text/javascript" src="http://grfx.cstv.com/scripts/omniture/s_code_tm.js"></script> 
+  <script language="JavaScript" type="text/javascript">
+function get_meta_og_title() {
+    var metas = document.getElementsByTagName('meta');
+    for (i=0; i<metas.length; i++) {
+        if (metas[i].getAttribute("property") == "og:title") {
+            return metas[i].getAttribute("content");
+        }
+    }
+    return '';
+}
+</script> 
+  <script>
+      	if(window.location.href.indexOf("rolltide") > -1) {
+	      	$("body").addClass("bama");
+      	}
+      </script> 
+  <script>
+var omdata = {
+    'is_dev':'false',
+    'rsids':'cbsicbscnsite-' + schoolCode,
+    'context': {
+        'schoolcode': schoolCode,
+		'school': pg_settings.short_name,
+        'sections':'photogallery',
+        'page_type':'photogallery',
+        'sport': sportCode,
+        'content_title': schoolCode + " Photo Gallery"
+    }
+}
+if(s){s.t()}
+</script> 
+  <script>
+<!--
+        var _rsCI="us-cstv";
+        var _rsCG="school";
+        var _rsDT=0;
+        var _rsDU=1;
+        var _rsDO=0;
+        var _rsX6=1;
+		var _rsSI=escape(docUrl + "&sport=" + sportCode);
+        var _rsLP=location.protocol.indexOf('https')>-1?'https:':'http:';
+        var _rsRP=escape(document.referrer);
+        var _rsND=_rsLP+'//secure-us.imrworldwide.com/';
+
+        if (parseInt(navigator.appVersion)>=4)
+        {
+                var _rsRD=(new Date()).getTime();
+                var _rsSE=0;
+                var _rsSV="";
+                var _rsSM=0;
+                _rsCL='<scr'+'ipt language="JavaScript" type="text/javascript" src="'+_rsND+'v53.js"></scr'+'ipt>';
+        }
+        else
+        {
+                _rsCL='<img src="'+_rsND+'cgi-bin/m?ci='+_rsCI+'&cg='+_rsCG+'&si='+_rsSI+'&rp='+_rsRP+'">';
+        }
+        document.write(_rsCL);
+//-->
+</script> 
+  <div id="footer"> 
+   <style>
+	#logo-wrap{
+	float:left;
+	background: url("http://grfx.cstv.com/graphics/new-footer-06-white-logo.png") no-repeat;
+		*background-image:none;
+	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://grfx.cstv.com/graphics/new-footer-06-white-logo.png");
+	width:50%;
+	display:block;
+	height:50px;
+	display:block
+	}
+	#logo-wrap img{
+    float:left;
+    width:290px;
+    height:50px;
+    position:relative;
+    z-index:10;
+    }
+	/* START CUSTOM CODE */
+	#footer {
+		width: 970px;
+		margin: 0 auto;
+		color: #fff;
+		background: rgba(0,0,0,.3);
+		padding: 7px 0 10px 0;
+		background: -moz-linear-gradient(left,  rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.3) 10%, rgba(0,0,0,0.3) 90%, rgba(0,0,0,0.05) 100%);
+		background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0.05)), color-stop(10%,rgba(0,0,0,0.3)), color-stop(90%,rgba(0,0,0,0.3)), color-stop(100%,rgba(0,0,0,0.05)));
+		background: -webkit-linear-gradient(left,  rgba(0,0,0,0.05) 0%,rgba(0,0,0,0.3) 10%,rgba(0,0,0,0.3) 90%,rgba(0,0,0,0.05) 100%);
+		background: -o-linear-gradient(left,  rgba(0,0,0,0.05) 0%,rgba(0,0,0,0.3) 10%,rgba(0,0,0,0.3) 90%,rgba(0,0,0,0.05) 100%);
+		background: -ms-linear-gradient(left,  rgba(0,0,0,0.05) 0%,rgba(0,0,0,0.3) 10%,rgba(0,0,0,0.3) 90%,rgba(0,0,0,0.05) 100%);
+		background: linear-gradient(to right,  rgba(0,0,0,0.05) 0%,rgba(0,0,0,0.3) 10%,rgba(0,0,0,0.3) 90%,rgba(0,0,0,0.05) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0d000000', endColorstr='#0d000000',GradientType=1 );
+	}
+	a {
+		color: inherit;
+	}
+	#footer-links {
+		text-align: center;
+		margin-bottom: 10px;
+	}
+	label {
+		float: left;
+		text-align: left;
+		margin-bottom: 0;
+		font-weight: 300;
+	}
+	#logo-wrap {
+		width: 290px;
+		margin-left: 169px;
+		margin-top: 3px;
+
+	}
+	#logo-wrap img{
+    	float:left;
+		width:290px;
+		height:50px;
+		position:relative;
+		z-index:10;
+    }
+	form div {
+		font-size: 12px;
+		float: left;
+		width: 265px;
+		margin-top: -10px;
+	}
+	select {
+		height: 25px;
+	}
+	input {
+		float: right;
+		height: 25px;
+	}
+	</style> 
+   <link href="http://grfx.cstv.com/schools//library/-07-footer.css" rel="stylesheet" type="text/css"> 
+   <div id="footer-wrap-temp"> 
+    <!-- <div id="dots"></div> --> 
+    <div id="footer-links">
+      © 
+     <span id="currYear">&nbsp;</span> CBS Interactive. All rights reserved. | 
+     <a href="http://legalterms.cbsinteractive.com/privacy" target="_blank">Privacy Policy</a> | 
+     <a href="http://legalterms.cbsinteractive.com/adchoice" target="_blank">Ad Choice</a> | 
+     <a href="http://www.cbsinteractive.com/info/tou" target="_blank">Terms of Use</a> | 
+     <a href="http://collegenetwork.cbssports.com/">About Us</a> | 
+     <a href="http://www.cbsinteractive.com/advertise/">Advertise</a> | 
+    </div> 
+    <div id="logo-wrap">
+     <a href="http://www.cbssports.com/" target="_blank"><img src="http://grfx.cstv.com/graphics/spacer.gif" width="290" height="50" alt="CBS College Sports" border="0"></a>
+    </div> 
+    <div id="dropdown-wrap"> 
+     <!--
+				<form>
+					<script language="javascript">
+						document.write("<div><label for=\"cbsi_footer_menu\">Visit other CBS Interactive Sites</label><br><select name=\"cbsi_footer_menu\" id=\"cbsi_footer_menu\" class=\"rb_visit_sel\"> <option value=\"http://www.cbscares.com/\">CBS Cares</option><option value=\"http://www.cbsfilms.com\">CBS Films</option><option value=\"http://www.cbsradio.com/streaming/index.html\">CBS Radio</option><option value=\"http://www.cbs.com\">CBS.com</option><option value=\"http://www.cbsinteractive.com\">CBSInteractive</option><option value=\"http://www.cbsnews.com\">CBSNews.com</option><option value=\"http://www.cbssports.com\">CBSSports.com</option><option value=\"http://www.chow.com\">CHOW</option><option value=\"http://www.clicker.com\">Clicker</option><option value=\"http://www.cnet.com\">CNET</option><option value=\"http://collegenetwork.cbssports.com\">College Network</option><option value=\"http://www.gamespot.com\">GameSpot</option><option value=\"http://www.help.com\">Help.com</option><option value=\"http://www.last.fm\">Last.fm</option><option value=\"http://www.maxpreps.com/national/national.htm\">MaxPreps</option><option value=\"http://www.metacritic.com\">Metacritic.com</option><option value=\"http://www.metrolyrics.com\">MetroLyrics</option><option value=\"http://www.cbsnews.com/moneywatch/\">Moneywatch</option><option value=\"http://www.mysimon.com\">mySimon</option><option value=\"http://www.radio.com\">Radio.com</option><option value=\"http://www.search.com\">Search.com</option><option value=\"http://www.shopper.com\">Shopper.com</option><option value=\"http://www.sho.com/sho/home\">Showtime</option><option value=\"http://www.smartplanet.com\">SmartPlanet</option><option value=\"http://www.techrepublic.com\">TechRepublic</option><option value=\"http://www.tv.com\">TV.com</option><option value=\"http://www.tvguide.com\">TVGuide.com</option><option value=\"http://www.urbanbaby.com\">UrbanBaby.com</option><option value=\"http://www.zdnet.com\">ZDNet</option></select> <input type=\"button\" value=\"Go\" onClick=\"window.location=document.getElementById('cbsi_footer_menu').options[document.getElementById('cbsi_footer_menu').selectedIndex].value;\" class=\"rb_visit_go\" /></div>");
+					</script>
+				</form>
+				<noscript>
+					<div> 
+						  <a href="http://www.cbscares.com/">CBS Cares</a>  |  
+						  <a href="http://www.cbsfilms.com">CBS Films</a>  |  
+						  <a href="http://www.cbsradio.com/streaming/index.html">CBS Radio</a>  |  
+						  <a href="http://www.cbs.com">CBS.com</a>  |  
+						  <a href="http://www.cbsinteractive.com">CBSInteractive</a>  |  
+						  <a href="http://www.cbsnews.com">CBSNews.com</a>  |  
+						  <a href="http://www.cbssports.com">CBSSports.com</a>  |  
+						  <a href="http://www.chow.com">CHOW</a>  |  
+						  <a href="http://www.clicker.com">Clicker</a>  |  
+						  <a href="http://www.cnet.com">CNET</a>  |  
+						  <a href="http://collegenetwork.cbssports.com">College Network</a>  |  
+						  <a href="http://www.gamespot.com">GameSpot</a>  |  
+						  <a href="http://www.help.com">Help.com</a>  |  
+						  <a href="http://www.last.fm">Last.fm</a>  |  
+						  <a href="http://www.maxpreps.com/national/national.htm">MaxPreps</a>  |  
+						  <a href="http://www.metacritic.com">Metacritic.com</a>  |  
+						  <a href="http://www.metrolyrics.com">MetroLyrics</a>  |  
+						  <a href="http://www.cbsnews.com/moneywatch/">Moneywatch</a>  |  
+						  <a href="http://www.mysimon.com">mySimon</a>  |  
+						  <a href="http://www.radio.com">Radio.com</a>  |  
+						  <a href="http://www.search.com">Search.com</a>  |  
+						  <a href="http://www.shopper.com">Shopper.com</a>  |  
+						  <a href="http://www.sho.com/sho/home">Showtime</a>  |  
+						  <a href="http://www.smartplanet.com">SmartPlanet</a>  |  
+						  <a href="http://www.techrepublic.com">TechRepublic</a>  |  
+						  <a href="http://www.tv.com">TV.com</a>  |  
+						  <a href="http://www.tvguide.com">TVGuide.com</a>  |  
+						  <a href="http://www.urbanbaby.com">UrbanBaby.com</a>  |  
+						  <a href="http://www.zdnet.com">ZDNet</a>  |  
+					</div>
+				</noscript>
+--> 
+     <form> 
+      <script language="javascript">
+						document.write("<div><label for=\"cbsi_footer_menu\">Visit other CBS Interactive Sites</label><br><select name=\"cbsi_footer_menu\" id=\"cbsi_footer_menu\" class=\"rb_visit_sel\"> <option value=\"http://www.cbscares.com\">CBS Cares</option><option value=\"http://www.cbsfilms.com\">CBS Films</option><option value=\"http://www.cbsradio.com\">CBS Radio</option><option value=\"http://www.cbs.com\">CBS.com</option><option value=\"http://www.cbsiam.com\">CBSI Advanced Media</option><option value=\"http://cbsinteractive.com\">CBSInteractive</option><option value=\"http://www.cbsnews.com\">CBSNews.com</option><option value=\"http://www.CBSSports.com\">CBSSports.com</option><option value=\"http://www.chow.com\">CHOW</option><option value=\"http://www.cnet.com\">CNET</option><option value=\"http://www.gamespot.com\">GameSpot</option><option value=\"http://www.last.fm\">Last.fm</option><option value=\"http://www.maxprep.com\">MaxPreps</option><option value=\"http://www.metacritic.com\">Metacritic.com</option><option value=\"http://www.cbsnews.com/moneywatch/\">Moneywatch</option><option value=\"http://www.mysimon.com\">mySimon</option><option value=\"http://www.radio.com\">Radio.com</option><option value=\"http://www.search.com\">Search.com</option><option value=\"http://www.sho.com\">Showtime</option><option value=\"http://www.smartplanet.com\">SmartPlanet</option><option value=\"http://www.techrepublic.com\">TechRepublic</option><option value=\"http://www.tv.com\">TV.com</option><option value=\"http://www.urbanbaby.com\">UrbanBaby.com</option><option value=\"http://www.zdnet.com\">ZDNet</option></select> <input type=\"button\" value=\"Go\" onClick=\"window.location=document.getElementById('cbsi_footer_menu').options[document.getElementById('cbsi_footer_menu').selectedIndex].value;\" class=\"rb_visit_go\" /></div>");
+					</script> 
+     </form> 
+     <noscript> 
+      <div> 
+       <a href="http://www.cbscares.com">CBS Cares</a> | 
+       <a href="http://www.cbsfilms.com">CBS Films</a> | 
+       <a href="http://www.cbsradio.com">CBS Radio</a> | 
+       <a href="http://www.cbs.com">CBS.com</a> | 
+       <a href="http://www.cbsiam.com">CBSI Advanced Media</a> | 
+       <a href="http://cbsinteractive.com">CBSInteractive</a> | 
+       <a href="http://www.cbsnews.com">CBSNews.com</a> | 
+       <a href="http://www.CBSSports.com">CBSSports.com</a> | 
+       <a href="http://www.chow.com">CHOW</a> | 
+       <a href="http://www.cnet.com">CNET</a> | 
+       <a href="http://www.gamespot.com">GameSpot</a> | 
+       <a href="http://www.last.fm">Last.fm</a> | 
+       <a href="http://www.maxprep.com">MaxPreps</a> | 
+       <a href="http://www.metacritic.com">Metacritic.com</a> | 
+       <a href="http://www.cbsnews.com/moneywatch/">Moneywatch</a> | 
+       <a href="http://www.mysimon.com">mySimon</a> | 
+       <a href="http://www.radio.com">Radio.com</a> | 
+       <a href="http://www.search.com">Search.com</a> | 
+       <a href="http://www.sho.com">Showtime</a> | 
+       <a href="http://www.smartplanet.com">SmartPlanet</a> | 
+       <a href="http://www.techrepublic.com">TechRepublic</a> | 
+       <a href="http://www.tv.com">TV.com</a> | 
+       <a href="http://www.urbanbaby.com">UrbanBaby.com</a> | 
+       <a href="http://www.zdnet.com">ZDNet</a> | 
+      </div> 
+     </noscript> 
+    </div> 
+   </div> 
+   <div class="clearfix"></div> 
+  </div> 
+  <script>
+var headerWidth;
+var fotoLink;
+var showPrint;
+var fm_affiliate_id;
+var fm_url;
+var fotoSource;
+var favIcon;
+var picStoreLink = "http://webservices.cstv.com/";
+var oascode;
+var sport;
+var school;
+var style="";
+var domain="";
+var shortName="";
+var sellPhotos="";
+var apPhotos="";
+var sellPartner="";
+var storeId="";
+var zz = "zz";
+var date = new Date();
+var newdate = new Date(date);
+newdate.setDate(newdate.getDate() - 213);
+var nd = new Date(newdate);
+var ny = newdate.getFullYear();
+var ly = ny - 1;
+var ybl = ly - 1;
+var subYear = ny - 1999;
+setTimeout(function(){	
+for (var x in pg_settings) {	
+	domain+=pg_settings.domain;
+	shortName+=pg_settings.short_name;
+	sellPhotos+=pg_settings.sell_school_photos;
+	apPhotos+=pg_settings.sell_ap_photos;
+	sellPartner+=pg_settings.sell_partner;
+	storeId+=pg_settings.store_id;	
+	style+="<style type='text/css'>" + 
+	"#car-thumb li.active, .face, .modal-header, #gallery-nav {" +
+		"border-color: #" + pg_settings.light_hex + ";}" + 
+
+	"#myCarousel, #collapseOne{" +
+		"border-top-color:#" + pg_settings.light_hex + ";}" + 
+
+	".face.front:before, .face.back:before{" +
+		"border-bottom-color:#" + pg_settings.light_hex + ";}" + 
+
+	"#logo{" +
+		"background:#" + pg_settings.dark_hex +"}" + 
+
+	"body{" +
+		"background:#" + pg_settings.bkg_color + ";" +
+		"background: -moz-linear-gradient(top, #" + pg_settings.bkg_color + " 0%, #" + pg_settings.bkg_color + " 76%, #" + pg_settings.title_color + " 100%);" + 
+		"background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#" + pg_settings.bkg_color + "), color-stop(76%,#" + pg_settings.bkg_color + "), color-stop(100%,#" + pg_settings.title_color + "));" + 
+		"background: -webkit-linear-gradient(top,  #" + pg_settings.bkg_color + " 0%,#" + pg_settings.bkg_color + " 76%,#" + pg_settings.title_color + " 100%);" +
+		"background: -o-linear-gradient(top,  #" + pg_settings.bkg_color + " 0%,#" + pg_settings.bkg_color + " 76%,#" + pg_settings.title_color + " 100%);" + 
+		"background: -ms-linear-gradient(top,  #" + pg_settings.bkg_color + " 0%,#" + pg_settings.bkg_color + " 76%,#" + pg_settings.title_color + " 100%);" + 
+		"background: linear-gradient(to bottom,  #" + pg_settings.bkg_color + " 0%,#" + pg_settings.bkg_color + " 76%,#" + pg_settings.title_color + " 100%);" + 
+		"filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#" + pg_settings.bkg_color + "', endColorstr='#" + pg_settings.title_color + "',GradientType=0 );}@media (min-width: 980px){#collapseTwo li:hover,#gal-modal li:hover,#index li:hover{color: #" + pg_settings.light_hex + ";}" + 
+	
+	"#story-ad-image {" + 
+		"background: #" + pg_settings.bkg_color + ";background: -moz-radial-gradient(center, ellipse cover,  #" + pg_settings.bkg_color + " 0%, #" + pg_settings.title_color + " 100%);" + 
+		"background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#" + pg_settings.bkg_color + "), color-stop(100%,#" + pg_settings.title_color + "));" + 
+		"background: -webkit-radial-gradient(center, ellipse cover,  #" + pg_settings.bkg_color + " 0%,#" + pg_settings.title_color + " 100%);" + 
+		"background: -o-radial-gradient(center, ellipse cover,  #" + pg_settings.bkg_color + " 0%,#" + pg_settings.title_color + " 100%);" + 
+		"background: -ms-radial-gradient(center, ellipse cover,  #" + pg_settings.bkg_color + " 0%,#" + pg_settings.title_color + " 100%);" + 
+		"background: radial-gradient(ellipse at center,  #" + pg_settings.bkg_color + " 0%,#" + pg_settings.title_color + " 100%);" + 
+		"filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#" + pg_settings.bkg_color + "', endColorstr='#" + pg_settings.title_color + "',GradientType=1 );}" +
+	
+	"@media (min-width: 600px){" +
+		".indy li:hover, #a-two li:hover, #a-three li:hover{" + 
+			"border-color:#" + pg_settings.light_hex + ";}" +
+	
+		".indy li:hover, #a-two li:hover, #a-three li:hover, .galDescription:hover{" + 
+			"color:#" + pg_settings.light_hex + ";}" +
+	"}" +
+	"</style>" +
+	
+	"<!--[if IE]>" +
+	"<style type='text/css'>" +
+		"#story-ad-image {" + 
+			"background:#" + pg_settings.bkg_color + ";" + 
+			"background: -ms-linear-gradient(top,  #" + pg_settings.bkg_color + " 0%,#" + pg_settings.bkg_color + " 76%,#" + pg_settings.title_color + " 100%);" + 
+			"background: linear-gradient(to bottom,  #" + pg_settings.bkg_color + " 0%,#" + pg_settings.bkg_color + " 76%,#" + pg_settings.title_color + " 100%);" + 
+			"filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#" + pg_settings.bkg_color + "', endColorstr='#" + pg_settings.title_color + "',GradientType=0 );}@media (min-width: 980px){#collapseTwo li:hover,#gal-modal li:hover,#index li:hover{color: #" + pg_settings.light_hex + ";}" + 
+	"</style>" +
+	"<![endif]-->";
+	    break;
+	}
+storeId+="";
+sellPartner+="";
+apPhotos+="";
+sellPhotos+="";
+domain+="";
+shortName+="";
+style+="";
+$('head').append(style);
+
+$("#title").append(shortName + " Photo Gallery");
+$("title").append(domain.toUpperCase() + " PHOTO CENTER");
+setTimeout(function(){
+	$("#f1_container").addClass("flip-1");
+	$(".back").css({'visibility': 'visible'});
+	$(".front").fadeOut({'visibility': 'hidden'}, 1000);
+},3000);
+setTimeout(function(){
+	$("#flip-wrapper").fadeOut({'visibility': 'hidden'}, 1000);	
+},6000);
+}, 100);
+
+if (Modernizr.touch){
+}else{
+		var deskStyle = ".carousel-control:hover, #accordion-header a:hover, #gal-close:hover, .base-color, #a-two li:hover .galDescription, #collapseTwo a:hover,#collapseTwo li:hover,#gal-modal li:hover, #gal-modal li:hover .galDescription,#index li:hover, .accordion-inner li:hover," +
+		 ".accordion-inner li a:hover, #pic-pause:hover, #pic-play:hover, .info-icon:hover, h3 a:hover, h4 a:hover{color:#" + pg_settings.light_hex + " !important;}" +
+		 ".info-icon:hover, .heidi:hover, .shoo:hover, #pic-pause:hover, #pic-play:hover, #collapseTwo li:hover,#gal-modal li:hover,#index li:hover, #gal-close:hover,#gal-list li:hover, .indy li:hover{border-color:#" + pg_settings.light_hex + " !important;}";
+		$('#desktop').append(deskStyle);
+	
+}
+
+function currentYear() {
+    var d = new Date();
+    var n = d.getFullYear();
+    document.getElementById("currYear").innerHTML = n;
+}
+currentYear();
+</script> 
+  <style>
+#swipe-scroll, #flip-wrapper, #container, #story-ad-container{opacity: 1;}
+</style>   
+ </body>
+</html>

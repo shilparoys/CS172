@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <title>New York City - Restaurants Search - The New York Times</title> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+  <meta name="ROBOTS" content="NOARCHIVE"> 
+  <meta name="articleid" content="article"> 
+  <meta name="CG" content="Style"> 
+  <meta name="SCG" content="Dining"> 
+  <meta name="PT" content="Search"> 
+  <meta name="PST" content="Results"> 
+  <meta name="PSST" content="Restaurants"> 
+  <meta name="PS" content=""> 
+  <meta name="ttl" content=""> 
+  <!--[if IE]>
+	<style type="text/css">
+		@import url(http://graphics8.nytimes.com/css/0.1/screen/common/ie.css);
+	</style>
+<![endif]--> 
+  <!--[if IE 6]>
+	<style type="text/css">
+		@import url(http://graphics8.nytimes.com/css/0.1/screen/common/ie6.css);
+	</style>
+<![endif]--> 
+  <link rel="stylesheet" type="text/css" href="http://graphics8.nytimes.com/css/0.1/screen/build/search/restaurants/styles.css"> 
+  <!--[if lt IE 9]>
+    <script src="http://graphics8.nytimes.com/js/html5shiv.js"></script>
+<![endif]--> 
+  <script type="text/javascript" src="http://graphics8.nytimes.com/js/common.js"></script> 
+  <script type="text/javascript" src="http://graphics8.nytimes.com/js/util/tooltip.js"></script> 
+  <script type="text/javascript" src="http://graphics8.nytimes.com/js/app/restaurants/1.0/tools.js"></script> 
+ </head> 
+ <body> 
+  <a name="top"></a> 
+  <div id="shell"> 
+   <ul id="memberTools"> 
+    <li><a href="http://www.nytimes.com/auth/login?URI=http://">Log In</a></li> 
+    <li><a href="http://www.nytimes.com/gst/regi.html" onclick="dcsMultiTrack('WT.z_ract', 'Regnow', 'WT.z_rprod', 'Masthead','WT.z_dcsm','1');">Register Now</a></li> 
+    <li><a href="http://www.nytimes.com/membercenter/sitehelp.html">Help</a></li> 
+   </ul> 
+   <div class="tabsContainer"> 
+    <ul id="mainTabs" class="tabs"> 
+     <li class="first mainTabHome"><a href="http://www.nytimes.com">Home Page</a></li> 
+     <li class="mainTabTodaysPaper"><a href="http://www.nytimes.com/pages/todayspaper/index.html">Today's Paper</a></li> 
+     <li class="mainTabVideo"><a href="http://www.nytimes.com/video">Video</a></li> 
+     <li class="mainTabMostPopular"><a href="http://www.nytimes.com/mostpopular">Most Popular</a></li> 
+     <li class="mainTabTimesTopics"><a href="http://topics.nytimes.com/top/reference/timestopics">Times Topics</a></li> 
+    </ul> 
+   </div> 
+   <div id="page" class="tabContent active"> 
+    <div class="clearfix" id="masthead"> 
+     <div id="branding"> 
+      <a href="http://www.nytimes.com"><img src="http://graphics8.nytimes.com/images/misc/nytlogo152x23.gif" alt="New York Times" id="NYTLogo"></a> 
+     </div> 
+     <h2> <a href="http://www.nytimes.com/restaurants/search">Restaurants Search</a> </h2> 
+    </div> 
+    <div id="main"> 
+     <div class="spanAB"> 
+      <div class="abColumn">
+       <!-- open abColumn --> 
+       <form name="fullSearch" id="fullSearch" action="#" method="get" onsubmit="NYTD.RestaurantTools.fullSearch(this); return false;"> 
+        <div class="searchheader clearfix"> 
+         <div class="columnGroup first"> 
+          <h5>Restaurant Search Results</h5> 
+          <p>1-10 of 2502</p> 
+         </div>
+         <!--end columnGroup first--> 
+         <div class="columnGroup last inlineSearchControl"> 
+          <input type="text" autocomplete="off" name="keyword" class="text greyed" id="bsearchQuery" value=""> 
+          <input type="submit" value="Search" id="searchSubmit"> 
+         </div>
+         <!--end columnGroup last inlineSearchControl--> 
+        </div>
+        <!--end searchheader clearfix--> 
+        <div class="sorter clearfix"> 
+         <div class="columnGroup first"> 
+          <h5>Sort Results</h5> 
+          <select name="sortresults" onchange="NYTD.RestaurantTools.fullSearch();"> <option value="critics-picks">Critics’ Picks</option> <option value="recently-reviewed" selected>Recently Reviewed</option> <option value="name-asc">Name A-Z</option> <option value="name-desc">Name Z-A</option> <option value="price-asc">Price Low-High</option> <option value="price-desc">Price High-Low</option> <option value="nyt-rating">NYT Rating</option> <option value="reader-rating">Reader Rating</option> </select> 
+         </div>
+         <!--end columnGroup first--> 
+        </div> 
+        <!--end sorter --> 
+        <div class="wideB noBackground"> 
+         <div class="aColumn"> 
+          <div id="refinery" class="columnGroup"> 
+           <h4>Refine Results</h4> 
+           <h5><a onclick="NYTD.RestaurantTools.show('allneighborhoods'); return false;">Neighborhoods</a></h5> 
+           <div id="allneighborhoods" class="refinements" style="display:none"> 
+            <h5>Choose Neighborhood(s):</h5> 
+            <p class="closebutton"><a onclick="NYTD.RestaurantTools.hide(); return false;">Close</a></p> 
+            <div class="filters clearfix"> 
+             <ul class="clearfix">
+              <li><input id="neighborhood-all" type="checkbox" checked><label for="neighborhood-all">All Neighborhoods</label></li>
+             </ul> 
+             <ul class="clearfix" id="neighborhood-choices"> 
+              <li><input id="Arverne" type="checkbox" name="neighborhood" value="Arverne"><label for="Arverne">Arverne</label></li> 
+              <li><input id="Astoria" type="checkbox" name="neighborhood" value="Astoria"><label for="Astoria">Astoria</label></li> 
+              <li><input id="Battery Park" type="checkbox" name="neighborhood" value="Battery Park"><label for="Battery Park">Battery Park</label></li> 
+              <li><input id="Battery Park City" type="checkbox" name="neighborhood" value="Battery Park City"><label for="Battery Park City">Battery Park City</label></li> 
+              <li><input id="Bay Ridge" type="checkbox" name="neighborhood" value="Bay Ridge"><label for="Bay Ridge">Bay Ridge</label></li> 
+              <li><input id="Bayside" type="checkbox" name="neighborhood" value="Bayside"><label for="Bayside">Bayside</label></li> 
+              <li><input id="Bedford Stuyvesant" type="checkbox" name="neighborhood" value="Bedford Stuyvesant"><label for="Bedford Stuyvesant">Bedford Stuyvesant</label></li> 
+              <li><input id="Belmont" type="checkbox" name="neighborhood" value="Belmont"><label for="Belmont">Belmont</label></li> 
+              <li><input id="Boerum Hill" type="checkbox" name="neighborhood" value="Boerum Hill"><label for="Boerum Hill">Boerum Hill</label></li> 
+              <li><input id="Borough Park" type="checkbox" name="neighborhood" value="Borough Park"><label for="Borough Park">Borough Park</label></li> 
+              <li><input id="Brighton Beach" type="checkbox" name="neighborhood" value="Brighton Beach"><label for="Brighton Beach">Brighton Beach</label></li> 
+              <li><input id="Brooklyn Heights" type="checkbox" name="neighborhood" value="Brooklyn Heights"><label for="Brooklyn Heights">Brooklyn Heights</label></li> 
+              <li><input id="Bushwick" type="checkbox" name="neighborhood" value="Bushwick"><label for="Bushwick">Bushwick</label></li> 
+              <li><input id="Carroll Gardens" type="checkbox" name="neighborhood" value="Carroll Gardens"><label for="Carroll Gardens">Carroll Gardens</label></li> 
+              <li><input id="Charleston" type="checkbox" name="neighborhood" value="Charleston"><label for="Charleston">Charleston</label></li> 
+              <li><input id="Chelsea" type="checkbox" name="neighborhood" value="Chelsea"><label for="Chelsea">Chelsea</label></li> 
+              <li><input id="Chinatown" type="checkbox" name="neighborhood" value="Chinatown"><label for="Chinatown">Chinatown</label></li> 
+              <li><input id="City Island" type="checkbox" name="neighborhood" value="City Island"><label for="City Island">City Island</label></li> 
+              <li><input id="Clinton" type="checkbox" name="neighborhood" value="Clinton"><label for="Clinton">Clinton</label></li> 
+              <li><input id="Clinton Hill" type="checkbox" name="neighborhood" value="Clinton Hill"><label for="Clinton Hill">Clinton Hill</label></li> 
+              <li><input id="Cobble Hill" type="checkbox" name="neighborhood" value="Cobble Hill"><label for="Cobble Hill">Cobble Hill</label></li> 
+              <li><input id="Columbia Street Waterfront District" type="checkbox" name="neighborhood" value="Columbia Street Waterfront District"><label for="Columbia Street Waterfront District">Columbia Street Waterfront District</label></li> 
+              <li><input id="Concourse" type="checkbox" name="neighborhood" value="Concourse"><label for="Concourse">Concourse</label></li> 
+              <li><input id="Coney Island" type="checkbox" name="neighborhood" value="Coney Island"><label for="Coney Island">Coney Island</label></li> 
+              <li><input id="Corona" type="checkbox" name="neighborhood" value="Corona"><label for="Corona">Corona</label></li> 
+              <li><input id="Crown Heights" type="checkbox" name="neighborhood" value="Crown Heights"><label for="Crown Heights">Crown Heights</label></li> 
+              <li><input id="Ditmars" type="checkbox" name="neighborhood" value="Ditmars"><label for="Ditmars">Ditmars</label></li> 
+              <li><input id="Ditmas" type="checkbox" name="neighborhood" value="Ditmas"><label for="Ditmas">Ditmas</label></li> 
+              <li><input id="Downtown Brooklyn" type="checkbox" name="neighborhood" value="Downtown Brooklyn"><label for="Downtown Brooklyn">Downtown Brooklyn</label></li> 
+              <li><input id="Dumbo" type="checkbox" name="neighborhood" value="Dumbo"><label for="Dumbo">Dumbo</label></li> 
+              <li><input id="East Elmhurst" type="checkbox" name="neighborhood" value="East Elmhurst"><label for="East Elmhurst">East Elmhurst</label></li> 
+              <li><input id="East Harlem" type="checkbox" name="neighborhood" value="East Harlem"><label for="East Harlem">East Harlem</label></li> 
+              <li><input id="East Village" type="checkbox" name="neighborhood" value="East Village"><label for="East Village">East Village</label></li> 
+              <li><input id="Elmhurst" type="checkbox" name="neighborhood" value="Elmhurst"><label for="Elmhurst">Elmhurst</label></li> 
+              <li><input id="Fairmont - Claremont Village" type="checkbox" name="neighborhood" value="Fairmont - Claremont Village"><label for="Fairmont - Claremont Village">Fairmont - Claremont Village</label></li> 
+              <li><input id="Financial District" type="checkbox" name="neighborhood" value="Financial District"><label for="Financial District">Financial District</label></li> 
+              <li><input id="Flatiron" type="checkbox" name="neighborhood" value="Flatiron"><label for="Flatiron">Flatiron</label></li> 
+              <li><input id="Flushing" type="checkbox" name="neighborhood" value="Flushing"><label for="Flushing">Flushing</label></li> 
+              <li><input id="Fordham Heights" type="checkbox" name="neighborhood" value="Fordham Heights"><label for="Fordham Heights">Fordham Heights</label></li> 
+              <li><input id="Forest Hills" type="checkbox" name="neighborhood" value="Forest Hills"><label for="Forest Hills">Forest Hills</label></li> 
+              <li><input id="Fort Greene" type="checkbox" name="neighborhood" value="Fort Greene"><label for="Fort Greene">Fort Greene</label></li> 
+              <li><input id="Fort Hamilton" type="checkbox" name="neighborhood" value="Fort Hamilton"><label for="Fort Hamilton">Fort Hamilton</label></li> 
+              <li><input id="Fulton Ferry" type="checkbox" name="neighborhood" value="Fulton Ferry"><label for="Fulton Ferry">Fulton Ferry</label></li> 
+              <li><input id="Glendale" type="checkbox" name="neighborhood" value="Glendale"><label for="Glendale">Glendale</label></li> 
+              <li><input id="Gowanus" type="checkbox" name="neighborhood" value="Gowanus"><label for="Gowanus">Gowanus</label></li> 
+              <li><input id="Gramercy Park" type="checkbox" name="neighborhood" value="Gramercy Park"><label for="Gramercy Park">Gramercy Park</label></li> 
+              <li><input id="Gravesend" type="checkbox" name="neighborhood" value="Gravesend"><label for="Gravesend">Gravesend</label></li> 
+              <li><input id="Greenpoint" type="checkbox" name="neighborhood" value="Greenpoint"><label for="Greenpoint">Greenpoint</label></li> 
+              <li><input id="Greenwich Village" type="checkbox" name="neighborhood" value="Greenwich Village"><label for="Greenwich Village">Greenwich Village</label></li> 
+              <li><input id="Greenwood Heights" type="checkbox" name="neighborhood" value="Greenwood Heights"><label for="Greenwood Heights">Greenwood Heights</label></li> 
+              <li><input id="Harlem" type="checkbox" name="neighborhood" value="Harlem"><label for="Harlem">Harlem</label></li> 
+              <li><input id="Hunts Point - Longwood" type="checkbox" name="neighborhood" value="Hunts Point - Longwood"><label for="Hunts Point - Longwood">Hunts Point - Longwood</label></li> 
+              <li><input id="Inwood" type="checkbox" name="neighborhood" value="Inwood"><label for="Inwood">Inwood</label></li> 
+              <li><input id="Jackson Heights" type="checkbox" name="neighborhood" value="Jackson Heights"><label for="Jackson Heights">Jackson Heights</label></li> 
+              <li><input id="Jamaica" type="checkbox" name="neighborhood" value="Jamaica"><label for="Jamaica">Jamaica</label></li> 
+              <li><input id="Jamaica Hills" type="checkbox" name="neighborhood" value="Jamaica Hills"><label for="Jamaica Hills">Jamaica Hills</label></li> 
+              <li><input id="Kingsbridge Heights" type="checkbox" name="neighborhood" value="Kingsbridge Heights"><label for="Kingsbridge Heights">Kingsbridge Heights</label></li> 
+              <li><input id="Kips Bay" type="checkbox" name="neighborhood" value="Kips Bay"><label for="Kips Bay">Kips Bay</label></li> 
+              <li><input id="Koreatown" type="checkbox" name="neighborhood" value="Koreatown"><label for="Koreatown">Koreatown</label></li> 
+              <li><input id="Little Italy" type="checkbox" name="neighborhood" value="Little Italy"><label for="Little Italy">Little Italy</label></li> 
+              <li><input id="Little Neck" type="checkbox" name="neighborhood" value="Little Neck"><label for="Little Neck">Little Neck</label></li> 
+              <li><input id="Long Island City" type="checkbox" name="neighborhood" value="Long Island City"><label for="Long Island City">Long Island City</label></li> 
+              <li><input id="Lower East Side" type="checkbox" name="neighborhood" value="Lower East Side"><label for="Lower East Side">Lower East Side</label></li> 
+              <li><input id="Maspeth" type="checkbox" name="neighborhood" value="Maspeth"><label for="Maspeth">Maspeth</label></li> 
+              <li><input id="Middle Village" type="checkbox" name="neighborhood" value="Middle Village"><label for="Middle Village">Middle Village</label></li> 
+              <li><input id="Midtown" type="checkbox" name="neighborhood" value="Midtown"><label for="Midtown">Midtown</label></li> 
+              <li><input id="Midtown East" type="checkbox" name="neighborhood" value="Midtown East"><label for="Midtown East">Midtown East</label></li> 
+              <li><input id="Midtown South" type="checkbox" name="neighborhood" value="Midtown South"><label for="Midtown South">Midtown South</label></li> 
+              <li><input id="Midtown West" type="checkbox" name="neighborhood" value="Midtown West"><label for="Midtown West">Midtown West</label></li> 
+              <li><input id="Midwood" type="checkbox" name="neighborhood" value="Midwood"><label for="Midwood">Midwood</label></li> 
+              <li><input id="Mill Basin" type="checkbox" name="neighborhood" value="Mill Basin"><label for="Mill Basin">Mill Basin</label></li> 
+              <li><input id="Morningside Heights" type="checkbox" name="neighborhood" value="Morningside Heights"><label for="Morningside Heights">Morningside Heights</label></li> 
+              <li><input id="Morris Park" type="checkbox" name="neighborhood" value="Morris Park"><label for="Morris Park">Morris Park</label></li> 
+              <li><input id="Mott Haven" type="checkbox" name="neighborhood" value="Mott Haven"><label for="Mott Haven">Mott Haven</label></li> 
+              <li><input id="Murray Hill" type="checkbox" name="neighborhood" value="Murray Hill"><label for="Murray Hill">Murray Hill</label></li> 
+              <li><input id="Navy Yard" type="checkbox" name="neighborhood" value="Navy Yard"><label for="Navy Yard">Navy Yard</label></li> 
+              <li><input id="NoHo" type="checkbox" name="neighborhood" value="NoHo"><label for="NoHo">NoHo</label></li> 
+              <li><input id="Nolita" type="checkbox" name="neighborhood" value="Nolita"><label for="Nolita">Nolita</label></li> 
+              <li><input id="North New York" type="checkbox" name="neighborhood" value="North New York"><label for="North New York">North New York</label></li> 
+              <li><input id="Ozone Park" type="checkbox" name="neighborhood" value="Ozone Park"><label for="Ozone Park">Ozone Park</label></li> 
+              <li><input id="Park Slope" type="checkbox" name="neighborhood" value="Park Slope"><label for="Park Slope">Park Slope</label></li> 
+              <li><input id="Park Slope North" type="checkbox" name="neighborhood" value="Park Slope North"><label for="Park Slope North">Park Slope North</label></li> 
+              <li><input id="Park Slope South" type="checkbox" name="neighborhood" value="Park Slope South"><label for="Park Slope South">Park Slope South</label></li> 
+              <li><input id="Parkchester" type="checkbox" name="neighborhood" value="Parkchester"><label for="Parkchester">Parkchester</label></li> 
+              <li><input id="Prospect Heights" type="checkbox" name="neighborhood" value="Prospect Heights"><label for="Prospect Heights">Prospect Heights</label></li> 
+              <li><input id="Red Hook" type="checkbox" name="neighborhood" value="Red Hook"><label for="Red Hook">Red Hook</label></li> 
+              <li><input id="Rego Park" type="checkbox" name="neighborhood" value="Rego Park"><label for="Rego Park">Rego Park</label></li> 
+              <li><input id="Ridgewood" type="checkbox" name="neighborhood" value="Ridgewood"><label for="Ridgewood">Ridgewood</label></li> 
+              <li><input id="Riverdale" type="checkbox" name="neighborhood" value="Riverdale"><label for="Riverdale">Riverdale</label></li> 
+              <li><input id="Sheepshead Bay" type="checkbox" name="neighborhood" value="Sheepshead Bay"><label for="Sheepshead Bay">Sheepshead Bay</label></li> 
+              <li><input id="SoHo" type="checkbox" name="neighborhood" value="SoHo"><label for="SoHo">SoHo</label></li> 
+              <li><input id="South Beach / Old Town" type="checkbox" name="neighborhood" value="South Beach / Old Town"><label for="South Beach / Old Town">South Beach / Old Town</label></li> 
+              <li><input id="South Jamaica" type="checkbox" name="neighborhood" value="South Jamaica"><label for="South Jamaica">South Jamaica</label></li> 
+              <li><input id="South Ozone Park" type="checkbox" name="neighborhood" value="South Ozone Park"><label for="South Ozone Park">South Ozone Park</label></li> 
+              <li><input id="Stapleton" type="checkbox" name="neighborhood" value="Stapleton"><label for="Stapleton">Stapleton</label></li> 
+              <li><input id="Steinway" type="checkbox" name="neighborhood" value="Steinway"><label for="Steinway">Steinway</label></li> 
+              <li><input id="Sunnyside (Queens)" type="checkbox" name="neighborhood" value="Sunnyside (Queens)"><label for="Sunnyside (Queens)">Sunnyside (Queens)</label></li> 
+              <li><input id="Sunset Park" type="checkbox" name="neighborhood" value="Sunset Park"><label for="Sunset Park">Sunset Park</label></li> 
+              <li><input id="Sutton Place" type="checkbox" name="neighborhood" value="Sutton Place"><label for="Sutton Place">Sutton Place</label></li> 
+              <li><input id="The Rockaways" type="checkbox" name="neighborhood" value="The Rockaways"><label for="The Rockaways">The Rockaways</label></li> 
+              <li><input id="Times Square Theatre District" type="checkbox" name="neighborhood" value="Times Square Theatre District"><label for="Times Square Theatre District">Times Square Theatre District</label></li> 
+              <li><input id="Tompkinsville" type="checkbox" name="neighborhood" value="Tompkinsville"><label for="Tompkinsville">Tompkinsville</label></li> 
+              <li><input id="TriBeCa" type="checkbox" name="neighborhood" value="TriBeCa"><label for="TriBeCa">TriBeCa</label></li> 
+              <li><input id="Union Square" type="checkbox" name="neighborhood" value="Union Square"><label for="Union Square">Union Square</label></li> 
+              <li><input id="Upper East Side" type="checkbox" name="neighborhood" value="Upper East Side"><label for="Upper East Side">Upper East Side</label></li> 
+              <li><input id="Upper West Side" type="checkbox" name="neighborhood" value="Upper West Side"><label for="Upper West Side">Upper West Side</label></li> 
+              <li><input id="Vinegar Hill" type="checkbox" name="neighborhood" value="Vinegar Hill"><label for="Vinegar Hill">Vinegar Hill</label></li> 
+              <li><input id="Washington Heights" type="checkbox" name="neighborhood" value="Washington Heights"><label for="Washington Heights">Washington Heights</label></li> 
+              <li><input id="West Village" type="checkbox" name="neighborhood" value="West Village"><label for="West Village">West Village</label></li> 
+              <li><input id="Williamsburg" type="checkbox" name="neighborhood" value="Williamsburg"><label for="Williamsburg">Williamsburg</label></li> 
+              <li><input id="Windsor Terrace" type="checkbox" name="neighborhood" value="Windsor Terrace"><label for="Windsor Terrace">Windsor Terrace</label></li> 
+              <li><input id="Woodside" type="checkbox" name="neighborhood" value="Woodside"><label for="Woodside">Woodside</label></li> 
+             </ul> 
+            </div>
+            <!-- end filters clearfix --> 
+            <input type="submit" value="Submit"> 
+            <a class="cancel" onclick="NYTD.RestaurantTools.hide(); return false;">Cancel</a> 
+           </div>
+           <!-- end refinements --> 
+           <h5><a onclick="NYTD.RestaurantTools.show('allprices'); return false;">Price</a></h5> 
+           <div id="allprices" class="refinements" style="display:none"> 
+            <h5>Choose Price(s):</h5> 
+            <p class="closebutton"><a onclick="NYTD.RestaurantTools.hide(); return false;">Close</a></p> 
+            <div class="filters clearfix"> 
+             <ul class="clearfix">
+              <li><input id="price-all" type="checkbox" checked><label for="price-all">All Prices</label></li>
+             </ul> 
+             <ul class="clearfix" id="price-choices"> 
+              <li><input id="$" type="checkbox" name="price" value="$"><label for="$"><abbr class="pricerange" title="$">$</abbr></label></li> 
+              <li><input id="$$" type="checkbox" name="price" value="$$"><label for="$$"><abbr class="pricerange" title="$$">$$</abbr></label></li> 
+              <li><input id="$$$" type="checkbox" name="price" value="$$$"><label for="$$$"><abbr class="pricerange" title="$$$">$$$</abbr></label></li> 
+              <li><input id="$$$$" type="checkbox" name="price" value="$$$$"><label for="$$$$"><abbr class="pricerange" title="$$$$">$$$$</abbr></label></li> 
+             </ul> 
+            </div>
+            <!--end filters clearfix--> 
+            <input type="submit" value="Submit"> 
+            <a class="cancel" onclick="NYTD.RestaurantTools.hide(); return false;">Cancel</a> 
+           </div>
+           <!--end refinements--> 
+           <h5><a onclick="NYTD.RestaurantTools.show('allnyt-rating'); return false;">NYT Rating</a></h5> 
+           <div id="allnyt-rating" class="refinements" style="display:none"> 
+            <h5>Choose Rating(s):</h5> 
+            <p class="closebutton"><a onclick="NYTD.RestaurantTools.hide(); return false;">Close</a></p> 
+            <div class="filters clearfix"> 
+             <ul class="clearfix">
+              <li><input id="nyt-rating-all" type="checkbox" checked><label for="nyt-rating-all">All Ratings</label></li>
+             </ul> 
+             <ul class="clearfix" id="nyt-rating-choices"> 
+              <li class="onestar"><input id="★" type="checkbox" name="nyt-rating" value="1 Star"><label for="★"><span class="NYTrating"> <abbr title="1" class="rating">★</abbr></span></label></li> 
+              <li class="twostar"><input id="★★" type="checkbox" name="nyt-rating" value="2 Stars"><label for="★★"><span class="NYTrating"> <abbr title="2" class="rating">★★</abbr></span></label></li> 
+              <li class="threestar"><input id="★★★" type="checkbox" name="nyt-rating" value="3 Stars"><label for="★★★"><span class="NYTrating"> <abbr title="3" class="rating">★★★</abbr></span></label></li> 
+              <li class="fourstar"><input id="★★★★" type="checkbox" name="nyt-rating" value="4 Stars"><label for="★★★★"><span class="NYTrating"> <abbr title="4" class="rating">★★★★</abbr></span></label></li> 
+              <li><input id="Satisfactory" type="checkbox" name="nyt-rating" value="Satisfactory"><label for="Satisfactory"><span class="NYTrating">Satisfactory</span></label></li> 
+              <li><input id="Fair" type="checkbox" name="nyt-rating" value="Fair"><label for="Fair"><span class="NYTrating">Fair</span></label></li> 
+              <li><input id="Poor" type="checkbox" name="nyt-rating" value="Poor"><label for="Poor"><span class="NYTrating">Poor</span></label></li> 
+              <li><input id="Not Rated" type="checkbox" name="nyt-rating" value="Not Rated"><label for="Not Rated"><span class="NYTrating">Not Rated</span></label></li> 
+             </ul> 
+            </div>
+            <!--end filters clearfix--> 
+            <input type="submit" value="Submit"> 
+            <a class="cancel" onclick="NYTD.RestaurantTools.hide(); return false;">Cancel</a> 
+           </div>
+           <!--end refinements--> 
+           <h5><a onclick="NYTD.RestaurantTools.show('allcuisines'); return false;">Cuisine</a></h5> 
+           <div id="allcuisines" class="refinements" style="display:none"> 
+            <h5>Choose Cuisine(s):</h5> 
+            <p class="closebutton"><a onclick="NYTD.RestaurantTools.hide(); return false;">Close</a></p> 
+            <div class="filters clearfix"> 
+             <ul class="clearfix">
+              <li><input id="cuisine-all" type="checkbox" checked><label for="cuisine-all">All Cuisines</label></li>
+             </ul> 
+             <ul class="clearfix" id="cuisine-choices"> 
+              <li><input id="Afghanistan" type="checkbox" name="cuisine" value="Afghanistan"><label for="Afghanistan">Afghanistan</label></li> 
+              <li><input id="African" type="checkbox" name="cuisine" value="African"><label for="African">African</label></li> 
+              <li><input id="American" type="checkbox" name="cuisine" value="American"><label for="American">American</label></li> 
+              <li><input id="Argentinian" type="checkbox" name="cuisine" value="Argentinian"><label for="Argentinian">Argentinian</label></li> 
+              <li><input id="Asian" type="checkbox" name="cuisine" value="Asian"><label for="Asian">Asian</label></li> 
+              <li><input id="Australian" type="checkbox" name="cuisine" value="Australian"><label for="Australian">Australian</label></li> 
+              <li><input id="Austrian" type="checkbox" name="cuisine" value="Austrian"><label for="Austrian">Austrian</label></li> 
+              <li><input id="Bakery/Baked Goods" type="checkbox" name="cuisine" value="Bakery/Baked Goods"><label for="Bakery/Baked Goods">Bakery/Baked Goods</label></li> 
+              <li><input id="Barbecue" type="checkbox" name="cuisine" value="Barbecue"><label for="Barbecue">Barbecue</label></li> 
+              <li><input id="Belgian" type="checkbox" name="cuisine" value="Belgian"><label for="Belgian">Belgian</label></li> 
+              <li><input id="Bistro" type="checkbox" name="cuisine" value="Bistro"><label for="Bistro">Bistro</label></li> 
+              <li><input id="Brazilian" type="checkbox" name="cuisine" value="Brazilian"><label for="Brazilian">Brazilian</label></li> 
+              <li><input id="Cafes" type="checkbox" name="cuisine" value="Cafes"><label for="Cafes">Cafes</label></li> 
+              <li><input id="Cajun/Creole" type="checkbox" name="cuisine" value="Cajun/Creole"><label for="Cajun/Creole">Cajun/Creole</label></li> 
+              <li><input id="Caribbean" type="checkbox" name="cuisine" value="Caribbean"><label for="Caribbean">Caribbean</label></li> 
+              <li><input id="Chinese" type="checkbox" name="cuisine" value="Chinese"><label for="Chinese">Chinese</label></li> 
+              <li><input id="Coffee" type="checkbox" name="cuisine" value="Coffee"><label for="Coffee">Coffee</label></li> 
+              <li><input id="Contemporary" type="checkbox" name="cuisine" value="Contemporary"><label for="Contemporary">Contemporary</label></li> 
+              <li><input id="Deli" type="checkbox" name="cuisine" value="Deli"><label for="Deli">Deli</label></li> 
+              <li><input id="Dessert" type="checkbox" name="cuisine" value="Dessert"><label for="Dessert">Dessert</label></li> 
+              <li><input id="Dim Sum" type="checkbox" name="cuisine" value="Dim Sum"><label for="Dim Sum">Dim Sum</label></li> 
+              <li><input id="Diners" type="checkbox" name="cuisine" value="Diners"><label for="Diners">Diners</label></li> 
+              <li><input id="East European" type="checkbox" name="cuisine" value="East European"><label for="East European">East European</label></li> 
+              <li><input id="English" type="checkbox" name="cuisine" value="English"><label for="English">English</label></li> 
+              <li><input id="European" type="checkbox" name="cuisine" value="European"><label for="European">European</label></li> 
+              <li><input id="Fast Food" type="checkbox" name="cuisine" value="Fast Food"><label for="Fast Food">Fast Food</label></li> 
+              <li><input id="French" type="checkbox" name="cuisine" value="French"><label for="French">French</label></li> 
+              <li><input id="German" type="checkbox" name="cuisine" value="German"><label for="German">German</label></li> 
+              <li><input id="Greek" type="checkbox" name="cuisine" value="Greek"><label for="Greek">Greek</label></li> 
+              <li><input id="Hamburgers" type="checkbox" name="cuisine" value="Hamburgers"><label for="Hamburgers">Hamburgers</label></li> 
+              <li><input id="Hot Dogs" type="checkbox" name="cuisine" value="Hot Dogs"><label for="Hot Dogs">Hot Dogs</label></li> 
+              <li><input id="Indian" type="checkbox" name="cuisine" value="Indian"><label for="Indian">Indian</label></li> 
+             </ul> 
+             <p class="show clearfix"><a id="moreCuisinesLink" onclick="NYTD.RestaurantTools.showMore('moreCuisines'); return false;">Show more cuisines</a></p> 
+            </div>
+            <!--end filters clearfix--> 
+            <div class="morefilters clearfix" id="moreCuisinesList" style="display:none"> 
+             <ul class="clearfix" id="cuisine-choices"> 
+              <li><input id="Indonesian" type="checkbox" name="cuisine" value="Indonesian"><label for="Indonesian">Indonesian</label></li> 
+              <li><input id="Irish" type="checkbox" name="cuisine" value="Irish"><label for="Irish">Irish</label></li> 
+              <li><input id="Italian" type="checkbox" name="cuisine" value="Italian"><label for="Italian">Italian</label></li> 
+              <li><input id="Japanese" type="checkbox" name="cuisine" value="Japanese"><label for="Japanese">Japanese</label></li> 
+              <li><input id="Korean" type="checkbox" name="cuisine" value="Korean"><label for="Korean">Korean</label></li> 
+              <li><input id="Kosher" type="checkbox" name="cuisine" value="Kosher"><label for="Kosher">Kosher</label></li> 
+              <li><input id="Latin" type="checkbox" name="cuisine" value="Latin"><label for="Latin">Latin</label></li> 
+              <li><input id="Latin American" type="checkbox" name="cuisine" value="Latin American"><label for="Latin American">Latin American</label></li> 
+              <li><input id="Malaysian" type="checkbox" name="cuisine" value="Malaysian"><label for="Malaysian">Malaysian</label></li> 
+              <li><input id="Mediterranean" type="checkbox" name="cuisine" value="Mediterranean"><label for="Mediterranean">Mediterranean</label></li> 
+              <li><input id="Mexican" type="checkbox" name="cuisine" value="Mexican"><label for="Mexican">Mexican</label></li> 
+              <li><input id="Middle Eastern" type="checkbox" name="cuisine" value="Middle Eastern"><label for="Middle Eastern">Middle Eastern</label></li> 
+              <li><input id="Moroccan" type="checkbox" name="cuisine" value="Moroccan"><label for="Moroccan">Moroccan</label></li> 
+              <li><input id="New American" type="checkbox" name="cuisine" value="New American"><label for="New American">New American</label></li> 
+              <li><input id="Noodles" type="checkbox" name="cuisine" value="Noodles"><label for="Noodles">Noodles</label></li> 
+              <li><input id="Pakistani" type="checkbox" name="cuisine" value="Pakistani"><label for="Pakistani">Pakistani</label></li> 
+              <li><input id="Philippine" type="checkbox" name="cuisine" value="Philippine"><label for="Philippine">Philippine</label></li> 
+              <li><input id="Pizza" type="checkbox" name="cuisine" value="Pizza"><label for="Pizza">Pizza</label></li> 
+              <li><input id="Portuguese" type="checkbox" name="cuisine" value="Portuguese"><label for="Portuguese">Portuguese</label></li> 
+              <li><input id="Russian" type="checkbox" name="cuisine" value="Russian"><label for="Russian">Russian</label></li> 
+              <li><input id="Salads" type="checkbox" name="cuisine" value="Salads"><label for="Salads">Salads</label></li> 
+              <li><input id="Sandwiches" type="checkbox" name="cuisine" value="Sandwiches"><label for="Sandwiches">Sandwiches</label></li> 
+              <li><input id="Scandinavian" type="checkbox" name="cuisine" value="Scandinavian"><label for="Scandinavian">Scandinavian</label></li> 
+              <li><input id="Seafood" type="checkbox" name="cuisine" value="Seafood"><label for="Seafood">Seafood</label></li> 
+              <li><input id="Soups" type="checkbox" name="cuisine" value="Soups"><label for="Soups">Soups</label></li> 
+              <li><input id="Southeast Asian" type="checkbox" name="cuisine" value="Southeast Asian"><label for="Southeast Asian">Southeast Asian</label></li> 
+              <li><input id="Southern" type="checkbox" name="cuisine" value="Southern"><label for="Southern">Southern</label></li> 
+              <li><input id="Southwestern" type="checkbox" name="cuisine" value="Southwestern"><label for="Southwestern">Southwestern</label></li> 
+              <li><input id="Spanish" type="checkbox" name="cuisine" value="Spanish"><label for="Spanish">Spanish</label></li> 
+              <li><input id="Steak House" type="checkbox" name="cuisine" value="Steak House"><label for="Steak House">Steak House</label></li> 
+              <li><input id="Sushi" type="checkbox" name="cuisine" value="Sushi"><label for="Sushi">Sushi</label></li> 
+              <li><input id="Tapas" type="checkbox" name="cuisine" value="Tapas"><label for="Tapas">Tapas</label></li> 
+              <li><input id="Tea" type="checkbox" name="cuisine" value="Tea"><label for="Tea">Tea</label></li> 
+              <li><input id="Tex-Mex" type="checkbox" name="cuisine" value="Tex-Mex"><label for="Tex-Mex">Tex-Mex</label></li> 
+              <li><input id="Thai" type="checkbox" name="cuisine" value="Thai"><label for="Thai">Thai</label></li> 
+              <li><input id="Theme" type="checkbox" name="cuisine" value="Theme"><label for="Theme">Theme</label></li> 
+              <li><input id="Tibetan" type="checkbox" name="cuisine" value="Tibetan"><label for="Tibetan">Tibetan</label></li> 
+              <li><input id="Turkish" type="checkbox" name="cuisine" value="Turkish"><label for="Turkish">Turkish</label></li> 
+              <li><input id="Ukrainian" type="checkbox" name="cuisine" value="Ukrainian"><label for="Ukrainian">Ukrainian</label></li> 
+              <li><input id="Vegetarian" type="checkbox" name="cuisine" value="Vegetarian"><label for="Vegetarian">Vegetarian</label></li> 
+              <li><input id="Vietnamese" type="checkbox" name="cuisine" value="Vietnamese"><label for="Vietnamese">Vietnamese</label></li> 
+              <li><input id="Wine Bar" type="checkbox" name="cuisine" value="Wine Bar"><label for="Wine Bar">Wine Bar</label></li> 
+             </ul> 
+            </div>
+            <!--end morefilters--> 
+            <input type="submit" value="Submit"> 
+            <a class="cancel" onclick="NYTD.RestaurantTools.hide(); return false;">Cancel</a> 
+           </div>
+           <!--end refinements--> 
+           <h5><a onclick="NYTD.RestaurantTools.show('allmeals'); return false;">Meal</a></h5> 
+           <div id="allmeals" class="refinements" style="display:none"> 
+            <h5>Choose Meal(s):</h5> 
+            <p class="closebutton"><a onclick="NYTD.RestaurantTools.hide(); return false;">Close</a></p> 
+            <div class="filters clearfix"> 
+             <ul class="clearfix">
+              <li><input id="meals-all" type="checkbox" checked><label for="meals-all">All Meals</label></li>
+             </ul> 
+             <ul class="clearfix" id="meals-choices"> 
+              <li><input id="Breakfast" type="checkbox" name="meals" value="Breakfast"><label for="Breakfast">Breakfast</label></li> 
+              <li><input id="Brunch" type="checkbox" name="meals" value="Brunch"><label for="Brunch">Brunch</label></li> 
+              <li><input id="Lunch" type="checkbox" name="meals" value="Lunch"><label for="Lunch">Lunch</label></li> 
+              <li><input id="Dinner" type="checkbox" name="meals" value="Dinner"><label for="Dinner">Dinner</label></li> 
+              <li><input id="Late Night" type="checkbox" name="meals" value="Late Night"><label for="Late Night">Late Night</label></li> 
+             </ul> 
+            </div>
+            <!--end filters clearfix--> 
+            <input type="submit" value="Submit"> 
+            <a onclick="NYTD.RestaurantTools.hide(); return false;" class="cancel">Cancel</a> 
+           </div>
+           <!--end refinements --> 
+          </div>
+          <!--end refinery--> 
+          <div id="directives" class="columnGroup"> 
+           <ul> 
+            <li> <input type="checkbox" id="only_critics_picks" name="only_critics_picks" value="1" onclick="NYTD.RestaurantTools.fullSearch();"> <label for="only_critics_picks"><span class="NYTcriticpick">New York Times Critics' Picks</span> Only Critics' Picks</label> </li> 
+           </ul>
+          </div>
+          <!--end directives--> 
+         </div>
+         <!--end .aColumn--> 
+         <div class="bColumn"> 
+          <div class="criticsPicks columnGroup"> 
+           <h3 class="sectionHeader">Critics&amp;rsquo; Picks</h3> 
+           <ul> 
+            <li class="listing nothumbnail clearfix"> 
+             <ul> 
+              <li class="info"> 
+               <ul> 
+                <li> <h4><a href="/restaurants/1248069043895/la-morada/details.html">La Morada</a></h4> <span class="NYTcriticpick" title="A New York Times Critics' Pick"><a href="/restaurants/search?only_critics_picks=1">New York Times Critics' Pick</a></span> </li> 
+                <li class="type"> <a href="/restaurants/search?cuisine=Mexican">Mexican</a> </li>
+                <!--end type--> 
+                <li class="desc">La Morada’s married owners, Natalia Mendez and Antonio Saavedra, were once farmers in Oaxaca, which is one of the poorest states in Mexico but whose cuisine is among the country’s richest. While much of the menu is taken up by tacos and quesadillas, a few dishes offer a glimpse of the “infinite gastronomy” that is Oaxacan cooking.</li> 
+                <li class="adr"> <span class="street-address">308 Willis Avenue</span><br> <a href="/restaurants/search?neighborhood="></a><br> <span class="tel">718-292-0235</span> </li>
+                <!--end adr--> 
+               </ul> </li>
+              <!--end info--> 
+              <li class="pricerange"> <abbr>$</abbr> </li> 
+             </ul> </li>
+            <!--end listing --> 
+            <li class="listing nothumbnail clearfix last"> 
+             <ul> 
+              <li class="info"> 
+               <ul> 
+                <li> <h4><a href="/restaurants/1248069043893/izakaya/details.html">Izakaya</a></h4> <span class="NYTcriticpick" title="A New York Times Critics' Pick"><a href="/restaurants/search?only_critics_picks=1">New York Times Critics' Pick</a></span> </li> 
+                <li class="type"> <a href="/restaurants/search?cuisine=Japanese">Japanese</a> </li>
+                <!--end type--> 
+                <li class="desc">An izakaya is an informal Japanese establishment, neither quite restaurant nor tavern, that treats eating as fortification for drinking. But Dai Watanabe, the chef here, is not content to be an accompanist. The mission may be comfort food, but there’s a reverence to its making, even in the minor dishes. </li> 
+                <li class="adr"> <span class="street-address">326 East Sixth Street</span><br> <a href="/restaurants/search?neighborhood="></a><br> <span class="tel">917-475-1284</span> </li>
+                <!--end adr--> 
+               </ul> </li>
+              <!--end info--> 
+              <li class="pricerange"> <abbr>$$</abbr> </li> 
+             </ul> </li>
+            <!--end listing --> 
+           </ul> 
+           <p class="more"><a href="search?&amp;sortresults=recently-reviewed&amp;only_critics_picks=1">View All 509 Critics' Picks »</a></p> 
+          </div>
+          <!--close columnGroup--> 
+          <div class="columnGroup"> 
+           <h3 class="sectionHeader">All Results</h3> 
+           <ul> 
+            <li class="listing nothumbnail clearfix"> 
+             <ul> 
+              <li class="info"> 
+               <ul> 
+                <li> <h4><a href="/restaurants/1248069043895/la-morada/details.html">La Morada</a></h4> <span class="NYTcriticpick" title="A New York Times Critics' Pick"><a href="/restaurants/search?only_critics_picks=1">New York Times Critics' Pick</a></span> </li> 
+                <li class="type"> <a href="/restaurants/search?cuisine=Mexican">Mexican</a> </li>
+                <!--end type--> 
+                <li class="desc">La Morada’s married owners, Natalia Mendez and Antonio Saavedra, were once farmers in Oaxaca, which is one of the poorest states in Mexico but whose cuisine is among the country’s richest. While much of the menu is taken up by tacos and quesadillas, a few dishes offer a glimpse of the “infinite gastronomy” that is Oaxacan cooking.</li> 
+                <li class="adr"> <span class="street-address">308 Willis Avenue</span><br> <a href="/restaurants/search?neighborhood=North New York">North New York</a><br> <span class="tel">718-292-0235</span> </li>
+                <!--end adr--> 
+               </ul> </li>
+              <!--end info--> 
+              <li class="pricerange"> <abbr>$</abbr> </li> 
+             </ul> </li>
+            <!--end listing --> 
+            <li class="listing nothumbnail clearfix"> 
+             <ul> 
+              <li class="info"> 
+               <ul> 
+                <li> <h4><a href="/restaurants/1248069043893/izakaya/details.html">Izakaya</a></h4> <span class="NYTcriticpick" title="A New York Times Critics' Pick"><a href="/restaurants/search?only_critics_picks=1">New York Times Critics' Pick</a></span> </li> 
+                <li class="type"> <a href="/restaurants/search?cuisine=Japanese">Japanese</a> </li>
+                <!--end type--> 
+                <li class="desc">An izakaya is an informal Japanese establishment, neither quite restaurant nor tavern, that treats eating as fortification for drinking. But Dai Watanabe, the chef here, is not content to be an accompanist. The mission may be comfort food, but there’s a reverence to its making, even in the minor dishes. </li> 
+                <li class="adr"> <span class="street-address">326 East Sixth Street</span><br> <a href="/restaurants/search?neighborhood=East Village">East Village</a><br> <span class="tel">917-475-1284</span> </li>
+                <!--end adr--> 
+               </ul> </li>
+              <!--end info--> 
+              <li class="pricerange"> <abbr>$$</abbr> </li> 
+             </ul> </li>
+            <!--end listing --> 
+            <li class="listing nothumbnail clearfix"> 
+             <ul> 
+              <li class="info"> 
+               <ul> 
+                <li> <h4><a href="/restaurants/1248069043894/semilla/details.html">Semilla</a></h4> <span class="NYTcriticpick" title="A New York Times Critics' Pick"><a href="/restaurants/search?only_critics_picks=1">New York Times Critics' Pick</a></span> <span class="NYTrating"><a href="/restaurants/search?nyt-rating=2 Stars"> <abbr title="2 Stars" class="rating">★★</abbr> <span class="worst">0</span> <span class="best">4</span> </a></span> </li> 
+                <li class="type"> <a href="/restaurants/search?cuisine=Contemporary">Contemporary</a> </li>
+                <!--end type--> 
+                <li class="desc">Semilla’s chef, José Ramírez-Ruiz, and pastry chef, Pam Yung, stack their tasting menus with dishes that weren’t concocted to please the marketplace. Diners browse extensively upon stems, tubers, rhizomes, seeds and other plant parts, yet this isn’t a vegetarian restaurant.</li> 
+                <li class="adr"> <span class="street-address">160 Havemeyer Street</span><br> <a href="/restaurants/search?neighborhood=Williamsburg">Williamsburg</a><br> <span class="tel">718-782-3474</span> </li>
+                <!--end adr--> 
+               </ul> </li>
+              <!--end info--> 
+              <li class="pricerange"> <abbr>$$$</abbr> </li> 
+             </ul> </li>
+            <!--end listing --> 
+            <li class="listing nothumbnail clearfix"> 
+             <ul> 
+              <li class="info"> 
+               <ul> 
+                <li> <h4><a href="/restaurants/1248069043891/patacon-pisao/details.html">Patacon Pisao</a></h4> <span class="NYTcriticpick" title="A New York Times Critics' Pick"><a href="/restaurants/search?only_critics_picks=1">New York Times Critics' Pick</a></span> </li> 
+                <li class="type"> <a href="/restaurants/search?cuisine=Latin American">Latin American</a> </li>
+                <!--end type--> 
+                <li class="desc">The specialty here is patacón, the formidable sandwich of the city of Maracaibo, Venezuela, bookended not by bread but by unripe plantains that have been fried, smashed and fried again. The small but sleek storefront traces its origins back to 2005, when Liliana Velazquez, a native of Maracaibo, started selling patacónes out of a truck in Inwood, Manhattan</li> 
+                <li class="adr"> <span class="street-address">139 Essex Street</span><br> <a href="/restaurants/search?neighborhood=Lower East Side">Lower East Side</a><br> <span class="tel">646-678-5913</span> </li>
+                <!--end adr--> 
+               </ul> </li>
+              <!--end info--> 
+              <li class="pricerange"> <abbr>$</abbr> </li> 
+             </ul> </li>
+            <!--end listing --> 
+            <li class="listing nothumbnail clearfix"> 
+             <ul> 
+              <li class="info"> 
+               <ul> 
+                <li> <h4><a href="/restaurants/1248069043892/shuko/details.html">Shuko</a></h4> <span class="NYTcriticpick" title="A New York Times Critics' Pick"><a href="/restaurants/search?only_critics_picks=1">New York Times Critics' Pick</a></span> <span class="NYTrating"><a href="/restaurants/search?nyt-rating=3 Stars"> <abbr title="3 Stars" class="rating">★★★</abbr> <span class="worst">0</span> <span class="best">4</span> </a></span> </li> 
+                <li class="type"> <a href="/restaurants/search?cuisine=Japanese">Japanese</a> </li>
+                <!--end type--> 
+                <li class="desc">Jimmy Lau and Nick Kim, the chefs and owners, rose to the top of Masa Takayama’s restaurant group. What’s impressive about their own restaurant, Shuko, is how many times the chefs ring the bells without resorting to clichéd indulgences.</li> 
+                <li class="adr"> <span class="street-address">47 East 12th Street</span><br> <a href="/restaurants/search?neighborhood=Greenwich Village">Greenwich Village</a><br> <span class="tel">212-228-6088</span> </li>
+                <!--end adr--> 
+               </ul> </li>
+              <!--end info--> 
+              <li class="pricerange"> <abbr>$$$$</abbr> </li> 
+             </ul> </li>
+            <!--end listing --> 
+            <li class="listing nothumbnail clearfix"> 
+             <ul> 
+              <li class="info"> 
+               <ul> 
+                <li> <h4><a href="/restaurants/1248069043890/kao-soy/details.html">Kao Soy</a></h4> <span class="NYTcriticpick" title="A New York Times Critics' Pick"><a href="/restaurants/search?only_critics_picks=1">New York Times Critics' Pick</a></span> <span class="NYTrating"><a href="/restaurants/search?nyt-rating=1 Star"> <abbr title="1 Star" class="rating">★</abbr> <span class="worst">0</span> <span class="best">4</span> </a></span> </li> 
+                <li class="type"> <a href="/restaurants/search?cuisine=Thai">Thai</a> </li>
+                <!--end type--> 
+                <li class="desc">Kao Soy sells some of the dishes you know from your local Thai spot, but its mission is to turn New Yorkers on to what Sirichai Sreparplarn, one of the two chefs, calls “the real food from the North.” The northern Thai dishes are scattered around the menu. Most obvious is the excellent kao soy, made in the style of Ms. Supachana’s father back in Chiang Mai.</li> 
+                <li class="adr"> <span class="street-address">283 Van Brunt Street</span><br> <a href="/restaurants/search?neighborhood=Red Hook">Red Hook</a><br> <span class="tel">718-875-1155</span> </li>
+                <!--end adr--> 
+               </ul> </li>
+              <!--end info--> 
+              <li class="pricerange"> <abbr>$$</abbr> </li> 
+             </ul> </li>
+            <!--end listing --> 
+            <li class="listing nothumbnail clearfix"> 
+             <ul> 
+              <li class="info"> 
+               <ul> 
+                <li> <h4><a href="/restaurants/1248069043889/patina/details.html">Patina</a></h4> <span class="NYTcriticpick" title="A New York Times Critics' Pick"><a href="/restaurants/search?only_critics_picks=1">New York Times Critics' Pick</a></span> </li> 
+                <li class="type"> <a href="/restaurants/search?cuisine=African">African</a> </li>
+                <!--end type--> 
+                <li class="desc">It can be an intimate, if slightly disorienting experience dining at this very small West African restaurant in the Bronx. No menu is presented, at least not in written form, and only a few dishes are available at a time. But the food is delicious: earthy soups and stews over dense, chewy rice and black-eyed peas, with seams of heat from hidden Scotch bonnets.</li> 
+                <li class="adr"> <span class="street-address">823 East 169th Street</span><br> <a href="/restaurants/search?neighborhood=Fairmont - Claremont Village">Fairmont - Claremont Village</a><br> <span class="tel">718-378-7700</span> </li>
+                <!--end adr--> 
+               </ul> </li>
+              <!--end info--> 
+              <li class="pricerange"> <abbr>$</abbr> </li> 
+             </ul> </li>
+            <!--end listing --> 
+            <li class="listing nothumbnail clearfix"> 
+             <ul> 
+              <li class="info"> 
+               <ul> 
+                <li> <h4><a href="/restaurants/1248069043888/cosme/details.html">Cosme</a></h4> <span class="NYTcriticpick" title="A New York Times Critics' Pick"><a href="/restaurants/search?only_critics_picks=1">New York Times Critics' Pick</a></span> <span class="NYTrating"><a href="/restaurants/search?nyt-rating=3 Stars"> <abbr title="3 Stars" class="rating">★★★</abbr> <span class="worst">0</span> <span class="best">4</span> </a></span> </li> 
+                <li class="type"> <a href="/restaurants/search?cuisine=Contemporary">Contemporary</a>, <a href="/restaurants/search?cuisine=Mexican">Mexican</a> </li>
+                <!--end type--> 
+                <li class="desc">The first New York restaurant from the acclaimed Mexican chef Enrique Olvera pulls off two tough moves at once. First, its approach to Mexican cuisine is modern and relaxed, but without the superficiality that might imply. Second, it has a sharp instinct for what New Yorkers want when they go out for dinner, which isn’t often the case with restaurants opened by chefs from abroad.</li> 
+                <li class="adr"> <span class="street-address">35 East 21st Street</span><br> <a href="/restaurants/search?neighborhood=Flatiron">Flatiron</a><br> <span class="tel">212-913-9659</span> </li>
+                <!--end adr--> 
+               </ul> </li>
+              <!--end info--> 
+              <li class="pricerange"> <abbr>$$$</abbr> </li> 
+             </ul> </li>
+            <!--end listing --> 
+            <li class="listing nothumbnail clearfix"> 
+             <ul> 
+              <li class="info"> 
+               <ul> 
+                <li> <h4><a href="/restaurants/1248069043887/sariling-atin/details.html">Sariling Atin</a></h4> <span class="NYTcriticpick" title="A New York Times Critics' Pick"><a href="/restaurants/search?only_critics_picks=1">New York Times Critics' Pick</a></span> </li> 
+                <li class="type"> <a href="/restaurants/search?cuisine=Philippine">Philippine</a> </li>
+                <!--end type--> 
+                <li class="desc">Past the shelves of egg cracklets and adobo-flavored corn nuts at Sariling Atin is a modest dining room, where food is ordered turo-turo (point-point) style, as in a cafeteria, and spooned into plastic-foam bowls. </li> 
+                <li class="adr"> <span class="street-address">89-12 Queens Boulevard </span><br> <a href="/restaurants/search?neighborhood=Elmhurst">Elmhurst</a><br> <span class="tel">718-397-1200</span> </li>
+                <!--end adr--> 
+               </ul> </li>
+              <!--end info--> 
+              <li class="pricerange"> <abbr>$</abbr> </li> 
+             </ul> </li>
+            <!--end listing --> 
+            <li class="listing nothumbnail clearfix last"> 
+             <ul> 
+              <li class="info"> 
+               <ul> 
+                <li> <h4><a href="/restaurants/1016531702825/blue-smoke/details.html">Blue Smoke</a></h4> <span class="NYTcriticpick" title="A New York Times Critics' Pick"><a href="/restaurants/search?only_critics_picks=1">New York Times Critics' Pick</a></span> <span class="NYTrating"><a href="/restaurants/search?nyt-rating=1 Star"> <abbr title="1 Star" class="rating">★</abbr> <span class="worst">0</span> <span class="best">4</span> </a></span> </li> 
+                <li class="type"> <a href="/restaurants/search?cuisine=American">American</a>, <a href="/restaurants/search?cuisine=Barbecue">Barbecue</a> </li>
+                <!--end type--> 
+                <li class="desc">Since opening in 2002, Blue Smoke has always been a few paces behind the frontrunners of New York barbecue. But when it comes to contemporary Southern cooking, Jean-Paul Bourgeois’s menu is at the head of the pack. </li> 
+                <li class="adr"> <span class="street-address">116 East 27th Street</span><br> <a href="/restaurants/search?neighborhood=Kips Bay">Kips Bay</a><br> <span class="tel">212-447-7733</span> </li>
+                <!--end adr--> 
+               </ul> </li>
+              <!--end info--> 
+              <li class="pricerange"> <abbr>$$$</abbr> <span class="menuLink"><a onmousedown="dcsMultiTrack('DCS.dcssip','www.nytimes.com','DCS.dcsuri','/restaurants/search-results/menu','WT.ti','Menu - Restaurant Search Results','WT.cg_n','Style','WT.cg_s','Dining','WT.z_gpt','Topic','WT.z_gpst','Details','WT.z_gpsst','Restaurants','WT.z_dcsm','1','WT.z_menu','search-results-menu')" href="/restaurants/1016531702825/blue-smoke/details.html?menu">Menu</a></span> </li> 
+             </ul> </li>
+            <!--end listing --> 
+           </ul> 
+          </div>
+          <!--close columnGroup--> 
+          <div class="columnGroup"> 
+           <div id="pageLinks"> 
+            <ul id="pageNumbers"> 
+             <li>1</li> 
+             <li><a href="search?&amp;sortresults=recently-reviewed&amp;page=2" title="Page 2">2</a></li> 
+             <li><a href="search?&amp;sortresults=recently-reviewed&amp;page=3" title="Page 3">3</a></li> 
+             <li><a href="search?&amp;sortresults=recently-reviewed&amp;page=4" title="Page 4">4</a></li> 
+             <li><a href="search?&amp;sortresults=recently-reviewed&amp;page=5" title="Page 5">5</a></li> 
+            </ul>
+            <!--end pageNumbers--> 
+            <a href="search?&amp;sortresults=recently-reviewed&amp;page=2" title="Next Page" class="next">Next »</a> 
+           </div>
+           <!--end pageLinks--> 
+          </div>
+          <!--end columnGroup--> 
+         </div>
+         <!--end bColumn --> 
+        </div>
+        <!--end wideB --> 
+       </form> 
+      </div>
+      <!--end abColumn--> 
+      <div class="cColumn"> 
+       <!--cur: prev:--> 
+       <div class="columnGroup first"> 
+        <script type="text/javascript">
+        var map_data = [{"name":"La Morada","lat":40.8105551,"lon":-73.9214101,"type":"Mexican","address1":"308 Willis Avenue","address2":"North New York","telephone":"718-292-0235","criticspick":true,"stars":"","rating":"","review":"http:\/\/www.nytimes.com\/2015\/03\/04\/dining\/hungry-city-la-morada-in-the-south-bronx.html","details":"http:\/\/www.nytimes.com\/restaurants\/1248069043895\/la-morada\/details.html"},{"name":"Izakaya","lat":40.7267246,"lon":-73.9873481,"type":"Japanese","address1":"326 East Sixth Street","address2":"East Village","telephone":"917-475-1284","criticspick":true,"stars":"","rating":"","review":"http:\/\/www.nytimes.com\/2015\/02\/25\/dining\/izakaya-in-the-east-village.html","details":"http:\/\/www.nytimes.com\/restaurants\/1248069043893\/izakaya\/details.html"},{"name":"Semilla","lat":40.7114602,"lon":-73.9578316,"type":"Contemporary","address1":"160 Havemeyer Street","address2":"Williamsburg","telephone":"718-782-3474","criticspick":true,"stars":2,"rating":"","review":"http:\/\/www.nytimes.com\/2015\/02\/25\/dining\/restaurant-review-semilla-in-williamsburg-brooklyn.html","details":"http:\/\/www.nytimes.com\/restaurants\/1248069043894\/semilla\/details.html"},{"name":"Patacon Pisao","lat":40.72039,"lon":-73.9875662,"type":"Latin American","address1":"139 Essex Street","address2":"Lower East Side","telephone":"646-678-5913","criticspick":true,"stars":"","rating":"","review":"http:\/\/www.nytimes.com\/2015\/02\/18\/dining\/patacon-pisao-on-the-lower-east-side.html","details":"http:\/\/www.nytimes.com\/restaurants\/1248069043891\/patacon-pisao\/details.html"},{"name":"Shuko","lat":40.7335563,"lon":-73.9917157,"type":"Japanese","address1":"47 East 12th Street","address2":"Greenwich Village","telephone":"212-228-6088","criticspick":true,"stars":3,"rating":"","review":"http:\/\/www.nytimes.com\/2015\/02\/18\/dining\/restaurant-review-shuko-in-the-east-village.html","details":"http:\/\/www.nytimes.com\/restaurants\/1248069043892\/shuko\/details.html"},{"name":"Kao Soy","lat":40.6790727,"lon":-74.0106833,"type":"Thai","address1":"283 Van Brunt Street","address2":"Red Hook","telephone":"718-875-1155","criticspick":true,"stars":1,"rating":"","review":"http:\/\/www.nytimes.com\/2015\/02\/11\/dining\/restaurant-review-kao-soy-in-red-hook-brooklyn.html","details":"http:\/\/www.nytimes.com\/restaurants\/1248069043890\/kao-soy\/details.html"},{"name":"Patina","lat":40.8297112,"lon":-73.8980028,"type":"African","address1":"823 East 169th Street","address2":"Fairmont - Claremont Village","telephone":"718-378-7700","criticspick":true,"stars":"","rating":"","review":"http:\/\/www.nytimes.com\/2015\/02\/11\/dining\/hungry-city-patina-in-morrisania-the-bronx.html","details":"http:\/\/www.nytimes.com\/restaurants\/1248069043889\/patina\/details.html"},{"name":"Cosme","lat":40.7396275,"lon":-73.9883999,"type":"Contemporary, Mexican","address1":"35 East 21st Street","address2":"Flatiron","telephone":"212-913-9659","criticspick":true,"stars":3,"rating":"","review":"http:\/\/www.nytimes.com\/2015\/02\/04\/dining\/restaurant-review-cosme-in-the-flatiron-district.html","details":"http:\/\/www.nytimes.com\/restaurants\/1248069043888\/cosme\/details.html"},{"name":"Sariling Atin","lat":40.7345009,"lon":-73.8744705,"type":"Philippine","address1":"89-12 Queens Boulevard ","address2":"Elmhurst","telephone":"718-397-1200","criticspick":true,"stars":"","rating":"","review":"http:\/\/www.nytimes.com\/2015\/02\/04\/dining\/hungry-city-sariling-atin-in-elmhurst-queens.html","details":"http:\/\/www.nytimes.com\/restaurants\/1248069043887\/sariling-atin\/details.html"},{"name":"Blue Smoke","lat":40.74233,"lon":-73.98369,"type":"American, Barbecue","address1":"116 East 27th Street","address2":"Kips Bay","telephone":"212-447-7733","criticspick":true,"stars":1,"rating":"","review":"http:\/\/www.nytimes.com\/2015\/01\/28\/dining\/restaurant-review-blue-smoke-and-north-end-grill.html","details":"http:\/\/www.nytimes.com\/restaurants\/1016531702825\/blue-smoke\/details.html"}]
+    </script> 
+        <div id="mapresults" class="mapresults"> 
+         <div id="mapHeader" class="mapHeader"> 
+          <h3>Map of Results</h3> 
+          <a href="#" id="mapSizeControl" class="mapSizeControl" onclick="NYTD.RestaurantTools.openMap(); return false;">Expand map</a> 
+          <a href="#" id="mapSizeControlChevron" class="mapSizeControlChevron" onclick="NYTD.RestaurantTools.openMap(); return false;">Expand map</a> 
+         </div> 
+         <div id="mapBody" class="mapBody"> 
+          <div id="map_container" class="map_container"> 
+           <div id="mapDiv" class="mapDiv" style=""></div>
+           <!-- holds the map --> 
+           <div id="mapWindowDiv" class="info-window-line-container"></div> 
+           <div id="mapListDiv" class="mapListDiv" style="position: absolute; z-index:2"></div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+       <!--cur: prev:--> 
+       <div class="columnGroup "> 
+        <div class="other-restaurants singleRule"> 
+         <h3>Recently Reviewed</h3> 
+         <ul> 
+          <li class="listing clearfix"> 
+           <ul> 
+            <li> <h4><a href="/restaurants/1248069043895/la-morada/details.html">La Morada</a></h4> <span class="NYTcriticpick" title="A New York Times Critics' Pick"><a href="/restaurants/search?only_critics_picks=1">New York Times Critics' Pick</a></span> </li> 
+            <li class="desc"> La Morada’s married owners, Natalia Mendez and Antonio Saavedra, were once farmers in Oaxaca, which is one of the poorest states in Mexico but whose cuisine is among the country’s richest. While much of the menu is taken up by tacos and quesadillas, a few dishes offer a glimpse of the “infinite gastronomy” that is Oaxacan cooking.<br> <span class="more"><a href="http://www.nytimes.com/2015/03/04/dining/hungry-city-la-morada-in-the-south-bronx.html">Complete Review</a> »</span> </li>
+            <!--end desc--> 
+           </ul> </li>
+          <!--end listing clearfix--> 
+          <li class="listing clearfix"> 
+           <ul> 
+            <li> <h4><a href="/restaurants/1248069043889/patina/details.html">Patina</a></h4> <span class="NYTcriticpick" title="A New York Times Critics' Pick"><a href="/restaurants/search?only_critics_picks=1">New York Times Critics' Pick</a></span> </li> 
+            <li class="desc"> It can be an intimate, if slightly disorienting experience dining at this very small West African restaurant in the Bronx. No menu is presented, at least not in written form, and only a few dishes are available at a time. But the food is delicious: earthy soups and stews over dense, chewy rice and black-eyed peas, with seams of heat from hidden Scotch bonnets.<br> <span class="more"><a href="http://www.nytimes.com/2015/02/11/dining/hungry-city-patina-in-morrisania-the-bronx.html">Complete Review</a> »</span> </li>
+            <!--end desc--> 
+           </ul> </li>
+          <!--end listing clearfix--> 
+          <li class="listing clearfix"> 
+           <ul> 
+            <li> <h4><a href="/restaurants/1248069043877/sky-cafe/details.html">Sky Cafe</a></h4> <span class="NYTcriticpick" title="A New York Times Critics' Pick"><a href="/restaurants/search?only_critics_picks=1">New York Times Critics' Pick</a></span> </li> 
+            <li class="desc"> Lily Tjia started cooking, semi-secretly, for her neighbors in the growing Indonesian community of South Philadelphia. In 2010 she opened a restaurant in that city; four year later, she moved to Elmhurst, Queens, and opened another. <br> <span class="more"><a href="http://www.nytimes.com/2014/12/17/dining/hungry-city-sky-cafe-in-elmhurst-queens.html">Complete Review</a> »</span> </li>
+            <!--end desc--> 
+           </ul> </li>
+          <!--end listing clearfix--> 
+         </ul> 
+        </div>
+        <!--end other-restaurants singleRule--> 
+       </div> 
+       <!--cur: prev:--> 
+       <div class="columnGroup last"> 
+        <div id="adxSponLink"></div> 
+        <input type="hidden" value="Dining_leaderboard" name="hdnGoogleAdChannel" id="hdnGoogleAdChannel"> 
+        <input type="hidden" value="" name="hdnGoogleContents" id="hdnGoogleContents"> 
+        <input type="hidden" value="ca-nytimes_display_html" name="hdnGoogleClient" id="hdnGoogleClient"> 
+        <script language="JavaScript" type="text/javascript">
+google_ad_client = $F('hdnGoogleClient');
+google_ad_channel = $F('hdnGoogleAdChannel');
+google_hints = '';
+</script> 
+        <script language="JavaScript" type="text/javascript">
+<!--
+function ss(w,id) {window.status = w;return true;}function cs(){window.status='';}function ha(a){  pha=document.getElementById(a); nhi=pha.href.indexOf("&nh=");if(nhi < 1) {phb=pha.href+"&nh=1";} pha.href=phb;}function ca(a) {  pha=document.getElementById(a); nci=pha.href.indexOf("&nc=");if(nci < 1) {phb=pha.href+"&nc=1";} pha.href=phb;window.open(document.getElementById(a).href);}function ga(o,e) {if (document.getElementById) {a=o.id.substring(1);p = "";r = "";g = e.target;if (g) {t = g.id;f = g.parentNode;if (f) {p = f.id;h = f.parentNode;if (h)r = h.id;}} else {h = e.srcElement;f = h.parentNode;if (f)p = f.id;t = h.id;}if (t==a || p==a || r==a)return true;pha=document.getElementById(a); nbi=pha.href.indexOf("&nb=");if(nbi < 1) {phb=pha.href+"&nb=1";} pha.href=phb;window.open(document.getElementById(a).href);}}
+
+function google_ad_request_done(ads) {
+	var s = "";
+
+	if (ads.length == 0) {
+		return;
+	} else if (google_ad.bidtype == "CPM" && ads[0].type != 'image') {
+		google_ad_section_line_height = "22px";
+		google_ad_section_padding_left = "12px";
+		google_title_link_font_size = "18px";
+		google_ad_text_font_size = "14px";
+		google_visible_url_font_size = "14px";
+		google_target_div = 'adxSponLinkA';
+	} else if (ads[0].type != 'image') {
+		google_ad_section_line_height = "14px";
+		google_ad_section_padding_left = "7px";
+		google_title_link_font_size = "12px";
+		google_ad_text_font_size = "11px";
+		google_visible_url_font_size = "10px";
+		google_target_div = 'adxSponLink';
+	}
+	s += '<table width="100%" height="" border="0" cellspacing="0" cellpadding="0" style="width:100%; border-style: solid; border-width: 1px; border-color: #9da3ad" >\n<tr>\n<td style="font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#333333;" valign="top"><table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0" style="width:100%; height:100%;">\n<tr>\n <td style="background-color:#9da3ad; width:70%; height:20px; padding-top:2px; padding-left:11px; padding-bottom:2px; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#333333;" width="70%" height="20" bgcolor="#9da3ad" ><span style="font-size: 12px; font-weight: normal; color:#ffffff;" >Ads by Google</span></td>\n<td style="padding-top:2px; padding-bottom:2px; width:30%; height:20px; align:right; background-color:#9da3ad; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#333333;" width="30%" height="20" align="right" bgcolor="#9da3ad" ><span><a style="font-family:Arial,Helvetica,sans-serif; color: white; font-size:12px; padding-right:7px;" href="http://www.nytimes.com/ref/membercenter/faq/linkingqa16.html" onclick="window.open(\'\',\'popupad\',\'left=100,top=100,width=390,height=390,resizable,scrollbars=no\')" target="popupad">what\'s this?</a></span></td>\n</tr>\n</table>\n</td>\n</tr>\n<tr>\n<td style="height:110px; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#333333;" valign="top" height="110"><table height="100%" width="100%" cellpadding="4" cellspacing="0" border="0" bgcolor="#f8f8f9" style="height:100%; width:100%; padding:4px; background-color:#f8f8f9;">\n';
+	for (i = 0; i < ads.length; ++i) {
+		s += '<tr>\n<td style="font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#333333; background-color:#f8f8f9;" id="taw' + i + '" style="cursor:pointer; cursor:hand;" valign="middle" onFocus="ss(\'go to ' + ads[i].visible_url + '\',\'aw' + i + '\')" onMouseOver="ss(\'go to ' + ads[i].visible_url + '\',\'aw' + i + '\')"  onMouseOut="cs()" onClick="ga(this,event)"><div style="line-height:' + google_ad_section_line_height + '; padding-left:' + google_ad_section_padding_left + '; padding-bottom:5px;" ><a id="aw' + i + '" href="' + ads[i].url + '" target="_blank" style="font-size:' + google_title_link_font_size + '; color:#000066; font-weight:bold; text-decoration:underline;" onFocus="ss(\'go to ' + ads[i].visible_url + '\',\'aw' + i + '\')" onClick="ha(\'aw' + i + '\')" onMouseOver="return ss(\'go to ' + ads[i].visible_url + '\',\'aw' + i + '\')"  onMouseOut="cs()">' + ads[i].line1 + '</a><br>\n<a href="' + ads[i].url + '" target="_blank" style="font-family:Arial,Helvetica,sans-serif; font-size:' + google_ad_text_font_size + ';color:#333333;text-decoration:none;">' + ads[i].line2 + ' ' + ads[i].line3 + '</a><br>\n<a href="' + ads[i].url + '" target="_blank" style="font-size:' + google_visible_url_font_size + '; color:#000066; font-weight:normal; text-decoration:none;">' + ads[i].visible_url + '</a></div>\n</td>\n</tr>\n';
+	}
+	s += '</table>\n</td>\n</tr>\n</table>';
+	document.getElementById(google_target_div).innerHTML = s;
+	return;
+}
+google_ad_output = 'js';
+google_max_num_ads = '3';
+google_safe = 'high';
+google_encoding	= 'utf8';
+// -->
+</script> 
+        <script type="text/javascript" language="JavaScript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script> 
+        <!-- End code from ADX --> 
+       </div> 
+      </div>
+      <!--end cColumn--> 
+     </div>
+     <!--end spanAB--> 
+    </div>
+    <!--end main --> 
+    <footer class="pageFooter"> 
+     <div class="inset"> 
+      <nav class="pageFooterNav"> 
+       <ul class="pageFooterNavList wrap"> 
+        <li class="firstItem"><a href="http://www.nytimes.com/content/help/rights/copyright/copyright-notice.html">© 2015 The New York Times Company</a></li> 
+        <li><a href="http://spiderbites.nytimes.com/">Site Map</a></li> 
+        <li><a href="http://www.nytimes.com/privacy">Privacy</a></li> 
+        <li><a href="http://www.nytimes.com/ref/membercenter/help/privacy.html#pp">Your Ad Choices</a></li> 
+        <li><a href="http://www.nytimes.whsites.net/mediakit/">Advertise</a></li> 
+        <li><a href="http://www.nytimes.com/content/help/rights/sale/terms-of-sale.html ">Terms of Sale</a></li> 
+        <li><a href="http://www.nytimes.com/ref/membercenter/help/agree.html">Terms of Service</a></li> 
+        <li><a href="http://www.nytco.com/careers">Work With Us</a></li> 
+        <li><a href="http://www.nytimes.com/rss">RSS</a></li> 
+        <li><a href="http://www.nytimes.com/membercenter/sitehelp.html">Help</a></li> 
+        <li><a href="http://www.nytimes.com/ref/membercenter/help/infoservdirectory.html">Contact Us</a></li> 
+        <li class="lastItem"><a href="https://myaccount.nytimes.com/membercenter/feedback.html">Site Feedback</a></li> 
+       </ul> 
+      </nav> 
+     </div>
+     <!-- close inset --> 
+    </footer>
+    <!-- close pageFooter --> 
+   </div>
+   <!--end page --> 
+  </div>
+  <!--end shell --> 
+  <script type="text/javascript">
+var dcsvid = "";
+var regstatus = "non-registered";
+</script> 
+  <script src="http://graphics8.nytimes.com/js/app/analytics/trackingTags_v1.1.js" type="text/javascript"></script>
+  <noscript>
+   <div>
+    <img alt="DCSIMG" id="DCSIMG" width="1" height="1" src="http://wt.o.nytimes.com/dcsym57yw10000s1s8g0boozt_9t1x/njs.gif?dcsuri=/nojavascript&amp;WT.js=No&amp;WT.tv=1.0.7">
+   </div>
+  </noscript> 
+  <!-- Start UPT call -->
+  <img height="1" width="3" border="0" src="http://up.nytimes.com/?d=0//&amp;t=&amp;s=0&amp;ui=&amp;r=&amp;u=www.nytimes.com">
+  <!-- End UPT call -->   
+ </body>
+</html>

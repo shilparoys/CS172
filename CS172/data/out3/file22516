@@ -1,0 +1,437 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" lang="EN">
+ <head> 
+  <title>Office of the Governor</title> 
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+  <meta name="ROBOTS" content="NOARCHIVE"> 
+  <meta name="GOOGLEBOT" content="NOARCHIVE"> 
+  <meta name="author" content="mgryczon"> 
+  <meta name="revised" content="02/02/2015"> 
+  <meta name="keywords" content="State of New Jersey, New Jersey,  Governor, NJ Governor, Governor of New Jersey, New Jersey Office of the Governor, Christie, Chris Christie, news, photos"> 
+  <meta name="description" content="New Jersey Governor Chris Christie official Web site contains his key initiatives, press releases, biography, and photographs."> 
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script> 
+  <script type="text/javascript" src="/governor/assets/script/leavenotice/jquery.leaveNotice.min.js"></script> 
+  <link href="/governor/assets/css/home.css " rel="stylesheet" type="text/css"> 
+  <link href="/governor/assets/css/leavenotice/jquery.leaveNotice.css " rel="stylesheet" type="text/css"> 
+  <script type="text/javascript" src="/governor/assets/script/carousel/jquery.infinitecarousel2.js"></script> 
+  <script type="text/javascript" src="/governor/assets/script/carousel/jquery.easing.1.3.js"></script> 
+  <script type="text/javascript" src="/governor/assets/script/mediaplayer/swfobject.js"></script> 
+  <script type="text/javascript">
+$(function(){
+	$('#carousel').infiniteCarousel({
+		transitionSpeed: 800,
+		displayTime: 6000,
+		inView:1,
+		advance:1,
+		imagePath: '/governor/assets/slices/',
+		easeLeft: 'easeInOutQuart',
+		easeRight:'easeOutQuart',
+		textholderHeight : .25,
+		padding:'0px',
+		displayProgressBar: false,
+		prevNextInternal: false
+	
+
+
+	});
+});
+</script> 
+  <script language="javascript" type="text/javascript">
+$(function(){
+	$('a[target=_blank]').leaveNotice({siteName:'State of New Jersey'});
+});
+</script> 
+  <script type="text/javascript">
+
+var currentFile = ""; 
+var currentItem = 0; 
+var previousItem = -1; 
+
+var player = null;
+function playerReady(thePlayer) {
+	player = window.document[thePlayer.id];
+	addListeners();
+}
+
+
+function addListeners() {
+	if (player) { 
+		player.addControllerListener("ITEM", "itemListener"); 
+	} else {
+		setTimeout("addListeners()",100);
+	}
+}
+
+
+function itemListener(obj) { 
+	if (obj.index != currentItem) {
+ 		previousItem = currentItem;
+		currentItem = obj.index;
+	}
+}
+var popWin = null;
+function createWindow(theUrl,w,h) {   
+	if (player) { 
+		player.sendEvent("STOP"); 
+		deletePlayer('wrapper', 'placeholder1', 'player1');
+	}
+
+	document.getElementById("buttonId1").style.visibility = "hidden";
+ 	var winl = (screen.width-w)/2;
+	var wint = (screen.height-h)/2;
+	
+	settings='height='+h+',width='+w+',top=250,left='+winl+',outerWidth=='+w+',toolbar=no,scrollbars=no,directories=0, statusbar=no,menubar=0,resizable=no,location=0,status=0';
+	popWin = window.open(theUrl, "smallWin",settings);
+	popWin.focus();
+}
+
+
+function popWinPlay() {
+	if ((popWin)&&(! popWin.closed)) { 
+		popWin.player.sendEvent('PLAY'); 
+	} else { 
+		createWindow('/governor/assets/script/mediaplayer/welcome_win.html?'+currentItem); 
+	}
+}
+
+
+function initPlayer() {
+	document.getElementById("buttonId1").style.visibility = "visible";
+	
+}
+
+$(document).ready(function() {
+	
+$("ul#topnav li").click(function() { //Hover over event on list item
+	$(this).css({ 'background' : '#4f678e url(/governor/assets/slices/top_nav_active.gif) repeat-x'}); //Add background color + image on hovered list item
+	$(this).find("span").show(); //Show the subnav
+} , function() { //on hover out...
+	$(this).css({ 'background' : 'none'}); //Remove the background
+	$(this).find("span").hide(); //Hide the subnav
+});
+	
+});
+</script> 
+ </head> 
+ <body> 
+  <div id="skip"> 
+   <a href="#btm_wrap">Skip to Main Content</a> 
+  </div> 
+  <div id="container"> 
+   <div id="header"> 
+    <div id="headerlinks"> 
+     <ul> 
+      <li><a href="http://www.nj.gov/">NJ Home</a></li> 
+      <li><a href="http://www.nj.gov/nj/gov/njgov/alphaserv.html">Services A to Z</a></li> 
+      <li><a href="http://www.nj.gov/nj/gov/deptserv/">Departments/Agencies</a></li> 
+      <li><a href="http://www.nj.gov/faqs/" class="last">FAQs</a> </li>
+     </ul> 
+    </div> 
+    <form action="http://search.state.nj.us/query.html" method="get" name="seek" id="seek"> 
+     <label for="qt" title="enter keyword here" accesskey="s">Search</label> 
+     <select name="qp" id="qp" class="selectbox"> <option value="" selected>All of NJ</option> <option value="+url:www.state.nj.us/governor/">This Site</option> </select> 
+     <label for="qp" accesskey="c" class="hidden">select</label> 
+     <input name="qt" type="text" id="qt" size="8" class="searchbox" title="Enter the terms you wish to search for."> 
+     <input name="submit search" type="image" id="submit_search" src="/governor/assets/slices/btn_submit.jpg" alt="submit" border="0" class="submit_search"> 
+    </form> 
+    <div id="logo"> 
+     <a href="/governor/" title="State of NJ - Governor Chris Christie">Home</a> 
+    </div> 
+   </div> 
+   <div class="clearA"> 
+   </div> 
+   <div id="navigation_wrap"> 
+    <!-- leftnav include starts --> 
+    <!-- BEGIN leftNav --> 
+    <ul id="navigation"> 
+     <li><a href="/governor/index.shtml">Home<span></span></a></li> 
+     <li><a href="/governor/news/">Newsroom<span></span></a></li> 
+     <li><a href="/governor/media/">Media<span></span></a></li> 
+     <li><a href="/governor/admin/">Administration<span></span></a></li> 
+     <li><a href="/governor/priorities/edu/index.html">NJ's Priorities <span></span></a></li> 
+     <li><a href="/governor/contact/">Contact Us<span></span></a></li> 
+    </ul> 
+    <!-- END leftNav --> 
+    <!-- leftnav include ends --> 
+   </div> 
+   <div class="clearA"> 
+   </div> 
+   <div id="carousel_wrap"> 
+    <div id="carousel"> 
+     <ul> 
+      <li> <img src="/governor/library/slides/active/20150126Snow.jpg" alt="Governor Christie Gives Update On Winter Storm Juno" border="0" width="395" height="326"> <p><a href="http://www.nj.gov/governor/news/news/552015/approved/20150126b.html " target="_self">Governor Christie Gives Update On Winter Storm Juno</a></p> </li> 
+      <li> <img src="/governor/library/slides/active/20150122Fire.jpg" alt="Governor Christie Meets With Edgewater Fire Victims " border="0" width="395" height="326"> <p><a href="http://www.nj.gov/governor/news/news/552015/approved/20150122f.html" target="_self">Governor Christie Meets With Edgewater Fire Victims </a></p> </li> 
+      <li> <img src="/governor/library/slides/active/20150112Summit.jpg" alt="Governor Christie Holds Atlantic City Summit Part III" border="0" width="395" height="326"> <p><a href="http://nj.gov/governor/news/news/552015/pdf/20150122b.pdf" target="_self">Governor Christie Holds Atlantic City Summit Part III</a></p> </li> 
+      <li> <img src="/governor/library/slides/active/20141217Mendham.jpg" alt="Governor Christie Recognizes Mendham Township Middle School For Distinction As A 2014 National Blue Ribbon School" border="0" width="395" height="326"> <p><a href="http://www.nj.gov/governor/news/news/552014/approved/20141217a.html" target="_self">Governor Christie Recognizes Mendham Township Middle School For Distinction As A 2014 National Blue Ribbon School</a></p> </li> 
+      <li> <img src="/governor/library/slides/active/20141216Rennaissance.jpg" alt="Governor Christie Holds Roundtable Discussion On Drug Treatment &amp; Recovery At Newark Renaissance House" border="0" width="395" height="326"> <p><a href="http://www.nj.gov/governor/news/news/552014/approved/20141216d.html " target="_self">Governor Christie Holds Roundtable Discussion On Drug Treatment &amp; Recovery At Newark Renaissance House</a></p> </li> 
+      <li> <img src="/governor/library/slides/active/20141011NAAC.jpg" alt="Governor Christie Gives The Keynote Address At The NAACP New Jersey State Convention Membership Luncheon" border="0" width="395" height="326"> <p><a href="http://www.nj.gov/governor/news/news/552014/approved/20141011a.html" target="_self">Governor Christie Gives The Keynote Address At The NAACP New Jersey State Convention Membership Luncheon</a></p> </li> 
+      <li> <img src="/governor/library/slides/active/20141009Drugs.jpg" alt="Governor Christie Creates Facing Addiction Task Force To Fight Drug Addiction Through Treatment And Prevention" border="0" width="395" height="326"> <p><a href="http://www.nj.gov/governor/news/news/552014/approved/20141009b.html" target="_self">Governor Christie Creates Facing Addiction Task Force To Fight Drug Addiction Through Treatment And Prevention</a></p> </li> 
+      <li> <img src="/governor/library/slides/active/20140925Catrambone114.jpg" alt="Governor Christie Attends The Ribbon Cutting Ceremony for the George L. Catrambone Elementary School in Long Branch" border="0" width="395" height="326"> <p><a href="http://www.nj.gov/governor/news/news/552014/approved/20140925a.html " target="_self">Governor Christie Attends The Ribbon Cutting Ceremony for the George L. Catrambone Elementary School in Long Branch</a></p> </li> 
+      <li> <img src="/governor/library/slides/active/20141202Camden.jpg" alt="Governor Christie Announces Multimillion Dollar Plan to Rehabilitate Camden High School" border="0" width="395" height="326"> <p><a href="http://www.nj.gov/governor/news/news/552014/approved/20141202b.html " target="_self">Governor Christie Announces Multimillion Dollar Plan to Rehabilitate Camden High School</a></p> </li> 
+      <li> <img src="/governor/library/slides/active/20150115Medicine.jpg" alt="Governor Christie Announces New Joint Venture To Form A New Four-Year School Of Medicine " border="0" width="395" height="326"> <p><a href="http://www.nj.gov/governor/news/news/552015/approved/20150115b.html " target="_self">Governor Christie Announces New Joint Venture To Form A New Four-Year School Of Medicine </a></p> </li> 
+      <li> <img src="/governor/library/slides/active/20150113SOS.jpg" alt="Governor Christie Delivers His 2015 State Of The State Address" border="0" width="395" height="326"> <p><a href="http://www.nj.gov/governor/news/news/552015/approved/20150113e.html" target="_self">Governor Christie Delivers His 2015 State Of The State Address</a></p> </li> 
+     </ul> 
+    </div> 
+   </div>
+   <!--Carousel Wrap Ends --> 
+   <!-- Btm Content Starts --> 
+   <div id="btm_wrap"> 
+    <div id="btm_left"> 
+     <h2 class="title">Twitter Feed</h2> 
+     <div class="clearA"> 
+     </div> 
+     <div id="tweets"> 
+      <a class="twitter-timeline" href="https://twitter.com/GovChristie" data-widget-id="344895491638689793" width="300" data-chrome="nofooter transparent noheader noscrollbar" data-show-replies="false" aria-polite="polite" data-tweet-limit="3">Tweets by @GovChristie</a> 
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script> 
+     </div> 
+     <a href="http://twitter.com/#!/GovChristie" class="twitter-follow-button" data-button="grey" data-link-color="153a55" data-text-color="666666">Follow @GovChristie</a> 
+     <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script> 
+     <div class="clearA"></div> 
+     <!-- <a href="http://twitter.com/#!/LtGovGuadagno" class="twitter-follow-button" data-button="grey" data-link-color="153a55" data-text-color="666666">Follow @LtGovGuadagno</a>
+				<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+		<div class="clearA"></div> --> 
+     <a href="http://twitter.com/#!/NJGovNews" class="twitter-follow-button" data-button="grey" data-link-color="153a55" data-text-color="666666">Follow @NJGovNews</a> 
+     <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script> 
+     <div class="clearA"></div> 
+    </div> 
+    <div id="btm_middle"> 
+     <h2 class="title">Headlines</h2> 
+     <!-- news include section starts here --> 
+     <div class="clearA"></div> 
+     <!-- news include code ends here --> 
+     <!-- News Include Starts--> 
+     <!-- iw_ostream file="/governor/news/news/552015/approved/news_include.html" --> 
+     <div class="post"> 
+      <h4><a href="/governor/news/news/552015/approved/20150226a.html">Acting Governor Guadagno Congratulates State Correction Officers Class 233 at Graduation Ceremony</a></h4> 
+      <div class="clearA"> 
+      </div> 
+      <span class="post_date">Thursday, February 26, 2015</span> 
+      <div class="clearA"> 
+      </div> 
+      <div class="content">
+       <p><em>Trenton Ceremony Honors 122 Department of Corrections Graduates </em></p>
+      </div> 
+      <div class="clearA"> 
+      </div> 
+      <ul class="more_links"> 
+       <li class="readmore"><a href="/governor/news/news/552015/approved/20150226a.html" target="">Read more</a></li> 
+      </ul> 
+     </div>
+     <div class="clearA"> 
+     </div>
+     <div class="post"> 
+      <h4><a href="/governor/news/news/552015/approved/20150225f.html">Governor Christie: I love This Place </a></h4> 
+      <div class="clearA"> 
+      </div> 
+      <span class="post_date">Wednesday, February 25, 2015</span> 
+      <div class="clearA"> 
+      </div> 
+      <div class="content">
+       <p><em>Video &amp; Transcript</em></p>
+      </div> 
+      <div class="clearA"> 
+      </div> 
+      <ul class="more_links"> 
+       <li class="readmore"><a href="/governor/news/news/552015/approved/20150225f.html" target="">Read more</a></li> 
+      </ul> 
+     </div>
+     <div class="clearA"> 
+     </div>
+     <div class="post"> 
+      <h4><a href="/governor/news/news/552015/approved/20150225e.html">Governor Christie: It Bankrupted Detroit, It Bankrupted General Motors, And It Will Bankrupt Us</a></h4> 
+      <div class="clearA"> 
+      </div> 
+      <span class="post_date">Wednesday, February 25, 2015</span> 
+      <div class="clearA"> 
+      </div> 
+      <div class="content">
+       <p><em>Video &amp; Transcript</em></p>
+      </div> 
+      <div class="clearA"> 
+      </div> 
+      <ul class="more_links"> 
+       <li class="readmore"><a href="/governor/news/news/552015/approved/20150225e.html" target="">Read more</a></li> 
+      </ul> 
+     </div>
+     <div class="clearA"> 
+     </div>
+     <div class="post"> 
+      <h4><a href="/governor/news/news/552015/approved/20150225d.html">Governor Christie: This Is Game Time</a></h4> 
+      <div class="clearA"> 
+      </div> 
+      <span class="post_date">Wednesday, February 25, 2015</span> 
+      <div class="clearA"> 
+      </div> 
+      <div class="content">
+       <p><em>Video &amp; Transcript</em></p>
+      </div> 
+      <div class="clearA"> 
+      </div> 
+      <ul class="more_links"> 
+       <li class="readmore"><a href="/governor/news/news/552015/approved/20150225d.html" target="">Read more</a></li> 
+      </ul> 
+     </div>
+     <div class="clearA"> 
+     </div> 
+     <div class="clearA"></div> 
+     <!-- news include section ends here --> 
+    </div> 
+    <div id="btm_right"> 
+     <div id="r_post"> 
+      <h3>Stay Connected<span>with Social Media</span></h3> 
+      <div class="clearA"></div> 
+      <div class="r_content"> 
+       <ul class="interact_links"> 
+        <li><a href="/governor/news/news/552013/approved/rss.xml" class="rss_link" title="RSS"></a></li> 
+        <li><a href="http://www.facebook.com/GovChrisChristie" target="_blank" class="facebook_link" title="Facebook"></a></li> 
+        <li><a href="http://www.youtube.com/GovChristie" target="_blank" class="YouTube_link" title="YouTube"></a></li> 
+        <li><a href="http://twitter.com/GovChristie" target="_blank" class="tweet_link" title="Twitter"></a></li> 
+        <li><a href="http://scribd.com/govchristie" target="_blank" class="scribd_link" title="Scribd"></a></li> 
+        <li><a href="http://new.livestream.com//GovChristie" target="_blank" class="ls_link" title="livestream"></a></li> 
+       </ul> 
+      </div> 
+     </div> 
+     <div id="r_post"> 
+      <h3>Stay Connected<span>with Email Alerts</span></h3> 
+      <div class="clearA"></div> 
+      <div class="r_content"> 
+       <form class="subscribe_form" name="survey" action="http://nj.gov/cgi-bin/governor/newsletter/subscribe.pl" method="post"> 
+        <input type="hidden" maxlength="100" size="50" value="all" name="all"> 
+        <input class="form_text" maxlength="100" size="25" name="email"> 
+        <input type="submit" value="" name="Submit" class="form_btn" alt="Submit form"> 
+       </form> 
+      </div> 
+     </div> 
+     <div id="r_post"> 
+      <div class="r_content"> 
+       <img src="/governor/assets/slices/share_title.gif" alt="Share With Your Friends" class="img_floattop"> 
+       <!-- AddThis Button BEGIN --> 
+       <a href="http://www.addthis.com/bookmark.php" class="addthis_button"></a> 
+       <script type="text/javascript">var addthis_config = {"data_track_clickback":true};</script> 
+       <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4de82e5a1fa00e42"></script> 
+       <!-- AddThis Button END --> 
+      </div> 
+     </div> 
+     <div id="r_post"> 
+      <div class="r_content"> 
+       <img src="/governor/library/home/gorr.jpg" alt="Office of the Recovery and Rebuilding" class="img_floattop"> 
+       <a href="http://nj.gov/gorr/" class="r_link">Find resources to move forward after Superstorm Sandy</a> 
+      </div> 
+      <div class="clearA"></div> 
+     </div> 
+     <div id="r_post"> 
+      <div class="r_content"> 
+       <img src="/governor/library/home/logo_yourmoney.jpg" alt="YourMoney.NJ.gov" class="img_floattop"> 
+       <a href="http://nj.gov/transparency/" class="r_link">Learn where YOUR tax money goes </a> 
+      </div> 
+      <div class="clearA"></div> 
+     </div> 
+     <div id="r_post"> 
+      <h3>NJ Heroes</h3> 
+      <div class="clearA"></div> 
+      <div class="r_content"> 
+       <img src="/governor/library/home/logo_nj_hero.jpg" alt="NJ Heroes" class="img_floatright"> 
+       <a href="http://newjerseyheroes.org/" class="r_link">Submit Your NJ Hero</a> 
+      </div> 
+      <div class="clearA"></div> 
+     </div> 
+    </div> 
+   </div>
+   <!-- Btm Content Ends --> 
+   <div class="clearA"></div> 
+   <div id="footer"> 
+    <a href="http://nj.gov/opra/"><img src="/governor/assets/slices/opra.jpg" alt="Opra | Open Public RecordsActs" width="119" height="35" border="0" class="logo"></a> 
+    <table border="0" align="right" cellpadding="0" cellspacing="0" class="fLinks"> 
+     <tbody>
+      <tr align="left"> 
+       <td><a href="http://www.nj.gov/nj/feedback.html" class="stateLinks">Contact Us</a> |</td> 
+       <td><a href="http://www.nj.gov/nj/privacy.html" class="stateLinks">Privacy Notice</a> |</td> 
+       <td><a href="http://www.nj.gov/nj/legal.html" class="stateLinks">Legal Statement &amp; Disclaimers </a> |</td> 
+       <td><a href="http://www.nj.gov/nj/accessibility.html" class="stateLinks">Accessibility Statement</a> |</td> 
+       <td align="right"><a href="http://www.nj.gov/"><img src="/governor/assets/slices/nj.jpg" alt="nj statate elogo" width="25" height="25" border="0" class="logo"></a></td> 
+      </tr> 
+     </tbody>
+    </table> 
+    <div class="clearA"> 
+    </div> 
+    <div class="footerText">
+     Statewide: 
+     <a href="http://www.nj.gov/nj/">NJ Home</a> | 
+     <a href="http://www.nj.gov/nj/gov/njgov/alphaserv.html">Services A to Z</a> | 
+     <a href="http://www.nj.gov/nj/deptserv.html">Departments/Agencies</a> | 
+     <a href="http://www.nj.gov/faqs/">FAQs</a>
+     <br> Office of the Governor: 
+     <a href="/governor/index.shtml">Home</a> | 
+     <a href="/governor/news/">Newsroom</a> | 
+     <a href="/governor/media/">Media</a> | 
+     <a href="/governor/admin/">Administration</a> | 
+     <a href="/governor/priorities/edu/">NJ's Priorities </a> | 
+     <a href="/governor/contact/">Contact Us</a> 
+     <br> 
+     <br> Copyright © State of New Jersey, 
+     <script type="text/javascript" language="JavaScript">
+
+			<!--
+
+var begYear="1996-";
+
+var today = new Date();
+
+document.write(begYear);
+
+document.write(today.getFullYear());
+
+//--></script> 
+     <noscript>
+       1996-2010 
+     </noscript> 
+     <br> Office of the Governor
+     <br> PO Box 001 
+     <br> Trenton, NJ 08625
+     <br> 609-292-6000
+    </div> 
+   </div> 
+   <!-- START OF SmartSource Data Collector TAG --> 
+   <!-- Copyright (c) 1996-2010 WebTrends Inc.  All rights reserved. --> 
+   <!-- Version: 8.6.2 --> 
+   <!-- Tag Builder Version: 3.0  --> 
+   <!-- Created: 7/15/2010 7:20:59 PM --> 
+   <meta name="WT.cg_n" content="Governor"> 
+   <script src="http://www.nj.gov/governor/webtrends.js" type="text/javascript"></script> 
+   <script type="text/javascript">
+	var _tag=new WebTrends();
+	_tag.dcsGetId();
+</script> 
+   <script type="text/javascript">
+	_tag.dcsCollect();
+</script> 
+   <noscript> 
+    <div>
+     <img alt="DCSIMG" id="DCSIMG" width="1" height="1" src="http://sdc.state.nj.us/dcs5w0txb10000wocrvqy1nqm_6n1p/njs.gif?dcsuri=/nojavascript&amp;WT.js=No&amp;WT.tv=8.6.2">
+    </div> 
+   </noscript> 
+   <!-- END OF SmartSource Data Collector TAG --> 
+  </div>
+  <!-- Container Ends --> 
+  <!-- START OF SmartSource Data Collector TAG --> 
+  <!-- Copyright (c) 1996-2010 WebTrends Inc.  All rights reserved. --> 
+  <!-- Version: 8.6.2 --> 
+  <!-- Tag Builder Version: 3.0  --> 
+  <!-- Created: 7/15/2010 7:20:59 PM --> 
+  <meta name="WT.cg_n" content="example"> 
+  <script src="/governor/assets/script/webtrends.js" type="text/javascript"></script> 
+  <script type="text/javascript"> 
+		var _tag=new WebTrends();
+		_tag.dcsGetId();
+	</script> 
+  <script type="text/javascript"> 
+		_tag.dcsCollect();
+	</script> 
+  <noscript> 
+   <div>
+    <img alt="DCSIMG" id="DCSIMG" width="1" height="1" src="http://sdc.state.nj.us/dcsyk1q1p00000004bfqwwhy0_8h2x/njs.gif?dcsuri=/nojavascript&amp;WT.js=No&amp;WT.tv=8.6.2">
+   </div> 
+  </noscript> 
+  <!-- END OF SmartSource Data Collector TAG -->   
+ </body>
+</html>

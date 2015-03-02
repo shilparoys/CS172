@@ -1,0 +1,343 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+  <title>Library Appointment Request Form - Holman Library - Green River Community College
+</title> 
+  <link href="/information-request/css/structure.css" rel="stylesheet" type="text/css" media="screen"> 
+  <link href="/information-request/css/form102.css" rel="stylesheet" type="text/css" media="screen"> 
+  <!-- jQuery Tools --> 
+  <script src="/scripts/jquery/jquery.tools.min.js" type="text/javascript"></script> 
+  <!-- JQuery Scripts References --> 
+  <script src="/scripts/jquery/jquery.validate.js" type="text/javascript"></script> 
+  <script src="/scripts/jquery/jquery.maskedinput-1.0.js" type="text/javascript"></script> 
+  <script type="text/javascript">
+    // this one requires the value to be the same as the first parameter
+	$.validator.methods.equal = function(value, element, param) {
+		return value == param;
+	};
+    $().ready(function() {
+    
+      $("#lib-appointment").validate({
+        rules: {
+		  		spmchck: {required:true,equal: 3},
+		  		email: {required: true, email:true}
+		 },
+		  
+		  messages: {
+		  		spmchck: "Please type in the correct answer"
+		}
+      });
+	
+		//Hide div w/id
+	   	$(".extra").hide();
+	   	$(".name_wrap").hide();
+	   	
+	   	//Reset
+	   	$("#foli1-5 #num_attendees").val('-- Please choose --');
+	   
+	
+		// Add onclick handler to checkbox w/id
+	   $("#enroll-grcc").click(function(){
+		
+		// If checked
+		if ($("#enroll-grcc").is(":checked"))
+		{
+			//show the hidden div
+			$("#enroll-info").show("fast");
+		}
+		else
+		{	   
+			//otherwise, hide it 
+			$("#enroll-info").hide("fast");
+		}
+	  });
+	  
+	  // Add onclick handler to checkbox w/id
+	   $("#transfer").click(function(){
+		
+		// If checked
+		if ($("#transfer").is(":checked"))
+		{
+			//show the hidden div
+			$("#transfer-info").show("fast");
+		}
+		else
+		{	   
+			//otherwise, hide it 
+			$("#transfer-info").hide("fast");
+		}
+	  });
+	  
+	  // Add onclick handler to checkbox w/id
+	   $("#career-training").click(function(){
+		
+		// If checked
+		if ($("#career-training").is(":checked"))
+		{
+			//show the hidden div
+			$("#career-info").show("fast");
+		}
+		else
+		{	   
+			//otherwise, hide it 
+			$("#career-info").hide("fast");
+		}
+	  });
+	  
+	  	// When a dropdown selection is made
+		$("#foli1-5 #num_attendees").change(function() {
+
+	
+		$(".name_wrap").slideUp().find("input").removeClass("active_name_field");
+		
+		switch ($("#foli1-5 #num_attendees option:selected").text()) {
+			
+		case '3':
+	
+		$("#attendee_1_wrap").slideDown().find("input").addClass("active_name_field");
+		$("#attendee_2_wrap").slideDown().find("input").addClass("active_name_field");
+		$("#attendee_3_wrap").slideDown().find("input").addClass("active_name_field");
+		break;
+			
+		case '4':
+		
+		$("#attendee_1_wrap").slideDown().find("input").addClass("active_name_field");	
+		$("#attendee_2_wrap").slideDown().find("input").addClass("active_name_field");
+		$("#attendee_3_wrap").slideDown().find("input").addClass("active_name_field");
+		$("#attendee_4_wrap").slideDown().find("input").addClass("active_name_field");
+		break;
+		
+		case '5':	
+		$("#attendee_1_wrap").slideDown().find("input").addClass("active_name_field");	
+		$("#attendee_2_wrap").slideDown().find("input").addClass("active_name_field");	
+		$("#attendee_3_wrap").slideDown().find("input").addClass("active_name_field");
+		$("#attendee_4_wrap").slideDown().find("input").addClass("active_name_field");	
+		$("#attendee_5_wrap").slideDown().find("input").addClass("active_name_field");
+		break;
+		
+		case '6':	
+		$("#attendee_1_wrap").slideDown().find("input").addClass("active_name_field");	
+		$("#attendee_2_wrap").slideDown().find("input").addClass("active_name_field");	
+		$("#attendee_3_wrap").slideDown().find("input").addClass("active_name_field");
+		$("#attendee_4_wrap").slideDown().find("input").addClass("active_name_field");	
+		$("#attendee_5_wrap").slideDown().find("input").addClass("active_name_field");
+		$("#attendee_6_wrap").slideDown().find("input").addClass("active_name_field");
+		break;
+		}
+
+	  });
+});
+</script> 
+  <script type="text/javascript" charset="utf-8">
+  $(function(){   
+  	$("#phone").mask("999-999-9999");
+  	$("#grad_year").mask("9999");
+  	$("#enroll_year").mask("9999");
+	$("#date-first-absent").mask("99/99/9999");
+});      
+</script> 
+  <style>
+
+.name_wrap label, .format_wrap label, .method_wrap label {
+	margin-bottom: 4px;
+	}
+
+#num_attendees_wrap, #affiliation_wrap, #notification_wrap {
+	/*margin-left: 182px;*/
+	}
+	
+#num_attendees_wrap h3, #affiliation_wrap h3, #notification_wrap h3 {
+	margin-top: 6px;
+	font-size: 12px;
+	font-weight: bold;
+	width: 55%;
+	}
+
+#name_wrap, #method_wrap {
+	margin-left: 182px;
+	/*width: 393px;*/
+	}
+	
+#format_wrap .error { } 
+
+#name_wrap .error, #method_wrap .error { }
+	
+#format_wrap h3, #name_wrap h3, #method_wrap h3 {
+	margin-top: 6px;
+	font-size: 12px;
+	font-weight: bold;
+	}
+	
+#book {
+	width: 382px;
+	}
+	
+#extra .info {
+	padding-bottom: 8px;
+	border-bottom:1px dotted #666;
+	margin:0 0 10px 0;
+	}
+	
+.input_field {
+	width: 370px;
+	margin-left: 0px;
+	border-bottom: 1px solid #ccc;
+	}
+	
+input.smallest, select.smallest{
+	width:65px;
+}
+
+input.small, select.small{
+	width:140px;
+}
+input.medium, select.medium{
+	width:230px;
+}
+input.large, select.large, textarea.textarea{
+	width: 325px;
+}
+
+h3.note {
+	border: 1px solid #ccc; 
+	margin: 6px 0 10px 0; 
+	padding: 20px; 
+	background: #eee;
+	text-align: center;
+	}
+	
+.clearing_spacer {
+	clear: both;
+	display: block;
+	height: 10px;
+	}
+	
+</style> 
+  <!--[if IE 7]>
+<style>
+
+form label.error {
+	margin: 0 0 14px 0;
+}
+	
+.desc .stacked {
+	 margin-top: 0px;
+	 }
+	 
+input.smallest, select.smallest{
+	width:65px;
+}
+
+input.small, select.small{
+	width:140px;
+}
+input.medium, select.medium{
+	width:230px;
+}
+input.large, select.large, textarea.textarea{
+	width: 325px;
+}
+
+.hidden_row {
+	margin: 0 0 4px -182px;
+	}
+	
+.hidden_section{
+	margin: 6px 0 6px -182px; 
+	}
+
+</style>
+<![endif]--> 
+ </head> 
+ <body> 
+  <div id="container"> 
+   <form action="http://grcc.greenriver.edu/sendemail.aspx" method="POST" id="lib-appointment"> 
+    <h1>Request an Appointment with a Librarian</h1> 
+    <p>Please complete this form if you would like to schedule an appointment with a librarian. This service is available only to students currently enrolled in classes at Green River Community College.</p> 
+    <p class="req">* Required information</p> 
+    <fieldset id="student_info"> 
+     <legend>Student Information</legend> 
+     <ul> 
+      <li id="foli1-1" class="row"><label class="desc" for="student_name"> <span id="req_1-1" class="req">* </span>Your Full Name: </label> 
+       <div> 
+        <input id="student_name" name="student_name" type="text" class="field text medium required" value="" size="30" maxlength="30"> 
+       </div> </li> 
+      <li id="foli1-3" class="row"><label class="desc" for="sid"> <span id="req_1-3" class="req">* </span>Student Identification (SID): </label> 
+       <div> 
+        <input id="sid" name="sid" type="text" class="field text medium required" value="" size="30" maxlength="30"> 
+       </div> </li> 
+      <li id="foli1-4" class="row"><label class="desc" for="email"> <span id="req_1-4" class="req">* </span>E-mail Address: </label> 
+       <div> 
+        <input id="email" name="email" type="text" class="field text large required" value="" size="60" maxlength="60"> 
+       </div> </li> 
+     </ul> 
+    </fieldset> 
+    <fieldset id="class_info"> 
+     <legend>Background</legend> 
+     <ul> 
+      <li id="foli11" class="row"> <label class="desc" for="research_question"> <span id="req1_5" class="req">* </span>What is your research question?</label> 
+       <div> 
+        <textarea id="research_question" name="research_question" class="field textarea medium required" rows="10" cols="50"></textarea> 
+       </div> </li> 
+      <li id="foli11" class="row"> <label class="desc" for="ways_to_answer"> <span id="req1_5" class="req">* </span>In what ways have you already tried to answer this question?</label> 
+       <div> 
+        <textarea id="ways_to_answer" name="ways_to_answer" class="field textarea medium required" rows="10" cols="50"></textarea> 
+       </div> </li> 
+     </ul> 
+    </fieldset> 
+    <fieldset> 
+     <legend>Your Availability</legend> 
+     <p class="instructions">Please indicate 3 options for your preferred date and time you are available for an appointment: </p> 
+     <ol> 
+      <li class="row"><label class="desc" for="date1">Date 1:</label> <input name="date1" id="date1" class="date-pick"> </li> 
+      <li class="row"><label class="desc" for="time1">Time 1:</label> <input name="time1" id="time1" class="time-pick"> </li> 
+      <li class="divider"></li> 
+      <li class="row"><label class="desc" for="date2">Date 2:</label> <input name="date2" id="date2" class="date-pick"> </li> 
+      <li class="row"><label class="desc" for="time2">Time 2:</label> <input name="time2" id="time2" class="time-pick"> </li> 
+      <li class="divider"></li> 
+      <li class="row"><label class="desc" for="date3">Date 3:</label> <input name="date3" id="date3" class="date-pick"> </li> 
+      <li class="row"><label class="desc" for="time3">Time 3:</label> <input name="time3" id="time3" class="time-pick"> </li> 
+     </ol> 
+    </fieldset> 
+    <fieldset> 
+     <legend>Submit your Request</legend> 
+     <ul> 
+      <li class="row"> <p class="instructions">In order to reduce spam, please respond to the following question (answer using numbers):</p> <label id="spmchck" for="spmchck" class="desc"><span class="req">*</span> What is the next whole number after two? </label> 
+       <div> 
+        <input id="spmchck" name="spmchck" class="field text small required" size="30" maxlength="30"> 
+       </div> </li> 
+      <!--<li class="row"><p class="req">* Required information</p></li>--> 
+      <li class="buttons" style="margin-left: 175px;"> <input type="hidden" id="FormName" name="FormName" value="Library Appointment Request Form"> <input id="submit_button" class="submit" type="submit" value="Submit"> <input class="submit" type="reset" value="Clear"> </li> 
+     </ul> 
+    </fieldset> 
+   </form> 
+   <div class="clearing"> 
+   </div> 
+  </div> 
+  <!-- Date Picker --> 
+  <link rel="stylesheet" type="text/css" media="screen" href="/scripts/jquery/datepicker/datePicker.css"> 
+  <script src="/scripts/jquery/datepicker/date.js" type="text/javascript"></script> 
+  <script src="/scripts/jquery/datepicker/jquery.datePicker.min-2.1.2.js" type="text/javascript"></script> 
+  <script type="text/javascript" charset="utf-8">
+   $(function(){
+	//$('.date-pick').datePicker({clickInput:true}).val(new Date().asString()).trigger('change');
+	//$('.date-pick').datePicker({clickInput:true}).dpSetSelected(new Date().asString());
+	$('.date-pick').datePicker({clickInput:true});
+});
+</script> 
+  <!-- Time Picker --> 
+  <link rel="stylesheet" type="text/css" media="screen" href="/scripts/jquery/clockpick/jquery.clockpick.1.2.7.css"> 
+  <script src="/scripts/jquery/clockpick/jquery.clockpick.1.2.7.js" type="text/javascript"></script> 
+  <script type="text/javascript">
+$(document).ready(function() {
+
+	$(".time-pick").clockpick({
+		starthour : 8,
+		endhour : 16,
+		minutedivisions : 2
+		});
+});
+</script>   
+ </body>
+</html>

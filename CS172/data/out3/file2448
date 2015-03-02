@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <title>
+	
+			Silent Witness Form
+		
+</title> 
+  <!--
+'***********************************************************************
+'   (c) Copyright by ClassApps 2002-2010
+'   Application:  SelectSurvey.NET
+'   COPYRIGHT NOTICE:  See attached Software License Agreement
+'   All rights are reserved.  Reproduction or transmission in whole or in part, in
+'   any form or by any means, electronic, mechanical or otherwise, is prohibited								
+'   without the prior written consent of the copyright owner.
+'
+'***********************************************************************
+--> 
+ </head> 
+ <body class="SurveyBodyStyle" onload="cc()"> 
+  <!-- the below must be in body tag or will not work --> 
+  <link href="Resources/StyleSheet/TakeSurveyStyle.css" rel="stylesheet" type="text/css" title="Style"> 
+  <meta content="Microsoft Visual Studio .NET 7.1" name="GENERATOR"> 
+  <meta content="C#" name="CODE_LANGUAGE"> 
+  <meta content="JavaScript" name="vs_defaultClientScript"> 
+  <meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema"> 
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+  <!--<script language="javascript" type="text/javascript" src="ClientInclude/jquery-1.3.2.min.js"></script>--> 
+  <script language="javascript" type="text/javascript" src="ClientInclude/jquery-1.6.2.min.js"></script> 
+  <script type="text/javascript" src="ClientInclude/tinyMCE/jquery.tinymce.js"></script> 
+  <script language="javascript" type="text/javascript" src="ClientInclude/jquery.meio.mask.min.js"></script> 
+  <script language="JavaScript" src="ClientInclude/Utility.js"></script> 
+  <script type="text/javascript" language="JavaScript" src="ClientInclude/AC_RunActiveContent.js"></script> 
+  <script type="text/javascript" language="JavaScript" src="ClientInclude/ieupdate.js"></script> 
+  <script type="text/javascript" language="JavaScript" src="ClientInclude/slider.js"></script> 
+  <script language="javascript" type="text/javascript" src="ClientInclude/jquery.datePicker.js"></script> 
+  <script language="javascript" type="text/javascript" src="ClientInclude/date.js"></script> 
+  <link type="text/css" rel="stylesheet" href="ClientInclude/jquery_themes/custom-theme/datePicker.css"> 
+  <script src="ClientInclude/jquery_imagemapster/jquery.imagemapster.min.js" type="text/javascript"></script> 
+  <script type="text/javascript">//<![CDATA[
+             $(window).load(function () {
+                 $('img').mapster({
+                     fillOpacity: 0.3,
+                     
+                     fillColor: 'ff0000',
+                     
+                     stroke: true,
+                     strokeWeight: 2,
+                   
+                     strokeColor: '00ff00',
+                    
+                     areas: [
+        {
+        //preselects areas with state="MO"
+            key: 'MO',
+            selected: true,
+            render_select: {
+               
+                fillColor: 'ff0000',
+                stroke: true
+            }
+        }
+        
+   ],
+                     mapKey: 'state'
+                 });
+            
+             });//]]>  
+</script> 
+  <script language="JavaScript" type="text/javascript">
+		<!--
+
+		    //date picker js
+		    Date.format = 'mm/dd/yyyy';
+            $(function()
+            {
+                $('.date-pick').datePicker({autoFocusNextInput: true, startDate: '01/01/1900'});                
+            });
+		    // connect the question condition triggers
+		    $(function() {
+                $("#frmSurvey").submit(function(eventObject) {
+                if ($('img[name="btnNext"]').length == 1){
+                        submitCheck(3);
+                        return false;
+                    }
+                if ($('img[name="btnDone"]').length == 1){
+                        submitCheck(1);
+                        return false;
+                    }
+                    return false;
+                });
+
+		        $(".qc_trigger").click(function() {
+		            var matches = $(this).attr("class").match(/\d+$/);
+		            //alert($(this).attr("class"));
+		            if ($(this).attr("turnOffQuestionCondition") == "yes") {
+		                $(".qc_" + matches[0]).hide();
+		                return;
+		            }
+		            if ($(this).attr("checked")) {
+		                $(".qc_" + matches[0]).show();
+		            } else {
+		                $(".qc_" + matches[0]).hide();
+		            }
+		        });
+
+		        $(".qc_trigger_select").change(function() {
+		            var triggers = $(this).attr("triggers").split('|');
+		            var selection = $(this).val();
+		            var found = false;
+		            var matches = $(this).attr("class").match(/\d+$/);
+		            for (var i = 0; i < triggers.length; i++) {
+		                if (triggers[i] == selection) {
+		                    $(".qc_" + matches[0]).show();
+		                    found = true;
+		                    break;
+		                }
+		            }
+		            if (!found)
+		                $(".qc_" + matches[0]).hide();
+
+		        });
+
+		        $("input[id^=ic_]").each(function() {
+		            var val = $(this).val();
+		             if (val != "")
+                     {
+		                // find the div parent
+		                $(this).parents("div[class^=qc_]").show();
+		            }
+		        });
+		    });
+
+
+
+            //for new matrix textbox sum total feature 7/14/2012
+            function sumRow(cellchanged) {
+              var sumCol = 0;
+              var sumRow = 0;
+              var sum = 0;
+              var thisRow = $(cellchanged).parent('tr');
+
+              //below gets Answer23241 the id of the cell in the matrix thats value was changed.
+              var cellid = $(cellchanged).attr('id');
+              //sum all input boxes in the column where input ids contain Answer23241. All inputs in column have same AnswerID (Answer23241) passed into function as cellchanged.
+              $("input[id^=" + cellid + "]").each(function() {
+              //only add if it is a number.  this is required or will concatenate as a string.
+              if(!isNaN(parseFloat(this.value)))
+              { sumCol += parseFloat(this.value);}
+              });
+
+            //put sum in the total box below this column only, identified by the Answer23241 (totalfieldAnswer23241 is id of total box for column)
+            var totalFieldInputId = "totalfield" + cellid;
+            $("input[id=" + totalFieldInputId + "]").val(sumCol);
+
+             //now sum row totals, all input fields with the same SIID will be summed together. 
+             //get SIID from current cell. name='QID2324||SIID4047||AID5380'
+             var splitChar = "||";
+             var rowAID= $(cellchanged).attr('name').split(splitChar)[2];
+             var rowSIID = $(cellchanged).attr('name').split(splitChar)[1];
+
+             //get row number part out of title before the space. (title='row2 5383')
+             //get row number part out of class attribute
+             //var rowNumberPart = $(cellchanged).attr('title').split(' ');
+             //remove "row" to get number
+             //var rowNumber = rowNumberPart[0].substring(3);
+             //class='sum1'
+             var rowNumberPart = $(cellchanged).attr('class');
+             //remove "sum" to get number
+             var rowNumber = rowNumberPart.substring(3);
+
+             //select and sum all inputs that have this rowSIID in substring for name
+               $("input[name*=" + rowSIID + "]").each(function() {
+                if(!isNaN(parseFloat(this.value)))
+              { sumRow += parseFloat(this.value);}
+              });
+
+              //set the sum into the total row text box.
+              $("input[id=totalRow" + rowNumber + "]").val(sumRow);
+
+            }
+
+
+       
+
+       //for new clickable image question type 10-7-2012
+       
+        function clickableImageMapsClick(itemid,mapid,alttext)
+        {
+	        var imgmapSelectedText = "";
+	        var imgmapClickText = 0;
+            //see if this area was already clicked
+            imgmapSelectedText = $("textarea[id=QID" + itemid + "]").val();
+   
+            if(!isNaN(parseInt($("input[id=QID" + itemid + "OTHERTEXT]").val()),10))
+            {
+                imgmapClickText = parseInt($("input[id=QID" + itemid + "OTHERTEXT]").val(),10);
+            }
+
+            //split string into array by comma separator
+            var selectedAreaArray = imgmapSelectedText.split(",");
+            var tmpTextStr = "";
+            var newBuiltStringFromArray = "";
+            var existsYN = "N";
+            for (var i = 0; i < selectedAreaArray.length; i++) 
+            { 
+                   tmpTextStr = selectedAreaArray[i].trim();
+                   if(tmpTextStr.length > 0)
+                   {
+                       if(tmpTextStr == alttext) 
+                       {
+                            //exists, so remove it from string by not adding it back to string.
+                            existsYN = "Y";
+                       }
+                       else
+                       {
+                           //does not exist, add to string
+                           newBuiltStringFromArray = newBuiltStringFromArray + tmpTextStr + ", ";
+                       }
+                   }
+            } 
+            if(existsYN == "Y")
+            {
+                imgmapClickText = parseInt(imgmapClickText,10) - 1;
+            }
+            else
+            {
+                newBuiltStringFromArray = newBuiltStringFromArray +  alttext + ", ";
+                imgmapClickText = parseFloat(imgmapClickText) + 1;
+            }
+            //replace with rebuilt string
+            imgmapSelectedText = newBuiltStringFromArray;
+           
+            
+            //update value of text area
+            $("textarea[id=QID" + itemid + "]").val(imgmapSelectedText);
+
+            //update value of click status textbox
+            $("input[id=QID" + itemid + "OTHERTEXT]").val(imgmapClickText);
+
+        }
+       
+
+
+    
+           
+
+	    var session_keep_alive;
+	    var keep_alive_interval = 1 * (60 * 1000)
+		$(function() {
+			initRichTextEditor();
+			session_keep_alive = setTimeout("SessionKeepAlive()", keep_alive_interval);
+
+		});
+                    
+        function SessionKeepAlive() {
+            $.post( "refresh_session.aspx", null,
+                function(data) { 
+					session_keep_alive = setTimeout("SessionKeepAlive()", keep_alive_interval);
+                }
+            );
+        }
+		
+		function initRichTextEditor() {
+			$(".richTextEditor").each(function() {
+				$(this).tinymce({
+					script_url : "clientinclude/tinyMCE/tiny_mce_sheryl.js",
+					// General options
+					theme : "advanced",
+					plugins : "safari,pagebreak,style,layer,table,advhr,advimage,advlink,emotions,inlinepopups,insertdatetime,preview,media,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+
+					// Theme options
+					theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,formatselect,fontselect,fontsizeselect",
+					theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
+					theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,advhr,|,print,|,ltr,rtl,|,fullscreen",
+					theme_advanced_toolbar_location : "top",
+					theme_advanced_toolbar_align : "left",
+					theme_advanced_statusbar_location : "none",
+					theme_advanced_resizing : false,
+                force_br_newlines : true,
+force_p_newlines : false,
+forced_root_block : ""
+				});
+			});
+		}
+
+
+
+	function cc() {
+    //doesn't work in chrome or safari.
+		/* check to see if cookies are enabled in browser */
+		//if (document.cookie == "") 
+		//{				
+			/*alert("COOKIES need to be enabled in order to save your survey results!  Enable cookies, close your browser and try again.");*/
+		//	alert("Please enter a value that is greater than or equal to (#number#)");
+			
+			 /* If the user has Cookies disabled an alert will let him know 
+        that cookies need to be enabled to log on.*/ 
+
+        //     document.forms['frmSurvey'].cookieexists.value ="false"  
+        //    } 
+        //    else 
+       //     {
+             /* this sets the value to true and nothing else will happen,
+         the user will be able to log on*/
+       //     document.forms['frmSurvey'].cookieexists.value ="true"
+       // }
+        document.forms['frmSurvey'].cookieexists.value = "true";
+		
+	}
+	
+	function startResponseTimer(timeLeft, timerDuration, responseId)
+	{
+	    var idTimeElapsed = document.getElementById('idTimeElapsed');
+	    var idTimeRemaining = document.getElementById('idTimeRemaining');
+	    var idTimeTotal = document.getElementById('idTimeTotal');
+	    if (idTimeElapsed == null || idTimeRemaining == null || idTimeTotal == null)
+	    {
+	        setTimeout("startResponseTimer(" + timeLeft + ", " + timerDuration + ", " + responseId + ")", 100);
+	        return;
+	    }
+	    
+	    idTimeElapsed.innerHTML = timerDuration - timeLeft;
+	    idTimeRemaining.innerHTML = timeLeft;
+	    idTimeTotal.innerHTML = timerDuration;
+	    
+	    setTimeout("responseTimerTick(" + timeLeft + ", " + timerDuration + ", " + responseId + ")", 60000);
+	}
+	
+	function alertCommitChanges()
+	{
+	    //alert('Time has run out.  Last changes committed!');
+	    alert('Time has run out.  Last changes committed!');
+	    submitCheck(4);
+	}
+   
+	function updateResponseTime(responseId, newTime)
+	{
+	   var ua = navigator.userAgent.toLowerCase();
+       if (!window.ActiveXObject)
+         request = new XMLHttpRequest();
+       else if (ua.indexOf('msie 5') == -1)
+         request = new ActiveXObject("Msxml2.XMLHTTP");
+       else
+         request = new ActiveXObject("Microsoft.XMLHTTP");
+         
+       var httpRequest = "SurveyUpdateTime.aspx?ResponseId=" + responseId + "&minutesCompleted=" + newTime;
+         
+       request.open("GET", httpRequest);
+       request.send(null);
+	}
+	
+
+	
+	function responseTimerTick(timeLeft, timerDuration, responseId)
+	{
+	    timeLeft--;
+	    
+	    var idTimeElapsed = document.getElementById('idTimeElapsed');
+	    var idTimeRemaining = document.getElementById('idTimeRemaining');
+	    var idTimeTotal = document.getElementById('idTimeTotal');
+	    
+	    updateResponseTime(responseId, timerDuration - timeLeft);
+	    
+	    idTimeElapsed.innerHTML = timerDuration - timeLeft;
+	    idTimeRemaining.innerHTML = timeLeft;
+	    idTimeTotal.innerHTML = timerDuration;
+	    
+	    if (timeLeft <= 0)
+	    {
+	        alertCommitChanges();
+	        return;
+	    } 
+	    
+	    setTimeout("responseTimerTick(" + timeLeft + ", " + timerDuration + ", " + responseId + ")", 60000);
+	}
+
+//	function navigateToPage(pageNumber) {
+//	    $("input[name=ActualPageNumber]").val(pageNumber);
+//	    $("input[name=DisplayPageNumber]").val(pageNumber);
+//	    submitCheck(3);
+//	}
+
+    function navigateToPage(pageNumber) {
+	    $("input[name=ActualPageNumber]").val(pageNumber - 1);
+	    $("input[name=DisplayPageNumber]").val(pageNumber - 1);
+	    submitCheck(3);
+	}
+
+	function tabNavGoBack() {
+        navigateToPage(1);    
+	}
+
+      function printValue(sliderBoundTextBoxID, sliderValue) {
+            var x = document.getElementById(sliderBoundTextBoxID + "_BoundControl");
+            x.value = sliderValue;
+        }
+	
+	/* Set a cookie to be sure that one exists.
+	Note that this is outside the function*/
+	document.cookie = 'killme' + escape('nothing');
+
+	//document.cookie = "killme" + escape("nothing") + ";expires=" + new Date(); 
+	// -->
+	</script> 
+  <script language="javascript" type="text/javascript">
+		    function closeWindow() {
+		        if (navigator.appName == 'Microsoft Internet Explorer') {
+		            window.open('', '_parent', '');
+		            window.close();
+		        }
+		        else {
+		            /* alert("Your browser security does not allow automatic closing of the window.  Please manually close the window."); */
+		            alert("Please enter a value that is greater than or equal to (#number#)");
+		        }
+		    }
+
+		    function setButtonClick(button) {
+		        document.getElementById('buttonclicked').value = button;
+		    }
+
+		    function valButton(btn) {
+		        var cnt = -1;
+		        for (var i = btn.length - 1; i > -1; i--) {
+		            if (btn[i].checked) {
+		                //alert("btn value=" + btn[i].value);
+		                cnt = i;
+		                i = -1;
+		            }
+		        }
+		        if (cnt > -1)
+
+		            return btn[cnt].value;
+		        else return null;
+		    }
+
+
+
+		    // set the radio button with the given value as being checked
+		    // do nothing if there are no radio buttons
+		    // if the given value does not exist, all the radio buttons
+		    // are reset to unchecked
+		    function SelectOtherRadioButton(radioObj, newValue) {
+		        if (!radioObj)
+		            return;
+		        var radioLength = radioObj.length;
+		        if (radioLength == undefined) {
+		            radioObj.checked = (radioObj.value == newValue.toString());
+		            return;
+		        }
+		        for (var i = 0; i < radioLength; i++) {
+		            radioObj[i].checked = false;
+		            if (radioObj[i].value == newValue.toString()) {
+		                radioObj[i].checked = true;
+		            }
+		        }
+		    }
+
+
+
+		   
+            
+		</script> 
+  <!--insert session timer script here--> 
+  <script language="javascript">startClock();updateClock(900);</script> 
+  <!--insert response timer script here--> 
+  <!--insert script block here --> 
+  <script language="JavaScript">
+function updateClock2(iTimeOutAlert)
+{
+setTimeout("updateClock('" + iTimeOutAlert + "');", 100);
+dNow = new Date();
+dWatch = dNow.getTime() - dStarted.getTime();
+dClock = Math.round(dWatch/1000);
+if (dClock == iTimeOutAlert)
+{
+alert('Please enter a numeric value for question number (#questionnumber#)');
+}
+}
+
+
+function isDate2(dateStr) {
+var datePat = /^(\d{1,2})(\/|-|.)(\d{1,2})(\/|-|.)(\d{4})$/;
+var matchArray = dateStr.match(datePat); // is the format ok?
+if (matchArray == null) {
+    alert('Please select at least (#number#) for question number (#questionnumber#)');
+    return false;
+}
+month = matchArray[1]; // parse date into variables
+day = matchArray[3];
+year = matchArray[5];
+if (month < 1 || month > 12) { // check month range
+    alert('Please select at least (#number#) for question number (#questionnumber#)');
+    return false;
+}
+ if (day < 1 || day > 31) {
+     alert('Please enter a numeric value for question number (#questionnumber#)');
+     return false;
+ }
+ if ((month==4 || month==6 || month==9 || month==11) && day==31) {
+     alert('Please select no more than (#number#) for (#questionnumber#)')
+     return false;
+ }
+ if (month == 2) { // check for february 29th
+    var isleap = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
+    if (day > 29 || (day==29 && !isleap)) {
+        alert('Please select no more than (#number#) for (#questionnumber#)');
+        return false;
+    }
+ }
+return true; // date is valid
+}
+
+
+function isDateEuropean2(dateStr) {
+var datePat = /^(\d{1,2})(\/|-|.)(\d{1,2})(\/|-|.)(\d{4})$/;
+var matchArray = dateStr.match(datePat); // is the format ok?
+if (matchArray == null) {
+    alert('Please select at least (#number#) for question number (#questionnumber#)');
+return false;
+}
+day = matchArray[1]; // parse date into variables
+month = matchArray[3];
+year = matchArray[5];
+if (month < 1 || month > 12) { // check month range
+    alert('Please select at least (#number#) for question number (#questionnumber#)');
+return false;
+}
+if (day < 1 || day > 31) {
+     alert('Please enter a numeric value for question number (#questionnumber#)');
+return false;
+}
+ if ((month==4 || month==6 || month==9 || month==11) && day==31) {
+     alert('Please select no more than (#number#) for (#questionnumber#)')
+return false;
+}
+if (month == 2) { // check for february 29th
+var isleap = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
+if (day > 29 || (day==29 && !isleap)) {
+        alert('Please select no more than (#number#) for (#questionnumber#)');
+ return false;
+ }
+}
+return true; // date is valid
+}
+
+function doSubmit(){
+    $('#frmSurvey').unbind('submit');
+document.forms['frmSurvey'].action = 'TakeSurveyAction.aspx';
+    document.forms['frmSurvey'].submit();
+}
+function submitCheck(button){setButtonClick(button);if(button == '2'){
+    doSubmit();
+return;
+}
+var flgValueSelected;
+var lngTotalValue = 0;
+var strTemp;
+var strSelectedValues ='';
+if (trim(document.forms['frmSurvey'].QID8553.value) != ''){if (isDate2(trim(document.forms['frmSurvey'].QID8553.value)) == false){document.forms['frmSurvey'].QID8553.focus();return;}
+}
+doSubmit();}
+</script> 
+  <!--insert style block here --> 
+  <style>.ProgressFirstColor{BACKGROUND-COLOR: #FFFFFF;}
+.ProgressSecondColor{BACKGROUND-COLOR: #FFFFFF;}
+.SurveyColor{BACKGROUND-COLOR: #FFFFFF;}
+.SurveyBorder{BACKGROUND-COLOR: #000000;}
+.SurveyBodyStyle{FONT-FAMILY : Verdana ;BACKGROUND-COLOR :#FFFFFF ;COLOR : #000000 ;MARGIN-LEFT: 10;MARGIN-RIGHT: 0;MARGIN-BOTTOM: 0;MARGIN-TOP: 15; } 
+.Normal{COLOR: #000000;FONT-FAMILY: Verdana;FONT-SIZE: 12px;FONT-WEIGHT: Normal;}
+.Required{COLOR: red;FONT-FAMILY: Verdana;FONT-SIZE: 10px;}
+.H1HeadingStyle{COLOR: #000000;FONT-FAMILY: Verdana;FONT-WEIGHT: Bold;FONT-SIZE: 18px;}
+.SurveyName{COLOR: #000000;FONT-FAMILY: Verdana;FONT-WEIGHT: Bold;FONT-SIZE: 18px;}
+.PageNumberFontStyle{COLOR: #000000;FONT-FAMILY:Verdana;FONT-WEIGHT: Normal;FONT-SIZE: 12px;}
+.InlineHelpSpanStyle{COLOR: #000000;FONT-FAMILY: Verdana;FONT-SIZE: 10px;FONT-WEIGHT: Normal;}
+.SurveyPageTitle{COLOR: #000000; FONT-FAMILY: Verdana;FONT-SIZE: 14px;FONT-WEIGHT: Bold;}
+.QuestionHeadingStyle{COLOR: #000000;FONT-FAMILY: Verdana;FONT-SIZE: 14px;FONT-WEIGHT: Bold }
+.SurveyNavigationLink A{COLOR: #000000; FONT-FAMILY: Verdana;FONT-SIZE: 14px;FONT-WEIGHT: Normal;}
+.SurveyMatrixHeadingRowText{COLOR: #000000;FONT-FAMILY:Verdana, Arial;FONT-WEIGHT: normal;FONT-SIZE: 12px;}
+
+.SurveyPageIntroduction{COLOR: #000000;FONT-FAMILY:;FONT-WEIGHT: ;FONT-SIZE: 12px;}
+</style> 
+  <script type="text/javascript">
+            function preventBack() { window.history.forward(); }
+            setTimeout("preventBack()", 0);
+            window.onunload = function () { null };
+</script> 
+  <script type="text/javascript">
+//for dynamic matrix image upload column question
+    function uploadError(sender, args) {
+        // addToClientTable(args.get_fileName(), "<span style='color:red;'>" + args.get_errorMessage() + "</span>");
+    }
+    function uploadComplete(sender, args) {
+        //set hidden field to true so can validate client side for required file uploads.
+         alert(args.get_fileName() + " uploaded successfully.");
+       
+         //alert(sender.get_id());
+         //returns ct102_ct123
+         
+         //alert(sender.get_element().getAttribute("assocSurveyItemID"));
+         //returns "AsyncFileUploadQID12223||SID123||AID123"
+         var hdnFieldUpdate = sender.get_element().getAttribute("assocSurveyItemID");
+         var hdnField2 = hdnFieldUpdate.replace("AsyncFileUpload", "DynMatrixFileValidation");
+         document.getElementById(hdnField2).value = args.get_fileName();
+         //alert("value: " + document.getElementById(hdnField2).value);
+    }
+    </script> 
+  <script type="text/javascript" language="JavaScript" src="ClientInclude/ToolTip/wz_tooltip.js"></script> 
+  <script type="text/javascript" language="JavaScript" src="ClientInclude/ToolTip/tip_balloon.js"></script> 
+  <script type="text/javascript" language="JavaScript" src="ClientInclude/ToolTip/tip_followscroll.js"></script> 
+  <script type="text/javascript" language="JavaScript" src="ClientInclude/ToolTip/tip_centerwindow.js"></script> 
+  <form name="frmSurvey" method="post" action="TakeSurveyAction.aspx" id="frmSurvey"> 
+   <input type="hidden" name="ScriptManager1_HiddenField" id="ScriptManager1_HiddenField" value=""> 
+   <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMjAyNDQ3OTc2Nw8WAh4IU3VydmV5SUQoKVlTeXN0ZW0uSW50NjQsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OQM1NjIWAgIBD2QWAgIED2QWAmYPZBYCAgIPZBYCZg9kFgICAQ8WAh4LXyFJdGVtQ291bnRmZGQ/nQkaSoF9ti99rWQvE8J2QhPv3rL9Eak5Djk3HmZQYA=="> 
+   <script src="/ScriptResource.axd?d=YUNK7IqlrWVpjnBkiUdmnYU6yIopFYsULWUVu8U9nsNwAeHdgl__jYjxAwjLBPkM0eSkI-hpPXFq58gXS0Xgku6pGaKB-yqbBxteTpzopnDYFjr6GsfKPlJQV6I4wUNV0&amp;t=254cc609" type="text/javascript"></script> 
+   <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="76EC3392"> 
+   <input type="hidden" name="cookieexists" value="false"> 
+   <!--start of outer template align table --> 
+   <table class="SurveyAlignmentStyle" align="center"> 
+    <tbody>
+     <tr class="SurveyAlignmentRowStyle"> 
+      <td> 
+       <!--templateHTMLTopBlock --> 
+       <!--start of survey title table--> 
+       <table class="SurveyLogoBlockStyle" id="tblLogo" border="0" cellspacing="0" cellpadding="5" width="760" align="center"> 
+        <tbody>
+         <tr>
+          <td height="44" valign="bottom"><span class="SurveyName"><a name="skipnav" tabindex="1">Silent Witness</a></span></td>
+         </tr> 
+        </tbody>
+       </table> 
+       <!--end of survey title --> 
+       <!--start of outlined table --> 
+       <table class="SurveyBorder" border="0" cellspacing="0" cellpadding="2" width="760" align="center"> 
+        <tbody>
+         <tr> 
+          <td> 
+           <table class="SurveyColor" cellpadding="0" border="0" width="100%"> 
+            <tbody>
+             <tr> 
+              <td> 
+               <!--start of top page indicator table --> 
+               <table class="SurveyOuterProgressBarTable" cellpadding="3" cellspacing="2" border="0" width="100%"> 
+                <tbody>
+                 <tr> 
+                  <td align="right" width="100%"> 
+                   <div id="divTimer" style="display:none"> 
+                    <table class="SurveyTimerTable"> 
+                     <tbody>
+                      <tr> 
+                       <td align="right"><span class="Normal">Time Elapsed:</span></td> 
+                       <td><span class="Normal" id="idTimeElapsed">0</span><span class="Normal"> minutes</span></td> 
+                      </tr> 
+                      <tr> 
+                       <td align="right"><span class="Normal">Time Remaining:</span></td> 
+                       <td><span class="Normal" id="idTimeRemaining">0</span><span class="Normal"> minutes</span></td> 
+                      </tr> 
+                      <tr> 
+                       <td align="right"><span class="Normal">Total Time:</span></td> 
+                       <td><span class="Normal" id="idTimeTotal">0</span><span class="Normal"> minutes</span></td> 
+                      </tr> 
+                     </tbody>
+                    </table> 
+                   </div> 
+                   <div id="divLoginCode" style="display:none"> 
+                    <table class="LoginCodeTable"> 
+                     <tbody>
+                      <tr> 
+                       <td align="right"><span class="NormalBold">Anonymous Login Code: </span></td> 
+                      </tr> 
+                      <tr> 
+                       <td><span class="InlineHelpSpanStyle">Save this code, which is required to update your response at a later time.</span></td> 
+                      </tr> 
+                     </tbody>
+                    </table> 
+                   </div> </td> 
+                  <td width="48">&nbsp;</td> 
+                  <td align="right" valign="top"> 
+                   <table class="SurveyProgressBarTextTable" width="100" border="0" cellspacing="0" cellpadding="2"> 
+                    <tbody>
+                     <tr> 
+                      <td align="center" colspan="2"> <span class="Normal"> <span class="PageNumberFontStyle">Page 1 of 1</span> </span> </td> 
+                     </tr> 
+                    </tbody>
+                   </table> 
+                   <table class="SurveyProgressBarTable" width="100" border="0" cellspacing="0" cellpadding="1"> 
+                    <tbody>
+                     <tr> 
+                      <td bgcolor="black">
+                       <table width="100" border="0" cellspacing="0" cellpadding="0" height="12">
+                        <tbody>
+                         <tr>
+                          <td class="ProgressFirstColor" width="100"></td>
+                          <td class="ProgressSecondColor" width="0"></td>
+                         </tr>
+                        </tbody>
+                       </table></td> 
+                     </tr> 
+                    </tbody>
+                   </table> </td> 
+                  <td width="14">&nbsp;</td> 
+                 </tr> 
+                 <!-- R2L - adding literal control to show preview text --> 
+                </tbody>
+               </table>
+               <table class="SurveyPageTitleTable">
+                <tbody>
+                 <tr align="left">
+                  <td width="28">&nbsp;</td>
+                  <td><span class="SurveyPageTitle">Silent Witness Form&nbsp;</span></td>
+                  <td width="14">&nbsp;</td>
+                 </tr>
+                </tbody>
+               </table> 
+               <table class="SurveyPageIntroTable">
+                <tbody>
+                 <tr align="left">
+                  <td width="28">&nbsp;</td>
+                  <td colspan="2"><span class="SurveyPageIntroduction">Please use this form to report criminal or suspicious activity. This form will be submitted <u>completely anonymous.</u> No personal information is requested and there is no tracking system to trace the origin of this message. The information will only be sent to the University of Wyoming Police Department.<br><br> <b>If you are witnessing a crime that is being committed RIGHT NOW, please do not use this form. Immediately contact the UWPD at 766-5179 or 911.</b><br><br> Please use this form for <u>Suspicious Criminal Activity</u>. Workplace issues and rules violations should be referred to a department head or supervisor.&nbsp;</span></td>
+                  <td width="14">&nbsp;</td>
+                 </tr>
+                </tbody>
+               </table> 
+               <!--</table>--> 
+               <!--stop of top page indicator table --> <br> 
+               <!--start of question holder table --> 
+               <table class="QuestionHolderTable" cellpadding="2" cellspacing="0" border="0" width="100%"> 
+                <tbody>
+                 <tr> 
+                  <td width="5">&nbsp;</td> 
+                  <td valign="top"> 
+                   <!--insert QuestionTableHTML.txt --> 
+                   <div id="PanelQuestionHolder"> 
+                    <table id="ctl02_SingleSelectDropdown" class="SingleSelectDropdownTable" cellspacing="0" cellpadding="2" width="100%"> 
+                     <tbody>
+                      <tr valign="top"> 
+                       <td width="21"> <a name="ItemID8551"> <span class="PageNumberFontStyle">1. <br></span></a></td> 
+                       <td><span class="Normal"><label for="QID8551">Type of Crime:<br></label></span></td> 
+                      </tr> 
+                      <tr> 
+                       <td width="21">&nbsp;</td> 
+                       <td><select name="QID8551" id="QID8551" class="qc_trigger_select item_8551" triggers=""><option value="-- None --">-- None --</option><option value="29342">Alcohol</option><option value="29343">Assault/Personal Safety</option><option value="29344">Computer Related</option><option value="29345">Drugs</option><option value="29346">Fraud</option><option value="29347">Sex Crime</option><option value="29348">Traffic Violation</option><option value="29349">Other</option></select></td> 
+                      </tr> 
+                      <tr> 
+                       <td width="21">&nbsp;</td> 
+                       <td>&nbsp;</td> 
+                      </tr> 
+                     </tbody>
+                    </table> 
+                    <div id="ctl02_qcContainer" style="display:none" class="qc_8551"> 
+                     <table style="width:100%;" border="0" class="Normal"> 
+                      <tbody>
+                       <tr>
+                        <td></td>
+                        <td>&nbsp;</td>
+                       </tr> 
+                      </tbody>
+                     </table>
+                    </div> 
+                    <table id="ctl03_OpenEndedCommentsBox" class="OpenEndedCommentsBoxTable" cellspacing="0" cellpadding="2" width="100%"> 
+                     <tbody>
+                      <tr valign="top"> 
+                       <td width="21"> <a name="ItemID8552"> <span class="PageNumberFontStyle">2. <br></span></a></td> 
+                       <td><span class="Normal"><label for="QID8552">If Other, Please Explain:<br></label></span></td> 
+                      </tr> 
+                      <tr> 
+                       <td width="21">&nbsp;</td> 
+                       <td><textarea style="width:675px" rows="5" name="QID8552" id="QID8552"></textarea></td> 
+                      </tr> 
+                      <tr> 
+                       <td width="21">&nbsp;</td> 
+                       <td>&nbsp;</td> 
+                      </tr> 
+                     </tbody>
+                    </table> 
+                    <table id="ctl04_OpenEndedDate" class="OpenEndedDateTable" cellspacing="0" cellpadding="2" width="100%"> 
+                     <tbody>
+                      <tr valign="top"> 
+                       <td width="21"> <a name="ItemID8553"> <span class="PageNumberFontStyle">3. <br></span></a></td> 
+                       <td><span class="Normal"><label for="QID8553">Date:<br></label></span></td> 
+                      </tr> 
+                      <tr> 
+                       <td width="21">&nbsp;</td> 
+                       <td><input type="text" value="" class="date-pick" maxlength="" style="width:150px" name="QID8553" id="QID8553"><br><span class="InlineHelpSpanStyle"> mm/dd/yyyy </span></td> 
+                      </tr> 
+                      <tr> 
+                       <td width="21">&nbsp;</td> 
+                       <td>&nbsp;</td> 
+                      </tr> 
+                     </tbody>
+                    </table> 
+                    <table id="ctl05_OpenEndedOneLine" class="OpenEndedOneLineTable" cellspacing="0" cellpadding="2" width="100%"> 
+                     <tbody>
+                      <tr valign="top"> 
+                       <td width="21"> <a name="ItemID8554"> <span class="PageNumberFontStyle">4. <br></span></a></td> 
+                       <td><span class="Normal"><label for="QID8554">Time:<br></label></span></td> 
+                      </tr> 
+                      <tr> 
+                       <td width="21">&nbsp;</td> 
+                       <td><input type="text" value="" maxlength="150" style="width:675px" name="QID8554" id="QID8554"></td> 
+                      </tr> 
+                      <tr> 
+                       <td width="21">&nbsp;</td> 
+                       <td>&nbsp;</td> 
+                      </tr> 
+                     </tbody>
+                    </table> 
+                    <table id="ctl06_OpenEndedOneLine" class="OpenEndedOneLineTable" cellspacing="0" cellpadding="2" width="100%"> 
+                     <tbody>
+                      <tr valign="top"> 
+                       <td width="21"> <a name="ItemID28663"> <span class="PageNumberFontStyle">5. <br></span></a></td> 
+                       <td><span class="Normal"><label for="QID28663">Location:<br></label></span></td> 
+                      </tr> 
+                      <tr> 
+                       <td width="21">&nbsp;</td> 
+                       <td><input type="text" value="" maxlength="150" style="width:675px" name="QID28663" id="QID28663"></td> 
+                      </tr> 
+                      <tr> 
+                       <td width="21">&nbsp;</td> 
+                       <td>&nbsp;</td> 
+                      </tr> 
+                     </tbody>
+                    </table> 
+                    <table id="ctl07_OpenEndedCommentsBox" class="OpenEndedCommentsBoxTable" cellspacing="0" cellpadding="2" width="100%"> 
+                     <tbody>
+                      <tr valign="top"> 
+                       <td width="21"> <a name="ItemID8555"> <span class="PageNumberFontStyle">6. <br></span></a></td> 
+                       <td><span class="Normal"><label for="QID8555">Briefly Explain What You Saw or Heard During the Incident:<br></label></span></td> 
+                      </tr> 
+                      <tr> 
+                       <td width="21">&nbsp;</td> 
+                       <td><textarea style="width:675px" rows="5" name="QID8555" id="QID8555"></textarea></td> 
+                      </tr> 
+                      <tr> 
+                       <td width="21">&nbsp;</td> 
+                       <td>&nbsp;</td> 
+                      </tr> 
+                     </tbody>
+                    </table> 
+                    <table id="ctl08_OpenEndedCommentsBox" class="OpenEndedCommentsBoxTable" cellspacing="0" cellpadding="2" width="100%"> 
+                     <tbody>
+                      <tr valign="top"> 
+                       <td width="21"> <a name="ItemID8556"> <span class="PageNumberFontStyle">7. <br></span></a></td> 
+                       <td><span class="Normal"><label for="QID8556">Suspect Description:<br></label></span></td> 
+                      </tr> 
+                      <tr> 
+                       <td width="21">&nbsp;</td> 
+                       <td><textarea style="width:675px" rows="5" name="QID8556" id="QID8556"></textarea></td> 
+                      </tr> 
+                      <tr> 
+                       <td width="21">&nbsp;</td> 
+                       <td>&nbsp;</td> 
+                      </tr> 
+                     </tbody>
+                    </table> 
+                    <table id="ctl09_OpenEndedOneLine" class="OpenEndedOneLineTable" cellspacing="0" cellpadding="2" width="100%"> 
+                     <tbody>
+                      <tr valign="top"> 
+                       <td width="21"> <a name="ItemID8557"> <span class="PageNumberFontStyle">8. <br></span></a></td> 
+                       <td><span class="Normal"><label for="QID8557">Suspect's Name:<br></label></span></td> 
+                      </tr> 
+                      <tr> 
+                       <td width="21">&nbsp;</td> 
+                       <td><input type="text" value="" maxlength="150" style="width:675px" name="QID8557" id="QID8557"></td> 
+                      </tr> 
+                      <tr> 
+                       <td width="21">&nbsp;</td> 
+                       <td>&nbsp;</td> 
+                      </tr> 
+                     </tbody>
+                    </table> 
+                    <table id="ctl10_OpenEndedOneLine" class="OpenEndedOneLineTable" cellspacing="0" cellpadding="2" width="100%"> 
+                     <tbody>
+                      <tr valign="top"> 
+                       <td width="21"> <a name="ItemID8558"> <span class="PageNumberFontStyle">9. <br></span></a></td> 
+                       <td><span class="Normal"><label for="QID8558">Vehicle:<br></label></span></td> 
+                      </tr> 
+                      <tr> 
+                       <td width="21">&nbsp;</td> 
+                       <td><input type="text" value="" maxlength="150" style="width:675px" name="QID8558" id="QID8558"></td> 
+                      </tr> 
+                      <tr> 
+                       <td width="21">&nbsp;</td> 
+                       <td>&nbsp;</td> 
+                      </tr> 
+                     </tbody>
+                    </table> 
+                    <table id="ctl11_OpenEndedOneLine" class="OpenEndedOneLineTable" cellspacing="0" cellpadding="2" width="100%"> 
+                     <tbody>
+                      <tr valign="top"> 
+                       <td width="21"> <a name="ItemID8559"> <span class="PageNumberFontStyle">10. <br></span></a></td> 
+                       <td><span class="Normal"><label for="QID8559">Vehicle's License Plate:<br></label></span></td> 
+                      </tr> 
+                      <tr> 
+                       <td width="21">&nbsp;</td> 
+                       <td><input type="text" value="" maxlength="150" style="width:675px" name="QID8559" id="QID8559"></td> 
+                      </tr> 
+                      <tr> 
+                       <td width="21">&nbsp;</td> 
+                       <td>&nbsp;</td> 
+                      </tr> 
+                     </tbody>
+                    </table> 
+                   </div> &nbsp;</td> 
+                  <td width="5">&nbsp;</td> 
+                 </tr> 
+                 <tr> 
+                  <td colspan="3">&nbsp;</td> 
+                 </tr> 
+                </tbody>
+               </table> 
+               <!--end of question holder table --> 
+               <!--insert NavTableHTML.txt --> 
+               <table border="0" cellpadding="10" cellspacing="3" width="100%">
+                <tbody>
+                 <tr>
+                  <td width="25">&nbsp;</td>
+                  <td align="center"><a href="javascript:submitCheck(1);"><img border="0" alt="Done" name="btnDone" src="Resources/SurveyButtons/Done.gif"></a>&nbsp;&nbsp;<a href="javascript:submitCheck(4);"><img border="0" alt="Save" name="btnSave" src="Resources/SurveyButtons/Save.gif"></a>&nbsp;&nbsp;<img onclick="javascript:closeWindow();" style="cursor:hand" border="0" alt="Cancel" name="btnCancel" src="Resources/SurveyButtons/Cancel.gif">&nbsp;&nbsp;</td>
+                  <td width="5">&nbsp;</td>
+                 </tr>
+                </tbody>
+               </table> </td> 
+             </tr> 
+            </tbody>
+           </table> </td> 
+         </tr> 
+        </tbody>
+       </table> 
+       <!--end of outlined table --> 
+       <!--templateHTMLBottomBlock --> </td> 
+     </tr> 
+    </tbody>
+   </table> 
+   <!--end of outer template align table --> 
+   <!--start of hidden fields --> 
+   <input type="hidden" value="No" name="AdminOrOwnerEditResponse"> 
+   <input type="hidden" value="528110" name="AdminOrOwnerResponseID"> 
+   <input type="hidden" value="l210584" name="SurveyID"> 
+   <input type="hidden" value="0" name="EmailAddressID"> 
+   <input type="hidden" value="0" name="EmailMessageID"> 
+   <input type="hidden" value="" name="EID"> 
+   <input type="hidden" value="A" name="ResponseType"> 
+   <input type="hidden" value="" name="SurveyComplete"> 
+   <input type="hidden" value="0" name="DoneClicked"> 
+   <input type="hidden" value="" name="ItemIDValues"> 
+   <input type="hidden" value="PageNumber=1&amp;SurveyID=m6105p9" name="PostedQueryString"> 
+   <input type="hidden" value="PageNumber=1&amp;SurveyID=m6105p9" name="FirstPageQueryString"> 
+   <input type="hidden" value="1" name="DisplayPageNumber"> 
+   <input type="hidden" value="3/1/2015 6:11:46 PM" name="ResponseStartDate"> 
+   <input type="hidden" value="1" name="ActualPageNumber"> 
+   <input type="hidden" value="false" name="hdnUpdatingSurvey"> 
+   <input type="hidden" value="false" name="hdnMultipleUpdateableSurvey"> 
+   <input type="hidden" value="false" name="hdnIsUpdateable"> 
+   <input type="hidden" value="528110" name="ResponseID"> 
+   <input type="hidden" value="11" name="QuestionNumber"> 
+   <input type="hidden" value="1" name="prevQN"> 
+   <input type="hidden" value="0" name="buttonclicked" id="buttonclicked"> 
+   <input type="hidden" value="False" name="save" id="save"> 
+   <input type="hidden" value="," name="SP"> 
+   <input type="hidden" value="6" name="AL"> 
+   <!--end of hidden fields --> 
+   <script type="text/javascript">
+//<![CDATA[
+(function() {var fn = function() {$get("ScriptManager1_HiddenField").value = '';Sys.Application.remove_init(fn);};Sys.Application.add_init(fn);})();//]]>
+</script> 
+  </form>   
+ </body>
+</html>

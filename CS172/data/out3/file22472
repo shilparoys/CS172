@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+ <head> 
+  <title>World University of Bangladesh</title> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+  <link href="http://www.wub.edu.bd/assets/css/download.css" rel="stylesheet" type="text/css"> 
+  <!-- CSS Bootstrap & Custom --> 
+  <link href="http://www.wub.edu.bd/assets/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen"> 
+  <link href="http://www.wub.edu.bd/assets/css/font-awesome.min.css" rel="stylesheet" media="screen"> 
+  <link href="http://www.wub.edu.bd/assets/css/animate.css" rel="stylesheet" media="screen"> 
+  <link href="http://www.wub.edu.bd/assets/style.css" rel="stylesheet" media="screen"> 
+  <!-- Favicons --> 
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://www.wub.edu.bd/assets/images/ico/apple-touch-icon-144-precomposed.png"> 
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://www.wub.edu.bd/assets/images/ico/apple-touch-icon-114-precomposed.png"> 
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://www.wub.edu.bd/assets/images/ico/apple-touch-icon-72-precomposed.png"> 
+  <link rel="apple-touch-icon-precomposed" href="http://www.wub.edu.bd/assets/images/ico/apple-touch-icon-57-precomposed.png"> 
+  <link rel="shortcut icon" href="http://www.wub.edu.bd/assets/images/ico/favicon.ico"> 
+  <!-- JavaScripts --> 
+  <script src="http://www.wub.edu.bd/assets/js/jquery-1.10.2.min.js"></script> 
+  <script src="http://www.wub.edu.bd/assets/js/jquery-migrate-1.2.1.min.js"></script> 
+  <script src="http://www.wub.edu.bd/assets/js/modernizr.js"></script> 
+  <script src="http://www.wub.edu.bd/assets/bootstrap/js/bootstrap.min.js"></script> 
+  <script src="http://www.wub.edu.bd/assets/js/plugins.js"></script> 
+  <script src="http://www.wub.edu.bd/assets/js/custom.js"></script> 
+  <style type="text/css">
+	a{
+	cursor:pointer;
+	}
+	</style> 
+ </head> 
+ <body> 
+  <!-- This one in here is responsive menu for tablet and mobiles --> 
+  <div class="responsive-navigation visible-sm visible-xs"> 
+   <a href="#" class="menu-toggle-btn"> <i class="padding-top:20px;padding-bottom:20px;"></i> </a> 
+   <div class="responsive_menu"> 
+    <ul class="main_menu"> 
+     <li><a href="index.html">Home</a></li> 
+     <li><a>Academics<i class="fa fa-angle-down"></i></a> 
+      <ul> 
+       <li><a onclick="load_submenu('academic_courses_list');">Academic Courses<i class="fa fa-angle-right"></i></a> 
+        <ul style="display:none;" id="academic_courses_list" class="sub-menu3"> 
+         <li><a onclick="load_submenu('science_dept');">Science &amp; Engineering<i class="fa fa-angle-right"></i></a> 
+          <ul style="display:none;" class="sub-menu3" id="science_dept"> 
+           <li><a href="http://www.wub.edu.bd/courses/cse_for_mobile">CSE</a></li> 
+           <li><a href="http://www.wub.edu.bd/courses/cse_diploma_for_mobile">CSE(For Diploma Engr.)</a></li> 
+           <li><a href="http://www.wub.edu.bd/courses/eee_for_mobile">EEE</a></li> 
+           <li><a href="http://www.wub.edu.bd/courses/eee_diploma_for_mobile">EEE(For Diploma Engr.)</a></li> 
+           <li><a href="http://www.wub.edu.bd/courses/mecha_for_mobile">MTE</a></li> 
+           <li><a href="http://www.wub.edu.bd/courses/mecha_diploma_for_mobile">MTE(For Diploma Engr.)</a></li> 
+           <li><a href="http://www.wub.edu.bd/courses/civil_for_mobile">CIVIL</a></li> 
+           <li><a href="http://www.wub.edu.bd/courses/civil_diploma_for_mobile">CIVIL(For Diploma Engr.)</a></li> 
+           <li><a href="http://www.wub.edu.bd/courses/textile_for_mobile">Textile Engineering</a></li> 
+           <li><a href="http://www.wub.edu.bd/courses/architecture_for_mobile">Architecture</a></li> 
+           <li><a href="http://www.wub.edu.bd/courses/pharmacy_for_mobile">Pharmacy</a></li> 
+          </ul> </li> 
+         <li><a onclick="load_submenu('business_studies_list');">Business Studies<i class="fa fa-angle-right"></i></a> 
+          <ul class="sub-menu3" style="display:none;" id="business_studies_list"> 
+           <li><a href="http://www.wub.edu.bd/courses/bba_for_mobile">BBA</a></li> 
+           <li><a href="#">MBA(Regular)</a></li> 
+           <li><a href="#">MBA(Executive)</a></li> 
+           <li><a href="#">MBA(BBA/MCOM)</a></li> 
+           <li><a href="http://www.wub.edu.bd/courses/thm_for_mobile">THM</a></li> 
+          </ul> </li> 
+         <li><a onclick="load_submenu('arts_and_humanities');">Arts and Humanities<i class="fa fa-angle-right"></i></a> 
+          <ul class="sub-menu3" style="display:none;" id="arts_and_humanities"> 
+           <li><a href="#">BA in English</a></li> 
+           <li><a href="http://www.wub.edu.bd/courses/ma_english_1_year_for_mobile">MA in English(1 year)</a></li> 
+           <li><a href="http://www.wub.edu.bd/courses/ma_english_2_year_for_mobile">MA in English(2 year)</a></li> 
+           <li><a href="http://www.wub.edu.bd/courses/llb_priliminary_2_years_for_mobile">LLB(Preliminary)</a></li> 
+           <li><a href="http://www.wub.edu.bd/courses/llb_4_years_for_mobile">LLB(Regular)</a></li> 
+           <li><a href="http://www.wub.edu.bd/courses/llm_1_years_for_mobile">LLM(1 year)</a></li> 
+           <li><a href="http://www.wub.edu.bd/courses/llm_2_years_for_mobile">LLM(2 year)</a></li> 
+          </ul> </li> 
+        </ul> </li> 
+       <li><a href="#">Academic Policy</a></li> 
+       <li><a href="#">Academic Calendar</a></li> 
+       <li><a onclick="load_submenu('faculty_list');">Faculty<i class="fa fa-angle-right"></i></a> 
+        <ul style="display:none;" id="faculty_list" class="sub-menu3"> 
+         <li><a href="http://cse.wub.edu.bd">CSE</a></li> 
+         <li><a href="http://eee.wub.edu.bd">EEE</a></li> 
+         <li><a href="http://civil.wub.edu.bd">Civil</a></li> 
+         <li><a href="http://pharmacy.wub.edu.bd">Pharmacy</a></li> 
+         <li><a href="http://arch.wub.edu.bd">Architecture</a></li> 
+         <li><a href="http://business.wub.edu.bd">Business</a></li> 
+         <li><a href="http://english.wub.edu.bd">English</a></li> 
+         <li><a href="http://law.wub.edu.bd">Law</a></li> 
+        </ul> </li> 
+       <li><a href="#">Rules &amp; Regulation</a></li> 
+       <li><a href="http://www.wub.edu.bd/get_inspired/get_notice">Announcements</a></li> 
+       <li><a href="http://www.wub.edu.bd/get_inspired/exam_routine_for_mobile">Exam Schedule</a></li> 
+      </ul> </li> 
+     <li><a>Students<i class="fa fa-angle-down"></i></a> 
+      <ul> 
+       <li><a onclick="load_submenu('current_student_list');">Current Students<i class="fa fa-angle-right"></i></a> 
+        <ul style="display:none;" id="current_student_list" class="sub-menu3"> 
+         <li><a href="#">Student Portal</a></li> 
+         <li><a href="#">Webmail</a></li> 
+         <li><a href="http://www.wub.edu.bd/get_inspired/get_notice">Announcement</a></li> 
+         <li><a href="http://www.wub.edu.bd/library/library_for_mobile">Library</a></li> 
+         <li><a href="#">E-learning</a></li> 
+         <li><a href="#">Billing &amp; Payment</a></li> 
+         <li><a href="#">Clubs</a></li> 
+         <li><a href="#">Convocation</a></li> 
+        </ul> </li> 
+       <li><a onclick="load_submenu('prospective_student_list');">Prospective Students<i class="fa fa-angle-right"></i></a> 
+        <ul style="display:none;" id="prospective_student_list" class="sub-menu3"> 
+         <li><a href="#">Admission Information</a></li> 
+         <li><a href="http://www.wub.edu.bd/students/fees_for_mobile">Tuition Fees</a></li> 
+         <li><a href="#">Short Courses</a></li> 
+         <li><a href="#">Facilities</a></li> 
+         <li><a href="#">Digital Technology</a></li> 
+         <li><a href="http://wub.edu.bd/downloads/admission_form_wub.pdf">Admission Form</a></li> 
+         <li><a href="#">Online Application</a></li> 
+         <li><a href="http://www.wub.edu.bd/students/scholarship_and_waivers">Scholarships &amp; Waivers</a></li> 
+         <li><a href="#">Student Support</a></li> 
+         <li><a href="#">FAQ</a></li> 
+        </ul> </li> 
+       <li><a href="#">International Students</a></li> 
+      </ul> </li> 
+     <li><a>About<i class="fa fa-angle-down"></i></a> 
+      <ul> 
+       <li><a href="http://www.wub.edu.bd/about/history_for_mobile">History</a></li> 
+       <li><a href="http://www.wub.edu.bd/about/at_a_glance_for_mobile">WUB at a glance</a></li> 
+       <li><a onclick="load_submenu('campus_list');">Campuses<i class="fa fa-angle-right"></i></a> 
+        <ul style="display:none;" id="campus_list" class="sub-menu3"> 
+         <li><a href="#">New Campus</a></li> 
+        </ul> </li> 
+       <li><a href="http://www.wub.edu.bd/about/accreditation_for_mobile">Accreditation</a></li> 
+       <li><a onclick="load_submenu('socail_list');">Social Responsibility<i class="fa fa-angle-right"></i></a> 
+        <ul style="display:none;" id="socail_list" class="sub-menu3"> 
+         <li><a href="#">Award &amp; Achievement</a></li> 
+        </ul> </li> 
+       <li><a href="http://www.wub.edu.bd/about/administration_for_mobile">Management</a></li> 
+       <li><a href="http://www.wub.edu.bd/contact/index_for_mobile">Contact Us</a></li> 
+      </ul> </li> 
+     <li><a>Staff<i class="fa fa-angle-down"></i></a> 
+      <ul> 
+       <li><a href="#">Staff Portal</a></li> 
+       <li><a href="http://www.wub.edu.bd/get_inspired/get_notice">Announcement</a></li> 
+       <li><a href="#">Webmail</a></li> 
+       <li><a href="#">FAQ</a></li> 
+       <li><a href="http://www.wub.edu.bd/library/library_for_mobile">Library</a></li> 
+       <li><a href="#">Repository</a></li> 
+      </ul> </li> 
+     <li><a>Get Inspired<i class="fa fa-angle-down"></i></a> 
+      <ul> 
+       <li><a href="http://www.wub.edu.bd/get_inspired/publications_for_mobile">Publication</a></li> 
+       <li><a onclick="load_submenu('ceo_list');">Research<i class="fa fa-angle-right"></i></a> 
+        <ul style="display:none;" id="ceo_list" class="sub-menu3"> 
+         <li><a href="#">Center of Excellence</a></li> 
+        </ul> </li> 
+       <li><a href="#">Media Room</a></li> 
+       <li><a onclick="load_submenu('clubs_list');">Clubs<i class="fa fa-angle-right"></i></a> 
+        <ul style="display:none;" id="clubs_list" class="sub-menu3"> 
+         <li><a href="#">Computer Club </a></li> 
+         <li><a href="#">Pharmacy Club</a></li> 
+         <li><a href="http://www.wub.edu.bd/get_inspired/textile_club_for_mobile">Textile Club</a></li> 
+         <li><a href="http://adventure.wub.edu.bd">Adventure Club</a></li> 
+         <li><a href="http://cultural.wub.edu.bd">Cultural Club</a></li> 
+         <li><a href="http://sports.wub.edu.bd">Sports Club</a></li> 
+        </ul> </li> 
+       <li><a onclick="load_submenu('events_list');">Events<i class="fa fa-angle-right"></i></a> 
+        <ul style="display:none;" id="events_list" class="sub-menu3"> 
+         <li><a href="#">Archive </a></li> 
+         <li><a href="#">Ongoing</a></li> 
+         <li><a href="#">Upcoming</a></li> 
+        </ul> </li> 
+       <li><a href="http://worlduniversity.weebly.com/" target="_blank">Photo Gallery</a></li> 
+       <li><a href="http://www.wub.edu.bd/get_inspired/video_gallery_for_mobile">Video Gallery</a></li> 
+       <li><a href="http://convocation.wub.edu.bd">Convocation</a></li> 
+       <li><a href="http://www.wub.edu.bd/get_inspired/allumni_form">Alumni </a></li> 
+      </ul> </li> 
+     <li><a href="http://career.wub.edu.bd/">Jobs</a></li> 
+    </ul> 
+    <!-- /.main_menu --> 
+    <ul class="social_icons"> 
+     <li><a href="#"><i class="fa fa-facebook"></i></a></li> 
+     <li><a href="#"><i class="fa fa-twitter"></i></a></li> 
+     <li><a href="#"><i class="fa fa-pinterest"></i></a></li> 
+     <li><a href="#"><i class="fa fa-google-plus"></i></a></li> 
+     <li><a href="#"><i class="fa fa-rss"></i></a></li> 
+    </ul> 
+    <!-- /.social_icons --> 
+   </div> 
+   <!-- /.responsive_menu --> 
+  </div> 
+  <!-- /responsive_navigation --> 
+  <div class="clear"></div>
+  <br> 
+  <div class="container"> 
+   <div class="row"> 
+    <div class="col-md-12"> 
+     <a href="http://www.wub.edu.bd/home/convocation2015"> 
+      <text style="font-size:18px;color:green;"> 
+       <b><i style="font-size:36px;color:red;">C</i>ONVOCATION-
+        <text style="color:red;">
+         2015 
+        </text> &nbsp;&nbsp;&nbsp;</b>
+      </text>
+      <text style="color:red;">
+       <marquee behavior="alternate" width="80%">
+        <b style="font-size:16px;"> Registration by: January 18, 2015(Extended on Request) (Click for registration form)</b>
+       </marquee> 
+      </text> </a> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="container"> 
+   <div class="row"> 
+    <div class="col-md-8"> 
+     <div class="main-slideshow"> 
+      <div class="flexslider"> 
+       <ul class="slides"> 
+        <li> <img src="http://www.wub.edu.bd/assets/images/slide1.jpg"> 
+         <div class="slider-caption"> 
+          <!--<h2><a href="blog-single.html">When a Doctor’s Visit Is a Guilt Trip</a></h2>
+                                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>--> 
+         </div> </li> 
+        <li> <img src="http://www.wub.edu.bd/assets/images/slide3.jpg"> 
+         <div class="slider-caption"> 
+          <!--<h2><a href="blog-single.html">Corin Sworn wins Max Mara Art Prize</a></h2>
+                                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>--> 
+         </div> </li> 
+        <li> <img src="http://www.wub.edu.bd/assets/images/slide4.jpg"> 
+         <div class="slider-caption"> 
+          <!--<h2><a href="blog-single.html">Corin Sworn wins Max Mara Art Prize</a></h2>
+                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>--> 
+         </div> </li> 
+        <li> <img src="http://www.wub.edu.bd/assets/images/slide5.jpg"> 
+         <div class="slider-caption"> 
+          <!--<h2><a href="blog-single.html">Corin Sworn wins Max Mara Art Prize</a></h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>--> 
+         </div> </li> 
+        <li> <img src="http://www.wub.edu.bd/assets/images/slide6.jpg"> 
+         <div class="slider-caption"> 
+          <!--<h2><a href="blog-single.html">Corin Sworn wins Max Mara Art Prize</a></h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>--> 
+         </div> </li> 
+        <li> <img src="http://www.wub.edu.bd/assets/images/slide7.jpg"> 
+         <div class="slider-caption"> 
+          <!--<h2><a href="blog-single.html">Corin Sworn wins Max Mara Art Prize</a></h2>
+                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>--> 
+         </div> </li> 
+        <li> <img src="http://www.wub.edu.bd/assets/images/slide8.jpg"> 
+         <div class="slider-caption"> 
+          <!--<h2><a href="blog-single.html">Corin Sworn wins Max Mara Art Prize</a></h2>
+                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>--> 
+         </div> </li> 
+       </ul> 
+       <!-- /.slides --> 
+      </div> 
+      <!-- /.flexslider --> 
+     </div> 
+     <!-- /.main-slideshow --> 
+    </div> 
+    <!-- /.col-md-8 --> 
+    <div class="col-md-4"> 
+     <div class="widget-main"> 
+      <div class="widget-inner"> 
+       <div class="prof-list-item clearfix"> 
+        <div class="prof-details"> 
+         <a href="#"><h5 class="prof-name-list">Admission Information</h5></a> 
+        </div> 
+        <!-- /.prof-details --> 
+       </div> 
+       <!-- /.prof-list-item --> 
+       <div class="prof-list-item clearfix"> 
+        <div class="prof-details"> 
+         <a target="__blank" href="http://wub.edu.bd/downloads/admission_form_wub.pdf"><h5 class="prof-name-list">Online Applications</h5></a> 
+        </div> 
+        <!-- /.prof-details --> 
+       </div> 
+       <!-- /.prof-list-item --> 
+       <div class="prof-list-item clearfix"> 
+        <div class="prof-details"> 
+         <a href="http://www.wub.edu.bd/students/scholarship_and_waivers_for_mobile"><h5 class="prof-name-list">Scholarship &amp; Waivers</h5></a> 
+        </div> 
+        <!-- /.prof-details --> 
+       </div> 
+       <!-- /.prof-list-item --> 
+       <div class="prof-list-item clearfix"> 
+        <div class="prof-details"> 
+         <a href="#"><h5 class="prof-name-list">Programs</h5></a> 
+        </div> 
+        <!-- /.prof-details --> 
+       </div> 
+       <!-- /.prof-list-item --> 
+       <div class="prof-list-item clearfix"> 
+        <div class="prof-details"> 
+         <a href="http://www.wub.edu.bd/students/fees_for_other_device"><h5 class="prof-name-list">Tution Fees</h5></a> 
+        </div> 
+        <!-- /.prof-details --> 
+       </div> 
+       <div class="prof-list-item clearfix"> 
+        <div class="prof-details"> 
+         <a href="http://www.wub.edu.bd/contact/contact_short_course_for_other_device"><h5 class="prof-name-list">Short Courses</h5></a> 
+        </div> 
+        <!-- /.prof-details --> 
+       </div> 
+      </div> 
+      <!-- /.widget-inner --> 
+     </div> 
+     <!-- /.widget-main --> 
+    </div> 
+    <!-- /.col-md-4 --> 
+   </div> 
+  </div> 
+  <div class="container"> 
+   <div class="row"> 
+    <!-- Here begin Main Content --> 
+    <div class="col-md-8"> 
+     <div class="row"> 
+      <div class="col-md-6"> 
+       <div class="widget-main"> 
+        <div class="widget-main-title"> 
+         <h4 class="widget-title">Announcements</h4> 
+        </div> 
+        <div class="widget-inner" style="overflow:auto;height:260px;"> 
+         <div class="prof-list-item clearfix"> 
+          <div class="prof-details"> 
+           <a href="http://www.wub.edu.bd/get_inspired/notice_details/35"><h5 class="prof-name-list">Convocation 2015 Re-Scheduled</h5></a> 
+          </div> 
+          <!-- /.prof-details --> 
+         </div> 
+         <!-- /.prof-list-item --> 
+         <div class="prof-list-item clearfix"> 
+          <div class="prof-details"> 
+           <a href="http://www.wub.edu.bd/get_inspired/notice_details/34"><h5 class="prof-name-list">CONVOCATION 2015</h5></a> 
+          </div> 
+          <!-- /.prof-details --> 
+         </div> 
+         <!-- /.prof-list-item --> 
+         <div class="prof-list-item clearfix"> 
+          <div class="prof-details"> 
+           <a href="http://www.wub.edu.bd/get_inspired/notice_details/33"><h5 class="prof-name-list">Press Release</h5></a> 
+          </div> 
+          <!-- /.prof-details --> 
+         </div> 
+         <!-- /.prof-list-item --> 
+         <div class="prof-list-item clearfix"> 
+          <div class="submit_field"> 
+           <a href="http://www.wub.edu.bd/get_inspired/get_notice"> <input class="mainBtn pull-right" type="submit" name="" value="See All Announcements" style=""> </a> 
+          </div> 
+          <!-- /.submit-field --> 
+         </div> 
+        </div> 
+        <!-- /.widget-inner --> 
+       </div> 
+       <!-- /.widget-main --> 
+      </div> 
+      <div class="col-md-6"> 
+       <div class="widget-main"> 
+        <div class="widget-main-title"> 
+         <h4 class="widget-title">Events</h4> 
+        </div> 
+        <div class="widget-inner" style="overflow:auto;height:260px;"> 
+         <div class="prof-list-item clearfix"> 
+          <div class="prof-details"> 
+           <a href="http://www.wub.edu.bd/get_inspired/event_details/29"><h5 class="prof-name-list">Orientation Program of WUB</h5></a> 
+          </div> 
+          <!-- /.prof-details --> 
+         </div> 
+         <!-- /.prof-list-item --> 
+         <div class="prof-list-item clearfix"> 
+          <div class="prof-details"> 
+           <a href="http://www.wub.edu.bd/get_inspired/event_details/1"><h5 class="prof-name-list">3rd WUB CSE Festival - 2014</h5></a> 
+          </div> 
+          <!-- /.prof-details --> 
+         </div> 
+         <!-- /.prof-list-item --> 
+         <div class="prof-list-item clearfix"> 
+          <div class="prof-details"> 
+           <a href="http://www.wub.edu.bd/get_inspired/event_details/2"><h5 class="prof-name-list">PITHA UTSHOB 2014 </h5></a> 
+          </div> 
+          <!-- /.prof-details --> 
+         </div> 
+         <!-- /.prof-list-item --> 
+         <div class="prof-list-item clearfix"> 
+          <div class="submit_field"> 
+           <a href="http://www.wub.edu.bd/get_inspired/get_events"> <input class="mainBtn pull-right" type="submit" name="" value="See All Events" style=""> </a> 
+          </div> 
+          <!-- /.submit-field --> 
+         </div> 
+        </div> 
+        <!-- /.widget-inner --> 
+       </div> 
+       <!-- /.widget-main --> 
+      </div> 
+     </div> 
+     <!-- /.row --> 
+     <div class="row"> 
+      <!-- Show Latest Blog News --> 
+      <div class="col-md-6"> 
+       <div class="widget-main"> 
+        <div class="widget-main-title"> 
+         <h4 class="widget-title">Suggested Video</h4> 
+        </div> 
+        <!-- /.widget-main-title --> 
+        <div class="widget-inner"> 
+         <iframe width="320" height="240" src="//www.youtube.com/embed/pYAIYqHp4RM" frameborder="0" allowfullscreen></iframe> 
+        </div> 
+        <!-- /.widget-inner --> 
+       </div> 
+       <!-- /.widget-main --> 
+      </div> 
+      <!-- /col-md-6 --> 
+      <div class="col-md-6"> 
+       <div class="widget-main"> 
+        <div class="widget-main-title"> 
+         <h4 class="widget-title">Facebook Official Fan Page</h4> 
+        </div> 
+        <!-- /.widget-main-title --> 
+        <div class="widget-inner"> 
+         <iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fwubedubd&amp;width=240&amp;height=230&amp;show_faces=true&amp;colorscheme=light&amp;stream=false&amp;border_color=%23f2f0eb&amp;header=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:320px; height:240px;" allowtransparency="true"></iframe> 
+        </div> 
+        <!-- /.widget-inner --> 
+       </div> 
+       <!-- /.widget-main --> 
+      </div> 
+      <!-- /col-md-6 --> 
+     </div> 
+     <!-- /.row --> 
+    </div> 
+    <!-- /.col-md-8 --> 
+    <!-- Here begin Sidebar --> 
+    <div class="col-md-4"> 
+     <div class="widget-main"> 
+      <div class="widget-main-title"> 
+       <h4 class="widget-title">News</h4> 
+      </div> 
+      <div class="widget-inner" style="overflow:auto;height:260px;"> 
+       <div class="prof-list-item clearfix"> 
+        <div class="prof-details"> 
+         <a href="http://www.wub.edu.bd/get_inspired/news_details/1"><h5 class="prof-name-list">Ph.D. Degree Confirmed</h5></a> 
+        </div> 
+        <!-- /.prof-details --> 
+       </div> 
+       <!-- /.prof-list-item --> 
+       <div class="prof-list-item clearfix"> 
+        <div class="prof-details"> 
+         <a href="http://www.wub.edu.bd/get_inspired/news_details/2"><h5 class="prof-name-list">ওয়ার্ল্ড ইউনিভার্সিটি অব বাংলাদেশ এবং বিসিএসআইআর এর মাঝে শিক্ষা কার্যক্রম বিনিময় সংক্রান্ত সমঝোতা চুক্তি স্বাক্ষর</h5></a> 
+        </div> 
+        <!-- /.prof-details --> 
+       </div> 
+       <!-- /.prof-list-item --> 
+       <div class="prof-list-item clearfix"> 
+        <div class="prof-details"> 
+         <a href="http://www.wub.edu.bd/get_inspired/news_details/3"><h5 class="prof-name-list">তোমাদের চাকুরির পিছনে ঘুরতে হবে না, চাকুরি তোমাদের পিছনে ঘুরবে : উপাচার্য ড. আবদুল মান্নান চৌধুরী</h5></a> 
+        </div> 
+        <!-- /.prof-details --> 
+       </div> 
+       <!-- /.prof-list-item --> 
+       <div class="prof-list-item clearfix"> 
+        <div class="submit_field"> 
+         <a href="http://www.wub.edu.bd/get_inspired/get_news"> <input class="mainBtn pull-right" type="submit" name="" value="See All News" style=""> </a> 
+        </div> 
+        <!-- /.submit-field --> 
+       </div> 
+      </div> 
+      <!-- /.widget-inner --> 
+     </div> 
+     <!-- /.widget-main --> 
+     <div class="widget-main"> 
+      <div class="widget-main-title"> 
+       <h4 class="widget-title">Resource Center</h4> 
+      </div> 
+      <div class="widget-inner"> 
+       <div class="prof-list-item clearfix"> 
+        <div class="prof-details"> 
+         <a href="#"> <h5 class="prof-name-list">Library</h5></a> 
+        </div> 
+        <!-- /.prof-details --> 
+       </div> 
+       <!-- /.prof-list-item --> 
+       <div class="prof-list-item clearfix"> 
+        <div class="prof-details"> 
+         <a href="http://www.wub.edu.bd/get_inspired/textile_club"><h5 class="prof-name-list">Textile Club</h5></a> 
+        </div> 
+        <!-- /.prof-details --> 
+       </div> 
+       <!-- /.prof-list-item --> 
+       <div class="prof-list-item clearfix"> 
+        <div class="prof-details"> 
+         <a href="#"><h5 class="prof-name-list">Computer Club</h5></a> 
+        </div> 
+        <!-- /.prof-details --> 
+       </div> 
+       <!-- /.prof-list-item --> 
+       <div class="prof-list-item clearfix"> 
+        <div class="prof-details"> 
+         <a href="#"><h5 class="prof-name-list">Pharmacy Club</h5></a> 
+        </div> 
+        <!-- /.prof-details --> 
+       </div> 
+       <!-- /.prof-list-item --> 
+       <div class="prof-list-item clearfix"> 
+        <div class="prof-details"> 
+         <a href="http://adventure.wub.edu.bd"><h5 class="prof-name-list">Adventure Club</h5></a> 
+        </div> 
+        <!-- /.prof-details --> 
+       </div> 
+       <!-- /.prof-list-item --> 
+      </div> 
+      <!-- /.widget-inner --> 
+     </div> 
+     <!-- /.widget-main --> 
+    </div> 
+   </div> 
+  </div> 
+  <!-- Footer --> 
+  <!-- begin The Footer --> 
+  <footer class="site-footer"> 
+   <div class="container"> 
+    <div class="row"> 
+     <div class="col-md-3"> 
+      <div class="footer-widget"> 
+       <h4 class="footer-widget-title">Contact Us</h4> 
+       <p> Main campus:<br>Plot - 3/A, Road - 4 Dhanmondi,<br> Dhaka - 1205<br> Tel: (0088 02) 961 1410,<br> (0088 02) 961 1411 - 3;<br> EXT -- 111, 112 </p> 
+      </div> 
+     </div> 
+     <div class="col-md-2"> 
+      <div class="footer-widget"> 
+       <h4 class="footer-widget-title">Home</h4> 
+       <ul class="list-links"> 
+        <li><a href="http://www.wub.edu.bd/students/scholarship_and_waivers_for_mobile">Scholarships &amp; Waivers</a></li> 
+        <li><a href="http://www.wub.edu.bd/contact/index_for_mobile">Contact Us</a></li> 
+        <li><a href="#">Our Teachers</a></li> 
+        <li><a href="#">Campuses</a></li> 
+        <li><a href="#">Photo Gallery</a></li> 
+        <li><a href="http://www.wub.edu.bd/get_inspired/video_gallery_for_mobile">Video Gallery</a></li> 
+        <li><a href="#">My Wub</a></li> 
+       </ul> 
+      </div> 
+     </div> 
+     <div class="col-md-2"> 
+      <div class="footer-widget"> 
+       <h4 class="footer-widget-title">Administration</h4> 
+       <ul class="list-links"> 
+        <li><a href="#">Vice Chancellor</a></li> 
+        <li><a href="#">Registrar's Office</a></li> 
+        <li><a href="#">Faculty/Staff</a></li> 
+        <li><a href="#">International</a></li> 
+        <li><a href="#">Postdocs</a></li> 
+        <li><a href="http://www.wub.edu.bd/get_inspired/allumni_form_for_mobile">Alumni</a></li> 
+       </ul> 
+      </div> 
+     </div> 
+     <div class="col-md-2"> 
+      <div class="footer-widget"> 
+       <h4 class="footer-widget-title">About</h4> 
+       <ul class="list-links"> 
+        <li><a href="http://www.wub.edu.bd/about/accreditation_for_mobile">Accreditation</a></li> 
+        <li><a href="http://www.wub.edu.bd/about/history_for_mobile">History</a></li> 
+        <li><a href="#">Mission</a></li> 
+        <li><a href="http://www.wub.edu.bd/get_inspired/publications_for_mobile">Publications</a></li> 
+        <li><a href="#">Media Room</a></li> 
+       </ul> 
+      </div> 
+     </div> 
+     <div class="col-md-3"> 
+      <div class="footer-widget"> 
+       <ul class="footer-media-icons"> 
+        <li><a href="#" class="fa fa-facebook"></a></li> 
+        <li><a href="#" class="fa fa-twitter"></a></li> 
+        <li><a href="#" class="fa fa-google-plus"></a></li> 
+        <li><a href="#" class="fa fa-youtube"></a></li> 
+        <li><a href="#" class="fa fa-linkedin"></a></li> 
+        <li><a href="#" class="fa fa-instagram"></a></li> 
+        <li><a href="#" class="fa fa-apple"></a></li> 
+        <li><a href="#" class="fa fa-rss"></a></li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <!-- /.row --> 
+    <div class="bottom-footer"> 
+     <div class="row"> 
+      <div class="col-md-5"> 
+       <p class="small-text">© Copyright 2014. Universe designed by <a href="#">ITSBD</a></p> 
+      </div> 
+      <!-- /.col-md-5 --> 
+      <div class="col-md-7"> 
+       <ul class="footer-nav"> 
+        <li><a href="http://www.wub.edu.bd/home">Home</a></li> 
+        <li><a href="#">Courses</a></li> 
+        <li><a href="#">Events</a></li> 
+        <li><a href="#">Blog</a></li> 
+        <li><a href="#">Shortcodes</a></li> 
+        <li><a href="http://www.wub.edu.bd/contact/index_for_mobile">Contact</a></li> 
+       </ul> 
+      </div> 
+      <!-- /.col-md-7 --> 
+     </div> 
+     <!-- /.row --> 
+    </div> 
+    <!-- /.bottom-footer --> 
+   </div> 
+   <!-- /.container --> 
+  </footer> 
+  <!-- /.site-footer -->  
+  <script type="text/javascript">
+	
+		function load_submenu(name){
+		
+			//alert();
+			 var name =name;
+			 //alert(name);
+			$("#" + name).toggle();
+		
+		
+		}
+		
+	
+	</script> 
+ </body>
+</html>

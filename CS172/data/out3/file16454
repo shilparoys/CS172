@@ -1,0 +1,983 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+  <meta name="Author" content="StatCounter"> 
+  <meta name="Keywords" content="StatCounter API"> 
+  <meta name="Description" content="StatCounter API"> 
+  <meta name="format-detection" content="telephone=no"> 
+  <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+  <link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-144x144-precomposed.png"> 
+  <title>StatCounter API</title> 
+  <link rel="alternate" type="application/rss+xml" title="StatCounter Blog RSS Feed" href="http://blog.statcounter.com/feed/"> 
+  <link rel="stylesheet" href="http://statcounter.com/css/packed/global-e015648938.css" type="text/css" media="Screen">
+  <script type="text/javascript" src="http://statcounter.com/js/packed/base-956eb29e94.js"></script>
+  <script type="text/javascript">var _statcounter = _statcounter || [];</script> 
+  <!--[if ! IE 7]><!--> 
+  <style type="text/css">
+th{ text-align: left; }
+</style> 
+  <!--<![endif]--> 
+  <!--[if lt IE 7]> <style type="text/css">
+#fan-home{ width: 332px; margin-top: -20px; }
+#project-home{ margin-left: 275px; }
+#ex-l-home{ margin-left: 280px; width: 340px;  }
+#configure-home{ margin-left: 219px; width: 400px;  }
+#country-home{ margin-left: 270px; width: 350px  }
+.green-tall .inner{ cursor: pointer;}
+#date-tabs li {  background:url(/images/left-corner.ie6.png) no-repeat left top; } 
+#date-tabs span { background:url(/images/right-corner.ie6.png) no-repeat right top; } 
+#date-tabs .selected, #date-outer-left {  background-image:url(/images/left-corner.ie6.png);}
+#date-tabs .selected span, #date-outer-right {  background-image:url(/images/right-corner.ie6.png); }
+.wide-body #stats-wrapper { width: 54em; }
+#logo { margin-left: 18px; }
+.half-button { float: right; }
+.wide-body #content {width: 100% !important }
+#content-inner { border: 1px solid white;  }
+.log-bar-frame { left: -4px; font-size: 2px; }
+#feedback-tab { position: absolute; }
+#return-to-old-site-tab { position: absolute; }
+#feedback-dialog { position: absolute; }
+</style> 
+<script type="text/javascript">
+connect(window, "onDOMload", function(e){
+  connectEach($$("label"), "onclick", function(e){
+    var forattr = getNodeAttribute(e.src(), "for");
+    if(forattr && $(forattr)){
+      $(forattr).click()
+    } else {
+      var firstChildInput = getFirstElementByTagAndClassName("input", null, e.src());
+      if(firstChildInput){
+        firstChildInput.click()
+      }
+    }
+  });
+});
+</script>
+<![endif]--> 
+  <!--[if IE 6]> 
+<style type="text/css">
+#switch-to-old-statcounter-tab, #feedback-tab { display: none !important; }
+#left-col { margin-left: 8px; }
+#left-login-form div { position: relative; top: 2px; left: -1px; }
+</style> 
+<![endif]--> 
+  <!--[if lte IE 7]> 
+<style type="text/css">
+.standard td { vertical-align: top; }
+.green-tall h3{ margin-top: 34px; }
+#content { background: transparent url(/images/content-edge.png) repeat left top; }
+#content-outer { background: transparent url(/images/content-edge.png) repeat right top; }
+#content-container { height: 100%;  }
+.banner, .flush-left #user-controls { right: 39px; }
+.header-right {margin-top: -1em; }
+/*.wide-body #main-col{ border: 1px solid black;  }*/
+.wide-body #main-col-inner{ /*margin-left: 382px; border: 1px solid Yellow;*/  }
+/*#ad-col{ border: 1px solid Green; }*/
+#project-list .stats-link { white-space: normal; background-image: url(/images/stats.png); background-position: 0 1px; }
+#project-list td { vertical-align: middle; }
+.snippet-right-column { position: static; }
+button div{ zoom: 1; display: inline; }
+</style> 
+<![endif]--> 
+  <!--[if IE 7]> 
+<style type="text/css">
+#left-login-form button { padding: 3px 5px 3px 5px !important; }
+</style> 
+<![endif]--> 
+  <!--[if lte IE 8]> 
+<style type="text/css">
+.cbox-button { top: -1px; }
+.cbox-input { padding-bottom: 4px !important; }
+.wide-body #content-container, /*.wide-body #content-inner */ { width: 100%; }
+.shrinkwrap { zoom: 1; display: inline; }
+#nav { width: 620px;}
+.jqmWindow { position: absolute; top: expression((document.documentElement.scrollTop || document.body.scrollTop) + Math.round(17 * (document.documentElement.offsetHeight || document.body.clientHeight) / 100) + 'px'); } 
+.iw{ margin-right: 10px; }
+button { min-height: 0 !important; }
+</style> 
+<![endif]--> 
+  <!--[if IE 8]> 
+<style type="text/css">
+#left-login-form button { padding-top: 2px; }
+#add-filter.down { padding-bottom: 4px; }
+</style> 
+<![endif]--> 
+  <!--[if IE 9]> 
+<style type="text/css">
+.fixed-by-colspan{ table-layout: auto; }
+</style> 
+<![endif]--> 
+ </head> 
+ <body class="no-banner">
+  <div id="current-time"></div>
+  <div style="display:none;">
+   <input type="hidden" id="show-full-url" value="Multiline URLs">
+   <input type="hidden" id="wrap-ref-l" value="1">
+   <input type="hidden" id="wrap-dl-l" value="1">
+   <input type="hidden" id="wrap-ex-l" value="1">
+   <input type="hidden" id="wrap-pj-l" value="1">
+   <input type="hidden" id="wrap-pj-t" value="1">
+   <input type="hidden" id="wrap-mix-l" value="1">
+   <input type="hidden" id="wrap-m-col" value="1">
+  </div>
+  <div id="feedback-tab"></div>
+  <div id="overlay"></div>
+  <div id="mainframe">
+   <div id="cookie-info">
+    <a href="/about/cookies/"></a>
+   </div>
+   <div id="masthead">
+    <div id="logo-push" style="margin-right:-290px">
+     <div class="nav-tabs">
+      <ul></ul>
+     </div>
+    </div>
+    <a href="/"></a>
+    <a href="."><img id="logo" class="api" src="http://www.statcounter.com/images/statcounter-api-logo.png" alt="StatCounter API"></a>
+    <div id="nav" class="nav-tabs">
+     <ul></ul>
+    </div>
+   </div>
+   <div id="menu">
+    <div class="outer">
+     <div class="inner"> 
+      <ul id="subnav"> 
+       <li><a href="/.">Home</a></li> 
+       <li class="current">Documentation</li> 
+       <li><a href="/feedback">Feedback</a></li> 
+      </ul> 
+     </div>
+    </div>
+   </div>
+   <div id="content" class="wide">
+    <div id="content-outer">
+     <div id="content-inner">
+      <div class="section">
+       <h2>StatCounter API Documentation - Version 3</h2> 
+       <ul> 
+        <li><a href="#introduction">1. Introduction</a></li> 
+        <li><a href="#api-password">2. API Login Credentials</a></li> 
+        <li><a href="#construct-call">3. Constructing an API Call</a></li> 
+        <li><a href="#retrieve-stats">4. Retrieve Stats</a> 
+         <ul> 
+          <li><a href="#date-range">4.1 Date Range Selection</a></li> 
+          <li><a href="#batch">4.2 Multiple Project Selection</a></li> 
+          <li><a href="#summary">4.3 Summary Stats</a> 
+           <ul> 
+            <li><a href="#summary-hourly">4.3.1 Hourly</a></li> 
+            <li><a href="#summary-daily">4.3.2 Daily</a></li> 
+            <li><a href="#summary-weekly">4.3.3 Weekly</a></li> 
+            <li><a href="#summary-monthly">4.3.4 Monthly</a></li> 
+            <li><a href="#summary-quarterly">4.3.5 Quarterly</a></li> 
+            <li><a href="#summary-yearly">4.3.6 Yearly</a></li> 
+           </ul> </li> 
+          <li><a href="#visitors">4.4 Recent Visitors</a></li> 
+          <li><a href="#popular">4.5 Popular Pages</a></li> 
+          <li><a href="#entry">4.6 Entry Pages</a></li> 
+          <li><a href="#exit">4.7 Exit Pages</a></li> 
+          <li><a href="#camefrom">4.8 Came From</a></li> 
+          <li><a href="#recent_camefrom">4.9 Recent Came From</a></li> 
+          <li><a href="#keyword-activity">4.10 Recent Keyword Activity</a></li> 
+          <li><a href="#browsers">4.11 Browsers</a></li> 
+          <li><a href="#os">4.12 Operating Systems</a></li> 
+          <li><a href="#search_engine">4.13 Search Engines</a></li> 
+          <li><a href="#country">4.14 Country</a></li> 
+          <li><a href="#pageload">4.15 Recent Pageload Activity</a></li> 
+          <li><a href="#exit-links">4.16 Exit Links</a></li> 
+          <li><a href="#exit-link-activity">4.17 Exit Link Activity</a></li> 
+          <li><a href="#downloads">4.18 Downloads</a></li> 
+          <li><a href="#download-link-activity">4.19 Download Link Activity</a></li> 
+          <li><a href="#visit-length">4.20 Visit Length</a></li> 
+          <li><a href="#returning-visits">4.21 Returning Visits</a></li> 
+          <li><a href="#keyword-analysis">4.22 Keyword Analysis</a></li> 
+          <li><a href="#lookup-visitor">4.23 Lookup Visitor Navigation</a></li> 
+          <li><a href="#lookup-visitor-info">4.24 Lookup Visitor Info</a></li> 
+          <li><a href="#mobile-devices">4.25 Mobile Devices</a></li> 
+          <li><a href="#platform">4.26 Platform</a></li> 
+          <li><a href="#export">4.27 Export</a></li> 
+         </ul> </li> 
+        <li><a href="#create-project">5. Create a New Project</a></li> 
+        <li><a href="#update-project">6. Update Project Settings</a></li> 
+        <li><a href="#increase-logsize">7. Increase Project Log Size</a></li> 
+        <li><a href="#retrieve-logsizes">8. Retrieve Account Log Sizes</a></li> 
+        <li><a href="#user-details">9. Retrieve User Details</a></li> 
+        <li><a href="#integrate-stats">10. Integrate StatCounter Stats using an iframe</a></li> 
+        <li><a href="#user-projects">11. Retrieve User Project Details</a></li> 
+        <li><a href="#select-project">12. Select Project Details</a></li> 
+        <li><a href="#create-ip-label">13. Create IP Label</a></li> 
+       </ul> 
+       <ul id="faq" style="list-style-type: none;"> 
+        <li> <h3 id="introduction">1. Introduction <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('introduction')" href="#introduction">#</a></h3> <p>The StatCounter API accepts requests via the HTTP GET method. Results are returned in either JSON (default) or XML format. To perform the required task, simply send the necessary HTTP request, as described in this specification.</p> <p>All API calls return an error response in the case of a failure. The structure of an error response (JSON format) is as follows:</p> 
+         <div class="api-output">
+          { "@attributes": { "status": "fail", }, "error": [{ "code": "CODE", "description": "ERROR_DESCRIPTION" }] }
+         </div> </li> 
+        <li> <h3 id="api-password">2. API Login Credentials <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('api-password')" href="#api-password">#</a></h3> <p>To use the StatCounter API, you will require a StatCounter account with a paid upgrade. If you do not already have an account, you must <a href="http://statcounter.com/sign-up/">sign up for an account</a>. <a href="http://statcounter.com/upgrade/">Paid upgrades are available here</a>.</p> <p>Once you have a StatCounter account with a paid upgrade, you will need to <a href="../password">set your API password</a>. You may then <a href="#construct-call">construct an API call</a>.</p> <p>If you do not have an upgraded account, you may test the StatCounter API using our Demo API User details:</p> <p><b>Username:</b> demo_user<br><b>API Password:</b> statcounter<br><b>Demo Project ID:</b> 2292634</p> </li> 
+        <li> <h3 id="construct-call">3. Constructing an API Call <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('construct-call')" href="#construct-call">#</a></h3> <p>Each StatCounter API call contains settings that configure the task or function that you wish to execute. To perform the required task, you must configure the correct settings.</p> <p> As an example, we will look in detail at how to retrieve statistics for <a href="#visitors">Recent Visitors</a>.</p> <p>All API calls are sent via HTTP to the same URL, so every API call must begin with:</p> 
+         <div class="api-call">
+          http://api.statcounter.com/
+         </div> <p>The correct function must then be added to the call (e.g. stats/, add_project/, update_project/, etc.). In this example, we will add "stats/", as stated in the specification for <a href="#visitors">Recent Visitors</a>:</p> 
+         <div class="api-call">
+          http://api.statcounter.com/
+          <b>stats/</b>
+         </div> <p>The next step is to add the required settings, beginning with the "?" symbol, with each setting separated by the "&amp;" symbol.</p> <p>The "Version Number" (vn) setting determines the particular API version number that you wish to use. The current API version is version 3. To request the most recent API version number, we use "vn=3":</p> 
+         <div class="api-call">
+          http://api.statcounter.com/stats/?
+          <b>vn=3</b>
+         </div> <p>Again, using <a href="#visitors">Recent Visitors</a> as an example, we will look at the "Stats" (s) setting. "Stats" determines the set of statistics which you wish to return e.g. summary, visitor, popular. To request the "Recent Visitor Activity" statistics, we use "s=visitor":</p> 
+         <div class="api-call">
+          http://api.statcounter.com/stats/?vn=3&amp;
+          <b>s=visitor</b>
+         </div> <p>The "Format" (f) setting determines the format in which you wish to return data from the server. The available options are "JSON" and "XML". The default setting is "JSON". To request "XML" format, use "f=xml":</p> 
+         <div class="api-call">
+          http://api.statcounter.com/stats/?vn=3&amp;s=visitor&amp;
+          <b>f=xml</b>
+         </div> <p>The "Project ID" (pi) is always required when retrieving data for a particular project. To request project ID "1234567", for example, use "pi=1234567":</p> 
+         <div class="api-call">
+          http://api.statcounter.com/stats/?vn=3&amp;s=visitor&amp;f=xml&amp;
+          <b>pi=1234567</b>
+         </div> <p>You can also set the number of results (n) that you wish to return. This setting is optional, and will return 20 results by default if not set. To request 10 returned results, use "n=10":</p> 
+         <div class="api-call">
+          http://api.statcounter.com/stats/?vn=3&amp;s=visitor&amp;f=xml&amp;pi=1234567&amp;
+          <b>n=10</b>
+         </div> <p>For security and authentication reasons, each API call must be accompanied by the time of execution (t) of the call, in Unix timestamp format. When a scripting language such as PHP, the timestamp can easily be generated with the "time()" function e.g. timestamp "1329142078". To include this timestamp in your API call, we use "t=1329142078":</p> 
+         <div class="api-call">
+          http://api.statcounter.com/stats/?vn=3&amp;s=visitor&amp;f=xml&amp;pi=1234567&amp;n=10&amp;
+          <b>t=1329142078</b>
+         </div> <p>You must also include your StatCounter username in the API call e.g. username "myusername". To include your username in the API call, we use "u=myusername":</p> 
+         <div class="api-call">
+          http://api.statcounter.com/stats/?vn=3&amp;s=visitor&amp;f=xml&amp;pi=1234567&amp;n=10&amp;t=1329142078&amp;
+          <b>u=myusername</b>
+         </div> <p>The final step in creating your API call for <a href="#visitors">Recent Visitors</a> is to add the SHA-1 (sha1) authentication data. The SHA-1 proves your identity within the StatCounter system. The SHA-1 value that you must use is found by calculating the SHA-1 value of the existing URL query string to-date, with your API password appended.</p> <p>In our example, the URL query string to-date is:</p> 
+         <div class="api-call">
+          ?vn=3&amp;s=visitor&amp;f=xml&amp;pi=1234567&amp;n=10&amp;t=1329142078&amp;u=myusername
+         </div> <p>If we take our example password to be "mypassword", and append it to the URL query string, we get the following string:</p> 
+         <div class="api-call">
+          ?vn=3&amp;s=visitor&amp;f=xml&amp;pi=1234567&amp;n=10&amp;t=1329142078&amp;u=myusernamemypassword
+         </div> <p>Using PHP, the SHA-1 of this string can easily be found using the sha1() function:</p> 
+         <div class="api-call">
+          <b>sha1(</b>"?vn=3&amp;s=visitor&amp;f=xml&amp;pi=1234567&amp;n=10&amp;t=1329142078&amp;u=myusernamemypassword"
+          <b>);</b>
+         </div> <p>The following SHA-1 string is returned:</p> 
+         <div class="api-call">
+          e0fd149f1999f81ce474070a01c7b14c01e4044f
+         </div> <p>The final step in creating our API call is to go back to our URL string to-date, and add the SHA-1 value:</p> 
+         <div class="api-call">
+          http://api.statcounter.com/stats/?vn=3&amp;s=visitor&amp;f=xml&amp;pi=1234567&amp;n=10&amp;t=1329142078&amp;u=myusername&amp;
+          <b>sha1=e0fd149f1999f81ce474070a01c7b14c01e4044f</b>
+         </div> <p>When this URL is passed to the StatCounter server via HTTP, the data will be returned, in this case, in XML format. The URL will only work for 15 minutes, after which time, it will need to be re-constructed.</p> </li> 
+        <li> <h3 id="retrieve-stats">4. Retrieve Stats <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('retrieve-stats')" href="#retrieve-stats">#</a></h3> </li>
+        <li> <h3 id="date-range">4.1 Date Range Selection <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('date-range')" href="#date-range">#</a></h3></li> 
+        <p>The StatCounter API allows for the retrieval of each statistic type (Popular Pages, Recent Visitors, etc.) within a set time period. To select your required period, just add the necessary details to your API call, as detailed for each appropriate time period below. If no time period is specified, the API will search all available records.</p> 
+        <h3 id="retrieve-stats">Hourly:</h3> 
+        <div class="api-call">
+         &amp;g=hourly&amp;sh=
+         <b><a href="#start-hour">START_HOUR</a></b>&amp;sd=
+         <b><a href="#start-day">START_DAY</a></b>&amp;sm=
+         <b><a href="#start-month">START_MONTH</a></b>&amp;sy=
+         <b><a href="#start-year">START_YEAR</a></b>&amp;eh=
+         <b><a href="#end-hour">END_HOUR</a></b>&amp;ed=
+         <b><a href="#end-day">END_DAY</a></b>&amp;em=
+         <b><a href="#end-month">END_MONTH</a></b>&amp;ey=
+         <b><a href="#end-year">END_YEAR</a></b>
+        </div> 
+        <h3 id="retrieve-stats">Daily:</h3> 
+        <div class="api-call">
+         &amp;g=daily&amp;sd=
+         <b><a href="#start-day">START_DAY</a></b>&amp;sm=
+         <b><a href="#start-month">START_MONTH</a></b>&amp;sy=
+         <b><a href="#start-year">START_YEAR</a></b>&amp;ed=
+         <b><a href="#end-day">END_DAY</a></b>&amp;em=
+         <b><a href="#end-month">END_MONTH</a></b>&amp;ey=
+         <b><a href="#end-year">END_YEAR</a></b>
+        </div> 
+        <h3 id="retrieve-stats">Weekly:</h3> 
+        <div class="api-call">
+         &amp;g=weekly&amp;sy=
+         <b><a href="#start-year">START_YEAR</a></b>&amp;sw=
+         <b><a href="#start-week">START_WEEK</a></b>&amp;ey=
+         <b><a href="#end-year">END_YEAR</a></b>&amp;ew=
+         <b><a href="#end-week">END_WEEK</a></b>
+        </div> 
+        <h3 id="retrieve-stats">Monthly:</h3> 
+        <div class="api-call">
+         &amp;g=monthly&amp;sm=
+         <b><a href="#start-month">START_MONTH</a></b>&amp;sy=
+         <b><a href="#start-year">START_YEAR</a></b>&amp;em=
+         <b><a href="#end-month">END_MONTH</a></b>&amp;ey=
+         <b><a href="#end-year">END_YEAR</a></b>
+        </div> 
+        <h3 id="retrieve-stats">Quarterly:</h3> 
+        <div class="api-call">
+         &amp;g=quarterly&amp;sy=
+         <b><a href="#start-year">START_YEAR</a></b>&amp;sq=
+         <b><a href="#start-quarter">START_QUARTER</a></b>&amp;ey=
+         <b><a href="#end-year">END_YEAR</a></b>&amp;eq=
+         <b><a href="#end-quarter">END_QUARTER</a></b>
+        </div> 
+        <h3 id="retrieve-stats">Yearly:</h3> 
+        <div class="api-call">
+         &amp;g=yearly&amp;sy=
+         <b><a href="#start-year">START_YEAR</a></b>&amp;ey=
+         <b><a href="#end-year">END_YEAR</a></b>
+        </div> 
+        <p>With the exception of Summary Stats, the returned response structure for each statistic type is unchanged, regardless as to whether a time period is specified or not. Specific examples are given for Summary Stats (below) due to different response structures.</p> 
+        <li> <h3 id="batch">4.2 Multiple Project Selection <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('batch')" href="#batch">#</a></h3></li> 
+        <p>The StatCounter API allows for the retrieval of stats data for multiple projects in one call. This may be faster than making a seperate call to the stats function for each project of interest. To request data for multiple projects, just add multiple "Project ID" (pi) parameters to your stats call:</p> 
+        <div class="api-call">
+         http://api.statcounter.com/stats/?vn=3&amp;s=visitor&amp;f=xml
+         <b>&amp;pi=123&amp;pi=456pi=789</b>
+        </div> 
+        <p>The returned response structure is different when multiple "Project ID" (pi) parameters are used. The response will consist of an array of objects composed of a id attribute, representing the Project ID, and the normal sc_data attribute with the associated project's stats data:</p> 
+        <div class="api-output">
+         { "@attributes": { "status": "ok", }, "project": [{ "id": "123", "sc_data": [{ ... }, { "id": "456", "sc_data": [{ ... }, { "id": "789", "sc_data": [{ ... }] }] }
+        </div> 
+        <li> <h3 id="summary">4.3 Summary Stats <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('summary')" href="#summary">#</a></h3> </li>
+        <li> <h3 id="summary-hourly">4.3.1 Summary Stats - Hourly <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('summary-hourly')" href="#summary-hourly">#</a></h3> 
+         <div class="api-call">
+          http://api.statcounter.com/stats/?vn=
+          <b><a href="#version-number">VERSION_NUMBER</a></b>&amp;s=summary&amp;g=
+          <b><a href="#granularity">GRANULARITY</a></b>&amp;sh=
+          <b><a href="#start-hour">START_HOUR</a></b>&amp;sd=
+          <b><a href="#start-day">START_DAY</a></b>&amp;sm=
+          <b><a href="#start-month">START_MONTH</a></b>&amp;sy=
+          <b><a href="#start-year">START_YEAR</a></b>&amp;eh=
+          <b><a href="#end-hour">END_HOUR</a></b>&amp;ed=
+          <b><a href="#end-day">END_DAY</a></b>&amp;em=
+          <b><a href="#end-month">END_MONTH</a></b>&amp;ey=
+          <b><a href="#end-year">END_YEAR</a></b>&amp;pi=
+          <b><a href="#project-id">PROJECT_ID</a></b>&amp;t=
+          <b><a href="#time-execution">TIME_OF_EXECUTION</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;f=
+          <b><a href="#format">FORMAT</a></b>&amp;sha1=
+          <b><a href="#sha1-proof">SHA-1_TO_PROVE_IDENTITY</a></b>
+         </div> <p>Successful response structure (JSON format):</p> 
+         <div class="api-output">
+          { "@attributes": { "status": "ok", }, "sc_data": [{ "date": "DATE", (YYYY-MM-DD) "hour": "HOUR", (HH) "page_views": "PAGE_VIEWS", "unique_visits": "UNIQUE_VISITS", "returning_visits": "RETURNING_VISITS", "first_time_visits": "FIRST_TIME_VISITS" }] }
+         </div> <p>Here is a sample return containing data from a number of days:</p> 
+         <div class="api-output">
+          { "@attributes":{ "status":"ok" }, "sc_data": [{ "date":"2012-01-10", "hour":"01", "page_views":"3369", "unique_visits":"938", "returning_visits":"289" }, { "date":"2012-01-11", "hour":"02", "page_views":"2409", "unique_visits":"840", "returning_visits":"258" }, { "date":"2012-01-12", "hour":"03", "page_views":"2712", "unique_visits":"1068", "returning_visits":"277" }] }
+         </div> </li> 
+        <li> <h3 id="summary-daily">4.3.2 Summary Stats - Daily <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('summary-daily')" href="#summary-daily">#</a></h3> 
+         <div class="api-call">
+          http://api.statcounter.com/stats/?vn=
+          <b><a href="#version-number">VERSION_NUMBER</a></b>&amp;s=summary&amp;g=
+          <b><a href="#granularity">GRANULARITY</a></b>&amp;sd=
+          <b><a href="#start-day">START_DAY</a></b>&amp;sm=
+          <b><a href="#start-month">START_MONTH</a></b>&amp;sy=
+          <b><a href="#start-year">START_YEAR</a></b>&amp;ed=
+          <b><a href="#end-day">END_DAY</a></b>&amp;em=
+          <b><a href="#end-month">END_MONTH</a></b>&amp;ey=
+          <b><a href="#end-year">END_YEAR</a></b>&amp;pi=
+          <b><a href="#project-id">PROJECT_ID</a></b>&amp;t=
+          <b><a href="#time-execution">TIME_OF_EXECUTION</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;f=
+          <b><a href="#format">FORMAT</a></b>&amp;sha1=
+          <b><a href="#sha1-proof">SHA-1_TO_PROVE_IDENTITY</a></b>
+         </div> <p>Successful response structure (JSON format):</p> 
+         <div class="api-output">
+          { "@attributes": { "status": "ok", }, "sc_data": [{ "date": "DATE", (YYYY-MM-DD) "page_views": "PAGE_VIEWS", "unique_visits": "UNIQUE_VISITS", "returning_visits": "RETURNING_VISITS", "first_time_visits": "FIRST_TIME_VISITS" }] }
+         </div> <p>Here is a sample return containing data from a number of days:</p> 
+         <div class="api-output">
+          { "@attributes":{ "status":"ok" }, "sc_data": [{ "date":"2012-01-10", "page_views":"3369", "unique_visits":"938", "returning_visits":"289" }, { "date":"2012-01-11", "page_views":"2409", "unique_visits":"840", "returning_visits":"258" }, { "date":"2012-01-12", "page_views":"2712", "unique_visits":"1068", "returning_visits":"277" }] }
+         </div> </li> 
+        <li> <h3 id="summary-weekly">4.3.3 Summary Stats - Weekly <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('summary-weekly')" href="#summary-weekly">#</a></h3> 
+         <div class="api-call">
+          http://api.statcounter.com/stats/?vn=
+          <b><a href="#version-number">VERSION_NUMBER</a></b>&amp;s=summary&amp;g=
+          <b><a href="#granularity">GRANULARITY</a></b>&amp;sy=
+          <b><a href="#start-year">START_YEAR</a></b>&amp;sw=
+          <b><a href="#start-week">START_WEEK</a></b>&amp;ey=
+          <b><a href="#end-year">END_YEAR</a></b>&amp;ew=
+          <b><a href="#end-week">END_WEEK</a></b>&amp;pi=
+          <b><a href="#project-id">PROJECT_ID</a></b>&amp;t=
+          <b><a href="#time-execution">TIME_OF_EXECUTION</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;f=
+          <b><a href="#format">FORMAT</a></b>&amp;sha1=
+          <b><a href="#sha1-proof">SHA-1_TO_PROVE_IDENTITY</a></b>
+         </div> <p>Successful response structure (JSON format):</p> 
+         <div class="api-output">
+          { "@attributes": { "status": "ok", }, "sc_data": [{ "year": "YEAR", "week": "WEEK", "page_views": "PAGE_VIEWS", "unique_visits": "UNIQUE_VISITS", "returning_visits": "RETURNING_VISITS", "first_time_visits": "FIRST_TIME_VISITS" }] }
+         </div> <p>Here is a sample return containing data from a number of days:</p> 
+         <div class="api-output">
+          { "@attributes":{ "status":"ok" }, "sc_data": [{ "year":"2012", "week":"1", "page_views":"3369", "unique_visits":"938", "returning_visits":"289" }, { "year":"2012", "week":"2", "page_views":"2409", "unique_visits":"840", "returning_visits":"258" }] }
+         </div> </li> 
+        <li> <h3 id="summary-monthly">4.3.4 Summary Stats - Monthly <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('summary-monthly')" href="#summary-monthly">#</a></h3> 
+         <div class="api-call">
+          http://api.statcounter.com/stats/?vn=
+          <b><a href="#version-number">VERSION_NUMBER</a></b>&amp;s=summary&amp;g=
+          <b><a href="#granularity">GRANULARITY</a></b>&amp;sm=
+          <b><a href="#start-month">START_MONTH</a></b>&amp;sy=
+          <b><a href="#start-year">START_YEAR</a></b>&amp;em=
+          <b><a href="#end-month">END_MONTH</a></b>&amp;ey=
+          <b><a href="#end-year">END_YEAR</a></b>&amp;pi=
+          <b><a href="#project-id">PROJECT_ID</a></b>&amp;t=
+          <b><a href="#time-execution">TIME_OF_EXECUTION</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;f=
+          <b><a href="#format">FORMAT</a></b>&amp;sha1=
+          <b><a href="#sha1-proof">SHA-1_TO_PROVE_IDENTITY</a></b>
+         </div> <p>Successful response structure (JSON format):</p> 
+         <div class="api-output">
+          { "@attributes": { "status": "ok", }, "sc_data": [{ "year": "YEAR", "month": "MONTH", (MM) "page_views": "PAGE_VIEWS", "unique_visits": "UNIQUE_VISITS", "returning_visits": "RETURNING_VISITS", "first_time_visits": "FIRST_TIME_VISITS" }] }
+         </div> <p>Here is a sample return containing data from a number of days:</p> 
+         <div class="api-output">
+          { "@attributes":{ "status":"ok" }, "sc_data": [{ "year":"2012", "month":"1", "page_views":"3369", "unique_visits":"938", "returning_visits":"289" }, { "year":"2012", "month":"2", "page_views":"2409", "unique_visits":"840", "returning_visits":"258" }, { "year":"2012", "month":"3", "page_views":"2712", "unique_visits":"1068", "returning_visits":"277" }] }
+         </div> </li> 
+        <li> <h3 id="summary-quarterly">4.3.5 Summary Stats - Quarterly <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('summary-quarterly')" href="#summary-quarterly">#</a></h3> 
+         <div class="api-call">
+          http://api.statcounter.com/stats/?vn=
+          <b><a href="#version-number">VERSION_NUMBER</a></b>&amp;s=summary&amp;g=
+          <b><a href="#granularity">GRANULARITY</a></b>&amp;sy=
+          <b><a href="#start-year">START_YEAR</a></b>&amp;sq=
+          <b><a href="#start-quarter">START_QUARTER</a></b>&amp;ey=
+          <b><a href="#end-year">END_YEAR</a></b>&amp;eq=
+          <b><a href="#end-quarter">END_QUARTER</a></b>&amp;pi=
+          <b><a href="#project-id">PROJECT_ID</a></b>&amp;t=
+          <b><a href="#time-execution">TIME_OF_EXECUTION</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;f=
+          <b><a href="#format">FORMAT</a></b>&amp;sha1=
+          <b><a href="#sha1-proof">SHA-1_TO_PROVE_IDENTITY</a></b>
+         </div> <p>Successful response structure (JSON format):</p> 
+         <div class="api-output">
+          { "@attributes": { "status": "ok", }, "sc_data": [{ "year": "YEAR", "quarter": "QUARTER", "page_views": "PAGE_VIEWS", "unique_visits": "UNIQUE_VISITS", "returning_visits": "RETURNING_VISITS", "first_time_visits": "FIRST_TIME_VISITS" }] }
+         </div> <p>Here is a sample return containing data from a number of days:</p> 
+         <div class="api-output">
+          { "@attributes":{ "status":"ok" }, "sc_data": [{ "year":"2012", "quarter": "1", "page_views":"3369", "unique_visits":"938", "returning_visits":"289" }, { "year":"2012", "quarter": "2", "unique_visits":"840", "returning_visits":"258" }] }
+         </div> </li> 
+        <li> <h3 id="summary-yearly">4.3.6 Summary Stats - Yearly <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('summary-yearly')" href="#summary-yearly">#</a></h3> 
+         <div class="api-call">
+          http://api.statcounter.com/stats/?vn=
+          <b><a href="#version-number">VERSION_NUMBER</a></b>&amp;s=summary&amp;g=
+          <b><a href="#granularity">GRANULARITY</a></b>&amp;sy=
+          <b><a href="#start-year">START_YEAR</a></b>&amp;ey=
+          <b><a href="#end-year">END_YEAR</a></b>&amp;pi=
+          <b><a href="#project-id">PROJECT_ID</a></b>&amp;t=
+          <b><a href="#time-execution">TIME_OF_EXECUTION</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;f=
+          <b><a href="#format">FORMAT</a></b>&amp;sha1=
+          <b><a href="#sha1-proof">SHA-1_TO_PROVE_IDENTITY</a></b>
+         </div> <p>Successful response structure (JSON format):</p> 
+         <div class="api-output">
+          { "@attributes": { "status": "ok", }, "sc_data": [{ "year": "YEAR", "page_views": "PAGE_VIEWS", "unique_visits": "UNIQUE_VISITS", "returning_visits": "RETURNING_VISITS", "first_time_visits": "FIRST_TIME_VISITS" }] }
+         </div> <p>Here is a sample return containing data from a number of days:</p> 
+         <div class="api-output">
+          { "@attributes":{ "status":"ok" }, "sc_data": [{ "year":"2012", "page_views":"3369", "unique_visits":"938", "returning_visits":"289" }] }
+         </div> </li> 
+        <li> <h3 id="visitors">4.4 Recent Visitors <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('visitors')" href="#visitors">#</a></h3> 
+         <div class="api-call">
+          http://api.statcounter.com/stats/?vn=
+          <b><a href="#version-number">VERSION_NUMBER</a></b>&amp;s=visitor&amp;pi=
+          <b><a href="#project-id">PROJECT_ID</a></b>&amp;n=
+          <b><a href="#number-results">NUMBER_OF_RESULTS</a></b>&amp;t=
+          <b><a href="#time-execution">TIME_OF_EXECUTION</a></b>&amp;f=
+          <b><a href="#format">FORMAT</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;sha1=
+          <b><a href="#sha1-proof">SHA-1_TO_PROVE_IDENTITY</a></b>
+         </div> <p>Optional: <a href="#date-range">Date Range Selection</a></p> <p>Successful response structure (JSON format):</p> 
+         <div class="api-output">
+          { "@attributes": { "status": "ok", }, "sc_data": [{ "log_visits": "The number of visits from this visitor available in the log.", "entries_in_visit": "The number of page views in the most recent visit from a visitor.", "entry_t": "ENTRY_TIME", "entry_url": "ENTRY_PAGE_URL", "entry_title": "ENTRY_PAGE_TITLE", "se_keywords": " SEARCH_ENGINE_KEYWORDS", "link": "REFERRAL_URL", "country_name": "COUNTRY_NAME", "state": "STATE", "res": "RESOLUTION", "exit_t": "EXIT_TIME", "exit_url": "EXIT_PAGE_URL", "exit_title": "EXIT PAGE TITLE", "returning_count": "The number of returning visits from this visitor based on the cookie data (not limited to log size).", "browser_name": "BROWSER_NAME", "browser_version": "BROWSER_VERSION", "os": "OS", "width": "WIDTH", "height": "HEIGHT", "javascript": "JAVASCRIPT", "country": "COUNTRY", "city": "CITY", "isp": "ISP", "ip_address": "IP_ADDRESS", "ip_label": "IP_LABEL", "latitude": "LATITUDE", "longitude": "LONGITUDE", "num_entry": "The total number of page views for this visitor available in the log.", "visit_length": "VISIT_LENGTH" }] }
+         </div> </li> 
+        <li> <h3 id="popular">4.5 Popular Pages <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('popular')" href="#popular">#</a></h3> 
+         <div class="api-call">
+          http://api.statcounter.com/stats/?vn=
+          <b><a href="#version-number">VERSION_NUMBER</a></b>&amp;s=popular&amp;pi=
+          <b><a href="#project-id">PROJECT_ID</a></b>&amp;n=
+          <b><a href="#number-results">NUMBER_OF_RESULTS</a></b>&amp;c=
+          <b><a href="#chop-url">CHOP_URL</a></b>&amp;ct=
+          <b><a href="#count-type">COUNT_TYPE</a></b>&amp;t=
+          <b><a href="#time-execution">TIME_OF_EXECUTION</a></b>&amp;f=
+          <b><a href="#format">FORMAT</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;sha1=
+          <b><a href="#sha1-proof">SHA-1_TO_PROVE_IDENTITY</a></b>
+         </div> <p>Optional: <a href="#date-range">Date Range Selection</a></p> <p>Successful response structure (JSON format):</p> 
+         <div class="api-output">
+          { "@attributes": { "status": "ok", }, "sc_data": [{ "page_views": "PAGE_VIEWS", "title": "TITLE", "url": "URL" }] }
+         </div> </li> 
+        <li> <h3 id="entry">4.6 Entry Pages <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('entry')" href="#entry">#</a></h3> 
+         <div class="api-call">
+          http://api.statcounter.com/stats/?vn=
+          <b><a href="#version-number">VERSION_NUMBER</a></b>&amp;s=entry&amp;pi=
+          <b><a href="#project-id">PROJECT_ID</a></b>&amp;n=
+          <b><a href="#number-results">NUMBER_OF_RESULTS</a></b>&amp;t=
+          <b><a href="#time-execution">TIME_OF_EXECUTION</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;f=
+          <b><a href="#format">FORMAT</a></b>&amp;sha1=
+          <b><a href="#sha1-proof">SHA-1_TO_PROVE_IDENTITY</a></b>
+         </div> <p>Optional: <a href="#date-range">Date Range Selection</a></p> <p>Successful response structure (JSON format):</p> 
+         <div class="api-output">
+          { "@attributes": { "status": "ok", }, "sc_data": [{ "page_views": "PAGE_VIEWS", "page_title": "PAGE_TITLE", "page_url": "PAGE_URL" }] }
+         </div> </li> 
+        <li> <h3 id="exit">4.7 Exit Pages <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('exit')" href="#exit">#</a></h3> 
+         <div class="api-call">
+          http://api.statcounter.com/stats/?vn=
+          <b><a href="#version-number">VERSION_NUMBER</a></b>&amp;s=exit&amp;pi=
+          <b><a href="#project-id">PROJECT_ID</a></b>&amp;n=
+          <b><a href="#number-results">NUMBER_OF_RESULTS</a></b>&amp;t=
+          <b><a href="#time-execution">TIME_OF_EXECUTION</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;f=
+          <b><a href="#format">FORMAT</a></b>&amp;sha1=
+          <b><a href="#sha1-proof">SHA-1_TO_PROVE_IDENTITY</a></b>
+         </div> <p>Optional: <a href="#date-range">Date Range Selection</a></p> <p>Successful response structure (JSON format):</p> 
+         <div class="api-output">
+          { "@attributes": { "status": "ok", }, "sc_data": [{ "page_views": "PAGE_VIEWS", "title": "PAGE_TITLE", "page_url": "PAGE_URL" }] }
+         </div> </li> 
+        <li> <h3 id="camefrom">4.8 Came From <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('camefrom')" href="#camefrom">#</a></h3> 
+         <div class="api-call">
+          http://api.statcounter.com/stats/?vn=
+          <b><a href="#version-number">VERSION_NUMBER</a></b>&amp;s=camefrom&amp;pi=
+          <b><a href="#project-id">PROJECT_ID</a></b>&amp;n=
+          <b><a href="#number-results">NUMBER_OF_RESULTS</a></b>&amp;t=
+          <b><a href="#time-execution">TIME_OF_EXECUTION</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;f=
+          <b><a href="#format">FORMAT</a></b>&amp;e=
+          <b><a href="#exclude-external">EXTERNAL</a></b>&amp;ese=
+          <b><a href="#exclude-search-engines">EXCLUDE_SEARCH_ENGINES</a></b>&amp;gbd=
+          <b><a href="#group-by-domain">GROUP_BY_DOMAIN</a></b>&amp;sha1=
+          <b><a href="#sha1-proof">SHA-1_TO_PROVE_IDENTITY</a></b>
+         </div> <p>Optional: <a href="#date-range">Date Range Selection</a></p> <p>Successful response structure (JSON format):</p> 
+         <div class="api-output">
+          { "@attributes": { "status": "ok", }, "sc_data": [{ "page_views": "PAGE_VIEWS", "referring_url": "REFERRING_URL" }] }
+         </div> </li> 
+        <li> <h3 id="recent_camefrom">4.9 Recent Came From <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('recent_camefrom')" href="#recent_camefrom">#</a></h3> 
+         <div class="api-call">
+          http://api.statcounter.com/stats/?vn=
+          <b><a href="#version-number">VERSION_NUMBER</a></b>&amp;s=recent_camefrom&amp;pi=
+          <b><a href="#project-id">PROJECT_ID</a></b>&amp;n=
+          <b><a href="#number-results">NUMBER_OF_RESULTS</a></b>&amp;t=
+          <b><a href="#time-execution">TIME_OF_EXECUTION</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;f=
+          <b><a href="#format">FORMAT</a></b>&amp;ese=
+          <b><a href="#exclude-search-engines">EXCLUDE_SEARCH_ENGINES</a></b>&amp;sha1=
+          <b><a href="#sha1-proof">SHA-1_TO_PROVE_IDENTITY</a></b>
+         </div> <p>Optional: <a href="#date-range">Date Range Selection</a></p> <p>Successful response structure (JSON format):</p> 
+         <div class="api-output">
+          { "@attributes": { "status": "ok", }, "sc_data": [{ "referring_url": "REFERRING_URL", "time": "TIME", "entry_page": "ENTRY_PAGE", "ip_address": "IP_ADDRESS", "ip_label": "IP_LABEL", "se_keywords": "SE_KEYWORDS" }] }
+         </div> </li> 
+        <li> <h3 id="keyword-activity">4.10 Recent Keyword Activity <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('keyword-activity')" href="#keyword-activity">#</a></h3> 
+         <div class="api-call">
+          http://api.statcounter.com/stats/?vn=
+          <b><a href="#version-number">VERSION_NUMBER</a></b>&amp;s=keyword-activity&amp;pi=
+          <b><a href="#project-id">PROJECT_ID</a></b>&amp;eek=
+          <b><a href="#exclude-encrypted-keywords">EXCLUDE_ENCRYPTED_KEYWORDS</a></b>&amp;n=
+          <b><a href="#number-results">NUMBER_OF_RESULTS</a></b>&amp;t=
+          <b><a href="#time-execution">TIME_OF_EXECUTION</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;f=
+          <b><a href="#format">FORMAT</a></b>&amp;e=
+          <b><a href="#exclude-external">EXTERNAL</a></b>&amp;sha1=
+          <b><a href="#sha1-proof">SHA-1_TO_PROVE_IDENTITY</a></b>
+         </div> <p>Optional: <a href="#date-range">Date Range Selection</a></p> <p>Successful response structure (JSON format):</p> 
+         <div class="api-output">
+          { "@attributes": { "status": "ok", }, "sc_data": [{ "search_engine_name": "SEARCH_ENGINE_NAME", "search_engine_host": "SEARCH_ENGINE_HOST", "keyword": "KEYWORD", "time": "TIME", "page_url": "PAGE_URL", "page_title": "PAGE_TITLE", "referring_url": "REFERRING_URL", "ip_address": "IP_ADDRESS", "ip_label": "IP_LABEL" }] }
+         </div> </li> 
+        <li> <h3 id="browsers">4.11 Browsers <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('browsers')" href="#browsers">#</a></h3> 
+         <div class="api-call">
+          http://api.statcounter.com/stats/?vn=
+          <b><a href="#version-number">VERSION_NUMBER</a></b>&amp;s=browsers&amp;de=
+          <b><a href="#device-type">DEVICE</a></b>&amp;pi=
+          <b><a href="#project-id">PROJECT_ID</a></b>&amp;t=
+          <b><a href="#time-execution">TIME_OF_EXECUTION</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;f=
+          <b><a href="#format">FORMAT</a></b>&amp;sha1=
+          <b><a href="#sha1-proof">SHA-1_TO_PROVE_IDENTITY</a></b>
+         </div> <p>Optional: <a href="#date-range">Date Range Selection</a></p> <p>Successful response structure (JSON format):</p> 
+         <div class="api-output">
+          { "@attributes": { "status": "ok", }, "sc_data": [{ "page_views": "PAGE_VIEWS", "browser_name": "BROWSER_NAME", "browser_version": "BROWSER_VERSION", "percentage": "PERCENTAGE" }] }
+         </div> </li> 
+        <li> <h3 id="os">4.12 Operating Systems <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('os')" href="#os">#</a></h3> 
+         <div class="api-call">
+          http://api.statcounter.com/stats/?vn=
+          <b><a href="#version-number">VERSION_NUMBER</a></b>&amp;s=os&amp;de=
+          <b><a href="#device-type">DEVICE</a></b>&amp;pi=
+          <b><a href="#project-id">PROJECT_ID</a></b>&amp;t=
+          <b><a href="#time-execution">TIME_OF_EXECUTION</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;f=
+          <b><a href="#format">FORMAT</a></b>&amp;sha1=
+          <b><a href="#sha1-proof">SHA-1_TO_PROVE_IDENTITY</a></b>
+         </div> <p>Optional: <a href="#date-range">Date Range Selection</a></p> <p>Successful response structure (JSON format):</p> 
+         <div class="api-output">
+          { "@attributes": { "status": "ok", }, "sc_data": [{ "page_views": "PAGE_VIEWS", "os_name": "OS_NAME", "percentage": "PERCENTAGE" }] }
+         </div> </li> 
+        <li> <h3 id="search_engine">4.13 Search Engines <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('search_engine')" href="#search_engine">#</a></h3> 
+         <div class="api-call">
+          http://api.statcounter.com/stats/?vn=
+          <b><a href="#version-number">VERSION_NUMBER</a></b>&amp;s=search_engine&amp;pi=
+          <b><a href="#project-id">PROJECT_ID</a></b>&amp;t=
+          <b><a href="#time-execution">TIME_OF_EXECUTION</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;f=
+          <b><a href="#format">FORMAT</a></b>&amp;sha1=
+          <b><a href="#sha1-proof">SHA-1_TO_PROVE_IDENTITY</a></b>
+         </div> <p>Optional: <a href="#date-range">Date Range Selection</a></p> <p>Successful response structure (JSON format):</p> 
+         <div class="api-output">
+          { "@attributes": { "status": "ok", }, "sc_data": [{ "page_views": "PAGE_VIEWS", "search_engine_name": "SEARCH_ENGINE_NAME", "search_engine_provider": "SEARCH_ENGINE_PROVIDER", "percentage": "PERCENTAGE" }] }
+         </div> </li> 
+        <li> <h3 id="country">4.14 Country <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('country')" href="#country">#</a></h3> 
+         <div class="api-call">
+          http://api.statcounter.com/stats/?vn=
+          <b><a href="#version-number">VERSION_NUMBER</a></b>&amp;s=country&amp;pi=
+          <b><a href="#project-id">PROJECT_ID</a></b>&amp;t=
+          <b><a href="#time-execution">TIME_OF_EXECUTION</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;f=
+          <b><a href="#format">FORMAT</a></b>&amp;sha1=
+          <b><a href="#sha1-proof">SHA-1_TO_PROVE_IDENTITY</a></b>
+         </div> <p>Optional: <a href="#date-range">Date Range Selection</a></p> <p>Successful response structure (JSON format):</p> 
+         <div class="api-output">
+          { "@attributes": { "status": "ok", }, "sc_data": [{ "page_views": "PAGE_VIEWS", "country_name": "COUNTRY_NAME", "percentage": "PERCENTAGE" }] }
+         </div> </li> 
+        <li> <h3 id="pageload">4.15 Recent Pageload Activity <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('pageload')" href="#pageload">#</a></h3> 
+         <div class="api-call">
+          http://api.statcounter.com/stats/?vn=
+          <b><a href="#version-number">VERSION_NUMBER</a></b>&amp;s=pageload&amp;de=
+          <b><a href="#device-type">DEVICE</a></b>&amp;pi=
+          <b><a href="#project-id">PROJECT_ID</a></b>&amp;t=
+          <b><a href="#time-execution">TIME_OF_EXECUTION</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;f=
+          <b><a href="#format">FORMAT</a></b>&amp;sha1=
+          <b><a href="#sha1-proof">SHA-1_TO_PROVE_IDENTITY</a></b>
+         </div> <p>Optional: <a href="#date-range">Date Range Selection</a></p> <p>Successful response structure (JSON format):</p> 
+         <div class="api-output">
+          { "@attributes": { "status": "ok", }, "sc_data": [{ "page_url": "PAGE_URL", "time": "TIME", "referring_url": "REFERRING_URL", "page_title": "PAGE_TITLE", "browser_name": "BROWSER_NAME", "browser_version": "BROWSER_VERSION", "os_name": "OS_NAME", "device_vendor": "DEVICE_VENDOR", "device_model": "DEVICE_MODEL", "se_keywords": "SEARCH_ENGINE_KEYWORDS", "resolution_width": "RESOLUTION_WIDTH", "resolution_height": "RESOLUTION_HEIGHT", "isp": "ISP", "city": "CITY", "state": "STATE", "country": "COUNTRY", "ip_address": "IP_ADDRESS", "ip_label": "IP_LABEL" }] }
+         </div> </li> 
+        <li> <h3 id="exit-links">4.16 Exit Links <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('exit-links')" href="#exit-links">#</a></h3> 
+         <div class="api-call">
+          http://api.statcounter.com/stats/?vn=
+          <b><a href="#version-number">VERSION_NUMBER</a></b>&amp;s=exit-links&amp;pi=
+          <b><a href="#project-id">PROJECT_ID</a></b>&amp;t=
+          <b><a href="#time-execution">TIME_OF_EXECUTION</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;f=
+          <b><a href="#format">FORMAT</a></b>&amp;sha1=
+          <b><a href="#sha1-proof">SHA-1_TO_PROVE_IDENTITY</a></b>
+         </div> <p>Optional: <a href="#date-range">Date Range Selection</a></p> <p>Successful response structure (JSON format):</p> 
+         <div class="api-output">
+          { "@attributes": { "status": "ok", }, "sc_data": [{ "hit": "HIT", "link": "EXIT_LINK" }] }
+         </div> </li> 
+        <li> <h3 id="exit-link-activity">4.17 Exit Link Activity <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('exit-link-activity')" href="#exit-link-activity">#</a></h3> 
+         <div class="api-call">
+          http://api.statcounter.com/stats/?vn=
+          <b><a href="#version-number">VERSION_NUMBER</a></b>&amp;s=exit-link-activity&amp;de=
+          <b><a href="#device-type">DEVICE</a></b>&amp;pi=
+          <b><a href="#project-id">PROJECT_ID</a></b>&amp;t=
+          <b><a href="#time-execution">TIME_OF_EXECUTION</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;f=
+          <b><a href="#format">FORMAT</a></b>&amp;sha1=
+          <b><a href="#sha1-proof">SHA-1_TO_PROVE_IDENTITY</a></b>
+         </div> <p>Optional: <a href="#date-range">Date Range Selection</a></p> <p>Successful response structure (JSON format):</p> 
+         <div class="api-output">
+          { "@attributes": { "status": "ok", }, "sc_data": [{ "link": "EXIT_LINK", "time": "TIME", "page_url": "EXIT_PAGE_URL", "page_title": "EXIT_PAGE_TITLE", "ip_address": "IP_ADDRESS", "ip_label": "IP_LABEL" }] }
+         </div> </li> 
+        <li> <h3 id="downloads">4.18 Downloads <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('downloads')" href="#downloads">#</a></h3> 
+         <div class="api-call">
+          http://api.statcounter.com/stats/?vn=
+          <b><a href="#version-number">VERSION_NUMBER</a></b>&amp;s=downloads&amp;pi=
+          <b><a href="#project-id">PROJECT_ID</a></b>&amp;t=
+          <b><a href="#time-execution">TIME_OF_EXECUTION</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;f=
+          <b><a href="#format">FORMAT</a></b>&amp;sha1=
+          <b><a href="#sha1-proof">SHA-1_TO_PROVE_IDENTITY</a></b>
+         </div> <p>Optional: <a href="#date-range">Date Range Selection</a></p> <p>Successful response structure (JSON format):</p> 
+         <div class="api-output">
+          { "@attributes": { "status": "ok", }, "sc_data": [{ "hit": "HIT", "link": "DOWNLOAD_LINK" }] }
+         </div> </li> 
+        <li> <h3 id="download-link-activity">4.19 Download Link Activity <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('download-link-activity')" href="#download-link-activity">#</a></h3> 
+         <div class="api-call">
+          http://api.statcounter.com/stats/?vn=
+          <b><a href="#version-number">VERSION_NUMBER</a></b>&amp;s=download-link-activity&amp;de=
+          <b><a href="#device-type">DEVICE</a></b>&amp;pi=
+          <b><a href="#project-id">PROJECT_ID</a></b>&amp;t=
+          <b><a href="#time-execution">TIME_OF_EXECUTION</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;f=
+          <b><a href="#format">FORMAT</a></b>&amp;sha1=
+          <b><a href="#sha1-proof">SHA-1_TO_PROVE_IDENTITY</a></b>
+         </div> <p>Optional: <a href="#date-range">Date Range Selection</a></p> <p>Successful response structure (JSON format):</p> 
+         <div class="api-output">
+          { "@attributes": { "status": "ok", }, "sc_data": [{ "link": "DOWNLOAD_LINK", "time": "TIME", "page_url": "DOWNLOAD_PAGE_URL", "page_title": "DOWNLOAD_PAGE_TITLE", "ip_address": "IP_ADDRESS", "ip_label": "IP_LABEL", "extension": "EXTENSION" }] }
+         </div> </li> 
+        <li> <h3 id="visit-length">4.20 Visit Length <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('visit-length')" href="#visit-length">#</a></h3> 
+         <div class="api-call">
+          http://api.statcounter.com/stats/?vn=
+          <b><a href="#version-number">VERSION_NUMBER</a></b>&amp;s=visit_length&amp;pi=
+          <b><a href="#project-id">PROJECT_ID</a></b>&amp;t=
+          <b><a href="#time-execution">TIME_OF_EXECUTION</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;f=
+          <b><a href="#format">FORMAT</a></b>&amp;sha1=
+          <b><a href="#sha1-proof">SHA-1_TO_PROVE_IDENTITY</a></b>
+         </div> <p>Optional: <a href="#date-range">Date Range Selection</a></p> <p>Successful response structure (JSON format):</p> 
+         <div class="api-output">
+          { "@attributes": { "status": "ok", }, "sc_data": [{ "Lessthan5secs": "STRING", "From5secsto30secs": "STRING", "From30secsto5mins": "STRING", "From5minsto20mins": "STRING", "From20minstoanhour": "STRING", "Longerthananhour": "STRING" }] }
+         </div> </li> 
+        <li> <h3 id="returning-visits">4.21 Returning Visits <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('returning-visits')" href="#returning-visits">#</a></h3> 
+         <div class="api-call">
+          http://api.statcounter.com/stats/?vn=
+          <b><a href="#version-number">VERSION_NUMBER</a></b>&amp;s=returning_visits&amp;pi=
+          <b><a href="#project-id">PROJECT_ID</a></b>&amp;t=
+          <b><a href="#time-execution">TIME_OF_EXECUTION</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;f=
+          <b><a href="#format">FORMAT</a></b>&amp;sha1=
+          <b><a href="#sha1-proof">SHA-1_TO_PROVE_IDENTITY</a></b>
+         </div> <p>Optional: <a href="#date-range">Date Range Selection</a></p> <p>Successful response structure (JSON format):</p> 
+         <div class="api-output">
+          { "@attributes": { "status": "ok", }, "sc_data": [{ "ReturningVisitsFirstTimeVisitors": "STRING", "ReturningVisits1to5": "STRING", "ReturningVisits6to10": "STRING", "ReturningVisits10OrMore": "STRING" }] }
+         </div> </li> 
+        <li> <h3 id="keyword-analysis">4.22 Keyword Analysis <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('keyword-analysis')" href="#keyword-analysis">#</a></h3> 
+         <div class="api-call">
+          http://api.statcounter.com/stats/?vn=
+          <b><a href="#version-number">VERSION_NUMBER</a></b>&amp;s=keyword_analysis&amp;pi=
+          <b><a href="#project-id">PROJECT_ID</a></b>&amp;ck=
+          <b><a href="#combine-keywords">COMBINE_KEYWORDS</a></b>&amp;eek=
+          <b><a href="#exclude-encrypted-keywords">EXCLUDE_ENCRYPTED_KEYWORDS</a></b>&amp;t=
+          <b><a href="#time-execution">TIME_OF_EXECUTION</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;f=
+          <b><a href="#format">FORMAT</a></b>&amp;sha1=
+          <b><a href="#sha1-proof">SHA-1_TO_PROVE_IDENTITY</a></b>
+         </div> <p>Optional: <a href="#date-range">Date Range Selection</a></p> <p>Successful response structure (JSON format):</p> 
+         <div class="api-output">
+          { "@attributes": { "status": "ok", }, "sc_data": [{ "keyword_count": "KEYWORD_COUNT", "keyword": "KEYWORD", "percentage": "PERCENTAGE", "search_engine_name": "SEARCH_ENGINE_NAME", "search_engine_host": "SEARCH_ENGINE_HOST" }] }
+         </div> </li> 
+        <li> <h3 id="lookup-visitor">4.23 Lookup Visitor Navigation Path <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('lookup-visitor')" href="#lookup-visitor">#</a></h3> 
+         <div class="api-call">
+          http://api.statcounter.com/stats/?vn=
+          <b><a href="#version-number">VERSION_NUMBER</a></b>&amp;s=lookup_visitor_navigation&amp;ip=
+          <b><a href="#ip-address">IP_ADDRESS</a></b>&amp;pi=
+          <b><a href="#project-id">PROJECT_ID</a></b>&amp;t=
+          <b><a href="#time-execution">TIME_OF_EXECUTION</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;f=
+          <b><a href="#format">FORMAT</a></b>&amp;sha1=
+          <b><a href="#sha1-proof">SHA-1_TO_PROVE_IDENTITY</a></b>
+         </div> <p>Optional: <a href="#date-range">Date Range Selection</a></p> <p>Successful response structure (JSON format):</p> 
+         <div class="api-output">
+          { "@attributes": { "status": "ok", }, "sc_data": [{ "url": "URL", "type": "TYPE", "time": "TIME" }] }
+         </div> </li> 
+        <li> <h3 id="lookup-visitor-info">4.24 Lookup Visitor Info <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('lookup-visitor-info')" href="#lookup-visitor-info">#</a></h3> 
+         <div class="api-call">
+          http://api.statcounter.com/stats/?vn=
+          <b><a href="#version-number">VERSION_NUMBER</a></b>&amp;s=lookup_visitor_info&amp;ip=
+          <b><a href="#ip-address">IP_ADDRESS</a></b>&amp;pi=
+          <b><a href="#project-id">PROJECT_ID</a></b>&amp;t=
+          <b><a href="#time-execution">TIME_OF_EXECUTION</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;f=
+          <b><a href="#format">FORMAT</a></b>&amp;sha1=
+          <b><a href="#sha1-proof">SHA-1_TO_PROVE_IDENTITY</a></b>
+         </div> <p>Successful response structure (JSON format):</p> 
+         <div class="api-output">
+          { "@attributes": { "status": "ok", }, "sc_data": [{ "resolution": "RESOLUTION", "country_name": "COUNTRY_NAME", "city": "CITY", "state": "STATE", "isp": "ISP", "browser_name": "BROWSER_NAME", "os": "OS", "host": "HOST", "latitude": "LATITUDE", "longitude": "LONGITUDE", "javascript": "JAVASCRIPT", "visit_length": "VISIT_LENGTH", "returning_visits": "RETURNING_VISITS", "ip_label": "IP_LABEL" }] }
+         </div> </li> 
+        <li> <h3 id="mobile-devices">4.25 Mobile Devices <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('mobile-devices')" href="#mobile-devices">#</a></h3> 
+         <div class="api-call">
+          http://api.statcounter.com/stats/?vn=
+          <b><a href="#version-number">VERSION_NUMBER</a></b>&amp;s=mobile_device&amp;pi=
+          <b><a href="#project-id">PROJECT_ID</a></b>&amp;t=
+          <b><a href="#time-execution">TIME_OF_EXECUTION</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;f=
+          <b><a href="#format">FORMAT</a></b>&amp;sha1=
+          <b><a href="#sha1-proof">SHA-1_TO_PROVE_IDENTITY</a></b>
+         </div> <p>Successful response structure (JSON format):</p> 
+         <div class="api-output">
+          { "@attributes": { "status": "ok", }, "sc_data": [{ "hit": "HIT", "vendor": "VENDOR", "device": "DEVICE", "percentage": "PERCENTAGE", }] }
+         </div> </li> 
+        <li> <h3 id="platform">4.26 Platform <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('platform')" href="#platform">#</a></h3> 
+         <div class="api-call">
+          http://api.statcounter.com/stats/?vn=
+          <b><a href="#version-number">VERSION_NUMBER</a></b>&amp;s=platform&amp;pi=
+          <b><a href="#project-id">PROJECT_ID</a></b>&amp;t=
+          <b><a href="#time-execution">TIME_OF_EXECUTION</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;f=
+          <b><a href="#format">FORMAT</a></b>&amp;sha1=
+          <b><a href="#sha1-proof">SHA-1_TO_PROVE_IDENTITY</a></b>
+         </div> <p>Successful response structure (JSON format):</p> 
+         <div class="api-output">
+          { "@attributes": { "status": "ok", }, "sc_data": [{ "desktop": "DESKTOP", "mobile": "MOBILE", "tablet": "TABLET", "console": "CONSOLE" }] }
+         </div> </li> 
+        <li> <h3 id="export">4.27 Export <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('export')" href="#export">#</a></h3> <p>Note: This function is designed to give API access to the same data provided by the Download Log feature on the StatCounter website.</p> 
+         <div class="api-call">
+          http://api.statcounter.com/stats/?vn=
+          <b><a href="#version-number">VERSION_NUMBER</a></b>&amp;s=export&amp;pi=
+          <b><a href="#project-id">PROJECT_ID</a></b>&amp;t=
+          <b><a href="#time-execution">TIME_OF_EXECUTION</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;f=
+          <b><a href="#format">FORMAT</a></b>&amp;sha1=
+          <b><a href="#sha1-proof">SHA-1_TO_PROVE_IDENTITY</a></b>
+         </div> <p>Optional: <a href="#date-range">Date Range Selection</a></p> <p>Successful response structure (JSON format):</p> 
+         <div class="api-output">
+          { "@attributes": { "status": "ok", }, "sc_data": [{ "t":"DATETIME", "ip":"IP", "ip_label":"IP_LABEL", "browser_name":"BROWSER_NAME", "browser_version":"BROWSER_VERSION", "os":"OS", "resolution":"RESOLUTION", "country":"COUNTRY", "region":"REGION", "city":"CITY", "postal_code":"POSTAL_CODE", "isp":"ISP", "returning_count":"RETURNING_COUNT", "type":"TYPE", "url":"URL", "title":"TITLE", "link":"LINK", "se_host":"SE_HOST", "se_name":"SE_NAME", "se_keywords":"SE_KEYWORDS", "is_paid":"IS_PAID" }] }
+         </div> </li>
+        <li> <h2>Query String Fields</h2> <p>Each API call is made with a URL containing a detailed query string. The fields used by the API are detailed below.</p> <p id="version-number"><b>vn – Version Number</b><br> The version number of the StatCounter API that you are calling. This document describes the StatCounter API for Version 3 so the value '3' should always be passed.<br> <i>Example: vn=3</i></p> <p id="format"><b>f – Format</b><br> The required format of the returned data. The available options are 'json' and 'xml'. JSON is the default format.<br> <i>Example: f=xml</i></p> <p><b>s – Stats</b><br> The stats that you wish to call. The available options are:<br> - summary (Summary Stats)<br> - visitor (Recent Visitor Activity)<br> - popular (Popular Pages)<br> - entry (Entry Pages)<br> - exit (Exit Pages)<br> - camefrom (Recent Came From)<br> <i>Example: s=popular</i></p> <p id="project-id"><b>pi – Project ID</b><br> The project ID of your StatCounter project.<br> <i>Example: pi=7407742</i></p> <p id="username"><b>u – Username</b><br> Your statCounter username.<br> <i>Example: u=myusername</i></p> <p id="website-title"><b>wt – Website Title</b><br> The name that will be given to the new StatCounter project e.g. 'My Website'. The title must be encoded for use in the URL.<br> <i>Example: wt=My%20Website</i></p> <p id="website-url"><b>wu – Website URL</b><br> The URL of the website e.g. 'http://www.mywebsite.com/'. The URL must be encoded for use in the URL.<br> <i>Example: wu=http%3A%2F%2Fwww.mywebsite.com</i></p> <p id="log-size"><b>ls – Log Size</b><br> The desired log size for the project.<br> <i>Example: ls=5000</i></p> <p id="time-execution"><b>t – Time of Execution</b><br> The time of execution of the request, in Unix timestamp format.<br> <i>Example: t=1321438882</i></p> <p id="time-zone"><b>tz – Time Zone</b><br> The time zone to be used for the project stats e.g. 'America/New_York'. See Time Zone Options in the Appendix for the complete list. The default is America/New_York. The Time Zone must be encoded for use in the URL.<br> <i>Example: tz=America%2FNew_York</i></p> <p id="public-stats"><b>ps – Public Stats</b><br> Set the level of public access to stats in a project. The default is that all stats are publicly available. The available options are:<br> 0: All public stats are disabled 1: All stats are public 2: Only 'Summary Stats' are public <i>Example: ps=2</i></p> <p id="number-results"><b>n – Number of Results</b><br> The number of results to return.<br> <i>Example: n=10</i></p> <p id="chop-url"><b>c – Chop URL</b><br> Chop the query string from the returned URL. Many URLs contain data variables in a query string that is used to set details on the web page. Chopping the query string can make the returned URL list easier to read and less cluttered. The available options are '0' and '1'. The default is '1' (chop URL).<br> <i>Example: c=1</i></p> <p id="count-type"><b>ct – Count Type</b><br> The type of counts used by a stat. A stat can be counted by page views or visitors. The available api options are 'page_view' and 'visitor'. The default is 'page_view'.<br> <i>Example: ct=page_view</i></p> <p id="granularity"><b>g – Granularity</b><br> The time interval of returned stats, used with a 'Summary Stats' query. Default value is 'weekly'. The available options are:<br> - hourly<br> - daily<br> - weekly<br> - monthly<br> - quarterly<br> - yearly<br> <i>Example: g=weekly</i></p> <p id="start-hour"><b>sh – Start Hour</b><br> The start hour for a time period in a 'Summary Stats' query. Default value is '0'.<br> <i>Example: sh=10</i></p> <p id="start-day"><b>sd – Start Day</b><br> The start day for a time period in a 'Summary Stats' query. Default value is '1'.<br> <i>Example: sd=26</i></p> <p id="start-month"><b>sm – Start Month</b><br> The start month for a time period in a 'Summary Stats' query. Default value is '1'.<br> <i>Example: sm=8</i></p> <p id="start-year"><b>sy – Start Year</b><br> The start year for a time period in a 'Summary Stats' query. Default value is '2015'.<br> <i>Example: sy=2011</i></p> <p id="start-week"><b>sw – Start Week</b><br> The start week for a time period in a 'Summary Stats' query. Only required if granularity is 'weekly'. Default value is '1'.<br> <i>Example: sw=2</i></p> <p id="start-quarter"><b>sq – Start Quarter</b><br> The start quarter for a time period in a 'Summary Stats' query. Only required if granularity is 'quarterly'. Default value is '1'.<br> <i>Example: sq=1</i></p> <p id="end-hour"><b>eh – End Hour</b><br> The end hour for a time period in a 'Summary Stats' query. Default value is '23'.<br> <i>Example: eh=22</i></p> <p id="end-day"><b>ed – End Day</b><br> The end day for a time period in a 'Summary Stats' query. Default value is '28'.<br> <i>Example: ed=30</i></p> <p id="end-month"><b>em – End Month</b><br> The end month for a time period in a 'Summary Stats' query. Default value is '12'.<br> <i>Example: em=11</i></p> <p id="end-year"><b>ey – End Year</b><br> The end year for a time period in a 'Summary Stats' query. Default value is '2015'.<br> <i>Example: ey=2012</i></p> <p id="end-week"><b>ew – End Week</b><br> The end week for a time period in a 'Summary Stats' query. Only required if granularity is 'weekly'. Default value is '2'.<br> <i>Example: ew=34</i></p> <p id="end-quarter"><b>eq – End Quarter</b><br> The end quarter for a time period in a 'Summary Stats' query. Only required if granularity is 'quarterly'. Default value is '4'.<br> <i>Example: eq=4</i></p> <p id="exclude-external"><b>e – Exclude External</b><br> Choose to exclude external results to your site. Available options are '0' or '1'. Default value is '1' (exclude external).<br> <i>Example: e=1</i></p> <p id="exclude-search-engines"><b>ese – Exclude Search Engines</b><br> Choose to exclude search engine driven results to your site. Available options are '0' or '1'. Default value is '0' (include search engines).<br> <i>Example: ese=1</i></p> <p id="exclude-encrypted-keywords"><b>eek – Exclude Encrypted Keywords</b><br> Choose to exclude encrypted keyword results. Available options are '0' or '1'. Default value is '0' (include encrypted keyword results).<br> <i>Example: eek=1</i></p> <p id="combine-keywords"><b>ck – Combine Keywords</b><br> Choose to combine keyword results based on one of three possible criteria. Available options are 'search_engine_host' or 'search_engine_name' or 'together'. Default value is 'search_engine_host'.<br> <i>Example: ck=together</i></p> <p id="group-by-domain"><b>gbd – Group By Domain</b><br> Choose to group results by referring domain, in the 'Came From' stats query. Available options are '0' or '1'. Default value is '0' (do not group by domain).<br> <i>Example: gbd=1</i></p> <p id="device-type"><b>de – Device</b><br> Choose the device type. Default value is 'All'. The available options are:<br> - all<br> - desktop<br> - mobile<br> <i>Example: de=mobile</i></p> <p id="ip-address"><b>ip – I.P. Address</b><br> The I.P. address of a visitor you want to look up, in the stat lookup_visitor.<br> <i>Example: ip=192.168.1.1</i></p> <p id="sha1-proof"><b>sha1 – SHA-1 Proof</b><br> The SHA-1 proof is used to verify your identity within the StatCounter system. It is created from the SHA-1 value of the existing URL query string to-date, with your API password appended. e.g. sha1 (query string + api password) </p>
+         <ul>
+          <li>Query string is the full URL query string, beginning with and including '?'.</li>
+          <li>The API password is set by you (see <a href="#api-password">API Login Credentials</a> for more details).</li>
+         </ul> <i>Example: sha1=e0fd149f1999f81ce474070a01c7b14c01e4044f</i><p></p> </li> 
+        <li> <h3 id="create-project">5. Create a New Project <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('create-project')" href="#create-project">#</a></h3> 
+         <div class="api-call">
+          http://api.statcounter.com/add_project/?vn=
+          <b><a href="#version-number">VERSION_NUMBER</a></b>&amp;wt=
+          <b><a href="#website-title">WEBSITE_TITLE</a></b>&amp;wu=
+          <b><a href="#website-url">WEBSITE_URL</a></b>&amp;t=
+          <b><a href="#time-execution">TIME_OF_EXECUTION</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;tz=
+          <b><a href="#time-zone">TIME_ZONE</a></b>&amp;ps=
+          <b><a href="#public-stats">PUBLIC_STATS</a></b>&amp;f=
+          <b><a href="#format">FORMAT</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;sha1=
+          <b><a href="#sha1-proof">SHA-1_TO_PROVE_IDENTITY</a></b>
+         </div> <p>Successful response structure (JSON format):</p> 
+         <div class="api-output">
+          { "@attributes": { "status": "ok", }, "sc_data": [{ "project_id": "PROJECT_ID", "security_code": "SECURITY_CODE" }] }
+         </div> <p>Once you receive a successful response, it is important to save the PROJECT_ID and the SECURITY_CODE into a database for that website, as these values will need to be retrieved each time the website is loaded.</p> </li> 
+        <li> <h3 id="update-project">6. Update Project Settings <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('update-project')" href="#update-project">#</a></h3> 
+         <div class="api-call">
+          http://api.statcounter.com/update_project/?vn=
+          <b><a href="#version-number">VERSION_NUMBER</a></b>&amp;pi=
+          <b><a href="#project-id">PROJECT_ID</a></b>&amp;t=
+          <b><a href="#time-execution">TIME_OF_EXECUTION</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;ps=
+          <b><a href="#public-stats">PUBLIC_STATS</a></b>&amp;f=
+          <b><a href="#format">FORMAT</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;sha1=
+          <b><a href="#sha1-proof">SHA-1_TO_PROVE_IDENTITY</a></b>
+         </div> <p>Successful response structure (JSON format):</p> 
+         <div class="api-output">
+          { "@attributes": { "status": "ok" } }
+         </div> </li> 
+        <li> <h3 id="increase-logsize">7. Increase Project Log Size <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('increase-logsize')" href="#increase-logsize">#</a></h3> <p>This call allows you to increase the log size of any of your projects. The log size must be greater than 500, and you cannot use this call to decrease the log size.</p> 
+         <div class="api-call">
+          http://api.statcounter.com/update_logsize/?vn=
+          <b><a href="#version-number">VERSION_NUMBER</a></b>&amp;pi=
+          <b><a href="#project-id">PROJECT_ID</a></b>&amp;ls=
+          <b><a href="#log-size">LOG_SIZE</a></b>&amp;t=
+          <b><a href="#time-execution">TIME_OF_EXECUTION</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;f=
+          <b><a href="#format">FORMAT</a></b>&amp;sha1=
+          <b><a href="#sha1-proof">SHA-1_TO_PROVE_IDENTITY</a></b>
+         </div> <p>Successful response structure (JSON format):</p> 
+         <div class="api-output">
+          { "@attributes": { "message": "The adjust log request has been received for project ID PROJECT_ID and will be processed in the next 5 minutes" } }
+         </div> </li>
+        <li> <h3 id="retrieve-logsizes">8. Retrieve Account Log Sizes <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('retrieve-logsizes')" href="#retrieve-logsizes">#</a></h3> <p>This call will return log details for each project associated with your account.</p> 
+         <div class="api-call">
+          http://api.statcounter.com/account_logsizes/?vn=
+          <b><a href="#version-number">VERSION_NUMBER</a></b>&amp;t=
+          <b><a href="#time-execution">TIME_OF_EXECUTION</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;f=
+          <b><a href="#format">FORMAT</a></b>&amp;sha1=
+          <b><a href="#sha1-proof">SHA-1_TO_PROVE_IDENTITY</a></b>
+         </div> <p>Successful response structure (JSON format):</p> 
+         <div class="api-output">
+          { "@attributes": { "status":"ok" }, "sc_data": { "project_id":"PROJECT_ID", "project_name":"PROJECT_NAME", "log_size":"LOG_SIZE", "log_usage":"LOG_USAGE", "log_size_days_estimated":"LOG_SIZE_DAYS_ESTIMATE", "log_size_days_usage":"LOG_SIZE_DAYS_USAGE" } }
+         </div> </li> 
+        <li> <h3 id="user-details">9. Retrieve User Details <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('user-details')" href="#user-details">#</a></h3> <p>This call will return details of the user making the call.</p> 
+         <div class="api-call">
+          http://api.statcounter.com/user_details/?vn=
+          <b><a href="#version-number">VERSION_NUMBER</a></b>&amp;t=
+          <b><a href="#time-execution">TIME_OF_EXECUTION</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;f=
+          <b><a href="#format">FORMAT</a></b>&amp;sha1=
+          <b><a href="#sha1-proof">SHA-1_TO_PROVE_IDENTITY</a></b>
+         </div> <p>Successful response structure (JSON format):</p> 
+         <div class="api-output">
+          { "@attributes": { "status":"ok" }, "sc_data":[{ "name":"FULL_NAME", "email":"EMAIL_ADDRESS", "log_quota":"LOG_QUOTA", "date_format":"DATE_FORMAT", "time_format":"TIME_FORMAT" }] }
+         </div> <p><strong>Note:</strong></p> <p>date_format key:</p> 
+         <ol start="0"> 
+          <li>DD MONTH YYYY</li> 
+          <li>MONTH DD YYYY</li> 
+          <li>YYYY.MM.DD</li> 
+          <li>DD<sup>th</sup> MONTH YYYY</li> 
+          <li>MONTH DD<sup>th</sup> YYYY</li> 
+         </ol> <p>time_format key:</p> 
+         <ol start="0"> 
+          <li>HH:MM:SS</li> 
+          <li>HH:MM:SS <span class="ampm">AM/PM</span></li> 
+          <li>HH:MM:SS</li> 
+          <li>HH:MM:SS <span class="ampm">AM/PM</span></li> 
+         </ol> </li> 
+        <li> <h3 id="integrate-stats">10. Integrate StatCounter Stats using an iframe <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('integrate-stats')" href="#integrate-stats">#</a></h3> <p>To view the public website stats, the user needs to be sent to the following website URL:</p> 
+         <div style="margin-bottom: 10px; padding: 3px; border: 1px solid #6E7680;">
+          <i>http://statcounter.com/p<b><a href="#project-id">PROJECT_ID</a></b>?guest=1</i>
+         </div> <p><b>project_id</b><br> The project ID returned by StatCounter via the API.<br> <i>Example: 3104569</i></p> <p>The user can view their website stats inside any control panel with the following iframe integration: </p>
+         <div class="api-output">
+          &lt;HTML&gt; &lt;HEAD&gt; &lt;TITLE&gt;User Admin Panel&lt;/TITLE&gt; &lt;/HEAD&gt; &lt;BODY&gt; &lt;p&gt;Your Standard Control Panel HTML here&lt;/p&gt; &lt;iframe src = "http://statcounter.com/pPROJECT_ID?guest=1" width="100%" height="900"&gt; &lt;p&gt;Your browser does not support iframes.&lt;/p&gt; &lt;/iframe&gt; &lt;/BODY&gt; &lt;/HTML&gt;
+         </div> </li> 
+        <li> <h3 id="user-projects">11. Retrieve User Project Details <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('user-projects')" href="#user-projects">#</a></h3> <p>This call will return details of each project for which the given user has sufficient permissions.</p> 
+         <div class="api-call">
+          http://api.statcounter.com/user_projects/?vn=
+          <b><a href="#version-number">VERSION_NUMBER</a></b>&amp;t=
+          <b><a href="#time-execution">TIME_OF_EXECUTION</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;f=
+          <b><a href="#format">FORMAT</a></b>&amp;sha1=
+          <b><a href="#sha1-proof">SHA-1_TO_PROVE_IDENTITY</a></b>
+         </div> <p>Successful response structure (JSON format):</p> 
+         <div class="api-output">
+          { "@attributes": { "status":"ok" }, "sc_data":[{ "project_id":"PROJECT_ID", "project_name":"PROJECT_NAME", "url":"URL", "project_group_id":"PROJECT_GROUP_ID", "project_group_name":"PROJECT_GROUP_NAME", "hidden_group":"HIDDEN_GROUP" }] }
+         </div> </li> 
+        <li> <h3 id="select-project">12. Select Project Details <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('select-project')" href="#select-project">#</a></h3> <p>This call will return details of a project specified by the project id (pi) parameter</p> 
+         <div class="api-call">
+          http://api.statcounter.com/select_project/?vn=
+          <b><a href="#version-number">VERSION_NUMBER</a></b>&amp;pi=
+          <b><a href="#project-id">PROJECT_ID</a></b>&amp;t=
+          <b><a href="#time-execution">TIME_OF_EXECUTION</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;f=
+          <b><a href="#format">FORMAT</a></b>&amp;sha1=
+          <b><a href="#sha1-proof">SHA-1_TO_PROVE_IDENTITY</a></b>
+         </div> <p>Successful response structure (JSON format):</p> 
+         <div class="api-output">
+          { "@attributes": { "status":"ok" }, "sc_data":[{ "project_name":"PROJECT_NAME", "log_size": "LOG_SIZE", "timezone": "TIME_ZONE", "url":"URL", "log_oldest_entry":"LOG_OLDEST_ENTRY", "log_latest_entry":"LOG_LATEST_ENTRY" }] }
+         </div> </li> 
+        <li> <h3 id="create-ip-label">13. Create IP Label <a class="headerlink" title="Permalink to this API docs item" onclick="highlight('create-ip-label')" href="#create-ip-label">#</a></h3> <p>This call allows you to create an IP address label for any of your projects.</p> 
+         <div class="api-call">
+          http://api.statcounter.com/create_ip_label?vn=
+          <b><a href="#version-number">VERSION_NUMBER</a></b>&amp;pi=
+          <b><a href="#project-id">PROJECT_ID</a></b>&amp;ip=
+          <b><a href="#ip-address">IP_ADDRESS</a></b>&amp;ipl=
+          <b><a href="#ip-address-label">IP_LABEL</a></b>&amp;t=
+          <b><a href="#time-execution">TIME_OF_EXECUTION</a></b>&amp;u=
+          <b><a href="#username">USERNAME</a></b>&amp;f=
+          <b><a href="#format">FORMAT</a></b>&amp;sha1=
+          <b><a href="#sha1-proof">SHA-1_TO_PROVE_IDENTITY</a></b>
+         </div> <p>Successful response structure (JSON format):</p> 
+         <div class="api-output">
+          { "@attributes": { "status":"ok" } }
+         </div> </li> 
+       </ul> Last Update: 27th June 2014
+      </div>
+      <br class="breaker">
+     </div>
+    </div>
+   </div>
+   <script type="text/javascript">
+  signal(window, "onDOMcheckpoint");
+</script>
+   <div id="base">
+    <div class="outer">
+     <div class="inner"></div>
+    </div>
+   </div>
+   <div id="footer">
+    <div class="inner"></div> 
+    <ul id="footer-groups"> 
+     <li class="footer-section"><span id="copyright-api">Copyright 1999-2015<br>© StatCounter, All rights reserved.</span></li> 
+     <li class="footer-section"><span id="copyright-api"><a href="terms">Terms of Use</a></span></li> 
+    </ul> 
+   </div>
+  </div>
+  <script type="text/javascript">
+  signal(window, "onDOMload");
+</script>
+  <!-- Start of StatCounter Code --> 
+  <script type="text/javascript">
+if(document.cookie.indexOf("landing=")==-1) {
+        var exdate=new Date();
+        exdate.setDate(exdate.getDate()+365);
+        document.cookie="landing=" +escape(document.location)+"|||"+escape(document.referrer)+";expires="+exdate.toGMTString()+";path=/;domain=.statcounter.com";
+}
+var sc_project=204609;
+var sc_invisible=1;
+var sc_security="0c932f53";
+var sc_https=1;
+var sc_click_stat=1;
+var scJsHost = (("https:" == document.location.protocol) ? "https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" + scJsHost + "statcounter.com/counter/counter_test.js'></"+"script>");</script> 
+  <noscript>
+   <div class="statcounter">
+    <a title="blogger visitor counter" href="http://statcounter.com/blogger/" target="_blank"><img class="statcounter" src="https://c.statcounter.com/204609/0/0c932f53/1/" alt="blogger visitor counter"></a>
+   </div>
+  </noscript> 
+  <!-- End of StatCounter Code --> 
+ </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <meta charset="utf-8"> 
+  <title>
+      Google+ Help Forum
+    </title> 
+  <meta content="Help forum page for issues related to Google+. Visit this page to ask questions about Google Plus and get answers from Google+ community managers and users." name="description"> 
+  <link href="/+/css/plus.base.css" rel="stylesheet"> 
+  <link href="//www.google.com/css/gweb/lightbox.css" rel="stylesheet"> 
+  <script src="//www.google.com/js/gweb/analytics/autotrack.js">
+</script> 
+  <script>
+new gweb.analytics.AutoTrack({
+      profile: 'UA-23996903-1'
+    });
+    </script> 
+ </head> 
+ <body> 
+  <div id="header-bar"> 
+   <div class="container-12"> 
+    <a class="col-2" href="/intl/en/+/learnmore/" id="logo"><img alt="Google+" src="/images/logos/googleplus_logo.png"></a> 
+    <ul class="col-9"> 
+     <li> <a href="/intl/en/+/learnmore/index.html">Overview</a> </li> 
+     <li> <a href="http://www.google.com/support/+/?hl=en">Details</a> </li> 
+     <li> <a href="http://www.google.com/support/plus/go/discuss?hl=en">Discuss</a> </li> 
+    </ul> 
+   </div> 
+  </div> 
+  <div class="container-12"> 
+   <iframe frameborder="0" id="forum_embed" scrolling="no" src="javascript:void(0)"></iframe> 
+  </div> 
+  <p class="container-12" id="footer"> © Google · <a href="/intl/en/+/policy/">Google+ Privacy Policy</a> </p>
+  <script>
+/* Adjust the height of the iframe to fit completely with viewport */
+    function adjust() {
+    var width, height;
+    if (document.all) {
+      width = 960;
+      height = document.documentElement.offsetHeight;
+    } else {
+      width = 960;
+      height = window.innerHeight;
+    }
+    var forum_iframe = document.getElementById('forum_embed');
+    forum_iframe.height = Math.max(height - 150, 300);
+    forum_iframe.width = Math.max(width - 50, 800);
+    }
+
+    /* Instantiate instance of help center forum embed and readjust viewport as needed */
+    var init = function() {
+    var i = window.location.href.indexOf("#");
+    var parentUrl = (i == -1 ? encodeURIComponent(window.location.href) : encodeURIComponent(window.location.href.substring(0, i)));
+    var forumUrl = 'https://groups.google.com/a/googleproductforums.com/forum/embed/?place=forum/google-plus-discuss&showsearch=true&showtabs=false&hl=en&fragments=true' + (parentUrl ? ("&parenturl=" + parentUrl) : "");
+    if (i != -1) {
+      forumUrl += "#" + window.location.href.substring(i + 1);
+    }
+    document.getElementById('forum_embed').src = forumUrl;
+    adjust();
+    }();
+    window.onresize = adjust;
+    </script>  
+ </body>
+</html>

@@ -1,0 +1,594 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
+ <head> 
+  <base href="http://ceit.es/"> 
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"> 
+  <meta name="robots" content="index, follow"> 
+  <meta name="keywords" content=""> 
+  <meta name="description" content=""> 
+  <meta name="generator" content=""> 
+  <title>CEIT - Centro de estudios e investigaciones técnicas de Gipuzkoa</title> 
+  <link href="/en?format=feed&amp;type=rss" rel="alternate" type="application/rss+xml" title="RSS 2.0"> 
+  <link href="/en?format=feed&amp;type=atom" rel="alternate" type="application/atom+xml" title="Atom 1.0"> 
+  <link href="/templates/pie_abajo_v2/favicon.ico" rel="shortcut icon" type="image/x-icon"> 
+  <script type="text/javascript" src="/plugins/content/avreloaded/silverlight.js"></script> 
+  <script type="text/javascript" src="/plugins/content/avreloaded/wmvplayer.js"></script> 
+  <script type="text/javascript" src="/plugins/content/avreloaded/swfobject.js"></script> 
+  <script type="text/javascript" src="/plugins/content/avreloaded/avreloaded.js"></script> 
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+  <link href="/templates/pie_abajo_v2/css/pantalla.css" rel="stylesheet" type="text/css" media="screen"> 
+  <link href="/templates/pie_abajo_v2/css/contenido.css" rel="stylesheet" type="text/css" media="screen"> 
+  <!--[if lte IE 6]>
+		<link href="/templates/pie_abajo_v2/css/ie.css" media="all" rel="stylesheet" type="text/css" />
+	<![endif]--> 
+  <!--[if IE 7]>
+		<link href="/templates/pie_abajo_v2/css/ie7.css" media="all" rel="stylesheet" type="text/css" />
+	<![endif]--> 
+  <script type="text/javascript">
+	//<![CDATA[
+		document.write('<link href="/templates/pie_abajo_v2/css/javascript.css" media="screen" rel="stylesheet" type="text/css" />');
+	//]]>
+	</script> 
+  <link href="/templates/pie_abajo_v2/css/print.css" rel="stylesheet" type="text/css" media="print"> 
+  <meta http-equiv="imagetoolbar" content="no"> 
+  <link href="/templates/pie_abajo_v2/favicon.ico" rel="shortcut icon"> 
+  <script src="/templates/pie_abajo_v2/js/jquery.js" type="text/javaScript"></script> 
+  <script src="/templates/pie_abajo_v2/js/jquery.blockUI.js" type="text/javaScript"></script> 
+  <script src="/templates/pie_abajo_v2/js/comunes.js" type="text/javaScript"></script> 
+  <script src="/templates/pie_abajo_v2/js/centrarListasElementosFlotantes.js" type="text/javaScript"></script> 
+  <script src="/templates/pie_abajo_v2/js/recursosFlash.js" type="text/javaScript"></script> 
+  <script type="text/javascript">
+	//<![CDATA[
+		$(document).ready(function(){
+		    displayMenuPrincipal();
+					/*
+				CARRUSEL DE BANNERS
+			*/
+			/*
+				ATENCIÓN: la función innerXHTML está en el archivo js/recursosFlash.js
+			*/
+			var xml2str = "<div>" + encodeURIComponent(innerXHTML(document.getElementById('bannersFlash')),true) + "</div>";
+			var flashvars = {
+			    banners: xml2str
+			};
+			var params = {
+				wmode: "transparent"
+			};
+			var url = "/templates/pie_abajo_v2/swf/carrusel.swf";
+			/*
+				ATENCIÓN: no es necesario enlazar con un archivo swfobject.js situado en el directorio js de nuestra plantilla
+				porque el plugin avreloaded (para meter vídeos en los artículos) ya lo mete.
+			*/
+
+						swfobject.embedSWF(url, "carruselBannersFlash", "342", "209", "8.0.0",undefined,flashvars,params);
+
+			/*
+    			MENÚ LÍNEAS DE INVESTIGACIÓN:
+				- Sustituye el span contenido en el enlace por una imagen cuyo alt será el texto contenido en el span
+				- En el over sustituiremos la imagen por otra
+			*/
+			$("#menuLineasInv ul li a").map(function(index) {
+				var alt = $(this).children("span").text();
+			    var srcOut = "/templates/pie_abajo_v2/images/lineas_out_0" + index +"_en.gif";
+				var srcOver = "/templates/pie_abajo_v2/images/lineas_over_0" + index +"_en.gif";
+
+				$(this).children("span").replaceWith("<img src='" + srcOut + "' alt='" + alt + "' />");
+				$(this).hover (
+					function() {
+					    $(this).children("img").attr("src",srcOver);
+					},
+					function() {
+					    $(this).children("img").attr("src",srcOut);
+					}
+				);
+			});
+
+			/*
+				MENÚ SECORES DE APLICACIÓN:
+				- Sustituye el span contenido en el enlace por una imagen cuyo alt será el texto contenido en el span
+				- En el over sustituiremos la imagen por otra
+			*/
+			$("#sectoresAplicacion ul li a").map(function(index) {
+
+    			var alt = $(this).children("span").text();
+    			var srcOut = "/templates/pie_abajo_v2/images/sectores_out_0" + index +"_en.gif";
+    			var srcOver = "/templates/pie_abajo_v2/images/sectores_over_0" + index +"_en.gif";
+
+    			$(this).children("span").replaceWith("<img src='" + srcOut + "' alt='" + alt + "' />");
+       			$(this).hover(
+    				function() {
+    					$(this).children("img").attr("src",srcOver);
+    				},
+    				function() {
+    					$(this).children("img").attr("src",srcOut);
+    				}
+    			);
+    		});
+
+			/*
+				BANNER INDEX BOLETÍN:
+				- Sustituir en el over una imagen por otra
+			*/
+			$("#bannerBoletin").children("a").hover(
+				function() {
+					var srcOver = "/templates/pie_abajo_v2/images/boletin_over_en.jpg";
+					$(this).children("img").attr("src",srcOver);
+				},
+				function() {
+					var srcOut = "/templates/pie_abajo_v2/images/boletin_out_en.jpg";
+					$(this).children("img").attr("src",srcOut);
+				}
+			);
+
+    
+            /*   CENTRAR PAGINACIÓN   */
+		    var entornoPag = $(".paginacionEnv");// el entorno en que hay que centrar las paginaciones
+		    var entornosListaPag = $(".paginacionEnv .interior");// los <div> que contienen los <ul> que representan las paginaciones
+																		   // en nuestro caso ES NECESARIO envolver las listas en <div>
+		    if(entornoPag.length && entornosListaPag.length) {// comprobamos que existen ambos elementos
+		        var centraPaginaciones = new CentrarListaElementosFlotantes(entornoPag,entornosListaPag);
+		        centraPaginaciones.centrar();
+		    }
+
+		    /*   FORMULARIO DE SUSCRIPCIÓN AL NEWSLETTER   */
+		    //var entornoForm = $(".suscripcionNewsletter");
+
+		    //if(entornoForm.html() != null){
+	
+
+			/*   MENSAJES DE ESTADO DE LA SUSCRIPCION   */
+	
+        });
+	//]]>
+	</script> 
+ </head> 
+ <body> 
+  <div id="contenedor"> 
+   <div id="cuerpo"> 
+    <h1 class="ayudaAcces">CEIT - Centro de estudios e investigaciones técnicas de Gipuzkoa</h1> 
+    <div id="cabecera" class="index"> 
+     <div id="cabeceraInterior"> 
+      <a class="flotaIzquierda" href="/index.php" title="Jump to the home page"><img src="/templates/pie_abajo_v2/images/logo.gif" alt="CEIT: Centro de Estudios e Investigaciones Técnicas"></a> 
+      <div id="cabeceraTop" class="flotaDerecha"> 
+       <div id="idiomas" class="flotaDerecha"> 
+        <ul>
+         <li><a href="http://ceit.es/es"><span lang="es" xml:lang="es">Español</span></a></li>
+         <li><a href="http://ceit.es/eu"><span lang="eu" xml:lang="eu">Euskara</span></a></li>
+        </ul>
+        <!--JoomFish V2.2.3 (Feng Huang)--> 
+        <!-- &copy; 2003-2012 Think Network, released under the GPL. --> 
+        <!-- More information: at http://www.joomfish.net --> 
+       </div> 
+       <div id="directoA" class="flotaDerecha"> 
+        <form method="post" action="#">
+         <select name="directoA" onchange="submit();return false;"><option value="0">Straight to...</option><option value="/en/join-ceit/opportunities">Opportunities</option><option value="/en/press-room/scientific-publications">Publications</option><option value="/en/press-room/tesis">PhD Thesis</option><option value="/en/press-room/news-a-events">News &amp; Events</option></select>
+         <input id="botDirectoA" name="botDirectoA" type="submit" value="Straight to...">
+        </form> 
+       </div> 
+       <div id="menuAuxTop" class="flotaDerecha"> 
+        <ul class="menu">
+         <li class="primero item2"><a href="/en/about-ceit/our-location-"><span>Our Location</span></a></li>
+         <li class="item3"><a href="/en/about-ceit/contact"><span>Contact</span></a></li>
+         <li class="ultimo item4"><a href="/en/about-ceit/personnel-directory"><span>Personnel Directory</span></a></li>
+        </ul> 
+       </div> 
+       <div id="buscador" class="flotaDerecha"> 
+        <form action="index.php?option=com_search&amp;view=search&amp;Itemid=49" method="post"> 
+         <div id="search"> 
+          <input name="searchword" id="mod_search_searchword" maxlength="20" alt="buscar" class="inputbox" type="text" size="20" value="Search..." onblur="if(this.value=='') this.value='Search...';" onfocus="if(this.value=='Search...') this.value='';">
+          <input type="image" value="buscar" class="button" src="/images/M_images/searchButton.gif" onclick="this.form.searchword.focus();"> 
+         </div> 
+         <input type="hidden" name="task" value="search"> 
+         <input type="hidden" name="option" value="com_search"> 
+        </form> 
+       </div> 
+       <div class="clearall"></div> 
+       <p class="ayudaAcces"><a href="#" id="enlace_anterior_mp">Enlace anterior al menú principal</a></p> 
+       <div id="menuPrincipal" class="flotaDerecha"> 
+        <ul class="menu">
+         <li class="primero parent item5"><a href="/en/about-ceit/centre-profile"><span><span class="palabra1">About</span><span> CEIT</span></span></a>
+          <ul>
+           <li class="primero item19"><a href="/en/about-ceit/centre-profile"><span>Centre Profile</span></a></li>
+           <li class="item20"><a href="/en/about-ceit/directors-message"><span>Director's Message</span></a></li>
+           <li class="item21"><a href="/en/about-ceit/missionvision"><span>Mission/Vision</span></a></li>
+           <li class="item22"><a href="/en/about-ceit/history"><span>History</span></a></li>
+           <li class="item23"><a href="/en/about-ceit/ceit-alliances"><span>CEIT Alliances</span></a></li>
+           <li class="item24"><a href="/en/about-ceit/departments"><span>Departments</span></a></li>
+           <li class="item25"><a href="/en/about-ceit/personnel-directory"><span>Personnel Directory</span></a></li>
+           <li class="item320"><a href="/en/about-ceit/ceit-authorities"><span>CEIT Authorities</span></a></li>
+           <li class="item26"><a href="/en/about-ceit/our-location-"><span>Our Location</span></a></li>
+           <li class="item27"><a href="/en/about-ceit/contact"><span>Contact</span></a></li>
+           <li class="ultimo item366"><a href="/en/about-ceit/eduroam"><span>Eduroam</span></a></li>
+          </ul></li>
+         <li class="parent item368"><a href="/en/industrial-sectors"><span><span class="palabra1">Industrial</span><span> Sectors</span></span></a>
+          <ul>
+           <li class="primero item369"><a href="/en/industrial-sectors/railway"><span>Railway</span></a></li>
+           <li class="item370"><a href="/en/industrial-sectors/aeronautical"><span>Aeronautical</span></a></li>
+           <li class="item371"><a href="/en/industrial-sectors/automotive"><span>Automotive</span></a></li>
+           <li class="item372"><a href="/en/industrial-sectors/environmental"><span>Environmental</span></a></li>
+           <li class="item373"><a href="/en/industrial-sectors/energy"><span>Energy</span></a></li>
+           <li class="item374"><a href="/en/industrial-sectors/health-a-food"><span>Health &amp; Food</span></a></li>
+           <li class="item375"><a href="/en/industrial-sectors/ict"><span>ICT</span></a></li>
+           <li class="ultimo item376"><a href="/en/industrial-sectors/industrialmanufacturing"><span>Industrial/Manufacturing</span></a></li>
+          </ul></li>
+         <li class="parent item6"><a href="/en/areas-of-r-a-d"><span><span class="palabra1">Areas</span><span> of R &amp; D</span></span></a>
+          <ul>
+           <li class="primero item28"><a href="/en/areas-of-r-a-d/materials"><span>Materials</span></a></li>
+           <li class="item29"><a href="/en/areas-of-r-a-d/applied-mechanics"><span>Applied Mechanics</span></a></li>
+           <li class="item30"><a href="/en/areas-of-r-a-d/electronics-and-communications"><span>Electronics &amp; Communications</span></a></li>
+           <li class="item31"><a href="/en/areas-of-r-a-d/environmental-engineering"><span>Environmental Engineering</span></a></li>
+           <li class="item32"><a href="/en/areas-of-r-a-d/microelectronics-a-microsystems"><span>Microelectronics &amp; Microsystems</span></a></li>
+           <li class="ultimo item33"><a href="/en/areas-of-r-a-d/biomedical-engineering"><span>Biomedical Engineering</span></a></li>
+          </ul></li>
+         <li class="parent item7"><a href="/en/services-and-results/r-a-d-projects"><span><span class="palabra1">Services</span><span> &amp; Results</span></span></a>
+          <ul>
+           <li class="primero item34"><a href="/en/services-and-results/r-a-d-projects"><span>R &amp; D Projects</span></a></li>
+           <li class="item35"><a href="/en/services-and-results/training-for-young-researchers"><span>Training for Young Researchers</span></a></li>
+           <li class="item36"><a href="/en/services-and-results/scientific-results"><span>Scientific Results</span></a></li>
+           <li class="ultimo item37"><a href="/en/services-and-results/spin-offs"><span>Spin-offs</span></a></li>
+          </ul></li>
+         <li class="parent item8"><a href="/en/join-ceit/introduction"><span><span class="palabra1">Join</span><span> CEIT</span></span></a>
+          <ul>
+           <li class="primero item38"><a href="/en/join-ceit/introduction"><span>Introduction</span></a></li>
+           <li class="item351"><a href="/en/join-ceit/opportunities"><span>Opportunities</span></a></li>
+           <li class="item40"><a href="/en/join-ceit/the-city-around-us"><span>The City Around Us</span></a></li>
+           <li class="ultimo item41"><a href="/en/join-ceit/accommodation"><span>Accommodation</span></a></li>
+          </ul></li>
+         <li class="ultimo parent item9"><a href="/en/press-room/news-a-events"><span><span class="palabra1">Press</span><span> Room</span></span></a>
+          <ul>
+           <li class="primero item42"><a href="/en/press-room/news-a-events"><span>News &amp; Events</span></a></li>
+           <li class="item69"><a href="/en/press-room/you-may-be-interested"><span>You may be Interested</span></a></li>
+           <li class="item71"><a href="/en/press-room/scientific-publications"><span>Scientific Publications</span></a></li>
+           <li class="item44"><a href="/en/press-room/press-resources"><span>Press Resources</span></a></li>
+           <li class="item338"><a href="/en/press-room/tesis"><span>PhD Thesis</span></a></li>
+           <li class="ultimo item45"><a href="/en/press-room/subscriptions"><span>Subscriptions</span></a></li>
+          </ul></li>
+        </ul> 
+       </div> 
+       <p class="ayudaAcces"><a href="#" id="enlace_posterior_mp">Enlace posterior al menú principal</a></p> 
+       <div class="clearall"></div> 
+      </div> 
+      <div class="clearall"></div> 
+      <div id="parcheAzul"> 
+       <div id="carruselBanners" class="flotaIzquierda"> 
+        <div id="carruselBannersFlash"> 
+         <a href="/en/carrusel-home">Ver todos los mensajes</a> 
+         <ul id="bannersFlash"> 
+          <li class="banner"> <a href="http://www.tecnun.es/tec/presentacion.html" rel="internal"><img src="http://ceit.es/images/banners/teceng.jpg" alt=""></a> </li> 
+          <li class="banner"> <a href="http://ceit.es/en/areas-of-r-a-d/materials/thermomechanical-treatments/optibos" rel="internal"><img src="http://ceit.es/images/banners/OPTIBOS.jpg" alt=""></a> </li> 
+          <li class="banner"> <a href="http://ceit.es/en/areas-of-r-a-d/materials/multiscale-mechanics-of-materials/hipercut" rel="internal"><img src="http://ceit.es/images/banners/HIPERCUT.jpg" alt=""></a> </li> 
+          <li class="banner"> <a href="http://ceit.es/en/areas-of-r-a-d/materials/multiscale-mechanics-of-materials/ebreak" rel="internal"><img src="http://ceit.es/images/banners/EBREAK.jpg" alt=""></a> </li> 
+          <li class="banner"> <a href="http://ceit.es/en/areas-of-r-a-d/materials/consolidation-of-metallic-and-ceramic-powders/cerrod" rel="internal"><img src="http://ceit.es/images/banners/CERROD.jpg" alt=""></a> </li> 
+          <li class="banner"> <a href="http://ceit.es/en/areas-of-r-a-d/electronics-and-communications/embedded-systems-a-networks/ecuc" rel="internal"><img src="http://ceit.es/images/banners/ECUC.jpg" alt=""></a> </li> 
+          <li class="banner"> <a href="http://ceit.es/en/areas-of-r-a-d/electronics-and-communications/integrated-circuits-ic-design-a-antennas/eats" rel="internal"><img src="http://ceit.es/images/banners/EATS.jpg" alt=""></a> </li> 
+          <li class="banner"> <a href="http://ceit.es/en/areas-of-r-a-d/environmental-engineering/mathematical-modelling-and-simulation-of-environmental-processes-and-technologies/diamond" rel="internal"><img src="http://ceit.es/images/banners/DIAMOND.jpg" alt=""></a> </li> 
+          <li class="banner"> <a href="http://ceit.es/en/areas-of-r-a-d/environmental-engineering/treatment-and-management-of-sludge-and-solid-wastes/saraswati" rel="internal"><img src="http://ceit.es/images/banners/SARASWATI.jpg" alt=""></a> </li> 
+          <li class="banner"> <a href="http://ceit.es/en/areas-of-r-a-d/materials/thermomechanical-treatments/astough" rel="internal"><img src="http://ceit.es/images/banners/AUSTOUGH.jpg" alt=""></a> </li> 
+          <li class="banner"> <a href="http://ceit.es/en/areas-of-r-a-d/materials/multiscale-mechanics-of-materials/alloysods" rel="internal"><img src="http://ceit.es/images/banners/EFDA.jpg" alt=""></a> </li> 
+          <li class="banner"> <a href="http://ceit.es/en/areas-of-r-a-d/materials/multiscale-mechanics-of-materials/enoval" rel="internal"><img src="http://ceit.es/images/banners/ENOVAL.jpg" alt=""></a> </li> 
+          <li class="banner"> <a href="http://ceit.es/en/areas-of-r-a-d/applied-mechanics/biomechanics/ebsf" rel="internal"><img src="http://ceit.es/images/banners/EBSF.jpg" alt=""></a> </li> 
+          <li class="banner"> <a href="http://ceit.es/en/areas-of-r-a-d/environmental-engineering/automatic-control-in-environmental-engineering-technologies/opti-vfa" rel="internal"><img src="http://ceit.es/images/banners/OPTIVFA.jpg" alt=""></a> </li> 
+          <li class="banner"> <a href="http://ceit.es/en/areas-of-r-a-d/materials/thermomechanical-treatments/rorc-rolled-only-in718-ring-shaped-components" rel="internal"><img src="http://ceit.es/images/banners/RORC.jpg" alt=""></a> </li> 
+          <li class="banner"> <a href="http://www.ceit.es/en/areas-of-r-a-d/materials/consolidation-of-metallic-and-ceramic-powders/aerobeam-direct-manufacturing-of-stator-vanes-through-electron-beam-melting" rel="internal"><img src="http://ceit.es/images/banners/AEROBEAMpro.jpg" alt=""></a> </li> 
+          <li class="banner"> <a href="http://www.hemis-eu.org/" rel="internal"><img src="http://ceit.es/images/banners/HEMIS.jpg" alt=""></a> </li> 
+          <li class="banner"> <a href="http://www.ceit.es/en/areas-of-r-a-d/electronics-and-communications/digital-signal-processing-a-digital-implementation/wildcraft-wireless-smart-distributed-end-system-for-aircraft" rel="internal"><img src="http://ceit.es/images/banners/WILDCRAFT.jpg" alt=""></a> </li> 
+          <li class="banner"> <a href="http://www.ceit.es/en/areas-of-r-a-d/electronics-and-communications/embedded-systems-a-networks/ambient-assisted-living-a-e-health-solutions/e-iliza-development-of-an-e-health-system-in-orthopedics" rel="internal"><img src="http://ceit.es/images/banners/E-ILIZA.jpg" alt=""></a> </li> 
+         </ul> 
+        </div> 
+       </div> 
+       <div id="ayudaEmpresasProfesionales" class="flotaDerecha"> 
+        <h2>CEIT Researching today, creating the future</h2> 
+        <div id="ayudaEmpresas" class="flotaIzquierda cabeceraHomeMenu"> 
+         <p class="lema"><span class="palabra1">Institutions</span><span class="palabra2">Entreprises</span><span class="palabra3">Technological Centers</span></p> 
+         <ul class="menu">
+          <li class="primero item72"><a href="/en/services-and-results/r-a-d-projects"><span>R &amp; D Projects</span></a></li>
+          <li class="item73"><a href="/en/services-and-results/scientific-results"><span>Scientific Results</span></a></li>
+          <li class="ultimo item74"><a href="/en/services-and-results/spin-offs"><span>Spin-offs</span></a></li>
+         </ul> 
+        </div> 
+        <div id="ayudaProfesionales" class="flotaDerecha cabeceraHomeMenu"> 
+         <p class="lema"><span class="palabra1">Student</span><span class="palabra2">Researcher</span><span class="palabra3">recent graduates</span></p> 
+         <ul class="menu">
+          <li class="primero item75"><a href="/en/join-ceit/opportunities/employment-opportunities"><span>Employments Opportunities</span></a></li>
+          <li class="item76"><a href="/en/join-ceit/opportunities/phd-opportunities"><span>PhD Opportunities</span></a></li>
+          <li class="ultimo item77"><a href="/en/join-ceit/opportunities/final-year-projects-and-master"><span>Final Year Projects and Master</span></a></li>
+         </ul> 
+        </div> 
+       </div> 
+       <div class="clearall"></div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="clearall"></div> 
+    <div id="sectoresAplicacion"> 
+     <div id="sectoresAplInterior"> 
+      <ul class="menu">
+       <li class="primero item377"><a href="/en/industrial-sectors/railway"><span>Railway</span></a></li>
+       <li class="item378"><a href="/en/industrial-sectors/aeronautical"><span>Aeronautical</span></a></li>
+       <li class="item379"><a href="/en/industrial-sectors/automotive"><span>Automotive</span></a></li>
+       <li class="item380"><a href="/en/industrial-sectors/environmental"><span>Environmental</span></a></li>
+       <li class="item381"><a href="/en/industrial-sectors/energy"><span>Energy</span></a></li>
+       <li class="item382"><a href="/en/industrial-sectors/health-a-food"><span>Health &amp; Food</span></a></li>
+       <li class="item383"><a href="/en/industrial-sectors/ict"><span>ICT</span></a></li>
+       <li class="ultimo item384"><a href="/en/industrial-sectors/industrialmanufacturing"><span>Manufacturing</span></a></li>
+      </ul> 
+      <img id="fakeTitleSectores" src="/templates/pie_abajo_v2/images/sectores_en.png" alt="Targets"> 
+     </div> 
+     <div class="clearall"></div> 
+    </div> 
+    <div id="lineasInvestigacion">
+     <div id="lineasInvInterior"> 
+      <div id="bokata" class="flotaIzquierda es"> 
+       <h2>Our 6<br>areas of<br>research</h2> 
+      </div> 
+      <div id="menuLineasInv" class="flotaDerecha"> 
+       <ul class="menu">
+        <li class="primero item10"><a href="/en/areas-of-r-a-d/materials"><span>Materials</span></a></li>
+        <li class="item11"><a href="/en/areas-of-r-a-d/applied-mechanics"><span>Applied Mechanics</span></a></li>
+        <li class="item12"><a href="/en/areas-of-r-a-d/electronics-and-communications"><span>Electronics &amp; Communications</span></a></li>
+        <li class="item13"><a href="/en/areas-of-r-a-d/environmental-engineering"><span>Environmental Engineering</span></a></li>
+        <li class="item14"><a href="/en/areas-of-r-a-d/microelectronics-a-microsystems"><span>Microelectronics &amp; Microsystems</span></a></li>
+        <li class="ultimo item15"><a href="/en/areas-of-r-a-d/biomedical-engineering"><span>Biomedical Engineering</span></a></li>
+       </ul> 
+      </div> 
+      <div class="clearall"></div>
+     </div>
+    </div> 
+    <div id="contenido" class="index"> 
+     <div id="colIzq" class="flotaIzquierda"> 
+      <h2>You may be Interested</h2> 
+      <div id="deInteres"> 
+       <ul class="latestnews"> 
+        <li> 
+         <div class="articuloIntroduccion"> 
+          <div class="miniatura flotaIzquierda"> 
+           <a href="/en/press-room/you-may-be-interested/1236-the-new-path-to-innovation"><img src="/images/FTI.jpg" width="104" height="37" alt="fast track to innovation CEIT"></a> 
+          </div> 
+          <div class="detalle flotaIzquierda "> 
+           <h3><a href="/en/press-room/you-may-be-interested/1236-the-new-path-to-innovation">The new path to innovation</a></h3> 
+           <p><span style="line-height: 1.4em; font-size: 12.960000038147px;">The information session Fast Track to Innovation presented the new European Commission program, drawing in more than 150 professionals from the technology sector&nbsp;[WATCH VIDEO].</span></p> 
+          </div> 
+          <div class="clearall"></div> 
+         </div> </li> 
+        <li> 
+         <div class="articuloIntroduccion"> 
+          <div class="miniatura flotaIzquierda"> 
+           <a href="/en/press-room/you-may-be-interested/1234-commitment-to-cancer-research-"><img src="/images/stories/files/images/Press-Department/You-may-be-interested/notcancer.jpg" alt="cancer research" width="104" height="35"></a> 
+          </div> 
+          <div class="detalle flotaIzquierda "> 
+           <h3><a href="/en/press-room/you-may-be-interested/1234-commitment-to-cancer-research-">Commitment to cancer research </a></h3> 
+           <p>Research on cancer by the biomedical engineering team at CEIT-IK4 has been recognized by organizations like the Spanish Association Against Cancer (AECC).</p> 
+          </div> 
+          <div class="clearall"></div> 
+         </div> </li> 
+        <li> 
+         <div class="articuloIntroduccion"> 
+          <div class="miniatura flotaIzquierda"> 
+           <a href="/en/press-room/you-may-be-interested/1230-more-eco-efficient-and-sustainable-automatic-control-for-wastewater-treatment-plants"><img src="/images/stories/files/images/Press-Department/You-may-be-interested/articaweb.jpg" alt="artICA4nr" width="104" height="45"></a> 
+          </div> 
+          <div class="detalle flotaIzquierda "> 
+           <h3><a href="/en/press-room/you-may-be-interested/1230-more-eco-efficient-and-sustainable-automatic-control-for-wastewater-treatment-plants">More eco-efficient and sustainable wastewater treatment plants</a></h3> 
+           <p>The artICA4nr project, whose objective is to optimise nitrogen removal in wastewater treatment plants, moves ahead.</p> 
+          </div> 
+          <div class="clearall"></div> 
+         </div> </li> 
+        <li> 
+         <div class="articuloIntroduccion"> 
+          <div class="miniatura flotaIzquierda"> 
+           <a href="/en/press-room/you-may-be-interested/1226-microsensors-to-improve-the-quality-of-olive-oil"><img src="/images/stories/files/images/Press-Department/You-may-be-interested/ETIVOL.jpg" alt="ETIVOL" width="104" height="26"></a> 
+          </div> 
+          <div class="detalle flotaIzquierda "> 
+           <h3><a href="/en/press-room/you-may-be-interested/1226-microsensors-to-improve-the-quality-of-olive-oil">Microsensors to improve the quality of olive oil</a></h3> 
+           <p>The ETIVOL project will study the technical and economic viability of developing an efficient microsensor that detects volatile compounds in packaged olive oil.</p> 
+          </div> 
+          <div class="clearall"></div> 
+         </div> </li> 
+       </ul> 
+      </div> 
+      <a href="/en/press-room/you-may-be-interested" class="b01"> <span> <span> <span> <span>View all articles</span> </span> </span> </span> </a> 
+     </div> 
+     <div id="colDcha" class="flotaDerecha"> 
+      <h2>News &amp; Events</h2> 
+      <div id="noticias"> 
+       <ul class="latestnews"> 
+        <li> 
+         <div class="articuloIntroduccion"> 
+          <h3><a href="/en/press-room/news-a-events/1235-doctors-of-applied-research"><span class="fecha">24/02/2015</span><span class="titular">Doctors of applied research</span></a></h3> 
+          <p>The Outstanding Doctorate Awards for 2013-2014 combine scientific speculation with practical research carried out at a technology centre.</p> 
+         </div> </li> 
+        <li> 
+         <div class="articuloIntroduccion"> 
+          <h3><a href="/en/press-room/news-a-events/1233-fast-track-to-innovation-claves-para-lograr-proyectos-europeos-de-innovacion-industrial-con-exito"><span class="fecha">21/01/2015</span><span class="titular">EVENT: "Fast Track to Innovation: claves para lograr proyectos europeos de innovación industrial con éxito"</span></a></h3> 
+          <p>February the 13th in CEIT-IK4, Ibaeta facility.</p> 
+         </div> </li> 
+        <li> 
+         <div class="articuloIntroduccion"> 
+          <h3><a href="/en/press-room/news-a-events/1218-google-glasses-to-improve-the-surgeons-accuracy"><span class="fecha">18/11/2014</span><span class="titular">Google Glasses to improve the surgeon’s accuracy</span></a></h3> 
+          <ol style="list-style-type: upper-roman;">
+           <ol style="list-style-type: upper-roman;">
+            <ol style="list-style-type: upper-roman;">
+             <ol style="list-style-type: upper-roman;">
+              <ol style="list-style-type: upper-roman;">
+               <ol style="list-style-type: upper-roman;">
+                <ol style="list-style-type: upper-roman;">
+                 <ol style="list-style-type: upper-roman;">
+                  <ol style="list-style-type: upper-roman;">
+                   <ol style="list-style-type: upper-roman;">
+                    <ol style="list-style-type: upper-roman;">
+                     <ol style="list-style-type: upper-roman;"></ol>
+                    </ol>
+                   </ol>
+                  </ol>
+                 </ol>
+                </ol>
+               </ol>
+              </ol>
+             </ol>
+            </ol>
+           </ol>
+          </ol> 
+          <p>Cost effective direct to eye prosthesis and smart system, the D2Eye Project.</p> 
+         </div> </li> 
+        <li> 
+         <div class="articuloIntroduccion"> 
+          <h3><a href="/en/press-room/news-a-events/1210-new-generation-of-high-strength-alloys"><span class="fecha">29/10/2014</span><span class="titular">New generation of high strength alloys</span></a></h3> 
+          <ol style="list-style-type: upper-roman;">
+           <ol style="list-style-type: upper-roman;">
+            <ol style="list-style-type: upper-roman;">
+             <ol style="list-style-type: upper-roman;">
+              <ol style="list-style-type: upper-roman;">
+               <ol style="list-style-type: upper-roman;">
+                <ol style="list-style-type: upper-roman;">
+                 <ol style="list-style-type: upper-roman;">
+                  <ol style="list-style-type: upper-roman;">
+                   <ol style="list-style-type: upper-roman;">
+                    <ol style="list-style-type: upper-roman;">
+                     <ol style="list-style-type: upper-roman;"></ol>
+                    </ol>
+                   </ol>
+                  </ol>
+                 </ol>
+                </ol>
+               </ol>
+              </ol>
+             </ol>
+            </ol>
+           </ol>
+          </ol> 
+          <p>The final face-to-face meeting of the PrecHiMn project served as a platform for presenting the most significant results of the project and the final conclusions.</p> 
+         </div> </li> 
+       </ul> 
+      </div> 
+      <div id="rss" class="flotaDerecha"> 
+       <!--<a href="#">RSS</a>--> 
+       <a href="/en/component/bca-rss-syndicator/?feed_id=1">CEIT</a> 
+      </div> 
+      <a href="/en/press-room/news-a-events" class="b01"> <span> <span> <span> <span>View all articles</span> </span> </span> </span> </a> 
+      <div class="clearall"></div> 
+     </div> 
+     <div class="clearall"></div> 
+     <div id="bannersHome"> 
+      <div id="bannerBoletin"> 
+       <a href="/en/component/acajoom/subone/listid-1/Itemid-300"><img src="/templates/pie_abajo_v2/images/boletin_out_en.jpg" alt="Newsletter free subscription"></a> 
+      </div> 
+      <div id="bannerPublicaciones"> 
+       <div class="int"> 
+        <p class="titular">CEIT publications</p> 
+        <ul> 
+         <li><a href="https://asp-es.secure-zone.net/v2/index.jsp?id=5559/12278/26299&amp;lng=en" rel="external" title="It will be opened in a new window of the navigator"><span>Annual report</span></a></li> 
+         <li><a href="/en/press-room/scientific-publications"><span>Scientific publications</span></a></li> 
+        </ul> 
+       </div> 
+      </div> 
+      <div id="bannerRedesSociales"> 
+       <div class="int"> 
+        <p class="titular">We are in:</p> 
+        <ul> 
+         <li> <a href="http://www.youtube.com/user/CeitTV" rel="external" title="It will be opened in a new window of the navigator"><span><img src="http://ceit.es/images/banners/icono_youtube.gif" alt="Visit us at YouTube CEIT"></span></a></li>  
+         <li> <a href="http://www.facebook.com/pages/CEIT/255487822437?ref=search&amp;sid=100000675331323.2778524657..1&amp;v=wall#/pages/CEIT/255487822437" rel="external" title="It will be opened in a new window of the navigator"><span><img src="http://ceit.es/images/banners/icono_facebook.gif" alt="Visit us at Facebook CEIT"></span></a></li>  
+         <li> <a href="http://twitter.com/ceit_ik4" rel="external" title="It will be opened in a new window of the navigator"><span><img src="http://ceit.es/images/banners/icono_twitter.gif" alt="Visit us at Twitter CEIT-IK4"></span></a></li>  
+         <li> <a href="http://www.linkedin.com/company/ceit" rel="external" title="It will be opened in a new window of the navigator"><span><img src="http://ceit.es/images/banners/icono_linkedin.jpg" alt="Visit us at Linkedin CEIT"></span></a></li>  
+         <li> <a href="http://www.flickr.com/photos/ceitdonostia/sets/" rel="external" title="It will be opened in a new window of the navigator"><span><img src="http://ceit.es/images/banners/icono_flickr.gif" alt="Visit us at Flickr CEIT"></span></a></li>  
+        </ul> 
+        <div class="clearall"></div> 
+       </div> 
+      </div> 
+      <div class="clearall"></div> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="piefalso"></div> 
+  </div> 
+  <div id="pie"> 
+   <div id="pieInterior"> 
+    <div id="pieBloque1" class="pieBloque flotaIzquierda"> 
+     <p>© 2015 CEIT</p>
+     <br> 
+     <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Licencia Creative Commons" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png"></a> 
+    </div> 
+    <div id="pieBloque2" class="pieBloque flotaIzquierda"> 
+     <div class="partner primero flotaIzquierda"> 
+      <p class="texto">Member of Technological Alliance</p> 
+      <p class="imagen"><a href="http://www.ik4.es" rel="external" title="It will be opened in a new window of the navigator"><img src="/templates/pie_abajo_v2/images/pie_logo_ik4.png" alt="IK4 research alliance"></a></p> 
+     </div> 
+     <div class="partner flotaIzquierda"> 
+      <p class="texto">Associate University</p> 
+      <p class="imagen"><a href="http://www.tecnun.es/" rel="external" title="It will be opened in a new window of the navigator"><img src="/templates/pie_abajo_v2/images/pie_logo_tecnun.png" alt="Tecnun - universidad de Navarra"></a></p> 
+     </div> 
+     <div class="clearall"></div> 
+    </div> 
+    <div id="pieBloque3" class="pieBloque flotaIzquierda"> 
+     <div id="menuAuxPie" class="flotaDerecha"> 
+      <ul class="menu">
+       <li class="primero item50"><a href="/en/legal-information"><span>Legal Information</span></a></li>
+       <li class="ultimo item51"><a href="/en/web-map"><span>Web Map</span></a></li>
+      </ul> 
+     </div> 
+     <div class="clearall"></div> 
+     <p id="intranet"><a href="http://intranet.ceit.es/" rel="external" title="It will be opened in a new window of the navigator">Intranet</a></p> 
+    </div> 
+    <div class="clearall"></div> 
+   </div> 
+  </div> 
+  <script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script> 
+  <script type="text/javascript">
+try {
+	var pageTracker = _gat._getTracker("UA-5985303-1");
+	pageTracker._trackPageview();
+} catch(err) {}
+</script> 
+  <script type="text/javascript" src="/templates/pie_abajo_v2/js/leyCookies.js"></script> 
+  <script type="text/javascript">
+	if(navigator.userAgent.match(/MSIE\s(?!7.0)/) || !(navigator.userAgent.match(/MSIE\s/))) {
+		var NLC_this_page = new NLC({
+			idiomaPagina: 'en',
+			idiomaPorDefecto: 'en',
+			jsonEnlacesPoliticaCookies: {
+				"idiomas": {
+					"en": "/en/legal-information#politicaCookies"
+				}
+			},
+			enlaceEnVentanaNueva: false,
+			prefijoCookie: 'ceit_',
+			mostrarAvisoRestrictivo: false,
+			paginaRedirigirNoAceptarCookies: 'http://www.agpd.es',
+			pathArchivoCss: '/templates/pie_abajo_v2/css/leyCookies.css',
+			jsonTextos: {
+				"idiomas": {
+					"es": ["Este sitio utiliza cookies",
+					       "Utilizamos cookies para mejorar la experiencia de navegación y poder ofrecerte nuestros servicios. Si continuas navegando, consideramos que aceptas su uso.",
+					       "Si quieres revocar tu consentimiento u obtener más información consulta nuestra ",
+					       ".",
+					       "Aceptar",
+					       "Política de Cookies",
+					       "Borrar cookies y salir",
+					       "Aceptar y continuar"
+					      ],
+					"eu": ["Webgune honek cookie-ak erabiltzen ditu",
+					       "Cookie-ak erabiltzen ditugu nabigazio esperientzia hobetzeko eta gure zerbitzuak eskaintzeko. Nabigatzen jarraitzen baduzu, ulertuko dugu horien erabilera onartzen duzula.",
+					       "Zure baimena atzera bota edo informazio gehiago nahi baduzu, kontsultatu gure ",
+					       ".",
+					       "Onartu",
+					       "Cookie Politika",
+					       "Ezabatu cookie-ak eta irten",
+					       "Onartu eta jarraitu"
+					      ],
+					"en": ["This site uses cookies",
+					       "We use cookies to improve the browsing experience and provide our services to you. If you continue browsing, we consider that you accept their use.",
+					       "If you wish to revoke your consent or obtain additional information, please query our ",
+					       ".",
+					       "Accept",
+					       "Cookies Policy",
+					       "Delete cookies and exit",
+					       "Accept and continue"
+					      ]
+					}
+			}
+		});
+	}
+</script>  
+ </body>
+</html>

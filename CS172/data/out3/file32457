@@ -1,0 +1,1366 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1"> 
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+  <script type="text/javascript" src="library/js/nepoajax.js"></script> 
+  <script type="text/javascript" src="https://www.google.com/jsapi?key=ABQIAAAA4lPXZBe-10j5_-8_g4YB5BSdi8kkdg_bbwyjpvWhgqQYSOpCJxRRFqFwAbbgkN98dhGwqGaysdvcbw"></script> 
+  <script type="text/javascript">
+
+var gchrmfrm=false;
+
+
+
+var check = new nepoAjax();
+function doCheck()
+{
+	check.requestFile = "scheck.php";
+	check.onCompletion = postCheck;
+	check.onError = servererror;
+	check.method = "GET";
+	check.runAJAX();
+}
+
+function postCheck()
+{
+	query='';
+	if(check.response == 1)
+	{
+			
+			document.location = "authx.php"+location.hash;
+			
+			
+	}
+	
+}
+function servererror()
+{
+	return false;
+}
+doCheck();
+</script> 
+  <title>Brown Maps V6</title> 
+  <link rel="stylesheet" href="library/css/mapstyle.css" type="text/css"> 
+  <!--[if lt IE 7]>
+  <link href="library/css/pngfix.css" media="screen" rel="stylesheet" type="text/css" />    
+<![endif]--> 
+  <link rel="stylesheet" type="text/css" href="library/css/ewindow.css"> 
+  <link rel="stylesheet" href="library/css/jquery.iviewer.css" type="text/css"> 
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> 
+  <script language="javascript" src="library/js/google_earth.js"></script> 
+  <script language="javascript" src="library/js/jquery.js"></script> 
+  <script language="javascript" src="library/js/brownmap.js"></script> 
+  <script src="library/js/history.jquery.js" language="javascript"></script> 
+  <script language="javascript" src="library/js/jquery.galleriffic.js"></script> 
+  <script type="text/javascript" src="library/js/tileoverlay.js"></script> 
+  <script language="javascript" src="library/js/infobox.js"></script> 
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" type="text/javascript"></script> 
+  <script type="text/javascript" src="library/js/jquery.mousewheel.min.js"></script> 
+  <script type="text/javascript" src="library/js/jquery.iviewer.js"></script> 
+  <script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script> 
+  <script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-3602790-28");
+pageTracker._setAllowAnchor(true);
+
+        pageTracker._initData();
+pageTracker._trackPageview();
+} catch(err) {}</script> 
+  <script language="javascript">
+google.load('earth', '1');
+var ge;
+var map;
+var ib;
+var ew,ew2;
+var brownoverlay;
+var athleticoverlay;
+var markerarray=new Array();
+var markerobj;
+var mapTypeCtrl, mapZoomCtrl, mapOverViewCtrl, mapsmallZoomCtrl ;
+var markerPoint;
+var ewstate;
+var gallery;
+var mapview=true;
+var mmpoint;
+var vart=null;
+var Overlay ; 
+var polygons=new Array();
+var IE = document.all?true:false
+if (!IE){
+	document.captureEvents(Event.MOUSEMOVE)
+	
+	}		
+document.onmousemove = getMouseXY;
+var flag_x = 0;
+var html_x = "";
+var tempX = 0;
+var tempY = 0;
+var override_flag = 0;
+
+var uuid = 'x';
+var uname = 'x';
+var polyshow=true;
+
+var ttx_flag = 1;
+
+
+
+function callback(hash) {
+_gaq.push(['_trackPageview', '/'+hash]);
+		map.getStreetView().setVisible(false);
+		if(hash) {
+		var param;
+			param=hash.split('/');
+		//alert(param.length);
+			if(param.length<3){
+				var type=param[0];
+				switch (type){
+					case 'building':
+						$("#hdncatid").val('');
+						if(!mapview)mapView();
+						if(param[1]=="" || $("#hdnbid").val()==param[1])break;
+						$("#hdnbid").val(param[1]);
+						location.href = "#building/"+param[1];
+						getBuildingMarker(param[1]);
+					break;
+					case 'category':
+						$("#hdnbid").val('');
+						var catid=param[1];
+						catid=catid.replace("-"," ");
+						if((catid=="" || $("#hdncatid").val()==catid)&& $("#hdnbid").val().length==0)break;
+						$("#hdncatid").val(catid);
+						location.href = "#category/"+catid;
+						showCatgoryBuildings(catid);
+					break;
+					case 'type':
+						$("#hdnbid").val('');	
+						if(param[1]=="" || $("#hdncatid").val()==param[1])break;
+						$("#hdncatid").val(param[1]);
+						showbluelights();
+						location.href = "#type/"+param[1];
+					break;
+					case 'room':
+						$("#hdnbid").val('');	
+						if($("#hdncatid").val()=='ROOM')break;
+						$("#hdncatid").val('ROOM');
+						location.href = "#room";
+						showRoombuilding();
+					break;
+				}
+			}else if (param.length>=3){
+				$("#hdncatid").val('');
+				var building=param[1];
+				var type=param[2];
+				var pid=0;
+				if (type=="VIDEO")pid=1;
+				if (type=="PICTURES")pid=2;
+				if (type=="FLOORPLANS")pid=3;
+				if (type=="HYPERLINK")pid=4;
+				if (type=="PDF")pid=5;
+				var prop=param[3]!='undefined'?param[3]:0;
+				if(param[2]=="" || $("#hdnpropid").val()==pid ){return false;}
+				if(pid==0){
+					location.href = "#building/"+param[1];
+					}
+				else{
+					if (param.length==3)
+						location.href = "#building/"+param[1]+"/"+type;
+					else
+						location.href = "#building/"+param[1]+"/"+type+"/"+prop;
+					}
+				$("#hdnbid").val(building);
+				$("#hdnpropid").val(pid);
+				override_flag = 1;
+				getBuildingMarker(building);
+				showbuildingproperties(param[1],pid,location.href);
+			}
+		} else {
+			// start page
+			$("#load").empty();
+		}
+	}
+
+jQuery(document).ready(function() {
+	var urlhash=window.location.hash
+	var uris=urlhash.split("/");
+	if(uris[0]=="#building"){
+		var uri="index.php?buildingabbr="+uris[1];
+	}else if(uris[0]=="#category"){
+		var uri ="list.php?level=buildlistbycat&catabbr="+uris[1];
+	}else{
+		var uri="index.php";
+	}
+	$.ajax({
+			type	:	"GET",
+			url		:	"process/process.php",
+			data	:	"cmd=ismobile",
+			success	:	function (data){
+				results=data;
+				if(results){
+											window.location=results+uri;
+										}else{
+					$("#pagewrapper").fadeIn();
+					desktopmap();
+					
+				}//	
+			}
+		});//end ajax
+	if($.browser.msie){
+		$(".clslnkchromeframe").css("height","60px")
+	}else{
+		$(".clslnkchromeframe").css("height","0px")
+	}
+
+});
+function floorLoad(imgsrc)
+{ 
+$("#viewer").iviewer(
+{
+	src: imgsrc,
+	update_on_resize: false,
+	zoom: 'fit',
+	initCallback: function ()
+	{
+		$("#floor").change(function() 
+		{
+			changeFloor(this.value);
+		});
+	},
+	onFinishLoad: function()
+	{
+	$("#viewer").data('viewer').setCoords(-500,-500);
+	//jQuery('#pic').maphilight();
+	}
+});
+
+}
+$(document.body).unload(function() {
+	if (GBrowserIsCompatible()) {
+		GUnload();
+	}
+});
+
+function desktopmap(){
+	init();	
+	$.history.init(callback);
+	showPolygons();
+	iwstate=0;
+	google.maps.event.addListener(map, "maptypeid_changed", function(){
+			var maptype=map.getMapTypeId();
+			if(maptype=="roadmap"){
+				Overlay.setMap(null);
+				showoverlay();
+			}else{
+				Overlay.setVisible(false);
+			}
+		});
+		
+			
+		$("ul#BrownMenu > li > a").click(function() {	
+				//alert("clicked in the category tab");
+				var id=$(this).find("+ ul")[0].id;
+				spanid="img_"+id.split('_')[1]
+				$('ul#BrownMenu > li > span').not('#'+spanid).attr('class','imgarrowdown');
+				$('span#'+spanid).toggleClass("imgarrowup");
+				$('#BrownMenu > li > a ').find("+ ul").not($(this).find("+ ul")[0]).slideUp('slow');
+				$('#'+id+' ul').slideToggle('slow');
+				var catid=id.split('_')[1];
+				if(catid!=$('#hdncatid').val()){ 
+					$('#hdncatid').val(catid);
+					if(catid=='ALL')return false;
+				}else{
+					return false;
+				}
+				catid=catid.replace("-", " ");
+				showCatgoryBuildings(catid);
+				$("#hdnbid").val('');
+				$("#hdnpropid").val('');
+			});	///
+		
+
+		
+		
+		$("#type_2").click(function(){	
+			$("#hdncatid").val('BLUE LIGHTS');
+			pageTracker._setAllowAnchor(true);
+			pageTracker._trackEvent('#type/BLUE LIGHTS','Viewing');
+			showbluelights();
+			location.href ='#type/BLUE LIGHTS';	
+			$("#hdnbid").val('');
+			$("#hdnpropid").val('');
+			return false;
+		});
+
+		$("#type_6").click(function(){	
+			$("#hdncatid").val('ROOM');
+			pageTracker._setAllowAnchor(true);
+			pageTracker._trackEvent('#room','Viewing');
+			showRoombuilding();
+			location.href ='#room';	
+			$("#hdnbid").val('');
+			$("#hdnpropid").val('');
+			return false;
+		});
+		
+		$("ul#BrownMenu > li > span ").click(function() {	
+			var id=$(this).attr("id");
+			$('ul#BrownMenu > li > span').not('#'+id).attr('class','imgarrowdown');
+			$('span#'+id).toggleClass("imgarrowup");
+			catid="cat_"+id.split('_')[1]
+			$('#BrownMenu > li > a ').find("+ ul").not('#'+catid+' > ul').slideUp('slow');
+			$('#'+catid+' > ul').slideToggle('slow');
+			$(this).attr('src','images/marker/arrow_up.gif')
+		});	///
+				
+		$("ul#RoomMenu > li > span ").click(function() {	
+			var id=$(this).attr("id");
+			$('ul#RoomMenu > li > span').not('#'+id).attr('class','imgarrowdown');
+			$('span#'+id).toggleClass("imgarrowup");
+			catid="build_"+id.split('_')[1]
+			$('ul#RoomMenu > li > a ').find("+ ul").not($(this).find("+ ul")[0]).slideUp('slow');
+			$('#'+catid+' > ul').slideToggle('slow');
+			$(this).attr('src','images/marker/arrow_up.gif')
+		});	///
+				
+		$("ul#RoomMenu > li > a").click(function() {
+			var id=$(this).find("+ ul")[0].id;
+			spanid="img_"+id.split('_')[1]
+			$('ul#RoomMenu > li > span').not('#'+spanid).attr('class','imgarrowdown');
+			$('span#'+spanid).toggleClass("imgarrowup");
+			$('ul#RoomMenu > li > a ').find("+ ul").not($(this).find("+ ul")[0]).slideUp('slow');
+			$('#'+id).slideToggle('slow');
+		});	///
+		
+		$("#txtsearch").focus(function(){
+			var txtkey=$(this).val()
+			if($.trim(txtkey).length==0 || $.trim(txtkey)=='Search Brown'){
+				$(this).val('');
+				}else{
+					$(this).select();
+				}
+		});
+		
+		$('#txtsearch').bind('keypress', function(e) {
+			var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
+			var target = e.target.tagName.toLowerCase();
+			if (key === 13 && target === 'input') {
+				//alert("btnsearch trigerred");
+					$("#btnsearch").trigger("click");
+				}
+			});
+		
+		$("#txtsearch").blur(function(){
+			var txtkey=$(this).val();
+			if($.trim(txtkey).length==0){
+				$(this).val('Search Brown');
+				}
+		});
+		
+		$(".chromeframe").click(function(){
+			if(confirm("View using Firefox, Safari, or Chrome for full interactive mouse functionality over the map or install Chrome Frame to activate these features in IE.")){
+				return true;
+			}else{
+				return false;
+			} 
+		})
+		
+		$("#btnsearch").click(function(){
+			var txtkey=$("#txtsearch").val();
+			if($.trim(txtkey).length<=1 || $.trim(txtkey)=='Search Brown'){
+				$("#txtsearch").select();
+				return false;
+				}else{
+				searchBuilding(txtkey);
+				}
+			});////
+		$("#hidemsgchrmfrm").click(function(){
+			$("#lnkchromeframe").hide("slow");
+			});////	
+	}
+
+</script> 
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-32893756-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script> 
+ </head> 
+ <body> 
+  <div id="mapping"> 
+   <map name="simple" id="simple"> </map> 
+  </div> 
+  <div id="pagewrapper" class="pagewrapper" style="display:none;"> 
+   <!-- for home page header --> 
+   <div id="headerwrapper1" style="display:block"> 
+    <div class="header_left1"> 
+     <img src="images/map_banner_left1.jpg" alt="Brown Maps" border="0" usemap="#Map1" title="Brown Maps"> 
+     <map name="Map1" id="Map1"> <area shape="rect" coords="4,2,151,30" href="http://www.brown.edu" alt="Brown University"> <area shape="rect" coords="12,33,223,73" href="http://brown.edu/Facilities/Facilities_Management/maps/index.php" alt="Brown Maps"> <area shape="rect" coords="45,72,220,89" href="http://www.brown.edu/Facilities/Facilities_Management/" alt="Department of Facilities Management"> </map> 
+    </div> 
+    <div class="header_right1"> 
+     <img src="images/map_banner_right1.jpg" alt="Brown University" border="0" usemap="#Map2" title="Brown University"> 
+     <map name="Map2" id="Map2"> <area shape="rect" coords="443,2,473,47" href="http://www.brown.edu" alt="Brown University"> </map> 
+    </div> 
+   </div> 
+   <!-- headerwrapper end --> 
+   <!-- for home page header end--> 
+   <div id="headerwrapper" style="display:none"> 
+    <div class="header_left"> 
+     <img src="images/map_banner_left.jpg" alt="Brown Maps" border="0" usemap="#Map1" title="Brown Maps"> 
+     <map name="Map1" id="Map1"> <area shape="rect" coords="4,2,151,30" href="http://www.brown.edu" alt="Brown University"> </map> 
+    </div> 
+    <div class="header_right"> 
+     <img src="images/map_banner_right.jpg" alt="Brown University" border="0" usemap="#Map2" title="Brown University"> 
+     <map name="Map2" id="Map2"> <area shape="rect" coords="443,2,473,47" href="http://www.brown.edu" alt="Brown University"> </map> 
+    </div> 
+   </div> 
+   <!-- headerwrapper end --> 
+   <div id="topmapwrapper" style="display:none"> 
+    <div id="mapwrapper1" class="mapwrapper"> 
+     <div id="smallmap" class="smallmap"></div> 
+     <div class="brownmapstxt">
+      <img src="images/brownmaps.png" border="0" usemap="#Map3"> 
+      <map name="Map3" id="Map3"> <area shape="rect" coords="8,10,220,48" href="http://brown.edu/Facilities/Facilities_Management/maps/index.php" alt="Brown Maps"> <area shape="rect" coords="8,10,220,50" href="http://www.brown.edu/Facilities/Facilities_Management/" alt="Department of Facilities Management"> </map> 
+     </div> 
+     <div class="brownlogobtm">
+      <a href="http://www.brown.edu/" alt="Brown Maps"><img src="images/brownlogobtm.png" border="0"></a>
+     </div> 
+    </div> 
+    <!-- mapwrapper end --> 
+   </div> 
+   <!-- topmapwrapper end --> 
+   <div class="clear"></div> 
+   <div id="topnav"> 
+    <div id="backtomap" class="backtomap" align="center">
+     <img id="detail" src="images/arrowUp.jpg" title="Detail View" onclick="FullView();">&nbsp;&nbsp;
+     <img id="changeView" src="images/arrow.jpg" title="Map View" onclick="mapView();">
+    </div> 
+    <div class="topnavlink">
+     <a href="authx.php">Log In</a>|
+     <a href="maphelp/maphelp.htm"> <strong>Help</strong></a>
+    </div> 
+   </div> 
+   <div class="clear"></div> 
+   <div id="contentwrapper" class="contentwrapperH"> 
+    <div id="leftcontentwrapper"> 
+     <div id="left_nav"> 
+      <div class="left_header" id="type_1" style="cursor:pointer">
+       BUILDINGS
+      </div>
+      <ul id="BrownMenu">
+       <li id="cat_ALL"><span class="imgarrowdown" id="img_0"></span><a class="regular" style="cursor:pointer">&nbsp;&nbsp;ALL (231 )</a>
+        <ul id="cat_ALL" style="display:none;">
+         <li id="building"><a rel="history" href="#building/ALUMNAE" bid="ALUMNAE" style="cursor:pointer">ALUMNAE HALL</a></li>
+         <li id="building"><a rel="history" href="#building/ANDREWHALL" bid="ANDREWHALL" style="cursor:pointer">ANDREWS HALL</a></li>
+         <li id="building"><a rel="history" href="#building/ANDREWSHSE" bid="ANDREWSHSE" style="cursor:pointer">ANDREWS HOUSE</a></li>
+         <li id="building"><a rel="history" href="#building/ANGELL127" bid="ANGELL127" style="cursor:pointer">ANGELL ST 127</a></li>
+         <li id="building"><a rel="history" href="#building/ANGELL129" bid="ANGELL129" style="cursor:pointer">ANGELL ST 129</a></li>
+         <li id="building"><a rel="history" href="#building/ANGELL169" bid="ANGELL169" style="cursor:pointer">ANGELL ST 169</a></li>
+         <li id="building"><a rel="history" href="#building/ANGELL195" bid="ANGELL195" style="cursor:pointer">ANGELL ST 195</a></li>
+         <li id="building"><a rel="history" href="#building/ANNMARY" bid="ANNMARY" style="cursor:pointer">ANNMARY BROWN MEMORIAL LIBRARY</a></li>
+         <li id="building"><a rel="history" href="#building/KQARCHBRON" bid="KQARCHBRON" style="cursor:pointer">ARCHIBALD-BRONSON: KEENEY QUAD</a></li>
+         <li id="building"><a rel="history" href="#building/ARNOLDLAB" bid="ARNOLDLAB" style="cursor:pointer">ARNOLD LAB</a></li>
+         <li id="building"><a rel="history" href="#building/BARBOUR" bid="BARBOUR" style="cursor:pointer">BARBOUR HALL</a></li>
+         <li id="building"><a rel="history" href="#building/BH" bid="BH" style="cursor:pointer">BARUS &amp; HOLLEY</a></li>
+         <li id="building"><a rel="history" href="#building/BARUSBUILD" bid="BARUSBUILD" style="cursor:pointer">BARUS BUILDING</a></li>
+         <li id="building"><a rel="history" href="#building/BENE005" bid="BENE005" style="cursor:pointer">BENEVOLENT ST 005</a></li>
+         <li id="building"><a rel="history" href="#building/BENE020" bid="BENE020" style="cursor:pointer">BENEVOLENT ST 020</a></li>
+         <li id="building"><a rel="history" href="#building/BENE022" bid="BENE022" style="cursor:pointer">BENEVOLENT ST 022</a></li>
+         <li id="building"><a rel="history" href="#building/BENE026" bid="BENE026" style="cursor:pointer">BENEVOLENT ST 026</a></li>
+         <li id="building"><a rel="history" href="#building/BENE070-72" bid="BENE070-72" style="cursor:pointer">BENEVOLENT ST 070-072</a></li>
+         <li id="building"><a rel="history" href="#building/BENE074-80" bid="BENE074-80" style="cursor:pointer">BENEVOLENT ST 074-080</a></li>
+         <li id="building"><a rel="history" href="#building/BENE083-85" bid="BENE083-85" style="cursor:pointer">BENEVOLENT ST 083-085</a></li>
+         <li id="building"><a rel="history" href="#building/BENE084" bid="BENE084" style="cursor:pointer">BENEVOLENT ST 084</a></li>
+         <li id="building"><a rel="history" href="#building/BENE086" bid="BENE086" style="cursor:pointer">BENEVOLENT ST 086</a></li>
+         <li id="building"><a rel="history" href="#building/BENE088" bid="BENE088" style="cursor:pointer">BENEVOLENT ST 088</a></li>
+         <li id="building"><a rel="history" href="#building/BENE095" bid="BENE095" style="cursor:pointer">BENEVOLENT ST 095</a></li>
+         <li id="building"><a rel="history" href="#building/BENE097" bid="BENE097" style="cursor:pointer">BENEVOLENT ST 097</a></li>
+         <li id="building"><a rel="history" href="#building/BENE099" bid="BENE099" style="cursor:pointer">BENEVOLENT ST 099</a></li>
+         <li id="building"><a rel="history" href="#building/BENOCOOKE" bid="BENOCOOKE" style="cursor:pointer">BENONI COOKE HOUSE</a></li>
+         <li id="building"><a rel="history" href="#building/BIOMEDACF" bid="BIOMEDACF" style="cursor:pointer">BIO-MED ACF</a></li>
+         <li id="building"><a rel="history" href="#building/BIOMEDCTR" bid="BIOMEDCTR" style="cursor:pointer">BIO-MED CTR</a></li>
+         <li id="building"><a rel="history" href="#building/BIOMEDGG" bid="BIOMEDGG" style="cursor:pointer">BIO-MED GRIMSHAW-GUDEWICZ</a></li>
+         <li id="building"><a rel="history" href="#building/BLISTEIN" bid="BLISTEIN" style="cursor:pointer">BLISTEIN HOUSE</a></li>
+         <li id="building"><a rel="history" href="#building/BOWEN219" bid="BOWEN219" style="cursor:pointer">BOWEN ST 219</a></li>
+         <li id="building"><a rel="history" href="#building/BOWEN244" bid="BOWEN244" style="cursor:pointer">BOWEN ST 244</a></li>
+         <li id="building"><a rel="history" href="#building/BOWEN247" bid="BOWEN247" style="cursor:pointer">BOWEN ST 247</a></li>
+         <li id="building"><a rel="history" href="#building/BOWEN251" bid="BOWEN251" style="cursor:pointer">BOWEN ST 251</a></li>
+         <li id="building"><a rel="history" href="#building/BROOK245-7" bid="BROOK245-7" style="cursor:pointer">BROOK ST 245-247</a></li>
+         <li id="building"><a rel="history" href="#building/BROOK250" bid="BROOK250" style="cursor:pointer">BROOK ST 250</a></li>
+         <li id="building"><a rel="history" href="#building/BROOK277" bid="BROOK277" style="cursor:pointer">BROOK ST 277</a></li>
+         <li id="building"><a rel="history" href="#building/BROOK281-3" bid="BROOK281-3" style="cursor:pointer">BROOK ST 281-283</a></li>
+         <li id="building"><a rel="history" href="#building/BROOK333" bid="BROOK333" style="cursor:pointer">BROOK ST 333</a></li>
+         <li id="building"><a rel="history" href="#building/BROOK341" bid="BROOK341" style="cursor:pointer">BROOK ST 341</a></li>
+         <li id="building"><a rel="history" href="#building/BROOK456" bid="BROOK456" style="cursor:pointer">BROOK ST 456</a></li>
+         <li id="building"><a rel="history" href="#building/BOB" bid="BOB" style="cursor:pointer">BROWN OFFICE BLDG</a></li>
+         <li id="building"><a rel="history" href="#building/BROWN068H" bid="BROWN068H" style="cursor:pointer">BROWN ST 068.5</a></li>
+         <li id="building"><a rel="history" href="#building/BROWN070" bid="BROWN070" style="cursor:pointer">BROWN ST 070</a></li>
+         <li id="building"><a rel="history" href="#building/BROWN093" bid="BROWN093" style="cursor:pointer">BROWN ST 093</a></li>
+         <li id="building"><a rel="history" href="#building/BROWN095" bid="BROWN095" style="cursor:pointer">BROWN ST 095</a></li>
+         <li id="building"><a rel="history" href="#building/BROWN109" bid="BROWN109" style="cursor:pointer">BROWN ST 109</a></li>
+         <li id="building"><a rel="history" href="#building/BROWN111" bid="BROWN111" style="cursor:pointer">BROWN ST 111</a></li>
+         <li id="building"><a rel="history" href="#building/BROWN131-3" bid="BROWN131-3" style="cursor:pointer">BROWN ST 131-133</a></li>
+         <li id="building"><a rel="history" href="#building/BROWNSTAD" bid="BROWNSTAD" style="cursor:pointer">BROWN STADIUM</a></li>
+         <li id="building"><a rel="history" href="#building/BUXTON" bid="BUXTON" style="cursor:pointer">BUXTON HOUSE: WRISTON QUAD</a></li>
+         <li id="building"><a rel="history" href="#building/CARRIE" bid="CARRIE" style="cursor:pointer">CARRIE TOWER</a></li>
+         <li id="building"><a rel="history" href="#building/CASWELL" bid="CASWELL" style="cursor:pointer">CASWELL HALL</a></li>
+         <li id="building"><a rel="history" href="#building/CNTRLHEAT" bid="CNTRLHEAT" style="cursor:pointer">CENTRAL HEAT PLANT</a></li>
+         <li id="building"><a rel="history" href="#building/CHAMPLIN" bid="CHAMPLIN" style="cursor:pointer">CHAMPLIN: PEMBROKE QUAD</a></li>
+         <li id="building"><a rel="history" href="#building/CHAPIN" bid="CHAPIN" style="cursor:pointer">CHAPIN HOUSE: WRISTON QUAD</a></li>
+         <li id="building"><a rel="history" href="#building/CHAR038" bid="CHAR038" style="cursor:pointer">CHARLESFIELD ST 038</a></li>
+         <li id="building"><a rel="history" href="#building/CHAR059" bid="CHAR059" style="cursor:pointer">CHARLESFIELD ST 059</a></li>
+         <li id="building"><a rel="history" href="#building/CHAR070-72" bid="CHAR070-72" style="cursor:pointer">CHARLESFIELD ST 070-072</a></li>
+         <li id="building"><a rel="history" href="#building/CHAR075" bid="CHAR075" style="cursor:pointer">CHARLESFIELD ST 075</a></li>
+         <li id="building"><a rel="history" href="#building/CHAR108-10" bid="CHAR108-10" style="cursor:pointer">CHARLESFIELD ST 108-110</a></li>
+         <li id="building"><a rel="history" href="#building/CHURCHILL" bid="CHURCHILL" style="cursor:pointer">CHURCHILL HOUSE</a></li>
+         <li id="building"><a rel="history" href="#building/COOKE037" bid="COOKE037" style="cursor:pointer">COOKE ST 037</a></li>
+         <li id="building"><a rel="history" href="#building/CORLISS-B" bid="CORLISS-B" style="cursor:pointer">CORLISS-BRACKETT</a></li>
+         <li id="building"><a rel="history" href="#building/CUSH084-86" bid="CUSH084-86" style="cursor:pointer">CUSHING ST 084-086</a></li>
+         <li id="building"><a rel="history" href="#building/CUSH154" bid="CUSH154" style="cursor:pointer">CUSHING ST 154</a></li>
+         <li id="building"><a rel="history" href="#building/CUSH166" bid="CUSH166" style="cursor:pointer">CUSHING ST 166</a></li>
+         <li id="building"><a rel="history" href="#building/DAVOL001" bid="DAVOL001" style="cursor:pointer">DAVOL SQ 001</a></li>
+         <li id="building"><a rel="history" href="#building/DAVOL003" bid="DAVOL003" style="cursor:pointer">DAVOL SQ 003</a></li>
+         <li id="building"><a rel="history" href="#building/DAVOL010" bid="DAVOL010" style="cursor:pointer">DAVOL SQ 010</a></li>
+         <li id="building"><a rel="history" href="#building/DIMAN" bid="DIMAN" style="cursor:pointer">DIMAN HOUSE: WRISTON QUAD</a></li>
+         <li id="building"><a rel="history" href="#building/DYERHSE" bid="DYERHSE" style="cursor:pointer">DYER HOUSE</a></li>
+         <li id="building"><a rel="history" href="#building/DYER200" bid="DYER200" style="cursor:pointer">DYER ST 200</a></li>
+         <li id="building"><a rel="history" href="#building/EDDYST339" bid="EDDYST339" style="cursor:pointer">EDDY ST 339</a></li>
+         <li id="building"><a rel="history" href="#building/EDDYST349" bid="EDDYST349" style="cursor:pointer">EDDY ST 349</a></li>
+         <li id="building"><a rel="history" href="#building/ELM110" bid="ELM110" style="cursor:pointer">ELM ST 110</a></li>
+         <li id="building"><a rel="history" href="#building/EMERY" bid="EMERY" style="cursor:pointer">EMERY: PEMBROKE QUAD</a></li>
+         <li id="building"><a rel="history" href="#building/KQEVRTPLND" bid="KQEVRTPLND" style="cursor:pointer">EVERETT-POLAND: KEENEY QUAD</a></li>
+         <li id="building"><a rel="history" href="#building/FACULTCLUB" bid="FACULTCLUB" style="cursor:pointer">FACULTY CLUB</a></li>
+         <li id="building"><a rel="history" href="#building/FAUNCEHSE" bid="FAUNCEHSE" style="cursor:pointer">FAUNCE HOUSE</a></li>
+         <li id="building"><a rel="history" href="#building/FEINSTEIN" bid="FEINSTEIN" style="cursor:pointer">FEINSTEIN</a></li>
+         <li id="building"><a rel="history" href="#building/FONES008" bid="FONES008" style="cursor:pointer">FONES ALLEY 008</a></li>
+         <li id="building"><a rel="history" href="#building/FOXPOINT" bid="FOXPOINT" style="cursor:pointer">FOX POINT DAY CARE CTR</a></li>
+         <li id="building"><a rel="history" href="#building/GARDNER" bid="GARDNER" style="cursor:pointer">GARDNER HOUSE</a></li>
+         <li id="building"><a rel="history" href="#building/GEO-CHEM" bid="GEO-CHEM" style="cursor:pointer">GEO-CHEM BLDG</a></li>
+         <li id="building"><a rel="history" href="#building/GEORGE025" bid="GEORGE025" style="cursor:pointer">GEORGE ST 025</a></li>
+         <li id="building"><a rel="history" href="#building/GEORGE067" bid="GEORGE067" style="cursor:pointer">GEORGE ST 067</a></li>
+         <li id="building"><a rel="history" href="#building/GEORGE155" bid="GEORGE155" style="cursor:pointer">GEORGE ST 155</a></li>
+         <li id="building"><a rel="history" href="#building/GEORGE163" bid="GEORGE163" style="cursor:pointer">GEORGE ST 163</a></li>
+         <li id="building"><a rel="history" href="#building/GEORGE180" bid="GEORGE180" style="cursor:pointer">GEORGE ST 180</a></li>
+         <li id="building"><a rel="history" href="#building/GEORGE182" bid="GEORGE182" style="cursor:pointer">GEORGE ST 182</a></li>
+         <li id="building"><a rel="history" href="#building/GERARDHSE" bid="GERARDHSE" style="cursor:pointer">GERARD HOUSE, SAMUEL N.</a></li>
+         <li id="building"><a rel="history" href="#building/GIDDINGS" bid="GIDDINGS" style="cursor:pointer">GIDDINGS HOUSE</a></li>
+         <li id="building"><a rel="history" href="#building/GODDARD" bid="GODDARD" style="cursor:pointer">GODDARD HOUSE: WRISTON QUAD</a></li>
+         <li id="building"><a rel="history" href="#building/GRADCTRA" bid="GRADCTRA" style="cursor:pointer">GRADUATE CTR A</a></li>
+         <li id="building"><a rel="history" href="#building/GRADCTRB" bid="GRADCTRB" style="cursor:pointer">GRADUATE CTR B</a></li>
+         <li id="building"><a rel="history" href="#building/GRADCTRC" bid="GRADCTRC" style="cursor:pointer">GRADUATE CTR C</a></li>
+         <li id="building"><a rel="history" href="#building/GRADCTRD" bid="GRADCTRD" style="cursor:pointer">GRADUATE CTR D</a></li>
+         <li id="building"><a rel="history" href="#building/GRADCTRE" bid="GRADCTRE" style="cursor:pointer">GRADUATE CTR E</a></li>
+         <li id="building"><a rel="history" href="#building/GRNFCAC" bid="GRNFCAC" style="cursor:pointer">GRANOFF CTR FOR THE CREATIVE ARTS</a></li>
+         <li id="building"><a rel="history" href="#building/GRANTFULT" bid="GRANTFULT" style="cursor:pointer">GRANT FULTON</a></li>
+         <li id="building"><a rel="history" href="#building/HAFFBARN" bid="HAFFBARN" style="cursor:pointer">HAFFENREFFER BARN</a></li>
+         <li id="building"><a rel="history" href="#building/HAFFCARE" bid="HAFFCARE" style="cursor:pointer">HAFFENREFFER CARETAKER HOUSE</a></li>
+         <li id="building"><a rel="history" href="#building/HAFFMUSEUM" bid="HAFFMUSEUM" style="cursor:pointer">HAFFENREFFER MUSEUM COLLECTIONS RES</a></li>
+         <li id="building"><a rel="history" href="#building/HAFFOUTING" bid="HAFFOUTING" style="cursor:pointer">HAFFENREFFER OUTING RESERVATION FAC</a></li>
+         <li id="building"><a rel="history" href="#building/HARKNESS" bid="HARKNESS" style="cursor:pointer">HARKNESS HOUSE: WRISTON QUAD</a></li>
+         <li id="building"><a rel="history" href="#building/HEGEMAN" bid="HEGEMAN" style="cursor:pointer">HEGEMAN HALL</a></li>
+         <li id="building"><a rel="history" href="#building/HEMISPHERE" bid="HEMISPHERE" style="cursor:pointer">HEMISPHERE BLDG</a></li>
+         <li id="building"><a rel="history" href="#building/HILLELHSE" bid="HILLELHSE" style="cursor:pointer">HILLEL HOUSE</a></li>
+         <li id="building"><a rel="history" href="#building/HOPECOLL" bid="HOPECOLL" style="cursor:pointer">HOPE COLLEGE</a></li>
+         <li id="building"><a rel="history" href="#building/HOPE134" bid="HOPE134" style="cursor:pointer">HOPE ST 134</a></li>
+         <li id="building"><a rel="history" href="#building/HOPE190" bid="HOPE190" style="cursor:pointer">HOPE ST 190</a></li>
+         <li id="building"><a rel="history" href="#building/HOPPIN" bid="HOPPIN" style="cursor:pointer">HOPPIN (THOMAS P.) HOUSE</a></li>
+         <li id="building"><a rel="history" href="#building/HORACEMANN" bid="HORACEMANN" style="cursor:pointer">HORACE MANN HOUSE</a></li>
+         <li id="building"><a rel="history" href="#building/JWWILSON" bid="JWWILSON" style="cursor:pointer">J. WALTER WILSON BUILDING</a></li>
+         <li id="building"><a rel="history" href="#building/KQJMSNMEAD" bid="KQJMSNMEAD" style="cursor:pointer">JAMESON-MEAD: KEENEY QUAD</a></li>
+         <li id="building"><a rel="history" href="#building/JCBLIBRARY" bid="JCBLIBRARY" style="cursor:pointer">JOHN CARTER BROWN LIBRARY</a></li>
+         <li id="building"><a rel="history" href="#building/JHAYLIB" bid="JHAYLIB" style="cursor:pointer">JOHN HAY LIBRARY</a></li>
+         <li id="building"><a rel="history" href="#building/JOHN050" bid="JOHN050" style="cursor:pointer">JOHN ST 050</a></li>
+         <li id="building"><a rel="history" href="#building/KASSAR" bid="KASSAR" style="cursor:pointer">KASSAR (EDWARD W.) HOUSE</a></li>
+         <li id="building"><a rel="history" href="#building/KINGHSE" bid="KINGHSE" style="cursor:pointer">KING HOUSE</a></li>
+         <li id="building"><a rel="history" href="#building/LADDOBSERV" bid="LADDOBSERV" style="cursor:pointer">LADD OBSERVATORY</a></li>
+         <li id="building"><a rel="history" href="#building/LINCOLNFLD" bid="LINCOLNFLD" style="cursor:pointer">LINCOLN FIELD BUILDING</a></li>
+         <li id="building"><a rel="history" href="#building/LIPPITTHSE" bid="LIPPITTHSE" style="cursor:pointer">LIPPITT HOUSE</a></li>
+         <li id="building"><a rel="history" href="#building/LISTART" bid="LISTART" style="cursor:pointer">LIST (ALBERT &amp; VERA) ART BUILDING</a></li>
+         <li id="building"><a rel="history" href="#building/LITTLEFLD" bid="LITTLEFLD" style="cursor:pointer">LITTLEFIELD HALL</a></li>
+         <li id="building"><a rel="history" href="#building/LLOYD165-7" bid="LLOYD165-7" style="cursor:pointer">LLOYD AVE 165-167</a></li>
+         <li id="building"><a rel="history" href="#building/LLOYD295" bid="LLOYD295" style="cursor:pointer">LLOYD AVE 295</a></li>
+         <li id="building"><a rel="history" href="#building/LYMANHALL" bid="LYMANHALL" style="cursor:pointer">LYMAN HALL</a></li>
+         <li id="building"><a rel="history" href="#building/MACFARLANE" bid="MACFARLANE" style="cursor:pointer">MACFARLANE HOUSE</a></li>
+         <li id="building"><a rel="history" href="#building/MACHADO" bid="MACHADO" style="cursor:pointer">MACHADO (ANTONIO) HOUSE</a></li>
+         <li id="building"><a rel="history" href="#building/MACMILLAN" bid="MACMILLAN" style="cursor:pointer">MACMILLAN HALL</a></li>
+         <li id="building"><a rel="history" href="#building/MADDOCK" bid="MADDOCK" style="cursor:pointer">MADDOCK ALUMNI CENTER</a></li>
+         <li id="building"><a rel="history" href="#building/MANNING" bid="MANNING" style="cursor:pointer">MANNING HALL</a></li>
+         <li id="building"><a rel="history" href="#building/MANNING029" bid="MANNING029" style="cursor:pointer">MANNING ST 029</a></li>
+         <li id="building"><a rel="history" href="#building/MANNING037" bid="MANNING037" style="cursor:pointer">MANNING ST 037</a></li>
+         <li id="building"><a rel="history" href="#building/MARCYHSE" bid="MARCYHSE" style="cursor:pointer">MARCY HOUSE: WRISTON QUAD</a></li>
+         <li id="building"><a rel="history" href="#building/MRSTNBOAT" bid="MRSTNBOAT" style="cursor:pointer">MARSTON BOATHOUSE</a></li>
+         <li id="building"><a rel="history" href="#building/MARSTONHAL" bid="MARSTONHAL" style="cursor:pointer">MARSTON HALL</a></li>
+         <li id="building"><a rel="history" href="#building/MAXCY" bid="MAXCY" style="cursor:pointer">MAXCY HALL</a></li>
+         <li id="building"><a rel="history" href="#building/MRL" bid="MRL" style="cursor:pointer">MEDICAL RESEARCH LAB</a></li>
+         <li id="building"><a rel="history" href="#building/MEEHAN" bid="MEEHAN" style="cursor:pointer">MEEHAN AUDITORIUM</a></li>
+         <li id="building"><a rel="history" href="#building/MEIKLEJOHN" bid="MEIKLEJOHN" style="cursor:pointer">MEIKLEJOHN HOUSE</a></li>
+         <li id="building"><a rel="history" href="#building/MENCOFF" bid="MENCOFF" style="cursor:pointer">MENCOFF HALL</a></li>
+         <li id="building"><a rel="history" href="#building/METCALFHAL" bid="METCALFHAL" style="cursor:pointer">METCALF HALL</a></li>
+         <li id="building"><a rel="history" href="#building/METRSCHBLD" bid="METRSCHBLD" style="cursor:pointer">METCALF RESEARCH BUILDING</a></li>
+         <li id="building"><a rel="history" href="#building/MILLER" bid="MILLER" style="cursor:pointer">MILLER HALL</a></li>
+         <li id="building"><a rel="history" href="#building/MINDEN" bid="MINDEN" style="cursor:pointer">MINDEN HALL</a></li>
+         <li id="building"><a rel="history" href="#building/MONTGOM601" bid="MONTGOM601" style="cursor:pointer">MONTGOMERY ST 601</a></li>
+         <li id="building"><a rel="history" href="#building/MOR-GERARD" bid="MOR-GERARD" style="cursor:pointer">MORRISON-GERARD STUDIO</a></li>
+         <li id="building"><a rel="history" href="#building/MORRISHALL" bid="MORRISHALL" style="cursor:pointer">MORRISS HALL: PEMBROKE QUAD</a></li>
+         <li id="building"><a rel="history" href="#building/NELSONFIT" bid="NELSONFIT" style="cursor:pointer">NELSON FITNESS CENTER</a></li>
+         <li id="building"><a rel="history" href="#building/NEWPEM1" bid="NEWPEM1" style="cursor:pointer">NEW PEMBROKE NO. 1</a></li>
+         <li id="building"><a rel="history" href="#building/NEWPEM2" bid="NEWPEM2" style="cursor:pointer">NEW PEMBROKE NO. 2</a></li>
+         <li id="building"><a rel="history" href="#building/NEWPEM3" bid="NEWPEM3" style="cursor:pointer">NEW PEMBROKE NO. 3</a></li>
+         <li id="building"><a rel="history" href="#building/NEWPEM4" bid="NEWPEM4" style="cursor:pointer">NEW PEMBROKE NO. 4</a></li>
+         <li id="building"><a rel="history" href="#building/NICHOLSON" bid="NICHOLSON" style="cursor:pointer">NICHOLSON HOUSE</a></li>
+         <li id="building"><a rel="history" href="#building/NIGHT-BROW" bid="NIGHT-BROW" style="cursor:pointer">NIGHTINGALE-BROWN HOUSE</a></li>
+         <li id="building"><a rel="history" href="#building/NMAIN1128" bid="NMAIN1128" style="cursor:pointer">NORTH MAIN 1128</a></li>
+         <li id="building"><a rel="history" href="#building/NORWOOD" bid="NORWOOD" style="cursor:pointer">NORWOOD HOUSE</a></li>
+         <li id="building"><a rel="history" href="#building/OLIVE020" bid="OLIVE020" style="cursor:pointer">OLIVE ST 020</a></li>
+         <li id="building"><a rel="history" href="#building/OLNEY" bid="OLNEY" style="cursor:pointer">OLNEY HOUSE: WRISTON QUAD</a></li>
+         <li id="building"><a rel="history" href="#building/OMAC" bid="OMAC" style="cursor:pointer">OLNEY-MARGOLIES ATHLETIC CENTER</a></li>
+         <li id="building"><a rel="history" href="#building/ORWIG" bid="ORWIG" style="cursor:pointer">ORWIG MUSIC HALL</a></li>
+         <li id="building"><a rel="history" href="#building/PARKLN010" bid="PARKLN010" style="cursor:pointer">PARK LANE 010</a></li>
+         <li id="building"><a rel="history" href="#building/PARTRIDGE" bid="PARTRIDGE" style="cursor:pointer">PARTRIDGE HALL &amp; ANNEX</a></li>
+         <li id="building"><a rel="history" href="#building/PEMFLDHSE" bid="PEMFLDHSE" style="cursor:pointer">PEMBROKE FIELD HOUSE</a></li>
+         <li id="building"><a rel="history" href="#building/PEMBROKE" bid="PEMBROKE" style="cursor:pointer">PEMBROKE HALL</a></li>
+         <li id="building"><a rel="history" href="#building/PERKINS" bid="PERKINS" style="cursor:pointer">PERKINS HALL</a></li>
+         <li id="building"><a rel="history" href="#building/PGREENHSE" bid="PGREENHSE" style="cursor:pointer">PETER GREEN HOUSE</a></li>
+         <li id="building"><a rel="history" href="#building/PIZZITOLA" bid="PIZZITOLA" style="cursor:pointer">PIZZITOLA</a></li>
+         <li id="building"><a rel="history" href="#building/PLANENVCTR" bid="PLANENVCTR" style="cursor:pointer">PLANT ENVIRONMENTAL CENTER</a></li>
+         <li id="building"><a rel="history" href="#building/POWER089" bid="POWER089" style="cursor:pointer">POWER ST 089</a></li>
+         <li id="building"><a rel="history" href="#building/POWERPARK" bid="POWERPARK" style="cursor:pointer">POWER ST PARKING GARAGE</a></li>
+         <li id="building"><a rel="history" href="#building/PRESHSE" bid="PRESHSE" style="cursor:pointer">PRESIDENT'S HOUSE</a></li>
+         <li id="building"><a rel="history" href="#building/PRINCELAB" bid="PRINCELAB" style="cursor:pointer">PRINCE ENGINEERING LAB</a></li>
+         <li id="building"><a rel="history" href="#building/PROSPECHSE" bid="PROSPECHSE" style="cursor:pointer">PROSPECT HOUSE</a></li>
+         <li id="building"><a rel="history" href="#building/RIHALL" bid="RIHALL" style="cursor:pointer">RHODE ISLAND HALL</a></li>
+         <li id="building"><a rel="history" href="#building/RICHMND196" bid="RICHMND196" style="cursor:pointer">RICHMOND ST 196</a></li>
+         <li id="building"><a rel="history" href="#building/RICHMND222" bid="RICHMND222" style="cursor:pointer">RICHMOND ST 222 (MED ED)</a></li>
+         <li id="building"><a rel="history" href="#building/RICHMNDPKG" bid="RICHMNDPKG" style="cursor:pointer">RICHMOND ST 222 PARKING GARAGE</a></li>
+         <li id="building"><a rel="history" href="#building/RICHMND233" bid="RICHMND233" style="cursor:pointer">RICHMOND ST 233</a></li>
+         <li id="building"><a rel="history" href="#building/ROBINSON" bid="ROBINSON" style="cursor:pointer">ROBINSON HALL</a></li>
+         <li id="building"><a rel="history" href="#building/ROCHAMBEAU" bid="ROCHAMBEAU" style="cursor:pointer">ROCHAMBEAU HOUSE</a></li>
+         <li id="building"><a rel="history" href="#building/ROCKLIB" bid="ROCKLIB" style="cursor:pointer">ROCKEFELLER (JOHN D., JR.) LIBRARY</a></li>
+         <li id="building"><a rel="history" href="#building/SALOMON" bid="SALOMON" style="cursor:pointer">SALOMON CTR FOR TEACHING</a></li>
+         <li id="building"><a rel="history" href="#building/SAYLESHALL" bid="SAYLESHALL" style="cursor:pointer">SAYLES HALL</a></li>
+         <li id="building"><a rel="history" href="#building/SCILIB" bid="SCILIB" style="cursor:pointer">SCIENCES LIBRARY</a></li>
+         <li id="building"><a rel="history" href="#building/SEARS" bid="SEARS" style="cursor:pointer">SEARS HOUSE: WRISTON QUAD</a></li>
+         <li id="building"><a rel="history" href="#building/SHARPEHSE" bid="SHARPEHSE" style="cursor:pointer">SHARPE HOUSE</a></li>
+         <li id="building"><a rel="history" href="#building/SHARPEREF" bid="SHARPEREF" style="cursor:pointer">SHARPE REFECTORY</a></li>
+         <li id="building"><a rel="history" href="#building/SHIPST070" bid="SHIPST070" style="cursor:pointer">SHIP ST 070</a></li>
+         <li id="building"><a rel="history" href="#building/SMILLERHSE" bid="SMILLERHSE" style="cursor:pointer">SHIRLEY MILLER HOUSE</a></li>
+         <li id="building"><a rel="history" href="#building/SFRANKHLSB" bid="SFRANKHLSB" style="cursor:pointer">SIDNEY E. FRANK HALL LIFE SCIENCES</a></li>
+         <li id="building"><a rel="history" href="#building/SLATER" bid="SLATER" style="cursor:pointer">SLATER HALL</a></li>
+         <li id="building"><a rel="history" href="#building/SMITH-BUON" bid="SMITH-BUON" style="cursor:pointer">SMITH-BUONANNO HALL</a></li>
+         <li id="building"><a rel="history" href="#building/SMAIN121" bid="SMAIN121" style="cursor:pointer">SOUTH MAIN ST 121</a></li>
+         <li id="building"><a rel="history" href="#building/STEINERT" bid="STEINERT" style="cursor:pointer">STEINERT CENTER</a></li>
+         <li id="building"><a rel="history" href="#building/STIMSON002" bid="STIMSON002" style="cursor:pointer">STIMSON AVE 002</a></li>
+         <li id="building"><a rel="history" href="#building/TFGREEN" bid="TFGREEN" style="cursor:pointer">T.F. GREEN HALL</a></li>
+         <li id="building"><a rel="history" href="#building/TAFTAVE" bid="TAFTAVE" style="cursor:pointer">TAFT AVE DAYCARE CTR</a></li>
+         <li id="building"><a rel="history" href="#building/THAYER135" bid="THAYER135" style="cursor:pointer">THAYER ST 135</a></li>
+         <li id="building"><a rel="history" href="#building/THAYER272" bid="THAYER272" style="cursor:pointer">THAYER ST 272</a></li>
+         <li id="building"><a rel="history" href="#building/THAYER307" bid="THAYER307" style="cursor:pointer">THAYER ST 307</a></li>
+         <li id="building"><a rel="history" href="#building/THAYER315" bid="THAYER315" style="cursor:pointer">THAYER ST 315</a></li>
+         <li id="building"><a rel="history" href="#building/TOCK285" bid="TOCK285" style="cursor:pointer">TOCKWOTTEN 285</a></li>
+         <li id="building"><a rel="history" href="#building/UHALL" bid="UHALL" style="cursor:pointer">UNIVERSITY HALL</a></li>
+         <li id="building"><a rel="history" href="#building/UEL" bid="UEL" style="cursor:pointer">URBAN ENVIRONMENTAL LAB</a></li>
+         <li id="building"><a rel="history" href="#building/VGQUADA" bid="VGQUADA" style="cursor:pointer">VARTAN GREGORIAN QUAD A</a></li>
+         <li id="building"><a rel="history" href="#building/VGQUADB" bid="VGQUADB" style="cursor:pointer">VARTAN GREGORIAN QUAD B</a></li>
+         <li id="building"><a rel="history" href="#building/VERN-WOOL" bid="VERN-WOOL" style="cursor:pointer">VERNEY-WOOLLEY HALL: PEMBROKE QUAD</a></li>
+         <li id="building"><a rel="history" href="#building/WALTERHALL" bid="WALTERHALL" style="cursor:pointer">WALTER HALL</a></li>
+         <li id="building"><a rel="history" href="#building/WATER070" bid="WATER070" style="cursor:pointer">WATERMAN ST 070</a></li>
+         <li id="building"><a rel="history" href="#building/WATER085" bid="WATER085" style="cursor:pointer">WATERMAN ST 085</a></li>
+         <li id="building"><a rel="history" href="#building/WATER086" bid="WATER086" style="cursor:pointer">WATERMAN ST 086</a></li>
+         <li id="building"><a rel="history" href="#building/WATER094" bid="WATER094" style="cursor:pointer">WATERMAN ST 094</a></li>
+         <li id="building"><a rel="history" href="#building/WATER131" bid="WATER131" style="cursor:pointer">WATERMAN ST 131</a></li>
+         <li id="building"><a rel="history" href="#building/WATER133" bid="WATER133" style="cursor:pointer">WATERMAN ST 133</a></li>
+         <li id="building"><a rel="history" href="#building/WATER137" bid="WATER137" style="cursor:pointer">WATERMAN ST 137</a></li>
+         <li id="building"><a rel="history" href="#building/WATER229" bid="WATER229" style="cursor:pointer">WATERMAN ST 229</a></li>
+         <li id="building"><a rel="history" href="#building/WATSONCIT" bid="WATSONCIT" style="cursor:pointer">WATSON CENTER FOR INFORMATION TECH</a></li>
+         <li id="building"><a rel="history" href="#building/WATSONINS" bid="WATSONINS" style="cursor:pointer">WATSON INSTITUTE</a></li>
+         <li id="building"><a rel="history" href="#building/WAYLAND" bid="WAYLAND" style="cursor:pointer">WAYLAND HOUSE: WRISTON QUAD</a></li>
+         <li id="building"><a rel="history" href="#building/WESTHSE" bid="WESTHSE" style="cursor:pointer">WEST HOUSE</a></li>
+         <li id="building"><a rel="history" href="#building/WILBOUR" bid="WILBOUR" style="cursor:pointer">WILBOUR HALL</a></li>
+         <li id="building"><a rel="history" href="#building/WILSONHALL" bid="WILSONHALL" style="cursor:pointer">WILSON HALL</a></li>
+         <li id="building"><a rel="history" href="#building/WOOLLEYHAL" bid="WOOLLEYHAL" style="cursor:pointer">WOOLLEY HALL: PEMBROKE QUAD</a></li>
+         <li id="building"><a rel="history" href="#building/YO002" bid="YO002" style="cursor:pointer">YOUNG ORCHARD AVE 002</a></li>
+         <li id="building"><a rel="history" href="#building/YO004" bid="YO004" style="cursor:pointer">YOUNG ORCHARD AVE 004</a></li>
+         <li id="building"><a rel="history" href="#building/YO010" bid="YO010" style="cursor:pointer">YOUNG ORCHARD AVE 010</a></li>
+        </ul></li>
+       <li id="cat_ACAD"><span class="imgarrowdown" id="img_ACAD"></span> <a rel="history" class="regular" href="#category/ACAD" style="cursor:pointer"><img src="images/marker/52.gif">&nbsp;ACADEMIC (82 )</a>
+        <ul id="cat_ACAD" style="display:none;" href="#category/ACAD">
+         <li id="building"><a rel="history" bid="ALUMNAE" style="cursor:pointer" href="#building/ALUMNAE">ALUMNAE HALL</a></li>
+         <li id="building"><a rel="history" bid="ANGELL169" style="cursor:pointer" href="#building/ANGELL169">ANGELL ST 169</a></li>
+         <li id="building"><a rel="history" bid="ARNOLDLAB" style="cursor:pointer" href="#building/ARNOLDLAB">ARNOLD LAB</a></li>
+         <li id="building"><a rel="history" bid="BH" style="cursor:pointer" href="#building/BH">BARUS &amp; HOLLEY</a></li>
+         <li id="building"><a rel="history" bid="BARUSBUILD" style="cursor:pointer" href="#building/BARUSBUILD">BARUS BUILDING</a></li>
+         <li id="building"><a rel="history" bid="BIOMEDACF" style="cursor:pointer" href="#building/BIOMEDACF">BIO-MED ACF</a></li>
+         <li id="building"><a rel="history" bid="BIOMEDCTR" style="cursor:pointer" href="#building/BIOMEDCTR">BIO-MED CTR</a></li>
+         <li id="building"><a rel="history" bid="BIOMEDGG" style="cursor:pointer" href="#building/BIOMEDGG">BIO-MED GRIMSHAW-GUDEWICZ</a></li>
+         <li id="building"><a rel="history" bid="BLISTEIN" style="cursor:pointer" href="#building/BLISTEIN">BLISTEIN HOUSE</a></li>
+         <li id="building"><a rel="history" bid="BROOK333" style="cursor:pointer" href="#building/BROOK333">BROOK ST 333</a></li>
+         <li id="building"><a rel="history" bid="BROOK341" style="cursor:pointer" href="#building/BROOK341">BROOK ST 341</a></li>
+         <li id="building"><a rel="history" bid="BROWN068H" style="cursor:pointer" href="#building/BROWN068H">BROWN ST 068.5</a></li>
+         <li id="building"><a rel="history" bid="BROWN070" style="cursor:pointer" href="#building/BROWN070">BROWN ST 070</a></li>
+         <li id="building"><a rel="history" bid="CHURCHILL" style="cursor:pointer" href="#building/CHURCHILL">CHURCHILL HOUSE</a></li>
+         <li id="building"><a rel="history" bid="DYERHSE" style="cursor:pointer" href="#building/DYERHSE">DYER HOUSE</a></li>
+         <li id="building"><a rel="history" bid="FEINSTEIN" style="cursor:pointer" href="#building/FEINSTEIN">FEINSTEIN</a></li>
+         <li id="building"><a rel="history" bid="GEO-CHEM" style="cursor:pointer" href="#building/GEO-CHEM">GEO-CHEM BLDG</a></li>
+         <li id="building"><a rel="history" bid="GEORGE067" style="cursor:pointer" href="#building/GEORGE067">GEORGE ST 067</a></li>
+         <li id="building"><a rel="history" bid="GEORGE155" style="cursor:pointer" href="#building/GEORGE155">GEORGE ST 155</a></li>
+         <li id="building"><a rel="history" bid="GEORGE163" style="cursor:pointer" href="#building/GEORGE163">GEORGE ST 163</a></li>
+         <li id="building"><a rel="history" bid="GEORGE180" style="cursor:pointer" href="#building/GEORGE180">GEORGE ST 180</a></li>
+         <li id="building"><a rel="history" bid="GEORGE182" style="cursor:pointer" href="#building/GEORGE182">GEORGE ST 182</a></li>
+         <li id="building"><a rel="history" bid="GERARDHSE" style="cursor:pointer" href="#building/GERARDHSE">GERARD HOUSE, SAMUEL N.</a></li>
+         <li id="building"><a rel="history" bid="GIDDINGS" style="cursor:pointer" href="#building/GIDDINGS">GIDDINGS HOUSE</a></li>
+         <li id="building"><a rel="history" bid="GRNFCAC" style="cursor:pointer" href="#building/GRNFCAC">GRANOFF CTR FOR THE CREATIVE ARTS</a></li>
+         <li id="building"><a rel="history" bid="GRANTFULT" style="cursor:pointer" href="#building/GRANTFULT">GRANT FULTON</a></li>
+         <li id="building"><a rel="history" bid="HAFFBARN" style="cursor:pointer" href="#building/HAFFBARN">HAFFENREFFER BARN</a></li>
+         <li id="building"><a rel="history" bid="HAFFMUSEUM" style="cursor:pointer" href="#building/HAFFMUSEUM">HAFFENREFFER MUSEUM COLLECTIONS RES</a></li>
+         <li id="building"><a rel="history" bid="HEMISPHERE" style="cursor:pointer" href="#building/HEMISPHERE">HEMISPHERE BLDG</a></li>
+         <li id="building"><a rel="history" bid="HOPE190" style="cursor:pointer" href="#building/HOPE190">HOPE ST 190</a></li>
+         <li id="building"><a rel="history" bid="HORACEMANN" style="cursor:pointer" href="#building/HORACEMANN">HORACE MANN HOUSE</a></li>
+         <li id="building"><a rel="history" bid="JWWILSON" style="cursor:pointer" href="#building/JWWILSON">J. WALTER WILSON BUILDING</a></li>
+         <li id="building"><a rel="history" bid="KASSAR" style="cursor:pointer" href="#building/KASSAR">KASSAR (EDWARD W.) HOUSE</a></li>
+         <li id="building"><a rel="history" bid="LADDOBSERV" style="cursor:pointer" href="#building/LADDOBSERV">LADD OBSERVATORY</a></li>
+         <li id="building"><a rel="history" bid="LINCOLNFLD" style="cursor:pointer" href="#building/LINCOLNFLD">LINCOLN FIELD BUILDING</a></li>
+         <li id="building"><a rel="history" bid="LIPPITTHSE" style="cursor:pointer" href="#building/LIPPITTHSE">LIPPITT HOUSE</a></li>
+         <li id="building"><a rel="history" bid="LISTART" style="cursor:pointer" href="#building/LISTART">LIST (ALBERT &amp; VERA) ART BUILDING</a></li>
+         <li id="building"><a rel="history" bid="LYMANHALL" style="cursor:pointer" href="#building/LYMANHALL">LYMAN HALL</a></li>
+         <li id="building"><a rel="history" bid="MACFARLANE" style="cursor:pointer" href="#building/MACFARLANE">MACFARLANE HOUSE</a></li>
+         <li id="building"><a rel="history" bid="MACMILLAN" style="cursor:pointer" href="#building/MACMILLAN">MACMILLAN HALL</a></li>
+         <li id="building"><a rel="history" bid="MANNING" style="cursor:pointer" href="#building/MANNING">MANNING HALL</a></li>
+         <li id="building"><a rel="history" bid="MANNING029" style="cursor:pointer" href="#building/MANNING029">MANNING ST 029</a></li>
+         <li id="building"><a rel="history" bid="MANNING037" style="cursor:pointer" href="#building/MANNING037">MANNING ST 037</a></li>
+         <li id="building"><a rel="history" bid="MARSTONHAL" style="cursor:pointer" href="#building/MARSTONHAL">MARSTON HALL</a></li>
+         <li id="building"><a rel="history" bid="MAXCY" style="cursor:pointer" href="#building/MAXCY">MAXCY HALL</a></li>
+         <li id="building"><a rel="history" bid="MRL" style="cursor:pointer" href="#building/MRL">MEDICAL RESEARCH LAB</a></li>
+         <li id="building"><a rel="history" bid="MEIKLEJOHN" style="cursor:pointer" href="#building/MEIKLEJOHN">MEIKLEJOHN HOUSE</a></li>
+         <li id="building"><a rel="history" bid="MENCOFF" style="cursor:pointer" href="#building/MENCOFF">MENCOFF HALL</a></li>
+         <li id="building"><a rel="history" bid="METRSCHBLD" style="cursor:pointer" href="#building/METRSCHBLD">METCALF RESEARCH BUILDING</a></li>
+         <li id="building"><a rel="history" bid="MOR-GERARD" style="cursor:pointer" href="#building/MOR-GERARD">MORRISON-GERARD STUDIO</a></li>
+         <li id="building"><a rel="history" bid="NORWOOD" style="cursor:pointer" href="#building/NORWOOD">NORWOOD HOUSE</a></li>
+         <li id="building"><a rel="history" bid="ORWIG" style="cursor:pointer" href="#building/ORWIG">ORWIG MUSIC HALL</a></li>
+         <li id="building"><a rel="history" bid="PARTRIDGE" style="cursor:pointer" href="#building/PARTRIDGE">PARTRIDGE HALL &amp; ANNEX</a></li>
+         <li id="building"><a rel="history" bid="PEMBROKE" style="cursor:pointer" href="#building/PEMBROKE">PEMBROKE HALL</a></li>
+         <li id="building"><a rel="history" bid="PGREENHSE" style="cursor:pointer" href="#building/PGREENHSE">PETER GREEN HOUSE</a></li>
+         <li id="building"><a rel="history" bid="PLANENVCTR" style="cursor:pointer" href="#building/PLANENVCTR">PLANT ENVIRONMENTAL CENTER</a></li>
+         <li id="building"><a rel="history" bid="PRINCELAB" style="cursor:pointer" href="#building/PRINCELAB">PRINCE ENGINEERING LAB</a></li>
+         <li id="building"><a rel="history" bid="PROSPECHSE" style="cursor:pointer" href="#building/PROSPECHSE">PROSPECT HOUSE</a></li>
+         <li id="building"><a rel="history" bid="RICHMND222" style="cursor:pointer" href="#building/RICHMND222">RICHMOND ST 222 (MED ED)</a></li>
+         <li id="building"><a rel="history" bid="ROBINSON" style="cursor:pointer" href="#building/ROBINSON">ROBINSON HALL</a></li>
+         <li id="building"><a rel="history" bid="ROCHAMBEAU" style="cursor:pointer" href="#building/ROCHAMBEAU">ROCHAMBEAU HOUSE</a></li>
+         <li id="building"><a rel="history" bid="SALOMON" style="cursor:pointer" href="#building/SALOMON">SALOMON CTR FOR TEACHING</a></li>
+         <li id="building"><a rel="history" bid="SAYLESHALL" style="cursor:pointer" href="#building/SAYLESHALL">SAYLES HALL</a></li>
+         <li id="building"><a rel="history" bid="SHARPEHSE" style="cursor:pointer" href="#building/SHARPEHSE">SHARPE HOUSE</a></li>
+         <li id="building"><a rel="history" bid="SHIPST070" style="cursor:pointer" href="#building/SHIPST070">SHIP ST 070</a></li>
+         <li id="building"><a rel="history" bid="SMILLERHSE" style="cursor:pointer" href="#building/SMILLERHSE">SHIRLEY MILLER HOUSE</a></li>
+         <li id="building"><a rel="history" bid="SFRANKHLSB" style="cursor:pointer" href="#building/SFRANKHLSB">SIDNEY E. FRANK HALL LIFE SCIENCES</a></li>
+         <li id="building"><a rel="history" bid="SMITH-BUON" style="cursor:pointer" href="#building/SMITH-BUON">SMITH-BUONANNO HALL</a></li>
+         <li id="building"><a rel="history" bid="SMAIN121" style="cursor:pointer" href="#building/SMAIN121">SOUTH MAIN ST 121</a></li>
+         <li id="building"><a rel="history" bid="STEINERT" style="cursor:pointer" href="#building/STEINERT">STEINERT CENTER</a></li>
+         <li id="building"><a rel="history" bid="STIMSON002" style="cursor:pointer" href="#building/STIMSON002">STIMSON AVE 002</a></li>
+         <li id="building"><a rel="history" bid="THAYER135" style="cursor:pointer" href="#building/THAYER135">THAYER ST 135</a></li>
+         <li id="building"><a rel="history" bid="UEL" style="cursor:pointer" href="#building/UEL">URBAN ENVIRONMENTAL LAB</a></li>
+         <li id="building"><a rel="history" bid="WALTERHALL" style="cursor:pointer" href="#building/WALTERHALL">WALTER HALL</a></li>
+         <li id="building"><a rel="history" bid="WATER070" style="cursor:pointer" href="#building/WATER070">WATERMAN ST 070</a></li>
+         <li id="building"><a rel="history" bid="WATER085" style="cursor:pointer" href="#building/WATER085">WATERMAN ST 085</a></li>
+         <li id="building"><a rel="history" bid="WATER137" style="cursor:pointer" href="#building/WATER137">WATERMAN ST 137</a></li>
+         <li id="building"><a rel="history" bid="WATER229" style="cursor:pointer" href="#building/WATER229">WATERMAN ST 229</a></li>
+         <li id="building"><a rel="history" bid="WATSONCIT" style="cursor:pointer" href="#building/WATSONCIT">WATSON CENTER FOR INFORMATION TECH</a></li>
+         <li id="building"><a rel="history" bid="WATSONINS" style="cursor:pointer" href="#building/WATSONINS">WATSON INSTITUTE</a></li>
+         <li id="building"><a rel="history" bid="WILBOUR" style="cursor:pointer" href="#building/WILBOUR">WILBOUR HALL</a></li>
+         <li id="building"><a rel="history" bid="WILSONHALL" style="cursor:pointer" href="#building/WILSONHALL">WILSON HALL</a></li>
+        </ul></li>
+       <li id="cat_ADMIN"><span class="imgarrowdown" id="img_ADMIN"></span> <a rel="history" class="regular" href="#category/ADMIN" style="cursor:pointer"><img src="images/marker/2.gif">&nbsp;ADMINISTRATION (19 )</a>
+        <ul id="cat_ADMIN" style="display:none;" href="#category/ADMIN">
+         <li id="building"><a rel="history" bid="BENE005" style="cursor:pointer" href="#building/BENE005">BENEVOLENT ST 005</a></li>
+         <li id="building"><a rel="history" bid="BENE026" style="cursor:pointer" href="#building/BENE026">BENEVOLENT ST 026</a></li>
+         <li id="building"><a rel="history" bid="BENOCOOKE" style="cursor:pointer" href="#building/BENOCOOKE">BENONI COOKE HOUSE</a></li>
+         <li id="building"><a rel="history" bid="BOB" style="cursor:pointer" href="#building/BOB">BROWN OFFICE BLDG</a></li>
+         <li id="building"><a rel="history" bid="CORLISS-B" style="cursor:pointer" href="#building/CORLISS-B">CORLISS-BRACKETT</a></li>
+         <li id="building"><a rel="history" bid="DAVOL003" style="cursor:pointer" href="#building/DAVOL003">DAVOL SQ 003</a></li>
+         <li id="building"><a rel="history" bid="DYER200" style="cursor:pointer" href="#building/DYER200">DYER ST 200</a></li>
+         <li id="building"><a rel="history" bid="ELM110" style="cursor:pointer" href="#building/ELM110">ELM ST 110</a></li>
+         <li id="building"><a rel="history" bid="FONES008" style="cursor:pointer" href="#building/FONES008">FONES ALLEY 008</a></li>
+         <li id="building"><a rel="history" bid="GEORGE025" style="cursor:pointer" href="#building/GEORGE025">GEORGE ST 025</a></li>
+         <li id="building"><a rel="history" bid="GRADCTRE" style="cursor:pointer" href="#building/GRADCTRE">GRADUATE CTR E</a></li>
+         <li id="building"><a rel="history" bid="HOPPIN" style="cursor:pointer" href="#building/HOPPIN">HOPPIN (THOMAS P.) HOUSE</a></li>
+         <li id="building"><a rel="history" bid="MADDOCK" style="cursor:pointer" href="#building/MADDOCK">MADDOCK ALUMNI CENTER</a></li>
+         <li id="building"><a rel="history" bid="MONTGOM601" style="cursor:pointer" href="#building/MONTGOM601">MONTGOMERY ST 601</a></li>
+         <li id="building"><a rel="history" bid="NICHOLSON" style="cursor:pointer" href="#building/NICHOLSON">NICHOLSON HOUSE</a></li>
+         <li id="building"><a rel="history" bid="RIHALL" style="cursor:pointer" href="#building/RIHALL">RHODE ISLAND HALL</a></li>
+         <li id="building"><a rel="history" bid="UHALL" style="cursor:pointer" href="#building/UHALL">UNIVERSITY HALL</a></li>
+         <li id="building"><a rel="history" bid="WATER131" style="cursor:pointer" href="#building/WATER131">WATERMAN ST 131</a></li>
+         <li id="building"><a rel="history" bid="WATER133" style="cursor:pointer" href="#building/WATER133">WATERMAN ST 133</a></li>
+        </ul></li>
+       <li id="cat_ATHLETICS"><span class="imgarrowdown" id="img_ATHLETICS"></span> <a rel="history" class="regular" href="#category/ATHLETICS" style="cursor:pointer"><img src="images/marker/3.gif">&nbsp;ATHLETICS (6 )</a>
+        <ul id="cat_ATHLETICS" style="display:none;" href="#category/ATHLETICS">
+         <li id="building"><a rel="history" bid="BROWNSTAD" style="cursor:pointer" href="#building/BROWNSTAD">BROWN STADIUM</a></li>
+         <li id="building"><a rel="history" bid="MRSTNBOAT" style="cursor:pointer" href="#building/MRSTNBOAT">MARSTON BOATHOUSE</a></li>
+         <li id="building"><a rel="history" bid="MEEHAN" style="cursor:pointer" href="#building/MEEHAN">MEEHAN AUDITORIUM</a></li>
+         <li id="building"><a rel="history" bid="NELSONFIT" style="cursor:pointer" href="#building/NELSONFIT">NELSON FITNESS CENTER</a></li>
+         <li id="building"><a rel="history" bid="OMAC" style="cursor:pointer" href="#building/OMAC">OLNEY-MARGOLIES ATHLETIC CENTER</a></li>
+         <li id="building"><a rel="history" bid="PIZZITOLA" style="cursor:pointer" href="#building/PIZZITOLA">PIZZITOLA</a></li>
+        </ul></li>
+       <li id="cat_DINING"><span class="imgarrowdown" id="img_DINING"></span> <a rel="history" class="regular" href="#category/DINING" style="cursor:pointer"><img src="images/marker/4.gif">&nbsp;DINING (3 )</a>
+        <ul id="cat_DINING" style="display:none;" href="#category/DINING">
+         <li id="building"><a rel="history" bid="FACULTCLUB" style="cursor:pointer" href="#building/FACULTCLUB">FACULTY CLUB</a></li>
+         <li id="building"><a rel="history" bid="SHARPEREF" style="cursor:pointer" href="#building/SHARPEREF">SHARPE REFECTORY</a></li>
+         <li id="building"><a rel="history" bid="VERN-WOOL" style="cursor:pointer" href="#building/VERN-WOOL">VERNEY-WOOLLEY HALL: PEMBROKE QUAD</a></li>
+        </ul></li>
+       <li id="cat_DORMITORY"><span class="imgarrowdown" id="img_DORMITORY"></span> <a rel="history" class="regular" href="#category/DORMITORY" style="cursor:pointer"><img src="images/marker/5.gif">&nbsp;DORMITORY (45 )</a>
+        <ul id="cat_DORMITORY" style="display:none;" href="#category/DORMITORY">
+         <li id="building"><a rel="history" bid="ANDREWHALL" style="cursor:pointer" href="#building/ANDREWHALL">ANDREWS HALL</a></li>
+         <li id="building"><a rel="history" bid="KQARCHBRON" style="cursor:pointer" href="#building/KQARCHBRON">ARCHIBALD-BRONSON: KEENEY QUAD</a></li>
+         <li id="building"><a rel="history" bid="BARBOUR" style="cursor:pointer" href="#building/BARBOUR">BARBOUR HALL</a></li>
+         <li id="building"><a rel="history" bid="BOWEN219" style="cursor:pointer" href="#building/BOWEN219">BOWEN ST 219</a></li>
+         <li id="building"><a rel="history" bid="BROWN111" style="cursor:pointer" href="#building/BROWN111">BROWN ST 111</a></li>
+         <li id="building"><a rel="history" bid="BUXTON" style="cursor:pointer" href="#building/BUXTON">BUXTON HOUSE: WRISTON QUAD</a></li>
+         <li id="building"><a rel="history" bid="CASWELL" style="cursor:pointer" href="#building/CASWELL">CASWELL HALL</a></li>
+         <li id="building"><a rel="history" bid="CHAMPLIN" style="cursor:pointer" href="#building/CHAMPLIN">CHAMPLIN: PEMBROKE QUAD</a></li>
+         <li id="building"><a rel="history" bid="CHAPIN" style="cursor:pointer" href="#building/CHAPIN">CHAPIN HOUSE: WRISTON QUAD</a></li>
+         <li id="building"><a rel="history" bid="DIMAN" style="cursor:pointer" href="#building/DIMAN">DIMAN HOUSE: WRISTON QUAD</a></li>
+         <li id="building"><a rel="history" bid="EMERY" style="cursor:pointer" href="#building/EMERY">EMERY: PEMBROKE QUAD</a></li>
+         <li id="building"><a rel="history" bid="KQEVRTPLND" style="cursor:pointer" href="#building/KQEVRTPLND">EVERETT-POLAND: KEENEY QUAD</a></li>
+         <li id="building"><a rel="history" bid="GODDARD" style="cursor:pointer" href="#building/GODDARD">GODDARD HOUSE: WRISTON QUAD</a></li>
+         <li id="building"><a rel="history" bid="GRADCTRA" style="cursor:pointer" href="#building/GRADCTRA">GRADUATE CTR A</a></li>
+         <li id="building"><a rel="history" bid="GRADCTRB" style="cursor:pointer" href="#building/GRADCTRB">GRADUATE CTR B</a></li>
+         <li id="building"><a rel="history" bid="GRADCTRC" style="cursor:pointer" href="#building/GRADCTRC">GRADUATE CTR C</a></li>
+         <li id="building"><a rel="history" bid="GRADCTRD" style="cursor:pointer" href="#building/GRADCTRD">GRADUATE CTR D</a></li>
+         <li id="building"><a rel="history" bid="HARKNESS" style="cursor:pointer" href="#building/HARKNESS">HARKNESS HOUSE: WRISTON QUAD</a></li>
+         <li id="building"><a rel="history" bid="HEGEMAN" style="cursor:pointer" href="#building/HEGEMAN">HEGEMAN HALL</a></li>
+         <li id="building"><a rel="history" bid="HOPECOLL" style="cursor:pointer" href="#building/HOPECOLL">HOPE COLLEGE</a></li>
+         <li id="building"><a rel="history" bid="KQJMSNMEAD" style="cursor:pointer" href="#building/KQJMSNMEAD">JAMESON-MEAD: KEENEY QUAD</a></li>
+         <li id="building"><a rel="history" bid="KINGHSE" style="cursor:pointer" href="#building/KINGHSE">KING HOUSE</a></li>
+         <li id="building"><a rel="history" bid="LITTLEFLD" style="cursor:pointer" href="#building/LITTLEFLD">LITTLEFIELD HALL</a></li>
+         <li id="building"><a rel="history" bid="MACHADO" style="cursor:pointer" href="#building/MACHADO">MACHADO (ANTONIO) HOUSE</a></li>
+         <li id="building"><a rel="history" bid="MARCYHSE" style="cursor:pointer" href="#building/MARCYHSE">MARCY HOUSE: WRISTON QUAD</a></li>
+         <li id="building"><a rel="history" bid="METCALFHAL" style="cursor:pointer" href="#building/METCALFHAL">METCALF HALL</a></li>
+         <li id="building"><a rel="history" bid="MILLER" style="cursor:pointer" href="#building/MILLER">MILLER HALL</a></li>
+         <li id="building"><a rel="history" bid="MINDEN" style="cursor:pointer" href="#building/MINDEN">MINDEN HALL</a></li>
+         <li id="building"><a rel="history" bid="MORRISHALL" style="cursor:pointer" href="#building/MORRISHALL">MORRISS HALL: PEMBROKE QUAD</a></li>
+         <li id="building"><a rel="history" bid="NEWPEM1" style="cursor:pointer" href="#building/NEWPEM1">NEW PEMBROKE NO. 1</a></li>
+         <li id="building"><a rel="history" bid="NEWPEM2" style="cursor:pointer" href="#building/NEWPEM2">NEW PEMBROKE NO. 2</a></li>
+         <li id="building"><a rel="history" bid="NEWPEM3" style="cursor:pointer" href="#building/NEWPEM3">NEW PEMBROKE NO. 3</a></li>
+         <li id="building"><a rel="history" bid="NEWPEM4" style="cursor:pointer" href="#building/NEWPEM4">NEW PEMBROKE NO. 4</a></li>
+         <li id="building"><a rel="history" bid="OLNEY" style="cursor:pointer" href="#building/OLNEY">OLNEY HOUSE: WRISTON QUAD</a></li>
+         <li id="building"><a rel="history" bid="PERKINS" style="cursor:pointer" href="#building/PERKINS">PERKINS HALL</a></li>
+         <li id="building"><a rel="history" bid="SEARS" style="cursor:pointer" href="#building/SEARS">SEARS HOUSE: WRISTON QUAD</a></li>
+         <li id="building"><a rel="history" bid="SLATER" style="cursor:pointer" href="#building/SLATER">SLATER HALL</a></li>
+         <li id="building"><a rel="history" bid="VGQUADA" style="cursor:pointer" href="#building/VGQUADA">VARTAN GREGORIAN QUAD A</a></li>
+         <li id="building"><a rel="history" bid="VGQUADB" style="cursor:pointer" href="#building/VGQUADB">VARTAN GREGORIAN QUAD B</a></li>
+         <li id="building"><a rel="history" bid="WAYLAND" style="cursor:pointer" href="#building/WAYLAND">WAYLAND HOUSE: WRISTON QUAD</a></li>
+         <li id="building"><a rel="history" bid="WESTHSE" style="cursor:pointer" href="#building/WESTHSE">WEST HOUSE</a></li>
+         <li id="building"><a rel="history" bid="WOOLLEYHAL" style="cursor:pointer" href="#building/WOOLLEYHAL">WOOLLEY HALL: PEMBROKE QUAD</a></li>
+         <li id="building"><a rel="history" bid="YO002" style="cursor:pointer" href="#building/YO002">YOUNG ORCHARD AVE 002</a></li>
+         <li id="building"><a rel="history" bid="YO004" style="cursor:pointer" href="#building/YO004">YOUNG ORCHARD AVE 004</a></li>
+         <li id="building"><a rel="history" bid="YO010" style="cursor:pointer" href="#building/YO010">YOUNG ORCHARD AVE 010</a></li>
+        </ul></li>
+       <li id="cat_COMMERCIAL"><span class="imgarrowdown" id="img_COMMERCIAL"></span> <a rel="history" class="regular" href="#category/COMMERCIAL" style="cursor:pointer"><img src="images/marker/6.gif">&nbsp;COMMERCIAL (12 )</a>
+        <ul id="cat_COMMERCIAL" style="display:none;" href="#category/COMMERCIAL">
+         <li id="building"><a rel="history" bid="BENE083-85" style="cursor:pointer" href="#building/BENE083-85">BENEVOLENT ST 083-085</a></li>
+         <li id="building"><a rel="history" bid="BROOK250" style="cursor:pointer" href="#building/BROOK250">BROOK ST 250</a></li>
+         <li id="building"><a rel="history" bid="DAVOL001" style="cursor:pointer" href="#building/DAVOL001">DAVOL SQ 001</a></li>
+         <li id="building"><a rel="history" bid="DAVOL010" style="cursor:pointer" href="#building/DAVOL010">DAVOL SQ 010</a></li>
+         <li id="building"><a rel="history" bid="EDDYST339" style="cursor:pointer" href="#building/EDDYST339">EDDY ST 339</a></li>
+         <li id="building"><a rel="history" bid="EDDYST349" style="cursor:pointer" href="#building/EDDYST349">EDDY ST 349</a></li>
+         <li id="building"><a rel="history" bid="NMAIN1128" style="cursor:pointer" href="#building/NMAIN1128">NORTH MAIN 1128</a></li>
+         <li id="building"><a rel="history" bid="RICHMND196" style="cursor:pointer" href="#building/RICHMND196">RICHMOND ST 196</a></li>
+         <li id="building"><a rel="history" bid="RICHMNDPKG" style="cursor:pointer" href="#building/RICHMNDPKG">RICHMOND ST 222 PARKING GARAGE</a></li>
+         <li id="building"><a rel="history" bid="RICHMND233" style="cursor:pointer" href="#building/RICHMND233">RICHMOND ST 233</a></li>
+         <li id="building"><a rel="history" bid="THAYER272" style="cursor:pointer" href="#building/THAYER272">THAYER ST 272</a></li>
+         <li id="building"><a rel="history" bid="WATER094" style="cursor:pointer" href="#building/WATER094">WATERMAN ST 094</a></li>
+        </ul></li>
+       <li id="cat_LIBRARY"><span class="imgarrowdown" id="img_LIBRARY"></span> <a rel="history" class="regular" href="#category/LIBRARY" style="cursor:pointer"><img src="images/marker/51.gif">&nbsp;LIBRARY (5 )</a>
+        <ul id="cat_LIBRARY" style="display:none;" href="#category/LIBRARY">
+         <li id="building"><a rel="history" bid="ANNMARY" style="cursor:pointer" href="#building/ANNMARY">ANNMARY BROWN MEMORIAL LIBRARY</a></li>
+         <li id="building"><a rel="history" bid="JCBLIBRARY" style="cursor:pointer" href="#building/JCBLIBRARY">JOHN CARTER BROWN LIBRARY</a></li>
+         <li id="building"><a rel="history" bid="JHAYLIB" style="cursor:pointer" href="#building/JHAYLIB">JOHN HAY LIBRARY</a></li>
+         <li id="building"><a rel="history" bid="ROCKLIB" style="cursor:pointer" href="#building/ROCKLIB">ROCKEFELLER (JOHN D., JR.) LIBRARY</a></li>
+         <li id="building"><a rel="history" bid="SCILIB" style="cursor:pointer" href="#building/SCILIB">SCIENCES LIBRARY</a></li>
+        </ul></li>
+       <li id="cat_LEED"><span class="imgarrowdown" id="img_LEED"></span><a rel="history" class="regular" href="#category/LEED" style="cursor:pointer"><img src="images/marker/12.gif">&nbsp;LEED (10 )</a>
+        <ul id="cat_LEED" style="display:none;" href="#category/LEED">
+         <li id="building"><a rel="history" bid="FAUNCEHSE" style="cursor:pointer" href="#building/FAUNCEHSE">FAUNCE HOUSE</a></li>
+         <li id="building"><a rel="history" bid="GRNFCAC" style="cursor:pointer" href="#building/GRNFCAC">GRANOFF CTR FOR THE CREATIVE ARTS</a></li>
+         <li id="building"><a rel="history" bid="METCALFHAL" style="cursor:pointer" href="#building/METCALFHAL">METCALF HALL</a></li>
+         <li id="building"><a rel="history" bid="METRSCHBLD" style="cursor:pointer" href="#building/METRSCHBLD">METCALF RESEARCH BUILDING</a></li>
+         <li id="building"><a rel="history" bid="MILLER" style="cursor:pointer" href="#building/MILLER">MILLER HALL</a></li>
+         <li id="building"><a rel="history" bid="NELSONFIT" style="cursor:pointer" href="#building/NELSONFIT">NELSON FITNESS CENTER</a></li>
+         <li id="building"><a rel="history" bid="RIHALL" style="cursor:pointer" href="#building/RIHALL">RHODE ISLAND HALL</a></li>
+         <li id="building"><a rel="history" bid="RICHMND222" style="cursor:pointer" href="#building/RICHMND222">RICHMOND ST 222 (MED ED)</a></li>
+         <li id="building"><a rel="history" bid="SFRANKHLSB" style="cursor:pointer" href="#building/SFRANKHLSB">SIDNEY E. FRANK HALL LIFE SCIENCES</a></li>
+         <li id="building"><a rel="history" bid="WATER085" style="cursor:pointer" href="#building/WATER085">WATERMAN ST 085</a></li>
+        </ul></li>
+       <li id="cat_AUXILIARY"><span class="imgarrowdown" id="img_AUXILIARY"></span> <a rel="history" class="regular" href="#category/AUXILIARY" style="cursor:pointer"><img src="images/marker/7.gif">&nbsp;AUXILIARY (34 )</a>
+        <ul id="cat_AUXILIARY" style="display:none;" href="#category/AUXILIARY">
+         <li id="building"><a rel="history" bid="ANGELL127" style="cursor:pointer" href="#building/ANGELL127">ANGELL ST 127</a></li>
+         <li id="building"><a rel="history" bid="ANGELL129" style="cursor:pointer" href="#building/ANGELL129">ANGELL ST 129</a></li>
+         <li id="building"><a rel="history" bid="BENE022" style="cursor:pointer" href="#building/BENE022">BENEVOLENT ST 022</a></li>
+         <li id="building"><a rel="history" bid="BENE070-72" style="cursor:pointer" href="#building/BENE070-72">BENEVOLENT ST 070-072</a></li>
+         <li id="building"><a rel="history" bid="BENE074-80" style="cursor:pointer" href="#building/BENE074-80">BENEVOLENT ST 074-080</a></li>
+         <li id="building"><a rel="history" bid="BENE084" style="cursor:pointer" href="#building/BENE084">BENEVOLENT ST 084</a></li>
+         <li id="building"><a rel="history" bid="BENE086" style="cursor:pointer" href="#building/BENE086">BENEVOLENT ST 086</a></li>
+         <li id="building"><a rel="history" bid="BENE095" style="cursor:pointer" href="#building/BENE095">BENEVOLENT ST 095</a></li>
+         <li id="building"><a rel="history" bid="BENE097" style="cursor:pointer" href="#building/BENE097">BENEVOLENT ST 097</a></li>
+         <li id="building"><a rel="history" bid="BENE099" style="cursor:pointer" href="#building/BENE099">BENEVOLENT ST 099</a></li>
+         <li id="building"><a rel="history" bid="BOWEN244" style="cursor:pointer" href="#building/BOWEN244">BOWEN ST 244</a></li>
+         <li id="building"><a rel="history" bid="BOWEN247" style="cursor:pointer" href="#building/BOWEN247">BOWEN ST 247</a></li>
+         <li id="building"><a rel="history" bid="BOWEN251" style="cursor:pointer" href="#building/BOWEN251">BOWEN ST 251</a></li>
+         <li id="building"><a rel="history" bid="BROOK245-7" style="cursor:pointer" href="#building/BROOK245-7">BROOK ST 245-247</a></li>
+         <li id="building"><a rel="history" bid="BROOK277" style="cursor:pointer" href="#building/BROOK277">BROOK ST 277</a></li>
+         <li id="building"><a rel="history" bid="BROOK281-3" style="cursor:pointer" href="#building/BROOK281-3">BROOK ST 281-283</a></li>
+         <li id="building"><a rel="history" bid="BROOK456" style="cursor:pointer" href="#building/BROOK456">BROOK ST 456</a></li>
+         <li id="building"><a rel="history" bid="BROWN093" style="cursor:pointer" href="#building/BROWN093">BROWN ST 093</a></li>
+         <li id="building"><a rel="history" bid="BROWN095" style="cursor:pointer" href="#building/BROWN095">BROWN ST 095</a></li>
+         <li id="building"><a rel="history" bid="BROWN109" style="cursor:pointer" href="#building/BROWN109">BROWN ST 109</a></li>
+         <li id="building"><a rel="history" bid="BROWN131-3" style="cursor:pointer" href="#building/BROWN131-3">BROWN ST 131-133</a></li>
+         <li id="building"><a rel="history" bid="CHAR038" style="cursor:pointer" href="#building/CHAR038">CHARLESFIELD ST 038</a></li>
+         <li id="building"><a rel="history" bid="CHAR059" style="cursor:pointer" href="#building/CHAR059">CHARLESFIELD ST 059</a></li>
+         <li id="building"><a rel="history" bid="CHAR070-72" style="cursor:pointer" href="#building/CHAR070-72">CHARLESFIELD ST 070-072</a></li>
+         <li id="building"><a rel="history" bid="CHAR108-10" style="cursor:pointer" href="#building/CHAR108-10">CHARLESFIELD ST 108-110</a></li>
+         <li id="building"><a rel="history" bid="CUSH084-86" style="cursor:pointer" href="#building/CUSH084-86">CUSHING ST 084-086</a></li>
+         <li id="building"><a rel="history" bid="CUSH154" style="cursor:pointer" href="#building/CUSH154">CUSHING ST 154</a></li>
+         <li id="building"><a rel="history" bid="CUSH166" style="cursor:pointer" href="#building/CUSH166">CUSHING ST 166</a></li>
+         <li id="building"><a rel="history" bid="HOPE134" style="cursor:pointer" href="#building/HOPE134">HOPE ST 134</a></li>
+         <li id="building"><a rel="history" bid="LLOYD165-7" style="cursor:pointer" href="#building/LLOYD165-7">LLOYD AVE 165-167</a></li>
+         <li id="building"><a rel="history" bid="OLIVE020" style="cursor:pointer" href="#building/OLIVE020">OLIVE ST 020</a></li>
+         <li id="building"><a rel="history" bid="THAYER307" style="cursor:pointer" href="#building/THAYER307">THAYER ST 307</a></li>
+         <li id="building"><a rel="history" bid="THAYER315" style="cursor:pointer" href="#building/THAYER315">THAYER ST 315</a></li>
+         <li id="building"><a rel="history" bid="WATER086" style="cursor:pointer" href="#building/WATER086">WATERMAN ST 086</a></li>
+        </ul></li>
+       <li id="cat_STUDENT-AC"><span class="imgarrowdown" id="img_STUDENT-AC"></span> <a rel="history" class="regular" href="#category/STUDENT AC" style="cursor:pointer"><img src="images/marker/8.gif">&nbsp;STUDENT AC (6 )</a>
+        <ul id="cat_STUDENT-AC" style="display:none;" href="#category/STUDENT AC">
+         <li id="building"><a rel="history" bid="ANGELL195" style="cursor:pointer" href="#building/ANGELL195">ANGELL ST 195</a></li>
+         <li id="building"><a rel="history" bid="BENE020" style="cursor:pointer" href="#building/BENE020">BENEVOLENT ST 020</a></li>
+         <li id="building"><a rel="history" bid="BENE088" style="cursor:pointer" href="#building/BENE088">BENEVOLENT ST 088</a></li>
+         <li id="building"><a rel="history" bid="FAUNCEHSE" style="cursor:pointer" href="#building/FAUNCEHSE">FAUNCE HOUSE</a></li>
+         <li id="building"><a rel="history" bid="HAFFOUTING" style="cursor:pointer" href="#building/HAFFOUTING">HAFFENREFFER OUTING RESERVATION FAC</a></li>
+         <li id="building"><a rel="history" bid="TFGREEN" style="cursor:pointer" href="#building/TFGREEN">T.F. GREEN HALL</a></li>
+        </ul></li>
+       <li id="cat_SUPPORT"><span class="imgarrowdown" id="img_SUPPORT"></span> <a rel="history" class="regular" href="#category/SUPPORT" style="cursor:pointer"><img src="images/marker/9.gif">&nbsp;SUPPORT (18 )</a>
+        <ul id="cat_SUPPORT" style="display:none;" href="#category/SUPPORT">
+         <li id="building"><a rel="history" bid="ANDREWSHSE" style="cursor:pointer" href="#building/ANDREWSHSE">ANDREWS HOUSE</a></li>
+         <li id="building"><a rel="history" bid="CARRIE" style="cursor:pointer" href="#building/CARRIE">CARRIE TOWER</a></li>
+         <li id="building"><a rel="history" bid="CNTRLHEAT" style="cursor:pointer" href="#building/CNTRLHEAT">CENTRAL HEAT PLANT</a></li>
+         <li id="building"><a rel="history" bid="CHAR075" style="cursor:pointer" href="#building/CHAR075">CHARLESFIELD ST 075</a></li>
+         <li id="building"><a rel="history" bid="COOKE037" style="cursor:pointer" href="#building/COOKE037">COOKE ST 037</a></li>
+         <li id="building"><a rel="history" bid="FOXPOINT" style="cursor:pointer" href="#building/FOXPOINT">FOX POINT DAY CARE CTR</a></li>
+         <li id="building"><a rel="history" bid="GARDNER" style="cursor:pointer" href="#building/GARDNER">GARDNER HOUSE</a></li>
+         <li id="building"><a rel="history" bid="HAFFCARE" style="cursor:pointer" href="#building/HAFFCARE">HAFFENREFFER CARETAKER HOUSE</a></li>
+         <li id="building"><a rel="history" bid="JOHN050" style="cursor:pointer" href="#building/JOHN050">JOHN ST 050</a></li>
+         <li id="building"><a rel="history" bid="LLOYD295" style="cursor:pointer" href="#building/LLOYD295">LLOYD AVE 295</a></li>
+         <li id="building"><a rel="history" bid="NIGHT-BROW" style="cursor:pointer" href="#building/NIGHT-BROW">NIGHTINGALE-BROWN HOUSE</a></li>
+         <li id="building"><a rel="history" bid="PARKLN010" style="cursor:pointer" href="#building/PARKLN010">PARK LANE 010</a></li>
+         <li id="building"><a rel="history" bid="PEMFLDHSE" style="cursor:pointer" href="#building/PEMFLDHSE">PEMBROKE FIELD HOUSE</a></li>
+         <li id="building"><a rel="history" bid="POWER089" style="cursor:pointer" href="#building/POWER089">POWER ST 089</a></li>
+         <li id="building"><a rel="history" bid="POWERPARK" style="cursor:pointer" href="#building/POWERPARK">POWER ST PARKING GARAGE</a></li>
+         <li id="building"><a rel="history" bid="PRESHSE" style="cursor:pointer" href="#building/PRESHSE">PRESIDENT'S HOUSE</a></li>
+         <li id="building"><a rel="history" bid="TAFTAVE" style="cursor:pointer" href="#building/TAFTAVE">TAFT AVE DAYCARE CTR</a></li>
+         <li id="building"><a rel="history" bid="TOCK285" style="cursor:pointer" href="#building/TOCK285">TOCKWOTTEN 285</a></li>
+        </ul></li>
+       <li id="cat_AFFILIATED"><span class="imgarrowdown" id="img_AFFILIATED"></span> <a rel="history" class="regular" href="#category/AFFILIATED" style="cursor:pointer"><img src="images/marker/1.gif">&nbsp;AFFILIATED (1 )</a>
+        <ul id="cat_AFFILIATED" style="display:none;" href="#category/AFFILIATED">
+         <li id="building"><a rel="history" bid="HILLELHSE" style="cursor:pointer" href="#building/HILLELHSE">HILLEL HOUSE</a></li>
+        </ul></li>
+      </ul>
+      <div class="left_header" id="type_2" style="cursor:pointer">
+       BLUE LIGHTS
+      </div>
+      <div class="left_header" id="type_6" style="cursor:pointer">
+       ROOMS
+       <span id="imgRoomUpDown" class="roomarrowdown" onclick="ShowHideRoomList()"></span>
+      </div>
+      <ul id="RoomMenu" style="display:none;">
+       <li id="build_1"><span class="imgarrowdown" id="img_1"></span><a class="regular" style="cursor:pointer" title="ALUMNAE HALL">&nbsp;&nbsp;ALUMNAE HALL (3)</a>
+        <ul id="rooms_1" style="display:none;" href="#building/ALUMNAE">
+         <li id="room_74"><a rel="history" bid="ALUMNAE" rid="74" style="cursor:pointer" href="#building/ALUMNAE/FLOORPLANS/74" onclick="RoomRedirect('building/ALUMNAE/FLOORPLANS/74');IncreaseRoomClick('74');">ALUMNAE HALL AUDITORIUM</a></li>
+         <li id="room_70"><a rel="history" bid="ALUMNAE" rid="70" style="cursor:pointer" href="#building/ALUMNAE/FLOORPLANS/70" onclick="RoomRedirect('building/ALUMNAE/FLOORPLANS/70');IncreaseRoomClick('70');">THE COMMONS ROOM</a></li>
+         <li id="room_68"><a rel="history" bid="ALUMNAE" rid="68" style="cursor:pointer" href="#building/ALUMNAE/FLOORPLANS/68" onclick="RoomRedirect('building/ALUMNAE/FLOORPLANS/68');IncreaseRoomClick('68');">THE CRYSTAL ROOM</a></li>
+        </ul></li>
+       <li id="build_2"><span class="imgarrowdown" id="img_2"></span><a class="regular" style="cursor:pointer" title="ANDREWS HALL">&nbsp;&nbsp;ANDREWS HALL (1)</a>
+        <ul id="rooms_2" style="display:none;" href="#building/ANDREWHALL">
+         <li id="room_144"><a rel="history" bid="ANDREWHALL" rid="144" style="cursor:pointer" href="#building/ANDREWHALL/FLOORPLANS/144" onclick="RoomRedirect('building/ANDREWHALL/FLOORPLANS/144');IncreaseRoomClick('144');">ANDREWS DINING ROOM</a></li>
+        </ul></li>
+       <li id="build_17"><span class="imgarrowdown" id="img_17"></span><a class="regular" style="cursor:pointer" title="ARCHIBALD-BRONSON: KEENEY QUAD">&nbsp;&nbsp;ARCHIBALD-BRON.. (1)</a>
+        <ul id="rooms_17" style="display:none;" href="#building/KQARCHBRON">
+         <li id="room_30510"><a rel="history" bid="ARCHIBALD" rid="30510" style="cursor:pointer" href="#building/ARCHIBALD/FLOORPLANS/30510" onclick="RoomRedirect('building/ARCHIBALD/FLOORPLANS/30510');IncreaseRoomClick('30510');">ARNOLD LOUNGE</a></li>
+        </ul></li>
+       <li id="build_24"><span class="imgarrowdown" id="img_24"></span><a class="regular" style="cursor:pointer" title="BARUS &amp; HOLLEY">&nbsp;&nbsp;BARUS &amp; HOLLEY (4)</a>
+        <ul id="rooms_24" style="display:none;" href="#building/BH">
+         <li id="room_3242"><a rel="history" bid="BH" rid="3242" style="cursor:pointer" href="#building/BH/FLOORPLANS/3242" onclick="RoomRedirect('building/BH/FLOORPLANS/3242');IncreaseRoomClick('3242');"></a></li>
+         <li id="room_3234"><a rel="history" bid="BH" rid="3234" style="cursor:pointer" href="#building/BH/FLOORPLANS/3234" onclick="RoomRedirect('building/BH/FLOORPLANS/3234');IncreaseRoomClick('3234');">HOPKINS LOBBY</a></li>
+         <li id="room_3287"><a rel="history" bid="BH" rid="3287" style="cursor:pointer" href="#building/BH/FLOORPLANS/3287" onclick="RoomRedirect('building/BH/FLOORPLANS/3287');IncreaseRoomClick('3287');">THE RESS AUDITORIUM</a></li>
+         <li id="room_3288"><a rel="history" bid="BH" rid="3288" style="cursor:pointer" href="#building/BH/FLOORPLANS/3288" onclick="RoomRedirect('building/BH/FLOORPLANS/3288');IncreaseRoomClick('3288');">THE TANNER AUDITORIUM</a></li>
+        </ul></li>
+       <li id="build_53"><span class="imgarrowdown" id="img_53"></span><a class="regular" style="cursor:pointer" title="BIO-MED CTR">&nbsp;&nbsp;BIO-MED CTR (1)</a>
+        <ul id="rooms_53" style="display:none;" href="#building/BIOMEDCTR">
+         <li id="room_22241"><a rel="history" bid="BIOMEDCTR" rid="22241" style="cursor:pointer" href="#building/BIOMEDCTR/FLOORPLANS/22241" onclick="RoomRedirect('building/BIOMEDCTR/FLOORPLANS/22241');IncreaseRoomClick('22241');">LOUIS J. NOVAK AMPITHEATER</a></li>
+        </ul></li>
+       <li id="build_78"><span class="imgarrowdown" id="img_78"></span><a class="regular" style="cursor:pointer" title="BROWN ST 070">&nbsp;&nbsp;BROWN ST 070 (1)</a>
+        <ul id="rooms_78" style="display:none;" href="#building/BROWN070">
+         <li id="room_8708"><a rel="history" bid="BROWN070" rid="8708" style="cursor:pointer" href="#building/BROWN070/FLOORPLANS/8708" onclick="RoomRedirect('building/BROWN070/FLOORPLANS/8708');IncreaseRoomClick('8708');">RICHARD C BARKER '57PRESENTATION RM</a></li>
+        </ul></li>
+       <li id="build_131"><span class="imgarrowdown" id="img_131"></span><a class="regular" style="cursor:pointer" title="FAUNCE HOUSE">&nbsp;&nbsp;FAUNCE HOUSE (10)</a>
+        <ul id="rooms_131" style="display:none;" href="#building/FAUNCEHSE">
+         <li id="room_12126"><a rel="history" bid="FAUNCEHSE" rid="12126" style="cursor:pointer" href="#building/FAUNCEHSE/FLOORPLANS/12126" onclick="RoomRedirect('building/FAUNCEHSE/FLOORPLANS/12126');IncreaseRoomClick('12126');">BLUE ROOM</a></li>
+         <li id="room_12064"><a rel="history" bid="FAUNCEHSE" rid="12064" style="cursor:pointer" href="#building/FAUNCEHSE/FLOORPLANS/12064" onclick="RoomRedirect('building/FAUNCEHSE/FLOORPLANS/12064');IncreaseRoomClick('12064');">FAUNCE MEMORIAL ROOM</a></li>
+         <li id="room_12156"><a rel="history" bid="FAUNCEHSE" rid="12156" style="cursor:pointer" href="#building/FAUNCEHSE/FLOORPLANS/12156" onclick="RoomRedirect('building/FAUNCEHSE/FLOORPLANS/12156');IncreaseRoomClick('12156');">KASPER MULTIPURPOSE ROOM</a></li>
+         <li id="room_109475"><a rel="history" bid="FAUNCEHSE" rid="109475" style="cursor:pointer" href="#building/FAUNCEHSE/FLOORPLANS/109475" onclick="RoomRedirect('building/FAUNCEHSE/FLOORPLANS/109475');IncreaseRoomClick('109475');">LOBBY</a></li>
+         <li id="room_12045"><a rel="history" bid="FAUNCEHSE" rid="12045" style="cursor:pointer" href="#building/FAUNCEHSE/FLOORPLANS/12045" onclick="RoomRedirect('building/FAUNCEHSE/FLOORPLANS/12045');IncreaseRoomClick('12045');">PETTERUTI LOUNGE</a></li>
+         <li id="room_109528"><a rel="history" bid="FAUNCEHSE" rid="109528" style="cursor:pointer" href="#building/FAUNCEHSE/FLOORPLANS/109528" onclick="RoomRedirect('building/FAUNCEHSE/FLOORPLANS/109528');IncreaseRoomClick('109528');">SHOLEM FAMILY LOUNGE</a></li>
+         <li id="room_12096"><a rel="history" bid="FAUNCEHSE" rid="12096" style="cursor:pointer" href="#building/FAUNCEHSE/FLOORPLANS/12096" onclick="RoomRedirect('building/FAUNCEHSE/FLOORPLANS/12096');IncreaseRoomClick('12096');">STUART THEATER</a></li>
+         <li id="room_12048"><a rel="history" bid="FAUNCEHSE" rid="12048" style="cursor:pointer" href="#building/FAUNCEHSE/FLOORPLANS/12048" onclick="RoomRedirect('building/FAUNCEHSE/FLOORPLANS/12048');IncreaseRoomClick('12048');">THE LEUNG FAMILY GALLERY</a></li>
+         <li id="room_12196"><a rel="history" bid="FAUNCEHSE" rid="12196" style="cursor:pointer" href="#building/FAUNCEHSE/FLOORPLANS/12196" onclick="RoomRedirect('building/FAUNCEHSE/FLOORPLANS/12196');IncreaseRoomClick('12196');">THE STEINBERG ROOM</a></li>
+         <li id="room_12187"><a rel="history" bid="FAUNCEHSE" rid="12187" style="cursor:pointer" href="#building/FAUNCEHSE/FLOORPLANS/12187" onclick="RoomRedirect('building/FAUNCEHSE/FLOORPLANS/12187');IncreaseRoomClick('12187');">THE UNDERGROUND</a></li>
+        </ul></li>
+       <li id="build_2734"><span class="imgarrowdown" id="img_2734"></span><a class="regular" style="cursor:pointer" title="GRANOFF CTR FOR THE CREATIVE ARTS">&nbsp;&nbsp;GRANOFF CTR FO.. (5)</a>
+        <ul id="rooms_2734" style="display:none;" href="#building/GRNFCAC">
+         <li id="room_109910"><a rel="history" bid="GRNFCAC" rid="109910" style="cursor:pointer" href="#building/GRNFCAC/FLOORPLANS/109910" onclick="RoomRedirect('building/GRNFCAC/FLOORPLANS/109910');IncreaseRoomClick('109910');">COHEN GALLERY</a></li>
+         <li id="room_109961"><a rel="history" bid="GRNFCAC" rid="109961" style="cursor:pointer" href="#building/GRNFCAC/FLOORPLANS/109961" onclick="RoomRedirect('building/GRNFCAC/FLOORPLANS/109961');IncreaseRoomClick('109961');">ENGLANDER STUDIO</a></li>
+         <li id="room_109870"><a rel="history" bid="GRNFCAC" rid="109870" style="cursor:pointer" href="#building/GRNFCAC/FLOORPLANS/109870" onclick="RoomRedirect('building/GRNFCAC/FLOORPLANS/109870');IncreaseRoomClick('109870');">FRIBOURG FAMILY ATRIUM</a></li>
+         <li id="room_109885"><a rel="history" bid="GRNFCAC" rid="109885" style="cursor:pointer" href="#building/GRNFCAC/FLOORPLANS/109885" onclick="RoomRedirect('building/GRNFCAC/FLOORPLANS/109885');IncreaseRoomClick('109885');">MARTINOS AUDITORIUM</a></li>
+         <li id="room_109978"><a rel="history" bid="GRNFCAC" rid="109978" style="cursor:pointer" href="#building/GRNFCAC/FLOORPLANS/109978" onclick="RoomRedirect('building/GRNFCAC/FLOORPLANS/109978');IncreaseRoomClick('109978');">STUDIO 1</a></li>
+        </ul></li>
+       <li id="build_2749"><span class="imgarrowdown" id="img_2749"></span><a class="regular" style="cursor:pointer" title="HILLEL HOUSE">&nbsp;&nbsp;HILLEL HOUSE (5)</a>
+        <ul id="rooms_2749" style="display:none;" href="#building/HILLELHSE">
+         <li id="room_27603"><a rel="history" bid="HILLELHSE" rid="27603" style="cursor:pointer" href="#building/HILLELHSE/FLOORPLANS/27603" onclick="RoomRedirect('building/HILLELHSE/FLOORPLANS/27603');IncreaseRoomClick('27603');">COMMON'S</a></li>
+         <li id="room_27562"><a rel="history" bid="HILLELHSE" rid="27562" style="cursor:pointer" href="#building/HILLELHSE/FLOORPLANS/27562" onclick="RoomRedirect('building/HILLELHSE/FLOORPLANS/27562');IncreaseRoomClick('27562');">ENGLANDER BEIT MIDRASH</a></li>
+         <li id="room_27585"><a rel="history" bid="HILLELHSE" rid="27585" style="cursor:pointer" href="#building/HILLELHSE/FLOORPLANS/27585" onclick="RoomRedirect('building/HILLELHSE/FLOORPLANS/27585');IncreaseRoomClick('27585');">GOLDFARB SOCIAL HALL</a></li>
+         <li id="room_27561"><a rel="history" bid="HILLELHSE" rid="27561" style="cursor:pointer" href="#building/HILLELHSE/FLOORPLANS/27561" onclick="RoomRedirect('building/HILLELHSE/FLOORPLANS/27561');IncreaseRoomClick('27561');">MEETING ROOM</a></li>
+         <li id="room_27548"><a rel="history" bid="HILLELHSE" rid="27548" style="cursor:pointer" href="#building/HILLELHSE/FLOORPLANS/27548" onclick="RoomRedirect('building/HILLELHSE/FLOORPLANS/27548');IncreaseRoomClick('27548');">WINNICK CHAPEL</a></li>
+        </ul></li>
+       <li id="build_198"><span class="imgarrowdown" id="img_198"></span><a class="regular" style="cursor:pointer" title="LIST (ALBERT &amp; VERA) ART BUILDING">&nbsp;&nbsp;LIST (ALBERT &amp;.. (3)</a>
+        <ul id="rooms_198" style="display:none;" href="#building/LISTART">
+         <li id="room_20595"><a rel="history" bid="LISTART" rid="20595" style="cursor:pointer" href="#building/LISTART/FLOORPLANS/20595" onclick="RoomRedirect('building/LISTART/FLOORPLANS/20595');IncreaseRoomClick('20595');">LECTURE ROOM</a></li>
+         <li id="room_20573"><a rel="history" bid="LISTART" rid="20573" style="cursor:pointer" href="#building/LISTART/FLOORPLANS/20573" onclick="RoomRedirect('building/LISTART/FLOORPLANS/20573');IncreaseRoomClick('20573');">LOBBY</a></li>
+         <li id="room_20589"><a rel="history" bid="LISTART" rid="20589" style="cursor:pointer" href="#building/LISTART/FLOORPLANS/20589" onclick="RoomRedirect('building/LISTART/FLOORPLANS/20589');IncreaseRoomClick('20589');">LOBBY</a></li>
+        </ul></li>
+       <li id="build_203"><span class="imgarrowdown" id="img_203"></span><a class="regular" style="cursor:pointer" title="LYMAN HALL">&nbsp;&nbsp;LYMAN HALL (2)</a>
+        <ul id="rooms_203" style="display:none;" href="#building/LYMANHALL">
+         <li id="room_18776"><a rel="history" bid="LYMANHALL" rid="18776" style="cursor:pointer" href="#building/LYMANHALL/FLOORPLANS/18776" onclick="RoomRedirect('building/LYMANHALL/FLOORPLANS/18776');IncreaseRoomClick('18776');">ASHAMU DANCE STUDIO</a></li>
+         <li id="room_108828"><a rel="history" bid="LYMANHALL" rid="108828" style="cursor:pointer" href="#building/LYMANHALL/FLOORPLANS/108828" onclick="RoomRedirect('building/LYMANHALL/FLOORPLANS/108828');IncreaseRoomClick('108828');">ISABELLA RUSSEK LEEDS THEATRE</a></li>
+        </ul></li>
+       <li id="build_207"><span class="imgarrowdown" id="img_207"></span><a class="regular" style="cursor:pointer" title="MACMILLAN HALL">&nbsp;&nbsp;MACMILLAN HALL (4)</a>
+        <ul id="rooms_207" style="display:none;" href="#building/MACMILLAN">
+         <li id="room_534"><a rel="history" bid="MACMILLAN" rid="534" style="cursor:pointer" href="#building/MACMILLAN/FLOORPLANS/534" onclick="RoomRedirect('building/MACMILLAN/FLOORPLANS/534');IncreaseRoomClick('534');"></a></li>
+         <li id="room_533"><a rel="history" bid="MACMILLAN" rid="533" style="cursor:pointer" href="#building/MACMILLAN/FLOORPLANS/533" onclick="RoomRedirect('building/MACMILLAN/FLOORPLANS/533');IncreaseRoomClick('533');">C.V. STARR AUDITORIUM</a></li>
+         <li id="room_508"><a rel="history" bid="MACMILLAN" rid="508" style="cursor:pointer" href="#building/MACMILLAN/FLOORPLANS/508" onclick="RoomRedirect('building/MACMILLAN/FLOORPLANS/508');IncreaseRoomClick('508');">CLASSROOM</a></li>
+         <li id="room_506"><a rel="history" bid="MACMILLAN" rid="506" style="cursor:pointer" href="#building/MACMILLAN/FLOORPLANS/506" onclick="RoomRedirect('building/MACMILLAN/FLOORPLANS/506');IncreaseRoomClick('506');">CORRIDOR</a></li>
+        </ul></li>
+       <li id="build_208"><span class="imgarrowdown" id="img_208"></span><a class="regular" style="cursor:pointer" title="MADDOCK ALUMNI CENTER">&nbsp;&nbsp;MADDOCK ALUMNI.. (5)</a>
+        <ul id="rooms_208" style="display:none;" href="#building/MADDOCK">
+         <li id="room_1080"><a rel="history" bid="MADDOCK" rid="1080" style="cursor:pointer" href="#building/MADDOCK/FLOORPLANS/1080" onclick="RoomRedirect('building/MADDOCK/FLOORPLANS/1080');IncreaseRoomClick('1080');">CLASS OF 1933 ROOM</a></li>
+         <li id="room_1084"><a rel="history" bid="MADDOCK" rid="1084" style="cursor:pointer" href="#building/MADDOCK/FLOORPLANS/1084" onclick="RoomRedirect('building/MADDOCK/FLOORPLANS/1084');IncreaseRoomClick('1084');">THE BRIAN ROOM</a></li>
+         <li id="room_1083"><a rel="history" bid="MADDOCK" rid="1083" style="cursor:pointer" href="#building/MADDOCK/FLOORPLANS/1083" onclick="RoomRedirect('building/MADDOCK/FLOORPLANS/1083');IncreaseRoomClick('1083');">THE GOLDBERGER ROOM</a></li>
+         <li id="room_1079"><a rel="history" bid="MADDOCK" rid="1079" style="cursor:pointer" href="#building/MADDOCK/FLOORPLANS/1079" onclick="RoomRedirect('building/MADDOCK/FLOORPLANS/1079');IncreaseRoomClick('1079');">THE HERITAGE ROOM</a></li>
+         <li id="room_1089"><a rel="history" bid="MADDOCK" rid="1089" style="cursor:pointer" href="#building/MADDOCK/FLOORPLANS/1089" onclick="RoomRedirect('building/MADDOCK/FLOORPLANS/1089');IncreaseRoomClick('1089');">THE LANPHER ROOM</a></li>
+        </ul></li>
+       <li id="build_210"><span class="imgarrowdown" id="img_210"></span><a class="regular" style="cursor:pointer" title="MANNING HALL">&nbsp;&nbsp;MANNING HALL (1)</a>
+        <ul id="rooms_210" style="display:none;" href="#building/MANNING">
+         <li id="room_1260"><a rel="history" bid="MANNING" rid="1260" style="cursor:pointer" href="#building/MANNING/FLOORPLANS/1260" onclick="RoomRedirect('building/MANNING/FLOORPLANS/1260');IncreaseRoomClick('1260');">MANNING CHAPEL</a></li>
+        </ul></li>
+       <li id="build_220"><span class="imgarrowdown" id="img_220"></span><a class="regular" style="cursor:pointer" title="MEEHAN AUDITORIUM">&nbsp;&nbsp;MEEHAN AUDITOR.. (1)</a>
+        <ul id="rooms_220" style="display:none;" href="#building/MEEHAN">
+         <li id="room_25879"><a rel="history" bid="MEEHAN" rid="25879" style="cursor:pointer" href="#building/MEEHAN/FLOORPLANS/25879" onclick="RoomRedirect('building/MEEHAN/FLOORPLANS/25879');IncreaseRoomClick('25879');">DR JULIUS IRVING LOBBY</a></li>
+        </ul></li>
+       <li id="build_253"><span class="imgarrowdown" id="img_253"></span><a class="regular" style="cursor:pointer" title="OLNEY-MARGOLIES ATHLETIC CENTER">&nbsp;&nbsp;OLNEY-MARGOLIE.. (1)</a>
+        <ul id="rooms_253" style="display:none;" href="#building/OMAC">
+         <li id="room_23664"><a rel="history" bid="OMAC" rid="23664" style="cursor:pointer" href="#building/OMAC/FLOORPLANS/23664" onclick="RoomRedirect('building/OMAC/FLOORPLANS/23664');IncreaseRoomClick('23664');">ALDEN TRACK</a></li>
+        </ul></li>
+       <li id="build_258"><span class="imgarrowdown" id="img_258"></span><a class="regular" style="cursor:pointer" title="PEMBROKE FIELD HOUSE">&nbsp;&nbsp;PEMBROKE FIELD.. (1)</a>
+        <ul id="rooms_258" style="display:none;" href="#building/PEMFLDHSE">
+         <li id="room_6989"><a rel="history" bid="PEMFLDHSE" rid="6989" style="cursor:pointer" href="#building/PEMFLDHSE/FLOORPLANS/6989" onclick="RoomRedirect('building/PEMFLDHSE/FLOORPLANS/6989');IncreaseRoomClick('6989');">ASSEMBLY</a></li>
+        </ul></li>
+       <li id="build_259"><span class="imgarrowdown" id="img_259"></span><a class="regular" style="cursor:pointer" title="PEMBROKE HALL">&nbsp;&nbsp;PEMBROKE HALL (1)</a>
+        <ul id="rooms_259" style="display:none;" href="#building/PEMBROKE">
+         <li id="room_106767"><a rel="history" bid="PEMBROKE" rid="106767" style="cursor:pointer" href="#building/PEMBROKE/FLOORPLANS/106767" onclick="RoomRedirect('building/PEMBROKE/FLOORPLANS/106767');IncreaseRoomClick('106767');">ASSEMBLY</a></li>
+        </ul></li>
+       <li id="build_263"><span class="imgarrowdown" id="img_263"></span><a class="regular" style="cursor:pointer" title="PIZZITOLA">&nbsp;&nbsp;PIZZITOLA (3)</a>
+        <ul id="rooms_263" style="display:none;" href="#building/PIZZITOLA">
+         <li id="room_7380"><a rel="history" bid="PIZZITOLA" rid="7380" style="cursor:pointer" href="#building/PIZZITOLA/FLOORPLANS/7380" onclick="RoomRedirect('building/PIZZITOLA/FLOORPLANS/7380');IncreaseRoomClick('7380');">GYMNASIUM</a></li>
+         <li id="room_7371"><a rel="history" bid="PIZZITOLA" rid="7371" style="cursor:pointer" href="#building/PIZZITOLA/FLOORPLANS/7371" onclick="RoomRedirect('building/PIZZITOLA/FLOORPLANS/7371');IncreaseRoomClick('7371');">LOBBY</a></li>
+         <li id="room_7423"><a rel="history" bid="PIZZITOLA" rid="7423" style="cursor:pointer" href="#building/PIZZITOLA/FLOORPLANS/7423" onclick="RoomRedirect('building/PIZZITOLA/FLOORPLANS/7423');IncreaseRoomClick('7423');">THE JOUKOWSKY ROOM</a></li>
+        </ul></li>
+       <li id="build_277"><span class="imgarrowdown" id="img_277"></span><a class="regular" style="cursor:pointer" title="RHODE ISLAND HALL">&nbsp;&nbsp;RHODE ISLAND H.. (2)</a>
+        <ul id="rooms_277" style="display:none;" href="#building/RIHALL">
+         <li id="room_8243"><a rel="history" bid="RIHALL" rid="8243" style="cursor:pointer" href="#building/RIHALL/FLOORPLANS/8243" onclick="RoomRedirect('building/RIHALL/FLOORPLANS/8243');IncreaseRoomClick('8243');">CLASSROOM</a></li>
+         <li id="room_8227"><a rel="history" bid="RIHALL" rid="8227" style="cursor:pointer" href="#building/RIHALL/FLOORPLANS/8227" onclick="RoomRedirect('building/RIHALL/FLOORPLANS/8227');IncreaseRoomClick('8227');">LOBBY</a></li>
+        </ul></li>
+       <li id="build_279"><span class="imgarrowdown" id="img_279"></span><a class="regular" style="cursor:pointer" title="RICHMOND ST 222 (MED ED)">&nbsp;&nbsp;RICHMOND ST 22.. (5)</a>
+        <ul id="rooms_279" style="display:none;" href="#building/RICHMND222">
+         <li id="room_110600"><a rel="history" bid="RICHMND222" rid="110600" style="cursor:pointer" href="#building/RICHMND222/FLOORPLANS/110600" onclick="RoomRedirect('building/RICHMND222/FLOORPLANS/110600');IncreaseRoomClick('110600');">ERIK J. SIRULNICK, MD CASE STUDY RM</a></li>
+         <li id="room_110593"><a rel="history" bid="RICHMND222" rid="110593" style="cursor:pointer" href="#building/RICHMND222/FLOORPLANS/110593" onclick="RoomRedirect('building/RICHMND222/FLOORPLANS/110593');IncreaseRoomClick('110593');">MICHAEL G. EHRLICH, MD CASE STDY RM</a></li>
+         <li id="room_26903"><a rel="history" bid="RICHMND222" rid="26903" style="cursor:pointer" href="#building/RICHMND222/FLOORPLANS/26903" onclick="RoomRedirect('building/RICHMND222/FLOORPLANS/26903');IncreaseRoomClick('26903');">RIMI COMMONS</a></li>
+         <li id="room_110539"><a rel="history" bid="RICHMND222" rid="110539" style="cursor:pointer" href="#building/RICHMND222/FLOORPLANS/110539" onclick="RoomRedirect('building/RICHMND222/FLOORPLANS/110539');IncreaseRoomClick('110539');">THE BROWN MED ALUMNI ASSOC BOARDRM</a></li>
+         <li id="room_110597"><a rel="history" bid="RICHMND222" rid="110597" style="cursor:pointer" href="#building/RICHMND222/FLOORPLANS/110597" onclick="RoomRedirect('building/RICHMND222/FLOORPLANS/110597');IncreaseRoomClick('110597');">THE SURGICAL ARTS MULTIPURPOSE ROOM</a></li>
+        </ul></li>
+       <li id="build_288"><span class="imgarrowdown" id="img_288"></span><a class="regular" style="cursor:pointer" title="SALOMON CTR FOR TEACHING">&nbsp;&nbsp;SALOMON CTR FO.. (4)</a>
+        <ul id="rooms_288" style="display:none;" href="#building/SALOMON">
+         <li id="room_8506"><a rel="history" bid="SALOMON" rid="8506" style="cursor:pointer" href="#building/SALOMON/FLOORPLANS/8506" onclick="RoomRedirect('building/SALOMON/FLOORPLANS/8506');IncreaseRoomClick('8506');">DE CICCIO FAMILY AUDITORIUM</a></li>
+         <li id="room_8489"><a rel="history" bid="SALOMON" rid="8489" style="cursor:pointer" href="#building/SALOMON/FLOORPLANS/8489" onclick="RoomRedirect('building/SALOMON/FLOORPLANS/8489');IncreaseRoomClick('8489');">LECTURE ROOM</a></li>
+         <li id="room_8485"><a rel="history" bid="SALOMON" rid="8485" style="cursor:pointer" href="#building/SALOMON/FLOORPLANS/8485" onclick="RoomRedirect('building/SALOMON/FLOORPLANS/8485');IncreaseRoomClick('8485');">LOBBY</a></li>
+         <li id="room_8500"><a rel="history" bid="SALOMON" rid="8500" style="cursor:pointer" href="#building/SALOMON/FLOORPLANS/8500" onclick="RoomRedirect('building/SALOMON/FLOORPLANS/8500');IncreaseRoomClick('8500');">LOBBY</a></li>
+        </ul></li>
+       <li id="build_291"><span class="imgarrowdown" id="img_291"></span><a class="regular" style="cursor:pointer" title="SAYLES HALL">&nbsp;&nbsp;SAYLES HALL (1)</a>
+        <ul id="rooms_291" style="display:none;" href="#building/SAYLESHALL">
+         <li id="room_8648"><a rel="history" bid="SAYLESHALL" rid="8648" style="cursor:pointer" href="#building/SAYLESHALL/FLOORPLANS/8648" onclick="RoomRedirect('building/SAYLESHALL/FLOORPLANS/8648');IncreaseRoomClick('8648');">THE MAIN HALL</a></li>
+        </ul></li>
+       <li id="build_296"><span class="imgarrowdown" id="img_296"></span><a class="regular" style="cursor:pointer" title="SHARPE REFECTORY">&nbsp;&nbsp;SHARPE REFECTO.. (12)</a>
+        <ul id="rooms_296" style="display:none;" href="#building/SHARPEREF">
+         <li id="room_21068"><a rel="history" bid="SHARPEREF" rid="21068" style="cursor:pointer" href="#building/SHARPEREF/FLOORPLANS/21068" onclick="RoomRedirect('building/SHARPEREF/FLOORPLANS/21068');IncreaseRoomClick('21068');">CHANCELLOR'S DINING ROOM</a></li>
+         <li id="room_110323"><a rel="history" bid="SHARPEREF" rid="110323" style="cursor:pointer" href="#building/SHARPEREF/FLOORPLANS/110323" onclick="RoomRedirect('building/SHARPEREF/FLOORPLANS/110323');IncreaseRoomClick('110323');">CHANCELLOR'S DINING ROOM ANNEX</a></li>
+         <li id="room_21062"><a rel="history" bid="SHARPEREF" rid="21062" style="cursor:pointer" href="#building/SHARPEREF/FLOORPLANS/21062" onclick="RoomRedirect('building/SHARPEREF/FLOORPLANS/21062');IncreaseRoomClick('21062');">DINING ROOM #6</a></li>
+         <li id="room_21060"><a rel="history" bid="SHARPEREF" rid="21060" style="cursor:pointer" href="#building/SHARPEREF/FLOORPLANS/21060" onclick="RoomRedirect('building/SHARPEREF/FLOORPLANS/21060');IncreaseRoomClick('21060');">DINING ROOM #8</a></li>
+         <li id="room_26500"><a rel="history" bid="SHARPEREF" rid="26500" style="cursor:pointer" href="#building/SHARPEREF/FLOORPLANS/26500" onclick="RoomRedirect('building/SHARPEREF/FLOORPLANS/26500');IncreaseRoomClick('26500');">DINING ROOM #9</a></li>
+         <li id="room_21057"><a rel="history" bid="SHARPEREF" rid="21057" style="cursor:pointer" href="#building/SHARPEREF/FLOORPLANS/21057" onclick="RoomRedirect('building/SHARPEREF/FLOORPLANS/21057');IncreaseRoomClick('21057');">FRONT ALCOVE</a></li>
+         <li id="room_21056"><a rel="history" bid="SHARPEREF" rid="21056" style="cursor:pointer" href="#building/SHARPEREF/FLOORPLANS/21056" onclick="RoomRedirect('building/SHARPEREF/FLOORPLANS/21056');IncreaseRoomClick('21056');">MAIN DINING AREA</a></li>
+         <li id="room_21053"><a rel="history" bid="SHARPEREF" rid="21053" style="cursor:pointer" href="#building/SHARPEREF/FLOORPLANS/21053" onclick="RoomRedirect('building/SHARPEREF/FLOORPLANS/21053');IncreaseRoomClick('21053');">MAIN DINING AREA</a></li>
+         <li id="room_21054"><a rel="history" bid="SHARPEREF" rid="21054" style="cursor:pointer" href="#building/SHARPEREF/FLOORPLANS/21054" onclick="RoomRedirect('building/SHARPEREF/FLOORPLANS/21054');IncreaseRoomClick('21054');">MAIN DINING AREA</a></li>
+         <li id="room_21055"><a rel="history" bid="SHARPEREF" rid="21055" style="cursor:pointer" href="#building/SHARPEREF/FLOORPLANS/21055" onclick="RoomRedirect('building/SHARPEREF/FLOORPLANS/21055');IncreaseRoomClick('21055');">MAIN DINING AREA</a></li>
+         <li id="room_21059"><a rel="history" bid="SHARPEREF" rid="21059" style="cursor:pointer" href="#building/SHARPEREF/FLOORPLANS/21059" onclick="RoomRedirect('building/SHARPEREF/FLOORPLANS/21059');IncreaseRoomClick('21059');">PRESIDENT'S DINING ROOM</a></li>
+         <li id="room_21063"><a rel="history" bid="SHARPEREF" rid="21063" style="cursor:pointer" href="#building/SHARPEREF/FLOORPLANS/21063" onclick="RoomRedirect('building/SHARPEREF/FLOORPLANS/21063');IncreaseRoomClick('21063');">REAR ALCOVE</a></li>
+        </ul></li>
+       <li id="build_435"><span class="imgarrowdown" id="img_435"></span><a class="regular" style="cursor:pointer" title="SIDNEY E. FRANK HALL LIFE SCIENCES">&nbsp;&nbsp;SIDNEY E. FRAN.. (2)</a>
+        <ul id="rooms_435" style="display:none;" href="#building/SFRANKHLSB">
+         <li id="room_29106"><a rel="history" bid="SFRANKHLSB" rid="29106" style="cursor:pointer" href="#building/SFRANKHLSB/FLOORPLANS/29106" onclick="RoomRedirect('building/SFRANKHLSB/FLOORPLANS/29106');IncreaseRoomClick('29106');">LOBBY</a></li>
+         <li id="room_29131"><a rel="history" bid="SFRANKHLSB" rid="29131" style="cursor:pointer" href="#building/SFRANKHLSB/FLOORPLANS/29131" onclick="RoomRedirect('building/SFRANKHLSB/FLOORPLANS/29131');IncreaseRoomClick('29131');">MARCUVITZ AUDITORIUM</a></li>
+        </ul></li>
+       <li id="build_438"><span class="imgarrowdown" id="img_438"></span><a class="regular" style="cursor:pointer" title="SMITH-BUONANNO HALL">&nbsp;&nbsp;SMITH-BUONANNO.. (2)</a>
+        <ul id="rooms_438" style="display:none;" href="#building/SMITH-BUON">
+         <li id="room_26720"><a rel="history" bid="SMITH-BUON" rid="26720" style="cursor:pointer" href="#building/SMITH-BUON/FLOORPLANS/26720" onclick="RoomRedirect('building/SMITH-BUON/FLOORPLANS/26720');IncreaseRoomClick('26720');">CLASS OF 1974 AUDITORIUM</a></li>
+         <li id="room_26722"><a rel="history" bid="SMITH-BUON" rid="26722" style="cursor:pointer" href="#building/SMITH-BUON/FLOORPLANS/26722" onclick="RoomRedirect('building/SMITH-BUON/FLOORPLANS/26722');IncreaseRoomClick('26722');">SUSKIND LOBBY</a></li>
+        </ul></li>
+       <li id="build_317"><span class="imgarrowdown" id="img_317"></span><a class="regular" style="cursor:pointer" title="UNIVERSITY HALL">&nbsp;&nbsp;UNIVERSITY HALL (1)</a>
+        <ul id="rooms_317" style="display:none;" href="#building/UHALL">
+         <li id="room_12997"><a rel="history" bid="UHALL" rid="12997" style="cursor:pointer" href="#building/UHALL/FLOORPLANS/12997" onclick="RoomRedirect('building/UHALL/FLOORPLANS/12997');IncreaseRoomClick('12997');">CONFERENCE ROOM</a></li>
+        </ul></li>
+       <li id="build_410"><span class="imgarrowdown" id="img_410"></span><a class="regular" style="cursor:pointer" title="WATSON INSTITUTE">&nbsp;&nbsp;WATSON INSTITU.. (4)</a>
+        <ul id="rooms_410" style="display:none;" href="#building/WATSONINS">
+         <li id="room_15160"><a rel="history" bid="WATSONINS" rid="15160" style="cursor:pointer" href="#building/WATSONINS/FLOORPLANS/15160" onclick="RoomRedirect('building/WATSONINS/FLOORPLANS/15160');IncreaseRoomClick('15160');">JOUKOWSKY AUDITORIUM</a></li>
+         <li id="room_15319"><a rel="history" bid="WATSONINS" rid="15319" style="cursor:pointer" href="#building/WATSONINS/FLOORPLANS/15319" onclick="RoomRedirect('building/WATSONINS/FLOORPLANS/15319');IncreaseRoomClick('15319');">KIM KOO LIBRARY</a></li>
+         <li id="room_15172"><a rel="history" bid="WATSONINS" rid="15172" style="cursor:pointer" href="#building/WATSONINS/FLOORPLANS/15172" onclick="RoomRedirect('building/WATSONINS/FLOORPLANS/15172');IncreaseRoomClick('15172');">LOBBY</a></li>
+         <li id="room_15320"><a rel="history" bid="WATSONINS" rid="15320" style="cursor:pointer" href="#building/WATSONINS/FLOORPLANS/15320" onclick="RoomRedirect('building/WATSONINS/FLOORPLANS/15320');IncreaseRoomClick('15320');">MCKINNEY CONFERENCE ROOM</a></li>
+        </ul></li>
+      </ul> 
+      <ul> 
+       <li> 
+        <ul style="overflow:hidden;" class="clslnkchromeframe"> 
+         <li> 
+          <div id="lnkchromeframe" style="cursor:pointer; position:relative; display:none;vertical-align:middle;">
+           <a href="http://www.google.com/chromeframe/eula.html" target="_blank" class="chromeframe">For full interactive functionality click here.</a>
+          </div> </li> 
+        </ul> </li> 
+      </ul> 
+     </div> 
+    </div> 
+    <!-- leftcontentrwrapper end --> 
+    <!-- leftcontentrwrapper end --> 
+    <div id="binfotab_wrapper" style="display:none;"> 
+     <div class="binfo_mid"> 
+      <div id="binfo_txt"> 
+       <span id="building_name">Building Name </span> 
+       <div id="building_prop" class="binfo_tab"> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <!-- binfotab_wrapper end --> 
+    <div class="clear"></div> 
+    <div id="rightsection" class="rightsection"> 
+     <!-- 3rd column --> 
+     <div id="rightbxwrapper"> 
+      <div id="rightbx_desc" class="rightbx_desc" style="display:none"></div> 
+      <div id="search_content"> 
+       <!--<div class="right_header">Search Result</div> --> 
+       <div class="right_header"> 
+        <div id="search_bg"> 
+         <div class="search_left"> 
+         </div> 
+         <div class="search_right"> 
+          <input type="text" name="txtsearch" id="txtsearch" value="Search Brown" autofill="false"> 
+         </div> 
+         <div class="search_btn"> 
+          <input type="image" src="images/search_right.png" alt="Search" id="btnsearch"> 
+          <!--<img src="images/search_right.png" alt="Search Brown University" border="0"title="Search Brown University" /> --> 
+         </div> 
+        </div> 
+        <!-- search_bg end --> 
+       </div> 
+       <div id="search_result" class="rightbx_content"> 
+        <div class="search_rslt" onclick="getSearchedRoom('#building/FAUNCEHSE/FLOORPLANS/109475');">
+         <div class="b_namehead">
+          LOBBY
+          <span title="Room" class="roomicon"></span>
+         </div>
+         <div class="search_rslt_img" title="LOBBY">
+          <a id="img_searchlink"><img src="docx/roompics/thumbs/fauncehse_000d_19.jpg" border="0" width="75px"></a>
+         </div>
+         <div class="search_rslt_txt">
+          <span style="font-weight:bold;">CORRIDOR</span>
+          <br>75 WATERMAN ST, PROVIDENCE, RI 02912
+         </div>
+         <div class="clear"></div>
+        </div>
+        <div class="search_rslt" onclick="getSearchedRoom('#building/SHARPEREF/FLOORPLANS/21059');">
+         <div class="b_namehead">
+          PRESIDENT'S DINING ROOM
+          <span title="Room" class="roomicon"></span>
+         </div>
+         <div class="search_rslt_img" title="PRESIDENT'S DINING ROOM">
+          <a id="img_searchlink"><img src="docx/roompics/thumbs/sharperef_125_87.jpg" border="0" width="75px"></a>
+         </div>
+         <div class="search_rslt_txt">
+          <span style="font-weight:bold;">FOOD FAC. - DINING</span>
+          <br>144 THAYER ST, PROVIDENCE, RI 02912
+         </div>
+         <div class="clear"></div>
+        </div>
+        <div class="search_rslt" onclick="getSearchedBuilding(&quot;SHIPST070&quot;)" style="cursor:pointer">
+         <div class="b_namehead">
+          <span title="Building" class="buildicon"></span>
+          <a id="searchlink" style="cursor:pointer" bid="SHIPST070">SHIP ST 070</a>
+         </div>
+         <div class="search_rslt_img" title="SHIP ST 070">
+          <a id="img_searchlink" style="cursor:pointer" bid="SHIPST070" href="#building/SHIPST070"><img src="docx/building_thumbnails/SHIP STREET 070_1.jpg" border="0" width="75px"></a>
+         </div>
+         <div class="search_rslt_txt">
+          70 SHIP ST, PROVIDENCE, RI 02903
+         </div>
+         <div class="clear"></div>
+        </div>
+        <div class="search_rslt" onclick="getSearchedBuilding(&quot;GRNFCAC&quot;)" style="cursor:pointer">
+         <div class="b_namehead">
+          <span title="Building" class="buildicon"></span>
+          <a id="searchlink" style="cursor:pointer" bid="GRNFCAC">GRANOFF CTR FOR THE CREATIVE ARTS</a>
+         </div>
+         <div class="search_rslt_img" title="GRANOFF CTR FOR THE CREATIVE ARTS">
+          <a id="img_searchlink" style="cursor:pointer" bid="GRNFCAC" href="#building/GRNFCAC"><img src="docx/building_thumbnails/3982_2734.jpg" border="0" width="75px"></a>
+         </div>
+         <div class="search_rslt_txt">
+          154 ANGELL ST, PROVIDENCE, RI 02912
+         </div>
+         <div class="clear"></div>
+        </div>
+        <div class="search_rslt" onclick="getSearchedBuilding(&quot;KASSAR&quot;)" style="cursor:pointer">
+         <div class="b_namehead">
+          <span title="Building" class="buildicon"></span>
+          <a id="searchlink" style="cursor:pointer" bid="KASSAR">KASSAR (EDWARD W.) HOUSE</a>
+         </div>
+         <div class="search_rslt_img" title="KASSAR (EDWARD W.) HOUSE">
+          <a id="img_searchlink" style="cursor:pointer" bid="KASSAR" href="#building/KASSAR"><img src="docx/building_thumbnails/100559_192.jpg" border="0" width="75px"></a>
+         </div>
+         <div class="search_rslt_txt">
+          151 THAYER ST, PROVIDENCE, RI 02912
+         </div>
+         <div class="clear"></div>
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <!-- 3rd column end--> 
+     <div id="rightcontentwrapper"> 
+      <div id="mapwrapper" class="mapwrapper"> 
+       <div id="map" class="map"> 
+        <span><img src="images/loading.gif"></span> 
+       </div> 
+      </div> 
+      <!-- mapwrapper end --> 
+      <div id="midwrapper" class="midwrapper" style="display:none"> 
+       <div id="contenthead" class="contenthead" style="min-width:560px;">
+         Pictures 
+       </div> 
+       <div id="gallerywrapper"> 
+       </div> 
+       <!-- gallerywrapper end --> 
+      </div> 
+      <!-- midwrapper end --> 
+     </div> 
+     <!-- rightcontentwrapper end --> 
+     <div class="clear"></div> 
+    </div> 
+    <!-- rightsection end --> 
+    <div class="clear"></div> 
+   </div> 
+   <!-- contentrwrapper end --> 
+   <div id="mapfooter"> 
+    <a href="http://brown.edu/Facilities/Facilities_Management">Facilities Management</a> | 
+    <a href="http://brown.edu/Facilities/Facilities_Management/maps_building.php">Maps &amp; Buildings</a> | 
+    <a href="http://brown.edu/Facilities/Facilities_Management/map_download.php">Download Maps</a> | 
+    <a href="http://www.brown.edu/Facilities/Building_Brown/index.html">Building Brown</a> 
+    <br> Brown University | Providence, RI 02912 | (401) 863-1000 | 
+    <a href="../feedback.php">Feedback</a> | 
+    <a href="aboutus.php">About This Site</a> 
+   </div> 
+   <input type="hidden" name="hdnbid" id="hdnbid"> 
+   <input type="hidden" name="hdncatid" id="hdncatid"> 
+   <input type="hidden" name="hdnpropid" id="hdnpropid"> 
+   <input type="hidden" name="hdnFirstSearch" id="hdnFirstSearch" value="false"> 
+  </div> 
+  <!-- pagerwrapper end --> 
+  <div id="tt_x" style="position: absolute; padding: 5px; z-index: 1000;background-color: #f4f5f8; border:1px solid #878a90; color:#000; font-family:arial; font-size:10px; font-weight:bold; display:none;"></div> 
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"> </script> 
+  <script>
+ CFInstall.check({
+    node: "placeholder",
+	mode: "popup",
+    destination: "http://www.brown.edu/Facilities/Facilities_Management/maps/",
+	url: "http://www.google.com/chromeframe/eula.html",
+	preventPrompt: true,
+	onmissing: showlink
+  });
+  function showlink(){
+  	if($.browser.msie){
+	$("#lnkchromeframe").show("slow");	
+	$(".clslnkchromeframe").css("height","60px")
+	}else{
+	return false;	
+	}
+  }
+ 
+</script> 
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script> 
+  <script type="text/javascript" src="library/js/jquery.maphilight.js"></script> 
+  <script type="text/javascript">
+   jQuery.noConflict();
+    jQuery(function() {
+        jQuery('.map').maphilight(); //set true for fading hover effect
+        });
+	
+</script> 
+  <script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script> 
+  <script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-3860081-1");
+pageTracker._trackPageview();
+} catch(err) {}</script> 
+  <script type="text/javascript">
+
+ var _gaq = _gaq || [];
+ _gaq.push(['_setAccount', 'UA-3602790-36']);
+ _gaq.push(['_trackPageview']);
+
+ (function() {
+   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+ })();
+
+</script>   
+  <script type="text/javascript">
+function overrideP()
+{
+//this is required...this is a tweak....
+}
+</script> 
+ </body>
+</html>

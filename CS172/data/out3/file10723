@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <title>Smart911 - Smart911</title> 
+  <meta charset="utf-8"> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0"> 
+  <meta name="description" content="This service helps 9-1-1 protect your family by providing more information to first responders.  You should sign up too, it is free!"> 
+  <meta property="og:image" content="https://www.smart911.com/images/smart911.png"> 
+  <link rel="icon" href="https://www.smart911.com/favicon.ico" type="image/x-icon"> 
+  <link rel="shortcut icon" href="https://www.smart911.com/favicon.ico" type="image/x-icon"> 
+  <meta name="com.silverpop.brandeddomains" content="www.pages05.net,ravemobilesafety.com,ravemobilesafety.mkt4804.com,safety.smart911.com,smart911.com"> 
+  <link rel="canonical" href="https://www.smart911.com/?webSyncID=b9808146-843e-09be-8c98-5a1d60e58138&amp;sessionGUID=13d7e6bb-6681-67b0-125e-3a203d2c259d"> 
+  <meta property="og:url" content="https://www.smart911.com/?webSyncID=b9808146-843e-09be-8c98-5a1d60e58138&amp;sessionGUID=13d7e6bb-6681-67b0-125e-3a203d2c259d"> 
+  <link rel="shortcut icon" href="/images/avatar_16.png"> 
+  <link rel="apple-touch-icon" href="/images/avatar_128.png"> 
+  <link rel="stylesheet" type="text/css" href="/css/smart911.css"> 
+  <link rel="stylesheet" type="text/css" href="/css/smart911Dashboard.css"> 
+  <link rel="stylesheet" type="text/css" href="/css/raveModal.css"> 
+  <link rel="stylesheet" type="text/css" href="/css/site.css"> 
+  <link rel="stylesheet" type="text/css" href="/css/splash.css"> 
+  <!-- BEGIN GA CODE --> 
+  <script language="javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  // Fix cross-site requests
+  ga('require', 'linker');
+  ga('linker:autoLink', ['safety.smart911.com', 'www.smart911.com']);
+  // Create
+  ga('create', 'UA-11337715-6', 'auto', {
+    'allowLinker': true
+  });
+  ga('send', 'pageview');
+  </script> 
+  <!-- END GA CODE --> 
+  <script src="https://www.sc.pages05.net/lp/static/js/iMAWebCookie.js?36c1a0bc-13761b99ca2-c6f842ded9e6d11c5ffebd715e129037&amp;h=www.pages05.net" type="text/javascript"></script> 
+  <script type="text/javascript" src="/js/libs/head.min.js"></script> 
+  <script type="text/javascript" src="/js/jquery.min.js"></script> 
+  <link rel="stylesheet" type="text/css" href="/smart911/js/libs/jquery-ui-1.8.16.custom/css/ui-lightness/jquery-ui-1.8.16.custom.css"> 
+  <link rel="stylesheet" type="text/css" href="/smart911/js/libs/raveMap/raveMap.css"> 
+  <script language="javascript">
+function toggleHHMenu()
+{
+    $('#hhMenu').toggle();
+}
+</script> 
+  <script type="text/javascript">
+var fb_param = {};
+fb_param.pixel_id = '6007910239390';
+fb_param.value = '0.00';
+(function(){
+  var fpw = document.createElement('script');
+  fpw.async = true;
+  fpw.src = '//connect.facebook.net/en_US/fp.js';
+  var ref = document.getElementsByTagName('script')[0];
+  ref.parentNode.insertBefore(fpw, ref);
+})();
+</script> 
+  <noscript></noscript>
+ </head>
+ <body>
+  <img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/offsite_event.php?id=6007910239390&amp;value=0">   
+  <ul class="skipList" id="top"> 
+   <li class="skip"><a href="#cont" id="menu">Skip to content.</a></li> 
+  </ul> 
+  <script>
+
+function raveModalConfirm(header, message, buttonLabel, confirmAction, cancelAction, messageType)
+{
+    ( function($) {
+        $("html, body").animate({ scrollTop: 0 }, "fast");
+    } ) ( jQuery );
+
+    document.getElementById("_raveModalBackground").style.height = document.body.offsetHeight+"px";
+    if ("DIRE_WARNING" == messageType)
+    {
+        document.getElementById("_raveModalConfirm").className = "popupModal direWarning";
+        document.getElementById("_raveModalConfirmButton").className = "btn";
+    }
+    else
+        document.getElementById("_raveModalConfirm").className = "popupModal";
+    document.getElementById("_raveModalConfirmHeader").innerHTML = header;
+    document.getElementById("_raveModalConfirmMessage").innerHTML = message;
+    document.getElementById("_raveModalConfirmButton").innerHTML = buttonLabel;
+    document.getElementById("_raveModalConfirmButton").href="javascript:_raveModalConfirmAction('"+confirmAction+"')";
+    document.getElementById("_raveModalConfirmCancel").href="javascript: _raveModalConfirmCancelAction('"+cancelAction+"')";
+    document.getElementById("_raveModalBackground").style.display = "block";
+    document.getElementById("_raveModalConfirm").style.display = "block";
+    var actualWidth = parseInt(document.getElementById("_raveModalConfirm").offsetWidth, 10);
+    document.getElementById("_raveModalConfirm").style.marginLeft = "-"+(actualWidth/2)+"px";
+}
+
+function raveModalConfirmF(header, message, buttonLabel, confirmAction, messageType)
+{
+    document.getElementById("_raveModalBackground").style.height = document.body.offsetHeight+"px";
+    if ("DIRE_WARNING" == messageType)
+    {
+        document.getElementById("_raveModalConfirm").className = "popupModal direWarning";
+        document.getElementById("_raveModalConfirmButton").className = "btn";
+    }
+    else
+        document.getElementById("_raveModalConfirm").className = "popupModal";
+    document.getElementById("_raveModalConfirmHeader").innerHTML = header;
+    document.getElementById("_raveModalConfirmMessage").innerHTML = message;
+    document.getElementById("_raveModalConfirmButton").innerHTML = buttonLabel;
+    document.getElementById("_raveModalConfirmButton").href="javascript:_raveModalConfirmAction('"+confirmAction+"')";
+    document.getElementById("_raveModalConfirmCancel").href="javascript: _raveModalConfirmCancelAction('')";
+    document.getElementById("_raveModalBackground").style.display = "block";
+    document.getElementById("_raveModalConfirm").style.display = "block";
+    
+  	document.getElementById("_raveModalConfirmCancel").style.display = "block";
+  	document.getElementById("_raveModalConfirmButton").style.display = "block";
+  	
+    var actualWidth = parseInt(document.getElementById("_raveModalConfirm").offsetWidth, 10);
+    document.getElementById("_raveModalConfirm").style.marginLeft = "-"+(actualWidth/2)+"px";
+}
+
+function raveModalConfirmW(header, message, buttonLabel, confirmAction, cancelAction, messageType)
+{
+	raveModalConfirmF(header, message, buttonLabel, confirmAction, messageType);
+    $("#_raveModalConfirmButton").removeClass('error');
+    $("#_raveModalConfirmButton").addClass('warning');
+    document.getElementById("_raveModalConfirmCancel").href="javascript: _raveModalConfirmCancelAction('"+cancelAction+"')";
+
+}
+
+function raveActionModal(header, message)
+{
+    raveModalConfirmF(header, message, '', '', '');
+    document.getElementById("_raveModalConfirmButton").style.display = "none";
+}
+
+function _raveModalConfirmAction(func)
+{
+    document.getElementById("_raveModalConfirm").style.display = "none";
+    document.getElementById("_raveModalBackground").style.display = "none";
+    eval(func);
+}
+
+function _raveModalConfirmCancelAction(func)
+{
+    document.getElementById("_raveModalConfirm").style.display = "none";
+    document.getElementById("_raveModalBackground").style.display = "none";
+    eval(func);
+}
+
+function raveModalAlert(header, message, buttonLabel, messageType)
+{
+    ( function($) {
+        $("html, body").animate({ scrollTop: 0 }, "fast");
+    } ) ( jQuery );
+
+	document.getElementById("_raveModalBackground").style.height = document.body.offsetHeight+"px";
+	if ("DIRE_WARNING" == messageType)
+    {
+        document.getElementById("_raveModalAlert").className = "popupModal direWarning";
+        document.getElementById("_raveModalAlertButton").className = "btn";
+    }
+    else
+        document.getElementById("_raveModalAlert").className = "popupModal";
+    document.getElementById("_raveModalAlertHeader").innerHTML = header;
+    document.getElementById("_raveModalAlertMessage").innerHTML = message;
+    document.getElementById("_raveModalAlertButton").innerHTML = buttonLabel;
+    document.getElementById("_raveModalBackground").style.display = "block";
+    document.getElementById("_raveModalAlert").style.display = "block";
+    var actualWidth = parseInt(document.getElementById("_raveModalAlert").offsetWidth, 10);
+    document.getElementById("_raveModalAlert").style.marginLeft = "-"+(actualWidth/2)+"px";
+}
+
+
+function _raveModalAlertCancel(func)
+{
+    document.getElementById("_raveModalAlert").style.display = "none";
+    document.getElementById("_raveModalBackground").style.display = "none";
+}
+
+function _raveModalAJAXGenericContainerOpen(payLoad, className)
+{
+    document.getElementById("_raveModalBackground").style.height = document.body.offsetHeight+"px";
+
+    if (payLoad != null)
+		document.getElementById("_raveModalAJAXGenericContainer").innerHTML = payLoad;
+
+    if (className != null)
+        document.getElementById("_raveModalAJAXGenericContainer").className = className;
+
+    document.getElementById("_raveModalBackground").style.display = "block";
+    document.getElementById("_raveModalAJAXGenericContainer").style.display = "block";
+    var actualWidth = parseInt(document.getElementById("_raveModalAJAXGenericContainer").offsetWidth, 10);
+    document.getElementById("_raveModalAJAXGenericContainer").style.marginLeft = "-"+(actualWidth/2)+"px";
+}
+
+function _raveModalAJAXGenericContainerClose()
+{
+    document.getElementById("_raveModalAJAXGenericContainer").style.display = "none";
+    document.getElementById("_raveModalBackground").style.display = "none";
+    $('#_raveModalAJAXGenericContainer').html("");
+}
+
+</script> 
+  <div id="_raveModalConfirm" class="popupModal"> 
+   <a id="_raveModalConfirmCancel" href="javascript: _raveModalConfirmCancelAction()" style="text-decoration: none;"> 
+    <s911:icon id="_raveModalConfirmCancel" styleclass="ico die x24" style="float: right" dataicon="D" title="Close" /></a> 
+   <div id="_raveModalConfirmHeader" class="popupModalHeader">
+    Header Missing
+   </div> 
+   <div id="_raveModalConfirmMessage" class="popupModalMessage">
+    Message Missing
+   </div> 
+   <a id="_raveModalConfirmButton" href="javascript: _raveModalConfirmCancelAction()" class="btn error fcenter fno">Button Label Missing</a> 
+  </div> 
+  <div id="_raveModalAlert" class="popupModal"> 
+   <s911:icon id="_raveModalAlertCancel" styleclass="ico die x24" style="float: right" dataicon="D" title="Close" onclick="_raveModalAlertCancel()" /> 
+   <div id="_raveModalAlertHeader" class="popupModalHeader">
+    Header Missing
+   </div> 
+   <div id="_raveModalAlertMessage" class="popupModalMessage">
+    Message Missing
+   </div> 
+   <a id="_raveModalAlertButton" href="javascript: _raveModalAlertCancel()" class="btn carbon">Button Label Missing</a> 
+  </div> 
+  <div id="_raveModalAJAXGenericContainer" class="popupModal"> 
+  </div> 
+  <div id="_raveModalBackground" class="disabledBackground"> 
+  </div> 
+  <div id="headerBleed" class="accountMgt" role="banner"> 
+   <div id="header" class="vertAlignWrapper"> 
+    <div id="google_translate_element" class="disableForHandHeld"></div> 
+    <ul style="margin: 38.5px 0px 0px; padding: 0px 0px 0px 10px; float: right; list-style: none;" class="disableForIpad"> 
+     <li style="padding: 0; margin: 0; line-height: 13px;"> <a id="signOut" href="/smart911/login.action" title="Sign In"> Sign In<span class="disableForHandHeld"> / Sign Up</span></a> </li> 
+    </ul> 
+    <ul id="consumerNav" style="margin-top: 37px; margin-bottom: 0px;"> 
+     <li><a href="http://safety.smart911.com/smart911/">About Smart911</a></li> 
+     <li><a href="http://safety.smart911.com/news/">News</a></li> 
+     <li><a href="http://safety.smart911.com/">Community</a></li> 
+    </ul> 
+    <a href="/" id="smart911LogoLink">&nbsp;</a> 
+    <a id="hhAccountNav" class="mobileMenu" href="javascript: toggleHHMenu();">MENU</a> 
+    <!--
+        <a href="/" id="smart911LogoLink" style="float: left; margin-top: 30.5px; margin-bottom: 0px;"><img src="/images/logos/smart911_logo.png" alt="Smart911 Logo"></a>
+--> 
+   </div> 
+  </div> 
+  <div id="hhMenu"> 
+   <ul> 
+    <li><a href="/smart911/accountMgt/dashboard.action">PROFILE</a></li> 
+    <li><a href="/smart911/accountMgt/preferences.action">PREFERENCES</a></li> 
+    <li><a href="/smart911/accountMgt/editAccountDetails.action">SETTINGS</a></li> 
+    <li><a href="http://safety.smart911.com/faq/">FAQ</a></li> 
+    <li><a href="http://safety.smart911.com/about/">ABOUT SMART911</a></li> 
+    <li><a href="http://safety.smart911.com/news/">NEWS</a></li> 
+    <li><a href="http://safety.smart911.com">COMMUNITY</a></li> 
+    <li><a href="/smart911/logout.action">SIGN OUT</a></li> 
+   </ul> 
+  </div> 
+  <style type="text/css">
+            div#headerBleed.accountMgt { border-bottom: 0px !important; }
+        </style> 
+  <div id="modulePageContainer"> 
+   <!-- AddThis Button BEGIN --> 
+   <div class="addthis_toolbox addthis_default_style " aria-hidden="true" role="presentation"> 
+    <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a> 
+    <a class="addthis_button_tweet"></a> 
+    <a class="addthis_counter addthis_pill_style"></a> 
+   </div> 
+   <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ravemobilesafety"></script> 
+   <script language="javascript">
+var addthis_config = {
+	username: "ravemobilesafety",
+	services_custom: [
+		{
+			name: "Advocate",
+			url: "http://safety.smart911.com/advocate/",
+			icon: "/images/advocate_16.png"
+		},
+		{
+			name: "Pinterest",
+			url: "http://pinterest.com/pin/create/button/?url={{url}}&media=https://www.smart911.com/images/smart911.png&description={{title}}",
+			icon: "/images/icons/pin_16.jpg"
+		},
+		{
+			name: "Google +1",
+			url: "https://plus.google.com/share?url={{url}}",
+			icon: "/images/icons/plus_16.png"
+		}
+	],
+	services_expanded: 'facebook_like,tweet',
+	services_compact: 'facebook,twitter,linkedin,pinterest.com,plus.google.com,email,print,favorites,safety.smart911.com',
+	data_track_addressbar: true
+};
+addthis.addEventListener('addthis.menu.share', function() {
+	if (evt.type == 'addthis.menu.share') {
+		alert(evt.data.service);
+		if (evt.data.service == 'safety.smart911.com') {
+			window.location = 'http://safety.smart911.com/advocate/';
+			return false;
+		}
+	}
+});
+</script> 
+   <!-- AddThis Button END --> 
+   <!-- START WEB-INF/jsp/common/sharedContent.jsp --> 
+   <script>
+
+function initFAQ()
+{
+    $('H2.faq, H3.faq').click( function() {
+        $(this).toggleClass('link');
+        $(this).next().toggleClass('hide');
+    });
+    $('.collapseAllBtn').hide();
+    $('.expandAllBtn').show();
+    try {
+    $('#fq DIV.content DIV.faq').touchScroll({scrollHeight: 4000, momentum: false});
+    } catch (e) { }
+    $('.expandAllBtn').click( function() {
+        $(this).hide();
+        $('H2.faq, H3.faq').removeClass('link');
+        $('H2.faq, H3.faq').next().removeClass('hide');
+        $('.collapseAllBtn').show()
+    });
+    $('.collapseAllBtn').click( function() {
+        $(this).hide();
+        $('H2.faq, H3.faq').addClass('link');
+        $('H2.faq, H3.faq').next().addClass('hide');
+        $('.expandAllBtn').show()
+    });
+    $('#_faqControlButtons').show();
+}
+
+function _raveModalAJAXGenericContainerOpen(payLoad, className)
+{
+    document.getElementById("_raveModalBackground").style.height = document.body.offsetHeight+"px";
+
+    if (payLoad != null)
+		document.getElementById("_raveModalAJAXGenericContainer").innerHTML = payLoad;
+
+    if (className != null)
+        document.getElementById("_raveModalAJAXGenericContainer").className = className;
+
+    document.getElementById("_raveModalBackground").style.display = "block";
+    document.getElementById("_raveModalAJAXGenericContainer").style.display = "block";
+    var actualWidth = parseInt(document.getElementById("_raveModalAJAXGenericContainer").offsetWidth, 10);
+    document.getElementById("_raveModalAJAXGenericContainer").style.marginLeft = "-"+(actualWidth/2)+"px";
+}
+
+function _raveModalAJAXGenericContainerClose()
+{
+    document.getElementById("_raveModalAJAXGenericContainer").style.display = "none";
+    document.getElementById("_raveModalBackground").style.display = "none";
+    $('#_raveModalAJAXGenericContainer').html("");
+}
+
+function popupSharedContent(url, faq)
+{
+    $.ajax({
+        url: url,
+        success: function(data, textStatus, xhr) {
+            $('#_sharedContentTitle').remove();
+            $('#_scTitle').html("");
+            $('#_sharedContentPopup DIV.content DIV.faq').html(xhr.responseText);
+            $('#_scTitle').html($('#_sharedContentTitle').html());
+            _raveModalAJAXGenericContainerOpen($('#_sharedContentPopup').html(), "popupModal sharedContent");
+            if (faq)
+            {
+                $('H2.faq, H3.faq').addClass('link');
+                initFAQ();
+            }
+            $("html, body").animate({ scrollTop: 0 }, "fast");
+        }
+    });
+}   /* popupSharedContent() */
+
+</script> 
+   <div id="_sharedContentPopup" class="popupModal limit" style="display: none"> 
+    <h1 id="_scTitle"></h1> 
+    <a href="#" class="nolink" onclick="_raveModalAJAXGenericContainerClose()"><b class="die" title="Close">&nbsp;</b></a> 
+    <div class="content" style="height: 375px; overflow: auto"> 
+     <div class="clearfix hidelist faq"> 
+     </div> 
+    </div> 
+   </div> 
+   <!-- END WEB-INF/jsp/common/sharedContent.jsp --> 
+   <span style="position:absolute;"><a name="cont" id="cont" tabindex="-1"> </a></span> 
+   <!-- s911:showErrorHeader / --> 
+   <!--       <div id="pageContainer">   --> 
+   <section id="container-2" class="clearfix"> 
+    <span style="position:absolute;"><a name="cont" id="cont" tabindex="-1"> </a></span> 
+    <script language="javascript">
+var contestRotation = false;
+
+var availabilityWindow = null;
+function checkAvailability()
+{
+    availabilityWindow = window.open("/smart911/isSmart911InMyAreaForm.action", "_CHECK_AVAILABILITY", "width=400,height=600,scrollbars=yes");
+    availabilityWindow.focus();
+}
+
+function validateAndSubmit(action)
+{
+    clearAllPlaceholders();
+    disableFormSubmitButtons();
+
+    var error = false;
+    if ($('#uid').val().length < 1) {
+	    $('#uid').addClass('error');
+	    error = true;
+    }
+    if ($('#pwd').val().length < 1) {
+	    $('#pwd').addClass('error');
+	    error = true;
+    }
+    if (error) {
+	    enableFormSubmitButtons();
+	    initPlaceholders();
+	    return false;
+    }
+    if (action != null) document.getElementById('loginForm').action = action;
+    document.getElementById('loginForm').submit();
+}
+
+</script> 
+    <!-- <div class="splash home contest1" id="homeSplash"> --> 
+    <div class="splash home" id="homeSplash" role="main"> 
+     <div id="splash-heading-container" class="splash-heading main"> 
+      <span id="splash-heading-content" class="white"><a href="http://safety.smart911.com/secondssavelives/">Be Smart About Safety</a></span> 
+     </div> 
+     <div id="splash-subheading" class="splash-subheading main"> 
+      <span id="splash-subheading-content"> No one plans to call 9-1-1, but now you can plan ahead. </span> 
+      <br> 
+      <a class="orangeForwardLink" href="https://www.smart911.com/smart911/registration/registrationLanding.action">Sign Up Now – It's Free</a> 
+     </div> 
+     <div class="splash-box splash-create-profile"> 
+      <h1 class="disableForHandHeld">Sign Up Today</h1> 
+      <p class="disableForHandHeld">Be smart about safety. It's free, private and secure.</p> 
+      <a class="button ready" href="/smart911/registration/registrationLanding.action" role="button">Sign Up</a> 
+      <div class="link-container disableForHandHeld"> 
+       <a href="#" onclick="javascript: checkAvailability();">Is Smart911 available in my area?</a> 
+      </div> 
+      <div class="big-login-link enableForHandHeld"> 
+       <p>Have an account? <a href="/smart911/login.action">Sign In ▶</a></p> 
+      </div> 
+     </div> 
+     <div class="splash-box splash-login"> 
+      <h1>Have an Account?</h1> 
+      <p>Sign in here.</p> 
+      <form id="loginForm" name="loginPost" action="/smart911/loginPost.action" method="post"> 
+       <label for="uid" class="hidden508">User ID</label> 
+       <input id="uid" type="text" name="username" placeholder="User ID" onfocus="$('#uid').removeClass('error');"> 
+       <label for="pwd" class="hidden508">Password</label> 
+       <input id="pwd" type="password" name="password" placeholder="Password" onfocus="$('#pwd').removeClass('error');"> 
+       <a class="button ready" onclick="javascript: validateAndSubmit();" role="button">Sign In</a> 
+      </form> 
+      <br> 
+      <hr class="headerDivider"> 
+      <div class="link-container">
+        Forget User ID or Password?
+       <br> 
+       <a href="/smart911/retrieveLoginInfo.action">Retrieve Your User ID or Password Now</a>
+       <br> 
+      </div> 
+     </div> 
+     <link rel="stylesheet" href="/css/flexslider.css" type="text/css"> 
+     <script src="/js/libs/jquery.flexslider.js"></script> 
+     <!-- Place somewhere in the <body> of your page --> 
+     <div class="newsslider main"> 
+      <ul class="slides"> 
+       <li> 
+        <div class="news-slide iconed clearfix" style="background: url(/image.php?img=2014%2F09%2F2Medical.png) no-repeat left center; background-size: 59px 59px;"> 
+         <div class="news-slide-header"> 
+          <a href="http://safety.smart911.com/safetymonth/">National Safety Month</a> 
+         </div> 
+         <div class="news-slide-content">
+           Four weeks of safety measures you can take this June. 
+         </div> 
+         <div class="news-slide-more"> 
+          <a href="http://safety.smart911.com/?p=1648">Learn More</a> 
+         </div> 
+        </div> </li> 
+       <li> 
+        <div class="news-slide iconed clearfix" style="background: url(https://img.youtube.com/vi/-RakKwYq-_g/default.jpg) no-repeat left center; background-size: 59px 59px;" id="post_5319"> 
+         <div class="news-slide-wrapper"> 
+          <div class="news-slide-header"> 
+           <a href="http://safety.smart911.com/davidson-county-9-1-1-encourages-citizens-sign-smart911/">Davidson County 9-1-1 Encourages Citizens to Sign ...</a> 
+          </div> 
+          <div class="news-slide-content"> 
+          </div> 
+          <div class="news-slide-more"> 
+           <a href="http://safety.smart911.com/davidson-county-9-1-1-encourages-citizens-sign-smart911/">More info</a> 
+          </div> 
+         </div> 
+        </div> <script language="javascript">
+			$('#post_5319').click(function() {
+				window.location = 'http://safety.smart911.com/davidson-county-9-1-1-encourages-citizens-sign-smart911/';
+				return false;
+			});
+			</script> </li> 
+       <li> 
+        <div class="news-slide iconed clearfix" style="background: url(https://img.youtube.com/vi/BcgRx2Id-tk/default.jpg) no-repeat left center; background-size: 59px 59px;" id="post_5236"> 
+         <div class="news-slide-wrapper"> 
+          <div class="news-slide-header"> 
+           <a href="http://safety.smart911.com/cedar-park-rolls-smart911-emergency-response/">Cedar Park Rolls Out Smart911 Emergency Response</a> 
+          </div> 
+          <div class="news-slide-content"> 
+          </div> 
+          <div class="news-slide-more"> 
+           <a href="http://safety.smart911.com/cedar-park-rolls-smart911-emergency-response/">More info</a> 
+          </div> 
+         </div> 
+        </div> <script language="javascript">
+			$('#post_5236').click(function() {
+				window.location = 'http://safety.smart911.com/cedar-park-rolls-smart911-emergency-response/';
+				return false;
+			});
+			</script> </li> 
+       <li> 
+        <div class="news-slide iconed clearfix" style="background: url(https://img.youtube.com/vi/AOhkcp93Sg8/default.jpg) no-repeat left center; background-size: 59px 59px;" id="post_5228"> 
+         <div class="news-slide-wrapper"> 
+          <div class="news-slide-header"> 
+           <a href="http://safety.smart911.com/smart911-comes-cedar-park/">Smart911 Comes to Cedar Park</a> 
+          </div> 
+          <div class="news-slide-content"> 
+          </div> 
+          <div class="news-slide-more"> 
+           <a href="http://safety.smart911.com/smart911-comes-cedar-park/">More info</a> 
+          </div> 
+         </div> 
+        </div> <script language="javascript">
+			$('#post_5228').click(function() {
+				window.location = 'http://safety.smart911.com/smart911-comes-cedar-park/';
+				return false;
+			});
+			</script> </li> 
+       <li> 
+        <div class="news-slide iconed clearfix" style="background: url(https://img.youtube.com/vi/XhfADENd3hM/default.jpg) no-repeat left center; background-size: 59px 59px;" id="post_5207"> 
+         <div class="news-slide-wrapper"> 
+          <div class="news-slide-header"> 
+           <a href="http://safety.smart911.com/county-joins-program-customize-911-services/">County Joins Smart911 Program to Customize 911 Ser...</a> 
+          </div> 
+          <div class="news-slide-content"> 
+          </div> 
+          <div class="news-slide-more"> 
+           <a href="http://safety.smart911.com/county-joins-program-customize-911-services/">More info</a> 
+          </div> 
+         </div> 
+        </div> <script language="javascript">
+			$('#post_5207').click(function() {
+				window.location = 'http://safety.smart911.com/county-joins-program-customize-911-services/';
+				return false;
+			});
+			</script> </li> 
+       <li> 
+        <div class="news-slide iconed clearfix" style="background: url(https://img.youtube.com/vi/2EdCHHuPKyg/default.jpg) no-repeat left center; background-size: 59px 59px;" id="post_5139"> 
+         <div class="news-slide-wrapper"> 
+          <div class="news-slide-header"> 
+           <a href="http://safety.smart911.com/charleston-county-launches-new-smart-911-service/">Charleston County Launches New 'Smart' 911 Service</a> 
+          </div> 
+          <div class="news-slide-content"> 
+          </div> 
+          <div class="news-slide-more"> 
+           <a href="http://safety.smart911.com/charleston-county-launches-new-smart-911-service/">More info</a> 
+          </div> 
+         </div> 
+        </div> <script language="javascript">
+			$('#post_5139').click(function() {
+				window.location = 'http://safety.smart911.com/charleston-county-launches-new-smart-911-service/';
+				return false;
+			});
+			</script> </li> 
+       <li> 
+        <div class="news-slide iconed clearfix" style="background: url(https://img.youtube.com/vi/aoyVOLKZ0Sg/default.jpg) no-repeat left center; background-size: 59px 59px;" id="post_5086"> 
+         <div class="news-slide-wrapper"> 
+          <div class="news-slide-header"> 
+           <a href="http://safety.smart911.com/smart911-growing-puget-sound-popularity/">Smart911 Growing in Puget Sound Popularity</a> 
+          </div> 
+          <div class="news-slide-content"> 
+          </div> 
+          <div class="news-slide-more"> 
+           <a href="http://safety.smart911.com/smart911-growing-puget-sound-popularity/">More info</a> 
+          </div> 
+         </div> 
+        </div> <script language="javascript">
+			$('#post_5086').click(function() {
+				window.location = 'http://safety.smart911.com/smart911-growing-puget-sound-popularity/';
+				return false;
+			});
+			</script> </li> 
+       <li> 
+        <div class="news-slide iconed clearfix" style="background: url(https://img.youtube.com/vi/-pgpJzK4d9U/default.jpg) no-repeat left center; background-size: 59px 59px;" id="post_4608"> 
+         <div class="news-slide-wrapper"> 
+          <div class="news-slide-header"> 
+           <a href="http://safety.smart911.com/personal-safety-game-changer-called-smart911/">The Personal Safety Game Changer Called 'Smart911'</a> 
+          </div> 
+          <div class="news-slide-content"> 
+          </div> 
+          <div class="news-slide-more"> 
+           <a href="http://safety.smart911.com/personal-safety-game-changer-called-smart911/">More info</a> 
+          </div> 
+         </div> 
+        </div> <script language="javascript">
+			$('#post_4608').click(function() {
+				window.location = 'http://safety.smart911.com/personal-safety-game-changer-called-smart911/';
+				return false;
+			});
+			</script> </li> 
+      </ul> 
+     </div> 
+     <script language="javascript">
+(function() {
+	var $window = $(window), flexslider;
+
+	function getGridSize() {
+		//return 3;
+		return (window.innerWidth < 600) ? 1 : 3;
+	}
+	$window.load(function() {
+		$('.newsslider').flexslider({
+			animation: "slide",
+			animationLoop: false,
+			slideshow: false,
+			pauseOnHover: true,
+			directionNav: true,
+			itemWidth: 220,
+			itemMargin: 0,
+			minItems: getGridSize(),
+			maxItems: getGridSize()
+		});
+	});
+	$window.resize(function() {
+		var gridSize = getGridSize();
+		try {
+			flexslider.vars.minItems = gridSize;
+			flexslider.vars.maxItems = gridSize;
+		} catch (e) { }
+	});
+}());
+</script> 
+    </div> 
+    <script language="javascript">
+$('#pwd').keypress(function (e) {
+	if (e.which == 13) {
+		//$('form#loginForm').submit();
+		validateAndSubmit();
+		return false;
+	}
+});
+
+if (contestRotation) {
+
+var blurb = [
+	[
+		'I Signed Up for Smart911...',
+		'"To help with a faster emergency response time, if needed, for my twin girls and family."  – Rick – Bartlett, IL',
+		'contest1'
+	],
+	[
+		'I Signed Up for Smart911...',
+		'"I have 5 children 1 is on a home ventilator & has O2 in his room. It is important to have vital medical history & information on record for responders."  – Dana – Madison, TN',
+		'contest2'
+	],
+	[
+		'I Signed Up for Smart911...',
+		'"My dog Blaze is part of my family. She can\'t call me if there is an emergency & she can\'t reach the doorknob to let herself out. She needs saving!"  – Amanda – Milton, GA',
+		'contest3'
+	],
+	[
+		'I Signed Up for Smart911...',
+		'"One month ago today, my brother had a massive heart attack. A stroke left him with Aphasia. We lost him, this service might have saved him."  – Claire – Hermosa Beach, CA',
+		'contest4'
+	]
+];
+
+var bgpos = 0;
+window.setInterval(function() {
+	var oldpos = bgpos;
+	bgpos = (bgpos + 1) % blurb.length;
+
+	console.log("Rotating from "  + oldpos + " to " + bgpos);
+	console.log(blurb[oldpos]);
+	console.log(blurb[bgpos]);
+
+	// Replace class
+	$('#homeSplash').removeClass(blurb[oldpos][2]).addClass(blurb[bgpos][2]);
+	// Replace text
+	$('#splash-heading-content').html(blurb[bgpos][0]);
+	$('#splash-subheading-content').html(blurb[bgpos][1]);
+}, 15000);
+
+
+$('.splash.home').css('backgroundImage', 'url(\'/images/splash/home_contest_main1.jpg\')');
+
+} // end if contestRotation
+
+</script> 
+   </section> 
+  </div> 
+  <!--    </div>    --> 
+  <div id="footerBleed"> 
+   <div id="footer"> 
+    <div id="footerLogoWrapper"> 
+     <a href="https://www.smart911.com" id="smart911FooterLogoLink"><img src="/images/logos_5.12/logo_smart911_footer.png" alt="Smart911 Logo" class="png_bg"></a> 
+    </div> 
+    <div id="linksFooterSocial"> 
+     <span class="disableForHandHeld">Connect With Us</span> 
+     <a href="http://facebook.com/smart911" target="_blank"><img src="/images/icons/social_facebook.png"></a> 
+     <a href="http://youtube.com/ravemobilesafety" target="_blank"><img src="/images/icons/social_youtube.png"></a> 
+     <a href="http://twitter.com/smart911" target="_blank"><img src="/images/icons/social_twitter.png"></a> 
+     <a href="http://www.pinterest.com/ravesmart911/" target="_blank"><img src="/images/icons/social_pinterest.png"></a> 
+     <a href="http://www.linkedin.com/company/165665?trk=NUS_CMPY_FOL-co" target="_blank"><img src="/images/icons/social_linkedin.png"></a> 
+    </div> 
+    <hr> 
+    <!--
+            <div id="handHeldDirectory">
+                <ul>
+                    <li>
+                        <a href="/" class="orange">Smart911 Home Page</a>
+                    </li>
+                    <li>
+                        <a href="/smart911/login.action" class="orange">My Safety Profile</a>
+                    </li>
+                    <li>
+                        <a href="/contact.php" class="orange">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+--> 
+    <div id="directory"> 
+     <div class="subDirectory first"> 
+      <h2><a href="http://safety.smart911.com/smart911/">About Smart911</a></h2> 
+      <ul> 
+       <li><a href="http://safety.smart911.com/what-is-smart911/">&gt; What is Smart911?</a></li> 
+       <li><a href="http://safety.smart911.com/smart911-work/">&gt; How Does Smart911 Work?</a></li> 
+       <li><a href="http://safety.smart911.com/awards/">&gt; Awards &amp; Endorsements</a></li> 
+       <li><a href="http://safety.smart911.com/privacy/">&gt; Security &amp; Privacy</a></li> 
+       <li><a href="http://safety.smart911.com/faq/">&gt; FAQ</a></li> 
+       <li><a href="http://safety.smart911.com/brand/">&gt; Branding &amp; Usage Guidelines</a></li> 
+      </ul> 
+     </div> 
+     <div class="subDirectory"> 
+      <h2><a href="http://safety.smart911.com/news/">News</a></h2> 
+      <ul> 
+       <li><a href="http://safety.smart911.com/news/video-coverage/">&gt; Video Coverage</a></li> 
+       <li><a href="http://safety.smart911.com/news/features/">&gt; News Features</a></li> 
+       <li><a href="http://safety.smart911.com/news/press-releases/">&gt; Press Releases</a></li> 
+       <li><a href="http://safety.smart911.com/category/news/resources/">&gt; Resources</a></li> 
+      </ul> 
+     </div> 
+     <div class="subDirectory"> 
+      <h2><a href="http://safety.smart911.com">Community</a></h2> 
+      <ul> 
+       <!--
+                        <li><a href="#">&gt; Think Local</a></li>
+--> 
+       <li><a href="http://safety.smart911.com/safety-zone/">&gt; The Safety Zone</a></li> 
+       <li><a href="http://safety.smart911.com/blog/">&gt; The Blog</a></li> 
+       <li><a href="http://safety.smart911.com/buzz/">&gt; The Buzz</a></li> 
+       <li><a href="http://safety.smart911.com/contests/">&gt; Contests &amp; Programs</a></li> 
+      </ul> 
+     </div> 
+     <div class="subDirectory"> 
+      <h2><a href="http://safety.smart911.com/contact/">Contact</a></h2> 
+      <ul> 
+       <li><a href="http://safety.smart911.com/advocate/">&gt; Want Smart911?</a></li> 
+       <li><a href="http://safety.smart911.com/contact-community-outreach/">&gt; Contact Community Outreach</a></li> 
+       <li><a href="http://safety.smart911.com/contact/">&gt; Contact Technical Support</a></li> 
+       <li><a href="http://safety.smart911.com/Smart911">&gt; Public Safety Officials</a></li> 
+       <li><a href="http://www.smart911connect.com/">&gt; Developers</a></li> 
+      </ul> 
+     </div> 
+    </div> 
+    <hr> 
+    <div id="copyrightFooter">
+      © 2014 Rave Mobile Safety. All Rights Reserved. 
+     <span> <a target="_blank" href="https://www.smart911.com/privacy.html">Privacy Policy</a> | <a target="_blank" href="https://www.smart911.com/terms.html">Terms of use</a> </span> 
+    </div> 
+   </div> 
+  </div> 
+  <div id="modalBackground" class="haze"> 
+  </div> 
+  <script type="text/javascript">
+            head.js("/js/smart911.min.js",
+                    "/js/libs/jquery.touchscroll.min.js",
+                    "/js/stringFunctions.js",
+                    "/js/validateFormInputs.min.js",
+                    "/js/placeholder.min.js");
+            if (head.browser.ie)  {
+                head.js("/js/libs/modernizr-1.7.min.js");
+            }
+        </script> 
+  <script>
+
+        if ((screen.width <= 1024) && ($('#headerControlsWrapper').length > 0))
+        {
+            $('#headerControlsWrapper').css('marginTop', 40);
+        }
+
+        if (top.location != location)
+        {
+            $('BODY').addClass('iframed');
+            $('#logoutLink').hide();
+        }
+
+    </script> 
+  <!-- START TRANSLATION --> 
+  <script language="javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                gaTrack: true,
+                gaId: 'UA-11337715-6'
+            }, 'google_translate_element');
+        }
+
+
+    </script> 
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> 
+  <!-- END TRANSLATION -->   
+ </body>
+</html>

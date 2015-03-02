@@ -1,0 +1,274 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+ <!-- InstanceBegin template="/Templates/new_main.dwt.jsp" codeOutsideHTMLIsLocked="false" -->
+ <head> 
+  <!-- InstanceBeginEditable name="doctitle" --> 
+  <title>My Last Dip</title> 
+  <!-- InstanceEndEditable --> 
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+  <link type="text/css" rel="stylesheet" href="/mld.css"> 
+  <script language="javascript" src="js/common.js"></script> 
+  <script type="text/javascript" src="js/internalpopup.js"></script> 
+  <script language="javascript"> 
+
+
+var onloadFuncList = new Array();
+
+function addOnloadFunction(f){
+	onloadFuncList[onloadFuncList.length] = f;
+}//addOnloadFunction
+
+function runOnloadFunctions(){
+	for(i=0; i<onloadFuncList.length; i++){
+		eval(onloadFuncList[i]);
+	}
+	
+}//runOnloadFunctions
+
+</script> 
+  <!-- InstanceBeginEditable name="head" --> 
+  <script type="text/javascript" src="/js/prototype.js"></script> 
+  <script type="text/javascript" src="/js/internalpopup.js"></script> 
+  <!-- InstanceEndEditable --> 
+ </head> 
+ <body leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0"> 
+  <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+   <tbody>
+    <tr> 
+     <td align="center" class="printVisible"> 
+      <table width="850" border="0" cellpadding="0" cellspacing="0"> 
+       <tbody>
+        <tr> 
+         <td rowspan="8" width="20"><img src="/images/spacer.gif" width="10" height="1"></td> 
+         <td rowspan="4" width="160"> <a href="index.jsp"><img src="/images/mainlogo.gif" width="160" height="151" border="0"></a> </td> 
+         <td> 
+          <table cellpadding="0" cellspacing="0" border="0" width="100%"> 
+           <tbody>
+            <tr> 
+             <td valign="bottom" align="left" class="functionText headerText headerFooterColor">Web-based smokeless tobacco cessation project</td> 
+             <td align="right" width="1"><img src="/images/spacer.gif" width="1" height="46"></td> 
+            </tr> 
+           </tbody>
+          </table> </td> 
+         <td rowspan="8" width="20"><img src="/images/spacer.gif" width="10" height="1"></td> 
+        </tr> 
+        <tr> 
+         <td width="653" class="brownNavbar"> 
+          <table cellpadding="0" cellspacing="0" border="0" width="100%"> 
+           <tbody>
+            <tr> 
+             <td align="left" width="1"><img src="images/spacer.gif" width="1" height="62"></td> 
+             <td align="right" valign="top"> 
+              <!-- InstanceBeginEditable name="dateinfobar" --> 
+              <!-- InstanceEndEditable --> </td> 
+            </tr> 
+           </tbody>
+          </table> </td> 
+        </tr> 
+        <tr> 
+         <td class="navbar"> 
+          <table cellpadding="0" cellspacing="0" border="0" width="100%"> 
+           <tbody>
+            <tr> 
+             <td align="left" width="1"><img src="/images/spacer.gif" width="1" height="17.9"></td> 
+             <td valign="center" align="right">
+              <!-- InstanceBeginEditable name="navbar" --> 
+              <table border="0" cellpadding="0" cellspacing="0"> 
+               <tbody>
+                <tr> 
+                 <td class="navCell"><a href="index.jsp" class="functionText navText ">HOME</a></td> 
+                </tr> 
+               </tbody>
+              </table> 
+              <!-- InstanceEndEditable --></td> 
+            </tr> 
+           </tbody>
+          </table> </td> 
+        </tr> 
+        <tr>
+         <td><img src="/images/spacer.gif" width="1" height="22"></td>
+        </tr> 
+        <tr> 
+         <td valign="top"> 
+          <!-- InstanceBeginEditable name="sidebars" --> 
+          <!-- Attribute not triggered --> 
+          <!-- INCLUDE LOG IN SIDEBAR --> <script src="/js/jquery-1.11.1.min.js"></script> <script language="javascript">
+function parseField(response,field){
+	return response.getElementsByTagName(field)[0]==null?"":response.getElementsByTagName(field)[0].firstChild==null?"":response.getElementsByTagName(field)[0].firstChild.data;
+}//parseField
+
+function submitLogin(){
+	var username = document.getElementById("username").value;
+	var password = document.getElementById("password").value;
+	
+	// use AJAX to determine need for assessments, baseline, login questions
+	$.post( "/loginXML.jsp",
+	{
+		username:username,
+		password:password
+	}, 
+	function( data ) {
+		processLogin(data);
+	});
+	function processLogin(data){
+	
+			var xmlobj = data.getElementsByTagName("login");
+			var destination = parseField(xmlobj[0],"destination");
+			var sid = parseField(xmlobj[0],"sid");
+			if(destination=="popup"){
+				launchPopupDocument("loginPopup.jsp?username=" + username,275,350,0,false);
+			}else if(destination=="failure"){
+				alert("Sorry, either your username or password is incorrect.  Please check the values and log in again, or use the \"Sign up now!\" button if you are a new member.");
+			}else if(destination=="withdraw"){
+				alert("Sorry, you have been withdraw from the program. If this is a mistake, please contact the Oregon Research Institute at mylastdip@ori.org");
+			}else if(destination=="chewfree"){
+				location.href = "https://www.chewfree.com/chewfreelogin.cfm?subjID=" + sid;
+			}else{
+				location.href = "" + destination;
+			}
+		
+	};
+}//submitLogin
+
+
+function checkKeyEnter(e){
+	if(window.event){
+		if(window.event.keyCode == 13){
+			submitLogin();
+		}
+	}else if(e.which){
+		if(e.which == 13){
+			submitLogin();
+		}
+	}
+}
+</script> 
+          <table cellpadding="0" cellspacing="0" border="0" width="100%"> 
+           <tbody>
+            <tr> 
+             <td><img src="images/spacer.gif" width="1" height="15"></td> 
+            </tr> 
+            <tr> 
+             <td align="center">
+              <table cellpadding="0" cellspacing="0" border="0" class="sideNavTable"> 
+               <tbody>
+                <tr> 
+                 <td class="sideNavTabOutside" align="left">
+                  <table cellpadding="0" cellspacing="0" border="0"> 
+                   <tbody>
+                    <tr> 
+                     <td width="17"><img src="images/sideNavTabLeft.gif" width="17" height="22"></td> 
+                     <td class="sideNavTab functionText">LOG IN</td> 
+                     <td width="17"><img src="images/sideNavTabRight.gif" width="17" height="22"></td> 
+                    </tr> 
+                   </tbody>
+                  </table></td> 
+                </tr> 
+                <tr class="sideNavRow"> 
+                 <td align="left" class="normalText formText"><input type="text" name="username" id="username" value="" class="formFieldClass1" style="width: 117px;"> <br> Username</td> 
+                </tr> 
+                <tr class="sideNavRow"> 
+                 <td align="left" class="normalText formText"><input type="password" name="password" id="password" value="" class="formFieldClass1" style="width: 117px;" onkeypress="checkKeyEnter(event)"> <br> Password</td> 
+                </tr> 
+                <tr class="sideNavRow"> 
+                 <td align="right"><input type="button" name="loginsubmit" id="loginsubmit" value="SUBMIT" class="formButton" onclick="submitLogin();" onmouseover="style.cursor='pointer'"></td> 
+                </tr> 
+                <tr class="sideNavRow"> 
+                 <td align="left"><a href="retrieve_password.jsp" class="normalText linkMedium">Forgot username<br> or password?</a></td> 
+                </tr> 
+               </tbody>
+              </table></td> 
+            </tr> 
+            <tr> 
+             <td style="border:none; outline:none;height:10px">&nbsp;</td> 
+            </tr> 
+            <tr> 
+             <td align="center"><a href="registration/submit_email.jsp"><img src="images/signUpButton.gif" width="132" height="55" border="0" class="sideNavBorder"></a></td> 
+            </tr> 
+            <tr> 
+             <td style="border:none; outline:none;height:10px">&nbsp;</td> 
+            </tr> 
+            <!--<tr><td align="center"><div class="sideBarBox sideNavBorder" align="left"><a href="provisitors.jsp" class="normalText largerText linkMild">Professional Visitors click here</a></div></td></tr>---> 
+           </tbody>
+          </table> 
+          <!-- InstanceEndEditable --> </td> 
+         <td valign="top" align="left" class="printVisible">
+          <!-- InstanceBeginEditable name="maincontent" --> 
+          <table cellpadding="0" cellspacing="0" border="0" width="100%"> 
+           <tbody>
+            <tr> 
+             <td valign="top"> 
+              <table cellpadding="0" cellspacing="0" border="0" width="100%" class="articleTable"> 
+               <tbody>
+                <tr> 
+                 <td align="left" valign="top"><a href="javascript:launchPopupDocument('WhatIsMLDPopup.jsp',350,400,0);"><img src="images/QuestionSign.gif" width="123" height="117" border="0"></a></td> 
+                 <td align="left" valign="top" class="normalText articleTextCell articleText"><a href="javascript:launchPopupDocument('WhatIsMLDPopup.jsp',350,400,0);" style="text-decoration:none"><span class="articleHeader">What is MyLastDip?</span></a><br> MyLastDip is a Web-based research project website funded by a grant from the National Cancer Institute to evaluate ways to help people quit using smokeless tobacco.<br> <a href="javascript:launchPopupDocument('WhatIsMLDPopup.jsp',350,400,0);" class="linkBright noTextDecoration">&gt;&gt; more...</a></td> 
+                </tr> 
+               </tbody>
+              </table> 
+              <table cellpadding="0" cellspacing="0" border="0" width="100%" class="articleTable"> 
+               <tbody>
+                <tr> 
+                 <td align="left" valign="top"><a href="javascript:launchPopupDocument('DecisionPointPopup.jsp',350,425,0);"><img src="images/ArrowSign.gif" width="126" height="120" border="0"></a></td> 
+                 <td align="left" valign="top" class="normalText articleTextCell articleText"><a href="javascript:launchPopupDocument('DecisionPointPopup.jsp',350,425,0);" style="text-decoration:none"><span class="articleHeader">Reached Your Decision Point?</span></a><br> People who have successfully quit using tobacco often reach a personal decision point when they know they need to do something different in order to quit. <a href="javascript:launchPopupDocument('DecisionPointPopup.jsp',350,425,0);" class="linkBright noTextDecoration">&gt;&gt; more...</a></td> 
+                </tr> 
+               </tbody>
+              </table> 
+              <table cellpadding="0" cellspacing="0" border="0" width="100%" class="articleTable"> 
+               <tbody>
+                <tr> 
+                 <td align="left" valign="top"><a href="javascript:launchPopupDocument('TriedToQuitPopup.jsp',350,400,0);"><img src="images/TriedToQuit2.jpg" width="123" height="117" border="0"></a></td> 
+                 <td align="left" valign="top" class="normalText articleTextCell articleText"><a href="javascript:launchPopupDocument('TriedToQuitPopup.jsp',350,400,0);" style="text-decoration:none"><span class="articleHeader">Tried to Quit Before?</span></a><br> Most tobacco users try to quit many times before they finally succeed. Do not be discouraged if you have tried to quit on your own before without success.<br> <a href="javascript:launchPopupDocument('TriedToQuitPopup.jsp',350,400,0);" class="linkBright noTextDecoration">&gt;&gt; more...</a></td> 
+                </tr> 
+               </tbody>
+              </table> </td> 
+             <td width="15"><img src="images/spacer.gif" width="15" height="1"></td> 
+             <td valign="top"> 
+              <table cellpadding="0" cellspacing="0" border="0" width="100%"> 
+               <tbody>
+                <tr> 
+                 <td align="left" valign="top"> 
+                  <table cellpadding="0" cellspacing="0" border="0"> 
+                   <tbody>
+                    <tr> 
+                     <td width="15"><img src="images/brownTabLeft.gif" width="15" height="17" border="0"></td> 
+                     <td align="center" valign="middle" class="pollTab functionText">TODAY&#x2019;S POLL</td> 
+                     <td width="15"><img src="images/brownTabRight.gif" width="15" height="17" border="0"></td> 
+                    </tr> 
+                   </tbody>
+                  </table> </td> 
+                </tr> 
+                <tr> 
+                 <td align="center" valign="middle" class="pollBox"> <iframe width="304" height="200" src="polls/poll.jsp?poll_section=0" class="pollIFrame" frameborder="0"></iframe> </td> 
+                </tr> 
+               </tbody>
+              </table> </td> 
+            </tr> 
+            <tr>
+             <td colspan="3"><img src="images/spacer.gif" width="1" height="15"></td>
+            </tr> 
+           </tbody>
+          </table> 
+          <!-- InstanceEndEditable --></td> 
+        </tr> 
+        <tr> 
+         <td colspan="2"><img src="/images/spacer.gif" height="20" width="1" border="0"></td> 
+        </tr> 
+        <tr>
+         <td colspan="2" align="center" class="navText"><a href="about.jsp" class="functionText navText ">About Us</a> &nbsp;|&nbsp; <a href="/contact.jsp" class="functionText navText ">Contact Us</a> &nbsp;|&nbsp; <a href="privacy.jsp" class="functionText navText ">Privacy Policy</a></td>
+        </tr> 
+        <tr>
+         <td colspan="2" align="center" class="functionText footerText headerFooterColor">© 2014 Oregon Research Institute</td>
+        </tr> 
+       </tbody>
+      </table> </td> 
+    </tr> 
+   </tbody>
+  </table> 
+  <script language="javascript">
+window.onload = runOnloadFunctions;
+</script> 
+  <div id="sound_span" style="visibility:collapse;"></div>  
+  <!-- InstanceEnd --> 
+ </body>
+</html>

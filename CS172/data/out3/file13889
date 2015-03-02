@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/transitional.dtd">
+<html lang="en">
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+  <meta http-equiv="Pragma" name="Cache-Control" content="no-cache"> 
+  <meta http-equiv="Cache-Control" name="Cache-Control" content="no-cache"> 
+  <link rel="stylesheet" href="https://www.drew.edu/wp-content/themes/Drew-v8-r/css/bannerssb.css" type="text/css"> 
+  <link rel="stylesheet" href="/css/web_defaultprint.css" type="text/css" media="print"> 
+  <title>Dynamic Schedule</title> 
+  <meta http-equiv="Content-Script-Type" name="Default_Script_Language" content="text/javascript"> 
+  <script language="JavaScript" type="text/javascript">
+<!-- Hide JavaScript from older browsers 
+window.onunload = function() {submitcount=0;}
+var submitcount=0;
+function checkSubmit() {
+if (submitcount == 0)
+   {
+   submitcount++;
+   return true;
+   }
+else
+   {
+alert("Your changes have already been submitted.");
+   return false;
+   }
+}
+//  End script hiding -->
+</script> 
+  <script language="JavaScript" type="text/javascript">
+<!-- Hide JavaScript from older browsers 
+//  Function to open a window
+function windowOpen(window_url) {
+   helpWin = window.open(window_url,'','toolbar=yes,status=no,scrollbars=yes,menubar=yes,resizable=yes,directories=no,location=no,width=350,height=400');
+   if (document.images) { 
+       if (helpWin) helpWin.focus()
+   }
+}
+//  End script hiding -->
+</script> 
+ </head> 
+ <body> 
+  <div class="headerwrapperdiv"> 
+   <div class="pageheaderdiv1"> 
+    <a href="#main_content" onmouseover="window.status='Go to Main Content'; return true" onmouseout="window.status=''; return true" onfocus="window.status='Go to Main Content'; return true" onblur="window.status=''; return true" class="skiplinks">Go to Main Content</a> 
+    <h1><a href="http://www.drew.edu/home/">Drew University</a></h1>
+   </div>
+   <div class="headerlinksdiv"> 
+   </div> 
+   <table class="plaintable" summary="This table displays Menu Items and Banner Search textbox." width="100%"> 
+    <tbody>
+     <tr> 
+      <td class="pldefault"> 
+       <div class="headerlinksdiv2">
+         &nbsp; 
+       </div> </td> 
+      <td class="pldefault"><p class="rightaligntext"></p> <span class="pageheaderlinks"> <a href="/wtlhelp/twbhhelp.htm" accesskey="H" onclick="popup = window.open('/wtlhelp/twbhhelp.htm', 'PopupPage','height=500,width=450,scrollbars=yes,resizable=yes'); return false" target="_blank" onmouseover="window.status='';  return true" onmouseout="window.status=''; return true" onfocus="window.status='';  return true" onblur="window.status=''; return true" class="submenulinktext2">HELP</a> | <a href="twbkwbis.P_Logout" accesskey="3" class="submenulinktext2">EXIT</a> </span> </td> 
+     </tr> 
+    </tbody>
+   </table> 
+  </div> 
+  <div class="pagetitlediv"> 
+   <table class="plaintable" summary="This table displays title and static header displays." width="100%"> 
+    <tbody>
+     <tr> 
+      <td class="pldefault"> <h2>Dynamic Schedule</h2> </td> 
+      <td class="pldefault"> &nbsp; </td> 
+      <td class="pldefault"><p class="rightaligntext"></p> 
+       <div class="staticheaders"> 
+       </div> </td> 
+     </tr> 
+     <tr> 
+      <td class="bg3" width="100%" colspan="3"><img src="/wtlgifs/web_transparent.gif" alt="Transparent Image" class="headerImg" title="Transparent Image" name="web_transparent" hspace="0" vspace="0" border="0" height="3" width="10"></td> 
+     </tr> 
+    </tbody>
+   </table> 
+   <a name="main_content"></a> 
+  </div> 
+  <div class="pagebodydiv"> 
+   <!--  ** END OF twbkwbis.P_OpenDoc **  --> 
+   <form action="/prod/bwckgens.p_proc_term_date" method="POST" onsubmit="return checkSubmit()"> 
+    <input type="hidden" name="p_calling_proc" value="bwckschd.p_disp_dyn_sched"> 
+    <table class="dataentrytable" summary="This layout table is used for term selection." width="100%">
+     <caption class="captiontext">
+      Search by Term: 
+     </caption> 
+     <tbody>
+      <tr> 
+       <td class="dedefault"><label for="term_input_id"><span class="fieldlabeltextinvisible">Term</span></label> <select name="p_term" size="1" id="term_input_id"> <option value="">None </option><option value="201540">Summer 2015 (View only) </option><option value="201530">Spring 2015 </option><option value="201525">SP MFA 2015 (View only) </option><option value="201520">January Term 2015 (View only) </option><option value="201510">Fall 2014 (View only) </option><option value="201508">FA MFA 2014 (View only) </option><option value="201505">Summer MAT 2014 (View only) </option><option value="201440">Summer 2014 (View only) </option><option value="201430">Spring 2014 (View only) </option><option value="201425">SP MFA 2014 (View only) </option><option value="201410">Fall 2013 (View only) </option></select> </td> 
+      </tr> 
+     </tbody>
+    </table> 
+    <br> 
+    <input type="hidden" name="p_by_date" value="Y"> 
+    <h3>OR</h3> 
+    <table class="dataentrytable" summary="This layout table is used for date selection." width="30%">
+     <caption class="captiontext">
+      Search by Date Range ( MM/DD/YYYY ):
+     </caption> 
+     <tbody>
+      <tr> 
+       <td class="delabel" scope="row"><label for="from_id"><span class="fieldlabeltext">From:</span></label></td> 
+       <td class="dedefault"> <input type="text" name="p_from_date" size="14" maxlength="12" id="from_id"> </td> 
+       <td class="delabel" scope="row"><label for="to_id"><span class="fieldlabeltext">To:</span></label></td> 
+       <td class="dedefault"> <input type="text" name="p_to_date" size="14" maxlength="12" id="to_id"> </td> 
+      </tr> 
+     </tbody>
+    </table> 
+    <br> 
+    <input type="submit" value="Submit"> 
+    <input type="reset" value="Reset"> 
+   </form> 
+   <!--  ** START OF twbkwbis.P_CloseDoc **  --> 
+   <table class="plaintable" summary="This is table displays line separator at end of the page." width="100%" cellspacing="0" cellpadding="0" border="0">
+    <tbody>
+     <tr>
+      <td class="bgtabon" width="100%" colspan="2"><img src="/wtlgifs/web_transparent.gif" alt="Transparent Image" class="headerImg" title="Transparent Image" name="web_transparent" hspace="0" vspace="0" border="0" height="3" width="10"></td>
+     </tr>
+    </tbody>
+   </table> 
+   <a href="#top" onmouseover="window.status='Skip to top of page'; return true" onmouseout="window.status=''; return true" onfocus="window.status='Skip to top of page'; return true" onblur="window.status=''; return true" class="skiplinks">Skip to top of page</a> 
+  </div> 
+  <div class="footerbeforediv"> 
+  </div> 
+  <div class="footerafterdiv"> 
+  </div> 
+  <div class="globalafterdiv"> 
+  </div> 
+  <div class="globalfooterdiv"> 
+  </div> 
+  <div class="pagefooterdiv"> 
+   <span class="releasetext">Release: 8.5.1</span> 
+  </div> 
+  <div class="poweredbydiv"> 
+  </div> 
+  <div class="div1"></div> 
+  <div class="div2"></div> 
+  <div class="div3"></div> 
+  <div class="div4"></div> 
+  <div class="div5"></div> 
+  <div class="div6"></div> 
+  <div class="banner_copyright"> 
+   <br>
+   <h5>© 2015 Ellucian Company L.P. and its affiliates.<br></h5>
+  </div>   
+ </body>
+</html>

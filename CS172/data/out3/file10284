@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <title>
+        
+          IRIS: 
+  Data Services Newsletter
+  
+  
+
+
+        
+      </title> 
+  <meta name="keywords" content="seismology, seismological data,
+  earthquakes, iris dmc"> 
+  <meta name="description" content="IRIS is a consortium of
+  universities dedicated to the operation of science facilities
+  for the acquisition, management, and distribution of seismological
+  data."> 
+  <!-- Forces IE to render in 'latest' compatible mode --> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"XAYAVVVRGwYGXFlaAAc="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=s(e),f=c.length,u=i(a,o,r),d=0;f>d;d++)c[d].apply(u,n);return u}function a(t,e){f[t]=s(t).concat(e)}function s(t){return f[t]||[]}function c(){return n(e)}var f={};return{on:a,emit:e,create:c,listeners:s,_events:f}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],3:[function(t){function e(t,e,n,i,s){try{c?c-=1:r("err",[s||new UncaughtException(t,e,n)])}catch(f){try{r("ierr",[f,(new Date).getTime(),!0])}catch(u){}}return"function"==typeof a?a.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(5),i=t("ee"),a=window.onerror,s=!1,c=0;t("loader").features.err=!0,window.onerror=e;try{throw new Error}catch(f){"stack"in f&&(t(1),t(4),"addEventListener"in window&&t(2),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&t(3),s=!0)}i.on("fn-start",function(){s&&(c+=1)}),i.on("fn-err",function(t,e,r){s&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){s&&!this.thrown&&c>0&&(c-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:8,2:5,3:9,4:7,5:22,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],4:[function(t){function e(){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var n=t("ee"),r=t("handle"),o=t(1);t("loader").features.stn=!0,t(2),n.on("fn-start",function(t){var e=t[0];e instanceof Event&&(this.bstStart=Date.now())}),n.on("fn-end",function(t,e){var n=t[0];n instanceof Event&&r("bst",[n,e,this.bstStart,Date.now()])}),o.on("fn-start",function(t,e,n){this.bstStart=Date.now(),this.bstType=n}),o.on("fn-end",function(t,e){r("bstTimer",[e,this.bstStart,Date.now(),this.bstType])}),n.on("pushState-start",function(){this.time=Date.now(),this.startPath=location.pathname+location.hash}),n.on("pushState-end",function(){r("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),"addEventListener"in window.performance&&(window.performance.addEventListener("webkitresourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.webkitClearResourceTimings()},!1),window.performance.addEventListener("resourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.clearResourceTimings()},!1)),document.addEventListener("scroll",e,!1),document.addEventListener("keypress",e,!1),document.addEventListener("click",e,!1)}},{1:8,2:6,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],5:[function(t,e){function n(t){i.inPlace(t,["addEventListener","removeEventListener"],"-",r)}function r(t){return t[1]}var o=(t(1),t("ee").create()),i=t(2)(o),a=t("gos");if(e.exports=o,n(window),"getPrototypeOf"in Object){for(var s=document;s&&!s.hasOwnProperty("addEventListener");)s=Object.getPrototypeOf(s);s&&n(s);for(var c=XMLHttpRequest.prototype;c&&!c.hasOwnProperty("addEventListener");)c=Object.getPrototypeOf(c);c&&n(c)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&n(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t){if(t[1]){var e=t[1];"function"==typeof e?this.wrapped=t[1]=a(e,"nr@wrapped",function(){return i(e,"fn-",null,e.name||"anonymous")}):"function"==typeof e.handleEvent&&i.inPlace(e,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:22,2:23,ee:"QJf3ax",gos:"7eSDFh"}],6:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window.history,["pushState"],"-")},{1:23,2:22,ee:"QJf3ax"}],7:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=r(t[0],"fn-")})},{1:23,2:22,ee:"QJf3ax"}],8:[function(t,e){function n(t,e,n){var r=t[0];"string"==typeof r&&(r=new Function(r)),t[0]=o(r,"fn-",null,n)}var r=(t(2),t("ee").create()),o=t(1)(r);e.exports=r,o.inPlace(window,["setTimeout","setInterval","setImmediate"],"setTimer-"),r.on("setTimer-start",n)},{1:23,2:22,ee:"QJf3ax"}],9:[function(t,e){function n(){c.inPlace(this,d,"fn-")}function r(t,e){c.inPlace(e,["onreadystatechange"],"fn-")}function o(t,e){return e}var i=t("ee").create(),a=t(1),s=t(2),c=s(i),f=s(a),u=window.XMLHttpRequest,d=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];e.exports=i,window.XMLHttpRequest=function(t){var e=new u(t);try{i.emit("new-xhr",[],e),f.inPlace(e,["addEventListener","removeEventListener"],"-",function(t,e){return e}),e.addEventListener("readystatechange",n,!1)}catch(r){try{i.emit("internal-error",[r])}catch(o){}}return e},window.XMLHttpRequest.prototype=u.prototype,c.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",o),i.on("send-xhr-start",r),i.on("open-xhr-start",r)},{1:5,2:23,ee:"QJf3ax"}],10:[function(t){function e(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function n(t){var n=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;c>i;i++)t.removeEventListener(s[i],this.listener,!1);if(!n.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){n.status=t.status;var a=t.responseType,f="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,u=e(f);if(u&&(r.rxSize=u),this.sameOrigin){var d=t.getResponseHeader("X-NewRelic-App-Data");d&&(n.cat=d.split(", ").pop())}}else n.status=0;r.cbTime=this.cbTime,o("xhr",[n,r,this.startTime])}}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}if(window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)){t("loader").features.xhr=!0;var o=t("handle"),i=t(2),a=t("ee"),s=["load","error","abort","timeout"],c=s.length,f=t(1);t(4),t(3),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=n,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,n){var r=this.metrics,o=t[0],i=this;if(r&&o){var f=e(o);f&&(r.txSize=f)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof n.onload))&&i.end(n)}catch(e){try{a.emit("internal-error",[e])}catch(r){}}};for(var u=0;c>u;u++)n.addEventListener(s[u],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof XMLHttpRequest&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&&a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{1:"XL7HBI",2:11,3:9,4:5,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],11:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&&e.port===n.port&&e.protocol===n.protocol,r}},{}],12:[function(t,e){function n(t){return function(){r(t,[(new Date).getTime()].concat(i(arguments)))}}var r=t("handle"),o=t(1),i=t(2);"undefined"==typeof window.newrelic&&(newrelic=window.NREUM);var a=["setPageViewName","trackUserAction","finished","traceEvent","inlineHit","noticeError"];o(a,function(t,e){window.NREUM[e]=n("api-"+e)}),e.exports=window.NREUM},{1:21,2:22,handle:"D5DuLP"}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):(o[t]||(o[t]=[]),void o[t].push(e))}var r=t("ee").create(),o={};e.exports=n,n.ee=r,r.q=o},{ee:"QJf3ax"}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],G9z0Bl:[function(t,e){function n(){var t=l.info=NREUM.info;if(t&&t.licenseKey&&t.applicationID&&f&&f.body){s(h,function(e,n){e in t||(t[e]=n)}),l.proto="https"===p.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var e=f.createElement("script");e.src=l.proto+t.agent,f.body.appendChild(e)}}function r(){"complete"===f.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=t(1),c=(t(2),window),f=c.document,u="addEventListener",d="attachEvent",p=(""+location).split("?")[0],h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-536.min.js"},l=e.exports={offset:i(),origin:p,features:{}};f[u]?(f[u]("DOMContentLoaded",o,!1),c[u]("load",n,!1)):(f[d]("onreadystatechange",r),c[d]("onload",n)),a("mark",["firstbyte",i()])},{1:21,2:12,handle:"D5DuLP"}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],21:[function(t,e){function n(t,e){var n=[],o="",i=0;for(o in t)r.call(t,o)&&(n[i]=e(o,t[o]),i+=1);return n}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],22:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],23:[function(t,e){function n(t){return!(t&&"function"==typeof t&&t.apply&&!t[i])}var r=t("ee"),o=t(1),i="nr@wrapper",a=Object.prototype.hasOwnProperty;e.exports=function(t){function e(t,e,r,a){function nrWrapper(){var n,i,s,f;try{i=this,n=o(arguments),s=r&&r(n,i)||{}}catch(d){u([d,"",[n,i,a],s])}c(e+"start",[n,i,a],s);try{return f=t.apply(i,n)}catch(p){throw c(e+"err",[n,i,p],s),p}finally{c(e+"end",[n,i,f],s)}}return n(t)?t:(e||(e=""),nrWrapper[i]=!0,f(t,nrWrapper),nrWrapper)}function s(t,r,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<r.length;c++)s=r[c],a=t[s],n(a)||(t[s]=e(a,f?s+o:o,i,s,t))}function c(e,n,r){try{t.emit(e,n,r)}catch(o){u([o,e,n,r])}}function f(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){u([r])}for(var o in t)a.call(t,o)&&(e[o]=t[o]);return e}function u(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=r),e.inPlace=s,e.flag=i,e}},{1:22,ee:"QJf3ax"}]},{},["G9z0Bl",3,10,4]);</script>
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","queueTime":0,"licenseKey":"a0c27f55c0","agent":"js-agent.newrelic.com/nr-536.min.js","transactionName":"MQNUbUAAW0UAVEwKVwhJcExcAkFfDlkXDV0RFVpcRhVQRE9BUQZPFVx4XEUSWVMVQ10RcQgCU0E=","applicationID":"5688876","errorBeacon":"bam.nr-data.net","applicationTime":1222}</script> 
+  <link rel="stylesheet" media="screen" type="text/css" href="/static/css/iris.css"> 
+  <link rel="stylesheet" media="print" type="text/css" href="/static/css/new_site/print.css"> 
+  <link rel="stylesheet" media="screen" type="text/css" href="/static/css/new_site/megamenu.css"> 
+  <link rel="stylesheet" media="screen" type="text/css" href="/static/css/new_site/nivo-slider.css"> 
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script> 
+  <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script> 
+  <!--
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+    --> 
+  <script type="text/javascript" src="/static/libs/megamenu/megamenu_plugins.js"></script> 
+  <script type="text/javascript" src="/static/libs/megamenu/megamenu.min.js"></script> 
+  <script type="text/javascript">
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-1860730-1', 'iris.edu');
+      ga('send', 'pageview');
+
+      // Send event on nav menu link
+      $(function() {
+        $("nav a").click(function() {
+          var href = this.href;
+          var nav_done = false;
+          var do_nav = function() { if (!nav_done) { document.location = href; nav_done = true; } };
+          setTimeout(do_nav, 100);
+          ga('send', 'event', 'nav_menu', 'click', href, { hitCallback: do_nav });
+          return false;
+        });
+      });
+    </script> 
+  <!-- START: Syntax highlighting --> 
+  <link rel="stylesheet" type="text/css" href="/static/libs/prettify/r298/css/prettify.css"> 
+  <script type="text/javascript" src="/static/libs/prettify/r298/js/prettify.js">
+  </script> 
+  <script type="text/javascript">
+  $(document).ready(function(){
+    prettyPrint();
+  });
+  </script> 
+  <!-- END: Syntax highlighting --> 
+  <style type="text/css" media="all">@import "/static/newsletter/css/style.css";</style> 
+ </head> 
+ <body> 
+  <div class="resource-wrapper"> 
+   <div class="resources container"> 
+    <div class="row"> 
+     <div class="col-xs-8"> 
+      <a href="http://www.iris.edu/hq/contact" title="Contact Us">Contact Us</a> 
+      <a href="http://www.iris.edu/hq/staff" title="Staff">Staff</a> 
+      <a href="http://www.iris.edu/hq/calendar">Calendar</a> 
+     </div> 
+     <div class="col-xs-4"> 
+      <div class="search"> 
+       <form action="http://www.iris.edu/hq/search" method="get"> 
+        <input type="hidden" name="cx" value="000587591391783241528:dsb0_jo9rjy"> 
+        <input type="hidden" name="cof" value="FORID:9"> 
+        <input type="hidden" name="ie" value="UTF-8"> 
+        <div class="input-group input-group-sm"> 
+         <input class="form-control" name="q" type="text"> 
+         <span class="input-group-btn"> <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button> </span> 
+        </div> 
+       </form> 
+      </div>
+      <!-- .search --> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <div id="site-container"> 
+   <header> 
+    <div id="header-container"> 
+     <div class="container"> 
+      <div id="header"> 
+       <div id="header-left"> 
+        <div id="logo"> 
+         <a href="http://www.iris.edu/hq" title="IRIS"> <img src="/static/img/layout/logos/header-logo.png" alt="IRIS"> </a> 
+        </div> 
+        <div id="logo-name"> 
+         <img src="/static/img/layout/logos/HomeText_bold.png" alt="Incorporated Research Institutions for Seismology"> 
+        </div> 
+       </div>
+       <!-- #header-left --> 
+       <div id="header-right"> 
+        <ul id="top-menu"> 
+         <li> <a href="" title="Resources" id="resources">Resources/Search</a> </li> 
+         <li> <a href="/hq/programs/education_and_outreach/social_media" title="Social Media"> <img src="/static/img/layout/buttons/social-top.png" alt="Social Media"> </a> </li> 
+        </ul> 
+        <script type="text/javascript">
+            $('a#resources').on('click', function(e) {
+              e.preventDefault();
+              $('div.resource-wrapper').slideToggle('300');
+            });
+          </script> 
+        <div id="nsf-logo"> 
+         <a href="http://www.nsf.gov/" title="The National Science Foundation" target="_blank"> <img src="/static/img/layout/logos/nsf.png" alt="The National Science Foundation"> </a> 
+        </div> 
+        <div id="nsf"> 
+         <!--
+            <div id="nsf-text">
+              A university consortium dedicated to the
+              operation of science facilities for the
+              acquisition, management, and distribution of
+              freely available seismic data.
+            </div>
+            --> 
+        </div>
+        <!-- #nsf --> 
+       </div>
+       <!-- #header-right --> 
+      </div>
+      <!-- #header --> 
+     </div> 
+    </div>
+    <!-- #header-container --> 
+   </header> 
+   <div class="container"> 
+    <div class="wrapper"> 
+     <div> 
+      <ul class="breadcrumb"> 
+       <li> <a href="/">Home</a> </li> 
+       <li> <a href="/ds">Data Services</a> </li> 
+       <li> <a href="/ds/newsletter">Newsletter</a> </li> 
+      </ul> 
+     </div> 
+     <div id="page"> 
+      <div class="row"> 
+       <div class="col-xs-12"> 
+        <div id="page-content"> 
+         <h1> Data Services Newsletter </h1> 
+         <div id="content"> 
+          <div class="row"> 
+           <div class="col-xs-10"> 
+            <p> The Data Services Newsletter is a quarterly online publication that focuses on the data and services available through the Data Management System. Each newsletter highlights new and existing data access tools, data types, projects and features of the IRIS Data Management System. </p> 
+            <p> Total number of newsletters <strong>52</strong>. You can also <a href="/ds/newsletter/tag/">search for articles based on how they have been tagged</a>, <a href="/ds/newsletter/author/"> search for articles based on author</a> or <a href="/ds/newsletter/section/">view articles from each section</a>. </p> 
+           </div> 
+           <div class="col-xs-2"> 
+            <span class="dmc-inline-logo"> <strong>DS</strong> </span> 
+           </div> 
+          </div> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol16/no3"> Winter 2014 – </a> <small> <a href="/ds/newsletter/vol16"> Volume 16 </a>, <a href="/ds/newsletter/vol16/no3"> Number 3 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol16/no3/federated-services-within-seismology-the-iris-involvement-in-the-coopeus-project/"> Federated services within seismology: the IRIS involvement in the COOPEUS Project </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol16/no3/building-the-earthcube-geows-block-data-discovery-and-access-across-multiple-geoscience-domains/"> Building the EarthCube GeoWS block: data discovery and access across multiple geoscience domains </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol16/no3/data-from-the-ooi-cabled-array-seismic-network-in-cascadia-is-now-available/"> Data from the OOI Cabled Array Seismic Network in Cascadia is now available </a> </li> 
+             <li> <span class="newsletter-section-inline">Products</span> – <a href="/ds/newsletter/vol16/no3/aftershocks/"> Aftershocks </a> </li> 
+             <li> <span class="newsletter-section-inline">Products</span> – <a href="/ds/newsletter/vol16/no3/global-stacks/"> Global stacks </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol16/no3/robert-weekly-quality-and-deployment-system-engineer/"> Robert Weekly - Quality and Deployment System Engineer </a> </li> 
+             <li> <span class="newsletter-section-inline">New Networks</span> – <a href="/ds/newsletter/vol16/no3/new-networks-at-the-dmc/"> New Networks at the DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">New Data</span> – <a href="/ds/newsletter/vol16/no3/new-data-at-the-dmc/"> New Data at the DMC </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol16/no3"> <img src="/media/newsletter/vol16/no3/federated-services-within-seismology-the-iris-involvement-in-the-coopeus-project/coopeus.png" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol16/no2"> Summer 2014 – </a> <small> <a href="/ds/newsletter/vol16"> Volume 16 </a>, <a href="/ds/newsletter/vol16/no2"> Number 2 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol16/no2/whats-new-at-the-international-deployment-of-accelerometers-data-collection-center/"> What's new at the International Deployment of Accelerometer's Data Collection Center </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol16/no2/iris-data-services-sponsors-the-8th-data-management-workshop-in-bogota-colombia/"> IRIS Data Services Sponsors the 8th Data Management Workshop in Bogotá, Colombia </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol16/no2/comprehensive-data-analytics-as-a-service-the-mustang-project/"> Comprehensive Data Analytics as a Service -- The MUSTANG Project </a> </li> 
+             <li> <span class="newsletter-section-inline">Products</span> – <a href="/ds/newsletter/vol16/no2/data-product-development-in-collaboration-with-the-research-community/"> Data product development in collaboration with the research community </a> </li> 
+             <li> <span class="newsletter-section-inline">Products</span> – <a href="/ds/newsletter/vol16/no2/new-automated-surface-wave-phase-velocity-measuring-system-aswms/"> New Automated Surface-Wave Phase-Velocity Measuring System (ASWMS) </a> </li> 
+             <li> <span class="newsletter-section-inline">Products</span> – <a href="/ds/newsletter/vol16/no2/the-new-university-of-washington-continuous-envelope-functions/"> The new University of Washington Continuous Envelope Functions </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol16/no2/very-old-mount-st-helens-data-arrives-at-the-dmc/"> Very old Mount St. Helens data arrives at the DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol16/no2/mike-stults-java-web-services-engineer/"> Mike Stults - Java Web Services Engineer </a> </li> 
+             <li> <span class="newsletter-section-inline">New Networks</span> – <a href="/ds/newsletter/vol16/no2/new-networks-at-the-dmc/"> New Networks at the DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">New Data</span> – <a href="/ds/newsletter/vol16/no2/new-data-at-the-dmc/"> New Data at the DMC </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol16/no2"> <img src="/media/newsletter/vol16/no2/whats-new-at-the-international-deployment-of-accelerometers-data-collection-center/figure1.jpg" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol16/no1"> Spring 2014 – </a> <small> <a href="/ds/newsletter/vol16"> Volume 16 </a>, <a href="/ds/newsletter/vol16/no1"> Number 1 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol16/no1/core-systems-and-web-services-running-at-the-auxilary-data-center/"> Core systems and web services running at the Auxilary Data Center </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol16/no1/data-services-directorate-continues-support-for-international-training-workshops/"> Data Services Directorate Continues Support for International Training Workshops </a> </li> 
+             <li> <span class="newsletter-section-inline">Products</span> – <a href="/ds/newsletter/vol16/no1/missouri-st-shear-wave-splitting-database/"> Missouri S&amp;T shear-wave splitting database </a> </li> 
+             <li> <span class="newsletter-section-inline">Products</span> – <a href="/ds/newsletter/vol16/no1/source-time-functions/"> Source time functions </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol16/no1/inaugural-dmc-staff-retreat/"> Inaugural DMC staff retreat </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol16/no1/rick-benson-celebrating-20-years-at-the-iris-dmc/"> Rick Benson - celebrating 20 years at the IRIS DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">New Networks</span> – <a href="/ds/newsletter/vol16/no1/new-networks-at-the-dmc/"> New Networks at the DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">New Data</span> – <a href="/ds/newsletter/vol16/no1/new-data-at-the-dmc/"> New Data at the DMC </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol16/no1"> <img src="/media/newsletter/vol16/no1/another-dmc-core-systems-and-web-services-running-at-the-auxilary-data-center/lvoc.jpg" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol15/no3"> Winter 2013 – </a> <small> <a href="/ds/newsletter/vol15"> Volume 15 </a>, <a href="/ds/newsletter/vol15/no3"> Number 3 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol15/no3/the-new-nigerian-network-of-seismographic-stations/"> The New Nigerian Network of Seismographic Stations </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol15/no3/digital-object-identifiers-for-fdsn-network-operators/"> Digital Object Identifiers for FDSN network operators </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol15/no3/iris-epo-team-release-the-new-iris-earthquake-browser-ieb/"> IRIS EPO team release the new IRIS Earthquake Browser (IEB) </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol15/no3/sac-version-1016a-patch-release/"> SAC Version 101.6a patch release </a> </li> 
+             <li> <span class="newsletter-section-inline">Web Update</span> – <a href="/ds/newsletter/vol15/no3/new-web-application-helps-users-determine-the-best-dmc-tool-available/"> New web application helps users determine the best DMC Tool available </a> </li> 
+             <li> <span class="newsletter-section-inline">Web Update</span> – <a href="/ds/newsletter/vol15/no3/new-web-application-provides-an-interactive-tool-to-understand-timeseries-data-channel-codes/"> New web application provides an interactive tool to understand timeseries data channel codes </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol15/no3/iris-dmc-staff-photo/"> IRIS DMC Staff Photo </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol15/no3/yigong-liu-software-engineer/"> Yigong Liu - Software Engineer </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol15/no3/new-networks-at-the-dmc/"> New Networks at the DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol15/no3/new-data-at-the-dmc/"> New Data at the DMC </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol15/no3"> <img src="/media/newsletter/vol15/no3/the-new-nigerian-network-of-seismographic-stations/nigeria-map.png" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol15/no2"> Fall 2013 – </a> <small> <a href="/ds/newsletter/vol15"> Volume 15 </a>, <a href="/ds/newsletter/vol15/no2"> Number 2 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol15/no2/ta-network-final-datasets-at-the-iris-data-management-center/"> TA network "final" datasets at the IRIS Data Management Center </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol15/no2/the-regional-exchange-of-earthquake-data-reed-project/"> The Regional Exchange of Earthquake Data (REED) Project </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol15/no2/usarray-transportable-array-station-siting-summary-the-wisdom-of-8-years-on-the-road/"> USArray Transportable Array station siting summary - the wisdom of 8 years on the road </a> </li> 
+             <li> <span class="newsletter-section-inline">Node Focus</span> – <a href="/ds/newsletter/vol15/no2/super-ground-motion-visualizations-sgmvs/"> Super Ground Motion Visualizations (SGMVs) </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol15/no2/mohammed-taher-database-administrator/"> Mohammed Taher - Database Administrator </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol15/no2/new-data-at-the-dmc/"> New Data at the DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol15/no2/new-networks-at-the-dmc/"> New Networks at the DMC </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol15/no2"> <img src="/media/newsletter/vol15/no2/ta-network-final-datasets-at-the-iris-data-management-center/usarray-20130927.gif" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol15/no1"> Summer 2013 – </a> <small> <a href="/ds/newsletter/vol15"> Volume 15 </a>, <a href="/ds/newsletter/vol15/no1"> Number 1 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol15/no1/obsip-supporting-cascadia-initiative-and-improving-ocean-bottom-seismograph-data-quality/"> OBSIP: Supporting Cascadia Initiative and Improving Ocean Bottom Seismograph Data Quality </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol15/no1/fdsn-web-services-and-a-new-service-home-at-the-dmc/"> FDSN web services and a new service home at the DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol15/no1/iris-dmc-special-event-webpages/"> IRIS DMC Special Event Webpages </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol15/no1/software-updates-at-the-dmc/"> Software updates at the DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Web Update</span> – <a href="/ds/newsletter/vol15/no1/wilber-3-release/"> Wilber 3 Release </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol15/no1/sarah-ashmore-data-control-technician/"> Sarah Ashmore - Data Control Technician </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol15/no1/new-networks-at-the-dmc/"> New Networks at the DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol15/no1/new-data-at-the-dmc/"> New Data at the DMC </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol15/no1"> <img src="/media/newsletter/vol15/no1/obsip-supporting-cascadia-initiative-and-improving-ocean-bottom-seismograph-data-quality/obsip_wecoma.jpg" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol14/no3"> Winter 2012 – </a> <small> <a href="/ds/newsletter/vol14"> Volume 14 </a>, <a href="/ds/newsletter/vol14/no3"> Number 3 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol14/no3/seiscode-a-seismological-software-repository/"> SeisCode: a seismological software repository </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol14/no3/new-dmc-primary-archive-disk-replacement/"> New DMC Primary Archive Disk Replacement </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol14/no3/global-shakemovie-synthetic-seismograms-available-at-the-dmc/"> Global ShakeMovie synthetic seismograms available at the DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol14/no3/portable-data-collection-center-v39-same-but-different/"> Portable Data Collection Center v3.9 – Same But Different </a> </li> 
+             <li> <span class="newsletter-section-inline">Products</span> – <a href="/ds/newsletter/vol14/no3/effects-of-hurricane-sandy-visualized-across-the-usarray/"> Effects of Hurricane Sandy visualized across the USArray </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol14/no3/celso-reyes-quality-assurance-engineer/"> Celso Reyes - Quality Assurance Engineer </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol14/no3/sue-schoch-senior-software-engineer-retires/"> Sue Schoch - Senior Software Engineer - Retires </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol14/no3/new-networks-at-the-dmc/"> New Networks at the DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol14/no3/new-data-at-the-dmc/"> New Data at the DMC </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol14/no3"> <img src="/media/newsletter/vol14/no3/seiscode-a-seismological-software-repository/seiscode_infographic.png" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol14/no2"> Fall 2012 – </a> <small> <a href="/ds/newsletter/vol14"> Volume 14 </a>, <a href="/ds/newsletter/vol14/no2"> Number 2 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol14/no2/leaner-greener-data-management-at-iris-dmc/"> Leaner, Greener Data Management at IRIS DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol14/no2/spud-20/"> SPUD 2.0 </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol14/no2/web-services-get-a-tuneup-in-2012/"> Web Services Get a Tuneup in 2012 </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol14/no2/jevalresp-and-jplotresp-now-use-iris-web-services/"> JEvalResp and JPlotResp Now Use IRIS Web Services </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol14/no2/pqlx-2011365-goes-open-source/"> PQLX 2011.365 Goes Open Source </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol14/no2/jweed-40-released/"> JWEED 4.0 Released </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol14/no2/rob-newman-information-services-coordinatorwebmaster/"> Rob Newman - Information Services Coordinator/Webmaster </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol14/no2/new-data-at-the-dmc/"> New Data at the DMC </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol14/no2"> <img src="/media/newsletter/vol14/no2/leaner-greener-data-management-at-iris-dmc-the-journey-of-virtual-machine-consolidation/virtual_machine.png" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol14/no1"> Spring 2012 – </a> <small> <a href="/ds/newsletter/vol14"> Volume 14 </a>, <a href="/ds/newsletter/vol14/no1"> Number 1 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol14/no1/the-relevance-of-seismic-fields-for-gravitational-wave-detection/"> The Relevance of Seismic Fields for Gravitational-Wave Detection </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol14/no1/share-and-preview-earth-models-using-the-emc/"> Share and Preview Earth Models Using the EMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol14/no1/direct-data-access-from-within-matlab/"> Direct Data Access from within MATLAB® </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol14/no1/jevalresp-and-jplotresp-v17/"> JEvalResp and JPlotResp v1.7 </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol14/no1/sac-v1015c/"> SAC v101.5c </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol14/no1/rdseed-52/"> rdseed 5.2 </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol14/no1/pdcc-38/"> PDCC 3.8 </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol14/no1/pqlx-v2011365/"> PQLX v2011.365 </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol14/no1/adam-clark-web-applications-developer/"> Adam Clark - Web Applications Developer </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol14/no1/new-data-at-the-dmc/"> New Data at the DMC </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol14/no1"> <img src="/media/newsletter/vol14/no1/the-relevance-of-seismic-fields-for-gravitational-wave-detection/ligo.png" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol13/no2"> Summer 2011 – </a> <small> <a href="/ds/newsletter/vol13"> Volume 13 </a>, <a href="/ds/newsletter/vol13/no2"> Number 2 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol13/no2/the-iris-dmc-knowledge-base-finding-answers-fast/"> The IRIS DMC Knowledge Base: Finding answers fast </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol13/no2/iris-help-center-providing-answers-to-frequently-asked-questions/"> IRIS Help Center: Providing answers to Frequently Asked Questions </a> </li> 
+             <li> <span class="newsletter-section-inline">Workshops</span> – <a href="/ds/newsletter/vol13/no2/iris-metadata-workshop/"> IRIS Metadata Workshop </a> </li> 
+             <li> <span class="newsletter-section-inline">Workshops</span> – <a href="/ds/newsletter/vol13/no2/advanced-studies-institute-on-earthquake-location/"> Advanced Studies Institute on Earthquake Location </a> </li> 
+             <li> <span class="newsletter-section-inline">Web Update</span> – <a href="/ds/newsletter/vol13/no2/new-iris-mousepad/"> New IRIS Mousepad </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol13/no2/vase-29/"> VASE 2.9 </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol13/no2/rdseed-51/"> rdseed 5.1 </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol13/no2/ashley-spencer-data-control-technician/"> Ashley Spencer - Data Control Technician </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol13/no2/new-networks-at-the-dmc/"> New Networks at the DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol13/no2/new-data-at-the-dmc/"> New Data at the DMC </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol13/no2"> <img src="/media/newsletter/vol13/no2/the-iris-dmc-knowledge-base-finding-answers-fast/kb-screenshot.png" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol13/no1"> Spring 2011 – </a> <small> <a href="/ds/newsletter/vol13"> Volume 13 </a>, <a href="/ds/newsletter/vol13/no1"> Number 1 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol13/no1/dms-data-products-for-the-tohoku-japan-earthquake/"> DMS Data Products for the Tohoku, Japan Earthquake </a> </li> 
+             <li> <span class="newsletter-section-inline">Statistics</span> – <a href="/ds/newsletter/vol13/no1/iris-web-statistics-for-the-m90-tohoku-japan-earthquake/"> IRIS Web Statistics for the M9.0 Tohoku, Japan earthquake </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol13/no1/preliminary-research-results-for-the-m90-tohoku-japan-earthquake/"> Preliminary research results for the M9.0 Tohoku, Japan earthquake </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol13/no1/december-2010-dmc-computer-center-remodel/"> December 2010 DMC Computer Center Remodel </a> </li> 
+             <li> <span class="newsletter-section-inline">New Data</span> – <a href="/ds/newsletter/vol13/no1/historical-seismograms-online/"> Historical Seismograms Online </a> </li> 
+             <li> <span class="newsletter-section-inline">Web Update</span> – <a href="/ds/newsletter/vol13/no1/data-access-navigator/"> Data Access Navigator </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol13/no1/yazan-suleiman-software-engineer/"> Yazan Suleiman - Software Engineer </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol13/no1/rick-braman-retires-from-the-iris-dmc/"> Rick Braman retires from the IRIS DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol13/no1/station-web-service/"> Station Web Service </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol13/no1/cayman-islands-network/"> Cayman Islands Network </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol13/no1/new-data-at-the-dmc/"> New Data at the DMC </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol13/no1"> <img src="/media/newsletter/vol13/no1/dms-data-products-for-the-tohoku-japan-earthquake/tohoku_data_fig1.png" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol12/no3"> Winter 2010 – </a> <small> <a href="/ds/newsletter/vol12"> Volume 12 </a>, <a href="/ds/newsletter/vol12/no3"> Number 3 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol12/no3/iris-dms-conducts-its-5th-metadata-workshop-in-foz-do-iguacu-brazil/"> IRIS DMS Conducts its 5th Metadata Workshop in Foz do Iguaçu, Brazil </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol12/no3/web-services-at-the-dmc/"> Web Services at the DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol12/no3/m-quality-data/"> M Quality Data </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol12/no3/vase-29-coming-soon/"> VASE 2.9 - Coming soon </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol12/no3/inge-watson-senior-systems-administrator/"> Inge Watson - Senior Systems Administrator </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol12/no3/new-networks-at-the-dmc/"> New Networks at the DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol12/no3/new-data-at-the-dmc/"> New Data at the DMC </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol12/no3"> <img src="/media/newsletter/vol12/no3/iris-dms-conducts-its-5th-metadata-workshop-in-foz-do-iguacu-brazil/graphic_1.png" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol12/no2"> Fall 2010 – </a> <small> <a href="/ds/newsletter/vol12"> Volume 12 </a>, <a href="/ds/newsletter/vol12/no2"> Number 2 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol12/no2/earthscope-automated-receiver-survey-ears-at-the-iris-dmc/"> EarthScope Automated Receiver Survey (EARS) at the IRIS DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol12/no2/pdcc-37/"> PDCC 3.7 </a> </li> 
+             <li> <span class="newsletter-section-inline">Node Focus</span> – <a href="/ds/newsletter/vol12/no2/iris-dmc-tools-survey-results/"> IRIS DMC Tools Survey Results </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol12/no2/rdseed-50/"> rdseed 5.0 </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol12/no2/sac-v1014-release/"> SAC v101.4 Release </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol12/no2/jevalresp-and-jplotresp-v16/"> JEvalResp and JPlotResp v1.6 </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol12/no2/sac-manual-new-version/"> SAC Manual - New Version </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol12/no2/alex-hutko-product-specialist/"> Alex Hutko - Product Specialist </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol12/no2/virtual-networks-at-the-dmc/"> Virtual Networks at the DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol12/no2/new-data-at-the-dmc/"> New Data at the DMC </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol12/no2"> <img src="/media/newsletter/vol12/no2/earthscope-automated-receiver-survey-ears-at-the-iris-dmc/ears_fig1.png" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol12/no1"> Spring/Summer 2010 – </a> <small> <a href="/ds/newsletter/vol12"> Volume 12 </a>, <a href="/ds/newsletter/vol12/no1"> Number 1 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol12/no1/seismic-data-quality-control-workshop-results/"> Seismic Data Quality Control Workshop Results </a> </li> 
+             <li> <span class="newsletter-section-inline">Feature Earthquake</span> – <a href="/ds/newsletter/vol12/no1/january-2010-m70-haiti-quake/"> January 2010 M7.0 Haiti Quake </a> </li> 
+             <li> <span class="newsletter-section-inline">Feature Earthquake</span> – <a href="/ds/newsletter/vol12/no1/february-2010-m88-chile-quake/"> February 2010 M8.8 Chile Quake </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol12/no1/sac-software-statistics/"> SAC Software Statistics </a> </li> 
+             <li> <span class="newsletter-section-inline">Web Update</span> – <a href="/ds/newsletter/vol12/no1/data-product-suggestion-form/"> Data Product Suggestion Form </a> </li> 
+             <li> <span class="newsletter-section-inline">Workshops</span> – <a href="/ds/newsletter/vol12/no1/iris-dms-plans-2010-metadata-workshop-in-brazil/"> IRIS DMS Plans 2010 Metadata Workshop in Brazil </a> </li> 
+             <li> <span class="newsletter-section-inline">Workshops</span> – <a href="/ds/newsletter/vol12/no1/iris-hosts-2010-pqlx-workshop/"> IRIS Hosts 2010 PQLX Workshop </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol12/no1/jweed-32-released/"> JWEED 3.2 Released </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol12/no1/evalresp-332/"> evalresp 3.3.2 </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol12/no1/seismac-30/"> SeisMac 3.0 </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol12/no1/iris-dmc-staff-photo/"> IRIS DMC Staff Photo </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol12/no1/new-data-at-the-dmc/"> New Data at the DMC </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol12/no1"> <img src="/media/newsletter/vol12/no1/seismic-data-quality-control-workshop-results/qc_quack.png" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol11/no4"> Winter 2009 – </a> <small> <a href="/ds/newsletter/vol11"> Volume 11 </a>, <a href="/ds/newsletter/vol11/no4"> Number 4 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol11/no4/iris-dms-conducts-metadata-workshop-in-cairo-egypt/"> IRIS DMS Conducts Metadata Workshop in Cairo, Egypt </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol11/no4/the-iris-dmc-nominal-response-library/"> The IRIS DMC Nominal Response Library </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol11/no4/pdcc-36/"> PDCC 3.6 </a> </li> 
+             <li> <span class="newsletter-section-inline">Web Update</span> – <a href="/ds/newsletter/vol11/no4/url-shortcuts/"> URL Shortcuts </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol11/no4/jweed-313-released/"> JWEED 3.13 Released </a> </li> 
+             <li> <span class="newsletter-section-inline">Products</span> – <a href="/ds/newsletter/vol11/no4/usarray-ground-motion-visualization/"> USArray Ground Motion Visualization </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol11/no4/manochehr-bahavar-product-specialist/"> Manochehr Bahavar - Product Specialist </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol11/no4/cascadia-facility-enhancement-initiative/"> Cascadia Facility Enhancement Initiative </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol11/no4/new-data-at-the-dmc/"> New Data at the DMC </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol11/no4"> <img src="/media/newsletter/vol11/no4/iris-dms-conducts-metadata-workshop-in-cairo-egypt/participants.png" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol11/no3"> Fall 2009 – </a> <small> <a href="/ds/newsletter/vol11"> Volume 11 </a>, <a href="/ds/newsletter/vol11/no3"> Number 3 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol11/no3/a-3d-broadband-seismic-array-at-lsbb/"> A 3D Broadband Seismic Array at LSBB </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol11/no3/batch-requesting-data-from-the-dmc/"> Batch Requesting Data from the DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol11/no3/teachable-moments/"> Teachable Moments </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol11/no3/evalresp-330/"> evalresp 3.3.0 </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol11/no3/data-access-chart-updated/"> Data Access Chart Updated </a> </li> 
+             <li> <span class="newsletter-section-inline">Education and Public Outreach</span> – <a href="/ds/newsletter/vol11/no3/dms-short-course-at-agu/"> DMS short course at AGU </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol11/no3/rich-karstens-software-engineer/"> Rich Karstens - Software Engineer </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol11/no3/new-networks-at-the-dmc/"> New Networks at the DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol11/no3/new-data-at-the-dmc/"> New Data at the DMC </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol11/no3"> <img src="/media/newsletter/vol11/no3/a-3d-broadband-seismic-array-at-lsbb/3d_seismic_array_fig1.png" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol11/no2"> Summer 2009 – </a> <small> <a href="/ds/newsletter/vol11"> Volume 11 </a>, <a href="/ds/newsletter/vol11/no2"> Number 2 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol11/no2/server-hardware-transitions-at-the-iris-dmc/"> Server Hardware Transitions at the IRIS DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol11/no2/spade-11-release/"> SPADE 1.1 release </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol11/no2/new-channel-response-tool/"> New Channel Response Tool </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol11/no2/evalresp-330/"> evalresp 3.3.0 </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol11/no2/sac-v1013/"> SAC v101.3 </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol11/no2/uptime-report-tool/"> Uptime Report Tool </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol11/no2/sue-schoch-senior-software-engineer/"> Sue Schoch - Senior Software Engineer </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol11/no2/new-networks-at-the-dmc/"> New Networks at the DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol11/no2/new-data-at-the-dmc/"> New Data at the DMC </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol11/no2"> <img src="/media/newsletter/vol11/no2/server-hardware-transitions-at-the-iris-dmc/barracuda.png" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol11/no1"> Spring 2009 – </a> <small> <a href="/ds/newsletter/vol11"> Volume 11 </a>, <a href="/ds/newsletter/vol11/no1"> Number 1 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol11/no1/quality-control-efforts-on-usarray-data-at-the-iris-dmc/"> Quality Control Efforts on USArray Data at the IRIS DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol11/no1/iris-dmc-waveform-plotting-workflow/"> IRIS DMC Waveform Plotting Workflow </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol11/no1/mt-redoubt-eruption-march-2009/"> Mt. Redoubt Eruption - March 2009 </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol11/no1/nichole-king-software-engineer/"> Nichole King - Software Engineer </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol11/no1/rdseed-48-released/"> rdseed 4.8 released </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol11/no1/jrdseed-works-with-windows/"> Jrdseed - works with Windows </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol11/no1/irisdmc-help-mailing-list-created-for-users-of-the-iris-dmc/"> irisdmc-help Mailing List Created for Users of the IRIS DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol11/no1/new-data-at-the-dmc/"> New Data at the DMC </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol11/no1"> <img src="/media/newsletter/vol11/no1/quality-control-efforts-on-usarray-data-at-the-iris-dmc/PQLX2.png" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol10/no3"> September 2008 – </a> <small> <a href="/ds/newsletter/vol10"> Volume 10 </a>, <a href="/ds/newsletter/vol10/no3"> Number 3 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol10/no3/pqlx-a-software-tool-to-evaluate-seismic-station-performance/"> PQLX - A Software Tool to Evaluate Seismic Station Performance </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol10/no3/collaboration-with-and-new-data-from-lgit-france/"> Collaboration with, and new data from, LGIT - France </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol10/no3/sac-v1012-release/"> SAC v101.2 Release </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol10/no3/vase-v28-released/"> VASE v2.8 Released </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol10/no3/fetchresp-v11-released/"> FetchResp v1.1 Released </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol10/no3/sac-patches/"> SAC Patches </a> </li> 
+             <li> <span class="newsletter-section-inline">Education and Public Outreach</span> – <a href="/ds/newsletter/vol10/no3/dms-one-pagers/"> DMS One-Pagers </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol10/no3/new-data-at-the-dmc/"> New Data at the DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol10/no3/juan-jose-rodriguez-peralta-junior-software-engineer/"> Juan Jose Rodriguez Peralta - Junior Software Engineer </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol10/no3"> <img src="/media/newsletter/vol10/no3/pqlx-a-software-tool-to-evaluate-seismic-station-performance/pqlx_eg.png" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol10/no2"> June 2008 – </a> <small> <a href="/ds/newsletter/vol10"> Volume 10 </a>, <a href="/ds/newsletter/vol10/no2"> Number 2 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol10/no2/new-iris-website/"> New IRIS Website </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol10/no2/web-utilities/"> Web Utilities </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol10/no2/iris-software/"> IRIS Software </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol10/no2/jweed-31-released/"> JWEED 3.1 Released </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol10/no2/sac-software/"> SAC Software </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol10/no2/iris-staff-directory/"> IRIS Staff Directory </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol10/no2/netherlands-antilles-seismic-network/"> Netherlands Antilles Seismic Network </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol10/no2/new-data-at-the-dmc/"> New Data at the DMC </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol10/no2"> <img src="/media/newsletter/vol10/no2/new-iris-website/splash.png" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol10/no1"> March 2008 – </a> <small> <a href="/ds/newsletter/vol10"> Volume 10 </a>, <a href="/ds/newsletter/vol10/no1"> Number 1 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol10/no1/new-iris-website-in-development/"> New IRIS Website in Development </a> </li> 
+             <li> <span class="newsletter-section-inline">Project Focus</span> – <a href="/ds/newsletter/vol10/no1/jweed-31-released/"> JWEED 3.1 Released </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol10/no1/earthscope-portal-reaches-alpha/"> EarthScope Portal Reaches Alpha </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol10/no1/joanna-muench-software-engineer-leaving-the-dmc/"> Joanna Muench - Software Engineer: Leaving the DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol10/no1/new-networks-at-the-dmc/"> New Networks at the DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol10/no1/new-data-at-the-dmc/"> New Data at the DMC </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol10/no1"> <img src="/media/newsletter/vol10/no1/new-iris-website-in-development/dmc.png" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol9/no4"> December 2007 – </a> <small> <a href="/ds/newsletter/vol9"> Volume 9 </a>, <a href="/ds/newsletter/vol9/no4"> Number 4 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol9/no4/iris-dms-conducts-metadata-workshop-in-kuala-lumpur-malaysia/"> IRIS DMS Conducts Metadata Workshop in Kuala Lumpur, Malaysia </a> </li> 
+             <li> <span class="newsletter-section-inline">Project Focus</span> – <a href="/ds/newsletter/vol9/no4/jweed-30/"> JWEED 3.0 </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol9/no4/dhi-clients/"> DHI Clients </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol9/no4/chad-trabant-usarray-lead-data-control-analyst/"> Chad Trabant - USArray Lead Data Control Analyst </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol9/no4/new-networks-at-the-dmc/"> New Networks at the DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol9/no4/new-data-at-the-dmc/"> New Data at the DMC </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol9/no4"> <img src="/media/newsletter/vol9/no4/iris-dms-conducts-metadata-workshop-in-kuala-lumpur-malaysia/towers.png" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol9/no3"> September 2007 – </a> <small> <a href="/ds/newsletter/vol9"> Volume 9 </a>, <a href="/ds/newsletter/vol9/no3"> Number 3 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol9/no3/coordinate-acquisition-tool-cat-integrated-into-seismiquery/"> Coordinate Acquisition Tool (CAT) Integrated into SeismiQuery </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol9/no3/iris-request-methods-and-data-repositories/"> IRIS Request Methods and Data Repositories </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol9/no3/iris-dms-mapping-tools/"> IRIS DMS Mapping Tools </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol9/no3/un-joe-data-control-technician/"> Un Joe - Data Control Technician </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol9/no3/new-networks-at-the-dmc/"> New Networks at the DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol9/no3/new-data-at-the-dmc/"> New Data at the DMC </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol9/no3"> <img src="/media/newsletter/vol9/no3/coordinate-acquisition-tool-cat-integrated-into-seismiquery/cat_fig1.png" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol9/no2"> June 2007 – </a> <small> <a href="/ds/newsletter/vol9"> Volume 9 </a>, <a href="/ds/newsletter/vol9/no2"> Number 2 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol9/no2/iris-earthquake-browser/"> IRIS Earthquake Browser </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol9/no2/iris-dmc-offsite-backup-and-restore-facility-reaches-a-milestone/"> IRIS DMC Offsite Backup and Restore Facility Reaches a Milestone </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol9/no2/vase-v27-released/"> VASE v2.7 Released </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol9/no2/gale-eschete-office-manager/"> Gale Eschete - Office Manager </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol9/no2/new-networks-at-the-dmc/"> New Networks at the DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol9/no2/new-data-at-the-dmc/"> New Data at the DMC </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol9/no2"> <img src="/media/newsletter/vol9/no2/iris-earthquake-browser/ieb.png" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol9/no1"> March 2007 – </a> <small> <a href="/ds/newsletter/vol9"> Volume 9 </a>, <a href="/ds/newsletter/vol9/no1"> Number 1 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol9/no1/searchable-product-archive-and-discovery-engine-now-available/"> Searchable Product Archive and Discovery Engine Now Available </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol9/no1/iris-software-tutorials/"> IRIS Software Tutorials </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol9/no1/sac-v1010-release/"> SAC v101.0 Release </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol9/no1/matthew-canfield-data-control-technician/"> Matthew Canfield - Data Control Technician </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol9/no1/new-networks-at-the-dmc/"> New Networks at the DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol9/no1/new-data-at-the-dmc/"> New Data at the DMC </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol9/no1"> <img src="/media/newsletter/vol9/no1/searchable-product-archive-and-discovery-engine-now-available/SPADE.png" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol8/no4"> December 2006 – </a> <small> <a href="/ds/newsletter/vol8"> Volume 8 </a>, <a href="/ds/newsletter/vol8/no4"> Number 4 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol8/no4/geows-client-project-results/"> GeoWS Client Project Results </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol8/no4/virtual-networks-at-the-iris-dmc/"> Virtual Networks at the IRIS DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol8/no4/quack-report-maker/"> Quack Report Maker </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol8/no4/fetchresp-dhi-utility-released/"> FetchResp - DHI Utility Released </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol8/no4/gillian-sharer-usarray-data-control-analyst/"> Gillian Sharer - USArray Data Control Analyst </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol8/no4/iris-dmc-data-access-tools/"> IRIS DMC Data Access Tools </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol8/no4/new-data-at-the-dmc/"> New Data at the DMC </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol8/no4"> <img src="/media/newsletter/vol8/no4/geows-client-project-results/geows_logo.png" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol8/no3"> September 2006 – </a> <small> <a href="/ds/newsletter/vol8"> Volume 8 </a>, <a href="/ds/newsletter/vol8/no3"> Number 3 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol8/no3/new-web-interfaces-the-metadata-aggregator-mda-and-google-map-service/"> New Web Interfaces: the Metadata Aggregator (MDA) and Google Map Service </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol8/no3/geows-a-partnership-for-interoperable-data-exchange/"> GeoWS: A Partnership for Interoperable Data Exchange </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol8/no3/jrdseed-rdseed-ported-to-java/"> Jrdseed: rdseed Ported to Java </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol8/no3/maryann-wood-data-control-technician/"> MaryAnn Wood - Data Control Technician </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol8/no3/new-networks-at-the-dmc/"> New Networks at the DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol8/no3/new-data-at-the-dmc/"> New Data at the DMC </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol8/no3"> <img src="/media/newsletter/vol8/no3/new-web-interfaces-the-metadata-aggregator-mda-and-google-map-service/web-interfaces.png" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol8/no2"> June 2006 – </a> <small> <a href="/ds/newsletter/vol8"> Volume 8 </a>, <a href="/ds/newsletter/vol8/no2"> Number 2 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol8/no2/portable-data-collection-centers/"> Portable Data Collection Centers </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol8/no2/pbo-and-safod-seismic-data/"> PBO and SAFOD Seismic Data </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol8/no2/vase-v263-released/"> VASE v2.6.3 Released </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol8/no2/jweed-298-released/"> JWEED 2.9.8 Released </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol8/no2/thani-rojanaparpai-data-control-technician/"> Thani Rojanaparpai - Data Control Technician </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol8/no2/accessing-earthscope-data/"> Accessing EarthScope Data </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol8/no2/new-data-at-the-dmc/"> New Data at the DMC </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol8/no2"> <img src="/media/newsletter/vol8/no2/portable-data-collection-centers/pdcc_3.0.png" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol8/no1"> March 2006 – </a> <small> <a href="/ds/newsletter/vol8"> Volume 8 </a>, <a href="/ds/newsletter/vol8/no1"> Number 1 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol8/no1/exploring-iris-data-and-data-quality-with-quack/"> Exploring IRIS Data and Data Quality with QUACK </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol8/no1/searchable-product-archive-and-distribution-engine-spade/"> Searchable Product Archive and Distribution Engine (SPADE) </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol8/no1/seed-manual-2006-edition-released/"> SEED Manual 2006 Edition Released </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol8/no1/anh-ngo-operations-programmer/"> Anh Ngo - Operations Programmer </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol8/no1/supergravimeter-data-now-archiving-at-iris/"> Supergravimeter data now archiving at IRIS </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol8/no1/data-issues-mailing-list-replaces-the-data-problems-listserv/"> data-issues mailing list replaces the data-problems listserv </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol8/no1/new-data-at-the-dmc/"> New Data at the DMC </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol8/no1"> <img src="/media/newsletter/vol8/no1/exploring-iris-data-and-data-quality-with-quack/quack_pdf-clickable.png" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol7/no4"> December 2005 – </a> <small> <a href="/ds/newsletter/vol7"> Volume 7 </a>, <a href="/ds/newsletter/vol7/no4"> Number 4 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol7/no4/iris-mailing-lists-communicating-with-the-seismology-community/"> IRIS Mailing Lists: Communicating with the Seismology Community </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol7/no4/sac-data-handling-interface/"> SAC Data Handling Interface </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol7/no4/pql-ii-released/"> PQL II Released </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol7/no4/vase-v262-released/"> VASE v2.6.2 Released </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol7/no4/chris-loos-iris-hq-information-technology-coordinator/"> Chris Loos - IRIS HQ Information Technology Coordinator </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol7/no4/new-hardware-additions-to-the-iris-data-management-center-isilon-nas/"> New hardware additions to the IRIS Data Management Center: Isilon NAS </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol7/no4/new-data-at-the-dmc/"> New Data at the DMC </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol7/no4"> <img src="/media/newsletter/vol7/no4/iris-mailing-lists-communicating-with-the-seismology-community/logo2010.png" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol7/no3"> September 2005 – </a> <small> <a href="/ds/newsletter/vol7"> Volume 7 </a>, <a href="/ds/newsletter/vol7/no3"> Number 3 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol7/no3/monitoring-cape-girardeau-mo-bridge/"> Monitoring Cape Girardeau (MO) Bridge </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol7/no3/usarray-at-the-iris-dmc/"> USArray at the IRIS DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol7/no3/plate-boundary-observatory/"> Plate Boundary Observatory </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol7/no3/sosa-11-released/"> SOSA 1.1 Released </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol7/no3/rob-casey-director-of-software-engineering/"> Rob Casey - Director of Software Engineering </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol7/no3/new-networks-at-the-dmc-pbo-safod-and-the-alaska-broadband-regional-network/"> New Networks at the DMC: PBO, SAFOD and the Alaska Broadband Regional Network </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol7/no3/new-data-at-the-dmc/"> New Data at the DMC </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol7/no3"> <img src="/media/newsletter/vol7/no3/monitoring-cape-girardeau-mo-bridge/bridge1.png" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol7/no2"> June 2005 – </a> <small> <a href="/ds/newsletter/vol7"> Volume 7 </a>, <a href="/ds/newsletter/vol7/no2"> Number 2 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol7/no2/seismoarchives-seismogram-archives-of-significant-earthquakes-of-the-world/"> SeismoArchives: Seismogram Archives of Significant Earthquakes of the World </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol7/no2/web-services-at-the-iris-dmc/"> Web Services at the IRIS DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol7/no2/jevalresp-and-jplotresp-v151-released/"> JEvalResp and JPlotResp v1.51 released </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol7/no2/mary-templeton-usarray-data-control-analyst/"> Mary Templeton - USArray Data Control Analyst </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol7/no2/my-network-providing-seismic-data-from-malaysia/"> MY Network - Providing Seismic Data from Malaysia </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol7/no2/new-data-at-the-dmc/"> New Data at the DMC </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol7/no2"> <img src="/media/newsletter/vol7/no2/seismoarchives/alaska_1964.png" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol7/no1"> March 2005 – </a> <small> <a href="/ds/newsletter/vol7"> Volume 7 </a>, <a href="/ds/newsletter/vol7/no1"> Number 1 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol7/no1/sac-availability-for-the-iris-community/"> SAC Availability for the IRIS Community </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol7/no1/uniform-product-distribution-system-upds-overview/"> Uniform Product Distribution System (UPDS) Overview </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol7/no1/sosa-application-released/"> SOSA Application Released </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol7/no1/peggy-johnson-usarray-data-control-analyst/"> Peggy Johnson - USArray Data Control Analyst </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol7/no1/tim-knight-information-services-coordinator-webmaster/"> Tim Knight - Information Services Coordinator / Webmaster </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol7/no1/earthscope-array-data-access/"> EarthScope array data access </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol7/no1/new-data-at-the-dmc/"> New Data at the DMC </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol7/no1"> <img src="/media/newsletter/vol7/no1/sac-availability-for-the-iris-community/sac_fig1.png" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol6/no3"> December 2004 – </a> <small> <a href="/ds/newsletter/vol6"> Volume 6 </a>, <a href="/ds/newsletter/vol6/no3"> Number 3 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol6/no3/seamless-access-to-distributed-data-centers/"> Seamless Access to Distributed Data Centers </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol6/no3/gsn-station-noise-computation/"> GSN Station Noise Computation </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol6/no3/vase-viewer-and-seismogram-extraction-tool/"> VASE - Viewer and Seismogram Extraction tool </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol6/no3/mari-francissen-executive-assistant/"> Mari Francissen - Executive Assistant </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol6/no3/virtual-networks-becoming-a-reality-at-the-dmc/"> Virtual networks becoming a reality at the DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol6/no3/new-data-at-the-dmc/"> New Data at the DMC </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol6/no3"> <img src="/media/newsletter/vol6/no3/seamless-access-to-distributed-data-centers/jweed_servers.png" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol6/no2"> June 2004 – </a> <small> <a href="/ds/newsletter/vol6"> Volume 6 </a>, <a href="/ds/newsletter/vol6/no2"> Number 2 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol6/no2/virtual-networks-defined/"> Virtual networks defined </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol6/no2/usarray-update/"> USArray Update </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol6/no2/where-is-that-page/"> Where is that page.... </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol6/no2/joanna-muench-software-engineer/"> Joanna Muench - Software Engineer </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol6/no2/announcing-jweed-a-map-based-seismogram-request-tool/"> Announcing JWEED: A map-based seismogram request tool </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol6/no2/new-data-at-the-dmc/"> New Data at the DMC </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol6/no1"> January 2004 – </a> <small> <a href="/ds/newsletter/vol6"> Volume 6 </a>, <a href="/ds/newsletter/vol6/no1"> Number 1 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol6/no1/preparing-for-usarray-hardware/"> Preparing for USArray - Hardware </a> </li> 
+             <li> <span class="newsletter-section-inline">Project Focus</span> – <a href="/ds/newsletter/vol6/no1/fissures-matlab-interface-update/"> FISSURES-MATLAB Interface - Update </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol6/no1/portable-data-collection-centers-is-well-received/"> Portable Data Collection Centers is well received </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol6/no1/chad-trabant-usarray-lead-data-control-analyst/"> Chad Trabant - USArray Lead Data Control Analyst </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol6/no1/new-record-section-plotting-page-update/"> New Record Section Plotting Page - Update </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol6/no1/new-data-at-the-dmc/"> New Data at the DMC </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol6/no1"> <img src="/media/newsletter/vol6/no1/preparing-for-usarray-hardware/sunfire.png" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol5/no4"> October 2003 – </a> <small> <a href="/ds/newsletter/vol5"> Volume 5 </a>, <a href="/ds/newsletter/vol5/no4"> Number 4 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol5/no4/managing-seismological-metadata-workshop-pdcc-30/"> Managing seismological metadata workshop: PDCC 3.0 </a> </li> 
+             <li> <span class="newsletter-section-inline">Project Focus</span> – <a href="/ds/newsletter/vol5/no4/fissures-matlab-interface/"> FISSURES-MATLAB Interface </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol5/no4/new-netdc-web-request-tool/"> New NetDC web request tool </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol5/no4/new-record-section-plotting-page/"> New Record Section Plotting Page </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol5/no4/lonny-jones-systems-administrator-for-usarray/"> Lonny Jones - Systems Administrator for USArray </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol5/no3"> July 2003 – </a> <small> <a href="/ds/newsletter/vol5"> Volume 5 </a>, <a href="/ds/newsletter/vol5/no3"> Number 3 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol5/no3/beyond-sac2000/"> Beyond SAC2000? </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol5/no3/new-wilber-ii-plots/"> New WILBER II plots </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol5/no3/vase-goes-through-some-changes/"> VASE goes through some changes </a> </li> 
+             <li> <span class="newsletter-section-inline">Node Focus</span> – <a href="/ds/newsletter/vol5/no3/global-seismic-network-noise-study/"> Global Seismic Network Noise Study </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol5/no3/checking-on-data-problems-and-re-archiving-status/"> Checking on Data Problems and Re-archiving Status </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol5/no2"> April 2003 – </a> <small> <a href="/ds/newsletter/vol5"> Volume 5 </a>, <a href="/ds/newsletter/vol5/no2"> Number 2 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol5/no2/the-possible-impact-of-the-usarray-project-on-the-dmc/"> The Possible Impact of the USArray Project on the DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol5/no2/quack-quality-analysis-control-kit/"> QUACK - Quality Analysis Control Kit </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol5/no2/the-state-of-spyder/"> The State of SPYDER </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol5/no2/apparenet-network-analysis-tool-being-evaluated-by-the-iris-dmc/"> AppareNet network analysis tool being evaluated by the IRIS DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Node Focus</span> – <a href="/ds/newsletter/vol5/no2/albuquerque-seismic-lab-news-update/"> Albuquerque Seismic Lab news update </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol5/no2/the-dmc-software-group/"> The DMC Software Group </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol5/no2"> <img src="/media/newsletter/vol5/no2/the-possible-impact-of-the-usarray-project-on-the-dmc/data_flow.png" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol5/no1"> January 2003 – </a> <small> <a href="/ds/newsletter/vol5"> Volume 5 </a>, <a href="/ds/newsletter/vol5/no1"> Number 1 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol5/no1/listservers-to-serve-you/"> Listservers to Serve You </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol5/no1/station-log-application/"> Station Log Application </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol5/no1/visualization-and-seismogram-extraction-vase-realtime-streams-and-more/"> Visualization and Seismogram Extraction (VASE), realtime streams and more </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol5/no1/new-iris-website/"> New IRIS website </a> </li> 
+             <li> <span class="newsletter-section-inline">Node Focus</span> – <a href="/ds/newsletter/vol5/no1/news-from-ida/"> News From IDA </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol5/no1/the-dmc-engine-room/"> The DMC Engine Room </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol4/no3"> September 2002 – </a> <small> <a href="/ds/newsletter/vol4"> Volume 4 </a>, <a href="/ds/newsletter/vol4/no3"> Number 3 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol4/no3/crediting-network-operators-and-data-centers/"> Crediting Network Operators and Data Centers </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol4/no3/ida-mk-7-datalogger-problem/"> IDA MK 7 Datalogger Problem </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol4/no3/iris-dms-participation-in-the-scec-itr-project/"> IRIS DMS Participation in the SCEC ITR Project </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol4/no3/jevalresp-and-jplotresp-versions-10-released/"> JEvalResp and JPlotResp versions 1.0 Released </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol4/no3/dmc-purchases-powerful-software-installer-tool/"> DMC purchases powerful software installer tool </a> </li> 
+             <li> <span class="newsletter-section-inline">Node Focus</span> – <a href="/ds/newsletter/vol4/no3/albuquerque-seismological-laboratory-dcc-news/"> Albuquerque Seismological Laboratory DCC news </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol4/no3/tim-ahern-iris-dms-program-manager/"> Tim Ahern – IRIS DMS Program Manager </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol4/no3"> <img src="/media/newsletter/vol4/no3/crediting-network-operators-and-data-centers/fdsn_map.png" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol4/no2"> June 2002 – </a> <small> <a href="/ds/newsletter/vol4"> Volume 4 </a>, <a href="/ds/newsletter/vol4/no2"> Number 2 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol4/no2/merging-quality-controlled-data-with-raw-data-from-real-time-data-streams-at-the-dmc/"> Merging Quality Controlled Data with Raw Data from Real Time Data Streams at the DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol4/no2/seismic-monitor-ii-the-next-generation/"> Seismic Monitor II - The Next Generation </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol4/no2/using-antelope-for-passcal-field-data-management/"> Using Antelope for PASSCAL Field Data Management </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol4/no2/updated-request-processing-software-breq_fast-and-rdseed/"> Updated request processing software: BREQ_FAST and rdseed </a> </li> 
+             <li> <span class="newsletter-section-inline">Node Focus</span> – <a href="/ds/newsletter/vol4/no2/national-data-center-of-the-institute-of-geophysical-research-of-the-national-nuclear-center-of-republic-of-kazakhstan/"> National Data Center of the Institute of Geophysical Research of the National Nuclear Center of Republic of Kazakhstan </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol4/no2/leanne-rubin-office-manager/"> Leanne Rubin - Office Manager </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol4/no1"> March 2002 – </a> <small> <a href="/ds/newsletter/vol4"> Volume 4 </a>, <a href="/ds/newsletter/vol4/no1"> Number 1 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol4/no1/improved-support-for-miniseed-data/"> Improved Support for miniSEED Data </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol4/no1/software-information-list-server/"> Software Information List Server </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol4/no1/obtaining-deep-seismic-sounding-data-sets/"> Obtaining Deep Seismic Sounding data sets </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol4/no1/new-version-of-the-iris-dmc-web-search-engine/"> New version of the IRIS DMC web search engine </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol4/no1/new-data-access-tutorial/"> New data access tutorial </a> </li> 
+             <li> <span class="newsletter-section-inline">Node Focus</span> – <a href="/ds/newsletter/vol4/no1/changes-at-the-dmc/"> Changes at the DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol4/no1/russ-welti-software-engineer/"> Russ Welti - Software Engineer </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol4/no1/linus-kamb-software-engineer/"> Linus Kamb - Software Engineer </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol3/no4"> December 2001 – </a> <small> <a href="/ds/newsletter/vol3"> Volume 3 </a>, <a href="/ds/newsletter/vol3/no4"> Number 4 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol3/no4/basic-object-oriented-programming-boot-camp/"> Basic Object Oriented Programming (BOOT) Camp </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol3/no4/a-review-of-the-iris-dmc-web-search-engine/"> A Review of the IRIS DMC Web Search Engine </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol3/no4/ew2mseed-getting-earthworm-data-to-data-centers/"> ew2mseed - Getting Earthworm data to data centers </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol3/no4/new-seismiquery-event-search-feature/"> New SeismiQuery Event Search Feature </a> </li> 
+             <li> <span class="newsletter-section-inline">Node Focus</span> – <a href="/ds/newsletter/vol3/no4/albuquerque-seismic-lab-update/"> Albuquerque Seismic Lab Update </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol3/no4/bruce-weertman-real-time-systems-software-engineer/"> Bruce Weertman - Real Time Systems Software Engineer </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol3/no4"> <img src="/media/newsletter/vol3/no4/basic-object-oriented-programming-boot-camp/boot_camp.png" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol3/no3"> September 2001 – </a> <small> <a href="/ds/newsletter/vol3"> Volume 3 </a>, <a href="/ds/newsletter/vol3/no3"> Number 3 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol3/no3/organization-of-data-holdings-at-the-iris-dmc/"> Organization of Data Holdings at the IRIS DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol3/no3/bud-an-online-buffer-of-uniform-data-and-how-it-works/"> BUD - an online Buffer of Uniform Data and how it works </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol3/no3/what-happened-to-fissures-or-exactly-what-is-the-data-handling-interface/"> What happened to FISSURES? Or exactly what is the Data Handling Interface? </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol3/no3/an-update-on-the-progress-of-the-pondfarm-data-archive/"> An update on the progress of the POND/FARM data archive </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol3/no3/new-at-ida/"> New at IDA </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol3/no3/new-at-harvard-university-waveform-quality-center/"> New at Harvard University Waveform Quality Center </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol3/no3/chris-laughbon-senior-software-engineer/"> Chris Laughbon - Senior Software Engineer </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol3/no3"> <img src="/media/newsletter/vol3/no3/organization-of-data-holdings-at-the-iris-dmc/archive_2001_opt.png" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol3/no2"> June 2001 – </a> <small> <a href="/ds/newsletter/vol3"> Volume 3 </a>, <a href="/ds/newsletter/vol3/no2"> Number 2 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol3/no2/iris-dmc-data-transcription/"> IRIS DMC Data Transcription </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol3/no2/bud-an-on-line-buffer-of-real-time-data/"> BUD: An On-line Buffer of Real Time Data </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol3/no2/wilber-ii-son-of-wilber/"> WILBER II, Son of WILBER </a> </li> 
+             <li> <span class="newsletter-section-inline">Node Focus</span> – <a href="/ds/newsletter/vol3/no2/albuquerque-seismological-laboratory-finds-a-home/"> Albuquerque Seismological Laboratory Finds a Home </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol3/no2/robert-casey-software-engineer/"> Robert Casey - Software Engineer </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol3/no1"> March 2001 – </a> <small> <a href="/ds/newsletter/vol3"> Volume 3 </a>, <a href="/ds/newsletter/vol3/no1"> Number 1 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol3/no1/upgrade-of-the-dms-mass-storage-system/"> Upgrade of the DMS Mass Storage System </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol3/no1/pond-and-wilber-ii-transition-to-a-more-dynamic-event-dataset/"> POND and WILBER II: Transition to a more dynamic event dataset </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol3/no1/data-handling-infrastructure-at-the-iris-dmc/"> Data Handling Infrastructure at the IRIS DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol3/no1/new-sync-tools/"> New Sync tools </a> </li> 
+             <li> <span class="newsletter-section-inline">Node Focus</span> – <a href="/ds/newsletter/vol3/no1/university-of-south-carolina/"> University of South Carolina </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol3/no1/deborah-barnes-information-services-coordinator/"> Deborah Barnes - Information Services Coordinator </a> </li> 
+             <li> <span class="newsletter-section-inline">Education and Public Outreach</span> – <a href="/ds/newsletter/vol3/no1/the-music-of-earthquakes/"> The music of earthquakes </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol3/no1"> <img src="/media/newsletter/vol3/no1/upgrade-of-the-dms-mass-storage-system/mass_storage_system.png" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol2/no4"> December 2000 – </a> <small> <a href="/ds/newsletter/vol2"> Volume 2 </a>, <a href="/ds/newsletter/vol2/no4"> Number 4 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol2/no4/automated-data-handling-within-the-iris-dms/"> Automated Data Handling within the IRIS DMS </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol2/no4/data-transfer-to-the-dmc/"> Data Transfer to the DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol2/no4/real-time-data-access-through-the-iris-dmc/"> Real Time Data Access through the IRIS DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol2/no4/antelope-software-university-edition/"> Antelope Software: University Edition </a> </li> 
+             <li> <span class="newsletter-section-inline">Node Focus</span> – <a href="/ds/newsletter/vol2/no4/harvard-university/"> Harvard University </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol2/no4/sue-schoch-senior-software-engineer/"> Sue Schoch - Senior Software Engineer </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol2/no4"> <img src="/media/newsletter/vol2/no4/automated-data-handling-within-the-iris-dms/earthworm_antelope.png" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol2/no3"> September 2000 – </a> <small> <a href="/ds/newsletter/vol2"> Volume 2 </a>, <a href="/ds/newsletter/vol2/no3"> Number 3 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol2/no3/crop-rotation-in-the-farm/"> Crop Rotation in the FARM </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol2/no3/spyder-near-real-time-seismic-data/"> SPYDER® - Near-real-time Seismic Data </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol2/no3/wilber-web-interface-to-lookup-big-events-for-retrieval/"> WILBER - Web Interface to Lookup Big Events for Retrieval </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol2/no3/seed2sync-a-sync-file-creation-utility/"> seed2sync - a sync file creation utility </a> </li> 
+             <li> <span class="newsletter-section-inline">Node Focus</span> – <a href="/ds/newsletter/vol2/no3/the-university-of-washington/"> The University of Washington </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol2/no3/sandy-stromme-software-engineer/"> Sandy Stromme - Software Engineer </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol2/no3"> <img src="/media/newsletter/vol2/no3/crop-rotation-in-the-farm/farm3.gif" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol2/no2"> June 2000 – </a> <small> <a href="/ds/newsletter/vol2"> Volume 2 </a>, <a href="/ds/newsletter/vol2/no2"> Number 2 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol2/no2/data-flow-through-the-dmc/"> Data Flow Through the DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol2/no2/combine-a-new-synchronization-tool/"> COMBINE: A new synchronization tool </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol2/no2/new-breq_fast-web-based-request-generator/"> New BREQ_FAST Web-based Request Generator </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol2/no2/seismic-processing-capabilitiestape-copy-facilities/"> Seismic Processing Capabilities/Tape Copy Facilities </a> </li> 
+             <li> <span class="newsletter-section-inline">Node Focus</span> – <a href="/ds/newsletter/vol2/no2/the-iris-data-management-center-seattle/"> The IRIS Data Management Center, Seattle </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol2/no2/rick-benson-director-of-operations/"> Rick Benson - Director of Operations </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol2/no2"> <img src="/media/newsletter/vol2/no2/data-flow-through-the-dmc/data_holdings_2000.png" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol2/no1"> March 2000 – </a> <small> <a href="/ds/newsletter/vol2"> Volume 2 </a>, <a href="/ds/newsletter/vol2/no1"> Number 1 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol2/no1/servicing-data-requests-at-the-dmc/"> Servicing Data Requests at the DMC </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol2/no1/portable-data-collection-center/"> Portable Data Collection Center </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol2/no1/seismiquery-an-online-database-interface/"> SeismiQuery: An Online Database Interface </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol2/no1/gapoverlap-analysis-tool-goat/"> Gap/Overlap Analysis Tool (GOAT) </a> </li> 
+             <li> <span class="newsletter-section-inline">Node Focus</span> – <a href="/ds/newsletter/vol2/no1/irisida-data-collection-center/"> IRIS/IDA Data Collection Center </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol2/no1/anh-ngo-senior-data-technician/"> Anh Ngo - Senior Data Technician </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+            <a href="/ds/newsletter/vol2/no1"> <img src="/media/newsletter/vol2/no1/servicing-data-requests-at-the-dmc/data_request_optimized.png" style="max-height:200px;max-width:240px;" class="img-responsive img-thumbnail"> </a> 
+           </div> 
+          </div> 
+          <hr> 
+          <div class="row"> 
+           <div class="col-md-8"> 
+            <h2> <a href="/ds/newsletter/vol1/no1"> November 1999 – </a> <small> <a href="/ds/newsletter/vol1"> Volume 1 </a>, <a href="/ds/newsletter/vol1/no1"> Number 1 </a> </small> </h2> 
+            <ul class="list-unstyled"> 
+             <li> <span class="newsletter-section-inline">Feature Article</span> – <a href="/ds/newsletter/vol1/no1/specification-of-seismograms-the-location-identifier/"> Specification of Seismograms: The Location Identifier </a> </li> 
+             <li> <span class="newsletter-section-inline">Program Spotlight</span> – <a href="/ds/newsletter/vol1/no1/networked-data-centers-netdc/"> Networked Data Centers (NetDC) </a> </li> 
+             <li> <span class="newsletter-section-inline">Data Access</span> – <a href="/ds/newsletter/vol1/no1/data-access-tutorial/"> Data Access Tutorial </a> </li> 
+             <li> <span class="newsletter-section-inline">Software</span> – <a href="/ds/newsletter/vol1/no1/seismiquery-a-new-web-tool/"> SeismiQuery: a new web tool </a> </li> 
+             <li> <span class="newsletter-section-inline">Node Focus</span> – <a href="/ds/newsletter/vol1/no1/about-the-albuquerque-seismic-lab-irisusgs-data-collection-center/"> About the Albuquerque Seismic Lab IRIS/USGS Data Collection Center </a> </li> 
+             <li> <span class="newsletter-section-inline">Staff Highlight</span> – <a href="/ds/newsletter/vol1/no1/mary-edmunds-data-control-technician/"> Mary Edmunds - Data Control Technician </a> </li> 
+            </ul> 
+           </div> 
+           <div class="col-md-4"> 
+           </div> 
+          </div> 
+          <hr> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div id="footer"> 
+     <div class="row"> 
+      <div class="col-xs-4"> 
+       <ul> 
+        <li class="footer-link-heading">Quick Links</li> 
+        <li><a href="http://www.iris.edu/hq/programs/education_and_outreach/distinguished_lectureship" title="Distinguished Lectureship">Distinguished Lectureship</a></li> 
+        <li><a href="http://www.iris.edu/hq/about_iris/mailing_lists" title="Mailing Lists">Mailing Lists</a></li> 
+        <li><a href="http://www.iris.edu/hq/employment" title="Employment">Employment</a></li> 
+        <li><a href="http://www.iris.edu/hq/about_iris/faqs" title="Frequently Asked Questions">Frequently Asked Questions</a></li> 
+        <li><a href="http://www.iris.edu/hq/gallery/home" title="Image Gallery">Image Gallery</a></li> 
+        <li><a href="http://www.youtube.com/user/IRISEnO" title="YouTube Channel" target="_blank">YouTube Channel</a></li> 
+       </ul> 
+       <ul> 
+        <li><a href="http://www.iris.edu/hq/sitemap" title="Site Map">Site Map</a></li> 
+        <li><a href="http://www.iris.edu/hq/contact" title="Contact Us">Contact Us</a></li> 
+       </ul> 
+      </div>
+      <!-- .footer-links-box --> 
+      <div class="col-xs-4"> 
+       <ul> 
+        <li class="footer-link-heading">Programs</li> 
+        <li> 
+         <ul> 
+          <li><a href="http://www.iris.edu/hq/programs/gsn" title="Global Seismic Network">Global Seismic Network</a></li> 
+          <li><a href="http://www.iris.edu/hq/programs/passcal" title="Portable (PASSCAL)">Portable (PASSCAL)</a></li> 
+          <li><a href="http://www.usarray.org/" title="USArray" target="_blank">USArray</a></li> 
+          <li><a href="http://www.iris.edu/hq/The-OBSIP" title="Ocean Bottom Seismograph Instrumentation Pool">Ocean Bottom Seismograph Instrumentation Pool</a></li> 
+          <li> 
+           <ul> 
+            <li><a href="http://www.iris.edu/hq/programs/glisn" title="Greenland Ice Sheet Monitoring Network">Greenland Ice Sheet Monitoring Network</a></li> 
+           </ul> </li> 
+          <li><a href="http://www.iris.edu/hq/chile" title="IRIS Community Instrument Development in Chlle">IRIS Community Instrument Development in Chile</a></li> 
+         </ul> </li> 
+        <li><a href="http://www.iris.edu/hq/programs/ds" title="Data Services">Data Services</a></li> 
+        <li><a href="http://www.iris.edu/hq/education_and_outreach" title="Education and Public Outreach">Education and Public Outreach</a></li> 
+        <li><a href="http://www.iris.edu/hq/about_iris/governance/ds" title="International Development Seismology">International Development Seismology</a></li> 
+       </ul> 
+      </div>
+      <!-- .footer-links-box --> 
+      <div class="col-xs-4"> 
+       <ul> 
+        <li class="footer-link-heading"><a href="http://www.earthscope.org/" title="EarthScope" target="_bank">EarthScope</a></li> 
+        <li><a href="http://www.earthscope.org/observatories/safod" title="SAFOD" target="_bank">SAFOD</a></li> 
+        <li><a href="http://www.usarray.org/" title="USArray" target="_bank">USArray</a></li> 
+        <li><a href="http://pbo.unavco.org/" title="Plate Boundary Observatory" target="_bank">Plate Boundary Observatory</a></li> 
+       </ul> 
+       <ul> 
+        <li class="footer-link-heading">Research</li> 
+        <li><a href="http://www.passcal.nmt.edu/maps/funded" title="Portable (PASSCAL) Experiments" target="_bank">Portable (PASSCAL) Experiments</a></li> 
+        <li><a href="http://www.iris.edu/data/" title="Data">Data</a></li> 
+        <li><a href="http://www.iris.edu/software/" title="Software">Software</a></li> 
+        <li><a href="http://www.iris.edu/hq/instrumentation" title="Instrumentation">Instrumentation</a></li> 
+       </ul> 
+       <div class="search"> 
+        <form action="http://www.iris.edu/hq/search" method="get"> 
+         <input type="hidden" name="cx" value="000587591391783241528:dsb0_jo9rjy"> 
+         <input type="hidden" name="cof" value="FORID:9"> 
+         <input type="hidden" name="ie" value="UTF-8"> 
+         <div class="input-group input-group-sm"> 
+          <input class="form-control" name="q" type="text"> 
+          <span class="input-group-btn"> <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button> </span> 
+         </div> 
+        </form> 
+       </div>
+       <!-- .search --> 
+      </div>
+      <!-- .footer-links-box --> 
+     </div> 
+     <div id="footer-bottom"> 
+      <ul> 
+       <li><span><a href="http://www.iris.edu/hq/" title="IRIS"><img src="/static/img/layout/logos/URL_TXT.png"></a></span></li> 
+       <li><em><a href="http://www.nsf.gov/" title="The National Science Foundation" target="_blank">Sponsored by the National Science Foundation</a></em></li> 
+       <li><a href="http://www.iris.edu/hq/" title="IRIS">© Copyright 2015 IRIS</a></li> 
+       <li>1200 New York Avenue NW, Suite 400, Washington, DC 20005, 202-682-2220</li> 
+       <li><a href="mailto:info@iris.edu">info@iris.edu</a></li> 
+      </ul> 
+     </div>
+     <!-- #footer-bottom --> 
+    </div>
+    <!-- #footer --> 
+   </div> 
+  </div>
+  <!-- #site-container -->   
+ </body>
+</html>

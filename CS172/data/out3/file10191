@@ -1,0 +1,888 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"XAYAVVVRGwYGVVVaAgU="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=s(e),f=c.length,u=i(a,o,r),d=0;f>d;d++)c[d].apply(u,n);return u}function a(t,e){f[t]=s(t).concat(e)}function s(t){return f[t]||[]}function c(){return n(e)}var f={};return{on:a,emit:e,create:c,listeners:s,_events:f}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],3:[function(t){function e(t,e,n,i,s){try{c?c-=1:r("err",[s||new UncaughtException(t,e,n)])}catch(f){try{r("ierr",[f,(new Date).getTime(),!0])}catch(u){}}return"function"==typeof a?a.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(5),i=t("ee"),a=window.onerror,s=!1,c=0;t("loader").features.err=!0,window.onerror=e,NREUM.noticeError=n;try{throw new Error}catch(f){"stack"in f&&(t(1),t(4),"addEventListener"in window&&t(2),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&t(3),s=!0)}i.on("fn-start",function(){s&&(c+=1)}),i.on("fn-err",function(t,e,r){s&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){s&&!this.thrown&&c>0&&(c-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:8,2:5,3:9,4:7,5:21,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],4:[function(t){function e(){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var n=t("ee"),r=t("handle"),o=t(2);t("loader").features.stn=!0,t(1),n.on("fn-start",function(t){var e=t[0];e instanceof Event&&(this.bstStart=Date.now())}),n.on("fn-end",function(t,e){var n=t[0];n instanceof Event&&r("bst",[n,e,this.bstStart,Date.now()])}),o.on("fn-start",function(t,e,n){this.bstStart=Date.now(),this.bstType=n}),o.on("fn-end",function(t,e){r("bstTimer",[e,this.bstStart,Date.now(),this.bstType])}),n.on("pushState-start",function(){this.time=Date.now(),this.startPath=location.pathname+location.hash}),n.on("pushState-end",function(){r("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),"addEventListener"in window.performance&&(window.performance.addEventListener("webkitresourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.webkitClearResourceTimings()},!1),window.performance.addEventListener("resourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.clearResourceTimings()},!1)),document.addEventListener("scroll",e,!1),document.addEventListener("keypress",e,!1),document.addEventListener("click",e,!1)}},{1:6,2:8,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],5:[function(t,e){function n(t){i.inPlace(t,["addEventListener","removeEventListener"],"-",r)}function r(t){return t[1]}var o=(t(1),t("ee").create()),i=t(2)(o),a=t("gos");if(e.exports=o,n(window),"getPrototypeOf"in Object){for(var s=document;s&&!s.hasOwnProperty("addEventListener");)s=Object.getPrototypeOf(s);s&&n(s);for(var c=XMLHttpRequest.prototype;c&&!c.hasOwnProperty("addEventListener");)c=Object.getPrototypeOf(c);c&&n(c)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&n(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t){if(t[1]){var e=t[1];"function"==typeof e?this.wrapped=t[1]=a(e,"nr@wrapped",function(){return i(e,"fn-",null,e.name||"anonymous")}):"function"==typeof e.handleEvent&&i.inPlace(e,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:21,2:22,ee:"QJf3ax",gos:"7eSDFh"}],6:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window.history,["pushState"],"-")},{1:22,2:21,ee:"QJf3ax"}],7:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=r(t[0],"fn-")})},{1:22,2:21,ee:"QJf3ax"}],8:[function(t,e){function n(t,e,n){var r=t[0];"string"==typeof r&&(r=new Function(r)),t[0]=o(r,"fn-",null,n)}var r=(t(2),t("ee").create()),o=t(1)(r);e.exports=r,o.inPlace(window,["setTimeout","setInterval","setImmediate"],"setTimer-"),r.on("setTimer-start",n)},{1:22,2:21,ee:"QJf3ax"}],9:[function(t,e){function n(){c.inPlace(this,d,"fn-")}function r(t,e){c.inPlace(e,["onreadystatechange"],"fn-")}function o(t,e){return e}var i=t("ee").create(),a=t(1),s=t(2),c=s(i),f=s(a),u=window.XMLHttpRequest,d=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];e.exports=i,window.XMLHttpRequest=function(t){var e=new u(t);try{i.emit("new-xhr",[],e),f.inPlace(e,["addEventListener","removeEventListener"],"-",function(t,e){return e}),e.addEventListener("readystatechange",n,!1)}catch(r){try{i.emit("internal-error",[r])}catch(o){}}return e},window.XMLHttpRequest.prototype=u.prototype,c.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",o),i.on("send-xhr-start",r),i.on("open-xhr-start",r)},{1:5,2:22,ee:"QJf3ax"}],10:[function(t){function e(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function n(t){var n=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;c>i;i++)t.removeEventListener(s[i],this.listener,!1);if(!n.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){n.status=t.status;var a=t.responseType,f="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,u=e(f);if(u&&(r.rxSize=u),this.sameOrigin){var d=t.getResponseHeader("X-NewRelic-App-Data");d&&(n.cat=d.split(", ").pop())}}else n.status=0;r.cbTime=this.cbTime,o("xhr",[n,r,this.startTime])}}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}if(window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)){t("loader").features.xhr=!0;var o=t("handle"),i=t(2),a=t("ee"),s=["load","error","abort","timeout"],c=s.length,f=t(1);t(4),t(3),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=n,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,n){var r=this.metrics,o=t[0],i=this;if(r&&o){var f=e(o);f&&(r.txSize=f)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof n.onload))&&i.end(n)}catch(e){try{a.emit("internal-error",[e])}catch(r){}}};for(var u=0;c>u;u++)n.addEventListener(s[u],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof XMLHttpRequest&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&&a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{1:"XL7HBI",2:11,3:9,4:5,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],11:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&&e.port===n.port&&e.protocol===n.protocol,r}},{}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):(o[t]||(o[t]=[]),void o[t].push(e))}var r=t("ee").create(),o={};e.exports=n,n.ee=r,r.q=o},{ee:"QJf3ax"}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],G9z0Bl:[function(t,e){function n(){var t=l.info=NREUM.info;if(t&&t.licenseKey&&t.applicationID&&f&&f.body){s(h,function(e,n){e in t||(t[e]=n)}),l.proto="https"===p.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var e=f.createElement("script");e.src=l.proto+t.agent,f.body.appendChild(e)}}function r(){"complete"===f.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=t(1),c=window,f=c.document,u="addEventListener",d="attachEvent",p=(""+location).split("?")[0],h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-515.min.js"},l=e.exports={offset:i(),origin:p,features:{}};f[u]?(f[u]("DOMContentLoaded",o,!1),c[u]("load",n,!1)):(f[d]("onreadystatechange",r),c[d]("onload",n)),a("mark",["firstbyte",i()])},{1:20,handle:"D5DuLP"}],20:[function(t,e){function n(t,e){var n=[],o="",i=0;for(o in t)r.call(t,o)&&(n[i]=e(o,t[o]),i+=1);return n}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],21:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],22:[function(t,e){function n(t){return!(t&&"function"==typeof t&&t.apply&&!t[i])}var r=t("ee"),o=t(1),i="nr@wrapper",a=Object.prototype.hasOwnProperty;e.exports=function(t){function e(t,e,r,a){function nrWrapper(){var n,i,s,f;try{i=this,n=o(arguments),s=r&&r(n,i)||{}}catch(d){u([d,"",[n,i,a],s])}c(e+"start",[n,i,a],s);try{return f=t.apply(i,n)}catch(p){throw c(e+"err",[n,i,p],s),p}finally{c(e+"end",[n,i,f],s)}}return n(t)?t:(e||(e=""),nrWrapper[i]=!0,f(t,nrWrapper),nrWrapper)}function s(t,r,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<r.length;c++)s=r[c],a=t[s],n(a)||(t[s]=e(a,f?s+o:o,i,s,t))}function c(e,n,r){try{t.emit(e,n,r)}catch(o){u([o,e,n,r])}}function f(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){u([r])}for(var o in t)a.call(t,o)&&(e[o]=t[o]);return e}function u(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=r),e.inPlace=s,e.flag=i,e}},{1:21,ee:"QJf3ax"}]},{},["G9z0Bl",3,10,4]);</script> 
+  <title>IRIS Internship Program - News and Announcements</title> 
+  <link rel="stylesheet" type="text/css" media="all" href="http://www.iris.edu/hq/internship/?css=layout_parts/default.v.1422902109"> 
+  <!--[if lte IE 7]><script type="text/javascript" src="http://www.iris.edu/hq/internship/js/suckerfish.js"></script><![endif]--> 
+  <!--[if lte IE 6]><style type="text/css" media="all">@import url(http://www.iris.edu/hq/internship/css/ie6.css);</style><![endif]--> 
+  <link media="handheld" href="http://www.iris.edu/hq/internship/?css=layout_parts/iphone.v.1354069253" type="text/css" rel="stylesheet"> 
+  <link media="only screen and (max-device-width: 480px)" href="http://www.iris.edu/hq/internship/?css=layout_parts/iphone.v.1354069253" type="text/css" rel="stylesheet"> 
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script> 
+  <script type="text/javascript" src="http://www.iris.edu/hq/internship/layout_parts/js/popup"></script> 
+ </head> 
+ <body> 
+  <div id="container"> 
+   <div id="header"> 
+    <!--                                <div id="nsfLogo"><a href="http://www.nsf.gov"><img src="http://www.iris.edu/hq/internship/images/layout/nsf.png" alt="NSF" /></a><br />EAR-0453427</div>--> 
+    <div id="home">
+     <a href="http://www.iris.edu/hq/internship/"><img src="http://www.iris.edu/hq/internship/images/clear.gif" alt=""></a>
+    </div> 
+   </div> 
+   <div id="left"> 
+    <ul id="nav"> 
+     <li class="mobile"><a href="http://www.iris.edu/hq/internship/">Home</a></li> 
+     <li class="mobile"><a href="http://www.iris.edu/hq/internship/about">About the Program</a> 
+      <ul> 
+       <li><a href="http://www.iris.edu/hq/internship/about">Overview</a></li> 
+       <li><a href="http://www.iris.edu/hq/internship/about/orientation">Orientation Week</a></li> 
+       <li><a href="http://www.iris.edu/hq/internship/about/host">Host Site and Staying Connected</a></li> 
+       <li><a href="http://www.iris.edu/hq/internship/about/presenting">Presenting Results</a></li> 
+       <li><a href="http://www.iris.edu/hq/internship/about/maintaining">Maintaining Community Connections</a></li> 
+      </ul> </li> 
+     <li><a href="http://www.iris.edu/hq/internship/apply">Apply</a> 
+      <ul> 
+       <li><a href="http://www.iris.edu/hq/internship/interns">Be an Intern</a></li> 
+       <li><a href="http://www.iris.edu/hq/internship/hosts">Hosts an Intern</a></li> 
+      </ul> </li> 
+     <li><a href="http://www.iris.edu/hq/internship/faq">FAQs</a></li> 
+     <li class="mobile"><a href="http://www.iris.edu/hq/internship/blogs">Current Interns</a></li> 
+     <li class="mobile"><a href="http://www.iris.edu/hq/internship/forums">Discussion Forum</a></li> 
+     <li><a href="http://www.iris.edu/hq/internship/previous">Previous Interns</a> 
+      <ul> 
+       <li><a href="http://www.iris.edu/hq/internship/2014">2014</a></li> 
+       <li><a href="http://www.iris.edu/hq/internship/2013">2013</a></li> 
+       <li><a href="http://www.iris.edu/hq/internship/2012">2012</a></li> 
+       <li><a href="http://www.iris.edu/hq/internship/2011">2011</a></li> 
+       <li><a href="http://www.iris.edu/hq/internship/2010">2010</a></li> 
+       <li><a href="http://www.iris.edu/hq/internship/previous/2009">2009</a></li> 
+       <li><a href="http://www.iris.edu/hq/internship/previous/2008">2008</a></li> 
+       <li><a href="http://www.iris.edu/hq/internship/previous/2007">2007</a></li> 
+       <li><a href="http://www.iris.edu/hq/internship/previous/2006">2006</a></li> 
+       <li><a href="http://www.iris.edu/hq/internship/previous/2005">2005</a></li> 
+       <li><a href="http://www.iris.edu/hq/internship/previous/2004">2004</a></li> 
+       <li><a href="http://www.iris.edu/hq/internship/previous/2003">2003</a></li> 
+       <li><a href="http://www.iris.edu/hq/internship/previous/2002">2002</a></li> 
+      </ul> </li> 
+     <li><a href="http://www.iris.edu/hq/internship/minority">Minority Recruitment Speaker Series</a></li> 
+     <li><a href="http://www.iris.edu/hq/internship/related">Related Student Opportunities</a></li> 
+     <li><a href="http://www.iris.edu/hq/internship/grad">IRIS PASSCAL Grad Internship</a></li> 
+     <li><a href="http://www.iris.edu/hq/internship/news">Archived News</a></li> 
+     <li><a href="http://www.iris.edu/hq/internship/contact">Contact</a></li> 
+     <li class="mobile"><a href="http://www.iris.edu/hq/internship/login">Intern Login</a></li> 
+    </ul> 
+    <div id="leftLogo"> 
+     <a href="http://www.iris.edu"><img src="http://www.iris.edu/hq/internship/images/layout/irisLogo.png" alt="IRIS"></a>
+     <br> 
+     <a href="http://www.iris.edu">www.iris.edu</a> 
+     <p> <a href="http://www.facebook.com/pages/IRIS-Undergraduate-Internship-Program/168366944430"><img alt="" src="http://www.iris.edu/hq/internship/uploads/715ddeaa6e57b0e/facebook-logo.png" style="width: 60px; height: 60px;">
+       <!-- Facebook Badge START --></a><br> &nbsp;</p> 
+    </div> 
+   </div> 
+   <div id="right"> 
+    <h1>News and Announcements</h1> 
+    <br> 
+    <div id="crumbs"> 
+     <a href="http://www.iris.edu/hq/internship/">Home</a> » News and Announcements 
+    </div> 
+    <p><a href="http://www.iris.edu/hq/internship/rss/news"><img style="border: 0px" class="rssIcon" src="http://www.iris.edu/hq/internship/images/rss.png" alt="RSS"></a></p> 
+    <h3>Mendenhall Postdoctoral Fellowship opportunities</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p>There are several opporunities available that are likely to be of interest to the alumni of our program. Please find four of these highlighted below. The first three are based in Golden, the fourth is based in Menolo Park, and the fifth is based at the Seattle field office.</p> 
+     <p>(1) <strong>Integrating...</strong></p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/mendenhall_postdoctoral_fellowship_opportunities">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>2014 Intern Presentations at AGU</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p><img alt="" src="http://www.iris.edu/hq/internship/images/uploads/DSCF1617.jpg" style="float:left; height:150px; margin:8px; width:200px">In case you missed seeing our interns at AGU, you can still checkout their abstracts as well as some of their posters (if they have been uploaded). For your convenience, we have provided listing of the <a href="http://www.iris.edu/hq/internship/images/uploads/Files/2014_AGU_Papers.pdf">2014 Intern AGU papers here</a>. Then you can search for their session in the <a href="https://agu.confex.com/agu/fm14/meetingapp.cgi" target="_blank">AGU 2014 Fall Meeting...</a></p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/2014_intern_presentations_at_agu">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Please join us for the Annual Internship Reception at the Fall AGU Meeting</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p><img alt="" src="http://www.iris.edu/hq/internship/images/uploads/Files/2014_alumni_invite_low1.jpg" style="float:left; height:456px; margin:8px; width:342px">It is that time of the year again and we can't wait to celebrate this successful program, catch up with our old friends, and make new connections!</p> 
+     <p>Looking forward to seeing both intern and mentor alumni of the program during AGU!</p> 
+     <p>The event is located only <a href="http://g.co/maps/bz4cw">a few short blocks from the AGU meeting</a>....</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/2014_internship_reception">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>2015 MATE/UNOLS Six-Month Internship Opporunity</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p><img alt="" src="http://ceoas.oregonstate.edu/oceanus/oceanus2.jpg" style="float:left; height:266px; margin:8px; width:400px">The MATE Center and the University National Oceanographic Laboratory System (UNOLS) are pleased to announce that we are accepting applications for the <strong>2015&nbsp;MATE/UNOLS Six-Month Internship</strong>&nbsp;through January 5, 2015. &nbsp;&nbsp;</p> 
+     <p>Location:&nbsp;R/V Oceanus&nbsp;at Oregon State University</p> 
+     <p>Full Description:&nbsp;This...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/2015_mate_unols_six_month_internship_opporunity">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Will you be with us? Apply NOW for Summer 2015</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p><img alt="" src="http://www.iris.edu/hq/files/programs/education_and_outreach/internship/IMG_0011.jpg" style="float:left; height:242px; margin:8px; width:332px">The IRIS Undergraudate Internship Program is pleased to announce the opening of their online application system for the summer of 2015.&nbsp; We anticipate offering at least 12 opportunities for students conduct exciting research with state of the art geophysical data and leading researchers at IRIS...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/apply_now_for_summer_2015">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Howard University - Another new recruiting venue</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p><img alt="" src="http://www.coas.howard.edu/images/hulogo/howard_university_logo2896x2896.jpg" style="float:left; height:200px; margin:8px; width:200px">As part of the IRIS Undergraduate Internship Program's committment to <a href="http://www.iris.edu/hq/internship/minority">increasing diversity</a> within the seismological community, the program will be recruiting at <a href="http://www.physics1.howard.edu/">Howard University's Physics Department</a> on November 19, 2014. We are excited about this opportunity as it will be our first, of hopefully...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/howard_university_another_new_recruiting_venue">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Recruiting in the Land of Enchantment</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p><img alt="" src="http://auctionsouthwest.com/wp-content/uploads/2011/01/UNM-logo-2.jpg" style="float:left; height:148px; margin:8px; width:283px">The Physics Department at the University of New Mexico is a new venue for our efforts to recruit minority students (as well as all students generally) into our internship program. If you are in the area, please plan to join our speaker and learn more about the program!</p> 
+     <p><strong>Time:</strong>&nbsp;...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/recruiting_in_the_land_of_enchantment">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Recruiting at Fort Valley State University</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p><img alt="" src="http://3.bp.blogspot.com/-hGYrKZGJXww/UXPRK0AKNiI/AAAAAAAAAOE/JuHM7DhFWkg/s1600/ASTAND-SEAL.jpg" style="float:left; height:211px; margin:8px; width:162px">As part of the IRIS Undergraduate Internship Program's committment to increasing diversity within the seismological community, the program will be recruiting at Fort Valley State University (FVSU) on November 6, 2014. Over the past three years four students from FVSU has been accepted into the...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/recruiting_at_fort_valley_state_university">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Program Alumni Receives Pretegious Packard Fellowship in Science and Engineering</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p><img alt="" src="https://scontent-a-dfw.xx.fbcdn.net/hphotos-xpa1/v/t1.0-9/q85/s720x720/1383179_725842880839975_150604012924626372_n.jpg?oh=74c7d989721114955fbef329b9f25b4c&amp;oe=54F35FB7" style="float:left; height:193px; margin:10px; width:200px">On October 15, 2014, Ved Lekic (2002 program alumnus) was selected as one of the eighteen 2014 Packard Fellows. The Packard Fellowships are an investment in an elite group of scientists and engineers who have demonstrated vision for the future of their fields and for the betterment of our society,”...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/program_alumni_receives_packard_fellowship">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Recruiting at the SACNAS National Conference</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p><img alt="" src="http://www.iris.edu/hq/internship/images/uploads/IMG_3304.JPG" style="float:left; height:240px; margin:10px; width:320px">Annually, IRIS and UNAVCO sponsor and coordinate the Geoscience Field Trip at the SACNAS National Conference. This year's trip was lead by <a href="http://pasadena.wr.usgs.gov/office/hough/" target="_blank">Sue Hough</a> of the USGS and provided the students with multiple opportunities to explore the San Andreas fault and its various surface expressions (from the...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/recruiting_at_the_sacnas_national_conference">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>AGI/Schlumberger Fellowship in Geoscience Communication</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p><img alt="" src="http://www.americangeosciences.org/sites/default/files/AGI-Logo-Tagline-300.png" style="float:left; height:67px; margin:10px; width:200px">The American Geosciences Institute is currently accepting applications for the AGI/Schlumberger Fellowship in Geoscience Communication. The successful candidate will play a leading role in AGI’s Critical Issues program, a new initiative to make relevant geoscience information more accessible to...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/agi_schlumberger_fellowship_in_geoscience_communication">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>IRIS/PASSCAL pre-AGU Workshop geared towards early career and new investigators</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p><img alt="" src="http://www.passcal.nmt.edu/sites/default/files/webfm/passcal/lfoley/AGU4.jpg" style="float:left; height:177px; margin:8px; width:250px">The IRIS/PASSCAL Instrument Center would like to invite you to register for our PASSCAL Users Workshop to be held on Sunday December 14th, 2014 (the day before the beginning of the AGU Fall meeting)! This year’s workshop will give an overview of the PASSCAL facility, the services we provide and how...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/iris_passcal_pre_agu_workshop">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Application deadline for MSPHDS in GEO REU Extended</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p>The application deadline for the Minorities Striving and Pursuing Higher Degrees of Success in GEO REU (MS PHD’S–GEO REU) Professional Development Program has been extended to September 22, 2014! This exciting new program hosted by the Institute for Broadening Participation (IBP) offers full...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/msphds_in_geo_reu_extended">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Geophysicist position at the Hawaiian Volcano Observatory</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p><img alt="" src="http://pubs.usgs.gov/gip/hawaii/cover2.gif" style="float:left; height:181px; margin:8px; width:300px">The U.S. Geological Survey invites applications for a geophysicist position at the Hawaiian Volcano Observatory. This is a full-time, permanent position monitoring ground surface deformation on some of Earth’s most active volcanoes. Primary job duties include: - Monitors the operational status of...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/geophysicist_position_at_the_hawaiian_volcano_observatory">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Reminder: Graduate Research Fellowship Program Deadline</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p><img alt="" src="http://www.nsfgrfp.org/images/GRFP_logo.png" style="float:left; height:84px; margin:8px; width:200px">Attention alumni! Here is a great way to kick start your graduate career. NSF's Graduate Research Fellowship Program is open to graduating seniors, first year graduate students, and second year graduate students in their first semester. The program provides three years of support for graduate study...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/reminder_graduate_research_fellowship_program_deadline">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>An employment opportunity at NSF for alumni with a PhD</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p><img alt="" src="http://upload.wikimedia.org/wikipedia/commons/8/87/NSF_Logo.PNG" style="float:left; height:125px; margin:8px; width:125px">For those who have been out of their PhD for a few years already, please consider applying to this Geophysics rotator (1- to 2-year) position at NSF.</p> 
+     <p><a href="https://www.usajobs.gov/GetJob/ViewDetails/371116000" target="_blank">https://www.usajobs.gov/GetJob/ViewDetails/371116000</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Winner of the 4th Annual T-shirt Design Competition</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p><img alt="" src="http://www.iris.edu/hq/internship/images/uploads/Files/tshirt/IMG_2045.JPG" style="border-style:solid; border-width:0px; float:left; height:188px; margin:8px; width:250px">The winner of this year's alumni T-shirt design competition is Aaron Prunty (2013).&nbsp; After participating in the IRIS internship program, Aaron received his B.S. in Geology and Geophysics from Virginia Tech in Fall 2013.&nbsp; Currently, Aaron is employed as a research assistant working in computational...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/winner_of_the_4th_annual_t_shirt_design_competition">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Webinar Opportunity: Funding your Graduate Education</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" height="78" src="http://192.185.24.213/~rchstem/wp-content/uploads/2014/02/IBP.jpg" style="margin: 2px; float: left;" width="105">Interested in graduate school but wondering how to pay for it? Your not alone and the <a href="http://www.pathwaystoscience.org/index.aspx">Institute for Broadening Participation</a> has some answers that can help! Join them on Wednesday July 9th at 4 p.m. EST for this FREE webinar&nbsp; "Funding your Graduate Education".</p> 
+     <p> <a href="http://www.pathwaystoscience.org/webinarregistration.aspx?eventid=EVE-20140709-02">Registration for this FREE event...</a></p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/webinar_opportunity_funding_your_graduate_education">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Research position in seismology, University of Alaska Fairbanks</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" height="117" src="http://www.gi.alaska.edu/files/dept/8/gi-logo.jpg" style="margin: 8px; float: left;" width="117">The Geophysical Institute (GI) at the University of Alaska Fairbanks is hiring a new seismology faculty member at the rank of Research Assistant Professor or Research Associate Professor. We seek a scientist interested in building a long-term research program that leverages the extensive...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/research_position_in_seismology_university_of_alaska_fairbanks">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Announcing the 4th Annual T-shirt Design Competition</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img align="left" alt="" height="246" src="http://www.iris.edu/hq/internship/images/uploads/tshirt_front_Final.jpg" style="margin: 8px;" width="219">Calling alumni of the IRIS Internship Program! Now is your chance to grab fame and fortune by submitting a design idea for the 2014 Internship T-Shirt. Not to mention that this year's internship class is depending on you and your creativity to get the super cool t-shirts this year!</p> 
+     <p> <strong>Who is...</strong></p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/announcing_the_4th_annual_t_shirt_design_competition">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Two positions with IRIS PASSCAL Instrument Center at New Mexico Tech</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" height="76" src="http://xeos.passcal.nmt.edu/images/passcal_logo_clear.png" style="margin: 8px; float: left;" width="228">(1)&nbsp; The IRIS PASSCAL Instrument Center at New Mexico Tech solicits applications for a professional Staff Scientist/Data Specialist for seismology support operations.&nbsp; The PASSCAL Instrument Center supports both controlled and passive source seismology worldwide with end-to-end experiment support...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/two_positions_with_iris_passcal_instrument_center_at_new_mexico_tech">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>2014 IRIS Workshop Travel Scholarships</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> IRIS 2014 Workshop Scholarship Application Deadline: Friday March 28, 2014</p> 
+     <p> Student and Postdoctoral Fellows:</p> 
+     <p> One student or postdoctoral fellow from an IRIS Voting Member Institution or Education Affiliate may request support.</p> 
+     <p> Subject to individual approval in advance of the workshop, IRIS...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/2014_iris_workshop_scholarship_applicatio">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Upcoming webinar: Women in geosciences: Improving your chance for success</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" src="http://www.iris.edu/hq/internship/images/uploads/Unknown.jpeg" style="width: 160px; height: 47px; margin: 8px; float: left;">WOMEN IN GEOSCIENCES: IMPROVING YOUR CHANCE FOR SUCCESS<strong>**</strong></p> 
+     <p> Tuesday February 25th, 2014 3:00pm EST</p> 
+     <p> Women have just as much opportunity for career triumph in geosciences (and other STEM fields) as men, and yet there is evidence that we are not paid as much as men, nor are there as many women in...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/upcoming_webinar_women_in_geosciences_improving_your_chance_for_success">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Intern’s passion for seismology began with an IRIS school seismograph</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> Amanda Livers’ interest in geology and earthquakes began in middle school. When choosing a topic for the science fair Amanda found IRIS’s <a href="http://www.iris.edu/hq/sis" target="_blank">Seismographs in Schools</a> website and convinced her 8th grade science teacher that they should apply.&nbsp; Their joint application resulted in Sidney Middle School...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/interns_passion_for_seismology">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Community Involvement Opportunities</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" height="170" src="http://www.iris.edu/hq/internship/images/uploads/iris_intern_pin_transparent_copy.jpg" style="margin: 8px; float: right;" width="171">As the IRIS Undergraduate Internship Program ramps up for another great summer, there are still opportunities for you and your research to become involved!&nbsp;</p> 
+     <p> 1) <strong>Apply to mentor an intern in 2014</strong>. This is a great opportunity to become the catalyst in the career of an exceptional young scientist...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/community_invovlement_opportunities">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Webinar Opportunity: Making the Most of Your Postdoctoral Position</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> Wednesday, February 5, 2014 7:00 pm ET / 4:00 pm PT</p> 
+     <p> An experienced panel (both current postdocs and faculty members) will share their perspectives on this topic, followed by a Question &amp; Answer period.</p> 
+     <p> Preregistration is required.&nbsp;</p> 
+     <p> Please sign up and pre-share your questions with us at&nbsp;...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/making_the_most_of_your_postdoctoral_position">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Student deadline for summer 2014 approaching</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" src="http://www.iris.edu/hq/files/programs/education_and_outreach/internship/IMG_0011.jpg" style="margin: 8px; width: 446px; height: 331px; float: left;">Don't be left out this summer! If you are looking for an amazing opportunity to explore the field of geophysics, there is still time to apply for summer 2014!&nbsp; Act fast as the deadline is rapidly approaching with student applications are due by February 1st&nbsp; and letters of recommendation due by...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/student_deadline_for_summer_2014">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Postdoc position at the University of Maryland, College Park</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <em><img alt="" src="http://www.umd.edu/wrapper/images/header-um-logo.gif" style="width: 271px; height: 46px; margin: 8px;"></em></p> 
+     <p> <em>Application deadline 2/28/2014</em></p> 
+     <p> We invite applicants for a postdoctoral researcher to work on a multidisciplinary project aimed at constraining crustal structure and composition using seismic data. The project entails close collaboration between geochemistry/petrology (Rudnick and McDonough)...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/postdoc_maryland_college_park">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Congratulations to the AGU OSPA winners!</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> Congratulations to all the outstanding student presentation award winners from the recent 2013 Fall AGU. Notable in the list was the award to Martin Schwed, an alumni of our program from 2010, for his paper in the Near-Surface Geophysics section.</p> 
+     <p> NS33A-1682. Seismic Site Characterization...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/congratulations_to_the_agu_ospa_winners">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Join the IRIS Team!</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> The IRIS DMC is looking for an Quality and Deployment Engineer in Seattle.</p> 
+     <p> Do not let the title throw you off, if you are a geoscientist with an inclination for the technical side of things or technical person who happens to be doing geoscience this job could be for you.</p> 
+     <p> This job is for you...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/join_the_iris_team">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Call for Participation in GeoPRISMS ENAM Community Seismic Experiment</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" src="http://geoprisms.org/templates/contract-land-staff/images/wideLogo2.png" style="margin: 8px; width: 415px; height: 55px;"></p> 
+     <p> Application Deadlines:<br> January 7, 2014 for Broadband OBS Deployment Cruise<br> March 1, 2014 for Explosion Seismic Shoot, Active-Source, Seismic Cruise, and Active-Source OBS Deployment Cruise, Broadband OBS Recovery Cruise<br> Applications are being solicited to participate in the GeoPRISMS...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/call_for_participation_in_geoprisms_enam_community_seismic_experiment">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>AGU Seismology Section News: November 2013</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" height="79" src="https://images.magnetmail.net/images/clients/AGU_/AGUlogowithTM.jpg" style="margin: 8px; float: left;" width="219"></p> 
+     <p> 1. AGU Fall Meeting Events<br> With the AGU Fall Meeting just ahead, we would like to draw your attention to a number of seismology-related meeting events:</p> 
+     <p> &nbsp;</p> 
+     <p> Tuesday, 10 December, 5:00 PM: Presentation of the 2013 Paul G. Silver Award for Outstanding Scientific Service<br> 104 Moscone South...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/agu_seismology_section_news_november_2013">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Postdoctoral position in seismology at the University of New Mexico</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" height="110" src="http://urbanuniversitiesforhealth.org/media/images/unm-flagship-logo.png" style="margin: 8px; float: left;" width="144">A postdoctoral position in seismology is available at the University of New Mexico (UNM) in Albuquerque. There are many potential opportunities in studies of lithospheric and deeper mantle structure beneath North America across a wide range of spatial scales. Candidates interested in a mix of...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/postdoctoral_position_in_seismology_at_the_university_of_new_mexico">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Annual Internship Receiption at the AGU Meeting</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" height="301" src="http://www.iris.edu/hq/internship/images/uploads/iris_internship_invite_9-19-13_1.jpg" style="margin: 8px; float: left;" width="452">It is that time of the year again and we can't wait to celebrate this successful program, catch up with our old friends, and make new connections!</p> 
+     <p> Looking forward to seeing both intern and mentor alumni of the program during AGU!</p> 
+     <p> The event is located only <a href="http://g.co/maps/bz4cw" target="_blank">a few short blocks from the AGU...</a></p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/annual_internship_receiption_at_the_agu_meeting">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Seismic Source Facility Short Course @ AGU</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> The Seismic Source Facility is having a short course to familiarize students and principal investigators with the facility and the safety procedures used.&nbsp; The short course will be Sunday, December 8, 2013, 8:30 am to 4 pm. The location will be Zeum Room, Hotel Palomar, 12 4th St., San Francisco,...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/seismic_source_facility_short_course_agu">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Travel Grants for the 2014 SSA Meeting</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" src="http://www.seismosoc.org/images/header-logo.gif" style="width: 200px; height: 51px; float: left; margin: 8px;">The SSA Travel Grant application is open now for the SSA 2014 Annual Meeting, to be held next year in Anchorage, Alaska (30 April – 2 May, 2014).&nbsp; The travel grants available are: Student Travel Grants, the International Travel Grant, and the SSA/ESC Travel Grant.&nbsp;</p> 
+     <p> If you are coming to the SSA...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/travel_grants_2014_ssa_meeting">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>PhD Student opportunity in geophysics</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" height="101" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbroPgz-UaSSVGlO6-r-t_y8bGW5YXDJHjIyws2gQnZdY2sLSMkMxcvOnC" style="margin: 8px; float: left;" width="91">San Diego State University and University of California San Diego are accepting applications for the Joint Doctoral Program in Geophysics. The SDSU/UCSD Joint Program provides full access to the Geophysics curriculum of UCSD’s Scripps Institution of Oceanography, with additional specialized...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/phd_student_opportunity_in_geophysics">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Postdoctoral Fellow Positions Available UC Berkeley Seismological Laboratory</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" height="57" src="http://earthquakes.berkeley.edu/BSL_template_img/BSLlogo_forweb_75pct.jpg" style="margin: 8px; float: left;" width="204">Two postdoctoral fellow positions are available at the UC Berkeley Seismological Laboratory to join Prof. Richard Allen’s earthquake early warning group.</p> 
+     <p> Earthquake early warning is the rapid detection of earthquakes underway, estimation of the ground shaking hazard they pose, and warning of...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/postdoctoral_fellow_positions_available_uc_berkeley_seismological_laborator">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>GeoPRISMS Prize for Outstanding AGU Student Poster and Oral Presentations</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <strong>Application Deadline: November 11, 2013</strong></p> 
+     <p> The GeoPRISMS Program, successor to MARGINS, is offering two $500 prizes for Outstanding Student Presentations on GeoPRISMS- or MARGINS-related science at the AGU Fall Meeting in San Francisco, December 9-13, 2013. The two prizes, one each for a poster...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/geoprisms_prize_for_outstanding_agu_student_poster_and_oral_presentations">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Student research opportunity (M.S.) at University of Alabama w/ Antarctic fieldwork</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" height="171" src="http://www.iris.edu/hq/internship/images/uploads/Antarctica.jpg" style="margin: 8px; float: left;" width="227">The Department of Geological Sciences at the University of Alabama seeks a motivated student who is interested in pursuing graduate studies in earthquake seismology. Support for one is available starting Fall 2014 through an NSF-funded CAREER grant. Research projects will focus on characterizing...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/student_research_opportunity_alabama">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Earthquake/Tsunami ResearchEarthquake/Tsunami Research Position at the University of Puerto Rico at</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" src="http://www.uprm.edu/portada/media/logo_rum.png" style="width: 142px; height: 142px; margin: 8px; float: left;">The Geology Department of the University of Puerto Rico at Mayagüez is seeking applications for a research faculty position in the Puerto Rico Seismic Network (PRSN), in the fields of seismology and earthquake/tsunami monitoring. The appointment will be as a faculty researcher, with an academic...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/earthquake_tsunami_researcher">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Tenure-Track Professor in Solid Earth Geosciences - Harvard University</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" src="http://www.fas.harvard.edu/~topdownsynthbio/images/harvard_logo.jpg" style="margin: 8px; width: 144px; height: 139px; float: left;">The Department of Earth and Planetary Sciences seeks to appoint two tenure-track professors in solid Earth geosciences, with an emphasis on the geochemistry and geophysics of the Earth’s crust and interior.</p> 
+     <p> Successful applicants will be expected to establish an innovative and internationally...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/tenure_track_professor">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>IRIS/PASSCAL Instrument Center seeks Staff Scientist/Field Engineer</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" height="85" src="http://xeos.passcal.nmt.edu/images/passcal_logo_clear.png" style="margin: 8px; float: left;" width="255"><strong>JOB DUTIES - </strong>Primary responsibilities are to support seismic research both in the field and in the lab. Duties include: preparing equipment for shipping; worldwide field support including the Arctic and Antarctic; development of specialized equipment for seismic stations in harsh environments;...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/iris_passcal_instrument_center_seeks_staff_scientist_field_engineer">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Winner of the 3rd Annual T-shirt Design Competition</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" src="http://eapsweb.mit.edu/files/eapsweb/imagecache/person/img/personthumb/nschnepf/picture-62.png" style="width: 135px; height: 135px; border-width: 1px; border-style: solid; margin: 8px; float: left;">The winner of this year's alumni T-shirt design competition was Neesha Schnepf (2011). After participating in the IRIS internship program Neesha received her B.S. in Science of Earth Systems from Cornell University in 2013. Neesha has just started graduate school at the Massachusetts Institute of...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/winner_of_the_3rd_annual_t_shirt_design_competition">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Post-AGU CIDER workshop: Dec 14, 2013 (Berkeley, CA)</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" src="http://www.deep-earth.org/logo_cider_small.jpg" style="width: 178px; height: 116px; margin: 8px; float: left;">Registration is now open for the 2013 Post AGU CIDER workshop, which will take place at U.C. Berkeley on Saturday Dec 14, 2013, following the AGU meeting in San Francisco.</p> 
+     <p> This one day workshop features a retrospective of the 2013 CIDER summer program on the topic "From mantle to crust:...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/post_agu_cider_workshop_dec_14_2013_berkeley_ca">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Los Alamos National Lab seeking geophysicist</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" src="http://www.lanl.gov/_assets/images/lanl-logo-footer.png" style="width: 281px; height: 168px; margin: 8px; float: left; ">The Geophysics Group at Los Alamos National Laboratory is looking for a creative, experienced professional scientist to join our interdisciplinary team to take a leadership role in research to detect and characterize clandestine nuclear explosions using multi-phenomenology explosion monitoring...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/LANL_seeking_geophysicist">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Two new Assistant Professor positions… (Boise, ID &amp; Munich, Germany)</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <strong>Assistant Professor in Geophysics - Boise State University</strong></p> 
+     <p> Boise State University, powered by creativity and innovation, stands uniquely positioned in the Northwest as a metropolitan research university of distinction. Interested applicants are encouraged to apply for the position of a tenure...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/two_new_assistant_professor_positions">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>AGU Seismology Section Seeks Student Representative</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> The <a href="http://www.agu.org/sections/seis/" target="_blank">Seismology Section</a> is looking for a new Ph.D. student to serve as a student representative. This position involves being a voice for student interests and concerns within the section, and includes attending a student breakfast and a meeting with the section officers at the AGU Fall Meeting....</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/seeks_student_representative">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Webinar Opportunity: “Funding your Graduate Education”</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> Do I have to pay to go to graduate school? How does it all work? The Institute for Broadening Participation collaborated with COSEE-OS to host this webinar outlining the process of applying for graduate funding. Liv Detrick and Chris Cash foam the Institute for Broadening Participation (IBP)...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/webinar_funding_graduate_education">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>AAAS Staff trains IRIS interns on communicating science to non-scientists</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> This session, "Communicating Your Summer's Research with a Non-scientist Audience", will be presented on July 15, 2013.&nbsp; The session presented by Linda Cendes, Program Associate in the Public Engagement Office, will focus on how to communicate scientific research to a non-scientific audience....</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/aaas_staff_communication">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>2011 Alumna’s internship project expands to publication</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="McCormack and Long at 2011 IRIS internship alumni reception at the Fall AGU Meeting" longdesc="McCormack and Long at 2011 IRIS internship alumni reception at the Fall AGU Meeting" src="http://www.iris.edu/hq/internship/images/uploads/McCormack_Long_2011.jpg" style="margin: 8px; float: left; width: 182px; height: 154px;">2011 intern Kimmy McCormack's (left) internship project focused on developing receiver functions for seismic stations along the Ryukyu arc in southeastern Japan. The goal of the project was to attempt to determine whether any serpentinization has occurred in the upper mantle of the subduction...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/alumna_project_publication">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Announcing the 3rd Annual T-shirt Design Competition</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <strong><img alt="" height="265" src="http://www.iris.edu/hq/internship/images/uploads/FRONT_FINAL_Small.jpg" style="float: right; margin: 8px;" width="377"></strong>Calling alumni of the IRIS Internship Program! Now is your chance to grab fame and fortune by submitting a design idea for the 2013 Internship T-Shirt. Not to mention that this year's internship class is depending on you and your creativity to get the super cool t-shirts this year!</p> 
+     <p> <strong>Who is...</strong></p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/3rd_design_competition">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Upcoming Webinar - Negotiating your Postdoc Position</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> An experienced panel (both current postdocs and faculty members) will share their perspectives on this topic, followed by a Question &amp; Answer period. Preregistration is requested. Please sign up and pre-share your questions with us at:<a href="https://www.surveymonkey.com/s/VG86QR7" target="_blank"> https://www.surveymonkey.com/s/VG86QR7</a></p> 
+     <p> Date : Tuesday,...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/upcoming_webinar_negotiating_your_postdoc_position">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Alumna (2007) receives outstanding student paper award from AGU</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" height="75" src="https://lh3.googleusercontent.com/-TnKWLvuB4HE/AAAAAAAAAAI/AAAAAAAABFY/mXeCxmO1U9k/s120-c/photo.jpg" style="float: left; margin: 8px;" width="75">Stefany Sit was recently recognized for her paper submitted to the 2012 Fall AGU meeting "Six years of tectonic tremor observations prior to the M w 7.4 March 20, 2012 Ometepec earthquake".&nbsp; Stefany's work on tremor began in 2007 when she was an IRIS intern and placed at Miami of Ohio to work...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/alumni_receives_outstanding_student_paper_award_from_agu">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>2012 Internship Class Presents at AGU</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" height="269" src="http://www.iris.edu/hq/internship/images/uploads/IMG_1173.jpg" style="margin: 8px; float: left;" width="397">We are very proud of our 15 interns who are presenting at the 2012 Fall AGU meeting! We encourage the IRIS community to stop by the interns' posters to meet and talk with them about their work this summer.&nbsp; A complete listing of the IRIS Intern presentations can be <a href="http://www.iris.edu/hq/files/programs/education_and_outreach/internship/2012_AGU/2012_AGU_Papers.pdf">downloaded here</a>.</p> 
+     <p> Not only is...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/2012_internship_class_presents_at_agu">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Three PhD Positions in Seismology at RSES, The Australian National University</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" height="134" src="http://www.iris.edu/hq/internship/images/uploads/fieldmap_0.jpg" style="margin: 8px; float: left;" width="268">Three PhD positions in the recently funded projects are available in Seismology and Mathematical Geophysics Group at the Research School of Earth Sciences (RSES), the Australian National University (ANU) starting early 2013. Applications and inquiries are invited from qualified and motivated...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/phd_positions_australian_national">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Help Us Celebrate 15 Years of the IRIS Internship Program at AGU!</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" height="324" src="http://www.iris.edu/hq/files/programs/education_and_outreach/internship/Invitation.jpg" style="margin: 8px; float: left; text-align: center;" width="486"></p> 
+     <p> &nbsp;</p> 
+     <p> &nbsp;</p> 
+     <p> &nbsp;</p> 
+     <p> &nbsp;</p> 
+     <p> &nbsp;</p> 
+     <p> &nbsp;</p> 
+     <p> &nbsp;</p> 
+     <p> &nbsp;</p> 
+     <p> &nbsp;</p> 
+     <p> &nbsp;</p> 
+     <p> Initiated in 1998, the IRIS Undergraduate Internship Program has placed 129 students at over 50 IRIS institutions. The vast majority of our alumni have gone on to pursue careers in geophysics or other closely related STEM fields. Help us celebrate this...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/help_us_celebrate_15_years_of_the_iris_internship_program">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Postdoc position at the University of Alaska Fairbanks</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" src="http://giseis.alaska.edu/input/west/images/ak_seismicity.jpg" style="margin: 8px; float: left;">The UAF Seismology Lab is home to two dozen faculty, postdocs, staff and students dedicated to advancing observation-driven seismology. Our research targets earthquakes, volcanoes, tsunamis, glaciers and tectonics in Alaska and around the world. We monitor earthquake and volcano activity...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/postdoc_position_at_the_university_of_alaska_fairbanks">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>PhD scholarships in Geophysics at Victoria University of Wellington, NZ</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" src="http://www.victoria.ac.nz/__data/assets/image/0013/283/vic-logo_landscape_web-sr_rgb_v3.gif" style="width: 220px; height: 75px; margin: 8px; float: left;">PhD students are sought to work on several seismological and geophysical topics within the <a href="http://www.victoria.ac.nz/sgees">Institute of Geophysics, School of Geography, Environment, and Earth Sciences, Victoria University of Wellington (VUW)</a>.</p> 
+     <ol> 
+      <li> Deep Fault Drilling Project, Alpine Fault — several studies addressing the...</li>
+     </ol>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/phd_scholarships_in_geophysics_at_victoria_university_of_wellington_nz">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>PhD Research Position at the University of Twente, the Netherlands</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> PhD Research Postion on "Modelling of the African Lithosphere Combining GOCE and Seismology"</p> 
+     <p> This four-year PhD position is offered within the department of Earth Systems Analysis, Faculty ITC at the University of Twente, the Netherlands, in collaboration with Utrecht University, Pennsylvania...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/phd_research_position_at_the_university_of_twente_the_netherlands">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Opportunity of the Carnegie Institution of Washington</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> The Carnegie Institution of Washington's Department of Terrestrial Magnetism has multiple postdoctoral fellowships available in geophysics, volcanology, and planetary science. Details can be found at <a href="http://www.dtm.ciw.edu/fellowships-mainmenu-96/general-mainmenu-475.">http://www.dtm.ciw.edu/fellowships-mainmenu-96/general-mainmenu-475</a>.<br> &nbsp;</p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>AAAS staff to train IRIS interns on communicating their research to the public</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" src="http://www.iris.edu/hq/internship/uploads/715ddeaa6e57b0e/0601public_engagement_lohwater.jpg" style="width: 93px; height: 100px; margin: 8px; float: left;"></p> 
+     <p> This session, "Communicating Your Summer's Research with a Non-scientist Audience", will be presented on July 6, 2012.&nbsp; The session presented by Tiffany Lohwater (AAAS Public Engagement Manager), will focus on how to communicate scientific research to a non-scientific audience. Concepts will...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/communicating_your_summers_research_with_a_non-scientist_audience_july">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Winner of the 2nd Annual Alumni T-shirt Design Competition</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" src="http://www.iris.edu/hq/internship/uploads/715ddeaa6e57b0e/Schwed_Headshot.jpg" style="width: 100px; height: 100px; margin: 8px; float: left;">The winner of this year's alumni T-shirt design competition was Martin Schwed (2010). After participating in the IRIS internship program Martin received his B.S. in Geoloical Sciences from Trinity University in 2012. Martin will be starting graduate school at Baylor University in the fall, where...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/winner_of_the_2nd_annual_alumni_t-shirt_design_competition">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Opportunity at Victoria University of Wellington</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" src="http://www.jobsbump.com/wp-content/uploads/2012/05/Victoria-University-of-Wellington1.jpg" style="margin: 8px; float: left; width: 225px; height: 169px;">PhD students are sought to work on several seismological and geophysical topics within the Institute of Geophysics, School of Geography, Environment, and Earth Sciences, Victoria University of Wellington (VUW).</p> 
+     <p> 1. Fault zone structure in the region of the magnitude 7.1 Darfield and the...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/opportunity_at_victoria_university_of_wellington">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>2011 Interns, Brunner and Kenyon, receive honorable mentions for AGU presentations</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" src="http://www.iris.edu/hq/internship/images/avatars/uploads/avatar_30.jpg" style="width: 50px; height: 50px; border-width: 1px; border-style: solid; margin: 8px; float: left;"> <img alt="" src="http://www.iris.edu/hq/internship/images/avatars/uploads/avatar_35.jpg" style="width: 50px; height: 50px; border-width: 1px; border-style: solid; margin: 8px; float: left;">Congratulations to Kelsey Brunner (left) and Lindsey Kenyon (right) for their honorable mention in the AGU Seismology Section Outstanding Student Presentation Award program. This is an impressive accomplishment as there were 250 student seismology presentations and the program does not...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/2011_interns_brunner_and_kenyon_receive_honorable_mentions_for_agu_pre">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Announcing the 2nd Annual T-Shirt Design Competition for Alumni</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> Calling alumni of the IRIS Internship Program! Now is your chance to grab fame and fortune by submtting a design idea for the 2012 Internship T-Shirt.</p> 
+     <p> <strong><img alt="" src="www.iris.edu/hq/files/programs/education_and_outreach/internship/Tshirts/SingleShirtView.gif"><img alt="" src="http://www.iris.edu/hq/files/programs/education_and_outreach/internship/Tshirts/SingleShirtView.gif" style="width: 397px; height: 306px; margin: 8px; float: right;">Who is eligible:</strong> Any alumni of our internship program</p> 
+     <p> <strong>What:</strong> Submit a design featuring your own original work (either scientific or artistic)...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/announcing_the_2012_t-shirt_design_competition_for_alumni">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Alumni receives SSA’s Student Presentation Award</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" src="http://www.seismosoc.org/awards/student-awards/2011_Pics/Justin_Brown.jpg" style="width: 100px; height: 115px; margin: 8px; float: left;">Annually, the Seismological Society of America (SSA) recognizes excellence in student research with its <a href="http://www.seismosoc.org/awards/student-awards/index.php" target="_blank">Student Presentation Award</a>.&nbsp; This year's list of eight recipients includes IRIS Internship alumni Justin Brown (Class of 2004).&nbsp; Justin was recognized for his continued efforts to better...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/alumni_receives_ssas_student_presentation_award">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>2011 intern missed AGU but made it to the South Pole (or nearly)</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" src="http://www.iris.edu/hq/internship/uploads/715ddeaa6e57b0e/Image.jpg" style="margin: 8px; float: left; width: 140px; height: 127px;"><a href="http://www.iris.edu/hq/internship/blogs/user/31">Piage Czoski</a>, an undergraduate at New Mexico Tech (NMT) and 2011 IRIS Intern, is just back from conducting research for her senior thesis in Antarctica. She arrived to Mc Murdo Station in late November and spent much of her time working on Mt. Erebus. Mt. Erebus ( 3,794 m in elevation) is the...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/2011_intern_missed_agu_but_made_it_to_the_south_pole_or_nearly">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Workshop for advanced graduate students and post-docs - CIDER</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" src="http://www.deep-earth.org/logo_cider_small.jpg" style="width: 178px; height: 116px; float: left; margin: 8px;">Advanced graduate students and post-docs: Come to the CIDER 2012 summer lecture and tutorial program, July 15th- August 10th to improve your understanding of geoscience disciplines other than your specialty and engage in multi-disciplinary research.</p> 
+     <p> This year's CIDER summer program main theme...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/workshop_for_advanced_graduate_students_and_post-docs_-_cider">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>USGS Mendenhall Postdoc: Exploring Fault Slip Modes in Alaska and the Aleutian Arc</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" src="http://geology.usgs.gov/postdoc/2013/2013heading.jpg" style="width: 365px; height: 128px; float: left; margin: 8px;">We seek a postdoctoral Fellow to study ‘slow’ to ‘fast’ fault slip in Alaska and along the Aleutian arc, which are home to a 2500 km span of subduction zone and one of the world’s most prominent volcanic arcs. These major plate boundaries have hosted episodes of aseismic slip and tremor and an...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/usgs_mendenhall_postdoc_exploring_fault_slip_modes_in_alaska_and_the_aleuti">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Opportunity for Graduate and Advanced Undergrad Students: Sail on the R/V Langseth</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" src="http://upload.wikimedia.org/wikipedia/commons/9/90/LDEO_Langseth.jpg" style="width: 302px; height: 203px; margin: 8px; float: left;">The following comes from W. Steven Holbrook at the University of Wyoming. Three alumni of our program are currently enrolled in the department (<a href="http://www.gg.uwyo.edu/ggstudent/aandrus/Austin_Andrus/Home.html" target="_blank">Austin Andrus 09'</a>, <a href="http://www.gg.uwyo.edu/ggstudent/eeverson/Site/Home.html">Eric Everson 07'</a> &amp; <a href="http://www.gg.uwyo.edu/ggstudent/kfoste14/Site/Home.html">Katie Foster 09'</a>) as graduate students. &nbsp;</p> 
+     <p> We announce an opportunity for students and early-career scientists to...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/opportunity_for_graduate_and_advanced_undergrad_students_sail_on_the_r">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Celebrate with us, catch up with friends, and make new connections!</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> All alumni of the program, regardless of their year of participation, are encouraged to attend this celebration!&nbsp;</p> 
+     <p> The event is located only a few <a href="http://g.co/maps/bz4cw" target="_blank">short blocks from the AGU meeting</a>!&nbsp;</p> 
+     <p> <img alt="" src="http://www.iris.edu/hq/internship/uploads/715ddeaa6e57b0e/2011_Announcement.jpg" style="width: 510px; height: 339px; margin: 8px; float: left;"></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Catch up with the IRIS interns at AGU!</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" src="http://www.iris.edu/hq/internship/uploads/715ddeaa6e57b0e/PC150061.jpg" style="width: 199px; height: 161px; margin: 8px; float: left;">The culmination of each student’s internship experience with IRIS is the opportunity to present the results of their summer research. Most interns and their hosts choose to present at the Fall AGU meeting. This year, 13 of 15 interns will be presenting papers at AGU (the other two are presenting...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/catch-up_with_the_iris_interns_at_agu">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Program alumnus seeks Graduate Student for Antarctic fieldwork and earthquake seismology</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" src="http://donahoe.geo.ua.edu/faculty/images/H_FieldWork_1.jpg" style="width: 205px; height: 154px; float: left; margin: 8px;">The Department of Geological Sciences at the University of Alabama seeks motivated students who are interested in pursuing graduate studies in earthquake seismology. Support for two student research positions (1 MS, 1 PhD) is available starting Fall 2012 through an NSF-funded CAREER grant....</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/program_alumni_seeks_graduate_student_for_antarctic_fieldwork_and_eart">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Alumni Opportunity: Don’t Miss the 3rd Annual IRIS Early Career Breakfast at AGU!</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <strong>Are you an "Early Career" seismologist &amp; interested in IRIS? </strong><br> IRIS welcomes any post docs to pre-tenure faculty to join us for breakfast to discuss<br> ways in which IRIS can support you with your research and educational endeavors.</p> 
+     <p> When: Tuesday, December 6 at 7AM<br> RSVP &amp; More Info: contact...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/alumni_opportunity_dont_miss_the_3rd_annual_iris_early_career_breakfast_at_">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Are you the program’s next Alumni Mentor?</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" src="http://www.iris.edu/hq/internship/uploads/715ddeaa6e57b0e/Andy2.jpg" style="width: 242px; height: 199px; margin: 8px; float: left;">Currently, we are seeking an alumni of the program to serve as the next Alumni Mentor for the program. This alumnus, a student advanced in a PhD program, will provide general support and assist instructionally during the orientation week. Throughout the following summer and fall the Alumni Mentor...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/are_you_the_next_alumni_mentor_for_the_iris_undergraduate_internship_p">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>The 2011 Best Blogger Award goes to….</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" src="http://www.iris.edu/hq/internship/uploads/715ddeaa6e57b0e/263795_1861050967554_1279320310_31762774_2013851_n.jpg" style="width: 230px; height: 225px; border-width: 0px; border-style: solid; margin: 10px; float: left;">With votes form all of the 2011 interns now cast, the 2011 Best Blogger Award goes to <a href="http://www.iris.edu/hq/internship/blogs/user/45" target="_blank">Sara Kowalke</a>!&nbsp; Competition this year was stiff as the runner-up spot was a tie between <a href="http://www.iris.edu/hq/internship/blogs/user/39" target="_blank">Ado</a> for her impressive prose and <a href="http://www.iris.edu/hq/internship/blogs/user/40" target="_blank">Neesha</a> for her "figure-rich" reflections on detecting tremor.&nbsp; Other notable blogs include...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/2011_best_blogger_award_goes_to">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>AAAS Office of Public Programs to deliver webinar to IRIS Interns</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" src="http://www.iris.edu/hq/internship/uploads/715ddeaa6e57b0e/0601public_engagement_lohwater.jpg" style="width: 93px; height: 100px; float: left; margin: 8px;"><strong>Communicating your summer's research with a non-scientist audience (July 7, 2011)</strong></p> 
+     <p> This session, presented by Tiffany Lohwater (AAAS Public Engagement Manager), will focus on how to communicate scientific research to a non-scientific audience. Concepts will include: the challenges and...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/aaas_office_of_public_programs_to_deliver_webinar_to_interns_7_7_11">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Sit (07’) receives Outstanding Student Paper award from AGU Seismology Section</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> Stefany Sit was recently recognized by the AGU Seismolgy section for her paper submitted to the 2010 Fall AGU meeting "<a href="http://www.agu.org/cgi-bin/SFgate/SFgate?language=English&amp;verbose=0&amp;listenv=table&amp;application=fm10&amp;convert=&amp;converthl=&amp;refinequery=&amp;formintern=&amp;formextern=&amp;transquery=sit&amp;_lines=&amp;multiple=0&amp;descriptor=%2fdata%2fepubs%2fwais%2findexes%2ffm10%2ffm10|565|3461|Quantifying%20NVT%20in%20southern%20Mexico%20and%20its%20apparent%20lack%20of%20correlation%20with%20slow%20slip|HTML|localhost:0|%2fdata%2fepubs%2fwais%2findexes%2ffm10%2ffm10|48953239%2048956700%20%2fdata2%2fepubs%2fwais%2fdata%2ffm10%2ffm10.txt" target="_blank">Quantifying NVT in southern Mexico and its apparent lack of correltation with slow slip</a>".&nbsp; Stefany's work on tremor began in 2007 when she was an IRIS intern and placed at Miami...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/sit_07_receives_outstanding_student_paper_award_from_agu_seismology_section">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Winner of the Noble Energy T-shirt design competition</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" src="http://www.iris.edu/hq/internship/uploads/715ddeaa6e57b0e/cfl_photo.jpg" style="width: 88px; height: 87px; margin: 8px; float: left; border-width: 1px; border-style: solid;">The winner of this year's alumni T-shirt design competition was Cate Fox-Lent (2003). After participating in the IRIS internship program Cate received her B.S. in Geoloical Sciences from Brown University in 2005. Currently, Cate is a high school science teacher in Austin, TX. Congratulations...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/winner_of_the_t-shirt_deisgn_competition">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>2011 internship orientation underway!</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" src="http://www.iris.edu/hq/internship/uploads/715ddeaa6e57b0e/drivingrange_2011.jpg" style="width: 302px; height: 200px; float: left; margin: 8px;">This week, May 30 to June 4th, the 2011 class of IRIS interns have gathered in Socorro, NM. This orientation week is designed to help the interns get to know one another and to provide them with an opportunity to learn the basics of seismology and computer programming. The week kicked off with a...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/2011_internship_orientation_underway">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Kluskiewicz (09) awarded NSF Graduate Research Fellowship</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" src="http://earthweb.ess.washington.edu/dwp/people/images/grads/thumbnails/kluskiewicz--daniel.jpg" style="margin: 8px; float: left;">Daniel Kluskiewicz, a graduate of Penn State University (2010), was recently awarded a NSF <a href="http://www.nsfgrfp.org/" target="_blank">Graduate Research Fellowship</a> to support his graduate work at the University of Washington.&nbsp; Kluskiewicz participated in the IRIS Internship program during the summer of 2009 where he worked with Shad O'Neel...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/kluskiewicz_09_awarded_nsf_graduate_research_fellowship">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Welcome class of 2011</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" src="http://www.iris.edu/hq/internship/uploads/715ddeaa6e57b0e/2010-06-04 19.14.02.jpg" style="width: 251px; height: 187px; margin: 8px; float: left;">The IRIS undergraduate internship program is pleased to announce the 2011 internship class! Below is a listing of all students accepted into this year's program.&nbsp; Their summer placements have been finalized and the interns are now in the process of finalizing the details of their summer...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/welcome_class_of_2011">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>T-Shirt Design Competition for Alumni</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> Calling alumni of the IRIS Internship Program! Now is your chance to grab fame and fortune by submtting a design idea for the 2011 Internship T-Shirt.</p> 
+     <p> <strong><img alt="" src="http://www.iris.edu/hq/files/programs/education_and_outreach/internship/Tshirts/img_3735.gif" style="width: 227px; height: 229px; margin: 8px; float: left; border-width: 1px; border-style: solid;">Who is eligible:</strong> All alumni of the internship program</p> 
+     <p> <strong>What:</strong> Submit a design featuring your own original work (either scientific or artistic)...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/t-shirt_design_competition_for_alumni">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Two great fieldcamp opportunities from GSA/Exxon</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" src="http://rock.geosociety.org/ExxonMobilAward/2011/images/EM-group-1.jpg" style="width: 250px; height: 173px; margin: 8px; float: left;">Program 1. GSA and ExxonMobil are excited to announce the third annual Field Seminar in the Bighorn Basin of north-central Wyoming, which will emphasize multi-disciplinary integrated basin analysis. An all-expenses paid field camp (through an award) in Wyoming from July 31 - Aug. 5, run by the...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/two_great_fieldcamp_opportunities_from_gsa_exxon">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Opportunity for program alumni: Dynamics of Mountain Building Summer Workshop</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" src="http://www.deep-earth.org/logo_cider.jpg" style="width: 218px; height: 120px; margin: 0px; float: left;">Cooperative Institute for Dynamic Earth Research (CIDER) Workshop: Tutorial and workshop for advanced graduate students and post-docs.<br> The goal is to familiarize participants with the tools of geochemistry, geodynamics, mineral and rock physics and seismology that are used for understanding...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/opportunity_for_program_alumni_dynamics_of_mountain_building_summer_worksho">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Don’t be left out!</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <a href="http://www.iris.edu/hq/files/programs/education_and_outreach/internship/IMG_0011.jpg"><img alt="" src="http://www.iris.edu/hq/files/programs/education_and_outreach/internship/IMG_0011.jpg" style="width: 233px; height: 173px; float: left; margin: 8px;"></a>The IRIS Undergraduate Internship Program is accepting applications for our 2011 internship class.&nbsp; Act now as the <strong>February 1 deadline</strong> to apply is quickly approaching! We are waiting to fill our fourteen slots&nbsp; with qualified applicants just like you! &nbsp;</p> 
+     <p> <a href="http://www.iris.edu/hq/internship/about">Learn more</a>, <a href="http://www.iris.edu/hq/internship/interns">apply now</a>, or share this link...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/dont_be_left_out">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Geothermal Research Fellowship Opportunity at U. of Nevada, Reno</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" src="http://www.unr.edu/geothermal/images/GPSField.jpg" style="width: 144px; height: 137px; float: left; margin: 8px;">The goal of the fellowship program is to encourage outstanding students to pursue graduate degrees in geoscience and engineering fields related to geothermal energy.&nbsp;<br> <br> The Fellowship award provides tuition support, health insurance, and an annual stipend of $26,000 for living expenses for...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/geothermal_geothermal_research_fellowship_opportunity_at_u._of_nevada_">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>2010 Interns Papers at AGU</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" src="http://www.iris.edu/hq/internship/uploads/715ddeaa6e57b0e/IMG_0001.jpg" style="width: 215px; height: 138px; margin: 15px 25px; float: left;">The presentation of research results at a professional meeting, like AGU, continues to be a corner stone of the IRIS Internship program.&nbsp; Not only does this process provide closure to the reseach phase of the program but it also provides the interns with,</p> 
+     <ul> 
+      <li> an opportunity to interact with...</li>
+     </ul>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/2010_interns_papers_at_agu">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Announcing the 8th Annual IRIS Internship Reception @ AGU!</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" src="http://www.iris.edu/hq/internship/uploads/715ddeaa6e57b0e/2010_Alumni_Reception_Invit.gif" style="width: 434px; height: 288px; margin: 8px; float: left;"></p> 
+     <p> <img alt="" src="http://www.iris.edu/hq/internship/uploads/715ddeaa6e57b0e/2010_Alumni_Reception_Invite.pdf" style="margin: 8px;"></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Now accepting student applications for summer 2011!</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" src="http://www.iris.edu/hq/internship/uploads/715ddeaa6e57b0e/Group2_Install.JPG" style="width: 169px; height: 131px; margin: 8px 20px; float: left;">Are you an undergraduate physics, math or geoscience major interested in working on a seismological research project this summer? If so, consider applying to the IRIS Summer Undergraduate Internship Program!</p> 
+     <p> Through the program you will spend 8 to 10 weeks working on a seismological research...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/now_accepting_student_applicatinos_for_summer_2011">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>PhD scholarships in Geophysics at Victoria University of Wellington</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" src="http://www.iris.edu/hq/internship/uploads/715ddeaa6e57b0e/VicLogoSmall.jpg" style="width: 173px; height: 132px; margin: 9px 8px; float: left;">The Institute of Geophysics, Victoria University of Wellington, New Zealand announces PhD scholarship opportunities at our university.<br> <br> We have several seismological projects of interest for which we would like to guide a PhD student:<br> <br> 1) Studies of the Sept. 4 2010, M=7.2 Darfield earthquake...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/phd_scholarships_in_geophysics_at_victoria_university_of_wellington">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>2010 - 2011 Minority Recriument Speakers Announced</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> Each year, the IRIS Undergraduate Internship Program sends almuni of its program to the physics departments of minority serving institutions to promote both the field of seismology as a career option as well as the IRIS Internship program as a path to such a career.&nbsp; We are pleased to announce...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/2010_-_2011_minority_recriument_speakers_announced">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Virtual Poster Competition for Undergraduates</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <object height="258" width="400"><param name="movie" value="http://www.youtube.com/v/b2-Od2dX180?fs=1&amp;hl=en_US&amp;rel=0&amp;color1=0x2b405b&amp;color2=0x6b8ab6&amp;border=1; float: left"><param name="allowFullScreen" value="true"><param name="allowscriptaccess" value="always"><embed allowfullscreen="true" allowscriptaccess="always" height="258" src="http://www.youtube.com/v/b2-Od2dX180?fs=1&amp;hl=en_US&amp;rel=0&amp;color1=0x2b405b&amp;color2=0x6b8ab6&amp;border=1" type="application/x-shockwave-flash" width="400"></object></p> 
+     <p> The Journal of Young Investigators, the premier science journal for undergraduates, is hosting a Virtual Poster Session competition. Entries will be accepted until November 19, 2010. Interested students should make a video of themselves discussing a scientific poster and upload their...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/virtual_poster_competition_for_undergraduates">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Program alumni’s research featured in 2010 T-shirt design</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" src="http://www.iris.edu/hq/internship/uploads/715ddeaa6e57b0e/2010_T_Shirt.jpg" style="margin: 0px; width: 203px; height: 232px; float: left;">This year's internship T-shirt design features the work of Scott Burdick et al.'s P-wave tomography using data from regional and teleseismic distances. Scott was an IRIS intern in 2005 working with George Zandt at the University of Arizona and is currently a PhD student at Massachusetts Institute...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/program_alumnis_research_featured_on_2010_t-shirt_design">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Funding Opportunity: NSF Graduate Research Fellowship Program (GRFP)</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> The GRFP provides 3 years of Fellowship support to our nation’s best future scientists and engineers who seek research-based masters or PhD degrees in the science and engineering fields supported by NSF. The award includes a $30,000 per fellowship year stipend to the student, and a $10,500...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/funding_opportunity_nsf_graduate_research_fellowship_program_grfp">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Preparing for the 2010 Fall AGU meeting</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" src="http://www.iris.edu/hq/internship/uploads/715ddeaa6e57b0e/Picture 1.jpg" style="width: 120px; height: 148px; float: left; margin: 10px;">For many of the interns summer is winding down and they are in their final weeks of their research.&nbsp; As a result, they and their advisors are working with an eye towards the 2010 Fall AGU meeting.&nbsp; This meeting will be held in San Francisco, CA on December 13 to the 17.&nbsp; What this isn't for...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/preparing_for_the_2010_fall_agu_meeting">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Orientation wraps-up and the research begins</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> <img alt="" src="http://www.iris.edu/hq/internship/uploads/715ddeaa6e57b0e/2010-06-04 19.14.02.jpg" style="width: 306px; height: 229px; float: left; margin: 8px;">As ususal, the orientation week closed with a bonfire and BBQ in the beautiful San Lorenzo Canyon.&nbsp; Hiking, eating, star gazing and stories of local (and inter-galactic) visitors to the region were pleasant diversions for the interns after intensive days of learning content and skills.&nbsp; The next...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/orientation_wraps-up_and_research_begins">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>2010 Internship Orientation Underway</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> This week, May 31 to June 5th, the 2010 class of IRIS interns have gathered in Socorro, NM.&nbsp; This orientation week is designed to help them get to know one another and to provide them with an opportunity to learn the basics of seismology and computer programming.&nbsp; The week kicked off with a...</p>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/2010_internship_orientation_underway">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+    <h3>Alumni work appears in the journal Nature</h3> 
+    <div style="margin-bottom: 30px"> 
+     <p> Not one, but two! Amanda Thomas (2005), a PhD student at UC Berkeley and Danny Brothers (2003), a PhD student at Scripps Institute of Oceanography, have each recently had their work published in nature. Congratulations to both Amanda and Danny!</p> 
+     <div align="left"> 
+      <img src="http://www.iris.edu/hq/internship/uploads/715ddeaa6e57b0e/IMG_0018_2.jpg" style="border-width: 0px; border-style: solid; width: 115px; height: 130px; margin: 8px; float: left;">Amanda and her colleagues have identified a robust...
+     </div>
+     <p class="read"><a href="http://www.iris.edu/hq/internship/news/entry/alumni_work_appears_in_the_journal_nature">Read Full News Story</a></p> 
+    </div> 
+    <div style="clear: both"> 
+    </div> 
+   </div> 
+   <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1860730-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script> 
+   <div id="footer"> 
+    <a href="http://www.nsf.gov" target="_blank"><img src="http://www.iris.edu/hq/internship/images/layout/nsf.png" alt="NSF"></a> 
+    <ul> 
+     <li><a href="http://www.iris.edu/hq/internship/">Home</a></li> 
+     <li><a href="http://www.iris.edu/hq/internship/about">About the Program</a> </li> 
+     <li><a href="http://www.iris.edu/hq/internship/apply">Apply</a> </li> 
+     <li><a href="http://www.iris.edu/hq/internship/faq">FAQs</a></li> 
+     <li><a href="http://www.iris.edu/hq/internship/blogs">Current Interns</a></li> 
+     <li><a href="http://www.iris.edu/hq/internship/2010">2010 Interns</a></li> 
+     <li><a href="http://www.iris.edu/hq/internship/forums">Discussion Forum</a></li> 
+     <li><a href="http://www.iris.edu/hq/internship/previous">Previous Interns</a></li> 
+     <li><a href="http://www.iris.edu/hq/internship/minority">Minority Recruitment Speaker Series</a></li> 
+     <li><a href="http://www.iris.edu/hq/internship/related">Related Student Opportunities</a></li> 
+     <li><a href="http://www.iris.edu/hq/internship/grad">IRIS PASSCAL Grad Internship</a></li> 
+     <li><a href="http://www.iris.edu/hq/internship/news">Archived News</a></li> 
+     <li><a href="http://www.iris.edu/hq/internship/contact">Contact</a></li> 
+     <li><a href="http://www.iris.edu/hq/internship/system">Intern Login</a></li> 
+    </ul> 
+    <p><a href="http://www.iris.edu">www.iris.edu</a></p> 
+   </div> 
+  </div> 
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"beacon-5.newrelic.com","licenseKey":"a0c27f55c0","applicationID":"5614854","transactionName":"MQNUbUAAW0UAVEwKVwhJdUxBFVpbTlldFEs=","queueTime":0,"applicationTime":205,"atts":"HURXGwgaSEs=","errorBeacon":"bam.nr-data.net","agent":"js-agent.newrelic.com\/nr-515.min.js"}</script> 
+ </body>
+</html>

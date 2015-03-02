@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <title>Московский государственный медико-стоматологический университет</title> 
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"> 
+  <meta name="Keywords" content=""> 
+  <meta name="Description" content=""> 
+  <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon"> 
+  <link type="text/css" href="/static/css/main.css" rel="stylesheet">
+  <link type="text/css" href="/static/css/jquery/themes/base/jquery.ui.all.css" rel="stylesheet">
+  <link type="text/css" href="/static/css/jquery.lightbox-0.5.css" rel="stylesheet">
+  <link type="text/css" href="/static/jwysiwyg/jquery.wysiwyg.css" rel="stylesheet"> 
+  <script type="text/javascript" src="/static/js/jquery.js"></script>
+  <script type="text/javascript" src="/static/js/jquery/ui/jquery.bgiframe-2.1.1.js"></script>
+  <script type="text/javascript" src="/static/js/jquery/ui/jquery.effects.core.js"></script>
+  <script type="text/javascript" src="/static/js/jquery/ui/jquery.effects.blind.js"></script>
+  <script type="text/javascript" src="/static/js/jquery/ui/jquery.effects.explode.js"></script>
+  <script type="text/javascript" src="/static/js/jquery/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="/static/js/jquery/jquery.ui.datepicker-ru.js"></script>
+  <script type="text/javascript" src="/static/js/jquery/jquery-ui-timepicker-addon-0.6.min.js"></script>
+  <script type="text/javascript" src="/static/js/jquery.lightbox.js"></script>
+  <script type="text/javascript" src="/static/jwysiwyg/jquery.wysiwyg.js"></script> 
+  <script type="text/javascript" src="/static/js/main.js"></script>
+  <script type="text/javascript" src="/static/js/faq.js"></script>
+  <script type="text/javascript" src="/static/js/user.js"></script>
+  <script type="text/javascript" src="/static/js/comment.js"></script>
+ </head> 
+ <body id="p_index"> 
+  <div class="bgMainRepeat">
+   &nbsp;
+  </div> 
+  <div id="container"> 
+   <div id="container2"> 
+    <div class="widthSite"> 
+     <!--шапка--> 
+     <div id="header"> 
+      <style>
+ #password{
+  display:block !important;
+ }
+ input.inp.hidden {
+  display:none !important;
+ }
+</style> 
+      <!----> 
+      <div class="headerDoor"> 
+       <span class="flashVer cur">FLASH версия</span>&nbsp;&nbsp;&nbsp; 
+       <span class="htmlVer">HTML версия</span> 
+      </div> 
+      <!--/--> 
+      <!-- Вход/Регистрация --> 
+      <div class="authorization"> 
+       <div class="doorBlock">
+        <span class="enterDoor"><span>Вход</span></span> / 
+        <a href="/user/register">Регистрация</a>
+       </div> 
+       <!-- Окно входа --> 
+       <div class="loginBlock popupWrap"> 
+        <form action="/user/login" method="post"> 
+         <div class="inside"> 
+          <div class="close" title="Закрыть">
+           Закрыть
+          </div> 
+          <div id="loginAuthError"></div> 
+          <div class="field"> 
+           <label class="_autohide" for="username">Введите ваш e-mail</label> 
+           <input type="text" id="username" name="username" value="" class="inp"> 
+          </div> 
+          <div class="field"> 
+           <label class="_autohide" for="password">Введите пароль</label> 
+           <input type="password" id="password" name="password" value="" class="inp hidden"> 
+          </div> 
+          <div class="forgetDoor">
+           <span>Забыли пароль?</span>
+          </div> 
+          <input type="submit" id="loginButton" name="loginButton" value="Вход" class="button"> 
+         </div> 
+         <div class="cb">
+          &nbsp;
+         </div> 
+        </form> 
+       </div> 
+       <!-- Окно забыли пароль --> 
+       <form action="" method=""> 
+        <div class="passBlock popupWrap"> 
+         <div class="inside"> 
+          <div class="close" title="Закрыть">
+           Закрыть
+          </div> 
+          <div id="forgetAuthError"></div> 
+          <div class="h">
+           Восстановление пароля
+          </div> 
+          <div class="field"> 
+           <label class="_autohide" for="forgetUsername">Введите ваш e-mail</label> 
+           <input type="text" id="forgetUsername" name="forgetUsername" value="" class="inp"> 
+          </div> 
+          <input type="submit" id="forgetButton" name="forgetButton" value="Напомнить" class="button"> 
+         </div> 
+         <div class="cb">
+          &nbsp;
+         </div> 
+        </div> 
+       </form> 
+      </div> 
+      <!-- /Вход/Регистрация --> 
+      <!--шапка-контакты--> 
+      <div class="address"> 
+       <dfn>Москва, ул. Делегатская, д. 20, стр. 1</dfn> Административное здание МГМСУ 
+       <dfn>8 (495) 609-67-00</dfn> справочная университета 
+       <dfn>8 (495)637-94-52</dfn> Приемная комиссия Call-центр 
+      </div> 
+      <!--флэш--> 
+      <script type="text/javascript">
+    $(document).ready(function(){
+       var isFlashEnabled = false; 
+   // Проверка для всех браузеров, кроме IE 
+   if (typeof(navigator.plugins)!="undefined" 
+       && typeof(navigator.plugins["Shockwave Flash"])=="object" 
+   ) { 
+      isFlashEnabled = true; 
+   } else if (typeof  window.ActiveXObject !=  "undefined") { 
+      // Проверка для IE 
+      try { 
+         if (new ActiveXObject("ShockwaveFlash.ShockwaveFlash")) { 
+            isFlashEnabled = true; 
+         } 
+      } catch(e) {}; 
+   }; 
+   //alert(isFlashEnabled);
+   if (isFlashEnabled == false) 
+   {
+       $(".htmlHeader").css("display", "block");
+       $(".videoHeader").css("display", "none");
+       
+       $(".flashVer").removeClass("cur");
+       $(".htmlVer").addClass("cur");
+   }
+    });
+</script> 
+      <div class="htmlHeader" style="display: none;"> 
+       <a href="/" class="logo"> <img src="/static/i/logo.png" alt="Московский государственный медико-стоматологический университет"> </a> 
+       <ul class="promoMenu"> 
+        <li class="slideBlock1 cur"> О ПОСТУПЛЕНИИ 
+         <ul class="slider"> 
+          <li class="cur">1</li> 
+          <li>2</li> 
+         </ul> </li> 
+        <li class="slideBlock2"> ПРЕИМУЩЕСТВА ОБУЧЕНИЯ 
+         <ul class="slider"> 
+          <li>1</li> 
+          <li>2</li> 
+         </ul> </li> 
+        <li class="slideBlock3"> МГМСУ ОТКРЫТ ДЛЯ КАЖДОГО 
+         <ul class="slider"> 
+          <li>1</li> 
+          <li>2</li> 
+         </ul> </li> 
+       </ul> 
+       <div class="list"> 
+        <!----> 
+        <div class="slideBlock1"> 
+         <div class="block cur"> 
+          <div class="foreword"> 
+           <dfn>Приветствую Вас на сайте Московского государственного медико-стоматологического университета. </dfn> В данной промо-презентации вы ознакомитесь
+           <br>с историей университета, условиями поступления, лечебной практикой нашего учебного заведения
+           <br>а так же можете ознакомиться с приветственной речью ректора. 
+          </div> 
+          <img alt="" src="/static/i/student1.png"> 
+          <dl> 
+           <dt>
+            Дмитрий Смирнов
+           </dt> 
+           <dd>
+             студент 1-го курса факультета Стоматологии 
+           </dd> 
+          </dl> 
+         </div> 
+         <div class="block"> 
+          <div class="foreword"> 
+           <p>Я очень рад, что поступил в МГМСУ. Это ведущий стоматологический ВУЗ страны, с богатой историей<br>и огромным опытом. Я горжусь, что буду учиться<br>у таких преподавателей — это лучшие специалисты <br>в области стоматологии и лечебной медицины.</p> 
+           <p>Если ты тоже хочешь стать студентом МГМСУ — ЗДЕСЬ есть вся необходимая информация для поступления. Если будут вопросы — звони в справочную университета!</p> 
+          </div> 
+          <img alt="" src="/static/i/student2.png"> 
+          <dl> 
+           <dt>
+            Дмитрий Смирнов
+           </dt> 
+           <dd>
+             студент 1-го курса факультета Стоматологии 
+           </dd> 
+          </dl> 
+         </div> 
+        </div> 
+        <!--/--> 
+        <!----> 
+        <div class="slideBlock2"> 
+         <div class="block"> 
+          <div class="foreword"> 
+           <dfn>Учиться здесь — большая удача для каждого, кто избрал профессию врача.</dfn> Учебный и научно-практический центр МГМСУ— крупнейший в стране и Европе. В нашем университете — современные учебные корпуса, клиники
+           <br>и лаборатории, на их базе работают 11 факультетов
+           <br>и более ста кафедр. 
+          </div> 
+          <img alt="" src="/static/i/student5.png"> 
+          <dl> 
+           <dt>
+            Беспалова Юлия
+           </dt> 
+           <dd>
+             студентка 5-го курса факультета Стоматологии 
+           </dd> 
+          </dl> 
+         </div> 
+         <div class="block"> 
+          <div class="foreword">
+            В данной промо-презентации вы ознакомитесь
+           <br>с историей университета, условиями поступления, лечебной практикой нашего учебного заведения
+           <br>а так же можете ознакомиться с приветственной речью ректора. 
+          </div> 
+          <img alt="" src="/static/i/student6.png"> 
+          <dl> 
+           <dt>
+            Беспалова Юлия
+           </dt> 
+           <dd>
+             студентка 5-го курса факультета Стоматологии 
+           </dd> 
+          </dl> 
+         </div> 
+        </div> 
+        <!--/--> 
+        <!----> 
+        <div class="slideBlock3"> 
+         <div class="block"> 
+          <div class="foreword"> 
+           <dfn>МГМСУ открыт для каждого, а учиться здесь интересно и престижно</dfn> Я знаю, что выпускники МГМСУ востребованы во всем мире. С таким дипломом я без проблем смогу трудоустроиться и сделать отличную медицинскую карьеру. 
+          </div> 
+          <img alt="" src="/static/i/student3.png"> 
+          <dl> 
+           <dt>
+            Бекирова Лейла
+           </dt> 
+           <dd>
+             студентка 5-го курса факультета Стоматологии 
+           </dd> 
+          </dl> 
+         </div> 
+         <div class="block"> 
+          <div class="foreword"> 
+           <dfn>Наши студенты — это настоящее всемирное врачебное братство! </dfn> Здесь я не только приобретаю знания и полезные навыки — у меня появилось много друзей из разных стран. Мы постоянно общаемся в социальной сети университета, часто встречаемся вне учебы на разных мероприятиях, организованных Профкомом студентов нашего ВУЗа. 
+          </div> 
+          <img alt="" src="/static/i/student4.png"> 
+          <dl> 
+           <dt>
+            Бекирова Лейла
+           </dt> 
+           <dd>
+             студентка 5-го курса факультета Стоматологии 
+           </dd> 
+          </dl> 
+         </div> 
+        </div> 
+        <!--/--> 
+       </div> 
+      </div> 
+      <div style="height:450px;overflow: hidden;"> 
+       <div class="videoHeader" style="display: block;"> 
+        <script src="/static/js/swfobject.js" type="text/javascript"></script> 
+        <script type="text/javascript">
+		var flashvars = {
+			xmlpath: "/static/swf/videoList.xml"
+		};
+		var params = {
+			menu: "false",
+			scale: "noscale",
+			allowFullscreen: "true",
+			allowScriptAccess: "always",
+			//bgcolor: "#40aedf",
+			wmode: "opaque"
+		};
+		var attributes = {
+			id:"VideoHeaderMGMSU"
+		};
+		swfobject.embedSWF("/static/swf/VideoHeaderMGMSU.swf", "altContent", "100%", "100%", "9.0.0", "/static/swf/expressInstall.swf", flashvars, params, attributes);
+	</script> 
+        <div id="altContent"> 
+         <h1>VideoHeaderMGMSU</h1> 
+         <p>Alternative content</p> 
+         <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player"></a></p> 
+        </div> 
+       </div> 
+      </div> 
+      <!--/флэш--> 
+      <!--/шапка-контакты--> 
+      <!--меню--> 
+      <ul class="menuTop">
+       <li class="m1"><a href="/university">Университет</a>
+        <ul class="submenu">
+         <li class="ct">&nbsp;</li>
+         <li><a href="/svedeniya-ob-obrazovatelnoj-organizacii">Сведения об образовательной организации</a></li>
+         <li><a href="/politika-mgmsu">Политика МГМСУ</a></li>
+         <li><a href="/istoriya-vuza">История университета</a></li>
+         <li><a href="/missiya-ustav-simvoly">Миссия, устав, символы</a></li>
+         <li><a href="/university/leadership">Ректорат</a></li>
+         <li><a href="/uchsovet">Ученый Совет</a></li>
+         <li><a href="/priyomnaya-komissiya">Приёмная комиссия</a></li>
+         <li><a href="/university/organizational-structure">Факультеты и кафедры</a></li>
+         <li><a href="/struktura-universiteta">Структура университета</a></li>
+         <li><a href="/mezhdunarodnaya-deyatelnost">Международная деятельность</a></li>
+         <li><a href="/studencheskaya-zhizn">Студенческая жизнь</a></li>
+         <li><a href="/university/press">Пресс-центр</a></li>
+         <li><a href="/usloviya-pitaniya-na-osnovnyx-bazax-mgmsu">Условия питания на основных базах МГМСУ</a></li>
+         <li><a href="http://www.msmsu.ru/obshhezhitie">Общежитие</a></li>
+         <li class="cb">&nbsp;</li>
+        </ul></li>
+       <li class="m2"><a href="/education">Образование</a>
+        <ul class="submenu">
+         <li class="ct">&nbsp;</li>
+         <li><a href="/education/abiturient">Абитуриент</a></li>
+         <li><a href="/education/student">Студент</a></li>
+         <li><a href="/internam-i-ordinatoram">Интерн / ординатор</a></li>
+         <li><a href="/professionalnaya-perepodgotovka-i-povyshenie-kvalifikacii">Профессиональная переподготовка и повышение квалификации</a></li>
+         <li><a href="/upravlenie-kachestvom-obrazovaniya">Управление качеством образования</a></li>
+         <li><a href="/svyaz-s-vypusknikami">Связь с выпускниками</a></li>
+         <li><a href="/biblioteka">Библиотека</a></li>
+         <li><a href="/aspirantam-i-doktorantam">Аспирант / докторант</a></li>
+         <li><a href="http://www.msmsu.ru/documents">Документы</a></li>
+         <li><a href="/studencheskoe-byuro">Студенческое бюро</a></li>
+         <li class="cb">&nbsp;</li>
+        </ul></li>
+       <li class="m3"><a href="/science">Наука</a>
+        <ul class="submenu">
+         <li class="ct">&nbsp;</li>
+         <li><a href="/naukoemkaya-informaciya">Наукоемкая информация</a></li>
+         <li><a href="/nauchnye-dostizheniya">Научные достижения</a></li>
+         <li><a href="/molodyozhnaya-nauka">Молодёжная наука</a></li>
+         <li><a href="/komitet-po-etike-pri-mgmsu">Комитет по этике при МГМСУ</a></li>
+         <li><a href="http://www.msmsu.ru/problemnye-komissii">Проблемные комиссии</a></li>
+         <li><a href="/nauchnye-podrazdeleniya-mgmsu">Научные подразделения МГМСУ</a></li>
+         <li><a href="/userdata/manual/doc/nauka/strategiya%20razvitiya%20med%20nauki.pdf">Стратегия развития медицинской науки в РФ на период до 2025 года</a></li>
+         <li class="cb">&nbsp;</li>
+        </ul></li>
+       <li class="m4"><a href="/treatment">Лечение</a>
+        <ul class="submenu">
+         <li class="ct">&nbsp;</li>
+         <li><a href="/organizaciya-medicinskoj-deyatelnosti">Организация медицинской деятельности</a></li>
+         <li><a href="/kliniki-mgmsu">Клиники университета</a></li>
+         <li class="cb">&nbsp;</li>
+        </ul></li>
+       <li class="m5"><a href="/forum">Форум</a></li>
+       <li class="m6"><a href="/contact">Контакты</a>
+        <ul class="submenu">
+         <li class="ct">&nbsp;</li>
+         <li><a href="/university/spravochnaya-informaciya">Справочная информация</a></li>
+         <li><a href="/vyshestoyashhie-organizacii">Вышестоящие организации</a></li>
+         <li><a href="/partnery">Партнеры</a></li>
+         <li><a href="/priyomnaya-komissiya">Приёмная комиссия</a></li>
+         <li class="cb">&nbsp;</li>
+        </ul> 
+        <!--/меню--> </li>
+      </ul>
+     </div> 
+     <!--/шапка--> 
+     <!--середина--> 
+     <div id="mainWrap"> 
+      <div class="block1"> 
+       <!--новости--> 
+       <div> 
+        <div class="newsListMain"> 
+         <h2><a href="/announces">Анонсы</a></h2> 
+         <div class="block"> 
+          <div class="meta"> 
+           <em class="date"> 16 марта </em> 
+           <div class="topic"> 
+            <span>тема:</span> 
+            <a href="/news/theme/universitet-news">Новости университета</a> 
+           </div> 
+          </div> 
+          <p><a href="/news/2015/03/16/lekciya-trening-ot-farmacevticheskoj-kompanii-novo-nordisk-kak-pravilno-podgotovit-prezentaciyu">Лекция-тренинг «Как правильно подготовить научную презентацию. Правила презентации научных результатов»</a></p> 
+         </div> 
+         <div class="block"> 
+          <div class="meta"> 
+           <em class="date"> 1 апреля </em> 
+           <div class="topic"> 
+            <span>тема:</span> 
+            <a href="/news/theme/universitet-news">Новости университета</a> 
+           </div> 
+          </div> 
+          <p><a href="/news/2015/04/01/xxxvii-itogovaya-nauchnaya-konferenciya-obshhestva-molodyx-uchenyx">XXXVII Итоговая научная конференция Общества молодых ученых </a></p> 
+         </div> 
+         <div class="block"> 
+          <div class="meta"> 
+           <em class="date"> 18 марта </em> 
+           <div class="topic"> 
+            <span>тема:</span> 
+            <a href="/news/theme/universitet-news">Новости университета</a> 
+           </div> 
+          </div> 
+          <p><a href="/news/2015/03/18/festival-iskusstv-studencheskaya-vesna-vtoroj-etap">Фестиваль искусств "Студенческая весна". Второй этап</a></p> 
+         </div> 
+         <div class="block"> 
+          <div class="meta"> 
+           <em class="date"> 2 марта </em> 
+           <div class="topic"> 
+            <span>тема:</span> 
+            <a href="/news/theme/lekcii">Лекции</a> 
+           </div> 
+          </div> 
+          <p><a href="/news/2015/03/02/nauchno-publicisticheskij-stendap-lishnij-ves-kak-pobedit">Научно-публицистический стендап «Лишний вес: как победить?»</a></p> 
+         </div> 
+         <div class="block"> 
+          <div class="meta"> 
+           <em class="date"> 28 февраля </em> 
+           <div class="topic"> 
+            <span>тема:</span> 
+            <a href="/news/theme/universitet-news">Новости университета</a> 
+           </div> 
+          </div> 
+          <p><a href="/news/2015/02/28/raspisanie-raboty-kulturno-delovogo-centra-mgmsu-na-noyabr">Расписание работы Культурно-делового центра МГМСУ на февраль</a></p> 
+         </div> 
+         <div class="block"> 
+          <div class="meta"> 
+           <em class="date"> 27 ноября </em> 
+           <div class="topic"> 
+            <span>тема:</span> 
+            <a href="/news/theme/universitet-news">Новости университета</a> 
+           </div> 
+          </div> 
+          <p><a href="/news/2014/11/27/plan-meropriyatij-na-2014-2015-gg-shkoly-molodyx-uchenyx-mgmsu">План мероприятий на 2014-2015 гг Школы молодых ученых МГМСУ</a></p> 
+         </div> 
+         <div class="block"> 
+          <div class="meta"> 
+           <em class="date"> 14 августа </em> 
+           <div class="topic"> 
+            <span>тема:</span> 
+            <a href="/news/theme/universitet-news">Новости университета</a> 
+           </div> 
+          </div> 
+          <p><a href="/news/2014/08/14/proekt-kadrovoj-politiki-mgmsu-im-a-i-evdokimova">Проект Кадровой политики МГМСУ им. А.И. Евдокимова</a></p> 
+         </div> 
+         <a href="/announces" class="more">Все анонсы</a> 
+        </div> 
+        <div class="newsListMain"> 
+         <h2><a href="/news">Новости</a></h2> 
+         <div class="block"> 
+          <div class="meta"> 
+           <em class="date"> 5 декабря </em> 
+           <div class="topic"> 
+            <span>тема:</span> 
+            <a href="/news/theme/sobytiya">События</a> 
+           </div> 
+          </div> 
+          <p><a href="/news/2014/12/05/mgmsu-laureat-premii-pravitelstva-rossii">МГМСУ –лауреат премии Правительства России!</a></p> 
+         </div> 
+         <div class="block"> 
+          <div class="meta"> 
+           <em class="date"> 11 февраля </em> 
+           <div class="topic"> 
+            <span>тема:</span> 
+            <a href="/news/theme/olimpiady">Олимпиады</a> 
+           </div> 
+          </div> 
+          <p><a href="/news/2015/02/11/itogi-vi-vserossijskoj-studencheskoj-stomatologicheskoj-olimpiady-s-mezhdunarodnym-uchastiem-proshedshej-pod-devizom-ot-obrazovaniya-k-praktike">Итоги VI Всероссийской студенческой стоматологической Олимпиады с международным участием</a></p> 
+         </div> 
+         <div class="block"> 
+          <div class="meta"> 
+           <em class="date"> 19 февраля </em> 
+           <div class="topic"> 
+            <span>тема:</span> 
+            <a href="/news/theme/universitet-news">Новости университета</a> 
+           </div> 
+          </div> 
+          <p><a href="/news/2015/02/19/studentam-poluchenie-spravki-o-vakcinacii-protiv-kori">Студентам: получение справки о вакцинации против кори</a></p> 
+         </div> 
+         <div class="block"> 
+          <div class="meta"> 
+           <em class="date"> 9 февраля </em> 
+           <div class="topic"> 
+            <span>тема:</span> 
+            <a href="/news/theme/sobytiya">События</a> 
+           </div> 
+          </div> 
+          <p><a href="/news/2015/02/09/simpozium-bolezni-tverdyx-tkanej-zubov-pulpy-i-periodonta-sovremennye-texnologii-diagnostiki-lecheniya-profilaktiki-oslozhnenij">Симпозиум "Болезни твердых тканей зубов, пульпы и периодонта. Современные технологии диагностики, лечения, профилактики осложнений"</a></p> 
+         </div> 
+         <div class="block"> 
+          <div class="meta"> 
+           <em class="date"> 9 февраля </em> 
+           <div class="topic"> 
+            <span>тема:</span> 
+            <a href="/news/theme/universitet-news">Новости университета</a> 
+           </div> 
+          </div> 
+          <p><a href="/news/2015/02/09/rasshirenie-funkcij-studencheskogo-byuro">Расширение функций Студенческого бюро</a></p> 
+         </div> 
+         <div class="block"> 
+          <div class="meta"> 
+           <em class="date"> 3 февраля </em> 
+           <div class="topic"> 
+            <span>тема:</span> 
+            <a href="/news/theme/vakansii">Вакансии</a> 
+           </div> 
+          </div> 
+          <p><a href="/news/2015/02/03/putyovka-v-budushhee">Путёвка в будущее</a></p> 
+         </div> 
+         <div class="block"> 
+          <div class="meta"> 
+           <em class="date"> 29 января </em> 
+           <div class="topic"> 
+            <span>тема:</span> 
+            <a href="/news/theme/sobytiya">События</a> 
+           </div> 
+          </div> 
+          <p><a href="/news/2015/01/29/29-yanvarya-2015-goda-v-dome-priemov-pravitelstva-rossijskoj-federacii-sostoyalas-18-ya-ceremoniya-nagrazhdeniya-laureatov-premii-pravitelstva-v-oblasti-kachestva">18-я Церемония награждения лауреатов премии Правительства в области качества</a></p> 
+         </div> 
+         <div class="block"> 
+          <div class="meta"> 
+           <em class="date"> 19 января </em> 
+           <div class="topic"> 
+            <span>тема:</span> 
+            <a href="/news/theme/universitet-news">Новости университета</a> 
+           </div> 
+          </div> 
+          <p><a href="/news/2015/01/19/specialnost-stomatologiya-iii-etap-gia-itogovoe-sobesedovanie-vechernee-otdelenie-stomatologicheskogo-fakulteta-2014-2015-g">Специальность «Стоматология». III этап ГИА – Итоговое собеседование вечернее отделение стоматологического факультета 2014-2015 г</a></p> 
+         </div> 
+         <a href="/news" class="more">Все новости</a> 
+        </div> 
+       </div> 
+       <!--/новости--> 
+       <!--фотки--> 
+       <!--/фотки--> 
+      </div> 
+      <div class="block2 mainright"> 
+       <div class="substrate"> 
+        <!--приветствие--> 
+        <div class="wordsRector"> 
+         <h2>Страничка ректора</h2> 
+         <div class="descr"> 
+          <img src="/userdata/page/full/516d66b241038222.jpg"> 
+          <dl> 
+           <dt>
+            <span class="position">Ректор МГМСУ, профессор, заслуженный врач Российской Федерации</span>
+            <a href="/person/single/12">Янушевич<br> Олег Олегович</a>
+           </dt> 
+           <b>
+            <dd>
+             МГМСУ вступил в эпоху обновления, переходит к более эффективной экономической модели, оптимизирует систему управления. Мы обязаны обеспечить уровень подготовки молодого поколения врачей России, адекватный требованиям ХХI столетия. Медицинская профессия не прощает опозданий – ни в технологическом плане, ни в принятии грамотных решений.
+            </dd></b> 
+          </dl> 
+         </div> 
+         <!--<a href="/page/welcoming-speech" class="more">Полное содержание приветствия</a> --> 
+        </div> 
+        <!--/приветствие--> 
+        <!--dicit--> 
+        <div class="eventBlock"> 
+         <h2><a href="/dicit">Dicit et Scribit</a></h2> 
+         <ul class="listBlock"> 
+          <li> 
+           <div class="date">
+             29 декабря 
+           </div> <a href="/dicit/2014/12/29/2015-vyzovy-i-vozmozhnosti"><b>2015: вызовы и возможности</b></a> </li> 
+          <li> 
+           <div class="date">
+             1 сентября 
+           </div> <a href="/dicit/2014/09/01/pervokursnikam-2014"><b>Первокурсникам - 2014</b></a> </li> 
+          <li> 
+           <div class="date">
+             21 марта 
+           </div> <a href="/dicit/2014/03/21/v-partnerax-u-gosudarstva"><b>В партнерах у государства</b></a> </li> 
+         </ul> 
+         <a href="/dicit" class="more">Все сообщения</a>
+        </div> 
+        <!--/анонс--> 
+       </div> 
+       <!--анонс--> 
+       <div class="eventBlock"> 
+        <h2><a href="/announce">Разное</a></h2> 
+        <ul class="listBlock"> 
+         <li> 
+          <div class="date">
+            21 ноября 
+          </div> <a href="/announce/2013/11/21/predlozhenie-publikacii-nauchnyx-rabot-v-zhurnalax-iz-mezhdunarodnyx-sistem-citirovaniya-scopus-isi-web-of-knowledge">Предложение публикации научных работ в журналах из международных систем цитирования Scopus, ISI Web of Knowledge</a> </li> 
+         <li> 
+          <div class="date">
+            20 ноября 
+          </div> <a href="/announce/2013/11/20/mgmsu-zaklyuchil-dogovor-s-nauchnoj-elektronnoj-bibliotekoj">МГМСУ заключил договор с Научной электронной библиотекой</a> </li> 
+        </ul> 
+        <a href="/announce" class="more">Все объявления</a>
+       </div> 
+       <!--/анонс--> 
+       <!--анонс--> 
+       <!--/анонс--> 
+       <form action="/subscribe" class="subscribe-form"> 
+        <fieldset> 
+         <p>Я хочу получать рассылку от МГМСУ</p> 
+         <div class="holder"> 
+          <div class="text"> 
+           <input type="text" name="email" value="Введите ваш e-mail"> 
+          </div> 
+          <input type="submit" value="Подписаться" class="submit"> 
+         </div> 
+        </fieldset> 
+       </form> 
+      </div> 
+      <!--ссылки--> 
+      <div class="bannerBlock"> 
+       <noindex> 
+        <a href="http://fsknmsk.ru/" target="_blank" rel="nofollow"><img src="http://www.msmsu.ru/userdata/mainpage_banners/fskn.jpg"></a> 
+        <a href="http://www.msmsu.ru/zdorovyj-obraz-zhizni" rel="nofollow"><img src="http://www.msmsu.ru/userdata/mainpage_banners/mgmsu.jpg"></a> 
+        <img src="http://www.msmsu.ru/userdata/mainpage_banners/mgmsu2020.jpg" style="display:float:left;block;width: 227px;"> 
+        <a href="http://www.gosuslugi.ru/pgu/" target="_blank" rel="nofollow"><img src="http://www.msmsu.ru/userdata/mainpage_banners/gosyslugi.png"></a> 
+       </noindex> 
+      </div> 
+      <div class="links-block"> 
+       <div class="block"> 
+        <h3> <a href="http://www.rosminzdrav.ru/"> <img src="/userdata/link/full/503221f6466a4logo_minzdrav_new.png"> <span>Министерство здравоохранения РФ</span> </a> </h3> 
+        <p> официальный сайт </p> 
+       </div> 
+       <div class="block"> 
+        <h3> <a href="/priyomnaya-komissiya"> <img src="/userdata/link/full/4d6e4b4909a904cdd68f92d5c5biblioteka.png"> <span>Приёмная комиссия</span> </a> </h3> 
+        <p> Часы работы 10.00 - 16.00, кроме выходных </p> 
+       </div> 
+       <div class="block"> 
+        <h3> <a href="http://www.msmsu.ru/zhurnal-zachetnik"> <img src="/userdata/link/full/4d6e4ab6f20b14cdd68f01a59aeducation.png"> <span>Журнал "Зачетник"</span> </a> </h3> 
+        <p> Вышел новый номер! </p> 
+       </div> 
+       <div class="block"> 
+        <h3> <a href="http://studburo.msmsu.ru/"> <img src="/userdata/link/full/54dddec8f3a02banner_studburo.png"> <span>Студенческое бюро</span> </a> </h3> 
+        <p> Прием и подготовка документов </p> 
+       </div> 
+       <div class="block"> 
+        <h3> <a href="/gazeta"> <img src="/userdata/link/full/4cdd690a375d5paper.png"> <span>Вестник МГМСУ</span> </a> </h3> 
+        <p> Скачайте свежий выпуск газеты </p> 
+       </div> 
+      </div> 
+      <!--/ссылки--> 
+     </div> 
+     <!--/середина--> 
+    </div> 
+   </div> 
+  </div> 
+  <!--подвал--> 
+  <div id="footer"> 
+   <div class="widthSite"> 
+    <ul class="menuBot"> 
+     <li><a href="/copyright">Копирайты</a></li> 
+     <li><a href="/partners">Партнеры</a></li> 
+     <li><a href="/contact">Контакты</a></li> 
+    </ul> 
+    <dfn>© 2010, МГМСУ<br><small>(Московский Государственный<br>Медико-Стоматологический<br> Университет имени А.И. Евдокимова)</small></dfn> 
+    <div class="creator">
+     <a href="http://www.notamedia.ru">Сайт сделан в компании Notamedia</a>2010
+    </div> 
+    <div class="counter"> 
+     <script type="text/javascript">
+
+			  var _gaq = _gaq || [];
+			  _gaq.push(['_setAccount', 'UA-23844722-1']);
+			  _gaq.push(['_trackPageview']);
+			
+			  (function() {
+			    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			  })();
+			
+			</script> 
+     <!-- begin of Top100 code --> 
+     <script id="top100Counter" type="text/javascript" src="http://counter.rambler.ru/top100.jcn?2493730"></script> 
+     <noscript> 
+      <a href="http://top100.rambler.ru/navi/2493730/"> <img src="http://counter.rambler.ru/top100.cnt?2493730" alt="Rambler's Top100" border="0"> </a> 
+     </noscript> 
+     <!-- end of Top100 code --> 
+     <!-- Yandex.Metrika informer --> 
+     <a href="http://metrika.yandex.ru/stat/?id=7396582&amp;from=informer" target="_blank" rel="nofollow"><img src="//bs.yandex.ru/informer/7396582/3_1_FFFFFFFF_EFEFEFFF_0_pageviews" style="width:88px; height:31px; border:0;" alt="яндекс.м	етрика" title="яндекс.метрика: данные за сегодня (просмотры, визиты и уникальные посетители)"></a> 
+     <!-- /Yandex.Metrika informer --> 
+     <!-- Yandex.Metrika counter --> 
+     <div style="display:none;">
+      <script type="text/javascript">
+			(function(w, c) {
+			    (w[c] = w[c] || []).push(function() {
+			        try {
+			            w.yaCounter7396582 = new Ya.Metrika({id:7396582, enableAll: true});
+			        }
+			        catch(e) { }
+			    });
+			})(window, 'yandex_metrika_callbacks');
+			</script>
+     </div> 
+     <script src="//mc.yandex.ru/metrika/watch.js" type="text/javascript" defer></script> 
+     <noscript>
+      <div>
+       <img src="//mc.yandex.ru/watch/7396582" style="position:absolute; left:-9999px;" alt="">
+      </div>
+     </noscript> 
+     <!-- /Yandex.Metrika counter --> 
+     <!--Openstat--> 
+     <span id="openstat2186044"></span> 
+     <script type="text/javascript">
+			var openstat = { counter: 2186044, image: 51, next: openstat };
+			(function(d, t, p) {
+			var j = d.createElement(t); j.async = true; j.type = "text/javascript";
+			j.src = ("https:" == p ? "https:" : "http:") + "//openstat.net/cnt.js";
+			var s = d.getElementsByTagName(t)[0]; s.parentNode.insertBefore(j, s);
+			})(document, "script", document.location.protocol);
+			</script> 
+     <!--/Openstat--> 
+    </div> 
+    <ul class="links"> 
+     <li><a href="/map">карта сайта</a></li> 
+     <li class="rss"><a href="/news/rss">rss</a></li> 
+     <!-- <li class="twitter"><a href="#" title="twitter">twitter</a></li>
+			<li class="facebook"><a href="#" title="facebook">facebook</a></li> --> 
+    </ul> 
+    <!--поиск--> 
+    <form action="/search/index" method="get" id="mainSearchForm" accept-charset="utf-8"> 
+     <div class="searchBlock"> 
+      <div class="search"> 
+       <label for="fsearch" class="name _autohide">Поиск</label> 
+       <input type="text" id="fsearch" name="search_text" value="" class="inp"> 
+       <input type="submit" value="Найти" class="but"> 
+       <ul class="options"> 
+        <!-- при клике добавляем show --> 
+        <li class="cur"><label for="fradio1"><input checked type="radio" value="all" id="fradio1" name="action">по сайту</label></li> 
+        <li><label for="fradio2"><input type="radio" value="profile" id="fradio2" name="action">по людям</label></li> 
+        <li> </li>
+       </ul> 
+      </div> 
+     </div> 
+    </form> 
+    <!--/поиск--> 
+   </div> 
+  </div> 
+  <!--/подвал-->   
+ </body>
+</html>

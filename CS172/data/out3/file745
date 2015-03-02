@@ -1,0 +1,70 @@
+<html>
+ <head> 
+  <title>1098-T Information Login</title> 
+  <script>
+     function verifySID () {
+        var sid=document.hopeLogin.sid.value;
+        var pin=document.hopeLogin.pin.value;
+        if (sid.length!=9){
+          alert("A nine character SID is required");
+          return false
+
+        }else{
+        if (pin.length<4){
+          alert("You must enter a 4 to 6 digit PIN.");
+          return false;
+        } }
+        document.hopeLogin.submit();
+        return true;
+    }
+    </script> 
+ </head> 
+ <!-- center>
+	<h3><font color="#FF0000" size="3">Maintenance Notice</font></h3>
+	<div class="notice_text">
+	<b>The SBCTC will be performing state-mandated changes to their data center over Presidents Day weekend.</b><br>
+	<b>1098-T Information Login will be unavailable between Friday, February 13th at 5:00 p.m. and Tuesday, February 17th at 5:00 a.m.</b><br>
+	<b>Thank you for your patience.&nbsp; We apologize 
+	in advance for any inconvenience these service outages 
+	may cause.</b>
+	</div>
+  </center><br><br> ---> 
+ <body onload="document.hopeLogin.sid.value=&quot;&quot;;
+    document.hopeLogin.pin.value=&quot;&quot;;
+    document.hopeLogin.sid.focus()"> 
+  <center> 
+   <font color="#006600" size="4"><b>Green River Community College</b></font>
+   <p> <b> <font size="4">1098-T Information Login</font> </b> </p> 
+   <hr size="3" width="55%"> 
+   <p><b><font face="Calibri" size="4">The American Opportunity and the Lifetime Learning Tax Credit for the 2014 tax year <br> is final and accurate as of January 14, 2015.</font></b></p> 
+   <br> 
+   <form method="POST" action="https://grcc.greenriver.edu/cgi-bin/rqserver.exe" name="hopeLogin"> 
+    <input type="hidden" name="request" value="hope"> 
+    <br>
+    <table border="0" cellspacing="10" cellpadding="0"> 
+     <tbody>
+      <tr> 
+       <td>Type your Student Identification Number (SID).</td> 
+       <td><input type="password" name="sid" size="9" maxlength="9" value=""></td> 
+      </tr>  
+      <tr> 
+       <td>Type your Personal Identification Number(PIN).</td> 
+       <td><input type="password" name="pin" size="6" maxlength="6" value=""></td> 
+      </tr> 
+     </tbody>
+    </table> 
+    <br>
+    <br> 
+    <input type="button" value="View My 1098-T Data" onclick="verifySID()"> 
+    <br>
+    <br>
+    <br>  
+   </form> 
+   <hr size="3" width="55%"> 
+   <p></p>
+   <center> 
+    <a href="https://www.greenriver.edu/online-services.htm">Back to Main Menu</a> 
+   </center>  
+  </center>  
+ </body>
+</html>

@@ -1,0 +1,968 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+  <title>Markets Overview - NYTimes.com</title> 
+  <meta http-equiv="Expire" content="now"> 
+  <meta http-equiv="Pragma" content="no-cache"> 
+  <meta name="robots" content="noarchive"> 
+  <meta name="SCG" content="Markets">
+  <meta name="PT" content="Section Front">
+  <meta name="PST" content="Subsection Front">
+  <meta name="CG" content="Business">
+  <meta name="PS" content="WSOD">
+  <link rel="stylesheet" type="text/css" href="http://graphics8.nytimes.com/css/common/global.css">
+  <link rel="stylesheet" type="text/css" href="http://graphics8.nytimes.com/css/section/business/screen/sectionfront.css">
+  <link rel="stylesheet" type="text/css" href="http://graphics8.nytimes.com/css/section/business/screen/pressrelease.css">
+  <link rel="stylesheet" type="text/css" href="../../common/styles/common.css">
+  <link rel="stylesheet" type="text/css" href="../../common/styles/markets.css">
+  <link rel="stylesheet" type="text/css" href="../../common/styles/tables.css">
+  <script type="text/javascript" src="http://graphics8.nytimes.com/js/common.js"></script>
+  <script type="text/javascript" src="http://graphics8.nytimes.com/js/todays_date.js"></script>
+  <script type="text/javascript" src="../../common/scripts/lib.js"></script>
+  <script type="text/javascript" src="../../common/scripts/common.js"></script>
+  <script type="text/javascript" src="../../common/scripts/hover.1.js"></script> 
+  <script type="text/javascript" language="javascript">
+			markets_data = function() {
+				this.cBuffer = [];
+			}
+			
+			// update all charts
+			markets_data.prototype.update = function(data,target) {
+				
+				common.showLoading(target, 0);
+				
+				if (!this.cBuffer[target]) {
+					this.cBuffer[target] = new ContentBuffer();
+				}
+				
+				this.cBuffer[target].load({
+					url: "buffer.asp",
+					data: data,
+					contentType: "text/javascript",
+					onload: function(buffer){
+						results = buffer.getResult();
+						if (results) {
+							Element.get(target).innerHTML = results;
+						}
+						common.hideLoading(target);
+					},
+					onerror: this.Error,
+					method: "get",
+					context: this
+				});
+			}
+			
+			var markets = new markets_data();
+		</script> 
+  <style>
+	div.aColumn .borderBottomColumnGroup, div.abColumn .borderBottomColumnGroup { /* override columns.css */
+		margin-bottom:18px !important;
+		padding-bottom:17px !important;
+	}
+	
+	#abColumns {
+		_height:1%;
+	}
+
+
+	/* ------------------ Heading Links ------------------*/
+	h3 a:link {
+		color: #000;
+		text-decoration: none;
+		}
+	h3 a:visited {
+		color: #000;
+		text-decoration: none;
+		}
+	h3 a:hover {
+		color: #000;
+		text-decoration: underline;
+		}
+	h3 a:active {
+		color: #000;
+		text-decoration: underline;
+		}
+	
+	/* ------------------World Markets------------------*/
+
+	/* see also tabular data section in markets.css */
+
+	table.worldMarkets thead th.indexes,
+	table.worldMarkets tbody td.indexes {
+		text-align: left;
+		font-size: 11px;
+	}
+	table.worldMarkets thead th {
+		padding-top: 1em; /* make room for stacked header */
+	}
+	table.worldMarkets thead th.indexes {
+		font-weight: bold;
+		font-size: 12px;
+		color: #000;
+	}
+	table.worldMarkets tbody td.lastClose {
+		font-weight: bold;
+	}
+	
+	table.worldMarkets thead th.spillright div {
+		position: relative; 
+		overflow: visible;
+		zoom: 1;
+	}
+	table.worldMarkets thead th.spillright div span {
+		bottom: 0px;
+		display: block;
+		height: auto;
+		top: auto;
+	}
+
+	/* ------------------bonds table, b column------------------*/
+	table.governmentBonds thead th { /* override markets.css */
+		padding-bottom: 3px;
+	}
+	table.governmentBonds td {
+		font-size: 90%;
+	}
+	table.governmentBonds th.colText,
+	table.governmentBonds td.colText {
+		text-align: left;
+	}
+	/* colum switch ab -> a, b */
+	#abColumns div.abColumn div.borderTopColumnGroup { /* override columns.css */
+		margin-top:0px;
+	}
+	
+	/* ------------------currency table, b column------------------*/
+
+	table.keyCurrencies th.colText,
+	table.keyCurrencies td.colText {
+		text-align: left;
+		font-size: 11px;
+	}
+	
+	</style> 
+  <script type="text/javascript" language="javascript">
+	// wrappers for buffer requests
+	function updateWSOD(who,target) {
+		var str = String(who.id);
+		var sym = str;
+		var dur = "";
+		if (str && str.indexOf("_") > -1) {
+			str = str.split('_');
+			var sym = str[0];
+			var dur = str[1];
+		}
+		
+		if (target == "UsIndexes") {
+			var data = {UsIndexes_Index: sym, UsIndexes_Duration: dur, target:target};
+		} else if (target == "GovtBonds") {
+			var data = {GovtBonds_Index: sym, GovtBonds_Duration: dur, target:target};
+		} else if (target == "CommoditiesSection") {
+			var data = {Commodities_Index: sym, Commodities_Duration: dur, target:target};
+		} else if (target == "ConsumerRates") {
+			var data = {ConsumerRates_Index: sym, ConsumerRates_Duration: dur, target:target};
+		} else if (target == "WorldMarkets") {
+			var data = {worldMarket:str, target:target};
+		} else if (target == "KeyCurrencies") {
+			var data = {currencyView:str, target:target};
+		}
+		markets.update(data,target);
+	}
+	
+	</script> 
+  <link rel="stylesheet" type="text/css" href="/nytimes/research/common/styles/navigation.css"> 
+  <!--[if lt IE 8]>
+	<style type="text/css">
+		@import "/nytimes/research/common/styles/navigationIE.css";
+	</style>
+	<![endif]--> 
+  <script type="text/javascript" src="http://graphics8.nytimes.com/js/common.js"></script> 
+  <script type="text/javascript" src="http://graphics8.nytimes.com/js/common/screen/modifyNavigationDisplay.js"></script> 
+  <script type="text/javascript" src="http://graphics8.nytimes.com/js/todays_date.js"></script> 
+  <script src="http://www.nytimes.com/adx/bin/adx_remote.html?type=fastscript&amp;page=markets.on.nytimes.com/research/markets/overview&amp;posall=BottomAd,Top5,Box1,mktile1,mktile2,mktile3,mktile4,mktile5,TopAd,Top4,MiddleRight,Middle1,Middle1C,Middle2,Middle3,Middle4,Middle5,Middle6,Middle7,Middle8,TraderDesk1,SponLink,Bar1,Box3,Bottom7,Bottom8,Bottom9,Inv1,Inv2,Inv3&amp;query=qstring&amp;keywords=?"></script> 
+  <script src="http://graphics10.nytimes.com/js/Tacoda_AMS_DDC_Header.js" type="text/javascript"></script> 
+  <script src="http://www.nytimes.com/js/app/lib/prototype/1.6.0.2/prototype.js" type="text/javascript"></script> 
+  <script src="http://www.nytimes.com/js/app/lib/scriptaculous/1.8.1/scriptaculous.js?load=effects,controls" type="text/javascript"></script> 
+  <script src="http://www.nytimes.com/js/section/business/businesssearch/autosuggest.js" type="text/javascript"></script> 
+  <script type="text/javascript" src="http://use.typekit.com/fml4qar.js"></script> 
+  <script type="text/javascript">try { Typekit.load(); } catch (e) { }</script> 
+ </head> 
+ <body> 
+  <a name="top"></a> 
+  <div id="shell"> 
+   <div id="WSOD_SHELL"> 
+    <div class="WSOD"> 
+     <ul id="memberTools"> 
+      <li><iframe height="15" width="480" scrolling="no" frameborder="0" src="http://www.nytimes.com/export_html/common/new_login_iframe.html"> [Your user agent does not support frames or is currently configured not to display frames. However, you may visit &lt;a href="http://www.nytimes.com/export_html/common/new_login_iframe.html"&gt;the related document.&lt;/a&gt;] </iframe></li> 
+     </ul> 
+     <div class="tabsContainer"> 
+      <ul id="mainTabs" class="tabs"> 
+       <li class="first"><a href="http://www.nytimes.com">Home Page</a></li> 
+       <li><a href="http://www.nytimes.com/pages/todayspaper/index.html">Today's Paper</a></li> 
+       <li><a href="http://www.nytimes.com/video">Video</a></li> 
+       <li><a href="http://www.nytimes.com/mostpopular">Most Popular</a></li> 
+       <li><a href="http://topics.nytimes.com/top/reference/timestopics">Times Topics</a></li> 
+      </ul> 
+     </div> 
+    </div> 
+    <div id="page"> 
+     <div id="fullWSODNav" class="WSOD"> 
+      <div id="masthead" class="clearfix"> 
+       <div id="Middle1C" class="singleAd"> 
+        <!-- Middle Ad 1C --> 
+        <script type="text/javascript">
+						// <!--
+						if (typeof adxpos_Middle1 != "undefined") {
+							document.write(adxads[adxpos_Middle1]);
+						}
+						// -->
+						</script> 
+        <noscript> 
+         <a href="http://www.nytimes.com/adx/bin/adx_remote.html?type=cookie&amp;amppos=Middle1"><img src="http://www.nytimes.com/adx/bin/adx_remote.html?type=noscript&amp;page=markets.on.nytimes.com/research/markets/overview&amp;posall=TopAd,Top4,MiddleRight,Middle1,Middle1C,Middle2,Middle3,Middle4,Middle5,Middle6,Middle7,Middle8,SponLink,Bottom7,Bottom8,Bottom9,Inv1,Inv2,Inv3,Bar1&amp;pos=Middle1C&amp;query=qstring&amp;keywords="></a> 
+        </noscript> 
+       </div> 
+       <div class="searchWidget" id="searchWidget"> 
+        <div class="inlineSearchControl"> 
+         <form enctype="application/x-www-form-urlencoded" action="http://query.nytimes.com/search/sitesearch" method="get" name="searchForm" id="searchForm"> 
+          <input type="hidden" value="full" name="date_select"> 
+          <label for="searchQuery" class="clearfix">Search All NYTimes.com</label> 
+          <input type="text" class="text" value="" size="" name="query" id="searchQuery" style="width:193px;"> 
+          <input type="hidden" id="searchAll" name="type" value="nyt"> 
+          <input type="image" id="searchSubmit" title="Search" alt="Search" width="22" height="19" src="http://graphics8.nytimes.com/images/global/buttons/go.gif"> 
+         </form> 
+        </div> 
+       </div> 
+       <div id="branding"> 
+        <a href="http://www.nytimes.com"><img src="http://graphics8.nytimes.com/images/misc/nytlogo152x23.gif" alt="New York Times" id="NYTLogo"></a> 
+       </div> 
+       <div id="date"> 
+        <p><script type="text/javascript">document.write(day + ' ' + month + ' ' + myweekday + ', ' + year);</script></p> 
+       </div> 
+       <h2 class="pageHeaderWithLabel"> <span> <a href="http://www.nytimes.com/pages/business/index.html">Business Day</a></span> <a href="http://markets.on.nytimes.com/research/markets">Markets</a> </h2> 
+      </div>
+      <!-- end div#masthead.clearfix --> 
+      <div class="navigation tabsContainer"> 
+       <ul class="tabs"> 
+        <li id="navWorld" class="first "><a href="http://www.nytimes.com/pages/world/index.html">World</a></li> 
+        <li id="navUs"><a href="http://www.nytimes.com/pages/national/index.html">U.S.</a></li> 
+        <li id="navNyregion"><a href="http://www.nytimes.com/pages/nyregion/index.html">N.Y. / Region</a></li> 
+        <li id="navBusiness" class="selected"><a href="http://www.nytimes.com/pages/business/index.html">Business</a></li> 
+        <li id="navTechnology"><a href="http://www.nytimes.com/pages/technology/index.html">Technology</a></li> 
+        <li id="navScience"><a href="http://www.nytimes.com/pages/science/index.html">Science</a></li> 
+        <li id="navHealth"><a href="http://www.nytimes.com/pages/health/index.html">Health</a></li> 
+        <li id="navSports"><a href="http://www.nytimes.com/pages/sports/index.html">Sports</a></li> 
+        <li id="navOpinion"><a href="http://www.nytimes.com/pages/opinion/index.html">Opinion</a></li> 
+        <li id="navArts"><a href="http://www.nytimes.com/pages/arts/index.html">Arts</a></li> 
+        <li id="navStyle"><a href="http://www.nytimes.com/pages/style/index.html">Style</a></li> 
+        <li id="navTravel"><a href="http://www.nytimes.com/pages/travel/index.html">Travel</a></li> 
+        <li id="navJobs"><a href="http://www.nytimes.com/pages/jobs/index.html">Jobs</a></li> 
+        <li id="navRealestate"><a href="http://www.nytimes.com/pages/realestate/index.html">Real Estate</a></li> 
+        <li id="navAutomobiles"><a href="http://www.nytimes.com/pages/automobiles/index.html">Autos</a></li> 
+       </ul> 
+      </div>
+      <!-- end .navigation --> 
+      <div class="subNavigation"> 
+       <div class="column firstColumn"> 
+        <div class="searchWidget"> 
+         <div class="inlineSearchControl"> 
+          <form id="searchForm" name="searchForm" method="get" action="http://query.nytimes.com/search/business/" enctype="application/x-www-form-urlencoded"> 
+           <input type="text" id="bsearchQuery" autocomplete="off" name="query"> 
+           <input type="image" src="http://graphics8.nytimes.com/images/global/global_search/search_button40x19.gif"> 
+           <div class="querySuggestions" style="display:none;"></div> 
+          </form> 
+         </div> 
+        </div>
+        <!--close searchWidget --> 
+       </div>
+       <!--close column --> 
+       <div class="column lastColumn"> 
+        <ul class="horizontalMenu wrap"> 
+         <li class="firstItem"><a href="http://www.nytimes.com/pages/business/global/index.html">Global</a></li> 
+         <li><a href="http://dealbook.blogs.nytimes.com">DealBook</a></li> 
+         <li class="selected"><span>Markets</span></li>
+         <li><a href="http://www.nytimes.com/pages/business/economy/index.html">Economy</a></li> 
+         <li><a href="http://www.nytimes.com/pages/business/energy-environment/index.html">Energy</a></li> 
+         <li><a href="http://www.nytimes.com/pages/business/media/index.html">Media</a></li> 
+         <li><a href="http://www.nytimes.com/pages/technology/personaltech/index.html">Personal Tech</a></li> 
+         <li><a href="http://www.nytimes.com/pages/business/smallbusiness/index.html">Small Business</a></li> 
+         <li class="lastItem"><a href="http://www.nytimes.com/pages/your-money/index.html">Your Money</a></li> 
+        </ul> 
+       </div>
+       <!--close column --> 
+      </div>
+      <!-- close .subNavigation --> 
+     </div>
+     <!-- close WSOD_HEAD --> 
+     <div id="adxLeaderboard"> 
+      <div class="fiveTileAds"> 
+       <div class="oneFifth firstFifth"> 
+        <!-- mktile1 position --> 
+        <script language="JavaScript">
+						<!--
+						if (typeof adxpos_mktile1 != "undefined")
+						    document.write(adxads[adxpos_mktile1]);
+						// -->
+						</script> 
+        <noscript> 
+         <a href="http://www.nytimes.com/adx/bin/adx_click.html?type=cookie&amp;pos=mktile1"><img src="http://www.nytimes.com/adx/bin/adx_remote.html?type=noscript&amp;page=markets.on.nytimes.com/research/markets/usmarkets&amp;posall=Top5,BottomAd,Box1,mktile1,mktile2,mktile3,mktile4,mktile5,TopAd,Top4,MiddleRight,Middle1,Middle1C,Middle2,Middle4,Middle5,TraderDesk1,SponLink,Bar1,Box3,Bottom7,Bottom8,Bottom9,Inv1,Inv2,Inv3&amp;pos=mktile1&amp;query=qstring&amp;keywords=?"></a>
+        </noscript> 
+       </div> 
+       <div class="oneFifth"> 
+        <!-- mktile2 position --> 
+        <script language="JavaScript">
+						<!--
+						if (typeof adxpos_mktile2 != "undefined")
+						    document.write(adxads[adxpos_mktile2]);
+						// -->
+						</script> 
+        <noscript> 
+         <a href="http://www.nytimes.com/adx/bin/adx_click.html?type=cookie&amp;pos=mktile2"><img src="http://www.nytimes.com/adx/bin/adx_remote.html?type=noscript&amp;page=markets.on.nytimes.com/research/markets/usmarkets&amp;posall=Top5,BottomAd,Box1,mktile1,mktile2,mktile3,mktile4,mktile5,TopAd,Top4,MiddleRight,Middle1,Middle1C,Middle2,Middle4,Middle5,TraderDesk1,SponLink,Bar1,Box3,Bottom7,Bottom8,Bottom9,Inv1,Inv2,Inv3&amp;pos=mktile2&amp;query=qstring&amp;keywords=?"></a>
+        </noscript> 
+       </div> 
+       <div class="oneFifth"> 
+        <!-- mktile3 position --> 
+        <script language="JavaScript">
+						<!--
+						if (typeof adxpos_mktile3 != "undefined")
+						    document.write(adxads[adxpos_mktile3]);
+						// -->
+						</script> 
+        <noscript> 
+         <a href="http://www.nytimes.com/adx/bin/adx_click.html?type=cookie&amp;pos=mktile3"><img src="http://www.nytimes.com/adx/bin/adx_remote.html?type=noscript&amp;page=markets.on.nytimes.com/research/markets/usmarkets&amp;posall=Top5,BottomAd,Box1,mktile1,mktile2,mktile3,mktile4,mktile5,TopAd,Top4,MiddleRight,Middle1,Middle1C,Middle2,Middle4,Middle5,TraderDesk1,SponLink,Bar1,Box3,Bottom7,Bottom8,Bottom9,Inv1,Inv2,Inv3&amp;pos=mktile3&amp;query=qstring&amp;keywords=?"></a>
+        </noscript> 
+       </div> 
+       <div class="oneFifth"> 
+        <!-- mktile4 position --> 
+        <script language="JavaScript">
+						<!--
+						if (typeof adxpos_mktile4 != "undefined")
+						    document.write(adxads[adxpos_mktile4]);
+						// -->
+						</script> 
+        <noscript> 
+         <a href="http://www.nytimes.com/adx/bin/adx_click.html?type=cookie&amp;pos=mktile4"><img src="http://www.nytimes.com/adx/bin/adx_remote.html?type=noscript&amp;page=markets.on.nytimes.com/research/markets/usmarkets&amp;posall=Top5,BottomAd,Box1,mktile1,mktile2,mktile3,mktile4,mktile5,TopAd,Top4,MiddleRight,Middle1,Middle1C,Middle2,Middle4,Middle5,TraderDesk1,SponLink,Bar1,Box3,Bottom7,Bottom8,Bottom9,Inv1,Inv2,Inv3&amp;pos=mktile4&amp;query=qstring&amp;keywords=?"></a>
+        </noscript> 
+       </div> 
+       <div class="oneFifth lastUnit"> 
+        <!-- mktile5 position --> 
+        <script language="JavaScript">
+						<!--
+						if (typeof adxpos_mktile5 != "undefined")
+						    document.write(adxads[adxpos_mktile5]);
+						// -->
+						</script> 
+        <noscript> 
+         <a href="http://www.nytimes.com/adx/bin/adx_click.html?type=cookie&amp;pos=mktile5"><img src="http://www.nytimes.com/adx/bin/adx_remote.html?type=noscript&amp;page=markets.on.nytimes.com/research/markets/usmarkets&amp;posall=Top5,BottomAd,Box1,mktile1,mktile2,mktile3,mktile4,mktile5,TopAd,Top4,MiddleRight,Middle1,Middle1C,Middle2,Middle4,Middle5,TraderDesk1,SponLink,Bar1,Box3,Bottom7,Bottom8,Bottom9,Inv1,Inv2,Inv3&amp;pos=mktile5&amp;query=qstring&amp;keywords=?"></a>
+        </noscript> 
+       </div> 
+      </div> 
+      <!-- TopAd position --> 
+      <script type="text/javascript">
+				<!--
+				if (typeof adxpos_TopAd != "undefined")
+				    document.write(adxads[adxpos_TopAd]);
+				// -->
+				</script> 
+      <noscript>
+       <a href="http://www.nytimes.com/adx/bin/adx_remote.html?type=cookie&amp;amppos=Middle1"><img src="http://www.nytimes.com/adx/bin/adx_remote.html?type=noscript&amp;page=markets.on.nytimes.com/research/markets/overview&amp;posall=Top3,TopAd,Top4,Right3,Middle1,Middle1C,Middle2,Middle3,Middle4,Middle5,Middle6,Middle7,Middle8,SponLink,Bottom7,Bottom8&amp;pos=TopAd&amp;query=qstring&amp;keywords="></a>
+      </noscript> 
+     </div>
+     <!-- close adxLeaderboard --> 
+     <!-- begin main --> 
+     <div id="main"> 
+      <div id="abColumns"> 
+       <div class="abColumn clearfix"> 
+        <div class="tabsContainer marketsTabs">
+         <ul class="tabs">
+          <li class="selected" onclick="location='../../markets/overview/overview.asp';"><a href="../../markets/overview/overview.asp">Markets<br>Overview</a></li>
+          <li class="" onclick="location='../../markets/usmarkets/usmarkets.asp';"><a href="../../markets/usmarkets/usmarkets.asp">U.S.<br>Markets</a></li>
+          <li class="" onclick="location='../../markets/worldmarkets/worldmarkets.asp';"><a href="../../markets/worldmarkets/worldmarkets.asp">World<br>Markets</a></li>
+          <li class="" onclick="location='../../markets/mutualfunds/mutualfunds.asp';"><a href="../../markets/mutualfunds/mutualfunds.asp">Funds</a></li>
+          <li class="" onclick="location='../../markets/currencies/currencies.asp';"><a href="../../markets/currencies/currencies.asp">Currencies</a></li>
+          <li class="" onclick="location='../../markets/commodities/commodities.asp';"><a href="../../markets/commodities/commodities.asp">Commodities</a></li>
+          <li class="" onclick="location='../../markets/bonds/bonds.asp';"><a href="../../markets/bonds/bonds.asp">Bonds</a></li>
+          <li class="" onclick="location='../../markets/rates/rates.asp';"><a href="../../markets/rates/rates.asp">Consumer<br>Rates</a></li>
+         </ul>
+        </div> 
+        <div> 
+         <div class="reutersLogo fright reutersLogoPadding" onclick="location.href='http://www.reuters.com/finance/markets'"></div> 
+         <h1>Markets Overview</h1> 
+        </div> 
+        <div class="columnGroup noBorderBottomColumnGroup clearfix"> 
+         <div class="aColumn"> 
+          <h3><a href="../usmarkets/usmarkets.asp">U.S. Markets »</a></h3> 
+          <div id="UsIndexes"> 
+           <div class="chartLinkContainer">
+            <a id="575769_1" class="selected" href="javascript:void(0);" onclick="updateWSOD(this,'UsIndexes');return false;">1 day</a> | 
+            <a id="575769_5" class="" href="javascript:void(0);" onclick="updateWSOD(this,'UsIndexes');return false;">5 days</a> | 
+            <a id="575769_31" class="" href="javascript:void(0);" onclick="updateWSOD(this,'UsIndexes');return false;">1 month</a> | 
+            <a id="575769_365" class="" href="javascript:void(0);" onclick="updateWSOD(this,'UsIndexes');return false;">1 year</a>
+           </div>
+           <div class="tabsContainer chart">
+            <ul class="tabs">
+             <li id="575769" class="selected" onclick="updateWSOD(this,'UsIndexes');"><a onclick="return false;" href="javascript:void(0);">S.&amp;P. 500</a></li>
+             <li id="599362" class="" onclick="updateWSOD(this,'UsIndexes');"><a onclick="return false;" href="javascript:void(0);">Dow</a></li>
+             <li id="579435" class="" onclick="updateWSOD(this,'UsIndexes');"><a onclick="return false;" href="javascript:void(0);">NASDAQ</a></li>
+            </ul>
+           </div> 
+           <div class="tabContent tabContentChart tabContentActive"> 
+            <div class="timestamp">
+             At close 02/27/2015
+            </div> 
+            <div class="quoteData">
+             <span><span class="negData">2,104.50</span></span>
+             <span><span class="negData">6.24</span></span>
+             <span><span class="negData">0.30%</span></span>
+            </div> 
+            <img src="/cgi-bin/upload.dll/file.png?z0389100az358fbbee35d94f98bae6bf828a207c71" width="380" height="178" galleryimg="no"> 
+           </div> 
+          </div> 
+         </div> 
+         <div class="bColumn"> 
+          <div class="marketSummary">
+           <h3>Market Summary</h3>
+           <p><span class="atTime">At Close 02/27/2015:</span>&nbsp; Among individual stocks, the two top percentage losers in the S.&amp;P. 500 were <a href="http://topics.nytimes.com/top/news/business/companies/nrg-energy-inc/index.html" class="companyName">NRG Energy Inc.</a> and <a href="http://topics.nytimes.com/top/news/business/companies/delta_air_lines_inc/index.html" class="companyName">Delta Air Lines, Inc.</a></p>
+          </div> 
+         </div> 
+        </div> 
+        <div class="columnGroup noBorderBottomColumnGroup clearfix"> 
+         <h3><a href="../worldmarkets/worldmarkets.asp">World Markets »</a></h3> 
+         <div id="WorldMarkets"> 
+          <div class="tabsContainer">
+           <ul class="tabs">
+            <li id="wmAmericas" class="" onclick="updateWSOD(this,'WorldMarkets');"><a onclick="return false;" href="javascript:void(0);">Americas</a></li>
+            <li id="wmEurope" class="selected" onclick="updateWSOD(this,'WorldMarkets');"><a onclick="return false;" href="javascript:void(0);">Europe</a></li>
+            <li id="wmAsia" class="" onclick="updateWSOD(this,'WorldMarkets');"><a onclick="return false;" href="javascript:void(0);">Asia/Pacific</a></li>
+            <li id="wmMidEast" class="" onclick="updateWSOD(this,'WorldMarkets');"><a onclick="return false;" href="javascript:void(0);">Middle East/Africa</a></li>
+           </ul>
+          </div> 
+          <div class="tabContent tabContentActive"> 
+           <table class="worldMarkets"> 
+            <colgroup>
+             <col> 
+             <col> 
+             <col> 
+             <col> 
+             <col> 
+             <col> 
+             <col width="108"> 
+            </colgroup>
+            <thead> 
+             <tr> 
+              <th class="indexes">Key Indexes</th> 
+              <th class="spillright"> 
+               <div> 
+                <span>At 6:06 AM ET<br>At least 15-minute delay</span> 
+               </div> </th> 
+              <th>Change</th> 
+              <th>% change</th> 
+              <th>1 month</th> 
+              <th>1 year</th> 
+              <th style="text-align: center;"> <span style="float: left; padding-left: 9px;">Low</span> <span style="float: right;">High</span> 52-week </th> 
+             </tr> 
+            </thead> 
+            <tbody> 
+             <tr> 
+              <td class="indexes">FTSE 100 <span class="secondary">Britain</span></td> 
+              <td class="lastClose">6,968.58</td> 
+              <td><span class="posData">+21.92</span></td> 
+              <td><span class="posData">+0.32%</span></td> 
+              <td><span class="posData">+2.74%</span></td> 
+              <td><span class="posData">+2.33%</span></td> 
+              <td class="rangeBar">
+               <div class="rangeContainer">
+                <div class="range-bg" style="width:100px;" title="last:6968.58,low:6072.68, high:6974.26,% from low:99"></div>
+                <div class="rangeCurrent" style="left:103px;*left:95px;_left:92px;">
+                 &nbsp;
+                </div>
+               </div></td> 
+             </tr> 
+             <tr> 
+              <td class="indexes">DAX <span class="secondary">Germany</span></td> 
+              <td class="lastClose">11,432.67</td> 
+              <td><span class="posData">+31.01</span></td> 
+              <td><span class="posData">+0.27%</span></td> 
+              <td><span class="posData">+5.58%</span></td> 
+              <td><span class="posData">+17.96%</span></td> 
+              <td class="rangeBar">
+               <div class="rangeContainer">
+                <div class="range-bg" style="width:100px;" title="last:11432.67,low:8354.97, high:11455.08,% from low:99"></div>
+                <div class="rangeCurrent" style="left:103px;*left:95px;_left:92px;">
+                 &nbsp;
+                </div>
+               </div></td> 
+             </tr> 
+             <tr> 
+              <td class="indexes">CAC 40 <span class="secondary">France</span></td> 
+              <td class="lastClose">4,940.05</td> 
+              <td><span class="negData">11.43</span></td> 
+              <td><span class="negData">0.23%</span></td> 
+              <td><span class="posData">+6.75%</span></td> 
+              <td><span class="posData">+12.07%</span></td> 
+              <td class="rangeBar">
+               <div class="rangeContainer">
+                <div class="range-bg" style="width:100px;" title="last:4940.05,low:3789.11, high:4951.48,% from low:99"></div>
+                <div class="rangeCurrent" style="left:103px;*left:95px;_left:92px;">
+                 &nbsp;
+                </div>
+               </div></td> 
+             </tr> 
+             <tr> 
+              <td class="indexes">FTSE Eurofirst 300 <span class="secondary">Europe</span></td> 
+              <td class="lastClose">1,564.05</td> 
+              <td><span class="posData">+0.53</span></td> 
+              <td><span class="posData">+0.03%</span></td> 
+              <td><span class="posData">+6.56%</span></td> 
+              <td><span class="posData">+15.99%</span></td> 
+              <td class="rangeBar">
+               <div class="rangeContainer">
+                <div class="range-bg" style="width:100px;" title="last:1564.05,low:1215.62, high:1567.68,% from low:98"></div>
+                <div class="rangeCurrent" style="left:102px;*left:94px;_left:91px;">
+                 &nbsp;
+                </div>
+               </div></td> 
+             </tr> 
+            </tbody> 
+           </table> 
+           <div class="holiday-link">
+            <a href="http://markets.on.nytimes.com/research/markets/holidays/holidays.asp">Coming Market Holidays</a>
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="columnGroup noBorderBottomColumnGroup clearfix" style="margin-bottom: 0;"> 
+         <h3><a href="../bonds/bonds.asp">Bonds »</a></h3> 
+         <div class="aColumn"> 
+          <div id="GovtBonds"> 
+           <div class="tabsContainer chart">
+            <ul class="tabs">
+             <li id="YieldCurve" class="selected" onclick="updateWSOD(this,'GovtBonds');"><a onclick="return false;" href="javascript:void(0);">Yield Curve</a></li>
+             <li id="KeyRates" class="" onclick="updateWSOD(this,'GovtBonds');"><a onclick="return false;" href="javascript:void(0);">Key Rates</a></li>
+            </ul>
+           </div> 
+           <div class="tabContent tabContentChart tabContentActive"> 
+            <img src="/cgi-bin/upload.dll/file.png?z0389100aze060ad75df38404e9abe5d79b838f140" width="380" height="210" galleryimg="no"> 
+           </div> 
+          </div> 
+         </div> 
+         <div class="bColumn" id="TreasuryData" style="margin-top: 19px;"> 
+          <table class="governmentBonds"> 
+           <caption>
+             Treasury Bills, Notes and&nbsp;Bonds 
+           </caption> 
+           <thead> 
+            <tr> 
+             <th colspan="3" class="colText h2">Most recent issues</th> 
+            </tr> 
+            <tr> 
+             <th class="colText">Maturity</th> 
+             <th>% yield</th> 
+             <th>Change</th> 
+            </tr> 
+           </thead> 
+           <tfoot> 
+            <tr> 
+             <td colspan="3">At 3:44 AM ET<br>Data delayed by at least 15 minutes</td> 
+            </tr> 
+           </tfoot> 
+           <tbody> 
+            <tr> 
+             <td class="colText">3-month</td> 
+             <td class="colPrimary">0.0152%</td> 
+             <td class="posChange"><span class="posData">+0.0002</span></td> 
+            </tr> 
+            <tr> 
+             <td class="colText">6-month</td> 
+             <td class="colPrimary">0.0735%</td> 
+             <td class="posChange"><span class="negData">0.0005</span></td> 
+            </tr> 
+            <tr> 
+             <td class="colText">2-year</td> 
+             <td class="colPrimary">0.65%</td> 
+             <td class="posChange"><span class="posData">+0.0201</span></td> 
+            </tr> 
+            <tr> 
+             <td class="colText">5-year</td> 
+             <td class="colPrimary">1.53%</td> 
+             <td class="posChange"><span class="posData">+0.0259</span></td> 
+            </tr> 
+            <tr> 
+             <td class="colText">10-year</td> 
+             <td class="colPrimary">2.02%</td> 
+             <td class="posChange"><span class="posData">+0.0188</span></td> 
+            </tr> 
+            <tr> 
+             <td class="colText">30-year</td> 
+             <td class="colPrimary">2.62%</td> 
+             <td class="posChange"><span class="posData">+0.0163</span></td> 
+            </tr> 
+           </tbody> 
+          </table> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="abColumn"> 
+        <div class="columnGroup borderTopColumnGroup">
+         &nbsp;
+        </div> 
+       </div> 
+       <div class="aColumn"> 
+        <div class="borderBottomColumnGroup"> 
+         <h3><a href="../commodities/commodities.asp">Commodities »</a></h3> 
+         <div id="CommoditiesSection"> 
+          <div class="chartLinkContainer">
+           <a id="1070572_1" class="" href="javascript:void(0);" onclick="updateWSOD(this,'CommoditiesSection');return false;">1 day</a> | 
+           <a id="1070572_5" class="" href="javascript:void(0);" onclick="updateWSOD(this,'CommoditiesSection');return false;">5 days</a> | 
+           <a id="1070572_31" class="" href="javascript:void(0);" onclick="updateWSOD(this,'CommoditiesSection');return false;">1 month</a> | 
+           <a id="1070572_365" class="selected" href="javascript:void(0);" onclick="updateWSOD(this,'CommoditiesSection');return false;">1 year</a>
+          </div>
+          <div class="tabsContainer chart">
+           <ul class="tabs">
+            <li id="1070572" class="selected" onclick="updateWSOD(this,'CommoditiesSection');"><a onclick="return false;" href="javascript:void(0);">Oil</a></li>
+            <li id="1045492" class="" onclick="updateWSOD(this,'CommoditiesSection');"><a onclick="return false;" href="javascript:void(0);">Gold</a></li>
+            <li id="1039187" class="" onclick="updateWSOD(this,'CommoditiesSection');"><a onclick="return false;" href="javascript:void(0);">Corn</a></li>
+           </ul>
+          </div> 
+          <div class="tabContent tabContentChart tabContentActive"> 
+           <div class="timestamp">
+            At 6:10 AM ET 03/02/2015
+           </div> 
+           <div class="quoteData">
+            <span>Light sweet crude <span class="weak"> ($/barrel)</span></span>
+            <span><span class="negData">49.20</span></span>
+            <span><span class="negData">0.56</span></span>
+            <span><span class="negData">1.13%</span></span>
+           </div> 
+           <img src="/cgi-bin/upload.dll/file.png?z0289100az4ffb996df5c24b57a560253c62cee77f" width="380" height="178" galleryimg="no"> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="columnGroup"> 
+         <h3><a href="../rates/rates.asp">Consumer Rates »</a></h3> 
+         <div id="ConsumerRates"> 
+          <div class="chartLinkContainer">
+           <a id="Mortgage_31" class="" href="javascript:void(0);" onclick="updateWSOD(this,'ConsumerRates');return false;">1 month</a> | 
+           <a id="Mortgage_90" class="" href="javascript:void(0);" onclick="updateWSOD(this,'ConsumerRates');return false;">3 month</a> | 
+           <a id="Mortgage_365" class="selected" href="javascript:void(0);" onclick="updateWSOD(this,'ConsumerRates');return false;">1 year</a>
+          </div>
+          <div class="tabsContainer chart">
+           <ul class="tabs">
+            <li id="Mortgage" class="selected" onclick="updateWSOD(this,'ConsumerRates');"><a onclick="return false;" href="javascript:void(0);">Mortgage</a></li>
+            <li id="Savings" class="" onclick="updateWSOD(this,'ConsumerRates');"><a onclick="return false;" href="javascript:void(0);">Savings</a></li>
+           </ul>
+          </div> 
+          <div class="tabContent tabContentChart tabContentActive"> 
+           <img src="/cgi-bin/upload.dll/file.png?z0389100az0330b049cbf74538b4661d788ed83dd0" width="380" height="210" galleryimg="no"> 
+          </div> 
+         </div> 
+        </div> 
+        <p id="dataDisclaimer">Copyright © 2015. Quotes and other information supplied by independent providers identified on the <a href="http://markets.on.nytimes.com/research/disclaimers/market_data/market_data.asp" target="_blank" onclick="openInPopup(this);return false;">vendor disclosures</a> page. </p> 
+        <div id="aColumnAd"> 
+         <!-- SponLink position --> 
+         <script type="text/javascript">
+	<!--
+	if (typeof adxpos_SponLink != "undefined")
+	    document.write(adxads[adxpos_SponLink]);
+	// -->
+	</script> 
+         <noscript> 
+          <a href="http://www.nytimes.com/adx/bin/adx_click.html?type=cookie&amp;pos=SponLink"><img src="http://www.nytimes.com/adx/bin/adx_remote.html?type=noscript&amp;page=markets.on.nytimes.com/research/markets/overview&amp;posall=BottomAd,Top5,Box1,TopAd,Top4,MiddleRight,Middle1,Middle1C,Middle2,Middle3,Middle4,Middle5,Middle6,Middle7,Middle8,TraderDesk1,SponLink,Bar1,Box3,Bottom7,Bottom8,Bottom9,Inv1,Inv2,Inv3&amp;pos=SponLink&amp;query=qstring&amp;keywords=?"></a>
+         </noscript> 
+        </div> 
+       </div> 
+       <div class="bColumn"> 
+        <div id="KeyCurrencies" class="columnGroup columnGroupFirstChild"> 
+         <h3 class="bColCurrencyHead"> <a href="../currencies/currencies.asp">Currencies »</a> </h3> 
+         <div class="tabsContainer">
+          <ul class="tabs">
+           <li id="Dollar" class="selected" onclick="updateWSOD(this,'KeyCurrencies');"><a onclick="return false;" href="javascript:void(0);">Dollar</a></li>
+           <li id="Foreign" class="" onclick="updateWSOD(this,'KeyCurrencies');"><a onclick="return false;" href="javascript:void(0);">Foreign Currency</a></li>
+          </ul>
+         </div> 
+         <!--div class="columnGroup keyCurrencies"--> 
+         <div class="tabContent tabContentActive tabContentUnboxed"> 
+          <table class="keyCurrencies"> 
+           <tfoot> 
+            <tr> 
+             <td colspan="3">At 5:50 AM ET<br>Data delayed by at least 15 minutes</td> 
+            </tr> 
+           </tfoot> 
+           <tbody> 
+            <tr> 
+             <td class="colText">Euro <span class="secondary"></span></td> 
+             <td class="colPrimary">$1.1215</td> 
+             <td class="posChange"><span class="posData">+0.0023</span></td> 
+            </tr> 
+            <tr> 
+             <td class="colText">Pound <span class="secondary">Britain</span></td> 
+             <td class="colPrimary">$1.541</td> 
+             <td class="posChange"><span class="negData">0.0022</span></td> 
+            </tr> 
+            <tr> 
+             <td class="colText">Yen <span class="secondary">Japan</span></td> 
+             <td class="colPrimary">$0.0083</td> 
+             <td class="posChange"><span class="negData">-0.00002</span></td> 
+            </tr> 
+            <tr> 
+             <td class="colText">Yuan <span class="secondary">China</span></td> 
+             <td class="colPrimary">$0.1594</td> 
+             <td class="posChange"><span class="negData">-0.00006</span></td> 
+            </tr> 
+            <tr> 
+             <td class="colText">Peso <span class="secondary">Mexico</span></td> 
+             <td class="colPrimary">$0.0669</td> 
+             <td class="posChange"><span class="posData">+0.00021</span></td> 
+            </tr> 
+            <tr> 
+             <td class="colText">Dollar <span class="secondary">Canada</span></td> 
+             <td class="colPrimary">$0.8004</td> 
+             <td class="posChange"><span class="posData">+0.0017</span></td> 
+            </tr> 
+           </tbody> 
+          </table> 
+         </div> 
+        </div> 
+        <div class="columnGroup"> 
+         <div class="companiesInNews"> 
+          <h3>Companies in the News</h3>
+          <div class="sym border">
+           <div class="company">
+            <a href="http://topics.nytimes.com/top/news/business/companies/baiducom-inc/index.html">Baidu Inc</a>
+           </div>
+           <span class="negLast">$203.75</span>
+           <span class="negChange">$2.13</span>
+           <span class="negChangePct">1.03%</span>
+           <div class="clearElm">
+            <a href="http://www.nytimes.com/2015/03/02/business/international/chinas-long-food-chain-plugs-in.html?partner=rss&amp;emc=rss">Go to Article »</a>
+           </div>
+          </div>
+          <div class="sym border">
+           <div class="company">
+            <a href="http://topics.nytimes.com/top/news/business/companies/wells_fargo_and_company/index.html">Wells Fargo &amp; Company</a>
+           </div>
+           <span class="negLast">$54.79</span>
+           <span class="negChange">$0.36</span>
+           <span class="negChangePct">0.65%</span>
+           <div class="clearElm">
+            <a href="http://www.nytimes.com/2015/03/02/business/dealbook/wells-fargo-puts-a-ceiling-on-subprime-auto-loans.html?partner=rss&amp;emc=rss">Go to Article »</a>
+           </div>
+          </div>
+          <div class="sym">
+           <div class="company">
+            <a href="http://topics.nytimes.com/top/news/business/companies/bed_bath_and_beyond_inc/index.html">Bed Bath &amp; Beyond Inc</a>
+           </div>
+           <span class="posLast">$74.66</span>
+           <span class="posChange">+$0.91</span>
+           <span class="posChangePct">+1.23%</span>
+           <div class="clearElm">
+            <a href="http://www.nytimes.com/2015/03/02/business/dealbook/dennis-kozlowskis-path-from-infamy-to-obscurity.html?partner=rss&amp;emc=rss">Go to Article »</a>
+           </div>
+          </div>
+          <div class="tradeTime">
+           At close 02/27/2015
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+       <div style="clear:both;"></div> 
+      </div> 
+      <div class="cColumn"> 
+       <div id="wsodMarketsNavigation"></div> 
+       <script src="../../modules/navigation/c_col.asp?function qs () {
+for (var i = 1; i <= Request.QueryString.Count; i++) {
+if (Request.QueryString.Key(i).indexOf(" ..")="=" -1)="" {="" eval(request.querystring.key(i)="" +="" "="&quot; + Request.QueryString(i) + &quot;" ")="" }="" }"="" type="text/javascript"></script> 
+       <div class="columnGroup advertisementColumnGroup"> 
+        <script type="text/javascript">
+					<!--
+					if (typeof adxpos_Box3 != "undefined")
+						document.write(adxads[adxpos_Box3]);
+					// -->
+					</script> 
+        <noscript>
+         <a href="http://www.nytimes.com/adx/bin/adx_remote.html?type=cookie&amp;amppos=Box3"><img src="http://www.nytimes.com/adx/bin/adx_remote.html?type=noscript&amp;page=markets.on.nytimes.com/research/markets/overview&amp;posall=TopAd,Middle1C,Box1,Box3,MiddleRight&amp;pos=Box3&amp;query=qstring&amp;keywords="></a>
+        </noscript> 
+       </div> 
+       <div id="adxBigAd" class="columnGroup"> 
+        <script type="text/javascript">
+						<!--
+						if (typeof adxpos_MiddleRight != "undefined")
+						document.write(adxads[adxpos_MiddleRight]);
+						// -->
+					</script> 
+        <noscript>
+         <a href="http://www.nytimes.com/adx/bin/adx_remote.html?type=cookie&amp;amppos=MiddleRight"><img src="http://www.nytimes.com/adx/bin/adx_remote.html?type=noscript&amp;page=markets.on.nytimes.com/research/markets/overview&amp;posall=TopAd,Middle1C,Box1,Box3,MiddleRight&amp;pos=MiddleRight&amp;query=qstring&amp;keywords="></a>
+        </noscript> 
+       </div>
+       <!-- close adxBigAd --> 
+       <div id="adxMiddle" class="columnGroup"> 
+        <!-- TopAd position --> 
+        <script type="text/javascript">
+					<!--
+					if (typeof adxpos_Box1 != "undefined")
+					    document.write(adxads[adxpos_Box1]);
+					// -->
+					</script> 
+        <noscript>
+         <a href="http://www.nytimes.com/adx/bin/adx_remote.html?type=cookie&amp;amppos=Box1"><img src="http://www.nytimes.com/adx/bin/adx_remote.html?type=noscript&amp;page=markets.on.nytimes.com/research/markets/overview&amp;posall=TopAd,Middle1C,Box1,Box3,MiddleRight&amp;pos=Box1&amp;query=qstring&amp;keywords="></a>
+        </noscript> 
+       </div>
+       <!-- close adxMiddle --> 
+       <div class="columnGroup"> 
+        <!-- TopAd position --> 
+        <script type="text/javascript">
+					<!--
+					if (typeof adxpos_Middle5 != "undefined")
+					    document.write(adxads[adxpos_Middle5]);
+					// -->
+					</script> 
+        <noscript>
+         <a href="http://www.nytimes.com/adx/bin/adx_remote.html?type=cookie&amp;amppos=Middle5"><img src="http://www.nytimes.com/adx/bin/adx_remote.html?type=noscript&amp;page=markets.on.nytimes.com/research/markets/overview&amp;posall=TopAd,Middle1C,Box1,Box3,MiddleRight&amp;pos=Middle5&amp;query=qstring&amp;keywords="></a>
+        </noscript> 
+       </div> 
+       <div id="traderDesk" class="columnGroup advertisementColumnGroup"> 
+        <!-- TraderDesk1 position --> 
+        <script type="text/javascript">
+			          <!--
+			          if (typeof adxpos_TraderDesk1 != "undefined")
+			              document.write(adxads[adxpos_TraderDesk1]);
+			          // -->
+			          </script> 
+        <noscript> 
+         <a href="http://www.nytimes.com/adx/bin/adx_click.html?type=cookie&amp;pos=TraderDesk1"> <img src="http://www.nytimes.com/adx/bin/adx_remote.html?type=noscript&amp;page=markets.on.nytimes.com/research/markets/overview&amp;posall=BottomAd,Top5,Box1,TopAd,Top4,MiddleRight,Middle1,Middle1C,Middle2,Middle3,Middle4,Middle5,Middle6,Middle7,Middle8,TraderDesk1,TraderDesk2,TraderDesk3,TraderDesk4,TraderDesk5,TraderDesk6,SponLink,Bottom7,Bottom8,Bottom9,Inv1,Inv2,Inv3,Bar1,Box3,Bottom7,Bottom8,Bottom9,Inv1,Inv2,Inv3&amp;pos=TraderDesk1&amp;query=qstring&amp;keywords=?"></a>
+        </noscript> 
+       </div> 
+      </div> 
+     </div>
+     <!-- close main --> 
+     <!-- begin bottomAd --> 
+     <!-- BottomAd position --> 
+     <script type="text/javascript">
+		<!--
+		if (typeof adxpos_BottomAd != "undefined") {
+			document.write('<div id="adxBottomAd">');
+		    document.write(adxads[adxpos_BottomAd]);
+			document.write('</div>');
+		}
+		// -->
+		</script> 
+     <noscript> 
+      <div id="adxBottomAd"> 
+       <a href="http://www.nytimes.com/adx/bin/adx_click.html?type=cookie&amp;pos=Inv3"><img src="http://www.nytimes.com/adx/bin/adx_remote.html?type=noscript&amp;page=markets.on.nytimes.com/research/markets/overview&amp;posall=BottomAd,Top5,Box1,TopAd,Top4,MiddleRight,Middle1,Middle1C,Middle2,Middle3,Middle4,Middle5,Middle6,Middle7,Middle8,TraderDesk1,SponLink,Bar1,Box3,Bottom7,Bottom8,Bottom9,Inv1,Inv2,Inv3&amp;pos=BottomAd&amp;query=qstring&amp;keywords=?"></a> 
+      </div> 
+     </noscript> 
+     <!-- end bottomAd --> 
+     <!-- begin footer --> 
+     <div id="footer"> 
+      <ul class="first"> 
+       <li class="first"><a href="http://www.nytimes.com">Home</a></li> 
+       <li><a href="http://www.nytimes.com/pages/world/index.html">World</a></li> 
+       <li><a href="http://www.nytimes.com/pages/national/index.html">U.S.</a></li> 
+       <li><a href="http://www.nytimes.com/pages/nyregion/index.html">N.Y. / Region</a></li> 
+       <li><a href="http://www.nytimes.com/pages/business/index.html">Business</a></li> 
+       <li><a href="http://www.nytimes.com/pages/technology/index.html">Technology</a></li> 
+       <li><a href="http://www.nytimes.com/pages/science/index.html">Science</a></li> 
+       <li><a href="http://www.nytimes.com/pages/health/index.html">Health</a></li> 
+       <li><a href="http://www.nytimes.com/pages/sports/index.html">Sports</a></li> 
+       <li><a href="http://www.nytimes.com/pages/opinion/index.html">Opinion</a></li> 
+       <li><a href="http://www.nytimes.com/pages/arts/index.html">Arts</a></li> 
+       <li><a href="http://www.nytimes.com/pages/style/index.html">Style</a></li> 
+       <li><a href="http://www.nytimes.com/pages/travel/index.html">Travel</a></li> 
+       <li><a href="http://www.nytimes.com/pages/jobs/index.html">Jobs</a></li> 
+       <li><a href="http://www.nytimes.com/pages/realestate/index.html">Real Estate</a></li> 
+       <li><a href="http://www.nytimes.com/pages/automobiles/index.html">Autos</a></li> 
+       <li><a href="#top">Back to Top</a></li> 
+      </ul> 
+      <ul> 
+       <li class="first"><a href="http://www.nytimes.com/ref/membercenter/help/copyright.html">Copyright 2010</a> <a href="http://www.nytco.com/">The New York Times Company</a></li> 
+       <li><a href="http://www.nytimes.com/privacy">Privacy</a></li> 
+       <li><a href="http://www.nytimes.com/ref/membercenter/help/agree.html">Terms of Service</a></li> 
+       <li><a href="http://www.nytimes.com/search">Search</a></li> 
+       <li><a href="http://www.nytimes.com/corrections.html">Corrections</a></li> 
+       <li><a class="rssButton" href="http://www.nytimes.com/rss">RSS</a></li> 
+       <li><a href="http://firstlook.nytimes.com">First Look</a></li> 
+       <li><a href="http://www.nytimes.com/membercenter/sitehelp.html">Help</a></li> 
+       <li><a href="http://www.nytimes.com/ref/membercenter/help/infoservdirectory.html">Contact Us</a></li> 
+       <li><a href="https://careers.nytco.com/TAM/nyt_docs/TAM/candidate.html">Work for Us</a></li> 
+       <li><a href="http://www.nytimes.whsites.net/mediakit/">Advertise</a></li> 
+       <li><a href="http://spiderbites.nytimes.com/">Site Map</a></li> 
+      </ul> 
+     </div>
+     <!-- close footer --> 
+    </div>
+    <!-- close page --> 
+   </div>
+   <!-- close wsodshell --> 
+  </div>
+  <!-- close shell --> 
+  <!-- Bottom7 position --> 
+  <script type="text/javascript">
+<!--
+if (typeof adxpos_Bottom7 != "undefined")
+    document.write(adxads[adxpos_Bottom7]);
+// -->
+</script> 
+  <noscript> 
+   <a href="http://www.nytimes.com/adx/bin/adx_click.html?type=cookie&amp;pos=Bottom7"><img src="http://www.nytimes.com/adx/bin/adx_remote.html?type=noscript&amp;page=markets.on.nytimes.com/research/markets/overview&amp;posall=BottomAd,Top5,Box1,TopAd,Top4,MiddleRight,Middle1,Middle1C,Middle2,Middle3,Middle4,Middle5,Middle6,Middle7,Middle8,TraderDesk1,SponLink,Bar1,Box3,Bottom7,Bottom8,Bottom9,Inv1,Inv2,Inv3&amp;pos=Bottom7&amp;query=qstring&amp;keywords=?"></a>
+  </noscript> 
+  <!-- Bottom8 position --> 
+  <script type="text/javascript">
+<!--
+if (typeof adxpos_Bottom8 != "undefined")
+    document.write(adxads[adxpos_Bottom8]);
+// -->
+</script> 
+  <noscript> 
+   <a href="http://www.nytimes.com/adx/bin/adx_click.html?type=cookie&amp;pos=Bottom8"><img src="http://www.nytimes.com/adx/bin/adx_remote.html?type=noscript&amp;page=markets.on.nytimes.com/research/markets/overview&amp;posall=BottomAd,Top5,Box1,TopAd,Top4,MiddleRight,Middle1,Middle1C,Middle2,Middle3,Middle4,Middle5,Middle6,Middle7,Middle8,TraderDesk1,SponLink,Bar1,Box3,Bottom7,Bottom8,Bottom9,Inv1,Inv2,Inv3&amp;pos=Bottom8&amp;query=qstring&amp;keywords=?"></a>
+  </noscript> 
+  <!-- Bottom9 position --> 
+  <script type="text/javascript">
+<!--
+if (typeof adxpos_Bottom9 != "undefined")
+    document.write(adxads[adxpos_Bottom9]);
+// -->
+</script> 
+  <noscript> 
+   <a href="http://www.nytimes.com/adx/bin/adx_click.html?type=cookie&amp;pos=Bottom9"><img src="http://www.nytimes.com/adx/bin/adx_remote.html?type=noscript&amp;page=markets.on.nytimes.com/research/markets/overview&amp;posall=BottomAd,Top5,Box1,TopAd,Top4,MiddleRight,Middle1,Middle1C,Middle2,Middle3,Middle4,Middle5,Middle6,Middle7,Middle8,TraderDesk1,SponLink,Bar1,Box3,Bottom7,Bottom8,Bottom9,Inv1,Inv2,Inv3&amp;pos=Bottom9&amp;query=qstring&amp;keywords=?"></a>
+  </noscript> 
+  <!-- Inv1 position --> 
+  <script type="text/javascript">
+<!--
+if (typeof adxpos_Inv1 != "undefined")
+    document.write(adxads[adxpos_Inv1]);
+// -->
+</script> 
+  <noscript> 
+   <a href="http://www.nytimes.com/adx/bin/adx_click.html?type=cookie&amp;pos=Inv1"><img src="http://www.nytimes.com/adx/bin/adx_remote.html?type=noscript&amp;page=markets.on.nytimes.com/research/markets/overview&amp;posall=BottomAd,Top5,Box1,TopAd,Top4,MiddleRight,Middle1,Middle1C,Middle2,Middle3,Middle4,Middle5,Middle6,Middle7,Middle8,TraderDesk1,SponLink,Bar1,Box3,Bottom7,Bottom8,Bottom9,Inv1,Inv2,Inv3&amp;pos=Inv1&amp;query=qstring&amp;keywords=?"></a>
+  </noscript> 
+  <!-- Inv2 position --> 
+  <script type="text/javascript">
+<!--
+if (typeof adxpos_Inv2 != "undefined")
+    document.write(adxads[adxpos_Inv2]);
+// -->
+</script> 
+  <noscript> 
+   <a href="http://www.nytimes.com/adx/bin/adx_click.html?type=cookie&amp;pos=Inv2"><img src="http://www.nytimes.com/adx/bin/adx_remote.html?type=noscript&amp;page=markets.on.nytimes.com/research/markets/overview&amp;posall=BottomAd,Top5,Box1,TopAd,Top4,MiddleRight,Middle1,Middle1C,Middle2,Middle3,Middle4,Middle5,Middle6,Middle7,Middle8,TraderDesk1,SponLink,Bar1,Box3,Bottom7,Bottom8,Bottom9,Inv1,Inv2,Inv3&amp;pos=Inv2&amp;query=qstring&amp;keywords=?"></a>
+  </noscript> 
+  <!-- Inv3 position --> 
+  <script type="text/javascript">
+<!--
+if (typeof adxpos_Inv3 != "undefined")
+    document.write(adxads[adxpos_Inv3]);
+// -->
+</script> 
+  <noscript> 
+   <a href="http://www.nytimes.com/adx/bin/adx_click.html?type=cookie&amp;pos=Inv3"><img src="http://www.nytimes.com/adx/bin/adx_remote.html?type=noscript&amp;page=markets.on.nytimes.com/research/markets/overview&amp;posall=BottomAd,Top5,Box1,TopAd,Top4,MiddleRight,Middle1,Middle1C,Middle2,Middle3,Middle4,Middle5,Middle6,Middle7,Middle8,TraderDesk1,SponLink,Bar1,Box3,Bottom7,Bottom8,Bottom9,Inv1,Inv2,Inv3&amp;pos=Inv3&amp;query=qstring&amp;keywords=?"></a>
+  </noscript> 
+  <script type="text/javascript">Tacoda_AMS_DDC_addPair("t_section","Business")</script> 
+  <script type="text/javascript">Tacoda_AMS_DDC_addPair("site","nytimes.com")</script> 
+  <script type="text/javascript">Tacoda_AMS_DDC("http://te.nytimes.com/tte/blank.gif","1.0")</script> 
+  <script src="http://graphics8.nytimes.com/js/app/analytics/trackingTags_v1.1.js" type="text/javascript"></script> 
+  <noscript> 
+   <div>
+    <img alt="DCSIMG" id="DCSIMG" width="1" height="1" src="http://wt.o.nytimes.com/dcsc32upj10000c58n7kgpaeo_8i3g/njs.gif?dcsuri=/nojavascript&amp;WT.js=No&amp;WT.tv=1.0.7">
+   </div> 
+  </noscript>   
+ </body>
+</html>

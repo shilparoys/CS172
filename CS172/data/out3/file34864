@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+ <!--<![endif]-->
+ <head> 
+  <!-- Basic Page Needs
+  ================================================== --> 
+  <meta charset="utf-8"> 
+  <title>RIT - Search</title> 
+  <meta name="description" content=""> 
+  <meta name="author" content=""> 
+  <!-- Mobile Specific Metas
+  ================================================== --> 
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> 
+  <!-- CSS
+  ================================================== --> 
+  <link rel="stylesheet" href="/_skeleton-base.css"> 
+  <link rel="stylesheet" href="/_skeleton-grid.css"> 
+  <link rel="stylesheet" href="/_skeleton-layout.css"> 
+  <link rel="stylesheet" href="/_site-secondary.css"> 
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300" rel="stylesheet" type="text/css"> 
+  <style type="text/css">
+/* CSS specific to only this page (not site) */
+
+#suggest {font-weight:normal;}
+#suggest a {font-weight:bold;}
+
+#searchcontrol a.gs-title { color: #f36e21; }
+#searchcontrol a.gs-title:visited { color: #c5765d !important;}
+
+/* Add "[PDF]" before PDF links */
+div.gs-title a[href$='.pdf'].gs-title:before { content: "[PDF] "; color: #000; background: #f8f7ed;}
+div.gs-title a[href$='.PDF'].gs-title:before { content: "[PDF] "; color: #000; background: #f8f7ed;}
+div.gs-title a[href*='?sequence='].gs-title:before { content: "[PDF] "; color: #000; background: #f8f7ed;}
+
+form.gsc-search-box { width: 350px !important; }
+div.gsc-control {width:100%; margin:24px auto 10px auto;}
+form.gsc-search-box { margin-bottom:15px !important; }
+table.gsc-search-box { margin-left:0 !important; }
+input.gsc-input { padding: 4px 4px 4px 0px; border: solid 1px #CDC6B7 !important; font-size: 1em; }
+div.gsc-clear-button { display:none !important; }
+table.gsc-resultsHeader { display:none; }
+div.gs-visibleUrl { color: #513127 !important; }
+div.gs-visibleUrl.gs-visibleUrl-long { display:block !important; }
+div.gs-visibleUrl.gs-visibleUrl-short { display:none !important; }
+div.gs-webResult { margin:5px 0 10px 0; }
+/*.gsc-result { padding:7px; background: none; }*/
+/*.gsc-result:hover { padding:7px; background-color: #FFF9DF; }*/
+div.gs-title { font-size:16px; padding-bottom:1px;  font-weight:normal !important; }
+div.gs-title:hover { text-decoration:none; border-bottom:none; }
+a.gsc-trailing-more-results { display:none !important; }
+div.gsc-cursor { font-size:20px; color:#513127 !important;}
+div.gsc-cursor-page:hover { color:#f36e21 !important; border-bottom: none !important; text-decoration: none !important;}
+div.gsc-cursor-current-page { color:#f36e21 !important; font-weight:bold !important; }
+div.gsc-cursor-box {border-top:1px solid #ddd; padding-top:7px; }
+b { font-style: italic; font-weight: normal; }
+a.gs-title b {color: #f36e21 !important;}
+a.gs-title:visited b {color: #c5765d !important;}
+
+.gsc-tabsArea {font-size:1.2em;margin-bottom:20px;border-bottom:1px solid #cccccc;}
+.gsc-tabHeader {margin-right:5px !important;}
+.gsc-tabsArea .gsc-tabhInactive {background-color:#eee !important; border:1px solid #cccccc !important;}
+.gsc-tabsArea .gsc-tabhActive {border-bottom:1px solid #f8f7ed;}
+
+
+
+/* New code from mark, for the new search */
+#gsc-i-id1 {background:#fff !important;}
+.gsc-search-button {margin-left:20px !important;}
+.gsc-control-cse {background:none !important; border:none !important;}
+.gsc-result {border:none !important;}
+.gs-title {color:#f36e21 !important;}
+/* .gcsc-branding {display:none !important;} */
+
+
+
+</style> 
+  <script type="text/javascript" src="/_site.js"></script> 
+  <script language="Javascript" type="text/javascript">
+/* Javascript specific to only this page (not site) */
+
+
+</script> 
+  <!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<style>
+#ritnav-menu-icon, #ritsearch-menu-icon { display:none; }
+</style>
+<![endif]--> 
+  <script src="//code.jquery.com/jquery-1.9.1.min.js"></script> 
+  <script type="text/javascript">
+/* Javascript specific to only this page (not site) */
+jQuery(document).ready(function($){
+	
+	$('#rit-mainnav-toplevel').before('<div id="ritnav-menu-icon">Menu</div>');
+	$('#rit-mainnav-toplevel').before('<div id="ritsearch-menu-icon">Search</div><div id="ritsearch-spacer"></div>');
+	
+	$("#ritnav-menu-icon").on("click", function(){
+		$("#rit-mainnav-toplevel").slideToggle("fast");
+		$(this).toggleClass("active");
+	});
+
+	$("#ritsearch-menu-icon").on("click", function(){
+		$("#ritsearch-spacer").slideToggle("fast");
+		$("#metaritsearch").slideToggle("fast");
+		$(this).toggleClass("active");
+	});
+	
+});
+</script> 
+  <!-- Favicons
+	================================================== --> 
+  <link rel="shortcut icon" href="/framework/v1/images/favicon.ico"> 
+  <link rel="apple-touch-icon" href="/framework/v1/images/apple-touch-icon.png"> 
+  <link rel="apple-touch-icon" sizes="72x72" href="/framework/v1/images/apple-touch-icon-72x72.png"> 
+  <link rel="apple-touch-icon" sizes="114x114" href="/framework/v1/images/apple-touch-icon-114x114.png"> 
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-10681416-1']);
+  _gaq.push(['_setDomainName', 'rit.edu']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+	
+</script> 
+ </head> 
+ <body> 
+  <!-- Primary Page Layout
+	================================================== --> 
+  <div id="header">
+   <div id="top"></div> 
+   <div class="container"> 
+    <div id="metanav"> 
+     <p>Site-wide links</p> 
+     <ul> 
+      <li id="metaskip"><a href="#pagecontent" title="Skip to content">Skip to content</a></li> 
+      <li id="metarithome"><a href="/" title="RIT Home"><span id="metarithometext">RIT Home</span><span id="metaritlogo"></span></a></li> 
+      <li id="metaritdirectories"><a href="/directories.html">Directories</a></li> 
+      <li id="metaritsearch"><a href="/search/">Search RIT</a> 
+       <div id="metaritsearchdiv"> 
+        <form id="metasearchform" method="get" action="/search/"> 
+         <div> 
+          <input id="metaritsearchbox" class="faded" name="q" type="text" value="Search RIT" maxlength="250" onfocus="focusSearch(this)" onblur="blurSearch(this)"> 
+          <button title="Submit Search">Search</button> 
+         </div> 
+        </form> 
+       </div> </li> 
+     </ul> 
+     <script type="text/javascript">
+		function focusSearch(formfield){ if (formfield.defaultValue==formfield.value) formfield.value = ""; formfield.className = "focused"; }
+		function blurSearch(formfield){ if (formfield.value==""){ formfield.value = formfield.defaultValue; formfield.className = "faded";} }
+		</script> 
+    </div> 
+    <ul id="rit-mainnav-toplevel"> 
+     <li class="first"><a href="/overview/">About</a></li> 
+     <li><a href="/academics.html">Academics</a></li> 
+     <li><a href="/admission.html">Admission</a></li> 
+     <li class="short"><a href="https://www.rit.edu/alumni/">Alumni</a></li> 
+     <li><a href="/campuslife.html">Campus Life</a></li> 
+     <li class="short"><a href="/co-op.html">Co-op</a></li> 
+     <li class="short"><a href="/news/">News</a></li> 
+     <li class="last"><a href="/research/">Research</a></li> 
+    </ul> 
+   </div> 
+  </div> 
+  <div id="body">
+   <div id="pagecontent"></div> 
+   <div class="container"> 
+    <div class="sixteen columns"> 
+     <h1>RIT Search</h1> 
+     <div class="maincontent"> 
+      <script>
+  (function() {
+    var cx = '006753132760558468089:ehugk-nnkew';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script> 
+      <gcse:search></gcse:search> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <!-- container --> 
+  <div id="footer"> 
+   <!--this is a full-width container outside of the .container class--> 
+   <div class="container"> 
+    <div class="eight columns"> 
+     <p class="footer1">Copyright © <a href="/">Rochester Institute of Technology</a>. All Rights Reserved<br> <a href="/copyright.html">Copyright Infringement</a> | <a href="/privacystatement.html">Privacy Statement</a> | <a href="/disclaimer.html">Disclaimer</a> | <a href="/nondiscrimination.html">Nondiscrimination</a></p> 
+    </div> 
+    <div class="eight columns"> 
+     <p class="footer2"><a href="/maps/">One Lomb Memorial Drive, Rochester, NY 14623-5603</a><br> Questions or comments? <a href="/ask/">Send us feedback.</a> Telephone:&nbsp;585-475-2411</p> 
+    </div> 
+   </div> 
+   <!-- container --> 
+  </div> 
+  <!-- footer --> 
+  <!-- End Document
+================================================== -->  
+ </body>
+</html>

@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+ <head> 
+  <meta charset="utf-8"> 
+  <meta name="Author" content="Apple Inc."> 
+  <meta name="viewport" content="width=1024"> 
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7, IE=9"> 
+  <link rel="stylesheet" href="http://images.apple.com/ac/globalheader/1.0/styles/globalheader.css" type="text/css"> 
+  <title>Apple - Legal - Contact</title> 
+  <meta name="omni_page" content="Apple - Legal - Feedback"> 
+  <meta name="Description" content=""> 
+  <script src="http://images.apple.com/global/scripts/lib/prototype.js" type="text/javascript" charset="utf-8"></script> 
+  <script src="http://images.apple.com/global/scripts/lib/scriptaculous.js" type="text/javascript" charset="utf-8"></script> 
+  <script src="http://images.apple.com/global/scripts/lib/sizzle.js" type="text/javascript" charset="utf-8"></script> 
+  <script src="http://images.apple.com/global/scripts/browserdetect.js" type="text/javascript" charset="utf-8"></script> 
+  <script src="http://images.apple.com/global/scripts/apple_core.js" type="text/javascript" charset="utf-8"></script> 
+  <script src="http://images.apple.com/global/scripts/search_decorator.js" type="text/javascript" charset="utf-8"></script> 
+  <script src="http://images.apple.com/global/ac_base/ac_base.js" type="text/javascript" charset="utf-8"></script> 
+  <script src="http://images.apple.com/global/scripts/feedstatistics.js" type="text/javascript" charset="utf-8"></script> 
+  <script src="http://images.apple.com/global/ac_retina/ac_retina.js" type="text/javascript" charset="utf-8"></script> 
+  <link rel="stylesheet" href="http://images.apple.com/global/styles/base.css" type="text/css"> 
+  <link rel="stylesheet" href="http://images.apple.com/v/legal/a/styles/legal.css" type="text/css"> 
+  <link rel="stylesheet" href="http://images.apple.com/v/legal/a/styles/contact.css" type="text/css"> 
+  <script src="http://images.apple.com/v/legal/a/scripts/contact.js" type="text/javascript" charset="utf-8"></script> 
+  <script src="https://km.support.apple.com.edgekey.net/kb/resources/js/KmLoader.js" type="text/javascript" charset="utf-8"></script> 
+  <script src="http://images.apple.com/global/scripts/lib/validation.js" type="text/javascript" charset="utf-8"></script> 
+  <script src="http://images.apple.com/v/legal/a/scripts/feedback.js" type="text/javascript" charset="utf-8"></script> 
+  <script type="text/javascript" language="javascript">
+        Event.onDOMReady(function() {        
+                Event.observe('legal_type', 'change', function(event){
+                    $('legal-questions-form').reset();
+                    var selectedValue = event.target.options[event.target.selectedIndex].value;
+                    var targetForm = $('legal-questions-form');            
+                    var targetUrl = $('form_url');
+                    switch (selectedValue) {
+                        case 'Copyright Infringement':
+                            targetForm.setAttribute('name', 'copyright-infringement-questions');
+                            targetUrl.setAttribute('value', 'http://www.apple.com/legal/contact/copyright_infringement.html');
+                            break;
+                        case 'Copyright':
+                            targetForm.setAttribute('name', 'copyright-questions');
+                            targetUrl.setAttribute('value', 'http://www.apple.com/legal/contact/copyright_information.html');
+                            break;
+                        case 'Counterfeit Prevention Hardware':
+                            targetForm.setAttribute('name', 'counterfeit-questions');
+                            targetUrl.setAttribute('value', 'http://www.apple.com/legal/contact/counterfeit-prevention.html');
+                            break;
+                        case 'Patent':
+                            targetForm.setAttribute('name', 'patent-questions');
+                            targetUrl.setAttribute('value', 'http://www.apple.com/legal/contact/patent.html');
+                            break;
+                        case 'Phishing and Spam':
+                            targetForm.setAttribute('name', 'phishingandspam-questions');
+                            targetUrl.setAttribute('value', 'http://www.apple.com/legal/contact/phishingandspam.html');
+                            break;
+                        case 'Piracy':
+                            targetForm.setAttribute('name', 'piracy-questions');
+                            targetUrl.setAttribute('value', 'http://www.apple.com/legal/contact/piracy.html');
+                            break;
+                        case 'Apple Trademark':
+                            targetForm.setAttribute('name', 'apple-trademark-questions');
+                            targetUrl.setAttribute('value', 'http://www.apple.com/legal/contact/trademark_information.html');
+                            break;
+                        case 'Idea Submissions':
+                            targetForm.setAttribute('name', 'idea-submissions-questions');
+                            targetUrl.setAttribute('value', 'http://www.apple.com/legal/contact/idea-submissions.html');
+                            break;
+                        default:
+                            targetForm.setAttribute('name', '');
+                            break;
+                    }
+                });
+                Event.observe('legal-questions-form', 'submit', function(event) {
+                    var selectedValue = $('legal_type').options[$('legal_type').selectedIndex].value;
+                    var targetCustomerName = $('customer_name');
+                    var targetCustomerEmail = $('customer_email');
+                    var targetThankyou = $('thankyou');
+                    var targetSubject = $('subject');
+                    var targetComment = $('feedback_comment');
+                    var targetType = $('feedback_type');
+                    var targetFormId = $('formId');
+                        switch (selectedValue) {
+                        case 'Copyright Infringement':
+                            targetFormId.setAttribute('value', '229');
+                            targetCustomerName.setAttribute('value', $F('first_name_copyrightagent')+' ' +$F('last_name_copyrightagent'));
+                            targetThankyou.setAttribute('value', 'http://www.apple.com/legal/contact/copyrightInfringementthankyou.html');
+                            targetCustomerEmail.setAttribute('value', $F('email_copyrightagent'));
+                            targetSubject.setAttribute('value', 'Apple - Legal - Claims Of Copyright');
+                            targetComment.setAttribute('value', 'Apple - Legal - Claims Of Copyright - Customer Questions');
+                            targetType.setAttribute('value', 'Apple - Legal - Claims Of Copyright');
+                            break;
+                        case 'Copyright':
+                            targetFormId.setAttribute('value', '230');                        
+                            targetCustomerName.setAttribute('value', $F('first_name_copyright')+' ' +$F('last_name_copyright'));
+                            targetThankyou.setAttribute('value', 'http://www.apple.com/legal/contact/copyrightthankyou.html');
+                            targetCustomerEmail.setAttribute('value', $F('email_copyright'));
+                            targetSubject.setAttribute('value', 'Apple - Legal Copyright Information');
+                            targetComment.setAttribute('value', 'Apple - Legal Copyright Information - Customer Questions');
+                            targetType.setAttribute('value', 'Apple - Legal Copyright Information');
+                            break;
+                        case 'Counterfeit Prevention Hardware':
+                            targetFormId.setAttribute('value', '241');                        
+                            targetCustomerName.setAttribute('value', $F('name_counterfeit'));
+                            targetThankyou.setAttribute('value', emailCheck('email_counterfeit'));
+                            targetCustomerEmail.setAttribute('value', $F('email_counterfeit'));
+                            targetSubject.setAttribute('value', 'Apple - Legal - Counterfeits & KnockOffs');
+                            targetComment.setAttribute('value', 'Apple - Legal - Counterfeits & KnockOffs - Customer Questions');
+                            targetType.setAttribute('value', 'Apple - Legal - Counterfeits & KnockOffs');
+                            break;
+                        case 'Patent':
+                            targetFormId.setAttribute('value', '242');                        
+                            targetCustomerName.setAttribute('value', $F('first_name_patent')+' ' +$F('last_name_patent'));
+                            targetThankyou.setAttribute('value', 'http://www.apple.com/legal/contact/patentthankyou.html');
+                            targetCustomerEmail.setAttribute('value', $F('email_patent'));
+                            targetSubject.setAttribute('value', 'Apple - Legal - Patent Issues');
+                            targetComment.setAttribute('value', 'Apple - Legal - Patent - Customer Issues');
+                            targetType.setAttribute('value', 'Apple - Legal - Patent Issues');
+                            break;
+                        case 'Piracy':
+                            targetFormId.setAttribute('value', '232');                        
+                            targetCustomerName.setAttribute('value', $F('first_name_piracy')+' ' +$F('last_name_piracy'));
+                            targetThankyou.setAttribute('value', 'http://www.apple.com/legal/contact/piracythankyou.html');
+                            targetCustomerEmail.setAttribute('value', $F('email_piracy'));
+                            targetSubject.setAttribute('value', 'Apple - Legal - Piracy');
+                            targetComment.setAttribute('value', 'Apple - Legal - Piracy - Customer Questions');
+                            targetType.setAttribute('value', 'Apple - Legal - Piracy');
+                            break;
+                        case 'Apple Trademark':
+                            targetFormId.setAttribute('value', '231');                        
+                            targetCustomerName.setAttribute('value', $F('first_name_trademark')+' ' +$F('last_name_trademark'));
+                            targetThankyou.setAttribute('value', 'http://www.apple.com/legal/contact/trademarkthankyou.html');
+                            targetCustomerEmail.setAttribute('value', $F('email_trademark'));
+                            targetSubject.setAttribute('value', 'Apple - Legal - Trademark Information');
+                            targetComment.setAttribute('value', 'Apple - Legal - Trademark Information - Customer Questions');
+                            targetType.setAttribute('value', 'Apple - Legal - Trademark Information');
+                            break;
+                        case 'Idea Submissions':
+                            targetFormId.setAttribute('value', '245');                        
+                            targetCustomerName.setAttribute('value', $F('first_name_idea_submissions')+' ' +$F('last_name_idea_submissions'));
+                            targetThankyou.setAttribute('value', 'http://www.apple.com/legal/contact/ideathankyou.html');
+                            targetCustomerEmail.setAttribute('value', $F('email_idea_submissions'));
+                            targetSubject.setAttribute('value', 'Apple - Legal - Idea Submissions');
+                            targetComment.setAttribute('value', 'Apple - Legal - Idea Submissions Information - Customer Questions');
+                            targetType.setAttribute('value', 'Apple - Legal - Idea Submissions Information');
+                            break;
+                        default:
+                            targetThankyou.setAttribute('value', 'http://www.apple.com/legal/contact/');
+                            break;
+                    }
+                    return true;
+                });
+            });
+        /* When Counterfeits and Knockoffs is selected, on submit, this will parse the value entered for the email address and set the thank you URL according to Apple internal and external email origination source. */
+         var emailCheck = function(elemid) {
+            var address = document.getElementById(elemid).value;
+            if(address.indexOf('apple.com') > 0)    {
+                return("http://www.apple.com/legal/contact/counterfeitthankyou.html");
+            }else  {
+                return("http://www.apple.com/legal/contact/counterfeitformthankyou.html");
+            } 
+        };
+    </script> 
+ </head> 
+ <body class="legal feedback" onload="display_init()"> 
+  <nav id="globalheader" class="globalheader" role="navigation" aria-label="Global Navigation" data-hires="false" data-analytics-region="global nav" lang="en-US"> 
+   <div id="gh-content" class="gh-content"> 
+    <ul class="gh-menu"> 
+     <li id="gh-menu-icon-toggle" class="gh-menu-icon gh-menu-icon-toggle"><button id="gh-svg-icons" class="gh-svg-wrapper"><span class="gh-text-replace">Menu</span></button></li> 
+     <li id="gh-menu-icon-home" class="gh-menu-icon gh-menu-icon-home"><a href="/"><span class="gh-text-replace">Apple</span></a></li> 
+    </ul>
+    <!--/gh-menu--> 
+    <div class="gh-nav"> 
+     <div class="gh-nav-view"> 
+      <ul class="gh-nav-list"> 
+       <li class="gh-tab gh-tab-apple"><a class="gh-tab-link" href="/"><span class="gh-tab-inner"><span class="gh-text-replace">Apple</span></span></a></li> 
+       <li class="gh-tab gh-tab-store"><a class="gh-tab-link" href="http://store.apple.com/us"><span class="gh-tab-inner"><span class="gh-text-replace">Store</span></span></a></li> 
+       <li class="gh-tab gh-tab-mac"><a class="gh-tab-link" href="/mac/"><span class="gh-tab-inner"><span class="gh-text-replace">Mac</span></span></a></li> 
+       <li class="gh-tab gh-tab-iphone"><a class="gh-tab-link" href="/iphone/"><span class="gh-tab-inner"><span class="gh-text-replace">iPhone</span></span></a></li> 
+       <li class="gh-tab gh-tab-watch"><a class="gh-tab-link" href="/watch/"><span class="gh-tab-inner"><span class="gh-text-replace">Watch</span></span></a></li> 
+       <li class="gh-tab gh-tab-ipad"><a class="gh-tab-link" href="/ipad/"><span class="gh-tab-inner"><span class="gh-text-replace">iPad</span></span></a></li> 
+       <li class="gh-tab gh-tab-ipod"><a class="gh-tab-link" href="/ipod/"><span class="gh-tab-inner"><span class="gh-text-replace">iPod</span></span></a></li> 
+       <li class="gh-tab gh-tab-itunes"><a class="gh-tab-link" href="/itunes/"><span class="gh-tab-inner"><span class="gh-text-replace">iTunes</span></span></a></li> 
+       <li class="gh-tab gh-tab-support"><a class="gh-tab-link" href="/support/"><span class="gh-tab-inner"><span class="gh-text-replace">Support</span></span></a></li> 
+       <li id="gh-tab-search" class="gh-tab gh-tab-search"> 
+        <div id="gh-search" class="gh-search" role="search"> 
+         <form action="/search/" method="post" class="gh-search-form" id="gh-search-form" data-search-recommended-results="{&quot;url&quot;:&quot;/global/nav/scripts/shortcuts.php&quot;,&quot;requestName&quot;:&quot;recommendedResults&quot;,&quot;queryName&quot;:&quot;q&quot;,&quot;dataType&quot;:&quot;xml&quot;}" data-search-suggested-searches="{&quot;url&quot;:&quot;/search/instant/getSuggestions&quot;,&quot;requestName&quot;:&quot;suggestedSearches&quot;,&quot;queryName&quot;:&quot;query&quot;,&quot;queryParams&quot;:{&quot;model&quot;:&quot;marcom_en_US&quot;,&quot;locale&quot;:&quot;en_US&quot;},&quot;dataType&quot;:&quot;json&quot;}"> 
+          <div class="gh-search-input-wrapper"> 
+           <label for="gh-search-input" class="gh-text-replace">Search apple.com</label> 
+           <input type="text" name="q" id="gh-search-input" class="gh-search-input" placeholder="Search apple.com"> 
+          </div> 
+          <button disabled type="submit" id="gh-search-submit" class="gh-search-submit gh-search-magnify"><span class="gh-text-replace">Search apple.com</span></button> 
+          <button disabled type="reset" id="gh-search-reset" class="gh-search-reset"><span class="gh-text-replace">Reset</span></button> 
+         </form> 
+        </div> <a class="gh-search-magnify" href="/search/"><span class="gh-text-replace">Search apple.com</span></a> </li> 
+      </ul> 
+     </div> 
+    </div>
+    <!--/gh-nav--> 
+   </div> 
+  </nav>
+  <!--/globalheader--> 
+  <script src="http://images.apple.com/ac/globalheader/1.0/scripts/globalheader.js" type="text/javascript" charset="utf-8"></script> 
+  <div id="top"> 
+   <!-- SiteCatalyst code version: H.8. Copyright 1997-2006 Omniture, Inc. --> 
+   <script type="text/javascript">
+/* RSID: */
+
+var s_account="appleglobal,appleuscorporate"
+
+</script> 
+   <script type="text/javascript" src="http://images.apple.com/metrics/scripts/s_code_h.js"></script> 
+   <script type="text/javascript">
+
+	
+
+
+s.pageName=AC.Tracking.pageName()+" (us)";
+s.channel="www.us.contact"
+
+
+
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code = s.t();</script> 
+   <!-- End SiteCatalyst code version: H.8. --> 
+  </div> 
+  <div id="productheader" data-hires="true"> 
+   <h2><a href="/legal/"><img src="http://images.apple.com/legal/images/legal_title.png" width="71" height="34" alt="Legal"></a></h2> 
+   <ul> 
+    <li id="pn-hardware"><a href="/legal/warranty/">Hardware</a></li> 
+    <li id="pn-software"><a href="/legal/sla/">Software</a></li> 
+    <li id="pn-sales-support"><a href="/legal/sales-support/">Sales &amp; Support</a></li> 
+    <li id="pn-internet-services"><a href="/legal/internet-services/">Internet Services</a></li> 
+    <li id="pn-intellectual-property"><a href="/legal/intellectual-property/">Intellectual Property</a></li> 
+    <li id="pn-more-resources"><a href="/legal/more-resources/">More Resources</a></li> 
+   </ul> 
+  </div> 
+  <div id="main" data-hires="true"> 
+   <div class="content" id="content"> 
+    <header id="hero"> 
+     <h1><img src="http://images.apple.com/legal/contact/images/title.png" width="311" height="46" alt="Legal Questions"></h1> 
+     <p class="intro">If you have questions about Apple’s Legal Policy, copyright information, trademark information, or other legal topics, we’d like to hear from you. Get started by choosing a topic from the list below.</p> 
+    </header> 
+    <section class="top-row"> 
+     <div class="column one-column"> 
+      <div id="select-question"> 
+       <ul class="inputs"> 
+        <li class="dropdown"> <label for="legal_type">I have a question about</label> <select name="legal_type" id="legal_type" onchange="display(this)"> <option value="" disabled>Please select</option> <option value="App Store Claims of Infringement">App Store Claims of Infringement</option> <option value="Copyright Infringement">Claims of Copyright Infringement</option> <option value="Copyright">Copyright Information</option> <option value="Counterfeit Prevention Hardware">Counterfeit or Knockoff Products</option> <option value="Idea Submissions">Idea Submissions</option> <option value="iTunes Store Claims of Infringement">iTunes Store Claims of Infringement</option> <option value="Patent">Patent</option> <option value="Phishing and Spam">Phishing and Spam</option> <option value="Piracy">Piracy</option> <option value="Apple Trademark">Trademark Information</option> <option value="Other">Other</option> </select> <i>Required</i> <span></span> </li> 
+       </ul> 
+      </div> 
+      <form name="" action="https://feedback.apple.com/bin/nph-fb.pl" method="post" id="legal-questions-form"> 
+       <input type="hidden" name="formId" id="formId"> 
+       <input type="hidden" name="form_url" id="form_url" value="http://www.apple.com/legal/contact/"> 
+       <input type="hidden" name="thankyou" id="thankyou" value="thankyou"> 
+       <input type="hidden" name="feedback_type" id="feedback_type"> 
+       <input type="hidden" name="subject" id="subject"> 
+       <input type="hidden" name="feedback_comment" id="feedback_comment"> 
+       <div style="display:none;"> 
+        <input type="text" name="customer_name" value="" id="customer_name"> 
+        <input type="text" name="customer_email" value="" id="customer_email"> 
+       </div> 
+       <section id="form-questions"> 
+        <div id="show-content">    
+         <title>Apple - Legal - Contact</title> 
+         <meta name="omni_page" content="Apple - Legal - Contact"> 
+         <meta name="Category" content=""> 
+         <meta name="Description" content=""> 
+         <script type="text/javascript" language="javascript">
+			Validation.add('validate-email-copyrightagent', 'Valid email address required.  Example: steve@mac.com', function(v) {
+				return Validation.get('IsEmpty').test(v) || /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/.test(v);
+			});
+			Validation.add('validate-phone-number','Valid Phone Number. Example: 4080001111', function(v) {
+				return Validation.get('IsEmpty').test(v) || !isNaN(v);
+			});
+			Validation.add('validate-fax', 'Please make a selection', function(v){
+				return Validation.get('IsEmpty').test(v) || !isNaN(v);
+			});
+			
+	</script>   
+         <div id="copyright-infringement" class="content"> 
+          <h3>Procedure for Making Claims of Copyright Infringement</h3> 
+          <p>Apple Inc. is registered with the United States Copyright Office as a Service Provider (refer to the Digital Millennium Copyright Act 17 USC 512). If you believe that your work has been copied in a way that constitutes infringement on Apple’s Web site, please provide the information below.</p> 
+          <h3>To file a copyright infringement notification with us, you will need to send a written communication that includes the following (please consult your legal counsel or see Section 512(c)(3) of the Digital Millennium Copyright Act to confirm these requirements):</h3> 
+          <ul class="requirements"> 
+           <li>A physical or electronic signature of a person authorized to act on behalf of the owner of an exclusive right that is allegedly infringed.</li> 
+           <li>Identification of the copyrighted work claimed to have been infringed or, if multiple copyrighted works at a single online site are covered by a single notification, a representative list of such works at that site.</li> 
+           <li>Identification of the material that is claimed to be infringing or to be the subject of infringing activity and that is to be removed or access to which is to be disabled, and information reasonably sufficient to permit the service provider to locate the material. Providing URLs in the body of an email is the best way to help us locate content quickly.</li> 
+           <li>Information reasonably sufficient to permit the service provider to contact the complaining party, such as an address, telephone number, and, if available, an electronic mail address at which the complaining party may be contacted.</li> 
+           <li>A statement that the complaining party has a good faith belief that use of the material in the manner complained of is not authorized by the copyright owner, its agent, or the law.</li> 
+           <li>A statement that the information in the notification is accurate and, under penalty of perjury, that the complaining party is authorized to act on behalf of the owner of an exclusive right that is allegedly infringed.</li> 
+          </ul> 
+          <h3>To expedite our ability to process your request, such written notice should be sent to our designated agent via our online copyright complaint form below. </h3> 
+          <ul class="inputs"> 
+           <li> <label for="url_infringing_copyrightagent">URL of Allegedly Infringing Material</label> <span class="formwrap"> <input type="text" id="url_infringing_copyrightagent" name="url_infringing_copyrightagent" maxlength="150" class="required"> <i>Required</i> </span> </li> 
+           <li> <label for="work_infringed_copyrightagent">Describe the work allegedly infringed.</label> <span class="formwrap"> <textarea name="work_infringed_copyrightagent" id="work_infringed_copyrightagent" maxlength="800" class="required"></textarea> <i>Required</i> </span> </li> 
+           <li> <label for="territories_infringed_copyrightagent">Territories where infringement occurred</label> <span class="formwrap"> <textarea name="territories_infringed_copyrightagent" id="territories_infringed_copyrightagent" maxlength="250" class="required"></textarea> <i>Required</i> </span> </li> 
+           <li> <label for="first_name_copyrightagent">First Name</label> <span class="formwrap"> <input type="text" id="first_name_copyrightagent" name="first_name_copyrightagent" maxlength="25" class="required"> <i>Required</i> </span> </li> 
+           <li> <label for="last_name_copyrightagent">Last Name</label> <span class="formwrap"> <input type="text" id="last_name_copyrightagent" name="last_name_copyrightagent" maxlength="25" class="required"> <i>Required</i> </span> </li> 
+           <li> <label for="company_name_copyrightagent">Company Name</label> <span class="formwrap"> <input type="text" id="company_name_copyrightagent" name="company_name_copyrightagent" maxlength="50"> </span> </li> 
+           <li> <label for="title_copyrightagent">Title/Position</label> <span class="formwrap"> <input type="text" id="title_copyrightagent" name="title_copyrightagent" maxlength="50"> </span> </li> 
+           <li> <label for="street_address_copyrightagent">Street Address</label> <span class="formwrap"> <input type="text" id="street_address_copyrightagent" name="street_address_copyrightagent" maxlength="50" class="required"> <i>Required</i> </span> </li> 
+           <li> <label for="city_copyrightagent">City</label> <span class="formwrap"> <input type="text" id="city_copyrightagent" name="city_copyrightagent" maxlength="50" class="required"> <i>Required</i> </span> </li> 
+           <li> <label for="state_copyrightagent">State/Province</label> <span class="formwrap"> <input type="text" id="state_copyrightagent" name="state_copyrightagent" maxlength="50" class="required"> <i>Required</i> </span> </li> 
+           <li> <label for="zip_copyrightagent">Zip/Postal Code</label> <span class="formwrap"> <input type="text" id="zip_copyrightagent" name="zip_copyrightagent" maxlength="11" class="required validate-zipcode"> <i>Required</i> </span> </li> 
+           <li> <label for="country_copyrightagent">Country</label> <span class="formwrap"> <input type="text" id="country_copyrightagent" name="country_copyrightagent" maxlength="50" class="required"> <i>Required</i> </span> </li> 
+           <li> <label for="phone_copyrightagent">Phone Number</label> <span class="formwrap"> <input type="text" id="phone_copyrightagent" name="phone_copyrightagent" maxlength="12" class="required validate-phone-number"> <i>Required</i> </span> </li> 
+           <li> <label for="mobile_copyrightagent">Mobile Number</label> <span class="formwrap"> <input type="text" id="mobile_copyrightagent" maxlength="12" name="mobile_copyrightagent"> </span> </li> 
+           <li> <label for="email_copyrightagent">Email Address</label> <span class="formwrap"> <input type="text" id="email_copyrightagent" name="email_copyrightagent" maxlength="100" class="required validate-email-copyrightagent"> <i>Required</i> </span> </li> 
+           <li> <label for="fax_copyrightagent">Fax</label> <span class="formwrap"> <input type="text" id="fax_copyrightagent" maxlength="12" name="fax_copyrightagent"> </span> </li> 
+          </ul> 
+          <ul class="inputs selfclear"> 
+           <li class="checkbox_label"> 
+            <fieldset class="checkbox"> 
+             <legend>By checking the following boxes, I state UNDER PENALTY OF PERJURY that <span class="sosumi">(choose all of the options)</span></legend> 
+             <div> 
+              <input id="undertaking_copyright_1" type="checkbox" name="undertaking_copyright" value="Agent Authorized Statement: I am the owner, or an agent authorized to act on behalf of the owner, of an exclusive right that is allegedly infringed." class="required"> 
+              <label for="undertaking_copyright_1">I am the owner, or an agent authorized to act on behalf of the owner, of an exclusive right that is allegedly infringed.</label> 
+             </div> 
+             <div> 
+              <input id="undertaking_copyright_2" type="checkbox" name="undertaking_copyright" value="Copyright Authorized Statement: I have a good faith belief that the use of the material in the manner complained of is not authorized by the copyright owner, its agent, or the law; and" class="required"> 
+              <label for="undertaking_copyright_2">I have a good faith belief that the use of the material in the manner complained of is not authorized by the copyright owner, its agent, or the law; and </label> 
+             </div> 
+             <div> 
+              <input id="undertaking_copyright_3" type="checkbox" name="undertaking_copyright" value="Notification Statement: This notification is accurate." class="required"> 
+              <label for="undertaking_copyright_3">This notification is accurate.</label> 
+             </div> 
+             <div> 
+              <input id="undertaking_copyright_4" type="checkbox" name="undertaking_copyright" value="Acknowledgement Statement: I acknowledge that under Section 512(f) any person who knowingly materially misrepresents that material or activity is infringing may be subject to liability for damages." class="required"> 
+              <label for="undertaking_copyright_4">I acknowledge that under Section 512(f) any person who knowingly materially misrepresents that material or activity is infringing may be subject to liability for damages.</label> 
+             </div> 
+            </fieldset> </li> 
+           <li> <label for="signature_copyrightagent">Typing your full name in this box will act as your digital signature.</label> <span class="formwrap"> <input type="text" id="signature_copyrightagent" name="signature_copyrightagent" maxlength="25" class="required"> <i>Required</i> </span> </li> 
+          </ul> 
+          <input type="image" src="http://images.apple.com/legal/contact/images/submit_button.jpg" name="submit-copyright-agent" id="submit-copyright-agent" alt="Comments" value="" class="submit"> 
+         </div>      
+         <title>Apple - Legal - Contact</title> 
+         <meta name="omni_page" content="Apple - Legal - Contact"> 
+         <meta name="Category" content=""> 
+         <meta name="Description" content=""> 
+         <script type="text/javascript" language="javascript">
+				Validation.add('validate-email-copyright', 'Valid email address required.  Example: steve@mac.com', function(v) {
+					return Validation.get('IsEmpty').test(v) || /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/.test(v);
+				});
+		</script>   
+         <div id="copyright" class="content"> 
+          <p>A copyright is a property right in an original work of authorship. Copyright is recognized in most countries of the world by statutory copyright laws. <a href="/legal/intellectual-property/rightsandpermissions.html">Learn more</a> about copyright.</p> 
+          <p>To help us process your request, please complete the following fields. </p> 
+          <ul class="inputs"> 
+           <li> <label for="first_name_copyright">First Name</label> <span class="formwrap"> <input type="text" id="first_name_copyright" name="first_name_copyright" maxlength="25" class="required"> <i>Required</i> </span> </li> 
+           <li> <label for="last_name_copyright">Last Name</label> <span class="formwrap"> <input type="text" id="last_name_copyright" name="last_name_copyright" maxlength="25" class="required"> <i>Required</i> </span> </li> 
+           <li> <label for="email_copyright">Email Address</label> <span class="formwrap"> <input type="text" id="email_copyright" name="email_copyright" maxlength="100" class="required validate-email-copyright"> <i>Required</i> </span> </li> 
+           <li> <label for="company_name_copyright">Company Name</label> <span class="formwrap"> <input type="text" id="company_name_copyright" name="company_name_copyright" maxlength="50"> </span> </li> 
+           <li> <label for="title_copyright">Title/Position</label> <span class="formwrap"> <input type="text" id="title_copyright" name="title_copyright" maxlength="50"> </span> </li> 
+           <li> <label for="telephone_copyright">Phone Number</label> <span class="formwrap"> <input type="text" id="telephone_copyright" name="telephone_copyright" maxlength="13"> </span> </li> 
+           <li> <label for="fax_copyright">Fax</label> <span class="formwrap"> <input type="text" id="fax_copyright" name="fax_copyright" maxlength="13"> </span> </li> 
+           <li> <label for="describe_copyright">Describe your Request</label> <span class="formwrap"> <textarea name="describe_copyright" id="describe_copyright" maxlength="1000" class="required"></textarea> <i>Required</i> </span> </li> 
+          </ul> 
+          <input type="image" src="http://images.apple.com/legal/contact/images/submit_button.jpg" name="submit-copyright" alt="Submit" value="" class="submit"> 
+         </div>      
+         <title>Apple - Legal - Contact</title> 
+         <meta name="omni_page" content="Apple - Legal - Contact"> 
+         <meta name="Category" content=""> 
+         <meta name="Description" content=""> 
+         <script type="text/javascript" language="javascript">
+			Validation.add('validate-email-counterfeit', 'Valid email address required.  Example: steve@mac.com', function(v) {
+				return Validation.get('IsEmpty').test(v) || /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/.test(v);
+			});
+	</script>   
+         <div id="counterfeit" class="content"> 
+          <p>If you would like to report counterfeit or knockoff Apple products, or have questions concerning such products, please fill out the form below.</p> 
+          <ul class="inputs"> 
+           <li> <label for="name_counterfeit">Name</label> <span class="formwrap"> <input type="text" id="name_counterfeit" name="name_counterfeit" maxlength="50" class="required"> <i>Required</i> </span> </li> 
+           <li> <label for="email_counterfeit">Email Address</label> <span class="formwrap"> <input type="text" id="email_counterfeit" name="email_counterfeit" maxlength="100" class="required validate-email-counterfeit"> <i>Required</i> </span> </li> 
+           <li> <label for="phone_counterfeit">Phone Number</label> <span class="formwrap"> <input type="text" id="phone_counterfeit" maxlength="12" name="phone_counterfeit"> </span> </li> 
+           <li class="counterfeit_label"> 
+            <fieldset> 
+             <legend>Please provide information about the counterfeit or knockoff Apple products that you saw</legend> 
+            </fieldset> </li> 
+           <li> <label for="description_online">Website/URL</label> <span class="formwrap"> <input type="text" name="description_online" maxlength="25" id="description_online"> </span> </li> 
+           <li> <label for="store-name_counterfeit">Store Name</label> <span class="formwrap"> <input type="text" id="store-name_counterfeit" maxlength="25" name="store-name_counterfeit"> </span> </li> 
+           <li> <label for="counterfeit_contact">Store/Business Contact Name</label> <span class="formwrap"> <input type="text" id="counterfeit_contact" maxlength="25" name="counterfeit_contact"> </span> </li> 
+           <li> <label for="description_store">Address/Location</label> <span class="formwrap"> <input type="text" name="description_store" maxlength="25" id="description_store"> </span> </li> 
+           <li> <label for="store_city_counterfeit">City</label> <span class="formwrap"> <input type="text" id="store_city_counterfeit" maxlength="25" name="store-city_counterfeit"> </span> </li> 
+           <li> <label for="store_state_counterfeit">State</label> <span class="formwrap"> <input type="text" id="store_state_counterfeit" maxlength="25" name="store-state_counterfeit"> </span> </li> 
+           <li> <label for="counterfeit_country">Country</label> <span class="formwrap"> <input type="text" id="counterfeit_country" maxlength="25" name="counterfeit_country"> </span> </li> 
+           <li> <label for="product_counterfeit">Product Name/Model No</label> <span class="formwrap"> <input type="text" id="product_counterfeit" maxlength="25" name="product_counterfeit"> </span> </li> 
+           <li> <label for="comments_counterfeit">Description/Comments</label> <span class="formwrap"> <textarea name="comments_counterfeit" maxlength="800" id="comments_counterfeit"></textarea> </span> </li> 
+           <li class="checkbox_label"> 
+            <fieldset class="checkbox"> 
+             <legend></legend> 
+             <div> 
+              <input id="docs_counterfeit" type="checkbox" name="docs_counterfeit" value="Yes"> 
+              <label for="docs_counterfeit">I have additional documents or photos to provide.</label> 
+             </div> 
+            </fieldset> </li> 
+           <li class="dropdown"> <label for="counterfeit_product"><strong>Which Apple product is the most similar to the counterfeit or knockoff product you saw?</strong></label> <span class="formwrap"> <select name="counterfeit_product" id="counterfeit_product"> <option value="">Please Select</option> <option value="iMac">iMac</option> <option value="MacBook Pro">MacBook Pro</option> <option value="MacBook Air">MacBook Air</option> <option value="iPod Classic">iPod Classic</option> <option value="iPod nano">iPod nano</option> <option value="iPod Shuffle">iPod Shuffle</option> <option value="iPod Touch">iPod Touch</option> <option value="iPad">iPad</option> <option value="iPhone">iPhone</option> <option value="Smart Cover">Smart Cover</option> <option value="MFi">MFi</option> <option value="MagSafe Adapter">MagSafe Adapter</option> <option value="USB Adapter">USB Adapter</option> <option value="Cases">Cases</option> <option value="Other Accessories">Other Accessories</option> <option value="Packaging">Packaging</option> <option value="Components">Components</option> <option value="Software/Apps">Software/Apps</option> <option value="Internet Services">Internet Services</option> </select> </span> <span class="hide"></span> </li> 
+           <li class="radio_label"> 
+            <fieldset class="radio"> 
+             <legend>Have you reported this issue to any other Apple Group?</legend> 
+             <span> <input id="counterfeit_email_question" type="radio" name="counterfeit_email_question" value="yes"> <label for="counterfeit_email_question">Yes</label> </span> 
+             <span> <input id="counterfeit_email_question" type="radio" name="counterfeit_email_question" value="no"> <label for="counterfeit_email_question">No</label> </span> 
+            </fieldset> </li> 
+           <li class="checkbox_label"> 
+            <fieldset class="checkbox"> 
+             <legend></legend> 
+             <div> 
+              <input id="docs_counterfeit" type="checkbox" name="docs_counterfeit" value="Yes"> 
+              <label for="docs_counterfeit">I have additional documents or photos to provide.</label> 
+             </div> 
+            </fieldset> </li> 
+          </ul> 
+          <input type="image" src="http://images.apple.com/legal/contact/images/submit_button.jpg" name="submit-counterfeit" id="submit-counterfeit" alt="Comments" value="" class="submit"> 
+         </div>      
+         <title>Apple - Legal - Contact</title> 
+         <meta name="omni_page" content="Apple - Legal - Contact"> 
+         <meta name="Category" content=""> 
+         <meta name="Description" content=""> 
+         <script type="text/javascript" language="javascript">
+			Validation.add('validate-email-patent', 'Valid email address required.  Example: steve@mac.com', function(v) {
+				return Validation.get('IsEmpty').test(v) || /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/.test(v);
+			});
+			Validation.add('validate-phone-number','Valid Phone Number. Example: 4080001111', function(v) {
+				return Validation.get('IsEmpty').test(v) || !isNaN(v);
+			});		
+	</script>   
+         <div id="patent" class="content"> 
+          <p>If you have an idea submission, please go to <a href="/legal/intellectual-property/policies/ideas.html">Apple’s website for unsolicited outside submissions</a>.</p> 
+          <p>If you have any questions concerning licensing of Apple patents, please note that Apple generally does not license its patent portfolio. However, there are some ways you might be able to work with Apple:<br> </p>
+          <ul class="requirements"> 
+           <li>If you’d like to build products that would interoperate with our iPod touch, iPhone, or iPad, we have a licensing program called the Made for iPod Program (of which the Works with iPhone program is a part). Licensees under this program, get access to some of our technology and interfaces that will enable the licensees to build products that interoperate with third party products. You can email the Made for iPod Program office at <a href="mailto:madeforipod@apple.com">madeforipod@apple.com</a> for more info.</li> 
+           <li>You also should check out our Apple Developer Connection web page located at <a href="http://developer.apple.com/">developer.apple.com</a>.</li> 
+           <li>Apple also offers an SDK that enables developers to write applications that will run on the iPhone, iPod touch, and iPad. See <a href="http://developer.apple.com/iphone/program/">developer.apple.com/iphone/program</a> for more info.</li> 
+          </ul>
+          <p></p> 
+          <p>If you have any questions for the Apple Patent Department, please fill out the form below.</p> 
+          <ul class="inputs"> 
+           <li> <label for="first_name_patent">First Name</label> <span class="formwrap"> <input type="text" id="first_name_patent" name="first_name_patent" maxlength="25" class="required"> <i>Required</i> </span> </li> 
+           <li> <label for="last_name_patent">Last Name</label> <span class="formwrap"> <input type="text" id="last_name_patent" name="last_name_patent" maxlength="25" class="required"> <i>Required</i> </span> </li> 
+           <li> <label for="company_name_patent">Company Name</label> <span class="formwrap"> <input type="text" id="company_name_patent" maxlength="25" name="company_name_patent"> </span> </li> 
+           <li> <label for="title_patent">Title/Position</label> <span class="formwrap"> <input type="text" id="title_patent" maxlength="25" name="title_patent"> </span> </li> 
+           <li> <label for="phone_patent">Phone Number</label> <span class="formwrap"> <input type="text" id="phone_patent" name="phone_patent" maxlength="12"> </span> </li> 
+           <li> <label for="email_patent">Email Address</label> <span class="formwrap"> <input type="text" id="email_patent" name="email_patent" maxlength="100" class="required validate-email-patent"> <i>Required</i> </span> </li> 
+           <li> <label for="description_patent">Description</label> <span class="formwrap"> <textarea name="description_patent" id="description_patent" maxlength="800" class="required"></textarea> <i>Required</i> </span> </li> 
+          </ul> 
+          <ul class="inputs"> 
+           <li class="radio_label"> 
+            <fieldset class="radio"> 
+             <legend>Have you emailed anyone else at Apple about this matter?</legend> 
+             <span> <input id="patentyes_email_question" type="radio" name="patent_email_question" value="yes"> <label for="patent_email_question">Yes</label> </span> 
+             <span> <input id="patentno_email_question" type="radio" name="patent_email_question" value="no"> <label for="patent_email_question">No</label> </span> 
+            </fieldset> </li> 
+           <li class="checkbox_label"> 
+            <fieldset class="checkbox"> 
+             <legend></legend> 
+             <div> 
+              <input id="docs_patent" type="checkbox" name="docs_patent" value="Yes"> 
+              <label for="docs_patent">I have additional documents or photos to provide.</label> 
+             </div> 
+            </fieldset> </li> 
+          </ul> 
+          <input type="image" src="http://images.apple.com/legal/contact/images/submit_button.jpg" name="submit-patent-agent" id="submit-patent-agent" alt="Comments" value="" class="submit"> 
+         </div>      
+         <title>Apple - Legal - Contact</title> 
+         <meta name="omni_page" content="Apple - Legal - Contact"> 
+         <meta name="Category" content=""> 
+         <meta name="Description" content="">   
+         <div id="phishingandspam" class="content"> 
+          <p>Phishing refers to an email that attempts to fraudulently acquire personal information from you, such as your Apple ID, password and/or credit card information. On the surface, the email may appear to be from a legitimate company or individual, but it's not.</p> 
+          <p>Please refer to <a href="/legal/more-resources/phishing/">http://www.apple.com/legal/more-resources/phishing/</a> for more information and resources, including how to report suspicious emails.</p> 
+         </div>      
+         <title>Apple - Legal - Contact</title> 
+         <meta name="omni_page" content="Apple - Legal - Contact"> 
+         <meta name="Category" content=""> 
+         <meta name="Description" content=""> 
+         <script type="text/javascript" language="javascript">
+			Event.onDOMReady(function() {
+				Validation.add('validate-email-piracy', 'Valid email address required.  Example: steve@mac.com', function(v) {
+					return Validation.get('IsEmpty').test(v) || /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/.test(v);
+				});
+				Validation.add('validate-zip-end-user','Valid Zip Code. Example: 99999', function(v) {
+					return Validation.get('IsEmpty').test(v) || !isNaN(v);
+				});
+				Validation.add('validate-zip-distributor','Valid Zip Code. Example: 99999', function(v) {
+					return Validation.get('IsEmpty').test(v) || !isNaN(v);
+				});
+		
+			});
+		</script>   
+         <div id="piracy" class="content"> 
+          <p>Apple actively and aggressively enforces its intellectual property rights to the fullest extent of the law. If you have any questions concerning <a href="/legal/intellectual-property/piracy.html">piracy</a> please fill out the form below.</p> 
+          <ul class="inputs"> 
+           <li> <label for="first_name_piracy">First Name</label> <span class="formwrap"> <input type="text" id="first_name_piracy" name="first_name_piracy" maxlength="25" class="required"> <i>Required</i> </span> </li> 
+           <li> <label for="last_name_piracy">Last Name</label> <span class="formwrap"> <input type="text" id="last_name_piracy" name="last_name_piracy" maxlength="25" class="required"> <i>Required</i> </span> </li> 
+           <li> <label for="home_phone_piracy">Phone Number</label> <span class="formwrap"> <input type="text" id="home_phone_piracy" maxlength="12" name="home_phone_piracy"> </span> </li> 
+           <li> <label for="work_phone_piracy">Mobile Number</label> <span class="formwrap"> <input type="text" id="work_phone_piracy" maxlength="12" name="work_phone_piracy"> </span> </li> 
+           <li> <label for="email_piracy">Email address</label> <span class="formwrap"> <input type="text" id="email_piracy" name="email_piracy" maxlength="100" class="required validate-email-piracy"> <i>Required</i> </span> </li> 
+           <li class="dropdown"> <label for="piracy_type">Select type of piracy</label> <span class="formwrap"> <select name="piracy_type" id="piracy_type" onchange="displayPiracy(this)" class="required"> <option value="">Please Select</option> <option value="End User">End User</option> <option value="Distributor">Reseller/Distributor</option> <option value="Internet">Internet</option> </select> <i>Required</i> </span> <span class="hide"></span> </li> 
+          </ul> 
+          <div id="show-piracy"> 
+           <div id="end-user"> 
+            <ul class="inputs"> 
+             <li class="radio_label"> 
+              <fieldset class="radio"> 
+               <legend>For piracy at the company: </legend> 
+               <span> <input id="end_user_company" type="radio" name="end_user_company" value="work currently"> <label for="end_user_comapny">Where you work.</label> </span> 
+               <span> <input id="end_user_company" type="radio" name="end_user_company" value="have worked"> <label for="end_user_comapny">Where you have worked.</label> </span> 
+               <span> <input id="end_user_company" type="radio" name="end_user_company" value="none"> <label for="end_user_comapny">None of the above.</label> </span> 
+              </fieldset> </li> 
+             <li> <label for="company_reporting_end_user">Organization Name</label> <span class="formwrap"> <input type="text" id="company_reporting_end_user" maxlength="25" name="company_reporting_end_user" class="required"> <i>Required</i> </span> </li> 
+             <li> <label for="country_end_user">Country</label> <span class="formwrap"> <input type="text" id="country_end_user" maxlength="25" name="country_end_user" class="required"> <i>Required</i> </span> <span class="hide"></span> </li> 
+             <li> <label for="address_end_user">Street Address</label> <span class="formwrap"> <input type="text" id="address_end_user" maxlength="25" name="address_end_user" class="required"> <i>Required</i> </span> </li> 
+             <li> <label for="city_end_user">City</label> <span class="formwrap"> <input type="text" id="city_end_user" maxlength="25" name="city_end_user" class="required"> <i>Required</i> </span> </li> 
+             <li> <label for="state_end_user">State/Province</label> <span class="formwrap"> <input type="text" id="state_end_user" maxlength="25" name="state_end_user" class="required"> <i>Required</i> </span> </li> 
+             <li> <label for="zip_end_user">Zip/Postal</label> <span class="formwrap"> <input type="text" name="zip_end_user" maxlength="25" id="zip_end_user" class="required validate-zip-end-user"> <i>Required</i> </span> </li> 
+             <li> <label for="company_website_end_user">Organization Website</label> <span class="formwrap"> <input type="text" id="company_website_end_user" maxlength="25" name="company_website_end_user"> </span> </li> 
+             <li> <label for="phone_end_user">Phone Number</label> <span class="formwrap"> <input type="text" id="phone_end_user" maxlength="12" name="phone_end_user"> </span> </li> 
+             <li> <label for="amount_end_user">How many computers in the company?</label> <span class="formwrap"> <input type="text" id="amount_end_user" maxlength="10" name="amount_end_user"> </span> </li> 
+             <li> <label for="software_end_user">Name of Software</label> <span class="formwrap"> <input type="text" id="software_end_user" maxlength="25" name="software_end_user"> </span> </li> 
+             <li> <label for="installed_end_user">Number Installed</label> <span class="formwrap"> <input type="text" id="installed_end_user" maxlength="10" name="installed_end_user"> </span> </li> 
+             <li> <label for="license_end_user">Number of Licenses</label> <span class="formwrap"> <input type="text" id="license_end_user" maxlength="10" name="license_end_user"> </span> </li> 
+             <li> <label for="aware_end_user">How did you become aware of this piracy?</label> <span class="formwrap"> <textarea name="aware_end_user" id="aware_end_user" maxlength="800" class="required"></textarea> <i>Required</i> </span> </li> 
+            </ul> 
+           </div> 
+           <div id="distributor"> 
+            <ul class="inputs"> 
+             <li class="radio_label"> 
+              <fieldset class="radio"> 
+               <legend>For reporting companies that illegally: </legend> 
+               <span> <input id="distributor_question" type="radio" name="distributor_question" value="sell"> <label for="distributor_question">Sell software.</label> </span> 
+               <span> <input id="distributor_question" type="radio" name="distributor_question" value="distribute"> <label for="distributor_question">Distribute software.</label> </span> 
+              </fieldset> </li> 
+             <li> <label for="company_reporting_distributor">Company Reporting</label> <span class="formwrap"> <input type="text" id="company_reporting_distributor" maxlength="25" name="company_reporting_distributor" class="required"> <i>Required</i> </span> </li> 
+             <li> <label for="country_distributor">Country</label> <span class="formwrap"> <input type="text" id="country_distributor" maxlength="25" name="country_distributor" class="required"> <i>Required</i> </span> </li> 
+             <li> <label for="address_distributor">Street Address</label> <span class="formwrap"> <input type="text" id="address_distributor" maxlength="25" name="address_distributor" class="required"> <i>Required</i> </span> </li> 
+             <li> <label for="city_distributor">City</label> <span class="formwrap"> <input type="text" id="city_distributor" maxlength="25" name="city_distributor" class="required"> <i>Required</i> </span> </li> 
+             <li> <label for="state_distributor">State/Province</label> <span class="formwrap"> <input type="text" id="state_distributor" maxlength="25" name="state_distributor" class="required"> <i>Required</i> </span> </li> 
+             <li> <label for="zip_distributor">Zip/Postal</label> <span class="formwrap"> <input type="text" name="zip_distributor" id="zip_distributor" maxlength="11" class="required validate-zip-distributor"> <i>Required</i> </span> </li> 
+             <li> <label for="company_website_distributor">Company Website</label> <span class="formwrap"> <input type="text" id="company_website_distributor" maxlength="25" name="company_website_distributor"> </span> </li> 
+             <li> <label for="phone_distributor">Phone Number</label> <span class="formwrap"> <input type="text" id="phone_distributor" maxlength="12" name="phone_distributor"> </span> </li> 
+             <li> <label for="amount_distributor">How many computers in the company?</label> <span class="formwrap"> <input type="text" id="amount_distributor" maxlength="10" name="amount_distributor"> </span> </li> 
+             <li> <label for="software_distributor">Name of Software</label> <span class="formwrap"> <input type="text" id="software_distributor" maxlength="25" name="software_distributor"> </span> </li> 
+             <li> <label for="installed_distributor">Number Installed</label> <span class="formwrap"> <input type="text" id="installed_distributor" maxlength="10" name="installed_distributor"> </span> </li> 
+             <li> <label for="license_distributor">Number of Licenses</label> <span class="formwrap"> <input type="text" id="license_distributor" maxlength="10" name="license_distributor"> </span> </li> 
+             <li> <label for="aware_distributor">How did you become aware of this piracy?</label> <span class="formwrap"> <textarea name="aware_distributor" id="aware_distributor" maxlength="800" class="required"></textarea> <i>Required</i> </span> </li> 
+            </ul> 
+           </div> 
+           <div id="internet"> 
+            <ul class="inputs"> 
+             <li class="radio_label"> 
+              <fieldset class="radio"> 
+               <legend>Please select one of the following:</legend> 
+               <span> <input id="internet_question" type="radio" name="internet_question" value="site"> <label for="internet_question">For reporting Internet sites.</label> </span> 
+               <span> <input id="internet_question" type="radio" name="internet_question" value="individual"> <label for="internet_question">For reporting individuals selling illegal software.</label> </span> 
+              </fieldset> </li> 
+             <li> <label for="online_offer_internet">What type of online offer did you respond to?</label> <span class="formwrap"> <input type="text" id="online_offer_internet" maxlength="25" name="online_offer_internet"> </span> </li> 
+             <li> <label for="website_address">If website offer, please provide the web address.</label> <span class="formwrap"> <input type="text" id="website_address" maxlength="25" name="website_address"> </span> </li> 
+             <li> <label for="other_explain">If other, please explain.</label> <span class="formwrap"> <input type="text" id="other_explain" maxlength="25" name="other_explain"> </span> </li> 
+             <li> <label for="seller_id">Seller ID (e.g., eBay)</label> <span class="formwrap"> <input type="text" id="seller_id" maxlength="25" name="seller_id"> </span> </li> 
+             <li> <label for="country_internet_piracy">Country</label> <span class="formwrap"> <input type="text" id="country_internet_piracy" maxlength="25" name="country_internet_piracy" class="required"> <i>Required</i> </span> </li> 
+             <li> <label for="product_description">Please briefly describe the product</label> <span class="formwrap"> <textarea name="product_description" id="product_description" maxlength="800" class="required"></textarea> <i>Required</i> </span> </li> 
+             <li> <label for="general_information" class="general_information">If reporting a website, do you know who is operating the site? Please provide any information that you have: name, aliases, email addresses, phone numbers, addresses, your relationship to the person and so&nbsp;on.</label> <span class="formwrap"> <textarea name="general_information" maxlength="800" id="general_information"></textarea> </span> </li> 
+            </ul> 
+           </div> 
+          </div> 
+          <input type="image" src="http://images.apple.com/legal/contact/images/submit_button.jpg" name="submit-piracy" alt="Comments" value="" class="submit"> 
+         </div>      
+         <title>Apple - Legal - Contact</title> 
+         <meta name="omni_page" content="Apple - Legal - Contact"> 
+         <meta name="Category" content=""> 
+         <meta name="Description" content=""> 
+         <script type="text/javascript" language="javascript">
+				Validation.add('validate-email-trademark', 'Valid email address required.  Example: steve@mac.com', function(v) {
+					return Validation.get('IsEmpty').test(v) || /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/.test(v);
+				});
+
+		</script>   
+         <div id="apple-trademark" class="content"> 
+          <p>If you have any questions concerning <a href="/legal/intellectual-property/guidelinesfor3rdparties.html">trademark</a>, please fill out the form below.</p> 
+          <ul class="inputs"> 
+           <li> <label for="first_name_trademark">First Name</label> <span class="formwrap"> <input type="text" id="first_name_trademark" name="first_name_trademark" maxlength="25" class="required"> <i>Required</i> </span> </li> 
+           <li> <label for="last_name_trademark">Last Name</label> <span class="formwrap"> <input type="text" id="last_name_trademark" name="last_name_trademark" maxlength="25" class="required"> <i>Required</i> </span> </li> 
+           <li> <label for="title_trademark">Title/Position</label> <span class="formwrap"> <input type="text" id="title_trademark" maxlength="25" name="title_trademark"> </span> </li> 
+           <li> <label for="company_trademark">Company</label> <span class="formwrap"> <input type="text" id="company_trademark" maxlength="25" name="company_trademark"> </span> </li> 
+           <li> <label for="phone_trademark">Phone Number</label> <span class="formwrap"> <input type="text" id="phone_trademark" name="phone_trademark" maxlength="12" class="required"> <i>Required</i> </span> </li> 
+           <li> <label for="email_trademark">Email Address</label> <span class="formwrap"> <input type="text" id="email_trademark" name="email_trademark" maxlength="100" class="required validate-email-trademark"> <i>Required</i> </span> </li> 
+           <li> <label for="trademarks">Describe your question or request.</label> <span class="formwrap"> <textarea name="trademarks" id="trademarks" maxlength="800" class="required"></textarea> <i>Required</i> </span> </li> 
+          </ul> 
+          <input type="image" src="http://images.apple.com/legal/contact/images/submit_button.jpg" name="submit-trademark" alt="Comments" value="" class="submit"> 
+         </div>      
+         <title>Apple - Legal - Contact</title> 
+         <meta name="omni_page" content="Apple - Legal - Contact"> 
+         <meta name="Category" content=""> 
+         <meta name="Description" content=""> 
+         <script type="text/javascript" language="javascript">
+			Validation.add('validate-email-idea-submissions', 'Valid email address required.  Example: steve@mac.com', function(v) {
+				return Validation.get('IsEmpty').test(v) || /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/.test(v);
+			});	
+	</script>   
+         <div id="idea-submissions" class="content"> 
+          <p>Apple or any of its employees do not accept, review, or consider unsolicited ideas for any purpose, including ideas for new advertising campaigns, new promotions, new or improved products or technologies, product enhancements, processes, materials, marketing plans or new product names. If you have any questions concerning <a href="/legal/intellectual-property/policies/ideas.html">idea submissions</a>, please fill out the form below.</p> 
+          <ul class="inputs"> 
+           <li> <label for="first_name_idea_submissions">First Name</label> <span class="formwrap"> <input type="text" id="first_name_idea_submissions" maxlength="25" name="first_name_idea_submissions" class="required"> <i>Required</i> </span> </li> 
+           <li> <label for="last_name_idea_submissions">Last Name</label> <span class="formwrap"> <input type="text" id="last_name_idea_submissions" maxlength="25" name="last_name_idea_submissions" class="required"> <i>Required</i> </span> </li> 
+           <li> <label for="company_name_idea_submissions">Company Name</label> <span class="formwrap"> <input type="text" id="company_name_idea_submissions" maxlength="25" name="company_name_idea_submissions"> </span> </li> 
+           <li> <label for="title_idea_submissions">Title/Position</label> <span class="formwrap"> <input type="text" id="title_idea_submissions" maxlength="25" name="title_idea_submissions"> </span> </li> 
+           <li> <label for="phone_idea_submissions">Phone Number</label> <span class="formwrap"> <input type="text" id="phone_idea_submissions" maxlength="12" name="phone_idea_submissions"> </span> </li> 
+           <li> <label for="email_idea_submissions">Email Address</label> <span class="formwrap"> <input type="text" id="email_idea_submissions" maxlength="100" name="email_idea_submissions" class="required validate-email-idea-submissions"> <i>Required</i> </span> </li> 
+           <li> <label for="description_idea_submissions">Description</label> <span class="formwrap"> <textarea name="description_idea_submissions" maxlength="800" id="description_idea_submissions" class="required"></textarea> <i>Required</i> </span> </li> 
+           <li class="radio_label"> 
+            <fieldset class="radio"> 
+             <legend>Have you emailed anyone else at Apple about this matter?</legend> 
+             <span> <input id="idea_email_question" type="radio" name="idea_email_question" value="yes"> <label for="idea_email_question">Yes</label> </span> 
+             <span> <input id="idea_email_question" type="radio" name="idea_email_question" value="no"> <label for="idea_email_question">No</label> </span> 
+            </fieldset> </li> 
+           <li class="checkbox_label"> 
+            <fieldset class="checkbox"> 
+             <legend></legend> 
+             <div> 
+              <input id="undertaking_idea_submissions" type="checkbox" name="undertaking_idea_submissions" value="Additional Documents" class="required"> 
+              <label for="undertaking_idea_submissions">Have you reviewed Apple's <a href="http://www.apple.com/legal/policies/ideas.html">Unsolicited Outside Submission Policy</a> and agree to abide by the policy.</label> 
+             </div> 
+            </fieldset> 
+            <fieldset class="checkbox"> 
+             <legend></legend> 
+             <div> 
+              <input id="docs_idea_submissions" type="checkbox" name="docs_idea_submissions" value="Yes"> 
+              <label for="docs_idea_submissions">I have additional documents or photos to provide.</label> 
+             </div> 
+            </fieldset> </li> 
+          </ul> 
+          <input type="image" src="http://images.apple.com/legal/contact/images/submit_button.jpg" name="submit-idea-submissions-agent" id="submit-idea-submissions-agent" alt="Comments" value="" class="submit"> 
+         </div>      
+         <title>Apple - Legal - iTunes Infringement</title> 
+         <meta name="omni_page" content="Apple - Legal - iTunes Infringement"> 
+         <meta name="Category" content=""> 
+         <meta name="Description" content="">   
+         <div id="itunes-infringement" class="content"> 
+          <p>To submit a claim of alleged infringement for content available on the iTunes Store, visit <a class="nowrap" href="/legal/internet-services/itunes/itunesstorenotices/">www.apple.com/legal/internet-services/itunes/itunesstorenotices</a>.</p> 
+         </div>      
+         <title>Apple - Legal - App Store Infringement</title> 
+         <meta name="omni_page" content="Apple - Legal - App Store Infringement"> 
+         <meta name="Category" content=""> 
+         <meta name="Description" content="">   
+         <div id="appstore-infringement" class="content"> 
+          <p>To submit a claim of alleged infringement for content available on the App Store or Mac App Store, visit <a href="/legal/internet-services/itunes/appstorenotices/">www.apple.com/legal/internet-services/itunes/appstorenotices</a>.</p> 
+         </div>      
+         <title>Apple - Legal - Contact</title> 
+         <meta name="omni_page" content="Apple - Legal - Contact"> 
+         <meta name="Category" content=""> 
+         <meta name="Description" content="">   
+         <div id="other" class="content"> 
+          <p>Get help with Apple products, services, and more. <a href="/contact/" class="more">Visit the Contact website</a></p> 
+         </div>   
+        </div>  
+       </section>
+      </form> 
+     </div> 
+    </section> 
+   </div> 
+  </div> 
+  <div id="globalfooter"> 
+   <div id="breadory"> 
+    <ol id="breadcrumbs"> 
+     <li class="home"><a href="/">Home</a></li> 
+     <li><a href="/legal/">Legal</a></li> 
+     <li>Legal Questions</li> 
+    </ol> 
+   </div> 
+   <!--googleoff: all--> 
+   <div id="directorynav" class="legal"> 
+    <div id="dn-cola" class="column first"> 
+     <h3>Hardware and Software</h3> 
+     <ul> 
+      <li><a href="/legal/warranty/">Hardware Warranties</a></li> 
+      <li><a href="/legal/sla/">Software License Agreements</a></li> 
+      <li><a href="/legal/rfexposure/">RF Exposure</a></li> 
+     </ul> 
+     <h3><a href="/legal/more-resources/">More Resources</a></h3> 
+     <ul> 
+      <li><a href="/legal/more-resources/phishing/">Phishing &amp; Other Suspicious Emails</a></li> 
+      <li><a href="/legal/more-resources/law-enforcement/">Legal Process Guidelines for US Law Enforcement</a></li> 
+      <li><a href="/legal/more-resources/gtc.html">Global Trade Compliance</a></li> 
+      <li><a href="/legal/more-resources/supplier-provisions.html">Supplier Provisions</a></li> 
+      <li><a href="/legal/contact/">Contact Apple Legal</a></li> 
+      <li><a href="http://www.filemaker.com/company/legal/trademark_guidelines.html">Filemaker Legal Information</a></li> 
+     </ul> 
+    </div> 
+    <div id="dn-colb" class="column"> 
+     <h3><a href="/legal/sales-support/">Sales &amp; Support</a></h3> 
+     <ul> 
+      <li><a href="/legal/sales-support/applecare/">AppleCare</a></li> 
+      <li><a href="https://discussions.apple.com/static/apple/tutorial/tou.html">Support Communities Terms of&nbsp;Use</a></li> 
+      <li><a href="/legal/sales-support/terms/iphonears/index.html">Express Replacement Service</a></li> 
+      <li><a href="http://images.apple.com/legal/sales-support/applecare/docs/remotesupport_terms.pdf">Remote Support Terms and&nbsp;Conditions</a></li> 
+      <li><a href="/retail/learn/one-to-one/terms.html">One to One</a></li> 
+      <li><a href="/legal/sales-support/terms/repair/">Repair Terms and Conditions</a></li> 
+      <li><a href="/legal/sales-support/certification/">Certification Agreements and Policies</a></li> 
+      <li><a href="/legal/sales-support/terms/training/trainingservice.html">Training Service Terms and&nbsp;Conditions</a></li> 
+      <li><a href="/legal/sales-support/sales-policies/">Sales Policies</a></li> 
+     </ul> 
+    </div> 
+    <div id="dn-colc" class="column"> 
+     <h3><a href="/legal/internet-services/">Internet Services</a></h3> 
+     <ul> 
+      <li><a href="/legal/internet-services/terms/site.html">Website Terms of Use</a></li> 
+      <li><a href="/legal/internet-services/itunes/ww/">iTunes Store, App Store, iBooks Store, and Game Center Terms and&nbsp;Conditions</a></li> 
+      <li><a href="/legal/internet-services/icloud/ww/">iCloud Terms of Service</a></li> 
+      <li><a href="/internetservices/terms/sales_policies.html">Print Services Sales Policies</a></li> 
+      <li><a href="/internetservices/terms/membership_terms.html">Print Services Terms of Use</a></li> 
+      <li><a href="/legal/internet-services/privacy/">Privacy Policy</a></li> 
+     </ul> 
+    </div> 
+    <div id="dn-cold" class="column last"> 
+     <h3><a href="/legal/intellectual-property/">Intellectual Property</a></h3> 
+     <ul> 
+      <li><a href="/legal/intellectual-property/policies/ideas.html">Unsolicited Idea Submission Policy</a></li> 
+      <li><a href="/legal/intellectual-property/trademark/">Trademarks</a></li> 
+      <li><a href="/legal/intellectual-property/rightsandpermissions.html">Rights and Permissions</a></li> 
+      <li><a href="/legal/intellectual-property/guidelinesfor3rdparties.html">Guidelines for Using Apple Trademarks and&nbsp;Copyrights</a></li> 
+      <li><a href="/legal/intellectual-property/piracy.html">Piracy Prevention</a></li> 
+     </ul> 
+    </div> 
+    <div class="capbottom"></div> 
+   </div> 
+   <!--googleon: all--> 
+   <p class="gf-buy footer-shop"><span>Shop the <a href="http://store.apple.com/us">Apple Online Store</a> (1-800-MY-APPLE),</span> visit an <a href="/retail/">Apple Retail Store</a>, or find a <a href="/buy/">reseller</a>.</p> 
+   <ul class="gf-links piped footer-links"> 
+    <li><a href="/about/" class="first">Apple Info</a></li> 
+    <li><a href="/sitemap/">Site Map</a></li> 
+    <li><a href="/hotnews/">Hot News</a></li> 
+    <li><a href="/rss/">RSS Feeds</a></li> 
+    <li><a href="/contact/" class="contact_us">Contact Us</a></li> 
+    <li><a href="/choose-your-country/" class="choose"> <img src="http://images.apple.com/global/elements/flags/22x22/usa.png" alt="Choose your country or region" width="22" height="22" data-hires="true"> </a></li> 
+   </ul> 
+   <div class="gf-sosumi footer-sosumi"> 
+    <p>Copyright © 2015 Apple Inc. All rights reserved.</p> 
+    <ul class="piped"> 
+     <li><a href="/legal/internet-services/terms/site.html" class="first">Terms of Use</a></li> 
+     <li><a href="/privacy/privacy-policy/">Updated Privacy Policy</a></li> 
+    </ul> 
+   </div> 
+  </div>   
+ </body>
+</html>

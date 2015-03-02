@@ -1,0 +1,134 @@
+<!--?xml version="1.0" encoding="UTF-8"?--><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <link type="text/css" rel="stylesheet" href="/candidato/spring/javax.faces.resource/theme.css?ln=primefaces-aristo">
+  <link type="text/css" rel="stylesheet" href="/candidato/spring/javax.faces.resource/primefaces.css?ln=primefaces">
+  <script type="text/javascript" src="/candidato/spring/javax.faces.resource/jquery/jquery.js?ln=primefaces"></script>
+  <script type="text/javascript" src="/candidato/spring/javax.faces.resource/primefaces.js?ln=primefaces"></script> 
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+  <link rel="stylesheet" href="/candidato/styles/style-genericos.css" type="text/css" media="screen, projection"> 
+  <link rel="stylesheet" href="/candidato/styles/style.css" type="text/css" media="screen, projection"> 
+  <link rel="stylesheet" href="/candidato/styles/style-primefaces-unav.css" type="text/css" media="screen, projection"> 
+  <link rel="shortcut icon" href="/candidato/images/favicon.ico"> 
+  <script type="text/javascript" src="/candidato/js/primefaces.locales.js"></script> 
+  <title>Futuros Alumnos</title>
+ </head>
+ <body> 
+  <style>
+
+#menuForm {
+	background: url(//candidato/spring/javax.faces.resource/images/ui-bg_highlight-hard_80_c4c4c4_1x100.png?ln=primefaces-aristo) #c4c4c4 repeat-x 50% 50%;
+}
+
+.ui-menu {
+	padding: 0 !important;
+	background: url(//candidato/spring/javax.faces.resource/images/ui-bg_highlight-hard_80_c4c4c4_1x100.png?ln=primefaces-aristo) #c4c4c4 repeat-x 50% 50%;
+}
+
+</style>
+  <div id="layout">
+   <div id="header"> 
+    <form id="inicioCabecera" name="inicioCabecera" method="post" action="/candidato/spring/login.xhtml;jsessionid=26401063DC47E8F8E2428B176F23134D" enctype="application/x-www-form-urlencoded"> 
+     <input type="hidden" name="inicioCabecera" value="inicioCabecera"> 
+     <div id="cabecera"> 
+      <div id="cabeceraIzquierda" align="center"> 
+       <a href="http://www.unav.es" target="_blank"><img width="196px" src="/candidato/images/marca1rojoB.gif" title="http://www.unav.es" alt="Universidad de Navarra" height="80"> </a> 
+      </div> 
+      <div id="cabeceraDerecha"> 
+       <span> <h1 style="margin-left:202px;">Futuros Alumnos</h1> </span> 
+       <span><span id="inicioCabecera:en"> <a href="loginEn.xhtml" class="versionApp" style="margin-right: 20px;">ENGLISH VERSION </a></span> </span> 
+      </div> 
+      <div id="cabeceraPortal"> 
+       <table width="99%"> 
+        <tbody>
+         <tr> 
+          <td width="25%"> </td> 
+          <td width="50%" style="text-align:center;"> <span id="textoCabeceraPortal">Portal del Candidato </span> </td> 
+          <td width="25%" style="text-align:right;"><span id="cerrarSesion2"> </span> <span id="cerrarSesion1"> </span> </td> 
+         </tr> 
+        </tbody>
+       </table> 
+      </div> 
+     </div> 
+    </form>
+   </div>
+   <div id="menuYContenido">
+    <div id="contenidoNoMenu"> 
+     <script type="text/javascript">
+window.onload=ocultarLinq; 
+function ocultarLinq()
+{
+	if(document.getElementById('login').value == 'en'){
+		document.getElementById('inicioCabecera:en').style.display='none';
+	}
+	else{
+		document.getElementById('inicioCabecera:es').style.display='none';
+	}
+}
+</script> 
+     <div> 
+      <form name="f" action="/candidato/spring/loginProcess" method="post"> 
+       <input type="hidden" value="es" id="login">
+       <div class="bloqueCentralDatos"> 
+        <fieldset> 
+         <legend class="textoMenuSuperior">&nbsp;&nbsp;ACCESO USUARIO&nbsp;&nbsp;</legend> 
+         <table width="56%" align="center"> 
+          <tbody>
+           <tr align="center"> 
+            <td align="center"> <h3>&nbsp;&nbsp;Para solicitar la admisión en los estudios de Grado y Máster, es necesario darse de alta en el Portal del Candidato. Si aún no lo has hecho, ¡no esperes más!&nbsp;&nbsp;</h3> </td> 
+           </tr> 
+           <tr>
+            <td></td>
+           </tr> 
+           <tr align="center"> 
+            <td align="center"><button id="j_idt35" name="j_idt35" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only botones" onclick="javascript:document.forms['registrarse'].submit();;PrimeFaces.ab({source:'j_idt35'});return false;" title="REGÍSTRATE" type="submit"><span class="ui-button-text">REGÍSTRATE</span></button><script id="j_idt35_s" type="text/javascript">PrimeFaces.cw('CommandButton','widget_j_idt35',{id:'j_idt35'});</script> </td> 
+           </tr> 
+           <tr>
+            <td></td>
+           </tr> 
+           <tr align="center"> 
+            <td align="center"> <h3>Si ya eres un usuario registrado, introduce tus datos para acceder al portal:</h3> </td> 
+           </tr> 
+          </tbody>
+         </table> 
+         <table width="50%" align="center"> 
+          <tbody>
+           <tr> 
+            <td colspan="3" align="left"> <span> <b>Correo electrónico</b> </span> <span style="margin-left: 112px;"> <b>Contraseña</b> </span> </td> 
+           </tr> 
+           <tr> 
+            <td align="left" width="40%"> <span> <input type="text" name="j_username" size="27"> </span> </td> 
+            <td align="left" width="40%"> <span> <input type="password" name="j_password" size="27"> </span> </td> 
+            <td style="display:none" align="left" width="40%"> <span> <input type="text" name="spring-security-redirect" value="/spring/inicio" size="27"> </span> </td> 
+            <td align="left" width="14%"> <span><button id="submitButton" name="submitButton" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only botones" onclick="javascript:document.forms['f'].submit();;PrimeFaces.ab({source:'submitButton'});return false;" title="ENTRAR" type="submit"><span class="ui-button-text">ENTRAR</span></button><script id="submitButton_s" type="text/javascript">PrimeFaces.cw('CommandButton','widget_submitButton',{id:'submitButton'});</script> </span> </td> 
+           </tr> 
+           <tr> 
+            <td class="olvidadoContrasenia" align="right" colspan="3"> <a href="#" onclick="javascript:document.forms['recuperarClave'].submit();">¿ Has olvidado tu contraseña ?</a> </td> 
+           </tr> 
+           <!-- INICIO AMEVERIS-2057 --> 
+           <tr> 
+            <td class="olvidadoContrasenia" align="right" colspan="3"> <a href="#" onclick="javascript:document.forms['recuperarActivacion'].submit();">¿No has recibido el correo para activar tu cuenta? </a> </td> 
+           </tr> 
+           <!-- FIN AMEVERIS-2057 --> 
+          </tbody>
+         </table> 
+         <br> 
+         <br> 
+        </fieldset>
+       </div>
+       <script id="j_idt48_s" type="text/javascript">$(function() {PrimeFaces.cw('DefaultCommand','widget_j_idt48',{id:'j_idt48',target:'submitButton'});});</script> 
+      </form> 
+      <form name="registrarse" action="/candidato/spring/registrarUsuario" method="post"> 
+      </form> 
+      <form name="recuperarClave" action="/candidato/spring/recuperarClave" method="post"> 
+      </form> 
+      <!-- INICIO AMEVERIS-2057 --> 
+      <form name="recuperarActivacion" action="/candidato/spring/recuperarActivacion" method="post"> 
+      </form> 
+      <!-- FIN AMEVERIS-2057 --> 
+     </div>
+    </div>
+   </div>
+  </div> 
+ </body>
+</html>

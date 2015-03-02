@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6 lte7 lte8 lte9 no-js"><![endif]-->
+<!--[if IE 7 ]><html class="ie ie7 lte7 lte8 lte9 no-js"><![endif]-->
+<!--[if IE 8 ]><html class="ie ie8 lte8 lte9 no-js"><![endif]-->
+<!--[if IE 9 ]><html class="ie ie9 lte9 no-js"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html class="no-js" xmlns="http://www.w3.org/1999/xhtml">
+ <!--<![endif]-->
+ <head id="ctl00_hd">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" lang="en-us">
+  <meta id="ctl00_metakeywords" name="keywords" content="keywordscontent">
+  <meta name="rating" content="General">
+  <meta name="ROBOTS" content="ALL">
+  <meta id="ctl00_metatitle" name="DC.Title" content="What Works Clearinghouse">
+  <meta id="ctl00_metaDCdesc" name="DC.Description" content="As an initiative of the U.S. Department of Education's Institute of Education Sciences (IES), the What Works Clearinghouse (WWC) was created in 2002 to be a central and trusted source of scientific evidence for what works in education.">
+  <meta id="ctl00_metadesc" name="Description" content="As an initiative of the U.S. Department of Education's Institute of Education Sciences (IES), the What Works Clearinghouse (WWC) was created in 2002 to be a central and trusted source of scientific evidence for what works in education.">
+  <meta name="DC.Publisher" content="National Center for Education Statistics">
+  <meta name="DC.Language" scheme="RFC1766" content="EN">
+  <title>
+	What Works Clearinghouse
+</title>
+  <link rel="image_src" href="images/logoWWC.ico">
+  <link href="http://fonts.googleapis.com/css?family=Old+Standard+TT" rel="stylesheet" type="text/css"> 
+  <!--[if !IE]--> 
+  <link href="css/jquery/jquery-ui-1.10.3.custom.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="css/fostyle.css">
+  <link rel="stylesheet" href="css/mprstyles.css"> 
+  <!--[endif]--> 
+  <!--[if gte IE 7]>
+        <link href="css/jquery/jquery-ui-1.10.3.custom.css" rel="stylesheet" type="text/css" /><link rel="stylesheet" type="text/css" href="css/fostyle.css" /><link rel="stylesheet" href="css/mprstyles.css" />
+        
+    <![endif]--> 
+  <!--[if IE]>
+        <link rel="stylesheet" type="text/css" href="css/IEFixes.css" />
+    <![endif]--> 
+  <!--[if lte IE 6]>
+        <link href="css/jquery/jquery-ui-1.10.3.custom.css" rel="stylesheet" type="text/css" /><link rel="stylesheet" type="text/css" href="css/ie6fixes.css" />
+    <![endif]--> 
+  <!--[if IE 7]>
+        <style type="text/css">
+            ul.topicareateams li
+                {
+                    line-height: 18pt;
+                }
+        </style>
+    <![endif]--> 
+  <!--[if lt IE 9]>
+        <style type="text/css">
+         a.SRGButton
+            {
+                font-size: 55% !important;
+            }
+
+        </style>
+    <![endif]--> 
+  <!-- Javascript - - - - - - - - - - - - - - - - - - - --> 
+  <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script> 
+  <script src="js/jquery-ui-1.9.2.custom.min.js" type="text/javascript"></script> 
+  <script type="text/javascript" src="js/modernizr-1.7.min.js"></script> 
+  <script type="text/javascript" src="js/jquery.placeholder.min.js"></script> 
+  <script type="text/javascript" src="js/jquery.tabs.js"></script> 
+  <script type="text/javascript" src="js/jquery.transit.min.js"></script>
+  <!--rotate divs--> 
+  <script type="text/javascript" src="js/topic.js"></script> 
+  <script type="text/javascript" src="js/scripts.js"></script> 
+  <script type="text/javascript" src="js/add-event.js"></script> 
+  <script type="text/javascript" src="js/popup.js"></script> 
+  <script type="text/javascript" src="js/resize.js"></script> 
+  <script type="text/javascript" src="js/SearchHighlight.js"></script> 
+  <script type="text/javascript">
+        $(document).ready(function () {
+
+//            //initialize
+            $('#divDidYouKnowAnswer').hide();
+            $('#divDidYouKnowClose').hide();
+
+            //events
+            $('#divDidYouKnowClose').click(function () {
+                $('#divDidYouKnowAnswer').hide('fast');
+                $('#divDidYouKnowClose').hide('fast');
+            });
+
+            $('#radDidYouKnowTrue').click(function () {
+                DisplayAnswer("True");
+            });
+
+            $('#radDidYouKnowFalse').click(function () {
+                DisplayAnswer("False");
+            });
+                
+            //rotator
+            var xmlDoc = loadXMLDoc("rotator.xml");
+            items = xmlDoc.getElementsByTagName("ITEM");
+
+            RotateOnTimer(index);
+
+        });
+
+        function DisplayAnswer(selectedAnswerText){
+            var correctAnswer = $('[id*="hdnDidYouKnowAnswer"]').val();
+            if (selectedAnswerText == correctAnswer) {
+                $('#h2DidYouKnowAnswer').html("<em>Correct!</em>");
+            }
+            else {
+                $('#h2DidYouKnowAnswer').html("<em>The correct answer is<br />" + correctAnswer + "</em>");
+            }
+
+            $('#divDidYouKnowAnswer').show('fast');
+            $('#divDidYouKnowClose').show('fast');
+        }
+    </script> 
+ </head> 
+ <body> 
+  <div id="pagetop"></div> 
+  <!-- begin hfs head sv2 --> 
+  <script type="text/javascript" src="/js/jquery-1.11.2.min.js"></script>
+  <script type="text/javascript">
+//<![CDATA[
+var $$i = jQuery.noConflict();
+//]]>
+</script>
+  <script type="text/javascript" src="/js/hfsNav.js?v=01"></script>
+  <script type="text/javascript" src="/js/main.js"></script>
+  <!--[if lte IE 8]><script type="text/javascript" src="/js/mainIE.js"></script><![endif]-->
+  <script type="text/javascript">//<![CDATA[
+loadInHead('&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/main.css&quot; /&gt;&lt;!--[if lte IE 8]&gt;&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/mainIE.css&quot; /&gt;&lt;![endif]--&gt;&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/hfsNav.css&quot; /&gt;&lt;!--[if lte IE 8]&gt;&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/hfsNavIE.css&quot; /&gt;&lt;![endif]--&gt;&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/hfsWWC.css&quot; /&gt;');
+//]]></script>
+  <noscript>
+   This page is best viewed with JavaScript enabled. You may have disabled JavaScript or your browser does not support JavaScript.
+  </noscript>
+  <a name="top"></a>
+  <div style="display:none">
+   <a href="#content" title="Skip Navigation">Skip Navigation</a>
+  </div>
+  <div class="hfsPrintBlock">
+   <h2>What Works Clearinghouse</h2>
+   <hr>
+  </div>
+  <div class="hfsMain">
+   <div class="hfsHeader hfsNoPrint">
+    <div class="center-logo">
+     <a href="/ncee/wwc"><img src="/images/hfs/wwc-logo-large.png" class="logo"></a>
+    </div>
+    <div class="navsearch">
+     <form onsubmit="return hfsIsSearchValid(this.childNodes[0]);" method="get" action="/ncee/wwc/sitesearch.aspx" name="HeaderSearch">
+      <input type="text" class="textinput default" value="Enter search terms here" name="Search">
+      <input type="hidden" value="NCEE/WWC" name="website">
+      <input type="image" src="/images/hfs/search-link.png" class="search-link">
+     </form>
+    </div>
+    <div class="ies-logo">
+     <a href="/"><img src="/images/hfs/ies-logo-small-white.png"></a>
+    </div>
+    <div class="clear"></div>
+    <ul class="hfsNav">
+     <li><a href="/ncee/wwc/default.aspx" title="Home">Home</a></li>
+     <li><a href="/ncee/wwc/topics.aspx" title="Topics in Education">Topics in Education</a>
+      <ul>
+       <li>
+        <ul>
+         <li>
+          <ul>
+           <li><a href="/ncee/wwc/Topic.aspx?sid=19" title="Children and Youth with Disabilities">Children and Youth with Disabilities</a></li>
+           <li><a href="/ncee/wwc/Topic.aspx?sid=2" title="College and Career Preparation">College and Career Preparation</a></li>
+           <li><a href="/ncee/wwc/Topic.aspx?sid=3" title="Dropout Prevention">Dropout Prevention</a></li>
+           <li><a href="/ncee/wwc/Topic.aspx?sid=4" title="Early Childhood Education">Early Childhood Education</a></li>
+           <li><a href="/ncee/wwc/Topic.aspx?sid=5" title="Education Technology">Education Technology</a></li>
+           <li><a href="/ncee/wwc/Topic.aspx?sid=6" title="English Language Learners">English Language Learners</a></li>
+           <li><a href="/ncee/wwc/Topic.aspx?sid=8" title="Literacy">Literacy</a></li>
+           <li><a href="/ncee/wwc/MathHome.aspx" title="Math">Math</a></li>
+          </ul></li>
+        </ul></li>
+       <li>
+        <ul>
+         <li>
+          <ul>
+           <li><a href="/ncee/wwc/Topic.aspx?sid=22" title="Postsecondary Education">Postsecondary Education</a></li>
+           <li><a href="/ncee/wwc/Topic.aspx?sid=11" title="School Choice">School Choice</a></li>
+           <li><a href="/ncee/wwc/Topic.aspx?sid=12" title="School Organization and Governance">School Organization and Governance</a></li>
+           <li><a href="/ncee/wwc/Topic.aspx?sid=14" title="Science">Science</a></li>
+           <li><a href="/ncee/wwc/Topic.aspx?sid=15" title="Student Behavior">Student Behavior</a></li>
+           <li><a href="/ncee/wwc/Topic.aspx?sid=16" title="Teacher and Leader Effectiveness">Teacher and Leader Effectiveness</a></li>
+           <li><a href="/ncee/wwc/Topic.aspx?sid=17" title="Teacher Incentives">Teacher Incentives</a></li>
+          </ul></li>
+        </ul></li>
+      </ul></li>
+     <li><a href="/ncee/wwc/publications_reviews.aspx" title="Publications &amp; Reviews">Publications &amp; Reviews</a>
+      <ul>
+       <li>
+        <ul>
+         <li>
+          <ul>
+           <li><a href="/ncee/wwc/Publications_Reviews.aspx?f=All%20Publication%20and%20Review%20Types,3;#pubsearch" title="Practice Guides">Practice Guides</a></li>
+           <li><a href="/ncee/wwc/Publications_Reviews.aspx?f=All%20Publication%20and%20Review%20Types,1;#pubsearch" title="Intervention Reports">Intervention Reports</a></li>
+           <li><a href="/ncee/wwc/Publications_Reviews.aspx?f=All%20Publication%20and%20Review%20Types,16;#pubsearch" title="Single Study Reviews">Single Study Reviews</a></li>
+           <li><a href="/ncee/wwc/Publications_Reviews.aspx?f=All%20Publication%20and%20Review%20Types,2;#pubsearch" title="Quick Reviews">Quick Reviews</a></li>
+          </ul></li>
+         <li><a href="/ncee/wwc/Publications_Reviews.aspx?f=All%20Publication%20and%20Review%20Types,5;#pubsearch" title="Reference Resources">Reference Resources</a>
+          <ul>
+           <li><a href="/ncee/wwc/DocumentSum.aspx?sid=19" title="Procedures &amp; Standards Handbook">Procedures &amp; Standards Handbook</a></li>
+           <li><a href="/ncee/wwc/Publications_Reviews.aspx?f=All%20Publication%20and%20Review%20Types,5;#pubsearch" title="Review Protocols">Review Protocols</a></li>
+          </ul></li>
+        </ul></li>
+      </ul></li>
+     <li><a href="/ncee/wwc/findwhatworks.aspx" title="Find What Works!">Find What Works!</a></li>
+     <li><a href="/ncee/wwc/InsidetheWWC.aspx" title="Inside the WWC">Inside the WWC</a>
+      <ul>
+       <li>
+        <ul>
+         <li>
+          <ul>
+           <li><a href="/ncee/wwc/InsidetheWWC.aspx#process" title="Our Review Process">Our Review Process</a></li>
+           <li><a href="/ncee/wwc/Publications_Reviews.aspx?f=All%20Publication%20and%20Review%20Types,5;#pubsearch" title="Review Protocols">Review Protocols</a></li>
+           <li><a href="/ncee/wwc/DocumentSum.aspx?sid=19" title="Procedures &amp; Standards Handbook">Procedures &amp; Standards Handbook</a></li>
+           <li><a href="/ncee/wwc/DocumentSum.aspx?sid=235" title="Reporting Guide for Study Authors">Reporting Guide for Study Authors</a></li>
+           <li><a href="/ncee/wwc/StudyReviewGuide.aspx" title="Study Review Guide">Study Review Guide</a></li>
+           <li><a href="/ncee/wwc/webinar.aspx" title="Webinar Materials">Webinar Materials</a></li>
+           <li><a href="/ncee/wwc/Glossary.aspx" title="Glossary of Terms">Glossary of Terms</a></li>
+          </ul></li>
+         <li><a href="#" title="Databases">Databases</a>
+          <ul>
+           <li><a href="/ncee/wwc/ReviewedStudies.aspx" title="Reviewed Studies">Reviewed Studies</a></li>
+           <li><a href="/ncee/wwc/Reviewers.aspx" title="Certified Reviewers">Certified Reviewers</a></li>
+           <li><a href="/ncee/wwc/references/registries/index.aspx" title="Evaluator Registry">Evaluator Registry</a></li>
+           <li><a href="/ncee/wwc/references/registries/index.aspx" title="Randomized Control Trial Registry">Randomized Control Trial Registry</a></li>
+          </ul></li>
+        </ul></li>
+      </ul></li>
+     <li class="last"><a href="/ncee/wwc/news_events.aspx" class="last" title="News &amp; Events">News &amp; Events</a>
+      <ul>
+       <li>
+        <ul>
+         <li>
+          <ul>
+           <li><a href="/ncee/wwc/news_events.aspx" title="What's New?">What's New?</a></li>
+           <li><a href="/ncee/wwc/whatsnew/whatsnew_rss.asp" title="Subscribe to RSS feed">Subscribe to RSS feed</a></li>
+           <li><a href="/newsflash/?url=%2Fncee%2Fwwc%2Findex%2Easp&amp;site=What+Works+Clearinghouse" title="Subscribe to NewsFlash">Subscribe to NewsFlash</a></li>
+           <li><a href="/transfer.asp?location=www.facebook.com/whatworksclearinghouse" class="external" title="Find us on Facebook ">Find us on Facebook </a></li>
+          </ul></li>
+         <li><a href="/ncee/wwc/features.aspx" title="Special Features">Special Features</a>
+          <ul>
+           <li><a href="/ncee/wwc/news.aspx?sid=1" title="Back to School">Back to School</a></li>
+           <li><a href="/ncee/wwc/news.aspx?sid=8" title="Addressing Behavior Problems">Addressing Behavior Problems</a></li>
+           <li><a href="/ncee/wwc/news.aspx?sid=3" title="College Bound">College Bound</a></li>
+           <li><a href="/ncee/wwc/news.aspx?sid=13" title="Early Childhood Instruction">Early Childhood Instruction</a></li>
+           <li><a href="/ncee/wwc/news.aspx?sid=19" title="Literacy Resources">Literacy Resources</a></li>
+          </ul></li>
+        </ul></li>
+      </ul></li>
+     <li class="more"><a href="/ncee/wwc/aboutus.aspx" class="more" title="About Us">About Us</a>
+      <ul>
+       <li>
+        <ul>
+         <li>
+          <ul>
+           <li><a href="/ncee/wwc/aboutus.aspx" title="About the WWC">About the WWC</a></li>
+           <li><a href="/ncee/wwc/Document.aspx?sid=15" title="Frequently Asked Questions">Frequently Asked Questions</a></li>
+           <li><a href="/ncee/wwc/ContactUs.aspx" title="Contact Us">Contact Us</a></li>
+           <li><a href="/ncee/wwc/help.aspx" title="Help">Help</a></li>
+          </ul></li>
+        </ul></li>
+      </ul></li>
+    </ul>
+    <div class="clear"></div>
+   </div>
+   <div class="hfsContent">
+    <a name="content"></a>
+    <!-- end hfs head --> 
+    <form name="aspnetForm" method="post" action="default.aspx?src=ft" id="aspnetForm"> 
+     <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTI1ODMyMjUzMg9kFgJmD2QWBGYPZBYCAgUPFgIeB2NvbnRlbnQFGFdoYXQgV29ya3MgQ2xlYXJpbmdob3VzZWQCAQ9kFgICAQ9kFhACAw8PFgIeBFRleHQFJEV2aWRlbmNlIGZvciBXaGF0IFdvcmtzIGluIEVkdWNhdGlvbmRkAgUPDxYCHwEFswM8cD48c3Ryb25nPldlIHJldmlldyB0aGUgcmVzZWFyY2g8L3N0cm9uZz4gb24gdGhlIGRpZmZlcmVudCA8ZW0+cHJvZ3JhbXMsIHByb2R1Y3RzLCBwcmFjdGljZXMsPC9lbT4gYW5kIDxlbT5wb2xpY2llczwvZW0+IGluIGVkdWNhdGlvbi48L3A+PHA+VGhlbiwgYnkgZm9jdXNpbmcgb24gdGhlIHJlc3VsdHMgZnJvbSA8ZW0+aGlnaC1xdWFsaXR5IHJlc2VhcmNoPC9lbT4sIHdlIHRyeSB0byBhbnN3ZXIgdGhlIHF1ZXN0aW9uIDxzdHJvbmc+JmxkcXVvO1doYXQgd29ya3MgaW4gZWR1Y2F0aW9uJiM2MzsmcmRxdW87PC9zdHJvbmc+PC9wPjxwPjxlbT5PdXIgZ29hbDwvZW0+IGlzIHRvIHByb3ZpZGUgZWR1Y2F0b3JzIHdpdGggdGhlIGluZm9ybWF0aW9uIHRoZXkgbmVlZCB0byBtYWtlIDxzdHJvbmc+ZXZpZGVuY2UtYmFzZWQgZGVjaXNpb25zPC9zdHJvbmc+LjwvcD5kZAIHD2QWDAIBD2QWAmYPFgIeCWlubmVyaHRtbAUBMWQCAw8WAh8CBQEwZAIFDxYCHwIFATZkAgcPFgIfAgUBMWQCCQ8WAh8CBQExZAILDxYEHwIFNDxhIGhyZWY9J1Jldmlld2VkU3R1ZGllcy5hc3B4Jz5zdHVkaWVzIHJldmlld2VkITwvYT4eBWNsYXNzBRdjb3VudGVyLWNhcHRpb24tZGVmYXVsdGQCCQ8QDxYIHhRBcHBlbmREYXRhQm91bmRJdGVtc2ceDURhdGFUZXh0RmllbGQFBVRvcGljHg5EYXRhVmFsdWVGaWVsZAULTG9jYXRpb25VUkweC18hRGF0YUJvdW5kZ2QQFRARU2VsZWN0IGEgdG9waWMuLi4kQ2hpbGRyZW4gYW5kIFlvdXRoIHdpdGggRGlzYWJpbGl0aWVzHkNvbGxlZ2UgYW5kIENhcmVlciBQcmVwYXJhdGlvbhJEcm9wb3V0IFByZXZlbnRpb24ZRWFybHkgQ2hpbGRob29kIEVkdWNhdGlvbhRFZHVjYXRpb24gVGVjaG5vbG9neRlFbmdsaXNoIExhbmd1YWdlIExlYXJuZXJzCExpdGVyYWN5BE1hdGgXUG9zdHNlY29uZGFyeSBFZHVjYXRpb24NU2Nob29sIENob2ljZSJTY2hvb2wgT3JnYW5pemF0aW9uIGFuZCBHb3Zlcm5hbmNlB1NjaWVuY2UQU3R1ZGVudCBCZWhhdmlvciBUZWFjaGVyIGFuZCBMZWFkZXIgRWZmZWN0aXZlbmVzcxJUZWFjaGVyIEluY2VudGl2ZXMVEAARdG9waWMuYXNweD9zaWQ9MTkQdG9waWMuYXNweD9zaWQ9MhB0b3BpYy5hc3B4P3NpZD0zEHRvcGljLmFzcHg/c2lkPTQQdG9waWMuYXNweD9zaWQ9NRB0b3BpYy5hc3B4P3NpZD02EHRvcGljLmFzcHg/c2lkPTgQdG9waWMuYXNweD9zaWQ9ORF0b3BpYy5hc3B4P3NpZD0yMhF0b3BpYy5hc3B4P3NpZD0xMRF0b3BpYy5hc3B4P3NpZD0xMhF0b3BpYy5hc3B4P3NpZD0xNBF0b3BpYy5hc3B4P3NpZD0xNRF0b3BpYy5hc3B4P3NpZD0xNhF0b3BpYy5hc3B4P3NpZD0xNxQrAxBnZ2dnZ2dnZ2dnZ2dnZ2dnZGQCDg8WAh8CBYoBVGhpcyByYXRpbmcgb25seSBtZWFucyB0aGF0IGFuIGludGVydmVudGlvbiB3YXMgPHN0cm9uZz5ubyBtb3JlIG9yIGxlc3MgZWZmZWN0aXZlPC9zdHJvbmc+IHRoYW4gdGhlIGFsdGVybmF0aXZlcyB0byB3aGljaCBpdCB3YXMgY29tcGFyZWQuZAISDw8WAh4HVmlzaWJsZWhkZAIUDxYCHwIFQuKAnE5vIGRpc2Nlcm5pYmxlIGVmZmVjdHPigJ0gbWVhbnMgYW4gaW50ZXJ2ZW50aW9uIGRvZXNu4oCZdCB3b3JrLmQCFg8WAh4LXyFJdGVtQ291bnQCBRYKAgEPZBYEAgEPDxYEHgtOYXZpZ2F0ZVVybAUzaHR0cDovL2llcy5lZC5nb3YvbmNlZS93d2MvcXVpY2tyZXZpZXcuYXNweD9zaWQ9MjM5HwEFP1dXQyBSZXZpZXcgb2YgYSBSZWNlbnQgU3R1ZHkgb2YgRnVsbC1EYXkgdnMuIFBhcnQtRGF5IFByZXNjaG9vbGRkAgMPDxYCHwEFBkZlYiAyNmRkAgIPZBYEAgEPDxYEHwoFM2h0dHA6Ly9pZXMuZWQuZ292L25jZWUvd3djL3F1aWNrcmV2aWV3LmFzcHg/c2lkPTIzOB8BBS5XV0MgUmV2aWV3IG9mIGEgUmVjZW50IFRvb2xzIG9mIHRoZSBNaW5kIFN0dWR5ZGQCAw8PFgIfAQUGRmViIDI1ZGQCAw9kFgQCAQ8PFgQfCgU6aHR0cDovL2llcy5lZC5nb3YvbmNlZS93d2MvaW50ZXJ2ZW50aW9ucmVwb3J0LmFzcHg/c2lkPTIyNR8BBXBVcGRhdGVkIFJldmlldyBvZiBIb3VnaHRvbiBNaWZmbGluIFJlYWRpbmcmIzE2OTsgRmluZHMgdGhhdCBNb3JlIFJlc2VhcmNoIGlzIFN0aWxsIE5lZWRlZCBvbiBQcm9ncmFt4oCZcyBJbXBhY3RzZGQCAw8PFgIfAQUGRmViIDEwZGQCBA9kFgQCAQ8PFgQfCgU5aHR0cDovL2llcy5lZC5nb3YvbmNlZS93d2MvU2luZ2xlU3R1ZHlSZXZpZXcuYXNweD9zaWQ9MjMxHwEFTldXQyBSZXZpZXdzIFN0dWR5IG9mIHRoZSBSZXNwb25zaXZlIENsYXNzcm9vbSBQcm9mZXNzaW9uYWwgRGV2ZWxvcG1lbnQgUHJvZ3JhbWRkAgMPDxYCHwEFBkZlYiAxMGRkAgUPZBYEAgEPDxYEHwoFO2h0dHA6Ly9pZXMuZWQuZ292L25jZWUvd3djL1NpbmdsZVN0dWR5UmV2aWV3LmFzcHg/c2lkPTEwMTExHwEFZVN0dWR5IEFzc2Vzc2VzIHRoZSBJbXBhY3Qgb2YgRGlhZ25vc3RpYyBBc3Nlc3NtZW50IFRvb2xzIChEQVQpIG9uIE1hdGhlbWF0aWNzIGFuZCBSZWFkaW5nIEFjaGlldmVtZW50ZGQCAw8PFgIfAQUFRmViIDNkZGTwyrv1K530vBQjGnsrTzE4MqgL7A=="> 
+     <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="DD389416"> 
+     <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWEwLttsz/DwLOg52dDQKpg92oDQLx0eXACQLx0ZEkAvHRvYkLAvHRqfIDAvHR1dcKAvHRrVMC8dHZtAsCvoPJjQQCoYPdqA0CvoPdqA0CvIPdqA0CvYPdqA0CuoPdqA0Cu4PdqA0C5v+ejQgCw6CDzQayU/sHLaNgg9NMTHm0JmOfId/UQg=="> 
+     <div id="bodydiv" class="front"> 
+      <div id="homepage-panel" class="homepage-panel"> 
+       <script type="text/javascript" src="js/rotator.js"></script> 
+       <div id="rotator" class="rotator exclude-definition"> 
+        <div id="rotator-content" class="rotator-content"></div> 
+        <div id="rotator-controls" class="controls"> 
+         <div id="prev" class="prev"> 
+          <input id="prevbtn" title="Previous slide" onclick="RotatorAction(-1);return false;" type="button" value="-1"> 
+         </div> 
+         <div id="pause" class="pause"> 
+          <input id="pausebtn" title="Pause slide" onclick="RotatorAction(0,this);return false;" type="button" value="0"> 
+         </div> 
+         <div id="next" class="next"> 
+          <input id="nextbtn" title="Next slide" onclick="RotatorAction(1);return false;" type="button" value="1"> 
+         </div> 
+        </div> 
+       </div> 
+       <div id="aboutus" class="panel-right-pad"> 
+        <h2> <a href="AboutUs.aspx"><span style="color:#006699;font-weight:bold;font-style:italic;"> <span id="ctl00_ContentPlaceHolder1_lblAboutTitle">Evidence for What Works in Education</span></span></a></h2> 
+        <span id="ctl00_ContentPlaceHolder1_lblAbout" class="include-definition"><p><strong>We review the research</strong> on the different <em>programs, products, practices,</em> and <em>policies</em> in education.</p><p>Then, by focusing on the results from <em>high-quality research</em>, we try to answer the question <strong>“What works in education?”</strong></p><p><em>Our goal</em> is to provide educators with the information they need to make <strong>evidence-based decisions</strong>.</p></span> 
+       </div> 
+      </div> 
+      <div id="primary-home-content" class="primary-home-content"> 
+       <div class="box-top"> 
+       </div> 
+       <div class="homepage-column max-height"> 
+        <div id="publications"> 
+         <div class="box "> 
+          <h2 style="line-height:1em;"> <a href="Publications_Reviews.aspx">Publications &amp; Reviews</a> </h2> 
+          <style type="text/css">
+	.tickerWrap {
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 22px;
+	}
+	
+	.ticker_num {
+		color: #fff !important;
+		font-weight: bold;
+	}
+	
+	.digit {
+		background: url(images/ticker_back.png) no-repeat;
+		width: 18px;
+		height: 39px;
+		float: left;
+		margin-left: 2px;
+		text-decoration: line-through; 
+		color: #0e4426 !important;
+		text-align: center;
+		font-weight: lighter !important;
+		padding-top: 3px;
+	}
+	
+	.nodig {
+		margin-left: 0;
+	}
+	
+	
+	/*
+	@media screen and (-webkit-min-device-pixel-ratio:0) {
+		.digit {
+			padding-top: 3px;
+		}
+	}*/
+	
+	.comma {
+		margin-top: 8px;
+		color: #0f4727 !important;
+		float: left;
+		padding: 2px 0;
+		font-weight: normal;
+	}
+	.counter-caption-reviewed-studies
+	{
+	     font-family:Georgia; 
+	     font-size:.85em;
+	     padding-left:6px;  
+	     color:#000000;
+	}
+	
+	.counter-caption-default
+	{
+	     font-family:Georgia; 
+	     font-size:.7em;
+	     padding-left:6px;  
+	}
+</style> 
+          <div class="tickerWrap"> 
+           <div id="ctl00_ContentPlaceHolder1_counter_div10000" class="digit">
+            <span id="ctl00_ContentPlaceHolder1_counter_span10000" class="ticker_num">1</span>
+           </div> 
+           <div class="digit">
+            <span id="ctl00_ContentPlaceHolder1_counter_span1000" class="ticker_num">0</span>
+           </div> 
+           <div class="comma">
+            ,
+           </div> 
+           <div class="digit nodig">
+            <span id="ctl00_ContentPlaceHolder1_counter_span100" class="ticker_num">6</span>
+           </div> 
+           <div class="digit">
+            <span id="ctl00_ContentPlaceHolder1_counter_span10" class="ticker_num">1</span>
+           </div> 
+           <div class="digit">
+            <span id="ctl00_ContentPlaceHolder1_counter_span1" class="ticker_num">1</span>
+           </div> 
+           <div>
+            <span id="ctl00_ContentPlaceHolder1_counter_spanCaption" class="counter-caption-default"><a href="ReviewedStudies.aspx">studies reviewed!</a></span>
+           </div> 
+          </div> 
+          <br>
+          <br> 
+          <p>Get started with WWC products:</p> 
+          <ul id="canned-Publication-Searches" class="hplist"> 
+           <li><a href="Publications_Reviews.aspx?f=All%20Publication%20and%20Review%20Types,3;#pubsearch"><img src="images/pg.png" style="border: 0; width: 36px; height: 36px; float: left; margin-right: 10px;" alt="Practice Guides"><span style="font-size:1.22em;font-weight:bold">Practice guides</span></a> help educators address classroom challenges.</li> 
+           <li><a href="Publications_Reviews.aspx?f=All%20Publication%20and%20Review%20Types,1;#pubsearch"><img src="images/ir.png" style="border: 0; width: 36px; height: 36px; float: left; margin-right: 10px;" alt="Intervention Reports"><span style="font-size:1.22em;font-weight:bold;">Intervention reports</span></a> guide evidence-based decisions.</li> 
+           <li><a href="Publications_Reviews.aspx?f=All%20Publication%20and%20Review%20Types,16;#pubsearch"><img src="images/ssr.png" style="border: 0; width: 36px; height: 36px; float: left; margin-right: 10px;" alt="Single Study Reviews"><span style="font-size:1.22em;font-weight:bold;">Single study reviews</span></a> examine research quality. </li> 
+           <li><a href="Publications_Reviews.aspx?f=All%20Publication%20and%20Review%20Types,2;#pubsearch"><img src="images/qr.png" style="border: 0; width: 36px; height: 36px; float: left; margin-right: 10px;" alt="Quick Reviews"><span style="font-size:1.22em;font-weight:bold;">Quick reviews</span></a> give the WWC's assessment of recent education research.</li> 
+           <li>The <a href="ReviewedStudies.aspx"> <span style="font-size:1.22em;font-weight:bold;">studies database</span></a> contains all WWC-reviewed studies.</li> 
+          </ul> 
+          <br> 
+          <p> Or search by <a href="topics.aspx">topics in education</a>.</p> 
+          <select name="ctl00$ContentPlaceHolder1$ddlTopics" id="ctl00_ContentPlaceHolder1_ddlTopics"> <option value="" class="selectheader">Select a topic...</option> <option value="topic.aspx?sid=19">Children and Youth with Disabilities</option> <option value="topic.aspx?sid=2">College and Career Preparation</option> <option value="topic.aspx?sid=3">Dropout Prevention</option> <option value="topic.aspx?sid=4">Early Childhood Education</option> <option value="topic.aspx?sid=5">Education Technology</option> <option value="topic.aspx?sid=6">English Language Learners</option> <option value="topic.aspx?sid=8">Literacy</option> <option value="topic.aspx?sid=9">Math</option> <option value="topic.aspx?sid=22">Postsecondary Education</option> <option value="topic.aspx?sid=11">School Choice</option> <option value="topic.aspx?sid=12">School Organization and Governance</option> <option value="topic.aspx?sid=14">Science</option> <option value="topic.aspx?sid=15">Student Behavior</option> <option value="topic.aspx?sid=16">Teacher and Leader Effectiveness</option> <option value="topic.aspx?sid=17">Teacher Incentives</option> </select>
+          <input type="submit" name="ctl00$ContentPlaceHolder1$btnPubTopic" value="Search" id="ctl00_ContentPlaceHolder1_btnPubTopic" autopostback="true"> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="homepage-column max-height"> 
+        <div id="fww"> 
+         <div class="box"> 
+          <h2> <a href="findwhatworks.aspx">Find What Works!</a></h2> 
+          <div style="vertical-align: middle; text-align: left; padding-top: 0px; padding-bottom: 10px;"> 
+           <img alt="An example of Find What Works" src="images/FWWReport-sm.gif">
+          </div> 
+          <p> Based on the research evidence, find what works to… </p> 
+          <ul id="canned-FWW-reports" class="protocollists"> 
+           <li><a href="FindWhatWorks.aspx?o=8&amp;n=Literacy&amp;r=1&amp;g=13">improve literacy skills in 3rd graders</a>,</li> 
+           <li><a href="FindWhatWorks.aspx?o=9&amp;n=Mathematics/Science&amp;r=1&amp;g=9">increase math achievement in preschoolers</a>,</li> 
+           <li><a href="FindWhatWorks.aspx?o=3&amp;n=Dropout%20Prevention&amp;r=1">reduce dropout rates</a>,</li> 
+           <li><a href="FindWhatWorks.aspx?o=19&amp;n=Special%20Needs&amp;r=1">help students with special needs</a>,</li> 
+          </ul> 
+          <p>… or <a href="FindWhatWorks.aspx">address your school’s challenge</a>!</p> 
+         </div> 
+        </div> 
+       </div> 
+       <div id="divDidYouKnowClose" style="width: 34px; height: 34px; background: url(images/close_button.png) no-repeat; position: absolute; margin-top: 5px; margin-left: 785px; z-index: 900;">
+        &nbsp;
+       </div> 
+       <div id="divDidYouKnowAnswer" style="margin-top: 20px; margin-left: 500px;position: absolute; z-index: 700; width: 267px; background: #fff; height: auto; padding: 15px; border: 5px solid #093;-webkit-box-shadow: 10px 6px 5px -2px rgba(0,0,0,0.27); -moz-box-shadow: 10px 6px 5px -2px rgba(0,0,0,0.27); box-shadow: 10px 6px 5px -2px rgba(0,0,0,0.27);"> 
+        <h2 id="h2DidYouKnowAnswer" style="text-align: center;font-style: italic; color: #093; margin-bottom: 0;"></h2> 
+        <input name="ctl00$ContentPlaceHolder1$hdnDidYouKnowAnswer" type="hidden" id="ctl00_ContentPlaceHolder1_hdnDidYouKnowAnswer" value="False"> 
+        <p id="ctl00_ContentPlaceHolder1_pDidYouKnowAnswerText" style="margin-top:10px; line-height: 1.5em;">This rating only means that an intervention was <strong>no more or less effective</strong> than the alternatives to which it was compared.</p> 
+        <a id="ctl00_ContentPlaceHolder1_hlDidYouKnowImageLink"></a> 
+       </div> 
+       <div class="homepage-column-wider max-height"> 
+        <!--<div style="position: absolute; margin-top: -10px; margin-left: 200px; z-index: 400;">
+                    <img src="images/new_ribbon.png" />
+                </div>--> 
+        <div id="news"> 
+         <div class="box"> 
+          <h2 style="line-height:1em;"> <a href="Document.aspx?sid=15&amp;pid=2"> WWC Fact Check: <br> Test Your Knowledge </a> </h2> 
+          <p id="ctl00_ContentPlaceHolder1_pDidYouKnowQuestion">“No discernible effects” means an intervention doesn’t work.</p> 
+          <p style="text-align: center; width: 100%;"> <input id="radDidYouKnowTrue" name="radDidYouKnow" type="radio" value="true"> True <input id="radDidYouKnowFalse" name="radDidYouKnow" style="margin-left: 50px;" type="radio" value="false">False </p> 
+          <div style="border-top: 5px solid #006699; margin: 20px 0 0 -20px !important; width: 100%; padding: 0 15px;">
+            &nbsp; 
+          </div> 
+          <h2> <a href="News_Events.aspx">What's New?</a> </h2> 
+          <p style="margin-top: 0;">Subscribe to NewsFlash <a href="/newsflash/?url=%2Fncee%2Fwwc%2Findex%2Easp&amp;site=What+Works+Clearinghouse
+                            http://ies.ed.gov/newsflash/?url=%2Fncee%2Fwwc%2Findex.asp&amp;site=What+Works+Clearinghouse&amp;selectedbox=What%20Works%20Clearinghouse#ncee" title="Subscribe to Newsflash"><img src="images/icons/newsflash_icon.png" width="23" height="23" border="0" alt="newsflash icon"></a> and stay updated! </p> 
+          <div style="border-bottom: 1px solid #2e2e2e; padding-bottom: 10px; margin-bottom: 0;"> 
+           <a href="http://ies.ed.gov/transfer.asp?location=www.facebook.com/whatworksclearinghouse" title="Facebook"><img src="images/icons/fb_icon.png" width="24" height="23" border="0" alt="facebook icon"></a> 
+           <a href="http://ies.ed.gov/transfer.asp?location=www.twitter.com/WhatWorksED" title="Twitter"><img src="images/icons/twitter_icon.png" width="24" height="23" border="0" alt="twitter icon"></a> 
+           <a href="ContactUs.aspx" title="Email"><img src="images/icons/email_icon.png" width="24" height="23" border="0" alt="email icon"></a> 
+           <a href="javascript:window.print()" title="Print"><img src="images/icons/print_icon.png" width="24" height="23" border="0" alt="print icon"></a> 
+           <a href="whatsnew/whatsnew_rss.asp" title="Subscribe to RSS feed"><img border="0" src="images/icons/rss.png" alt="subscribe to our rss feed"></a> 
+          </div> 
+          <ul class="dividers" style="margin-top: 4px;"> 
+           <li class="icon" style="padding-left: 0px;"> <a id="ctl00_ContentPlaceHolder1_rptrNewsEvents_ctl01_HyperLink1" href="http://ies.ed.gov/ncee/wwc/quickreview.aspx?sid=239">WWC Review of a Recent Study of Full-Day vs. Part-Day Preschool</a><br> <span id="ctl00_ContentPlaceHolder1_rptrNewsEvents_ctl01_lblDate" class="date">Feb 26</span> </li> 
+           <li class="icon" style="padding-left: 0px;"> <a id="ctl00_ContentPlaceHolder1_rptrNewsEvents_ctl02_HyperLink1" href="http://ies.ed.gov/ncee/wwc/quickreview.aspx?sid=238">WWC Review of a Recent Tools of the Mind Study</a><br> <span id="ctl00_ContentPlaceHolder1_rptrNewsEvents_ctl02_lblDate" class="date">Feb 25</span> </li> 
+           <li class="icon" style="padding-left: 0px;"> <a id="ctl00_ContentPlaceHolder1_rptrNewsEvents_ctl03_HyperLink1" href="http://ies.ed.gov/ncee/wwc/interventionreport.aspx?sid=225">Updated Review of Houghton Mifflin Reading© Finds that More Research is Still Needed on Program’s Impacts</a><br> <span id="ctl00_ContentPlaceHolder1_rptrNewsEvents_ctl03_lblDate" class="date">Feb 10</span> </li> 
+           <li class="icon" style="padding-left: 0px;"> <a id="ctl00_ContentPlaceHolder1_rptrNewsEvents_ctl04_HyperLink1" href="http://ies.ed.gov/ncee/wwc/SingleStudyReview.aspx?sid=231">WWC Reviews Study of the Responsive Classroom Professional Development Program</a><br> <span id="ctl00_ContentPlaceHolder1_rptrNewsEvents_ctl04_lblDate" class="date">Feb 10</span> </li> 
+           <li class="icon" style="padding-left: 0px;"> <a id="ctl00_ContentPlaceHolder1_rptrNewsEvents_ctl05_HyperLink1" href="http://ies.ed.gov/ncee/wwc/SingleStudyReview.aspx?sid=10111">Study Assesses the Impact of Diagnostic Assessment Tools (DAT) on Mathematics and Reading Achievement</a><br> <span id="ctl00_ContentPlaceHolder1_rptrNewsEvents_ctl05_lblDate" class="date">Feb 3</span> </li> 
+          </ul> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <script type="text/javascript" src="js/ProximityGlossary.js"></script> 
+     <script type="text/javascript" src="js/stickytooltip.js">   </script> 
+     <div id="tooltip-box" class="sticky-tooltip"> 
+      <div id="tooltip-container"> 
+      </div> 
+      <div class="stickystatus"></div> 
+     </div> 
+    </form> 
+    <span class="dontPrintMe clearfix"> 
+     <!-- begin hfs foot --> 
+     <div id="hfsFDummy" style="display:none"></div><script type="text/javascript">
+					//<![CDATA[
+					function hfsFooterHack(){var b=false;var fDummy=document.getElementById('hfsFDummy');if(fDummy&&fDummy.parentNode&&fDummy.parentNode.className!='hfsContent'&&fDummy.parentNode.style.clear=='both'){b=true;}return b;}var hfsFH=hfsFooterHack();if(hfsFH){document.write('\x3C/div\x3E');}
+					//]]></script>
+     <div style="clear:both"></div></span>
+   </div>
+   <div class="hfsFooter-container">
+    <div class="hfsFooter hfsNoPrint">
+     <div class="ies-center">
+      <a href="http://ies.ed.gov">Institute of Education Sciences</a>
+      <br>
+      <a href="/ncee/wwc">What Works Clearinghouse</a>
+     </div>
+     <div class="ed-link">
+      <a href="http://www.ed.gov">U.S. Department of Education</a>
+     </div>
+     <div class="footer-nav">
+      <a href="/ncee/wwc/News_Events.aspx" title="News &amp; Events">News &amp; Events</a> | 
+      <a href="/ncee/wwc/ContactUs.aspx" title="Contact Us">Contact Us</a> | 
+      <a href="/ncee/wwc/help.aspx" title="Help">Help</a> | 
+      <a href="/ncee/wwc/whatsnew/whatsnew_rss.asp" title="RSS">RSS</a> | 
+      <a href="/help/privacy.asp" title="Privacy Policy">Privacy Policy</a>
+      <br>
+      <a href="http://nces.ed.gov/statprog/2002/stdtoc.asp" title="Statistical Standards">Statistical Standards</a> | 
+      <a href="/transfer.asp?location=fedstats.sites.usa.gov" title="FedStats.gov">FedStats.gov</a>
+      <br>
+      <br>
+      <a href="" title="Notice of Language Assistance">Notice of Language Assistance</a> | 
+      <a href="http://www.ed.gov/notices/english-la" title="Information in English"> English </a> | 
+      <a href="http://www.ed.gov/notices/espanol-la" title="Information in Spanish"> español </a> | 
+      <a href="http://www.ed.gov/notices/chinese-la" title="Information in traditional Chinese"> 中文: 繁體版 </a> | 
+      <a href="http://www.ed.gov/notices/vietnamese-la" title="Information in Vietnamese"> Việt-ngữ </a> | 
+      <a href="http://www.ed.gov/notices/korean-la" title="Information in Korean"> 한국어 </a> | 
+      <a href="http://www.ed.gov/notices/tagalog-la" title="Information in Tagalog"> Tagalog </a> | 
+      <a href="http://www.ed.gov/notices/russian-la" title="Information in Russian"> Русский </a>
+     </div>
+    </div>
+   </div> 
+   <script type="text/javascript">//<![CDATA[
+if(hfsFH){document.write('\x3Cdiv\x3E');}$$i('body').css('font-size','1.0em');var b=document.getElementsByTagName('body')[0];var s=document.createElement('script');s.type='text/javascript';s.src='/js/federated-analytics.all.min.js';b.appendChild(s);
+//]]></script>
+  </div>
+  <!--hfs.101--> 
+  <!-- end hfs foot -->    
+ </body>
+</html>

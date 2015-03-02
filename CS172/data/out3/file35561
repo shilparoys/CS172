@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>USC Directory</title> 
+  <link rel="icon" href="https://www.usc.edu/favicon.ico"> 
+  <meta name="viewport" content="width=device-width"> 
+  <link rel="stylesheet" href="https://www.usc.edu/assets/themes/usc_gateway_child_directory/style.css" media="screen, projection, print"> 
+  <link rel="stylesheet" href="https://www.usc.edu/assets/themes/usc_gateway_child_directory/css/print.css" media="print"> 
+  <!--[if lt IE 9]>
+	<link rel="stylesheet" media="all" href="https://www.usc.edu/assets/themes/usc_gateway_child_directory/css/ie.css" />
+	<link rel="stylesheet" media="all" href="https://www.usc.edu/assets/themes/usc_gateway/css/ie.css" />
+	<script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]--> 
+  <script src="https://use.typekit.com/fua4yqd.js"></script> 
+  <script>try{Typekit.load();}catch(e){}</script> 
+ </head> 
+ <body class="faculty unauth" id="wp"> 
+  <header> 
+   <div class="pagewidth"> 
+    <ul class="accessibility"> 
+     <li class="nav"><a href="#topnav" title="Skip to navigation" class="scrollto">Skip to Navigation</a></li> 
+     <li class="content"><a href="#content-main" title="Skip to content" class="scrollto">Skip to Content</a></li> 
+    </ul> 
+    <h1><a href="http://www.usc.edu/" class="mono">USC</a> <a href="http://www.usc.edu/" class="name">University of Southern California</a></h1> 
+    <h2><a href="http://www.usc.edu/directory" title="Directory">USC Directory</a></h2> 
+   </div>
+   <!--/.pagewidth--> 
+  </header> 
+  <div class="pagewidth"> 
+   <a name="topnav"></a> 
+   <section id="topnav" class="alignleft"> 
+    <nav id="filter-menu">
+     <ul> 
+      <li id="menu-item-faculty"><a href="/wp/faculty/">Faculty, Staff &amp; Affiliate Directory</a><mark></mark></li> 
+      <li id="menu-item-student"><a href="/wp/shiblogin.do?r=/wp/student/SearchForm.do">Student Directory <span class="login_note">(login required)</span></a><mark></mark></li> 
+      <li id="menu-item-department"><a href="http://www.usc.edu/directories/departments.html">Departments &amp; Offices Directory</a><mark></mark></li> 
+     </ul>
+    </nav> 
+    <section id="tips" class="alignleft"> 
+     <h3>Search Tips</h3> 
+     <ul> 
+      <li>The directory will return up to 100 search results.</li> 
+      <li>Use an asterisk (*) for a wildcard search. For example, "deb*a" will return Deborah and Debra, but not Debbie.</li> 
+     </ul> 
+    </section> 
+   </section> 
+   <section id="content-main" class="page-curl"> 
+    <div id="wp" class="wp_form"> 
+     <form name="ldapSearch" id="ldapSearch" target="_self" method="POST" action="SearchForm.do"> 
+      <section class="basic"> 
+       <dl compact> 
+        <dt>
+         <label for="wp_t">Basic Search</label>
+        </dt> 
+        <dd> 
+         <input type="text" class="wp_t" id="basic" name="p_quickSearch" value=""> 
+         <input name="action" id="basic_submit" type="submit" value="Search" onclick="clearTimeout(myTimer.t);"> 
+        </dd> 
+       </dl> 
+      </section> 
+      <section class="advanced"> 
+       <dl compact> 
+        <dt>
+         <label for="wp_gn">First Name</label>
+        </dt> 
+        <dd> 
+         <input type="text" autocomplete="off" class="wp_t" id="givenName" name="p_givenName" value=""> 
+        </dd> 
+        <dt>
+         <label for="wp_sn">Last Name</label>
+        </dt> 
+        <dd> 
+         <input type="text" autocomplete="off" class="wp_t" id="sn" name="p_sn" value=""> 
+        </dd> 
+        <dt>
+         <label for="wp_mail">E-mail</label>
+        </dt> 
+        <dd> 
+         <input type="text" autocomplete="off" class="wp_t" id="mail" name="p_mail" value=""> 
+        </dd> 
+        <dt>
+         <label for="wp_dep">Department</label>
+        </dt> 
+        <dd> 
+         <input type="text" autocomplete="off" class="wp_t" id="departmentNumber" name="p_departmentNumber" value=""> 
+        </dd> 
+        <dt>
+         <label for="wp_div">Division</label>
+        </dt> 
+        <dd> 
+         <input type="text" autocomplete="off" class="wp_t" id="uscEmployeeHomeDivision" name="p_uscEmployeeHomeDivision" value=""> 
+        </dd> 
+        <dt>
+         <label for="wp_tn">Phone</label>
+        </dt> 
+        <dd> 
+         <input type="text" autocomplete="off" class="wp_t" id="telephoneNumber" name="p_telephoneNumber" value=""> 
+        </dd> 
+       </dl> 
+       <input type="hidden" name="p_uscAffiliationStudent" id="uscAffiliationStudent" value="unchecked" unchecked="unchecked"> 
+       <input type="hidden" name="p_uscAffiliationStaff" id="uscAffiliationStaff" value="checked" checked> 
+       <input type="hidden" name="p_uscAffiliationFaculty" id="uscAffiliationFaculty" value="checked" checked> 
+       <input type="hidden" name="p_uscAffiliationAffiliate" id="uscAffiliationAffiliate" value="checked" checked> 
+       <dl compact> 
+        <dt class="results2"></dt> 
+        <dd class="results2">
+         <span id="myreply"> </span>
+        </dd> 
+       </dl> 
+       <br clear="left"> 
+       <input type="hidden" name="PARAMETER_PREFIX" value="wp_"> 
+       <input name="action" id="wp_submit" type="submit" value="Show Results" onclick="clearTimeout(myTimer.t);"> 
+       <br clear="all"> 
+      </section>
+     </form>
+    </div> 
+   </section>  
+   <!--/#content-main--> 
+   <section id="content-sub"> 
+    <nav class="section box related"> 
+     <h3 class="arrowhead">Related Directories <mark></mark></h3> 
+     <ul id="menu-website-directories" class="menu"> 
+      <li><a href="http://www.usc.edu/student_life/">Student Services</a></li> 
+      <li><a href="http://www.usc.edu/directories/quick_reference_guides.html">Campus Quick Reference Guides</a></li> 
+      <li><a href="http://www.usc.edu/index/">USC Web Site Index</a></li> 
+     </ul> 
+    </nav> 
+    <nav class="section box update"> 
+     <h3 class="arrowhead">How to Update <mark></mark></h3> 
+     <p>To update your directory entry, contact your Home Department Coordinator. Faculty and staff may also update directory information via <a href="http://employees.usc.edu/">Workday</a>.</p> 
+    </nav> 
+    <nav class="section box google"> 
+     <h3 class="arrowhead">Google Enabled Accounts <mark></mark></h3> 
+     <p>The <img src="https://my.usc.edu/wp/ui/flag.gif"> icon indicates that the user has activated his or her <a href="http://google.usc.edu/">Google Apps at USC</a> account.</p> 
+    </nav> 
+   </section>
+   <!--/#content-sub--> 
+   <div class="clear"></div> 
+  </div>
+  <!--/.pagewidth--> 
+  <footer> 
+   <div class="pagewidth"> 
+    <p class="right">Website by <a title="USC Web Services" href="http://www.usc.edu/web/">USC Web Services</a></p> 
+   </div>
+   <!--/.pagewidth--> 
+  </footer> 
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js?ver=1"></script> 
+  <script type="text/javascript" src="https://www.usc.edu/assets/themes/usc_gateway/js/jq.gateway.js?ver=1"></script> 
+  <script type="text/javascript" src="https://www.usc.edu/assets/themes/usc_gateway_child_directory/js/jq.directory.js?ver=1"></script> 
+  <script type="text/javascript" src="/wp/js/wp_a.js"></script>   
+ </body>
+</html>

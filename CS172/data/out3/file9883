@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+  <meta http-equiv="refresh" content="600;url=exit.do"> 
+  <title>WebVoyáge Basic Search</title> 
+  <script src="ui/en_US/jscripts/ajaxUtils.js" type="text/javascript"></script>
+  <script type="text/javascript">
+            var msg;
+            var timeOut;
+            function timedMsg(time, grace, txtMsg)
+            {
+                msg = txtMsg;
+                timeOut = (time - grace) * 60000;
+                setTimeout("alert(msg)", timeOut);
+            }
+          </script>
+  <script src="ui/en_US/jscripts/pageInputFocus.js" type="text/javascript"></script> 
+  <link rel="stylesheet" type="text/css" media="all" href="ui/en_US/css/frameWork.css"> 
+  <link rel="stylesheet" type="text/css" media="all" href="ui/en_US/css/header.css"> 
+  <link rel="stylesheet" type="text/css" media="all" href="ui/en_US/css/quickSearchBar.css"> 
+  <link rel="stylesheet" type="text/css" media="all" href="ui/en_US/css/pageProperties.css"> 
+  <link rel="stylesheet" type="text/css" media="all" href="ui/en_US/css/searchPages.css"> 
+  <link rel="stylesheet" type="text/css" media="all" href="ui/en_US/css/searchBasic.css">
+  <!--[if lt IE 8]><link rel="stylesheet" type="text/css" media="all" href="ui/en_US/css/ieFixes.css"><![endif]-->
+  <!--[if IE 7]><link rel="stylesheet" type="text/css" media="all" href="ui/en_US/css/ie7Fixes.css"><![endif]-->
+  <!--[if IE 8]><link rel="stylesheet" type="text/css" media="all" href="ui/en_US/css/ie8Fixes.css"><![endif]-->
+ </head> 
+ <body onload="setFocus('page.searchBasic');timedMsg(10, 2, 'Your session will end in 2 minutes!')" class="frameWorkUI"> 
+  <div id="pageContainer"> 
+   <a accesskey="1" href="#mainContentLink"></a>
+   <a accesskey="2" href="#searchnavbar"></a>
+   <a accesskey="3" href="#mainNav"></a> 
+   <div id="pageHeader"> 
+    <div id="headerRow"> 
+     <div title="This a logo image within a link" id="logo"> 
+      <a href="http://www.greenriver.edu/library"><img alt="Green River Community College" src="ui/en_US/images/GRCCLogo.jpg"></a> 
+     </div> 
+     <div id="patronCol"> 
+      <div title="Log in&nbsp;to your account" id="headerPatron"> 
+       <span><a href="login">Log in</a>&nbsp;to your account</span> 
+      </div> 
+      <div title="Clicking this link opens Help in a new window" id="headerHelp"> 
+       <span><a target="help" href="ui/en_US/htdocs/help/searchBasic.html">Help</a>&nbsp;</span> 
+      </div> 
+     </div> 
+     <div title="Main Navigation Bar" id="headerTabs"> 
+      <a name="mainNav"></a> 
+      <h2 class="nav">Main Navigation Bar</h2> 
+      <ul class="navbar"> 
+       <li title="Search the library" class="on"> <a name="page.header.buttons.search.button" href="searchBasic"><span>Search</span></a> </li> 
+       <li title="My search list" class="off"> <a name="page.header.buttons.mySearches.button" href="mySearch"><span>My Searches</span></a> </li> 
+       <li title="My book list" class="off"> <a name="page.header.buttons.myList.button" href="myList"><span>My List</span></a> </li> 
+       <li title="My account information" class="off"> <a name="page.header.buttons.myAccount.button" href="myAccount"><span>My Account</span></a> </li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="mainContent"> 
+    <a name="mainContentLink"></a> 
+    <h1 id="pageHeadingTitle">Basic Search</h1> 
+    <noscript> 
+     <h2 class="accessibilityHeader">Notice: This web application times out 10 minutes after loading a page.</h2> 
+    </noscript> 
+    <div title="Currently Connected Database(s)." id="databaseInfo"> 
+     <span id="dbSelLabel">Database:</span>
+     <span id="page.search.database.label">My Library Catalog</span> 
+    </div> 
+    <a name="searchnavbar"></a> 
+    <div id="searchNav"> 
+     <h2 class="nav">Search Tab Navigation Bar</h2> 
+     <ul title="Search Tab Navigation Bar" class="navbar"> 
+      <li title="Basic search" class="on"> <a name="page.search.buttons.basic.button" href="searchBasic"><span>Basic</span></a> </li> 
+      <li title="Advanced search" class="off"> <a name="page.search.buttons.advanced.button" href="searchAdvanced"><span>Advanced</span></a> </li> 
+      <li title="Search by subject" class="off"> <a name="page.search.buttons.subjectHeading.button" href="searchSubject"><span>Subject List</span></a> </li> 
+      <li title="Search by author" class="off"> <a name="page.search.buttons.author.button" href="searchAuthor"><span>Author List</span></a> </li> 
+      <li title="Search for journals by title" class="off"> <a name="page.search.buttons.journals.button" href="http://sfxhosted02.exlibrisgroup.com/greenriver/az"><span>Journal List</span></a> </li> 
+      <li title="Search by course reserve" class="off"> <a name="page.search.buttons.courseReserve.button" href="enterCourseReserve.do"><span>Course Reserve</span></a> </li> 
+      <li title="New Items Search" class="off"> <a name="page.search.buttons.newbooks.button" href="newBooks.cgi?sk=en_US"><span>New Items </span></a> </li> 
+     </ul> 
+    </div> 
+    <div title="Click to show search history." id="searchHistoryLink"> 
+     <a href="searchHistory">Search History</a> 
+    </div> 
+    <div id="searchForm"> 
+     <form id="searchBasic" accept-charset="UTF-8" method="GET" action="search"> 
+      <div id="searchParams"> 
+       <div id="searchInputs"> 
+        <label for="searchArg">Search:</label>
+        <input title="Please enter search term(s)." id="searchArg" name="searchArg" class="inputStyle" size="51" accesskey="s" type="text">
+        <label for="searchCode">within</label> 
+        <select title="Select the index to search." class="" name="searchCode" id="searchCode"><option selected value="GKEY^*">Keyword</option><option value="TKEY^*">Title Keyword</option><option value="TALL">Title Starts With (omit A, An, The)</option><option value="NKEY*^">Author Keyword</option><option value="SKEY^*">Items with Keyword in Subject</option><option value="SUBJ@">Subject Headings with Keyword in Subject</option><option value="CALL+">Call Number</option><option value="ISB3">ISBN</option></select> 
+       </div> 
+       <div id="quickLimits"> 
+        <label for="limitTo">Limit To:</label> 
+        <select title="Limit your search to these items." class="" name="limitTo" id="limitTo"><option value="none"></option><option value="LOCA=Print and Electronic Books">All Books (Paper and Electronic)</option><option value="LOCA=Print Books">Print Books</option><option value="LOCA=Electronic Books">eBooks</option><option selected value="TYPE=gm">All Films (DVDs, Streaming, VHS)</option><option value="MEDI=v|LOCA=Physical Films">DVDs and VHS</option><option value="LOCA=Streaming Films">Streaming Films</option><option value="MEDI=s">CDs</option><option value="LOCA=Basic Skills Collection">Basic Skills Collection</option><option value="LOCA=Essential Skills Collection">Essential Skills Collection</option><option value="LOCA=Reference Collection">Reference Collection</option><option value="LOCA=Main Collection">Main Collection</option></select> 
+       </div> 
+      </div> 
+      <div title="" id="searchRecs"> 
+       <label for="recCount">Records per page:</label> 
+       <select title="Select how many records to display per page." class="" name="recCount" id="recCount"><option value="10">10 records per page</option><option value="20">20 records per page</option><option value="25">25 records per page</option><option selected value="50">50 records per page</option></select> 
+      </div> 
+      <div id="searchLinks"> 
+       <input type="hidden" name="searchType" value="1">
+       <input title="Search the library" type="submit" name="page.search.search.button" id="page.search.search.button" value="Search">
+       <span class="formHorizontalSpacer">&nbsp;</span>
+       <input type="reset" id="page.search.clear.button" value="Reset"> 
+      </div> 
+     </form> 
+    </div> 
+    <div class="pageHTMLSnippet"> 
+     <div class="searchTip"> 
+      <span class="label">Search Tips: </span> enter words relating to your topic, use quotes to search phrases: 
+      <span class="example">"world wide web"</span>, use + to mark essential terms: 
+      <span class="example">+explorer</span>, use * to mark important terms: 
+      <span class="example">*internet</span>, use ? to truncate: 
+      <span class="example">browser?</span> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="push"></div> 
+  </div> 
+  <div id="pageFooter"> 
+   <div title="Footer Navigation Bar" id="footerTabs"> 
+    <a name="navFooter"></a> 
+    <h2 class="navFooter">Footer Navigation Bar</h2> 
+    <ul class="navbar"> 
+     <li title="Search the library" class="on"> <a id="page.footer.buttons.search.button" name="page.footer.buttons.search.button" href="searchBasic"><span>Search</span></a> </li> 
+     <li title="My search list" class="off"> <a id="page.footer.buttons.mySearches.button" name="page.footer.buttons.mySearches.button" href="mySearch"><span>My Searches</span></a> </li> 
+     <li title="My book list" class="off"> <a id="page.footer.buttons.myList.button" name="page.footer.buttons.myList.button" href="myList"><span>My List</span></a> </li> 
+     <li title="My account information" class="off"> <a id="page.footer.buttons.myAccount.button" name="page.footer.buttons.myAccount.button" href="myAccount"><span>My Account</span></a> </li> 
+     <li title="Help on searching the library catalog" class="off"> <a id="page.footer.buttons.help.button" name="page.footer.buttons.help.button" href="ui/en_US/htdocs/help/searchBasic.html" target="newWin"><span>Help</span></a> </li> 
+    </ul> 
+   </div> 
+   <div id="libraryLink"> 
+    <span><span id="spanpage.footer.library.link"><a title="Holman Library" href="http://www.greenriver.edu/library">Holman Library</a></span></span> 
+   </div> 
+   <div title="Copyright" id="copyright"> 
+    <span>© 2011 Ex Libris Group. All rights reserved.</span> 
+   </div> 
+  </div>   
+ </body>
+</html>

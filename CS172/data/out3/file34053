@@ -1,0 +1,113 @@
+<html>
+ <head></head>
+ <body> 
+  <p align="center"><strong><font face="Arial"><big>Please wait to be redirected<br> To the new Career Discovery website</big></font></strong></p> 
+  <script>
+
+/*
+Count down then redirect script 2
+By William Kemper (kemperwilliam@hotmail.com)
+For this script and more, visit http://javascriptkit.com
+*/
+
+//specify redirect url
+var redirecturl="http://www.careerdiscovery.gatech.edu"
+//specify pause duration before redirection (in seconds)
+var pausefor=3
+
+//DONE EDITING
+
+function postaction(){
+if (window.timer){
+clearInterval(timer)
+clearInterval(timer_2)
+}
+window.location=redirecturl
+}
+setTimeout("postaction()",pausefor*1000)
+
+</script> 
+  <!--[if IE]>
+
+<script language="JavaScript1.2">
+
+<!--
+
+// this script was originally authored by william kemper.  I have no homepage.
+var switchm=new Array
+switchm[0]="ffaa00";
+switchm[1]="ffff00";
+switchm[2]="00ff00";
+switchm[3]="0099ff";
+switchm[4]="ff0000";
+switchm[5]="ff00ff";
+// if you want to add more colors go ahead, all the for limits are based on array length so
+// you shouldn't need to change any of the code, just add more colors.
+
+i=0
+j=0
+function STROBE()
+{
+if (j>increment.length-1)
+	{
+	j=0
+	i++
+		if (i>switchm.length-1)
+		{
+		i=0
+		}
+	}
+document.all.increment[j].filters.blendTrans.apply()
+document.all.increment[j].bgColor=switchm[i]
+document.all.increment[j].filters.blendTrans.play()
+j++
+}
+timer=setInterval("STROBE()",20) // change the number to effect the speed of the loadbar.
+timer_2=setInterval("REVEAL()",20)
+function REVEAL()
+	{
+	if (document.images[0].complete)
+		{
+		clearInterval(timer)
+		clearInterval(timer_2)
+		document.all.loadbar.style.visibility="hidden";
+		document.all.content.style.visibility="visible";
+		}
+	}
+// i don't know how to put comments in the css, but change duration to  effect the speed of the fade effect.
+
+
+
+//-->  
+  <style><!--
+body
+	{
+	font-size:12px;
+	font-family:Arial;
+	color:000000
+	}
+#increment
+	{
+	filter:blendTrans(duration=1)
+	}
+-->
+</style> 
+  <!--[endif]----> 
+  <!--[if IE]>
+
+<div id=loadbar 
+style=position:absolute;top:expression(document.body.clientHeight/2-100);left:expression(document.body.clientWidth/2-50)>
+<table cellspacing=0 cellpadding=0 width=100><tr><td 
+colspan=10><b>Loading...</b></td></tr><tr>
+<script language="JavaScript"><!--
+for (k=0;k<10;k++)
+{
+document.write("<td id=increment width=10 height=20></td>") // you could set  the length of the loadbar by changing the upper limit of the for statement.
+}
+//-->   
+  <div id="content" style="position:absolute;top:expression((document.body.clientHeight-document.images[0].height)/2);left:expression((document.body.clientWidth-document.images[0].width)/2);visibility:hidden;"> 
+   <img src="placeholder.gif" width="1" height="1"> 
+  </div> 
+  <!--[endif]---->  
+ </body>
+</html>

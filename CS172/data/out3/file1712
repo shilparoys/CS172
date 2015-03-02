@@ -1,0 +1,911 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="en-us" xmlns:fb="http://www.facebook.com/2008/fbml">
+ <head id="head1">
+  <title>
+	Pennsylvania College of Technology - Date/Time View
+</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta id="title1" name="title">
+  <meta id="description1" name="description">
+  <link href="Calendar.css" type="text/css" rel="stylesheet"> 
+  <script src="jquery-1.7.2.min.js" type="text/javascript"></script> 
+  <script src="multiSelect.js" type="text/javascript"></script> 
+  <script type="text/javascript" src="PopupWindows.js"></script> 
+  <script type="text/javascript" src="QuickTip.js"></script> 
+  <script type="text/javascript" src="JSFunctions.js"></script> 
+  <script type="text/javascript"> 
+			function displayKeywordWindow(){
+				var new_window = window.open('KeywordList.aspx?keywords=' + encodeURIComponent(String("")), 'Category\SubCategory', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=0,width=380,height=228,left=212,top=50');
+				new_window.focus();
+				document.Form1.dlstCategory.selectedIndex = 0;   
+			}
+			             
+			function displaySelectedLocationsWindow(){  
+				var new_window = window.open('SelectedLocationList.aspx?locs=&lFormat=Location - Building - Room', 'Category\SubCategory', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=0,width=380,height=228,left=212,top=50');
+				new_window.focus();
+				document.Form1.dlstCategory.selectedIndex = 0;
+            }
+
+            $(document).ready(function () {
+                $(".expander").css("cursor", "pointer").click(function () {
+                    if ($(this).html() == "+") { 
+                        $(this).html("-");
+                        $("#" + $(this)[0].id.replace("a", "d")).toggle();
+                    } 
+                    else {
+                        $(this).html("+");
+                        $("#" + $(this)[0].id.replace("a", "d")).toggle();
+                    }
+                });
+
+
+                 $(".url").hover(  
+                        function (e) {    
+                            var dataurl= $(this).attr("data-url");
+                            var data= $(this).attr("data");
+                            initQuickTip(dataurl,data,e);
+                        },  
+                        function (e) {    
+                            removeTimouts();               
+                            startexitingQuickTip();
+                       }
+                     ); 
+
+                    $("#dlstView").prop('selectedIndex', 0);
+                    $("#dlstView").blur();
+
+                       $(".openInternetBrowser").click(function (e) {    
+                            e.stopPropagation();
+                            var dataurl= $(this).attr("data-url");
+                            openInternetBrowser(dataurl);
+                        });
+
+
+
+            });
+
+            function checkBoxSelector(toggle) {
+                $("#cellCBlock input:checkbox").attr("checked", toggle);
+            }
+
+            function openCategorySelector(){
+                var lAutoOpen = "Disable";
+                if(lAutoOpen == "Enable"){
+                    var new_window = window.open('CategorySubCategorySelect.aspx', '', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=0,width=380,height=400,left=212,top=50');
+		            new_window.focus();
+                }
+            }
+
+
+
+		</script> 
+  <style type="text/css">
+                .modallayer {background-color:#C0C0C0;position:absolute;top:0px;left:0px;width:100%;}
+                .divlayer {position:absolute;display:none;}
+                .divlayerborder {border:solid 2px #214380;}
+                .divlayerbackground {background-color:#FFFFFF;}
+                .divlayerpadding {margin:5px;border:solid 1px #214380;}
+                .divlayerclosebar {}
+                .divlayercloseaction {float:right;font-weight:bold;padding-right:10px;}
+                .divlayerallaction {float:left;font-weight:bold;padding-left:10px;}
+                .divlayernoneaction {float:left;font-weight:bold;padding-left:10px;}
+                .divlayersaveaction {float:left;font-weight:bold;padding-left:10px;}               
+            </style> 
+  <style type="text/css">#cellCBlock {height:150px;overflow-y:scroll;border-top:2px inset #C0C0C0;border-left:2px inset #C0C0C0;border-bottom:1px solid #C0C0C0;border-right:1px solid #C0C0C0;} .ccontainer {width:100%;} .sccontainer {margin-left:30px;display:none;}</style>
+ </head> 
+ <body> 
+  <div style="position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden;">
+   <a href="#skip" title="Skip to content">Skip to content</a>
+  </div> 
+  <!--Start Header Here--> 
+  <style type="text/css" media="screen, projection">
+	@import url("/styles/pct11.css");
+</style> 
+  <style type="text/css" media="print">
+	@import url("/styles/print.css");
+</style> 
+  <div id="pagebody"> 
+   <ul id="nav"> 
+    <li><a class="logo" href="http://www.pct.edu/"><img src="/images/PCTlogoBlue.gif" alt="Pennsylvania College of Technology" width="200" height="160"></a> 
+     <ul> 
+      <li><a href="/default.aspx?type=&amp;view=DateTime&amp;range=next45">Calendars</a> 
+       <ul> 
+        <li><a href="/default.aspx?type=&amp;view=DateTime&amp;category=13-0&amp;range=next90">Academic</a></li> 
+        <li><a href="/default.aspx?type=&amp;view=DateTime&amp;category=5-0&amp;range=next90">Admissions Tours</a></li> 
+        <li><a href="/default.aspx?type=&amp;view=DateTime&amp;category=16-0&amp;numdays=180">Alumni</a></li> 
+        <li><a href="/default.aspx?type=&amp;view=DateTime&amp;category=2-0&amp;range=next45">Athletics</a></li> 
+        <li><a href="/default.aspx?type=&amp;view=DateTime&amp;category=19-0&amp;range=next90">Career Services</a></li> 
+        <li><a href="/default.aspx?type=&amp;view=DateTime&amp;category=4-0&amp;range=next90">Community Arts Center</a></li> 
+        <li><a href="/default.aspx?type=&amp;view=DateTime&amp;category=18-0&amp;range=next90">Dining</a></li> 
+        <li><a href="/default.aspx?type=&amp;view=DateTime&amp;category=22-0&amp;range=next90">Gallery</a></li> 
+        <!--<li><a href="/default.aspx?type=&amp;view=DateTime&amp;category=25-0&amp;range=next90">Health and Fitness</a></li>--> 
+        <li><a href="/default.aspx?type=&amp;view=DateTime&amp;category=8-0&amp;numdays=180">K-12 Events</a></li> 
+        <li><a href="/default.aspx?type=&amp;view=Grid&amp;category=17-0&amp;numdays=45">Le Jeune Chef Restaurant</a></li> 
+        <li><a href="/default.aspx?type=&amp;view=DateTime&amp;category=9-0&amp;range=next90">Library</a></li> 
+        <li><a href="/default.aspx?type=&amp;view=DateTime&amp;category=10-0&amp;range=next90">Placement Testing &amp; Pre-Enrollment Advising</a></li> 
+        <li><a href="/default.aspx?type=&amp;view=DateTime&amp;category=3-0&amp;range=next45">Student Activities</a></li> 
+        <!--<li><a href="/default.aspx?type=&amp;view=DateTime&amp;category=12-0&amp;range=next90">Workforce Development</a></li>--> 
+       </ul> </li> 
+     </ul> </li> 
+   </ul> 
+   <div id="global_wrapper"> 
+    <div id="global"> 
+     <form action="http://www.pct.edu/search/" method="post"> 
+      <input id="q" name="q" type="text" title="Search"> 
+      <input id="qSearchBtn" type="image" value="submit" src="http://www.pct.edu/cgi-bin/images/search_button.jpg" alt="search"> 
+      <label for="qSearchBtn" class="hidden">Search</label> 
+     </form> 
+     <ul> 
+      <li><a href="http://www.pct.edu/">Home</a></li> 
+      <li><a href="http://pctoday.pct.edu/">News</a></li> 
+      <li><a href="http://www.pct.edu/visit/">Visit Us</a></li> 
+      <li><a href="http://calendar.pct.edu/">Calendars</a></li> 
+      <li><a href="http://www.pct.edu/catalog/">Catalog</a></li> 
+      <li><a href="http://www.pct.edu/admissions/application_types.htm">Apply</a></li> 
+      <li><a href="http://www.pct.edu/about/">About Us</a></li> 
+      <li><a href="http://www.pct.edu/contact/">Contact Us</a></li> 
+     </ul> 
+    </div> 
+   </div> 
+   <!--end global--> 
+   <div id="content_wrapper"> 
+    <div id="content"> 
+     <div class="special"> 
+      <h1 id="calTitle">Calendar</h1> 
+      <div id="RSSsubscribe">
+       <a href="/rss/pct.asp"><img src="/images/rss_new.gif" alt="RSS Subscriptions"><br><span class="smaller">Subscribe</span></a>
+      </div> 
+     </div> 
+     <div id="calendar_wrapper"> 
+      <!--End Header Here--> 
+      <form name="Form1" method="post" action="EventList.aspx?fromdate=3%2f1%2f2015&amp;todate=3%2f14%2f2015&amp;view=DateTime" id="Form1" enctype="application/x-www-form-urlencoded"> 
+       <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJOTU1NDQ0NzcwDxYsHhhFdmVudERldGFpbHNIZWxwRmlsZVBhdGgFIUNhbGVuZGFyRXZlbnREZXRhaWxzVmlld0hlbHAuYXNweB4WRXZlbnRzQ2FsZW5kYXJMYW5ndWFnZQUPRXZlbnRzIENhbGVuZGFyHhJTZWxlY3RXZWVrSW1hZ2VBbHQFDlNlbGVjdCBhIHdlZWsuHgtSU1NJbWFnZUFsdAUmU3Vic2NyaWJlIHRvIFJTUyBmZWVkIG9mIGN1cnJlbnQgdmlldy4eDkFsbERheUxhbmd1YWdlBQdBbGwgRGF5HhRMb2NhdGlvbkhlbHBGaWxlUGF0aAUdQ2FsZW5kYXJMb2NhdGlvblZpZXdIZWxwLmFzcHgeCVN0YXJ0VGltZWUeD0xpc3RWaWV3SGVhZGluZwVRPHNwYW4gY2xhc3M9Imxpc3R0YWJsZWhlYWRlcnRleHQiIHN0eWxlPSJmb250LXdlaWdodDpib2xkOyI+RGF0ZS9UaW1lIFZpZXc8L3NwYW4+HgRUeXBlBQZwdWJsaWMeBFZpZXcFCERhdGVUaW1lHgZUb0RhdGUFCTMvMTQvMjAxNR4HRW5kVGltZWUeFENhdGVnb3J5SGVscEZpbGVQYXRoBR1DYWxlbmRhckNhdGVnb3J5Vmlld0hlbHAuYXNweB4MTmV4dEltYWdlQWx0BQROZXh0HhBEYXRlSGVscEZpbGVQYXRoBRlDYWxlbmRhckRhdGVWaWV3SGVscC5hc3B4HglQYWdlVGl0bGUFLlBlbm5zeWx2YW5pYSBDb2xsZWdlIG9mIFRlY2hub2xvZ3kgLSBHcmlkIFZpZXceDENsaWNrVG9QcmludAUTQ2xpY2sgaGVyZSB0byBQcmludB4TU3VtbWFyeUhlbHBGaWxlUGF0aAUcQ2FsZW5kYXJTdW1tYXJ5TGlzdFZpZXcuYXNweB4QUHJldmlvdXNJbWFnZUFsdAUIUHJldmlvdXMeC0dyaWREaXNwbGF5ZB4LRm9yTGFuZ3VhZ2UFA2Zvch4IRnJvbURhdGUFCDMvMS8yMDE1FgICAQ9kFgoCAQ9kFhpmDw8WAh4EVGV4dAUPRGlzcGxheSBGb3JtYXQ6ZGQCAQ8QDxYCHgdWaXNpYmxlZ2QQFQUGU2VsZWN0CUdyaWQgVmlldw1DYXRlZ29yeSBWaWV3DFN1bW1hcnkgVmlldw1Mb2NhdGlvbiBWaWV3FQUGU2VsZWN0CUdyaWQgVmlldw1DYXRlZ29yeSBWaWV3DFN1bW1hcnkgVmlldw1Mb2NhdGlvbiBWaWV3FCsDBWdnZ2dnFgFmZAICDw8WAh8WBQ5BbGwgQ2F0ZWdvcmllc2RkAgMPDxYGHgdUb29sVGlwBSJHbyB0byBhZG1pbmlzdHJhdGl2ZSBsb2dpbiBzY3JlZW4uHxYFDVN1Ym1pdCBFdmVudHMfF2dkZAIEDw8WBB4ISW1hZ2VVcmwFDmltYWdlcy9EYXkuZ2lmHg1BbHRlcm5hdGVUZXh0BSFEaXNwbGF5IGFsbCB0aGUgZXZlbnRzIGZvciB0b2RheS5kZAIFDw8WBB8ZBQ9pbWFnZXMvV2Vlay5naWYfGgUsRGlzcGxheSBhbGwgdGhlIGV2ZW50cyBmb3IgdGhlIGN1cnJlbnQgd2Vlay5kZAIGDw8WBB8ZBRBpbWFnZXMvTW9udGguZ2lmHxoFLURpc3BsYXkgYWxsIHRoZSBldmVudHMgZm9yIHRoZSBjdXJyZW50IG1vbnRoLmRkAgcPDxYEHxkFD2ltYWdlcy9ZZWFyLmdpZh8aBSxEaXNwbGF5IGFsbCB0aGUgZXZlbnRzIGZvciB0aGUgY3VycmVudCB5ZWFyLmRkAggPFgIfFgVAPHNwYW4gY2xhc3M9ImJvZHljb3B5IiBzdHlsZT0iZm9udC1zaXplOjFlbTsiPiZuYnNwOzwvc3Bhbj48L3RkPmQCCQ8PFgofGQUUaW1hZ2VzL3N1YnNjcmliZS5naWYfGAUxQ2xpY2sgdG8gc3Vic2NyaWJlIHRvIHRoZSBjdXJyZW50IHZpZXcgb2YgZXZlbnRzLh8WBTFDbGljayB0byBzdWJzY3JpYmUgdG8gdGhlIGN1cnJlbnQgdmlldyBvZiBldmVudHMuHgtOYXZpZ2F0ZVVybAUBIx8XaBYCHgdvbmNsaWNrBRdjYWxlbmRhclN1YnNjcmlwdGlvbigpO2QCCg8PFgofGQUTaW1hZ2VzL2Rvd25sb2FkLmdpZh8YBTpDbGljayB0byBkb3dubG9hZCBldmVudHMgc2hvd24gaW4gQ1NWLCBpQ0FMIG9yIFhNTCBmb3JtYXQuHxYFOkNsaWNrIHRvIGRvd25sb2FkIGV2ZW50cyBzaG93biBpbiBDU1YsIGlDQUwgb3IgWE1MIGZvcm1hdC4fGwUBIx8XZxYCHxwFgAFkb3dubG9hZFR5cGUoJ2Rvd25sb2FkdHlwZS5hc3B4P2Zyb21kYXRlPTMvMS8yMDE1JnRvZGF0ZT0zLzE0LzIwMTUmZGlzcGxheT0mdmlldz1EYXRlVGltZSZ0eXBlPXB1YmxpYyZkb3dubG9hZD1kb3dubG9hZCcsZXZlbnQpO2QCCw8PFggfGQUPaW1hZ2VzL2hlbHAuZ2lmHxgFKkNsaWNrIGZvciBoZWxwIGluIHVzaW5nIGNhbGVuZGFyIGRpc3BsYXlzLh8WBSpDbGljayBmb3IgaGVscCBpbiB1c2luZyBjYWxlbmRhciBkaXNwbGF5cy4fGwUlQ2FsZW5kYXJEYXRlVmlld0hlbHAuYXNweD90eXBlPXB1YmxpY2RkAgwPDxYKHxkFEGltYWdlcy9wcmludC5naWYfGAUpUHJpbnQgdGhlIGNvbnRlbnRzIG9mIHRoZSBjdXJyZW50IHNjcmVlbi4fFgUpUHJpbnQgdGhlIGNvbnRlbnRzIG9mIHRoZSBjdXJyZW50IHNjcmVlbi4fGwVgRXZlbnRMaXN0LmFzcHg/ZnJvbWRhdGU9My8xLzIwMTUmdG9kYXRlPTMvMTQvMjAxNSZkaXNwbGF5PSZ2aWV3PURhdGVUaW1lJnR5cGU9cHVibGljJnByaW50PXByaW50HxdnZGQCAg9kFjgCAg8PFgIfFgUORGlzcGxheSBNb250aDpkZAIDDxBkDxYNZgIBAgICAwIEAgUCBgIHAggCCQIKAgsCDBYNEAUGU2VsZWN0BQZTZWxlY3RnEAUHSmFudWFyeQUHSmFudWFyeWcQBQhGZWJydWFyeQUIRmVicnVhcnlnEAUFTWFyY2gFBU1hcmNoZxAFBUFwcmlsBQVBcHJpbGcQBQNNYXkFA01heWcQBQRKdW5lBQRKdW5lZxAFBEp1bHkFBEp1bHlnEAUGQXVndXN0BQZBdWd1c3RnEAUJU2VwdGVtYmVyBQlTZXB0ZW1iZXJnEAUHT2N0b2JlcgUHT2N0b2JlcmcQBQhOb3ZlbWJlcgUITm92ZW1iZXJnEAUIRGVjZW1iZXIFCERlY2VtYmVyZxYBZmQCBA8PFgIfFgUPQWR2YW5jZWQgU2VhcmNoZGQCBQ8PFgIfFgUxPHNw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wqDCoExvYmJ5BQUzLTUtNmcQBSfCoMKgwqBUaGUgVmlsbGFnZSBhdCBQZW5uIENvbGxlZ2UgKFZQQSkFBjMtMjYtMGcQBRXCoMKgwqBWaWN0b3JpYW4gSG91c2UFBjMtMjItMGcQBRVSb3NlIFN0cmVldCBXYXJlaG91c2UFBjExLTAtMGcQBR9TY2huZWViZWxpIEVhcnRoIFNjaWVuY2UgQ2VudGVyBQU4LTAtMGcQBRrCoMKgwqBFYXJ0aCBTY2llbmNlIENlbnRlcgUGOC0yOS0wZxAFFsKgwqDCoMKgwqDCoEdyZWVuaG91c2UFBzgtMjktNTBnEAUZwqDCoMKgwqDCoMKgTmF0dXJlJ3MgQ292ZQUHOC0yOS00OWdkZAIjDxYCHglpbm5lcmh0bWwFBihWaWV3KWQCJg8PFgIfFgUGKFZpZXcpFgIfJAUNZGlzcGxheTogbm9uZWQCKQ8PFgIfFgUGKFZpZXcpFgIfJAUNZGlzcGxheTogbm9uZWQCLA8PFgIfFgUGKFZpZXcpFgIfJAUNZGlzcGxheTogbm9uZWQCLw8PFgIfFgUGKFZpZXcpFgIfJAUNZGlzcGxheTogbm9uZWQCMA8PFgIfFgULS2V5d29yZChzKTpkZAIxDw8WAh8YBThDb21tYSBkZWxpbWl0ZWQgbGlzdCBvZiB3b3JkcyB1c2VkIHRvIHNlYXJjaCBmb3IgZXZlbnRzLhYCHyQFDHdpZHRoOjE3MnB4O2QCMg8WAh8lBQYoVmlldylkAjMPDxYCHxdoZGQCNA8PFgYfGAUiU2VhcmNoIHRvIG5hcnJvdyB0aGUgZXZlbnRzIHNob3duLh8WBQZTdWJtaXQfF2dkZAIDD2QWBAIDDxYCHxYFWTxzcGFuIGNsYXNzPSJsaXN0dGFibGVoZWFkZXJ0ZXh0IiBzdHlsZT0iZm9udC13ZWlnaHQ6Ym9sZDsiPk1hcmNoIDEgLSAxNCwgMjAxNTwvc3Bhbj48YnI+ZAIFDw8WBB8WZR8XaGRkAgYPDxYCHxdoZGQCBw9kFgJmD2QWAmYPZBYCZg8PFgIfFgVbPGEgaHJlZj0iaHR0cDovL3d3dy5hY3RpdmVkYXRheC5jb20vIj5DYWxlbmRhciBzb2Z0d2FyZTwvYT4gcG93ZXJlZCBieSBBY3RpdmUgRGF0YSBDYWxlbmRhcmRkGAEFHl9fQ29udHJvbHNSZXF1aXJlUG9zdEJhY2tLZXlfXxYIBQdpYnRuRGF5BQhpYnRuV2VlawUJaWJ0bk1vbnRoBQhpYnRuWWVhcgUSY2JsQ3VzdG9tRmllbGRfMSQwBRJjYmxDdXN0b21GaWVsZF8yJDAFEmNibEN1c3RvbUZpZWxkXzMkMAUSY2JsQ3VzdG9tRmllbGRfNCQwv7EUb4JFZ43xi2KLQ92Ak7iVA+Q="> 
+       <script src="/PopCalendar2008/PopCalendarAjaxNet.js" type="text/javascript"></script> 
+       <script src="/PopCalendar2008/PopCalendarFunctionsAjaxNet.js" type="text/javascript"></script> 
+       <script type="text/javascript">var PopCal_enUS_DaysShort=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];</script> 
+       <script type="text/javascript">var PopCal_enUS_MonthsShort=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];var PopCal_enUS_MonthsFull=['January','February','March','April','May','June','July','August','September','October','November','December'];</script> 
+       <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="38F712DD"> 
+       <div class="eventlistdiv"> 
+        <input type="hidden" value="Location - Building - Room" id="p_LocationColumnField" name="p_LocationColumnField"> 
+        <div id="pnlHideHead"> 
+         <!-- Section 508 Qick Nav Links --> 
+         <a href="#search"><img id="search_link" height="1" alt="Search events." src="images/transparent.gif" style=" border:0px; width:1px;"></a> 
+         <a href="#events"><img id="events_link" height="1" alt="View events." src="images/transparent.gif" style=" border:0px; width:1px;"></a> 
+         <table id="Table3" cellspacing="0" cellpadding="5" width="100%" align="center" border="0"> 
+          <tbody>
+           <tr> 
+            <td style="white-space:nowrap; width:30%;" align="left" valign="top"> <label for="dlstView" id="lblDisplayFormat" class="bodycopy">Display Format:</label>&nbsp;<select name="dlstView" id="dlstView" class="bodycopy"> <option selected value="Select">Select</option> <option value="Grid View">Grid View</option> <option value="Category View">Category View</option> <option value="Summary View">Summary View</option> <option value="Location View">Location View</option> </select> </td> 
+            <td align="center" style="width:40%;" valign="top"> <span id="lblCategoryHeading" class="title">All Categories</span></td> 
+            <td style="white-space:nowrap; width:30%;" align="right" valign="top"> <a id="lbtnSubmitEvents" title="Go to administrative login screen." class="bodycopy" href="javascript:__doPostBack('lbtnSubmitEvents','')"><b>Submit Events</b></a></td> 
+           </tr> 
+          </tbody>
+         </table> 
+         <table style="padding-right:5px;padding-left:5px;padding-top:5px;border-bottom:solid 1px #c1c1c1;" cellspacing="0" cellpadding="0" width="100%" border="0"> 
+          <tbody>
+           <tr> 
+            <td valign="bottom" style="white-space:nowrap; width:10%;" align="left"> 
+             <table cellspacing="0" cellpadding="0" border="0"> 
+              <tbody>
+               <tr> 
+                <td valign="bottom"><label style="display:none" for="ibtnDay">Day</label><input type="image" name="ibtnDay" id="ibtnDay" src="images/Day.gif" alt="Display all the events for today." border="0"></td> 
+                <td valign="bottom"><label style="display:none" for="ibtnWeek">Week</label><input type="image" name="ibtnWeek" id="ibtnWeek" src="images/Week.gif" alt="Display all the events for the current week." border="0"></td> 
+                <td valign="bottom"><label style="display:none" for="ibtnMonth">Month</label><input type="image" name="ibtnMonth" id="ibtnMonth" src="images/Month.gif" alt="Display all the events for the current month." border="0"></td> 
+                <td valign="bottom"><label style="display:none" for="ibtnYear">Year</label><input type="image" name="ibtnYear" id="ibtnYear" src="images/Year.gif" alt="Display all the events for the current year." border="0"></td> 
+               </tr> 
+              </tbody>
+             </table> </td> 
+            <td align="center" width="80%"> 
+             <div style="width:80%;text-align:center;"> 
+              <span class="bodycopy" style="font-size:1em;">&nbsp;</span>
+             </div></td>   
+            <td valign="bottom" style="white-space:nowrap;" align="right" width="10%"> <a id="linkDownload" title="Click to download events shown in CSV, iCAL or XML format." onclick="downloadType('downloadtype.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;view=DateTime&amp;type=public&amp;download=download',event);" href="#"><img title="Click to download events shown in CSV, iCAL or XML format." src="images/download.gif" alt="Click to download events shown in CSV, iCAL or XML format." border="0"></a> <a id="linkHelp" title="Click for help in using calendar displays." href="CalendarDateViewHelp.aspx?type=public" target="_blank"><img title="Click for help in using calendar displays." src="images/help.gif" alt="Click for help in using calendar displays." border="0"></a> <a id="linkPrint" title="Print the contents of the current screen." href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;view=DateTime&amp;type=public&amp;print=print" target="_blank"><img title="Print the contents of the current screen." src="images/print.gif" alt="Print the contents of the current screen." border="0"></a> </td> 
+           </tr> 
+          </tbody>
+         </table> 
+        </div> 
+        <table id="PageTable" cellspacing="0" cellpadding="5" width="100%" border="0"> 
+         <tbody>
+          <tr> 
+           <td valign="top"> 
+            <div id="pnlHideSearch"> 
+             <table id="Table2" cellspacing="0" cellpadding="0" border="0"> 
+              <tbody>
+               <tr> 
+                <td colspan="2">
+                 <div id="CalendarPanel"> 
+                  <table id="CalendarGrid1" cellspacing="0" cellpadding="2" border="0" width="100%" style="border-collapse:collapse;"> 
+                   <tbody>
+                    <tr> 
+                     <td></td>
+                     <td colspan="7">
+                      <table cellspacing="0" cellpadding="0" border="0" width="100%"> 
+                       <tbody>
+                        <tr> 
+                         <td align="left"><a id="lbtnADXCalenderPrevious" href="javascript:__doPostBack('lbtnADXCalenderPrevious','')"><img border="0" src="images/largearrow_left_transparent.gif" alt="Previous"></a></td>
+                         <td class="titleSmallGrid" align="center" nowrap>March 2015</td>
+                         <td align="right"><a id="lbtnADXCalenderNext" href="javascript:__doPostBack('lbtnADXCalenderNext','')"><img border="0" src="images/largearrow_right_transparent.gif" alt="Next"></a></td> 
+                        </tr> 
+                       </tbody>
+                      </table></td> 
+                    </tr>
+                    <tr> 
+                     <td></td>
+                     <th class="dayheaderSmallGrid" align="center" scope="col">Su</th>
+                     <th class="dayheaderSmallGrid" align="center" scope="col">Mo</th>
+                     <th class="dayheaderSmallGrid" align="center" scope="col">Tu</th>
+                     <th class="dayheaderSmallGrid" align="center" scope="col">We</th>
+                     <th class="dayheaderSmallGrid" align="center" scope="col">Th</th>
+                     <th class="dayheaderSmallGrid" align="center" scope="col">Fr</th>
+                     <th class="dayheaderSmallGrid" align="center" scope="col">Sa</th> 
+                    </tr>
+                    <tr> 
+                     <td><a id="3/1/2015_3/7/2015" href="javascript:__doPostBack('3/1/2015_3/7/2015','')"><img border="0" src="images/smallarrow_right_transparent.gif" alt="Select a week."></a></td>
+                     <td class="calendarcellhiliteSmallGrid" align="center" valign="top" title="Sunday, March 01, 2015"><a href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/1/2015&amp;view=DateTime&amp;display=Day&amp;type=public">1</a><br></td>
+                     <td class="calendarcellhiliteSmallGrid" align="center" valign="top" title="Monday, March 02, 2015"><a href="EventList.aspx?fromdate=3/2/2015&amp;todate=3/2/2015&amp;view=DateTime&amp;display=Day&amp;type=public">2</a><br></td>
+                     <td class="calendarcellhiliteSmallGrid" align="center" valign="top" title="Tuesday, March 03, 2015"><a href="EventList.aspx?fromdate=3/3/2015&amp;todate=3/3/2015&amp;view=DateTime&amp;display=Day&amp;type=public">3</a><br></td>
+                     <td class="calendarcellhiliteSmallGrid" align="center" valign="top" title="Wednesday, March 04, 2015"><a href="EventList.aspx?fromdate=3/4/2015&amp;todate=3/4/2015&amp;view=DateTime&amp;display=Day&amp;type=public">4</a><br></td>
+                     <td class="calendarcellhiliteSmallGrid" align="center" valign="top" title="Thursday, March 05, 2015"><a href="EventList.aspx?fromdate=3/5/2015&amp;todate=3/5/2015&amp;view=DateTime&amp;display=Day&amp;type=public">5</a><br></td>
+                     <td class="calendarcellhiliteSmallGrid" align="center" valign="top" title="Friday, March 06, 2015"><a href="EventList.aspx?fromdate=3/6/2015&amp;todate=3/6/2015&amp;view=DateTime&amp;display=Day&amp;type=public">6</a><br></td>
+                     <td class="calendarcellhiliteSmallGrid" align="center" valign="top" title="Saturday, March 07, 2015"><a href="EventList.aspx?fromdate=3/7/2015&amp;todate=3/7/2015&amp;view=DateTime&amp;display=Day&amp;type=public">7</a><br></td> 
+                    </tr>
+                    <tr> 
+                     <td><a id="3/8/2015_3/14/2015" href="javascript:__doPostBack('3/8/2015_3/14/2015','')"><img border="0" src="images/smallarrow_right_transparent.gif" alt="Select a week."></a></td>
+                     <td class="calendarcellhiliteSmallGrid" align="center" valign="top" title="Sunday, March 08, 2015"><a href="EventList.aspx?fromdate=3/8/2015&amp;todate=3/8/2015&amp;view=DateTime&amp;display=Day&amp;type=public">8</a><br></td>
+                     <td class="calendarcellhiliteSmallGrid" align="center" valign="top" title="Monday, March 09, 2015"><a href="EventList.aspx?fromdate=3/9/2015&amp;todate=3/9/2015&amp;view=DateTime&amp;display=Day&amp;type=public">9</a><br></td>
+                     <td class="calendarcellhiliteSmallGrid" align="center" valign="top" title="Tuesday, March 10, 2015"><a href="EventList.aspx?fromdate=3/10/2015&amp;todate=3/10/2015&amp;view=DateTime&amp;display=Day&amp;type=public">10</a><br></td>
+                     <td class="calendarcellhiliteSmallGrid" align="center" valign="top" title="Wednesday, March 11, 2015"><a href="EventList.aspx?fromdate=3/11/2015&amp;todate=3/11/2015&amp;view=DateTime&amp;display=Day&amp;type=public">11</a><br></td>
+                     <td class="calendarcellhiliteSmallGrid" align="center" valign="top" title="Thursday, March 12, 2015"><a href="EventList.aspx?fromdate=3/12/2015&amp;todate=3/12/2015&amp;view=DateTime&amp;display=Day&amp;type=public">12</a><br></td>
+                     <td class="calendarcellhiliteSmallGrid" align="center" valign="top" title="Friday, March 13, 2015"><a href="EventList.aspx?fromdate=3/13/2015&amp;todate=3/13/2015&amp;view=DateTime&amp;display=Day&amp;type=public">13</a><br></td>
+                     <td class="calendarcellhiliteSmallGrid" align="center" valign="top" title="Saturday, March 14, 2015"><a href="EventList.aspx?fromdate=3/14/2015&amp;todate=3/14/2015&amp;view=DateTime&amp;display=Day&amp;type=public">14</a><br></td> 
+                    </tr>
+                    <tr> 
+                     <td><a id="3/15/2015_3/21/2015" href="javascript:__doPostBack('3/15/2015_3/21/2015','')"><img border="0" src="images/smallarrow_right_transparent.gif" alt="Select a week."></a></td>
+                     <td class="calendarcellSmallGrid" align="center" valign="top" title="Sunday, March 15, 2015" onmouseover="this.className='calendarcellhiliteSmallGrid';" onmouseout="this.className='calendarcellSmallGrid';"><a href="EventList.aspx?fromdate=3/15/2015&amp;todate=3/15/2015&amp;view=DateTime&amp;display=Day&amp;type=public">15</a><br></td>
+                     <td class="calendarcellSmallGrid" align="center" valign="top" title="Monday, March 16, 2015" onmouseover="this.className='calendarcellhiliteSmallGrid';" onmouseout="this.className='calendarcellSmallGrid';"><a href="EventList.aspx?fromdate=3/16/2015&amp;todate=3/16/2015&amp;view=DateTime&amp;display=Day&amp;type=public">16</a><br></td>
+                     <td class="calendarcellSmallGrid" align="center" valign="top" title="Tuesday, March 17, 2015" onmouseover="this.className='calendarcellhiliteSmallGrid';" onmouseout="this.className='calendarcellSmallGrid';"><a href="EventList.aspx?fromdate=3/17/2015&amp;todate=3/17/2015&amp;view=DateTime&amp;display=Day&amp;type=public">17</a><br></td>
+                     <td class="calendarcellSmallGrid" align="center" valign="top" title="Wednesday, March 18, 2015" onmouseover="this.className='calendarcellhiliteSmallGrid';" onmouseout="this.className='calendarcellSmallGrid';"><a href="EventList.aspx?fromdate=3/18/2015&amp;todate=3/18/2015&amp;view=DateTime&amp;display=Day&amp;type=public">18</a><br></td>
+                     <td class="calendarcellSmallGrid" align="center" valign="top" title="Thursday, March 19, 2015" onmouseover="this.className='calendarcellhiliteSmallGrid';" onmouseout="this.className='calendarcellSmallGrid';"><a href="EventList.aspx?fromdate=3/19/2015&amp;todate=3/19/2015&amp;view=DateTime&amp;display=Day&amp;type=public">19</a><br></td>
+                     <td class="calendarcellSmallGrid" align="center" valign="top" title="Friday, March 20, 2015" onmouseover="this.className='calendarcellhiliteSmallGrid';" onmouseout="this.className='calendarcellSmallGrid';"><a href="EventList.aspx?fromdate=3/20/2015&amp;todate=3/20/2015&amp;view=DateTime&amp;display=Day&amp;type=public">20</a><br></td>
+                     <td class="calendarcellSmallGrid" align="center" valign="top" title="Saturday, March 21, 2015" onmouseover="this.className='calendarcellhiliteSmallGrid';" onmouseout="this.className='calendarcellSmallGrid';"><a href="EventList.aspx?fromdate=3/21/2015&amp;todate=3/21/2015&amp;view=DateTime&amp;display=Day&amp;type=public">21</a><br></td> 
+                    </tr>
+                    <tr> 
+                     <td><a id="3/22/2015_3/28/2015" href="javascript:__doPostBack('3/22/2015_3/28/2015','')"><img border="0" src="images/smallarrow_right_transparent.gif" alt="Select a week."></a></td>
+                     <td class="calendarcellSmallGrid" align="center" valign="top" title="Sunday, March 22, 2015" onmouseover="this.className='calendarcellhiliteSmallGrid';" onmouseout="this.className='calendarcellSmallGrid';"><a href="EventList.aspx?fromdate=3/22/2015&amp;todate=3/22/2015&amp;view=DateTime&amp;display=Day&amp;type=public">22</a><br></td>
+                     <td class="calendarcellSmallGrid" align="center" valign="top" title="Monday, March 23, 2015" onmouseover="this.className='calendarcellhiliteSmallGrid';" onmouseout="this.className='calendarcellSmallGrid';"><a href="EventList.aspx?fromdate=3/23/2015&amp;todate=3/23/2015&amp;view=DateTime&amp;display=Day&amp;type=public">23</a><br></td>
+                     <td class="calendarcellSmallGrid" align="center" valign="top" title="Tuesday, March 24, 2015" onmouseover="this.className='calendarcellhiliteSmallGrid';" onmouseout="this.className='calendarcellSmallGrid';"><a href="EventList.aspx?fromdate=3/24/2015&amp;todate=3/24/2015&amp;view=DateTime&amp;display=Day&amp;type=public">24</a><br></td>
+                     <td class="calendarcellSmallGrid" align="center" valign="top" title="Wednesday, March 25, 2015" onmouseover="this.className='calendarcellhiliteSmallGrid';" onmouseout="this.className='calendarcellSmallGrid';"><a href="EventList.aspx?fromdate=3/25/2015&amp;todate=3/25/2015&amp;view=DateTime&amp;display=Day&amp;type=public">25</a><br></td>
+                     <td class="calendarcellSmallGrid" align="center" valign="top" title="Thursday, March 26, 2015" onmouseover="this.className='calendarcellhiliteSmallGrid';" onmouseout="this.className='calendarcellSmallGrid';"><a href="EventList.aspx?fromdate=3/26/2015&amp;todate=3/26/2015&amp;view=DateTime&amp;display=Day&amp;type=public">26</a><br></td>
+                     <td class="calendarcellSmallGrid" align="center" valign="top" title="Friday, March 27, 2015" onmouseover="this.className='calendarcellhiliteSmallGrid';" onmouseout="this.className='calendarcellSmallGrid';"><a href="EventList.aspx?fromdate=3/27/2015&amp;todate=3/27/2015&amp;view=DateTime&amp;display=Day&amp;type=public">27</a><br></td>
+                     <td class="calendarcellSmallGrid" align="center" valign="top" title="Saturday, March 28, 2015" onmouseover="this.className='calendarcellhiliteSmallGrid';" onmouseout="this.className='calendarcellSmallGrid';"><a href="EventList.aspx?fromdate=3/28/2015&amp;todate=3/28/2015&amp;view=DateTime&amp;display=Day&amp;type=public">28</a><br></td> 
+                    </tr>
+                    <tr> 
+                     <td><a id="3/29/2015_4/4/2015" href="javascript:__doPostBack('3/29/2015_4/4/2015','')"><img border="0" src="images/smallarrow_right_transparent.gif" alt="Select a week."></a></td>
+                     <td class="calendarcellSmallGrid" align="center" valign="top" title="Sunday, March 29, 2015" onmouseover="this.className='calendarcellhiliteSmallGrid';" onmouseout="this.className='calendarcellSmallGrid';"><a href="EventList.aspx?fromdate=3/29/2015&amp;todate=3/29/2015&amp;view=DateTime&amp;display=Day&amp;type=public">29</a><br></td>
+                     <td class="calendarcellSmallGrid" align="center" valign="top" title="Monday, March 30, 2015" onmouseover="this.className='calendarcellhiliteSmallGrid';" onmouseout="this.className='calendarcellSmallGrid';"><a href="EventList.aspx?fromdate=3/30/2015&amp;todate=3/30/2015&amp;view=DateTime&amp;display=Day&amp;type=public">30</a><br></td>
+                     <td class="calendarcellSmallGrid" align="center" valign="top" title="Tuesday, March 31, 2015" onmouseover="this.className='calendarcellhiliteSmallGrid';" onmouseout="this.className='calendarcellSmallGrid';"><a href="EventList.aspx?fromdate=3/31/2015&amp;todate=3/31/2015&amp;view=DateTime&amp;display=Day&amp;type=public">31</a><br></td>
+                     <td class="otherdaySmallGrid" align="center" valign="top" title="Wednesday, April 01, 2015"><a href="EventList.aspx?fromdate=4/1/2015&amp;todate=4/1/2015&amp;view=DateTime&amp;display=Day&amp;type=public">1</a><br></td>
+                     <td class="otherdaySmallGrid" align="center" valign="top" title="Thursday, April 02, 2015"><a href="EventList.aspx?fromdate=4/2/2015&amp;todate=4/2/2015&amp;view=DateTime&amp;display=Day&amp;type=public">2</a><br></td>
+                     <td class="otherdaySmallGrid" align="center" valign="top" title="Friday, April 03, 2015"><a href="EventList.aspx?fromdate=4/3/2015&amp;todate=4/3/2015&amp;view=DateTime&amp;display=Day&amp;type=public">3</a><br></td>
+                     <td class="otherdaySmallGrid" align="center" valign="top" title="Saturday, April 04, 2015"><a href="EventList.aspx?fromdate=4/4/2015&amp;todate=4/4/2015&amp;view=DateTime&amp;display=Day&amp;type=public">4</a><br></td> 
+                    </tr> 
+                   </tbody>
+                  </table> 
+                 </div></td> 
+               </tr> 
+               <tr> 
+                <td style="PADDING-TOP: 5px; white-space:nowrap;" colspan="2"> 
+                 <table cellspacing="0" cellpadding="0" width="100%" border="0"> 
+                  <tbody>
+                   <tr> 
+                    <td><label for="dlstMonth" id="lblDisplayMonth" class="bodycopy">Display Month:</label></td> 
+                    <td align="right"><select name="dlstMonth" id="dlstMonth" class="bodycopy"> <option selected value="Select">Select</option> <option value="January">January</option> <option value="February">February</option> <option value="March">March</option> <option value="April">April</option> <option value="May">May</option> <option value="June">June</option> <option value="July">July</option> <option value="August">August</option> <option value="September">September</option> <option value="October">October</option> <option value="November">November</option> <option value="December">December</option> </select></td> 
+                   </tr> 
+                  </tbody>
+                 </table> </td> 
+               </tr> 
+               <tr> 
+                <td colspan="2"> 
+                 <hr width="100%" style="color:Black;" size="1"> <a id="search"></a> </td> 
+               </tr> 
+               <tr> 
+                <td style="white-space:nowrap;" colspan="2"> 
+                 <table cellspacing="0" cellpadding="0" width="100%" border="0"> 
+                  <tbody>
+                   <tr> 
+                    <td><span id="lblAdvancedSearch" class="bodycopy"><b>Advanced Search</b></span></td> 
+                    <td align="right"><a id="lbtnNewSearch" class="bodycopy" href="javascript:__doPostBack('lbtnNewSearch','')"><span style="font-size:0.8em">(New Search)</span></a></td> 
+                   </tr> 
+                  </tbody>
+                 </table> </td> 
+               </tr> 
+               <tr> 
+                <td style="white-space:nowrap;"><label for="txtStartDateSearch" id="lblFrom" class="bodycopy">From:</label>&nbsp;</td> 
+                <td style="white-space:nowrap;"> <input name="txtStartDateSearch" type="text" value="3/1/2015" id="txtStartDateSearch" class="textboxcopy" calendar="calStartDateSearch" format="m/d/yyyy" dir="ltr" autocomplete="off" onfocus="__PopCalSetFocus(this, event);"> <span id="calStartDateSearch" style="display:none" assembly="RJS.Web.WebControl.PopCalendar.Net.2008.dll" assemblyversion="8.1.3125.36581" popcalendarjsversion="1.0.1" popcalendarfunctionsjsversion="1.0.0"></span><span id="calStartDateSearch_Control" title="From:" onclick="__PopCalShowCalendar(&quot;txtStartDateSearch&quot;,this)" style="cursor:pointer;"><img src="/PopCalendar2008/Calendar.gif" border="0" align="absmiddle" alt="From:"></span>
+                 <link href="/PopCalendar2008/CSS/ADXPublic.css" type="text/css" rel="stylesheet"><br> </td> 
+               </tr> 
+               <tr> 
+                <td></td> 
+                <td><span id="calStartDateSearch_MessageError" dir="ltr" messagealignment="MessageContainer" style="visibility:hidden;white-space:nowrap;z-index:+1000;color:red;" controltovalidate="txtStartDateSearch" validationgroup="RJS.PopCalendars" evaluationfunction="__PopCalCustomValidatorEvaluateIsValid" clientvalidationfunction="__PopCalValidateOnSubmit"></span></td> 
+               </tr> 
+               <tr> 
+                <td style="white-space:nowrap;"><label for="txtEndDateSearch" id="lblTo" class="bodycopy">To:</label>&nbsp;</td> 
+                <td style="white-space:nowrap;"> <input name="txtEndDateSearch" type="text" value="3/14/2015" id="txtEndDateSearch" class="textboxcopy" calendar="calEndDateSearch" format="m/d/yyyy" dir="ltr" autocomplete="off" onfocus="__PopCalSetFocus(this, event);"> <span id="calEndDateSearch" style="display:none" assembly="RJS.Web.WebControl.PopCalendar.Net.2008.dll" assemblyversion="8.1.3125.36581" popcalendarjsversion="1.0.1" popcalendarfunctionsjsversion="1.0.0"></span><span id="calEndDateSearch_Control" title="To:" onclick="__PopCalShowCalendar(&quot;txtEndDateSearch&quot;,this)" style="cursor:pointer;"><img src="/PopCalendar2008/Calendar.gif" border="0" align="absmiddle" alt="To:"></span>
+                 <link href="/PopCalendar2008/CSS/ADXPublic.css" type="text/css" rel="stylesheet"><br> </td> 
+               </tr> 
+               <tr> 
+                <td></td> 
+                <td><span id="calEndDateSearch_MessageError" dir="ltr" messagealignment="MessageContainer" style="visibility:hidden;white-space:nowrap;z-index:+1000;color:red;" controltovalidate="txtEndDateSearch" validationgroup="RJS.PopCalendars" evaluationfunction="__PopCalCustomValidatorEvaluateIsValid" clientvalidationfunction="__PopCalValidateOnSubmit"></span></td> 
+               </tr> 
+               <tr> 
+                <td style="PADDING-TOP: 2px; white-space:nowrap;" colspan="2"> 
+                 <table cellspacing="0" cellpadding="0" width="100%" border="0"> 
+                  <tbody>
+                   <tr> 
+                    <td><label for="dlstCategory" id="lblCategorys" class="bodycopy">Category(s):</label></td> 
+                    <td align="right"></td> 
+                   </tr> 
+                  </tbody>
+                 </table> </td> 
+               </tr> 
+               <tr> 
+                <td style="white-space:nowrap;" colspan="2"><select name="dlstCategory" id="dlstCategory" class="bodycopy" onclick="openCategorySelector();" onchange="displayMultipleCategoryWindow()" style="width:172px;"> <option value="Select">Select</option> <option value="Select All">Select All</option> <option value="Select Multiple">Select Multiple</option> <option value="13-0">Academic</option> <option value="5-0">Admissions Tours</option> <option value="16-0">Alumni</option> <option value="16-17">&nbsp;&nbsp;&nbsp;Special Events</option> <option value="2-0">Athletics</option> <option value="19-0">Career Services</option> <option value="19-16">&nbsp;&nbsp;&nbsp;On-campus Recruiting</option> <option value="27-0">Centennial</option> <option value="4-0">Community Arts Center</option> <option value="4-2">&nbsp;&nbsp;&nbsp;(off)Broadway</option> <option value="4-7">&nbsp;&nbsp;&nbsp;Announcements</option> <option value="4-3">&nbsp;&nbsp;&nbsp;Comedy/Theatre</option> <option value="4-5">&nbsp;&nbsp;&nbsp;Family Friendly</option> <option value="4-6">&nbsp;&nbsp;&nbsp;Film</option> <option value="4-4">&nbsp;&nbsp;&nbsp;Music/Dance</option> <option value="18-0">Dining Services</option> <option value="22-0">Gallery</option> <option value="25-0">Health and Fitness</option> <option value="8-0">K-12 Events</option> <option value="17-0">Le Jeune Chef Restaurant</option> <option value="17-11">&nbsp;&nbsp;&nbsp;Bake Sale</option> <option value="17-8">&nbsp;&nbsp;&nbsp;Brunch</option> <option value="17-10">&nbsp;&nbsp;&nbsp;Dinner</option> <option value="17-13">&nbsp;&nbsp;&nbsp;Dinner - Classical</option> <option value="17-14">&nbsp;&nbsp;&nbsp;Dinner - Gourmet</option> <option value="17-12">&nbsp;&nbsp;&nbsp;Dinner - Regional American</option> <option value="17-9">&nbsp;&nbsp;&nbsp;Lunch</option> <option value="9-0">Library</option> <option value="10-0">Placement Testing &amp; Pre-Enrollment Advising</option> <option value="21-0">Registrar</option> <option value="3-0">Student Activities</option> <option value="3-18">&nbsp;&nbsp;&nbsp;Off-Campus</option> <option value="24-0">The College Store</option> <option value="12-0">Workforce Development</option> </select><br> </td> 
+               </tr> 
+               <tr> 
+                <td style="PADDING-TOP:2px; white-space:nowrap;" colspan="2"> 
+                 <table cellspacing="0" cellpadding="0" width="100%" border="0"> 
+                  <tbody>
+                   <tr> 
+                    <td><label for="dlstLocation" id="lblLocations" class="bodycopy">Location(s):</label></td> 
+                    <td align="right"></td> 
+                   </tr> 
+                  </tbody>
+                 </table> </td> 
+               </tr> 
+               <tr> 
+                <td style="white-space:nowrap;" colspan="2"> <select name="dlstLocation" id="dlstLocation" class="bodycopy" onchange="displayMultipleLocationWindow()" style="width:172px;"> <option value="Select">Select</option> <option value="Select All">Select All</option> <option value="Select Multiple">Select Multiple</option> <option value="6-0-0">Advanced Automotive Technology Center</option> <option value="4-0-0">Community Arts Center</option> <option value="9-0-0">Lumley Aviation Center</option> <option value="10-0-0">North Campus</option> <option value="7-0-0">Off-campus location (see details)</option> <option value="3-0-0">Penn College Main Campus</option> <option value="3-2-0">&nbsp;&nbsp;&nbsp;Academic Center (ACC)</option> <option value="3-2-10">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;218</option> <option value="3-2-3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Auditorium</option> <option value="3-2-38">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Courtyard</option> <option value="3-2-18">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lobby</option> <option value="3-2-48">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wrapture</option> <option value="3-8-0">&nbsp;&nbsp;&nbsp;Advanced Technology &amp; Health Sciences Ctr. (ATHS)</option> <option value="3-8-19">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Atrium</option> <option value="3-8-44">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fresh</option> <option value="3-8-33">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mall</option> <option value="3-8-41">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;W104</option> <option value="3-12-0">&nbsp;&nbsp;&nbsp;Automotive Engine Repair Center (ERC)</option> <option value="3-7-0">&nbsp;&nbsp;&nbsp;Automotive Technology Center (ATC)</option> <option value="3-14-0">&nbsp;&nbsp;&nbsp;Bardo Gymnasium (GYM)</option> <option value="3-9-0">&nbsp;&nbsp;&nbsp;Building Technologies Center (BTC)</option> <option value="3-9-55">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;120</option> <option value="3-1-0">&nbsp;&nbsp;&nbsp;Campus Center (CC)</option> <option value="3-1-11">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;105C</option> <option value="3-1-23">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;114</option> <option value="3-1-24">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;116</option> <option value="3-1-34">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;150</option> <option value="3-1-52">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;202</option> <option value="3-1-1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;204</option> <option value="3-1-43">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CC Commons</option> <option value="3-1-22">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Commons</option> <option value="3-1-63">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Commuter Lounge (102A)</option> <option value="3-1-21">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fitness Center</option> <option value="3-1-12">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lawn</option> <option value="3-1-37">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lobby</option> <option value="3-1-20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Penn's Inn</option> <option value="3-1-60">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The College Store</option> <option value="3-1-2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TV Lounge</option> <option value="3-1-46">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wildcat Express</option> <option value="3-23-0">&nbsp;&nbsp;&nbsp;Campus View Apartments (CVA)</option> <option value="3-30-0">&nbsp;&nbsp;&nbsp;Center for Business &amp; Workforce Development</option> <option value="3-10-0">&nbsp;&nbsp;&nbsp;Center for Business &amp; Workforce Development (BWD)</option> <option value="3-10-51">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;137</option> <option value="3-11-0">&nbsp;&nbsp;&nbsp;College Avenue Labs (CAL)</option> <option value="3-24-0">&nbsp;&nbsp;&nbsp;College West Apartments (CWA)</option> <option value="3-24-13">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Courtyard</option> <option value="3-24-47">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;West Side (Clinton 101)</option> <option value="3-13-0">&nbsp;&nbsp;&nbsp;Electrical Technologies Center (ETC)</option> <option value="3-3-0">&nbsp;&nbsp;&nbsp;Field House (FH)</option> <option value="3-3-14">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Basketball Court</option> <option value="3-3-35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lawn</option> <option value="3-3-39">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mezzanine</option> <option value="3-3-36">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Parking Lot</option> <option value="3-3-16">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soccer Field</option> <option value="3-3-15">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tennis Court</option> <option value="3-16-0">&nbsp;&nbsp;&nbsp;Le Jeune Chef Restaurant (LJC)</option> <option value="3-6-0">&nbsp;&nbsp;&nbsp;Lifelong Education Center (LEC)</option> <option value="3-6-56">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A208</option> <option value="3-6-54">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C153</option> <option value="3-6-53">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C155</option> <option value="3-6-9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Keystone Dining Room</option> <option value="3-6-8">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lobby</option> <option value="3-6-40">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Patio</option> <option value="3-6-45">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Penn Central</option> <option value="3-17-0">&nbsp;&nbsp;&nbsp;Machining Technologies Center (MAC)</option> <option value="3-15-0">&nbsp;&nbsp;&nbsp;Madigan Library (LIB)</option> <option value="3-15-42">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bookmarks Cafe</option> <option value="3-15-17">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gallery at Penn College (Room 303)</option> <option value="3-18-0">&nbsp;&nbsp;&nbsp;Metal Trades Center (MTC)</option> <option value="3-27-0">&nbsp;&nbsp;&nbsp;Penn's Loft</option> <option value="3-19-0">&nbsp;&nbsp;&nbsp;Physician Assistant Center (PAC)</option> <option value="3-20-0">&nbsp;&nbsp;&nbsp;Police Office</option> <option value="3-4-0">&nbsp;&nbsp;&nbsp;Professional Development Center (PDC)</option> <option value="3-4-28">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Atrium</option> <option value="3-4-32">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lawn</option> <option value="3-4-4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mountain Laurel Room</option> <option value="3-4-27">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Slate Run Room</option> <option value="3-4-26">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tiadaghton Room</option> <option value="3-25-0">&nbsp;&nbsp;&nbsp;Rose Street Apartments (RSA)</option> <option value="3-31-0">&nbsp;&nbsp;&nbsp;Rose Street Commons</option> <option value="3-31-57">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Courtyard</option> <option value="3-32-0">&nbsp;&nbsp;&nbsp;Rose Street Commons - Dauphin Hall</option> <option value="3-32-59">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Capitol Eatery</option> <option value="3-32-62">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Commons</option> <option value="3-32-61">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fitness Center</option> <option value="3-32-58">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fuel</option> <option value="3-5-0">&nbsp;&nbsp;&nbsp;Student &amp; Administrative Services Center (SASC)</option> <option value="3-5-7">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1047</option> <option value="3-5-29">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1056 (Presentaion Room)</option> <option value="3-5-5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Core</option> <option value="3-5-6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lobby</option> <option value="3-26-0">&nbsp;&nbsp;&nbsp;The Village at Penn College (VPA)</option> <option value="3-22-0">&nbsp;&nbsp;&nbsp;Victorian House</option> <option value="11-0-0">Rose Street Warehouse</option> <option value="8-0-0">Schneebeli Earth Science Center</option> <option value="8-29-0">&nbsp;&nbsp;&nbsp;Earth Science Center</option> <option value="8-29-50">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Greenhouse</option> <option value="8-29-49">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nature's Cove</option> </select><br> </td> 
+               </tr> 
+               <tr> 
+                <td style="PADDING-TOP: 2px; white-space:nowrap;" colspan="2"> 
+                 <table cellspacing="0" cellpadding="0" width="100%" border="0"> 
+                  <tbody>
+                   <tr> 
+                    <td><label for="txtKeyword" id="lblKeywords" class="bodycopy">Keyword(s):</label></td> 
+                    <td align="right"></td> 
+                   </tr> 
+                  </tbody>
+                 </table> </td> 
+               </tr> 
+               <tr> 
+                <td style="white-space:nowrap;" colspan="2"><input name="txtKeyword" type="text" maxlength="50" id="txtKeyword" title="Comma delimited list of words used to search for events." class="textboxcopy" style="width:172px;"><br> </td> 
+               </tr> 
+               <tr> 
+                <td style="PADDING-TOP: 2px; white-space:nowrap;" colspan="2"> <a id="lbtnSearch" title="Search to narrow the events shown." class="bodycopy" href="javascript:__doPostBack('lbtnSearch','')"><b>Submit</b></a> </td> 
+               </tr> 
+              </tbody>
+             </table> 
+            </div> </td> 
+           <td valign="top" align="left" width="100%"><a id="events"></a><a name="skip"></a> 
+            <div id="pnlListviewHeading"> 
+             <table cellspacing="0" cellpadding="1" width="100%" border="0"> 
+              <tbody>
+               <tr> 
+                <td></td> 
+                <td align="right"><span class="listtableheadertext" style="font-weight:bold;">March 1 - 14, 2015</span><br></td> 
+               </tr> 
+               <tr> 
+                <td></td> 
+               </tr> 
+              </tbody>
+             </table> 
+            </div> 
+            <div id="divTableEventsHighlighted"></div>
+            <div id="divTableEvents">
+             <table id="tblEvents" cellspacing="1" cellpadding="1" border="0" width="100%"> 
+              <tbody>
+               <tr> 
+                <th class="listcolumnheadtext" align="left" scope="col" colspan="1" width="30%">Start Date and Time</th>
+                <th class="listcolumnheadtext" align="left" scope="col" colspan="1" width="70%">Event Details</th> 
+               </tr>
+               <tr> 
+                <td class="listheadtext" align="left" colspan="2" width="100%">Sunday, March 01, 2015</td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext">All Day </a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=9004&amp;view=EventDetails&amp;information_id=32757" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="32757">Gallery Exhibit: Amanda McCavour, Line: Drawn &amp; Stitched (Multi-Day Event)</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listheadtext" align="left" colspan="2" width="100%">Monday, March 02, 2015</td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext">All Day </a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=9004&amp;view=EventDetails&amp;information_id=32757" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="32757">Gallery Exhibit: Amanda McCavour, Line: Drawn &amp; Stitched (Multi-Day Event)</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="30%"><a class="listtext">11:30 AM - 1:30 PM </a></td>
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=8870&amp;view=EventDetails&amp;information_id=32340" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="32340">Le Jeune Chef - Lunch A La Carte</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext">1:00 PM - 3:30 PM </a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=9108&amp;view=EventDetails&amp;information_id=33273" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="33273">Pre-enrollment Advising Session</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="30%"><a class="listtext">7:00 PM - 8:30 PM </a></td>
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=9040&amp;view=EventDetails&amp;information_id=32903" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="32903">Martial Arts Club Team</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext">8:00 PM - 9:00 PM </a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=8430&amp;view=EventDetails&amp;information_id=30863" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="30863">United Campus Ministry - FAITH TALKS</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listheadtext" align="left" colspan="2" width="100%">Tuesday, March 03, 2015</td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext">All Day </a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=9004&amp;view=EventDetails&amp;information_id=32757" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="32757">Gallery Exhibit: Amanda McCavour, Line: Drawn &amp; Stitched (Multi-Day Event)</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="30%"><a class="listtext">9:00 AM - 11:30 AM </a></td>
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=9109&amp;view=EventDetails&amp;information_id=33275" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="33275">Pre-enrollment Advising Session</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext">11:30 AM - 1:30 PM </a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=8870&amp;view=EventDetails&amp;information_id=32341" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="32341">Le Jeune Chef - Lunch A La Carte</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="30%"><a class="listtext">12:00 PM - 1:00 PM </a></td>
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=9044&amp;view=EventDetails&amp;information_id=32962" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="32962">Yoga Class</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext">1:00 PM - 3:30 PM </a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=9110&amp;view=EventDetails&amp;information_id=33277" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="33277">Pre-enrollment Advising Session</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="30%"><a class="listtext">4:00 PM - 6:00 PM </a></td>
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=9041&amp;view=EventDetails&amp;information_id=32930" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="32930">Power Lifting Club Team</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext">5:00 PM - 6:00 PM </a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=9046&amp;view=EventDetails&amp;information_id=32995" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="32995">Yoga Class</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="30%"><a class="listtext">6:00 PM - 7:00 PM </a></td>
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=9049&amp;view=EventDetails&amp;information_id=33048" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="33048">Zumba</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext">7:00 PM - 8:30 PM </a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=9062&amp;view=EventDetails&amp;information_id=33128" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="33128">Intramural Singles Pool League</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="30%"><a class="listtext">7:00 PM - 8:00 PM </a></td>
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=9053&amp;view=EventDetails&amp;information_id=33092" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="33092">Spring Break Preason Training</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext">7:30 PM - 7:30 PM </a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=9059&amp;view=EventDetails&amp;information_id=33116" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="33116">The Sing Off Live! Tour</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listheadtext" align="left" colspan="2" width="100%">Wednesday, March 04, 2015</td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext">All Day </a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=9004&amp;view=EventDetails&amp;information_id=32757" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="32757">Gallery Exhibit: Amanda McCavour, Line: Drawn &amp; Stitched (Multi-Day Event)</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="30%"><a class="listtext">10:00 AM - 12:00 PM </a></td>
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=9125&amp;view=EventDetails&amp;information_id=33307" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="33307">Le Jeune Chef - Patissier at the Market - French Favorites</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext">11:30 AM - 1:30 PM </a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=8870&amp;view=EventDetails&amp;information_id=32342" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="32342">Le Jeune Chef - Lunch A La Carte</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="30%"><a class="listtext">1:00 PM - 3:30 PM </a></td>
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=9111&amp;view=EventDetails&amp;information_id=33279" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="33279">Pre-enrollment Advising Session</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext">5:30 PM - 8:00 PM </a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=8778&amp;view=EventDetails&amp;information_id=32087" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="32087">Le Jeune Chef - Classical Cuisine - Normandy</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="30%"><a class="listtext">7:00 PM - 11:00 PM </a></td>
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=9039&amp;view=EventDetails&amp;information_id=32879" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="32879">Power Lifting Club Team</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext">7:00 PM - 8:00 PM </a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=8405&amp;view=EventDetails&amp;information_id=30731" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="30731">SGA - WEEKLY MEETING</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="30%"><a class="listtext">7:30 PM - 7:30 PM </a></td>
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=8545&amp;view=EventDetails&amp;information_id=31153" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="31153">America’s Test Kitchen Live with Christopher Kimball!</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext">8:00 PM - 9:00 PM </a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=9084&amp;view=EventDetails&amp;information_id=33179" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="33179">Intramural Table Tennis Tournament</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listheadtext" align="left" colspan="2" width="100%">Thursday, March 05, 2015</td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext">End Time 7:00 PM </a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=9004&amp;view=EventDetails&amp;information_id=32757" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="32757">Gallery Exhibit: Amanda McCavour, Line: Drawn &amp; Stitched (Multi-Day Event)</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="30%"><a class="listtext">9:00 AM - 11:30 AM </a></td>
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=9112&amp;view=EventDetails&amp;information_id=33281" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="33281">Pre-enrollment Advising Session</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext">11:30 AM - 1:30 PM </a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=8870&amp;view=EventDetails&amp;information_id=32343" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="32343">Le Jeune Chef - Lunch A La Carte</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="30%"><a class="listtext">12:00 PM - 1:00 PM </a></td>
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=9044&amp;view=EventDetails&amp;information_id=32963" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="32963">Yoga Class</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext">1:00 PM - 3:30 PM </a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=9113&amp;view=EventDetails&amp;information_id=33283" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="33283">Pre-enrollment Advising Session</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="30%"><a class="listtext">5:30 PM - 8:00 PM </a></td>
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=8778&amp;view=EventDetails&amp;information_id=32088" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="32088">Le Jeune Chef - Classical Cuisine - Normandy</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext">5:30 PM - 6:30 PM </a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=9047&amp;view=EventDetails&amp;information_id=33021" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="33021">Yoga Class</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="30%"><a class="listtext">6:00 PM - 7:00 PM </a></td>
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=9049&amp;view=EventDetails&amp;information_id=33049" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="33049">Zumba</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext">7:00 PM - 8:00 PM </a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=9055&amp;view=EventDetails&amp;information_id=33102" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="33102">Fitness &amp; Wellness Promotion Series@PCT: Foundation</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="30%"><a class="listtext">7:00 PM - 8:30 PM </a></td>
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=9040&amp;view=EventDetails&amp;information_id=32904" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="32904">Martial Arts Club Team</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext">7:30 PM - 7:30 PM </a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=8855&amp;view=EventDetails&amp;information_id=32252" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="32252">Wynonna and Friends: Stories &amp; Song</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listheadtext" align="left" colspan="2" width="100%">Friday, March 06, 2015</td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext"></a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=5687&amp;view=EventDetails&amp;information_id=21173" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="21173">1st 8-Week Classes End</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="30%"><a class="listtext"></a></td>
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=5686&amp;view=EventDetails&amp;information_id=21171" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="21171">Mid-term Grades due 12:00 noon</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext">9:30 AM - 12:00 PM </a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=9114&amp;view=EventDetails&amp;information_id=33285" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="33285">Pre-enrollment Advising Session (FULL)</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="30%"><a class="listtext">11:30 AM - 1:30 PM </a></td>
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=8870&amp;view=EventDetails&amp;information_id=32344" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="32344">Le Jeune Chef - Lunch A La Carte</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext">5:30 PM - 8:00 PM </a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=8873&amp;view=EventDetails&amp;information_id=32404" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="32404">Le Jeune Chef - Regional American Cuisine - Chesapeake Bay</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="30%"><a class="listtext">7:00 PM - 7:30 PM </a></td>
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=9052&amp;view=EventDetails&amp;information_id=33078" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="33078">Simple SIX- PAX</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listheadtext" align="left" colspan="2" width="100%">Saturday, March 07, 2015</td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext">5:30 PM - 8:00 PM </a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=8879&amp;view=EventDetails&amp;information_id=32444" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="32444">Le Jeune Chef - Gourmet Dinner - France</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="30%"><a class="listtext">6:00 PM - 8:00 PM </a></td>
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=9061&amp;view=EventDetails&amp;information_id=33120" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="33120">Alumni Networking at Troegs Brewing Company</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listheadtext" align="left" colspan="2" width="100%">Sunday, March 08, 2015</td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext"></a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=5688&amp;view=EventDetails&amp;information_id=21175" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="21175">Spring Break (NO CLASSES)</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="30%"><a class="listtext">7:00 PM - 7:00 PM </a></td>
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=9118&amp;view=EventDetails&amp;information_id=33293" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="33293">Matthew West</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listheadtext" align="left" colspan="2" width="100%">Monday, March 09, 2015</td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext"></a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=5688&amp;view=EventDetails&amp;information_id=22074" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="22074">Spring Break (NO CLASSES)</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="30%"><a class="listtext">10:00 AM - 2:00 PM </a></td>
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=9093&amp;view=EventDetails&amp;information_id=33211" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="33211">Placement Testing</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext">11:30 AM - 1:30 PM </a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=8870&amp;view=EventDetails&amp;information_id=32345" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="32345">Le Jeune Chef - Lunch A La Carte</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="30%"><a class="listtext">7:00 PM - 8:30 PM </a></td>
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=9040&amp;view=EventDetails&amp;information_id=32905" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="32905">Martial Arts Club Team</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext">8:00 PM - 9:00 PM </a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=8430&amp;view=EventDetails&amp;information_id=30864" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="30864">United Campus Ministry - FAITH TALKS</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listheadtext" align="left" colspan="2" width="100%">Tuesday, March 10, 2015</td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext"></a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=5688&amp;view=EventDetails&amp;information_id=22075" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="22075">Spring Break (NO CLASSES)</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="30%"><a class="listtext">11:30 AM - 1:30 PM </a></td>
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=8870&amp;view=EventDetails&amp;information_id=32346" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="32346">Le Jeune Chef - Lunch A La Carte</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext">12:30 PM - 4:30 PM </a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=9093&amp;view=EventDetails&amp;information_id=33212" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="33212">Placement Testing</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="30%"><a class="listtext">7:00 PM - 8:30 PM </a></td>
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=9062&amp;view=EventDetails&amp;information_id=33129" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="33129">Intramural Singles Pool League</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listheadtext" align="left" colspan="2" width="100%">Wednesday, March 11, 2015</td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext"></a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=5688&amp;view=EventDetails&amp;information_id=22076" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="22076">Spring Break (NO CLASSES)</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="30%"><a class="listtext">11:30 AM - 1:30 PM </a></td>
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=8870&amp;view=EventDetails&amp;information_id=32347" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="32347">Le Jeune Chef - Lunch A La Carte</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext">5:30 PM - 8:00 PM </a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=8879&amp;view=EventDetails&amp;information_id=32445" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="32445">Le Jeune Chef - Gourmet Dinner - France</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="30%"><a class="listtext">7:00 PM - 8:00 PM </a></td>
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=8405&amp;view=EventDetails&amp;information_id=30732" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="30732">SGA - WEEKLY MEETING</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listheadtext" align="left" colspan="2" width="100%">Thursday, March 12, 2015</td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext"></a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=5688&amp;view=EventDetails&amp;information_id=22077" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="22077">Spring Break (NO CLASSES)</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="30%"><a class="listtext">11:30 AM - 1:30 PM </a></td>
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=8870&amp;view=EventDetails&amp;information_id=32348" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="32348">Le Jeune Chef - Lunch A La Carte</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext">12:30 PM - 4:30 PM </a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=9093&amp;view=EventDetails&amp;information_id=33213" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="33213">Placement Testing</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="30%"><a class="listtext">5:30 PM - 8:00 PM </a></td>
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=8879&amp;view=EventDetails&amp;information_id=32446" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="32446">Le Jeune Chef - Gourmet Dinner - France</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext">7:00 PM - 7:00 PM </a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=8856&amp;view=EventDetails&amp;information_id=32254" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="32254">MOVIE: BIRDMAN</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listheadtext" align="left" colspan="2" width="100%">Friday, March 13, 2015</td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext"></a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=5688&amp;view=EventDetails&amp;information_id=22078" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="22078">Spring Break (NO CLASSES)</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="30%"><a class="listtext">11:30 AM - 1:30 PM </a></td>
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=8870&amp;view=EventDetails&amp;information_id=32349" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="32349">Le Jeune Chef - Lunch A La Carte</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext">12:30 PM - 4:30 PM </a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=9093&amp;view=EventDetails&amp;information_id=33214" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="33214">Placement Testing</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="30%"><a class="listtext">5:30 PM - 8:00 PM </a></td>
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=8879&amp;view=EventDetails&amp;information_id=32447" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="32447">Le Jeune Chef - Gourmet Dinner - France</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext">7:00 PM - 7:00 PM </a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=8856&amp;view=EventDetails&amp;information_id=32255" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="32255">MOVIE: BIRDMAN</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listheadtext" align="left" colspan="2" width="100%">Saturday, March 14, 2015</td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext"></a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=5688&amp;view=EventDetails&amp;information_id=22079" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="22079">Spring Break (NO CLASSES)</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="30%"><a class="listtext">5:30 PM - 8:00 PM </a></td>
+                <td class="listbodytextalt" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=8879&amp;view=EventDetails&amp;information_id=32448" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="32448">Le Jeune Chef - Gourmet Dinner - France</a><span class="listtext"></span></td> 
+               </tr>
+               <tr> 
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="30%"><a class="listtext">7:00 PM - 7:00 PM </a></td>
+                <td class="listbodytext" align="left" valign="top" colspan="1" width="70%"><a class="url" href="EventList.aspx?fromdate=3/1/2015&amp;todate=3/14/2015&amp;display=&amp;type=public&amp;eventidn=8856&amp;view=EventDetails&amp;information_id=32256" target="_self" data-url="http://calendar.pct.edu/QuickTip.aspx?Iid" data="32256">MOVIE: BIRDMAN</a><span class="listtext"></span></td> 
+               </tr> 
+              </tbody>
+             </table>
+            </div> <br> </td> 
+          </tr> 
+         </tbody>
+        </table> 
+        <table id="tblPoweredByADE" cellspacing="0" cellpadding="0" border="0" width="100%" style="padding-right:5px;padding-left:5px;padding-top:5px;border-top:solid 1px #c1c1c1;"> 
+         <tbody>
+          <tr> 
+           <td align="right"><span id="lblPoweredByADE"><a href="http://www.activedatax.com/">Calendar software</a> powered by Active Data Calendar</span>&nbsp;&nbsp;&nbsp;</td> 
+          </tr> 
+         </tbody>
+        </table> 
+       </div> 
+       <div id="pnlModalPopupSection"> 
+        <div id="divlayer1" class="divlayer divlayerborder divlayerbackground"> 
+         <div> 
+          <div style="height:200px;width:355px;overflow:scroll;background-color:#F5F5F5;"> 
+           <span id="lblWTS_1" style="font-weight:bold;">Select item(s) to Search</span> 
+           <div id="divCF_1" class="divCF_1"> 
+           </div> 
+          </div> 
+          <div class="divlayerclosebar" style="width:355px;"> 
+           <div> 
+            <input type="hidden" name="hfSelectedItems1" id="hfSelectedItems1"> 
+            <a class="divlayercloseaction" href="javascript:closeLayer('divlayer1');" style="text-decoration:none;">Close</a> 
+            <a class="divlayernoneaction" href="javascript:selectNone('1');" style="text-decoration:none;">Select None</a> 
+            <a class="divlayerallaction" href="javascript:selectAll('1');" style="text-decoration:none;">Select All</a> 
+            <a class="divlayersaveaction" href="javascript:saveSelectionToSession('CF1');" style="text-decoration:none;">Save</a> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+        <div id="divlayer2" class="divlayer divlayerborder divlayerbackground"> 
+         <div> 
+          <div style="height:200px;width:355px;overflow:scroll;background-color:#F5F5F5;"> 
+           <span id="lblWTS_2" style="font-weight:bold;">Select item(s) to Search</span> 
+           <div id="divCF_2" class="divCF_2"> 
+           </div> 
+          </div> 
+          <div class="divlayerclosebar" style="width:355px;"> 
+           <div> 
+            <input type="hidden" name="hfSelectedItems2" id="hfSelectedItems2"> 
+            <a class="divlayercloseaction" href="javascript:closeLayer('divlayer2');" style="text-decoration:none;">Close</a> 
+            <a class="divlayernoneaction" href="javascript:selectNone('2');" style="text-decoration:none;">Select None</a> 
+            <a class="divlayerallaction" href="javascript:selectAll('2');" style="text-decoration:none;">Select All</a> 
+            <a class="divlayersaveaction" href="javascript:saveSelectionToSession('CF2');" style="text-decoration:none;">Save</a> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+        <div id="divlayer3" class="divlayer divlayerborder divlayerbackground"> 
+         <div> 
+          <div style="height:200px;width:355px;overflow:scroll;background-color:#F5F5F5;"> 
+           <span id="lblWTS_3" style="font-weight:bold;">Select item(s) to Search</span> 
+           <div id="divCF_3" class="divCF_3"> 
+           </div> 
+          </div> 
+          <div class="divlayerclosebar" style="width:355px;"> 
+           <div> 
+            <input type="hidden" name="hfSelectedItems3" id="hfSelectedItems3"> 
+            <a class="divlayercloseaction" href="javascript:closeLayer('divlayer3');" style="text-decoration:none;">Close</a> 
+            <a class="divlayernoneaction" href="javascript:selectNone('3');" style="text-decoration:none;">Select None</a> 
+            <a class="divlayerallaction" href="javascript:selectAll('3');" style="text-decoration:none;">Select All</a> 
+            <a class="divlayersaveaction" href="javascript:saveSelectionToSession('CF3');" style="text-decoration:none;">Save</a> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+        <div id="divlayer4" class="divlayer divlayerborder divlayerbackground"> 
+         <div> 
+          <div style="height:200px;width:355px;overflow:scroll;background-color:#F5F5F5;"> 
+           <span id="lblWTS_4" style="font-weight:bold;">Select item(s) to Search</span> 
+           <div id="divCF_4" class="divCF_4"> 
+           </div> 
+          </div> 
+          <div class="divlayerclosebar" style="width:355px;"> 
+           <div> 
+            <input type="hidden" name="hfSelectedItems4" id="hfSelectedItems4"> 
+            <a class="divlayercloseaction" href="javascript:closeLayer('divlayer4');" style="text-decoration:none;">Close</a> 
+            <a class="divlayernoneaction" href="javascript:selectNone('4');" style="text-decoration:none;">Select None</a> 
+            <a class="divlayerallaction" href="javascript:selectAll('4');" style="text-decoration:none;">Select All</a> 
+            <a class="divlayersaveaction" href="javascript:saveSelectionToSession('CF4');" style="text-decoration:none;">Save</a> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+       <script type="text/javascript"><!--if((typeof(PopCalendar)=='undefined')||(PopCalendar.majorVersion==null)||(PopCalendar.minorVersion==null))    alert('Unable to find script library "/PopCalendar2008/PopCalendarAjaxNet.js".\n\nTry placing this file manually');else if((PopCalendar.majorVersion<1)||((PopCalendar.majorVersion=1)&&(PopCalendar.minorVersion<0.1)))    alert('This page uses an incorrect version of PopCalendarAjaxNet.js.\n\nThe page expects version 1.0.1 or greater. The script library is ' + PopCalendar.majorVersion + '.' + PopCalendar.minorVersion + '.');else if((typeof(PopCalendarFunctions)=='undefined')||(PopCalendarFunctions.majorVersion==null)||(PopCalendarFunctions.minorVersion==null))    alert('Unable to find script library "/PopCalendar2008/PopCalendarFunctionsAjaxNet.js".\n\nTry placing this file manually');else if((PopCalendarFunctions.majorVersion<1)||((PopCalendarFunctions.majorVersion=1)&&(PopCalendarFunctions.minorVersion<0)))    alert('This page uses an incorrect version of PopCalendarFunctionsjaxNet.js.\n\nThe page expects version 1.0.0 or greater. The script library is ' + PopCalendarFunctions.majorVersion + '.' + PopCalendarFunctions.minorVersion + '.');// --></script>
+       <script type="text/javascript">var calStartDateSearch=PopCalendar.newCalendar('calStartDateSearch');calStartDateSearch.imgDir='/PopCalendar2008/CSS/ADXPublic_Images/';calStartDateSearch.CssClass='ADXPublicStyle';calStartDateSearch.startAt=0;calStartDateSearch.todayString='Today is Sunday, March 01, 2015';calStartDateSearch.selectDateMessage='[Date]';calStartDateSearch.showWeekend=1;calStartDateSearch.centuryLimit=40;calStartDateSearch.forcedToday('2015-03-01','yyyy-mm-dd');calStartDateSearch.dayName=PopCal_enUS_DaysShort;calStartDateSearch.monthName=PopCal_enUS_MonthsFull;calStartDateSearch.monthNameShort=PopCal_enUS_MonthsShort;calStartDateSearch.initCalendar();__PopCalAddCalendarRange('txtStartDateSearch','2010-01-01',0,'','2025-12-31',0,'');</script>
+       <script type="text/javascript">var calEndDateSearch=PopCalendar.newCalendar('calEndDateSearch');calEndDateSearch.imgDir='/PopCalendar2008/CSS/ADXPublic_Images/';calEndDateSearch.CssClass='ADXPublicStyle';calEndDateSearch.startAt=0;calEndDateSearch.todayString='Today is Sunday, March 01, 2015';calEndDateSearch.selectDateMessage='[Date]';calEndDateSearch.showWeekend=1;calEndDateSearch.centuryLimit=40;calEndDateSearch.forcedToday('2015-03-01','yyyy-mm-dd');calEndDateSearch.dayName=PopCal_enUS_DaysShort;calEndDateSearch.monthName=PopCal_enUS_MonthsFull;calEndDateSearch.monthNameShort=PopCal_enUS_MonthsShort;calEndDateSearch.initCalendar();__PopCalAddCalendarRange('txtEndDateSearch','C:txtStartDateSearch',0,'','2025-12-31',0,'');</script>
+      </form> 
+      <!-- Start Footer Here --> 
+     </div> 
+     <!--end calendar_wrapper--> 
+    </div> 
+    <!--end content--> 
+   </div> 
+   <!--end main--> 
+  </div> 
+  <!--end pagebody--> 
+  <div class="foot "> 
+   <script type="text/javascript">
+	/*<![CDATA[*/
+	document.write('<div id="pctshare" class="addthis_toolbox addthis_default_style"><p class="smaller"><span class="addthis_separator">Share this page | <\/span><a class="addthis_button_facebook"><\/a><a class="addthis_button_twitter"><\/a><a class="addthis_button_email"><\/a><\/p><\/div>');
+	/*]]>*/
+	</script> 
+   <p class="address">Pennsylvania College of Technology<br>One College Avenue<br>Williamsport, PA 17701<br><br>570-326-3761<br>800-367-9222</p> 
+   <ul> 
+    <li>Help</li> 
+    <li><a href="http://www.pct.edu/askPennCollege/">Ask Penn College<sup>®</sup></a></li> 
+    <li><a href="http://www.pct.edu/search/">Site map</a></li> 
+    <li><a href="http://www.pct.edu/about/website.htm">About this website</a></li> 
+   </ul> 
+   <ul> 
+    <li>Statements About</li> 
+    <li><a href="http://www.pct.edu/privacy/">Privacy</a></li> 
+    <li><a href="http://www.pct.edu/disabilityservices/accessibility.htm">Accessibility</a></li> 
+    <li><a href="http://www.pct.edu/studentpolicy/nondiscrim.htm">Nondiscrimination</a></li> 
+   </ul> 
+   <ul class="social"> 
+    <li><a href="http://www.pct.edu/contact/social.asp">Join the Conversation!</a></li> 
+    <li><a target="ext" href="http://www.facebook.com/penncollege" title="Penn College on Facebook"><img src="http://www.pct.edu/cgi-bin/images/facebook26.png" alt="Penn College on Facebook"></a> <a target="ext" href="http://www.twitter.com/penncollege" title="Penn College on Twitter"><img src="http://www.pct.edu/cgi-bin/images/twitter26.png" alt="Penn College on Twitter"></a> <a target="ext" href="http://linkd.in/penncollege" title="Penn College on LinkedIn"><img src="http://www.pct.edu/cgi-bin/images/linkedin26.png" alt="Penn College on LinkedIn"></a> <a target="ext" href="http://ocf.pct.edu/" title="One College Family on Tumblr"><img src="http://www.pct.edu/cgi-bin/images/tumblr26.png" alt="One College Family on Tumblr"></a></li> 
+    <li><a target="ext" href="http://www.instagram.com/penncollege" title="Penn College on Instagram"><img src="http://www.pct.edu/cgi-bin/images/instagram26.png" alt="Penn College on Instagram"></a> <a target="ext" href="http://www.pinterest.com/penncollege" title="Penn College on Pinterest"><img src="http://www.pct.edu/cgi-bin/images/pinterest26.png" alt="Penn College on Pinterest"></a> <a target="ext" href="http://www.youtube.com/PennCollegeVideos" title="Penn College on YouTube"><img src="http://www.pct.edu/cgi-bin/images/youtube26.png" alt="Penn College on YouTube"></a> <a target="ext" href="https://google.com/+penncollege" title="Penn College on Google+"><img src="http://www.pct.edu/cgi-bin/images/googlePlus26.png" alt="Penn College on Google+"></a></li> 
+   </ul> 
+   <p class="copy">© 1995 Pennsylvania College of Technology. Penn College<sup>®</sup> and degrees that work<sup>®</sup> are registered in the U.S. Patent and Trademark Office.</p> 
+  </div> 
+  <script type="text/javascript" src="http://www.pct.edu/cgi-bin/scripts/addthis_widget.js#username=pctwebdev"></script> 
+  <script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-3515060-9', 'pct.edu');
+  ga('send', 'pageview');
+</script> 
+  <script language="javascript" type="text/javascript">
+if (location.pathname.toLowerCase() == "/rss/pct.asp") {
+	document.getElementById("RSSsubscribe").style.display = "none";
+}
+else if (location.pathname.toLowerCase() == "/loginpct.aspx") {
+	document.getElementById("RSSsubscribe").style.display = "none";
+}
+else if (location.pathname.toLowerCase() == "/login.aspx") {
+	document.getElementById("RSSsubscribe").style.display = "none";
+}
+else {
+	var strTitle;
+	strTitle = document.getElementById("lblCategoryHeading").innerHTML;
+
+	if (strTitle == "All Categories") {  // Check to see if All Categories
+		document.title = "Calendar - Pennsylvania College of Technology";
+		document.getElementById("calTitle").innerHTML = "Calendar";
+	}
+	else if (strTitle.match("Multiple Categories")) { // Check to see if Multiple Categories
+		document.title = "Calendar - Pennsylvania College of Technology";
+		document.getElementById("calTitle").innerHTML = "Calendar";
+	}
+	else { // Else replace text
+		strTitle = strTitle.replace("&amp;", "&");
+		document.title = strTitle + " Calendar - Pennsylvania College of Technology";
+		document.getElementById("calTitle").innerHTML = strTitle + " Calendar";
+	}
+}
+</script> 
+  <!-- End Footer Here -->   
+ </body>
+</html>

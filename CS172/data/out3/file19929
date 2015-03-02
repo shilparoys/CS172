@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"> 
+  <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1" media="(device-height: 568px)"> 
+  <meta name="start" content="{ts '2015-03-02 03:05:47'}"> 
+  <title>SignUpGenius</title> 
+  <!-- jQuery / jQuery Mobile --> 
+  <script src="assets/library/jqmobile/jquery-1.8.1.min.js"></script> 
+  <script src="assets/library/jqmobile/jquery.mobile-1.3.0.min.js"></script> 
+  <link rel="stylesheet" href="assets/library/jqmobile/jquery.mobile-1.3.0.min.css"> 
+  <!-- Themeroller --> 
+  <link rel="stylesheet" href="assets/css/default.min.css"> 
+  <!-- Apple icons --> 
+  <link rel="apple-touch-icon" href="assets/images/touch-icon-iphone.png"> 
+  <link rel="apple-touch-icon" sizes="72x72" href="assets/images/touch-icon-ipad.png"> 
+  <link rel="apple-touch-icon" sizes="114x114" href="assets/images/touch-icon-iphone-retina.png"> 
+  <link rel="apple-touch-icon" sizes="144x144" href="assets/images/touch-icon-ipad-retina.png"> 
+  <!-- Hide menu bar --> 
+  <meta name="apple-mobile-web-app-capable" content="yes"> 
+  <meta name="apple-mobile-web-app-status-bar-style" content="translucent black"> 
+  <!-- URLHide.js --> 
+  <script>
+			function BlockMove( event ) {
+			  // Tell Safari not to move the window.
+			  event.preventDefault() ;
+			}
+			
+			
+				if( document.height < window.outerHeight){
+					document.body.style.height = ( window.outerHeight + 50 ) + 'px';
+				}
+				window.scrollTo( 0, 1 );
+			
+			// Prevent links from opening in a new window.
+			(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")
+			var addToHomeConfig = {
+				touchIcon: true,
+			};
+		</script> 
+  <!-- custom --> 
+  <script src="assets/js/main.js"></script> 
+  <script>
+		function getRemaining( slotitemID, field, qtyfield, commentfield ){
+			$.ajax({
+				url: 'model/service/remoteService.cfc',	
+				type: 'get',
+				dataType: 'JSON',
+				data: {
+					method: 'getRemaining',	
+					dsn: 'SUGeniusSQLProd',
+					slotitemID: slotitemID
+				},
+				success: function( data ){
+					field.val('');
+					field.attr( 'placeholder', data.PLACEHOLDER );
+					field.attr( 'max', data.REMAINING );
+					field.val( 1 );
+					qtyfield.html( '(' + data.PLACEHOLDER + ')' );
+					commentfield.text( data.ITEMCOMMENT );
+				},
+				error: function ( err, message, detail ){
+					console.log( message, detail );
+				}
+			});
+		}
+		$(document).on('pageshow', '#goNonSSL', function(event, ui){
+			window.location.href = 'http://www3.signupgenius.com/mobile/index.cfm?action=members.myaccount&loadMobileTemplate';
+		});
+		$(document).on('pageshow', '#goNonSSLNoLogin', function(event, ui){
+			window.location.href = 'http://www3.signupgenius.com/mobile/index.cfm?action=main.default&loadMobileTemplate&nossl';
+		});
+		$(document).on('pageshow', '#goNonSSLSummary', function(event, ui){
+			var sugToken = $('#sugToken').val();
+			window.location.href = 'http://www3.signupgenius.com/mobile/index.cfm?action=signups.signupSummary&sugToken='+sugToken+'&mode=signup&loadMobileTemplate&nossl';
+		});
+		$(document).on('pageshow', '#goNonSSLForm', function(event, ui){
+			var sugToken = $('#sugToken').val();
+			window.location.href = 'http://www3.signupgenius.com/mobile/index.cfm?action=signups.signupForm&sugToken='+sugToken+'&mode=signup&loadMobileTemplate&nossl';
+		});
+		$(document).on('pageshow', '#reloadThankYou', function(event, ui){
+			var sugToken = $('#sugToken').val();
+			window.location.href = 'http://www3.signupgenius.com/mobile/index.cfm?action=signups.thankyou&sugToken='+sugToken+'&loadMobileTemplate';
+		});
+		$(document).on('pageshow', '#reloadSignupPage', function(event, ui){
+			var sugToken = $('#sugToken').val();
+			window.location.href = 'http://www3.signupgenius.com/mobile/index.cfm?action=signups.signup&sugToken='+sugToken+'&jqPageID=reloaded&loadMobileTemplate';
+		});
+	</script> 
+  <link rel="stylesheet" href="assets/css/custom.css"> 
+  <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script> 
+  <!-- Google --> 
+  <!--  Double Click for Publishers - Google ad server - https://support.google.com/dfp_premium/topic/28788?hl=en&ref_topic=28149 --> 
+  <!-- Google Analytics --> 
+  <script type="text/javascript">
+			  var _gaq = _gaq || [];
+			  _gaq.push(['_setAccount', 'UA-5787832-1']);
+			  _gaq.push(['_trackPageview']);
+			  (function() {
+			    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			  })();
+			</script> 
+  <!-- AdExchange --> 
+  <script type="text/javascript">
+			var googletag = googletag || {};
+			googletag.cmd = googletag.cmd || [];
+			(function() {
+			var gads = document.createElement('script');
+			gads.async = true;
+			gads.type = 'text/javascript';
+			var useSSL = 'https:' == document.location.protocol;
+			gads.src = (useSSL ? 'https:' : 'http:') + 
+			'//www.googletagservices.com/tag/js/gpt.js';
+			var node = document.getElementsByTagName('script')[0];
+			node.parentNode.insertBefore(gads, node);
+			})();
+			</script> 
+ </head> 
+ <body> 
+  <div data-theme="a"> 
+   <!-- SignUpGenius Mobile c2013 --> 
+   <script>
+		if ( window.mobileTemplateLoaded == undefined ){
+			window.location.href = 'index.cfm?action=signups.signup&URLID=20f0c4eaba62fa1f58-webstudy1&loadMobileTemplate';
+		};
+	</script> 
+   <div data-role="page" data-title="SignUpGenius" id="signupPage" data-theme="a" class="pageContent"> 
+    <div data-role="header"> 
+     <h1>SignUpGenius</h1> 
+     <a href="index.cfm?action=security.homePageRedirect" data-icon="home" data-transition="pop" data-iconpos="notext" class="ui-btn-right" data-ajax="false" data-theme="a" onclick="window.location=this.getAttribute(&quot;href&quot;);">Home</a> 
+     <div data-role="navbar"> 
+      <ul> 
+       <li><a href="index.cfm?action=tools.contactAdmin&amp;sugtoken=42D1B5A69FA986111F0513062EC698CDFD8B">Contact Admin</a></li> 
+       <li><a href="http://www.signupgenius.com/index.cfm?go=s.signup&amp;useFullSite=true&amp;URLID=20F0C4EABA62FA1F58-webstudy1" data-ajax="false">View at Full Site</a></li> 
+      </ul> 
+     </div> 
+    </div> 
+    <div data-role="content"> 
+     <div style="display: table;"> 
+      <div style="display:table-cell;"> 
+       <img src="http://www.signupgenius.com/images/theme/school_desk2_main.jpg" width="100px;"> 
+      </div> 
+      <div style="display:table-cell; padding-left:10px; vertical-align: middle;"> 
+       <h3>WebStudy Light for Face-to-Face Faculty</h3> 
+      </div> 
+     </div> 
+     <p> </p>
+     <div id="shortDesc" style="font-size: 0.9em !important; line-height: 1.4em !important;">
+       WebStudy Light is available for face-to-face classes!&nbsp; Students may access course materials from anywhere – even when unforeseen closures occur! Send news announcements to the entire class. Organize lesson plans. Enhance the learning experience. &nbsp; Workshops will begin promptly at the times indicated. You must attend the full hour for your account to be activated. ... 
+     </div> 
+     <a id="moreDesc" href="#" data-role="button" data-inline="true" data-mini="true" data-icon="arrow-r"> ... more</a> 
+     <div id="hideDesc" class="noFlashHide" style="font-size: 0.9em !important; line-height: 1.4em !important;">
+      WebStudy Light is available for face-to-face classes!&nbsp; Students may access course materials from anywhere – even when unforeseen closures occur! Send news announcements to the entire class. Organize lesson plans. Enhance the learning experience. &nbsp; Workshops will begin promptly at the times indicated. You must attend the full hour for your account to be activated. If you would like to follow along at the computer, please bring your Colleague ID number.&nbsp; This is the same username you enter on WebAdvisor when retrieving class rosters or entering attendance/final grades (example, rd1234567).&nbsp;&nbsp; PLEASE REGISTER WITH YOUR CCC EMAIL ADDRESS, SO WE MAY VERIFY YOUR STATUS. &nbsp;
+     </div> 
+     <a id="hideDescButton" href="#" data-role="button" data-inline="true" data-mini="true" data-icon="arrow-l" style="display:none;">less</a> 
+     <p></p> 
+     <div style="padding-bottom:12px;"> 
+      <b>Sign Up for WebStudy Light:</b> 
+     </div> 
+     <ul data-role="listview" data-inset="true" style="margin-top: 0;"> 
+      <li> <a href="index.cfm?action=signups.signupsummary&amp;sugtoken=42D1B5A69FA986111F0513062EC698CDFDDAED01A3308B8447D7BFB6771D0D9DC0C008C065CBEAF5A3" data-transition="slide" class="icon-lock" data-icon="lock"> 2/12/2015 Thu.<br> <span class="ui-btn-text" style="font-size:small;margin-left:10px;"> 5:00 PM - 6:00 PM </span> (31) <br><span class="ui-btn-text" style="font-size:small;margin-left:10px;">Madison 212, Blackwood campus</span> </a> </li> 
+      <li> <a href="index.cfm?action=signups.signupsummary&amp;sugtoken=42D1B5A69FA986111F0513062EC698CDFDDAED01A3308B8447D7BFB6771D0D9DC0C008C065CBEAF4A3" data-transition="slide" class="icon-lock" data-icon="lock"> 3/05/2015 Thu.<br> <span class="ui-btn-text" style="font-size:small;margin-left:10px;"> 3:30 PM - 4:30 PM </span> (34) <br><span class="ui-btn-text" style="font-size:small;margin-left:10px;">Madison 212, Blackwood campus</span> </a> </li> 
+      <li> <a href="index.cfm?action=signups.signupsummary&amp;sugtoken=42D1B5A69FA986111F0513062EC698CDFDDAED01A3308B8447D7BFB6771D0D9DC0C008C065CBE5FDA3" data-transition="slide" class="icon-lock" data-icon="lock"> 4/14/2015 Tue.<br> <span class="ui-btn-text" style="font-size:small;margin-left:10px;"> 5:00 PM - 6:00 PM </span> (35) <br><span class="ui-btn-text" style="font-size:small;margin-left:10px;">Madison 212, Blackwood campus</span> </a> </li> 
+      <li> <a href="index.cfm?action=signups.signupsummary&amp;sugtoken=42D1B5A69FA986111F0513062EC698CDFDDAED01A3308B8447D7BFB6771D0D9DC0C008C065CBE5FCA3" data-transition="slide" class="icon-lock" data-icon="lock"> 5/13/2015 Wed.<br> <span class="ui-btn-text" style="font-size:small;margin-left:10px;"> 3:00 PM - 4:00 PM </span> (34) <br><span class="ui-btn-text" style="font-size:small;margin-left:10px;">Madison 212, Blackwood campus</span> </a> </li> 
+     </ul> 
+     <input type="hidden" name="sugtoken" id="sugToken" value="42D1B5A69FA986111F0513062EC698CDFD8B"> 
+     <br>
+     <br>
+     <br> 
+    </div> 
+    <div data-role="footer" data-position="fixed" style="margin-top:4px; text-align: center;" class="footer"> 
+     <!-- SignUpGenius/Mobile --> 
+     <div id="Advert_Mobile" style="width:320;height:50;"> 
+      <script type="text/javascript">
+				    googletag.cmd.push(function() {
+				      
+					googletag.defineSlot('/311748471/SignUpGenius/Mobile', [320, 50], 'Advert_Mobile').addService(googletag.pubads());
+				
+				      googletag.enableServices();
+				      googletag.display('Advert_Mobile');
+				  });
+				  </script> 
+     </div> 
+     <div style="padding:5px;"> 
+      <h4 style="font-size: 0.6em; color: #fae9a6; line-height: 1.0 em; margin:0;padding:0;">© 2013 SignUpGenius v2.80 </h4> 
+     </div> 
+    </div> 
+   </div> 
+   <br>
+   <br>
+   <br> 
+  </div>  
+ </body>
+</html>

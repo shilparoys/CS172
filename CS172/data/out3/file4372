@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+ <head> 
+  <meta charset="utf-8"> 
+  <meta name="Author" content="Apple Inc."> 
+  <meta name="viewport" content="width=1024"> 
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7, IE=9"> 
+  <link rel="stylesheet" href="http://images.apple.com/ac/globalheader/1.0/styles/globalheader.css" type="text/css"> 
+  <title>Apple Retail Store</title> 
+  <meta name="omni_page" content="retail store - index"> 
+  <meta name="Description" content="Visit the Apple Retail Store to shop for Mac, iPhone, iPad, iPod, and more. Sign up for free workshops or visit the Genius bar for free support."> 
+  <link rel="stylesheet" href="http://images.apple.com/global/styles/base.css" type="text/css"> 
+  <link rel="stylesheet" href="http://images.apple.com/v/retail/g/styles/retail.css" type="text/css"> 
+  <link rel="stylesheet" href="http://images.apple.com/v/retail/home/g/styles/home.css" type="text/css"> 
+  <link rel="stylesheet" href="http://images.apple.com/retail/styles/retail.css" type="text/css"> 
+  <script src="http://images.apple.com/global/scripts/lib/prototype.js" type="text/javascript" charset="utf-8"></script> 
+  <script src="http://images.apple.com/global/scripts/lib/scriptaculous.js" type="text/javascript" charset="utf-8"></script> 
+  <script src="http://images.apple.com/global/scripts/lib/sizzle.js" type="text/javascript" charset="utf-8"></script> 
+  <script src="http://images.apple.com/global/scripts/browserdetect.js" type="text/javascript" charset="utf-8"></script> 
+  <script src="http://images.apple.com/global/scripts/apple_core.js" type="text/javascript" charset="utf-8"></script> 
+  <script src="http://images.apple.com/global/scripts/search_decorator.js" type="text/javascript" charset="utf-8"></script> 
+  <script src="http://images.apple.com/global/ac_base/ac_base.js" type="text/javascript" charset="utf-8"></script> 
+  <script src="http://images.apple.com/global/scripts/feedstatistics.js" type="text/javascript" charset="utf-8"></script> 
+  <script src="http://images.apple.com/global/ac_retina/ac_retina.js" type="text/javascript" charset="utf-8"></script> 
+  <link rel="stylesheet" href="/wss/fonts?family=Myriad+Set+Pro&amp;v=1&amp;weights=200,400,600"> 
+  <script src="http://images.apple.com/global/scripts/lib/event_mixins.js" charset="utf-8"></script> 
+  <script src="http://images.apple.com/global/scripts/swap_view.js" charset="utf-8"></script> 
+  <script src="http://images.apple.com/global/scripts/view_master_tracker.js" charset="utf-8"></script> 
+  <script src="http://images.apple.com/v/retail/g/scripts/ac_autogallery/ac_autogallery.js" charset="utf-8"></script> 
+  <script src="http://images.apple.com/v/retail/g/scripts/util.js" charset="utf-8"></script> 
+  <script src="http://images.apple.com/v/retail/g/scripts/utility_nav.js" charset="utf-8"></script> 
+  <link rel="stylesheet" href="http://images.apple.com/v/retail/locator/b/styles/locator.css" type="text/css"> 
+  <!-- retail locator view templates --> 
+  <script id="retail-locator-spinner" type="text/html">
+<img src="http://images.apple.com/global/elements/zoom_view/zoom-view-image-loading.gif" width="32" height="32" />
+</script> 
+  <script id="retail-locator-map-item-template" type="text/html">
+<div class="map-container">
+	<a href="#close" class="block close">
+	</a>
+	<div class="map-overlay-box">
+	
+		<a href="{store_detail_link}" class="store-info selfclear">
+			<img src="{image_link}" width="150" height="100" alt="" />
+			<div class="column last">
+				<h1 class="store-address-box">Apple Store {store_name}</h1>
+				<h2><address>{address}<br />{city_state} {zip}</address>
+				{phone}</h2>
+				<span class="more">View store details</span>
+				
+			</div>
+		</a>
+
+		
+		<a href="/retail/personal-pickup/" class="did-you-know">
+			<h1>Did you know?</h1>
+			<p>You can buy online and pick up your product at any Apple Store. <span class="more">Learn more</span></p>
+			
+			<div class="notch"></div>
+		</a>
+	</div>
+</div>
+</script> 
+  <script id="retail-locator-list-item-template" type="text/html">
+	<h1>{store_name}</h1>
+	<address>
+		<div>{address1}</div>
+		<div>{address2}</div>
+	</address>
+	
+	<a href="{store_detail_link}" class="more">View store details</a>
+	
+</script> 
+  <script id="retail-locator-list-item-template-mobile" type="text/html">
+	<h1>{store_name}</h1>
+	<address>
+		<div>{address1}</div>
+		<div>{address2}</div>
+	</address>
+</script> 
+  <script id="retail-locator-list-empty" type="text/html">
+	<li class='default'>
+	<h1>Please enter a location.</h1>
+	We&rsquo;ll show you the nearest Apple Store.
+	</li>
+</script> 
+  <script id="retail-locator-views" type="text/html">
+<div class="grid2col retailLocatorView" data-hires="false">
+	<div class="column first listViewContainer">
+		<ul class="listView">
+		</ul>
+		<div class="nav">
+		<a href="#" onclick="{direction}" class="more {nav_class}">{nav}</a>
+		</div>
+	</div>
+	<div class="column last mapView" data-hires="false">
+	</div>
+</div>
+</script> 
+  <script src="https://maps.googleapis.com/maps/api/js?client=gme-appleinc&amp;sensor=false"></script> 
+  <script src="http://images.apple.com/v/retail/locator/b/scripts/maps.js" charset="utf-8"></script> 
+  <script src="http://images.apple.com/v/retail/locator/b/scripts/globalsearch.locator.js" charset="utf-8"></script> 
+  <script src="http://images.apple.com/v/retail/locator/b/scripts/globalsearch.core.js" charset="utf-8"></script> 
+ </head> 
+ <body id="overview" class="retail overview"> 
+  <nav id="globalheader" class="globalheader" role="navigation" aria-label="Global Navigation" data-hires="false" data-analytics-region="global nav" lang="en-US"> 
+   <div id="gh-content" class="gh-content"> 
+    <ul class="gh-menu"> 
+     <li id="gh-menu-icon-toggle" class="gh-menu-icon gh-menu-icon-toggle"><button id="gh-svg-icons" class="gh-svg-wrapper"><span class="gh-text-replace">Menu</span></button></li> 
+     <li id="gh-menu-icon-home" class="gh-menu-icon gh-menu-icon-home"><a href="/"><span class="gh-text-replace">Apple</span></a></li> 
+    </ul>
+    <!--/gh-menu--> 
+    <div class="gh-nav"> 
+     <div class="gh-nav-view"> 
+      <ul class="gh-nav-list"> 
+       <li class="gh-tab gh-tab-apple"><a class="gh-tab-link" href="/"><span class="gh-tab-inner"><span class="gh-text-replace">Apple</span></span></a></li> 
+       <li class="gh-tab gh-tab-store"><a class="gh-tab-link" href="http://store.apple.com/us"><span class="gh-tab-inner"><span class="gh-text-replace">Store</span></span></a></li> 
+       <li class="gh-tab gh-tab-mac"><a class="gh-tab-link" href="/mac/"><span class="gh-tab-inner"><span class="gh-text-replace">Mac</span></span></a></li> 
+       <li class="gh-tab gh-tab-iphone"><a class="gh-tab-link" href="/iphone/"><span class="gh-tab-inner"><span class="gh-text-replace">iPhone</span></span></a></li> 
+       <li class="gh-tab gh-tab-watch"><a class="gh-tab-link" href="/watch/"><span class="gh-tab-inner"><span class="gh-text-replace">Watch</span></span></a></li> 
+       <li class="gh-tab gh-tab-ipad"><a class="gh-tab-link" href="/ipad/"><span class="gh-tab-inner"><span class="gh-text-replace">iPad</span></span></a></li> 
+       <li class="gh-tab gh-tab-ipod"><a class="gh-tab-link" href="/ipod/"><span class="gh-tab-inner"><span class="gh-text-replace">iPod</span></span></a></li> 
+       <li class="gh-tab gh-tab-itunes"><a class="gh-tab-link" href="/itunes/"><span class="gh-tab-inner"><span class="gh-text-replace">iTunes</span></span></a></li> 
+       <li class="gh-tab gh-tab-support"><a class="gh-tab-link" href="/support/"><span class="gh-tab-inner"><span class="gh-text-replace">Support</span></span></a></li> 
+       <li id="gh-tab-search" class="gh-tab gh-tab-search"> 
+        <div id="gh-search" class="gh-search" role="search"> 
+         <form action="/search/" method="post" class="gh-search-form" id="gh-search-form" data-search-recommended-results="{&quot;url&quot;:&quot;/global/nav/scripts/shortcuts.php&quot;,&quot;requestName&quot;:&quot;recommendedResults&quot;,&quot;queryName&quot;:&quot;q&quot;,&quot;dataType&quot;:&quot;xml&quot;}" data-search-suggested-searches="{&quot;url&quot;:&quot;/search/instant/getSuggestions&quot;,&quot;requestName&quot;:&quot;suggestedSearches&quot;,&quot;queryName&quot;:&quot;query&quot;,&quot;queryParams&quot;:{&quot;model&quot;:&quot;marcom_en_US&quot;,&quot;locale&quot;:&quot;en_US&quot;},&quot;dataType&quot;:&quot;json&quot;}"> 
+          <div class="gh-search-input-wrapper"> 
+           <label for="gh-search-input" class="gh-text-replace">Search apple.com</label> 
+           <input type="text" name="q" id="gh-search-input" class="gh-search-input" placeholder="Search apple.com"> 
+          </div> 
+          <button disabled type="submit" id="gh-search-submit" class="gh-search-submit gh-search-magnify"><span class="gh-text-replace">Search apple.com</span></button> 
+          <button disabled type="reset" id="gh-search-reset" class="gh-search-reset"><span class="gh-text-replace">Reset</span></button> 
+         </form> 
+        </div> <a class="gh-search-magnify" href="/search/"><span class="gh-text-replace">Search apple.com</span></a> </li> 
+      </ul> 
+     </div> 
+    </div>
+    <!--/gh-nav--> 
+   </div> 
+  </nav>
+  <!--/globalheader--> 
+  <script src="http://images.apple.com/ac/globalheader/1.0/scripts/globalheader.js" type="text/javascript" charset="utf-8"></script> 
+  <div id="top"> 
+   <!-- SiteCatalyst code version: H.8. Copyright 1997-2006 Omniture, Inc. --> 
+   <script type="text/javascript">
+/* RSID: */
+
+var s_account="appleglobal,appleretail"
+
+</script> 
+   <script type="text/javascript" src="http://images.apple.com/metrics/scripts/s_code_h.js"></script> 
+   <script type="text/javascript">
+
+s.pageName=AC.Tracking.pageName()+" (us)";
+s.channel="www.us.retailstore"
+
+
+//Map Tracking
+if (typeof Event !== 'undefined' && typeof $$ === 'function' && AC && AC.retail && typeof AC.retail.EventDispatch === 'function') {
+
+	AC.retail.EventDispatch().subscribeEvent("*", "::globalSearchReady", function() {
+		eventManager = AC.retail.EventDispatch();
+		var isDescendentOfTag = function isDescendentOfTag(node, tagType, maxParentDepthLevel) {
+				if (node && tagType && maxParentDepthLevel) {
+					if (node.tagName === tagType) {
+						return node;
+					} else if (maxParentDepthLevel) {
+						return isDescendentOfTag(node.parentNode, tagType, maxParentDepthLevel -= 1);
+					} else {
+						return false;
+					}
+				}
+			};
+		var searchInstances = AC.retail.AutoGlobalSearch().getGlobalSearchInstances();
+		var updateAnalytics = function(prop3Val, customName, eVar16Val, eventsVal) {
+				AC.Tracking.trackClick({
+					prop3: prop3Val,
+					eVar16: eVar16Val,
+					events: eventsVal
+				}, this, 'o', customName);
+			};
+		var locationGroupEventsAttached;
+		var trackLocatorNetworkUpdate = function(isDefaultLocation) {
+			if (!isDefaultLocation) {
+				updateAnalytics("Retail index - Find a store - Search", "retail search locator", "retail store search", "event6");
+			}
+				if (!locationGroupEventsAttached) {
+					eventManager.subscribeEvent($$(".listView")[0], "down", function(evt) {
+						if (AC.Element.hasClassName(evt.target, "more")) {
+							updateAnalytics("Find a store - List - View Store Details", "List - View Store Details");
+						}
+					});
+					eventManager.subscribeEvent($$(".mapView")[0], "down", function(evt) {
+						if (evt && evt.target) {
+							if (isDescendentOfTag(evt.target, "A", 5) && AC.Element.hasClassName(isDescendentOfTag(evt.target, "A", 5), "store-info")) {
+								updateAnalytics("Find a store - Map - View Store Details", "Map - View Store Details");
+							} else if (isDescendentOfTag(evt.target, "A", 5)) {
+								updateAnalytics("Find a store - Map - Learn more", "Map - Learn more");
+							}
+						}
+					});
+					locationGroupEventsAttached = true;
+				}
+			};
+
+		searchInstances.forEach(function(instanceOfGlobalSearch) {
+			if (instanceOfGlobalSearch.module && typeof instanceOfGlobalSearch.module.getModuleType === "function") {
+				if (instanceOfGlobalSearch.module.getModuleType() === "retail-locator") {
+					eventManager.subscribeEvent(instanceOfGlobalSearch.module, "::newNetworkLocationResults", trackLocatorNetworkUpdate);
+				}
+			}
+		});
+	});
+
+}
+
+
+
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)</script> 
+   <!-- End SiteCatalyst code version: H.8. --> 
+  </div> 
+  <nav id="productheader" data-hires="true" class="aos selfclear"> 
+   <div class="productheader-wrapper selfclear"> 
+    <h2><a href="http://store.apple.com/us">Apple Store</a></h2> 
+    <ul> 
+     <li id="pn-store"><a href="/retail">Find a Store</a></li> 
+     <li id="pn-learn"><a href="/retail/learn">Learn</a></li> 
+     <li id="pn-business"><a href="/retail/business/">Business</a></li> 
+     <li id="pn-get-help"> <a id="ph-get-help" href="#get-help-dropdown" class="dropdown" title="Get Help Dropdown Menu"><span class="dropdown" aria-hidden="true">Get Help</span><span class="icon-arrow"></span></a> 
+      <div class="productheader-dropdown"> 
+       <ul> 
+        <li> <span class="caret"></span> <a class="product-help-link" href="https://getsupport.apple.com/GetproductgroupList.do?locale=en_US"> <h3>Need help with a product you own?</h3> <p>Get help with all your Apple products, such as iPhone, iPad, Mac, and iTunes.</p> </a> </li> 
+        <li> <a href="https://secure1.store.apple.com/us/order/list"> <h3>Need help with an order you placed?</h3> <p>Check the status of your Apple Online Store order, and track your shipment.</p> </a> </li> 
+        <li class="last"> 
+         <div class="buying-products"> 
+          <h3>Need help buying products you want?</h3> 
+          <p>Call us at 1-800-MY-APPLE and we’ll help you get the right product.</p> 
+         </div> </li> 
+       </ul> 
+      </div> </li> 
+     <li id="pn-account"> <a id="ph-account" href="#account-dropdown" class="dropdown" title="Account Dropdown Menu"><span class="icon-arrow"></span></a> 
+      <div class="productheader-dropdown"> 
+       <ul> 
+        <li> <span class="caret"></span> <a href="https://secure1.store.apple.com/us/order/list"> <h3>Check Order Status</h3> <p>Find out estimated delivery dates for your orders.</p> </a> </li> 
+        <li> <a href="https://secure1.store.apple.com/us/order/home/return/page"> <h3>Return Items</h3> <p>Return your items and get a refund.</p> </a> </li> 
+        <li> <a href="https://secure1.store.apple.com/us/order/list"> <h3>Cancel Items</h3> <p>Cancel orders recently placed.</p> </a> </li> 
+        <li class="last"> <a href="http://store.apple.com/us/account/home"> <h3>View Account</h3> <p>Manage account settings, payments and order info.</p> </a> </li> 
+       </ul> 
+      </div> </li> 
+     <li id="pn-cart"><a title="Shopping Cart" href="http://store.apple.com/us/cart"></a></li> 
+    </ul> 
+   </div> 
+  </nav> 
+  <div id="main" data-hires="true"> 
+   <!-- RETAIL HOME --> 
+   <!-- RETAIL/IPAD --> 
+   <header class="content hero gallery autogallery autogallery-hero-retail autogallery-slideshow-retail-hero"> 
+    <div class="block"> 
+     <section id="hero-gallery" class="gallery-view"> 
+      <figure id="hero-gallery-ipadair" class="gallery-content hero-gallery-ipadair grid2col"> 
+       <img class="left" src="http://images.apple.com/retail/home/images/hero_ipadair.jpg" width="615" height="606" alt=""> 
+       <div class="column first"> 
+        <h1>iPad Air 2</h1> 
+        <p><a href="http://store.apple.com/xc/ipad_air_2">Buy online</a> and have it waiting for you in store,<br>or you can get it shipped directly to you for free.<br>Also available at the Apple Retail Store.</p> 
+       </div> 
+      </figure>
+      <!--/hero-gallery-imac--> 
+      <figure id="hero-gallery-ipadmini" class="gallery-content hero-gallery-ipadmini grid2col"> 
+       <img class="left" src="http://images.apple.com/retail/home/images/hero_ipadmini.jpg" width="324" height="417" alt=""> 
+       <div class="column last"> 
+        <h1>iPad mini 3</h1> 
+        <p><a href="http://store.apple.com/xc/ipad_mini_3">Buy online</a> and have it waiting for you in store,<br>or you can get it shipped directly to you for free.<br>Also available at the Apple Retail Store.</p> 
+       </div> 
+      </figure>
+      <!--/hero-gallery-ipadmini--> 
+      <figure id="hero-gallery-iphone" class="gallery-content hero-gallery-iphone grid2col"> 
+       <h1><img src="http://images.apple.com/retail/home/images/hero_iphone6_title.png" width="938" height="62" alt="iPhone 6"></h1> 
+       <p class="center">Now available at the Apple Retail Store on a first-come, first-served basis.*<br>You can also <a href="http://store.apple.com/go/iphone6">buy online</a> and have it waiting at the store, or get it shipped directly to you for free.</p> 
+       <img class="center" src="http://images.apple.com/retail/home/images/hero_iphone6.png" width="946" height="176" alt=""> 
+      </figure> 
+     </section>
+     <!--/gallery-view--> 
+    </div> 
+    <nav> 
+     <ul class="outer-dot-nav"> 
+      <li><a class="hero-gallery" href="#hero-gallery-ipadair"></a></li> 
+      <li><a class="hero-gallery" href="#hero-gallery-ipadmini"></a></li> 
+      <li><a class="hero-gallery" href="#hero-gallery-iphone"></a></li> 
+     </ul> 
+     <nav class="paddle-nav"> 
+      <ul> 
+       <li> <a class="arrow prev hero-gallery" href="#previous"><b>Previous</b></a> </li> 
+       <li> <a class="arrow next hero-gallery" href="#next"><b>Next</b></a> </li> 
+      </ul> 
+     </nav>
+     <!--/paddle-nav--> 
+    </nav> 
+   </header>
+   <!--/hero.gallery--> 
+   <div class="retail-locator-container retail-locator gallery-swap"> 
+    <nav class="nav hero-search retail-locator-search"> 
+     <div class="column first search"> 
+      <h2 class="left"> <img src="http://images.apple.com/retail/images/retail_find_a_store.png" width="125" height="25" alt="Find a store"> </h2> 
+      <input type="search" data-autoglobalsearch-module="retail-locator" results="0" placeholder="City and State or Zip" class="global-retail-search" required> 
+     </div> 
+     <div class="column last store-list"> 
+      <a href="/retail/storelist/" class="more">Complete store list</a> 
+     </div> 
+    </nav> 
+    <div class="gallery autogallery autogallery-featured-stores featured-stores"> 
+     <nav class="paddle-nav black"> 
+      <ul> 
+       <li> <a class="arrow prev store-gallery" href="#previous" ontouchstart=""><b>Previous</b></a> </li> 
+       <li> <a class="arrow next store-gallery" href="#next" ontouchstart=""><b>Next</b></a> </li> 
+      </ul> 
+     </nav> 
+     <div class="gallery-view wide-image" id="store-gallery"> 
+      <figure class="gallery-content first" id="store-gallery-1"> 
+       <img src="http://images.apple.com/retail/home/images/gallery/retail_store_gallery_istanbul.jpg" width="1440" height="605" alt=""> 
+       <figcaption>
+        <h1><a class="block" href="http://www.apple.com/tr/retail/zorlucenter/"><img src="http://images.apple.com/retail/home/images/gallery/retail_home_istanbul_title.png" width="980" height="50" alt="The Apple Store, Zorlu Center, Istanbul"></a></h1>
+       </figcaption> 
+      </figure> 
+      <figure class="gallery-content" id="store-gallery-2"> 
+       <img src="http://images.apple.com/retail/home/images/gallery/retail_store_gallery_amsterdam.jpg" width="1440" height="605" alt=""> 
+       <figcaption>
+        <h1><a class="block" href="http://www.apple.com/nl/retail/amsterdam/"><img src="http://images.apple.com/retail/home/images/gallery/retail_home_amsterdam_title.png" width="980" height="50" alt="The Apple Store, Amsterdam Netherlands"></a></h1>
+       </figcaption> 
+      </figure> 
+      <figure class="gallery-content" id="store-gallery-3"> 
+       <img src="http://images.apple.com/retail/home/images/gallery/retail_store_gallery_grand_central.jpg" width="1440" height="605" alt=""> 
+       <figcaption>
+        <h1><a class="block" href="/retail/grandcentral/"><img src="http://images.apple.com/retail/home/images/gallery/retail_home_grand_central_title.png" width="980" height="50" alt="The Apple Store, Grand Central New York"></a></h1>
+       </figcaption> 
+      </figure> 
+      <figure class="gallery-content" id="store-gallery-4"> 
+       <img src="http://images.apple.com/retail/home/images/gallery/retail_store_gallery_fifth.jpg" width="1440" height="605" alt=""> 
+       <figcaption>
+        <h1><a class="block" href="/retail/fifthavenue/"><img src="http://images.apple.com/retail/home/images/gallery/retail_home_fifth_title.png" width="980" height="50" alt="The Apple Store, Fifth Avenue New York"></a></h1>
+       </figcaption> 
+      </figure> 
+      <figure class="gallery-content" id="store-gallery-5"> 
+       <img src="http://images.apple.com/retail/home/images/gallery/retail_store_gallery_hong_kong.jpg" width="1440" height="605" alt=""> 
+       <figcaption>
+        <h1><a class="block" href="http://www.apple.com/hk/en/retail/ifcmall/"><img src="http://images.apple.com/retail/home/images/gallery/retail_home_hong_kong_title.png" width="980" height="50" alt="The Apple Store, ifc mall Hong Kong"></a></h1>
+       </figcaption> 
+      </figure> 
+      <figure class="gallery-content" id="store-gallery-6"> 
+       <img src="http://images.apple.com/retail/home/images/gallery/retail_store_gallery_pudong.jpg" width="1440" height="605" alt=""> 
+       <figcaption>
+        <h1><a class="block" href="http://www.apple.com/cn/retail/pudong/"><img src="http://images.apple.com/retail/home/images/gallery/retail_home_pudong_title.png" width="980" height="50" alt="The Apple Store, Pudong Shanghai"></a></h1>
+       </figcaption> 
+      </figure> 
+      <figure class="gallery-content" id="store-gallery-7"> 
+       <img src="http://images.apple.com/retail/home/images/gallery/retail_store_gallery_sydney.jpg" width="1440" height="605" alt=""> 
+       <figcaption>
+        <h1><a class="block" href="http://www.apple.com/au/retail/sydney/"><img src="http://images.apple.com/retail/home/images/gallery/retail_home_sydney_title.png" width="980" height="50" alt="The Apple Store, Sydney Australia"></a></h1>
+       </figcaption> 
+      </figure> 
+      <figure class="gallery-content" id="store-gallery-8"> 
+       <img src="http://images.apple.com/retail/home/images/gallery/retail_store_gallery_paris.jpg" width="1440" height="605" alt=""> 
+       <figcaption>
+        <h1><a class="block" href="http://www.apple.com/fr/retail/opera/"><img src="http://images.apple.com/retail/home/images/gallery/retail_home_paris_title.png" width="980" height="50" alt="The Apple Store, Opéra Paris"></a></h1>
+       </figcaption> 
+      </figure> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="promos grid2col" data-hires="true"> 
+    <a href="/retail/learn/" class="column first learn"> <img class="thumb" src="http://images.apple.com/retail/images/retail_storelist_learn.jpg" width="484" height="274" alt=""> <h1><img src="http://images.apple.com/retail/images/retail_storelist_learn_title.png" width="484" height="30" alt="Learn all you want."></h1> <p>Attend free workshops. Take your skills to the next level with One to One. Or&nbsp;take your kids to free youth programs like Apple&nbsp;Camp.</p> <span class="more">Learn about workshops and training</span> </a> 
+    <a href="/retail/geniusbar/" class="column last help"> <img class="thumb" src="http://images.apple.com/retail/images/retail_storelist_help.jpg" width="484" height="274" alt=""> <h1><img src="http://images.apple.com/retail/images/retail_storelist_help_title.png" width="484" height="30" alt="Get the help you need."></h1> <p>For hardware repairs, you can make a Genius Bar reservation. For software or services, get help even faster by phone or&nbsp;chat.</p> <span class="more">Learn about the Genius Bar</span> </a> 
+   </div> 
+   <div class="promos single" data-hires="true"> 
+    <h1><img src="http://images.apple.com/retail/images/retail_storelist_business_title.png" width="980" height="32" alt="Meet with the Business Team."></h1> 
+    <p>Whether you own a business or just use Apple products at work, the Business Team at your favorite Apple Store can work with you to help you find the right&nbsp;solutions.</p> 
+    <a href="/retail/business/" class="more">Learn more</a> 
+   </div> 
+  </div> 
+  <div class="sosumi">
+    *Supplies may be limited. 
+  </div> 
+  <footer id="globalfooter"> 
+   <div id="breadory"> 
+    <ol id="breadcrumbs"> 
+     <li class="home"><a href="/">Home</a></li> 
+     <li>Apple Retail&nbsp;Store</li> 
+    </ol> 
+   </div> 
+   <div id="directorynav" class="retail directorynav"> 
+    <div id="dn-cola" class="column first column large-3 small-12"> 
+     <ul> 
+      <li><a href="/retail/personal-pickup">Personal Pickup</a></li> 
+      <li><a href="/retail/personalsetup/">Personal Setup</a></li> 
+      <li><a href="/retail/geniusbar/">Genius Bar</a></li> 
+     </ul> 
+    </div> 
+    <div id="dn-colb" class="column large-3 small-12"> 
+     <ul> 
+      <li><a href="/retail/learn/">Workshops and Learning</a></li> 
+      <li><a href="/retail/learn/one-to-one/">One to One</a></li> 
+      <li><a href="/retail/learn/youth/">Youth Programs</a></li> 
+      <li><a href="/retail/business/">Business</a></li> 
+     </ul> 
+    </div> 
+    <div id="dn-colc" class="column large-3 small-12"> 
+     <ul> 
+      <li><a href="/retail/iphone/">How to Buy iPhone</a></li> 
+      <li><a href="/retail/ipad/">How to Buy iPad</a></li> 
+      <li><a href="/retail/mac/">How to Buy Mac</a></li> 
+     </ul> 
+    </div> 
+    <div id="dn-cold" class="column large-3 small-12"> 
+     <ul> 
+      <li><a href="/retail/locator/">Find a Store</a></li> 
+      <li><a href="/retail/storelist/">Complete Store List</a></li> 
+      <li><a href="/jobs/us/">Jobs</a></li> 
+     </ul> 
+    </div> 
+    <div class="capbottom"></div> 
+   </div> 
+   <div class="find-store"> 
+    <div class="grid3col"> 
+     <section class="column first"> 
+      <label for="retail-footer-search">Find an Apple Retail Store</label> 
+      <input type="text" id="retail-footer-search" results="0" placeholder="City and State or Zip" class="global-retail-search" required> 
+      <a href="/retail/storelist/" class="more">Complete Store List</a> 
+     </section> 
+     <section class="column">
+       Shop the 
+      <a href="http://store.apple.com">Apple Online Store</a> (1-800-MY-APPLE) 
+     </section> 
+     <section class="column last">
+       Find a 
+      <a href="/buy/">reseller</a> 
+     </section> 
+    </div> 
+   </div> 
+   <div class="gf-wrapper"> 
+    <ul class="gf-links piped"> 
+     <li><a href="/about/" class="first">Apple Info</a></li> 
+     <li><a href="/sitemap/">Site Map</a></li> 
+     <li><a href="/hotnews/">Hot News</a></li> 
+     <li><a href="/rss/">RSS Feeds</a></li> 
+     <li><a href="/contact/" class="contact_us">Contact Us</a></li> 
+     <li><a href="/choose-your-country/" class="choose"><img src="http://images.apple.com/global/elements/flags/22x22/usa.png" alt="Choose your country or region" width="22" height="22" data-hires="true"></a></li> 
+    </ul> 
+    <div class="gf-sosumi"> 
+     <p>Copyright © 2015 Apple Inc. All rights reserved.</p> 
+     <ul class="piped"> 
+      <li><a href="/legal/internet-services/terms/site.html" class="first">Terms of Use</a></li> 
+      <li><a href="/legal/privacy/en-us/">Privacy Policy</a></li> 
+     </ul> 
+    </div> 
+   </div> 
+  </footer> 
+  <script src="http://images.apple.com/v/retail/home/f/scripts/home.js"></script>   
+ </body>
+</html>

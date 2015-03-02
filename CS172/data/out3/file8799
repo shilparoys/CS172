@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html>
+ <!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>-->
+ <head> 
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"> 
+  <meta name="description" content="How to browse 3.4 million earthquakes and rotate thousands in 3D using the IEB website."> 
+  <meta name="keywords" content="earthquakes, quakes, terremoto, terremotos, 3d, visualize, visualizar, rotate, rotar, girar "> 
+  <meta name="robots" content="index, follow"> 
+  <link rel="author" href="https://plus.google.com/102693160540566422456"> 
+  <meta property="og:title" content="How to Use IEB to Browse Millions of Quakes on a Cool Map with 3D Rotation."> 
+  <meta property="og:image" content="http://www.iris.edu/ieb/imgs/iebImgSquared.png"> 
+  <meta property="og:description" content="How to choose from 3.4 million earthquakes and rotate them in 3D using the IRIS IEB website."> 
+  <meta property="fb:admins" content="100000767135167"> 
+  <title>IRIS Earthquake Browser - How to Browse Millions of Quakes and Rotate Thousands in 3D</title> 
+  <!--  	STYLES --> 
+  <style type="text/css">
+/*
+ * Reset CSS
+ */
+* {
+	margin: 0;
+	padding: 0;
+}
+a img, iframe { border: 0; }
+
+p {
+    margin-top: 7px;
+}
+
+/* Headers */
+
+h1, h2, h3, h4, h5, h6 {
+	font-size: 100%;
+	font-weight: normal;
+}
+	
+/* Lists */
+ul, ol, dl, li, dt, dd {
+	list-style: none;
+}
+
+/* Forms */
+
+form, fieldset {
+	border: 0;
+}	
+legend {
+	color: #000;
+}
+input, textarea, select, button {
+	font-size: 100%;
+	font-family: serif;
+}
+select {
+	margin: inherit;
+}
+/* Tables */
+
+table {
+	border-collapse: collapse;
+	border: 0;
+}
+td, th, caption {
+	font-size: 100%;
+	font-weight: normal;
+	text-align: left;
+}
+
+/* Our Styles */
+
+#header {position:absolute;
+         top: 5px; left: 5px; right: 5px;
+         height: 50px;
+         background-color: #CCCCFF;
+         text-align: center;
+         font-size: 22px;
+         border:1px solid #aaaaaa;
+}
+#header p {position:relative; top: 7px; }
+
+a.links:hover {background-color: #FF9900;} 
+
+#pnglogo {position:absolute; left:5px; top:6px;}
+#usage {position:absolute; top: 42px; left: 63px; height: 15px; background-color: transparent; text-align: right; font-size: 15px;}
+
+#contents {
+    position:absolute;
+    left:5px;
+    top:120px;
+    margin:0px;
+    padding:5px; 
+    text-align:left; 
+    border:1px dashed #333;
+    background-color:#eee;
+    
+}
+
+.centerBody {margin:90px 0px; padding:0px; text-align:center; }
+
+#warning { 	
+    width:500px;
+	margin:0px auto;
+	text-align:left;
+	padding:15px;
+	border:1px solid black;
+	background-color:#ede;
+	padding-bottom: 20px;
+}
+
+#introduction { 	
+	/*margin: 0px 25px 0px 170px;*/
+	margin: 0px 25px 0px 190px;
+	text-align:left;
+	padding:15px;
+	border:1px dashed #333;
+	background-color:#eee;
+}
+
+#overview { 	
+    width:610px;
+	margin:0px auto;
+	text-align:left;
+	padding:15px;
+}
+
+.myNumberedList {
+	list-style-position: outside;
+	list-style-type: decimal;
+}
+.myLi {
+	list-style-position: outside;
+	list-style-type: decimal;
+	padding:7px;
+}
+.myLi3 {
+	list-style-position: inside;
+	list-style-type:circle;
+	padding-top:2px;
+}
+.myOl {
+	list-style-position: inside;
+	list-style-type: decimal;
+	padding:10px;
+}
+.myLi2 {
+	list-style-position: inside;
+	list-style-type: decimal;
+	padding-top:3px;
+}
+	
+.myHead {margin-top: 1.2em; text-align: center; font-size: 18px;}
+.myTitle {text-align: left; font-size: 16px; padding-top: 10px;}
+.myTitle2 {text-align: left; font-size: 16px; font-weight: bold;}
+.myText {text-align: justify; font-size: 14px;}
+.myText2 {text-align: left; font-size: 15px; padding-top: 10px;}
+.topLink {text-align: left; font-size: small; clear: both; margin-left:10px;}
+
+#filtering { 
+    width: 650px;
+	margin:0px auto;
+	text-align:left;
+	padding:15px;
+}
+
+.filterBody1{
+    padding-top: 5px;
+    margin: 0pt auto;
+	text-align:left;
+	clear:both;
+}
+
+.filterImage1{
+    padding-top: 20px;    
+    float: left; 
+	width: 200px;
+}
+.filterSide1{
+	width: 410px;
+	float:right;
+}
+.filterSide2{
+    padding-top:5px;
+	width: 410px;
+	float:right;
+}
+
+#displaystats { 
+    width: 670px;
+	margin:0px auto;
+	text-align:left;
+	padding:15px;
+}
+
+.displaystatsBody{
+    padding-top: 5px;
+    margin: 0pt auto;
+	text-align:left;
+	clear:both;
+}
+
+.displaystatsImage{
+    float: left;
+}
+
+.displaystatsSide{
+	width: 410px;
+	float:right;
+}
+
+#zoom { 
+    width: 670px;
+	margin:0px auto;
+	text-align:left;
+	padding:15px;
+}
+
+.zoomBody1{
+    padding-top: 15px;
+    margin: 0pt auto;
+	text-align:left;
+	clear:both;
+}
+
+.zoomImage1{
+    float: left; 
+	width: 240px;
+}
+.zoomSide1{
+	width: 410px;
+	float:right;
+}
+.zoomImage2, .zoomImage3{
+    float: left; 
+	width: 237px;
+}
+.zoomSide2{
+	width: 245px;
+    padding-top:15px;
+	float:right;
+}
+#download { 
+    width: 650px;
+	margin:0px auto;
+	text-align:left;
+	padding:15px;
+}
+.downloadBody{
+    padding-top: 15px;
+    margin: 0pt auto;
+	text-align:left;
+	clear:both;
+}
+.downloadImage {
+    float: left; 
+}
+
+
+#threedv{
+    width: 900px;
+    margin:0px auto;
+    text-align:left;
+    padding:15px;
+}
+.threedvBody1{
+    padding-top: 15px;
+    margin: 0pt auto;
+    text-align:left;
+    clear:both;
+}
+.threedvImage12{
+    float: left;
+    width: 510px;
+}
+.threedvSide1{
+    width: 360px;
+    float:right;
+}
+
+#survey{
+    float:right;
+    font-size: 12px;
+    position: relative;
+    top:50px;
+    margin-right:20px;
+}
+
+
+
+#catalogs { 	
+     width: 650px;
+	margin:0px auto;
+	text-align:left;
+	padding:15px;
+}
+
+.catalogsBody{
+    width:500px;
+	margin:0px auto;
+	text-align:left;
+	padding:15px;
+	border:1px solid #333;
+	background-color:#eee;
+}
+
+
+.center {
+    text-align:center;
+}
+
+.underline{
+	text-decoration: underline;
+}
+.fakeLinkFilter{
+    color:blue;
+	text-decoration: underline;
+	background-color: #CCCCCC;
+	padding: 1px;
+}
+.fakeLinkFilter2{
+    background-color: #CCCCCC;
+	padding: 1px;
+}
+.fakeLinkZoom{
+    color:blue;
+	text-decoration: underline;
+	border:1px solid black;
+	padding: 1px;
+}
+.fakeDownloadLink{
+    color:blue;
+	text-decoration: underline;
+	background-color: #CCCCFF;
+	padding: 1px;
+}
+.yellowBackground{
+    background-color:yellow;
+}
+.myP1{
+    margin-top: 1.0em
+}
+.boldred {
+	font-style: italic;
+	font-weight: bold;
+	color: #FF0000;
+}
+.myBold {
+	font-style: italic;
+	font-weight: 800;
+}
+#map_overview {
+    position: relative;
+    left: -65px;
+}
+#en_espaniol {
+    position: absolute;
+    left: 40px;
+    top: 80px;
+    font-style: italic;
+}
+</style> 
+  <link rel="alternate" hreflang="es" href="http://www.iris.edu/ieb/help/index.es.html"> 
+  <!-- google translate has invalid CSS "_position" so grabbed a copy and corrected it:--> 
+  <link href="../css/translateelement.css" rel="stylesheet" type="text/css"> 
+  <meta name="google-translate-customization" content="86974ebf1bff7075-572fa7c89db82a61-gc88af9c72f0aecab-11">  
+ </head> 
+ <body style="top: 0px !important; position: static !important;"> 
+  <div style="position:relative;top:20px;left:70px; z-index:99;" id="google_translate_element"> 
+  </div> 
+  <script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+}
+</script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+</script> 
+  <script type="text/javascript">
+function showMagInfo() {
+   document.getElementById('smallmagsinfo').style.visibility = "visible";
+   document.getElementById('smallmagsinfo').style.display = "inline";
+}
+</script> 
+  <div id="header">
+   <p>The IRIS Earthquake Browser</p> 
+  </div> 
+  <div id="pnglogo">
+   <a href="../index.html"><img src="../icons/ee-icon-50x50.png" border="0"></a> 
+  </div> 
+  <div id="en_espaniol">
+   <a href="index.espan.html" hreflang="es">En español</a> 
+  </div> 
+  <div id="survey"> 
+   <a href="https://www.surveymonkey.com/s/ZK76LL5">Care to take a survey on IEB?</a> 
+  </div> 
+  <div id="contents"> 
+   <div class="myTitle center"> 
+    <a id="CONTENTS"></a>Contents 
+   </div> 
+   <ol> 
+    <li class="myLi3"><a href="#INTRODUCTION">Introduction</a></li> 
+    <li class="myLi3"><a href="#IMPLEMENTATION">Implementation</a></li> 
+    <li class="myLi3"><a href="#BASIC_USAGE">Basic Usage</a></li> 
+    <li class="myLi3"><a href="#OVERVIEW">Map Controls</a></li> 
+    <li class="myLi3"><a href="#FILTER">Event Filtering</a></li> 
+    <li class="myLi3"><a href="#DISPLAYSTATS">Display Statistics</a></li> 
+    <li class="myLi3"><a href="#ZOOM">Region Selection</a></li> 
+    <li class="myLi3"><a href="#DOWNLOAD">View as Table</a></li> 
+    <li class="myLi3"><a href="#3DV">View in 3D</a></li> 
+   </ol> 
+  </div> 
+  <div class="centerBody"> 
+   <div id="introduction"> 
+    <div class="myHead">
+     <a id="INTRODUCTION"></a>Introduction
+    </div> 
+    <!--<div class="myText2">
+<div class="boldred"> This help file is in the process of being
+                      updated to reflect recent changes.
+The Introduction is accurate; below that certain details
+have not been updated yet.  </div>
+</div>
+--> 
+    <div class="myText2"> 
+     <p>The IRIS Earthquake Browser (IEB) is an interactive map for exploring millions of seismic event epicenters (normally earthquakes) on a map of the world.</p> 
+     <p>Selections of up to 5000 events can also be viewed in profile and freely rotated with the 3D Viewer companion tool. No plugins (like Flash or Java) are required. These selections can also be viewed as sortable tables and exported to Excel. </p> 
+     <p>Notably the map, with <span style="font-size: 0.8em;">(almost)</span> all of its settings, can be bookmarked, emailed and socially shared. Other websites can dynamically construct IEB URLs and thereby send people to a certain very specific place, time, and set of quakes (<a href="http://www.iris.edu/ieb/index.html?format=text&amp;nodata=404&amp;starttime=2013-10-01&amp;endtime=2013-10-31&amp;orderby=time-desc&amp;limit=20&amp;maxlat=10.43914&amp;minlat=9.28375&amp;maxlon=124.68658&amp;minlon=123.35455&amp;sbl=1&amp;pbl=1&amp;name=Oct.%202013%20Bohol%20Isl.%20Phillipines">example</a>). </p> 
+     <p>IEB and 3DV are easy to use. They are intended to be of value both educationally and as research tools.</p> 
+     <p style="font-style:italic;font-size:0.8em;">Note: The terms "earthquakes", "quakes" and "events" may be used interchangeably in this document. The reason "events" is used is that human activities (bombs, mining etc), as well as phenomena like meteors, are also detected, and there is no difference to a seismometer whether the cause was actually an earthquake or not. </p> 
+    </div> 
+    <div class="myHead"> 
+     <a id="IMPLEMENTATION"></a>Implementation
+    </div> 
+    <div class="myText2"> 
+     <!--IEB is  a <a href="http://maps.google.com/" target="_blank">Google map</a>
+<a href="http://en.wikipedia.org/wiki/Mashup_%28web_application_hybrid%29"
+   target="_blank">mashup.</a>--> 
+     <p>IEB is a Google map. It uses its own earthquake database, which is periodically updated using <a href="http://service.iris.edu">IRIS web services</a>. </p> 
+     <p>At present, the IEB database contains 3.3 million earthquakes dating from the early 1970s to less than an hour old. <em><span id="smallmags" style="font-size:0.8em;"> <a href="javascript:showMagInfo();"> &nbsp;About small magnitudes in the U.S.</a></span></em> </p>
+     <div id="smallmagsinfo" style="font-size:0.8em;visibility:hidden;display:none;"> 
+      <p> IEB is best for visualizing the patterns over time in medium-to-large earthquakes. Magnitudes under about 4 are not well-represented outside of the United States. (See the sources link below.)<br> <br> The U.S. can appear more seismicly active than it should, relative to other regions. Other phenomena, e.g. temporary seismograph array deployments, can make it falsely appear that a burst of small earthquakes happened during some period of time. <br><br> Therefore, to screen out misleading small magnitudes and get a uniform global representation, either set the minimum magnitude at about 4, or set the priority to be for larger quakes, or both. </p> 
+     </div> 
+     <p></p> 
+     <p>The data come from various <a href="http://www.iris.edu/sm2/html/SM_sources_current.html">sources</a>, mainly the <a href="http://earthquake.usgs.gov/regional/neic/">USGS</a>, and are stored in the main data archive at the <a href="http://www.iris.edu/dms">IRIS Data Management Center</a> in Seattle, WA, USA. </p> 
+    </div> 
+    <div class="myHead">
+     <a id="BASIC_USAGE"></a>Basic Usage
+    </div> 
+    <div class="myText2"> 
+     <p>The user selects earthquakes to display on the map using filtering options like date, magnitude, and depth ranges, along with choosing a priority for either most recent or largest magnitude quakes. Regions of interest can be <a href="http://www.iris.edu/ieb/help/#ZOOM">selected</a> by drawing a selection box on the map.</p> 
+     <p>For practical reasons, only a small subset of the millions of earthquakes can be shown at a given time (currently up to 5000). However, by zooming and panning, the user can quickly discover all of the earthquakes in the database for any region of the world. </p>
+    </div> 
+    <div class="myText2"> 
+     <p>When zooming and panning, the earthquakes displayed update dynamically (the filter is re-applied and database re-queried) to match the currently-visible boundaries of the map.</p> 
+     <p>But if the user has <a href="http://www.iris.edu/ieb/help/#ZOOM"> selected</a> a region of interest, then the set of earthquakes is "locked", and zooming or panning will not cause a database update. To resume dynamic updating the "Deselect Region" link is used. Region selections can be as tiny as a few kilometers square!</p> 
+     <p style="font-size: 0.9em;"><em>Tip: If your intention is to select the whole world, do not make a huge selection box, simply deselect any region you may have selected and zoom out to where the whole world is visible. The first approach is the slowest database query possible, and the second is the fastest.</em></p> 
+    </div> 
+    <div class="myText2"> 
+     <p>Earthquakes shown or selected on the map may be viewed in a table using the "Open as: Table" link in the Options panel.</p> 
+     <p>The resulting table can be sorted by up to three of its columns. It can be copied, by double clicking it, and pasted into various editors and programs such as Excel. Direct exporting to Excel format is also possible, for most browsers.</p> 
+    </div> 
+    <div class="myText2"> 
+     <span class="myBold">Mileage May Vary:</span> 
+     <p>Recent versions of Chrome, Safari and Firefox work best. All WebKit-based browsers tested work.</p> 
+     <p>Ancient versions of Internet Explorer (6 and below) do not work with IEB. Versions 7 to 10 have issues, but the functionality improves with each version; and the 3DV viewer tool is slow. (They need faster JavaScript engines.)</p> 
+     <p>Older Opera has issues, but the new <a href="http://www.opera.com/computer/next">Opera Next</a> is one of the fastest and best.</p> 
+    </div> 
+    <div class="myText2">
+      Finally, your computer's operating system, speed, available memory and Internet connection bandwidth will all impact performance. 
+    </div> 
+   </div> 
+   <div class="topLink">
+    [
+    <a href="#TOP">Top</a>]
+   </div> 
+   <div id="overview"> 
+    <div class="myTitle2">
+     <a id="OVERVIEW"></a>Map Overview
+    </div> 
+    <div class="myText2">
+     The following diagram describes some of the features available in the IEB :
+    </div> 
+    <div>
+     <img id="map_overview" width="792" height="592" src="map_overview.png">
+    </div> 
+    <ol class="myNumberedList"> 
+     <li class="myLi" value="1"><strong>Earthquake Count</strong> - <a href="#DISPLAYSTATS">Displays</a> how may earthquakes are displayed, how many could have been displayed (and how many are visible on the map at this time).</li> 
+     <li class="myLi" value="2"><strong>Open as Table</strong> - Used to export data from the map to a sortable table, where you can copy and paste into other programs, and download as an Excel file.</li> 
+     <li class="myLi" value="3"><strong>Map Views</strong> - Select from various Google map view modes such as satellite or terrain.</li> 
+     <li class="myLi" value="4"><strong>Depth Scale</strong> - Circle colors indicate the depths of earthquakes (kilometers)</li> 
+     <li class="myLi" value="5"><strong>Options</strong> - A set of filtering <a href="#FILTER">options</a> for determining the subset of available earthquakes to display.</li> 
+     <li class="myLi" value="6"><strong>Magnitude Scale</strong> - Circle sizes indicate earthquake magnitudes</li> 
+     <li class="myLi" value="7"><strong>Region Selection</strong> - Use this to <a href="#ZOOM">select a map region</a> and zoom down to it. Only events in the selected region will be displayed.</li> 
+     <li class="myLi" value="8"><strong>Navigation Information</strong> - Displays the lat/lon bounds of the current selection and the lat-lon coordinates of the cursor.</li> 
+     <li class="myLi" value="9"><strong>Show Plates</strong> - Shows or hides the display of (clickable) tectonic plate boundaries.</li> 
+     <li class="myLi" value="10"><strong>Go To Region</strong> - Takes map to one of several predefined regions of interest (e.g. 'Aleutian Islands') or topics, which can be historical, such as 'Asian Tsunami Disaster Aftershocks'.</li> 
+     <li class="myLi" value="11"><strong><span class="boldred">NEW!</span> 3D Viewer</strong> - Opens a new window with a rotatable, zoomable 3D-view of the data.</li> 
+    </ol> 
+   </div> 
+   <div class="topLink">
+    [
+    <a href="#TOP">Top</a>]
+   </div> 
+   <div id="filtering"> 
+    <div class="myTitle2"> 
+     <a id="FILTER"></a> Event Filtering Controls 
+    </div> 
+    <div class="filterBody1"> 
+     <div class="filterImage1"> 
+      <img src="filter.png"> 
+      <p>Be sure to press <span class="boldred">Apply</span> after making changes!</p> 
+     </div> 
+     <div class="filterSide1"> 
+      <p> Earthquake filtering determines which quakes from the IRIS database are shown in any given map view. The quakes you get are filtered in two ways: </p> 
+      <ol class="myOl"> 
+       <li class="myLi2"> By number of quakes.</li> 
+       <li class="myLi2"> By quake parameters</li> 
+      </ol> 
+      <p class="myP1"> The first two options, <span class="fakeLinkFilter2">Max Quakes:</span> and <span class="fakeLinkFilter2">Priority:</span>, determine the number of quakes that will be displayed in a map. The rest of the options determine what parameters to use in selecting (filtering) from the quakes in the database. </p> 
+      <p class="myP1"> Options <span class="fakeLinkFilter2">Max Quakes:</span> and <span class="fakeLinkFilter2">Priority:</span> are always shown. To show the other options you must click on their option names. </p> 
+      <p class="myP1"> <span class="fakeLinkFilter2">Max quakes:</span> determines the maximum number of quakes that will be shown in any given view. You can choose values between 10 and 5,000. </p> 
+      <p class="myP1"> <span class="boldred">Displaying too many quakes can cause some web-browsers to be slow or unresponsive.</span> In rare cases the web browser may have to be restarted. </p> 
+      <p class="myP1"> <span class="fakeLinkFilter2">Priority:</span> determines which quakes have priority to be displayed when the number of quakes matching your filter in the database is greater than the <span class="fakeLinkFilter2">Max quakes:</span> setting. You can either prioritize <span class="myBold">Newer</span> or <span class="myBold">Larger</span> quakes. </p> 
+     </div> 
+    </div> 
+    <div class="filterBody1"> 
+     <!--
+	<div class="filterImage1">
+		<img src="timeRange.gif"/>
+	</div>
+    --> 
+     <div class="filterSide2"> 
+      <p class="myP1"> <span class="fakeLinkFilter">Time Range:</span> determines the dates of quakes that will be shown. By default all available dates are used: <span class="myBold">Earliest Available</span> to <span class="myBold">Latest Available</span>. </p> 
+      <p class="myP1"> To use your own date range, uncheck one or both of the check boxes and enter dates in the text fields or the date picker popups. Dates are in Universal Time (UTC) and run midnight to midnight. </p> 
+     </div> 
+    </div> 
+    <div class="filterBody1"> 
+     <!--
+	<div class="filterImage1">
+		<img src="magRange.gif"/>
+	</div>
+	--> 
+     <div class="filterSide2"> 
+      <p class="myP1"> <span class="fakeLinkFilter">Magnitude Range:</span> determines the magnitudes of quakes that will be shown. By default all available magnitudes are used. </p> 
+      <p class="myP1"> To use your own magnitude range, uncheck the check box and enter values in the text fields. </p> 
+     </div> 
+    </div> 
+    <div class="filterBody1"> 
+     <!--
+	<div class="filterImage1">
+		<img src="depthRange.gif"/>
+	</div>
+	--> 
+     <div class="filterSide2"> 
+      <p class="myP1"> <span class="fakeLinkFilter">Depth Range:</span> determines the depths of quakes that will be shown. By default all available depths are used. </p> 
+      <p class="myP1"> To use your own depth range, uncheck the check box and enter values in the text fields. </p> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="topLink">
+    [
+    <a href="#TOP">Top</a>]
+   </div> 
+   <div id="displaystats"> 
+    <div class="clear myTitle2"> 
+     <a id="DISPLAYSTATS"></a> Earthquake Count Field 
+    </div> 
+    <div class="displaystatsBody"> 
+     <div class="displaystatsImage"> 
+      <img src="displaystats.png"> 
+     </div> 
+     <div class="displaystatsSide"> 
+      <p> The <span class="underline">Earthquake Count</span> shows how many quakes were retrieved from the database, along with the total number of that <em>could</em> have been retrieved (but the limits of Max quakes prevented it). Since zooming and panning hides some quakes, the number that are actually visible in the current map view is given. </p> 
+      <p class="myP1"> If the Earthquake Count reads "500 of 38738" then 500 quakes are on the map and 38,738&nbsp;-&nbsp;500 = 38,238 matched in the database but are not displayed. So although a huge number of quakes matched your Options filter, they were not retrieved, based on the Max quakes setting of 500. Which 500 of them were retrieved is based on the Priority setting. </p> 
+      <p class="myP1"> If the counts are positive, but the number visible is zero, pan, zoom out, or use "Zoom to Region" if a region is currently selected. IEB prompts you if this condition arises. If all the values are zero, relax your filter settings in Options and press Apply. </p> 
+      <p class="myP1"> If you have selected a region using Select New Region, then zooming and panning will not affect the quakes displayed, the selected set is "locked" until you either deselect the region or change filter settings and press Apply. </p> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="topLink">
+    [
+    <a href="#TOP">Top</a>]
+   </div> 
+   <div id="zoom"> 
+    <div class="myTitle2 clear"> 
+     <a id="ZOOM"></a> Region Selection Controls 
+    </div> 
+    <div class="zoomBody1"> 
+     <div class="zoomImage1"> 
+      <img src="zoom1.png"> 
+     </div> 
+     <div class="zoomSide1"> 
+      <p> The region selection control allows you to quickly select a region and zoom there. Only events in the selected region will be shown. </p> 
+      <p>&nbsp;</p> 
+      <p> To start, click <span class="fakeLinkZoom">Select&nbsp;New Region</span> (or press the zoom icon directly above it, or just hold down the shift key). </p> 
+      <p> The cursor changes to a cross hairs, and the map and icon are slightly darkened. Now drag from one corner to the opposite corner of the desired region and release. </p> 
+      <p>&nbsp;</p> 
+      <p> Press the ESC key to cancel out of region select mode. </p> 
+     </div> 
+     <div class="zoomBody1"> 
+      <div class="zoomImage2 clear"> 
+       <img src="zoom2.png"> 
+      </div> 
+     </div> 
+     <div class="zoomBody1"> 
+      <div class="zoomImage1"> 
+       <img src="zoom3.png"> 
+      </div> 
+      <div class="zoomSide1"> 
+       <p>&nbsp;</p> 
+       <p> The event filter options will be freshly applied, but to the selected region only. </p> 
+       <p>&nbsp;</p> 
+       <p> Next click <span class="fakeLinkZoom">Zoom to Region</span> to zoom to the selected region. </p> 
+       <p>&nbsp;</p> 
+       <div class="boldred">
+        When a region is selected, the events inside it are effectively 'frozen'. If you pan the map away or zoom too close, no events will be visible -- but IEB recognizes this condition and will prompt you what to do. 
+       </div> 
+      </div> 
+     </div> 
+     <p>&nbsp;</p> 
+     <p>&nbsp;</p> 
+     <p>&nbsp;</p> 
+     <div class="zoomBody1"> 
+      <div class="zoomImage2 "> 
+       <img src="zoom4.png"> 
+      </div> 
+      <div class="zoomSide2"> 
+       <p> Click <span class="fakeLinkZoom">Deselect&nbsp;Region</span> to remove the selection box and 'unfreeze' the events, so they once again auto update to reflect the visible map area as you zoom and pan. </p> 
+       <p> You can immediately select a new region without deselecting the current one first. </p> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="topLink">
+     [
+     <a href="#TOP">Top</a>]
+    </div> 
+    <div id="download"> 
+     <div class="clear myTitle2"> 
+      <a id="DOWNLOAD"></a> Open as Table command 
+     </div> 
+     <div class="downloadBody"> 
+      <img src="download.png" class="downloadImage"> The 
+      <span>Open as Table</span> link leads to a new HTML page containing the currently-loaded earthquakes in table format. The columns of this table can be sorted by clicking on them, and double-clicking the table selects all its contents, which can be copied and then pasted into a program like Excel for sorting and further analysis. 
+      <img alt="IEB earthquakes exported to table with links to maps of each quake" src="../imgs/iebEvTabSq.png">
+      <br>
+      <br>Here is an example exported 
+      <a href="../evTableExample.html">table</a>.
+      <br>
+      <br> 
+      <p></p> 
+      <p>If the table has more than, say, a thousand rows, you should probably not use the copy/paste method, but rather you could save the table to disk as a file, and then open/import it in Excel. <br><br> Or, try the <span style="color:red;">experimental</span> "Download as Excel" button. </p> 
+     </div> 
+    </div> 
+    <div class="topLink">
+     [
+     <a href="#TOP">Top</a>]
+    </div> 
+    <div id="threedv"> 
+     <div class="clear myTitle2"> 
+      <a title="rotating quakes in 3D with 3DV viewer in IEB" id="3DV"></a> Rotating a set of Earthquakes with the 3D Viewer tool 
+     </div> 
+     <div class="threedvBody1"> 
+      <div class="threedvImage12">
+       <a href="http://www.iris.edu/ieb/"><img src="3dv1.png"></a>
+      </div> 
+      <div class="threedvSide1"> 
+       <p>&nbsp;</p> 
+       <p>&nbsp;</p> 
+       <p> The <a href="http://www.iris.edu/3dv/index.html?caller=sm&amp;ob=time-desc&amp;li=400&amp;xla=50.512&amp;nla=26.981&amp;xlo=158.730&amp;nlo=129.025&amp;sbl=1&amp;sz=med" title="the IRIS 3D earthquake viewer rotating 400 quakes in Japan">IRIS 3D Earthquake Viewer (3DV)</a> allows you to rotate thousands of earthquakes in any direction as well zoom in and out. It allows a better understanding of the spatial relationships in a set of earthquakes and often reveals a fault line or other underground feature only visible from a side view.<br><br> It will show coastline and plate boundaries and has a selection of view options to help visualize seismicity in emulated 3D space. It is very simple to use, and it requires no Flash or Java plugin. </p> 
+       <p>&nbsp;</p> 
+       <p> After selecting a region of interest, in this case the Fiji Islands region, you simply press the <br><strong>3D Viewer</strong> link: </p>
+       <div>
+        <img src="3dvlink.png">
+       </div> 
+       <p></p> 
+       <p>&nbsp;</p> 
+       <p> A new browser window (or tab) with a black background opens up. <br><br> By dragging your mouse you can rotate the scene.<br><br> With the mouse wheel you can zoom in and out. <br><br> There are various settings and view-related commands in the View menu such as auto-rotation, scaling, and capturing a screenshot. </p> 
+       <p>&nbsp;</p> More help on how to use 3DV will be forthcoming, but it's simplicity means you can generally discover what is possible to do by simple trial-and-error. 
+       <p>&nbsp;</p> 
+       <p>&nbsp;</p> 
+       <p style="font-size:0.8em;font-style:italic;"> We thank the <a href="http://earthquake.usgs.gov/regional/neic/" title="USGS National Earthquake Information Center">USGS</a>, the <a href="http://nsf.gov" title="National Science Foundation">NSF</a> and <a href="http://www.iris.edu/hq/about_iris/membership/member_institutions" title="IRIS member institutions">IRIS Consortium members</a> for data, funding and support; and original author B. Weertman.</p> 
+      </div> 
+      <div title="3D rotando sismos en 3D; rotating earthquakes in 3D Fiji" class="threedvImage12"> 
+       <img alt="image of rotating earthquakes in 3D near Fiji Islands" src="3dv2.png"> 
+      </div> 
+     </div> 
+    </div> 
+   </div>   
+  </div>
+ </body>
+</html>

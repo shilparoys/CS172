@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <!--title WITH "Sismos" capitalized: <title>&Uacute;ltimos Sismos en el mundo - Bolet&iacute;n de sismicidad reciente de IRIS</title>
+NOT capitialized:--> 
+  <title>Últimos sismos en el mundo - Boletín de sismicidad reciente de IRIS    </title> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+  <meta name="robots" content="index, follow"> 
+  <meta http-equiv="Expires" content="Wed, 8 Feb 2012 24:00:00 GMT"> 
+  <meta http-equiv="Refresh" content="1800"> 
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate"> 
+  <meta http-equiv="Cache-Control" content="pre-check=0, post-check=0, max-age=0"> 
+  <!-- Microdata markup added by Google Structured Data Markup Helper. --> 
+  <meta name="description" content="Últimos sismos en en el mundo, en español, con mapas de vista 3D. Tenemos: mundo entero, Chile, México, Ecuador, Peru, Costa Rica, Colombia, Repúb.Domin., etc."> 
+  <meta name="keywords" content="últimos,sismos,mundo,hoy,mapa,temblores,terremundo,iris"> 
+  <meta property="og:title" content="Ultimos sismos en América Latina y el mundo, con mapas y visor 3D."> 
+  <meta property="og:image" content="http://www.iris.washington.edu/ieb/imgs/iebEvTabSq.jpg"> 
+  <meta property="og:description" content="Navegas 3,4 millones de sismos en un map con abilidad de rotar y zoom en vista 3D."> 
+  <meta property="fb:admins" content="100000767135167"> 
+  <link rel="stylesheet" href="css/jq.css" type="text/css" media="print, projection, screen"> 
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="print, projection, screen"> 
+  <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script> 
+  <script type="text/javascript" src="js/jquery.tablesorter.js"></script> 
+  <script type="text/javascript">
+    function debug (msg) {
+      if (typeof console === "undefined") return;
+         console.log(msg);
+    }
+    </script> 
+  <script type="text/javascript">
+
+        $(document).ready(function () {
+            // call the tablesorter plugin
+            $("table").tablesorter({
+
+                // enable sorting by date, by implementing custom text
+                // extraction method. see tablesorter docs.
+                textExtraction: function (node) {
+                    // extract data from markup and return it;
+                    // NOTE: this is called for ALL columns
+
+                    var colStr = new String(node.childNodes[0].nodeValue);
+                    colStr = $.trim(colStr); // only FF seems to have a leading space here!
+
+                    if (colStr.indexOf(":") > 0) {
+
+                        // if this is the date column, return a UNIX epoch value
+                        // and note date functions differ in browsers so although some could
+                        // handle our date exactly as is, FF doesn't handle months JAN, FEB, MAR, etc!
+
+                        // 05-DEC-2012 17:08:12  --> 12/5/2012 17:08:12
+                        // see http://dygraphs.com/date-formats.html
+
+                        var evtXBrowsStr = colStr;
+                        // break out the month  e.g. JAN to get as digits
+                        var dateAry = evtXBrowsStr.split(' ');
+                        var dayAry = dateAry[0].split('-');
+                        var month = dayAry[1];
+                        var monDigits; // 01 02 etc
+                        switch (month) {
+                            case "JAN" :
+                            case "ENE" :
+                                monDigits = "01";
+                                break;
+                            case "FEB" :
+                                monDigits = "02";
+                                break;
+                            case "MAR" :
+                                monDigits = "03";
+                                break;
+                            case "APR" :
+                            case "ABR" :
+                                monDigits = "04";
+                                break;
+                            case "MAY" :
+                                monDigits = "05";
+                                break;
+                            case "JUN" :
+                                monDigits = "06";
+                                break;
+                            case "JUL" :
+                                monDigits = "07";
+                                break;
+                            case "AUG" :
+                                monDigits = "08";
+                                break;
+                            case "SEP"  :
+                                monDigits = "09";
+                                break;
+                            case "OCT" :
+                                monDigits = "10";
+                                break;
+                            case "NOV" :
+                                monDigits = "11";
+                                break;
+                            case "DEC" :
+                            case "DIC" :
+                                monDigits = "12";
+                                break;
+                            default:
+                                monDigits = "ER";
+                                debug('error: bad value in event date: ' + colStr);
+                        }
+
+                        // 05-DEC-2012 17:08:12  --> 12/5/2012 17:08:12
+                        evtXBrowsStr = monDigits + '/' + dayAry[0] + '/' + dayAry[2] + ' ' + dateAry[1];
+                        var d = Date.parse(evtXBrowsStr);
+                        //debug('' + evtXBrowsStr + ' parsed d = ' + d); // note: IE hasn't got this
+                        return(d);
+
+                    } // end if this is a date column
+                else {
+                    if (colStr === "" && node.className === " region")
+                        return(node.innerText);
+                    else
+                        // slow:   debug('returning val: '+colStr);// note: IE hasn't got this
+                        return(colStr);
+                }
+            } // end text extraction func
+
+            // right paren below closes call to tablesorter constructor;
+            // so we are binding to the tablesorter object here:
+
+            // after every sort re-color row backgrounds alternating
+        }).bind("sortEnd", function () {
+                    $('tr:even').removeClass('even odd');
+                    $('tr:even').removeClass('even odd');
+                    $('tr:even').addClass('even');
+                    $('tr:odd').addClass('odd');
+                });  // end bind
+
+            // now color the rows
+            $('tr:even').removeClass('even odd');
+            $('tr:even').removeClass('even odd');
+            $('tr:even').addClass('even');
+            $('tr:odd').addClass('odd');
+
+        }); // end document ready
+
+    </script> 
+ </head> 
+ <body> 
+  <span itemscope itemtype="http://schema.org/SoftwareApplication"> 
+   <div id="banner"> 
+    <div id="logolinks"> 
+     <a href="http://www.iris.washington.edu"> <img align="center" src="IRISlogo9.99_small.gif" alt="IRIS Consortium link" title="El página principal de IRIS." border="0"></a> 
+     <a href="http://www.iris.washington.edu/seismon/index.phtml?lang=es"> <img id="SMthumb" align="center" src="SMthumb.png" alt="IRIS Seismic Monitor link" title="Quieres ver el Monitor Sísmico? (IRIS Seismic Monitor) ?" border="0" width="149" height="68"></a> 
+     <a href="http://www.iris.washington.edu/ieb/index.phtml?caller=spanlnk&amp;minlat=-90&amp;maxlat=90&amp;minlon=-180&amp;maxlon=180&amp;orderby=time-desc&amp;mt=roa"> <img id="regionImg" align="center" src="mundo.png" alt="Region map" title="La region cubierta por la lista." border="0"> </a> 
+    </div> 
+    <!-- end of logolinks --> 
+    <!-- with Capitlaized Sismos: 
+<h1 style="margin-top:10px;"><span itemprop="applicationCategory">&Uacute;ltimos Sismos en el mundo</span> </h1>
+
+Without:--> 
+    <h1 style="margin-top:10px;"><span itemprop="applicationCategory">Últimos sismos en el mundo</span> </h1> 
+    <h2 class="magnote">(de magnitud &gt; 4.0, para una distribución uniforme)</h2> 
+    <!--<h3 style="color:red"Tuvimos 30 mins desconectado. Gracias por regresar!</h3>--> 
+   </div> 
+   <!-- end of banner --> 
+   <!-- the quick links to other regions --> 
+   <div id="goregion" style="display:inline;position:absolute;top:0px;left:15px;font-size:12px;">
+    <p>Otras regiones:</p>
+    <ul style="position:relative;top:-8px;left:-20px;list-style-type:none;">
+     <li style="position:relative;left:-12px;"><a title="los ultimos sismos hoy en Caribe a N.Venezuela" href="evlist.phtml?region=caribe"><span itemprop="applicationCategory">Caribe a N.Venezuela</span></a>&nbsp;&nbsp;</li>
+     <span style="visibility:hidden; display:none;"> reportes y boletines de todos los ultimos sismos o terremotos en Caribe a N.Venezuela </span>
+     <li style="position:relative;left:-12px;"><a title="los ultimos sismos hoy en Chile" href="evlist.phtml?region=chile"><span itemprop="applicationCategory">Chile</span></a>&nbsp;&nbsp;</li>
+     <span style="visibility:hidden; display:none;"> reportes y boletines de todos los ultimos sismos o terremotos en Chile </span>
+     <li style="position:relative;left:-12px;"><a title="los ultimos sismos hoy en Colombia" href="evlist.phtml?region=colombia"><span itemprop="applicationCategory">Colombia</span></a>&nbsp;&nbsp;</li>
+     <span style="visibility:hidden; display:none;"> reportes y boletines de todos los ultimos sismos o terremotos en Colombia </span>
+     <li style="position:relative;left:-12px;"><a title="los ultimos sismos hoy en Costa Rica" href="evlist.phtml?region=costarica"><span itemprop="applicationCategory">Costa Rica</span></a>&nbsp;&nbsp;</li>
+     <span style="visibility:hidden; display:none;"> reportes y boletines de todos los ultimos sismos o terremotos en Costa Rica </span>
+     <li style="position:relative;left:-12px;"><a title="los ultimos sismos hoy en Repúb. Dom." href="evlist.phtml?region=domrepub"><span itemprop="applicationCategory">Repúb. Dom.</span></a>&nbsp;&nbsp;</li>
+     <span style="visibility:hidden; display:none;"> reportes y boletines de todos los ultimos sismos o terremotos en Repúb. Dom. </span>
+     <li style="position:relative;left:-12px;"><a title="los ultimos sismos hoy en Ecuador" href="evlist.phtml?region=ecuador"><span itemprop="applicationCategory">Ecuador</span></a>&nbsp;&nbsp;</li>
+     <span style="visibility:hidden; display:none;"> reportes y boletines de todos los ultimos sismos o terremotos en Ecuador </span>
+     <li style="position:relative;left:-12px;"><a title="los ultimos sismos hoy en México a Panamá" href="evlist.phtml?region=mexipan"><span itemprop="applicationCategory">México a Panamá</span></a>&nbsp;&nbsp;</li>
+     <span style="visibility:hidden; display:none;"> reportes y boletines de todos los ultimos sismos o terremotos en México a Panamá </span>
+     <li style="position:relative;left:-12px;"><a title="los ultimos sismos hoy en Perú" href="evlist.phtml?region=peru"><span itemprop="applicationCategory">Perú</span></a>&nbsp;&nbsp;</li>
+     <span style="visibility:hidden; display:none;"> reportes y boletines de todos los ultimos sismos o terremotos en Perú </span>
+    </ul> 
+   </div> <a style="display:inline;position:absolute;top:15px;right:25px;font-size:14px;" href="http://www.iris.washington.edu/seismon/eventlist/index.es.html">Regiones de escala mundial</a> 
+   <div id="main"> 
+    <span style="visibility:hidden;display:none;" itemprop="applicationCategory"> los Últimos sismos (terremotos) en MINAHASSA PENINSULA, SULAWESI</span>
+    <span style="visibility:hidden;display:none;" itemprop="applicationCategory"> los Últimos sismos (terremotos) en ISLAS KURILES</span>
+    <span style="visibility:hidden;display:none;" itemprop="applicationCategory"> los Últimos sismos (terremotos) en AL SUR DE LAS ISLAS KERMADAC</span>
+    <span style="visibility:hidden;display:none;" itemprop="applicationCategory"> los Últimos sismos (terremotos) en ORIENTAL HONSHU, JAPóN</span>
+    <span style="visibility:hidden;display:none;" itemprop="applicationCategory"> los Últimos sismos (terremotos) en ISLAS FIJI REGIÓN</span>
+    <span style="visibility:hidden;display:none;" itemprop="applicationCategory"> los Últimos sismos (terremotos) en AL SUR DE LAS ISLAS FIJI</span>
+    <span style="visibility:hidden;display:none;" itemprop="applicationCategory"> los Últimos sismos (terremotos) en CERCA LA COSTA DEL NORTE DE CHILE</span>
+    <span style="visibility:hidden;display:none;" itemprop="applicationCategory"> los Últimos sismos (terremotos) en CERCA LA COSTA DEL NORTE DE CHILE</span>
+    <span style="visibility:hidden;display:none;" itemprop="applicationCategory"> los Últimos sismos (terremotos) en SOUTH OF HONSHU, JAPAN</span>
+    <span style="visibility:hidden;display:none;" itemprop="applicationCategory"> los Últimos sismos (terremotos) en CERCA LA COSTA DE PERÚ</span>
+    <span style="visibility:hidden;display:none;" itemprop="applicationCategory"> los Últimos sismos (terremotos) en MYANMAR-CHINA REGIÓN FRONTERIZA</span>
+    <table cellspacing="1" class="tablesorter" id="evTable"> 
+     <thead> 
+      <tr> 
+       <!-- for CSS tooltips I  show how to do it, but is awkward and risky and 
+             complex if can avoid is good. --> 
+       <th title="Fecha y hora del terremoto, UTC explicado abajo">FECHA - HORA (UTC)<br>
+        <div class="smallhead">
+         día-mes-año hora:min:seg
+        </div></th> 
+       <th class="latlon" title="Latitude en grados">LAT&nbsp;&nbsp;<br>
+        <div class="smallhead">
+         grados
+        </div></th> 
+       <th class="latlon" title="Longitude en grados">LON&nbsp;&nbsp;
+        <div class="smallhead">
+         grados
+        </div></th> 
+       <th class="mag" title="Magnitud, explicado abajo">MAG&nbsp;&nbsp;<br>
+        <div class="smallhead">
+         explicado abajo
+        </div></th> 
+       <th class="smallhead" title="Profundidad en kilometers bajo el nivel del mar">PROF<br>
+        <div class="smallhead">
+         km
+        </div></th> 
+       <th class="region" title="Pulsa para un mapa de donde ocurrió">&nbsp;&nbsp;LOCALIDAD &nbsp;
+        <div class="smallhead">
+         &nbsp;&nbsp;haga clic para ver 
+         <span style="color:red" itemprop="applicationCategory">mapas</span> poderosos, y de alli trate el botón "3D View"!
+        </div></th> 
+      </tr> 
+     </thead> 
+     <tbody> 
+      <tr> 
+       <td> 02-MAR-2015 01:40:52 </td> 
+       <td class=" latlon"> 0.06 </td> 
+       <td class=" latlon"> 124.56 </td> 
+       <td class=" mag"> 5.1 </td> 
+       <td class=" dep"> 79 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=0.06&amp;lon=124.56&amp;degs=1&amp;li=200&amp;name=MINAHASSA PENINSULA, SULAWESI&amp;caller=spanevlnk&amp;evid=5007216" title="Mapa interactivo de los Últimos sismos en MINAHASSA PENINSULA, SULAWESI">MINAHASSA PENINSULA, SULAWESI</a> </td> 
+      </tr>  
+      <tr> 
+       <td> 01-MAR-2015 23:47:20 </td> 
+       <td class=" latlon"> 48.50 </td> 
+       <td class=" latlon"> 154.20 </td> 
+       <td class=" mag"> 4.5 </td> 
+       <td class=" dep"> 70 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=48.50&amp;lon=154.20&amp;degs=1&amp;li=200&amp;name=ISLAS KURILES&amp;caller=spanevlnk&amp;evid=5007213" title="Mapa interactivo de los Últimos sismos en ISLAS KURILES">ISLAS KURILES</a> </td> 
+      </tr>  
+      <tr> 
+       <td> 01-MAR-2015 23:19:20 </td> 
+       <td class=" latlon"> -33.76 </td> 
+       <td class=" latlon"> -178.84 </td> 
+       <td class=" mag"> 4.7 </td> 
+       <td class=" dep"> 35 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=-33.76&amp;lon=-178.84&amp;degs=1&amp;li=200&amp;name=AL SUR DE LAS ISLAS KERMADAC&amp;caller=spanevlnk&amp;evid=5007212" title="Mapa interactivo de los Últimos sismos en AL SUR DE LAS ISLAS KERMADAC">AL SUR DE LAS ISLAS KERMADAC</a> </td> 
+      </tr>  
+      <tr> 
+       <td> 01-MAR-2015 19:21:56 </td> 
+       <td class=" latlon"> 36.66 </td> 
+       <td class=" latlon"> 137.47 </td> 
+       <td class=" mag"> 4.6 </td> 
+       <td class=" dep"> 240 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=36.66&amp;lon=137.47&amp;degs=1&amp;li=200&amp;name=ORIENTAL HONSHU, JAPóN&amp;caller=spanevlnk&amp;evid=5007206" title="Mapa interactivo de los Últimos sismos en ORIENTAL HONSHU, JAPóN">ORIENTAL HONSHU, JAPóN</a> </td> 
+      </tr>  
+      <tr> 
+       <td> 01-MAR-2015 16:56:32 </td> 
+       <td class=" latlon"> -20.84 </td> 
+       <td class=" latlon"> -178.59 </td> 
+       <td class=" mag"> 4.6 </td> 
+       <td class=" dep"> 596 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=-20.84&amp;lon=-178.59&amp;degs=1&amp;li=200&amp;name=ISLAS FIJI REGIÓN&amp;caller=spanevlnk&amp;evid=5007202" title="Mapa interactivo de los Últimos sismos en ISLAS FIJI REGIÓN">ISLAS FIJI REGIÓN</a> </td> 
+      </tr>  
+      <tr> 
+       <td> 01-MAR-2015 16:50:11 </td> 
+       <td class=" latlon"> -23.96 </td> 
+       <td class=" latlon"> 179.23 </td> 
+       <td class=" mag"> 4.7 </td> 
+       <td class=" dep"> 546 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=-23.96&amp;lon=179.23&amp;degs=1&amp;li=200&amp;name=AL SUR DE LAS ISLAS FIJI&amp;caller=spanevlnk&amp;evid=5007201" title="Mapa interactivo de los Últimos sismos en AL SUR DE LAS ISLAS FIJI">AL SUR DE LAS ISLAS FIJI</a> </td> 
+      </tr>  
+      <tr> 
+       <td> 01-MAR-2015 16:26:19 </td> 
+       <td class=" latlon"> -27.24 </td> 
+       <td class=" latlon"> -71.42 </td> 
+       <td class=" mag"> 4.1 </td> 
+       <td class=" dep"> 10 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=-27.24&amp;lon=-71.42&amp;degs=1&amp;li=200&amp;name=CERCA LA COSTA DEL NORTE DE CHILE&amp;caller=spanevlnk&amp;evid=5007200" title="Mapa interactivo de los Últimos sismos en CERCA LA COSTA DEL NORTE DE CHILE">CERCA LA COSTA DEL NORTE DE CHILE</a> </td> 
+      </tr>  
+      <tr> 
+       <td> 01-MAR-2015 15:48:18 </td> 
+       <td class=" latlon"> -27.20 </td> 
+       <td class=" latlon"> -71.56 </td> 
+       <td class=" mag"> 5.0 </td> 
+       <td class=" dep"> 12 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=-27.20&amp;lon=-71.56&amp;degs=1&amp;li=200&amp;name=CERCA LA COSTA DEL NORTE DE CHILE&amp;caller=spanevlnk&amp;evid=5007185" title="Mapa interactivo de los Últimos sismos en CERCA LA COSTA DEL NORTE DE CHILE">CERCA LA COSTA DEL NORTE DE CHILE</a> </td> 
+      </tr>  
+      <tr> 
+       <td> 01-MAR-2015 15:46:17 </td> 
+       <td class=" latlon"> 31.03 </td> 
+       <td class=" latlon"> 141.80 </td> 
+       <td class=" mag"> 4.5 </td> 
+       <td class=" dep"> 23 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=31.03&amp;lon=141.80&amp;degs=1&amp;li=200&amp;name=SOUTH OF HONSHU, JAPAN&amp;caller=spanevlnk&amp;evid=5007194" title="Mapa interactivo de los Últimos sismos en SOUTH OF HONSHU, JAPAN">SOUTH OF HONSHU, JAPAN</a> </td> 
+      </tr>  
+      <tr> 
+       <td> 01-MAR-2015 15:08:28 </td> 
+       <td class=" latlon"> -17.22 </td> 
+       <td class=" latlon"> -71.93 </td> 
+       <td class=" mag"> 5.0 </td> 
+       <td class=" dep"> 58 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=-17.22&amp;lon=-71.93&amp;degs=1&amp;li=200&amp;name=CERCA LA COSTA DE PERÚ&amp;caller=spanevlnk&amp;evid=5007184" title="Mapa interactivo de los Últimos sismos en CERCA LA COSTA DE PERÚ">CERCA LA COSTA DE PERÚ</a> </td> 
+      </tr>  
+      <tr> 
+       <td> 01-MAR-2015 10:24:42 </td> 
+       <td class=" latlon"> 23.56 </td> 
+       <td class=" latlon"> 98.84 </td> 
+       <td class=" mag"> 5.2 </td> 
+       <td class=" dep"> 15 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=23.56&amp;lon=98.84&amp;degs=1&amp;li=200&amp;name=MYANMAR-CHINA REGIÓN FRONTERIZA&amp;caller=spanevlnk&amp;evid=5007172" title="Mapa interactivo de los Últimos sismos en MYANMAR-CHINA REGIÓN FRONTERIZA">MYANMAR-CHINA REGIÓN FRONTERIZA</a> </td> 
+      </tr>  
+      <tr> 
+       <td> 01-MAR-2015 08:30:06 </td> 
+       <td class=" latlon"> 13.55 </td> 
+       <td class=" latlon"> -90.89 </td> 
+       <td class=" mag"> 5.0 </td> 
+       <td class=" dep"> 35 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=13.55&amp;lon=-90.89&amp;degs=1&amp;li=200&amp;name=CERCA DE COSTA DE GUATEMALA&amp;caller=spanevlnk&amp;evid=5007165" title="Mapa interactivo de los Últimos sismos en CERCA DE COSTA DE GUATEMALA">CERCA DE COSTA DE GUATEMALA</a> </td> 
+      </tr> 
+      <tr> 
+       <td> 01-MAR-2015 07:16:48 </td> 
+       <td class=" latlon"> 34.06 </td> 
+       <td class=" latlon"> 137.54 </td> 
+       <td class=" mag"> 4.1 </td> 
+       <td class=" dep"> 323 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=34.06&amp;lon=137.54&amp;degs=1&amp;li=200&amp;name=CERCA LA COSTA DE S. HONSHU, JAPóN&amp;caller=spanevlnk&amp;evid=5007161" title="Mapa interactivo de los Últimos sismos en CERCA LA COSTA DE S. HONSHU, JAPóN">CERCA LA COSTA DE S. HONSHU, JAPóN</a> </td> 
+      </tr> 
+      <tr> 
+       <td> 01-MAR-2015 07:01:56 </td> 
+       <td class=" latlon"> 4.74 </td> 
+       <td class=" latlon"> 125.91 </td> 
+       <td class=" mag"> 5.3 </td> 
+       <td class=" dep"> 99 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=4.74&amp;lon=125.91&amp;degs=1&amp;li=200&amp;name=TALAUD ISLAS, INDONESIA&amp;caller=spanevlnk&amp;evid=5007160" title="Mapa interactivo de los Últimos sismos en TALAUD ISLAS, INDONESIA">TALAUD ISLAS, INDONESIA</a> </td> 
+      </tr> 
+      <tr> 
+       <td> 01-MAR-2015 03:32:36 </td> 
+       <td class=" latlon"> 0.07 </td> 
+       <td class=" latlon"> 124.48 </td> 
+       <td class=" mag"> 5.4 </td> 
+       <td class=" dep"> 89 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=0.07&amp;lon=124.48&amp;degs=1&amp;li=200&amp;name=MINAHASSA PENINSULA, SULAWESI&amp;caller=spanevlnk&amp;evid=5007151" title="Mapa interactivo de los Últimos sismos en MINAHASSA PENINSULA, SULAWESI">MINAHASSA PENINSULA, SULAWESI</a> </td> 
+      </tr> 
+      <tr> 
+       <td> 01-MAR-2015 01:42:53 </td> 
+       <td class=" latlon"> 0.92 </td> 
+       <td class=" latlon"> -28.29 </td> 
+       <td class=" mag"> 4.7 </td> 
+       <td class=" dep"> 10 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=0.92&amp;lon=-28.29&amp;degs=1&amp;li=200&amp;name=CENTRAL DORSAL MEDIO-ATLANTICA&amp;caller=spanevlnk&amp;evid=5007148" title="Mapa interactivo de los Últimos sismos en CENTRAL DORSAL MEDIO-ATLANTICA">CENTRAL DORSAL MEDIO-ATLANTICA</a> </td> 
+      </tr> 
+      <tr> 
+       <td> 28-FEB-2015 22:39:31 </td> 
+       <td class=" latlon"> -4.97 </td> 
+       <td class=" latlon"> 151.53 </td> 
+       <td class=" mag"> 4.6 </td> 
+       <td class=" dep"> 128 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=-4.97&amp;lon=151.53&amp;degs=1&amp;li=200&amp;name=NUEVA BRETAÑA, PNG&amp;caller=spanevlnk&amp;evid=5007130" title="Mapa interactivo de los Últimos sismos en NUEVA BRETAÑA, PNG">NUEVA BRETAÑA, PNG</a> </td> 
+      </tr> 
+      <tr> 
+       <td> 28-FEB-2015 22:06:33 </td> 
+       <td class=" latlon"> 13.85 </td> 
+       <td class=" latlon"> -91.89 </td> 
+       <td class=" mag"> 4.8 </td> 
+       <td class=" dep"> 35 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=13.85&amp;lon=-91.89&amp;degs=1&amp;li=200&amp;name=CERCA DE COSTA DE GUATEMALA&amp;caller=spanevlnk&amp;evid=5007127" title="Mapa interactivo de los Últimos sismos en CERCA DE COSTA DE GUATEMALA">CERCA DE COSTA DE GUATEMALA</a> </td> 
+      </tr> 
+      <tr> 
+       <td> 28-FEB-2015 20:41:27 </td> 
+       <td class=" latlon"> 23.91 </td> 
+       <td class=" latlon"> -108.37 </td> 
+       <td class=" mag"> 4.6 </td> 
+       <td class=" dep"> 16 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=23.91&amp;lon=-108.37&amp;degs=1&amp;li=200&amp;name=GOLFO DE CALIFORNIA&amp;caller=spanevlnk&amp;evid=5007117" title="Mapa interactivo de los Últimos sismos en GOLFO DE CALIFORNIA">GOLFO DE CALIFORNIA</a> </td> 
+      </tr> 
+      <tr> 
+       <td> 28-FEB-2015 19:27:28 </td> 
+       <td class=" latlon"> -56.32 </td> 
+       <td class=" latlon"> -27.08 </td> 
+       <td class=" mag"> 5.4 </td> 
+       <td class=" dep"> 89 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=-56.32&amp;lon=-27.08&amp;degs=1&amp;li=200&amp;name=ISLAS SUR DE SANDWICH REGIÓN&amp;caller=spanevlnk&amp;evid=5007115" title="Mapa interactivo de los Últimos sismos en ISLAS SUR DE SANDWICH REGIÓN">ISLAS SUR DE SANDWICH REGIÓN</a> </td> 
+      </tr> 
+      <tr> 
+       <td> 28-FEB-2015 16:31:19 </td> 
+       <td class=" latlon"> 1.53 </td> 
+       <td class=" latlon"> 126.62 </td> 
+       <td class=" mag"> 4.4 </td> 
+       <td class=" dep"> 71 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=1.53&amp;lon=126.62&amp;degs=1&amp;li=200&amp;name=NORTE DE MAR DE LAS MOLUCAS&amp;caller=spanevlnk&amp;evid=5007108" title="Mapa interactivo de los Últimos sismos en NORTE DE MAR DE LAS MOLUCAS">NORTE DE MAR DE LAS MOLUCAS</a> </td> 
+      </tr> 
+      <tr> 
+       <td> 28-FEB-2015 15:38:02 </td> 
+       <td class=" latlon"> 1.53 </td> 
+       <td class=" latlon"> 66.82 </td> 
+       <td class=" mag"> 4.7 </td> 
+       <td class=" dep"> 10 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=1.53&amp;lon=66.82&amp;degs=1&amp;li=200&amp;name=CARLSBERG RIDGE&amp;caller=spanevlnk&amp;evid=5007107" title="Mapa interactivo de los Últimos sismos en CARLSBERG RIDGE">CARLSBERG RIDGE</a> </td> 
+      </tr> 
+      <tr> 
+       <td> 28-FEB-2015 12:28:03 </td> 
+       <td class=" latlon"> 15.35 </td> 
+       <td class=" latlon"> -61.37 </td> 
+       <td class=" mag"> 4.6 </td> 
+       <td class=" dep"> 135 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=15.35&amp;lon=-61.37&amp;degs=1&amp;li=200&amp;name=ISLAS DE SOTAVENTO&amp;caller=spanevlnk&amp;evid=5007104" title="Mapa interactivo de los Últimos sismos en ISLAS DE SOTAVENTO">ISLAS DE SOTAVENTO</a> </td> 
+      </tr> 
+      <tr> 
+       <td> 28-FEB-2015 11:13:02 </td> 
+       <td class=" latlon"> -3.60 </td> 
+       <td class=" latlon"> 144.14 </td> 
+       <td class=" mag"> 4.6 </td> 
+       <td class=" dep"> 10 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=-3.60&amp;lon=144.14&amp;degs=1&amp;li=200&amp;name=CERCA LA COSTA DE N DE NUEVA GUINEA, PNG.&amp;caller=spanevlnk&amp;evid=5007100" title="Mapa interactivo de los Últimos sismos en CERCA LA COSTA DE N DE NUEVA GUINEA, PNG.">CERCA LA COSTA DE N DE NUEVA GUINEA, PNG.</a> </td> 
+      </tr> 
+      <tr> 
+       <td> 28-FEB-2015 10:53:04 </td> 
+       <td class=" latlon"> -8.83 </td> 
+       <td class=" latlon"> 118.84 </td> 
+       <td class=" mag"> 5.0 </td> 
+       <td class=" dep"> 122 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=-8.83&amp;lon=118.84&amp;degs=1&amp;li=200&amp;name=SUMBAWA REGIÓN, INDONESIA&amp;caller=spanevlnk&amp;evid=5007099" title="Mapa interactivo de los Últimos sismos en SUMBAWA REGIÓN, INDONESIA">SUMBAWA REGIÓN, INDONESIA</a> </td> 
+      </tr> 
+      <tr> 
+       <td> 28-FEB-2015 10:41:37 </td> 
+       <td class=" latlon"> 38.86 </td> 
+       <td class=" latlon"> -115.38 </td> 
+       <td class=" mag"> 4.2 </td> 
+       <td class=" dep"> 0 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=38.86&amp;lon=-115.38&amp;degs=1&amp;li=200&amp;name=NEVADA&amp;caller=spanevlnk&amp;evid=5007098" title="Mapa interactivo de los Últimos sismos en NEVADA">NEVADA</a> </td> 
+      </tr> 
+      <tr> 
+       <td> 28-FEB-2015 08:42:30 </td> 
+       <td class=" latlon"> 17.73 </td> 
+       <td class=" latlon"> -63.96 </td> 
+       <td class=" mag"> 4.0 </td> 
+       <td class=" dep"> 156 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=17.73&amp;lon=-63.96&amp;degs=1&amp;li=200&amp;name=ISLAS DE SOTAVENTO&amp;caller=spanevlnk&amp;evid=5007089" title="Mapa interactivo de los Últimos sismos en ISLAS DE SOTAVENTO">ISLAS DE SOTAVENTO</a> </td> 
+      </tr> 
+      <tr> 
+       <td> 28-FEB-2015 08:40:40 </td> 
+       <td class=" latlon"> 35.63 </td> 
+       <td class=" latlon"> 140.72 </td> 
+       <td class=" mag"> 4.7 </td> 
+       <td class=" dep"> 47 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=35.63&amp;lon=140.72&amp;degs=1&amp;li=200&amp;name=CERCA LA COSTA ESTE DE HONSHU, JAPóN&amp;caller=spanevlnk&amp;evid=5007086" title="Mapa interactivo de los Últimos sismos en CERCA LA COSTA ESTE DE HONSHU, JAPóN">CERCA LA COSTA ESTE DE HONSHU, JAPóN</a> </td> 
+      </tr> 
+      <tr> 
+       <td> 28-FEB-2015 08:24:24 </td> 
+       <td class=" latlon"> 43.64 </td> 
+       <td class=" latlon"> 18.42 </td> 
+       <td class=" mag"> 4.2 </td> 
+       <td class=" dep"> 5 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=43.64&amp;lon=18.42&amp;degs=1&amp;li=200&amp;name=NOROESTE REGIóN DE LOS BALCANES&amp;caller=spanevlnk&amp;evid=5007087" title="Mapa interactivo de los Últimos sismos en NOROESTE REGIóN DE LOS BALCANES">NOROESTE REGIóN DE LOS BALCANES</a> </td> 
+      </tr> 
+      <tr> 
+       <td> 28-FEB-2015 05:48:10 </td> 
+       <td class=" latlon"> -17.35 </td> 
+       <td class=" latlon"> -178.53 </td> 
+       <td class=" mag"> 4.6 </td> 
+       <td class=" dep"> 551 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=-17.35&amp;lon=-178.53&amp;degs=1&amp;li=200&amp;name=ISLAS FIJI REGIÓN&amp;caller=spanevlnk&amp;evid=5007075" title="Mapa interactivo de los Últimos sismos en ISLAS FIJI REGIÓN">ISLAS FIJI REGIÓN</a> </td> 
+      </tr> 
+      <tr> 
+       <td> 28-FEB-2015 04:53:10 </td> 
+       <td class=" latlon"> -5.00 </td> 
+       <td class=" latlon"> -78.23 </td> 
+       <td class=" mag"> 4.6 </td> 
+       <td class=" dep"> 63 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=-5.00&amp;lon=-78.23&amp;degs=1&amp;li=200&amp;name=PERÚ-ECUADOR FRONTERA REGIÓN&amp;caller=spanevlnk&amp;evid=5007072" title="Mapa interactivo de los Últimos sismos en PERÚ-ECUADOR FRONTERA REGIÓN">PERÚ-ECUADOR FRONTERA REGIÓN</a> </td> 
+      </tr> 
+      <tr> 
+       <td> 28-FEB-2015 03:45:33 </td> 
+       <td class=" latlon"> -36.82 </td> 
+       <td class=" latlon"> -72.99 </td> 
+       <td class=" mag"> 4.7 </td> 
+       <td class=" dep"> 31 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=-36.82&amp;lon=-72.99&amp;degs=1&amp;li=200&amp;name=CERCA LA COSTA CENTRAL DE CHILE&amp;caller=spanevlnk&amp;evid=5007071" title="Mapa interactivo de los Últimos sismos en CERCA LA COSTA CENTRAL DE CHILE">CERCA LA COSTA CENTRAL DE CHILE</a> </td> 
+      </tr> 
+      <tr> 
+       <td> 28-FEB-2015 03:30:46 </td> 
+       <td class=" latlon"> -21.77 </td> 
+       <td class=" latlon"> -70.66 </td> 
+       <td class=" mag"> 4.2 </td> 
+       <td class=" dep"> 17 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=-21.77&amp;lon=-70.66&amp;degs=1&amp;li=200&amp;name=CERCA LA COSTA DEL NORTE DE CHILE&amp;caller=spanevlnk&amp;evid=5007070" title="Mapa interactivo de los Últimos sismos en CERCA LA COSTA DEL NORTE DE CHILE">CERCA LA COSTA DEL NORTE DE CHILE</a> </td> 
+      </tr> 
+      <tr> 
+       <td> 28-FEB-2015 02:14:58 </td> 
+       <td class=" latlon"> 11.86 </td> 
+       <td class=" latlon"> 142.21 </td> 
+       <td class=" mag"> 4.6 </td> 
+       <td class=" dep"> 35 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=11.86&amp;lon=142.21&amp;degs=1&amp;li=200&amp;name=AL SUR DE LAS ISLAS MARIANA&amp;caller=spanevlnk&amp;evid=5007068" title="Mapa interactivo de los Últimos sismos en AL SUR DE LAS ISLAS MARIANA">AL SUR DE LAS ISLAS MARIANA</a> </td> 
+      </tr> 
+      <tr> 
+       <td> 28-FEB-2015 01:02:50 </td> 
+       <td class=" latlon"> 16.98 </td> 
+       <td class=" latlon"> 145.98 </td> 
+       <td class=" mag"> 5.1 </td> 
+       <td class=" dep"> 10 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=16.98&amp;lon=145.98&amp;degs=1&amp;li=200&amp;name=ISLAS MARIANA&amp;caller=spanevlnk&amp;evid=5007062" title="Mapa interactivo de los Últimos sismos en ISLAS MARIANA">ISLAS MARIANA</a> </td> 
+      </tr> 
+      <tr> 
+       <td> 28-FEB-2015 00:40:43 </td> 
+       <td class=" latlon"> 42.69 </td> 
+       <td class=" latlon"> 144.32 </td> 
+       <td class=" mag"> 4.6 </td> 
+       <td class=" dep"> 92 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=42.69&amp;lon=144.32&amp;degs=1&amp;li=200&amp;name=HOKKAIDO, JAPAN REGION&amp;caller=spanevlnk&amp;evid=5007064" title="Mapa interactivo de los Últimos sismos en HOKKAIDO, JAPAN REGION">HOKKAIDO, JAPAN REGION</a> </td> 
+      </tr> 
+      <tr> 
+       <td> 27-FEB-2015 23:46:44 </td> 
+       <td class=" latlon"> 14.05 </td> 
+       <td class=" latlon"> -90.86 </td> 
+       <td class=" mag"> 4.8 </td> 
+       <td class=" dep"> 95 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=14.05&amp;lon=-90.86&amp;degs=1&amp;li=200&amp;name=GUATEMALA&amp;caller=spanevlnk&amp;evid=5007056" title="Mapa interactivo de los Últimos sismos en GUATEMALA">GUATEMALA</a> </td> 
+      </tr> 
+      <tr> 
+       <td> 27-FEB-2015 19:44:17 </td> 
+       <td class=" latlon"> 16.89 </td> 
+       <td class=" latlon"> 145.84 </td> 
+       <td class=" mag"> 4.7 </td> 
+       <td class=" dep"> 35 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=16.89&amp;lon=145.84&amp;degs=1&amp;li=200&amp;name=ISLAS MARIANA&amp;caller=spanevlnk&amp;evid=5007039" title="Mapa interactivo de los Últimos sismos en ISLAS MARIANA">ISLAS MARIANA</a> </td> 
+      </tr> 
+      <tr> 
+       <td> 27-FEB-2015 19:02:41 </td> 
+       <td class=" latlon"> -37.13 </td> 
+       <td class=" latlon"> 52.46 </td> 
+       <td class=" mag"> 4.9 </td> 
+       <td class=" dep"> 13 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=-37.13&amp;lon=52.46&amp;degs=1&amp;li=200&amp;name=EL SUR DE OCÉANO ÍNDICO&amp;caller=spanevlnk&amp;evid=5007034" title="Mapa interactivo de los Últimos sismos en EL SUR DE OCÉANO ÍNDICO">EL SUR DE OCÉANO ÍNDICO</a> </td> 
+      </tr> 
+      <tr> 
+       <td> 27-FEB-2015 19:00:10 </td> 
+       <td class=" latlon"> 1.05 </td> 
+       <td class=" latlon"> -77.49 </td> 
+       <td class=" mag"> 4.0 </td> 
+       <td class=" dep"> 114 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=1.05&amp;lon=-77.49&amp;degs=1&amp;li=200&amp;name=COLOMBIA&amp;caller=spanevlnk&amp;evid=5007035" title="Mapa interactivo de los Últimos sismos en COLOMBIA">COLOMBIA</a> </td> 
+      </tr> 
+      <tr> 
+       <td> 27-FEB-2015 17:36:51 </td> 
+       <td class=" latlon"> 16.95 </td> 
+       <td class=" latlon"> 145.92 </td> 
+       <td class=" mag"> 5.0 </td> 
+       <td class=" dep"> 18 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=16.95&amp;lon=145.92&amp;degs=1&amp;li=200&amp;name=ISLAS MARIANA&amp;caller=spanevlnk&amp;evid=5007032" title="Mapa interactivo de los Últimos sismos en ISLAS MARIANA">ISLAS MARIANA</a> </td> 
+      </tr> 
+      <tr> 
+       <td> 27-FEB-2015 16:52:01 </td> 
+       <td class=" latlon"> 16.98 </td> 
+       <td class=" latlon"> 145.83 </td> 
+       <td class=" mag"> 4.8 </td> 
+       <td class=" dep"> 24 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=16.98&amp;lon=145.83&amp;degs=1&amp;li=200&amp;name=ISLAS MARIANA&amp;caller=spanevlnk&amp;evid=5007027" title="Mapa interactivo de los Últimos sismos en ISLAS MARIANA">ISLAS MARIANA</a> </td> 
+      </tr> 
+      <tr> 
+       <td> 27-FEB-2015 16:45:20 </td> 
+       <td class=" latlon"> 17.00 </td> 
+       <td class=" latlon"> 145.84 </td> 
+       <td class=" mag"> 5.0 </td> 
+       <td class=" dep"> 30 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=17.00&amp;lon=145.84&amp;degs=1&amp;li=200&amp;name=ISLAS MARIANA&amp;caller=spanevlnk&amp;evid=5007025" title="Mapa interactivo de los Últimos sismos en ISLAS MARIANA">ISLAS MARIANA</a> </td> 
+      </tr> 
+      <tr> 
+       <td> 27-FEB-2015 16:24:50 </td> 
+       <td class=" latlon"> 16.92 </td> 
+       <td class=" latlon"> 145.84 </td> 
+       <td class=" mag"> 5.7 </td> 
+       <td class=" dep"> 20 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=16.92&amp;lon=145.84&amp;degs=1&amp;li=200&amp;name=ISLAS MARIANA&amp;caller=spanevlnk&amp;evid=5007024" title="Mapa interactivo de los Últimos sismos en ISLAS MARIANA">ISLAS MARIANA</a> </td> 
+      </tr> 
+      <tr> 
+       <td> 27-FEB-2015 15:27:56 </td> 
+       <td class=" latlon"> -7.48 </td> 
+       <td class=" latlon"> 122.52 </td> 
+       <td class=" mag"> 5.1 </td> 
+       <td class=" dep"> 568 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=-7.48&amp;lon=122.52&amp;degs=1&amp;li=200&amp;name=FLORES DEL MAR&amp;caller=spanevlnk&amp;evid=5007023" title="Mapa interactivo de los Últimos sismos en FLORES DEL MAR">FLORES DEL MAR</a> </td> 
+      </tr> 
+      <tr> 
+       <td> 27-FEB-2015 14:54:08 </td> 
+       <td class=" latlon"> 9.90 </td> 
+       <td class=" latlon"> 126.51 </td> 
+       <td class=" mag"> 4.9 </td> 
+       <td class=" dep"> 69 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=9.90&amp;lon=126.51&amp;degs=1&amp;li=200&amp;name=MINDANAO, ISLAS FILIPINAS&amp;caller=spanevlnk&amp;evid=5007021" title="Mapa interactivo de los Últimos sismos en MINDANAO, ISLAS FILIPINAS">MINDANAO, ISLAS FILIPINAS</a> </td> 
+      </tr> 
+      <tr> 
+       <td> 27-FEB-2015 13:45:05 </td> 
+       <td class=" latlon"> -7.29 </td> 
+       <td class=" latlon"> 122.53 </td> 
+       <td class=" big mag"> 7.0 </td> 
+       <td class=" dep"> 552 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=-7.29&amp;lon=122.53&amp;degs=1&amp;li=200&amp;name=FLORES DEL MAR&amp;caller=spanevlnk&amp;evid=5007016" title="Mapa interactivo de los Últimos sismos en FLORES DEL MAR">FLORES DEL MAR</a> </td> 
+      </tr> 
+      <tr> 
+       <td> 27-FEB-2015 12:53:09 </td> 
+       <td class=" latlon"> 31.97 </td> 
+       <td class=" latlon"> 31.02 </td> 
+       <td class=" mag"> 4.3 </td> 
+       <td class=" dep"> 16 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=31.97&amp;lon=31.02&amp;degs=1&amp;li=200&amp;name=EGIPTO&amp;caller=spanevlnk&amp;evid=5007022" title="Mapa interactivo de los Últimos sismos en EGIPTO">EGIPTO</a> </td> 
+      </tr> 
+      <tr> 
+       <td> 27-FEB-2015 11:35:15 </td> 
+       <td class=" latlon"> -7.04 </td> 
+       <td class=" latlon"> 155.30 </td> 
+       <td class=" mag"> 5.3 </td> 
+       <td class=" dep"> 71 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=-7.04&amp;lon=155.30&amp;degs=1&amp;li=200&amp;name=ISLAS SALOMÓN&amp;caller=spanevlnk&amp;evid=5007004" title="Mapa interactivo de los Últimos sismos en ISLAS SALOMÓN">ISLAS SALOMÓN</a> </td> 
+      </tr> 
+      <tr> 
+       <td> 27-FEB-2015 07:58:03 </td> 
+       <td class=" latlon"> 28.26 </td> 
+       <td class=" latlon"> 128.31 </td> 
+       <td class=" mag"> 4.9 </td> 
+       <td class=" dep"> 135 </td> 
+       <td class=" region"> <a href="http://www.iris.washington.edu/ieb/goregion.php?lat=28.26&amp;lon=128.31&amp;degs=1&amp;li=200&amp;name=RYUKYU ISLANDS&amp;caller=spanevlnk&amp;evid=5006986" title="Mapa interactivo de los Últimos sismos en RYUKYU ISLANDS">RYUKYU ISLANDS</a> </td> 
+      </tr> 
+     </tbody> 
+    </table> 50 terremotos listados 
+   </div>   <p>&nbsp;</p> <font face="Arial"> 
+    <blockquote> 
+     <b><a name="Fecha - Hora">FECHA - HORA (UTC):</a></b>
+     <br> 
+     <p> La fecha y la hora reflejan el momento en que el terremoto occurrió. La hora es expresada en Tiempo Universal Coordinado - UTC (Coordinated Universal Time en inglés), que también muy a menudo es referido a la hora en Meridiano de Greenwich, o en la longitud de 0 grados, aproximadamente <b>seis horas </b>adelantadas de Perú y Ecuador y a <b>siete horas </b>de Costa Rica. </p> 
+     <p> La hora del día es generalmente expresada en el systema de 24 horas. Cada hora tiene un número diferente, entónces no se necesitan indicadores AM o PM. <br> <br> Por ejemplo, 17:45 es 5:45 PM.&nbsp; Adicionalmente, el formato para el reloj de 24 horas es Horas:Minutos:Segundos. Por ejemplo, <br> <br> 02:00:05 es 2:00 AM y 5 segundos. <br> <br> Un otro factor es que el mundo se divida en 24 zonas (husos horarios) cada con su propia hora local. Usa el siguiente enlace para repasar las conversiones de UTC a la hora de su zona:</p> 
+     <ul> 
+      <li><a href="http://24timezones.com/reloj_hora_exacta.php"> Reloj Mundial y Mapa de los Husos Horarios </a></li> 
+     </ul> 
+    </blockquote> 
+    <blockquote> 
+     <p><b><a name="magdesc">Magnitud (MAG)</a>:</b><br> </p>
+     <p> Las magnitudes de los terremotos son reportados usando una escala logarítmica, que mide la fortaleza y la energía del terremoto y que es determinada por observaciones sismográficas . </p> 
+     <p> Generalmente magnitudes son entre 0 y 10. Terremotos en el rango de 0 hasta 4 pasan con relativa frecuencia en el mundo, más de ~M6 se consideran importante, y más de ~M8 son raros y pueden ser destructivos. Pero cualquier terremoto puede ser destructivo si sucede en un lugar poblado o vulnerable. Igualmente, terremotos grandes pueden ocurrir en sitios remotos sin destrucción. Terremotos en cualquier lugar en o cerca del mar, pueden causar tsunamis. </p> 
+     <p> Ésta lista solomente reporta terremotos de magnitud ~4 y mas grande. La razón es que partes del mundo son mejor cubiertas por sismografos, y no queremos representar que aquellas regiones en realidad son más activas sísmicamente. Pero al llegar al mapa, sigiuendo los enlaces, se puede establecer un rango de magnitud diferente. </p> 
+     <p> <b><a name="Profundidad">Profundidad (PROF)</a>:</b><br> </p>
+     <p> </p> 
+     <p> El número mostrado es una distancia menor a la del nivel mar en kilómetros. </p> 
+    </blockquote> </font> <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> <script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ ga('create', 'UA-1860730-1', 'auto');
+ ga('send', 'pageview');
+
+</script> <p style="visibility:hidden" ;="">Los ultimos sismos en el mundolistados por IRIS (www.iris.washington.edu), quienes hacen el Monitor Sismico.</p> <a style="visibility:hidden" ;="" rel="author" href="https://plus.google.com/109478711329133447674?rel=author">Author: R.Welti</a>   </span>
+ </body>
+</html>

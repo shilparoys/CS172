@@ -1,0 +1,253 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- 0.0: en_US - include/joinLayout.inc - pages/default/include/joinLayout.inc -->
+<html>
+ <head> 
+  <link rel="SHORTCUT ICON" href="/favicon.ico"> 
+  <title>Join a Meeting | GoToMeeting</title> 
+  <meta name="description" content="To connect to an online meeting, enter the meeting ID provided by the meeting organizer."> 
+  <meta name="robots" content="noindex,nofollow"> 
+  <link type="text/css" rel="stylesheet" href="/static/styles/reset.css"> 
+  <link rel="stylesheet" type="text/css" href="/static/styles/buttons.css"> 
+  <link rel="stylesheet" type="text/css" href="/static/styles/base.css"> 
+  <!--[if gt IE 6]> 
+        <link rel="stylesheet" type="text/css" href="/static/styles/ie.css">
+        <![endif]--> 
+  <script type="text/javascript" src="/static/scripts/jquery/jquery-1.4.2.min.js"></script> 
+  <script type="text/javascript" src="/static/scripts/jquery/jquery.tools.min.js"></script> 
+  <script type="text/javascript" src="/static/scripts/common.js"></script> 
+  <script type="text/javascript" src="/default/scripts/footer.js"></script> 
+  <!-- 1.1: en_US - island/content/gotomeetingJavaScript.inc - pages/default/island/content/gotomeetingJavaScript.inc --> 
+  <script type="text/javascript">
+        <!--
+            var validId = false;
+            var defaultError;
+            var defaultMeetingIdError = "Invalid Meeting ID. Please confirm the ID with the meeting organizer.";
+
+            // Do this here to set up Javascript-enabled pages for real time
+            // validation of entered IDs. The default behaviour is to validate
+            // post-submission.
+            jQuery(document).ready(function() {
+                jQuery(".bbReqs").hide();
+                jQuery("#errors").hide();
+                if (document.forms["meetingForm"].MeetingID.value != "") {
+                    verifyMeeting(false);
+                }
+                defaultError = jQuery("#errorMessage").html();
+                defaultMeetingIdError = jQuery("#meetingIdError").html();
+                jQuery("#meetingIdError").hide();
+                jQuery("#meetingForm").submit(function() {
+                    return verifyMeeting(true);
+                });
+                
+            });
+
+            function verifyMeetingId() {
+                var meetingId = document.forms["meetingForm"].MeetingID.value;
+                if (meetingId) {
+                    meetingId = meetingId.replace(/\-/g,'');
+                }
+
+                if (meetingId.length > 0 && (isNaN(meetingId) || meetingId.length != 9)) { 
+                    jQuery("#meetingIdError").html("Enter a valid meeting ID (ie 000-000-000)");
+                    jQuery("#meetingIdError").show();
+                    jQuery("#meetingId").css("background-color", "#ffd2d0");
+                    jQuery("#errorMessage").html(defaultError);
+                    jQuery("#errors").show();
+                    validId = false;
+                } else {
+                    jQuery("#meetingIdError").hide();
+                    jQuery("#meetingId").css("background-color", "#fff");
+                    jQuery("#errors").hide();
+                    validId = true;
+                }
+                return validId;
+            }
+
+            function verifyName() {
+                if (document.forms["meetingForm"].Name.value == "") {
+                    jQuery("#nameError").show();
+                    jQuery("#name").css("background-color", "#ffd2d0");
+                    jQuery("#errorMessage").html(defaultError);
+                    jQuery("#errors").show();
+                    return false;
+                }
+                jQuery("#nameError").hide();
+                jQuery("#name").css("background-color", "#fff");
+                if (validId && jQuery("#meetingIdError").css("visibility") == "hidden") {
+                    jQuery("#errors").hide();
+                }
+                return true;
+            }
+
+            function verifyMeeting(doSubmit) {
+                var form = document.forms["meetingForm"];
+                var meetingId = form.MeetingID.value.replace(/\-/g,'');
+                if (!doSubmit && meetingId.length == 0) {
+                    return true;
+                }
+                if (!verifyMeetingId()) {
+                    return false;
+                }
+                var call = "/meeting/validate/" + meetingId;
+                jQuery.getJSON(call,
+                    function(data) {
+                        if (data.Status == "OK" || data.Status == "MeetingNotStarted") {
+                            validId = true;
+                            action = "/join/" + meetingId;
+                            if (jQuery.inArray("Native", data.Endpoints) == -1 &&
+                                jQuery.inArray("Flash", data.Endpoints) >= 0) {
+                                action = "/flash" + action;
+                                //jQuery(".bbReqs").show();
+                                //document.forms["meetingForm"].requireName.value = true;
+                            }
+                            document.forms["meetingForm"].action = action;
+                            if (doSubmit) {
+                                jQuery("#meetingForm").submit();
+                            }
+                        } else if (data.Status == "Redirect") {
+                            if (data.RedirectHost) {
+                                window.location = "https://" + data.RedirectHost + "/join/" + data.MeetingId;
+                            }
+                        } else {
+                            var message = "";
+                            if (data.Status == "NoSuchMeeting") {
+                                message = "No such meeting.";
+                            } else if (data.Status == "InvalidMeetingId") {
+                                message = "Invalid meeeting ID.";
+                            } else if (data.Status == "MeetingExpired") {
+                                message = "This meeting has expired.";
+                            }
+                            jQuery("#meetingIdError").html(message + " Please confirm the ID with the meeting organizer.");
+                            jQuery("#meetingIdError").show();
+                            jQuery("#meetingId").css("background-color", "#ffd2d0");
+                            jQuery("#errors").show();
+                            validId = false;
+                        }
+                    });
+            }
+        //-->
+        </script> 
+  <!-- 1.1: 0ms --> 
+  <script type="text/javascript" src="/static/scripts/beta/gotomeeting.js"></script> 
+ </head> 
+ <body id="unified"> 
+  <div class="container"> 
+   <div id="header"> 
+    <a href="http://www.GoToMeeting.com" id="logo">GoToMeeting</a> 
+    <ul class="navLinks"> 
+     <li class="lastChild"><a href="/island/login.tmpl">Log In</a></li> 
+    </ul> 
+   </div> 
+   <div id="body" class="content noSidebar"> 
+    <div> 
+     <div id="errors" style="display: none"> 
+      <span id="errorMessage">Please check the errors below.</span> 
+      <!--[if IE]> 
+                        <div class="errorCorners errorTL"></div>
+                        <div class="errorCorners errorTR"></div>
+                        <div class="errorCorners errorBL"></div>
+                        <div class="errorCorners errorBR"></div>
+                        <![endif]--> 
+     </div> 
+     <div class="innerContent"> 
+      <!-- 2.1: en_US - island/content/gotomeeting.inc - pages/default/island/content/gotomeeting.inc --> 
+      <div id="content"> 
+       <h1>Join a Meeting</h1> 
+       <div id="form"> 
+        <form id="meetingForm" method="post" action="/join"> 
+         <h5>To connect to an online meeting, enter the ID provided by the organizer.</h5> 
+         <div class="formRow"> 
+          <label for"meetingid"="">Meeting ID</label> 
+          <input id="meetingId" type="text" name="MeetingID"> 
+         </div> 
+         <div class="formRow"> 
+          <div class="fieldErrorMsg ghostElement" id="meetingIdError"></div> 
+         </div> 
+         <div class="bbReqs"> 
+          <div class="formRow"> 
+           <label for="name">Name</label> 
+           <input id="name" type="text" class="formInput" name="Name"> 
+           <div class="fieldErrorMsg" id="nameError">
+            Enter your name
+           </div> 
+          </div> 
+          <div class="formRow"> 
+           <label for="text">Email Address <span class="formLabelExtra">(optional)</span></label> 
+           <input type="text" class="formInput" name="Email"> 
+          </div> 
+         </div> 
+         <input name="nojs" type="hidden" value="true"> 
+         <input name="requireName" type="hidden" value="false"> 
+         <div class="submitRow"> 
+          <label for="submit" class="slideButton blueSlide"> <input name="submit" id="submit" accesskey="l" value="Join a Meeting" type="submit"> <span>Join a Meeting</span> </label> 
+         </div> 
+        </form> 
+       </div> 
+      </div> 
+      <!-- 2.1: 0ms --> 
+      <!--[if IE]> 
+                        <div class="corners innerContentTL"></div>
+                        <div class="corners innerContentTR"></div>
+                        <div class="corners innerContentBL"></div>
+                        <div class="corners innerContentBR"></div>
+                        <![endif]--> 
+     </div> 
+     <div id="helpBar"> 
+      <!-- 3.1: en_US - island/content/gotomeetingInfo.inc - pages/default/island/content/gotomeetingInfo.inc --> 
+      <div class="helpGroup"> 
+       <h3>What is a Meeting ID?</h3> 
+       <ul> 
+        <li><span>Your Meeting ID is the 9-digit number provided by the meeting organizer that allows you to enter your meeting.</span></li> 
+       </ul> 
+       <div class="bbReqs"> 
+        <h3>Why do you need my name and email address?</h3> 
+        <ul> 
+         <li><span>We ask for your name and email address so that the organizer knows who you are.</span></li> 
+        </ul> 
+       </div> 
+      </div> 
+      <!-- 4.2: en_US - island/content/questions.inc - pages/default/island/content/questions.inc --> 
+      <div class="helpGroup"> 
+       <h3>Questions?</h3> 
+       <ul> 
+        <li><span>For 24/7 support, contact <a href="http://support.gotomeeting.com" rel="external">Global Customer Support</a>.</span></li> 
+        <li><span>Review the FAQ for <a href="http://support.gotomeeting.com/ics/support/default.asp?deptID=5641&amp;task=knowledge&amp;questionID=3800" rel="external">using GoToMeeting with Firewalls</a>.</span></li> 
+        <li><span>Tweet to us <a href="http://twitter.com/gotomeeting" rel="external">@gotomeeting</a>.</span></li> 
+       </ul> 
+      </div> 
+      <div class="helpGroup"> 
+       <h3>Want to hold your own online meetings?</h3> 
+       <ul> 
+        <li><span>Sign-up for <a href="https://www.gotomeeting.com/s/join" rel="external"> a 30-Day FREE TRIAL of GoToMeeting</a>.</span></li> 
+       </ul> 
+      </div> 
+      <!-- 4.2: 0ms --> 
+      <!-- 3.1: 0ms --> 
+     </div> 
+    </div> 
+    <!--[if IE]> 
+                <div class="corners contentTL"></div>
+                <div class="corners contentTR"></div>
+                <![endif]--> 
+   </div> 
+   <div id="footer"> 
+    <div id="footerInner"> 
+     <ul class="navLinks"> 
+      <li><a href="http://www.citrixonline.com/about.tmpl " rel="external">About Us</a></li> 
+      <li><a href="http://www.citrixonline.com/tosPopUp.tmpl " rel="popup">Terms of Service</a></li> 
+      <li class="lastChild"><a href="http://www.citrixonline.com/collaboration/privacy_policy_overview" class="LastAnchor newPPWindow" rel="1">Privacy Policy</a></li> 
+     </ul> 
+     <a href="http://www.citrixonline.com" class="footerLogo">Citrix Online</a> 
+     <!--[if IE]> 
+                    <div class="corners footerBL"></div>
+                    <div class="corners footerBR"></div>
+                    <![endif]--> 
+    </div> 
+   </div> 
+   <div id="copyright">
+    © 1997-2011 Citrix Online, LLC. All rights reserved.
+   </div> 
+  </div>   
+  <!-- 0.0: 0ms -->
+ </body>
+</html>

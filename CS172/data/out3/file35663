@@ -1,0 +1,421 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+  <meta name="twitter:widgets:csp" content="on"> 
+  <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script> 
+  <title>USC Libraries :: Libwire :: ‘The Imitation Game’ Outplays Competition to Win USC Libraries Scripter Award</title> 
+  <link rel="shortcut icon" type="image/x-icon" href="http://www.usc.edu/favicon.ico"> 
+  <link rel="stylesheet" type="text/css" media="all" href="http://dotsx.usc.edu/newsblog/index.php?css=main/reset_css.v.1247651023"> 
+  <link rel="stylesheet" type="text/css" media="all" href="http://dotsx.usc.edu/newsblog/index.php?css=main/grid_css.v.1247651045"> 
+  <link rel="stylesheet" type="text/css" media="all" href="http://dotsx.usc.edu/newsblog/index.php?css=main/text_css.v.1247651071"> 
+  <link rel="stylesheet" type="text/css" media="all" href="http://dotsx.usc.edu/newsblog/index.php?css=main/main_css.v.1310719605"> 
+  <link rel="stylesheet" type="text/css" media="all" href="http://www.usc.edu/libraries/css/bootstrap-imitate.dropdown.css"> 
+  <style type="text/css">
+  .dropdown-menu ul ul { margin:0; padding-left:40px; }
+</style> 
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
+  <script type="text/javascript" src="http://www.usc.edu/libraries/js/bootstrap-imitate.dropdown.js"></script> 
+  <script type="text/javascript" src="http://dotsx.usc.edu/newsblog/index.php/main/jquery_cookie_js/"></script> 
+  <script type="text/javascript" src="http://dotsx.usc.edu/newsblog/index.php/main/jquery_tree_js/"></script> 
+  <script type="text/javascript">
+  //Set margins & indents for left nav tree
+  $(document).ready(function() {
+	$('ul#nav_categories').tree();
+	$('#nav_categories > li').not(':has(ul)').css('padding-left','1.5em');
+	$('#nav_categories > li').has('ul').css({
+		'text-indent':'-1.3em',
+		'margin-left':'1.3em'
+	});
+  });
+</script> 
+  <script type="text/javascript">
+  $(document).ready(function() {
+	/* top nav code */
+	var navHtml = '';
+	var navHeadHtml = '<ul>';
+
+	//render json
+	$.getJSON( "http://www.usc.edu/libraries/inc/topnavlinks.php?callback=?", function(data) {
+		$.each(data.sections, function(i, section) {
+			if(section.id == 'libraries' || section.id == 'partners') {
+				if(section.id == 'libraries') {
+					navHeadHtml += '<li data-dropdown="#dropdown-' + i + '"><a href="#">' + section.section + '</a><b class="caret"></b></li>';
+					navHtml += '<div id="dropdown-' + i + '" class="dropdown-menu has-tip">';
+				}
+			}
+			else {
+				navHeadHtml += '<li data-dropdown="#dropdown-' + i + '"><a href="#">' + section.section + '</a><b class="caret"></b></li>';
+				navHtml += '<div id="dropdown-' + i + '" class="dropdown-menu has-tip">';
+			}
+			//libraries & partners dropdown
+			if(section.id == 'libraries' || section.id == 'partners') {
+				if(section.id == 'libraries') {
+					navHtml += '<div class="nav-header">Libraries &amp; Collections</div>';
+					navHtml += '<ul class="menu-items">';
+					$.each(section.links, function(j, link) {
+						if(j==section.links.length/2-1) {
+							navHtml += '</ul><ul class="menu-items">';
+						}
+						navHtml += '<li><a' + ' href="' + link.url + '">' + link.label + '</a>';
+						if(link.sublinks) {
+							navHtml += '<ul>';
+							$.each(link.sublinks, function(k, sublink) {
+								navHtml += '<li><a' + ' href="' + sublink.url + '">' + sublink.label + '</a></li>';
+							});
+							navHtml += '</ul>';
+						}
+						navHtml += '</li>';
+					});
+					navHtml += '</ul>';
+				}
+				if(section.id == 'partners') {
+					navHtml += '<div class="nav-header" style="clear:both; padding-top:20px;">Partners and Other Library Units</div><ul>';
+					$.each(section.links, function(j, link) {
+						navHtml += '<li><a' + ' href="' + link.url + '">' + link.label + '</a>';
+						if(link.sublinks) {
+							navHtml += '<ul>';
+							$.each(link.sublinks, function(k, sublink) {
+								navHtml += '<li><a' + ' href="' + sublink.url + '">' + sublink.label + '</a></li>';
+							});
+							navHtml += '</ul>';
+						}
+						navHtml += '</li>';
+					});
+					navHtml += '</ul></div>';
+				}
+			}
+			//other dropdowns
+			else {
+				$.each(section.links, function(j, link) {
+					if(j==0) {
+						navHtml += '<ul>';
+					}
+					navHtml += '<li><a' + ' href="' + link.url + '">' + link.label + '</a>';
+					if(link.sublinks) {
+						navHtml += '<ul>';
+						$.each(link.sublinks, function(k, sublink) {
+							navHtml += '<li><a' + ' href="' + sublink.url + '">' + sublink.label + '</a></li>';
+						});
+						navHtml += '</ul>';
+					}
+					navHtml += '</li>';
+				});
+				navHtml += '</ul></div>';
+			}
+		});
+		navHeadHtml += '</ul>';
+		$('#usclibNav').prepend(navHeadHtml);
+		$('#dropdown-container').html(navHtml);
+	  });
+  });
+</script> 
+ </head> 
+ <body> 
+  <!-- Facebook required code for like button and comments --> 
+  <div id="fb-root"></div> 
+  <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=197269336976535&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script> 
+  <!-- End Facebook required code --> 
+  <div id="outerContainer" class="container container_16"> 
+   <div class="container_16"> 
+    <div id="custom_header"> 
+     <div id="usclibHeader"> 
+      <div id="usclibContainer"> 
+       <h1> <a href="http://www.usc.edu/libraries">USC Libraries</a> </h1> 
+       <h2> <a href="http://www.usc.edu">University of Southern California</a> </h2> 
+      </div> 
+     </div> 
+     <div id="usclibNav"> 
+      <div style="float:right"> 
+       <a href="http://www.usc.edu/libraries/services/ask_a_librarian" class="btn" id="askalibrarian"><i class="icon-question-sign"></i> Ask a Librarian</a> 
+      </div> 
+      <div id="dropdown-container"></div> 
+     </div> 
+     <div id="usclibPagehead"> 
+      <h2><a href="http://dotsx.usc.edu/newsblog/">Libwire</a></h2> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="clear">
+    &nbsp;
+   </div> 
+   <!--		<div id="headerpic">
+    <div class="text">
+    	<h1></h1>
+     </div>
+  </div>
+
+	<div id="menu" style="height:5px; font-size:0;"></div>
+<div id="menu">
+
+		<ul class="mainNav">
+			<li><a href="http://dotsx.usc.edu/newsblog/index.php/main/">Home</a></li>
+      <li><a href="http://dotsx.usc.edu/newsblog/index.php/main/" class="active">Home</a></li>
+		</ul>
+
+      <ul class="secNav">
+                   <li><a href="http://dotsx.usc.edu/newsblog/index.php/main/login/">Login</a></li>
+       <li><a href="http://dotsx.usc.edu/newsblog/index.php/main/registration/">Register</a></li>
+            </ul>
+
+	</div>
+	
+--> 
+   <div class="container_16"> 
+    <div id="menubottom"></div> 
+   </div> 
+   <div class="clear">
+    &nbsp;
+   </div> 
+   <div class="grid_3"> 
+    <div id="leftsidebar"> 
+     <div class="box"> 
+      <ul id="nav_categories" class="linklist"> 
+       <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C10/">Collections</a> 
+        <ul> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C119/">Boeckmann Center</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C9/">USC Digital Library</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C1/">eJournals and Databases</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C120/">ONE Archives</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C2/">New Acquisitions</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C21/">Special Collections</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C92/">University Archives</a> </li> 
+        </ul> </li> 
+       <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C128/">Academy for Polymathic Study</a> </li> 
+       <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C23/">Distance Learning</a> </li> 
+       <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C19/">Faculty and Staff News</a> </li> 
+       <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C20/">Friends of the USC Libraries</a> </li> 
+       <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C11/">Events and Exhibitions</a> 
+        <ul> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C129/">Discovery Fellowship</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C109/">Los Angeles Archives Bazaar</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C26/">Scripter</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C134/">USC Libraries Research Award</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C126/">Wonderland Award</a> </li> 
+        </ul> </li> 
+       <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C4/">Services</a> 
+        <ul> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C107/">Homer Catalog</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C115/">Instruction</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C113/">Quick Search</a> </li> 
+        </ul> </li> 
+       <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C117/">L.A. as Subject</a> </li> 
+       <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C24/">Strategic Planning</a> 
+        <ul> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C124/">Discoverability</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C122/">Integration with Our Community</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C123/">Library Environment</a> </li> 
+        </ul> </li> 
+       <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C133/">MMLIS Program</a> </li> 
+       <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C132/">Mosely Snowflake Sponge</a> </li> 
+       <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C131/">OAPS</a> </li> 
+       <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C110/">Series</a> 
+        <ul> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C111/">Inside the USC Libraries</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C114/">Texts of the Trojan Family Tapestry</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C112/">Twitter Tuesday</a> </li> 
+        </ul> </li> 
+       <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C130/">USC Digital Repository</a> </li> 
+       <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C25/">Academic Subjects</a> 
+        <ul> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C27/">Anthropology &amp; Archaeology</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C28/">Art &amp; Architecture</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C29/">Biology/Life Sciences</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C30/">Business &amp; Economics</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C31/">Chemistry &amp; Physics</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C32/">Cinema &amp; Television</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C33/">Classical Studies</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C34/">Communication &amp; Journalism</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C35/">Dance &amp; Theater</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C36/">Data/Statistics</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C37/">Earth &amp; Ocean Sciences</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C38/">East Asian Studies</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C39/">Education</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C40/">Engineering</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C41/">Ethnic Studies/Area Studies</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C118/">Gender Studies</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C108/">Geography</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C42/">Gerontology</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C44/">Health Sciences</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C45/">History</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C46/">Language &amp; Literature</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C47/">Linguistics</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C125/">Mathematics</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C48/">Music</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C49/">Philosophy</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C50/">Political Science &amp; Public Policy</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C51/">Psychology</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C52/">Religion</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C54/">Social Work</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C55/">Sociology</a> </li> 
+        </ul> </li> 
+       <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C94/">Libraries</a> 
+        <ul> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C95/">Architecture &amp; Fine Arts Library</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C116/">Feuchtwanger Memorial Library</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C96/">Business &amp; Accounting Library</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C97/">Cinematic Arts Library</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C101/">Doheny Library</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C98/">East Asian Library</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C99/">Gerontology Library</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C121/">Grand Avenue Library</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C100/">Leavey Library</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C102/">Music Library</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C127/">Norris Medical Library</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C103/">Philosophy Library</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C104/">Science &amp; Engineering Library</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C105/">Social Work Information Center</a> </li> 
+         <li> <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C106/">VKC Library</a> </li> 
+        </ul> </li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="grid_9"> 
+    <div id="primarycontent"> 
+     <!-- Primary content area start --> 
+     <div class="post item"> 
+      <h3>‘The Imitation Game’ Outplays Competition to Win USC Libraries Scripter Award</h3> 
+      <div class="details">
+       Posted by 
+       <span id="eeEncEmail_6CR0C4MH9d">.(JavaScript must be enabled to view this email address)</span>
+       <script type="text/javascript">
+//<![CDATA[
+var l=new Array();
+var output = '';
+l[0]='>';l[1]='a';l[2]='/';l[3]='<';l[4]=' 108';l[5]=' 108';l[6]=' 105';l[7]=' 107';l[8]=' 115';l[9]=' 97';l[10]=' 71';l[11]=' 32';l[12]=' 110';l[13]=' 111';l[14]=' 115';l[15]=' 121';l[16]=' 84';l[17]='>';l[18]='\"';l[19]=' 117';l[20]=' 100';l[21]=' 101';l[22]=' 46';l[23]=' 99';l[24]=' 115';l[25]=' 117';l[26]=' 64';l[27]=' 108';l[28]=' 108';l[29]=' 105';l[30]=' 107';l[31]=' 115';l[32]=' 97';l[33]=' 103';l[34]=':';l[35]='o';l[36]='t';l[37]='l';l[38]='i';l[39]='a';l[40]='m';l[41]='\"';l[42]='=';l[43]='f';l[44]='e';l[45]='r';l[46]='h';l[47]='a ';l[48]='<';
+for (var i = l.length-1; i >= 0; i=i-1){ 
+if (l[i].substring(0, 1) == ' ') output += "&#"+unescape(l[i].substring(1))+";"; 
+else output += unescape(l[i]);
+}
+document.getElementById('eeEncEmail_6CR0C4MH9d').innerHTML = output;
+//]]>
+</script> on 02/02/15
+      </div> 
+      <div class="details social"> 
+       <!-- Google Plus one --> 
+       <g:plusone size="medium"></g:plusone> 
+       <!-- Facebook like --> 
+       <div class="fb-like" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div> 
+       <!-- Twitter share --> &nbsp;&nbsp;
+       <a href="https://twitter.com/share" class="twitter-share-button" data-via="USCLibraries">Tweet</a> 
+       <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script> 
+      </div> 
+      <div class="contentarea"> 
+       <p> <em><img alt="" height="333" src="http://dotsx.usc.edu/newsblog/images/uploads/NK3_2555.jpg" width="500"><br> Scripter Selection Committee chair Howard Rodman, Scripter Award-winning screenwriter Graham Moore, Dean of the USC Libraries Catherine Quinlan, USC Libraries Literary Achievement Award winner Walter Mosley, and master of ceremonies Glenn Sonnenberg (Photo: Rich Schmitt Photography)</em></p> 
+       <p> Screenwriter Graham Moore and author Andrew Hodges received the 27th-annual USC Libraries Scripter Award for <em>The Imitation Game</em>. Selection committee chair Howard Rodman announced the winners at the black-tie event on Saturday, Jan. 31, at USC’s historic Doheny Memorial Library.</p> 
+       <p> Moore based his adaptation on Hodges’ <em>Alan Turing: The Enigma</em>, a 1983 biography of the British World War II code-breaker and computer pioneer who was later persecuted for his homosexuality. Rodman accepted the award on behalf of Hodges, who teaches mathematics at Oxford University’s Wadham College.&nbsp;</p> 
+       <p> “Alan Turing never got to stand on a stage and hear people applaud his name,” Moore said in his acceptance speech. “And I do right now, and that is a profound injustice. All that I can do is spend the rest of my life endeavoring to repair it.”</p> 
+       <p> <em>The Imitation Game</em>’s Scripter win adds to the accolades for the Weinstein Co. film, which has earned eight Academy Award and eight BAFTA nominations.</p> 
+       <p> Scripter, established by the Friends of the USC Libraries in 1988, honors the screenwriter of the year’s most accomplished cinematic adaptation as well as the author of the written work upon which the screenplay is based. Scripter is the only award of its kind that recognizes authors of the original work alongside the adapting screenwriters.</p> 
+       <p> USC Libraries Dean Catherine Quinlan welcomed the attendees gathered in the Los Angeles Times Reference Room of Doheny Memorial Library, and noted that the proceeds from the night’s event benefited the USC Cinematic Arts Library.</p> 
+       <p> “Our Cinematic Arts Library is a tangible embodiment of cinema history and of the cultural history of the world,” Quinlan said. “It connects our students and scholars from near and far with knowledge that exists nowhere else but here.”</p> 
+       <p> Quinlan presented the first honor of the evening—the libraries’ inaugural Ex Libris Award—to Dr. Elaine Leventhal. “Elaine has been a wise, active, and involved advisor to our libraries for decades, and to me personally since I became dean. Her dedication has touched every aspect of what our libraries do.”</p> 
+       <p> Receiving a standing ovation as she accepted the award, Dr. Leventhal described how her love of books and libraries and a keen interest in history have led to her building a collection several thousand books strong. Having never discarded a volume from her collection, Dr. Leventhal praised the value of reading and re-reading stories that carry forward the knowledge of the past.&nbsp;</p> 
+       <p> “It makes me very happy,” she said, announcing to the crowd that the USC Libraries would become the home to her entire book collection, “to know that all of my books will be re-read.”</p> 
+       <p> Before announcing the Scripter 2015 winners, Howard Rodman presented the USC Libraries Literary Achievement Award to writer Walter Mosley.</p> 
+       <p> Mosley, a native of Southern California, has set much of his work there, including his “Easy” Rawlins series that features a black detective working in post-war Los Angeles. He is currently working on a Broadway version of his first novel, <em>Devil in a Blue Dress</em>, which was adapted in 1995 into a film starring Denzel Washington.</p> 
+       <p> “In one stroke, Walter stood the crime genre on its head,” Rodman said. “And in doing so, over the course of a 25-year career, has triumphantly turned the world 180 degrees.”</p> 
+       <p> In receiving the award, Mosley credited libraries for their central role in guaranteeing intellectual freedom and a civil society, “By making libraries stronger we make America stronger.”</p> 
+       <p> <img alt="" height="332" src="http://dotsx.usc.edu/newsblog/images/uploads/quinlan leventhal.jpg" width="500"><br> <em>USC Libraries Dean Catherine Quinlan presented Dr. Elaine Leventhal with the inaugural Ex Libris Award (Photo: Ron Murray)</em></p> 
+       <div class="details"> 
+        <!-- AddThis Button BEGIN --> 
+        <script type="text/javascript">
+							var addthis_options = 'email, delicious, facebook, twitter, google, more';
+							var addthis_exclude = 'print';
+							var titleStr = "‘The Imitation Game’ Outplays Competition to Win USC Libraries Scripter Award".replace(/'/g, "\'"); 
+						</script> 
+        <a href="http://www.addthis.com/bookmark.php?v=250&amp;pub=libwire" onmouseover="return addthis_open(this, '', 'http://dotsx.usc.edu/newsblog/index.php/main/comments/the_imitation_game_outplays_competition_to_win_usc_libraries_scripter_/', titleStr)" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s7.addthis.com/static/btn/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0"></a>
+        <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js?pub=libwire"></script> 
+        <!-- AddThis Button END --> &nbsp; 
+       </div>
+       <br> 
+       <div class="details">
+         Filed under: 
+        <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C11/">Events and Exhibitions</a> • 
+        <a href="http://dotsx.usc.edu/newsblog/index.php/main/local/C26/">Scripter</a> 
+       </div> 
+       <!-- Start Facebook Comments --> 
+       <br> 
+       <h4 id="fb-comments">Comments</h4> 
+       <fb:comments width="500" numposts="3" colorscheme="light" href="http://dotsx.usc.edu/newsblog/index.php/main/comments/the_imitation_game_outplays_competition_to_win_usc_libraries_scripter_/"></fb:comments> 
+       <!-- End Facebook Comments --> 
+      </div> 
+     </div> 
+     <!-- Normal content area end --> 
+     <br> 
+     <div class="prevNext"> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="grid_4"> 
+    <div id="secondarycontent"> 
+     <div class="box_noborder"> 
+      <div id="searchbox"> 
+       <form action="http://dotsx.usc.edu/newsblog/index.php/main/search_results_google/" id="cse-search-box"> 
+        <div> 
+         <input type="hidden" name="cx" value="007889385037742183054:utxhxntszby"> 
+         <input type="hidden" name="cof" value="FORID:10"> 
+         <input type="hidden" name="ie" value="UTF-8"> 
+         <input type="text" name="q" id="keywords" size="18" onblur="if (this.value == '') {this.value = 'Search';}" onfocus="if (this.value == 'Search') {this.value = '';}"> 
+         <input type="image" name="sa" value="Go" class="submit" src="http://dotsx.usc.edu/newsblog/images/search_magnifier.png"> 
+        </div> 
+       </form> 
+       <script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script> 
+      </div> 
+      <div class="subscribe_rss"> 
+       <a href="http://feeds.feedburner.com/libwire-main"> Subscribe to Libwire RSS</a> 
+       <br>
+       <span class="rss-sublink"><a href="http://dotsx.usc.edu/newsblog/index.php/main/rss_subscribe/">Subscribe by subject</a></span> 
+      </div> 
+      <div class="subscribe_email"> 
+       <a href="http://eepurl.com/DOZxj" onclick="window.open('http://eepurl.com/DOZxj','popWin','width=715,height=725'); return false;">Subscribe to Libwire by e-mail</a> 
+      </div> 
+      <div style="margin-top:15px;"> 
+       <!-- Twitter widget --> 
+       <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/USCLibraries" data-widget-id="269225374355955712">Tweets by @USCLibraries</a> 
+       <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="clear">
+    &nbsp;
+   </div> 
+   <div class="container_16"> 
+    <div id="footer"> 
+     <div class="left">
+      <a href="http://dotsx.usc.edu/newsblog/index.php/about">About Libwire</a>
+     </div> 
+     <div class="right">
+       © 
+      <script type="text/javascript">
+					var d = new Date();
+					document.write(d.getFullYear());
+				</script> 
+      <a href="http://www.usc.edu">University of Southern California</a>
+     </div> 
+    </div> 
+   </div> 
+   <div class="clear">
+    &nbsp;
+   </div> 
+  </div> 
+  <!-- Begin Google Analytics --> 
+  <script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script> 
+  <script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-5797929-1");
+pageTracker._trackPageview();
+</script> 
+  <!-- End Google Analytics -->  
+ </body>
+</html>

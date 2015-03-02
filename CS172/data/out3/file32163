@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <meta charset="utf-8"> 
+  <title>Ask USGS</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <meta name="description" content=""> 
+  <meta name="author" content=""> 
+  <!-- Le styles --> 
+  <link href="../css/usgs-common.css" rel="stylesheet" media="screen"> 
+  <link href="../css/bootstrap.css" rel="stylesheet"> 
+  <style type="text/css">
+      body {
+        padding-bottom: 40px;
+        font-family: Verdana,Helvetica,Arial,sans-serif;
+      }
+
+      /* Custom container */
+      .container-narrow {
+        margin: 0 auto;
+        max-width: 960px;
+      }
+      .container-narrow > hr {
+        margin: 30px 0;
+      }
+
+      /* Main marketing message and sign up button */
+      .jumbotron {
+        margin: 60px 0;
+        text-align: center;
+      }
+      .jumbotron h1 {
+        font-size: 72px;
+        line-height: 1;
+      }
+      .jumbotron .btn {
+        font-size: 21px;
+        padding: 14px 24px;
+      }
+
+      /* Supporting marketing content */
+      .marketing {
+        margin: 60px 0;
+      }
+      .marketing p + h4 {
+        margin-top: 28px;
+      }
+
+      .highlight {
+        font-weight: bold;
+      }
+
+      .usgsscca {
+          margin-right: 50px;
+          margin-top: 5px;
+      }
+      .usgscolorband {
+          background-color: #1B1B1B;
+          background-image: linear-gradient(to bottom, #222222, #111111);
+          background-repeat: repeat-x;
+          border-color: #252525;
+      }
+    
+      .usgsfooterbar {
+          background-repeat: repeat-x;
+          background-color: #666666;
+          box-shadow: none;
+          display: block;
+          margin-top: 1em;
+      }
+
+      .whitelinks a{
+          color: #FFFFFF;
+          font: bold 1.1em Verdana,Arial,Helvetica,sans-serif;
+          margin-left: 25px;
+          text-decoration: none;
+      }
+
+
+      a, .bluepagelinks a{
+          border: medium none;
+          color: #006098;
+          font-family: Verdana,Helvetica,Arial,sans-serif;
+          font-size: 1.1em;
+          font-weight: normal;
+          /* margin: 0 1em 0 0;
+          padding: 0.5em;
+          text-decoration: none; */
+      }
+
+      .bluepagelinks a:visited {
+          color: #0062A0;
+          text-decoration: underline;
+      }
+
+      .bluepagelinksunderlined a{
+          border: medium none;
+          color: #006098;
+          font-family: Verdana,Helvetica,Arial,sans-serif;
+          font-size: 1.1em;
+          font-weight: normal;
+          /* margin: 0 1em 0 0;
+          padding: 0.5em; */
+          text-decoration: underline;
+      }
+
+      .bluepagelinksunderlined a:visited {
+          color: #0062A0;
+          text-decoration: underline;
+      }
+
+      .textbox {
+          background-position: right center;
+          background-repeat: no-repeat;
+          border: 1px solid #DDDDDD;
+          box-shadow: 2px 2px 1px 1px #DDDDDD inset;
+          color: #888888;
+          height: 35px;
+          margin-right: 10px;
+          margin-bottom: 5px;
+          padding-left: 1em;
+          padding-right: 1em;
+          width: 100%;
+      }
+
+      .textarea {
+          background-position: right center;
+          background-repeat: no-repeat;
+          border: 1px solid #DDDDDD;
+          box-shadow: 2px 2px 2px 2px #DDDDDD inset;
+          color: #888888;
+          height: 150px;
+          margin-right: 10px;
+          margin-bottom: 5px;
+          padding-left: 1em;
+          padding-right: 1em;
+          width: 100%;
+      }
+
+      .question {
+        background-image: url('../img/search_icon.png');
+        background-repeat: no-repeat;
+        background-position: 98% center;
+      }
+
+      .borderradiuszero {
+          border-radius: 0px 0px 0px 0px;
+      }
+
+      .borderzero {
+          border: 0px;
+      }
+
+      .faqs {
+          border: 1px solid #DDDDDD;
+          padding-left: 1em;
+          margin-bottom: 25px;
+      }
+
+      .faq-results {  
+          min-height: 300px;
+          height: 300px;
+          overflow-y: scroll;
+          padding-top: 20px;
+      }
+    
+     .faq-results ul { 
+          margin-top: 15px;
+      }
+
+      .faq-results-list li {
+          margin-bottom: 5px;
+          line-height: 30px;
+          margin-left: 15px;
+      }
+
+      .faq-results-loading {
+        display: block;
+      }
+
+      .nowebchat {
+        display: none;
+      }
+
+    </style> 
+  <link href="../css/bootstrap-responsive.css" rel="stylesheet"> 
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements --> 
+  <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+    <![endif]--> 
+  <!-- Fav and touch icons --> 
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png"> 
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png"> 
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png"> 
+  <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png"> 
+  <link rel="shortcut icon" href="ico/favicon.png"> 
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
+  <link href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"> 
+  <script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script> 
+  <script src="https://itsupport.usgs.gov/api/clicktochat.js" type="text/javascript"></script> 
+  <script type="text/javascript"> BG.setSite("https://chat.cslive.usgs.gov"); </script> 
+  <script type="text/javascript" src="../js/modernizr.custom.82495.js"></script> 
+  <script type="text/javascript" src="../js/jquery.placeholder.min.js"></script> 
+  <script type="text/javascript" src="../js/spin.min.js"></script> 
+  <script type="text/javascript">
+            $(document).ready(function(){
+                    jQuery.fn.preventDoubleSubmit = function () {
+                            var alreadySubmitted = 0;
+                            return jQuery(this).submit(
+                                       function(){
+                                                    if(alreadySubmitted > 0){
+                                                            alreadySubmitted++;
+                                                            alert("Please be patient.  We are still processing your original message.");
+                                                            return false;
+                                                    }else{
+                                                            alreadySubmitted++;     
+                                                            return true;
+                                                    }
+                            }); //end jQuery(this).submit
+                    };//end jQuery.fn.preventDoubleSubmit
+
+                    jQuery('#form1').preventDoubleSubmit();
+
+                    jQuery('input, textarea').placeholder();
+
+                    jQuery("#webchat").click(function(e){
+                              BG.startChatWithIssueId('26', true);
+                              return false;
+                    });
+
+
+
+            });
+    </script> 
+ </head> 
+ <body> 
+  <!-- BEGIN USGS Header Template --> 
+  <div id="usgscolorband"> 
+   <div id="usgsbanner"> 
+    <div id="usgsidentifier"> 
+     <a href="http://www.usgs.gov/"> <img src="http://www.usgs.gov/images/header_graphic_usgsIdentifier_white.jpg" alt="USGS - science for a changing world" title="U.S. Geological Survey Home Page" width="178" height="72"> </a> 
+    </div> 
+    <div id="usgsccsabox"> 
+     <div id="usgsccsa"> 
+      <br>
+      <a href="http://www.usgs.gov/">USGS Home</a> 
+      <br>
+      <a href="http://www.usgs.gov/ask/">Contact USGS</a> 
+      <br>
+      <a href="http://search.usgs.gov/">Search USGS</a> 
+      <br> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <!-- END USGS Header Template --> 
+  <div class="container-narrow"> 
+   <!-- BEGIN PAGE CONTENT --> 
+   <div class="masthead"> 
+    <h3>CONTACT USGS</h3> 
+    <br> 
+    <strong></strong> 
+    <p></p> 
+   </div> 
+   <div class="row-fluid" style="display:none;"> 
+    <div class="span9"> 
+     <em>TRACKING INFO: tmplt=2|webchat=yes|time=UTC12:36</em> 
+    </div> 
+   </div> 
+   <div class="row-fluid" style="display:none;"> 
+    <div class="span9"> 
+    </div> 
+   </div> 
+   <div class="row-fluid"> 
+    <div class="span9"> 
+     <p>To find specific USGS information, data, maps, products or services please choose from the following options: </p>
+     <ul class="unstyled bluepagelinks"> 
+      <li><a href="http://www.usgs.gov/faq">USGS FAQs Homepage</a></li> 
+      <li>Call 1-888-ASK-USGS (1-888-275-8747)</li> 
+      <li><a id="webchat" href="#">Web Chat</a></li> 
+      <li><a href="http://www.usgs.gov/socialmedia">Social Media</a></li> 
+     </ul> 
+     <br> 
+     <p></p> 
+    </div> 
+   </div> 
+   <div class="row-fluid"> 
+    <div class="span9"> 
+     <p>Or, you can use the form below to ask a question or send a message to the USGS:</p> 
+     <div class="ANSWERFORM"> 
+      <form class="ANSWERFORM" name="form" accept-charset="iso-8859-1" id="form1" action="http://answers.usgs.gov/cgi-bin/gsanswers" method="post"> 
+       <input type="hidden" name="action" value="feedback"> 
+       <input type="hidden" name="email" value=""> 
+       <input type="hidden" name="pemail" value=""> 
+       <input type="hidden" name="cemail" value=""> 
+       <input type="hidden" name="subject" value="Message for USGS"> 
+       <input type="hidden" name="referer" value=""> 
+       <input type="hidden" name="note" value=""> 
+       <input type="hidden" name="tracking_info" value="tmplt=2|webchat=yes|time=UTC12:36"> 
+       <input type="hidden" name="disThesaurus" value="1"> 
+       <div class="row-fluid"> 
+        <div class="span9"> 
+         <input type="text" class="textbox" name="custid" id="email" alt="Enter your email address here" placeholder="Email Address *"> 
+        </div> 
+       </div> 
+       <div class="row-fluid"> 
+        <div class="span9"> 
+         <input type="text" class="textbox" name="subject" size="75" id="subject" alt="Enter a subject here" placeholder="Subject"> 
+        </div> 
+       </div> 
+       <div class="row-fluid"> 
+        <div class="span9"> 
+         <textarea class="textarea borderradiuszero" name="message" rows="12" id="message" alt="Enter your message here" placeholder="Message *"></textarea> 
+        </div> 
+       </div> 
+       <div class="row-fluid"> 
+        <div class="span9"> 
+         <input type="text" class="textbox" name="customer" id="name" alt="Enter your name here" placeholder="Name"> 
+        </div> 
+       </div> 
+       <div class="row-fluid"> 
+        <div class="span9"> 
+         <input type="text" class="textbox" name="phone" id="phone" alt="Enter your phone number here" placeholder="Phone Number"> 
+        </div> 
+       </div> 
+       <div class="row-fluid"> 
+        <div class="span9"> 
+         <textarea class="textarea borderradiuszero" name="address" rows="3" id="address" alt="Include your Organization name if applicable. If we are shipping something to you, please enter your address here" placeholder="Organization or Address (Optional)"></textarea> 
+         <br> 
+         <small></small> 
+        </div> 
+       </div> 
+       <div class="row-fluid"> 
+        <h6 class="bluepagelinks">* Required field. See our <a href="http://www.usgs.gov/privacy.html">Privacy Statement</a>.</h6>
+        <h6> <p><button class="btn-success btn-medium borderradiuszero" type="submit">Send</button> <strong>(Please only click once! You will get a page in response.)</strong></p> </h6>
+       </div> 
+      </form> 
+     </div> 
+    </div> 
+   </div> 
+   <!-- END PAGE CONTENT --> 
+   <div class="row-fluid"> 
+    <div class="span12"> 
+     <h4>Additional Contacts</h4> 
+     <p>For additional methods to contact the USGS, please select one of the following options: </p>
+     <ul class="unstyled bluepagelinks"> 
+      <li><a href="http://www.usgs.gov/phonebook/employee/">USGS Employee Phone Book</a></li> 
+      <li><a href="http://www.usgs.gov/newsroom/contacts.asp">USGS Office of Communications</a></li> 
+      <li><a href="http://www.usgs.gov/aboutusgs/organized/key_officials.asp/">USGS Directory of Key Officials</a></li> 
+      <li><a href="http://www.usgs.gov/contact_us/">USGS Offices and Science Centers</a></li> 
+     </ul> 
+     <br> 
+     <br> 
+    </div> 
+   </div> 
+  </div> 
+  <!-- /container --> 
+  <!-- BEGIN USGS Footer Template --> 
+  <div id="usgsfooter"> 
+   <p id="usgsfooterbar"> <a href="http://www.usgs.gov/laws/accessibility.html" title="Accessibility Policy (Section 508)">Accessibility</a> <a href="http://www.usgs.gov/foia/" title="Freedom of Information Act">FOIA</a> <a href="http://www.usgs.gov/laws/privacy.html" title="Privacy policies of the U.S. Geological Survey.">Privacy</a> <a href="http://www.usgs.gov/laws/policies_notices.html" title="Policies and notices that govern information posted on USGS Web sites.">Policies and Notices</a> </p> 
+   <p id="usgsfootertext"> <a href="http://www.takepride.gov/"><img src="/images/footer_graphic_takePride.jpg" alt="Take Pride in America logo" title="Take Pride in America Home Page" width="60" height="58"></a> <a href="http://usa.gov/"><img src="/images/footer_graphic_usagov.jpg" alt="USA.gov logo" title="USAGov: Government Made Easy" width="90" height="26"></a> <a href="http://www.doi.gov/">U.S. Department of the Interior</a> | <a href="http://www.usgs.gov/">U.S. Geological Survey</a> | <a href="http://www.doioig.gov/">DOI Inspector General</a><br> URL: http://answers.usgs.gov/<br> Page Contact Information: <a href="http://www.usgs.gov/ask/">Contact USGS</a><br> Page Last Modified: Wednesday, April 09, 2013 </p> 
+  </div> 
+  <!-- END USGS Footer Template --> 
+  <!-- Le javascript
+    ================================================== --> 
+  <!-- Placed at the end of the document so the pages load faster --> 
+  <script src="../js/bootstrap-transition.js"></script> 
+  <script src="../js/bootstrap-alert.js"></script> 
+  <script src="../js/bootstrap-modal.js"></script> 
+  <script src="../js/bootstrap-dropdown.js"></script> 
+  <script src="../js/bootstrap-scrollspy.js"></script> 
+  <script src="../js/bootstrap-tab.js"></script> 
+  <script src="../js/bootstrap-tooltip.js"></script> 
+  <script src="../js/bootstrap-popover.js"></script> 
+  <script src="../js/bootstrap-button.js"></script> 
+  <script src="../js/bootstrap-collapse.js"></script> 
+  <script src="../js/bootstrap-carousel.js"></script> 
+  <script src="../js/bootstrap-typeahead.js"></script> 
+  <script type="text/javascript" src="../js/usgs-analytics.js"></script>   
+ </body>
+</html>

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <meta charset="utf-8"> 
+  <title>Library Subject Resources</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <meta name="Description" content="The best stuff for your research.  No kidding."> 
+  <meta name="Keywords" content="research, databases, subjects, search, find"> 
+  <link type="text/css" media="all" rel="stylesheet" href="http://walter.drew.edu/splus/assets/css/bootstrap.css"> 
+  <link type="text/css" media="screen" rel="stylesheet" href="http://walter.drew.edu/splus/assets/css/default.css"> 
+  <link type="text/css" media="print" rel="stylesheet" href="http://walter.drew.edu/splus/assets/css/print.css"> 
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script> 
+  <script type="text/javascript" src="http://walter.drew.edu/splus/assets/jquery/jquery.livequery.min.js"></script> 
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script> 
+  <script type="text/javascript" language="javascript">
+    // Used for autocomplete
+
+        $.fn.defaultText = function(value){
+
+            var element = this.eq(0);
+            element.data('defaultText',value);
+
+            element.focus(function(){
+                if(element.val() == value){
+                    element.val('').removeClass('defaultText');
+                }
+            }).blur(function(){
+                if(element.val() == '' || element.val() == value){
+                    element.addClass('defaultText').val(value);
+
+                }
+            });
+
+            return element.blur();
+        }
+    </script> 
+ </head> 
+ <body> 
+  <div id="header"> 
+   <div id="header_inner_wrap"> 
+    <div> 
+     <table border="0" cellspacing="10" class="navbar"> 
+      <tbody>
+       <tr> 
+        <td rowspan="2"><img src="http://depts.drew.edu/lib/D_library.jpg" width="60" height="60"></td> 
+        <td colspan="5" valign="top" class="RunningHead"><a href="http://www.drew.edu/library">Drew Library</a></td> 
+       </tr> 
+       <tr valign="top"> 
+        <td><a href="http://walter.drew.edu/splus/subjects/databases.php">Resources A-Z</a></td> 
+        <td> | </td>
+        <td> </td>
+        <td><a href="http://walter.drew.edu/splus/subjects/index.php?type=Subject">Resources by Subject</a></td> 
+        <td> | </td>
+        <td> </td>
+        <td><a href="http://walter.drew.edu/splus/subjects/index.php?type=Course">Course Pages</a></td> 
+        <td> | </td>
+        <td> </td>
+        <td><a href="http://drew.summon.serialssolutions.com/">Summon</a></td> 
+        <td> | </td>
+        <td> </td>
+        <td><a href="http://illiad.drew.edu">ILL</a></td> 
+        <td> | </td>
+        <td> </td>
+        <td><a href="http://www.drew.edu/library/research">Research Resources</a></td> 
+       </tr> 
+      </tbody>
+     </table> 
+     <h1>Library Subject Resources</h1>
+    </div> 
+    <div style="float: right"> 
+     <!-- ?php
+include ("proactive-custom-popout.php");
+--> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="container-fluid" id="main-content"> 
+   <div class="row-fluid"> 
+    <div class="span12"> 
+     <div class="row-fluid"> 
+      <div class="span8"> 
+       <div class="pluslet"> 
+        <div class="titlebar"> 
+         <div class="titlebar_text">
+          Find Research Guides
+         </div> 
+        </div> 
+        <div class="pluslet_body"> 
+         <p style="margin: 0;">Find the research guide of your dreams</p> 
+         <form action="search.php" method="post" autocomplete="off"> 
+          <div class="autoC">  
+           <input type="text" id="quick_search" size="40" name="searchterm" class="searchy">
+           <input type="submit" value="Go" id="topsearch_button" name="submitsearch" alt="Search">  
+          </div>
+         </form>
+         <script type="text/javascript">
+	var startURL = 'guide.php?subject=';
+    
+	var defaultSearchText_1 = 'Quick Search';
+
+	jQuery(document).ready(function(){
+
+	// Caching 
+	var autoC = jQuery('#quick_search');
+	
+	// Defining a placeholder text; first check if the text is already set
+	// then fallback to default
+	if (window.defaultSearchText_1 == null) {
+		var defaultSearchText_1 = 'Start typing . . .';
+	} else {
+		var defaultSearchText_1 = window.defaultSearchText_1;
+	}
+
+	
+	
+	// Using jQuery UI's autocomplete widget:
+	autoC.autocomplete({
+		minLength	: 3,
+		source		: 'http://walter.drew.edu/splus/subjects/includes/autocomplete_data.php?collection=guides',
+		focus: function(event, ui) {
+			return;
+		},
+		select: function(event, ui) {
+            
+			location.href = startURL + ui.item.value;
+		}
+	});
+        autoC.defaultText(defaultSearchText_1);
+	});
+	</script>  
+         <br> 
+        </div> 
+       </div> 
+       <div class="pluslet" style=""> 
+        <div class="titlebar"> 
+         <div class="titlebar_text" style="width: 90%;">
+          Browse Guides
+         </div> 
+        </div> 
+        <div class="pluslet_body"> 
+         <div style="text-align: center;" id="letterhead"> 
+          <ul>
+           <li><input type="checkbox" id="show-Subject" name="showSubject">Subject Guides</li> 
+           <li><input type="checkbox" id="show-Course" name="showCourse" checked>Course Guides</li> 
+          </ul> 
+         </div> 
+         <div class="zebra evenrow type-Course" style="height: 1.5em;"> 
+          <div style="float: left; width: 83%;">
+           <a href="guide.php?subject=ANTH320">ANTH 320 Human Disease Evolution</a>
+          </div> 
+          <div style="float: left; width: 15%;">
+           Course
+          </div> 
+         </div> 
+         <div class="zebra oddrow type-Course" style="height: 1.5em;"> 
+          <div style="float: left; width: 83%;">
+           <a href="guide.php?subject=ARLET811">ARLET 811 Studies in British Literature</a>
+          </div> 
+          <div style="float: left; width: 15%;">
+           Course
+          </div> 
+         </div> 
+         <div class="zebra evenrow type-Course" style="height: 1.5em;"> 
+          <div style="float: left; width: 83%;">
+           <a href="guide.php?subject=ARLT905">ARLT 905 Joy of Scholarly Writing-- E-resources</a>
+          </div> 
+          <div style="float: left; width: 15%;">
+           Course
+          </div> 
+         </div> 
+         <div class="zebra oddrow type-Course" style="height: 1.5em;"> 
+          <div style="float: left; width: 83%;">
+           <a href="guide.php?subject=Biblical Stuides">Biblical Studies</a>
+          </div> 
+          <div style="float: left; width: 15%;">
+           Course
+          </div> 
+         </div> 
+         <div class="zebra evenrow type-Course" style="height: 1.5em;"> 
+          <div style="float: left; width: 83%;">
+           <a href="guide.php?subject=BIO160">BIO 160 Diversity of Life</a>
+          </div> 
+          <div style="float: left; width: 15%;">
+           Course
+          </div> 
+         </div> 
+         <div class="zebra oddrow type-Course" style="height: 1.5em;"> 
+          <div style="float: left; width: 83%;">
+           <a href="guide.php?subject=BIOL399">BIOL 399 Research Colloquium in Biology and Related Fields</a>
+          </div> 
+          <div style="float: left; width: 15%;">
+           Course
+          </div> 
+         </div> 
+         <div class="zebra evenrow type-Course" style="height: 1.5em;"> 
+          <div style="float: left; width: 83%;">
+           <a href="guide.php?subject=BST111Spring">BST 111 Corporations in Context</a>
+          </div> 
+          <div style="float: left; width: 15%;">
+           Course
+          </div> 
+         </div> 
+         <div class="zebra oddrow type-Course" style="height: 1.5em;"> 
+          <div style="float: left; width: 83%;">
+           <a href="guide.php?subject=CHST502">CHST 502 Church History I</a>
+          </div> 
+          <div style="float: left; width: 15%;">
+           Course
+          </div> 
+         </div> 
+         <div class="zebra evenrow type-Course" style="height: 1.5em;"> 
+          <div style="float: left; width: 83%;">
+           <a href="guide.php?subject=CHist2">Church History 2</a>
+          </div> 
+          <div style="float: left; width: 15%;">
+           Course
+          </div> 
+         </div> 
+         <div class="zebra oddrow type-Course" style="height: 1.5em;"> 
+          <div style="float: left; width: 83%;">
+           <a href="guide.php?subject=CSEMGolden">CSEM Global Peacebuilding and Leadership</a>
+          </div> 
+          <div style="float: left; width: 15%;">
+           Course
+          </div> 
+         </div> 
+         <div class="zebra evenrow type-Course" style="height: 1.5em;"> 
+          <div style="float: left; width: 83%;">
+           <a href="guide.php?subject=ENGLWM">ENGL 210 Writing in the Discipline of English</a>
+          </div> 
+          <div style="float: left; width: 15%;">
+           Course
+          </div> 
+         </div> 
+         <div class="zebra oddrow type-Course" style="height: 1.5em;"> 
+          <div style="float: left; width: 83%;">
+           <a href="guide.php?subject=ENG400">ENGL 400 Senior Capstone in English</a>
+          </div> 
+          <div style="float: left; width: 15%;">
+           Course
+          </div> 
+         </div> 
+         <div class="zebra evenrow type-Course" style="height: 1.5em;"> 
+          <div style="float: left; width: 83%;">
+           <a href="guide.php?subject=ESS210">ESS 210 Environment, Society and Sustainability</a>
+          </div> 
+          <div style="float: left; width: 15%;">
+           Course
+          </div> 
+         </div> 
+         <div class="zebra oddrow type-Course" style="height: 1.5em;"> 
+          <div style="float: left; width: 83%;">
+           <a href="guide.php?subject=ESS215">ESS 215 Environmental Science</a>
+          </div> 
+          <div style="float: left; width: 15%;">
+           Course
+          </div> 
+         </div> 
+         <div class="zebra evenrow type-Course" style="height: 1.5em;"> 
+          <div style="float: left; width: 83%;">
+           <a href="guide.php?subject=FREN400sp2015">FREN 400 Capstone Seminar</a>
+          </div> 
+          <div style="float: left; width: 15%;">
+           Course
+          </div> 
+         </div> 
+         <div class="zebra oddrow type-Course" style="height: 1.5em;"> 
+          <div style="float: left; width: 83%;">
+           <a href="guide.php?subject=hist 210">HIST 210 Historical Research Methods </a>
+          </div> 
+          <div style="float: left; width: 15%;">
+           Course
+          </div> 
+         </div> 
+         <div class="zebra evenrow type-Course" style="height: 1.5em;"> 
+          <div style="float: left; width: 83%;">
+           <a href="guide.php?subject=RISE seminar">HON 202 Honors Seminar Natural Science</a>
+          </div> 
+          <div style="float: left; width: 15%;">
+           Course
+          </div> 
+         </div> 
+         <div class="zebra oddrow type-Course" style="height: 1.5em;"> 
+          <div style="float: left; width: 83%;">
+           <a href="guide.php?subject=INTD700">INTD 700: Research Skills for M.A. Students</a>
+          </div> 
+          <div style="float: left; width: 15%;">
+           Course
+          </div> 
+         </div> 
+         <div class="zebra evenrow type-Course" style="height: 1.5em;"> 
+          <div style="float: left; width: 83%;">
+           <a href="guide.php?subject=MATEnglish">MAT, Resources for Teachers of English</a>
+          </div> 
+          <div style="float: left; width: 15%;">
+           Course
+          </div> 
+         </div> 
+         <div class="zebra oddrow type-Course" style="height: 1.5em;"> 
+          <div style="float: left; width: 83%;">
+           <a href="guide.php?subject=neurosci">NEURO 210 Neuroscience Research Methods</a>
+          </div> 
+          <div style="float: left; width: 15%;">
+           Course
+          </div> 
+         </div> 
+         <div class="zebra evenrow type-Course" style="height: 1.5em;"> 
+          <div style="float: left; width: 83%;">
+           <a href="guide.php?subject=PSCI 210">PSCI 210 Contemporary Approaches to Political Science</a>
+          </div> 
+          <div style="float: left; width: 15%;">
+           Course
+          </div> 
+         </div> 
+         <div class="zebra oddrow type-Course" style="height: 1.5em;"> 
+          <div style="float: left; width: 83%;">
+           <a href="guide.php?subject=UN Semester">PSCI 383 &amp; 384 United Nations Semester</a>
+          </div> 
+          <div style="float: left; width: 15%;">
+           Course
+          </div> 
+         </div> 
+         <div class="zebra evenrow type-Course" style="height: 1.5em;"> 
+          <div style="float: left; width: 83%;">
+           <a href="guide.php?subject=psyc 110">PSYC 110 Psychology Preceptorial</a>
+          </div> 
+          <div style="float: left; width: 15%;">
+           Course
+          </div> 
+         </div> 
+         <div class="zebra oddrow type-Course" style="height: 1.5em;"> 
+          <div style="float: left; width: 83%;">
+           <a href="guide.php?subject=Psyc348">PSYC 348 Abnormal Psychology</a>
+          </div> 
+          <div style="float: left; width: 15%;">
+           Course
+          </div> 
+         </div> 
+         <div class="zebra evenrow type-Course" style="height: 1.5em;"> 
+          <div style="float: left; width: 83%;">
+           <a href="guide.php?subject=SOC210">SOC 210 Sociological Research Methods</a>
+          </div> 
+          <div style="float: left; width: 15%;">
+           Course
+          </div> 
+         </div> 
+         <div class="zebra oddrow type-Course" style="height: 1.5em;"> 
+          <div style="float: left; width: 83%;">
+           <a href="guide.php?subject=soccapstone">SOC 400 Senior Seminar in Sociology</a>
+          </div> 
+          <div style="float: left; width: 15%;">
+           Course
+          </div> 
+         </div> 
+         <div class="zebra evenrow type-Course" style="height: 1.5em;"> 
+          <div style="float: left; width: 83%;">
+           <a href="guide.php?subject=SPAN310">SPAN 310 Identity, Performance and Self-Representation in Spanish-Speaking cultures</a>
+          </div> 
+          <div style="float: left; width: 15%;">
+           Course
+          </div> 
+         </div> 
+         <div class="zebra oddrow type-Course" style="height: 1.5em;"> 
+          <div style="float: left; width: 83%;">
+           <a href="guide.php?subject=SPAN333">SPAN 333 Colonial/Postcolonial Encounters</a>
+          </div> 
+          <div style="float: left; width: 15%;">
+           Course
+          </div> 
+         </div> 
+         <div class="zebra evenrow type-Course" style="height: 1.5em;"> 
+          <div style="float: left; width: 83%;">
+           <a href="guide.php?subject=TPHL584">TPHL 584 Research Skills for MDiv Students </a>
+          </div> 
+          <div style="float: left; width: 15%;">
+           Course
+          </div> 
+         </div> 
+         <div class="zebra oddrow type-Course" style="height: 1.5em;"> 
+          <div style="float: left; width: 83%;">
+           <a href="guide.php?subject=econ 318 wms 318">WMS/ECON 318 Gender and Globalization</a>
+          </div> 
+          <div style="float: left; width: 15%;">
+           Course
+          </div> 
+         </div> 
+         <div class="zebra evenrow type-Course" style="height: 1.5em;"> 
+          <div style="float: left; width: 83%;">
+           <a href="guide.php?subject=WRTG103Mako">WRTG 103/104 - Mako-Citarella</a>
+          </div> 
+          <div style="float: left; width: 15%;">
+           Course
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="span4"> 
+       <div class="pluslet"> 
+        <div class="titlebar"> 
+         <div class="titlebar_text">
+          Newest Guides
+         </div> 
+        </div> 
+        <div class="pluslet_body"> 
+         <ul> 
+          <li><a href="guide.php?subject=SPAN333">SPAN 333 Colonial/Postcolonial Encounters</a></li> 
+          <li><a href="guide.php?subject=FREN400sp2015">FREN 400 Capstone Seminar</a></li> 
+          <li><a href="guide.php?subject=BST111Spring">BST 111 Corporations in Context</a></li> 
+          <li><a href="guide.php?subject=BIO160">BIO 160 Diversity of Life</a></li> 
+          <li><a href="guide.php?subject=ESS215">ESS 215 Environmental Science</a></li> 
+         </ul> 
+        </div> 
+       </div> 
+       <!-- start pluslet --> 
+       <div class="pluslet"> 
+        <div class="titlebar"> 
+         <div class="titlebar_text">
+          Newest Databases
+         </div> 
+        </div> 
+        <div class="pluslet_body"> 
+         <ul> 
+          <li><a href="http://ezproxy.drew.edu/login?url=http://search.proquest.com.ezproxy.drew.edu/pqcentral?accountid=10558">ProQuest Central</a></li> 
+          <li><a href="http://ezproxy.drew.edu/login?url=http://search.ebscohost.com/login.aspx?authtype=ip,uid&amp;profile=ehost&amp;defaultdb=lxh">LISTA (Library and Information Science Technical Abstracts)</a></li> 
+          <li><a href="http://www.opendissertations.com">American Doctoral Dissertations, 1933-1955</a></li> 
+          <li><a href="http://ezproxy.drew.edu/login?url=http://www.jerseyclicks.org">Jerseyclicks.Org</a></li> 
+          <li><a href="http://www.getty.edu/publications/virtuallibrary/index.html">Getty Publications Virtual Library</a></li> 
+         </ul> 
+        </div> 
+       </div> 
+       <!-- end pluslet --> 
+       <br> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <div id="footer"> 
+   <p class="close" align="center"> This page maintained by: <a href="mailto:jheise@drew.edu"> Jenne Heise</a> <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-49345831-1', 'auto');
+  ga('send', 'pageview');
+
+</script> <br> Powered by <a href="http://www.subjectsplus.com/">SubjectsPlus</a> <br><br> </p> 
+   <!-- end footer div --> 
+  </div>  
+  <script src="http://walter.drew.edu/splus/assets/jquery/bootstrap.js"></script>  
+  <script type="text/javascript" language="javascript">
+    $(document).ready(function(){
+
+        // add rowstriping
+        stripeR();
+
+        $("[id*=show]").live("change", function() {
+
+            var showtype_id = $(this).attr("id").split("-");
+            //alert("u clicked: " + showtype_id[1]);
+            unStripeR();
+            $(".type-" + showtype_id[1]).toggle();
+            stripeR();
+
+        });
+
+        function stripeR() {
+            $(".zebra").not(":hidden").filter(":even").addClass("evenrow");
+            $(".zebra").not(":hidden").filter(":odd").addClass("oddrow");
+        }
+
+        function unStripeR () {
+            $(".zebra").removeClass("evenrow");
+            $(".zebra").removeClass("oddrow");
+        }
+
+    });
+</script>
+ </body>
+</html>

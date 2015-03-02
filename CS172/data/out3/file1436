@@ -1,0 +1,754 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+ <head> 
+  <meta content="Microsoft Visual Studio .NET 7.1" name="GENERATOR"> 
+  <meta content="Visual Basic .NET 7.1" name="CODE_LANGUAGE"> 
+  <meta content="JavaScript" name="vs_defaultClientScript"> 
+  <meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema"> 
+ </head> 
+ <body onunload="closeViewWindow();"> 
+  <div id="EMss_body"> 
+   <form name="Form1" method="post" action="BrowseCatalog.aspx?CNAME=DIPL" id="Form1"> 
+    <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJNjkxNjkwNjc2DxYEHhJIaWRlUHJpY2VPbkNhdGFsb2doHglJdGVtQ291bnQCAxYCAgEPZBYaAgEPDxYGHgpjb2xvcl9mb250Zx4PdGltZW91dF9zZWNvbmRzBQItMR4WcHJvbXB0X3RpbWVvdXRfc2Vjb25kcwUCLTFkFhQCAQ8WAh4EaHJlZgUqLi4vVGhlbWVzL0NvbW1vbi9DbGFzc2ljIFRoZW1lL2NsYXNzaWMuY3NzZAICDxYCHgdjb250ZW50BRQtMTtVUkw9UG9zdHN5bmMuYXNweGQCBA8WAh4HVmlzaWJsZWhkAgYPZBYCZg9kFgICAQ8WAh8HaBYEAhMPDxYCHgtOYXZpZ2F0ZVVybAUlLi4vc2VsZnNlcnZlL0ZvcmdvdFBhc3N3b3JkLmFzcHg/UEM9RGRkAhUPDxYCHwgFHy4uL3NlbGZzZXJ2ZS9SZWdpc3Rlci5hc3B4P1BDPURkZAIHD2QWAgIBDw8WCB4ISW1hZ2VVcmwFGX5cbG9nb3NcVVdZT1BST0RcUkVHMS5naWYfCAUafi9zZWxmc2VydmUvU3RvcmVIb21lLmFzcHgeB1Rvb2xUaXAFBiZuYnNwOx4EVGV4dAUGJm5ic3A7ZGQCCQ9kFggCAQ9kFgJmD2QWGgIBDw8WBh8IBRp+L3NlbGZzZXJ2ZS9TdG9yZUhvbWUuYXNweB8LBQRob21lHwdoZGQCAw8PFgIfB2hkZAIFDw8WBh8IBRx+L3NlbGZzZXJ2ZS95b3VyYWNjb3VudC5hc3B4HwsFDHlvdXIgYWNjb3VudB8HaGRkAgcPDxYCHwdoZGQCCQ8PFgYfCAUafi9zZWxmc2VydmUvYmlsbHNob21lLmFzcHgfCwUKdmlldyBiaWxscx8HaGRkAgsPDxYCHwdoZGQCDQ8PFgQfCAUefi9zZWxmc2VydmUvQnJvd3NlQ2F0YWxvZy5hc3B4HwsFDmJyb3dzZSBjYXRhbG9nZGQCEQ8PFgQfCAUbfi9zZWxmc2VydmUvVmlld0Jhc2tldC5hc3B4HwsFBmJhc2tldGRkAhUPDxYEHwgFGn4vc2VsZnNlcnZlL3JlY2VudHBheS5hc3B4HwdoZGQCFw8PFgIfB2hkZAIZDw8WBB8LBQRoZWxwHwdoZGQCGw8PFgIfB2hkZAIdDw8WBh8IBRl+L3NlbGZzZXJ2ZS9Qb3N0c3luYy5hc3B4HwsFCHNpZ24gb3V0HwdoZGQCAw8PFgIfB2hkZAIFDw8WAh8HaBYCHglvbmtleWRvd24FswFpZihldmVudC53aGljaCB8fCBldmVudC5rZXlDb2RlKXtpZiAoKGV2ZW50LndoaWNoID09IDEzKSB8fCAoZXZlbnQua2V5Q29kZSA9PSAxMykpIHtkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnT25saW5lSGVhZGVyMV9pbWdTZWFyY2gnKS5jbGljaygpO3JldHVybiBmYWxzZTt9fSBlbHNlIHtyZXR1cm4gdHJ1ZX07IGQCBw8PFgIfB2gWBB4Hb25jbGljawU1cmVkaXJlY3QoZG9jdW1lbnQuRm9ybTEuT25saW5lSGVhZGVyMV90eHRTZWFyY2hUZXh0KTseCm9uS2V5UHJlc3MFOWVudGVycHJlc3NlZChkb2N1bWVudC5Gb3JtMS5PbmxpbmVIZWFkZXIxX3R4dFNlYXJjaFRleHQpO2QCCg8WAh8HaGQCCw8WAh8HaGQCDA9kFgQCAQ8PFgQfCwUyJm5ic3A7ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAfB2hkZAIDDw8WBB8LBTImbmJzcDsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIB8HZ2RkAg0PZBYEAgEPZBYCZg9kFgICAQ8PFgQfC2QfB2hkZAIDDw8WAh8LBVRJZiB5b3UgYXJlIHBheWluZyBhIGdyYWQgZmVlIGZvciBhIHByaW9yIGdyYWR1YXRpb24gdGVybSB5b3UgbXVzdCBwYXkgdGhvdWdoIFd5b1dlYi5kZAIFDw8WAh8HaGRkAgcPZBYCZg9kFgJmD2QWAmYPPCsACQEADxYEHghEYXRhS2V5cxYAHgtfIUl0ZW1Db3VudAICZBYEZg9kFgICAQ8PFgQfCwUESG9tZR8IBRJCcm93c2VDYXRhbG9nLmFzcHhkZAIBD2QWBAIBDw8WBB8LBTJEaXBsb21hcyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIB8IZWRkAgMPDxYCHwdoZGQCCQ9kFgZmD2QWAmYPZBYCAgEPPCsACwEADxYKHw8WAB8QAv////8PHhVfIURhdGFTb3VyY2VJdGVtQ291bnQC/////w8eCVBhZ2VDb3VudGYfB2hkZAIBD2QWAmYPZBYCAgEPFgIfB2hkAgIPZBYCZg9kFgJmDw8WAh8LBVYqIFJlcXVpcmVkIGl0ZW1zLiBZb3UgbXVzdCBwYXkgZm9yIHRoZXNlIGl0ZW1zIGJlZm9yZSB5b3UgY2FuIHBheSBmb3IgYW55IG90aGVyIGl0ZW1zLmRkAgsPFgIfB2gWAgICD2QWAmYPZBYCAgEPPCsACwBkAg0PZBYCAhkPPCsACwEADxYCHwdoZGQCDw9kFgICGQ88KwALAQAPFgIfB2hkZAITDzwrAAsCAA8WCB8PFgAfEAIDHxICAR8RAgNkATwrAAgCATwrAAQBABYCHwdoBTwrAAQBABYCHwdoFgJmD2QWBgIBD2QWEGYPDxYCHwsFDFJFRy0xRlNHUkFEIGRkAgEPD2QWAh4GdmFsaWduBQNUb3AWAgIBDw8WAh8IBSlFZGl0SXRlbS5hc3B4P1BDPVJFRy0xRlNHUkFEKyZJdGVtQ291bnQ9M2QWAmYPDxYCHwdoZGQCAg9kFgQCAQ8PFgQfCwUyR3JhZHVhdGlvbiBGZWUgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAfCAUpRWRpdEl0ZW0uYXNweD9QQz1SRUctMUZTR1JBRCsmSXRlbUNvdW50PTNkZAIDDw8WAh8LBfQDVG8gcGF5IHRoZSBncmFkdWF0aW9uIGZlZSBpZiB5b3UgYXJlIGdyYWR1YXRpbmcgaW4gU1BSSU5HIDIwMTUgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBkZAIDD2QWAgIBDw8WAh8LZWRkAgQPDxYCHwsFBiQyNS4wMGRkAgUPZBYCAgEPDxYCHwdoZGQCBg9kFgICAQ8PFgIfCwUMVmlldyBEZXRhaWxzZGQCBw8PFgIfCwUBTmRkAgIPZBYQZg8PFgIfCwUMUkVHLUNFUlQgICAgZGQCAQ8PZBYCHxMFA1RvcBYCAgEPDxYCHwgFKUVkaXRJdGVtLmFzcHg/UEM9UkVHLUNFUlQrKysrJkl0ZW1Db3VudD0zZBYCZg8PFgIfB2hkZAICD2QWBAIBDw8WBB8LBTJDZXJ0aWZpY2F0ZSBQcm9ncmFtICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIB8IBSlFZGl0SXRlbS5hc3B4P1BDPVJFRy1DRVJUKysrKyZJdGVtQ291bnQ9M2RkAgMPDxYCHwsF9ANQYXkgdGhpcyBmZWUgb25seSBpZiB5b3UgYXJlIGNvbXBsZXRpbmcgYSBjZXJ0aWZpY2F0ZSBwcm9ncmFtLiBEbyBub3QgcGF5IHRoaXMgaWYgeW91IGFyZSBvbmx5IGluIGEgZGVncmVlIHByb2dyYW0uICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGRkAgMPZBYCAgEPDxYCHwtlZGQCBA8PFgIfCwUGJDEyLjUwZGQCBQ9kFgICAQ8PFgIfB2hkZAIGD2QWAgIBDw8WAh8LBQxWaWV3IERldGFpbHNkZAIHDw8WAh8LBQFOZGQCAw9kFhBmDw8WAh8LBQxSRUctM1JESVBMICBkZAIBDw9kFgIfEwUDVG9wFgICAQ8PFgIfCAUpRWRpdEl0ZW0uYXNweD9QQz1SRUctM1JESVBMKysmSXRlbUNvdW50PTNkFgJmDw8WAh8HaGRkAgIPZBYEAgEPDxYEHwsFMlJlcGxhY2VtZW50IERpcGxvbWEgRmVlICAgICAgICAgICAgICAgICAgICAgICAgICAgHwgFKUVkaXRJdGVtLmFzcHg/UEM9UkVHLTNSRElQTCsrJkl0ZW1Db3VudD0zZGQCAw8PFgIfCwX0A1RvIHBheSBmb3IgYSByZXBsYWNlbWVudCBkaXBsb21hIGlmIG9yaWdpbmFsIHdhcyBsb3N0IG9yIGRhbWFnZWQuICAqKiogQSBzaWduZWQgcmVxdWVzdCBmb3IgYSByZXBsYWNlbWVudCBkaXBsb21hIG11c3QgYWxzbyBiZSBzZW50IHRvIHRoZSBPZmZpY2Ugb2YgdGhlIFJlZ2lzdHJhci4gKioqICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZGQCAw9kFgICAQ8PFgIfC2VkZAIEDw8WAh8LBQYkNTAuMDBkZAIFD2QWAgIBDw8WAh8HaGRkAgYPZBYCAgEPDxYCHwsFDFZpZXcgRGV0YWlsc2RkAgcPDxYCHwsFAU5kZAIVDzwrAAsBATwrAAgBBTwrAAQBABYCHwdoZAIXDw8WAh8HaGRkAhkPPCsACwEADxYCHwdoZGQCGw9kFgICAQ9kFgZmD2QWAmYPZBYCAgEPDxYCHwtlZGQCAQ9kFgJmD2QWBAIDDw8WAh8LBQEwZGQCBw8PFgIfCwUBMGRkAgIPZBYCZg9kFggCAQ8PFgIfCwUVWW91ciBiYXNrZXQgaXMgZW1wdHkuZGQCAw88KwALAQAPFgIfB2hkZAIFDw8WAh8LBQtWaWV3IGJhc2tldGRkAgcPDxYEHwsFCENoZWNrb3V0HgdFbmFibGVkaGRkAh8PZBYGAgUPFgIfB2gWBgIBDw9kFgIeB29uQ2xpY2sFpQFqYXZhc2NyaXB0OiB2aWV3X3dpbmRvdz13aW5kb3cub3BlbignVGVybXMuYXNweCcsICd2aWV3X3dpbmRvdycsICd3aWR0aD04MTAsaGVpZ2h0PTYwMCxsZWZ0PTEwMCx0b3A9MTAwLHRvb2xiYXI9bm8sc2Nyb2xsYmFycz15ZXMnKTt2aWV3X3dpbmRvdy5mb2N1cygpO3JldHVybiBmYWxzZTtkAgMPD2QWAh8VBacBamF2YXNjcmlwdDogdmlld193aW5kb3c9d2luZG93Lm9wZW4oJ1ByaXZhY3kuYXNweCcsICd2aWV3X3dpbmRvdycsICd3aWR0aD04MTAsaGVpZ2h0PTYwMCxsZWZ0PTEwMCx0b3A9MTAwLHRvb2xiYXI9bm8sc2Nyb2xsYmFycz15ZXMnKTt2aWV3X3dpbmRvdy5mb2N1cygpO3JldHVybiBmYWxzZTtkAgUPD2QWAh8VBagBamF2YXNjcmlwdDogdmlld193aW5kb3c9d2luZG93Lm9wZW4oJ1NlY3VyaXR5LmFzcHgnLCAndmlld193aW5kb3cnLCAnd2lkdGg9ODEwLGhlaWdodD02MDAsbGVmdD0xMDAsdG9wPTEwMCx0b29sYmFyPW5vLHNjcm9sbGJhcnM9eWVzJyk7dmlld193aW5kb3cuZm9jdXMoKTtyZXR1cm4gZmFsc2U7ZAIHDw8WAh8LBZYBPHA+Rm9yIHF1ZXN0aW9ucyByZWdhcmRpbmcgdGhlIG9wZXJhdGlvbiBvZiB0aGlzIHBheW1lbnQgc2l0ZSwgY29udGFjdCB0aGUmbmJzcDtVVyBSZWdpc3RyYXIncyBPZmZpY2UgYXQgKDMwNykgNzY2LTUyNzIgb3IgcmVnaXN0cmFyJiM2NDt1d3lvLmVkdS48L3A+ZGQCCQ9kFgJmD2QWAmYPZBYCAgEPDxYCHwsFDChodm4xd2ViY24yKWRkZOV93jEyY8AVx+0S7IEGjO50aDdx"> 
+    <script src="/CASHNETC/ScriptResource.axd?d=Vo1LNUmS0ZvizwRitVrxplCDIcO-TjJQv11T4S4DFD7Z36jhz2NLddNMQGsvPukV1s-3WTYJE9TFUiYsXYqTBSZ4S3kvRcFlVqv5g6kLN_8nizkV1cXdgRvAbrtQj4JUvAxY5B5sjvKrNSny90uGO3aTveA1gl6cu8IGyJO_hf1VQYqe0&amp;t=1c6ae475" type="text/javascript"></script> 
+    <script type="text/javascript">
+//<![CDATA[
+if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side framework failed to load.');
+//]]>
+</script> 
+    <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="BC56C899"> 
+    <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWCAKZi8/QAQLIp8yABALIp9CABAKggdSZBgKggdiZBgKAjPzICwLNhfrICwKuvo/JCwakmWi19yGJhhwu1c0CClngJ0CP">  
+    <!-- Made header as run at = server to load script and meta tag dynamically for mobile browsers only.    --> 
+    <title>
+	CASHNet
+</title> 
+    <script type="text/javascript" src="../utilities/jquery.js"></script>  
+    <link id="OnlineHeader1_StyleSheet" media="all" type="text/css" rel="stylesheet" href="../Themes/Common/Classic Theme/classic.css"> 
+    <meta id="OnlineHeader1_RefreshPeriod" http-equiv="Refresh" content="-1;URL=Postsync.aspx"> 
+    <script language="javascript" type="text/javascript">
+function redirect(obj)
+{
+	document.location.href =  "../selfserve/searchresults.aspx?keyword=" + obj.value;
+} 
+        
+      var alertWindow;
+      var sPath = location.href;  
+      var Timeout = -1;    
+      var PromptTimeout = -1;  
+      if( (!(Timeout == -1)) && (sPath.toLowerCase().indexOf('prompt') == -1 ) && (sPath.toLowerCase().indexOf('/terms') == -1 ) && (sPath.toLowerCase().indexOf('security') == -1 ) && (sPath.toLowerCase().indexOf('privacy') == -1 ) && (sPath.toLowerCase().indexOf('postsync') == -1 ))
+      {
+            setTimeout("alertTimeout();",(PromptTimeout) * 1000);        
+            setTimeout("alertClose();",(Timeout) * 1000);             
+      }
+     
+     function alertTimeout() {
+       alertWindow = window.open('../selfServe/prompt.aspx', "_blank", 'width=310px,height=170px,location=no,dependent=no,resizable=no,toolbar=no,status=no,directories=no,menubar=no,scrollbars=no,left=280,top=280', false);
+       if (alertWindow != null)
+            alertWindow.focus();             
+       }
+      
+       function alertClose() {
+       if (alertWindow != null)
+            alertWindow.close();
+       }
+     
+      function enterpressed(obj)
+        {
+	        var key =event.keyCode;
+	        if(key==13)
+	        {
+		        event.returnValue=false;				
+		        event.cancelBubble=true; /*so that the other default enter key handlers dont get fired*/
+		        redirect(obj);
+	        }
+        }
+</script> 
+    <style type="text/css">
+			/*SALES FORCE CASE ID    :   24710
+              MODIFIED BY            :   ShashiKumar Sampath.
+              MODIFIED ON            :   15th JULY 2008.
+              PURPOSE                :   To customize Colors & Fonts for themes*/
+             
+    BODY ,#eMSSBGColor,#ss_ebilllogin_middle #ss_login_container,#ss_ebilllogin_middle #ss_login_container #ss_linkbox,	#ss_middle #ss_ShoppingCart #Grid table,.ss_select_categorydatagriditems,table#tblSelectShipping  .ss_select_form,.ss_selectPay_form,.ss_form_middle,#ss_ebilllogin_middle #ss_Storelogin_container #ss_Storeloginbox,.ss_confirm_shippingAddress,	#ss_EBillloginDIV  #ss_PageHeader, #ss_IPPAutopayconfirmDIV
+    {
+		background-color:white; 
+		font-family:Verdana; 
+		font-size:13px;
+		color:black;		
+    }  
+    .ContentTableBGColor 
+    {
+		background-color:white; 
+		font-family:Verdana; 
+		font-size:13px;
+    }
+    .cshritemref, #ss_RecentPayDIV .cshritemref label,
+    table#tblDonationDetails span
+    {
+		color:black;
+		font-family:Verdana;
+		font-size:13px;
+    }
+    .ContentTable
+    {
+    	color:black;
+		font-family:Verdana;
+		font-size:13px;	   
+    }
+    .HeaderItem, #ss_autopayconfirmDIV .ss_form_fields_confirm .HeaderItem 
+	{
+		color:white;
+		background-color:steelblue;
+		font-family:Verdana; 
+		font-size:13px;
+	}
+			
+	.Item A:link,.ss_viewbasketcategorydatagrid .categorydatagrid.Item, .ss_partialpaycategorydatagrid .categorydatagrid.Item 
+	{
+		color:black;
+		background-color: lightsteelblue;
+		font-family:Verdana;
+		font-size:13px;
+	}
+	.Item A:visited
+	{
+		color:black;
+		background-color: lightsteelblue;
+		font-family:Verdana; 
+		font-size:13px;		
+	}
+	.Item ,.Item1 ,.Item2 ,.Item P, .ss_viewbasketcategorydatagrid .categorydatagrid .Item,#ss_categoryCollectionItem .Item,#ss_ebilllogin_middle #ss_login_container #ss_loginbox,#Tablecontainer .Item,#ss_EditItemscontainer .ss_Editcategorydatagrid .Item,#ss_EnterpmtInfo .Item,#ss_homecategorydatagridrightside .ss_categorylistdatagrid .Item, .ss_catalogcontentcontainerright #ss_homecategorydatagridrightside .Item,.ss_payment_row .ss_selectPay_form,.ss_confirm_shippingAddress,.Item Label,#ss_IPPConfirmDIV .ss_form_middle .ss_form_fields .Item,table#tblSelectShipping  .ss_select_form,#ss_ebilllogin_middle #ss_login_container #ss_loginbox a,table#tblSelectShippingWidth .ss_select_datagridrow,#ss_IPPAutopayconfirmDIV table#tblIppAutoPayConfirmPmtInfo,#ss_AutopmtMethodDIV .ss_form_fields .Item,#ss_AutopmtInfoDIV .Item,#ss_IPPAutopayDIV .Item,.ss_select_categorydatagriditems,.ss_select_colcontrol,.ss_Items_table,table#dgItems .Item .ss_hiddentablecategorydatagriditems  .TextColor, .ss_partialpaycategorydatagrid .categorydatagrid .Item,
+	#ss_IPPTermsDIV .ss_ipp_terms_apr_details .Item, #ss_IPPTermsDIV .ss_IPPTermsTable #dgCharges .Item, #ss_IPPTermsDIV table.ss_IPPTermsTable table#dgCredits .Item,
+	#ss_IPPTermsDIV .ss_IPPTermsTable #dgWYPLCredits .Item, #divPaymentInfo .ss_ift_confirm_header, table#dgCreditBalances .Item .ss_ProductTitle1
+	{
+		color:black;
+		background-color: lightsteelblue;
+		font-family:Verdana; 
+		font-size:13px;
+		
+	}
+	/*.AlternateItem,.Item,.categorydatagriditems,.ss_categorydatagriditemsright,.myBox, {BORDER : 1px solid blue;}
+	#boxtitle {BORDER-BOTTOM : 1px solid blue;}*/
+	.AlternateItem A:link
+	{
+		color:black;
+		background-color: white;
+		font-family:Verdana; 
+		font-size:13px;
+	}	
+	.AlternateItem A:visited
+	{
+		color:black;
+		background-color: white;
+		font-family:Verdana; 
+		font-size:13px;;
+	}
+	.AlternateItem , .ss_viewbasketcategorydatagrid .AlternateItem,#ss_categoryCollectionItem .AlternateItem,#Tablecontainer .AlternateItem,#ss_EditItemscontainer .ss_Editcategorydatagrid .AlternateItem,#ss_homecategorydatagridrightside .ss_categorylistdatagrid .AlternateItem, .ss_catalogcontentcontainerright #ss_homecategorydatagridrightside .AlternateItem,table#dgItems .AlternateItem .ss_hiddentablecategorydatagriditems  .TextColor, .ss_partialpaycategorydatagrid .AlternateItem,#ss_IPPTermsDIV .ss_ipp_terms_apr_details .AlternateItem,
+	#ss_IPPTermsDIV .ss_IPPTermsTable #dgCharges .AlternateItem, #ss_IPPTermsDIV table.ss_IPPTermsTable table#dgCredits .AlternateItem,
+	#ss_IPPTermsDIV .ss_IPPTermsTable #dgWYPLCredits .AlternateItem, table#dgCreditBalances .AlternateItem .ss_ProductTitle1
+	{
+		color:black;
+		background-color: white;
+		font-family:Verdana; 
+		font-size:13px;
+		/*BORDER : steelblue 1px solid;*/
+	}     
+	
+	
+	.Label,.Label P, .Label H3,#ss_middle h3,#ss_middle h3 P, table#tblIppSummary .ss_PaymentHistory_DataGridAlign .ss_Inst_Footer
+	{
+		color:black;
+		font-family:Verdana;
+		font-size:13px;			
+	} 
+	.LabelBold
+	{
+		color:black;
+		font-family:Verdana;
+		font-size:13px; 	
+		font-weight:bold; 			
+	} 
+	.Bold
+	{
+		font-weight:bold; 	
+	} 
+	.InputControl
+	{
+		font-family:Verdana;
+		font-size:13px;
+			
+	} 
+	.Text,#boxcontent,.Text P, #ss_middle h2 p,#ss_middle h2,#ss_middle h2 P
+	{
+		color:black;
+		font-family:Verdana; 
+		font-size:13px; 	
+	}
+	.Line /*,#ss_categoryCollectionItemleft .ss_FeaturedproductDG*/
+	{
+		color:steelblue;
+		border-color:steelblue;
+	}
+	#ss_categoryCollectionItemleft .ss_FeaturedproductDG .Item A,#ss_categoryCollectionItemright .ss_newproductsDG .Item A,#ss_homecategorydatagridrightside .Item A, #ss_homecategorydatagrid .Item A   {color:black;}
+	#ss_categoryCollectionItemleft .ss_FeaturedproductDG .AlternateItem A,#ss_categoryCollectionItemright .ss_newproductsDG .AlternateItem A,#ss_homecategorydatagridrightside .AlternateItem A,#ss_homecategorydatagrid .AlternateItem A   {color:black;}		
+	.Link,#ss_login_container #ss_linkbox a,a#hlTerms
+	{
+		color:blue;
+		
+		font-family:Verdana; 
+	}	
+	
+	.Link {font-size:13px;}
+	
+	a,Label,.ss_youraccount_padding
+	{
+	font-family:Verdana;
+	}
+	
+	A,#boxcontent A:visited {
+	color:blue;
+	}
+	
+	.Error
+	{
+		color:red;
+		font-family:Verdana; 
+		font-size:13px; 	
+	}
+	.Button,.CurvedButton, .CurvedButton1, #ss_eRefundSummaryDIV .Button
+	{
+		color:black;
+		background-color:lightsteelblue;
+		font-family:Verdana; 
+		font-size:13px;
+	}		
+	/* .Button
+	{
+		color:black;
+		background-color:lightsteelblue;
+		font-family:Verdana; 
+		font-size:13px; 	
+	}*/	
+	html>body  .Button,html>body  .CurvedButton,html>body .CurvedButton1
+	{
+		color:black;
+		background-color:lightsteelblue;
+		font-family:Verdana; 
+		font-size:12px; 	
+	}	
+
+	.Header,.Header P,.Header_1098T,.Header_1098T P,#ss_middle h3 P,#ss_middle h3, .ss_normalP, #divPaymentInfo #Table3 .Header
+	{
+		color:steelblue;
+		font-family:Verdana; 
+		font-size:13px;
+		font-weight: bold;
+	}
+    
+	#lblSignupHeader
+	{
+	   color:steelblue;
+	   font-family:Verdana; 
+	}
+	/*Bugzilla Id 26718*/
+	.txt_backcolor
+	{
+	   background-color:white;
+	   border:none;
+	   outline:none;  
+	}
+	
+	.CNHeader
+	{
+		color:black;
+		text-decoration:	none;
+		font-family: Verdana;
+		font-size : 13px;
+		font-weight: bold;
+	}
+
+	TD.Item,#ss_eRefundTermsDIV .ss_form_fields,
+	{
+		color:black;
+		background-color: lightsteelblue;
+		font-family:Verdana; 
+		font-size:13px;
+		
+	}
+	
+	.Menu , #ss_footercontainer #EMss_footer,#Tablecontainer td.head,#Tablecontainer td.headlast,.ss_PaymentHistory_DataGridAlign .BG,.ss_PaymentHistory_DataGridAlign .BG1,.ss_categorydatagridheader,#ss_homecategorydatagridrightside h2,.ss_categoryListdatagridheader,.CategoryHeaderitem,#EMss_body  #ss_menu2,A#OnlineHeader1_lblSearch,#ss_eRefundSummaryDIV .Menu,.ss_eRufunddatagrid .Menu,#form table#dgAccounts .ss_eRefundHeaderAlign,
+	#divPaymentInfo .ss_confirm_header, #ss_IPPUsersummaryDIV .ss_PaymentHistory_DataGridAlign .ss_Installment_details, #ss_IPPTermsChangeDIV .ss_PaymentHistory_DataGridAlign .ss_Installment_details, #ss_autopayconfirmDIV #dgInstallments .Menu, #ss_IPPAutopayconfirmDIV #dgInstallments .Menu
+	{
+		color:white;
+		font-family:Verdana; 
+		font-size:13px; 	
+		background-color:steelblue;
+		text-decoration:none;
+		font-weight: bold;	
+	}
+	
+	#boxtitle,#boxtitle .Header,#boxtitle .Header P,#Tablecontainer .Headertext
+	{
+		color:white;
+		background-color:steelblue; 
+		font-family:Verdana;
+	}
+	#boxtitle{ border-bottom:1px solid steelblue;  }
+	.forBorder,.forBorderItemColor,.forLoginBoxBorder {border-color: steelblue !important;}/* Defined border color */
+	.forBorderLeft  {border-left-color:steelblue; }
+	.forBorderRight {border-right-color:steelblue;}
+	.forBorderTop {border-top-color:steelblue;}						   
+	.forBorderBottom,.ss_eRufunddatagrid .Menu  TD {border-bottom-color: 1px solid steelblue;}
+	.Button,#ss_eRefundSummaryDIV .Button {border-color: steelblue;}
+	
+	html>body .Button {border-color: steelblue;}
+	#ss_Itemscontainer {border-color: steelblue;} /*for Online basket dotted border*/
+	
+	 #ss_menu2 li a,#ss_footercontainer  #EMss_footer a
+    {
+		color:white;
+		font-family:Verdana; 
+		font-size:12px; 	
+		background-color:steelblue;
+		text-decoration:none;
+		border-color: steelblue;
+		
+    }   
+  
+  
+    
+    #EMss_body  #ss_menu2 
+    {
+     color:white;
+		font-family:Verdana; 
+		font-size:12px; 	
+		background-color:steelblue;
+		text-decoration:none;
+		border:none;
+    } 
+   html>body #EMss_body  #ss_menu2
+    {
+        color:white;
+		font-family:Verdana; 
+		font-size:12px; 	
+		background-color:steelblue;
+		text-decoration:none;
+    }
+	.LeftMenuLink
+	{
+		TEXT-DECORATION: none;
+		color:white;
+		font-size:13px; 			
+	}
+	#mainlink A:hover
+	{
+		TEXT-DECORATION: none;
+		color:orange;
+				
+	}
+	.section 
+	{ 
+		BORDER-RIGHT: =c6a765 1px solid; 
+		BORDER-TOP: 0px; 		
+		BORDER-LEFT: =c6a765 1px solid; 		
+		BORDER-BOTTOM: 0px 
+	}
+	.sectionFoot 
+	{ 
+		FONT-SIZE: 2px; 		
+		LINE-HEIGHT: 1px; 
+		BORDER-BOTTOM: =c6a765 1px solid; 			
+	}	
+	.sectionHeadMid 
+	{ 
+		BORDER-TOP: =c6a765 1px solid; 
+		FONT-WEIGHT: bold; 
+		FONT-SIZE: 18px; 		
+		LINE-HEIGHT: 25px; 		
+		BORDER-BOTTOM: =c6a765 1px solid;		
+	}
+	.ya_spacer 
+	{ 
+		HEIGHT: 15px 
+	}	
+	
+	.ss_homefeaturecategorydatagrid .Item .ss_homecategorydatagriditems	 H3 a { background:transparent;}
+	.ss_homefeaturecategorydatagrid .AlternateItem .ss_homecategorydatagriditems	 H3 a { background:transparent;}
+	.categorydatagrid .Item .ss_homecategorydatagriditems	 H3 a { background:transparent;}
+	.categorydatagrid .AlternateItem .ss_homecategorydatagriditems	 H3 a,
+	.ss_Resetpassword_form { background:transparent;}
+	#ss_AsstPmts { background-color: white;	}
+	html>body #ss_AsstPmts { background-color: white;	}
+	:root #ss_AsstPmts { background-color: white;	}	
+	
+	table#tblIFTPmtInfo { padding-left:5px; padding-top:5px;}
+	table#tblIFTConfirm .ss_confirm_paymentInfo {  white-space:nowrap; } 
+	#ss_ReceiptDIV .ss_ift_instruction { padding-top:5px; padding-bottom:14px;}
+	#ss_ParentformDIV .Item LABEL {color:black; font-family:Verdana;}
+	:root #ss_middle{  border-color: steelblue;}
+	:root table#tblOnePmtCharges table#dgCharges .forBorderItemColor{ border: 1px solid steelblue;}
+	.ss_viewbasketcategorydatagrid .categorydatagrid,
+	.ss_ipp_terms_apr_details .categorydatagrid, #ss_ipppastdueDIV #dgPastDue .categorydatagriditems,
+	div#ss_Confirm_div #tblACHAuth { border-color: steelblue;}
+	#OnlineHeader1_divDonationLogin { border: 1px solid steelblue; }
+	#ss_IPPTermsDIV table#tblAPRDetails { border:1px solid steelblue; background: lightsteelblue; }
+	#ss_IPPTermsDIV table#tblAPRDetails .ss_apr_head1 { border-right: 1px solid steelblue; }
+	#ss_IPPTermsDIV table#tblAPRDetails .ss_apr_head1 .Label { font-size:18px; }
+	#ss_IPPTermsDIV table#tblAPRDetails .ss_apr_head3 { border-right: 1px solid steelblue;}
+	#ss_IPPTermsDIV table#tblAPRDetails .ss_apr_head3 .Label { font-size:18px; }
+    #ss_IPPTermsDIV table#tblAPRDetails .ss_apr_head4 { border-right: 1px solid steelblue;}
+    #ss_IPPTermsDIV table#tblAPRDetails .ss_apr_head2 { border-right:none; }
+    #ss_IPPTermsDIV table#tblAPRDetails .ss_apr_item { border-right: 1px solid steelblue;}
+    #ss_IPPTermsDIV table#tblAPRDetails .ss_apr_value { border-right: 1px solid steelblue;}
+    #ss_IPPTermsDIV .ss_ipp_terms_apr_details .ss_categorydatagridheader { border: 1px solid steelblue; }
+    
+    /* Bugz 36955 -- Quantity Range Lookup Pop up window*/
+    #tblQuantityPricing .header { color:steelblue;} /*defined header color for the header text.*/
+    #divViewBasket .Link { color:blue; } /*Defined color for the link in view basket*/
+    #divPaymentInfo #Table1 { border-top-color: steelblue;}
+    
+    /*Bugz 41177 -- AutopayDetails page for donations*/
+    #ss_RegisterDIV #trDonationLogin #tdDonateForgetPwd #hlForgotPassword{ color: blue;} /*Applying link color to the forget password link*/
+    #ss_RegisterDIV #tblRegister label{ color:black;} /*Applying text color for radio button.*/
+</style> 
+    <div id="eMSSBGColor" lang="en" style="width: inherit"> 
+     <div id="OnlineHeader1_upLoginControls"> 
+     </div> 
+     <div id="Emss_menucontainer" style="width: inherit"> 
+      <div id="ss_image"> 
+       <div id="OnlineHeader1_ss_StoreLogo"> 
+        <a id="OnlineHeader1_hlImgHome" title="&amp;nbsp;" href="StoreHome.aspx"><img title="&amp;nbsp;" src="../logos/UWYOPROD/REG1.gif" alt="&amp;nbsp;" border="0"></a> 
+       </div> 
+      </div> 
+      <div id="ss_SmartPayLogo"> 
+      </div> 
+      <div id="OnlineHeader1_EMss_MenuToShowHide"> 
+       <div id="EMss_menu"> 
+        <div id="ss_menu2" class="Menu"> 
+         <div id="OnlineHeader1_upHeaderLinks"> 
+          <ul> 
+           <li class="home"> </li>
+           <li class="youraccount"> </li>
+           <li class="viewbills"> </li>
+           <li class="makepayment"> <a id="OnlineHeader1_hlMakePayment" class="LeftMenuLink" href="BrowseCatalog.aspx">browse catalog</a> <span id="OnlineHeader1_lblMakePayment"></span> </li>
+           <li class="shoppingcart"> <a id="OnlineHeader1_hlCart" class="LeftMenuLink" href="ViewBasket.aspx">basket</a> <span id="OnlineHeader1_lblCart"></span> </li>
+           <li class="checkout"> </li>
+           <li class="help"> </li>
+           <li class="signout"> </li> 
+           <li class="accessfullsite"> </li> 
+          </ul> 
+         </div> 
+         <div id="EMsearchcontainer"> 
+          <h4> </h4> 
+          <div id="searchIcon"> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+      <div id="ss_MerchantName" class="forBorderLeft forBorderRight"> 
+       <div id="OnlineHeader1_ss_Merchant"> 
+        <span id="OnlineHeader1_lblMerchantName" class="Header"><b><font size="4">&nbsp; </font></b></span> 
+        <div id="ss_menumobile"> 
+        </div> 
+       </div> 
+      </div> 
+      <div id="OnlineHeader1_ss_PagecustDIV"> 
+       <div id="ss_PageHeader" class="forBorderLeft forBorderRight forBorderTop"> 
+        <div id="OnlineHeader1_upCustName"> 
+         <h4 style="text-align: right"> </h4> 
+        </div> 
+        <div class="ss_PageHeaderText"> 
+         <span id="OnlineHeader1_lblPageHeader" class="Text">If you are paying a grad fee for a prior graduation term you must pay though WyoWeb.</span>
+        </div> 
+       </div> 
+      </div> 
+      <div id="OnlineHeader1_ss_HRDIV"> 
+       <hr class="Line" width="100%" noshade> 
+      </div> 
+     </div> 
+    </div> 
+    <div id="ss_middle" class="forBorderItemColor"> 
+     <div id="divBrowseCatalog"> 
+      <div>
+       <span id="lblErrorMsg" class="Error"></span>
+      </div> 
+      <div id="ss_catalogHeader">
+       <h3></h3>
+      </div> 
+      <div id="ss_Itemsrow"> 
+       <div class="ss_locator_Align"> 
+        <table id="tblCategory" border="0"> 
+         <tbody>
+          <tr> 
+           <td>
+            <table id="dlCategories" cellspacing="0" align="Left" border="0"> 
+             <tbody>
+              <tr> 
+               <td class="Text"> 
+                <div id="locator"> 
+                 <div id="locatortext"> 
+                  <a id="dlCategories_ctl00_hlCategory" class="Link" href="BrowseCatalog.aspx">Home</a> 
+                  <span id="dlCategories_ctl00_lblSep" class="Label">»</span> 
+                 </div> 
+                </div> </td>
+               <td class="Text"> 
+                <div id="locator"> 
+                 <div id="locatortext"> 
+                  <a id="dlCategories_ctl01_hlCategory" class="Link">Diplomas </a> 
+                 </div> 
+                </div> </td> 
+              </tr> 
+             </tbody>
+            </table></td> 
+          </tr> 
+         </tbody>
+        </table> 
+       </div> 
+       <div class="leftside"> 
+        <table cellspacing="0" cellpadding="0" width="100%" border="0"> 
+         <tbody>
+          <tr> 
+           <td> 
+            <table id="tblOpenItems" cellspacing="0" cellpadding="0" width="100%" border="0"> 
+             <tbody>
+              <tr> 
+               <td> 
+                <div id="ss_categorydatagrid"></div> </td> 
+              </tr> 
+              <tr> 
+               <td align="center"> </td> 
+              </tr> 
+              <tr> 
+               <td></td> 
+              </tr> 
+              <tr height="5px"> 
+               <td></td> 
+              </tr> 
+             </tbody>
+            </table> </td> 
+          </tr> 
+          <tr> 
+           <td> </td> 
+          </tr> 
+         </tbody>
+        </table> 
+        <div id="ss_catalogcontentcontainer"> 
+         <div id="ss_categoryCollectionItem"> 
+          <div id="ss_categoryCollectionItemleft"> 
+           <div class="first"> 
+            <!--<div id="ss_categoryItemList">
+	<div class="ss_categoryItemListLeft">
+		<div><img id="OnlineFeatured_imgItem1" src="" height="70" width="80" border="0" /></div>
+	</div>
+	<div class="ss_categoryItemListright">
+		<div class="title">
+			<H3><a id="OnlineFeatured_hlitemdesc1"></a></H3>
+			<P><span id="OnlineFeatured_lblItemLongDesc1" style="display:inline-block;"></span></P>
+		</div>
+		<div class="highlighText"><span id="OnlineFeatured_lblunitprice1">Unit Price:</span></div>
+		<div class="normalText"><span id="OnlineFeatured_lblPrice1"></span></div>
+		<div class="ss_categorybuttons"><input type="submit" name="OnlineFeatured$btndetails1" value="View Details" id="OnlineFeatured_btndetails1" class="Button" /></div>
+	</div>
+</div>
+<div id="ss_categoryItemListsub">
+	<div class="ss_categoryItemListLeft">
+		<div><img id="OnlineFeatured_imgItem2" src="" height="70" width="80" border="0" /></div>
+	</div>
+	<div class="ss_categoryItemListright">
+		<div class="title">
+			<h3><a id="OnlineFeatured_hlitemdesc2"></a></h3>
+			<P><span id="OnlineFeatured_lblItemLongDesc2" style="display:inline-block;"></span></P>
+		</div>
+		<div class="highlighText"><span id="OnlineFeatured_lblunitprice2">Unit Price:</span></div>
+		<div class="normalText"><span id="OnlineFeatured_lblPrice2" style="display:inline-block;"></span></div>
+		<div class="ss_categorybuttons"><input type="submit" name="OnlineFeatured$btndetails2" value="View Details" id="OnlineFeatured_btndetails2" class="Button" /></div>
+	</div>
+</div>--> 
+            <div> 
+            </div> 
+           </div> 
+          </div> 
+          <div id="ss_categoryCollectionItemright"> 
+           <div class="second"> 
+            <!--<div id="ss_categoryItemList">
+	<div class="ss_categoryItemListLeft">
+		<div><img id="OnlineNew1_imgitem1" src="" height="72" width="80" border="0" /></div>
+	</div>
+	<div class="ss_categoryItemListright">
+		<div class="title">
+			<H3><a id="OnlineNew1_hlitemdesc1"></a></H3>
+			<P><span id="OnlineNew1_lblItemLongDesc1" style="display:inline-block;"></span></P>
+		</div>
+		<div class="highlighText"><span id="OnlineNew1_lblunitprice1">Unit Price:</span></div>
+		<div class="normalText"><span id="OnlineNew1_lblPrice1" style="display:inline-block;"></span></div>
+		<div class="ss_categorybuttons"><input type="submit" name="OnlineNew1$btndetails1" value="View Details" id="OnlineNew1_btndetails1" class="Button" /></div>
+		<DIV></DIV>
+	</div>
+</div>
+<div id="ss_categoryItemListsub">
+	<div class="ss_categoryItemListLeft">
+		<div><img id="OnlineNew1_imgItem2" src="" height="72" width="80" border="0" /></div>
+	</div>
+	<div class="ss_categoryItemListright">
+		<div class="title">
+			<H3><a id="OnlineNew1_hlitemdesc2"></a></H3>
+			<P><span id="OnlineNew1_lblItemLongDesc2" style="display:inline-block;"></span></P>
+		</div>
+		<div class="highlighText"><span id="OnlineNew1_lblunitprice2" style="display:inline-block;">Unit Price:</span></div>
+		<div class="normalText"><span id="OnlineNew1_lblPrice2" style="display:inline-block;"></span></div>
+		<div class="ss_categorybuttons"><input type="submit" name="OnlineNew1$btndetails2" value="View Details" id="OnlineNew1_btndetails2" class="Button" /></div>
+	</div>
+</div>--> 
+            <div> 
+            </div>
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+        <div id="ss_catalogcontentcontainer"> 
+         <h3>
+          <div class="ss_newcharge_headerBrowsePag">
+           <span id="lblItemsHeader" class="Header"></span>
+          </div></h3> 
+         <div class="EMSS_catalogDGContainer"> 
+          <div class="ss_catalogDG"> 
+           <div id="ss_categorydatagrid">
+            <table class="ss_categoryItemsdatagrid forBorder" cellspacing="0" border="0" id="dgItems"> 
+             <tbody>
+              <tr class="ss_categorydatagridheader"> 
+               <td><font size="2"><b> <h2 style="TEXT-ALIGN: center"></h2> </b></font></td>
+               <td class="ss_categoryheaderprice"><font size="2"><b>&nbsp;</b></font></td>
+               <td><font size="2"><b> <h2 style="text-align:center"></h2><a></a> </b></font></td> 
+              </tr>
+              <tr class="Item"> 
+               <td class="ss_productcategorydatagriditems forBorderItemColor"><font size="2"> 
+                 <div class="ss_datalink"> 
+                  <a id="dgItems_ctl02_hlItemTitle" class="ss_ProductTitle" href="EditItem.aspx?PC=REG-1FSGRAD+&amp;ItemCount=3">Graduation Fee </a>
+                 </div> 
+                 <div class="ss_categorydatadescription"> 
+                  <span id="dgItems_ctl02_lblItemDesc">To pay the graduation fee if you are graduating in SPRING 2015 </span>
+                 </div> </font></td>
+               <td class="ss_categorydatagriditemsright forBorderItemColor" align="right" width="202"><font size="2">$25.00</font></td>
+               <td class="EMss_categorybuttonItems forBorderItemColor"><font size="2"> <input type="submit" name="dgItems$ctl02$btnaddtocart" value="View Details" id="dgItems_ctl02_btnaddtocart" class="CurvedButton"> </font></td> 
+              </tr>
+              <tr class="AlternateItem"> 
+               <td class="ss_productcategorydatagriditems forBorderItemColor"><font size="2"> 
+                 <div class="ss_datalink"> 
+                  <a id="dgItems_ctl03_hlItemTitle" class="ss_ProductTitle" href="EditItem.aspx?PC=REG-CERT++++&amp;ItemCount=3">Certificate Program </a>
+                 </div> 
+                 <div class="ss_categorydatadescription"> 
+                  <span id="dgItems_ctl03_lblItemDesc">Pay this fee only if you are completing a certificate program. Do not pay this if you are only in a degree program. </span>
+                 </div> </font></td>
+               <td class="ss_categorydatagriditemsright forBorderItemColor" align="right" width="202"><font size="2">$12.50</font></td>
+               <td class="EMss_categorybuttonItems forBorderItemColor"><font size="2"> <input type="submit" name="dgItems$ctl03$btnaddtocart" value="View Details" id="dgItems_ctl03_btnaddtocart" class="CurvedButton"> </font></td> 
+              </tr>
+              <tr class="Item"> 
+               <td class="ss_productcategorydatagriditems forBorderItemColor"><font size="2"> 
+                 <div class="ss_datalink"> 
+                  <a id="dgItems_ctl04_hlItemTitle" class="ss_ProductTitle" href="EditItem.aspx?PC=REG-3RDIPL++&amp;ItemCount=3">Replacement Diploma Fee </a>
+                 </div> 
+                 <div class="ss_categorydatadescription"> 
+                  <span id="dgItems_ctl04_lblItemDesc">To pay for a replacement diploma if original was lost or damaged. *** A signed request for a replacement diploma must also be sent to the Office of the Registrar. *** </span>
+                 </div> </font></td>
+               <td class="ss_categorydatagriditemsright forBorderItemColor" align="right" width="202"><font size="2">$50.00</font></td>
+               <td class="EMss_categorybuttonItems forBorderItemColor"><font size="2"> <input type="submit" name="dgItems$ctl04$btnaddtocart" value="View Details" id="dgItems_ctl04_btnaddtocart" class="CurvedButton"> </font></td> 
+              </tr> 
+             </tbody>
+            </table>
+           </div> 
+          </div> 
+          <div class="ss_catalogMerchantDG"> 
+           <div id="ss_catalogMerchantDG"></div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="ss_catalogcontentcontainerright"> 
+        <div> 
+         <div> 
+          <div id="ss_categorydatagrid"> 
+          </div> 
+         </div> 
+         <div id="ss_homecategorydatagridrightside"></div> 
+         <div></div> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="ss_item_trailer_message" id="ss_mobile_trailer_msg"> 
+       <table> 
+        <tbody>
+         <tr> 
+          <td colspan="2"> 
+           <div class="ss_catalog_align">
+            <span id="lblItemsTrailer" class="Header"></span>
+           </div> </td> 
+         </tr> 
+        </tbody>
+       </table> 
+      </div> 
+     </div> 
+    </div> 
+    <style> .tmtext { FONT-SIZE: 10px; LINE-HEIGHT: 100%; FONT-STYLE: normal } </style>  
+    <div id="ss_footercontainer"> 
+     <table id="OnlineFooter1_tblHR" cellspacing="1" cellpadding="1" width="100%" border="0"> 
+      <tbody>
+       <tr> 
+        <td align="center" width="33%"> 
+         <hr noshade width="100%" class="Line"> </td> 
+       </tr> 
+      </tbody>
+     </table> 
+     <div id="EMss_footer" class="Menu"> 
+      <div id="OnlineFooter1_ss_pagetrailer">
+       <h3><a href="http://www.cashnet.com" target="_blank"><img id="OnlineFooter1_imgfooter" src="../Themes/Common/Default%20Theme/graphics/img_powered.gif" alt="Powered by HigherOne" border="0"></a></h3>
+      </div> 
+     </div> 
+     <script language="javascript">
+			
+		var _IsDefaultCSS = document.getElementById('OnlineHeader1_StyleSheet').href			
+			if (_IsDefaultCSS.indexOf('default_theme.css')>0 || _IsDefaultCSS.indexOf('classic.css')>0 )
+			{			
+			ShowHideFooter()			
+			}
+			
+			
+		function ShowHideFooter()
+			{
+				var _ObjLinks = document.getElementById('OnlineFooter1_EMss_smartpaylinks')		
+				if (_ObjLinks==null)
+						{		
+				document.getElementById('EMss_footer').style.display = 'none'
+						}
+			}
+			
+		</script> 
+     <div class="EMss_pagetrailerMessage">
+      <span id="OnlineFooter1_lblEMPageTrailer" class="tmtext"><p>For questions regarding the operation of this payment site, contact the&nbsp;UW Registrar's Office at (307) 766-5272 or registrar@uwyo.edu.</p></span>
+     </div> 
+     <div id="ss_footer_bg"> 
+      <table id="OnlineFooter1_tblFooterTrailer" cellspacing="0" cellpadding="0" width="100%" border="0"> 
+       <tbody>
+        <tr> 
+         <td class="ss_footer_align"> <span id="OnlineFooter1_lblServerNo" class="tmtext">(hvn1webcn2)</span> </td> 
+         <td class="ss_footer_align" align="right"> </td> 
+        </tr> 
+       </tbody>
+      </table> 
+     </div> 
+    </div> 
+    <script language="javascript">
+var view_window;
+function closeViewWindow()
+{
+	if(view_window!=null && view_window!=self)
+	{
+		view_window.close();					
+	}
+}
+
+	</script>  
+   </form> 
+  </div>   
+ </body>
+</html>

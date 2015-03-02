@@ -1,0 +1,745 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+ <head> 
+  <title>Seismic Monitor: Europe </title> 
+  <meta http-equiv="Refresh" content="2020"> 
+  <meta name="description" content="Mar 2 2015: Today's earthquakes in the Europe region on a neat map with lists, links, and much more. Los últimos terremotos en alrededor de Europe, incluso mapa chivo, listas, enlaces y mucho más."> 
+  <link rel="shortcut icon" href="../imgs/favicon.png"> 
+  <link rel="icon" href="../imgs/favicon.png"> 
+  <style type="text/css">
+body { margin:8; font-family:verdana,sans-serif; font-size:12px;}
+
+
+#questMark { 
+         font-size: 18px; 
+         color: blue;
+         vertical-align:middle; 
+         padding:3 5 0 0;
+         cursor: help;
+}
+#gooTip {
+         display:none;
+         position:relative;
+         top:-200px;
+         left:500px;
+         padding:5px;
+
+         width:90px;
+         font-size: 13px;
+         background-color:blue;
+         color:white;
+}
+
+/*
+NOTE: is critical that even if empty there be linked and visited pseudo elements
+*/
+#questMark:linked  {}
+#questMark:visited  {}
+
+#questMark:hover > p {
+        display:block;
+}
+#gooImg:linked {}
+#gooImg:visited {}
+
+#gooImg:hover + span > p {
+        display:block;
+}
+#gooImg{ 
+      cursor:help;
+}
+
+
+
+
+#regionDiv {
+  position:absolute;
+  top:0px;
+  left:0px;
+  width:910px;
+  height:auto;
+}
+
+#regionLinks {
+  position:fixed;
+  /*top:15px;
+  left:800px; 
+  float:right;*/
+  margin-top:63px;
+  margin-left:30px;
+  -webkit-border-radius: 6;
+  -moz-border-radius: 6;
+  border-radius: 6px;
+  -webkit-box-shadow: 3px 3px 5px #666666;
+  -moz-box-shadow: 3px 3px 5px #666666;
+  box-shadow: 3px 3px 5px #666666;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  background: #cec8e6;
+  padding: 0px 14px 20px 14px;
+  text-decoration: none;
+}
+#regionLinks:hover {
+  text-decoration: none;
+}
+.regionLink {
+  margin-top:12px;
+}
+
+.btn {
+  background: #54bbff;
+  background-image: -webkit-linear-gradient(top, #54bbff, #7c61eb);
+  background-image: -moz-linear-gradient(top, #54bbff, #7c61eb);
+  background-image: -ms-linear-gradient(top, #54bbff, #7c61eb);
+  background-image: -o-linear-gradient(top, #54bbff, #7c61eb);
+  background-image: linear-gradient(to bottom, #54bbff, #7c61eb);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  -webkit-box-shadow: 0px 1px 3px #666666;
+  -moz-box-shadow: 0px 1px 3px #666666;
+  box-shadow: 0px 1px 3px #666666;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 2px 8px 4px 8px;
+  margin-right:3px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #2578cc;
+  background-image: -webkit-linear-gradient(top, #2578cc, #876bd6);
+  background-image: -moz-linear-gradient(top, #2578cc, #876bd6);
+  background-image: -ms-linear-gradient(top, #2578cc, #876bd6);
+  background-image: -o-linear-gradient(top, #2578cc, #876bd6);
+  background-image: linear-gradient(to bottom, #2578cc, #876bd6);
+  text-decoration: none;
+}
+
+
+
+
+#legend { position: absolute;
+        left: 10;
+        visibility: visible;
+        top: 8;
+}
+.small {font-size: 8px; }
+
+.btn {
+  background: #54bbff;
+  background-image: -webkit-linear-gradient(top, #54bbff, #7c61eb);
+  background-image: -moz-linear-gradient(top, #54bbff, #7c61eb);
+  background-image: -ms-linear-gradient(top, #54bbff, #7c61eb);
+  background-image: -o-linear-gradient(top, #54bbff, #7c61eb);
+  background-image: linear-gradient(to bottom, #54bbff, #7c61eb);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  -webkit-box-shadow: 0px 1px 3px #666666;
+  -moz-box-shadow: 0px 1px 3px #666666;
+  box-shadow: 0px 1px 3px #666666;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 2px 8px 4px 8px;
+  margin-right:3px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #2578cc;
+  background-image: -webkit-linear-gradient(top, #2578cc, #876bd6);
+  background-image: -moz-linear-gradient(top, #2578cc, #876bd6);
+  background-image: -ms-linear-gradient(top, #2578cc, #876bd6);
+  background-image: -o-linear-gradient(top, #2578cc, #876bd6);
+  background-image: linear-gradient(to bottom, #2578cc, #876bd6);
+  text-decoration: none;
+}
+
+
+</style>
+  <script language="javascript">
+
+window.onerror=null; // don't annoy user w/error dlgs
+
+// convert all characters to lowercase to simplify testing
+var agt=navigator.userAgent.toLowerCase();
+
+// *** BROWSER VERSION ***
+// Note: On IE5, these return 4, so use is_ie5up to detect IE5.
+var is_major = parseInt(navigator.appVersion);
+var is_minor = parseFloat(navigator.appVersion);
+
+// Note: Opera and WebTV spoof Navigator.  We do strict client detection.
+// If you want to allow spoofing, take out the tests for opera and webtv.
+var is_nav  = ((agt.indexOf('mozilla')!=-1) && (agt.indexOf('spoofer')==-1)
+                 && (agt.indexOf('compatible') == -1) && (agt.indexOf('opera')==
+-1)
+                 && (agt.indexOf('webtv')==-1) && (agt.indexOf('hotjava')==-1));
+var is_nav2 = (is_nav && (is_major == 2));
+var is_nav3 = (is_nav && (is_major == 3));
+var is_nav4 = (is_nav && (is_major == 4));
+var is_nav4up = (is_nav && (is_major >= 4));
+var is_navonly      = (is_nav && ((agt.indexOf(";nav") != -1) ||
+                                   (agt.indexOf("; nav") != -1)) );
+var is_nav6 = (is_nav && (is_major == 5));
+var is_nav6up = (is_nav && (is_major >= 5));
+var is_gecko = (agt.indexOf('gecko') != -1);
+
+var is_ie     = ((agt.indexOf("msie") != -1) && (agt.indexOf("opera") == -1));
+var is_ie3    = (is_ie && (is_major < 4));
+var is_ie4    = (is_ie && (is_major == 4) && (agt.indexOf("msie 5")==-1) );
+var is_ie4up  = (is_ie && (is_major >= 4));
+var is_ie5    = (is_ie && (is_major == 4) && (agt.indexOf("msie 5.0")!=-1) );
+var is_ie5_5  = (is_ie && (is_major == 4) && (agt.indexOf("msie 5.5") !=-1));
+var is_ie5up  = (is_ie && !is_ie3 && !is_ie4);
+var is_ie5_5up =(is_ie && !is_ie3 && !is_ie4 && !is_ie5);
+
+//Array function compatible with Netscape 2.0x and 3.0x
+function MakeArray(n) {                 
+  this.length = n;
+  for (var i = 1; i <= n; i++) { 
+      this[i] = 0 
+  }
+  return this
+}
+
+//find out what we have to work with 
+var tts = new MakeArray(305);
+tts[0]=304;
+tts[1]="";
+tts[2]="NORTH ATLANTIC OCEAN";
+tts[3]="AZORES ISLANDS REGION";
+tts[4]="NORTHERN MID-ATLANTIC RIDGE";
+tts[5]="NORTH ATLANTIC OCEAN";
+tts[6]="ICELAND REGION";
+tts[7]="EASTERN GREENLAND";
+tts[8]="MADEIRA ISLANDS REGION";
+tts[9]="AZORES ISLANDS REGION";
+tts[10]="NORTHERN MID-ATLANTIC RIDGE";
+tts[11]="NORTH ATLANTIC OCEAN";
+tts[12]="ICELAND REGION";
+tts[13]="ICELAND";
+tts[14]="ICELAND REGION";
+tts[15]="EASTERN GREENLAND";
+tts[16]="MADEIRA ISLANDS REGION";
+tts[17]="NORTH ATLANTIC OCEAN";
+tts[18]="ICELAND REGION";
+tts[19]="ICELAND";
+tts[20]="ICELAND REGION";
+tts[21]="JAN MAYEN ISLAND REGION";
+tts[22]="GREENLAND SEA";
+tts[23]="EASTERN GREENLAND";
+tts[24]="MADEIRA ISLANDS REGION";
+tts[25]="NORTH ATLANTIC OCEAN";
+tts[26]="ICELAND REGION";
+tts[27]="ICELAND";
+tts[28]="ICELAND REGION";
+tts[29]="JAN MAYEN ISLAND REGION";
+tts[30]="GREENLAND SEA";
+tts[31]="MADEIRA ISLANDS REGION";
+tts[32]="NORTH ATLANTIC OCEAN";
+tts[33]="ICELAND REGION";
+tts[34]="JAN MAYEN ISLAND REGION";
+tts[35]="GREENLAND SEA";
+tts[36]="MOROCCO";
+tts[37]="WEST OF GIBRALTAR";
+tts[38]="PORTUGAL";
+tts[39]="SPAIN";
+tts[40]="NORTH ATLANTIC OCEAN";
+tts[41]="EIRE";
+tts[42]="UNITED KINGDOM";
+tts[43]="NORTH ATLANTIC OCEAN";
+tts[44]="NORWEGIAN SEA";
+tts[45]="JAN MAYEN ISLAND REGION";
+tts[46]="GREENLAND SEA";
+tts[47]="MOROCCO";
+tts[48]="SPAIN";
+tts[49]="NORTH ATLANTIC OCEAN";
+tts[50]="UNITED KINGDOM";
+tts[51]="NORWEGIAN SEA";
+tts[52]="JAN MAYEN ISLAND REGION";
+tts[53]="GREENLAND SEA";
+tts[54]="NORTHERN ALGERIA";
+tts[55]="MOROCCO";
+tts[56]="SPAIN";
+tts[57]="BAY OF BISCAY";
+tts[58]="FRANCE";
+tts[59]="UNITED KINGDOM";
+tts[60]="NORWEGIAN SEA";
+tts[61]="JAN MAYEN ISLAND REGION";
+tts[62]="GREENLAND SEA";
+tts[63]="NORTHERN ALGERIA";
+tts[64]="WESTERN MEDITERRANEAN SEA";
+tts[65]="SPAIN";
+tts[66]="FRANCE";
+tts[67]="UNITED KINGDOM";
+tts[68]="NORTH SEA";
+tts[69]="NORWEGIAN SEA";
+tts[70]="GREENLAND SEA";
+tts[71]="NORTHERN ALGERIA";
+tts[72]="WESTERN MEDITERRANEAN SEA";
+tts[73]="BALEARIC ISLANDS";
+tts[74]="NEAR SOUTH COAST OF FRANCE";
+tts[75]="FRANCE";
+tts[76]="NORTH SEA";
+tts[77]="NORWEGIAN SEA";
+tts[78]="GREENLAND SEA";
+tts[79]="NORTHERN ALGERIA";
+tts[80]="WESTERN MEDITERRANEAN SEA";
+tts[81]="NEAR SOUTH COAST OF FRANCE";
+tts[82]="SWITZERLAND";
+tts[83]="GERMANY";
+tts[84]="THE NETHERLANDS";
+tts[85]="NORTH SEA";
+tts[86]="SOUTHERN NORWAY";
+tts[87]="NORWEGIAN SEA";
+tts[88]="GREENLAND SEA";
+tts[89]="SVALBARD REGION";
+tts[90]="TUNISIA";
+tts[91]="SARDINIA";
+tts[92]="CORSICA";
+tts[93]="SWITZERLAND";
+tts[94]="GERMANY";
+tts[95]="DENMARK";
+tts[96]="SOUTHERN NORWAY";
+tts[97]="NORWEGIAN SEA";
+tts[98]="GREENLAND SEA";
+tts[99]="SVALBARD REGION";
+tts[100]="NEAR COAST OF LIBYA";
+tts[101]="CENTRAL MEDITERRANEAN SEA";
+tts[102]="SICILY";
+tts[103]="TYRRHENIAN SEA";
+tts[104]="CENTRAL ITALY";
+tts[105]="NORTHERN ITALY";
+tts[106]="GERMANY";
+tts[107]="DENMARK";
+tts[108]="SWEDEN";
+tts[109]="NORTHERN NORWAY";
+tts[110]="NORWEGIAN SEA";
+tts[111]="SVALBARD REGION";
+tts[112]="NEAR COAST OF LIBYA";
+tts[113]="CENTRAL MEDITERRANEAN SEA";
+tts[114]="SICILY";
+tts[115]="SOUTHERN ITALY";
+tts[116]="ADRIATIC SEA";
+tts[117]="NORTHWESTERN BALKAN REGION";
+tts[118]="CZECH AND SLOVAK REPUBLICS";
+tts[119]="POLAND";
+tts[120]="BALTIC SEA";
+tts[121]="SWEDEN";
+tts[122]="NORTHERN NORWAY";
+tts[123]="NORWEGIAN SEA";
+tts[124]="SVALBARD REGION";
+tts[125]="CENTRAL MEDITERRANEAN SEA";
+tts[126]="IONIAN SEA";
+tts[127]="ADRIATIC SEA";
+tts[128]="NORTHWESTERN BALKAN REGION";
+tts[129]="HUNGARY";
+tts[130]="CZECH AND SLOVAK REPUBLICS";
+tts[131]="POLAND";
+tts[132]="BALTIC SEA";
+tts[133]="SWEDEN";
+tts[134]="NORTHERN NORWAY";
+tts[135]="NORWEGIAN SEA";
+tts[136]="SVALBARD REGION";
+tts[137]="NEAR COAST OF LIBYA";
+tts[138]="CENTRAL MEDITERRANEAN SEA";
+tts[139]="SOUTHERN GREECE";
+tts[140]="GREECE";
+tts[141]="NORTHWESTERN BALKAN REGION";
+tts[142]="ROMANIA";
+tts[143]="POLAND";
+tts[144]="BALTICS-BELARUS-NW RUSSIA REG.";
+tts[145]="FINLAND";
+tts[146]="SWEDEN";
+tts[147]="NORTHERN NORWAY";
+tts[148]="BARENTS SEA";
+tts[149]="SVALBARD REGION";
+tts[150]="NEAR COAST OF LIBYA";
+tts[151]="CRETE";
+tts[152]="SOUTHERN GREECE";
+tts[153]="AEGEAN SEA";
+tts[154]="BULGARIA";
+tts[155]="ROMANIA";
+tts[156]="UKRAINE-MOLDOVA-SW RUSSIA REGION";
+tts[157]="BALTICS-BELARUS-NW RUSSIA REG.";
+tts[158]="FINLAND";
+tts[159]="NORTHERN NORWAY";
+tts[160]="BARENTS SEA";
+tts[161]="SVALBARD REGION";
+tts[162]="EGYPT";
+tts[163]="EASTERN MEDITERRANEAN SEA";
+tts[164]="TURKEY";
+tts[165]="BULGARIA";
+tts[166]="ROMANIA";
+tts[167]="UKRAINE-MOLDOVA-SW RUSSIA REGION";
+tts[168]="BALTICS-BELARUS-NW RUSSIA REG.";
+tts[169]="FINLAND";
+tts[170]="NORTHERN NORWAY";
+tts[171]="BARENTS SEA";
+tts[172]="SVALBARD REGION";
+tts[173]="EGYPT";
+tts[174]="EASTERN MEDITERRANEAN SEA";
+tts[175]="TURKEY";
+tts[176]="BLACK SEA";
+tts[177]="UKRAINE-MOLDOVA-SW RUSSIA REGION";
+tts[178]="BALTICS-BELARUS-NW RUSSIA REG.";
+tts[179]="FINLAND-RUSSIA BORDER REGION";
+tts[180]="BALTICS-BELARUS-NW RUSSIA REG.";
+tts[181]="NORTHERN NORWAY";
+tts[182]="BARENTS SEA";
+tts[183]="SVALBARD REGION";
+tts[184]="EGYPT";
+tts[185]="CYPRUS REGION";
+tts[186]="TURKEY";
+tts[187]="BLACK SEA";
+tts[188]="UKRAINE-MOLDOVA-SW RUSSIA REGION";
+tts[189]="BALTICS-BELARUS-NW RUSSIA REG.";
+tts[190]="BARENTS SEA";
+tts[191]="SVALBARD REGION";
+tts[192]="DEAD SEA REGION";
+tts[193]="JORDAN - SYRIA REGION";
+tts[194]="TURKEY";
+tts[195]="BLACK SEA";
+tts[196]="UKRAINE-MOLDOVA-SW RUSSIA REGION";
+tts[197]="BALTICS-BELARUS-NW RUSSIA REG.";
+tts[198]="BARENTS SEA";
+tts[199]="FRANZ JOSEF LAND";
+tts[200]="JORDAN - SYRIA REGION";
+tts[201]="TURKEY";
+tts[202]="NORTHWESTERN CAUCASUS";
+tts[203]="UKRAINE-MOLDOVA-SW RUSSIA REGION";
+tts[204]="BALTICS-BELARUS-NW RUSSIA REG.";
+tts[205]="BARENTS SEA";
+tts[206]="FRANZ JOSEF LAND";
+tts[207]="IRAQ";
+tts[208]="TURKEY";
+tts[209]="NORTHWESTERN CAUCASUS";
+tts[210]="UKRAINE-MOLDOVA-SW RUSSIA REGION";
+tts[211]="BALTICS-BELARUS-NW RUSSIA REG.";
+tts[212]="BARENTS SEA";
+tts[213]="FRANZ JOSEF LAND";
+tts[214]="IRAQ";
+tts[215]="IRAN-IRAQ BORDER REGION";
+tts[216]="NORTHWESTERN IRAN";
+tts[217]="EASTERN CAUCASUS";
+tts[218]="UKRAINE-MOLDOVA-SW RUSSIA REGION";
+tts[219]="BALTICS-BELARUS-NW RUSSIA REG.";
+tts[220]="BARENTS SEA";
+tts[221]="FRANZ JOSEF LAND";
+tts[222]="MAG 4.2 28-FEB-2015 08:24:24 NORTHWESTERN BALKAN REGION";
+tts[223]="MAG 4.3 27-FEB-2015 12:53:09 EGYPT";
+tts[224]="MAG 5.0 23-FEB-2015 16:16:30 SPAIN";
+tts[225]="MAG 4.3 19-FEB-2015 01:26:12 ICELAND";
+tts[226]="MAG 4.4 17-FEB-2015 19:42:53 NORTHERN ITALY";
+tts[227]="MAG 4.7 16-FEB-2015 11:52:46 TURKEY";
+tts[228]="MAG 4.1 15-FEB-2015 21:26:38 EASTERN GREENLAND";
+tts[229]="VLC station";
+tts[230]="VAL station";
+tts[231]="KONO station - Click for more info.";
+tts[232]="GRFO station - Click for more info.";
+tts[233]="FLT1 station";
+tts[234]="NKC station";
+tts[235]="KBS station - Click for more info.";
+tts[236]="CLTB station";
+tts[237]="AQU station - Click for more info.";
+tts[238]="BRNL station";
+tts[239]="RGN station - Click for more info.";
+tts[240]="VAE station";
+tts[241]="CII station - Click for more info.";
+tts[242]="TRI station - Click for more info.";
+tts[243]="KHC station";
+tts[244]="RUE station";
+tts[245]="WDD station - Click for more info.";
+tts[246]="AIO station";
+tts[247]="PRU station";
+tts[248]="CEL station";
+tts[249]="CUC station";
+tts[250]="DPC station - Click for more info.";
+tts[251]="TIP station";
+tts[252]="MATE station";
+tts[253]="BLY station";
+tts[254]="MORC station - Click for more info.";
+tts[255]="PDG station";
+tts[256]="DAG station - Click for more info.";
+tts[257]="TIR station - Click for more info.";
+tts[258]="DIVS station";
+tts[259]="PSZ station - Click for more info.";
+tts[260]="BGY station - Click for more info.";
+tts[261]="BORG station - Click for more info.";
+tts[262]="SLIT station";
+tts[263]="VTS station - Click for more info.";
+tts[264]="KWP station";
+tts[265]="SUW station - Click for more info.";
+tts[266]="GVD station";
+tts[267]="CLF station";
+tts[268]="SIVA station";
+tts[269]="SANT station";
+tts[270]="ZKR station";
+tts[271]="APE station";
+tts[272]="VSU station";
+tts[273]="KEV station - Click for more info.";
+tts[274]="TIRR station";
+tts[275]="KIEV station - Click for more info.";
+tts[276]="PUL station";
+tts[277]="ISP station";
+tts[278]="CSS station";
+tts[279]="ANTO station - Click for more info.";
+tts[280]="EIL station - Click for more info.";
+tts[281]="ESK station - Click for more info.";
+tts[282]="LVZ station - Click for more info.";
+tts[283]="KSDI station";
+tts[284]="OBN station - Click for more info.";
+tts[285]="MALT station";
+tts[286]="KIV station - Click for more info.";
+tts[287]="PAB station - Click for more info.";
+tts[288]="GNI station - Click for more info.";
+tts[289]="MDT station - Click for more info.";
+tts[290]="SSB station";
+tts[291]="WLF station - Click for more info.";
+tts[292]="HGN station";
+tts[293]="DSB station - Click for more info.";
+tts[294]="RTC station";
+tts[295]="BNI station - Click for more info.";
+tts[296]="ECH station";
+tts[297]="MTE station";
+tts[298]="BFO station - Click for more info.";
+tts[299]="IBBN station";
+tts[300]="HLG station";
+tts[301]="GFA station - Click for more info.";
+tts[302]="VSL station - Click for more info.";
+tts[303]="TUE station";
+tts[304]="STU station - Click for more info.";
+ 
+var gooMode = 0;
+function toggleGooMode() {
+  if(gooMode==1) { gooMode=0; } else {gooMode=1;}
+  //alert("gooMode is: "+$gooMode);
+}
+
+var screenW = 640, screenH = 480;
+function init() {
+  if (is_nav4up || is_ie4up || is_ie5up ) {
+      screenW = screen.width;
+      screenH = screen.height;
+  }
+  document.statusform.tips.value=(tts[1]);
+  document.statusform.goocheck.checked=false;
+  lastT=1;
+}
+
+//put a tooltip msg in statusform.tips field
+var lastT;
+function tt(t) {
+   if(tts[0]<=2) {
+     document.statusform.tips.value="warning: no tool tips";
+   }
+   else {
+     if(t>tts[0])  {
+       document.statusform.tips.value="warning: tooltips indexing error";
+     }
+     else {
+       document.statusform.tips.value=(tts[t]);
+     }
+  }
+  lastT=t;
+  return true;
+}
+
+//open a google search result
+var gooWindow;
+function goo(t ){
+   if(gooMode == 0) {
+      return;
+   }
+   if(t<=1) t=lastT;
+   if(t<=1) return false;
+   ttp=tts[t]; 
+
+   if(tts[0]<=2) {
+     document.statusform.tips.value="warning: no tool tips";
+   }
+   else {
+     var width=(3*screenW/4);
+     if(width>700){ width=700; }
+     var height=3*screenH/4;
+     if(height>900){ height=900; }
+     var yoff=50;
+     var re;
+
+     // edit the Flynn Engdahl region for a better search
+     re=/-/gi;
+     ttp=ttp.replace(re," ");
+     re=/,/;
+     ttp=ttp.replace(re," ");
+     re=/REGION/gi;
+     ttp=ttp.replace(re,"");
+     re=/REG\./gi;
+     ttp=ttp.replace(re,"");
+     re=/N\.Z\./gi;
+     ttp=ttp.replace(re,"NEW ZEALAND");
+     re=/P\.N\.G\./gi;
+     ttp=ttp.replace(re,"PAPUA NEW GUINEA");
+     re=/PNG/gi;
+     ttp=ttp.replace(re,"PAPUA NEW GUINEA");
+     re=/IS\./gi;
+     ttp=ttp.replace(re,"ISLANDS");
+     re=/PROV\./gi;
+     ttp=ttp.replace(re,"PROVINCE");
+     // drop NORTH, NORTH CENTRAL, SOUTH CENTRAL, etc:
+     re=/THCENT/gi;
+     ttp=ttp.replace(re,"TH CENT");
+     re=/W\./gi;
+     ttp=ttp.replace(re,"WEST");
+     re=/ERN /gi;
+     ttp=ttp.replace(re," ");
+     re=/NORTH/gi;
+     ttp=ttp.replace(re," ");
+     re=/SOUTH/gi;
+     ttp=ttp.replace(re," ");
+     re=/EAST/gi;
+     ttp=ttp.replace(re," ");
+     re=/WEST/gi;
+     ttp=ttp.replace(re," ");
+     re=/CENTRAL /gi;
+     ttp=ttp.replace(re," ");
+     re=/ NW /gi;
+     ttp=ttp.replace(re," ");
+     re=/ SW /gi;
+     ttp=ttp.replace(re," ");
+     re=/ NE /gi;
+     ttp=ttp.replace(re," ");
+     re=/ SE /gi;
+     ttp=ttp.replace(re," ");
+     re=/ARG\./gi;
+     ttp=ttp.replace(re,"ARGENTINA");
+     re=/OFF COAST OF /gi;
+     ttp=ttp.replace(re,"");
+     re=/NEAR COAST OF /gi;
+     ttp=ttp.replace(re,"");
+     re=/NEAR /gi;
+     ttp=ttp.replace(re,"");
+     re=/OFF /gi;
+     ttp=ttp.replace(re,"");
+     re=/ OF /gi;
+     ttp=ttp.replace(re," ");
+
+     var gooUrl="http://www.google.com/search?hl=en&num=20&q="+escape(ttp+" (EARTHQUAKE OR EARTHQUAKES OR SEISMIC OR SEISMICITY OR TECTONICS) -weather -travel -flinn -score -vacation -deals -team -price");
+
+     var settings="width="+width+",height="+height+",top="+yoff+",left=0"+
+         ",screenX=110,screenY="+yoff+",resizable=yes,scrollbars=yes,status=yes,location=yes,toolbar=yes,menubar=yes";
+
+     gooWindow=window.open(gooUrl,  "googleWindow", settings);
+     gooWindow.focus();
+   }
+   return false;
+}
+
+
+// open the event list window, for events near to mouse click
+var evnWindow;
+function evn(lon,lat){
+   var width=950;
+   var height=screenH/2+200;
+   var yoff=50;
+   var xoff=200;
+
+   var rgn="Europe";
+
+   // new event list 
+   var url="../eventlist/index.phtml?region="+rgn+"&lon="+lon+"&lat="+lat;
+  ;
+
+   var settings="width="+width+",height="+height+
+                ",top="+yoff+",left="+xoff+
+                ",screenX="+xoff+",screenY="+yoff+
+                ",resizable=yes,scrollbars=yes,status=yes,location=yes,toolbar=yes,menubar=yes";
+
+   evnWindow=window.open(url, "eventWindow", settings);
+   evnWindow.focus();
+   //return true    --don't return anything or it shows up in window
+}
+
+
+</script>
+ </head>   
+ <body bgcolor="#FFFFFF" onload="init()"> 
+  <div id="theMap"> 
+   <span id="topMapImg"> <img src="../views/eveday//imgs/zmMap.eveday.Europe.gif" usemap="#topImgMap" border="0"> 
+    <!-- test placing IRIS logo with link  rcw: 1/2015
+     the zoom images are all different sizes which are not known yet.
+     ideally logo would be inside the image's top right edge. 
+     but instead of determining image size (could do) or
+     using jQuery or plain js to add logo element as child of topImgMap 
+           (in the init() function?) 
+     to place the logo, for now let's just put it to the right of image.
+
+     position:fixed; seems to work, float and relative causing headaches. 
+
+  <span id="logo" style="position:relative;float:top; "--> <span id="logo" style="position:fixed; margin-left: 55px;margin-top:2px;"> <a href="http://www.iris.edu" title="Explore the many tools and resources about earthquakes at IRIS"> <img src="../imgs/fromIRIS.png" border="0" width="70" height="56"> </a> </span> <span id="regionLinks"> <p style="font-size:16px; font-color:white;padding:0px;margin-top:5px;margin-bottom:0px;">Zoom Maps</p> 
+     <div class="regionLink"> 
+      <a class="btn" title="The latest earthquakes in Africa in Seismic Monitor" href="index.phtml?rgn=Africa">Africa</a> 
+     </div> 
+     <div class="regionLink"> 
+      <a class="btn" title="The latest earthquakes in Australia and New Zealand in Seismic Monitor" href="index.phtml?rgn=Australia_NZ">Australia/NZ</a> 
+     </div> 
+     <div class="regionLink"> 
+      <a class="btn" title="The latest earthquakes in Central America in Seismic Monitor" href="index.phtml?rgn=Central_America">Ctrl America</a> 
+     </div> 
+     <div class="regionLink"> 
+      <a class="btn" title="The latest earthquakes in Central Asia in Seismic Monitor" href="index.phtml?rgn=Central_Asia">Ctrl Asia</a> 
+     </div> 
+     <div class="regionLink"> 
+      <a class="btn" title="The latest earthquakes in Europe in Seismic Monitor" href="index.phtml?rgn=Europe">Europe</a> 
+     </div> 
+     <div class="regionLink"> 
+      <a class="btn" title="The latest earthquakes in the Indian Ocean region in Seismic Monitor" href="index.phtml?rgn=Indian_Ocean">Indian&nbsp;Ocean</a> 
+     </div> 
+     <div class="regionLink"> 
+      <a class="btn" title="The latest earthquakes in North America in Seismic Monitor" href="index.phtml?rgn=N_America">N America</a> 
+     </div> 
+     <div class="regionLink"> 
+      <a class="btn" title="The latest earthquakes in the Northern Atlantic ocean region in Seismic Monitor" href="index.phtml?rgn=N_Atlantic">N Atlantic</a> 
+     </div> 
+     <div class="regionLink"> 
+      <a class="btn" title="The latest earthquakes in the Northern Pacific ocean region in Seismic Monitor" href="index.phtml?rgn=N_Pacific">N Pacific</a> 
+     </div> 
+     <div class="regionLink"> 
+      <a class="btn" title="The latest earthquakes in the Polynesia region in Seismic Monitor" href="index.phtml?rgn=Polynesia">Polynesia</a> 
+     </div> 
+     <div class="regionLink"> 
+      <a class="btn" title="The latest earthquakes in South America in Seismic Monitor" href="index.phtml?rgn=S_America">S America</a> 
+     </div> 
+     <div class="regionLink"> 
+      <a class="btn" title="The latest earthquakes in the Southern Atlantic ocean region in Seismic Monitor" href="index.phtml?rgn=S_Atlantic">S Atlantic</a> 
+     </div> 
+     <div class="regionLink"> 
+      <a class="btn" title="The latest earthquakes in the Southern Pacific ocean region in Seismic Monitor" href="index.phtml?rgn=S_Pacific">S Pacific</a> 
+     </div> 
+     <div class="regionLink"> 
+      <a class="btn" title="The latest earthquakes in southern Southeast Asia" href="index.phtml?rgn=S_SE_Asia">S SE Asia</a> 
+     </div> </span> </span> 
+  </div> 
+  <span id="legend"> <img src="../imgs/zm_legend.gif" border="0" width="187" height="56"> </span> 
+  <form name="statusform"> 
+   <input type="text" name="tips" size="65" value=""> 
+  </form> 
+  <span> <a class="btn" href="../index.phtml">Return to World View</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a class="btn" href="../eventlist/index.phtml?region=Europe">Last 30 Days in Europe</a> </span> 
+  <span> <input style="margin-left:35px;" name="goocheck" type="checkbox" onclick="toggleGooMode();" value="none"> <img id="gooImg" style="margin-right:10px;" src="../imgs/google.gif" border="0" width="66" height="24" align="middle"> <span id="questMark"> ? <p id="gooTip" class="small">Click Google checkbox. Then click on map (except earthquakes and stations) to explore news and other information. </p> </span> </span> 
+  <map name="topImgMap"> <area shape="circle" coords="374,387,6" title="VLC station" onmouseover="tt(229)"> <area shape="circle" coords="186,295,6" title="VAL station" onmouseover="tt(230)"> <area shape="circle" coords="367,213,6" title="KONO station - Click for more info." onmouseover="tt(231)" href="http://www.fdsn.org/station_book/IU/KONO/kono.html" target="_blank"> <area shape="circle" coords="382,320,6" title="GRFO station - Click for more info." onmouseover="tt(232)" href="http://www.fdsn.org/station_book/IU/GRFO/grfo.html" target="_blank"> <area shape="circle" coords="382,290,6" title="FLT1 station" onmouseover="tt(233)"> <area shape="circle" coords="393,314,6" title="NKC station" onmouseover="tt(234)"> <area shape="circle" coords="384,68,6" title="KBS station - Click for more info." onmouseover="tt(235)" href="http://www.fdsn.org/station_book/IU/KBS/kbs.html" target="_blank"> <area shape="circle" coords="402,471,6" title="CLTB station" onmouseover="tt(236)"> <area shape="circle" coords="404,410,6" title="AQU station - Click for more info." onmouseover="tt(237)" href="http://www.fdsn.org/station_book/MN/AQU/aqu.html" target="_blank"> <area shape="circle" coords="401,289,6" title="BRNL station" onmouseover="tt(238)"> <area shape="circle" coords="400,266,6" title="RGN station - Click for more info." onmouseover="tt(239)" href="http://www.fdsn.org/station_book/GE/RGN/rgn.html" target="_blank"> <area shape="circle" coords="414,473,6" title="VAE station" onmouseover="tt(240)"> <area shape="circle" coords="412,418,6" title="CII station - Click for more info." onmouseover="tt(241)" href="http://www.fdsn.org/station_book/MN/CII/cii.html" target="_blank"> <area shape="circle" coords="406,368,6" title="TRI station - Click for more info." onmouseover="tt(242)" href="http://www.fdsn.org/station_book/MN/TRI/tri.html" target="_blank"> <area shape="circle" coords="404,327,6" title="KHC station" onmouseover="tt(243)"> <area shape="circle" coords="405,289,6" title="RUE station" onmouseover="tt(244)"> <area shape="circle" coords="416,495,6" title="WDD station - Click for more info." onmouseover="tt(245)" href="http://www.fdsn.org/station_book/MN/WDD/wdd.html" target="_blank"> <area shape="circle" coords="422,466,6" title="AIO station" onmouseover="tt(246)"> <area shape="circle" coords="412,317,6" title="PRU station" onmouseover="tt(247)"> <area shape="circle" coords="429,462,6" title="CEL station" onmouseover="tt(248)"> <area shape="circle" coords="428,440,6" title="CUC station" onmouseover="tt(249)"> <area shape="circle" coords="430,313,6" title="DPC station - Click for more info." onmouseover="tt(250)" href="http://www.fdsn.org/station_book/CZ/DPC/dpc.html" target="_blank"> <area shape="circle" coords="437,450,6" title="TIP station" onmouseover="tt(251)"> <area shape="circle" coords="436,431,6" title="MATE station" onmouseover="tt(252)"> <area shape="circle" coords="439,380,6" title="BLY station" onmouseover="tt(253)"> <area shape="circle" coords="440,319,6" title="MORC station - Click for more info." onmouseover="tt(254)" href="http://www.fdsn.org/station_book/GE/MORC/morc.html" target="_blank"> <area shape="circle" coords="460,409,6" title="PDG station" onmouseover="tt(255)"> <area shape="circle" coords="171,79,6" title="DAG station - Click for more info." onmouseover="tt(256)" href="http://www.fdsn.org/station_book/GE/DAG/dag.html" target="_blank"> <area shape="circle" coords="467,422,6" title="TIR station - Click for more info." onmouseover="tt(257)" href="http://www.fdsn.org/station_book/MN/TIR/tir.html" target="_blank"> <area shape="circle" coords="466,388,6" title="DIVS station" onmouseover="tt(258)"> <area shape="circle" coords="463,341,6" title="PSZ station - Click for more info." onmouseover="tt(259)" href="http://www.fdsn.org/station_book/GE/PSZ/psz.html" target="_blank"> <area shape="circle" coords="471,379,6" title="BGY station - Click for more info." onmouseover="tt(260)" href="http://www.fdsn.org/station_book/MN/BGY/bgy.html" target="_blank"> <area shape="circle" coords="117,166,6" title="BORG station - Click for more info." onmouseover="tt(261)" href="http://www.fdsn.org/station_book/II/BORG/borg.html" target="_blank"> <area shape="circle" coords="477,233,6" title="SLIT station" onmouseover="tt(262)"> <area shape="circle" coords="499,406,6" title="VTS station - Click for more info." onmouseover="tt(263)" href="http://www.fdsn.org/station_book/MN/VTS/vts.html" target="_blank"> <area shape="circle" coords="488,321,6" title="KWP station" onmouseover="tt(264)"> <area shape="circle" coords="488,272,6" title="SUW station - Click for more info." onmouseover="tt(265)" href="http://www.fdsn.org/station_book/GE/SUW/suw.html" target="_blank"> <area shape="circle" coords="512,508,6" title="GVD station" onmouseover="tt(266)"> <area shape="circle" coords="298,340,6" title="CLF station" onmouseover="tt(267)"> <area shape="circle" coords="520,506,6" title="SIVA station" onmouseover="tt(268)"> <area shape="circle" coords="525,487,6" title="SANT station" onmouseover="tt(269)"> <area shape="circle" coords="534,504,6" title="ZKR station" onmouseover="tt(270)"> <area shape="circle" coords="525,478,6" title="APE station" onmouseover="tt(271)"> <area shape="circle" coords="515,225,6" title="VSU station" onmouseover="tt(272)"> <area shape="circle" coords="501,125,6" title="KEV station - Click for more info." onmouseover="tt(273)" href="http://www.fdsn.org/station_book/IU/KEV/kev.html" target="_blank"> <area shape="circle" coords="547,383,6" title="TIRR station" onmouseover="tt(274)"> <area shape="circle" coords="547,309,6" title="KIEV station - Click for more info." onmouseover="tt(275)" href="http://www.fdsn.org/station_book/IU/KIEV/kiev.html" target="_blank"> <area shape="circle" coords="544,212,6" title="PUL station" onmouseover="tt(276)"> <area shape="circle" coords="574,468,6" title="ISP station" onmouseover="tt(277)"> <area shape="circle" coords="606,506,6" title="CSS station" onmouseover="tt(278)"> <area shape="circle" coords="595,441,6" title="ANTO station - Click for more info." onmouseover="tt(279)" href="http://www.fdsn.org/station_book/IU/ANTO/anto.html" target="_blank"> <area shape="circle" coords="627,579,6" title="EIL station - Click for more info." onmouseover="tt(280)" href="http://www.fdsn.org/station_book/GE/EIL/eil.html" target="_blank"> <area shape="circle" coords="254,258,6" title="ESK station - Click for more info." onmouseover="tt(281)" href="http://www.fdsn.org/station_book/II/ESK/esk.html" target="_blank"> <area shape="circle" coords="563,139,6" title="LVZ station - Click for more info." onmouseover="tt(282)" href="http://www.fdsn.org/station_book/II/LVZ/lvz.html" target="_blank"> <area shape="circle" coords="631,530,6" title="KSDI station" onmouseover="tt(283)"> <area shape="circle" coords="606,260,6" title="OBN station - Click for more info." onmouseover="tt(284)" href="http://www.fdsn.org/station_book/II/OBN/obn.html" target="_blank"> <area shape="circle" coords="652,462,6" title="MALT station" onmouseover="tt(285)"> <area shape="circle" coords="684,389,6" title="KIV station - Click for more info." onmouseover="tt(286)" href="http://www.fdsn.org/station_book/II/KIV/kiv.html" target="_blank"> <area shape="circle" coords="229,446,6" title="PAB station - Click for more info." onmouseover="tt(287)" href="http://www.fdsn.org/station_book/IU/PAB/pab.html" target="_blank"> <area shape="circle" coords="712,438,6" title="GNI station - Click for more info." onmouseover="tt(288)" href="http://www.fdsn.org/station_book/IU/GNI/gni.html" target="_blank"> <area shape="circle" coords="222,535,6" title="MDT station - Click for more info." onmouseover="tt(289)" href="http://www.fdsn.org/station_book/MN/MDT/mdt.html" target="_blank"> <area shape="circle" coords="319,373,6" title="SSB station" onmouseover="tt(290)"> <area shape="circle" coords="335,321,6" title="WLF station - Click for more info." onmouseover="tt(291)" href="http://www.fdsn.org/station_book/GE/WLF/wlf.html" target="_blank"> <area shape="circle" coords="333,308,6" title="HGN station" onmouseover="tt(292)"> <area shape="circle" coords="223,280,6" title="DSB station - Click for more info." onmouseover="tt(293)" href="http://www.fdsn.org/station_book/GE/DSB/dsb.html" target="_blank"> <area shape="circle" coords="200,519,6" title="RTC station" onmouseover="tt(294)"> <area shape="circle" coords="339,376,6" title="BNI station - Click for more info." onmouseover="tt(295)" href="http://www.fdsn.org/station_book/MN/BNI/bni.html" target="_blank"> <area shape="circle" coords="344,338,6" title="ECH station" onmouseover="tt(296)"> <area shape="circle" coords="199,434,6" title="MTE station" onmouseover="tt(297)"> <area shape="circle" coords="355,336,6" title="BFO station - Click for more info." onmouseover="tt(298)" href="http://www.fdsn.org/station_book/II/BFO/bfo.html" target="_blank"> <area shape="circle" coords="350,291,6" title="IBBN station" onmouseover="tt(299)"> <area shape="circle" coords="352,270,6" title="HLG station" onmouseover="tt(300)"> <area shape="circle" coords="361,515,6" title="GFA station - Click for more info." onmouseover="tt(301)" href="http://www.fdsn.org/station_book/MN/GFA/gfa.html" target="_blank"> <area shape="circle" coords="364,446,6" title="VSL station - Click for more info." onmouseover="tt(302)" href="http://www.fdsn.org/station_book/MN/VSL/vsl.html" target="_blank"> <area shape="circle" coords="364,359,6" title="TUE station" onmouseover="tt(303)"> <area shape="circle" coords="363,331,6" title="STU station - Click for more info." onmouseover="tt(304)" href="http://www.fdsn.org/station_book/GE/STU/stu.html" target="_blank"> <area shape="circle" coords="452,393,16" title="MAG 4.2 28-FEB-2015 08:24:24 NORTHWESTERN BALKAN REGION" onmouseover="tt(222)" href="javascript:evn(18.42,43.64)"> <area shape="circle" coords="585,547,16" title="MAG 4.3 27-FEB-2015 12:53:09 EGYPT" onmouseover="tt(223)" href="javascript:evn(31.02,31.97)"> <area shape="circle" coords="245,452,17.28" title="MAG 5.0 23-FEB-2015 16:16:30 SPAIN" onmouseover="tt(224)" href="javascript:evn(-2.67,39.06)"> <area shape="circle" coords="146,168,16" title="MAG 4.3 19-FEB-2015 01:26:12 ICELAND" onmouseover="tt(225)" href="javascript:evn(-17.63,64.50)"> <area shape="circle" coords="384,387,16" title="MAG 4.4 17-FEB-2015 19:42:53 NORTHERN ITALY" onmouseover="tt(226)" href="javascript:evn(11.41,44.17)"> <area shape="circle" coords="571,476,16" title="MAG 4.7 16-FEB-2015 11:52:46 TURKEY" onmouseover="tt(227)" href="javascript:evn(30.08,37.23)"> <area shape="circle" coords="164,71,16" title="MAG 4.1 15-FEB-2015 21:26:38 EASTERN GREENLAND" onmouseover="tt(228)" href="javascript:evn(-20.33,78.31)"> <area shape="poly" coords="0,575,4,533,39,533,36,575,0,575" onmouseover="tt(2)" onmouseup="goo(2)" onclick="goo(2)"> <area shape="poly" coords="4,533,19,414,53,414,39,533,4,533" onmouseover="tt(3)" onmouseup="goo(3)" onclick="goo(3)"> <area shape="poly" coords="19,414,32,340,65,340,53,414,19,414" onmouseover="tt(4)" onmouseup="goo(4)" onclick="goo(4)"> <area shape="poly" coords="32,340,62,210,92,210,65,340,32,340" onmouseover="tt(5)" onmouseup="goo(5)" onclick="goo(5)"> <area shape="poly" coords="62,210,89,131,116,131,92,210,62,210" onmouseover="tt(6)" onmouseup="goo(6)" onclick="goo(6)"> <area shape="poly" coords="89,131,134,57,156,57,116,131,89,131" onmouseover="tt(7)" onmouseup="goo(7)" onclick="goo(7)"> <area shape="poly" coords="30,575,34,533,70,533,66,575,30,575" onmouseover="tt(8)" onmouseup="goo(8)" onclick="goo(8)"> <area shape="poly" coords="34,533,49,414,83,414,70,533,34,533" onmouseover="tt(9)" onmouseup="goo(9)" onclick="goo(9)"> <area shape="poly" coords="49,414,54,376,88,376,83,414,49,414" onmouseover="tt(10)" onmouseup="goo(10)" onclick="goo(10)"> <area shape="poly" coords="54,376,88,210,117,210,88,376,54,376" onmouseover="tt(11)" onmouseup="goo(11)" onclick="goo(11)"> <area shape="poly" coords="88,210,95,181,124,181,117,210,88,210" onmouseover="tt(12)" onmouseup="goo(12)" onclick="goo(12)"> <area shape="poly" coords="95,181,104,155,132,155,124,181,95,181" onmouseover="tt(13)" onmouseup="goo(13)" onclick="goo(13)"> <area shape="poly" coords="104,155,112,131,139,131,132,155,104,155" onmouseover="tt(14)" onmouseup="goo(14)" onclick="goo(14)"> <area shape="poly" coords="112,131,153,57,176,57,139,131,112,131" onmouseover="tt(15)" onmouseup="goo(15)" onclick="goo(15)"> <area shape="poly" coords="61,575,69,492,104,492,97,575,61,575" onmouseover="tt(16)" onmouseup="goo(16)" onclick="goo(16)"> <area shape="poly" coords="69,492,113,210,143,210,104,492,69,492" onmouseover="tt(17)" onmouseup="goo(17)" onclick="goo(17)"> <area shape="poly" coords="113,210,120,181,149,181,143,210,113,210" onmouseover="tt(18)" onmouseup="goo(18)" onclick="goo(18)"> <area shape="poly" coords="120,181,128,155,156,155,149,181,120,181" onmouseover="tt(19)" onmouseup="goo(19)" onclick="goo(19)"> <area shape="poly" coords="128,155,135,131,163,131,156,155,128,155" onmouseover="tt(20)" onmouseup="goo(20)" onclick="goo(20)"> <area shape="poly" coords="135,131,144,109,170,109,163,131,135,131" onmouseover="tt(21)" onmouseup="goo(21)" onclick="goo(21)"> <area shape="poly" coords="144,109,152,90,177,90,170,109,144,109" onmouseover="tt(22)" onmouseup="goo(22)" onclick="goo(22)"> <area shape="poly" coords="152,90,172,57,195,57,177,90,152,90" onmouseover="tt(23)" onmouseup="goo(23)" onclick="goo(23)"> <area shape="poly" coords="92,575,99,492,134,492,128,575,92,575" onmouseover="tt(24)" onmouseup="goo(24)" onclick="goo(24)"> <area shape="poly" coords="99,492,139,210,168,210,134,492,99,492" onmouseover="tt(25)" onmouseup="goo(25)" onclick="goo(25)"> <area shape="poly" coords="139,210,145,181,174,181,168,210,139,210" onmouseover="tt(26)" onmouseup="goo(26)" onclick="goo(26)"> <area shape="poly" coords="145,181,152,155,180,155,174,181,145,181" onmouseover="tt(27)" onmouseup="goo(27)" onclick="goo(27)"> <area shape="poly" coords="152,155,159,131,186,131,180,155,152,155" onmouseover="tt(28)" onmouseup="goo(28)" onclick="goo(28)"> <area shape="poly" coords="159,131,166,109,192,109,186,131,159,131" onmouseover="tt(29)" onmouseup="goo(29)" onclick="goo(29)"> <area shape="poly" coords="166,109,192,57,214,57,192,109,166,109" onmouseover="tt(30)" onmouseup="goo(30)" onclick="goo(30)"> <area shape="poly" coords="123,575,129,492,164,492,159,575,123,575" onmouseover="tt(31)" onmouseup="goo(31)" onclick="goo(31)"> <area shape="poly" coords="129,492,164,210,194,210,164,492,129,492" onmouseover="tt(32)" onmouseup="goo(32)" onclick="goo(32)"> <area shape="poly" coords="164,210,182,131,209,131,194,210,164,210" onmouseover="tt(33)" onmouseup="goo(33)" onclick="goo(33)"> <area shape="poly" coords="182,131,188,109,214,109,209,131,182,131" onmouseover="tt(34)" onmouseup="goo(34)" onclick="goo(34)"> <area shape="poly" coords="188,109,211,57,234,57,214,109,188,109" onmouseover="tt(35)" onmouseup="goo(35)" onclick="goo(35)"> <area shape="poly" coords="154,575,156,533,192,533,190,575,154,575" onmouseover="tt(36)" onmouseup="goo(36)" onclick="goo(36)"> <area shape="poly" coords="156,533,159,492,194,492,192,533,156,533" onmouseover="tt(37)" onmouseup="goo(37)" onclick="goo(37)"> <area shape="poly" coords="159,492,165,414,199,414,194,492,159,492" onmouseover="tt(38)" onmouseup="goo(38)" onclick="goo(38)"> <area shape="poly" coords="165,414,169,376,202,376,199,414,165,414" onmouseover="tt(39)" onmouseup="goo(39)" onclick="goo(39)"> <area shape="poly" coords="169,376,176,305,208,305,202,376,169,376" onmouseover="tt(40)" onmouseup="goo(40)" onclick="goo(40)"> <area shape="poly" coords="176,305,180,272,212,272,208,305,176,305" onmouseover="tt(41)" onmouseup="goo(41)" onclick="goo(41)"> <area shape="poly" coords="180,272,185,240,215,240,212,272,180,272" onmouseover="tt(42)" onmouseup="goo(42)" onclick="goo(42)"> <area shape="poly" coords="185,240,190,210,219,210,215,240,185,240" onmouseover="tt(43)" onmouseup="goo(43)" onclick="goo(43)"> <area shape="poly" coords="190,210,205,131,232,131,219,210,190,210" onmouseover="tt(44)" onmouseup="goo(44)" onclick="goo(44)"> <area shape="poly" coords="205,131,211,109,237,109,232,131,205,131" onmouseover="tt(45)" onmouseup="goo(45)" onclick="goo(45)"> <area shape="poly" coords="211,109,230,57,253,57,237,109,211,109" onmouseover="tt(46)" onmouseup="goo(46)" onclick="goo(46)"> <area shape="poly" coords="185,575,189,492,224,492,221,575,185,575" onmouseover="tt(47)" onmouseup="goo(47)" onclick="goo(47)"> <area shape="poly" coords="189,492,197,376,231,376,224,492,189,492" onmouseover="tt(48)" onmouseup="goo(48)" onclick="goo(48)"> <area shape="poly" coords="197,376,204,305,236,305,231,376,197,376" onmouseover="tt(49)" onmouseup="goo(49)" onclick="goo(49)"> <area shape="poly" coords="204,305,215,210,245,210,236,305,204,305" onmouseover="tt(50)" onmouseup="goo(50)" onclick="goo(50)"> <area shape="poly" coords="215,210,228,131,255,131,245,210,215,210" onmouseover="tt(51)" onmouseup="goo(51)" onclick="goo(51)"> <area shape="poly" coords="228,131,233,109,259,109,255,131,228,131" onmouseover="tt(52)" onmouseup="goo(52)" onclick="goo(52)"> <area shape="poly" coords="233,109,250,57,272,57,259,109,233,109" onmouseover="tt(53)" onmouseup="goo(53)" onclick="goo(53)"> <area shape="poly" coords="216,575,217,533,253,533,252,575,216,575" onmouseover="tt(54)" onmouseup="goo(54)" onclick="goo(54)"> <area shape="poly" coords="217,533,219,492,254,492,253,533,217,533" onmouseover="tt(55)" onmouseup="goo(55)" onclick="goo(55)"> <area shape="poly" coords="219,492,226,376,259,376,254,492,219,492" onmouseover="tt(56)" onmouseup="goo(56)" onclick="goo(56)"> <area shape="poly" coords="226,376,228,340,261,340,259,376,226,376" onmouseover="tt(57)" onmouseup="goo(57)" onclick="goo(57)"> <area shape="poly" coords="228,340,231,305,263,305,261,340,228,340" onmouseover="tt(58)" onmouseup="goo(58)" onclick="goo(58)"> <area shape="poly" coords="231,305,241,210,270,210,263,305,231,305" onmouseover="tt(59)" onmouseup="goo(59)" onclick="goo(59)"> <area shape="poly" coords="241,210,251,131,278,131,270,210,241,210" onmouseover="tt(60)" onmouseup="goo(60)" onclick="goo(60)"> <area shape="poly" coords="251,131,255,109,281,109,278,131,251,131" onmouseover="tt(61)" onmouseup="goo(61)" onclick="goo(61)"> <area shape="poly" coords="255,109,269,57,292,57,281,109,255,109" onmouseover="tt(62)" onmouseup="goo(62)" onclick="goo(62)"> <area shape="poly" coords="246,575,249,492,284,492,282,575,246,575" onmouseover="tt(63)" onmouseup="goo(63)" onclick="goo(63)"> <area shape="poly" coords="249,492,251,453,285,453,284,492,249,492" onmouseover="tt(64)" onmouseup="goo(64)" onclick="goo(64)"> <area shape="poly" coords="251,453,253,414,287,414,285,453,251,453" onmouseover="tt(65)" onmouseup="goo(65)" onclick="goo(65)"> <area shape="poly" coords="253,414,259,305,291,305,287,414,253,414" onmouseover="tt(66)" onmouseup="goo(66)" onclick="goo(66)"> <area shape="poly" coords="259,305,261,272,292,272,291,305,259,305" onmouseover="tt(67)" onmouseup="goo(67)" onclick="goo(67)"> <area shape="poly" coords="261,272,266,210,296,210,292,272,261,272" onmouseover="tt(68)" onmouseup="goo(68)" onclick="goo(68)"> <area shape="poly" coords="266,210,278,109,304,109,296,210,266,210" onmouseover="tt(69)" onmouseup="goo(69)" onclick="goo(69)"> <area shape="poly" coords="278,109,289,57,311,57,304,109,278,109" onmouseover="tt(70)" onmouseup="goo(70)" onclick="goo(70)"> <area shape="poly" coords="277,575,279,492,314,492,313,575,277,575" onmouseover="tt(71)" onmouseup="goo(71)" onclick="goo(71)"> <area shape="poly" coords="279,492,280,453,315,453,314,492,279,492" onmouseover="tt(72)" onmouseup="goo(72)" onclick="goo(72)"> <area shape="poly" coords="280,453,282,414,316,414,315,453,280,453" onmouseover="tt(73)" onmouseup="goo(73)" onclick="goo(73)"> <area shape="poly" coords="282,414,283,376,317,376,316,414,282,414" onmouseover="tt(74)" onmouseup="goo(74)" onclick="goo(74)"> <area shape="poly" coords="283,376,286,305,318,305,317,376,283,376" onmouseover="tt(75)" onmouseup="goo(75)" onclick="goo(75)"> <area shape="poly" coords="286,305,292,210,321,210,318,305,286,305" onmouseover="tt(76)" onmouseup="goo(76)" onclick="goo(76)"> <area shape="poly" coords="292,210,300,109,326,109,321,210,292,210" onmouseover="tt(77)" onmouseup="goo(77)" onclick="goo(77)"> <area shape="poly" coords="300,109,308,57,330,57,326,109,300,109" onmouseover="tt(78)" onmouseup="goo(78)" onclick="goo(78)"> <area shape="poly" coords="308,575,309,492,344,492,344,575,308,575" onmouseover="tt(79)" onmouseup="goo(79)" onclick="goo(79)"> <area shape="poly" coords="309,492,311,414,345,414,344,492,309,492" onmouseover="tt(80)" onmouseup="goo(80)" onclick="goo(80)"> <area shape="poly" coords="311,414,312,376,345,376,345,414,311,414" onmouseover="tt(81)" onmouseup="goo(81)" onclick="goo(81)"> <area shape="poly" coords="312,376,313,340,345,340,345,376,312,376" onmouseover="tt(82)" onmouseup="goo(82)" onclick="goo(82)"> <area shape="poly" coords="313,340,314,305,346,305,345,340,313,340" onmouseover="tt(83)" onmouseup="goo(83)" onclick="goo(83)"> <area shape="poly" coords="314,305,315,272,346,272,346,305,314,305" onmouseover="tt(84)" onmouseup="goo(84)" onclick="goo(84)"> <area shape="poly" coords="315,272,316,240,346,240,346,272,315,272" onmouseover="tt(85)" onmouseup="goo(85)" onclick="goo(85)"> <area shape="poly" coords="316,240,318,181,347,181,346,240,316,240" onmouseover="tt(86)" onmouseup="goo(86)" onclick="goo(86)"> <area shape="poly" coords="318,181,322,109,348,109,347,181,318,181" onmouseover="tt(87)" onmouseup="goo(87)" onclick="goo(87)"> <area shape="poly" coords="322,109,324,90,349,90,348,109,322,109" onmouseover="tt(88)" onmouseup="goo(88)" onclick="goo(88)"> <area shape="poly" coords="324,90,327,57,350,57,349,90,324,90" onmouseover="tt(89)" onmouseup="goo(89)" onclick="goo(89)"> <area shape="poly" coords="339,575,340,453,374,453,375,575,339,575" onmouseover="tt(90)" onmouseup="goo(90)" onclick="goo(90)"> <area shape="poly" coords="340,453,340,414,374,414,374,453,340,453" onmouseover="tt(91)" onmouseup="goo(91)" onclick="goo(91)"> <area shape="poly" coords="340,414,340,376,374,376,374,414,340,414" onmouseover="tt(92)" onmouseup="goo(92)" onclick="goo(92)"> <area shape="poly" coords="340,376,341,340,374,340,374,376,340,376" onmouseover="tt(93)" onmouseup="goo(93)" onclick="goo(93)"> <area shape="poly" coords="341,340,342,272,373,272,374,340,341,340" onmouseover="tt(94)" onmouseup="goo(94)" onclick="goo(94)"> <area shape="poly" coords="342,272,342,240,373,240,373,272,342,272" onmouseover="tt(95)" onmouseup="goo(95)" onclick="goo(95)"> <area shape="poly" coords="342,240,343,181,372,181,373,240,342,240" onmouseover="tt(96)" onmouseup="goo(96)" onclick="goo(96)"> <area shape="poly" coords="343,181,345,109,371,109,372,181,343,181" onmouseover="tt(97)" onmouseup="goo(97)" onclick="goo(97)"> <area shape="poly" coords="345,109,345,90,370,90,371,109,345,109" onmouseover="tt(98)" onmouseup="goo(98)" onclick="goo(98)"> <area shape="poly" coords="345,90,347,57,369,57,370,90,345,90" onmouseover="tt(99)" onmouseup="goo(99)" onclick="goo(99)"> <area shape="poly" coords="370,575,370,533,405,533,406,575,370,575" onmouseover="tt(100)" onmouseup="goo(100)" onclick="goo(100)"> <area shape="poly" coords="370,533,370,492,405,492,405,533,370,533" onmouseover="tt(101)" onmouseup="goo(101)" onclick="goo(101)"> <area shape="poly" coords="370,492,369,453,404,453,405,492,370,492" onmouseover="tt(102)" onmouseup="goo(102)" onclick="goo(102)"> <area shape="poly" coords="369,453,369,414,403,414,404,453,369,453" onmouseover="tt(103)" onmouseup="goo(103)" onclick="goo(103)"> <area shape="poly" coords="369,414,369,376,402,376,403,414,369,414" onmouseover="tt(104)" onmouseup="goo(104)" onclick="goo(104)"> <area shape="poly" coords="369,376,369,340,402,340,402,376,369,376" onmouseover="tt(105)" onmouseup="goo(105)" onclick="goo(105)"> <area shape="poly" coords="369,340,368,272,400,272,402,340,369,340" onmouseover="tt(106)" onmouseup="goo(106)" onclick="goo(106)"> <area shape="poly" coords="368,272,368,240,399,240,400,272,368,272" onmouseover="tt(107)" onmouseup="goo(107)" onclick="goo(107)"> <area shape="poly" coords="368,240,368,181,397,181,399,240,368,240" onmouseover="tt(108)" onmouseup="goo(108)" onclick="goo(108)"> <area shape="poly" coords="368,181,367,131,394,131,397,181,368,181" onmouseover="tt(109)" onmouseup="goo(109)" onclick="goo(109)"> <area shape="poly" coords="367,131,367,90,392,90,394,131,367,131" onmouseover="tt(110)" onmouseup="goo(110)" onclick="goo(110)"> <area shape="poly" coords="367,90,366,57,389,57,392,90,367,90" onmouseover="tt(111)" onmouseup="goo(111)" onclick="goo(111)"> <area shape="poly" coords="401,575,400,533,436,533,437,575,401,575" onmouseover="tt(112)" onmouseup="goo(112)" onclick="goo(112)"> <area shape="poly" coords="400,533,400,492,435,492,436,533,400,533" onmouseover="tt(113)" onmouseup="goo(113)" onclick="goo(113)"> <area shape="poly" coords="400,492,399,453,434,453,435,492,400,492" onmouseover="tt(114)" onmouseup="goo(114)" onclick="goo(114)"> <area shape="poly" coords="399,453,398,414,432,414,434,453,399,453" onmouseover="tt(115)" onmouseup="goo(115)" onclick="goo(115)"> <area shape="poly" coords="398,414,398,376,431,376,432,414,398,414" onmouseover="tt(116)" onmouseup="goo(116)" onclick="goo(116)"> <area shape="poly" coords="398,376,397,340,430,340,431,376,398,376" onmouseover="tt(117)" onmouseup="goo(117)" onclick="goo(117)"> <area shape="poly" coords="397,340,396,305,428,305,430,340,397,340" onmouseover="tt(118)" onmouseup="goo(118)" onclick="goo(118)"> <area shape="poly" coords="396,305,395,272,427,272,428,305,396,305" onmouseover="tt(119)" onmouseup="goo(119)" onclick="goo(119)"> <area shape="poly" coords="395,272,394,240,425,240,427,272,395,272" onmouseover="tt(120)" onmouseup="goo(120)" onclick="goo(120)"> <area shape="poly" coords="394,240,391,155,419,155,425,240,394,240" onmouseover="tt(121)" onmouseup="goo(121)" onclick="goo(121)"> <area shape="poly" coords="391,155,390,131,417,131,419,155,391,155" onmouseover="tt(122)" onmouseup="goo(122)" onclick="goo(122)"> <area shape="poly" coords="390,131,388,90,413,90,417,131,390,131" onmouseover="tt(123)" onmouseup="goo(123)" onclick="goo(123)"> <area shape="poly" coords="388,90,385,57,408,57,413,90,388,90" onmouseover="tt(124)" onmouseup="goo(124)" onclick="goo(124)"> <area shape="poly" coords="432,575,430,492,465,492,468,575,432,575" onmouseover="tt(125)" onmouseup="goo(125)" onclick="goo(125)"> <area shape="poly" coords="430,492,429,453,463,453,465,492,430,492" onmouseover="tt(126)" onmouseup="goo(126)" onclick="goo(126)"> <area shape="poly" coords="429,453,428,414,462,414,463,453,429,453" onmouseover="tt(127)" onmouseup="goo(127)" onclick="goo(127)"> <area shape="poly" coords="428,414,426,376,460,376,462,414,428,414" onmouseover="tt(128)" onmouseup="goo(128)" onclick="goo(128)"> <area shape="poly" coords="426,376,425,340,458,340,460,376,426,376" onmouseover="tt(129)" onmouseup="goo(129)" onclick="goo(129)"> <area shape="poly" coords="425,340,424,305,456,305,458,340,425,340" onmouseover="tt(130)" onmouseup="goo(130)" onclick="goo(130)"> <area shape="poly" coords="424,305,422,272,454,272,456,305,424,305" onmouseover="tt(131)" onmouseup="goo(131)" onclick="goo(131)"> <area shape="poly" coords="422,272,419,210,449,210,454,272,422,272" onmouseover="tt(132)" onmouseup="goo(132)" onclick="goo(132)"> <area shape="poly" coords="419,210,414,131,441,131,449,210,419,210" onmouseover="tt(133)" onmouseup="goo(133)" onclick="goo(133)"> <area shape="poly" coords="414,131,412,109,438,109,441,131,414,131" onmouseover="tt(134)" onmouseup="goo(134)" onclick="goo(134)"> <area shape="poly" coords="412,109,410,90,435,90,438,109,412,109" onmouseover="tt(135)" onmouseup="goo(135)" onclick="goo(135)"> <area shape="poly" coords="410,90,405,57,427,57,435,90,410,90" onmouseover="tt(136)" onmouseup="goo(136)" onclick="goo(136)"> <area shape="poly" coords="462,575,461,533,497,533,498,575,462,575" onmouseover="tt(137)" onmouseup="goo(137)" onclick="goo(137)"> <area shape="poly" coords="461,533,460,492,495,492,497,533,461,533" onmouseover="tt(138)" onmouseup="goo(138)" onclick="goo(138)"> <area shape="poly" coords="460,492,458,453,493,453,495,492,460,492" onmouseover="tt(139)" onmouseup="goo(139)" onclick="goo(139)"> <area shape="poly" coords="458,453,457,414,491,414,493,453,458,453" onmouseover="tt(140)" onmouseup="goo(140)" onclick="goo(140)"> <area shape="poly" coords="457,414,455,376,488,376,491,414,457,414" onmouseover="tt(141)" onmouseup="goo(141)" onclick="goo(141)"> <area shape="poly" coords="455,376,453,340,486,340,488,376,455,376" onmouseover="tt(142)" onmouseup="goo(142)" onclick="goo(142)"> <area shape="poly" coords="453,340,449,272,480,272,486,340,453,340" onmouseover="tt(143)" onmouseup="goo(143)" onclick="goo(143)"> <area shape="poly" coords="449,272,444,210,474,210,480,272,449,272" onmouseover="tt(144)" onmouseup="goo(144)" onclick="goo(144)"> <area shape="poly" coords="444,210,442,181,471,181,474,210,444,210" onmouseover="tt(145)" onmouseup="goo(145)" onclick="goo(145)"> <area shape="poly" coords="442,181,437,131,464,131,471,181,442,181" onmouseover="tt(146)" onmouseup="goo(146)" onclick="goo(146)"> <area shape="poly" coords="437,131,434,109,460,109,464,131,437,131" onmouseover="tt(147)" onmouseup="goo(147)" onclick="goo(147)"> <area shape="poly" coords="434,109,431,90,456,90,460,109,434,109" onmouseover="tt(148)" onmouseup="goo(148)" onclick="goo(148)"> <area shape="poly" coords="431,90,424,57,447,57,456,90,431,90" onmouseover="tt(149)" onmouseup="goo(149)" onclick="goo(149)"> <area shape="poly" coords="493,575,492,533,527,533,529,575,493,575" onmouseover="tt(150)" onmouseup="goo(150)" onclick="goo(150)"> <area shape="poly" coords="492,533,490,492,525,492,527,533,492,533" onmouseover="tt(151)" onmouseup="goo(151)" onclick="goo(151)"> <area shape="poly" coords="490,492,488,453,522,453,525,492,490,492" onmouseover="tt(152)" onmouseup="goo(152)" onclick="goo(152)"> <area shape="poly" coords="488,453,486,414,520,414,522,453,488,453" onmouseover="tt(153)" onmouseup="goo(153)" onclick="goo(153)"> <area shape="poly" coords="486,414,484,376,517,376,520,414,486,414" onmouseover="tt(154)" onmouseup="goo(154)" onclick="goo(154)"> <area shape="poly" coords="484,376,481,340,514,340,517,376,484,376" onmouseover="tt(155)" onmouseup="goo(155)" onclick="goo(155)"> <area shape="poly" coords="481,340,479,305,511,305,514,340,481,340" onmouseover="tt(156)" onmouseup="goo(156)" onclick="goo(156)"> <area shape="poly" coords="479,305,470,210,500,210,511,305,479,305" onmouseover="tt(157)" onmouseup="goo(157)" onclick="goo(157)"> <area shape="poly" coords="470,210,460,131,487,131,500,210,470,210" onmouseover="tt(158)" onmouseup="goo(158)" onclick="goo(158)"> <area shape="poly" coords="460,131,456,109,482,109,487,131,460,131" onmouseover="tt(159)" onmouseup="goo(159)" onclick="goo(159)"> <area shape="poly" coords="456,109,452,90,477,90,482,109,456,109" onmouseover="tt(160)" onmouseup="goo(160)" onclick="goo(160)"> <area shape="poly" coords="452,90,443,57,466,57,477,90,452,90" onmouseover="tt(161)" onmouseup="goo(161)" onclick="goo(161)"> <area shape="poly" coords="524,575,522,533,558,533,560,575,524,575" onmouseover="tt(162)" onmouseup="goo(162)" onclick="goo(162)"> <area shape="poly" coords="522,533,520,492,555,492,558,533,522,533" onmouseover="tt(163)" onmouseup="goo(163)" onclick="goo(163)"> <area shape="poly" coords="520,492,515,414,549,414,555,492,520,492" onmouseover="tt(164)" onmouseup="goo(164)" onclick="goo(164)"> <area shape="poly" coords="515,414,512,376,546,376,549,414,515,414" onmouseover="tt(165)" onmouseup="goo(165)" onclick="goo(165)"> <area shape="poly" coords="512,376,509,340,542,340,546,376,512,376" onmouseover="tt(166)" onmouseup="goo(166)" onclick="goo(166)"> <area shape="poly" coords="509,340,506,305,538,305,542,340,509,340" onmouseover="tt(167)" onmouseup="goo(167)" onclick="goo(167)"> <area shape="poly" coords="506,305,495,210,525,210,538,305,506,305" onmouseover="tt(168)" onmouseup="goo(168)" onclick="goo(168)"> <area shape="poly" coords="495,210,483,131,510,131,525,210,495,210" onmouseover="tt(169)" onmouseup="goo(169)" onclick="goo(169)"> <area shape="poly" coords="483,131,479,109,505,109,510,131,483,131" onmouseover="tt(170)" onmouseup="goo(170)" onclick="goo(170)"> <area shape="poly" coords="479,109,469,73,493,73,505,109,479,109" onmouseover="tt(171)" onmouseup="goo(171)" onclick="goo(171)"> <area shape="poly" coords="469,73,463,57,485,57,493,73,469,73" onmouseover="tt(172)" onmouseup="goo(172)" onclick="goo(172)"> <area shape="poly" coords="555,575,553,533,588,533,591,575,555,575" onmouseover="tt(173)" onmouseup="goo(173)" onclick="goo(173)"> <area shape="poly" coords="553,533,550,492,585,492,588,533,553,533" onmouseover="tt(174)" onmouseup="goo(174)" onclick="goo(174)"> <area shape="poly" coords="550,492,544,414,578,414,585,492,550,492" onmouseover="tt(175)" onmouseup="goo(175)" onclick="goo(175)"> <area shape="poly" coords="544,414,541,376,574,376,578,414,544,414" onmouseover="tt(176)" onmouseup="goo(176)" onclick="goo(176)"> <area shape="poly" coords="541,376,534,305,566,305,574,376,541,376" onmouseover="tt(177)" onmouseup="goo(177)" onclick="goo(177)"> <area shape="poly" coords="534,305,521,210,551,210,566,305,534,305" onmouseover="tt(178)" onmouseup="goo(178)" onclick="goo(178)"> <area shape="poly" coords="521,210,511,155,539,155,551,210,521,210" onmouseover="tt(179)" onmouseup="goo(179)" onclick="goo(179)"> <area shape="poly" coords="511,155,506,131,533,131,539,155,511,155" onmouseover="tt(180)" onmouseup="goo(180)" onclick="goo(180)"> <area shape="poly" coords="506,131,501,109,527,109,533,131,506,131" onmouseover="tt(181)" onmouseup="goo(181)" onclick="goo(181)"> <area shape="poly" coords="501,109,489,73,513,73,527,109,501,109" onmouseover="tt(182)" onmouseup="goo(182)" onclick="goo(182)"> <area shape="poly" coords="489,73,482,57,505,57,513,73,489,73" onmouseover="tt(183)" onmouseup="goo(183)" onclick="goo(183)"> <area shape="poly" coords="586,575,583,533,619,533,622,575,586,575" onmouseover="tt(184)" onmouseup="goo(184)" onclick="goo(184)"> <area shape="poly" coords="583,533,580,492,615,492,619,533,583,533" onmouseover="tt(185)" onmouseup="goo(185)" onclick="goo(185)"> <area shape="poly" coords="580,492,573,414,607,414,615,492,580,492" onmouseover="tt(186)" onmouseup="goo(186)" onclick="goo(186)"> <area shape="poly" coords="573,414,569,376,603,376,607,414,573,414" onmouseover="tt(187)" onmouseup="goo(187)" onclick="goo(187)"> <area shape="poly" coords="569,376,561,305,593,305,603,376,569,376" onmouseover="tt(188)" onmouseup="goo(188)" onclick="goo(188)"> <area shape="poly" coords="561,305,529,131,556,131,593,305,561,305" onmouseover="tt(189)" onmouseup="goo(189)" onclick="goo(189)"> <area shape="poly" coords="529,131,510,73,534,73,556,131,529,131" onmouseover="tt(190)" onmouseup="goo(190)" onclick="goo(190)"> <area shape="poly" coords="510,73,501,57,524,57,534,73,510,73" onmouseover="tt(191)" onmouseup="goo(191)" onclick="goo(191)"> <area shape="poly" coords="617,575,614,533,649,533,653,575,617,575" onmouseover="tt(192)" onmouseup="goo(192)" onclick="goo(192)"> <area shape="poly" coords="614,533,610,492,645,492,649,533,614,533" onmouseover="tt(193)" onmouseup="goo(193)" onclick="goo(193)"> <area shape="poly" coords="610,492,602,414,636,414,645,492,610,492" onmouseover="tt(194)" onmouseup="goo(194)" onclick="goo(194)"> <area shape="poly" coords="602,414,598,376,631,376,636,414,602,414" onmouseover="tt(195)" onmouseup="goo(195)" onclick="goo(195)"> <area shape="poly" coords="598,376,589,305,621,305,631,376,598,376" onmouseover="tt(196)" onmouseup="goo(196)" onclick="goo(196)"> <area shape="poly" coords="589,305,553,131,580,131,621,305,589,305" onmouseover="tt(197)" onmouseup="goo(197)" onclick="goo(197)"> <area shape="poly" coords="553,131,530,73,554,73,580,131,553,131" onmouseover="tt(198)" onmouseup="goo(198)" onclick="goo(198)"> <area shape="poly" coords="530,73,521,57,543,57,554,73,530,73" onmouseover="tt(199)" onmouseup="goo(199)" onclick="goo(199)"> <area shape="poly" coords="648,575,640,492,675,492,684,575,648,575" onmouseover="tt(200)" onmouseup="goo(200)" onclick="goo(200)"> <area shape="poly" coords="640,492,632,414,666,414,675,492,640,492" onmouseover="tt(201)" onmouseup="goo(201)" onclick="goo(201)"> <area shape="poly" coords="632,414,627,376,660,376,666,414,632,414" onmouseover="tt(202)" onmouseup="goo(202)" onclick="goo(202)"> <area shape="poly" coords="627,376,616,305,648,305,660,376,627,376" onmouseover="tt(203)" onmouseup="goo(203)" onclick="goo(203)"> <area shape="poly" coords="616,305,576,131,603,131,648,305,616,305" onmouseover="tt(204)" onmouseup="goo(204)" onclick="goo(204)"> <area shape="poly" coords="576,131,551,73,575,73,603,131,576,131" onmouseover="tt(205)" onmouseup="goo(205)" onclick="goo(205)"> <area shape="poly" coords="551,73,540,57,563,57,575,73,551,73" onmouseover="tt(206)" onmouseup="goo(206)" onclick="goo(206)"> <area shape="poly" coords="678,575,670,492,705,492,714,575,678,575" onmouseover="tt(207)" onmouseup="goo(207)" onclick="goo(207)"> <area shape="poly" coords="670,492,661,414,695,414,705,492,670,492" onmouseover="tt(208)" onmouseup="goo(208)" onclick="goo(208)"> <area shape="poly" coords="661,414,655,376,689,376,695,414,661,414" onmouseover="tt(209)" onmouseup="goo(209)" onclick="goo(209)"> <area shape="poly" coords="655,376,644,305,676,305,689,376,655,376" onmouseover="tt(210)" onmouseup="goo(210)" onclick="goo(210)"> <area shape="poly" coords="644,305,599,131,626,131,676,305,644,305" onmouseover="tt(211)" onmouseup="goo(211)" onclick="goo(211)"> <area shape="poly" coords="599,131,571,73,595,73,626,131,599,131" onmouseover="tt(212)" onmouseup="goo(212)" onclick="goo(212)"> <area shape="poly" coords="571,73,559,57,582,57,595,73,571,73" onmouseover="tt(213)" onmouseup="goo(213)" onclick="goo(213)"> <area shape="poly" coords="709,575,705,533,741,533,745,575,709,575" onmouseover="tt(214)" onmouseup="goo(214)" onclick="goo(214)"> <area shape="poly" coords="705,533,700,492,735,492,741,533,705,533" onmouseover="tt(215)" onmouseup="goo(215)" onclick="goo(215)"> <area shape="poly" coords="700,492,695,453,730,453,735,492,700,492" onmouseover="tt(216)" onmouseup="goo(216)" onclick="goo(216)"> <area shape="poly" coords="695,453,684,376,717,376,730,453,695,453" onmouseover="tt(217)" onmouseup="goo(217)" onclick="goo(217)"> <area shape="poly" coords="684,376,671,305,703,305,717,376,684,376" onmouseover="tt(218)" onmouseup="goo(218)" onclick="goo(218)"> <area shape="poly" coords="671,305,622,131,649,131,703,305,671,305" onmouseover="tt(219)" onmouseup="goo(219)" onclick="goo(219)"> <area shape="poly" coords="622,131,592,73,616,73,649,131,622,131" onmouseover="tt(220)" onmouseup="goo(220)" onclick="goo(220)"> <area shape="poly" coords="592,73,579,57,601,57,616,73,592,73" onmouseover="tt(221)" onmouseup="goo(221)" onclick="goo(221)"> </map> 
+  <script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ ga('create', 'UA-1860730-1', 'auto');
+ ga('send', 'pageview');
+
+</script>   
+ </body>
+</html>

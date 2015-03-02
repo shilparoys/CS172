@@ -1,0 +1,140 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head> 
+  <title>USC Web Mail</title> 
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+  <script src="browser.js"></script> 
+  <script>
+var user = ''
+var error = ''
+var st = window.location.search
+var argv = ''
+
+if (st) {
+  var slen = st.length
+  var est = st.indexOf("&error")
+  var ust = st.indexOf("?user")
+  var ast = st.indexOf("?argv")
+  if (est > -1) {
+    error = st.substr(est+7)
+    slen = est
+  }
+  if (ust > -1)
+    user = st.substring(ust+6, slen)
+  if (ast > -1)
+    argv = st.substr(ast)
+}
+
+function selectField() {
+  var df = document.p
+  if (argv){
+    var ars = argv.split('&')
+    for (i=0; i<ars.length; i++)
+      df.argv[i].value = ars[i].substr(ars[i].indexOf('=')+1)
+  }
+  if (user) {
+    df.user.value = user
+    df.password.focus()
+  }
+  else
+    df.user.focus()
+}
+
+function errorHTML() {
+  var s=''
+  if (error || user)
+    s+='<tr><td>&nbsp;</td><td><div class="logErr">' + 
+        '<table border="0" cellspacing="0" cellpadding="0">' +
+        '<tr><td valign="top">' + 
+        '<img src="imx/Error_Large.gif" width="21" height="20" alt="Error" vspace="3">' +
+        '&#160;&#160;</td><td><span class="AlrtErrTxt">'
+
+  if (error) 
+    s+=unescape(error)
+  
+  if (user && !error)
+    s+='Authentication Failed<br>Reenter your username and password.<br>&nbsp<br>'
+ 
+  if (error || user)
+    s+='</span></td></tr></table></div></td></tr>'
+
+  document.write(s)
+}
+
+function openPop(f, name) {
+  var lang ='en'
+  window.open(lang + '/' + f + '&lang=' + lang, name,
+    'resizable=yes, scrollbars=yes, width=650,height=460')
+}
+
+</script> 
+  <style type="text/css" media="all">
+@import url("en/webmail.css");
+</style> 
+ </head> 
+ <body onload="javascript: selectField()"> 
+  <div id="monogram"> 
+   <a href="http://www.usc.edu"><img src="images/mono-gold-cardinal-med.gif" alt="" width="65" height="50" border="0"></a> 
+  </div> 
+  <div id="contain"> 
+   <div class="header">
+    <!--
+  -->
+    <a href="http://www.usc.edu" title="University of Southern California"> <img src="images/usc-name-gold-cardinal.gif" alt="University of Southern California" width="255" height="25" border="0"></a>
+   </div> 
+   <div class="header">
+    <!--
+  -->
+    <a href="http://www.usc.edu/its/" title="Store0"><img src="images/its_header.gif" alt="ITS Home" width="286" border="0"></a>
+   </div> 
+   <div id="main"> 
+    <div id="photobar"> 
+     <h1>USC Web Mail</h1> 
+    </div> 
+    <table summary="emai login and help" border="0" cellpadding="0" cellspacing="0"> 
+     <tbody>
+      <tr> 
+       <td id="leftcol" valign="top" width="426"> 
+        <div class="h2pad">
+         <h2>Announcements</h2>
+        </div> <p>USC's Information Technology Services (ITS) has completed the move of all student email accounts from the central email service (email.usc.edu) to the Google Apps at USC for Students Gmail service. <font color="red">From June 30 onward, all students will access their USC email by logging into my.usc.edu and clicking the Gmail link under Google Apps at USC.</font> Read more here: <a href="http://itservices.usc.edu/gmail-for-all-usc-students/">http://itservices.usc.edu/gmail-for-all-usc-students/</a>.</p> <p> ITS is in the process of moving all faculty, staff, and organization accounts from the central email service (email.usc.edu) to Office 365. Read more here: <a href="http://itservices.usc.edu/office365/">http://itservices.usc.edu/office365/</a>. </p> 
+        <div class="h2pad">
+         <h2>Email Login</h2>
+        </div> 
+        <table border="0" cellpadding="2" cellspacing="2"> 
+         <script> errorHTML(); </script> 
+         <form accept-charset="UTF-8" name="p" action="login.msc" method="post"></form> 
+         <tbody>
+          <tr> 
+           <td class="leftcell" valign="middle" align="left"> <span class="form">User Name:</span> </td>
+           <td> <input class="field" type="text" name="user" size="20"> </td> 
+          </tr>
+          <tr> 
+           <td class="leftcell" valign="middle" align="left"> <span class="form">Password:</span> </td>
+           <td> <input class="field" type="password" name="password" size="20"> </td> 
+          </tr> 
+          <tr>
+           <td>&nbsp;</td>
+           <td valign="top"> <input class="button" type="submit" value="Log In" title="Log In SunONE Messenger Express"> <input type="hidden" name="argv" value=""> </td>
+          </tr>
+         </tbody>
+        </table>  </td> 
+       <td id="rightcol" valign="top"> 
+        <div class="h2pad">
+         <h2>Help with Email</h2>
+        </div> 
+        <ul class="help"> 
+         <li><a href="http://www.usc.edu/firstlogin">Activate your email account</a></li> 
+         <li><a href="http://www.usc.edu/its/doc/internet/email/webmail/">Help using USC Web Mail</a></li> 
+         <li><a href="http://www.usc.edu/its/doc/internet/email/">Help configuring email clients</a></li> 
+         <li><a href="http://www.usc.edu/its/password">Password Change</a></li> 
+        </ul> <p class="right"> If you have problems, contact ITS Customer Support Center by phone at (213) 740-5555 or via email at <a href="mailto:consult@usc.edu">consult@usc.edu</a>.</p> </td> 
+      </tr> 
+     </tbody>
+    </table> 
+    <div id="footer"> 
+     <h3><a href="http://www.usc.edu/its/" title="MMP1">ITS</a> &gt; Web Mail</h3> 
+    </div> 
+   </div> 
+  </div>   
+ </body>
+</html>

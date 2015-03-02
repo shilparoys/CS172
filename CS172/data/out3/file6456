@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <script type="text/javascript" charset="utf-8" src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script> 
+  <script type="text/javascript" charset="utf-8" src="/js112/jquery-ui-1.9.2.custom.min.js"></script> 
+  <meta content="yes" name="apple-mobile-web-app-capable"> 
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"> 
+  <meta content="minimum-scale=1.0, width=device-width, maximum-scale=4.0, user-scalable=yes" name="viewport"> 
+  <link href="/iWebKit5.04/Framework/css/style.css" rel="stylesheet" media="screen" type="text/css"> 
+  <link rel="stylesheet" href="/css112/mobile.css" type="text/css" media="handheld, all"> 
+  <script src="/iWebKit5.04/Framework/javascript/functions.js" type="text/javascript"></script> 
+  <meta name="robots" content="noindex,nofollow"> 
+  <title>Library Answers</title> 
+  <style>
+			/* Webkit overrides. */
+					body {
+						background:-webkit-gradient(linear,left top,right top,from(#D1D0B6),color-stop(71%, #D1D0B6),color-stop(72%, #D7D6C0),to(#D7D6C0));
+						-webkit-touch-callout:default;
+						font-family: Verdana, Arial;
+						font-size: 10px;
+					}
+					.textbox { margin: 7px; font-size: 10pt; }
+					#title { padding: 0px; padding-top: 5px; position: relative; height: 100%; border: 0px solid #00ff00; line-height: 40px;}
+					#topbar { height: 45px; width: auto; }
+					/* search results styles */
+					#topbar{
+						position:relative;
+						left:0;
+						top:0;
+						width:auto;
+						background:-webkit-gradient(linear,0% 0%,0% 100%,from(#cdd5df),color-stop(3%,#b0bccd),color-stop(50%,#889bb3),color-stop(51%,#8195af),color-stop(97%,#6d84a2),to(#2d3642));
+						margin-bottom:13px
+					}
+					input[type="radio"] {-webkit-appearance: radio; position: relative; margin: 7px; width: 10px; height: auto;}
+					
+					/* jquery autocomplete 
+					.ui-widget { font-size: .7em; }*/		</style> 
+  <script>
+			var gIID = "41";
+			
+			//action for browse dropdown
+			function nav(elt, action) {
+				var options = elt.options;
+				document.location.href = '/mobile.php?action=' + action + '&tid=' + elt.value;
+			}
+			
+			//validate question form
+			function askQmobile(err_q, err_email, err_qlen, err_demo, failure){
+				if (jQuery('#pquestion').val() == "" && jQuery('#pdetails').val() == ""){ alert(err_q); return false; }
+				var validate_type = 0; //0=email 1=phone
+				if (jQuery('#preptype').length > 0) {
+					v = jQuery("#preptype").val();
+					v = v.split('##');
+					validate_type = v[0];
+				}				
+				var emailRegex = /^(['a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,6})+$/i;
+				var smsregex = /^\+?[0-9]{10,}$/;
+				var emailask = jQuery.trim(jQuery('#pemail').val());
+				if (validate_type == 1){
+					//emailask = emailask.replace(/\D/g,'');
+					//if (!emailask.match(smsregex)) {	alert(err_email); return false; }
+				} else {
+					if (!emailask.match(emailRegex)) {	alert(err_email); return false; }
+				}
+				
+				var incomplete = 0;
+				jQuery("#askqform input:text.required").each(function(i){
+					if (jQuery(this).val() == "") {
+						incomplete = 1;
+					}
+				});
+				jQuery("#askqform select.required").each(function(i){
+					if (jQuery(this).val() == 0) {
+						incomplete = 1;
+					}
+				});
+				if (incomplete == 1) { alert(err_demo); return false; }
+								
+				//return true;
+				jQuery('#qsubmitbutton').prop('disabled', true);
+				
+				jQuery.post(
+					'/process.php?m=newq',
+					jQuery('#askqform').serialize(),
+					function(data) {
+						var dd_array=data.split("#@#@");
+						if (parseInt(dd_array[0]) > 0) {
+							alert(dd_array[1]);
+							jQuery('#askqform textarea').val('');
+							jQuery('#askqform input:text').val('');
+							jQuery('#askqform select').val(0);
+						} else {
+							alert(failure);
+						}
+						jQuery('#qsubmitbutton').prop('disabled', false);
+					}
+				);
+				
+				
+				return false;
+			}
+			
+			//adjust pemail field/label for varying reponse types
+			function changeResponseType(v) {
+				d = v.split('##');
+				jQuery('#label_pemail').html(d[1]+'<span class="reqnote"> *</span>');
+				if (jQuery('#confem').length > 0) {
+					if (d[0] == 1) {
+						jQuery('#confem').prop('checked', false).prop('disabled', true);
+						jQuery('#confem_f label').css('color', '#aaa');
+					} else {
+						jQuery('#confem').prop('disabled', false);
+						jQuery('#confem_f label').css('color', 'inherit');
+					}
+				}			
+			}
+			
+			//add another file upload field
+			var fileupcount = 1;
+			function addFileUp() {
+				$cur = jQuery('#pfileup'+fileupcount);
+				fileupcount = fileupcount+1;
+				$cur.after('<br/><input type=file class=inputtext name=pfileup'+fileupcount+' id=pfileup'+fileupcount+' />');
+				if (fileupcount == 5) { jQuery('#addfileup').remove(); }
+				return false;
+			}
+						
+			//enable the ask us autocomplete. Call this inside document ready function
+			function enableAutocomplete() {
+				
+				jQuery("#qtext").autocomplete({
+						source: "process_searchitem.php?iid="+gIID,
+						minLength: 3,
+						select: function( event, ui ) {
+							doSearch(ui.item.id, ui.item.label);
+							return false;
+						}
+					});
+			
+			}
+			
+			//when autocomplete option is selected
+			function doSearch(qid, question){
+				var action = '8';	
+				document.location.href = '/mobile.php?action=' + action + '&s=' + question;
+				return false;
+			}
+			
+			
+			//comment via js to avoid spam
+			function addComment(msg, warn){
+				if (jQuery('#cname').val() == "") { alert(warn); return false; }
+				if (jQuery('#cemail').val() == "") { alert(warn); return false; }
+				if (jQuery('#cpost').val() == "") { alert(warn); return false; }
+				jQuery('#comsubmitbut').text('Working...');
+				jQuery.post(
+					'process_comments.php?m=addcomment',
+					jQuery('#commentform').serialize(),
+					function(data){
+						if (data > 0){
+							jQuery('#box_content_commentform').html(msg);
+						} else {
+							alert('Error');
+						}
+					}
+				);
+				return false;
+			}
+			
+			
+			//redo the dialogue as an alert
+			function mwMoreInfo(id) {
+				jQuery('#mwdetails'+id).toggle();
+				return false;
+			}
+			
+			jQuery(document).ready(function () {
+				enableAutocomplete();
+			});
+			
+		</script> 
+ </head> 
+ <body id="mobile_php"> 
+  <div id="topbar"> 
+   <a href="/mobile.php" style="text-decoration: none;">
+    <div id="title">
+     CCC Library Answers
+    </div></a> 
+  </div>
+  <div class="searchbox ui-widget"> 
+   <form id="mainsearch" action="/mobile.php" method="get" style="width: 80%;"> 
+    <input type="text" name="s" id="qtext" value="Ask Your Question. Get An Answer." style="width: 100%;" onfocus="if(this.value=='Ask Your Question. Get An Answer.'){this.value='';}"> 
+    <input type="hidden" name="action" value="8"> 
+   </form> 
+  </div>
+  <ul class="pageitem">
+   <li class="textbox">A library database of questions and answers.</li>
+  </ul>
+  <span class="graytitle">Browse Answers</span>
+  <ul id="hpbrowse" class="pageitem">
+   <li class="select" style="padding-left: 2px;"><select name="sel_topics" style="font-size: 14px; padding-left: 5px;" onchange="nav(this, '2');"><option value="0">By Topic</option><option value="443">Articles (57)</option><option value="474">College Services (33)</option><option value="431">Library Card (24)</option><option value="444">Books (23)</option><option value="458">Blackwood Library (23)</option><option value="430">Borrowing (21)</option><option value="605">Databases (20)</option><option value="476">Computers (19)</option><option value="461">Off-campus Access (16)</option><option value="446">Journals (16)</option><option value="453">Printing (12)</option><option value="447">Peer-Review (11)</option><option value="449">Citing Sources (11)</option><option value="478">Leisure Collection (10)</option><option value="452">Library Account (9)</option><option value="703">Blackwood Campus Map (9)</option><option value="705">CCC campus locations (8)</option><option value="490">Tutoring (8)</option><option value="442">Reserves (8)</option><option value="445">E-Books (7)</option><option value="1028">Library Policy (7)</option><option value="1600">Biology (7)</option><option value="517">Research (7)</option><option value="26098">Museum Pass (7)</option><option value="8209">College Policy (7)</option><option value="7607">Library Services (6)</option><option value="489">Testing Center (6)</option><option value="483">Scholarly (6)</option><option value="492">Textbooks (6)</option><option value="459">Interlibrary Loan (6)</option><option value="717">Wireless (5)</option><option value="702">Computer Classroom/Labs (5)</option><option value="1148">MLA (5)</option><option value="448">Hours (5)</option><option value="7762">Periodicals (5)</option><option value="516">Open Lab (5)</option><option value="577">Email (4)</option><option value="519">College Bookstore (4)</option><option value="433">Renew (4)</option><option value="5393">Business (4)</option><option value="724">College Emergency Closing (4)</option><option value="432">Library PIN (4)</option><option value="1703">Math (3)</option><option value="1661">Financial Aid (3)</option><option value="671">NoodleBib (3)</option><option value="17171">EasySearch (3)</option><option value="480">catalog (3)</option><option value="603">primary article (3)</option><option value="477">Guides (3)</option><option value="475">Local Libraries (3)</option><option value="472">Reference (3)</option><option value="460">Study Rooms (3)</option><option value="8583">Academic Advising (3)</option><option value="9847">Scientific Abstract Assignment (2)</option><option value="1751">WebAdvisor (2)</option><option value="2328">WebStudy (2)</option><option value="26356">Book Store (2)</option><option value="7988">English Essay Exam (2)</option><option value="14909">Writing (2)</option><option value="6964">Reference Collection (2)</option><option value="3444">Library Service Desk (2)</option><option value="1168">Circulation (2)</option><option value="1111">Photocopier (2)</option><option value="473">Newspapers (2)</option><option value="602">Internet (2)</option><option value="456">Camden (2)</option><option value="708">Student's Rights &amp; Responsibilities (2)</option><option value="491">law (2)</option><option value="454">Renew Library Card (2)</option><option value="518">HelpDesk (2)</option><option value="451">Fines (2)</option><option value="1149">APA (2)</option><option value="604">secondary article (2)</option><option value="8584">College Catalog (1)</option><option value="8585">Academic Program Guides (1)</option><option value="9585">Windows Live (1)</option><option value="455">Video/DVD (1)</option><option value="25517">Disability Services (1)</option><option value="7926">Events (1)</option><option value="598">Classes (1)</option><option value="599">Classrooms (1)</option><option value="1676">Mobile (1)</option><option value="1684">Nutrition (1)</option><option value="1685">Art (1)</option><option value="515">Scanner (1)</option><option value="707">Student Handbook (1)</option><option value="3442">Headphones (1)</option><option value="706">Student Code of Conduct (1)</option><option value="6293">Nursing (1)</option><option value="6294">Career (1)</option><option value="7161">children (1)</option><option value="7606">Chat (1)</option><option value="3443">Lost and Found (1)</option></select><span class="arrow"></span></li>
+   <li class="menu"><a href="/mobile.php?action=4"> <span class="name" style="font-size: 14px;">Recent</span> 
+     <div style="font-size: 1px; line-height: 1px; ">
+      &nbsp;
+     </div> <span class="arrow"></span></a></li>
+  </ul>
+  <ul class="pageitem">
+   <li class="menu"><a href="/mobile.php?action=7"> <span class="name" style="font-size: 14px;">Live Chat</span> 
+     <div style="font-size: 1px; line-height: 1px; ">
+      &nbsp;
+     </div> <span class="arrow"></span></a></li>
+  </ul>
+  <span class="graytitle"></span>
+  <ul class="pageitem">
+   <li class="textbox">
+    <ul id="mwlist">
+     <li id="mw25" style="clear:both">
+      <div class="mwicon">
+       <img src="http://laimages.s3.amazonaws.com/icon_mobile.gif" alt="a small icon">
+      </div>
+      <div class="mwtext">
+       Via SMS: TXT your question
+       <br>to 
+       <span id="smsnumber"><a href="sms:18566778983">(856) 677-8983</a></span> &nbsp;
+       <a href="#" class="moreinfo" onclick="return mwMoreInfo('25')">more info</a>
+      </div>
+      <div id="mwdetails25" class="mwdetails">
+       Send a question to a librarian at the Blackwood library by text message.
+       <br>
+       <br> 
+       <a href="http://library.camdencc.edu/HoursLocationMore/Hours.html">Library hours</a> and librarian availability may effect response time.
+      </div></li>
+     <li id="mw3065" style="clear:both">
+      <div class="mwicon">
+       <img src="http://laimages.s3.amazonaws.com/icon_phone.gif" alt="a small icon">
+      </div>
+      <div class="mwtext">
+       Call Us: (856) 227-7200 ext 4408 (Blackwood Campus Library)
+      </div>
+      <div id="mwdetails3065" class="mwdetails"></div></li>
+    </ul><br style="clear:both;"></li>
+  </ul>
+  <ul class="pageitem">
+   <li class="textbox"><strong>Submit Your Question</strong></li>
+   <li class="textbox">Fill out this form, and a CCC Librarian will reply by email excluding weekends and days that the library is closed.</li>
+  </ul>
+  <form name="askqform" id="askqform" method="post" onsubmit="return askQmobile('Please enter a question.', 'Invalid email address.', 'Question must not be longer than 150 characters.', 'Please answer all required questions.', 'Error submitting your question. Please reload the page and try again.');">
+   <ul class="pageitem">
+    <li class="textbox"><a name="questionform"></a><input type="hidden" name="instid" value="41"> <input type="hidden" name="qlog" value="0"> <input type="hidden" name="pu" value=""> <input type="hidden" name="source" value="3"><label for="pquestion">Question:</label><br><textarea name="pquestion" id="pquestion" class="textinput"></textarea></li> 
+    <li class="textbox" id="pdetails_f"><label for="pdetails">More Detail/Explanation:</label><br><textarea name="pdetails" id="pdetails" class="textinput"></textarea></li>
+    <li></li>
+    <li class="textbox"><label for="pemail">Email<span class="reqnote"> *</span></label> <input class="textinput required" type="text" id="pemail" name="pemail" value=""></li>
+    <li class="select" style="padding-left: 2px;"><select class=" required" name="val1" id="val1"><option value="0">College Status  *</option><option value="1">Student</option><option value="2">Faculty</option><option value="3">Staff</option></select><span class="arrow"></span></li>
+    <li class="textbox" id="confem_f"><input type="checkbox" name="confem" id="confem" value="1"> <label class="radiolabel" for="confem">Receive an email confirmation of your submission.</label></li>
+    <li class="textbox">Fields marked with <span class="reqnote"> *</span> are required.<br><br><button type="submit" id="qsubmitbutton">Submit Your Question</button></li>
+   </ul>
+   <div id="mobile_footer_nav"> 
+    <a id="footer_top_link" href="#">^ Top</a>&nbsp;&nbsp;
+    <span id="footer_top_link_spacer">|</span>&nbsp;&nbsp;
+    <a id="footer_home_page_link" href="/mobile.php">Home</a>&nbsp;&nbsp;
+    <span id="footer_home_page_link_spacer">|</span>&nbsp;&nbsp;
+    <a id="footer_full_site_link" href="/index.php?full_site=1">Full Site</a> 
+   </div> 
+   <div id="mobile_footer"> 
+    <div style="text-align: center;"> 
+     <div id="footer_powered_by">
+      Powered by 
+      <a href="http://www.springshare.com">Springshare</a> and iWebKit.
+     </div> 
+     <div id="footer_rights">
+      All rights reserved.
+     </div> 
+     <div id="footer_support_link">
+      <a href="http://ask.springshare.com/ask">Report a tech support issue.</a>
+     </div> 
+    </div> 
+   </div>   
+  </form>
+ </body>
+</html>

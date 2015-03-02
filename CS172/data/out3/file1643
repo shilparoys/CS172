@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:fb="http://ogp.me/ns/fb#">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+  <script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"UQIHWFZXGwUJVVhRDwc="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=s(e),f=c.length,u=i(a,o,r),d=0;f>d;d++)c[d].apply(u,n);return u}function a(t,e){f[t]=s(t).concat(e)}function s(t){return f[t]||[]}function c(){return n(e)}var f={};return{on:a,emit:e,create:c,listeners:s,_events:f}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],3:[function(t){function e(t,e,n,i,s){try{c?c-=1:r("err",[s||new UncaughtException(t,e,n)])}catch(f){try{r("ierr",[f,(new Date).getTime(),!0])}catch(u){}}return"function"==typeof a?a.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(5),i=t("ee"),a=window.onerror,s=!1,c=0;t("loader").features.err=!0,window.onerror=e;try{throw new Error}catch(f){"stack"in f&&(t(1),t(4),"addEventListener"in window&&t(2),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&t(3),s=!0)}i.on("fn-start",function(){s&&(c+=1)}),i.on("fn-err",function(t,e,r){s&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){s&&!this.thrown&&c>0&&(c-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:8,2:5,3:9,4:7,5:22,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],4:[function(t){function e(){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var n=t("ee"),r=t("handle"),o=t(1);t("loader").features.stn=!0,t(2),n.on("fn-start",function(t){var e=t[0];e instanceof Event&&(this.bstStart=Date.now())}),n.on("fn-end",function(t,e){var n=t[0];n instanceof Event&&r("bst",[n,e,this.bstStart,Date.now()])}),o.on("fn-start",function(t,e,n){this.bstStart=Date.now(),this.bstType=n}),o.on("fn-end",function(t,e){r("bstTimer",[e,this.bstStart,Date.now(),this.bstType])}),n.on("pushState-start",function(){this.time=Date.now(),this.startPath=location.pathname+location.hash}),n.on("pushState-end",function(){r("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),"addEventListener"in window.performance&&(window.performance.addEventListener("webkitresourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.webkitClearResourceTimings()},!1),window.performance.addEventListener("resourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.clearResourceTimings()},!1)),document.addEventListener("scroll",e,!1),document.addEventListener("keypress",e,!1),document.addEventListener("click",e,!1)}},{1:8,2:6,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],5:[function(t,e){function n(t){i.inPlace(t,["addEventListener","removeEventListener"],"-",r)}function r(t){return t[1]}var o=(t(1),t("ee").create()),i=t(2)(o),a=t("gos");if(e.exports=o,n(window),"getPrototypeOf"in Object){for(var s=document;s&&!s.hasOwnProperty("addEventListener");)s=Object.getPrototypeOf(s);s&&n(s);for(var c=XMLHttpRequest.prototype;c&&!c.hasOwnProperty("addEventListener");)c=Object.getPrototypeOf(c);c&&n(c)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&n(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t){if(t[1]){var e=t[1];"function"==typeof e?this.wrapped=t[1]=a(e,"nr@wrapped",function(){return i(e,"fn-",null,e.name||"anonymous")}):"function"==typeof e.handleEvent&&i.inPlace(e,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:22,2:23,ee:"QJf3ax",gos:"7eSDFh"}],6:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window.history,["pushState"],"-")},{1:23,2:22,ee:"QJf3ax"}],7:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=r(t[0],"fn-")})},{1:23,2:22,ee:"QJf3ax"}],8:[function(t,e){function n(t,e,n){var r=t[0];"string"==typeof r&&(r=new Function(r)),t[0]=o(r,"fn-",null,n)}var r=(t(2),t("ee").create()),o=t(1)(r);e.exports=r,o.inPlace(window,["setTimeout","setInterval","setImmediate"],"setTimer-"),r.on("setTimer-start",n)},{1:23,2:22,ee:"QJf3ax"}],9:[function(t,e){function n(){c.inPlace(this,d,"fn-")}function r(t,e){c.inPlace(e,["onreadystatechange"],"fn-")}function o(t,e){return e}var i=t("ee").create(),a=t(1),s=t(2),c=s(i),f=s(a),u=window.XMLHttpRequest,d=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];e.exports=i,window.XMLHttpRequest=function(t){var e=new u(t);try{i.emit("new-xhr",[],e),f.inPlace(e,["addEventListener","removeEventListener"],"-",function(t,e){return e}),e.addEventListener("readystatechange",n,!1)}catch(r){try{i.emit("internal-error",[r])}catch(o){}}return e},window.XMLHttpRequest.prototype=u.prototype,c.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",o),i.on("send-xhr-start",r),i.on("open-xhr-start",r)},{1:5,2:23,ee:"QJf3ax"}],10:[function(t){function e(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function n(t){var n=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;c>i;i++)t.removeEventListener(s[i],this.listener,!1);if(!n.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){n.status=t.status;var a=t.responseType,f="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,u=e(f);if(u&&(r.rxSize=u),this.sameOrigin){var d=t.getResponseHeader("X-NewRelic-App-Data");d&&(n.cat=d.split(", ").pop())}}else n.status=0;r.cbTime=this.cbTime,o("xhr",[n,r,this.startTime])}}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}if(window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)){t("loader").features.xhr=!0;var o=t("handle"),i=t(2),a=t("ee"),s=["load","error","abort","timeout"],c=s.length,f=t(1);t(4),t(3),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=n,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,n){var r=this.metrics,o=t[0],i=this;if(r&&o){var f=e(o);f&&(r.txSize=f)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof n.onload))&&i.end(n)}catch(e){try{a.emit("internal-error",[e])}catch(r){}}};for(var u=0;c>u;u++)n.addEventListener(s[u],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof XMLHttpRequest&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&&a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{1:"XL7HBI",2:11,3:9,4:5,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],11:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&&e.port===n.port&&e.protocol===n.protocol,r}},{}],12:[function(t,e){function n(t){return function(){r(t,[(new Date).getTime()].concat(i(arguments)))}}var r=t("handle"),o=t(1),i=t(2);"undefined"==typeof window.newrelic&&(newrelic=window.NREUM);var a=["setPageViewName","trackUserAction","finished","traceEvent","inlineHit","noticeError"];o(a,function(t,e){window.NREUM[e]=n("api-"+e)}),e.exports=window.NREUM},{1:21,2:22,handle:"D5DuLP"}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):(o[t]||(o[t]=[]),void o[t].push(e))}var r=t("ee").create(),o={};e.exports=n,n.ee=r,r.q=o},{ee:"QJf3ax"}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],G9z0Bl:[function(t,e){function n(){var t=l.info=NREUM.info;if(t&&t.licenseKey&&t.applicationID&&f&&f.body){s(h,function(e,n){e in t||(t[e]=n)}),l.proto="https"===p.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var e=f.createElement("script");e.src=l.proto+t.agent,f.body.appendChild(e)}}function r(){"complete"===f.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=t(1),c=(t(2),window),f=c.document,u="addEventListener",d="attachEvent",p=(""+location).split("?")[0],h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-536.min.js"},l=e.exports={offset:i(),origin:p,features:{}};f[u]?(f[u]("DOMContentLoaded",o,!1),c[u]("load",n,!1)):(f[d]("onreadystatechange",r),c[d]("onload",n)),a("mark",["firstbyte",i()])},{1:21,2:12,handle:"D5DuLP"}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],21:[function(t,e){function n(t,e){var n=[],o="",i=0;for(o in t)r.call(t,o)&&(n[i]=e(o,t[o]),i+=1);return n}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],22:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],23:[function(t,e){function n(t){return!(t&&"function"==typeof t&&t.apply&&!t[i])}var r=t("ee"),o=t(1),i="nr@wrapper",a=Object.prototype.hasOwnProperty;e.exports=function(t){function e(t,e,r,a){function nrWrapper(){var n,i,s,f;try{i=this,n=o(arguments),s=r&&r(n,i)||{}}catch(d){u([d,"",[n,i,a],s])}c(e+"start",[n,i,a],s);try{return f=t.apply(i,n)}catch(p){throw c(e+"err",[n,i,p],s),p}finally{c(e+"end",[n,i,f],s)}}return n(t)?t:(e||(e=""),nrWrapper[i]=!0,f(t,nrWrapper),nrWrapper)}function s(t,r,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<r.length;c++)s=r[c],a=t[s],n(a)||(t[s]=e(a,f?s+o:o,i,s,t))}function c(e,n,r){try{t.emit(e,n,r)}catch(o){u([o,e,n,r])}}function f(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){u([r])}for(var o in t)a.call(t,o)&&(e[o]=t[o]);return e}function u(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=r),e.inPlace=s,e.flag=i,e}},{1:22,ee:"QJf3ax"}]},{},["G9z0Bl",3,10,4]);</script>
+  <meta content="en" http-equiv="Content-Language">
+  <title>ZDNet | Technology News, Analysis, Comments and Product Reviews for IT Professionals | ZDNet</title>
+  <meta name="description" content="ZDNet's breaking news, analysis, and research keeps business technology professionals in touch with the latest IT trends, issues and events.">
+  <meta property="og:site_name" content="ZDNet">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ZDNet | Technology News, Analysis, Comments and Product Reviews for IT Professionals | ZDNet">
+  <meta property="og:description" content="ZDNet's breaking news, analysis, and research keeps business technology professionals in touch with the latest IT trends, issues and events.">
+  <meta property="og:image" content="http://zdnet4.cbsistatic.com/fly/287-fly/bundles/zdnetcore/images/logos/zdnet-logo-large.png">
+  <meta name="viewport" content="width=device-width, user-scalable=no, maximum-scale=1, minimum-scale=1">
+  <link rel="publisher" href="https://plus.google.com/105074359186426139750/">
+  <link rel="stylesheet" href="http://zdnet4.cbsistatic.com/fly/287-fly/bundles/zdnetcss/css/core/main.css">
+  <!--[if (lt IE 9)&(!IEMobile)]>
+            <link rel="stylesheet" href="http://zdnet4.cbsistatic.com/fly/287-fly/bundles/zdnetcss/css/core/ie8.css" media="screen">
+        <![endif]-->
+  <link rel="stylesheet" href="http://zdnet4.cbsistatic.com/fly/287-fly/bundles/zdnetcss/css/feature/default/default.css">
+  <script src="http://zdnet2.cbsistatic.com/fly/287-fly/bundles/zdnetjs/js/libs/bugsnag.js" data-apikey="73dab256d272cc12b69dca8e51241bc3" data-appversion="287-fly"></script>
+  <script type="text/javascript">
+    window.ZdnetPageVars = {
+        ads: {
+            enabled: true,
+            data: {"gpt":{"targeting":{"device":"desktop","ptype":"front_door","cid":"homepage","env":"prod"},"adConfig":{"network":{"local":7336,"dev":7336,"qa":8264,"demo":8264,"stage":8264,"prod":8264,"stageDebug":8264,"prodDebug":8264},"method":"async-inline","regions":[{"region":"uk","countries":["gb","ie","za","bh","kw","om","qa","sa","ae","iq","eg","ye","fr"]},{"region":"au","countries":["au","nz"]},{"region":"asia","countries":["sg","my","th","id","ph","hk","vn","tw"]},{"region":"in","countries":["in"]}],"adUnits":{"intromercial":{"outOfPage":true,"eventCallbacks":{"slotRenderEnded":"intromercialCallback"}},"skin":{"sizes":[[1600,1000]],"position":"top"},"marquee":{"sizes":[300,60]},"hotspot":{"sizes":[165,421]},"multiplexer":{"sizes":[460,170]},"ticker":{"sizes":[980,45]},"replay":{"sizes":[460,160]},"resourceCenterTop":{"sizes":[[300,300]],"position":"top"},"resourceCenterBottom":{"sizes":[[632,160]],"position":"bottom"},"mpuPlusTop":{"sizes":[[300,250],[300,600],[300,1050]],"position":"top","eventCallbacks":{"slotRenderEnded":"mpuCallback"}},"marqueeTop":{"sizes":[[234,60]],"position":"top"},"mpuTop":{"sizes":[[300,250],[300,600]],"position":"top"},"mpuBottom":{"sizes":[300,250],"position":"bottom","eventCallbacks":{"slotRenderEnded":"mpuCallback"}},"leaderPlusTop":{"sizes":[[728,90],[970,66],[970,250]],"position":"top","eventCallbacks":{"slotRenderEnded":"leaderCallback"}},"leaderTop":{"sizes":[[728,90],[970,66]],"position":"bottom"},"buttonTop":{"sizes":[[88,31]],"position":"top"},"mpuMiddle":{"sizes":[300,250],"position":"middle","eventCallbacks":{"slotRenderEnded":"mpuCallback"}},"leaderPlusBottom":{"sizes":[[728,90],[970,66],[970,250]],"position":"bottom","eventCallbacks":{"slotRenderEnded":"leaderCallback"}},"inpageVideoTop":{"sizes":[641,321],"position":"top"},"vendorTextLink":{"sizes":[300,450]},"featureSponsor":{"sizes":[88,31]},"sponsorLogo":{"sizes":[120,60]},"sponsoredTextLink":{"sizes":[401,11]},"resourceCenter":{"sizes":[300,261]},"specialFeatureRiver":{"sizes":[620,134]}},"mobile":{"adUnits":{"hpto":{"outOfPage":true},"mobileBannerTop":{"sizes":[[320,50],[6,1]],"position":"increment"},"mobileBannerMpuHptoOverlay":{"outOfPage":true},"mobileMpuBottom":{"sizes":[[300,250]],"position":"increment"},"mobileBanner":{"sizes":[[320,50]],"position":"increment"},"mobileBannerPlus":{"sizes":[[300,250],[320,50],[621,221]],"position":"increment"}}},"tablet":{"adUnits":{"intromercial":{"outOfPage":true,"eventCallbacks":{"slotRenderEnded":"intromercialCallback"}},"multiplexer":{"sizes":[460,170]},"resourceCenterTop":{"sizes":[[300,300]],"position":"top"},"resourceCenterBottom":{"sizes":[[632,160]],"position":"bottom"},"mpuPlusTop":{"sizes":[[300,250],[300,600]],"position":"top","eventCallbacks":{"slotRenderEnded":"mpuCallback"}},"marqueeTop":{"sizes":[[234,60]],"position":"top"},"mpuTop":{"sizes":[[300,250],[300,600]],"position":"top"},"mpuBottom":{"sizes":[300,250],"position":"bottom","eventCallbacks":{"slotRenderEnded":"mpuCallback"}},"leaderTop":{"sizes":[[728,90],[970,66]],"position":"bottom"},"leaderPlusTop":{"sizes":[728,90],"position":"top","eventCallbacks":{"slotRenderEnded":"leaderCallback"}},"mpuMiddle":{"sizes":[300,250],"position":"middle","eventCallbacks":{"slotRenderEnded":"mpuCallback"}},"leaderPlusBottom":{"sizes":[728,90],"position":"bottom","eventCallbacks":{"slotRenderEnded":"leaderCallback"}},"specialFeatureRiver":{"sizes":[620,134]}}},"siteName":"zdnet","collapseEmptyDiv":true,"setRefreshUnfilledSlots":true,"setClearUnfilledSlots":false,"disableInitialLoad":false,"disableInitialLoadCompanions":false,"enableSingleRequest":true,"enableAsyncRendering":true,"defaultRegion":"aw","adOrder":["intromercial","skin","ticker","sponsored_text_link","leader_plus_top","marquee","vendor_text_link","mpu_plus_top","hotspot","resource_center","multiplexer","mpu_middle","mpu_bottom","leader_plus_bottom","inpage_video_top"]},"containerId":"54f3b84ae529e","slotVars":{"network":"8264","siteName":"zdnet","collapseEmptyDiv":"1","topics":"home","platform":"desktop"},"adType":"gpt","adDivIds":["multiplexer-54f3b84ae529e","replay-54f3b84ae529e","multiplexer-54f3b84ae529e-2","replay-54f3b84ae529e-2","multiplexer-54f3b84ae529e-3","replay-54f3b84ae529e-3","multiplexer-54f3b84ae529e-4","replay-54f3b84ae529e-4","mpu-plus-top-54f3b84ae529e","mpu-middle-54f3b84ae529e","mpu-bottom-54f3b84ae529e","ticker-54f3b84ae529e","sponsored-text-link-54f3b84ae529e","skin-54f3b84ae529e","intromercial-54f3b84ae529e","leader-plus-top-54f3b84ae529e","leader-plus-bottom-54f3b84ae529e"]},"cookieName":"zdnet_ad","cookieServicePath":"\/ad\/ad-cookie\/","session":8,"subSession":6,"useFirstPageTargeting":true}
+        },
+        assetsVersion: {
+            version: '287-fly'
+        },
+        edition: {
+            code: 'us'
+        },
+        environment: 'prod',
+        tracking: {
+            enabled: true,
+            data: {"isEnabled":true,"articleId":"a6363294-2d12-40c6-bd53-b0e752ad7f3f","articleType":"content_feature","deviceType":"desktop","isDev":"0","pageType":"front_door","siteSection":"home","siteType":"responsive web","siteId":2,"bkSiteId":3330,"limit":4,"rsid":"cnetzdnetglobalsite","siteName":"zdnet","demographicKeys":["jobFunction","jobCategory","industry","computerProficiency","companySize","gender","ageGroup","country"],"tealium":{"profile":"zdnet","env":"prod"}}
+        },
+        user: {
+            baseUrl: 'https://secure.zdnet.com'
+        }
+    };
+
+    if(window.Bugsnag) {
+        Bugsnag.releaseStage = 'prod';
+    }
+</script>
+  <script src="http://zdnet2.cbsistatic.com/fly/287-fly/bundles/flyjs/js/libs/guid-1.0.js"></script>
+  <script type="text/javascript">
+    var __tealium_data_guid = null;
+    if (typeof window.uuid.v1 === 'function'){
+        __tealium_data_guid=window.uuid.v1();
+    }
+
+    var _utag_obj={"isEnabled":true,"articleId":"a6363294-2d12-40c6-bd53-b0e752ad7f3f","articleType":"content_feature","deviceType":"desktop","isDev":"0","pageType":"front_door","siteSection":"home","siteType":"responsive web","siteId":2,"bkSiteId":3330,"limit":4,"rsid":"cnetzdnetglobalsite","siteName":"zdnet","demographicKeys":["jobFunction","jobCategory","industry","computerProficiency","companySize","gender","ageGroup","country"],"tealium":{"profile":"zdnet","env":"prod"}};    
+    _utag_obj.pageViewGuid=__tealium_data_guid;
+    var utag_data=_utag_obj;
+</script>
+  <script type="text/javascript" src="http://zdnet4.cbsistatic.com/fly/287-fly/bundles/flyjs/js/libs/require-2.1.2.js"></script>
+  <script type="text/javascript">
+    require.config({"baseUrl":"\/287-fly\/bundles\/zdnetjs\/js-build","config":{"version":{"fly\/components\/accordion":"1.0","fly\/components\/alert":"1.0","fly\/components\/base":"1.0","fly\/components\/carousel":"1.0","fly\/components\/dependent-field":"1.0","fly\/components\/dropdown":"1.0","fly\/components\/expose":"2.0","fly\/components\/fixate":"1.0","fly\/components\/form-validate":"1.0","fly\/components\/image-gallery":"1.0","fly\/components\/iframe-messenger":"1.0","fly\/components\/livefyre-commentcount":"1.0","fly\/components\/livefyre-conversation":"1.0","fly\/components\/load-more":"1.0","fly\/components\/load-more-scroll":"1.0","fly\/components\/loading":"1.0","fly\/components\/modal":"1.0","fly\/components\/modal-async":"1.0","fly\/components\/modal-iframe":"1.0","fly\/components\/poll":"1.0","fly\/components\/social-button":"1.0","fly\/components\/social-counts":"1.0","fly\/components\/social-links":"1.0","fly\/components\/selectMenu":"1.0","fly\/components\/tabs":"1.0","fly\/components\/tooltip":"1.0","fly\/components\/video":"1.0","components\/css-map":"4.4.14","components\/alert-preferences":"1.0","components\/alert":"1.0","components\/broadband-speed-test":"1.0","fly\/libs\/easy-xdm":"2.4.19.3","fly\/libs\/jquery.cookie":"1.2","fly\/libs\/jquery.mobile":"1.3.0","fly\/libs\/jquery.throttle-debounce":"1.1","fly\/libs\/jquery.widget":"1.9.2","fly\/libs\/urs":"1.0","fly\/managers\/ad":"2.0","fly\/managers\/clicktale":"1.0","fly\/managers\/components":"1.0","fly\/managers\/cookie":"1.0","fly\/managers\/debug":"1.0","fly\/managers\/geo":"1.0","fly\/managers\/gpt":"4.0","fly\/managers\/history":"1.0","fly\/managers\/madison":"1.0","fly\/managers\/social-authentication":"1.0","fly\/managers\/tealium":"1.0","fly\/managers\/user":"1.0","fly\/utils\/data-prefix":"1.0","fly\/utils\/data-selector":"1.0","fly\/utils\/function-natives":"1.0","fly\/utils\/guid":"1.0","fly\/utils\/jquery-mobile-init":"1.0","fly\/utils\/log":"1.0","fly\/utils\/object-helper":"1.0","fly\/utils\/string-helper":"1.0","fly\/utils\/string-vars":"1.0","fly\/utils\/url-helper":"1.0","libs\/jquery\/lazyload":"1.9.3","libs\/jquery\/mobile":"1.4.5","libs\/jquery\/ui\/jquery.ui.core":"1.9.2","libs\/jquery\/ui\/jquery.ui.draggable":"1.9.2","libs\/jquery\/ui\/jquery.ui.mouse":"1.9.2","libs\/jquery\/ui\/jquery.ui.position":"1.9.2","libs\/jquery\/ui\/jquery.ui.slider":"1.9.2","libs\/jquery\/ui\/jquery.ui.touch-punch":"0.2.2","libs\/flash-js-libs\/swfobject":"2.2","libs\/jquery\/jquery.tablesorter":"2.0.5"}},"shim":{"version!libs\/jquery\/jqueryCssmap\/jquery.cssmap":["jquery"],"version!libs\/jquery\/lazyload":["jquery"],"version!libs\/jquery\/ui\/jquery.ui.core":["jquery"],"version!libs\/jquery\/ui\/jquery.ui.draggable":["jquery","version!libs\/jquery\/ui\/jquery.ui.core","version!fly\/libs\/jquery.widget","version!libs\/jquery\/ui\/jquery.ui.mouse"],"version!libs\/jquery\/ui\/jquery.ui.mouse":["jquery","version!libs\/jquery\/ui\/jquery.ui.core","version!fly\/libs\/jquery.widget"],"version!libs\/jquery\/ui\/jquery.ui.position":["jquery","version!libs\/jquery\/ui\/jquery.ui.core","version!fly\/libs\/jquery.widget"],"version!libs\/jquery\/ui\/jquery.ui.slider":["jquery","version!libs\/jquery\/ui\/jquery.ui.core","version!fly\/libs\/jquery.widget","version!libs\/jquery\/ui\/jquery.ui.mouse","version!libs\/jquery\/ui\/jquery.ui.touch-punch"],"version!libs\/jquery\/ui\/jquery.ui.touch-punch":["version!fly\/libs\/jquery.widget","version!libs\/jquery\/ui\/jquery.ui.mouse"],"version!libs\/jquery\/jquery.tablesorter":["jquery"]},"map":{"*":{"anonc":"\/\/dw.cbsi.com\/anonc.js","bluekai":"\/\/tags.bkrtx.com\/js\/bk-coretag.js","facebook":"\/\/connect.facebook.net\/en_US\/all.js","facebook-debug":"\/\/connect.facebook.net\/en_US\/all\/debug.js","google":"https:\/\/apis.google.com\/js\/plusone.js","google-csa":"\/\/www.google.com\/adsense\/search\/async-ads.js","gpt":"\/\/www.googletagservices.com\/tag\/js\/gpt.js","gpt-mobile":"\/\/www.googletagservices.com\/tag\/js\/gpt_mobile.js","linked-in":"\/\/platform.linkedin.com\/in.js?async=true","livefyre":"\/\/zor.livefyre.com\/wjs\/v3.0\/javascripts\/livefyre.js","livefyre-commentcount":"\/\/zor.livefyre.com\/wjs\/v1.0\/javascripts\/CommentCount.js","mpx":"..\/..\/cnetmpxpdk\/pdk\/tpPdk","nrelate":"http:\/\/static2.nrcdn.com\/common_js\/0.52.0\/nr_loader.min.js","pinterest":"\/\/assets.pinterest.com\/js\/pinit.js","recaptcha":"http:\/\/www.google.com\/recaptcha\/api\/js\/recaptcha_ajax.js","twitter":"\/\/platform.twitter.com\/widgets.js","urs":"\/\/urs.zdnet.com\/sdk\/urs.js","tealium":"\/\/tags.tiqcdn.com\/utag\/cbsi\/zdnetglobalsite\/prod\/utag.js","outbrain":"\/\/widgets.outbrain.com\/outbrain.js","yahooAds":"https:\/\/s.yimg.com\/uv\/dm\/scripts\/syndication.js","optimizely":"\/\/cdn.optimizely.com\/js\/328981956.js"}}});
+            require(['http://zdnet1.cbsistatic.com/fly/287-fly/bundles/zdnetjs/js-build/main.default.js']);
+    </script>
+  <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+  <script type="application/ld+json">
+{
+   "@context": "http://schema.org",
+   "@type": "WebSite",
+   "url": "http://www.zdnet.com/",
+   "potentialAction": {
+     "@type": "SearchAction",
+     "target": "http://www.zdnet.com/search?q={search_term_string}",
+     "query-input": "required name=search_term_string"
+   }
+}
+</script>
+ </head>
+ <body class=""> 
+  <div id="ticker-54f3b84ae529e" class="ad-ticker" data-ad="ticker"> 
+   <script>
+        window.console && console.log && console.log("ADS: queuing ticker-54f3b84ae529e for display");
+        var cbsiGptDivIds = cbsiGptDivIds || [];
+        cbsiGptDivIds.push("ticker-54f3b84ae529e");
+    </script>
+  </div> 
+  <header role="banner">
+   <div class="header container"> 
+    <a href="/" class="siteLogo">ZDNet</a> 
+    <div class="lvl-search"> 
+     <div class="sponsored-text-link"> 
+      <div id="sponsored-text-link-54f3b84ae529e" class="ad-sponsored-text-link" data-ad="sponsored-text-link"> 
+       <script>
+        window.console && console.log && console.log("ADS: queuing sponsored-text-link-54f3b84ae529e for display");
+        var cbsiGptDivIds = cbsiGptDivIds || [];
+        cbsiGptDivIds.push("sponsored-text-link-54f3b84ae529e");
+    </script>
+      </div> 
+     </div> 
+     <form class="siteSearch" method="get" action="/search/"> 
+      <fieldset class="box">
+       <input type="text" placeholder="Search ZDNet" tabindex="1" name="q" value="">
+       <input type="submit" value="Search">
+      </fieldset>
+     </form> 
+    </div> 
+    <div class="lvl-nav"> 
+     <nav class="secondaryNav">
+      <div class="siteUtils loggedOut"> 
+       <a href="https://secure.zdnet.com/user/login/?appId=1101" rel="nofollow" data-user-show="{&quot;action&quot;:&quot;login&quot;,&quot;params&quot;:{&quot;appId&quot;:1101,&quot;position&quot;:&quot;Header&quot;}}">Log In</a> | 
+       <a href="https://secure.zdnet.com/user/registration/?appId=1101" rel="nofollow" data-user-show="{&quot;action&quot;:&quot;register&quot;,&quot;params&quot;:{&quot;appId&quot;:1101,&quot;position&quot;:&quot;Header&quot;}}">Join ZDNet</a> 
+       <span class="avatar"><img src="http://zdnet4.cbsistatic.com/fly/287-fly/bundles/zdnetcore/images/avatar-20x20.jpg" alt="" width="20" height="20"></span> 
+      </div> 
+      <div class="nav expandable siteUtils loggedIn"> 
+       <a><span data-user-var="userName"></span> <span class="avatar"><img data-user-var="gravatarUrl" data-user-var-attr="src" src="http://zdnet4.cbsistatic.com/fly/287-fly/bundles/zdnetcore/images/avatar-20x20.jpg" alt="" width="20" height="20"></span> <span class="icon arrow"></span></a> 
+       <nav class="menu">
+        <ul>
+         <li><a href="https://secure.zdnet.com/members/edit-profile/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Header-SectionNav&quot;}" rel="nofollow">Manage</a></li> 
+         <li><a href="https://secure.zdnet.com/members/alert-preferences/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Header-SectionNav&quot;}" rel="nofollow">Discussion Alerts</a></li> 
+         <li><a href="http://www.zdnet.com/user/logout/" data-user-action="logout" data-omniture-track="trackLogout" rel="nofollow">Log Out</a></li> 
+        </ul>
+       </nav>
+      </div> 
+      <ul class="bar">
+       <li class="selected"><a href="/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Header-SectionNav&quot;}"><span class="icon home">header.nav.home</span></a></li> 
+       <li><a href="http://www.techrepublic.com/resource-library/whitepapers/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Header-SectionNav&quot;}">White Papers</a></li> 
+       <li><a href="/topic/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Header-SectionNav&quot;}">Hot Topics</a></li> 
+       <li><a href="http://downloads.zdnet.com/" data-download-link="true" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Header-SectionNav&quot;}">Downloads</a></li> 
+       <li><a href="/reviews/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Header-SectionNav&quot;}">Reviews</a></li> 
+       <li><a href="/newsletters/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Header-SectionNav&quot;}">Newsletters</a></li> 
+      </ul>
+     </nav>
+    </div> 
+   </div> 
+   <nav class="primaryNav container">
+    <ul class="bar editions">
+     <li class="expandable"><a aria-haspopup="true"><span data-label="edition"></span> Edition<span class="icon arrow"></span></a> 
+      <nav class="menu">
+       <ul data-component="editionToggler">
+        <li><span class="label">ZDNet.com is available in the following editions:</span></li> 
+        <li><a class="editionSwitch" data-edition="as">Asia</a></li> 
+        <li><a class="editionSwitch" data-edition="au">Australia</a></li> 
+        <li><a class="editionSwitch" data-edition="eu">Europe</a></li> 
+        <li><a class="editionSwitch" data-edition="in">India</a></li> 
+        <li><a class="editionSwitch" data-edition="uk">United Kingdom</a></li> 
+        <li><a class="editionSwitch" data-edition="us">United States</a></li> 
+        <li><span class="label">ZDNet around the globe:</span></li> 
+        <li><a href="http://www.zdnet.be/" target="_blank">ZDNet Belgium</a></li> 
+        <li><a href="http://www.zdnet.com.cn/" target="_blank">ZDNet China</a></li> 
+        <li><a href="http://www.zdnet.fr/" target="_blank">ZDNet France</a></li> 
+        <li><a href="http://www.zdnet.de/" target="_blank">ZDNet Germany</a></li> 
+        <li><a href="http://www.zdnet.co.kr/" target="_blank">ZDNet Korea</a></li> 
+        <li><a href="http://japan.zdnet.com/" target="_blank">ZDNet Japan</a></li> 
+       </ul>
+      </nav></li> 
+    </ul>
+    <ul class="bar mobile">
+     <li class="nav expandable"><a class="title" aria-haspopup="true">Topics<span class="icon arrow"></span></a> 
+      <nav class="menu topics">
+       <ul>
+        <li><a href="/topic/security-and-privacy-new-challenges/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Header-TopicNav&quot;}">Security</a></li> 
+        <li><a href="/topic/tapping-m2m-the-internet-of-things/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Header-TopicNav&quot;}">Internet of Things</a></li> 
+        <li><a href="http://www.techproresearch.com/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Header-TopicNav&quot;}">Research</a></li> 
+        <li><a href="/topic/windows-10/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Header-TopicNav&quot;}">Windows</a></li> 
+        <li><a href="/topic/enterprise-software/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Header-TopicNav&quot;}">Enterprise Software</a></li> 
+        <li><a href="/topic/storage-fear-loss-and-innovation/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Header-TopicNav&quot;}">Storage</a></li> 
+        <li><a href="/topic/innovation/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Header-TopicNav&quot;}">Innovation</a></li> 
+        <li><a href="/topic/cxo/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Header-TopicNav&quot;}">CXO</a></li> 
+        <li><a href="/blog/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Header-TopicNav&quot;}">All Writers</a></li> 
+       </ul>
+      </nav></li> 
+     <li class="nav expandable siteUtils loggedOut"><a aria-haspopup="true">Log In<span class="icon arrow"></span></a> 
+      <nav class="menu">
+       <ul>
+        <li> <a href="https://secure.zdnet.com/user/login/?appId=1101" rel="nofollow" data-user-show="{&quot;action&quot;:&quot;login&quot;,&quot;params&quot;:{&quot;appId&quot;:1101,&quot;position&quot;:&quot;Header&quot;}}">Log In</a> </li> 
+        <li> <a href="https://secure.zdnet.com/user/registration/?appId=1101" rel="nofollow" data-user-show="{&quot;action&quot;:&quot;register&quot;,&quot;params&quot;:{&quot;appId&quot;:1101,&quot;position&quot;:&quot;Header&quot;}}">Join ZDNet</a> </li> 
+       </ul>
+      </nav></li> 
+     <li class="nav expandable siteUtils loggedIn"><a aria-haspopup="true"><span data-user-var="userName"></span><span class="icon arrow"></span></a> 
+      <nav class="menu">
+       <ul>
+        <li><a href="https://secure.zdnet.com/members/edit-profile/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Header-SectionNav&quot;}" rel="nofollow">Manage</a></li> 
+        <li><a href="https://secure.zdnet.com/members/alert-preferences/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Header-SectionNav&quot;}" rel="nofollow">Discussion Alerts</a></li> 
+        <li><a href="http://www.zdnet.com/user/logout/" rel="nofollow" data-user-action="logout" data-omniture-track="trackLogout">Log Out</a></li> 
+       </ul>
+      </nav></li> 
+    </ul>
+   </nav>
+  </header>
+  <div id="mantle_skin"> 
+   <div class="skin"> 
+    <div id="skin-54f3b84ae529e" class="ad-skin" data-ad="skin"> 
+     <script>
+        window.console && console.log && console.log("ADS: queuing skin-54f3b84ae529e for display");
+        var cbsiGptDivIds = cbsiGptDivIds || [];
+        cbsiGptDivIds.push("skin-54f3b84ae529e");
+    </script>
+    </div> 
+   </div> 
+   <div class="intromercial"> 
+    <div id="intromercial-54f3b84ae529e" class="ad-intromercial" data-ad="intromercial"> 
+     <script>
+        window.console && console.log && console.log("ADS: queuing intromercial-54f3b84ae529e for display");
+        var cbsiGptDivIds = cbsiGptDivIds || [];
+        cbsiGptDivIds.push("intromercial-54f3b84ae529e");
+    </script>
+    </div> 
+   </div> 
+   <div class="hpto"> 
+   </div> 
+   <section class="leader leader-top ad-active">
+    <div class="container"> 
+     <div id="leader-plus-top-54f3b84ae529e" class="ad-leader-plus-top" data-ad="leader-plus-top"> 
+      <script>
+        window.console && console.log && console.log("ADS: queuing leader-plus-top-54f3b84ae529e for display");
+        var cbsiGptDivIds = cbsiGptDivIds || [];
+        cbsiGptDivIds.push("leader-plus-top-54f3b84ae529e");
+    </script>
+     </div> 
+    </div> 
+   </section>
+   <div id="content"> 
+    <div class="container "> 
+     <div class="row"> 
+      <div class="col-8"> 
+       <div class="row"> 
+        <div class="col-8"> 
+         <section class="carousel" data-component="carousel" data-carousel-options="{&quot;autoplayDelay&quot;:7000,&quot;incrementAmount&quot;:1,&quot;numOfVisibleSlides&quot;:1,&quot;transitionDuration&quot;:400,&quot;transitionType&quot;:&quot;fade&quot;}">
+          <div class="viewport" data-item="viewport"> 
+           <div class="sliderWrapper" data-item="canvas"> 
+            <article data-vr-zone="Carousel slide-1" data-item="slide">
+             <figure data-vr-contentbox="story link">
+              <a href="http://www.zdnet.com/article/samsung-galaxy-s6-first-look-the-productivity-edition/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Carousel&quot;}"> <span class="img "><img src="http://zdnet1.cbsistatic.com/hub/i/2015/02/27/8cab8d98-d931-4c79-9b73-846bbde9c070/28bbfddbaca4ec1ac3f42cc5813ba993/samsung-galaxy-s6-first-look-fd.jpg" alt=""></span> </a> 
+             </figure>
+             <div class="overlay"> 
+              <div class="content"> 
+               <h2 data-vr-contentbox="story link"><a href="http://www.zdnet.com/article/samsung-galaxy-s6-first-look-the-productivity-edition/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Carousel&quot;}">Galaxy S6 first look: Productivity edition</a></h2> 
+               <p>Samsung's new flagship phone is designed to woo consumers from Apple's iPhone, but the electronics giant also has a big pitch to businesses.</p> 
+               <ul class="relatedLinks">
+                <li data-vr-contentbox=""><a href="http://www.zdnet.com/pictures/samsungs-galaxy-s6-a-tour-of-the-device-simplified-software/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Carousel&quot;}">A tour of the device, simplified software</a></li> 
+                <li data-vr-contentbox=""><a href="http://www.zdnet.com/article/samsungs-galaxy-s6-how-it-was-designed/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Carousel&quot;}">Galaxy S6: How it was designed</a></li> 
+                <li data-vr-contentbox=""><a href="/article/samsung-galaxy-s6-offers-more-proof-microsoft-is-a-software-and-services-company/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Carousel&quot;}">More proof Microsoft is a software and services company</a></li> 
+               </ul>
+              </div> 
+             </div> 
+            </article>
+            <article data-vr-zone="Carousel slide-2" data-item="slide">
+             <figure data-vr-contentbox="story link">
+              <a href="http://www.zdnet.com/article/htc-one-m9-hands-on-improved-craftsmanship-camera-and-htc-sense-are-compelling/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Carousel&quot;}"> <span class="img "><img src="http://zdnet4.cbsistatic.com/hub/i/2015/02/28/8419c9f6-1d77-4579-b558-470c51346b8d/0253e6df0edec08cd1660dbf8c26ea33/htc-one-m9-cnet-fd.jpg" alt=""></span> </a> 
+             </figure>
+             <div class="overlay"> 
+              <div class="content"> 
+               <h2 data-vr-contentbox="story link"><a href="http://www.zdnet.com/article/htc-one-m9-hands-on-improved-craftsmanship-camera-and-htc-sense-are-compelling/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Carousel&quot;}">HTC's new One M9: Hands on at MWC</a></h2> 
+               <p>Improved craftsmanship, camera, and HTC Sense are compelling.</p> 
+               <ul class="relatedLinks">
+                <li data-vr-contentbox=""><a href="/article/htc-one-m9-the-evolution-of-a-flagship-smartphone/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Carousel&quot;}">Evolution of a flagship smartphone</a></li> 
+                <li data-vr-contentbox=""><a href="/pictures/htc-one-m9-camera-comparison-20-megapixels-on-the-back-and-ultrapixel-on-the-front/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Carousel&quot;}">Cameras compared: 20 megapixels on the back, UltraPixel on the front</a></li> 
+                <li data-vr-contentbox=""><a href="http://www.zdnet.com/topic/mwc/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Carousel&quot;}">Mobile World Congress 2015: Full coverage</a></li> 
+               </ul>
+              </div> 
+             </div> 
+            </article>
+            <article data-vr-zone="Carousel slide-3" data-item="slide">
+             <figure data-vr-contentbox="story link">
+              <a href="/article/lenovo-refreshes-a8-a10-tablets-cuts-price/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Carousel&quot;}"> <span class="img "><img src="http://zdnet4.cbsistatic.com/hub/i/2015/03/01/1826f361-8222-4084-ac45-4b0b7866aadd/686ffb5817590d1e71f745544e329f01/lenovo-a10-tablet-fd.jpg" alt=""></span> </a> 
+             </figure>
+             <div class="overlay"> 
+              <div class="content"> 
+               <h2 data-vr-contentbox="story link"><a href="/article/lenovo-refreshes-a8-a10-tablets-cuts-price/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Carousel&quot;}">Lenovo refreshes A8, A10 tablets, cuts price</a></h2> 
+               <p>At Mobile World Congress, Lenovo rolls out two new Android powered tablets that lower the cost curve.</p> 
+               <ul class="relatedLinks">
+                <li data-vr-contentbox=""><a href="/article/lenovo-promises-to-stop-bundling-crapware-on-pcs/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Carousel&quot;}">Lenovo promises to stop bundling crapware on PCs</a></li> 
+                <li data-vr-contentbox=""><a href="/article/35000-sandwiches-hundreds-of-hotspots-an-inside-look-at-what-it-takes-to-keep-mwc-running/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Carousel&quot;}">MWC 2015: 35,000 sandwiches, hundreds of hotspots</a></li> 
+               </ul>
+              </div> 
+             </div> 
+            </article>
+            <article data-vr-zone="Carousel slide-4" data-item="slide">
+             <figure data-vr-contentbox="story link">
+              <a href="/article/the-second-class-internet-youre-soaking-in-it/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Carousel&quot;}"> <span class="img "><img src="http://zdnet3.cbsistatic.com/hub/i/2015/02/27/f5cf5e01-4371-4aee-bdd4-a9ba77b51044/00f25efeec6d060be4428d7fef8fdb89/second-class-internet-citizens-fd.jpg" alt=""></span> </a> 
+             </figure>
+             <div class="overlay"> 
+              <div class="content"> 
+               <h2 data-vr-contentbox="story link"><a href="/article/the-second-class-internet-youre-soaking-in-it/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Carousel&quot;}">Second-class internet? You're soaking in it</a></h2> 
+               <p>Forget about net neutrality. Lenovo's Superfish idiocy proves that we already have a dual-class internet -- and most of us are proles.</p> 
+               <ul class="relatedLinks">
+                <li data-vr-contentbox=""><a href="/article/net-neutrality-becomes-the-law-of-the-land/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Carousel&quot;}">​Net neutrality becomes law of the land</a></li> 
+                <li data-vr-contentbox=""><a href="/article/lenovo-admits-security-issues-with-superfish-releases-removal-tool/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Carousel&quot;}">Lenovo admits security issues</a></li> 
+                <li data-vr-contentbox=""><a href="/article/zero-day-weekly-superfish-attacks-fbi-gameoverzeus-bounty-komodia-in-lavasoft/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Carousel&quot;}">Violet Blue: Zero Day Weekly</a></li> 
+               </ul>
+              </div> 
+             </div> 
+            </article>
+            <article data-vr-zone="Carousel slide-5" data-item="slide">
+             <figure data-vr-contentbox="story link">
+              <a href="/article/revealed-the-apps-that-are-draining-your-smartphone-battery/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Carousel&quot;}"> <span class="img "><img src="http://zdnet3.cbsistatic.com/hub/i/2015/02/27/c7f69ad7-dcaf-48c1-97c3-693f6ecf70e4/6a1a8d2c96693a5e6a34c6e5273be2b9/apps-battery-fd.jpg" alt=""></span> </a> 
+             </figure>
+             <div class="overlay"> 
+              <div class="content"> 
+               <h2 data-vr-contentbox="story link"><a href="/article/revealed-the-apps-that-are-draining-your-smartphone-battery/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Carousel&quot;}">Revealed: The apps that are draining your smartphone battery</a></h2> 
+               <p>Which apps are hogging space, consuming mobile data, and sucking the life out of your Android smartphone?</p> 
+               <ul class="relatedLinks">
+                <li data-vr-contentbox=""><a href="/pictures/33-ways-to-improve-your-iphones-battery-life/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Carousel&quot;}">33 ways to improve your iPhone's battery life</a></li> 
+               </ul>
+              </div> 
+             </div> 
+            </article>
+            <article data-vr-zone="Carousel slide-6" data-item="slide">
+             <figure data-vr-contentbox="story link">
+              <a href="/article/leonard-nimoy-spock-was-a-tech-inspiration/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Carousel&quot;}"> <span class="img "><img src="http://zdnet1.cbsistatic.com/hub/i/2015/03/01/e09b08f5-2b14-4956-9018-7cd0f5fd4a59/644e6ff6e808e4e7f2373888e6c1854d/spock-vulcan-mind-meld-fd.jpg" alt=""></span> </a> 
+             </figure>
+             <div class="overlay"> 
+              <div class="content"> 
+               <h2 data-vr-contentbox="story link"><a href="/article/leonard-nimoy-spock-was-a-tech-inspiration/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Carousel&quot;}">Mr. Spock was my IT hero. How about you?</a></h2> 
+               <p>For Jason Perlow, and millions of young TV viewers, Leonard Nimoy's portrayal of Star Trek's Mr. Spock was an inspiration to enter the fields of science and technology.</p> 
+               <ul class="relatedLinks">
+                <li data-vr-contentbox=""><a href="/article/from-cio-to-ceo-time-to-give-up-on-the-impossible-dream/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Carousel&quot;}">From CIO to CEO: Why it's time to give up on the impossible dream</a></li> 
+               </ul>
+              </div> 
+             </div> 
+            </article>
+           </div> 
+          </div> 
+          <div class="navControl"> 
+           <a class="sliderPrev" data-to="prev">« Previous</a>
+           <a class="sliderNext" data-to="next">Next »</a> 
+          </div> 
+          <ul class="sliderPagination">
+           <li><a href="#" data-to="0">0</a></li> 
+           <li><a href="#" data-to="1">1</a></li> 
+           <li><a href="#" data-to="2">2</a></li> 
+           <li><a href="#" data-to="3">3</a></li> 
+           <li><a href="#" data-to="4">4</a></li> 
+           <li><a href="#" data-to="5">5</a></li> 
+          </ul>
+         </section>
+         <section data-vr-zone="Featured Stories" class="col-8 module featuredStories">
+          <h2 class="heading"><span class="int">Featured Stories</span></h2> 
+          <div class="row"> 
+           <article data-vr-contentbox="" class="col-2">
+            <div> 
+             <a class="thumb" href="/article/htc-goes-beyond-mobile-with-the-htc-vive-vr-headset/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;FeaturedArticles&quot;}"> <span class="img "><img src="http://zdnet4.cbsistatic.com/hub/i/r/2015/02/28/72ef85cc-ad20-453a-ad68-2ef9fe62563e/thumbnail/170x128/5ec37438db7565364305236c98075c4a/htc-vivewhite.jpg" alt="MWC 2015: HTC launches Vive VR headset" height="128" width="170"></span> </a> 
+            </div> 
+            <p><a href="/article/htc-goes-beyond-mobile-with-the-htc-vive-vr-headset/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;FeaturedArticles&quot;}">MWC 2015: HTC launches Vive VR headset</a></p> 
+           </article>
+           <article data-vr-contentbox="" class="col-2">
+            <div> 
+             <a class="thumb" href="/article/htc-reveals-the-grip-a-wearable-going-beyond-active-to-athletic/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;FeaturedArticles&quot;}"> <span class="img "><img src="http://zdnet3.cbsistatic.com/hub/i/r/2015/03/01/f372f6e6-d1fc-405c-851a-06ac757cbd1b/thumbnail/170x128/51c0445221a5cd459f2949ab100bc060/grip.jpg" alt="HTC Grip: A wearable beyond active to athletic" height="128" width="170"></span> </a> 
+            </div> 
+            <p><a href="/article/htc-reveals-the-grip-a-wearable-going-beyond-active-to-athletic/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;FeaturedArticles&quot;}">HTC Grip: A wearable beyond active to athletic</a></p> 
+           </article>
+           <article data-vr-contentbox="" class="col-2">
+            <div> 
+             <a class="thumb" href="/article/why-ssds-are-obsolete/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;FeaturedArticles&quot;}"> <span class="img "><img src="http://zdnet3.cbsistatic.com/hub/i/r/2015/02/26/a3f1bc91-13d5-471e-98c9-c17d1c8f8516/thumbnail/170x128/131a59311acc8043edf050a73a94f500/ssds-thumb.jpg" alt="Why SSDs are obsolete" height="128" width="170"></span> </a> 
+            </div> 
+            <p><a href="/article/why-ssds-are-obsolete/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;FeaturedArticles&quot;}">Why SSDs are obsolete</a></p> 
+           </article>
+           <article data-vr-contentbox="" class="col-2">
+            <div> 
+             <a class="thumb" href="/article/microsoft-makes-enterprise-mobility-suite-available-to-small-midsize-businesses/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;FeaturedArticles&quot;}"> <span class="img "><img src="http://zdnet3.cbsistatic.com/hub/i/r/2015/03/01/a8bdc44b-b826-43af-9fb4-45ee41d98672/thumbnail/170x128/5c025c8805b4d9a99fd1fdfafc52bac4/emsforsmb.jpg" alt="Microsoft makes Enterprise Mobility Suite available to SMBs" height="128" width="170"></span> </a> 
+            </div> 
+            <p><a href="/article/microsoft-makes-enterprise-mobility-suite-available-to-small-midsize-businesses/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;FeaturedArticles&quot;}">Microsoft makes Enterprise Mobility Suite available to SMBs</a></p> 
+           </article>
+          </div> 
+         </section>
+        </div> 
+       </div> 
+       <div class="row"> 
+        <div class="col-8"> 
+         <div class="row"> 
+          <div class="col-2"> 
+           <section class="module moduleContact">
+            <h2 class="heading"><span class="int">Tip us off!</span></h2> 
+            <div class="box"> 
+             <p> Can't find what you want or have a tip? Tell us about it and we will endeavour to cover this topic. <a href="/tip-us-off/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;TipUsOff&quot;}">Drop us a line</a> </p> 
+            </div>
+           </section>
+           <section class="module moduleLatestEvents">
+            <h2 class="heading"> <span class="int">Videos</span> </h2> 
+            <div class="box"> 
+             <ul>
+              <li><a href="/article/everyday-ways-your-personal-privacy-is-under-threat/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;:&quot;Videos&quot;}">Everyday ways your personal privacy is under threat</a></li> 
+              <li><a href="/article/doing-small-business-better-series-highlights/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;:&quot;Videos&quot;}">Doing Small Business Better: Series highlights</a></li> 
+              <li><a href="/article/doing-small-business-better-creating-a-resilient-business/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;:&quot;Videos&quot;}">Doing Small Business Better: Creating a resilient business</a></li> 
+              <li><a href="/article/doing-small-business-better-impact-of-technology/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;:&quot;Videos&quot;}">Doing Small Business Better: Impact of technology</a></li> 
+              <li><a href="/article/doing-small-business-better-is-the-customer-king/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;:&quot;Videos&quot;}">Doing Small Business Better: Is the customer king?</a></li> 
+             </ul>
+            </div> 
+           </section>
+           <section class="module moduleDownloads">
+            <h2 class="heading"><span class="int">Downloads</span></h2> 
+            <div class="box"> 
+             <ul>
+              <li class="row"><a href="//downloads.zdnet.com/product/2094-76126328/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;:&quot;Downloads&quot;}">My Spices</a></li> 
+              <li class="row"><a href="//downloads.zdnet.com/product/2094-76100464/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;:&quot;Downloads&quot;}">FIAVis App Commander</a></li> 
+              <li class="row"><a href="//downloads.zdnet.com/product/2094-76100416/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;:&quot;Downloads&quot;}">Wow Followers For Pinterest - Get More Followers</a></li> 
+              <li class="row"><a href="//downloads.zdnet.com/product/2094-76100410/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;:&quot;Downloads&quot;}">Counfinite</a></li> 
+              <li class="row"><a href="//downloads.zdnet.com/product/2094-76126302/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;:&quot;Downloads&quot;}">pics2pdf - Add annotations to Images, Photo, Pictures, Snaps and Convert to PDF</a></li> 
+              <li class="row no-border"><a href="//downloads.zdnet.com/product/2094-76096108/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;:&quot;Downloads&quot;}">Media Player VLC Edition - Streaming Play All Video &amp; Audio Files - MKV, AVI, FLV FLASH</a></li> 
+             </ul>
+            </div> 
+           </section>
+          </div> 
+          <div class="col-6"> 
+           <div class="moduleRiver"> 
+            <section data-vr-zone="River" class="module" id="articleRiver">
+             <h2 class="heading"><span class="int">Latest Articles</span></h2> 
+             <ul class="tabs nav nav-tabs" data-component="tabs">
+              <li><a rel="nofollow" class="selected" data-item="trigger" data-target="#latest" href="#latest">Latest Articles</a></li> 
+              <li><a rel="nofollow" data-item="trigger" data-target="#photos" href="#photos">Photos</a></li> 
+              <li><a rel="nofollow" data-item="trigger" data-target="#videos" href="#videos">Videos</a></li> 
+              <li><a rel="nofollow" data-item="trigger" data-target="#reviews" href="#reviews">Reviews</a></li> 
+             </ul>
+             <div class="tabsContent" data-component="riverTimeAgo"> 
+              <div id="latest" class="tab selected"> 
+               <div id="4876c654-965d-41b9-b931-a3bcfc7aa6a3-river" class="river" data-component="loadMore" data-load-more-options="{&quot;url&quot;:&quot;\/components\/load-more\/xhr\/&quot;,&quot;data&quot;:{&quot;endpoint&quot;:&quot;\/api\/component\/listing\/e37601bd-268d-465d-a5a2-cac1cdb05230\/content\/4876c654-965d-41b9-b931-a3bcfc7aa6a3&quot;,&quot;params&quot;:[],&quot;view&quot;:&quot;river&quot;,&quot;familyName&quot;:&quot;listing&quot;,&quot;typeName&quot;:&quot;multi_filtered_listing&quot;,&quot;offset&quot;:15,&quot;initialLimit&quot;:15,&quot;limit&quot;:15,&quot;lastAssetId&quot;:&quot;2a4e9ecf-35e7-4a3d-8acc-dad8c3fdaffb&quot;},&quot;loader&quot;:{&quot;classes&quot;:{&quot;base&quot;:&quot;btn btn-primary btn-block load-more&quot;},&quot;text&quot;:{&quot;idle&quot;:&quot;View more articles&quot;}},&quot;pushState&quot;:{&quot;route&quot;:&quot;\/{page}\/&quot;,&quot;enabled&quot;:true,&quot;currentPage&quot;:1}}"> 
+                <div data-component="livefyreCommentcount"> 
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/article/myer-cio-takes-ceo-reins/" data-tracking="river">​Myer CIO takes CEO reins</a></h3>
+                   <div>
+                    <a class="thumb" href="/article/myer-cio-takes-ceo-reins/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="http://zdnet1.cbsistatic.com/hub/i/r/2015/01/15/58292c8d-c631-46e7-8a96-4ba299103552/thumbnail/170x128/dc205d45cede7538fb56c5e61ad2484b/online-shopping-thumb.jpg" alt="​Myer CIO takes CEO reins" height="128" width="170"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">Myer has appointed Richard Umbers, chief information and supply chain officer, as the new CEO who will continue to oversee the company's transformation project.</p>
+                    <p class="meta">published <span data-date="2015-03-01 23:55:00">1 hour ago</span> by <a rel="author" href="/meet-the-team/au/aimeech/" data-tracking="river">Aimee Chanthadavong</a></p>
+                    <p class="options"><a class="comment" href="/article/myer-cio-takes-ceo-reins/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="b1619761-d2b8-43b1-8b40-c39155703948" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/article/can-samsung-resharpen-its-edge-against-the-competition/" data-tracking="river">Can Samsung resharpen its edge against the competition?</a></h3>
+                   <div>
+                    <a class="thumb" href="/article/can-samsung-resharpen-its-edge-against-the-competition/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="http://zdnet4.cbsistatic.com/hub/i/r/2015/02/25/e268847c-d8dc-469f-b10d-8aa3332ea5ae/thumbnail/170x128/50cf13d7da7e6222826657bf16cf2126/samsung-galaxy-s6-edge.jpg" alt="Can Samsung resharpen its edge against the competition?" height="128" width="170"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">As the parade of new devices from MWC marches past, for the South Korean juggernaut, this week will be more important than most.</p>
+                    <p class="meta">published <span data-date="2015-03-01 23:07:36">2 hours ago</span> by <a rel="author" href="/meet-the-team/au/chris+duckett/" data-tracking="river">Chris Duckett</a></p>
+                    <p class="options"><a class="comment" href="/article/can-samsung-resharpen-its-edge-against-the-competition/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="ad043c8a-5d73-472f-b8f0-f719d9238f2e" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <section class="multiplexer">
+                  <div id="multiplexer-54f3b84ae529e" class="ad-multiplexer" data-ad="multiplexer"> 
+                   <script>
+        window.console && console.log && console.log("ADS: queuing multiplexer-54f3b84ae529e for display");
+        var cbsiGptDivIds = cbsiGptDivIds || [];
+        cbsiGptDivIds.push("multiplexer-54f3b84ae529e");
+    </script>
+                  </div> 
+                 </section>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/article/boardbooks-app-maker-diligent-targets-saas-extensions/" data-tracking="river">Boardbooks app maker Diligent targets SaaS extensions</a></h3>
+                   <div>
+                    <a class="thumb" href="/article/boardbooks-app-maker-diligent-targets-saas-extensions/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="http://zdnet2.cbsistatic.com/hub/i/r/2014/09/18/2a1ba819-3f2d-11e4-b6a0-d4ae52e95e57/thumbnail/170x128/891d58968a6d9630cb5a501d985fb6ae/it-top-executives-disagree-about-innovation-survey.jpg" alt="Boardbooks app maker Diligent targets SaaS extensions" height="128" width="170"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">Diligent Board Member Services, the maker of Boardbooks company director software, appears to be putting its governance and accounting troubles behind it.</p>
+                    <p class="meta">published <span data-date="2015-03-01 20:59:00">4 hours ago</span> by <a rel="author" href="/meet-the-team/au/rob+o%26%23039;neill/" data-tracking="river">Rob O'Neill</a></p>
+                    <p class="options"><a class="comment" href="/article/boardbooks-app-maker-diligent-targets-saas-extensions/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="093d674b-eec1-43d9-879d-bf7078bf5d86" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/article/leonard-nimoy-spock-was-a-tech-inspiration/" data-tracking="river">Leonard Nimoy: Mr. Spock is my IT hero. How about you?</a></h3>
+                   <div>
+                    <a class="thumb" href="/article/leonard-nimoy-spock-was-a-tech-inspiration/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="http://zdnet1.cbsistatic.com/hub/i/r/2015/03/01/ef359cf8-66c2-40f1-88bd-4722aeafcad2/thumbnail/170x128/9f6df7d981640b10f0df14ef98bd92ab/spock-nomad-620.jpg" alt="Leonard Nimoy: Mr. Spock is my IT hero. How about you?" height="128" width="170"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">For Jason Perlow, and millions of young TV viewers, Nimoy's portrayal of Star Trek's Mr. Spock was an inspiration to enter the fields of science and technology.</p>
+                    <p class="meta">published <span data-date="2015-03-01 18:39:00">7 hours ago</span> by <a rel="author" href="/meet-the-team/us/jperlow/" data-tracking="river">Jason Perlow</a></p>
+                    <p class="options"><a class="comment" href="/article/leonard-nimoy-spock-was-a-tech-inspiration/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="64153864-1708-4406-a25f-8ceea6899a30" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/article/samsung-galaxy-s6-offers-more-proof-microsoft-is-a-software-and-services-company/" data-tracking="river">Samsung Galaxy S6 offers more proof Microsoft is a software and services company</a></h3>
+                   <div>
+                    <a class="thumb" href="/article/samsung-galaxy-s6-offers-more-proof-microsoft-is-a-software-and-services-company/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="http://zdnet4.cbsistatic.com/hub/i/r/2015/03/01/09649bca-a3d7-445d-99e6-06b27febe2e3/thumbnail/170x128/2012460ee1c38c7ac06fadb7c18d051c/samsunggalaxymicrosoft.jpg" alt="Samsung Galaxy S6 offers more proof Microsoft is a software and services company" height="128" width="170"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">Microsoft's OneDrive and OneNote apps are preloaded on the just-announced Samsung Galaxy S6 Android phone. Could this be just the start of more OEM deals for Microsoft?</p>
+                    <p class="meta">published <span data-date="2015-03-01 18:18:00">7 hours ago</span> by <a rel="author" href="/meet-the-team/us/mary+jo+foley/" data-tracking="river">Mary Jo Foley</a></p>
+                    <p class="options"><a class="comment" href="/article/samsung-galaxy-s6-offers-more-proof-microsoft-is-a-software-and-services-company/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="3d143a56-7a66-4c57-88c0-51435ca792bf" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item promo">
+                  <div>
+                   <h3><a href="http://www.techproresearch.com/downloads/job-description-big-data-modeler/" target="_blank" data-tracking="river">Job description: Big data modeler</a></h3>
+                   <div>
+                    <a class="thumb" href="http://www.techproresearch.com/downloads/job-description-big-data-modeler/" target="_blank" data-tracking="river"><img src="http://b2b.cbsimg.net/images/pro/eas_image.jpeg"></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">When you talk to leaders about trends in technology jobs, one term comes up repeatedly: Big data. In the past few years, responding to the increasing buzz and job demand, new degree programs have been...</p>
+                    <h5><em>from <a href="http://www.techproresearch.com/downloads/job-description-big-data-modeler/" target="_blank" data-tracking="river">TechProResearch »</a></em></h5>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/article/microsoft-makes-enterprise-mobility-suite-available-to-small-midsize-businesses/" data-tracking="river">Microsoft makes Enterprise Mobility Suite available to small, midsize businesses</a></h3>
+                   <div>
+                    <a class="thumb" href="/article/microsoft-makes-enterprise-mobility-suite-available-to-small-midsize-businesses/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="http://zdnet3.cbsistatic.com/hub/i/r/2015/03/01/a8bdc44b-b826-43af-9fb4-45ee41d98672/thumbnail/170x128/5c025c8805b4d9a99fd1fdfafc52bac4/emsforsmb.jpg" alt="Microsoft makes Enterprise Mobility Suite available to small, midsize businesses" height="128" width="170"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">Microsoft's Enterprise Mobility Suite bundle is now available for small and midsize businesses, not just enterprise customers.</p>
+                    <p class="meta">published <span data-date="2015-03-01 17:36:46">8 hours ago</span> by <a rel="author" href="/meet-the-team/us/mary+jo+foley/" data-tracking="river">Mary Jo Foley</a></p>
+                    <p class="options"><a class="comment" href="/article/microsoft-makes-enterprise-mobility-suite-available-to-small-midsize-businesses/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="c51578cd-3e59-42fd-ace6-53fa3fe5dfaf" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/article/samsungs-galaxy-s6-how-it-was-designed/" data-tracking="river">​Samsung's Galaxy S6: How it was designed</a></h3>
+                   <div>
+                    <a class="thumb" href="/article/samsungs-galaxy-s6-how-it-was-designed/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="http://zdnet3.cbsistatic.com/hub/i/r/2015/02/25/454f408a-c855-4007-87fa-3cb44968b2e1/thumbnail/170x128/04d8053a8c86713825c2e7bc4359fab2/samsung-galaxy-s6-colors.jpg" alt="​Samsung's Galaxy S6: How it was designed" height="128" width="170"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">The redesign of the Samsung Galaxy smartphone line was about simplification with a hint of design thinking. What can other product designers learn?</p>
+                    <p class="meta">published <span data-date="2015-03-01 17:30:17">8 hours ago</span> by <a rel="author" href="/meet-the-team/us/larry+dignan/" data-tracking="river">Larry Dignan</a></p>
+                    <p class="options"><a class="comment" href="/article/samsungs-galaxy-s6-how-it-was-designed/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="78bb5cc8-1860-4d21-a010-d19e010dfd0b" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <section class="replay">
+                  <div id="replay-54f3b84ae529e" class="ad-replay" data-ad="replay"> 
+                   <script>
+        window.console && console.log && console.log("ADS: queuing replay-54f3b84ae529e for display");
+        var cbsiGptDivIds = cbsiGptDivIds || [];
+        cbsiGptDivIds.push("replay-54f3b84ae529e");
+    </script>
+                  </div> 
+                 </section>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/article/samsung-galaxy-s6-first-look-the-productivity-edition/" data-tracking="river">​Samsung Galaxy S6 first look: The productivity edition</a></h3>
+                   <div>
+                    <a class="thumb" href="/article/samsung-galaxy-s6-first-look-the-productivity-edition/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="http://zdnet4.cbsistatic.com/hub/i/r/2015/02/25/e268847c-d8dc-469f-b10d-8aa3332ea5ae/thumbnail/170x128/50cf13d7da7e6222826657bf16cf2126/samsung-galaxy-s6-edge.jpg" alt="​Samsung Galaxy S6 first look: The productivity edition" height="128" width="170"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">Samsung Galaxy S6 is designed to woo consumers from Apple's iPhone juggernaut, but the electronics giant also has a big pitch to businesses.</p>
+                    <p class="meta">published <span data-date="2015-03-01 17:30:11">8 hours ago</span> by <a rel="author" href="/meet-the-team/us/larry+dignan/" data-tracking="river">Larry Dignan</a></p>
+                    <p class="options"><a class="comment" href="/article/samsung-galaxy-s6-first-look-the-productivity-edition/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="a3041e17-b4b2-4ece-9374-e3cb252a6d4a" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/pictures/samsungs-galaxy-s6-a-tour-of-the-device-simplified-software/" data-tracking="river">Samsung's Galaxy S6: A tour of the device, simplified software</a></h3>
+                   <div>
+                    <a class="thumb" href="/pictures/samsungs-galaxy-s6-a-tour-of-the-device-simplified-software/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="http://zdnet4.cbsistatic.com/hub/i/r/2015/02/25/e268847c-d8dc-469f-b10d-8aa3332ea5ae/thumbnail/170x128/50cf13d7da7e6222826657bf16cf2126/samsung-galaxy-s6-edge.jpg" alt="Samsung's Galaxy S6: A tour of the device, simplified software" height="128" width="170"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">The redesign of Samsung's Galaxy S6 included the adoption of Google's Material Design approach as well as a hardware overhaul.</p>
+                    <p class="meta">published <span data-date="2015-03-01 17:30:03">8 hours ago</span> by <a rel="author" href="/meet-the-team/us/larry+dignan/" data-tracking="river">Larry Dignan</a></p>
+                    <p class="options"><a class="comment" href="/pictures/samsungs-galaxy-s6-a-tour-of-the-device-simplified-software/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="4eed8d09-d0cf-4566-969e-7d9a697c4dd0" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/article/blackberry-samsung-advance-security-partnership-services-deal/" data-tracking="river">​BlackBerry, Samsung advance security partnership, services deal</a></h3>
+                   <div>
+                    <a class="thumb" href="/article/blackberry-samsung-advance-security-partnership-services-deal/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="http://zdnet2.cbsistatic.com/hub/i/r/2014/11/28/42ab011c-76b2-11e4-b569-d4ae52e95e57/thumbnail/170x128/751974db0aaa16cfb7045baf181b9144/blackberry-offers-up-to-550-trade-in-value-for-iphone-to-passport-switchers.jpg" alt="​BlackBerry, Samsung advance security partnership, services deal" height="128" width="170"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">BlackBerry and Samsung tighten their security partnership with better integration of KNOX as well as a services pact.</p>
+                    <p class="meta">published <span data-date="2015-03-01 17:30:00">8 hours ago</span> by <a rel="author" href="/meet-the-team/us/larry+dignan/" data-tracking="river">Larry Dignan</a></p>
+                    <p class="options"><a class="comment" href="/article/blackberry-samsung-advance-security-partnership-services-deal/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="7bf135cd-f277-4689-aeb5-34e8913a7531" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/article/lenovo-refreshes-a8-a10-tablets-cuts-price/" data-tracking="river">Lenovo refreshes A8, A10 tablets, cuts price</a></h3>
+                   <div>
+                    <a class="thumb" href="/article/lenovo-refreshes-a8-a10-tablets-cuts-price/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="http://zdnet1.cbsistatic.com/hub/i/r/2015/02/26/f5cb206a-355f-4c25-b0cd-d59c70afc510/thumbnail/170x128/f1b71ae3f7864494d8f6f4494f694d5c/lenovo-a8.jpg" alt="Lenovo refreshes A8, A10 tablets, cuts price" height="128" width="170"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">At MWC, Lenovo rolls out two new Android powered tablets that lower the cost curve.</p>
+                    <p class="meta">published <span data-date="2015-03-01 17:00:04">8 hours ago</span> by <a rel="author" href="/meet-the-team/us/larry+dignan/" data-tracking="river">Larry Dignan</a></p>
+                    <p class="options"><a class="comment" href="/article/lenovo-refreshes-a8-a10-tablets-cuts-price/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="9034c507-7432-4f06-8ea3-1649d95bfa33" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/article/htc-one-m9-the-evolution-of-a-flagship-smartphone/" data-tracking="river">HTC One M9: The evolution of a flagship smartphone</a></h3>
+                   <div>
+                    <a class="thumb" href="/article/htc-one-m9-the-evolution-of-a-flagship-smartphone/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="http://zdnet1.cbsistatic.com/hub/i/r/2015/03/01/6c4a9af4-0b16-4f67-8265-b4eb2aeaee2c/thumbnail/170x128/8f59ea54f4d89d2f74e05aa4381fe86f/htc-one-m9-thumb.jpg" alt="HTC One M9: The evolution of a flagship smartphone" height="128" width="170"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">HTC's new One M9 is no ground-breaker, but like its M8 and M7 predecessors is a well designed and well engineered smartphone.</p>
+                    <p class="meta">published <span data-date="2015-03-01 16:13:00">9 hours ago</span> by <a rel="author" href="/meet-the-team/uk/charles+mclellan/" data-tracking="river">Charles McLellan</a></p>
+                    <p class="options"><a class="comment" href="/article/htc-one-m9-the-evolution-of-a-flagship-smartphone/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="32ae3188-8d23-436b-9e9d-b2845bf09c9a" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/article/telstra-and-ericsson-eye-5g/" data-tracking="river">Telstra and Ericsson eye 5G</a></h3>
+                   <div>
+                    <a class="thumb" href="/article/telstra-and-ericsson-eye-5g/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="http://zdnet3.cbsistatic.com/hub/i/r/2014/10/05/189b5b53-4cbd-11e4-b6a0-d4ae52e95e57/thumbnail/170x128/8e2959e9af60a449a5a5aea28abd4eaa/mobile-hands.jpg" alt="Telstra and Ericsson eye 5G" height="128" width="170"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">Telstra and Ericsson have kicked off Mobile World Congress by announcing faster 4G, LTE Broadcast, VoLTE, and plans to explore 5G.</p>
+                    <p class="meta">published <span data-date="2015-03-01 15:57:00">9 hours ago</span> by <a rel="author" href="/meet-the-team/au/josh+taylor/" data-tracking="river">Josh Taylor</a></p>
+                    <p class="options"><a class="comment" href="/article/telstra-and-ericsson-eye-5g/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="6bc1a696-516a-4763-8931-3cf367e240dd" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/pictures/htc-one-m9-camera-comparison-20-megapixels-on-the-back-and-ultrapixel-on-the-front/" data-tracking="river">HTC One M9 camera comparison: 20 megapixels on the back and UltraPixel on the front</a></h3>
+                   <div>
+                    <a class="thumb" href="/pictures/htc-one-m9-camera-comparison-20-megapixels-on-the-back-and-ultrapixel-on-the-front/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="http://zdnet4.cbsistatic.com/hub/i/r/2015/02/28/436eb2b8-0232-4b6b-ad3f-9d28c1775e94/thumbnail/170x128/3407e828d3db3402f272fe662f61a450/imag0021.jpg" alt="HTC One M9 camera comparison: 20 megapixels on the back and UltraPixel on the front" height="128" width="170"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">HTC made the right move by moving the UltraPixel camera to the front and adding in a more standard camera to the back. Software isn't yet final, but initial results are encouraging.</p>
+                    <p class="meta">published <span data-date="2015-03-01 15:52:03">9 hours ago</span> by <a rel="author" href="/meet-the-team/us/palmsolo+%28aka+matthew+miller%29/" data-tracking="river">Matthew Miller</a></p>
+                    <p class="options"><a class="comment" href="/pictures/htc-one-m9-camera-comparison-20-megapixels-on-the-back-and-ultrapixel-on-the-front/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="786d0f88-7698-4bac-b89d-30a55c3bd926" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/article/htc-goes-beyond-mobile-with-the-htc-vive-vr-headset/" data-tracking="river">MWC 2015: HTC goes beyond mobile with the HTC Vive VR headset</a></h3>
+                   <div>
+                    <a class="thumb" href="/article/htc-goes-beyond-mobile-with-the-htc-vive-vr-headset/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="http://zdnet4.cbsistatic.com/hub/i/r/2015/02/28/72ef85cc-ad20-453a-ad68-2ef9fe62563e/thumbnail/170x128/5ec37438db7565364305236c98075c4a/htc-vivewhite.jpg" alt="MWC 2015: HTC goes beyond mobile with the HTC Vive VR headset" height="128" width="170"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">HTC announced it is taking its design skills to the virtual world with the HTC Vive. In partnership with Valve, HTC will be launching a VR headset advertised as the most immersive ever.</p>
+                    <p class="meta">published <span data-date="2015-03-01 15:49:00">9 hours ago</span> by <a rel="author" href="/meet-the-team/us/palmsolo+%28aka+matthew+miller%29/" data-tracking="river">Matthew Miller</a></p>
+                    <p class="options"><a class="comment" href="/article/htc-goes-beyond-mobile-with-the-htc-vive-vr-headset/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="2a4e9ecf-35e7-4a3d-8acc-dad8c3fdaffb" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item promo">
+                  <div>
+                   <h3><a href="http://www.techproresearch.com/downloads/penetration-testing-and-scanning-policy/" target="_blank" data-tracking="river">Penetration Testing and Scanning Policy</a></h3>
+                   <div>
+                    <a class="thumb" href="http://www.techproresearch.com/downloads/penetration-testing-and-scanning-policy/" target="_blank" data-tracking="river"><img src="http://b2b.cbsimg.net/images/pro/penetration_testing_policy_thumbnail.jpg"></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">System or network vulnerabilities and security threats can severely impact business operations or even shutter its doors. However, these incidents can be prevented by proactively detecting potential threat...</p>
+                    <h5><em>from <a href="http://www.techproresearch.com/downloads/penetration-testing-and-scanning-policy/" target="_blank" data-tracking="river">TechProResearch »</a></em></h5>
+                   </div>
+                  </div>
+                 </article>
+                </div> 
+               </div> 
+               <div data-no-js="" data-load="4876c654-965d-41b9-b931-a3bcfc7aa6a3-river"> 
+                <a class="btn btn-primary btn-block load-more" href="/2/"><span class="text">View more articles</span></a> 
+               </div> 
+              </div> 
+              <div id="photos" class="tab "> 
+               <div id="d4d6f917-d769-4464-957c-03ad6ead8f67-river" class="river" data-component="loadMore" data-load-more-options="{&quot;url&quot;:&quot;\/components\/load-more\/xhr\/&quot;,&quot;data&quot;:{&quot;endpoint&quot;:&quot;\/api\/component\/listing\/e37601bd-268d-465d-a5a2-cac1cdb05230\/content\/d4d6f917-d769-4464-957c-03ad6ead8f67&quot;,&quot;params&quot;:[],&quot;view&quot;:&quot;river&quot;,&quot;familyName&quot;:&quot;listing&quot;,&quot;typeName&quot;:&quot;multi_filtered_listing&quot;,&quot;offset&quot;:15,&quot;initialLimit&quot;:15,&quot;limit&quot;:15,&quot;lastAssetId&quot;:&quot;3826edbf-f4d1-418f-8508-06fb0531f0e6&quot;},&quot;loader&quot;:{&quot;classes&quot;:{&quot;base&quot;:&quot;btn btn-primary btn-block load-more&quot;},&quot;text&quot;:{&quot;idle&quot;:&quot;View more photos&quot;}},&quot;pushState&quot;:{&quot;route&quot;:&quot;\/{page}\/&quot;,&quot;enabled&quot;:true,&quot;currentPage&quot;:1}}"> 
+                <div data-component="livefyreCommentcount"> 
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/pictures/samsungs-galaxy-s6-a-tour-of-the-device-simplified-software/" data-tracking="river">Samsung's Galaxy S6: A tour of the device, simplified software</a></h3>
+                   <div>
+                    <a class="thumb" href="/pictures/samsungs-galaxy-s6-a-tour-of-the-device-simplified-software/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Samsung's Galaxy S6: A tour of the device, simplified software" data-src="http://zdnet4.cbsistatic.com/hub/i/r/2015/02/25/e268847c-d8dc-469f-b10d-8aa3332ea5ae/thumbnail/170x128/50cf13d7da7e6222826657bf16cf2126/samsung-galaxy-s6-edge.jpg"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">The redesign of Samsung's Galaxy S6 included the adoption of Google's Material Design approach as well as a hardware overhaul.</p>
+                    <p class="meta">published <span data-date="2015-03-01 17:30:03">8 hours ago</span> by <a rel="author" href="/meet-the-team/us/larry+dignan/" data-tracking="river">Larry Dignan</a></p>
+                    <p class="options"><a class="comment" href="/pictures/samsungs-galaxy-s6-a-tour-of-the-device-simplified-software/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="4eed8d09-d0cf-4566-969e-7d9a697c4dd0" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/pictures/htc-one-m9-camera-comparison-20-megapixels-on-the-back-and-ultrapixel-on-the-front/" data-tracking="river">HTC One M9 camera comparison: 20 megapixels on the back and UltraPixel on the front</a></h3>
+                   <div>
+                    <a class="thumb" href="/pictures/htc-one-m9-camera-comparison-20-megapixels-on-the-back-and-ultrapixel-on-the-front/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="HTC One M9 camera comparison: 20 megapixels on the back and UltraPixel on the front" data-src="http://zdnet4.cbsistatic.com/hub/i/r/2015/02/28/436eb2b8-0232-4b6b-ad3f-9d28c1775e94/thumbnail/170x128/3407e828d3db3402f272fe662f61a450/imag0021.jpg"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">HTC made the right move by moving the UltraPixel camera to the front and adding in a more standard camera to the back. Software isn't yet final, but initial results are encouraging.</p>
+                    <p class="meta">published <span data-date="2015-03-01 15:52:03">9 hours ago</span> by <a rel="author" href="/meet-the-team/us/palmsolo+%28aka+matthew+miller%29/" data-tracking="river">Matthew Miller</a></p>
+                    <p class="options"><a class="comment" href="/pictures/htc-one-m9-camera-comparison-20-megapixels-on-the-back-and-ultrapixel-on-the-front/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="786d0f88-7698-4bac-b89d-30a55c3bd926" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <section class="multiplexer">
+                  <div id="multiplexer-54f3b84ae529e-2" class="ad-multiplexer" data-ad="multiplexer"> 
+                   <script>
+        window.console && console.log && console.log("ADS: queuing multiplexer-54f3b84ae529e-2 for display");
+        var cbsiGptDivIds = cbsiGptDivIds || [];
+        cbsiGptDivIds.push("multiplexer-54f3b84ae529e-2");
+    </script>
+                  </div> 
+                 </section>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/pictures/lenovo-yoga-tablet-2-windows-write-on-the-screen-with-any-pen-or-pencil-hands-on/" data-tracking="river">Lenovo Yoga Tablet 2 with Windows: Write on the screen with any pen or pencil (hands on)</a></h3>
+                   <div>
+                    <a class="thumb" href="/pictures/lenovo-yoga-tablet-2-windows-write-on-the-screen-with-any-pen-or-pencil-hands-on/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Lenovo Yoga Tablet 2 with Windows: Write on the screen with any pen or pencil (hands on)" data-src="http://zdnet4.cbsistatic.com/hub/i/r/2015/02/27/9a0ee777-2699-4a33-8956-56cfa9cef383/thumbnail/170x128/3db66479bff256139c44dbd7bfadc06e/01-yoga-tablet-2.jpg"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">This 8-inch Windows tablet is the first with Lenovo's Anypen technology that enables using any pen or pencil to write or draw on the screen. We go hands on with it to see how it fares.</p>
+                    <p class="meta">published <span data-date="2015-02-27 14:08:38">2 days ago</span> by <a rel="author" href="/meet-the-team/us/jameskendrick/" data-tracking="river">James Kendrick</a></p>
+                    <p class="options"><a class="comment" href="/pictures/lenovo-yoga-tablet-2-windows-write-on-the-screen-with-any-pen-or-pencil-hands-on/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="e004ee8c-d89e-4920-aa5f-8e26070c1a52" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/pictures/new-iphone-ipad-change-these-ios-8-privacy-settings-immediately/" data-tracking="river">New iPhone or iPad? Change these iOS 8 privacy settings immediately</a></h3>
+                   <div>
+                    <a class="thumb" href="/pictures/new-iphone-ipad-change-these-ios-8-privacy-settings-immediately/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="New iPhone or iPad? Change these iOS 8 privacy settings immediately" data-src="http://zdnet3.cbsistatic.com/hub/i/r/2015/02/16/52a2dc7a-1edb-41db-b4ac-7c4b74f399b2/thumbnail/170x128/5ec22c38ad88c49b7d0e25a61605a4bf/a-aa1-aa-iphone-hero.jpg"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">Before you sync your iCloud or reinstall your apps, you need to lock down your new iPhone or iPad. Here are the important tweaks you need to protect your privacy.</p>
+                    <p class="meta">published <span data-date="2015-02-26 03:27:33">February 25, 2015</span> by <a rel="author" href="/meet-the-team/us/zwhittaker/" data-tracking="river">Zack Whittaker</a></p>
+                    <p class="options"><a class="comment" href="/pictures/new-iphone-ipad-change-these-ios-8-privacy-settings-immediately/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="4797439d-278a-419d-b984-8cb08669c368" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/pictures/new-moto-e-2015-budget-android-smartphone-gallery/" data-tracking="river">Hands-on with the new Moto E budget smartphone: in pictures</a></h3>
+                   <div>
+                    <a class="thumb" href="/pictures/new-moto-e-2015-budget-android-smartphone-gallery/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Hands-on with the new Moto E budget smartphone: in pictures" data-src="http://zdnet3.cbsistatic.com/hub/i/r/2015/02/25/299c5fb3-3d64-4df3-bd27-412a62b03ccd/thumbnail/170x128/dbf986ed704f7a48aec269eafdaf54f1/hero-dsc0096.jpg"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">The Android phone won't win any awards for performance, but the addition of LTE networking makes the device a strong contender for entry-level bring-your-own-device users.</p>
+                    <p class="meta">published <span data-date="2015-02-25 14:55:00">February 25, 2015</span> by <a rel="author" href="/meet-the-team/us/zwhittaker/" data-tracking="river">Zack Whittaker</a></p>
+                    <p class="options"><a class="comment" href="/pictures/new-moto-e-2015-budget-android-smartphone-gallery/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="805cc53f-2012-448d-a7a6-04648efe2912" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/pictures/amds-new-high-performance-energy-efficient-carrizo-apu/" data-tracking="river">Gallery: AMD's new high-performance, energy-efficient 'Carrizo' APU</a></h3>
+                   <div>
+                    <a class="thumb" href="/pictures/amds-new-high-performance-energy-efficient-carrizo-apu/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Gallery: AMD's new high-performance, energy-efficient 'Carrizo' APU" data-src="http://zdnet1.cbsistatic.com/hub/i/r/2015/02/25/58e84ed1-0899-4108-ace3-e623668d8ca9/thumbnail/170x128/eb114853562b84e258d55ed2c0aad15d/001.jpg"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">AMD's next-generation A-Series Accelerated Processing Unit (APU) for laptops and low-power desktops, codenamed "Carrizo", will simultaneously ramp up energy efficiency and boost performance.</p>
+                    <p class="meta">published <span data-date="2015-02-25 10:28:41">February 25, 2015</span> by <a rel="author" href="/meet-the-team/us/adrian+kingsley-hughes/" data-tracking="river">Adrian Kingsley-Hughes</a></p>
+                    <p class="options"><a class="comment" href="/pictures/amds-new-high-performance-energy-efficient-carrizo-apu/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="fd8cade1-3291-48ce-bb20-590b5a7ca3f8" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/pictures/features-and-fixes-apple-ios-9-iphone-ipad/" data-tracking="river">12 fixes and features you need in iOS 9 to love your iPhone again</a></h3>
+                   <div>
+                    <a class="thumb" href="/pictures/features-and-fixes-apple-ios-9-iphone-ipad/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="12 fixes and features you need in iOS 9 to love your iPhone again" data-src="http://zdnet2.cbsistatic.com/hub/i/r/2015/02/24/ba8656d6-55f4-4984-aff4-416114adbee0/thumbnail/170x128/9869cb16c7366886b38eba3b9a1781c8/c-1-controlcenter.jpg"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">Apple's next-generation mobile software is expected to land on iPhones and iPads later this year in a widely anticipated public beta. Here's what we hope to see.</p>
+                    <p class="meta">published <span data-date="2015-02-24 11:30:00">February 24, 2015</span> by <a rel="author" href="/meet-the-team/us/zwhittaker/" data-tracking="river">Zack Whittaker</a></p>
+                    <p class="options"><a class="comment" href="/pictures/features-and-fixes-apple-ios-9-iphone-ipad/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="06c599d2-fa77-4509-a644-f198bafaebf4" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <section class="replay">
+                  <div id="replay-54f3b84ae529e-2" class="ad-replay" data-ad="replay"> 
+                   <script>
+        window.console && console.log && console.log("ADS: queuing replay-54f3b84ae529e-2 for display");
+        var cbsiGptDivIds = cbsiGptDivIds || [];
+        cbsiGptDivIds.push("replay-54f3b84ae529e-2");
+    </script>
+                  </div> 
+                 </section>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/pictures/10-good-android-apps-for-productivity/" data-tracking="river">10 productivity-boosting Android apps</a></h3>
+                   <div>
+                    <a class="thumb" href="/pictures/10-good-android-apps-for-productivity/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="10 productivity-boosting Android apps" data-src="http://zdnet3.cbsistatic.com/hub/i/r/2015/02/22/2d30e963-81da-4cdf-ae81-b7b14e62629c/thumbnail/170x128/c0536d243c3073f22f22922c2eff5a1f/00-android-apps.jpg"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">Take your Android tablet to work with these apps. Track your time, stay on top of what you need to do, and collaborate with colleagues.</p>
+                    <p class="meta">published <span data-date="2015-02-23 14:19:44">February 23, 2015</span> by <a rel="author" href="/meet-the-team/us/jameskendrick/" data-tracking="river">James Kendrick</a></p>
+                    <p class="options"><a class="comment" href="/pictures/10-good-android-apps-for-productivity/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="4c3abe6a-455b-4c11-bb6d-5106ed000483" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/pictures/six-clicks-googles-android-lollipop-updates-the-samsung-galaxy-s5-look-and-feel/" data-tracking="river">Google's Android Lollipop update improves the Samsung Galaxy S5 look and functionality</a></h3>
+                   <div>
+                    <a class="thumb" href="/pictures/six-clicks-googles-android-lollipop-updates-the-samsung-galaxy-s5-look-and-feel/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Google's Android Lollipop update improves the Samsung Galaxy S5 look and functionality" data-src="http://zdnet4.cbsistatic.com/hub/i/r/2014/10/04/1068b12a-4be4-11e4-b6a0-d4ae52e95e57/thumbnail/170x128/ff05d1087f54865f42b5c2f9d218a57c/samsung-galaxy-s5-mwc-2014-24610x458.jpg"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">Samsung is rolling out its Android Lollipop update for existing Galaxy S5 owners. The update integrates Material Design with Samsung TouchWiz and things look great.</p>
+                    <p class="meta">published <span data-date="2015-02-23 14:13:00">February 23, 2015</span> by <a rel="author" href="/meet-the-team/us/palmsolo+%28aka+matthew+miller%29/" data-tracking="river">Matthew Miller</a></p>
+                    <p class="options"><a class="comment" href="/pictures/six-clicks-googles-android-lollipop-updates-the-samsung-galaxy-s5-look-and-feel/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="43cb1d5a-d5f6-49ee-b81c-2c2b2412e1ee" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/pictures/love-fest-startups-and-large-companies-innovate-together/" data-tracking="river">Love fest: Startups and large companies innovate together</a></h3>
+                   <div>
+                    <a class="thumb" href="/pictures/love-fest-startups-and-large-companies-innovate-together/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Love fest: Startups and large companies innovate together" data-src="http://zdnet4.cbsistatic.com/hub/i/r/2015/02/23/68c127e3-ddf8-4e64-9962-2f5e9e2fd6ab/thumbnail/170x128/1c94fbab620d31225de01cfe1720b418/1-large-companies-love-startups.jpg"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">Startup companies and big organizations are natural partners; however, potential pitfalls can cause problems. This presentation will help your corporate innovation efforts start on the right track!</p>
+                    <p class="meta">published <span data-date="2015-02-23 13:14:00">February 23, 2015</span> by <a rel="author" href="/meet-the-team/us/mkrigsman@asuret.com/" data-tracking="river">Michael Krigsman</a></p>
+                    <p class="options"><a class="comment" href="/pictures/love-fest-startups-and-large-companies-innovate-together/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="943b85ef-a464-4216-823a-65cb0e963b7e" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/pictures/inside-the-robot-house-is-this-your-future-photos/" data-tracking="river">Inside the robot house: Is this your future? Photos</a></h3>
+                   <div>
+                    <a class="thumb" href="/pictures/inside-the-robot-house-is-this-your-future-photos/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Inside the robot house: Is this your future? Photos" data-src="http://zdnet3.cbsistatic.com/hub/i/r/2015/02/20/1670fa2a-2ae1-4df1-9dd2-d4b54497a1fb/thumbnail/170x128/29e1acef300dc349278d00d80c9e33cf/accompanyrobothouse1feb15.jpg"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">Service robots that are empathetic and that can learn from you - these are just some of the technologies tested out in robot houses across Europe as part of the Accompany project.</p>
+                    <p class="meta">published <span data-date="2015-02-21 12:00:03">February 21, 2015</span> by <a rel="author" href="/meet-the-team/uk/toby+wolpe/" data-tracking="river">Toby Wolpe</a></p>
+                    <p class="options"><a class="comment" href="/pictures/inside-the-robot-house-is-this-your-future-photos/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="0e006277-74dd-4537-b84b-ea48d97405db" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/pictures/tech-essentials-for-the-office-and-when-on-the-road/" data-tracking="river">Tech essentials for the office and when on the road</a></h3>
+                   <div>
+                    <a class="thumb" href="/pictures/tech-essentials-for-the-office-and-when-on-the-road/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Tech essentials for the office and when on the road" data-src="http://zdnet1.cbsistatic.com/hub/i/r/2015/02/20/4af8a30f-047f-4305-9393-be4b4b6983e6/thumbnail/170x128/cb00ce187f301b8cbb29483c70b687c9/000.jpg"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">Here's a tour of some of the things that I take for granted, but which work hard for me every day, and without them I wouldn't be able to do as much as I do each and every day.</p>
+                    <p class="meta">published <span data-date="2015-02-21 09:45:03">February 21, 2015</span> by <a rel="author" href="/meet-the-team/us/adrian+kingsley-hughes/" data-tracking="river">Adrian Kingsley-Hughes</a></p>
+                    <p class="options"><a class="comment" href="/pictures/tech-essentials-for-the-office-and-when-on-the-road/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="597decdc-488a-4f59-981e-a7ccdea8d981" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/pictures/top-laptops-ready-for-windows-10/" data-tracking="river">Six great laptops ready for Windows 10</a></h3>
+                   <div>
+                    <a class="thumb" href="/pictures/top-laptops-ready-for-windows-10/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Six great laptops ready for Windows 10" data-src="http://zdnet2.cbsistatic.com/hub/i/r/2015/02/20/a0837dfb-3ecb-49f9-9394-f03bfc8284a6/thumbnail/170x128/79a73c46712b336b4729d7ef593c50f5/00-windows-10.jpg"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">From powerhouses to light 2-in-1 models, these laptops -- including two ThinkPads and a MacBook Pro -- should all run Windows 10 like champs.</p>
+                    <p class="meta">published <span data-date="2015-02-20 14:09:19">February 20, 2015</span> by <a rel="author" href="/meet-the-team/us/jameskendrick/" data-tracking="river">James Kendrick</a></p>
+                    <p class="options"><a class="comment" href="/pictures/top-laptops-ready-for-windows-10/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="cc62da3d-c4c5-409a-886b-54525c525631" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/pictures/app-shootout-siri-or-cortana-which-is-best/" data-tracking="river">App shootout: Siri or Cortana - which is best?</a></h3>
+                   <div>
+                    <a class="thumb" href="/pictures/app-shootout-siri-or-cortana-which-is-best/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="App shootout: Siri or Cortana - which is best?" data-src="http://zdnet2.cbsistatic.com/hub/i/r/2015/02/18/f1394d56-fb55-4c5d-a28e-29f8dbaac56a/thumbnail/170x128/5158b5c92c3e095c73665d6756fe2514/1-eileen-brown-zdnet-siri-cortana.png"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">We asked Siri and Cortana the same questions to see whether the Apple -- or Microsoft -- personal assistant gave the best answer to our questions for work and leisure.</p>
+                    <p class="meta">published <span data-date="2015-02-19 19:04:00">February 19, 2015</span> by <a rel="author" href="/meet-the-team/us/eileenb/" data-tracking="river">Eileen Brown</a></p>
+                    <p class="options"><a class="comment" href="/pictures/app-shootout-siri-or-cortana-which-is-best/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="acfe2a5a-1ba3-4293-8439-07f6334953fd" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/pictures/the-windows-8-scrap-heap-10-features-that-didnt-make-it-to-windows-10/" data-tracking="river">The Windows 8 scrap heap: 10 features that didn't make it to Windows 10</a></h3>
+                   <div>
+                    <a class="thumb" href="/pictures/the-windows-8-scrap-heap-10-features-that-didnt-make-it-to-windows-10/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="The Windows 8 scrap heap: 10 features that didn't make it to Windows 10" data-src="http://zdnet1.cbsistatic.com/hub/i/r/2015/02/18/4db7190d-a51c-43e4-8f74-f47375566c97/thumbnail/170x128/b7e9ad06d8593ccb340ff609329983a2/01-start-screen.png"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">Windows 8 was filled with bold ideas, designed to move Windows forward in one giant leap. Three years later, as Windows 10 nears its release date, many of those innovative ideas are gone. Here's a look at what's been tossed away, and why.</p>
+                    <p class="meta">published <span data-date="2015-02-19 13:11:00">February 19, 2015</span> by <a rel="author" href="/meet-the-team/us/ed+bott/" data-tracking="river">Ed Bott</a></p>
+                    <p class="options"><a class="comment" href="/pictures/the-windows-8-scrap-heap-10-features-that-didnt-make-it-to-windows-10/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="3826edbf-f4d1-418f-8508-06fb0531f0e6" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                </div> 
+               </div> 
+               <div data-no-js="" data-load="d4d6f917-d769-4464-957c-03ad6ead8f67-river"> 
+                <a class="btn btn-primary btn-block load-more" href="/2/"><span class="text">View more photos</span></a> 
+               </div> 
+              </div> 
+              <div id="videos" class="tab "> 
+               <div id="6fb2444a-906d-4334-a1d3-643f5aa12014-river" class="river" data-component="loadMore" data-load-more-options="{&quot;url&quot;:&quot;\/components\/load-more\/xhr\/&quot;,&quot;data&quot;:{&quot;endpoint&quot;:&quot;\/api\/component\/listing\/e37601bd-268d-465d-a5a2-cac1cdb05230\/content\/6fb2444a-906d-4334-a1d3-643f5aa12014&quot;,&quot;params&quot;:[],&quot;view&quot;:&quot;river&quot;,&quot;familyName&quot;:&quot;listing&quot;,&quot;typeName&quot;:&quot;multi_filtered_listing&quot;,&quot;offset&quot;:15,&quot;initialLimit&quot;:15,&quot;limit&quot;:15,&quot;lastAssetId&quot;:&quot;c8cc83eb-26ba-11e4-8c7f-00505685119a&quot;},&quot;loader&quot;:{&quot;classes&quot;:{&quot;base&quot;:&quot;btn btn-primary btn-block load-more&quot;},&quot;text&quot;:{&quot;idle&quot;:&quot;View more videos&quot;}},&quot;pushState&quot;:{&quot;route&quot;:&quot;\/{page}\/&quot;,&quot;enabled&quot;:true,&quot;currentPage&quot;:1}}"> 
+                <div data-component="livefyreCommentcount"> 
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/article/everyday-ways-your-personal-privacy-is-under-threat/" data-tracking="river">Everyday ways your personal privacy is under threat</a></h3>
+                   <div>
+                    <a class="thumb" href="/article/everyday-ways-your-personal-privacy-is-under-threat/" data-tracking="river" data-item="riverThumb"><span class="icon video">Play Video</span><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Everyday ways your personal privacy is under threat" data-src="http://zdnet2.cbsistatic.com/hub/i/r/2015/02/03/63401cef-2ff8-4c8a-aeae-99ee6cdef079/thumbnail/170x128/1bcee37fab4072c560e3e8a25419138a/zdjanuaryvideo.jpg"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">If you think the government cannot and does not want to get its hands all over your personal data, then think again.</p>
+                    <p class="meta">published <span data-date="2015-02-02 20:50:00">February 2, 2015</span> by <a rel="author" href="/meet-the-team/au/chris+duckett/" data-tracking="river">Chris Duckett</a></p>
+                    <p class="options"><a class="comment" href="/article/everyday-ways-your-personal-privacy-is-under-threat/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="9bacb22d-32e6-46ea-a576-87b473803852" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/article/doing-small-business-better-series-highlights/" data-tracking="river">Doing Small Business Better: Series highlights</a></h3>
+                   <div>
+                    <a class="thumb" href="/article/doing-small-business-better-series-highlights/" data-tracking="river" data-item="riverThumb"><span class="icon video">Play Video</span><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Doing Small Business Better: Series highlights" data-src="http://zdnet3.cbsistatic.com/hub/i/r/2014/11/28/1230b537-76b6-11e4-b569-d4ae52e95e57/thumbnail/170x128/4845eac1444fe6095ce6897aedf12679/doing-small-business-better-series-highlights.jpg"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">The highlights from ZDNet's Doing Small Business Better video series.</p>
+                    <p class="meta">published <span data-date="2014-10-30 05:46:05">October 29, 2014</span> by <a rel="author" href="/meet-the-team/au/lilia.guan1/" data-tracking="river">Lilia Guan</a></p>
+                    <p class="options"><a class="comment" href="/article/doing-small-business-better-series-highlights/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="11feacd4-76b6-11e4-b569-d4ae52e95e57" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <section class="multiplexer">
+                  <div id="multiplexer-54f3b84ae529e-3" class="ad-multiplexer" data-ad="multiplexer"> 
+                   <script>
+        window.console && console.log && console.log("ADS: queuing multiplexer-54f3b84ae529e-3 for display");
+        var cbsiGptDivIds = cbsiGptDivIds || [];
+        cbsiGptDivIds.push("multiplexer-54f3b84ae529e-3");
+    </script>
+                  </div> 
+                 </section>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/article/doing-small-business-better-creating-a-resilient-business/" data-tracking="river">Doing Small Business Better: Creating a resilient business</a></h3>
+                   <div>
+                    <a class="thumb" href="/article/doing-small-business-better-creating-a-resilient-business/" data-tracking="river" data-item="riverThumb"><span class="icon video">Play Video</span><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Doing Small Business Better: Creating a resilient business" data-src="http://zdnet2.cbsistatic.com/hub/i/r/2014/11/28/603cbf6e-76b6-11e4-b569-d4ae52e95e57/thumbnail/170x128/363f29f642f2a63baeee83a89c5ebb89/doing-small-business-better-creating-a-resilient-business.png"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">For the fourth and final video in our small business video series, our expert panel looks at making a small business resilient.</p>
+                    <p class="meta">published <span data-date="2014-10-28 22:05:05">October 28, 2014</span> by <a rel="author" href="/feature/meet-the-team/" data-tracking="river">ZDNet Staff</a></p>
+                    <p class="options"><a class="comment" href="/article/doing-small-business-better-creating-a-resilient-business/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="600abb6c-76b6-11e4-b569-d4ae52e95e57" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/article/doing-small-business-better-impact-of-technology/" data-tracking="river">Doing Small Business Better: Impact of technology</a></h3>
+                   <div>
+                    <a class="thumb" href="/article/doing-small-business-better-impact-of-technology/" data-tracking="river" data-item="riverThumb"><span class="icon video">Play Video</span><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Doing Small Business Better: Impact of technology" data-src="http://zdnet4.cbsistatic.com/hub/i/r/2014/10/21/02436090-5901-11e4-b6a0-d4ae52e95e57/thumbnail/170x128/45cff5e7042a40abe6c8b2328fb3cd36/10147377.jpg"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">For the third video in our small business video series, our expert panel looks at the impact of technology on small business.</p>
+                    <p class="meta">published <span data-date="2014-10-21 23:33:06">October 21, 2014</span> by <a rel="author" href="/feature/meet-the-team/" data-tracking="river">ZDNet Staff</a></p>
+                    <p class="options"><a class="comment" href="/article/doing-small-business-better-impact-of-technology/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="d520df02-5db8-11e4-b6a0-d4ae52e95e57" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/article/doing-small-business-better-is-the-customer-king/" data-tracking="river">Doing Small Business Better: Is the customer king?</a></h3>
+                   <div>
+                    <a class="thumb" href="/article/doing-small-business-better-is-the-customer-king/" data-tracking="river" data-item="riverThumb"><span class="icon video">Play Video</span><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Doing Small Business Better: Is the customer king?" data-src="http://zdnet2.cbsistatic.com/hub/i/r/2014/10/20/238a02e2-5828-11e4-b6a0-d4ae52e95e57/thumbnail/170x128/92e412bc5454ffa012a43723b521e7e4/doing-small-business-better-is-the-customer-king.jpg"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">In the second video of our small business video series, the panel discusses the concept of being a customer-centric business.</p>
+                    <p class="meta">published <span data-date="2014-10-15 06:34:06">October 14, 2014</span> by <a rel="author" href="/feature/meet-the-team/" data-tracking="river">ZDNet Staff</a></p>
+                    <p class="options"><a class="comment" href="/article/doing-small-business-better-is-the-customer-king/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="235f4626-5828-11e4-b6a0-d4ae52e95e57" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/article/doing-small-business-better-working-smarter/" data-tracking="river">Doing Small Business Better: Working smarter</a></h3>
+                   <div>
+                    <a class="thumb" href="/article/doing-small-business-better-working-smarter/" data-tracking="river" data-item="riverThumb"><span class="icon video">Play Video</span><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Doing Small Business Better: Working smarter" data-src="http://zdnet1.cbsistatic.com/hub/i/r/2014/10/20/da20184a-5828-11e4-b6a0-d4ae52e95e57/thumbnail/170x128/03c6727b4b493ebad8f85ec6e453531f/doing-small-business-better-working-smarter.png"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">In the first video of our small business video series, the panel discusses what business owners can do to help themselves, and their staff, do what they do better.</p>
+                    <p class="meta">published <span data-date="2014-10-08 05:31:05">October 7, 2014</span> by <a rel="author" href="/feature/meet-the-team/" data-tracking="river">ZDNet Staff</a></p>
+                    <p class="options"><a class="comment" href="/article/doing-small-business-better-working-smarter/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="d9f74594-5828-11e4-b6a0-d4ae52e95e57" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/article/business-intelligence-on-the-move/" data-tracking="river">Business Intelligence on the Move</a></h3>
+                   <div>
+                    <a class="thumb" href="/article/business-intelligence-on-the-move/" data-tracking="river" data-item="riverThumb"><span class="icon video">Play Video</span><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Business Intelligence on the Move" data-src="http://zdnet3.cbsistatic.com/hub/i/r/2014/10/14/72de62d3-538e-11e4-b6a0-d4ae52e95e57/thumbnail/170x128/9ea19dab930df071b39d88f7ae26ae24/10146899.png"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary"></p>
+                    <p class="meta">published <span data-date="2014-10-02 08:22:03">October 2, 2014</span> by <a rel="author" href="/feature/meet-the-team/" data-tracking="river">ZDNet Staff</a></p>
+                    <p class="options"><a class="comment" href="/article/business-intelligence-on-the-move/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="23f93325-7478-11e4-a0a6-d4ae52e95e57" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <section class="replay">
+                  <div id="replay-54f3b84ae529e-3" class="ad-replay" data-ad="replay"> 
+                   <script>
+        window.console && console.log && console.log("ADS: queuing replay-54f3b84ae529e-3 for display");
+        var cbsiGptDivIds = cbsiGptDivIds || [];
+        cbsiGptDivIds.push("replay-54f3b84ae529e-3");
+    </script>
+                  </div> 
+                 </section>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/article/webinar-three-critical-success-factors-for-enterprise-mobility/" data-tracking="river">Webinar: Three critical success factors for enterprise mobility</a></h3>
+                   <div>
+                    <a class="thumb" href="/article/webinar-three-critical-success-factors-for-enterprise-mobility/" data-tracking="river" data-item="riverThumb"><span class="icon video">Play Video</span><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Webinar: Three critical success factors for enterprise mobility" data-src="http://zdnet4.cbsistatic.com/hub/i/r/2014/04/28/f79ed1e9-1d17-11e4-8c7f-00505685119a/thumbnail/170x128/7f13ac6536d0718f747ca9fb68ee271f/ent-sw-mobility-hub.jpg"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">Join host Rob O'Neill for a ZDNet webinar featuring an in-depth discussion on mobility systems and deployments.</p>
+                    <p class="meta">published <span data-date="2014-09-11 03:45:06">September 10, 2014</span> by <a rel="author" href="/feature/meet-the-team/" data-tracking="river">ZDNet Staff</a></p>
+                    <p class="options"><a class="comment" href="/article/webinar-three-critical-success-factors-for-enterprise-mobility/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="b055dac5-3e44-11e4-b6a0-d4ae52e95e57" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/article/mobility-like-a-drug-says-ceo-of-property-buyers-agent-full-interview/" data-tracking="river">Mobility "like a drug" says CEO of property buyer's agent (full interview)</a></h3>
+                   <div>
+                    <a class="thumb" href="/article/mobility-like-a-drug-says-ceo-of-property-buyers-agent-full-interview/" data-tracking="river" data-item="riverThumb"><span class="icon video">Play Video</span><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Mobility &quot;like a drug&quot; says CEO of property buyer's agent (full interview)" data-src="http://zdnet4.cbsistatic.com/hub/i/r/2014/08/21/d457ba29-34cd-11e4-9e6a-00505685119a/thumbnail/170x128/d17e9b4d1e1bd49441fe3309dfa21ae3/ben-handler-colour.jpg"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">Cohen Handler reaps client service and collaboration dividends from mobility investment.</p>
+                    <p class="meta">published <span data-date="2014-08-22 00:32:05">August 21, 2014</span> by <a rel="author" href="/meet-the-team/au/angus+macaskill/" data-tracking="river">Angus Macaskill</a></p>
+                    <p class="options"><a class="comment" href="/article/mobility-like-a-drug-says-ceo-of-property-buyers-agent-full-interview/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="d4296e67-34cd-11e4-9e6a-00505685119a" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/article/mobility-like-a-drug-says-ceo-of-property-buyers-agent-highlights-video/" data-tracking="river">Mobility "like a drug" says CEO of property buyer's agent (highlights video)</a></h3>
+                   <div>
+                    <a class="thumb" href="/article/mobility-like-a-drug-says-ceo-of-property-buyers-agent-highlights-video/" data-tracking="river" data-item="riverThumb"><span class="icon video">Play Video</span><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Mobility &quot;like a drug&quot; says CEO of property buyer's agent (highlights video)" data-src="http://zdnet4.cbsistatic.com/hub/i/r/2014/08/21/d4fb7c07-34cd-11e4-9e6a-00505685119a/thumbnail/170x128/4e02fa95ca0d24364336f710679f1cf2/ben-handler-bw.png"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">Cohen Handler reaps client service and collaboration dividends from mobility investment.</p>
+                    <p class="meta">published <span data-date="2014-08-22 00:32:05">August 21, 2014</span> by <a rel="author" href="/meet-the-team/au/angus+macaskill/" data-tracking="river">Angus Macaskill</a></p>
+                    <p class="options"><a class="comment" href="/article/mobility-like-a-drug-says-ceo-of-property-buyers-agent-highlights-video/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="d4ce8dde-34cd-11e4-9e6a-00505685119a" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/article/australiawow-gets-business-into-shape-with-mobility-full-interview/" data-tracking="river">AustraliaWOW! gets business into shape with mobility (full interview)</a></h3>
+                   <div>
+                    <a class="thumb" href="/article/australiawow-gets-business-into-shape-with-mobility-full-interview/" data-tracking="river" data-item="riverThumb"><span class="icon video">Play Video</span><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="AustraliaWOW! gets business into shape with mobility (full interview)" data-src="http://zdnet4.cbsistatic.com/hub/i/r/2014/08/21/f7410374-34cd-11e4-9e6a-00505685119a/thumbnail/170x128/8e7e9e6a61bed3bf2b0732c09bec1390/nathanhagueaustraliawow.jpg"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">SaaS business that services the fitness instructor market manages 30,000 global clients with just 5 full-time staff, and without any physical infrastructure.</p>
+                    <p class="meta">published <span data-date="2014-08-21 05:36:06">August 20, 2014</span> by <a rel="author" href="/meet-the-team/au/angus+macaskill/" data-tracking="river">Angus Macaskill</a></p>
+                    <p class="options"><a class="comment" href="/article/australiawow-gets-business-into-shape-with-mobility-full-interview/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="f713d43c-34cd-11e4-9e6a-00505685119a" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/article/australiawow-gets-business-into-shape-with-mobility-highlights-video/" data-tracking="river">AustraliaWOW! gets business into shape with mobility (highlights video)</a></h3>
+                   <div>
+                    <a class="thumb" href="/article/australiawow-gets-business-into-shape-with-mobility-highlights-video/" data-tracking="river" data-item="riverThumb"><span class="icon video">Play Video</span><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="AustraliaWOW! gets business into shape with mobility (highlights video)" data-src="http://zdnet4.cbsistatic.com/hub/i/r/2014/08/21/f88235f5-34cd-11e4-9e6a-00505685119a/thumbnail/170x128/1b22dd9e010afd7968a37d2fdad8af2b/nathanhagueaustraliawow-short-video.jpg"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">SaaS business that services the fitness instructor market manages 30,000 global clients with just 5 full-time staff, and without any physical infrastructure.</p>
+                    <p class="meta">published <span data-date="2014-08-21 05:36:06">August 20, 2014</span> by <a rel="author" href="/meet-the-team/au/angus+macaskill/" data-tracking="river">Angus Macaskill</a></p>
+                    <p class="options"><a class="comment" href="/article/australiawow-gets-business-into-shape-with-mobility-highlights-video/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="f85648c9-34cd-11e4-9e6a-00505685119a" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/article/strategies-to-help-you-profit-from-end-of-financial-year-webinar/" data-tracking="river">Strategies to help you profit from end of financial year: Webinar</a></h3>
+                   <div>
+                    <a class="thumb" href="/article/strategies-to-help-you-profit-from-end-of-financial-year-webinar/" data-tracking="river" data-item="riverThumb"><span class="icon video">Play Video</span><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Strategies to help you profit from end of financial year: Webinar" data-src="http://zdnet4.cbsistatic.com/hub/i/r/2014/06/20/c53a1bd5-1d18-11e4-8c7f-00505685119a/thumbnail/170x128/f47c8bc5cb14d7a187659e70caa7337c/andrew-griffiths.jpg"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">What’s the big deal about the end of the financial year? Is it an opportunity for businesses or just a hassle? </p>
+                    <p class="meta">published <span data-date="2014-07-07 01:15:06">July 6, 2014</span> by <a rel="author" href="/feature/meet-the-team/" data-tracking="river">ZDNet Staff</a></p>
+                    <p class="options"><a class="comment" href="/article/strategies-to-help-you-profit-from-end-of-financial-year-webinar/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="b15630e0-1edc-11e4-8c7f-00505685119a" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/article/data-protection-key-to-cloud-in-financial-services-directasia-com-cio/" data-tracking="river">Data protection key to cloud in financial services: DirectAsia.com CIO</a></h3>
+                   <div>
+                    <a class="thumb" href="/article/data-protection-key-to-cloud-in-financial-services-directasia-com-cio/" data-tracking="river" data-item="riverThumb"><span class="icon video">Play Video</span><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Data protection key to cloud in financial services: DirectAsia.com CIO" data-src="http://zdnet2.cbsistatic.com/hub/i/r/2014/06/30/e65aeff4-1d18-11e4-8c7f-00505685119a/thumbnail/170x128/290b5bdb7fbe66e05be622f0312d5039/jean-marc.png"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">Growing Asian direct insurer takes initial steps with trusted service providers to test resilience and security of critical apps in a cloud environment.</p>
+                    <p class="meta">published <span data-date="2014-06-30 09:12:05">June 30, 2014</span> by <a rel="author" href="/meet-the-team/au/angus+macaskill/" data-tracking="river">Angus Macaskill</a></p>
+                    <p class="options"><a class="comment" href="/article/data-protection-key-to-cloud-in-financial-services-directasia-com-cio/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="a33aa7fc-26ba-11e4-8c7f-00505685119a" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/article/cloud-starting-to-revolutionise-marketing-digital-veteran-full-video/" data-tracking="river">Cloud starting to revolutionise marketing: digital veteran (full video)</a></h3>
+                   <div>
+                    <a class="thumb" href="/article/cloud-starting-to-revolutionise-marketing-digital-veteran-full-video/" data-tracking="river" data-item="riverThumb"><span class="icon video">Play Video</span><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Cloud starting to revolutionise marketing: digital veteran (full video)" data-src="http://zdnet2.cbsistatic.com/hub/i/r/2014/06/27/e299287a-1d18-11e4-8c7f-00505685119a/thumbnail/170x128/b9ce30dc5de39b49998238799d45f5a0/teahan-colour.png"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">Dana Teahan, founder of tech and brand start-up, Divide by Zero, shares his perspectives on the potential of cloud to increase the effectiveness of the CMO and CDO.</p>
+                    <p class="meta">published <span data-date="2014-06-28 04:56:07">June 27, 2014</span> by <a rel="author" href="/meet-the-team/au/angus+macaskill/" data-tracking="river">Angus Macaskill</a></p>
+                    <p class="options"><a class="comment" href="/article/cloud-starting-to-revolutionise-marketing-digital-veteran-full-video/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="c8cc83eb-26ba-11e4-8c7f-00505685119a" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                </div> 
+               </div> 
+               <div data-no-js="" data-load="6fb2444a-906d-4334-a1d3-643f5aa12014-river"> 
+                <a class="btn btn-primary btn-block load-more" href="/2/"><span class="text">View more videos</span></a> 
+               </div> 
+              </div> 
+              <div id="reviews" class="tab "> 
+               <div id="58c8743c-44ac-43c0-b7c5-50e355c93b5b-river" class="river" data-component="loadMore" data-load-more-options="{&quot;url&quot;:&quot;\/components\/load-more\/xhr\/&quot;,&quot;data&quot;:{&quot;endpoint&quot;:&quot;\/api\/component\/listing\/e37601bd-268d-465d-a5a2-cac1cdb05230\/content\/58c8743c-44ac-43c0-b7c5-50e355c93b5b&quot;,&quot;params&quot;:[],&quot;view&quot;:&quot;river&quot;,&quot;familyName&quot;:&quot;listing&quot;,&quot;typeName&quot;:&quot;multi_filtered_listing&quot;,&quot;offset&quot;:15,&quot;initialLimit&quot;:15,&quot;limit&quot;:15,&quot;lastAssetId&quot;:&quot;eca0c67c-1c35-415f-9b00-bd5fd034ab50&quot;},&quot;loader&quot;:{&quot;classes&quot;:{&quot;base&quot;:&quot;btn btn-primary btn-block load-more&quot;},&quot;text&quot;:{&quot;idle&quot;:&quot;View more reviews&quot;}},&quot;pushState&quot;:{&quot;route&quot;:&quot;\/{page}\/&quot;,&quot;enabled&quot;:true,&quot;currentPage&quot;:1}}"> 
+                <div data-component="livefyreCommentcount"> 
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/pictures/htc-one-m9-camera-comparison-20-megapixels-on-the-back-and-ultrapixel-on-the-front/" data-tracking="river">HTC One M9 camera comparison: 20 megapixels on the back and UltraPixel on the front</a></h3>
+                   <div>
+                    <a class="thumb" href="/pictures/htc-one-m9-camera-comparison-20-megapixels-on-the-back-and-ultrapixel-on-the-front/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="HTC One M9 camera comparison: 20 megapixels on the back and UltraPixel on the front" data-src="http://zdnet4.cbsistatic.com/hub/i/r/2015/02/28/436eb2b8-0232-4b6b-ad3f-9d28c1775e94/thumbnail/170x128/3407e828d3db3402f272fe662f61a450/imag0021.jpg"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">HTC made the right move by moving the UltraPixel camera to the front and adding in a more standard camera to the back. Software isn't yet final, but initial results are encouraging.</p>
+                    <p class="meta">published <span data-date="2015-03-01 15:52:03">9 hours ago</span> by <a rel="author" href="/meet-the-team/us/palmsolo+%28aka+matthew+miller%29/" data-tracking="river">Matthew Miller</a></p>
+                    <p class="options"><a class="comment" href="/pictures/htc-one-m9-camera-comparison-20-megapixels-on-the-back-and-ultrapixel-on-the-front/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="786d0f88-7698-4bac-b89d-30a55c3bd926" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/article/htc-one-m9-hands-on-improved-craftsmanship-camera-and-htc-sense-are-compelling/" data-tracking="river">HTC One M9 hands-on: Improved craftsmanship, camera, and HTC Sense are compelling</a></h3>
+                   <div>
+                    <a class="thumb" href="/article/htc-one-m9-hands-on-improved-craftsmanship-camera-and-htc-sense-are-compelling/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="HTC One M9 hands-on: Improved craftsmanship, camera, and HTC Sense are compelling" data-src="http://zdnet1.cbsistatic.com/hub/i/r/2015/02/28/e4ee6b7e-d12e-45d6-b609-63b81c931c66/thumbnail/170x128/9223376d5dc7d215ce842a23addb658f/img1406.jpg"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">Matthew spent over 24 hours using the new HTC One M9 and it exceeds the emotional appeal of the M7. HTC improved where it needed to and the One M9 is sure to be a popular phone.</p>
+                    <p class="meta">published <span data-date="2015-03-01 15:45:00">9 hours ago</span> by <a rel="author" href="/meet-the-team/us/palmsolo+%28aka+matthew+miller%29/" data-tracking="river">Matthew Miller</a></p>
+                    <p class="options"><a class="comment" href="/article/htc-one-m9-hands-on-improved-craftsmanship-camera-and-htc-sense-are-compelling/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="05734b37-84fd-42fc-badb-d9c9c3056f84" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <section class="multiplexer">
+                  <div id="multiplexer-54f3b84ae529e-4" class="ad-multiplexer" data-ad="multiplexer"> 
+                   <script>
+        window.console && console.log && console.log("ADS: queuing multiplexer-54f3b84ae529e-4 for display");
+        var cbsiGptDivIds = cbsiGptDivIds || [];
+        cbsiGptDivIds.push("multiplexer-54f3b84ae529e-4");
+    </script>
+                  </div> 
+                 </section>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/product/motorola-moto-e-4g-lte/" data-tracking="river">Now with LTE, the new Moto E is the best sub-$150 Android phone</a></h3>
+                   <div>
+                    <a class="thumb" href="/product/motorola-moto-e-4g-lte/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Now with LTE, the new Moto E is the best sub-$150 Android phone" data-src="http://zdnet2.cbsistatic.com/hub/i/r/2015/02/25/540e69cb-b70a-4df7-bd9c-c74249595c43/thumbnail/170x128/1214da5bfb78e2bab44473bfc0903d79/moto-e-thumb.jpg"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">The Android phone won't win any awards for performance, but the addition of LTE will make this entry-level smartphone a strong contender for bring-your-own-device users.</p>
+                    <p class="meta">published <span data-date="2015-02-25 14:59:00">February 25, 2015</span> by <a rel="author" href="/meet-the-team/us/zwhittaker/" data-tracking="river">Zack Whittaker</a></p>
+                    <p class="options"><a class="comment" href="/product/motorola-moto-e-4g-lte/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="09ce9a93-0b42-4c7f-8b37-f05f118460d8" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/article/ubuntu-developments-15-04-beta-1-and-the-first-ubuntu-phone/" data-tracking="river">Ubuntu developments: 15.04 Beta 1 and the first Ubuntu phone</a></h3>
+                   <div>
+                    <a class="thumb" href="/article/ubuntu-developments-15-04-beta-1-and-the-first-ubuntu-phone/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Ubuntu developments: 15.04 Beta 1 and the first Ubuntu phone" data-src="http://zdnet2.cbsistatic.com/hub/i/r/2015/02/25/e51beb5a-9e98-4e0e-8d4a-b412491ef766/thumbnail/170x128/13d5d29421b0a5931e0b600a923069f5/ubuntu-1504-b1-logo.jpg"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">The split development paths of Ubuntu desktop and the converged Ubuntu Desktop Next mean that, so far, Ubuntu 15.04 for the desktop looks underwhelming. Meanwhile, the first Ubuntu smartphone, the BQ Aquaris E4.5 Ubuntu Edition, goes on sale.</p>
+                    <p class="meta">published <span data-date="2015-02-25 14:39:00">February 25, 2015</span> by <a rel="author" href="/meet-the-team/uk/terry@acousticmasters.com/" data-tracking="river">Terry Relph-Knight</a></p>
+                    <p class="options"><a class="comment" href="/article/ubuntu-developments-15-04-beta-1-and-the-first-ubuntu-phone/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="16c035d7-8994-4d44-a298-9c32a7be37e4" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/article/mophie-juice-pack-iphone-6-and-6-plus-hands-on-portable-power-when-one-day-is-not-enough/" data-tracking="river">Mophie Juice Pack for iPhone 6 and 6 Plus hands-on: Portable power when one day is not enough</a></h3>
+                   <div>
+                    <a class="thumb" href="/article/mophie-juice-pack-iphone-6-and-6-plus-hands-on-portable-power-when-one-day-is-not-enough/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Mophie Juice Pack for iPhone 6 and 6 Plus hands-on: Portable power when one day is not enough" data-src="http://zdnet3.cbsistatic.com/hub/i/r/2015/02/23/fc727fc2-d41b-4b75-abee-f9048ee2c7d3/thumbnail/170x128/83d200b35af55911936f4d021925e08f/retailpackagethumb.jpg"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">Apple's iPhone 6 Plus provides enough power to get heavy users through a day, but sometimes when you are on the road you need more capacity. That's where Mophie comes in with the Juice Pack.</p>
+                    <p class="meta">published <span data-date="2015-02-23 15:42:04">February 23, 2015</span> by <a rel="author" href="/meet-the-team/us/palmsolo+%28aka+matthew+miller%29/" data-tracking="river">Matthew Miller</a></p>
+                    <p class="options"><a class="comment" href="/article/mophie-juice-pack-iphone-6-and-6-plus-hands-on-portable-power-when-one-day-is-not-enough/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="c4af07be-91e5-4f39-99d8-24ad3b55768f" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item promo">
+                  <div>
+                   <h3><a href="http://www.techproresearch.com/downloads/job-description-big-data-modeler/" target="_blank" data-tracking="river">Job description: Big data modeler</a></h3>
+                   <div>
+                    <a class="thumb" href="http://www.techproresearch.com/downloads/job-description-big-data-modeler/" target="_blank" data-tracking="river"><img src="http://b2b.cbsimg.net/images/pro/eas_image.jpeg"></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">When you talk to leaders about trends in technology jobs, one term comes up repeatedly: Big data. In the past few years, responding to the increasing buzz and job demand, new degree programs have been...</p>
+                    <h5><em>from <a href="http://www.techproresearch.com/downloads/job-description-big-data-modeler/" target="_blank" data-tracking="river">TechProResearch »</a></em></h5>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/article/samsung-galaxy-alpha-hands-on-note-4-metal-design-in-small-compelling-form-factor/" data-tracking="river">Samsung Galaxy Alpha hands-on: Note 4 metal design in small compelling form factor</a></h3>
+                   <div>
+                    <a class="thumb" href="/article/samsung-galaxy-alpha-hands-on-note-4-metal-design-in-small-compelling-form-factor/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Samsung Galaxy Alpha hands-on: Note 4 metal design in small compelling form factor" data-src="http://zdnet2.cbsistatic.com/hub/i/r/2015/02/20/c98caebe-a5b7-464c-8144-8d4511ab3c44/thumbnail/170x128/4a330ab329030c4ff91f8d4a9d527737/img1234.jpg"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">The Samsung Galaxy Note 4 and Note Edge are the best designed Samsung smartphones and the Galaxy Alpha has the same metal edges.</p>
+                    <p class="meta">published <span data-date="2015-02-20 15:24:00">February 20, 2015</span> by <a rel="author" href="/meet-the-team/us/palmsolo+%28aka+matthew+miller%29/" data-tracking="river">Matthew Miller</a></p>
+                    <p class="options"><a class="comment" href="/article/samsung-galaxy-alpha-hands-on-note-4-metal-design-in-small-compelling-form-factor/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="9d392ef9-3cbe-4ffc-8a71-9da277a2d247" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/article/search-book-review-the-new-hinge-linking-people-and-machines/" data-tracking="river">Search, book review: The new 'hinge' linking people and machines</a></h3>
+                   <div>
+                    <a class="thumb" href="/article/search-book-review-the-new-hinge-linking-people-and-machines/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Search, book review: The new 'hinge' linking people and machines" data-src="http://zdnet2.cbsistatic.com/hub/i/r/2015/02/19/7db6b105-9f20-4a77-a1ed-f4bee3d1addf/thumbnail/170x128/34bb03b401b53156ef1fcad43b2307b7/search-book-thumb.jpg"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">The traditional search engine will evolve into a digital personal assistant that tracks your activities and automatically delivers helpful information, according to Microsoft's Stefan Weitz, whose excellent book takes an optimistic view of this future while acknowledging the potential pitfalls.</p>
+                    <p class="meta">published <span data-date="2015-02-19 10:24:59">February 19, 2015</span> by <a rel="author" href="/meet-the-team/uk/mary.branscombe/" data-tracking="river">Mary Branscombe</a></p>
+                    <p class="options"><a class="comment" href="/article/search-book-review-the-new-hinge-linking-people-and-machines/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="284b9ecf-30c8-4023-a563-39f33fd9dd0b" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <section class="replay">
+                  <div id="replay-54f3b84ae529e-4" class="ad-replay" data-ad="replay"> 
+                   <script>
+        window.console && console.log && console.log("ADS: queuing replay-54f3b84ae529e-4 for display");
+        var cbsiGptDivIds = cbsiGptDivIds || [];
+        cbsiGptDivIds.push("replay-54f3b84ae529e-4");
+    </script>
+                  </div> 
+                 </section>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/product/oneplus-one/" data-tracking="river">OnePlus One (64GB) review: A flagship phone with a mid-range price tag</a></h3>
+                   <div>
+                    <a class="thumb" href="/product/oneplus-one/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="OnePlus One (64GB) review: A flagship phone with a mid-range price tag" data-src="http://zdnet2.cbsistatic.com/hub/i/r/2015/02/18/43b3b103-6e6f-4c37-b38c-10dde7035c4a/thumbnail/170x128/8d053cd1afb09827444932519d11a288/oneplus-64-main.jpg"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">The OnePlus One is a high-end 5.5-inch smartphone that sells for an affordable price (if you can get hold of one). Although it lacks 800MHz (band 20) LTE support and MicroSD storage expansion, it's still a very impressive and highly recommended handset.</p>
+                    <p class="meta">published <span data-date="2015-02-18 13:56:18">February 18, 2015</span> by <a rel="author" href="/meet-the-team/uk/sandra+vogel/" data-tracking="river">Sandra Vogel</a></p>
+                    <p class="options"><a class="comment" href="/product/oneplus-one/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="75ade027-baac-4f6b-8da0-354b8b45caad" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/pictures/ten-raspberry-pi-2-alternatives/" data-tracking="river">Ten Raspberry Pi 2 alternatives</a></h3>
+                   <div>
+                    <a class="thumb" href="/pictures/ten-raspberry-pi-2-alternatives/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Ten Raspberry Pi 2 alternatives" data-src="http://zdnet1.cbsistatic.com/hub/i/r/2015/02/17/46874b9d-eea9-4532-9712-aa5234f8e464/thumbnail/170x128/7c211eba8399c3b07977541d6e9a3b7e/gallery-rpib.jpg"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">The Raspberry Pi 2 is the single-board computer of the moment, but there are plenty of others out there. We've rounded up some of the most eye-catching offerings.</p>
+                    <p class="meta">published <span data-date="2015-02-17 16:02:00">February 17, 2015</span> by <a rel="author" href="/meet-the-team/uk/terry@acousticmasters.com/" data-tracking="river">Terry Relph-Knight</a></p>
+                    <p class="options"><a class="comment" href="/pictures/ten-raspberry-pi-2-alternatives/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="60ad4a29-5461-4265-8266-71d0e41987df" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/article/hands-on-with-the-zeos-glassy-edge-to-edge-for-iphone-6-plus-screen-protection-covering-the-curves/" data-tracking="river">Hands-on with the Zeos Glassy Edge to Edge for iPhone 6 Plus: Screen protection covering the curves</a></h3>
+                   <div>
+                    <a class="thumb" href="/article/hands-on-with-the-zeos-glassy-edge-to-edge-for-iphone-6-plus-screen-protection-covering-the-curves/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Hands-on with the Zeos Glassy Edge to Edge for iPhone 6 Plus: Screen protection covering the curves" data-src="http://zdnet2.cbsistatic.com/hub/i/r/2015/02/17/a3eb60df-485f-4c14-b609-34088a4c004a/thumbnail/170x128/ffe4bcbdf3f5855769949e94edacaca1/20150208144953.jpg"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">A reported quarter to third of smartphone owners carry their phones without a case. The new Zeos screen protector extends over the curved edges to provide full and complete protection.</p>
+                    <p class="meta">published <span data-date="2015-02-17 14:30:00">February 17, 2015</span> by <a rel="author" href="/meet-the-team/us/palmsolo+%28aka+matthew+miller%29/" data-tracking="river">Matthew Miller</a></p>
+                    <p class="options"><a class="comment" href="/article/hands-on-with-the-zeos-glassy-edge-to-edge-for-iphone-6-plus-screen-protection-covering-the-curves/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="8b64c061-43b0-45d0-8bc1-33286770543b" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/product/raspberry-pi-2-model-b/" data-tracking="river">Raspberry Pi 2 review: More power to the Pi</a></h3>
+                   <div>
+                    <a class="thumb" href="/product/raspberry-pi-2-model-b/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Raspberry Pi 2 review: More power to the Pi" data-src="http://zdnet3.cbsistatic.com/hub/i/r/2015/02/16/df78c32e-c996-4241-9078-eb946a5bdfb5/thumbnail/170x128/153e31598eba724d77fa3a640d04fe8d/rasp-pi2-thumb.jpg"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">The Raspberry Pi 2 Model B is a simple, more powerful, upgrade to the original Pi that comes with a good range of bundled applications. The Pi 2 is great value at $35, but a number of additional items are needed to turn it into a fully functioning system.</p>
+                    <p class="meta">published <span data-date="2015-02-16 12:13:22">February 16, 2015</span> by <a rel="author" href="/meet-the-team/uk/terry@acousticmasters.com/" data-tracking="river">Terry Relph-Knight</a></p>
+                    <p class="options"><a class="comment" href="/product/raspberry-pi-2-model-b/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="4ce512c0-78f5-40fd-b801-eb96c52379af" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/article/hands-on-with-the-urban-armor-gear-rogue-for-microsoft-surface-pro-3/" data-tracking="river">Hands-on with the Urban Armor Gear Rogue for Microsoft Surface Pro 3</a></h3>
+                   <div>
+                    <a class="thumb" href="/article/hands-on-with-the-urban-armor-gear-rogue-for-microsoft-surface-pro-3/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Hands-on with the Urban Armor Gear Rogue for Microsoft Surface Pro 3" data-src="http://zdnet1.cbsistatic.com/hub/i/r/2015/02/15/c059b361-0323-46ba-b838-586d6ee7af73/thumbnail/170x128/ef84a820fa07b5562d636eb99d9a5647/uagsurfacepro12.jpg"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">The Microsoft Surface Pro 3 is an expensive mobile computer that many use away from the desk. Urban Armor Gear has an attractive rugged case that offers good drop protection.</p>
+                    <p class="meta">published <span data-date="2015-02-15 15:40:48">February 15, 2015</span> by <a rel="author" href="/meet-the-team/us/palmsolo+%28aka+matthew+miller%29/" data-tracking="river">Matthew Miller</a></p>
+                    <p class="options"><a class="comment" href="/article/hands-on-with-the-urban-armor-gear-rogue-for-microsoft-surface-pro-3/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="736d85f1-d435-41fc-b20a-09edfe16372d" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/article/fitbit-charge-hr-and-surge-review-wristbands-for-the-serious-daily-tracker/" data-tracking="river">Fitbit Charge HR and Surge review: Wristbands for the serious daily tracker</a></h3>
+                   <div>
+                    <a class="thumb" href="/article/fitbit-charge-hr-and-surge-review-wristbands-for-the-serious-daily-tracker/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Fitbit Charge HR and Surge review: Wristbands for the serious daily tracker" data-src="http://zdnet2.cbsistatic.com/hub/i/r/2015/02/12/4beb7e56-f98f-40fb-ac12-2528ca652846/thumbnail/170x128/0f311146b1fcadf476d4d9f1ec9f36b8/img1212.jpg"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">Fitbit's two high end devices are now available and both come with heart rate monitoring and basic notification support. Matthew spent a couple weeks with each and prefers one over the other.</p>
+                    <p class="meta">published <span data-date="2015-02-12 14:29:03">February 12, 2015</span> by <a rel="author" href="/meet-the-team/us/palmsolo+%28aka+matthew+miller%29/" data-tracking="river">Matthew Miller</a></p>
+                    <p class="options"><a class="comment" href="/article/fitbit-charge-hr-and-surge-review-wristbands-for-the-serious-daily-tracker/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="6c44f67d-0981-46e8-bcbb-6dc68b1a5ee4" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/product/acer-aspire-r-13/" data-tracking="river">Acer Aspire R13 review: A versatile multimode ultrabook</a></h3>
+                   <div>
+                    <a class="thumb" href="/product/acer-aspire-r-13/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Acer Aspire R13 review: A versatile multimode ultrabook" data-src="http://zdnet2.cbsistatic.com/hub/i/r/2015/02/11/8c5d6763-59da-4694-bc95-fab3d27bfa20/thumbnail/170x128/4202cdbaf5fbe342ada8f01c67782f11/acer-r13-main.jpg"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">Acer's latest take on multimodal computing is hard not to like, although few users will employ all of the usage modes. However, potential buyers should note the Aspire R13's limited SSD storage and sparse collection of ports, and the fact that the stylus is only an optional extra.</p>
+                    <p class="meta">published <span data-date="2015-02-11 10:40:00">February 11, 2015</span> by <a rel="author" href="/meet-the-team/uk/sandra+vogel/" data-tracking="river">Sandra Vogel</a></p>
+                    <p class="options"><a class="comment" href="/product/acer-aspire-r-13/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="deea9f4b-6ad9-4b7b-bb6a-f93e23bd8cbc" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item">
+                  <div class="">
+                   <h3><a href="/pictures/protect-your-galaxy-note-edge-and-iphone-6-plus-with-urban-armor-gear-in-pictures/" data-tracking="river">Protect your Galaxy Note Edge and iPhone 6 Plus with Urban Armor Gear (in pictures)</a></h3>
+                   <div>
+                    <a class="thumb" href="/pictures/protect-your-galaxy-note-edge-and-iphone-6-plus-with-urban-armor-gear-in-pictures/" data-tracking="river" data-item="riverThumb"><span class="img "><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Protect your Galaxy Note Edge and iPhone 6 Plus with Urban Armor Gear (in pictures)" data-src="http://zdnet3.cbsistatic.com/hub/i/r/2015/02/07/06c8146c-6f3e-42a0-9482-fcdab66076bb/thumbnail/170x128/d61b833b3fdef309748598822d2b5a24/uagedge6plus7.jpg"></span></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">The Samsung Galaxy Note Edge has a unique form factor and the iPhone 6 Plus has a slippery long metal frame. UAG offers solid protection for both and Matthew has been testing them out.</p>
+                    <p class="meta">published <span data-date="2015-02-07 17:49:00">February 7, 2015</span> by <a rel="author" href="/meet-the-team/us/palmsolo+%28aka+matthew+miller%29/" data-tracking="river">Matthew Miller</a></p>
+                    <p class="options"><a class="comment" href="/pictures/protect-your-galaxy-note-edge-and-iphone-6-plus-with-urban-armor-gear-in-pictures/#comments" data-tracking="river"><span class="livefyre-commentcount" data-lf-article-id="eca0c67c-1c35-415f-9b00-bd5fd034ab50" data-lf-site-id="360461">Comments</span></a></p>
+                   </div>
+                  </div>
+                 </article>
+                 <article data-vr-contentbox="" class="item promo">
+                  <div>
+                   <h3><a href="http://www.techproresearch.com/downloads/penetration-testing-and-scanning-policy/" target="_blank" data-tracking="river">Penetration Testing and Scanning Policy</a></h3>
+                   <div>
+                    <a class="thumb" href="http://www.techproresearch.com/downloads/penetration-testing-and-scanning-policy/" target="_blank" data-tracking="river"><img src="http://b2b.cbsimg.net/images/pro/penetration_testing_policy_thumbnail.jpg"></a>
+                   </div>
+                   <div class="content">
+                    <p class="summary">System or network vulnerabilities and security threats can severely impact business operations or even shutter its doors. However, these incidents can be prevented by proactively detecting potential threat...</p>
+                    <h5><em>from <a href="http://www.techproresearch.com/downloads/penetration-testing-and-scanning-policy/" target="_blank" data-tracking="river">TechProResearch »</a></em></h5>
+                   </div>
+                  </div>
+                 </article>
+                </div> 
+               </div> 
+               <div data-no-js="" data-load="58c8743c-44ac-43c0-b7c5-50e355c93b5b-river"> 
+                <a class="btn btn-primary btn-block load-more" href="/2/"><span class="text">View more reviews</span></a> 
+               </div> 
+              </div> 
+             </div> 
+            </section>
+           </div> 
+           <div class="YAD-3ed97993-767c-3711-a6e3-451e93781424" data-component="yahooRecommends" data-yahoo-recommends-options="{&quot;selector&quot;:&quot;.YAD-3ed97993-767c-3711-a6e3-451e93781424&quot;,&quot;identifier&quot;:&quot;3ed97993-767c-3711-a6e3-451e93781424&quot;}"></div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="col-4"> 
+       <div class="ad-wrap"> 
+        <section class="mpu ad-active">
+         <div id="mpu-plus-top-54f3b84ae529e" class="ad-mpu-plus-top" data-ad="mpu-plus-top"> 
+          <script>
+        window.console && console.log && console.log("ADS: queuing mpu-plus-top-54f3b84ae529e for display");
+        var cbsiGptDivIds = cbsiGptDivIds || [];
+        cbsiGptDivIds.push("mpu-plus-top-54f3b84ae529e");
+    </script>
+         </div> 
+        </section>
+       </div> 
+       <div data-component="newsletterWidget"> 
+        <section class="keepUp">
+         <h2 class="heading"><span class="int">The best of ZDNet, delivered</span></h2> 
+         <div class="box"> 
+          <div class="newsletterWidgetSuccessMessage hide">
+           You have been successfully signed up. To sign up for more newsletters or to manage your account, visit the 
+           <a href="https://secure.zdnet.com/members/newsletters/">Newsletter Subscription Center</a>.
+          </div> 
+          <div class="newsletterWidgetErrorMessage hide">
+           Subscription failed.
+          </div> 
+          <div class="newsletters"> 
+           <div id="widget-16" data-component="loadNewsletterAsync" data-load-newsletter-async-options="{&quot;loggedUrl&quot;:&quot;\/newsletter\/xhr\/widget\/&quot;,&quot;loginUrl&quot;:&quot;\/newsletter\/xhr\/widget-login\/&quot;}"> 
+           </div> 
+          </div> 
+          <div class="social"> 
+           <ul>
+            <li><a href="https://www.facebook.com/pages/ZDNet/5953112932" target="_blank" class="iconSocial facebook" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;:&quot;SocialButtons&quot;}">Facebook</a></li> 
+            <li><a href="http://twitter.com/#!/zdnet" target="_blank" class="iconSocial twitter" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;:&quot;SocialButtons&quot;}">Twitter</a></li> 
+            <li><a href="https://www.linkedin.com/company/zdnet-com" target="_blank" class="iconSocial linkedin" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;:&quot;SocialButtons&quot;}">LinkedIn</a></li> 
+            <li><a href="https://plus.google.com/105074359186426139750" target="_blank" class="iconSocial google" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;:&quot;SocialButtons&quot;}">Google+</a></li> 
+            <li><a href="/feature/rss-listing/" target="_blank" class="iconSocial rss" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;:&quot;SocialButtons&quot;}">RSS</a></li> 
+            <li><a href="https://play.google.com/store/apps/details?id=com.cbsinteractive.zdnet" target="_blank" class="iconSocial android" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;:&quot;SocialButtons&quot;}">Android</a></li> 
+            <li><a href="http://itunes.apple.com/au/app/zdnet/id425580940?mt=8#" target="_blank" class="iconSocial iphone" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;:&quot;SocialButtons&quot;}">iPhone</a></li> 
+           </ul>
+          </div> 
+         </div> 
+        </section>
+       </div> 
+       <div class="YAD-427d43ff-fd89-3f64-832a-138b6c593b5c YAD" data-component="yahooRecommends" data-yahoo-recommends-options="{&quot;selector&quot;:&quot;.YAD-427d43ff-fd89-3f64-832a-138b6c593b5c&quot;,&quot;identifier&quot;:&quot;427d43ff-fd89-3f64-832a-138b6c593b5c&quot;}"></div> 
+       <section class="module">
+        <h2 class="heading"> <span class="int">Top Stories</span> </h2> 
+        <ul class="tabs nav nav-tabs" data-component="tabs">
+         <li><a class="selected" href="#mostPopular" data-item="trigger" data-target="#mostPopular">Most Popular</a></li> 
+         <li><a href="#mostDiscussed" data-item="trigger" data-target="#mostDiscussed">Active Discussions</a></li> 
+        </ul>
+        <div class="tabsContent"> 
+         <div data-vr-zone="Most Popular" class="box selected" id="mostPopular"> 
+          <ul class="countdownList">
+           <li data-vr-contentbox=""> <span class="count">1</span> <a href="/pictures/33-ways-to-improve-your-iphones-battery-life/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;TopStories-MostPopular&quot;}">33 ways to improve your iPhone's battery life</a> </li> 
+           <li data-vr-contentbox=""> <span class="count">2</span> <a href="/article/seven-perfectly-legal-ways-to-get-windows-7-cheap-or-even-free/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;TopStories-MostPopular&quot;}">Perfectly legal ways you can still get Windows 7 cheap (or even free)</a> </li> 
+           <li data-vr-contentbox=""> <span class="count">3</span> <a href="/article/how-much-does-an-iphone-6-really-cost-hint-its-way-more-than-199/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;TopStories-MostPopular&quot;}">How much does an iPhone 6 really cost? (Hint: It's way more than $199)</a> </li> 
+           <li data-vr-contentbox=""> <span class="count">4</span> <a href="/article/seven-privacy-settings-you-should-change-immediately-in-ios-8/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;TopStories-MostPopular&quot;}">Seven privacy settings you should change immediately in iOS 8</a> </li> 
+           <li data-vr-contentbox=""> <span class="count">5</span> <a href="/article/so-you-have-an-app-idea-and-want-to-make-a-bajillion-bucks/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;TopStories-MostPopular&quot;}">So you have an app idea and want to make a bajillion bucks</a> </li> 
+          </ul>
+         </div> 
+         <div data-vr-zone="Most Discussed" class="box" id="mostDiscussed" data-component="loadAsync" data-load-async-options="{&quot;url&quot;:&quot;\/livefyre\/most-discussed\/xhr\/&quot;,&quot;replace&quot;:false}"></div> 
+        </div> 
+       </section>
+       <section data-vr-zone="Latest Posts" class="module river">
+        <h2 class="heading"> <span class="int">Latest Blog Posts</span> </h2> 
+        <div class="row"> 
+         <article data-vr-contentbox="" class="item">
+          <div> 
+           <a class="thumb" href="/article/can-samsung-resharpen-its-edge-against-the-competition/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;latestBlogPosts&quot;}"> <span class="img "><img src="http://zdnet1.cbsistatic.com/hub/i/r/2015/02/25/e268847c-d8dc-469f-b10d-8aa3332ea5ae/thumbnail/70x53/7e8de802029d23d95003fd1d91d70404/samsung-galaxy-s6-edge.jpg" alt="Can Samsung resharpen its edge against the competition?" height="53" width="70"></span> </a> 
+          </div> 
+          <p class="content"> <a href="/article/can-samsung-resharpen-its-edge-against-the-competition/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;latestBlogPosts&quot;}">Can Samsung resharpen its edge against the competition?</a> </p> 
+         </article>
+         <article data-vr-contentbox="" class="item">
+          <div> 
+           <a class="thumb" href="/article/leonard-nimoy-spock-was-a-tech-inspiration/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;latestBlogPosts&quot;}"> <span class="img "><img src="http://zdnet3.cbsistatic.com/hub/i/r/2015/03/01/ef359cf8-66c2-40f1-88bd-4722aeafcad2/thumbnail/70x53/ed33ae0777a2dc09dc1715428ec4940b/spock-nomad-620.jpg" alt="Leonard Nimoy: Mr. Spock is my IT hero. How about you?" height="53" width="70"></span> </a> 
+          </div> 
+          <p class="content"> <a href="/article/leonard-nimoy-spock-was-a-tech-inspiration/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;latestBlogPosts&quot;}">Leonard Nimoy: Mr. Spock is my IT hero. How about you?</a> </p> 
+         </article>
+         <article data-vr-contentbox="" class="item">
+          <div> 
+           <a class="thumb" href="/article/samsung-galaxy-s6-offers-more-proof-microsoft-is-a-software-and-services-company/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;latestBlogPosts&quot;}"> <span class="img "><img src="http://zdnet4.cbsistatic.com/hub/i/r/2015/03/01/09649bca-a3d7-445d-99e6-06b27febe2e3/thumbnail/70x53/49ee07d738dd565f2b7c186ecc6a0e83/samsunggalaxymicrosoft.jpg" alt="Samsung Galaxy S6 offers more proof Microsoft is a software and services company" height="53" width="70"></span> </a> 
+          </div> 
+          <p class="content"> <a href="/article/samsung-galaxy-s6-offers-more-proof-microsoft-is-a-software-and-services-company/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;latestBlogPosts&quot;}">Samsung Galaxy S6 offers more proof Microsoft is a software and services company</a> </p> 
+         </article>
+         <article data-vr-contentbox="" class="item">
+          <div> 
+           <a class="thumb" href="/article/microsoft-makes-enterprise-mobility-suite-available-to-small-midsize-businesses/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;latestBlogPosts&quot;}"> <span class="img "><img src="http://zdnet3.cbsistatic.com/hub/i/r/2015/03/01/a8bdc44b-b826-43af-9fb4-45ee41d98672/thumbnail/70x53/296d75eeb7f62a6b0b39701d143f663a/emsforsmb.jpg" alt="Microsoft makes Enterprise Mobility Suite available to small, midsize businesses" height="53" width="70"></span> </a> 
+          </div> 
+          <p class="content"> <a href="/article/microsoft-makes-enterprise-mobility-suite-available-to-small-midsize-businesses/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;latestBlogPosts&quot;}">Microsoft makes Enterprise Mobility Suite available to small, midsize businesses</a> </p> 
+         </article>
+        </div> 
+        <div class="moreLink"> 
+         <a href="/blog/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;latestBlogPosts&quot;}">More blogs</a> 
+        </div> 
+       </section>
+       <section class="mpu ad-active">
+        <div id="mpu-middle-54f3b84ae529e" class="ad-mpu-middle" data-ad="mpu-middle"> 
+         <script>
+        window.console && console.log && console.log("ADS: queuing mpu-middle-54f3b84ae529e for display");
+        var cbsiGptDivIds = cbsiGptDivIds || [];
+        cbsiGptDivIds.push("mpu-middle-54f3b84ae529e");
+    </script>
+        </div> 
+       </section>
+       <section data-vr-zone="Photo Galleries" class="module photoGalleries">
+        <h2 class="heading"> <span class="int">Photo Galleries</span> </h2> 
+        <div class="row"> 
+         <article data-vr-contentbox="">
+          <div> 
+           <a class="thumb" href="/pictures/samsungs-galaxy-s6-a-tour-of-the-device-simplified-software/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;PhotoGalleries&quot;}"> <span class="img "><img src="http://zdnet4.cbsistatic.com/hub/i/2015/02/25/e268847c-d8dc-469f-b10d-8aa3332ea5ae/05dfafe5b58f2c796af165deb1007729/samsung-galaxy-s6-edge.jpg" alt="Samsung's Galaxy S6: A tour of the device, simplified software"></span> </a> 
+          </div> 
+          <p> <a href="/pictures/samsungs-galaxy-s6-a-tour-of-the-device-simplified-software/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;PhotoGalleries&quot;}">Samsung's Galaxy S6: A tour of the device, simplified software</a> </p> 
+         </article>
+         <article data-vr-contentbox="">
+          <div> 
+           <a class="thumb" href="/pictures/htc-one-m9-camera-comparison-20-megapixels-on-the-back-and-ultrapixel-on-the-front/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;PhotoGalleries&quot;}"> <span class="img "><img src="http://zdnet4.cbsistatic.com/hub/i/2015/02/28/436eb2b8-0232-4b6b-ad3f-9d28c1775e94/53ac25bded4066b9d59a3060ca9813ef/imag0021.jpg" alt="HTC One M9 camera comparison: 20 megapixels on the back and UltraPixel on the front"></span> </a> 
+          </div> 
+          <p> <a href="/pictures/htc-one-m9-camera-comparison-20-megapixels-on-the-back-and-ultrapixel-on-the-front/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;PhotoGalleries&quot;}">HTC One M9 camera comparison: 20 megapixels on the back and UltraPixel on the front</a> </p> 
+         </article>
+        </div> 
+        <div class="moreLink"> 
+         <a href="/pictures/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;PhotoGalleries&quot;}">More galleries</a> 
+        </div> 
+       </section>
+       <section class="mpu scrolling-mpu ad-active">
+        <div id="mpu-bottom-54f3b84ae529e" class="ad-mpu-bottom" data-ad="mpu-bottom"> 
+         <script>
+        window.console && console.log && console.log("ADS: queuing mpu-bottom-54f3b84ae529e for display");
+        var cbsiGptDivIds = cbsiGptDivIds || [];
+        cbsiGptDivIds.push("mpu-bottom-54f3b84ae529e");
+    </script>
+        </div> 
+       </section>
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <section class="leader leader-bottom ad-active">
+    <div class="container"> 
+     <div id="leader-plus-bottom-54f3b84ae529e" class="ad-leader-plus-bottom" data-ad="leader-plus-bottom"> 
+      <script>
+        window.console && console.log && console.log("ADS: queuing leader-plus-bottom-54f3b84ae529e for display");
+        var cbsiGptDivIds = cbsiGptDivIds || [];
+        cbsiGptDivIds.push("leader-plus-bottom-54f3b84ae529e");
+    </script>
+     </div> 
+    </div> 
+   </section>
+  </div> 
+  <footer role="contentinfo" class="footer-main">
+   <div class="container"> 
+    <div class="row"> 
+     <div class="col-8 siteHighlights"> 
+      <h2>Featured Articles</h2> 
+      <div class="row"> 
+       <article class="col-2" data-vr-contentbox="">
+        <div> 
+         <a href="/article/myer-cio-takes-ceo-reins/" data-omniture-track="moduleClick" class="thumb"> <span class="img "><img src="http://zdnet1.cbsistatic.com/hub/i/r/2015/01/15/58292c8d-c631-46e7-8a96-4ba299103552/thumbnail/140x105/f771055573ea06b590332cd93c120ef8/online-shopping-thumb.jpg" alt="" height="105" width="140"></span> </a> 
+        </div> 
+        <h3><a href="/article/myer-cio-takes-ceo-reins/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Footer-FeaturedArticles&quot;}">​Myer CIO takes CEO reins</a></h3> 
+       </article>
+       <article class="col-2" data-vr-contentbox="">
+        <div> 
+         <a href="/product/hp-zbook-15u-g2/" data-omniture-track="moduleClick" class="thumb"> <span class="img "><img src="http://zdnet2.cbsistatic.com/hub/i/r/2015/02/20/ca844aaf-0927-4775-952d-81fb712a80b2/thumbnail/140x105/3186bcde9ebfc50b558383ba957bca0a/hp-hero.jpg" alt="" height="105" width="140"></span> </a> 
+        </div> 
+        <h3><a href="/product/hp-zbook-15u-g2/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Footer-FeaturedArticles&quot;}">HP ZBook 15u G2 review: A Windows ultrabook workhorse</a></h3> 
+       </article>
+       <article class="col-2" data-vr-contentbox="">
+        <div> 
+         <a href="/article/everyday-ways-your-personal-privacy-is-under-threat/" data-omniture-track="moduleClick" class="thumb"> <span class="icon video">Play Video</span> <span class="img "><img src="http://zdnet3.cbsistatic.com/hub/i/r/2015/02/03/63401cef-2ff8-4c8a-aeae-99ee6cdef079/thumbnail/140x105/e99cc0abe6713bda583ff43c496197ae/zdjanuaryvideo.jpg" alt="" height="105" width="140"></span> </a> 
+        </div> 
+        <h3><a href="/article/everyday-ways-your-personal-privacy-is-under-threat/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Footer-FeaturedArticles&quot;}">Everyday ways your personal privacy is under threat</a></h3> 
+       </article>
+       <article class="col-2" data-vr-contentbox="">
+        <div> 
+         <a href="/pictures/samsungs-galaxy-s6-a-tour-of-the-device-simplified-software/" data-omniture-track="moduleClick" class="thumb"> <span class="img "><img src="http://zdnet1.cbsistatic.com/hub/i/r/2015/02/25/e268847c-d8dc-469f-b10d-8aa3332ea5ae/thumbnail/140x105/398d0f53b05c56999951933e6d88e140/samsung-galaxy-s6-edge.jpg" alt="" height="105" width="140"></span> </a> 
+        </div> 
+        <h3><a href="/pictures/samsungs-galaxy-s6-a-tour-of-the-device-simplified-software/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Footer-FeaturedArticles&quot;}">Samsung's Galaxy S6: A tour of the device, simplified software</a></h3> 
+       </article>
+      </div> 
+     </div> 
+     <div class="col-2 footerMap"> 
+      <h2>Around ZDNet</h2> 
+      <ul>
+       <li><a href="/topic/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Footer-AroundZDnet&quot;}">Topics</a></li> 
+       <li><a href="/feature/broadband-speedtest/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Footer-AroundZDnet&quot;}">Broadband Speed Test</a></li> 
+       <li><a href="/feature/meet-the-team/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Footer-AroundZDnet&quot;}">Meet The Team</a></li> 
+       <li><a href="/feature/about/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Footer-AroundZDnet&quot;}">About ZDNet</a></li> 
+       <li><a href="/feature/sitemap/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Footer-AroundZDnet&quot;}">Site Map</a></li> 
+      </ul>
+     </div> 
+     <div class="col-2 footerMap"> 
+      <h2>Services</h2> 
+      <ul>
+       <li class="loggedIn"><a href="https://secure.zdnet.com/members/edit-profile/" rel="nofollow">Manage</a> | <a href="http://www.zdnet.com/user/logout/" rel="nofollow" data-member="submitLogOut" data-user-action="logout" data-omniture-track="trackLogout">Log Out</a></li> 
+       <li class="loggedOut"> <a href="https://secure.zdnet.com/user/login/?appId=1101" rel="nofollow" data-user-show="{&quot;action&quot;:&quot;login&quot;,&quot;params&quot;:{&quot;appId&quot;:1101,&quot;position&quot;:&quot;Footer&quot;}}">Log In</a> | <a href="https://secure.zdnet.com/user/registration/?appId=1101" rel="nofollow" data-user-show="{&quot;action&quot;:&quot;register&quot;,&quot;params&quot;:{&quot;appId&quot;:1101,&quot;position&quot;:&quot;Footer&quot;}}">Join ZDNet</a> </li> 
+       <li><a href="https://secure.zdnet.com/members/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Footer-Services&quot;}" rel="nofollow">Membership</a></li> 
+       <li><a href="/feature/newsletters/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Footer-Services&quot;}">Newsletters</a></li> 
+       <li><a href="/feature/rss-listing/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Footer-Services&quot;}">RSS Feeds</a></li> 
+       <li><a href="/feature/mobile-apps/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Footer-Services&quot;}">ZDNet Mobile</a></li> 
+       <li><a href="https://cbsi.secure.force.com/CBSi/knowledgehome" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Footer-Services&quot;}">Site Assistance</a></li> 
+      </ul>
+     </div> 
+    </div> 
+    <div class="row"> 
+     <div class="col-12"> 
+      <p class="copyright">© 2015 CBS Interactive. All rights reserved. <a href="http://legalterms.cbsinteractive.com/privacy" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Footer-CopyrightLinks&quot;}" rel="nofollow" target="_blank">Privacy Policy</a> | <a href="http://legalterms.cbsinteractive.com/cookies" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Footer-CopyrightLinks&quot;}" rel="nofollow" target="_blank">Cookies</a> | <a href="http://legalterms.cbsinteractive.com/adchoice" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Footer-CopyrightLinks&quot;}" rel="nofollow" target="_blank">Ad Choice</a> | <a href="/feature/advertise/" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Footer-CopyrightLinks&quot;}" rel="nofollow" target="_blank">Advertise</a> | <a href="http://legalterms.cbsinteractive.com/terms-of-use" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Footer-CopyrightLinks&quot;}" rel="nofollow" target="_blank">Terms of Use</a> | <a href="http://legalterms.cbsinteractive.com/eula" data-omniture-track="moduleClick" data-omniture-track-data="{&quot;moduleInfo&quot;: &quot;Footer-CopyrightLinks&quot;}" rel="nofollow" target="_blank">Mobile User Agreement</a></p> 
+      <div class="networkSites"> 
+       <form data-component="footerSites"> 
+        <label for="siteTarget">Visit other CBS Interactive sites:</label> 
+        <select id="siteTarget" name="target"><option selected value="">Select Site</option><option value="http://www.cbs.com/cbs_cares/">CBS Cares</option><option value="http://www.cbsfilms.com">CBS Films</option><option value="http://www.cbsradio.com">CBS Radio</option><option value="http://www.cbs.com">CBS.com</option><option value="http://www.cbsinteractive.com">CBSInteractive</option><option value="http://www.cbsnews.com">CBSNews.com</option><option value="http://www.cbssports.com">CBSSports.com</option><option value="http://www.chow.com">CHOW</option><option value="http://www.cnet.com">CNET</option><option value="http://www.cbsiam.com/">College Networks</option><option value="http://www.gamespot.com">GameSpot</option><option value="http://www.last.fm">Last.fm</option><option value="http://www.maxpreps.com">MaxPreps</option><option value="http://www.metacritic.com">Metacritic.com</option><option value="http://www.cbsnews.com/moneywatch/">Moneywatch</option><option value="http://www.mysimon.com">mySimon</option><option value="http://www.radio.com">Radio.com</option><option value="http://www.search.com">Search.com</option><option value="http://www.shopper.com">Shopper.com</option><option value="http://www.sho.com">Showtime</option><option value="http://www.smartplanet.com">SmartPlanet</option><option value="http://www.techrepublic.com">TechRepublic</option><option value="http://theinsider.etonline.com/">The Insider</option><option value="http://www.tv.com">TV.com</option><option value="http://www.urbanbaby.com">UrbanBaby.com</option><option value="http://www.zdnet.com">ZDNet</option></select>
+       </form> 
+      </div> 
+     </div> 
+    </div> 
+   </div>
+  </footer>
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"beacon-4.newrelic.com","licenseKey":"36c1ca5070","applicationID":"6919386","transactionName":"NV1TZ0MHXxUFWxBYWQwXcFBFD14IS1ALXFMSWVZW","queueTime":0,"applicationTime":727,"ttGuid":"","agentToken":"","atts":"GRpEEQsdExIcZw1VFFgaU1dVAAIFAQlJVFUBWRwHA1NVSwUBUVAbUApQUANXBABRXFBTFB8UE1ITXEobGQ==","errorBeacon":"bam.nr-data.net","agent":"js-agent.newrelic.com\/nr-536.min.js"}</script> 
+ </body>
+</html>

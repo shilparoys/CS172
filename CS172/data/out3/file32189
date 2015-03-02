@@ -1,0 +1,193 @@
+<html>
+ <head> 
+  <title>EarthNow! Landsat Image Viewer</title> 
+  <link rel="stylesheet" href="includes/styles.css" type="text/css"> 
+  <meta name="description" content="USGS Global Visualization"> 
+  <meta name="keywords" content="Landsat Image Viewer, EROS, Imagery, 
+    Satellite, Landsat, Satellite Data, World"> 
+  <meta name="publisher" content="USGS - US Geological Survey, EROS"> 
+  <meta name="abstract" content="The EarthNow! Landsat Image Viewer."> 
+  <script language="javascript" type="text/javascript">
+<!--
+    var sessionId = "unknown";
+    var queuePosition;
+    var timerID;
+    var messageNode;
+
+    // function to create a new http request object for the current browser.
+    // Returns null if the object could not be created.
+    //---------------------------------------------------------------------
+    function createXMLHttpRequest()
+    {
+        try { return new ActiveXObject("Msxml2.XMLHTTP"); } catch (e) {}
+        try { return new ActiveXObject("Microsoft.XMLHTTP"); } catch (e) {}
+        try { return new XMLHttpRequest(); } catch(e) {}
+        return null;
+    }
+
+    // function to call the cgi script to get a session id and the current
+    // queue position
+    //--------------------------------------------------------------------
+    function getQueuePosition()
+    {
+        var request = createXMLHttpRequest();
+        if (request != null)
+        {
+            request.open("GET", "checkQueuePosition.cgi?sessionId=" + sessionId,
+                         false);
+            // avoid caching of data on IE
+            request.setRequestHeader("If-Modified-Since",
+                    "Sat, 1 Jan 2000 00:00:00 GMT");
+            request.send(null);
+            var serverResponse = request.responseText;
+            var responseArray = serverResponse.split(",");
+            if (responseArray.length != 2)
+            {
+                queuePosition = 100;
+                alert("Error detected. Please report it to the web page "
+                      + "maintainer.");
+            }
+            else
+            {
+                sessionId = responseArray[0];
+                queuePosition = responseArray[1];
+
+                // save the session id to a cookie in case the page is reloaded
+                document.cookie = "sessionId="+sessionId;
+            }
+        }
+    }
+
+    // function to update the queue position information
+    function update()
+    {
+        // get the current position in the queue
+        getQueuePosition();
+
+        // if the front of the queue has been reached, go to the MWD page,
+        // passing the session id so it can be confirmed
+        if (queuePosition == 0)
+        {
+            // wipe out the cookie value and change to the applet page
+            document.cookie = "sessionId=unknown";
+            window.location="./earthnow_app.html?sessionId=" + sessionId;
+        }
+        else
+        {
+            // update the info shown in the web page for the queue position
+            updateCountDisplay();
+        }
+    }
+
+    // function to initialize the period update of the queue
+    //------------------------------------------------------
+    function init()
+    {
+        if (sessionId == "unknown")
+        {
+            // no sessionId set, so probably can't connect to the cgi script
+            var errormessage = document.getElementById("errormessage");
+            errormessage.style.display='inline';
+        }
+        else
+        {
+            // show the normal message and set the timer for refreshing the 
+            // position
+            var message = document.getElementById("message");
+            message.style.display='inline';
+            updateCountDisplay();
+            // FIXME - set to a more reasonable time (i.e. a minute or more?)
+            timerID = setInterval(update, 1000);
+        }
+    }
+
+    // function to update the display with the current queue position
+    //---------------------------------------------------------------
+    function updateCountDisplay()
+    {
+        // find the document node for showing the queue position
+        var result = document.getElementById("result");
+        if (result != null)
+        {
+            // the node was found, so if it already has a child node, update
+            // it, or create the child node for the display
+            if (result.childNodes.length > 0)
+            {
+                messageNode.nodeValue = queuePosition;
+            }
+            else
+            {
+                var status_text = document.createTextNode(queuePosition);
+                messageNode = status_text;
+                result.appendChild(status_text);
+            }
+        }
+    }
+
+    // before the page loads, see if the session id is stored in a cookie.
+    // Note that this is only done to save the session id if the user hits
+    // the reload button (otherwise they would get sent to the back of the 
+    // queue).
+    var cookieValue = document.cookie;
+    if (cookieValue)
+    {
+        var tempArray = cookieValue.split("=");
+        if ((tempArray.length == 2) && (tempArray[0] == "sessionId"))
+        {
+            sessionId = tempArray[1];
+        }
+    }
+
+    // before the page even loads, check whether there is a queue.
+    update();
+
+// -->
+</script> 
+  <script type="application/javascript" src="http://www.usgs.gov/scripts/analytics/usgs-analytics.js"></script> 
+ </head> 
+ <body onload="init()"> 
+  <!-- BEGIN USGS Header Template --> 
+  <div class="bannerColorBand"> 
+   <div class="banner"> 
+    <div class="identifier">
+     <a href="http://www.usgs.gov/" title="U.S. Geological Survey Home Page"> <img src="./images/header_graphic_usgsIdentifier_white.jpg" alt="U.S. Geological Survey - science for a changing world" width="178" height="72" style="border: none;"></a>
+    </div> 
+    <div class="ccsaBox"> 
+     <div class="ccsa"> 
+      <br>
+      <a href="http://www.usgs.gov/" title="USGS Home Page">USGS Home</a>
+      <br> 
+      <a href="http://www.usgs.gov/ask/index.html" title="Contact USGS">Contact USGS</a>
+      <br> 
+      <a href="http://www.usgs.gov/search" title="Search USGS">Search USGS</a> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="siteTitle"> 
+   <p id="pTitle">EarthNow! Landsat Image Viewer</p> 
+  </div> 
+  <!-- END USGS Header Template --> 
+  <noscript> 
+   <h3>This page requires Javascript to be enabled in your browser</h3> 
+  </noscript> 
+  <!-- put the normal message in a hidden div that is only made visible if 
+     javascript is enabled // --> 
+  <div id="message" style="display: none;"> 
+   <p>The EarthNow! Landsat Image Viewer is currently being viewed by the maximum number of users.</p> 
+   <p> </p>
+   <p>You are approximately at <b>position <span id="result"></span></b> for access to the EarthNow! Landsat Image Viewer.</p> 
+   <p>Your queue position will be updated periodically and the EarthNow! Landsat Image Viewer will be displayed when it is your turn.</p> 
+   <p>In the meantime, feel free to visit the <a href="earthnow_help.html" target="imwdhelp">help</a> and <a href="earthnow_faq.html" target="imwdhelp">faq</a> pages.</p> 
+  </div> 
+  <div id="errormessage" style="display: none;"> 
+   <h3>Error:</h3> 
+   <p>An error has been detected. It is likely due to using a browser that does not support the required features. Please try accessing the page again with a different browser, or report the problem to the web page maintainer.</p> 
+  </div> 
+  <!-- BEGIN USGS Footer Template --> 
+  <p class="footerBar" style="clear: both;"> <a href="http://www.usgs.gov/accessibility.html" title="Accessibility Policy (Section 508). ">Accessibility</a> <a href="http://www.usgs.gov/foia/" title="Freedom of Information Act. "> FOIA</a> <a href="http://www.usgs.gov/privacy.html" title="Privacy policies of the U.S. Geological Survey. ">Privacy</a> <a href="http://www.usgs.gov/policies_notices.html" title="Policies and notices that govern information posted on USGS Web sites. ">Policies and Notices</a></p> 
+  <p class="footerText"> <a href="http://www.takepride.gov/"> <img src="./images/footer_graphic_takePride.jpg" alt="Take Pride in America home page." width="60" height="58" style="border: none;  float: right;" title="Take Pride in America home page."> </a> <a href="http://usa.gov/"> <img src="./images/footer_graphic_usaGov.jpg" alt="UsaGov button" width="90" height="26" style="border: none; float: right; margin-right:10px;" title="UsaGov: The U.S. Government's Official Web Portal."></a> <a href="http://www.doi.gov">U.S. Department of the Interior</a> | <a href="http://www.usgs.gov">U.S. Geological Survey</a><br> URL: http://earthnow.usgs.gov/index.html<br> Page Contact Information: <a href="http://landsat.usgs.gov/contactus.php"> http://landsat.usgs.gov/contactus.php</a><br> Page Last Modified: Wednesday, 27-Nov-2013 13:30:39 CST </p> 
+  <hr> 
+  <!-- END USGS Footer Template -->   
+ </body>
+</html>

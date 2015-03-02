@@ -1,0 +1,753 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"XAYAVVVRGwYGVVVaAgU="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=s(e),f=c.length,u=i(a,o,r),d=0;f>d;d++)c[d].apply(u,n);return u}function a(t,e){f[t]=s(t).concat(e)}function s(t){return f[t]||[]}function c(){return n(e)}var f={};return{on:a,emit:e,create:c,listeners:s,_events:f}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],3:[function(t){function e(t,e,n,i,s){try{c?c-=1:r("err",[s||new UncaughtException(t,e,n)])}catch(f){try{r("ierr",[f,(new Date).getTime(),!0])}catch(u){}}return"function"==typeof a?a.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(5),i=t("ee"),a=window.onerror,s=!1,c=0;t("loader").features.err=!0,window.onerror=e,NREUM.noticeError=n;try{throw new Error}catch(f){"stack"in f&&(t(1),t(4),"addEventListener"in window&&t(2),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&t(3),s=!0)}i.on("fn-start",function(){s&&(c+=1)}),i.on("fn-err",function(t,e,r){s&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){s&&!this.thrown&&c>0&&(c-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:8,2:5,3:9,4:7,5:21,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],4:[function(t){function e(){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var n=t("ee"),r=t("handle"),o=t(2);t("loader").features.stn=!0,t(1),n.on("fn-start",function(t){var e=t[0];e instanceof Event&&(this.bstStart=Date.now())}),n.on("fn-end",function(t,e){var n=t[0];n instanceof Event&&r("bst",[n,e,this.bstStart,Date.now()])}),o.on("fn-start",function(t,e,n){this.bstStart=Date.now(),this.bstType=n}),o.on("fn-end",function(t,e){r("bstTimer",[e,this.bstStart,Date.now(),this.bstType])}),n.on("pushState-start",function(){this.time=Date.now(),this.startPath=location.pathname+location.hash}),n.on("pushState-end",function(){r("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),"addEventListener"in window.performance&&(window.performance.addEventListener("webkitresourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.webkitClearResourceTimings()},!1),window.performance.addEventListener("resourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.clearResourceTimings()},!1)),document.addEventListener("scroll",e,!1),document.addEventListener("keypress",e,!1),document.addEventListener("click",e,!1)}},{1:6,2:8,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],5:[function(t,e){function n(t){i.inPlace(t,["addEventListener","removeEventListener"],"-",r)}function r(t){return t[1]}var o=(t(1),t("ee").create()),i=t(2)(o),a=t("gos");if(e.exports=o,n(window),"getPrototypeOf"in Object){for(var s=document;s&&!s.hasOwnProperty("addEventListener");)s=Object.getPrototypeOf(s);s&&n(s);for(var c=XMLHttpRequest.prototype;c&&!c.hasOwnProperty("addEventListener");)c=Object.getPrototypeOf(c);c&&n(c)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&n(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t){if(t[1]){var e=t[1];"function"==typeof e?this.wrapped=t[1]=a(e,"nr@wrapped",function(){return i(e,"fn-",null,e.name||"anonymous")}):"function"==typeof e.handleEvent&&i.inPlace(e,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:21,2:22,ee:"QJf3ax",gos:"7eSDFh"}],6:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window.history,["pushState"],"-")},{1:22,2:21,ee:"QJf3ax"}],7:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=r(t[0],"fn-")})},{1:22,2:21,ee:"QJf3ax"}],8:[function(t,e){function n(t,e,n){var r=t[0];"string"==typeof r&&(r=new Function(r)),t[0]=o(r,"fn-",null,n)}var r=(t(2),t("ee").create()),o=t(1)(r);e.exports=r,o.inPlace(window,["setTimeout","setInterval","setImmediate"],"setTimer-"),r.on("setTimer-start",n)},{1:22,2:21,ee:"QJf3ax"}],9:[function(t,e){function n(){c.inPlace(this,d,"fn-")}function r(t,e){c.inPlace(e,["onreadystatechange"],"fn-")}function o(t,e){return e}var i=t("ee").create(),a=t(1),s=t(2),c=s(i),f=s(a),u=window.XMLHttpRequest,d=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];e.exports=i,window.XMLHttpRequest=function(t){var e=new u(t);try{i.emit("new-xhr",[],e),f.inPlace(e,["addEventListener","removeEventListener"],"-",function(t,e){return e}),e.addEventListener("readystatechange",n,!1)}catch(r){try{i.emit("internal-error",[r])}catch(o){}}return e},window.XMLHttpRequest.prototype=u.prototype,c.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",o),i.on("send-xhr-start",r),i.on("open-xhr-start",r)},{1:5,2:22,ee:"QJf3ax"}],10:[function(t){function e(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function n(t){var n=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;c>i;i++)t.removeEventListener(s[i],this.listener,!1);if(!n.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){n.status=t.status;var a=t.responseType,f="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,u=e(f);if(u&&(r.rxSize=u),this.sameOrigin){var d=t.getResponseHeader("X-NewRelic-App-Data");d&&(n.cat=d.split(", ").pop())}}else n.status=0;r.cbTime=this.cbTime,o("xhr",[n,r,this.startTime])}}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}if(window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)){t("loader").features.xhr=!0;var o=t("handle"),i=t(2),a=t("ee"),s=["load","error","abort","timeout"],c=s.length,f=t(1);t(4),t(3),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=n,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,n){var r=this.metrics,o=t[0],i=this;if(r&&o){var f=e(o);f&&(r.txSize=f)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof n.onload))&&i.end(n)}catch(e){try{a.emit("internal-error",[e])}catch(r){}}};for(var u=0;c>u;u++)n.addEventListener(s[u],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof XMLHttpRequest&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&&a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{1:"XL7HBI",2:11,3:9,4:5,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],11:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&&e.port===n.port&&e.protocol===n.protocol,r}},{}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):(o[t]||(o[t]=[]),void o[t].push(e))}var r=t("ee").create(),o={};e.exports=n,n.ee=r,r.q=o},{ee:"QJf3ax"}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],G9z0Bl:[function(t,e){function n(){var t=l.info=NREUM.info;if(t&&t.licenseKey&&t.applicationID&&f&&f.body){s(h,function(e,n){e in t||(t[e]=n)}),l.proto="https"===p.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var e=f.createElement("script");e.src=l.proto+t.agent,f.body.appendChild(e)}}function r(){"complete"===f.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=t(1),c=window,f=c.document,u="addEventListener",d="attachEvent",p=(""+location).split("?")[0],h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-515.min.js"},l=e.exports={offset:i(),origin:p,features:{}};f[u]?(f[u]("DOMContentLoaded",o,!1),c[u]("load",n,!1)):(f[d]("onreadystatechange",r),c[d]("onload",n)),a("mark",["firstbyte",i()])},{1:20,handle:"D5DuLP"}],20:[function(t,e){function n(t,e){var n=[],o="",i=0;for(o in t)r.call(t,o)&&(n[i]=e(o,t[o]),i+=1);return n}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],21:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],22:[function(t,e){function n(t){return!(t&&"function"==typeof t&&t.apply&&!t[i])}var r=t("ee"),o=t(1),i="nr@wrapper",a=Object.prototype.hasOwnProperty;e.exports=function(t){function e(t,e,r,a){function nrWrapper(){var n,i,s,f;try{i=this,n=o(arguments),s=r&&r(n,i)||{}}catch(d){u([d,"",[n,i,a],s])}c(e+"start",[n,i,a],s);try{return f=t.apply(i,n)}catch(p){throw c(e+"err",[n,i,p],s),p}finally{c(e+"end",[n,i,f],s)}}return n(t)?t:(e||(e=""),nrWrapper[i]=!0,f(t,nrWrapper),nrWrapper)}function s(t,r,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<r.length;c++)s=r[c],a=t[s],n(a)||(t[s]=e(a,f?s+o:o,i,s,t))}function c(e,n,r){try{t.emit(e,n,r)}catch(o){u([o,e,n,r])}}function f(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){u([r])}for(var o in t)a.call(t,o)&&(e[o]=t[o]);return e}function u(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=r),e.inPlace=s,e.flag=i,e}},{1:21,ee:"QJf3ax"}]},{},["G9z0Bl",3,10,4]);</script> 
+  <title>IRIS Internship Program - Intern Blogs</title> 
+  <link rel="stylesheet" type="text/css" media="all" href="http://www.iris.edu/hq/internship/?css=layout_parts/default.v.1422902109"> 
+  <!--[if lte IE 7]><script type="text/javascript" src="http://www.iris.edu/hq/internship/js/suckerfish.js"></script><![endif]--> 
+  <!--[if lte IE 6]><style type="text/css" media="all">@import url(http://www.iris.edu/hq/internship/css/ie6.css);</style><![endif]--> 
+  <link media="handheld" href="http://www.iris.edu/hq/internship/?css=layout_parts/iphone.v.1354069253" type="text/css" rel="stylesheet"> 
+  <link media="only screen and (max-device-width: 480px)" href="http://www.iris.edu/hq/internship/?css=layout_parts/iphone.v.1354069253" type="text/css" rel="stylesheet"> 
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script> 
+  <script type="text/javascript" src="http://www.iris.edu/hq/internship/layout_parts/js/popup"></script> 
+  <script type="text/javascript" src="http://www.iris.edu/hq/internship/layout_parts/gmap"></script> 
+  <script type="text/javascript" src="http://www.iris.edu/hq/internship/layout_parts/mapiconmaker"></script> 
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script> 
+  <script type="text/javascript">
+                                function initialize() {
+                                        {
+                                                exp:query sql = "select member_id, screen_name, email, url, bio, avatar_filename, photo_filename, location, occupation, interests, aol_im, msn_im, icq, yahoo_im FROM exp_members where group_id = '12' "}
+                                        var myLatlng = new LatLng({icq}, {yahoo_im});
+                                        { / exp:query}
+                                        var myOptions = {
+                                                zoom: 4,
+                                                center: myLatlng,
+                                                mapTypeId: google.maps.MapTypeId.ROADMAP
+                                        }
+                                        var map = new google.maps.Map(document.getElementById("map"), myOptions);
+
+                                        var marker = new google.maps.Marker({
+                                                position: myLatlng,
+                                                map: map,
+                                                title: 'Uluru (Ayers Rock)'
+                                        });
+                                        google.maps.event.addListener(marker, 'click', function() {
+                                                infowindow.open(map, marker);
+                                        });
+                                }
+
+                        </script> 
+ </head> 
+ <body onload="initialize()" onunload="GUnload()"> 
+  <div id="container"> 
+   <div id="header"> 
+    <!--                                <div id="nsfLogo"><a href="http://www.nsf.gov"><img src="http://www.iris.edu/hq/internship/images/layout/nsf.png" alt="NSF" /></a><br />EAR-0453427</div>--> 
+    <div id="home">
+     <a href="http://www.iris.edu/hq/internship/"><img src="http://www.iris.edu/hq/internship/images/clear.gif" alt=""></a>
+    </div> 
+   </div> 
+   <div id="left"> 
+    <ul id="nav"> 
+     <li class="mobile"><a href="http://www.iris.edu/hq/internship/">Home</a></li> 
+     <li class="mobile"><a href="http://www.iris.edu/hq/internship/about">About the Program</a> 
+      <ul> 
+       <li><a href="http://www.iris.edu/hq/internship/about">Overview</a></li> 
+       <li><a href="http://www.iris.edu/hq/internship/about/orientation">Orientation Week</a></li> 
+       <li><a href="http://www.iris.edu/hq/internship/about/host">Host Site and Staying Connected</a></li> 
+       <li><a href="http://www.iris.edu/hq/internship/about/presenting">Presenting Results</a></li> 
+       <li><a href="http://www.iris.edu/hq/internship/about/maintaining">Maintaining Community Connections</a></li> 
+      </ul> </li> 
+     <li><a href="http://www.iris.edu/hq/internship/apply">Apply</a> 
+      <ul> 
+       <li><a href="http://www.iris.edu/hq/internship/interns">Be an Intern</a></li> 
+       <li><a href="http://www.iris.edu/hq/internship/hosts">Hosts an Intern</a></li> 
+      </ul> </li> 
+     <li><a href="http://www.iris.edu/hq/internship/faq">FAQs</a></li> 
+     <li class="mobile"><a href="http://www.iris.edu/hq/internship/blogs">Current Interns</a></li> 
+     <li class="mobile"><a href="http://www.iris.edu/hq/internship/forums">Discussion Forum</a></li> 
+     <li><a href="http://www.iris.edu/hq/internship/previous">Previous Interns</a> 
+      <ul> 
+       <li><a href="http://www.iris.edu/hq/internship/2014">2014</a></li> 
+       <li><a href="http://www.iris.edu/hq/internship/2013">2013</a></li> 
+       <li><a href="http://www.iris.edu/hq/internship/2012">2012</a></li> 
+       <li><a href="http://www.iris.edu/hq/internship/2011">2011</a></li> 
+       <li><a href="http://www.iris.edu/hq/internship/2010">2010</a></li> 
+       <li><a href="http://www.iris.edu/hq/internship/previous/2009">2009</a></li> 
+       <li><a href="http://www.iris.edu/hq/internship/previous/2008">2008</a></li> 
+       <li><a href="http://www.iris.edu/hq/internship/previous/2007">2007</a></li> 
+       <li><a href="http://www.iris.edu/hq/internship/previous/2006">2006</a></li> 
+       <li><a href="http://www.iris.edu/hq/internship/previous/2005">2005</a></li> 
+       <li><a href="http://www.iris.edu/hq/internship/previous/2004">2004</a></li> 
+       <li><a href="http://www.iris.edu/hq/internship/previous/2003">2003</a></li> 
+       <li><a href="http://www.iris.edu/hq/internship/previous/2002">2002</a></li> 
+      </ul> </li> 
+     <li><a href="http://www.iris.edu/hq/internship/minority">Minority Recruitment Speaker Series</a></li> 
+     <li><a href="http://www.iris.edu/hq/internship/related">Related Student Opportunities</a></li> 
+     <li><a href="http://www.iris.edu/hq/internship/grad">IRIS PASSCAL Grad Internship</a></li> 
+     <li><a href="http://www.iris.edu/hq/internship/news">Archived News</a></li> 
+     <li><a href="http://www.iris.edu/hq/internship/contact">Contact</a></li> 
+     <li class="mobile"><a href="http://www.iris.edu/hq/internship/login">Intern Login</a></li> 
+    </ul> 
+    <div id="leftLogo"> 
+     <a href="http://www.iris.edu"><img src="http://www.iris.edu/hq/internship/images/layout/irisLogo.png" alt="IRIS"></a>
+     <br> 
+     <a href="http://www.iris.edu">www.iris.edu</a> 
+     <p> <a href="http://www.facebook.com/pages/IRIS-Undergraduate-Internship-Program/168366944430"><img alt="" src="http://www.iris.edu/hq/internship/uploads/715ddeaa6e57b0e/facebook-logo.png" style="width: 60px; height: 60px;">
+       <!-- Facebook Badge START --></a><br> &nbsp;</p> 
+    </div> 
+   </div> 
+   <div id="right"> 
+    <h1>2014 IRIS Undergraduate Interns</h1> 
+    <div id="crumbs"> 
+     <a href="http://www.iris.edu/hq/internship/">Home</a> » Blogs 
+    </div> 
+    <h2>Intern Locations</h2> 
+    <div id="map"></div> 
+    <div class="intern"> 
+     <div class="avatar"> 
+      <a href="http://www.iris.edu/hq/internship/blogs/user/92"><img src="http://www.iris.edu/hq/internship/images/avatars/uploads/avatar_92.jpg" alt="Gina Belair"></a> 
+     </div> 
+     <div class="intern-info"> 
+      <div class="bio"> 
+       <h3 class="intern-name">Gina Belair<span>- <a href="http://www.iris.edu/hq/internship/blogs/user/92" class="blog-link">Read Blog Entries</a></span></h3> 
+       <span class="project-title"><b>Project Title:</b> Imaging Magma Under St. Helens</span> 
+       <span class="project-meta"><b>Institution:</b> <a href="" target="_blank">University of Washington </a>, <b>Host:</b> <a href="http://www.ess.washington.edu/dwp/people/profile.php?name=creager--ken" target="_blank">Dr. Ken Creager</a></span> 
+      </div> 
+      <div class="project"> 
+       <h4 class="proj-head"> <b>Project Description:</b><span>(Click to expand)</span></h4> 
+       <div class="proj-desc">
+         I am working at the University of Washington this summer on the project iMUSH, Imaging Magma Under St. Helens. I am involved in the passive part of the experiment in which 70 broadband seismometers will be deployed on and around Mt. St. Helens and will stay in place for two years. A very large component of my summer will be spent doing fieldwork. My first two and a half weeks were spent installing the seismometers. I also went on a service run to make sure that everything was running smoothly at the sites and to retrieve the flash drives storing the data. I will then utilize the data obtained in order to check the orientation of the sensors. The sensors should be oriented towards true north, but there is error involved in placing them. It is important to check this orientation and then correct for it when analyzing the data. Another part of my summer will be spent organizing. iMUSH is an immense project involving a lot of people and a lot of equipment. Although it is not part of the hard science, it is a very important and vital part of a project this size. 
+       </div> 
+       <div class="aaas_communication"> 
+        <span class="aaas_communication"> <b></b><p><b> Communicating Science to a Non-scientist Project </b>(<a href="http://www.iris.edu/hq/internship/site/PAGE_standard/899" target="_blank">about</a>): <a href="http://www.iris.edu/hq/internship/images/uploads/Files/Assignments/2014/Belair_Inside_Mount_St._Helens.pdf" target="_blank">Inside Mount St. Helens</a> </p></span> 
+       </div> 
+       <div class="AGU_presentation"> 
+        <span class="AGU_presentation"> <p> <b>Fall AGU Meeting Presentation:</b></p></span> 
+       </div> 
+      </div> 
+     </div> 
+    </div>
+    <div class="intern"> 
+     <div class="avatar"> 
+      <a href="http://www.iris.edu/hq/internship/blogs/user/94"><img src="http://www.iris.edu/hq/internship/images/avatars/uploads/avatar_94.png" alt="Celeste Labedz"></a> 
+     </div> 
+     <div class="intern-info"> 
+      <div class="bio"> 
+       <h3 class="intern-name">Celeste Labedz<span>- <a href="http://www.iris.edu/hq/internship/blogs/user/94" class="blog-link">Read Blog Entries</a></span></h3> 
+       <span class="project-title"><b>Project Title:</b> Optimizing the processing of the ambient seismic noise field to recover body waves</span> 
+       <span class="project-meta"><b>Institution:</b> <a href="" target="_blank">Massachusetts Institute of Technology </a>, <b>Host:</b> <a href="http://www.mit.edu/~gprieto/" target="_blank">Dr. German Prieto </a></span> 
+      </div> 
+      <div class="project"> 
+       <h4 class="proj-head"> <b>Project Description:</b><span>(Click to expand)</span></h4> 
+       <div class="proj-desc">
+         The goal of this project is to correlate ambient seismic noise to detect body waves that can be used to map discontinuities in the mantle below North America. There is already a significant body of knowledge regarding the use of ambient seismic noise, the continuous background seismic signal caused principally by ocean waves, in revealing otherwise undetectable surface waves that can be used to map and reveal the Green’s function for the shallow Earth. However, using this ambient seismic noise to detect body waves, which can reveal information about the deep Earth, is still an emerging study. Body waves found through ambient noise correlation have been studied through data from seismically quiet areas like the Baltic Shield, but a study spanning North America has not been attempted. These body waves are significant because the manner of their reflection and refraction through the Earth can be used to map discontinuities in the mantle, and anomalies in the depth of those discontinuities can reveal the locations of tectonic plates subducted long ago, such as the Farallon Plate under North America. My role in this project will be using MATLAB and other software to correlate ambient seismic noise from sections of the USArray in search of body waves, and then to begin using those waves to map mantle discontinuities below North America. 
+       </div> 
+       <div class="aaas_communication"> 
+        <span class="aaas_communication"> <b></b><p><b> Communicating Science to a Non-scientist Project </b>(<a href="http://www.iris.edu/hq/internship/site/PAGE_standard/899" target="_blank">about</a>): <a href="http://www.iris.edu/hq/internship/images/uploads/Files/Assignments/2014/Labedz_Communication_Assignment.pptx" target="_blank">Ambient Seismic Noise: What we can learn from what we can’t feel</a> </p></span> 
+       </div> 
+       <div class="AGU_presentation"> 
+        <span class="AGU_presentation"> <p> <b>Fall AGU Meeting Presentation:</b></p></span> 
+       </div> 
+      </div> 
+     </div> 
+    </div>
+    <div class="intern"> 
+     <div class="avatar"> 
+      <a href="http://www.iris.edu/hq/internship/blogs/user/95"><img src="http://www.iris.edu/hq/internship/images/avatars/uploads/avatar_95.jpg" alt="Rebekah_Lee"></a> 
+     </div> 
+     <div class="intern-info"> 
+      <div class="bio"> 
+       <h3 class="intern-name">Rebekah_Lee<span>- <a href="http://www.iris.edu/hq/internship/blogs/user/95" class="blog-link">Read Blog Entries</a></span></h3> 
+       <span class="project-title"><b>Project Title:</b> Seismic Characterization of Poker Flats, AK</span> 
+       <span class="project-meta"><b>Institution:</b> <a href="" target="_blank">Sandia National Laboratories </a>, <b>Host:</b> <a href="" target="_blank">Dr. Robert Abbott</a></span> 
+      </div> 
+      <div class="project"> 
+       <h4 class="proj-head"> <b>Project Description:</b><span>(Click to expand)</span></h4> 
+       <div class="proj-desc">
+         This project is part of the Permafrost Active Layer Seismic Interferometry Experiment. The goal is to track changes in the depth of the active layer. The part of the ground that remains frozen all year round is known as the permafrost. The part that thaws out is called the active layer. The depth of permafrost has important implications for infrastructure foundations. This project will test a new technique for mapping the permafrost layer. If successful it will be a cost efficient way to track time-varying thickness as it will negate the necessity of costly site visits. 
+       </div> 
+       <div class="aaas_communication"> 
+        <span class="aaas_communication"> <b></b><p><b> Communicating Science to a Non-scientist Project </b>(<a href="http://www.iris.edu/hq/internship/site/PAGE_standard/899" target="_blank">about</a>): <a href="http://www.iris.edu/hq/internship/images/uploads/Files/Assignments/2014/Lee_Comm_project.pdf" target="_blank">Project Could Provide Method To Track Changes In Ice Below Ground</a> </p></span> 
+       </div> 
+       <div class="AGU_presentation"> 
+        <span class="AGU_presentation"> <p> <b>Fall AGU Meeting Presentation:</b></p></span> 
+       </div> 
+      </div> 
+     </div> 
+    </div>
+    <div class="intern"> 
+     <div class="avatar"> 
+      <a href="http://www.iris.edu/hq/internship/blogs/user/96"><img src="http://www.iris.edu/hq/internship/images/avatars/uploads/avatar_96.png" alt="Khalia Payton"></a> 
+     </div> 
+     <div class="intern-info"> 
+      <div class="bio"> 
+       <h3 class="intern-name">Khalia Payton<span>- <a href="http://www.iris.edu/hq/internship/blogs/user/96" class="blog-link">Read Blog Entries</a></span></h3> 
+       <span class="project-title"><b>Project Title:</b> Simulating tremor along the San Andreas Fault</span> 
+       <span class="project-meta"><b>Institution:</b> <a href="" target="_blank">United States Geological Survey – Pasadena Field Office </a>, <b>Host:</b> <a href="https://profile.usgs.gov/ecochran" target="_blank">Dr. Elizabeth Cochran </a></span> 
+      </div> 
+      <div class="project"> 
+       <h4 class="proj-head"> <b>Project Description:</b><span>(Click to expand)</span></h4> 
+       <div class="proj-desc">
+         The goal of this project is to effectively simulate tremor along the San Andreas Fault. Tectonic tremor is a weak vibration of the ground initially discovered in subduction zones but has subsequently been observed along transform faults like the San Andreas. Our primary area of focus is in a region known as Parkfield which is mid-way on a fault segment between locked segment to the south and a creeping segment to the north where two tectonic plates are continuously moving without major earthquakes. Due to Parkfield's rather unusual history of successive earthquakes at regular intervals, deep borehole seismometers were installed along this region and spectral signatures of motion unlike typical earthquakes were discovered. We now call this phenomenon tremor. In order to better understand what tremor actually is and whether or not it is indicative of potential earthquakes we will utilize the RSQSim to study a complex fault system. My role is to examine a suite of parameters to understand the fault properties that allow tremor to occur. I will determine the required conditions to match previous tremor observations. This cutting-edge work will yield results of which have the potential to help make communities safer from earthquake hazards. 
+       </div> 
+       <div class="aaas_communication"> 
+        <span class="aaas_communication"> <b></b><p><b> Communicating Science to a Non-scientist Project </b>(<a href="http://www.iris.edu/hq/internship/site/PAGE_standard/899" target="_blank">about</a>): <a href="" target="_blank"></a> </p></span> 
+       </div> 
+       <div class="AGU_presentation"> 
+        <span class="AGU_presentation"> <p> <b>Fall AGU Meeting Presentation:</b></p></span> 
+       </div> 
+      </div> 
+     </div> 
+    </div>
+    <div class="intern"> 
+     <div class="avatar"> 
+      <a href="http://www.iris.edu/hq/internship/blogs/user/97"><img src="http://www.iris.edu/hq/internship/images/avatars/uploads/avatar_97.jpg" alt="Shane Cooper"></a> 
+     </div> 
+     <div class="intern-info"> 
+      <div class="bio"> 
+       <h3 class="intern-name">Shane Cooper<span>- <a href="http://www.iris.edu/hq/internship/blogs/user/97" class="blog-link">Read Blog Entries</a></span></h3> 
+       <span class="project-title"><b>Project Title:</b> Tidal modulation of induced seismicity</span> 
+       <span class="project-meta"><b>Institution:</b> <a href="" target="_blank">University of Oregon </a>, <b>Host:</b> <a href="http://www.stanford.edu/~athomas7/" target="_blank">Dr. Amanda Thomas</a></span> 
+      </div> 
+      <div class="project"> 
+       <h4 class="proj-head"> <b>Project Description:</b><span>(Click to expand)</span></h4> 
+       <div class="proj-desc">
+         My project title is called tidal modulation of induced seismicity. We will be looking at how hydraulic fracturing and waste injection can reduce the normal stress on faults. Reducing the normal stress on a fault can make a fault more likely to slip, and thus cause an earthquake. We will also be examining the role tides play on triggering earthquakes. Tides can affect the movement of water in the ocean. Similarly, tides can affect the motion of rock. If there is enough force applied to the rock from the tide, an earthquake might be triggered due to this phenomenon. Remote triggering is similar to tidal modulation, and occurs when large, distant earthquakes trigger smaller earthquakes across the planet due to waves propagating within the earth. We will be researching articles about that subject as well. These two phenomena will tie back to induced seismicity, because hydraulic fracturing and waste injection increase the likelihood that faults will rupture from tidal forces and remote triggering. We will be looking at various places where anthropogenic activities are taking place, especially in Oklahoma. 
+       </div> 
+       <div class="aaas_communication"> 
+        <span class="aaas_communication"> <b></b><p><b> Communicating Science to a Non-scientist Project </b>(<a href="http://www.iris.edu/hq/internship/site/PAGE_standard/899" target="_blank">about</a>): <a href="http://www.iris.edu/hq/internship/images/uploads/Files/Assignments/2014/Cooper_Highschool_article.docx" target="_blank">Can Humans Cause Earthquakes?</a> </p></span> 
+       </div> 
+       <div class="AGU_presentation"> 
+        <span class="AGU_presentation"> <p> <b>Fall AGU Meeting Presentation:</b></p></span> 
+       </div> 
+      </div> 
+     </div> 
+    </div>
+    <div class="intern"> 
+     <div class="avatar"> 
+      <a href="http://www.iris.edu/hq/internship/blogs/user/98"><img src="http://www.iris.edu/hq/internship/images/avatars/uploads/avatar_98.jpg" alt="Ivan Kurz"></a> 
+     </div> 
+     <div class="intern-info"> 
+      <div class="bio"> 
+       <h3 class="intern-name">Ivan Kurz<span>- <a href="http://www.iris.edu/hq/internship/blogs/user/98" class="blog-link">Read Blog Entries</a></span></h3> 
+       <span class="project-title"><b>Project Title:</b> Models of seismic anisotropy around the San Andreas Fault, California</span> 
+       <span class="project-meta"><b>Institution:</b> <a href="" target="_blank">University of New Mexico </a>, <b>Host:</b> <a href="http://physics.unm.edu/pandaweb/people/person.phtml?personID=959" target="_blank">Dr. Mousumi Roy </a></span> 
+      </div> 
+      <div class="project"> 
+       <h4 class="proj-head"> <b>Project Description:</b><span>(Click to expand)</span></h4> 
+       <div class="proj-desc">
+         In this project, I construct 3D geodynamic rheological models of the San Andreas Fault region, accounting for the strike-slip plate motion between the Pacific and North American Plates and asthenospheric flow from the subduction of the Farallon Plate. Northern California demonstrates fault-parallel anisotropy near the fault and east-west anisotropy farther from the fault; southern California demonstrates uniform east-west anisotropy oblique to the fault. I hope to vary the viscosities of and time intervals over the higher-viscosity lithosphere and the lower-viscosity asthenosphere in the models in order to emulate these observations. I assume that the mantle behaves as an idealized Newtonian fluid in a channel, and that the lithosphere and asthenosphere are isothermal. For each model, I calculate the finite strain within the two layers, their flow fields, and the lattice-preferred orientation fabric and seismic anisotropy of the upper mantle due to the deformation of dry olivine-enstatite aggregates. Previous work suggests that differences in viscosity lead to strong lithosphere-asthenosphere coupling and depth-dependent anisotropy, consistent with observations in northern California, while isoviscous rheology demonstrates weaker coupling and a narrower, shallower region of fault-parallel anisotropy, consistent with observations in southern California. I hope to emulate these models and shed light on the anisotropic variations around the San Andreas Fault. 
+       </div> 
+       <div class="aaas_communication"> 
+        <span class="aaas_communication"> <b></b><p><b> Communicating Science to a Non-scientist Project </b>(<a href="http://www.iris.edu/hq/internship/site/PAGE_standard/899" target="_blank">about</a>): <a href="" target="_blank"></a> </p></span> 
+       </div> 
+       <div class="AGU_presentation"> 
+        <span class="AGU_presentation"> <p> <b>Fall AGU Meeting Presentation:</b></p></span> 
+       </div> 
+      </div> 
+     </div> 
+    </div>
+    <div class="intern"> 
+     <div class="avatar"> 
+      <a href="http://www.iris.edu/hq/internship/blogs/user/99"><img src="http://www.iris.edu/hq/internship/images/avatars/uploads/avatar_99.jpg" alt="Tierney Larson"></a> 
+     </div> 
+     <div class="intern-info"> 
+      <div class="bio"> 
+       <h3 class="intern-name">Tierney Larson<span>- <a href="http://www.iris.edu/hq/internship/blogs/user/99" class="blog-link">Read Blog Entries</a></span></h3> 
+       <span class="project-title"><b>Project Title:</b> Atmospheric infrasound from ground to space</span> 
+       <span class="project-meta"><b>Institution:</b> <a href="" target="_blank">University of North Carolina at Chapel Hill</a>, <b>Host:</b> <a href="http://www.unc.edu/~leesj/" target="_blank">Dr. Jonathan Lees </a></span> 
+      </div> 
+      <div class="project"> 
+       <h4 class="proj-head"> <b>Project Description:</b><span>(Click to expand)</span></h4> 
+       <div class="proj-desc">
+         The study of seismic waves has provided knowledge about the nature of earthquakes, the propagation of waves through different mediums, and the basic physical structure of Earth. However, acoustic waves, which are studied less frequently, may provide a deeper comprehension of underlying geological processes. Using infrasound data recorded over the last four years at an array outside of Socorro, New Mexico, I am working to develop a code to accurately determine three-component vectors of incoming sound waves. Using the differences in arrival times between the three stations in the array, I want to calculate celerity vectors of major events (explosions, mine blasts, etc.), then perform a three-dimensional statistical analysis to group different types of events over time and connect them to the locations of known sources in the area. With a successful program to determine celerity, future infrasound studies will be able to more efficiently analyze and further characterize recorded signals. My project is just a small part of a larger experiment in the Lees lab. The group is partnering with the NASA High Altitude Student Platform (HASP) to send an acoustic array 36 kilometers into the sky using a helium balloon provided by NASA at the end of this summer. This will be the first academic study to record infrasound with a free-flying network, which, if successful, could provide revolutionary information better defining existing infrasound propagation models and possible waveguides in the troposphere. The ground array I'm working on lies directly along the balloon's projected flight path, so my findings will predict the types of signals likely to be recorded during the NASA experiment. Results from this experiment will be applied to future projects to quantify three-dimensional acoustic radiation above volcanoes with the goal of better understanding internal explosive mechanisms. 
+       </div> 
+       <div class="aaas_communication"> 
+        <span class="aaas_communication"> <b></b><p><b> Communicating Science to a Non-scientist Project </b>(<a href="http://www.iris.edu/hq/internship/site/PAGE_standard/899" target="_blank">about</a>): <a href="http://www.iris.edu/hq/internship/images/uploads/Files/Assignments/2014/Larson_Comm_Assign.pdf" target="_blank">Decoding the Secret Language of Volcanoes Geophysicists analyze sound waves to understand what happens inside volcanoes</a> </p></span> 
+       </div> 
+       <div class="AGU_presentation"> 
+        <span class="AGU_presentation"> <p> <b>Fall AGU Meeting Presentation:</b></p></span> 
+       </div> 
+      </div> 
+     </div> 
+    </div>
+    <div class="intern"> 
+     <div class="avatar"> 
+      <a href="http://www.iris.edu/hq/internship/blogs/user/100"><img src="http://www.iris.edu/hq/internship/images/avatars/uploads/avatar_100.jpg" alt="Mackenzie Fannon"></a> 
+     </div> 
+     <div class="intern-info"> 
+      <div class="bio"> 
+       <h3 class="intern-name">Mackenzie Fannon<span>- <a href="http://www.iris.edu/hq/internship/blogs/user/100" class="blog-link">Read Blog Entries</a></span></h3> 
+       <span class="project-title"><b>Project Title:</b> Analysis of source properties for large magnitude earthquakes along the Mexico subduction zone</span> 
+       <span class="project-meta"><b>Institution:</b> <a href="" target="_blank">New Mexico Tech</a>, <b>Host:</b> <a href="http://www.ees.nmt.edu/recent-publications/162-bilek" target="_blank">Dr. Susan Bilek </a></span> 
+      </div> 
+      <div class="project"> 
+       <h4 class="proj-head"> <b>Project Description:</b><span>(Click to expand)</span></h4> 
+       <div class="proj-desc">
+         This study is on the source properties for large magnitude ( &gt; 5.5) along the Mexican subduction zone. This is being done in order to analyze the relationships between slow slip events, tremors and earthquakes. By studying these different events, we can then better comprehend their connections with each other to understand the earthquake producing region of this subduction zone. This study will also help with the correlation between slow slip and large earthquakes to show that they are not a coincidence. I will be determining source parameters of the large magnitude events using data from the IRIS DMC, processing the data, and then interpreting the data to make plots and look for spatial variations and compare the locations of tremor, slow slip, and ultra-slow velocity layer events. 
+       </div> 
+       <div class="aaas_communication"> 
+        <span class="aaas_communication"> <b></b><p><b> Communicating Science to a Non-scientist Project </b>(<a href="http://www.iris.edu/hq/internship/site/PAGE_standard/899" target="_blank">about</a>): <a href="http://www.iris.edu/hq/internship/images/uploads/Files/Assignments/2014/Fannon_Comm_Proj.pdf" target="_blank">Can Predicting Earthquakes be Possible? By Understanding the Relationship between Earthquakes and Other Seismic Behavior, We May be One Step Closer</a> </p></span> 
+       </div> 
+       <div class="AGU_presentation"> 
+        <span class="AGU_presentation"> <p> <b>Fall AGU Meeting Presentation:</b></p></span> 
+       </div> 
+      </div> 
+     </div> 
+    </div>
+    <div class="intern"> 
+     <div class="avatar"> 
+      <a href="http://www.iris.edu/hq/internship/blogs/user/101"><img src="http://www.iris.edu/hq/internship/images/avatars/uploads/avatar_101.jpg" alt="Ryley Hill"></a> 
+     </div> 
+     <div class="intern-info"> 
+      <div class="bio"> 
+       <h3 class="intern-name">Ryley Hill<span>- <a href="http://www.iris.edu/hq/internship/blogs/user/101" class="blog-link">Read Blog Entries</a></span></h3> 
+       <span class="project-title"><b>Project Title:</b> Seismic Imaging of a Mid-Ocean Ridge Volcano</span> 
+       <span class="project-meta"><b>Institution:</b> <a href="" target="_blank">University of Washington </a>, <b>Host:</b> <a href="http://gore.ocean.washington.edu/" target="_blank">Dr. William Wilcock </a></span> 
+      </div> 
+      <div class="project"> 
+       <h4 class="proj-head"> <b>Project Description:</b><span>(Click to expand)</span></h4> 
+       <div class="proj-desc">
+         Mid-ocean ridges are responsible for resurfacing 2/3 of the Earth’s surface and account for 80% of Earth’s volcanism. Seismic reflection surveys have been used to understand the melt lens beneath ridges for some time. However, seismic reflection surveys cannot image the lower crustal low velocity region. In my study we are using wide-angle seismology to model the area beneath the ridge axis. Making use of the seismic tomography data set collected on the Endeavour segment of the Juan de Fuca intermediate spreading rate ridge, I will be using a MATLAB based program titled tlPicker developed by my mentor, William Wilcock, to pick travel times for Moho reflections that cross the ridge axis in order to image crustal thickness and lower crustal velocities beneath the ridge axis. I will be extending a pick data set Moho reflection (PmP) travel times that currently do not include cross-axis paths. After inversion I will resolve the crustal thickness beneath the ridge axis and the extent of the the lower crustal low velocity zone and possibly propose further insight about the geology of the ridge from these findings. Also, I will be attending a ten day Cascadia Initiative cruise installing ocean-bottom seismometers (OBS) on the R/V Oceanus. 
+       </div> 
+       <div class="aaas_communication"> 
+        <span class="aaas_communication"> <b></b><p><b> Communicating Science to a Non-scientist Project </b>(<a href="http://www.iris.edu/hq/internship/site/PAGE_standard/899" target="_blank">about</a>): <a href="http://www.iris.edu/hq/internship/images/uploads/Files/Assignments/2014/Hill_HomeworkIRIS.pptx" target="_blank">Seeing from Hearing: Visualizing Crustal Thickness from active-source seismology</a> </p></span> 
+       </div> 
+       <div class="AGU_presentation"> 
+        <span class="AGU_presentation"> <p> <b>Fall AGU Meeting Presentation:</b></p></span> 
+       </div> 
+      </div> 
+     </div> 
+    </div>
+    <div class="intern"> 
+     <div class="avatar"> 
+      <a href="http://www.iris.edu/hq/internship/blogs/user/102"><img src="http://www.iris.edu/hq/internship/images/avatars/uploads/avatar_102.png" alt="Mason Phillips"></a> 
+     </div> 
+     <div class="intern-info"> 
+      <div class="bio"> 
+       <h3 class="intern-name">Mason Phillips<span>- <a href="http://www.iris.edu/hq/internship/blogs/user/102" class="blog-link">Read Blog Entries</a></span></h3> 
+       <span class="project-title"><b>Project Title:</b> Waveform Cross-correlation for Improved North Texas Earthquake Locations</span> 
+       <span class="project-meta"><b>Institution:</b> <a href="" target="_blank">Southern Methodist University </a>, <b>Host:</b> <a href="http://www.smu.edu/Dedman/Academics/Departments/EarthSciences/People/Faculty/DeShon" target="_blank">Dr. Heather DeShon </a></span> 
+      </div> 
+      <div class="project"> 
+       <h4 class="proj-head"> <b>Project Description:</b><span>(Click to expand)</span></h4> 
+       <div class="proj-desc">
+         Since November 5, 2013, earthquakes in the Reno-Azle area, northeast of Fort Worth, TX, have raised scientific questions about the nature of these sequences and heightened local and national concern about the impact of shale gas production on infrastructure and subsurface structures. While all North Texas events to date have been less than magnitude 4, seismologists are unable to evaluate the potential maximum magnitude for such faults and define the associated hazards. Scientists at SMU have installed and are operating a temporary seismic network in the Reno-Azle area to acquire data that may be used to locate and characterize the correlation and improve identification of swarm-like earthquakes and relative event locations. Size mechanisms and accelerations, associated with the events will allow the size, nature, and hazard of the fault to be estimated. The spatial relation of the felt earthquakes to fluid injection points related to shale gas development in Texas and other states remains a major question. Understanding if and/or how injection of fluids into the crystalline crust reactivates otherwise inactive faults has important implications for seismology, the energy industry, and society. 
+       </div> 
+       <div class="aaas_communication"> 
+        <span class="aaas_communication"> <b></b><p><b> Communicating Science to a Non-scientist Project </b>(<a href="http://www.iris.edu/hq/internship/site/PAGE_standard/899" target="_blank">about</a>): <a href="" target="_blank"></a> </p></span> 
+       </div> 
+       <div class="AGU_presentation"> 
+        <span class="AGU_presentation"> <p> <b>Fall AGU Meeting Presentation:</b></p></span> 
+       </div> 
+      </div> 
+     </div> 
+    </div>
+    <div class="intern"> 
+     <div class="avatar"> 
+      <a href="http://www.iris.edu/hq/internship/blogs/user/103"><img src="http://www.iris.edu/hq/internship/images/avatars/uploads/avatar_103.jpg" alt="Carolyn Nuyen"></a> 
+     </div> 
+     <div class="intern-info"> 
+      <div class="bio"> 
+       <h3 class="intern-name">Carolyn Nuyen<span>- <a href="http://www.iris.edu/hq/internship/blogs/user/103" class="blog-link">Read Blog Entries</a></span></h3> 
+       <span class="project-title"><b>Project Title:</b> Imaging the effect of the Yellowstone Hotspot on the Wyoming Province</span> 
+       <span class="project-meta"><b>Institution:</b> <a href="" target="_blank">University of Southern California </a>, <b>Host:</b> <a href="http://robporritt.wordpress.com/" target="_blank">Dr. Robert Porritt </a></span> 
+      </div> 
+      <div class="project"> 
+       <h4 class="proj-head"> <b>Project Description:</b><span>(Click to expand)</span></h4> 
+       <div class="proj-desc">
+         The objective of this project is to explore the interaction between the Yellowstone Hotspot and the North American lithosphere. Although the origin of the hotspot is still debated today, it is generally agreed upon that this feature is the manifestation of a mantle plume. Due to the relative motion of the North American Plate, the Yellowstone Hotspot has exhibited a northeasterly progression across Oregon, Idaho and Wyoming over the past 16 Ma. Currently the hotspot resides over the Archean age Wyoming Province in the northwest corner of Wyoming. This province is one of the oldest cratonic blocks in North American and as such, contains an immense amount of structural history from major geologic events. This summer I will be using data collected by the USArray in the Wyoming Province to image the region’s structure through joint inversion of P to S receiver functions with Rayleigh wave phase velocities and through a common conversion point stack of S to P receiver functions with the same dataset. Comparison of the two resulting 3-D datasets will allow me to make interpretations about the structures arising from initial province formation, accretion to North American, and recent deformation due to the Yellowstone Hotspot. 
+       </div> 
+       <div class="aaas_communication"> 
+        <span class="aaas_communication"> <b></b><p><b> Communicating Science to a Non-scientist Project </b>(<a href="http://www.iris.edu/hq/internship/site/PAGE_standard/899" target="_blank">about</a>): <a href="" target="_blank"></a> </p></span> 
+       </div> 
+       <div class="AGU_presentation"> 
+        <span class="AGU_presentation"> <p> <b>Fall AGU Meeting Presentation:</b></p></span> 
+       </div> 
+      </div> 
+     </div> 
+    </div>
+    <div class="intern"> 
+     <div class="avatar"> 
+      <a href="http://www.iris.edu/hq/internship/blogs/user/104"><img src="http://www.iris.edu/hq/internship/images/avatars/uploads/avatar_104.jpg" alt="Alexander Snyder"></a> 
+     </div> 
+     <div class="intern-info"> 
+      <div class="bio"> 
+       <h3 class="intern-name">Alexander Snyder<span>- <a href="http://www.iris.edu/hq/internship/blogs/user/104" class="blog-link">Read Blog Entries</a></span></h3> 
+       <span class="project-title"><b>Project Title:</b> Reflection Response from the Autocorrelation of Ambient Noise as Recorded on the Transportable Array and Northern Embayment Lithosphere Experiment</span> 
+       <span class="project-meta"><b>Institution:</b> <a href="" target="_blank">University of Memphis </a>, <b>Host:</b> <a href="http://www.memphis.edu/ceri/research/langston.php" target="_blank">Dr. Charles Langston </a></span> 
+      </div> 
+      <div class="project"> 
+       <h4 class="proj-head"> <b>Project Description:</b><span>(Click to expand)</span></h4> 
+       <div class="proj-desc">
+         I will be using data recorded from Transportable Arrays and Flex Arrays surrounding the Mississippi Embayment (ME) to understand Moho depths and sedimentary characteristics in this area. This will help to better understand the geologic history of the ME and the activity of the New Madrid Seismic Zone (NMSZ). I will perform Cross Correlation and Auto-Correlation through the HPC at CERI to analyze data at each station to isolate the green's function in the ME. The Auto-Correlation will determine the reflectors. Dispersion measurements will then be made and the group and phase velocities will be calculated. Finally tomography of the Northern ME will be constructed. 
+       </div> 
+       <div class="aaas_communication"> 
+        <span class="aaas_communication"> <b></b><p><b> Communicating Science to a Non-scientist Project </b>(<a href="http://www.iris.edu/hq/internship/site/PAGE_standard/899" target="_blank">about</a>): <a href="http://www.iris.edu/hq/internship/images/uploads/Files/Assignments/2014/Alexander_Snyder_IRIS_Presentation.pptx" target="_blank">Using Autocorrelation to Identify Reflectors</a> </p></span> 
+       </div> 
+       <div class="AGU_presentation"> 
+        <span class="AGU_presentation"> <p> <b>Fall AGU Meeting Presentation:</b></p></span> 
+       </div> 
+      </div> 
+     </div> 
+    </div>
+    <div class="intern"> 
+     <div class="avatar"> 
+      <a href="http://www.iris.edu/hq/internship/blogs/user/105"><img src="http://www.iris.edu/hq/internship/images/avatars/uploads/avatar_105.jpg" alt="Emma Myers"></a> 
+     </div> 
+     <div class="intern-info"> 
+      <div class="bio"> 
+       <h3 class="intern-name">Emma Myers<span>- <a href="http://www.iris.edu/hq/internship/blogs/user/105" class="blog-link">Read Blog Entries</a></span></h3> 
+       <span class="project-title"><b>Project Title:</b> Exploring and Reassessing the Seismicity of Antarctica</span> 
+       <span class="project-meta"><b>Institution:</b> <a href="" target="_blank">Colorado State University </a>, <b>Host:</b> <a href="http://warnercnr.colostate.edu/geo-people/faculty" target="_blank">Dr. Rick Aster </a></span> 
+      </div> 
+      <div class="project"> 
+       <h4 class="proj-head"> <b>Project Description:</b><span>(Click to expand)</span></h4> 
+       <div class="proj-desc">
+         With the growth in data obtained in the recent years of Antarctic study, through projects such as POLENET/AGAP, this internship will delve into processing that seismic data through USGS/NEIC-developed methodologies for correlation-based detection, such as use of a subspace detector. Differentiating signal sources from glacial, tectonic, and volcanic will help to characterize the continent’s many processes, including remotely triggered ice quakes from large magnitude earthquakes, clarifying the study of active magmatic seismicity beneath the Marie Byrd Land volcanoes, and generally reassessing the low but significant seismic levels of the continent. Understanding these features is hoped to help obtain a better understanding of lithospheric dynamics in relation to the various signal sources listed above. 
+       </div> 
+       <div class="aaas_communication"> 
+        <span class="aaas_communication"> <b></b><p><b> Communicating Science to a Non-scientist Project </b>(<a href="http://www.iris.edu/hq/internship/site/PAGE_standard/899" target="_blank">about</a>): <a href="http://www.iris.edu/hq/internship/images/uploads/Files/Assignments/2014/Myers_Comm_Project.pptx" target="_blank">Antarctic Earthquakes</a> </p></span> 
+       </div> 
+       <div class="AGU_presentation"> 
+        <span class="AGU_presentation"> <p> <b>Fall AGU Meeting Presentation:</b></p></span> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <script type="text/javascript">
+                
+                
+        //------------------------------------------------------------
+        // GOOGLE MAPS CODE
+        //------------------------------------------------------------
+        // 
+        // The code below will generate the google maps that shows the location of 
+        // each of the interns
+        //
+        
+        //declare the variable that will hold the intern information
+        //we will store this in an array of objects
+        var locations = new Array();
+        
+        //now we use expression engine to loop through the query we created 
+        //to get the information from the database
+        //we will insert each row into an object in the locations array
+        //
+        // The javascript code below this line is dynamically created 
+        // by expressionengine while it loops through the results form the query
+        //
+        //------------------EE LOOP BEGINS---------------------------
+
+
+
+        //push the object into the locations array
+        locations.push({
+                location: "University of Washington ", 
+                latitude: "47.655227", 
+                longitude: "-122.303595",
+                avatar: "uploads/avatar_92.jpg",
+                screenname: "Gina Belair",
+                host: "University of Washington ",
+                hostname: "Dr. Ken Creager",
+                id: "92",
+                project_title: "Imaging Magma Under St. Helens"
+        });
+
+
+
+        //push the object into the locations array
+        locations.push({
+                location: "Massachusetts Institute of Technology ", 
+                latitude: "42.359972", 
+                longitude: "-71.094257",
+                avatar: "uploads/avatar_94.png",
+                screenname: "Celeste Labedz",
+                host: "Massachusetts Institute of Technology ",
+                hostname: "Dr. German Prieto ",
+                id: "94",
+                project_title: "Optimizing the processing of the ambient seismic noise field to recover body waves"
+        });
+
+
+
+        //push the object into the locations array
+        locations.push({
+                location: "Sandia National Laboratories ", 
+                latitude: "35.060521", 
+                longitude: "-106.534766",
+                avatar: "uploads/avatar_95.jpg",
+                screenname: "Rebekah_Lee",
+                host: "Sandia National Laboratories ",
+                hostname: "Dr. Robert Abbott",
+                id: "95",
+                project_title: "Seismic Characterization of Poker Flats, AK"
+        });
+
+
+
+        //push the object into the locations array
+        locations.push({
+                location: "United States Geological Survey – Pasadena Field Office ", 
+                latitude: "34.136348", 
+                longitude: "-118.128246",
+                avatar: "uploads/avatar_96.png",
+                screenname: "Khalia Payton",
+                host: "United States Geological Survey – Pasadena Field Office ",
+                hostname: "Dr. Elizabeth Cochran ",
+                id: "96",
+                project_title: "Simulating tremor along the San Andreas Fault"
+        });
+
+
+
+        //push the object into the locations array
+        locations.push({
+                location: "University of Oregon ", 
+                latitude: "44.044853", 
+                longitude: "-123.072767",
+                avatar: "uploads/avatar_97.jpg",
+                screenname: "Shane Cooper",
+                host: "University of Oregon ",
+                hostname: "Dr. Amanda Thomas",
+                id: "97",
+                project_title: "Tidal modulation of induced seismicity"
+        });
+
+
+
+        //push the object into the locations array
+        locations.push({
+                location: "University of New Mexico ", 
+                latitude: "35.084247", 
+                longitude: "-106.619916",
+                avatar: "uploads/avatar_98.jpg",
+                screenname: "Ivan Kurz",
+                host: "University of New Mexico ",
+                hostname: "Dr. Mousumi Roy ",
+                id: "98",
+                project_title: "Models of seismic anisotropy around the San Andreas Fault, California"
+        });
+
+
+
+        //push the object into the locations array
+        locations.push({
+                location: "University of North Carolina at Chapel Hill", 
+                latitude: "35.904938", 
+                longitude: "-79.047042",
+                avatar: "uploads/avatar_99.jpg",
+                screenname: "Tierney Larson",
+                host: "University of North Carolina at Chapel Hill",
+                hostname: "Dr. Jonathan Lees ",
+                id: "99",
+                project_title: "Atmospheric infrasound from ground to space"
+        });
+
+
+
+        //push the object into the locations array
+        locations.push({
+                location: "New Mexico Tech", 
+                latitude: "34.067292", 
+                longitude: "-106.905998",
+                avatar: "uploads/avatar_100.jpg",
+                screenname: "Mackenzie Fannon",
+                host: "New Mexico Tech",
+                hostname: "Dr. Susan Bilek ",
+                id: "100",
+                project_title: "Analysis of source properties for large magnitude earthquakes along the Mexico subduction zone"
+        });
+
+
+
+        //push the object into the locations array
+        locations.push({
+                location: "University of Washington ", 
+                latitude: "47.655212", 
+                longitude: "-122.303541",
+                avatar: "uploads/avatar_101.jpg",
+                screenname: "Ryley Hill",
+                host: "University of Washington ",
+                hostname: "Dr. William Wilcock ",
+                id: "101",
+                project_title: "Seismic Imaging of a Mid-Ocean Ridge Volcano"
+        });
+
+
+
+        //push the object into the locations array
+        locations.push({
+                location: "Southern Methodist University ", 
+                latitude: "32.840975", 
+                longitude: "-96.784625",
+                avatar: "uploads/avatar_102.png",
+                screenname: "Mason Phillips",
+                host: "Southern Methodist University ",
+                hostname: "Dr. Heather DeShon ",
+                id: "102",
+                project_title: "Waveform Cross-correlation for Improved North Texas Earthquake Locations"
+        });
+
+
+
+        //push the object into the locations array
+        locations.push({
+                location: "University of Southern California ", 
+                latitude: "34.022343", 
+                longitude: "-118.285342",
+                avatar: "uploads/avatar_103.jpg",
+                screenname: "Carolyn Nuyen",
+                host: "University of Southern California ",
+                hostname: "Dr. Robert Porritt ",
+                id: "103",
+                project_title: "Imaging the effect of the Yellowstone Hotspot on the Wyoming Province"
+        });
+
+
+
+        //push the object into the locations array
+        locations.push({
+                location: "University of Memphis ", 
+                latitude: "35.118855", 
+                longitude: "-89.937286",
+                avatar: "uploads/avatar_104.jpg",
+                screenname: "Alexander Snyder",
+                host: "University of Memphis ",
+                hostname: "Dr. Charles Langston ",
+                id: "104",
+                project_title: "Reflection Response from the Autocorrelation of Ambient Noise as Recorded on the Transportable Array and Northern Embayment Lithosphere Experiment"
+        });
+
+
+
+        //push the object into the locations array
+        locations.push({
+                location: "Colorado State University ", 
+                latitude: "40.573412", 
+                longitude: "-105.086933",
+                avatar: "uploads/avatar_105.jpg",
+                screenname: "Emma Myers",
+                host: "Colorado State University ",
+                hostname: "Dr. Rick Aster ",
+                id: "105",
+                project_title: "Exploring and Reassessing the Seismicity of Antarctica"
+        });
+
+
+
+        //--------------EE LOOP ENDS -------------------------------
+
+        //now we create the map itself
+        //create the map.
+        //we pass in the following paramters: the id of the container the map will render in
+        //the zoom level
+        //Center co-ords
+        //and the maptype
+        var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 4,
+                center: new google.maps.LatLng(41.244772 ,-99.84375),
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+
+        //now we create the information window
+        //this is the popup when you click on the location pns on the map
+        var infowindow = new google.maps.InfoWindow();
+        
+        
+        //define the variables for the pins and a counter for the loop
+        var marker, i;
+        
+        //now we loop through the locations array
+        for (i = 0; i < locations.length; i++) { 
+                //for each object in the array we create a pin on the google map
+                //we pass the latitude, longitude as a LatLng object and the map we oringinally created
+                marker = new google.maps.Marker({
+                        position: new google.maps.LatLng(locations[i].latitude, locations[i].longitude),
+                        map: map
+                                        
+                });
+                
+                //now we add event listeners for the pins for when they are clicked
+                //when the ins are click the popup window will open
+                google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                        return function() { 
+                                infowindow.setContent('<div class="maps-popup"><img src="'+ 
+                                        'http://www.iris.edu/hq/internship/' +'images/avatars/' + locations[i].avatar + '" class="popup-avatar"/>' + 
+                                        '<h4 class="intern-name">' + locations[i].screenname + '</h4>'
+                                        + '<p>Project Title: ' + locations[i].project_title + '</p>'
+                                        + '<p>Institution: ' + locations[i].host + '</p>' +
+                                        '<p> Host: ' + locations[i].hostname + '</p>' + 
+                                        '<p>' + '<a href="http://www.iris.edu/hq/internship/blogs/user/'+ locations[i].id + '">Read Blog Entries</a></p>' +
+                                        '</div>');
+                                infowindow.open(map, marker);
+                        }
+                })(marker, i));
+        }
+
+
+                
+                
+                
+                
+                
+                
+                
+        //------------------------------------------------------------
+        // TOGGLE PROJECT DESCRIPTION
+        //------------------------------------------------------------
+        // 
+        // This show will toggle the showing and hiding of the oriject descrition
+        //
+                
+        //show hide project description information        
+        $(document).ready( function(){
+                
+                
+                var proj = $('.proj-head'),
+                desc = $('div.proj-desc');
+                
+                $('div.proj-desc').hide();
+                
+                proj.click(function(){$(this).next('div.proj-desc').slideToggle(300);});
+        });
+</script> 
+   </div> 
+   <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1860730-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script> 
+   <div id="footer"> 
+    <a href="http://www.nsf.gov" target="_blank"><img src="http://www.iris.edu/hq/internship/images/layout/nsf.png" alt="NSF"></a> 
+    <ul> 
+     <li><a href="http://www.iris.edu/hq/internship/">Home</a></li> 
+     <li><a href="http://www.iris.edu/hq/internship/about">About the Program</a> </li> 
+     <li><a href="http://www.iris.edu/hq/internship/apply">Apply</a> </li> 
+     <li><a href="http://www.iris.edu/hq/internship/faq">FAQs</a></li> 
+     <li><a href="http://www.iris.edu/hq/internship/blogs">Current Interns</a></li> 
+     <li><a href="http://www.iris.edu/hq/internship/2010">2010 Interns</a></li> 
+     <li><a href="http://www.iris.edu/hq/internship/forums">Discussion Forum</a></li> 
+     <li><a href="http://www.iris.edu/hq/internship/previous">Previous Interns</a></li> 
+     <li><a href="http://www.iris.edu/hq/internship/minority">Minority Recruitment Speaker Series</a></li> 
+     <li><a href="http://www.iris.edu/hq/internship/related">Related Student Opportunities</a></li> 
+     <li><a href="http://www.iris.edu/hq/internship/grad">IRIS PASSCAL Grad Internship</a></li> 
+     <li><a href="http://www.iris.edu/hq/internship/news">Archived News</a></li> 
+     <li><a href="http://www.iris.edu/hq/internship/contact">Contact</a></li> 
+     <li><a href="http://www.iris.edu/hq/internship/system">Intern Login</a></li> 
+    </ul> 
+    <p><a href="http://www.iris.edu">www.iris.edu</a></p> 
+   </div> 
+  </div> 
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"beacon-5.newrelic.com","licenseKey":"a0c27f55c0","applicationID":"5614854","transactionName":"MQNUbUAAW0UAVEwKVwhJdUxBFVpbTlVUDF8V","queueTime":0,"applicationTime":111,"atts":"HURXGwgaSEs=","errorBeacon":"bam.nr-data.net","agent":"js-agent.newrelic.com\/nr-515.min.js"}</script> 
+ </body>
+</html>

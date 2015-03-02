@@ -1,0 +1,1251 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:fb="http://ogp.me/ns/fb#">
+ <head id="Head1">
+  <meta name="viewport" content="width=device-width"> 
+  <link rel="stylesheet" href="/content/style/style.css"> 
+  <link rel="stylesheet" href="/content/style/ipad.css"> 
+  <link rel="stylesheet" href="/content/style/mobile.css"> 
+  <link rel="Shortcut Icon" href="/content/images/aust.ico"> 
+  <link rel="stylesheet" href="/content/style/DINPro-Light/fonts.css">
+  <!--'Conv_DINPro-Light',Sans-Serif--> 
+  <link rel="stylesheet" href="/content/style/Museo300-Regular/stylesheet.css">
+  <!--'museo300'--> 
+  <link rel="stylesheet" href="/content/style/AllianzSerif-Light/stylesheet.css">
+  <!--'allianzserif_lightregular'--> 
+  <link rel="stylesheet" href="/content/style/jquery.mCustomScrollbar.css"> 
+  <script type="text/javascript" src="/scripts/jquery.js"></script> 
+  <script type="text/javascript" src="/scripts/prefixfree.min.js"></script> 
+  <script type="text/javascript" src="/scripts/jquery.easing.1.3.js"></script> 
+  <script type="text/javascript" src="/scripts/detect.js"></script> 
+  <script type="text/javascript" src="/scripts/jquery.cycle.all.js"></script> 
+  <script type="text/javascript" src="/scripts/new-swipe.js"></script> 
+  <script type="text/javascript" src="/Scripts/jquery.validate.js?123"></script> 
+  <script type="text/javascript" src="/scripts/scripts.js"></script> 
+  <script>        !window.jQuery && document.write(unescape('%3Cscript src="js/minified/jquery-1.9.1.min.js"%3E%3C/script%3E'))</script>
+  <!-- custom scrollbars plugin --> 
+  <script src="/scripts/jquery.mCustomScrollbar.concat.min.js"></script> 
+  <title>
+	
+AUST | AMERICAN UNIVERSITY OF SCIENCE &amp; TECHNOLOGY - Home
+
+</title> 
+  <script type="text/javascript">
+     $.browser.chrome = /chrome/.test(navigator.userAgent.toLowerCase());
+     $(document).ready(function () {
+         console.log($(window).width())
+     })
+     $(window).load(function () {
+
+         $(".homeImages").cycle({
+             timeout: 5000,
+             speed: 1000,
+             width: '100%',
+             slideResize: true,
+             containerResize: true,
+             fit: 1,
+             pager: '.HsliderTabs',
+             before: BeforeHome,
+             after: afterHome
+         });
+
+         $(window).resize(function () {
+             //         console.log($(window).width())
+             //         if ($(window).width() <= 1024) {
+             //           $(".homeImages").cycle("destroy")
+             //             $(".homeImages").cycle({
+             //                 timeout: 5000,
+             //                 speed: 1000,
+             //                 containerResize: 0,
+             //                 slideResize:0, 
+             //                 pager: '.HsliderTabs',
+             //                 before: BeforeHome,
+             //                 after: afterHome
+             //             });
+             //         }
+
+             var fullW = $(".HsliderTabs").outerWidth(true) - 158;
+             if ($.browser.chrome) {
+                 var fullW = $(".HsliderTabs").outerWidth(true) - 157;
+             }
+             if ($.browser.msie && parseInt($.browser.version, 10) === 7) {
+                 var fullW = $(".HsliderTabs").outerWidth(true) - 155;
+             }
+             if ($.browser.msie && parseInt($.browser.version, 10) === 8) {
+                 var fullW = $(".HsliderTabs").outerWidth(true) - 155;
+             }
+
+             if ($(window).width() < 640) {
+                 var fullW = $(".HsliderTabs").outerWidth(true) - 160;
+             }
+             var nbrOItems = $(".HsliderTabs a").length - 1;
+             var ItemW = (fullW / nbrOItems) - 1;
+             $(".HsliderTabs a").css("width", ItemW);
+
+
+         })
+
+         var fullW = $(".HsliderTabs").outerWidth(true) - 158;
+         if ($.browser.chrome) {
+             var fullW = $(".HsliderTabs").outerWidth(true) - 157;
+         }
+         if ($.browser.msie && parseInt($.browser.version, 10) === 7) {
+             var fullW = $(".HsliderTabs").outerWidth(true) - 155;
+         }
+         if ($.browser.msie && parseInt($.browser.version, 10) === 8) {
+             var fullW = $(".HsliderTabs").outerWidth(true) - 155;
+         }
+
+         if ($(window).width() < 640) {
+             var fullW = $(".HsliderTabs").outerWidth(true) - 160;
+         }
+         var nbrOItems = $(".HsliderTabs a").length - 1;
+         var ItemW = (fullW / nbrOItems) - 1;
+         $(".HsliderTabs a").css("width", ItemW);
+
+     });
+
+     function BeforeHome(currSlideElement, nextSlideElement, options, forwardFlag) {
+
+         var fullW = $(".HsliderTabs").outerWidth(true) - 158;
+         if ($.browser.chrome) {
+             var fullW = $(".HsliderTabs").outerWidth(true) - 157;
+         }
+         if ($.browser.msie && parseInt($.browser.version, 10) === 7) {
+             var fullW = $(".HsliderTabs").outerWidth(true) - 155;
+         }
+         if ($.browser.msie && parseInt($.browser.version, 10) === 8) {
+             var fullW = $(".HsliderTabs").outerWidth(true) - 155;
+         }
+         if ($(window).width() < 640) {
+             var fullW = $(".HsliderTabs").outerWidth(true) - 160;
+         }
+         var nbrOItems = $(".HsliderTabs a").length - 1;
+         var ItemW = (fullW / nbrOItems) - 1;
+         $(".HsliderTabs a").css("width", ItemW);
+         //console.log(currSlideElement)
+         $(currSlideElement).find(".rightMoving").animate({ "right": "-267px", "opacity": "0" }, 700);
+         $(currSlideElement).find(".leftMoving").animate({ "left": "-235px", "opacity": "0" }, 700);
+     }
+     function afterHome(currSlideElement, nextSlideElement, options, forwardFlag) {
+         //console.log(currSlideElement)
+         $(this).find(".rightMoving").animate({ "right": "0", "opacity": "1" }, 700);
+         $(this).find(".leftMoving").animate({ "left": "0", "opacity": "1" }, 700);
+         var $ht = $(this).height() + 10;
+
+         //set the container's height to that of the current slide
+         $(this).parent().animate({ height: $ht });
+         $(this).parents(".homeSlider").animate({ height: $ht });
+     }
+ </script> 
+ </head> 
+ <body id="home"> 
+  <div id="fb-root"></div> 
+  <script>    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+    } (document, 'script', 'facebook-jssdk'));</script> 
+  <div class="outerWrapper"> 
+   <div class="rightTopBg"></div> 
+   <div class="headerOuter"> 
+    <div class="headerInner"> 
+     <div class="headerRight"> 
+      <div class="headerRightInner adjustSpacing"> 
+       <div class="headerRight1 inlineBlock"> 
+        <div class="headerRight1Items adjustSpacing"> 
+         <div class="headerRight1Item  inlineBlock"> 
+          <a class="LandingPageLink" href="/about/landingpage"></a> 
+          <div class="headerRight1ItemTxt">
+            ABOUT US 
+           <div class="newsSubMen aboutSubMen subMenOpened adjustSpacing"> 
+            <div class="subMenTopShad"></div> 
+            <div class="subMenBtmShad"></div> 
+            <a href="/About_UsPresident's_Message" style="" class="newsMenItem inlineBlock ">President's Message</a>
+            <!--newsMenItem--> 
+            <a href="/About_UsHistory" style="" class="newsMenItem inlineBlock ">History</a>
+            <!--newsMenItem--> 
+            <a href="/About_UsRecognition_of_AUST_Degrees" style="top:-6px;height:34px;" class="newsMenItem inlineBlock ">Recognition of AUST Degrees</a>
+            <!--newsMenItem--> 
+            <a href="/About_UsMode_of_Study___" style="" class="newsMenItem inlineBlock ">Mode of Study </a>
+            <!--newsMenItem--> 
+            <a href="/About_UsAffiliation" style="" class="newsMenItem inlineBlock ">Affiliation</a>
+            <!--newsMenItem--> 
+            <a href="/About_UsFacts_and_Figures" style="" class="newsMenItem inlineBlock ">Facts and Figures</a>
+            <!--newsMenItem--> 
+            <a href="/About_UsThe_University's_Mission" style="" class="newsMenItem inlineBlock ">The University's Mission</a>
+            <!--newsMenItem--> 
+            <a href="/About_UsAcademic_LaboratoriesFaculty_of_Arts_and_SciencesDepartment_of_Arts_and_Design" style="" class="newsMenItem inlineBlock no_bb">Academic Laboratories</a>
+            <!--newsMenItem--> 
+            <a href="/About_UsCampus_map" style="" class="newsMenItem inlineBlock no_bb">Campus map</a>
+            <!--newsMenItem--> 
+           </div>
+           <!--newsSubMen--> 
+          </div>
+          <!--headerRight1ItemTxt--> 
+         </div>
+         <!--headerRight1Item--> 
+         <div class="headerRight1Item  inlineBlock onlineServicesMod"> 
+          <a class="LandingPageLink" href="/OnlineServices"> </a>
+          <!--headerRight1Item--> 
+          <div class="headerRight1ItemTxt">
+            ONLINE SERVICES 
+           <div class="newsSubMen subMenOpened adjustSpacing"> 
+            <div class="subMenTopShad"></div> 
+            <div class="subMenBtmShad"></div> 
+            <a class="newsMenItem inlineBlock" href="https://outlook.com/aust.edu.lb" target="_blank">Webmail</a>
+            <!--newsMenItem--> 
+            <a class="newsMenItem inlineBlock" href="https://www.aust.edu.lb/English/index.php" target="_blank">Online System</a>
+            <!--newsMenItem--> 
+            <a class="newsMenItem inlineBlock" href="http://search.epnet.com/" target="_blank">Ebsco Publishing Service</a>
+            <!--newsMenItem--> 
+            <a class="newsMenItem inlineBlock" href="https://s1.aust.edu.lb/" target="_blank">Apply To Aust</a>
+            <!--newsMenItem--> 
+            <a class="newsMenItem inlineBlock" style="border-bottom:none;" href="https://s1.aust.edu.lb/Recruitment" target="_blank">Employment</a>
+            <!--newsMenItem--> 
+           </div> 
+          </div>
+          <!--headerRight1ItemTxt--> 
+         </div> 
+         <div class="headerRight1Item  inlineBlock newsMod"> 
+          <a class="LandingPageLink" href="/news/landingpage"></a> 
+          <div class="headerRight1ItemTxt">
+            NEWS 
+           <div class="newsSubMen subMenOpened adjustSpacing"> 
+            <div class="subMenTopShad"></div> 
+            <div class="subMenBtmShad"></div> 
+            <a href="/news" class="newsMenItem inlineBlock">Annoucements</a>
+            <!--newsMenItem--> 
+            <a href="/news/university-events" class="newsMenItem inlineBlock">University Events </a>
+            <!--newsMenItem--> 
+            <a href="/news/aust-midweek" style="border-bottom:none;" class="newsMenItem inlineBlock">Aust Midweek</a>
+            <!--newsMenItem--> 
+           </div>
+           <!--newsSubMen--> 
+          </div>
+          <!--headerRight1ItemTxt--> 
+         </div>
+         <!--headerRight1Item--> 
+         <a href="/contact" class="headerRight1Item  last inlineBlock"> 
+          <div class="headerRight1ItemTxt">
+            CONTACT US
+          </div>
+          <!--headerRight1ItemTxt--> </a>
+         <!--headerRight1Item--> 
+        </div>
+        <!--headerRight1Items--> 
+       </div>
+       <!--headerRight1--> 
+       <div class="headerRight2 inlineBlock"> 
+        <div class="searchInput"> 
+         <a onclick="Search();" class="leftSearchIcon"></a> 
+         <input name="search" class="searchtext" type="text" onkeydown="if (event.keyCode == 13) Search();" value="SEARCH" onclick="if(this.value == 'SEARCH'){this.value = ''}" onblur="if(this.value == ''){this.value = 'SEARCH'}"> 
+        </div>
+        <!--searchInput--> 
+        <div class="googleRightSearch thiIsgoogleID"> 
+         <input id="googleSearch" type="checkbox" name="google"> 
+         <label for="googleSearch"></label> 
+        </div>
+        <!--googleRightSearch--> 
+        <div class="bingRightSearch thiIsBingID" style="display:none"> 
+         <input id="bingSearch" type="checkbox" name="bing"> 
+         <label for="bingSearch"></label> 
+         <div class="searchBy icobing">
+          Bing
+         </div> 
+        </div>
+        <!--googleRightSearch--> 
+        <div class="selectASearchArrow"> 
+         <div class="selectASearchBox"> 
+          <div class="wrapInner"> 
+           <div class="searchBy icoGoogle" onclick="showGoogle(this)">
+            Google
+           </div> 
+           <div class="searchBy icobing" onclick="showBing(this)">
+            Bing
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+       </div>
+       <!--headerRight2--> 
+      </div>
+      <!--headerRightInner--> 
+     </div>
+     <!--headerRight--> 
+    </div>
+    <!--headerInner--> 
+   </div>
+   <!--headerOuter--> 
+   <div class="responsiveLogo"> 
+    <div class="responsiveLogoInner"> 
+     <div class="responsiveLogoImg"> 
+      <a href="/"> <img src="/content/images/responsivelogo.png"> </a> 
+     </div>
+     <!--responsiveLogoImg--> 
+    </div>
+    <!--responsiveLogoInner--> 
+    <div onclick="responsiveOpenMen()" class="responsiveLMenBtn"></div> 
+   </div>
+   <!--responsiveLogo--> 
+   <div class="ContainerWrapper"> 
+    <div class="containerInner adjustSpacing"> 
+     <div class="MenRightShad"></div>
+     <!--MenRightShad--> 
+     <div class="MenuLeft inlineBlock"> 
+      <div class="MenuLeftTop"> 
+       <a href="/" class="Logo"><img src="/content/images/logo.png"></a>
+       <!--MenuLeftLogo--> 
+       <div class="UniName">
+        AMERICAN UNIVERSITY OF SCIENCE &amp; TECHNOLOGY 
+        <div class="uniNameShad"></div>
+        <!--uniNameShad-->
+       </div>
+       <!--UniName--> 
+       <div class="LebLeft"></div>
+       <!--LebLeft--> 
+      </div>
+      <!--MenuLeftTop--> 
+      <div class="TopMeusMob"> 
+       <div class="MenPart  "> 
+        <div class="MenPartTtl"> 
+         <div class="selectedBgMen"></div>
+         <!--selectedBgMen--> 
+         <a href="/about/Landingpage" class="MenPartTtlTxt">About Us</a>
+         <!--MenPartTtlTxt--> 
+        </div>
+        <!--MenPartTtl--> 
+       </div>
+       <!--MenPart--> 
+       <div class="MenPart "> 
+        <div class="MenPartTtl"> 
+         <div class="selectedBgMen"></div>
+         <!--selectedBgMen--> 
+         <a href="/news/Landingpage" class="MenPartTtlTxt">News</a>
+         <!--MenPartTtlTxt--> 
+        </div>
+        <!--MenPartTtl--> 
+       </div>
+       <!--MenPart--> 
+       <div class="MenPart "> 
+        <div class="MenPartTtl"> 
+         <div class="selectedBgMen"></div>
+         <!--selectedBgMen--> 
+         <a href="/contact" class="MenPartTtlTxt">Contact Us</a>
+         <!--MenPartTtlTxt--> 
+        </div>
+        <!--MenPartTtl--> 
+       </div>
+       <!--MenPart--> 
+       <div class="MenPart "> 
+        <div class="MenPartTtl last"> 
+         <div class="selectedBgMen"></div>
+         <!--selectedBgMen--> 
+         <a href="/OnlineServices" class="MenPartTtlTxt">Online Services</a>
+         <!--MenPartTtlTxt--> 
+        </div>
+        <!--MenPartTtl--> 
+       </div>
+       <!--MenPart--> 
+       <div class="TopMeusMobShad"></div> 
+      </div>
+      <!--TopMeusMob--> 
+      <div class="MenParts"> 
+       <div class="MenPart selectedLeftMen"> 
+        <div class="MenPartTtl"> 
+         <div class="selectedBgMen"></div>
+         <!--selectedBgMen--> 
+         <a href="/" class="MenPartTtlTxt">Home</a>
+         <!--MenPartTtlTxt--> 
+        </div>
+        <!--MenPartTtl--> 
+       </div>
+       <!--MenPart--> 
+       <div class="MenPart notSelected"> 
+        <input type="hidden" value="False__"> 
+        <div class="MenPartTtl "> 
+         <div class="selectedBgMen"></div>
+         <!--selectedBgMen--> 
+         <a href="/Governance_and_AdministrationBoard_of_Trustees" class="MenPartTtlTxt">Governance &amp; Administration </a> 
+         <!--MenPartTtlTxt--> 
+        </div>
+        <!--MenPartTtl--> 
+        <div class="openedSubMen"> 
+         <div class="openedSubMenItems"> 
+          <div class="openedSubMenItem "> 
+           <div class="selectedBgMen"></div> 
+           <a href="/Governance_and_AdministrationBoard_of_Trustees" class="openedSubMenItemTxt">Board of Trustees</a>
+           <!--openedSubMenItemTxt--> 
+          </div>
+          <!--openedSubMenItem--> 
+          <div class="openedSubMenItem "> 
+           <div class="selectedBgMen"></div> 
+           <a href="/Governance_and_AdministrationExecutive_Council" class="openedSubMenItemTxt">Executive Council</a>
+           <!--openedSubMenItemTxt--> 
+          </div>
+          <!--openedSubMenItem--> 
+          <div class="openedSubMenItem "> 
+           <div class="selectedBgMen"></div> 
+           <a href="/Governance_and_AdministrationUniversity_Board" class="openedSubMenItemTxt">University Board</a>
+           <!--openedSubMenItemTxt--> 
+          </div>
+          <!--openedSubMenItem--> 
+          <div class="openedSubMenItem "> 
+           <div class="selectedBgMen"></div> 
+           <a href="/Governance_and_AdministrationPolicies" class="openedSubMenItemTxt">Policies</a>
+           <!--openedSubMenItemTxt--> 
+          </div>
+          <!--openedSubMenItem--> 
+         </div>
+         <!--openedSubMenItems--> 
+        </div>
+        <!--openedSubMen--> 
+       </div>
+       <!--MenPart--> 
+       <div class="MenPart notSelected"> 
+        <input type="hidden" value="False__"> 
+        <div class="MenPartTtl "> 
+         <div class="selectedBgMen"></div>
+         <!--selectedBgMen--> 
+         <a href="/Accreditations_and_Affiliations_Accreditation" class="MenPartTtlTxt">Accreditations &amp; Affiliations </a> 
+         <!--MenPartTtlTxt--> 
+        </div>
+        <!--MenPartTtl--> 
+        <div class="openedSubMen"> 
+         <div class="openedSubMenItems"> 
+          <div class="openedSubMenItem "> 
+           <div class="selectedBgMen"></div> 
+           <a href="/Accreditations_and_Affiliations_Accreditation" class="openedSubMenItemTxt">Accreditation</a>
+           <!--openedSubMenItemTxt--> 
+          </div>
+          <!--openedSubMenItem--> 
+          <div class="openedSubMenItem "> 
+           <div class="selectedBgMen"></div> 
+           <a href="/Accreditations_and_Affiliations_Affiliation" class="openedSubMenItemTxt">Affiliation</a>
+           <!--openedSubMenItemTxt--> 
+          </div>
+          <!--openedSubMenItem--> 
+         </div>
+         <!--openedSubMenItems--> 
+        </div>
+        <!--openedSubMen--> 
+       </div>
+       <!--MenPart--> 
+       <div class="MenPart notSelected"> 
+        <input type="hidden" value="False__"> 
+        <div class="MenPartTtl "> 
+         <div class="selectedBgMen"></div>
+         <!--selectedBgMen--> 
+         <a href="/AdmissionsOverviewAdmissions_Office" class="MenPartTtlTxt">Admissions </a> 
+         <!--MenPartTtlTxt--> 
+        </div>
+        <!--MenPartTtl--> 
+        <div class="openedSubMen"> 
+         <div class="openedSubMenItems"> 
+          <div class="openedSubMenItem "> 
+           <div class="selectedBgMen"></div> 
+           <a href="/AdmissionsOverviewAdmissions_Office" class="openedSubMenItemTxt">Overview</a>
+           <!--openedSubMenItemTxt--> 
+          </div>
+          <!--openedSubMenItem--> 
+          <div class="openedSubMenItem "> 
+           <div class="selectedBgMen"></div> 
+           <a href="/AdmissionsUndergraduate_ProgramsUndergraduate_Programs" class="openedSubMenItemTxt">Undergraduate Programs</a>
+           <!--openedSubMenItemTxt--> 
+          </div>
+          <!--openedSubMenItem--> 
+          <div class="openedSubMenItem "> 
+           <div class="selectedBgMen"></div> 
+           <a href="/AdmissionsGraduate_ProgramsGraduate_Programs" class="openedSubMenItemTxt">Graduate Programs</a>
+           <!--openedSubMenItemTxt--> 
+          </div>
+          <!--openedSubMenItem--> 
+          <div class="openedSubMenItem "> 
+           <div class="selectedBgMen"></div> 
+           <a href="/AdmissionsSpecialty_Programs" class="openedSubMenItemTxt">Specialty Programs</a>
+           <!--openedSubMenItemTxt--> 
+          </div>
+          <!--openedSubMenItem--> 
+          <div class="openedSubMenItem "> 
+           <div class="selectedBgMen"></div> 
+           <a href="/AdmissionsTeaching_Diploma" class="openedSubMenItemTxt">Teaching Diploma</a>
+           <!--openedSubMenItemTxt--> 
+          </div>
+          <!--openedSubMenItem--> 
+          <div class="openedSubMenItem "> 
+           <div class="selectedBgMen"></div> 
+           <a href="/AdmissionsTests_and_MeasurementsRecognized_English_Tests" class="openedSubMenItemTxt">Tests and Measurements</a>
+           <!--openedSubMenItemTxt--> 
+          </div>
+          <!--openedSubMenItem--> 
+          <div class="openedSubMenItem "> 
+           <div class="selectedBgMen"></div> 
+           <a href="/AdmissionsTuition_Fees_and_ExpensesUndergraduate_Tuition_Fees_" class="openedSubMenItemTxt">Tuition Fees and Expenses</a>
+           <!--openedSubMenItemTxt--> 
+          </div>
+          <!--openedSubMenItem--> 
+         </div>
+         <!--openedSubMenItems--> 
+        </div>
+        <!--openedSubMen--> 
+       </div>
+       <!--MenPart--> 
+       <div class="MenPart notSelected"> 
+        <input type="hidden" value="False__"> 
+        <div class="MenPartTtl "> 
+         <div class="selectedBgMen"></div>
+         <!--selectedBgMen--> 
+         <a href="/Faculties_and_ProgramsDegree_Programs" class="MenPartTtlTxt">Faculties and Programs </a> 
+         <!--MenPartTtlTxt--> 
+        </div>
+        <!--MenPartTtl--> 
+        <div class="openedSubMen"> 
+         <div class="openedSubMenItems"> 
+          <div class="openedSubMenItem "> 
+           <div class="selectedBgMen"></div> 
+           <a href="/Faculties_and_ProgramsDegree_Programs" class="openedSubMenItemTxt">Degree Programs</a>
+           <!--openedSubMenItemTxt--> 
+          </div>
+          <!--openedSubMenItem--> 
+          <div class="openedSubMenItem "> 
+           <div class="selectedBgMen"></div> 
+           <a href="/Faculties_and_ProgramsFaculty_of_Arts_and_SciencesDean's_Message" class="openedSubMenItemTxt">Faculty of Arts and Sciences</a>
+           <!--openedSubMenItemTxt--> 
+          </div>
+          <!--openedSubMenItem--> 
+          <div class="openedSubMenItem "> 
+           <div class="selectedBgMen"></div> 
+           <a href="/Faculties_and_ProgramsFaculty_of_Business_and_EconomicsDean's_Message" class="openedSubMenItemTxt">Faculty of Business and Economics</a>
+           <!--openedSubMenItemTxt--> 
+          </div>
+          <!--openedSubMenItem--> 
+          <div class="openedSubMenItem "> 
+           <div class="selectedBgMen"></div> 
+           <a href="/Faculties_and_ProgramsFaculty_of_EngineeringDean's_Message" class="openedSubMenItemTxt">Faculty of Engineering</a>
+           <!--openedSubMenItemTxt--> 
+          </div>
+          <!--openedSubMenItem--> 
+          <div class="openedSubMenItem "> 
+           <div class="selectedBgMen"></div> 
+           <a href="/Faculties_and_ProgramsFaculty_of_Health_SciencesDean's_Message" class="openedSubMenItemTxt">Faculty of Health Sciences</a>
+           <!--openedSubMenItemTxt--> 
+          </div>
+          <!--openedSubMenItem--> 
+         </div>
+         <!--openedSubMenItems--> 
+        </div>
+        <!--openedSubMen--> 
+       </div>
+       <!--MenPart--> 
+       <div class="MenPart notSelected"> 
+        <input type="hidden" value="False__"> 
+        <div class="MenPartTtl "> 
+         <div class="selectedBgMen"></div>
+         <!--selectedBgMen--> 
+         <a href="/French_Section" class="MenPartTtlTxt">French Section </a> 
+         <!--MenPartTtlTxt--> 
+        </div>
+        <!--MenPartTtl--> 
+       </div>
+       <!--MenPart--> 
+       <div class="MenPart notSelected"> 
+        <input type="hidden" value="False__"> 
+        <div class="MenPartTtl "> 
+         <div class="selectedBgMen"></div>
+         <!--selectedBgMen--> 
+         <a href="/Rules_and_RegulationsRegistration_Procedure" class="MenPartTtlTxt">Rules and Regulations </a> 
+         <!--MenPartTtlTxt--> 
+        </div>
+        <!--MenPartTtl--> 
+        <div class="openedSubMen"> 
+         <div class="openedSubMenItems"> 
+          <div class="openedSubMenItem "> 
+           <div class="selectedBgMen"></div> 
+           <a href="/Rules_and_RegulationsRegistration_Procedure" class="openedSubMenItemTxt">Registration Procedure</a>
+           <!--openedSubMenItemTxt--> 
+          </div>
+          <!--openedSubMenItem--> 
+          <div class="openedSubMenItem "> 
+           <div class="selectedBgMen"></div> 
+           <a href="/Rules_and_RegulationsChoice_Transfer_of_Major" class="openedSubMenItemTxt">Choice/Transfer of Major</a>
+           <!--openedSubMenItemTxt--> 
+          </div>
+          <!--openedSubMenItem--> 
+          <div class="openedSubMenItem "> 
+           <div class="selectedBgMen"></div> 
+           <a href="/Rules_and_RegulationsCourses_and_GradingDropping_and_Adding_of_Courses" class="openedSubMenItemTxt">Courses and Grading</a>
+           <!--openedSubMenItemTxt--> 
+          </div>
+          <!--openedSubMenItem--> 
+          <div class="openedSubMenItem "> 
+           <div class="selectedBgMen"></div> 
+           <a href="/Rules_and_RegulationsProbation_and_SuspensionProbation_and_Suspension_Regulations" class="openedSubMenItemTxt">Probation and Suspension</a>
+           <!--openedSubMenItemTxt--> 
+          </div>
+          <!--openedSubMenItem--> 
+          <div class="openedSubMenItem "> 
+           <div class="selectedBgMen"></div> 
+           <a href="/Rules_and_RegulationsFinal_Examinations" class="openedSubMenItemTxt">Final Examinations</a>
+           <!--openedSubMenItemTxt--> 
+          </div>
+          <!--openedSubMenItem--> 
+          <div class="openedSubMenItem "> 
+           <div class="selectedBgMen"></div> 
+           <a href="/Rules_and_RegulationsSpecial_NonDegree_Students" class="openedSubMenItemTxt">Special Non-Degree Students</a>
+           <!--openedSubMenItemTxt--> 
+          </div>
+          <!--openedSubMenItem--> 
+          <div class="openedSubMenItem "> 
+           <div class="selectedBgMen"></div> 
+           <a href="/Rules_and_RegulationsRequired_Credits_per_Academic_Year" class="openedSubMenItemTxt">Required Credits per Academic Year</a>
+           <!--openedSubMenItemTxt--> 
+          </div>
+          <!--openedSubMenItem--> 
+          <div class="openedSubMenItem "> 
+           <div class="selectedBgMen"></div> 
+           <a href="/Rules_and_RegulationsClassification_of_Students" class="openedSubMenItemTxt">Classification of Students</a>
+           <!--openedSubMenItemTxt--> 
+          </div>
+          <!--openedSubMenItem--> 
+          <div class="openedSubMenItem "> 
+           <div class="selectedBgMen"></div> 
+           <a href="/Rules_and_RegulationsGeneral_Graduation_Requirements" class="openedSubMenItemTxt">General Graduation Requirements</a>
+           <!--openedSubMenItemTxt--> 
+          </div>
+          <!--openedSubMenItem--> 
+         </div>
+         <!--openedSubMenItems--> 
+        </div>
+        <!--openedSubMen--> 
+       </div>
+       <!--MenPart--> 
+       <div class="MenPart notSelected"> 
+        <input type="hidden" value="False__"> 
+        <div class="MenPartTtl "> 
+         <div class="selectedBgMen"></div>
+         <!--selectedBgMen--> 
+         <a href="/Research_and_PublicationsFaculty_of_Arts_and_SciencesDepartment_of_Communication_Arts" class="MenPartTtlTxt">Research and Publications </a> 
+         <!--MenPartTtlTxt--> 
+        </div>
+        <!--MenPartTtl--> 
+        <div class="openedSubMen"> 
+         <div class="openedSubMenItems"> 
+          <div class="openedSubMenItem "> 
+           <div class="selectedBgMen"></div> 
+           <a href="/Research_and_PublicationsFaculty_of_Arts_and_SciencesDepartment_of_Communication_Arts" class="openedSubMenItemTxt">Faculty of Arts and Sciences</a>
+           <!--openedSubMenItemTxt--> 
+          </div>
+          <!--openedSubMenItem--> 
+          <div class="openedSubMenItem "> 
+           <div class="selectedBgMen"></div> 
+           <a href="/Research_and_PublicationsFaculty_of_Business_and_Economics" class="openedSubMenItemTxt">Faculty of Business and Economics</a>
+           <!--openedSubMenItemTxt--> 
+          </div>
+          <!--openedSubMenItem--> 
+          <div class="openedSubMenItem "> 
+           <div class="selectedBgMen"></div> 
+           <a href="/Research_and_PublicationsFaculty_of_EngineeringDepartment_of_Biomedical_Engineering" class="openedSubMenItemTxt">Faculty of Engineering</a>
+           <!--openedSubMenItemTxt--> 
+          </div>
+          <!--openedSubMenItem--> 
+          <div class="openedSubMenItem "> 
+           <div class="selectedBgMen"></div> 
+           <a href="/Research_and_PublicationsFaculty_of_Health_Sciences" class="openedSubMenItemTxt">Faculty of Health Sciences</a>
+           <!--openedSubMenItemTxt--> 
+          </div>
+          <!--openedSubMenItem--> 
+         </div>
+         <!--openedSubMenItems--> 
+        </div>
+        <!--openedSubMen--> 
+       </div>
+       <!--MenPart--> 
+       <div class="MenPart notSelected"> 
+        <input type="hidden" value="False__"> 
+        <div class="MenPartTtl "> 
+         <div class="selectedBgMen"></div>
+         <!--selectedBgMen--> 
+         <a href="/University_ServicesAdministrative_Services" class="MenPartTtlTxt">University Services </a> 
+         <!--MenPartTtlTxt--> 
+        </div>
+        <!--MenPartTtl--> 
+        <div class="openedSubMen"> 
+         <div class="openedSubMenItems"> 
+          <div class="openedSubMenItem "> 
+           <div class="selectedBgMen"></div> 
+           <a href="/University_ServicesAdministrative_Services" class="openedSubMenItemTxt">Administrative Services</a>
+           <!--openedSubMenItemTxt--> 
+          </div>
+          <!--openedSubMenItem--> 
+          <div class="openedSubMenItem "> 
+           <div class="selectedBgMen"></div> 
+           <a href="/University_ServicesCampus_Services" class="openedSubMenItemTxt">Campus Services</a>
+           <!--openedSubMenItemTxt--> 
+          </div>
+          <!--openedSubMenItem--> 
+          <div class="openedSubMenItem "> 
+           <div class="selectedBgMen"></div> 
+           <a href="/University_ServicesStudent_Housing" class="openedSubMenItemTxt">Student Housing</a>
+           <!--openedSubMenItemTxt--> 
+          </div>
+          <!--openedSubMenItem--> 
+          <div class="openedSubMenItem "> 
+           <div class="selectedBgMen"></div> 
+           <a href="/University_ServicesStudent_Activities" class="openedSubMenItemTxt">Student Activities</a>
+           <!--openedSubMenItemTxt--> 
+          </div>
+          <!--openedSubMenItem--> 
+         </div>
+         <!--openedSubMenItems--> 
+        </div>
+        <!--openedSubMen--> 
+       </div>
+       <!--MenPart--> 
+       <div class="MenPart notSelected"> 
+        <input type="hidden" value="False__"> 
+        <div class="MenPartTtl "> 
+         <div class="selectedBgMen"></div>
+         <!--selectedBgMen--> 
+         <a href="/University_CalendarAcademic_CalendarSpring_Semester_20142015" class="MenPartTtlTxt">University Calendar </a> 
+         <!--MenPartTtlTxt--> 
+        </div>
+        <!--MenPartTtl--> 
+        <div class="openedSubMen"> 
+         <div class="openedSubMenItems"> 
+          <div class="openedSubMenItem "> 
+           <div class="selectedBgMen"></div> 
+           <a href="/University_CalendarAcademic_CalendarSpring_Semester_20142015" class="openedSubMenItemTxt">Academic Calendar</a>
+           <!--openedSubMenItemTxt--> 
+          </div>
+          <!--openedSubMenItem--> 
+         </div>
+         <!--openedSubMenItems--> 
+        </div>
+        <!--openedSubMen--> 
+       </div>
+       <!--MenPart--> 
+       <div class="MenPart notSelected"> 
+        <input type="hidden" value="False__"> 
+        <div class="MenPartTtl "> 
+         <div class="selectedBgMen"></div>
+         <!--selectedBgMen--> 
+         <a href="/Industry_Partnerships" class="MenPartTtlTxt">Industry Partnerships </a> 
+         <!--MenPartTtlTxt--> 
+        </div>
+        <!--MenPartTtl--> 
+       </div>
+       <!--MenPart--> 
+       <div class="MenPart notSelected"> 
+        <input type="hidden" value="False__"> 
+        <div class="MenPartTtl "> 
+         <div class="selectedBgMen"></div>
+         <!--selectedBgMen--> 
+         <a href="http://www.aust.edu.lb/contact" class="MenPartTtlTxt">Contact Us </a> 
+         <!--MenPartTtlTxt--> 
+        </div>
+        <!--MenPartTtl--> 
+       </div>
+       <!--MenPart--> 
+      </div>
+      <!--MenParts--> 
+      <div class="menuBottom"> 
+       <div class="menuBottomRightShad"></div>
+       <!--menuBottomRightShad--> 
+       <div class="onlineSersBg"></div>
+       <!--onlineSersBg--> 
+       <div class="onlineSers"> 
+        <div class="onlineSersTtl"> 
+         <b>ONLINE</b> SERVICES 
+         <div class="sersTtlShad"></div>
+         <!--sersTtlShad--> 
+        </div>
+        <!--onlineSersTtl--> 
+        <div class="SerItemsCont"> 
+         <a target="_blank" href="https://outlook.com/aust.edu.lb" class="onlineSersItem">Webmail</a>
+         <!--onlineSersItem--> 
+         <a target="_blank" href="https://www.aust.edu.lb/English/index.php" class="onlineSersItem OSys">Online System</a>
+         <!--onlineSersItem--> 
+         <a target="_blank" href="http://search.epnet.com/" class="onlineSersItem EBSCO">EBSCO Publishing Service</a>
+         <!--onlineSersItem--> 
+         <a target="_blank" href="https://s1.aust.edu.lb/" class="onlineSersItem Apply">Apply to AUST</a>
+         <!--onlineSersItem--> 
+         <a target="_blank" href="https://s1.aust.edu.lb/Recruitment" class="onlineSersItem Employment">Employment</a>
+         <!--onlineSersItem--> 
+        </div>
+        <!--SerItemsCont--> 
+       </div>
+       <!--onlineSers--> 
+       <div class="onlineSersMedia" style="display:none;"> 
+        <a target="_blank" href="http://www.facebook.com">
+         <div class="onlineSersMediaItem"></div></a>
+        <!--onlineSersMediaItem--> 
+        <a target="_blank" href="https://www.twitter.com/">
+         <div class="onlineSersMediaItem Twt"></div></a>
+        <!--onlineSersMediaItem--> 
+        <a target="_blank" href="http://www.LinkedIn.com">
+         <div class="onlineSersMediaItem In"></div></a>
+        <!--onlineSersMediaItem--> 
+       </div>
+       <!--onlineSersMedia--> 
+      </div>
+      <!--menuBottom--> 
+     </div>
+     <!--MenuLeft--> 
+     <script type="text/javascript">
+    $(window).load(function () {
+        if ($(window).width() <= 1024) {
+            $(".MenuLeft").css("height", $(document).outerHeight(true) + 140);
+
+            $('.selectedLeftMenWS').find('.openedSubMen').css('height', $('.selectedLeftMenWS').find('.openedSubMen').height()); 
+            $('.selectedLeftMenWS').find('.openedSubMen > .openedSubMenItems').css('height', $('.selectedLeftMenWS').find('.openedSubMen').height());
+           
+            // alert("a")
+            //alert($(document).outerHeight(true))
+        }
+    });
+</script> 
+     <div class="content inlineBlock"> 
+      <div class="homeSlider"> 
+       <div class="homeImages"> 
+        <div class="homeSliderImg"> 
+         <img src="/KMS/Utils/ResizeImage?imagename=/content/uploads/HomeSlide/140721084904231~Home.jpg&amp;width=640&amp;height=999999"> 
+         <div class="leftMoving"> 
+          <div class="leftMovingTxt">
+           &nbsp; &nbsp; &nbsp; &nbsp;
+          </div> 
+          <div class="leftMovingTxt">
+           &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Since &nbsp;2000
+          </div> 
+         </div> 
+        </div>
+        <!--homeSliderImg--> 
+        <div class="homeSliderImg"> 
+         <img src="/KMS/Utils/ResizeImage?imagename=/content/uploads/HomeSlide/150121082414428~TTM (3).jpg&amp;width=640&amp;height=999999"> 
+        </div>
+        <!--homeSliderImg--> 
+        <div class="homeSliderImg"> 
+         <img src="/KMS/Utils/ResizeImage?imagename=/content/uploads/HomeSlide/150217022203958~welcome1.jpg&amp;width=640&amp;height=999999"> 
+         <div class="rightMoving rightGrey"> 
+          <div class="rightMoveTxt1">
+           <span style="font-size: x-large;">Spring</span>
+          </div> 
+          <div class="rightMoveTxt2">
+           &nbsp;
+          </div> 
+          <div class="rightMoveTxt3" style="top: 95px;">
+           2015
+          </div> 
+         </div> 
+        </div>
+        <!--homeSliderImg--> 
+        <div class="homeSliderImg"> 
+         <img src="/KMS/Utils/ResizeImage?imagename=/content/uploads/HomeSlide/150113020517137~IMG_0474.jpg&amp;width=640&amp;height=999999"> 
+        </div>
+        <!--homeSliderImg--> 
+        <div class="homeSliderImg"> 
+         <img src="/KMS/Utils/ResizeImage?imagename=/content/uploads/HomeSlide/150113020731292~CFA (15).jpg&amp;width=640&amp;height=999999"> 
+         <div class="leftMoving"> 
+          <div class="leftMovingTxt">
+           <span class="leftMovingTxt1">4th CFA</span> 
+           <div class="leftMovingTxt3">
+            2014
+           </div> 
+          </div> 
+         </div> 
+        </div>
+        <!--homeSliderImg--> 
+       </div>
+       <!--homeImages--> 
+       <div class="HsliderTabs"></div>
+       <!--HsliderTabs--> 
+       <div class="HomeSliderTabs"> 
+        <table class="HomeSliderTabsTbl" style="border-collapse:collapse" border="0" cellpadding="0"> 
+         <tbody>
+          <tr> 
+           <td class="selectedTab" height="6px">
+            <div class="selectedTabArrow"></div></td> 
+           <td height="6px"></td> 
+           <td height="6px"></td> 
+           <td height="6px"></td> 
+           <td height="6px"></td> 
+           <td height="6px"></td> 
+          </tr> 
+         </tbody>
+        </table> 
+       </div>
+       <!--HomeSliderTabs--> 
+      </div>
+      <!--homeSlider--> 
+      <div class="announcmentsHome"> 
+       <div class="announcmentsLeftRed"></div>
+       <!--announcmentsLeftRed--> 
+       <div class="announcmentsTtl">
+        ANNOUNCEMENTS
+       </div>
+       <!--announcmentsTtl--> 
+       <div class="announcments adjustSpacing"> 
+        <a href="/News/Details/180"> 
+         <div class="announcment inlineBlock"> 
+          <div class="announcmentTxt">
+           A Word of Welcome by AUST President
+          </div>
+          <!--announcmentTxt--> 
+          <div class="announcmentClock">
+           Monday 16 February
+          </div>
+          <!--announcmentClock--> 
+         </div>
+         <!--announcment--> </a> 
+        <a href="/News/Details/183"> 
+         <div class="announcment inlineBlock"> 
+          <div class="announcmentTxt">
+           Welcome Back Opening for Spring Semester 2015! 
+          </div>
+          <!--announcmentTxt--> 
+          <div class="announcmentClock">
+           Monday 16 February
+          </div>
+          <!--announcmentClock--> 
+         </div>
+         <!--announcment--> </a> 
+        <a href="/News/Details/179"> 
+         <div class="announcment inlineBlock"> 
+          <div class="announcmentTxt">
+           21st LAAS International Science Conference
+          </div>
+          <!--announcmentTxt--> 
+          <div class="announcmentClock">
+           Wednesday 15 April
+          </div>
+          <!--announcmentClock--> 
+         </div>
+         <!--announcment--> </a> 
+       </div>
+       <!--announcments--> 
+       <a href="/News">
+        <div class="announceRightPlus"></div></a>
+       <!--announceRightPlus--> 
+      </div>
+      <!--announcmentsHome--> 
+      <div class="homeBtm adjustSpacing"> 
+       <div class="homeBlocks inlineBlock"> 
+        <div class="homeBlock admission"> 
+         <div class="admissionMajor adjustSpacing"> 
+          <a class="admissionMajorItem inlineBlock" href="/AdmissionsUndergraduate_ProgramsUndergraduate_Programs"></a>
+          <!--admissionMajorItem--> 
+          <a class="admissionMajorItem admissionMajorItemFr inlineBlock" href="/AdmissionsGraduate_ProgramsAdmission_Requirements"></a>
+          <!--admissionMajorItem--> 
+          <a class="linktoAdmission" href="/AdmissionsOverviewAdmissions_Office"></a> 
+         </div>
+         <!--admissionMajor--> 
+        </div>
+        <!--homeBlock--> 
+        <a href="/content/uploads/New/150217020957870~mid186.pdf" "="" target="_blank"> 
+         <div class="homeBlock issues"> 
+          <div class="issueTtl1">
+           AUST
+          </div>
+          <!--issueTtl1--> 
+          <div class="issueTtl2">
+           MIDWEEK
+          </div>
+          <!--issueTtl2--> 
+          <div class="issuesAndCount"> 
+           <div class="issueLbl">
+            Issue
+           </div>
+           <!--issueLbl--> 
+           <div class="issueNbr">
+            186
+           </div>
+           <!--issueNbr--> 
+          </div>
+          <!--issuesAndCount--> 
+          <div class="issueDate">
+           Wednesday 18 February
+          </div>
+          <!--issueDate--> 
+         </div>
+         <!--homeBlock--> </a> 
+        <a href="/Faculties_and_ProgramsDegree_Programs" class="homeBlock faculties"></a>
+        <!--homeBlock--> 
+        <a href="/University_ServicesStudent_housing" class="homeBlock Dorms"></a>
+        <!--homeBlock--> 
+        <a href="/University_CalendarAcademic_CalendarSpring_Semester_20142015" class="homeBlock UniCal"></a>
+        <!--homeBlock--> 
+        <a href="https://s1.aust.edu.lb/" target="_blank" class="homeBlock Emp"></a>
+        <!--homeBlock--> 
+        <a href="/University_ServicesStudent_Activities" class="homeBlock StdActs"></a>
+        <!--homeBlock--> 
+       </div>
+       <!--homeBlocks--> 
+       <div class="upcommingHome inlineBlock"> 
+        <div class="upcummingTtl" style="font-size:19px;">
+         UNIVERSITY EVENTS
+         <div class="upcomingTtlShad"></div>
+         <!--upcomingTtlShad-->
+        </div>
+        <!--upcummingTtl--> 
+        <div class="upcommingItems"> 
+         <a href="/News/Details/181"> 
+          <div class="upcomingItem"> 
+           <div class="upcomingItemTxt">
+            AUST Strengthens Ties between Politecnico di Milano and Université de Lausanne
+           </div>
+           <!--upcomingItemTxt--> 
+           <div class="upcomingDate">
+            Friday 30 January
+           </div>
+           <!--upcomingDate--> 
+          </div>
+          <!--upcomingItem--> </a> 
+         <a href="/News/Details/175"> 
+          <div class="upcomingItem"> 
+           <div class="upcomingItemTxt">
+            The CCE Department at AUST Organizes the 4th Laboratory Projects Exposition - Fall 2014/2015
+           </div>
+           <!--upcomingItemTxt--> 
+           <div class="upcomingDate">
+            Saturday 17 January
+           </div>
+           <!--upcomingDate--> 
+          </div>
+          <!--upcomingItem--> </a> 
+        </div>
+        <!--upcommingItems--> 
+        <a href="/News/university-events">
+         <div class="upcomingHomePlus"></div></a>
+        <!--upcomingHomePlus--> 
+       </div>
+       <!--upcommingHome--> 
+      </div>
+      <!--homeBtm--> 
+     </div>
+     <!--content--> 
+    </div>
+    <!--containerInner--> 
+   </div>
+   <!--ContainerWrapper--> 
+   <script type="text/javascript">
+    $(document).ready(function () {
+        //        var maxHeight = Math.max.apply(null, $("div.FooterSitemapCol").map(function () {
+        //            return $(this).height();
+        //        }).get());
+        //        $("div.FooterSitemapCol").css("height", maxHeight + "px");
+
+        var nb_index_map = $("#nb_index_map").val();
+        for (var i = 1; i <= nb_index_map; i++) {           
+            var maxHeight = Math.max.apply(null, $("div.FooterSitemapCol.fmap" + i).map(function () {
+                return $(this).height();
+            }).get());            
+            $("div.FooterSitemapCol.fmap" + i).css("height", maxHeight + "px");
+        }
+    });
+</script> 
+   <div class="footerOuter"> 
+    <div class="footerTop"> 
+     <div class="footerTopInner adjustSpacing"> 
+      <div class="FooterSitemapCol aboutCol inlineBlock fmap1"> 
+       <a href="/about/landingpage">
+        <div class="colSiteTtl">
+         About Us
+        </div></a>
+       <!--colSiteTtl--> 
+       <a href="/About_UsPresident's_Message" class="colSiteItem">President's Message</a>
+       <!--colSiteItem--> 
+       <a href="/About_UsHistory" class="colSiteItem">History</a>
+       <!--colSiteItem--> 
+       <a href="/About_UsRecognition_of_AUST_Degrees" class="colSiteItem">Recognition of AUST Degrees</a>
+       <!--colSiteItem--> 
+       <a href="/About_UsMode_of_Study___" class="colSiteItem">Mode of Study </a>
+       <!--colSiteItem--> 
+       <a href="/About_UsAffiliation" class="colSiteItem">Affiliation</a>
+       <!--colSiteItem--> 
+       <a href="/About_UsFacts_and_Figures" class="colSiteItem">Facts and Figures</a>
+       <!--colSiteItem--> 
+       <a href="/About_UsThe_University's_Mission" class="colSiteItem">The University's Mission</a>
+       <!--colSiteItem--> 
+       <a href="/About_UsAcademic_LaboratoriesFaculty_of_Arts_and_SciencesDepartment_of_Arts_and_Design" class="colSiteItem">Academic Laboratories</a>
+       <!--colSiteItem--> 
+       <a href="/About_UsCampus_map" class="colSiteItem">Campus map</a>
+       <!--colSiteItem--> 
+      </div>
+      <!--FooterSitemapCol--> 
+      <div class="FooterSitemapCol Academic inlineBlock fmap1
+                "> 
+       <a href="/Governance_and_AdministrationBoard_of_Trustees">
+        <div class="colSiteTtl">
+         Governance &amp; Administration
+        </div></a>
+       <!--colSiteTtl--> 
+       <a href="/Governance_and_AdministrationBoard_of_Trustees" class="colSiteItem">Board of Trustees</a>
+       <!--colSiteItem--> 
+       <a href="/Governance_and_AdministrationExecutive_Council" class="colSiteItem">Executive Council</a>
+       <!--colSiteItem--> 
+       <a href="/Governance_and_AdministrationPolicies" class="colSiteItem">Policies</a>
+       <!--colSiteItem--> 
+       <a href="/Governance_and_AdministrationUniversity_Board" class="colSiteItem">University Board</a>
+       <!--colSiteItem--> 
+      </div>
+      <!--FooterSitemapCol--> 
+      <div class="FooterSitemapCol Academic inlineBlock fmap1
+             no_mr   "> 
+       <a href="/Accreditations_and_Affiliations_Accreditation">
+        <div class="colSiteTtl">
+         Accreditations &amp; Affiliations 
+        </div></a>
+       <!--colSiteTtl--> 
+       <a href="/Accreditations_and_Affiliations_Accreditation" class="colSiteItem">Accreditation</a>
+       <!--colSiteItem--> 
+       <a href="/Accreditations_and_Affiliations_Affiliation" class="colSiteItem">Affiliation</a>
+       <!--colSiteItem--> 
+      </div>
+      <!--FooterSitemapCol--> 
+      <div class="FooterSitemapCol Academic inlineBlock fmap2
+                bleft"> 
+       <a href="/AdmissionsOverviewAdmissions_Office">
+        <div class="colSiteTtl">
+         Admissions
+        </div></a>
+       <!--colSiteTtl--> 
+       <a href="/AdmissionsOverviewAdmissions_Office" class="colSiteItem">Overview</a>
+       <!--colSiteItem--> 
+       <a href="/AdmissionsUndergraduate_ProgramsUndergraduate_Programs" class="colSiteItem">Undergraduate Programs</a>
+       <!--colSiteItem--> 
+       <a href="/AdmissionsGraduate_ProgramsGraduate_Programs" class="colSiteItem">Graduate Programs</a>
+       <!--colSiteItem--> 
+       <a href="/AdmissionsSpecialty_Programs" class="colSiteItem">Specialty Programs</a>
+       <!--colSiteItem--> 
+       <a href="/AdmissionsTests_and_MeasurementsRecognized_English_Tests" class="colSiteItem">Tests and Measurements</a>
+       <!--colSiteItem--> 
+       <a href="/AdmissionsTuition_Fees_and_ExpensesUndergraduate_Tuition_Fees_" class="colSiteItem">Tuition Fees and Expenses</a>
+       <!--colSiteItem--> 
+       <a href="/AdmissionsTeaching_Diploma" class="colSiteItem">Teaching Diploma</a>
+       <!--colSiteItem--> 
+      </div>
+      <!--FooterSitemapCol--> 
+      <div class="FooterSitemapCol Academic inlineBlock fmap2
+                "> 
+       <a href="/Faculties_and_ProgramsDegree_Programs">
+        <div class="colSiteTtl">
+         Faculties and Programs
+        </div></a>
+       <!--colSiteTtl--> 
+       <a href="/Faculties_and_ProgramsFaculty_of_Arts_and_SciencesDean's_Message" class="colSiteItem">Faculty of Arts and Sciences</a>
+       <!--colSiteItem--> 
+       <a href="/Faculties_and_ProgramsFaculty_of_Business_and_EconomicsDean's_Message" class="colSiteItem">Faculty of Business and Economics</a>
+       <!--colSiteItem--> 
+       <a href="/Faculties_and_ProgramsFaculty_of_Health_SciencesDean's_Message" class="colSiteItem">Faculty of Health Sciences</a>
+       <!--colSiteItem--> 
+       <a href="/Faculties_and_ProgramsFaculty_of_EngineeringDean's_Message" class="colSiteItem">Faculty of Engineering</a>
+       <!--colSiteItem--> 
+       <a href="/Faculties_and_ProgramsDegree_Programs" class="colSiteItem">Degree Programs</a>
+       <!--colSiteItem--> 
+      </div>
+      <!--FooterSitemapCol--> 
+      <div class="FooterSitemapCol Academic inlineBlock fmap2
+             no_mr   "> 
+       <a href="/Rules_and_RegulationsRegistration_Procedure">
+        <div class="colSiteTtl">
+         Rules and Regulations
+        </div></a>
+       <!--colSiteTtl--> 
+       <a href="/Rules_and_RegulationsRegistration_Procedure" class="colSiteItem">Registration Procedure</a>
+       <!--colSiteItem--> 
+       <a href="/Rules_and_RegulationsChoice_Transfer_of_Major" class="colSiteItem">Choice/Transfer of Major</a>
+       <!--colSiteItem--> 
+       <a href="/Rules_and_RegulationsCourses_and_GradingDropping_and_Adding_of_Courses" class="colSiteItem">Courses and Grading</a>
+       <!--colSiteItem--> 
+       <a href="/Rules_and_RegulationsProbation_and_SuspensionProbation_and_Suspension_Regulations" class="colSiteItem">Probation and Suspension</a>
+       <!--colSiteItem--> 
+       <a href="/Rules_and_RegulationsGeneral_Graduation_Requirements" class="colSiteItem">General Graduation Requirements</a>
+       <!--colSiteItem--> 
+       <a href="/Rules_and_RegulationsFinal_Examinations" class="colSiteItem">Final Examinations</a>
+       <!--colSiteItem--> 
+       <a href="/Rules_and_RegulationsSpecial_NonDegree_Students" class="colSiteItem">Special Non-Degree Students</a>
+       <!--colSiteItem--> 
+       <a href="/Rules_and_RegulationsRequired_Credits_per_Academic_Year" class="colSiteItem">Required Credits per Academic Year</a>
+       <!--colSiteItem--> 
+       <a href="/Rules_and_RegulationsClassification_of_Students" class="colSiteItem">Classification of Students</a>
+       <!--colSiteItem--> 
+      </div>
+      <!--FooterSitemapCol--> 
+      <div class="FooterSitemapCol Academic inlineBlock fmap3
+                bleft"> 
+       <a href="/Research_and_PublicationsFaculty_of_Arts_and_SciencesDepartment_of_Communication_Arts">
+        <div class="colSiteTtl">
+         Research and Publications
+        </div></a>
+       <!--colSiteTtl--> 
+       <a href="/Research_and_PublicationsFaculty_of_Arts_and_SciencesDepartment_of_Communication_Arts" class="colSiteItem">Faculty of Arts and Sciences</a>
+       <!--colSiteItem--> 
+       <a href="/Research_and_PublicationsFaculty_of_EngineeringDepartment_of_Biomedical_Engineering" class="colSiteItem">Faculty of Engineering</a>
+       <!--colSiteItem--> 
+       <a href="/Research_and_PublicationsFaculty_of_Health_Sciences" class="colSiteItem">Faculty of Health Sciences</a>
+       <!--colSiteItem--> 
+       <a href="/Research_and_PublicationsFaculty_of_Business_and_Economics" class="colSiteItem">Faculty of Business and Economics</a>
+       <!--colSiteItem--> 
+      </div>
+      <!--FooterSitemapCol--> 
+      <div class="FooterSitemapCol Academic inlineBlock fmap3
+                "> 
+       <a href="/University_ServicesAdministrative_Services">
+        <div class="colSiteTtl">
+         University Services
+        </div></a>
+       <!--colSiteTtl--> 
+       <a href="/University_ServicesAdministrative_Services" class="colSiteItem">Administrative Services</a>
+       <!--colSiteItem--> 
+       <a href="/University_ServicesCampus_Services" class="colSiteItem">Campus Services</a>
+       <!--colSiteItem--> 
+       <a href="/University_ServicesStudent_Housing" class="colSiteItem">Student Housing</a>
+       <!--colSiteItem--> 
+       <a href="/University_ServicesStudent_Activities" class="colSiteItem">Student Activities</a>
+       <!--colSiteItem--> 
+      </div>
+      <!--FooterSitemapCol--> 
+      <div class="FooterSitemapCol Others inlineBlock fmap3 no_mr"> 
+       <div class="colSiteTtl">
+        OTHERS
+       </div>
+       <!--colSiteTtl--> 
+       <a href="/News/landingpage" class="colSiteItem">News</a>
+       <!--colSiteItem--> 
+       <a href="/Contact" class="colSiteItem">Contact Us</a>
+       <!--colSiteItem--> 
+       <a href="/OnlineServices" class="colSiteItem">Online Services</a>
+       <!--colSiteItem--> 
+      </div>
+      <!--FooterSitemapCol--> 
+      <input type="hidden" id="nb_index_map" value="3"> 
+     </div>
+     <!--footerTopInner--> 
+     <div class="footerSiteShad"></div>
+     <!--footerSiteShad--> 
+    </div>
+    <!--footerTop--> 
+    <div class="footerBtm"> 
+     <div class="footerBtmInner"> 
+      <div class="footerBtmInnerLeft adjustSpacing"> 
+       <a class="OfficialSite inlineBlock">Official AUST Website</a>
+       <!--OfficialSite--> 
+       <div class="RightsReserved inlineBlock">
+        All rights reserved. © 2015
+       </div>
+       <!--OfficialSite--> 
+      </div>
+      <!--footerBtmInnerLeft--> 
+      <a href="http://www.koein.com" target="_blank" class="ByKoein"></a>
+      <!--ByKoein--> 
+     </div>
+     <!--footerBtmInner--> 
+    </div>
+    <!--footerBtm--> 
+   </div>
+   <!--footerOuter--> 
+   <div class="opacityResponsive"></div> 
+  </div> 
+  <input type="hidden" id="routeUrl" value="/">   
+ </body>
+</html>

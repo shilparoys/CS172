@@ -1,0 +1,1067 @@
+<html>
+ <!-- lack of doctype above should force IE to use compatability mode when rendering -->
+ <head> 
+  <title>Seismic Monitor - Recent earthquakes on a world map with zoom, headlines, and more.</title> 
+  <meta http-equiv="Expires" content="Fri, 10 Apr 2011 24:00:00 GMT"> 
+  <meta http-equiv="Refresh" content="1800"> 
+  <meta http-equiv="Cache-Control" content="no-cache, must-revalidate, pre-check=0, post-check=0, max-age=0"> 
+  <meta name="description" content="Latest earthquakes map with news, lists, and links to other tools.  Mapa de últimos terremotos incluso boletines, noticias y enlaces a otros recursos. El único Monitor Sísmico! jishin,monita,sismik,zemletryaseniya,deprem,terremoti,tremblements,tierre,Erdbeben"> 
+  <meta name="keywords" content="earthquakes,ultimos,terremotos,monitor,map,today,mundo,hoy,reporte,jishin,monita,sismico,sismik,zemletryaseniya,deprem,terremoti,tremblements,tierre,Erdbeben"> 
+  <link rel="author" href="https://plus.google.com/102693160540566422456"> 
+  <meta property="og:title" content="Seismic Monitor. A colorful, interactive map with the latest earthquakes and much more."> 
+  <meta property="og:image" content="http://www.iris.washington.edu/seismon/imgs/smIconSquared.jpg"> 
+  <meta property="og:description" content="Popular map of the latest earthquakes with resources like bulletins, reports, animations and a 3D viewer."> 
+  <meta property="fb:admins" content="100000767135167"> 
+  <meta name="robots" content="index, follow"> 
+  <link rel="shortcut icon" href="imgs/favicon.png"> 
+  <link rel="icon" href="imgs/favicon.png"> 
+  <style type="text/css">
+body { margin:8; font-family:verdana,sans-serif; font-size:12px;}
+#regionLinks {
+  position:absolute;
+  top:15px;
+  left:800px;
+  -webkit-border-radius: 6;
+  -moz-border-radius: 6;
+  border-radius: 6px;
+  -webkit-box-shadow: 3px 3px 5px #666666;
+  -moz-box-shadow: 3px 3px 5px #666666;
+  box-shadow: 3px 3px 5px #666666;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  background: #cec8e6;
+  padding: 0px 14px 20px 14px;
+  text-decoration: none;
+}
+#regionLinks:hover {
+  text-decoration: none;
+}
+.regionLink {
+  margin-top:12px;
+}
+
+.btn {
+  background: #54bbff;
+  background-image: -webkit-linear-gradient(top, #54bbff, #7c61eb);
+  background-image: -moz-linear-gradient(top, #54bbff, #7c61eb);
+  background-image: -ms-linear-gradient(top, #54bbff, #7c61eb);
+  background-image: -o-linear-gradient(top, #54bbff, #7c61eb);
+  background-image: linear-gradient(to bottom, #54bbff, #7c61eb);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  -webkit-box-shadow: 0px 1px 3px #666666;
+  -moz-box-shadow: 0px 1px 3px #666666;
+  box-shadow: 0px 1px 3px #666666;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 2px 8px 4px 8px;
+  margin-right:3px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #2578cc;
+  background-image: -webkit-linear-gradient(top, #2578cc, #876bd6);
+  background-image: -moz-linear-gradient(top, #2578cc, #876bd6);
+  background-image: -ms-linear-gradient(top, #2578cc, #876bd6);
+  background-image: -o-linear-gradient(top, #2578cc, #876bd6);
+  background-image: linear-gradient(to bottom, #2578cc, #876bd6);
+  text-decoration: none;
+}
+
+
+/*
+#beta{ 
+  position: absolute;
+  left: 500;
+  top: 0
+}
+*/
+
+
+#theMap {position: relative  }
+#topImgMap{ 
+  position: absolute;
+  left: 0;
+  top: 0
+}
+
+#eq0 { position: absolute;
+     left: 269px; visibility: hidden; top: 232px;
+}
+#eq1 { position: absolute;
+     left: 331px; visibility: hidden; top: 107px;
+}
+#eq2 { position: absolute;
+     left: 380px; visibility: hidden; top: 324px;
+}
+#eq3 { position: absolute;
+     left: 299px; visibility: hidden; top: 134px;
+}
+#eq4 { position: absolute;
+     left: 382px; visibility: hidden; top: 290px;
+}
+#eq5 { position: absolute;
+     left: 377px; visibility: hidden; top: 299px;
+}
+#eq6 { position: absolute;
+     left: 586px; visibility: hidden; top: 307px;
+}
+#eq7 { position: absolute;
+     left: 585px; visibility: hidden; top: 307px;
+}
+#eq8 { position: absolute;
+     left: 306px; visibility: hidden; top: 148px;
+}
+#eq9 { position: absolute;
+     left: 591px; visibility: hidden; top: 280px;
+}
+#eq10 { position: absolute;
+     left: 222px; visibility: hidden; top: 168px;
+}
+#eq11 { position: absolute;
+     left: 555px; visibility: hidden; top: 195px;
+}
+#eq12 { position: absolute;
+     left: 299px; visibility: hidden; top: 140px;
+}
+#eq13 { position: absolute;
+     left: 271px; visibility: hidden; top: 219px;
+}
+#eq14 { position: absolute;
+     left: 268px; visibility: hidden; top: 232px;
+}
+#eq15 { position: absolute;
+     left: 683px; visibility: hidden; top: 230px;
+}
+#eq16 { position: absolute;
+     left: 323px; visibility: hidden; top: 246px;
+}
+#eq17 { position: absolute;
+     left: 553px; visibility: hidden; top: 194px;
+}
+#eq18 { position: absolute;
+     left: 517px; visibility: hidden; top: 167px;
+}
+#eq19 { position: absolute;
+     left: 621px; visibility: hidden; top: 374px;
+}
+#clickme { position: absolute;
+        left: 308;
+        visibility: visible; 
+        top: 54;
+}
+#fromIRIS { position: absolute;
+        left: 690;
+        visibility: visible; 
+        top: 20;
+}
+#minmag { position: absolute;
+        left: 44;
+        visibility: visible; 
+        top: 65;
+}
+#zoomin { position: absolute;
+        left: 595;
+        visibility: visible; 
+        top: 20;
+}
+#usgs { position: absolute;
+        left: 65;
+        visibility: visible;
+        top: 423;
+}
+#legend { position: absolute;
+        left: 4;
+        visibility: visible;
+        top: 4;
+}
+<!--
+#outtage { position: absolute;
+        left: 195;
+        visibility: visible;
+        top: 190;
+}
+-->
+
+button {
+	font: 12px "Microsoft Sans Serif";
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
+.placeNameTxt {
+	font: 13px "Microsoft Sans Serif";
+	margin-top: 3px;
+}
+
+* html button { overflow: visible; }
+
+</style> 
+  <script language="javascript" src="html/date.js"></script> 
+  <script language="javascript">
+
+window.onerror=null; // don't annoy user w/error dlgs
+
+// a few comments for following sniffer code stripped.
+// see full version /export/home/apache/htdocs/sm2/doc
+
+var agt=navigator.userAgent.toLowerCase();
+
+var is_major = parseInt(navigator.appVersion);
+var is_minor = parseFloat(navigator.appVersion);
+var is_nav  = ((agt.indexOf('mozilla')!=-1) && (agt.indexOf('spoofer')==-1)
+                 && (agt.indexOf('compatible') == -1) && (agt.indexOf('opera')==
+-1)
+                 && (agt.indexOf('webtv')==-1) && (agt.indexOf('hotjava')==-1));
+var is_nav2 = (is_nav && (is_major == 2));
+var is_nav3 = (is_nav && (is_major == 3));
+var is_nav4 = (is_nav && (is_major == 4));
+var is_nav4up = (is_nav && (is_major >= 4));
+var is_navonly      = (is_nav && ((agt.indexOf(";nav") != -1) ||
+                                   (agt.indexOf("; nav") != -1)) );
+var is_nav6 = (is_nav && (is_major == 5));
+var is_nav6up = (is_nav && (is_major >= 5));
+var is_gecko = (agt.indexOf('gecko') != -1);
+
+var is_ie     = ((agt.indexOf("msie") != -1) && (agt.indexOf("opera") == -1));
+var is_ie3    = (is_ie && (is_major < 4));
+var is_ie4    = (is_ie && (is_major == 4) && (agt.indexOf("msie 5")==-1) );
+var is_ie4up  = (is_ie && (is_major >= 4));
+var is_ie5    = (is_ie && (is_major == 4) && (agt.indexOf("msie 5.0")!=-1) );
+var is_ie5_5  = (is_ie && (is_major == 4) && (agt.indexOf("msie 5.5") !=-1));
+var is_ie5up  = (is_ie && !is_ie3 && !is_ie4);
+var is_ie5_5up =(is_ie && !is_ie3 && !is_ie4 && !is_ie5);
+var is_saf     = (agt.indexOf("afari") != -1);
+
+var is_ie10    = (is_ie && (agt.indexOf("MSIE 10.0") != -1));
+
+//Array function compatible with Netscape 2.0x and 3.0x
+function MakeArray(n) {                 
+  this.length = n;
+  for (var i = 1; i <= n; i++) { 
+      this[i] = 0 
+  }
+  return this
+}
+
+var DHTML = (document.getElementById || document.all || document.layers);
+
+function getObj(name)
+{
+  if (document.getElementById)
+  {
+     this.obj = document.getElementById(name);
+     this.style = document.getElementById(name).style;
+  }
+  else if (document.all)
+  {
+     this.obj = document.all[name];
+     this.style = document.all[name].style;
+  }
+  else if (document.layers)
+  {
+     this.obj = getObjNN4(document,name);
+     this.style = this.obj;
+  }
+}
+
+function getObjNN4(obj,name)
+{
+     var x = obj.layers;
+     var thereturn;
+     for (var i=0;i<x.length;i++) {
+         if (x[i].id == name) thereturn = x[i];
+         else if (x[i].layers.length)
+              var tmp = getObjNN4(x[i],name);
+         if (tmp) thereturn = tmp;
+     }
+     return thereturn;
+}
+
+
+var tts = new MakeArray(305);
+tts[0]=305;
+tts[1]="";
+tts[2]="Visit the IRIS Consortium web site";
+tts[3]="When was this map generated?";
+tts[4]="Australia";
+tts[5]="New Zealand";
+tts[6]="Hawaii";
+tts[7]="Antarctica";
+tts[8]="Africa";
+tts[9]="Arabia";
+tts[10]="Europe";
+tts[11]="Siberia";
+tts[12]="Central Asia";
+tts[13]="Asia";
+tts[14]="Indonesia";
+tts[15]="Malaysia";
+tts[16]="Philippines";
+tts[17]="Papua New Guinea";
+tts[18]="North America";
+tts[19]="South America";
+tts[20]="Africa";
+tts[21]="Arctic Ocean";
+tts[22]="Madagascar";
+tts[23]="Melanesia";
+tts[24]="Micronesia";
+tts[25]="North Pacific Ocean";
+tts[26]="South Pacific Ocean";
+tts[27]="Indian Ocean";
+tts[28]="Arabian Sea";
+tts[29]="Bay of Bengal";
+tts[30]="Central America";
+tts[31]="Caribbean";
+tts[32]="Iceland";
+tts[33]="Greenland";
+tts[34]="North Atlantic Ocean";
+tts[35]="North Atlantic Ocean";
+tts[36]="North Atlantic Ocean";
+tts[37]="South Atlantic Ocean";
+tts[38]="South Atlantic Ocean";
+tts[39]="MAG 5.1 02-MAR-2015 01:40:52 MINAHASSA PENINSULA, SULAWESI";
+tts[40]="MAG 4.5 01-MAR-2015 23:47:20 KURIL ISLANDS";
+tts[41]="MAG 4.7 01-MAR-2015 23:19:20 SOUTH OF KERMADEC ISLANDS";
+tts[42]="MAG 4.6 01-MAR-2015 19:21:56 EASTERN HONSHU, JAPAN";
+tts[43]="MAG 4.6 01-MAR-2015 16:56:32 FIJI ISLANDS REGION";
+tts[44]="MAG 4.7 01-MAR-2015 16:50:11 SOUTH OF FIJI ISLANDS";
+tts[45]="MAG 4.1 01-MAR-2015 16:26:19 NEAR COAST OF NORTHERN CHILE";
+tts[46]="MAG 5.0 01-MAR-2015 15:48:18 NEAR COAST OF NORTHERN CHILE";
+tts[47]="MAG 4.5 01-MAR-2015 15:46:17 SOUTH OF HONSHU, JAPAN";
+tts[48]="MAG 5.0 01-MAR-2015 15:08:28 NEAR COAST OF PERU";
+tts[49]="MAG 5.2 01-MAR-2015 10:24:42 MYANMAR-CHINA BORDER REGION";
+tts[50]="MAG 5.0 01-MAR-2015 08:30:06 NEAR COAST OF GUATEMALA";
+tts[51]="MAG 4.1 01-MAR-2015 07:16:48 NEAR S. COAST OF HONSHU, JAPAN";
+tts[52]="MAG 5.3 01-MAR-2015 07:01:56 TALAUD ISLANDS, INDONESIA";
+tts[53]="MAG 5.4 01-MAR-2015 03:32:36 MINAHASSA PENINSULA, SULAWESI";
+tts[54]="MAG 4.7 01-MAR-2015 01:42:53 CENTRAL MID-ATLANTIC RIDGE";
+tts[55]="MAG 4.6 28-FEB-2015 22:39:31 NEW BRITAIN REGION, P.N.G.";
+tts[56]="MAG 4.8 28-FEB-2015 22:06:33 NEAR COAST OF GUATEMALA";
+tts[57]="MAG 4.6 28-FEB-2015 20:41:27 GULF OF CALIFORNIA";
+tts[58]="MAG 5.4 28-FEB-2015 19:27:28 SOUTH SANDWICH ISLANDS REGION";
+tts[59]="MAG 4.4 28-FEB-2015 16:31:19 NORTHERN MOLUCCA SEA";
+tts[60]="MAG 4.7 28-FEB-2015 15:38:02 CARLSBERG RIDGE";
+tts[61]="MAG 4.6 28-FEB-2015 12:28:03 LEEWARD ISLANDS";
+tts[62]="MAG 4.6 28-FEB-2015 11:13:02 NEAR N COAST OF NEW GUINEA, PNG.";
+tts[63]="MAG 5.0 28-FEB-2015 10:53:04 SUMBAWA REGION, INDONESIA";
+tts[64]="MAG 4.2 28-FEB-2015 10:41:37 NEVADA";
+tts[65]="MAG 4.0 28-FEB-2015 08:42:30 LEEWARD ISLANDS";
+tts[66]="MAG 4.7 28-FEB-2015 08:40:40 NEAR EAST COAST OF HONSHU, JAPAN";
+tts[67]="MAG 4.2 28-FEB-2015 08:24:24 NORTHWESTERN BALKAN REGION";
+tts[68]="MAG 4.6 28-FEB-2015 05:48:10 FIJI ISLANDS REGION";
+tts[69]="MAG 4.6 28-FEB-2015 04:53:10 PERU-ECUADOR BORDER REGION";
+tts[70]="MAG 4.7 28-FEB-2015 03:45:33 NEAR COAST OF CENTRAL CHILE";
+tts[71]="MAG 4.2 28-FEB-2015 03:30:46 NEAR COAST OF NORTHERN CHILE";
+tts[72]="MAG 4.6 28-FEB-2015 02:14:58 SOUTH OF MARIANA ISLANDS";
+tts[73]="MAG 5.1 28-FEB-2015 01:02:50 MARIANA ISLANDS";
+tts[74]="MAG 4.6 28-FEB-2015 00:40:43 HOKKAIDO, JAPAN REGION";
+tts[75]="MAG 4.8 27-FEB-2015 23:46:44 GUATEMALA";
+tts[76]="MAG 4.7 27-FEB-2015 19:44:17 MARIANA ISLANDS";
+tts[77]="MAG 4.9 27-FEB-2015 19:02:41 SOUTH INDIAN OCEAN";
+tts[78]="MAG 4.0 27-FEB-2015 19:00:10 COLOMBIA";
+tts[79]="MAG 5.0 27-FEB-2015 17:36:51 MARIANA ISLANDS";
+tts[80]="MAG 4.8 27-FEB-2015 16:52:01 MARIANA ISLANDS";
+tts[81]="MAG 5.0 27-FEB-2015 16:45:20 MARIANA ISLANDS";
+tts[82]="MAG 5.7 27-FEB-2015 16:24:50 MARIANA ISLANDS";
+tts[83]="MAG 5.1 27-FEB-2015 15:27:56 FLORES SEA";
+tts[84]="MAG 4.9 27-FEB-2015 14:54:08 MINDANAO, PHILIPPINE ISLANDS";
+tts[85]="MAG 7.0 27-FEB-2015 13:45:05 FLORES SEA";
+tts[86]="MAG 4.3 27-FEB-2015 12:53:09 EGYPT";
+tts[87]="MAG 5.3 27-FEB-2015 11:35:15 SOLOMON ISLANDS";
+tts[88]="MAG 4.9 27-FEB-2015 07:58:03 RYUKYU ISLANDS";
+tts[89]="MAG 4.5 27-FEB-2015 06:02:51 FIJI ISLANDS REGION";
+tts[90]="MAG 4.5 27-FEB-2015 03:14:14 SOUTHERN SUMATERA, INDONESIA";
+tts[91]="MAG 4.4 27-FEB-2015 02:39:51 SOUTH OF KERMADEC ISLANDS";
+tts[92]="MAG 4.4 27-FEB-2015 02:24:47 NORTHERN IRAN";
+tts[93]="MAG 5.1 27-FEB-2015 00:47:38 WEST CHILE RISE";
+tts[94]="MAG 5.1 26-FEB-2015 23:44:57 NEW BRITAIN REGION, P.N.G.";
+tts[95]="MAG 4.7 26-FEB-2015 22:32:15 SOUTHEAST OF RYUKYU ISLANDS";
+tts[96]="MAG 5.4 26-FEB-2015 21:59:05 PAKISTAN";
+tts[97]="MAG 4.6 26-FEB-2015 19:15:48 OFF EAST COAST OF HONSHU, JAPAN";
+tts[98]="MAG 4.4 26-FEB-2015 18:52:32 NICOBAR ISLANDS, INDIA";
+tts[99]="MAG 4.4 26-FEB-2015 16:50:02 TAIWAN REGION";
+tts[100]="MAG 4.0 26-FEB-2015 15:40:03 NEAR COAST OF CENTRAL CHILE";
+tts[101]="MAG 4.7 26-FEB-2015 15:04:16 NORTHERN MOLUCCA SEA";
+tts[102]="MAG 4.7 26-FEB-2015 10:35:53 NORTHERN MOLUCCA SEA";
+tts[103]="MAG 5.4 26-FEB-2015 09:45:39 ANDREANOF ISLANDS, ALEUTIAN IS.";
+tts[104]="MAG 4.6 26-FEB-2015 07:26:35 EAST OF KURIL ISLANDS";
+tts[105]="MAG 5.2 26-FEB-2015 06:26:56 TONGA ISLANDS";
+tts[106]="MAG 5.0 26-FEB-2015 01:11:25 NEAR EAST COAST OF HONSHU, JAPAN";
+tts[107]="MAG 4.6 26-FEB-2015 00:10:47 VENEZUELA";
+tts[108]="MAG 5.0 25-FEB-2015 19:36:56 TONGA ISLANDS";
+tts[109]="MAG 4.8 25-FEB-2015 19:33:06 OFF E. COAST OF N. ISLAND, N.Z.";
+tts[110]="MAG 4.4 25-FEB-2015 19:09:04 FIJI ISLANDS REGION";
+tts[111]="MAG 4.6 25-FEB-2015 14:55:57 SAN JUAN PROVINCE, ARGENTINA";
+tts[112]="MAG 4.3 25-FEB-2015 14:12:19 KYRGYZSTAN-XINJIANG BORDER REG.";
+tts[113]="MAG 5.0 25-FEB-2015 13:48:31 SOUTHERN MID-ATLANTIC RIDGE";
+tts[114]="MAG 4.3 25-FEB-2015 12:29:53 OFF W. COAST OF S. ISLAND, N.Z.";
+tts[115]="MAG 4.9 25-FEB-2015 10:32:03 OFF EAST COAST OF HONSHU, JAPAN";
+tts[116]="MAG 4.3 25-FEB-2015 09:38:48 CENTRAL ALASKA";
+tts[117]="MAG 4.6 25-FEB-2015 08:34:45 NORTHERN IRAN";
+tts[118]="MAG 4.9 25-FEB-2015 08:29:32 NORTHERN SUMATERA, INDONESIA";
+tts[119]="MAG 4.6 25-FEB-2015 08:00:33 ANDREANOF ISLANDS, ALEUTIAN IS.";
+tts[120]="MAG 5.7 25-FEB-2015 07:01:01 SOUTH OF HONSHU, JAPAN";
+tts[121]="MAG 4.4 25-FEB-2015 03:42:36 SOUTH OF HONSHU, JAPAN";
+tts[122]="MAG 5.3 25-FEB-2015 03:02:40 NORTHERN MOLUCCA SEA";
+tts[123]="MAG 4.6 25-FEB-2015 02:19:27 KURIL ISLANDS";
+tts[124]="MAG 5.5 25-FEB-2015 01:31:43 SULU SEA";
+tts[125]="MAG 5.1 24-FEB-2015 23:43:18 ZAIRE";
+tts[126]="MAG 4.7 24-FEB-2015 20:49:46 MINAHASSA PENINSULA, SULAWESI";
+tts[127]="MAG 4.4 24-FEB-2015 19:28:48 AFGHANISTAN-TAJIKISTAN BORD REG.";
+tts[128]="MAG 4.3 24-FEB-2015 19:11:40 CHILE-ARGENTINA BORDER REGION";
+tts[129]="MAG 4.7 24-FEB-2015 16:36:44 VANUATU ISLANDS";
+tts[130]="MAG 4.5 24-FEB-2015 14:30:24 HINDU KUSH REGION, AFGHANISTAN";
+tts[131]="MAG 4.9 24-FEB-2015 13:11:24 EASTERN GULF OF ADEN";
+tts[132]="MAG 5.0 24-FEB-2015 10:23:01 EASTERN GULF OF ADEN";
+tts[133]="MAG 4.2 24-FEB-2015 09:02:31 CUBA REGION";
+tts[134]="MAG 5.1 24-FEB-2015 06:54:49 CENTRAL MID-ATLANTIC RIDGE";
+tts[135]="MAG 4.7 24-FEB-2015 06:23:06 EASTERN NEW GUINEA REG., P.N.G.";
+tts[136]="MAG 4.9 24-FEB-2015 05:14:02 NEAR COAST OF CENTRAL CHILE";
+tts[137]="MAG 5.4 24-FEB-2015 05:13:50 JUJUY PROVINCE, ARGENTINA";
+tts[138]="MAG 4.4 24-FEB-2015 04:29:58 NORTHERN COLOMBIA";
+tts[139]="MAG 4.4 24-FEB-2015 04:28:51 NEAR COAST OF NORTHERN CHILE";
+tts[140]="MAG 4.8 24-FEB-2015 03:13:02 FIJI ISLANDS REGION";
+tts[141]="MAG 5.1 24-FEB-2015 02:58:51 VANUATU ISLANDS";
+tts[142]="MAG 5.8 24-FEB-2015 02:28:54 OFF EAST COAST OF HONSHU, JAPAN";
+tts[143]="MAG 4.2 24-FEB-2015 00:52:12 SICHUAN, CHINA";
+tts[144]="MAG 4.5 23-FEB-2015 23:14:12 LUZON, PHILIPPINE ISLANDS";
+tts[145]="MAG 4.1 23-FEB-2015 19:07:32 BANDA SEA";
+tts[146]="MAG 4.2 23-FEB-2015 19:05:14 BONIN ISLANDS REGION";
+tts[147]="MAG 4.7 23-FEB-2015 18:28:20 SOUTH SANDWICH ISLANDS REGION";
+tts[148]="MAG 4.6 23-FEB-2015 16:21:34 MINDANAO, PHILIPPINE ISLANDS";
+tts[149]="MAG 5.0 23-FEB-2015 16:16:30 SPAIN";
+tts[150]="MAG 4.8 23-FEB-2015 12:42:03 EASTERN GULF OF ADEN";
+tts[151]="MAG 5.2 23-FEB-2015 10:25:07 OFF E. COAST OF N. ISLAND, N.Z.";
+tts[152]="MAG 4.9 23-FEB-2015 09:05:37 NEW BRITAIN REGION, P.N.G.";
+tts[153]="MAG 4.6 23-FEB-2015 08:00:08 NEAR EAST COAST OF HONSHU, JAPAN";
+tts[154]="MAG 4.5 23-FEB-2015 06:32:07 ANDAMAN ISLANDS, INDIA";
+tts[155]="MAG 4.5 23-FEB-2015 01:43:52 NEAR EAST COAST OF HONSHU, JAPAN";
+tts[156]="MAG 4.7 23-FEB-2015 01:37:36 OFF EAST COAST OF HONSHU, JAPAN";
+tts[157]="MAG 4.7 23-FEB-2015 00:48:46 BANDA SEA";
+tts[158]="MAG 4.8 23-FEB-2015 00:09:36 IRIAN JAYA, INDONESIA";
+tts[159]="MAG 4.0 22-FEB-2015 23:09:26 SEA OF JAPAN";
+tts[160]="MAG 4.3 22-FEB-2015 22:39:35 MINAHASSA PENINSULA, SULAWESI";
+tts[161]="MAG 4.7 22-FEB-2015 22:17:07 FIJI ISLANDS REGION";
+tts[162]="MAG 5.1 22-FEB-2015 19:43:32 OFF EAST COAST OF HONSHU, JAPAN";
+tts[163]="MAG 5.0 22-FEB-2015 18:26:52 CHILE-ARGENTINA BORDER REGION";
+tts[164]="MAG 4.8 22-FEB-2015 17:10:54 NORTHERN MID-ATLANTIC RIDGE";
+tts[165]="MAG 4.5 22-FEB-2015 14:36:21 OFF COAST OF JALISCO, MEXICO";
+tts[166]="MAG 6.2 22-FEB-2015 14:23:13 OFF COAST OF JALISCO, MEXICO";
+tts[167]="MAG 5.1 22-FEB-2015 13:02:16 FIJI ISLANDS REGION";
+tts[168]="MAG 5.6 22-FEB-2015 12:56:24 COLOMBIA";
+tts[169]="MAG 5.1 22-FEB-2015 11:48:25 SOUTH ATLANTIC OCEAN";
+tts[170]="MAG 5.2 22-FEB-2015 06:42:55 NORTHERN XINJIANG, CHINA";
+tts[171]="MAG 5.5 22-FEB-2015 06:10:33 IRIAN JAYA REGION, INDONESIA";
+tts[172]="MAG 4.8 22-FEB-2015 05:40:20 NEAR COAST OF NORTHERN CHILE";
+tts[173]="MAG 4.6 22-FEB-2015 03:54:59 VANUATU ISLANDS";
+tts[174]="MAG 5.0 22-FEB-2015 02:53:42 OFF EAST COAST OF HONSHU, JAPAN";
+tts[175]="MAG 5.2 21-FEB-2015 22:26:44 COLOMBIA";
+tts[176]="MAG 5.2 21-FEB-2015 19:50:59 SOLOMON ISLANDS";
+tts[177]="MAG 5.1 21-FEB-2015 19:42:22 EASTERN NEW GUINEA REG., P.N.G.";
+tts[178]="MAG 4.8 21-FEB-2015 18:52:43 LOYALTY ISLANDS REGION";
+tts[179]="MAG 4.7 21-FEB-2015 18:19:32 MINDANAO, PHILIPPINE ISLANDS";
+tts[180]="MAG 4.4 21-FEB-2015 17:38:33 FIJI ISLANDS REGION";
+tts[181]="MAG 4.4 21-FEB-2015 14:02:05 ANDREANOF ISLANDS, ALEUTIAN IS.";
+tts[182]="MAG 5.3 21-FEB-2015 11:34:07 SOUTHERN MID-ATLANTIC RIDGE";
+tts[183]="MAG 4.7 21-FEB-2015 10:37:00 SOUTH OF JAWA, INDONESIA";
+tts[184]="MAG 6.0 21-FEB-2015 10:13:54 OFF EAST COAST OF HONSHU, JAPAN";
+tts[185]="MAG 4.7 21-FEB-2015 03:42:48 OFF EAST COAST OF HONSHU, JAPAN";
+tts[186]="MAG 4.7 21-FEB-2015 00:57:37 FIJI ISLANDS REGION";
+tts[187]="MAG 4.9 20-FEB-2015 23:56:52 OFF EAST COAST OF HONSHU, JAPAN";
+tts[188]="MAG 4.7 20-FEB-2015 22:50:59 NEAR COAST OF CHIAPAS, MEXICO";
+tts[189]="MAG 4.6 20-FEB-2015 22:37:50 YUNNAN, CHINA";
+tts[190]="MAG 4.7 20-FEB-2015 21:41:03 TONGA ISLANDS";
+tts[191]="MAG 4.8 20-FEB-2015 21:05:55 OFF EAST COAST OF HONSHU, JAPAN";
+tts[192]="MAG 4.4 20-FEB-2015 20:53:38 NEAR COAST OF PERU";
+tts[193]="MAG 4.3 20-FEB-2015 20:25:27 EASTERN HONSHU, JAPAN";
+tts[194]="MAG 5.3 20-FEB-2015 19:28:28 HOKKAIDO, JAPAN REGION";
+tts[195]="MAG 4.5 20-FEB-2015 18:16:28 SOUTHERN IRAN";
+tts[196]="MAG 4.4 20-FEB-2015 15:57:45 OFF EAST COAST OF HONSHU, JAPAN";
+tts[197]="MAG 5.3 20-FEB-2015 15:39:18 KERMADEC ISLANDS REGION";
+tts[198]="MAG 4.9 20-FEB-2015 13:01:09 SOLOMON ISLANDS";
+tts[199]="MAG 4.1 20-FEB-2015 12:56:33 OFF EAST COAST OF HONSHU, JAPAN";
+tts[200]="MAG 4.4 20-FEB-2015 11:09:12 NEAR EAST COAST OF HONSHU, JAPAN";
+tts[201]="MAG 4.5 20-FEB-2015 09:46:23 OFF EAST COAST OF HONSHU, JAPAN";
+tts[202]="MAG 5.3 20-FEB-2015 09:08:15 SOUTHERN MID-ATLANTIC RIDGE";
+tts[203]="MAG 4.7 20-FEB-2015 07:46:21 OFF COAST OF CENTRAL AMERICA";
+tts[204]="MAG 6.3 20-FEB-2015 04:25:24 OFF EAST COAST OF HONSHU, JAPAN";
+tts[205]="MAG 4.3 20-FEB-2015 03:52:20 OFF EAST COAST OF HONSHU, JAPAN";
+tts[206]="MAG 4.5 20-FEB-2015 02:05:05 OAXACA, MEXICO";
+tts[207]="MAG 4.5 19-FEB-2015 23:59:57 BANDA SEA";
+tts[208]="MAG 5.0 19-FEB-2015 19:56:33 VANUATU ISLANDS";
+tts[209]="MAG 4.0 19-FEB-2015 17:21:25 SOUTH OF BALI, INDONESIA";
+tts[210]="MAG 5.7 19-FEB-2015 16:32:47 OFF EAST COAST OF KAMCHATKA";
+tts[211]="MAG 4.7 19-FEB-2015 15:10:47 EAST OF NORTH ISLAND, N.Z.";
+tts[212]="MAG 4.7 19-FEB-2015 15:10:47 OFF E. COAST OF N. ISLAND, N.Z.";
+tts[213]="MAG 5.5 19-FEB-2015 14:32:41 VANUATU ISLANDS";
+tts[214]="MAG 5.0 19-FEB-2015 14:08:49 FIJI ISLANDS REGION";
+tts[215]="MAG 5.1 19-FEB-2015 13:38:28 VANUATU ISLANDS";
+tts[216]="MAG 6.4 19-FEB-2015 13:18:32 VANUATU ISLANDS";
+tts[217]="MAG 5.1 19-FEB-2015 10:24:04 MACQUARIE ISLANDS REGION";
+tts[218]="MAG 4.6 19-FEB-2015 06:03:26 SOUTHERN SUMATERA, INDONESIA";
+tts[219]="MAG 4.3 19-FEB-2015 05:35:18 SOUTHERN IRAN";
+tts[220]="MAG 4.1 19-FEB-2015 05:19:39 VANCOUVER ISLAND REGION";
+tts[221]="MAG 4.3 19-FEB-2015 01:45:02 OFF EAST COAST OF HONSHU, JAPAN";
+tts[222]="MAG 4.3 19-FEB-2015 01:26:12 ICELAND";
+tts[223]="MAG 5.2 18-FEB-2015 22:47:05 SOUTH SANDWICH ISLANDS REGION";
+tts[224]="MAG 4.2 18-FEB-2015 22:15:07 SOUTHEASTERN ALASKA";
+tts[225]="MAG 4.5 18-FEB-2015 20:20:13 HALMAHERA, INDONESIA";
+tts[226]="MAG 4.6 18-FEB-2015 19:58:16 DOMINICAN REPUBLIC REGION";
+tts[227]="MAG 4.9 18-FEB-2015 18:50:47 SOLOMON ISLANDS";
+tts[228]="MAG 4.4 18-FEB-2015 17:53:26 KURIL ISLANDS";
+tts[229]="MAG 4.7 18-FEB-2015 17:25:16 SANTA CRUZ ISLANDS REGION";
+tts[230]="MAG 5.4 18-FEB-2015 17:09:42 SANTA CRUZ ISLANDS REGION";
+tts[231]="MAG 4.5 18-FEB-2015 16:59:37 PANAMA-COSTA RICA BORDER REGION";
+tts[232]="MAG 5.1 18-FEB-2015 16:27:27 SOLOMON ISLANDS";
+tts[233]="MAG 5.2 18-FEB-2015 14:31:53 HALMAHERA, INDONESIA";
+tts[234]="MAG 4.3 18-FEB-2015 13:49:29 AFGHANISTAN-TAJIKISTAN BORD REG.";
+tts[235]="MAG 4.5 18-FEB-2015 13:12:25 COSTA RICA";
+tts[236]="MAG 5.9 18-FEB-2015 09:32:26 SANTA CRUZ ISLANDS REGION";
+tts[237]="MAG 4.4 18-FEB-2015 09:04:11 WASHINGTON";
+tts[238]="MAG 4.4 18-FEB-2015 04:44:53 SOUTH OF HONSHU, JAPAN";
+tts[239]="MAG 5.4 18-FEB-2015 04:43:39 SOLOMON ISLANDS";
+tts[240]="MAG 4.4 18-FEB-2015 04:41:19 KERMADEC ISLANDS REGION";
+tts[241]="MAG 4.9 18-FEB-2015 03:32:21 ASCENSION ISLAND REGION";
+tts[242]="MAG 5.4 18-FEB-2015 02:20:37 ASCENSION ISLAND REGION";
+tts[243]="MAG 4.2 18-FEB-2015 02:16:20 SOUTHERN BOLIVIA";
+tts[244]="MAG 5.0 18-FEB-2015 01:41:12 NORTHERN EAST PACIFIC RISE";
+tts[245]="MAG 5.0 18-FEB-2015 01:16:17 NORTHERN EAST PACIFIC RISE";
+tts[246]="MAG 4.6 18-FEB-2015 00:58:00 NORTHERN EAST PACIFIC RISE";
+tts[247]="MAG 5.2 18-FEB-2015 00:48:30 NORTHERN EAST PACIFIC RISE";
+tts[248]="MAG 5.0 18-FEB-2015 00:47:24 CHILE-ARGENTINA BORDER REGION";
+tts[249]="MAG 4.0 17-FEB-2015 20:27:41 NEAR EAST COAST OF HONSHU, JAPAN";
+tts[250]="MAG 4.3 17-FEB-2015 19:55:06 IRIAN JAYA REGION, INDONESIA";
+tts[251]="MAG 4.6 17-FEB-2015 19:48:56 SANTA CRUZ ISLANDS";
+tts[252]="MAG 4.4 17-FEB-2015 19:42:53 NORTHERN ITALY";
+tts[253]="MAG 4.2 17-FEB-2015 18:51:58 OFF EAST COAST OF HONSHU, JAPAN";
+tts[254]="MAG 4.2 17-FEB-2015 18:35:18 OFF EAST COAST OF HONSHU, JAPAN";
+tts[255]="MAG 4.3 17-FEB-2015 17:00:04 OFF EAST COAST OF HONSHU, JAPAN";
+tts[256]="MAG 4.0 17-FEB-2015 16:49:53 REVILLA GIGEDO ISLANDS REGION";
+tts[257]="MAG 5.3 17-FEB-2015 16:33:21 OFF EAST COAST OF HONSHU, JAPAN";
+tts[258]="MAG 5.0 17-FEB-2015 14:35:54 NEAR COAST OF CENTRAL CHILE";
+tts[259]="MAG 4.5 17-FEB-2015 13:41:37 NORTHERN IRAN";
+tts[260]="MAG 4.2 17-FEB-2015 13:40:27 JUJUY PROVINCE, ARGENTINA";
+tts[261]="MAG 4.7 17-FEB-2015 13:14:23 UNIMAK ISLAND REGION";
+tts[262]="MAG 4.8 17-FEB-2015 09:11:27 KERMADEC ISLANDS REGION";
+tts[263]="MAG 5.2 17-FEB-2015 05:56:58 OFF E. COAST OF N. ISLAND, N.Z.";
+tts[264]="MAG 5.8 17-FEB-2015 04:46:38 NEAR EAST COAST OF HONSHU, JAPAN";
+tts[265]="MAG 4.1 17-FEB-2015 04:38:41 OFF EAST COAST OF HONSHU, JAPAN";
+tts[266]="MAG 4.6 17-FEB-2015 03:23:27 NORTHERN MOLUCCA SEA";
+tts[267]="MAG 4.3 17-FEB-2015 03:23:23 OFF EAST COAST OF HONSHU, JAPAN";
+tts[268]="MAG 5.3 17-FEB-2015 03:06:30 SOUTH SANDWICH ISLANDS REGION";
+tts[269]="MAG 4.5 17-FEB-2015 02:48:29 OFF W COAST OF NORTHERN SUMATERA";
+tts[270]="MAG 4.2 17-FEB-2015 02:45:17 OFF EAST COAST OF HONSHU, JAPAN";
+tts[271]="MAG 4.8 17-FEB-2015 02:29:52 NEAR EAST COAST OF HONSHU, JAPAN";
+tts[272]="MAG 5.1 17-FEB-2015 02:14:58 NORTHERN MOLUCCA SEA";
+tts[273]="MAG 4.2 17-FEB-2015 01:46:50 NEAR EAST COAST OF HONSHU, JAPAN";
+tts[274]="MAG 4.4 17-FEB-2015 01:27:44 OFF EAST COAST OF HONSHU, JAPAN";
+tts[275]="MAG 4.5 17-FEB-2015 01:15:02 NEAR EAST COAST OF HONSHU, JAPAN";
+tts[276]="MAG 4.7 17-FEB-2015 00:50:02 OFF EAST COAST OF HONSHU, JAPAN";
+tts[277]="MAG 6.7 16-FEB-2015 23:06:27 NEAR EAST COAST OF HONSHU, JAPAN";
+tts[278]="MAG 4.6 16-FEB-2015 22:56:43 CHAGOS ARCHIPELAGO REGION";
+tts[279]="MAG 4.2 16-FEB-2015 22:46:42 NORTHERN XINJIANG, CHINA";
+tts[280]="MAG 4.6 16-FEB-2015 22:45:08 IRIAN JAYA REGION, INDONESIA";
+tts[281]="MAG 4.6 16-FEB-2015 22:34:50 SOUTH OF KERMADEC ISLANDS";
+tts[282]="MAG 4.3 16-FEB-2015 22:32:15 CHILE-ARGENTINA BORDER REGION";
+tts[283]="MAG 4.4 16-FEB-2015 22:28:48 NORTHEASTERN CHINA";
+tts[284]="MAG 6.2 16-FEB-2015 22:00:53 SOUTH SANDWICH ISLANDS REGION";
+tts[285]="MAG 4.4 16-FEB-2015 21:52:24 LEEWARD ISLANDS";
+tts[286]="MAG 4.3 16-FEB-2015 21:41:42 MARIANA ISLANDS REGION";
+tts[287]="MAG 4.5 16-FEB-2015 21:26:40 EAST OF KURIL ISLANDS";
+tts[288]="MAG 4.5 16-FEB-2015 21:24:20 WEST CHILE RISE";
+tts[289]="MAG 4.8 16-FEB-2015 20:33:45 NEAR COAST OF CENTRAL CHILE";
+tts[290]="MAG 4.8 16-FEB-2015 17:20:34 VANUATU ISLANDS";
+tts[291]="MAG 4.5 16-FEB-2015 16:51:32 MARIANA ISLANDS REGION";
+tts[292]="MAG 4.5 16-FEB-2015 13:22:38 NORTHERN MOLUCCA SEA";
+tts[293]="MAG 4.4 16-FEB-2015 13:14:09 COOK STRAIT, NEW ZEALAND";
+tts[294]="MAG 4.6 16-FEB-2015 13:13:58 NEW IRELAND REGION, P.N.G.";
+tts[295]="MAG 4.7 16-FEB-2015 11:52:46 TURKEY";
+tts[296]="MAG 4.8 16-FEB-2015 11:52:09 WEST OF GALAPAGOS ISLANDS";
+tts[297]="MAG 5.0 16-FEB-2015 05:42:46 BALI SEA";
+tts[298]="MAG 4.5 16-FEB-2015 03:45:22 FIJI ISLANDS REGION";
+tts[299]="MAG 4.4 16-FEB-2015 03:27:58 BANDA SEA";
+tts[300]="MAG 4.4 16-FEB-2015 01:58:51 SOUTH ISLAND, NEW ZEALAND";
+tts[301]="MAG 4.7 16-FEB-2015 01:04:09 VANUATU ISLANDS";
+tts[302]="MAG 4.2 15-FEB-2015 21:40:11 MARIANA ISLANDS";
+tts[303]="MAG 4.1 15-FEB-2015 21:26:38 EASTERN GREENLAND";
+tts[304]="MAG 5.2 15-FEB-2015 21:08:43 SANTA CRUZ ISLANDS";
+var recEQs = new MakeArray(20);
+recEQs[0]="eq0";
+recEQs[1]="eq1";
+recEQs[2]="eq2";
+recEQs[3]="eq3";
+recEQs[4]="eq4";
+recEQs[5]="eq5";
+recEQs[6]="eq6";
+recEQs[7]="eq7";
+recEQs[8]="eq8";
+recEQs[9]="eq9";
+recEQs[10]="eq10";
+recEQs[11]="eq11";
+recEQs[12]="eq12";
+recEQs[13]="eq13";
+recEQs[14]="eq14";
+recEQs[15]="eq15";
+recEQs[16]="eq16";
+recEQs[17]="eq17";
+recEQs[18]="eq18";
+recEQs[19]="eq19";
+function setEQVis(eqIndex,v)
+{
+  if (!DHTML) return;
+  var eq = new getObj(recEQs[eqIndex]);
+  eq.style.visibility = (v) ? 'visible' : 'hidden'
+}
+
+function tt(imgIndex ){
+var t;
+var d;
+var w;
+var colon1;
+var colon2;
+var day;
+var tim;
+var datestr;
+var words;
+var tooltip;
+
+//put a tool tip up
+   if(tts[0]<=2) {
+     document.statusform.tips.value="warning: no events";
+   }
+   if(imgIndex == 1) {
+     document.statusform.tips.value="";
+   }
+   else {
+     t = new String(tts[imgIndex]);
+     colon1 = t.indexOf(':');
+     colon2 = t.lastIndexOf(':');
+
+     if(colon1>0 && colon2>0 && colon1 != colon2) {
+         // looks like a date
+         // MAG 4.6 30-APR-2009 11:45:38 NORTHERN PERU
+         words = t.split(" ");
+         day = words[2];
+         tim = words[3];
+         //alert(d.length);
+         datestr=new String(day+" "+tim+" GMT");
+//alert(datestr);
+
+         d = Date.parse(datestr);
+         datestr = ''+(d.toString('MMM dS hh:mmtt ')+'(your time)');
+         //datestr = d.toString();
+         tooltip = new String("");
+         for(w=0;w<words.length;w++) {
+            if(w<2 || w>3) tooltip=tooltip+words[w];
+            if(w==2)  tooltip=tooltip+datestr;
+            tooltip+=" ";
+         }
+         document.statusform.tips.value=(tooltip);
+     }
+     else {
+         document.statusform.tips.value=(tts[imgIndex]);
+     }
+   }
+   return true;
+}
+
+
+var screenW = 640, screenH = 480;
+function init() {
+  document.statusform.tips.value=(tts[1]);
+  if (is_nav4up || is_ie4 || is_ie5up ) {
+      screenW = screen.width;
+      screenH = screen.height;
+  }
+  
+  setEQVis(0,1);
+  setEQVis(1,1);
+  setEQVis(2,1);
+  setEQVis(3,1);
+  setEQVis(4,1);
+  setEQVis(5,1);
+  setEQVis(6,1);
+  setEQVis(7,1);
+  setEQVis(8,1);
+  setEQVis(9,1);
+  setEQVis(10,1);
+  setEQVis(11,1);
+  setEQVis(12,1);
+  setEQVis(13,1);
+  setEQVis(14,1);
+  setEQVis(15,1);
+  setEQVis(16,1);
+  setEQVis(17,1);
+  setEQVis(18,1);
+  setEQVis(19,1);
+  setTimeout("setEQVis(0,0)",4000);
+  setTimeout("setEQVis(1,0)",4000);
+  setTimeout("setEQVis(2,0)",4000);
+  setTimeout("setEQVis(3,0)",4000);
+  setTimeout("setEQVis(4,0)",4000);
+  setTimeout("setEQVis(5,0)",4000);
+  setTimeout("setEQVis(6,0)",4000);
+  setTimeout("setEQVis(7,0)",4000);
+  setTimeout("setEQVis(8,0)",4000);
+  setTimeout("setEQVis(9,0)",4000);
+  setTimeout("setEQVis(10,0)",4000);
+  setTimeout("setEQVis(11,0)",4000);
+  setTimeout("setEQVis(12,0)",4000);
+  setTimeout("setEQVis(13,0)",4000);
+  setTimeout("setEQVis(14,0)",4000);
+  setTimeout("setEQVis(15,0)",4000);
+  setTimeout("setEQVis(16,0)",4000);
+  setTimeout("setEQVis(17,0)",4000);
+  setTimeout("setEQVis(18,0)",4000);
+  setTimeout("setEQVis(19,0)",4000);
+  // assign event handlers
+  document.onmousemove = getMouseXY; 
+  document.onmouseup= oz;
+  //document.onclick= oz;
+}
+
+//lat and lon of mouse
+var curLon=0;
+var curLat=0;
+var curLonEW=0;
+var curLatNS=0;
+var curLonGMT=0;
+var view="eveday";
+
+
+//constants,vars,functions needed for xy2eckert4 below
+var EQ_RAD=6378137; //in meters, as per Paul Wessel
+var M_PI_2=1.57079632679489661923;
+var M_PI=3.14159265358979323846;
+var R2D=(180.0 / M_PI);
+var k4_x = 2.0 * EQ_RAD / d_sqrt (M_PI * (4.0 +M_PI));
+var k4_y = 2.0 * EQ_RAD * d_sqrt (M_PI / (4.0 +M_PI));
+var k4_ix = 1.0 / k4_x;
+var k4_iy = 1.0 / k4_y;
+var meridian=166;       //CHANGE if proj changes
+var s,phi,c;
+function d_sqrt(x) {
+return(x < 0.0 ? 0.0 : Math.sqrt (x));
+}
+function copysign(x,y) {
+return(y < 0.0 ? -(Math.abs(x)) : (Math.abs(x)));
+}
+function d_asin(x) {
+return(Math.abs (x) >= 1.0 ? copysign (M_PI_2, x) : Math.asin (x));
+}
+
+function xy2eckert4 (x, y) {
+  // Convert Eckert IV x/y to lon/lat
+  s = y * k4_iy;
+  phi = d_asin (s);
+  c = Math.cos (phi);
+  //dbgMsg('x='+x+'  y='+y+'  s='+s+'  phi='+phi+'  c='+c);
+  curLat = -(Math.round( d_asin ((phi + (s * c) + (2.0 * s)) / (2.0 + M_PI_2)) * R2D ));
+  //dbgMsg('R2D='+R2D+'  k4_ix='+k4_ix);
+  curLon = Math.round( meridian + (R2D * x * k4_ix / (1.0 +c)) );
+
+
+  // convert lon to E/W  currently ranges -14 to 346
+  if(curLon<=0) {
+     curLonEW=Math.abs(curLon)+" W"; 
+     curLonGMT=curLon;
+  }
+  else {
+    if(curLon>180) {
+       curLonEW=(360-curLon)+" W"; 
+       curLonGMT=-(180-Math.abs(180-curLon));
+    }
+    else {
+       curLonEW=curLon+" E"; 
+       curLonGMT=curLon;
+    }
+  }
+  curLatNS=curLat>0?curLat+" N":Math.abs(curLat)+" S";
+}
+
+function cleanup() {
+  // if zoom window present nullify its knowledge of this parent window.
+  // otherwise if user presses "return to main" JS error can result
+  if(zmWindow!=null && !zmWindow.closed && zmWindow.opener!=null) {
+     zmWindow.opener=null;
+  }
+}
+
+// next group of vars good for this image size only.
+// found by putting print statements in GMT source (gmt_map.c)
+// next time try "proj" utility
+var xRange=33804574; 
+var yRange=16902286;
+var xHalf=xRange/2.0;
+var yHalf=yRange/2.0;
+var factor=xRange/360.0; // should be SAME as yRange/180.0
+
+// map offsets to the actual map content (skip banner)
+// empirically derived myself
+var mapXOffset, mapYOffset;
+if(is_ie || is_nav6up) {
+   mapXOffset=9;
+   mapYOffset=70;}
+else {
+   mapXOffset=15;
+   mapYOffset=78;}
+
+var tempX = 0;
+var tempY = 0;
+
+
+function getMouseXY(e) {
+  if (is_ie) { // grab the x-y pos.s if browser is IE
+     tempX = event.clientX + document.body.scrollLeft;
+     tempY = event.clientY + document.body.scrollTop;
+  }
+  else {  // grab the x-y pos.s if browser is NS
+     tempX = e.pageX;
+     tempY = e.pageY;
+  }  
+  if (tempX < 0){tempX = 0;}
+  if (tempY < 0){tempY = 0;}  
+  // set curLat and curLon
+  // had to tweak the img size to a smaller size to make work
+  // note, however, that 720 is exactly 72 * 10i
+  xy2eckert4( ((tempX-mapXOffset)/720.0*xRange-xHalf),
+	     (((tempY-mapYOffset)/360.0*yRange-yHalf))  ); 
+  //xy2eckert4( (tempX/739.0*xRange-xHalf)-mapOffset,
+              //(375.0-(tempY/375.0*16902286.0-8451143.0))+mapOffset );
+  document.statusform.MouseLon.value = curLonEW;
+  document.statusform.MouseLat.value = curLatNS;
+  return true;
+}
+
+//openzoom function
+var zmWindow ;
+function oz() {
+  var url="zoom/?view="+view+"&lon="+curLonGMT+"&lat="+curLat;
+  ;
+
+  ////// zoom  window height and position
+
+  // todo: ancient code alert! could stand redo, such as have optimal sizes 
+  // for each continent!
+  // or use newer windowing technology like jQuery, for HTML5 "popup windows".
+  // Russ 3/2013
+
+  // some browsers call both onClick and onMouseUp handlers (IE does NOT).
+  // can try to return NOW if we already opened this zoom window, could not get to work.
+  // seems harmless, as does not actually reload the page.
+  if(tempX>745 && tempY<430 ) return(false); // right margin
+  if(tempY<65 ) return(true); // banner region
+  if(tempY>430) return(true); // too low on the page; other stuff down there
+  if(tempX>15  && tempX<152 && tempY>404 && tempY<418) return(true); // IRIS
+  if(tempX>584 && tempX<722 && tempY>404 && tempY<418) return(true); // UTC
+  var width=3*screenW/4;
+  if(width>800) { width=800; };
+  var height= parseInt(4*screenH/5);
+  if(height>800) { height=800; };
+  var yoffset=0;
+  var settings="width="+width+",height="+height+",top="+yoffset+",left=0"+
+             ",screenX=0,screenY="+yoffset+",resizable=yes,scrollbars=yes,status=yes,location=yes,toolbar=yes,menubar=yes";
+//alert(settings);
+  zmWindow=window.open(url, "ZoomWindow", settings);
+  zmWindow.focus();
+  if(!is_saf) {
+    return(false);  //this way the zoom window only opens, and NO reload of main,
+  }
+  //and Mozilla will allow zoom window to close itself.
+  //return(true); //this way can click on an EQ from main to
+ //get ev list AND get zoom too
+  // not returning anything is also possible. Mozilla won't like much
+}
+
+
+// new: share the same popup as much as possible
+// is annyoing to have so many.  rcw 3/13
+
+var sharedWindow;
+var sharedSettings="width=900,height=700,top=0,left=0,screenX=0,screenY=0,resizable=yes,scrollbars=yes,status=yes,location=yes,toolbar=yes,menubar=yes";
+
+/*
+function showNews(){
+  sharedWindow = window.open('http://news.google.com/news?hl=en&q=earthquakes%20OR%20earthquake%20OR%20tremor%20OR%20tremors%20OR%20quake%20OR%20quakes%20OR%20tsunami%20-sports%20-team%20-score%20-soccer&num=40','sharedWin',sharedSettings);
+  sharedWindow.focus();
+}
+function showBigmap(){
+  sharedWindow = window.open('bigmap/index.phtml','sharedWin',sharedSettings);
+  sharedWindow.focus();
+}
+function showEQs(){
+  sharedWindow = window.open('eventlist/index.phtml','sharedWin',sharedSettings);
+  sharedWindow.focus();
+}
+
+function showHelp(){
+  sharedWindow = window.open('html/Help.html','sharedWin',sharedSettings);
+  sharedWindow.focus();
+}
+function showFAQ(){
+  sharedWindow = window.open('html/FAQ.html','sharedWin',sharedSettings);
+  sharedWindow.focus();
+}
+function showSpecials(){
+  sharedWindow = window.open('http://www.iris.washington.edu/hq/retm','sharedWin',sharedSettings);
+  sharedWindow.focus();
+}
+function showPlates(){
+  sharedWindow = window.open('html/plates.html','sharedWin',sharedSettings);
+  sharedWindow.focus();
+}
+function showEdulinks(){
+  sharedWindow = window.open('/about/ENO/','sharedWin',sharedSettings);
+  sharedWindow.focus();
+}
+*/
+
+
+
+
+</script> 
+  <meta name="google-translate-customization" content="86974ebf1bff7075-572fa7c89db82a61-gc88af9c72f0aecab-11">  
+ </head> 
+ <!-- todo: style this with CSS 3/29/14 --> 
+ <body bgcolor="#FFFFFF" text="#000000" link="#0099FF" vlink="#CC00CC" onload="init()" onunload="cleanup()"> 
+  <div id="theMap"> 
+   <div id="topMapImg"> 
+    <img lowsrc="imgs/smLoading.jpg" src="views/eveday//imgs/topMap.eveday.gif" height="436" width="744" usemap="#topImgMap" border="0"> 
+    <span id="legend"> <img src="imgs/top_legend.gif" border="0" width="161" height="58"> </span> 
+   </div> 
+  </div> 
+  <span id="eq0"><img src="imgs/eq.gif" border="0" width="35" height="35"> </span> 
+  <span id="eq1"><img src="imgs/eq.gif" border="0" width="35" height="35"> </span> 
+  <span id="eq2"><img src="imgs/eq.gif" border="0" width="35" height="35"> </span> 
+  <span id="eq3"><img src="imgs/eq.gif" border="0" width="35" height="35"> </span> 
+  <span id="eq4"><img src="imgs/eq.gif" border="0" width="35" height="35"> </span> 
+  <span id="eq5"><img src="imgs/eq.gif" border="0" width="35" height="35"> </span> 
+  <span id="eq6"><img src="imgs/eq.gif" border="0" width="35" height="35"> </span> 
+  <span id="eq7"><img src="imgs/eq.gif" border="0" width="35" height="35"> </span> 
+  <span id="eq8"><img src="imgs/eq.gif" border="0" width="35" height="35"> </span> 
+  <span id="eq9"><img src="imgs/eq.gif" border="0" width="35" height="35"> </span> 
+  <span id="eq10"><img src="imgs/eq.gif" border="0" width="35" height="35"> </span> 
+  <span id="eq11"><img src="imgs/eq.gif" border="0" width="35" height="35"> </span> 
+  <span id="eq12"><img src="imgs/eq.gif" border="0" width="35" height="35"> </span> 
+  <span id="eq13"><img src="imgs/eq.gif" border="0" width="35" height="35"> </span> 
+  <span id="eq14"><img src="imgs/eq.gif" border="0" width="35" height="35"> </span> 
+  <span id="eq15"><img src="imgs/eq.gif" border="0" width="35" height="35"> </span> 
+  <span id="eq16"><img src="imgs/eq.gif" border="0" width="35" height="35"> </span> 
+  <span id="eq17"><img src="imgs/eq.gif" border="0" width="35" height="35"> </span> 
+  <span id="eq18"><img src="imgs/eq.gif" border="0" width="35" height="35"> </span> 
+  <span id="eq19"><img src="imgs/eq.gif" border="0" width="35" height="35"> </span> 
+  <span id="zoomin"> <a href="bigmap/index.phtml" title="A jumbo-sized version of the Seismic Monitor map"> <img src="imgs/LSI_3.gif" border="0" width="93" height="47"> </a> </span> 
+  <span id="clickme" title="Click on map to zoom in and see latest earthquakes."> 
+   <!-- "click on map to zoom" --> <img src="imgs/zoom_msg.gif" border="0" width="134" height="13"> </span> 
+  <span id="fromIRIS"> 
+   <!-- "from IRIS" link to HQ --> <a href="http://www.iris.edu" title="Explore other earthquake tools and resources at IRIS"> <img src="imgs/fromIRIS.png" border="0" width="58" height="44"> </a> </span> 
+  <!--
+<span id="outtage">
+<img src="imgs/outtage.gif" border="0" width="400" height="100"> 
+</span>
+--> 
+  <span id="usgs"> <a href="http://earthquake.usgs.gov/regional/neic/" target="_blank"> <img src="imgs/usgs_tiny.gif" border="0" width="40" height="12"> </a> </span> 
+  <form name="statusform"> 
+   <input type="text" name="tips" class="placeNameTxt" size="70" value=""> Longitude 
+   <input type="text" name="MouseLon" class="placeNameTxt" value="0" size="6"> Latitude 
+   <input type="text" name="MouseLat" class="placeNameTxt" value="0" size="5"> 
+  </form> 
+  <!--<div id="btnContainer" 
+style="position:relative; top:-8px;height:25px; font-size:13px;border:0px;background-color:white;overflow:hidden;width:100%> 
+style="position:relative; top:-8px;height:25px; font-size:13px;border:0px;background-color:white;overflow:hidden;width:100%;margin-bottom:9px;">
+--> 
+  <div style="position:relative; top:-8px;height:25px; font-size:13px;border:0px;background-color:white;overflow:hidden;width:800px;margin-bottom:3px;padding:3px;"> 
+   <a class="btn" href="html/Help.html">Help</a> 
+   <a class="btn" href="http://news.google.com/news?hl=en&amp;q=earthquakes%20OR%20earthquake%20OR%20tremor%20OR%20tremors%20OR%20quake%20OR%20quakes%20OR%20tsunami%20-sports%20-team%20-score%20-soccer&amp;num=40">Earthquake&nbsp;Headlines</a> 
+   <a class="btn" href="eventlist/index.phtml">Last&nbsp;30&nbsp;Days&nbsp;Earthquakes</a> 
+   <a class="btn" href="http://www.iris.washington.edu/hq/retm">Special&nbsp;Quakes</a> 
+   <a class="btn" href="html/plates.html">Plate&nbsp;Tectonics</a> 
+   <a class="btn" href="/about/ENO/">Education&nbsp;Links</a> 
+  </div> 
+  <map name="topImgMap"> <area shape="circle" coords="277,239,10" title="MAG 5.1 02-MAR-2015 01:40:52 MINAHASSA PENINSULA, SULAWESI" onmouseover="tt(39)" onmouseout="tt(1)"> <area shape="circle" coords="339,114,10" title="MAG 4.5 01-MAR-2015 23:47:20 KURIL ISLANDS" onmouseover="tt(40)" onmouseout="tt(1)"> <area shape="circle" coords="388,331,10" title="MAG 4.7 01-MAR-2015 23:19:20 SOUTH OF KERMADEC ISLANDS" onmouseover="tt(41)" onmouseout="tt(1)"> <area shape="circle" coords="307,141,10" title="MAG 4.6 01-MAR-2015 19:21:56 EASTERN HONSHU, JAPAN" onmouseover="tt(42)" onmouseout="tt(1)"> <area shape="circle" coords="390,297,10" title="MAG 4.6 01-MAR-2015 16:56:32 FIJI ISLANDS REGION" onmouseover="tt(43)" onmouseout="tt(1)"> <area shape="circle" coords="385,306,10" title="MAG 4.7 01-MAR-2015 16:50:11 SOUTH OF FIJI ISLANDS" onmouseover="tt(44)" onmouseout="tt(1)"> <area shape="circle" coords="594,314,10" title="MAG 4.1 01-MAR-2015 16:26:19 NEAR COAST OF NORTHERN CHILE" onmouseover="tt(45)" onmouseout="tt(1)"> <area shape="circle" coords="593,314,10" title="MAG 5.0 01-MAR-2015 15:48:18 NEAR COAST OF NORTHERN CHILE" onmouseover="tt(46)" onmouseout="tt(1)"> <area shape="circle" coords="314,155,10" title="MAG 4.5 01-MAR-2015 15:46:17 SOUTH OF HONSHU, JAPAN" onmouseover="tt(47)" onmouseout="tt(1)"> <area shape="circle" coords="599,287,10" title="MAG 5.0 01-MAR-2015 15:08:28 NEAR COAST OF PERU" onmouseover="tt(48)" onmouseout="tt(1)"> <area shape="circle" coords="230,175,10" title="MAG 5.2 01-MAR-2015 10:24:42 MYANMAR-CHINA BORDER REGION" onmouseover="tt(49)" onmouseout="tt(1)"> <area shape="circle" coords="563,202,10" title="MAG 5.0 01-MAR-2015 08:30:06 NEAR COAST OF GUATEMALA" onmouseover="tt(50)" onmouseout="tt(1)"> <area shape="circle" coords="307,147,10" title="MAG 4.1 01-MAR-2015 07:16:48 NEAR S. COAST OF HONSHU, JAPAN" onmouseover="tt(51)" onmouseout="tt(1)"> <area shape="circle" coords="279,226,10.422" title="MAG 5.3 01-MAR-2015 07:01:56 TALAUD ISLANDS, INDONESIA" onmouseover="tt(52)" onmouseout="tt(1)"> <area shape="circle" coords="276,239,11.016" title="MAG 5.4 01-MAR-2015 03:32:36 MINAHASSA PENINSULA, SULAWESI" onmouseover="tt(53)" onmouseout="tt(1)"> <area shape="circle" coords="691,237,10" title="MAG 4.7 01-MAR-2015 01:42:53 CENTRAL MID-ATLANTIC RIDGE" onmouseover="tt(54)" onmouseout="tt(1)"> <area shape="circle" coords="331,253,10" title="MAG 4.6 28-FEB-2015 22:39:31 NEW BRITAIN REGION, P.N.G." onmouseover="tt(55)" onmouseout="tt(1)"> <area shape="circle" coords="561,201,10" title="MAG 4.8 28-FEB-2015 22:06:33 NEAR COAST OF GUATEMALA" onmouseover="tt(56)" onmouseout="tt(1)"> <area shape="circle" coords="525,174,10" title="MAG 4.6 28-FEB-2015 20:41:27 GULF OF CALIFORNIA" onmouseover="tt(57)" onmouseout="tt(1)"> <area shape="circle" coords="629,381,11.016" title="MAG 5.4 28-FEB-2015 19:27:28 SOUTH SANDWICH ISLANDS REGION" onmouseover="tt(58)" onmouseout="tt(1)"> <area shape="circle" coords="281,235,10" title="MAG 4.4 28-FEB-2015 16:31:19 NORTHERN MOLUCCA SEA" onmouseover="tt(59)" onmouseout="tt(1)"> <area shape="circle" coords="161,235,10" title="MAG 4.7 28-FEB-2015 15:38:02 CARLSBERG RIDGE" onmouseover="tt(60)" onmouseout="tt(1)"> <area shape="circle" coords="621,197,10" title="MAG 4.6 28-FEB-2015 12:28:03 LEEWARD ISLANDS" onmouseover="tt(61)" onmouseout="tt(1)"> <area shape="circle" coords="316,250,10" title="MAG 4.6 28-FEB-2015 11:13:02 NEAR N COAST OF NEW GUINEA, PNG." onmouseover="tt(62)" onmouseout="tt(1)"> <area shape="circle" coords="266,264,10" title="MAG 5.0 28-FEB-2015 10:53:04 SUMBAWA REGION, INDONESIA" onmouseover="tt(63)" onmouseout="tt(1)"> <area shape="circle" coords="502,136,10" title="MAG 4.2 28-FEB-2015 10:41:37 NEVADA" onmouseover="tt(64)" onmouseout="tt(1)"> <area shape="circle" coords="615,190,10" title="MAG 4.0 28-FEB-2015 08:42:30 LEEWARD ISLANDS" onmouseover="tt(65)" onmouseout="tt(1)"> <area shape="circle" coords="313,144,10" title="MAG 4.7 28-FEB-2015 08:40:40 NEAR EAST COAST OF HONSHU, JAPAN" onmouseover="tt(66)" onmouseout="tt(1)"> <area shape="circle" coords="98,124,10" title="MAG 4.2 28-FEB-2015 08:24:24 NORTHWESTERN BALKAN REGION" onmouseover="tt(67)" onmouseout="tt(1)"> <area shape="circle" coords="390,288,10" title="MAG 4.6 28-FEB-2015 05:48:10 FIJI ISLANDS REGION" onmouseover="tt(68)" onmouseout="tt(1)"> <area shape="circle" coords="591,254,10" title="MAG 4.6 28-FEB-2015 04:53:10 PERU-ECUADOR BORDER REGION" onmouseover="tt(69)" onmouseout="tt(1)"> <area shape="circle" coords="582,338,10" title="MAG 4.7 28-FEB-2015 03:45:33 NEAR COAST OF CENTRAL CHILE" onmouseover="tt(70)" onmouseout="tt(1)"> <area shape="circle" coords="599,300,10" title="MAG 4.2 28-FEB-2015 03:30:46 NEAR COAST OF NORTHERN CHILE" onmouseover="tt(71)" onmouseout="tt(1)"> <area shape="circle" coords="312,206,10" title="MAG 4.6 28-FEB-2015 02:14:58 SOUTH OF MARIANA ISLANDS" onmouseover="tt(72)" onmouseout="tt(1)"> <area shape="circle" coords="320,192,10" title="MAG 5.1 28-FEB-2015 01:02:50 MARIANA ISLANDS" onmouseover="tt(73)" onmouseout="tt(1)"> <area shape="circle" coords="321,127,10" title="MAG 4.6 28-FEB-2015 00:40:43 HOKKAIDO, JAPAN REGION" onmouseover="tt(74)" onmouseout="tt(1)"> <area shape="circle" coords="563,200,10" title="MAG 4.8 27-FEB-2015 23:46:44 GUATEMALA" onmouseover="tt(75)" onmouseout="tt(1)"> <area shape="circle" coords="320,193,10" title="MAG 4.7 27-FEB-2015 19:44:17 MARIANA ISLANDS" onmouseover="tt(76)" onmouseout="tt(1)"> <area shape="circle" coords="151,339,10" title="MAG 4.9 27-FEB-2015 19:02:41 SOUTH INDIAN OCEAN" onmouseover="tt(77)" onmouseout="tt(1)"> <area shape="circle" coords="593,237,10" title="MAG 4.0 27-FEB-2015 19:00:10 COLOMBIA" onmouseover="tt(78)" onmouseout="tt(1)"> <area shape="circle" coords="320,196,10" title="MAG 5.0 27-FEB-2015 17:36:51 MARIANA ISLANDS" onmouseover="tt(79)" onmouseout="tt(1)"> <area shape="circle" coords="320,196,10" title="MAG 4.8 27-FEB-2015 16:52:01 MARIANA ISLANDS" onmouseover="tt(80)" onmouseout="tt(1)"> <area shape="circle" coords="320,196,10" title="MAG 5.0 27-FEB-2015 16:45:20 MARIANA ISLANDS" onmouseover="tt(81)" onmouseout="tt(1)"> <area shape="circle" coords="320,196,12.798" title="MAG 5.7 27-FEB-2015 16:24:50 MARIANA ISLANDS" onmouseover="tt(82)" onmouseout="tt(1)"> <area shape="circle" coords="273,264,10" title="MAG 5.1 27-FEB-2015 15:27:56 FLORES SEA" onmouseover="tt(83)" onmouseout="tt(1)"> <area shape="circle" coords="281,216,10" title="MAG 4.9 27-FEB-2015 14:54:08 MINDANAO, PHILIPPINE ISLANDS" onmouseover="tt(84)" onmouseout="tt(1)"> <area shape="circle" coords="273,264,20.52" title="MAG 7.0 27-FEB-2015 13:45:05 FLORES SEA" onmouseover="tt(85)" onmouseout="tt(1)"> <area shape="circle" coords="106,157,10" title="MAG 4.3 27-FEB-2015 12:53:09 EGYPT" onmouseover="tt(86)" onmouseout="tt(1)"> <area shape="circle" coords="338,263,10.422" title="MAG 5.3 27-FEB-2015 11:35:15 SOLOMON ISLANDS" onmouseover="tt(87)" onmouseout="tt(1)"> <area shape="circle" coords="288,166,10" title="MAG 4.9 27-FEB-2015 07:58:03 RYUKYU ISLANDS" onmouseover="tt(88)" onmouseout="tt(1)"> <area shape="circle" coords="391,293,10" title="MAG 4.5 27-FEB-2015 06:02:51 FIJI ISLANDS REGION" onmouseover="tt(89)" onmouseout="tt(1)"> <area shape="circle" coords="231,253,10" title="MAG 4.5 27-FEB-2015 03:14:14 SOUTHERN SUMATERA, INDONESIA" onmouseover="tt(90)" onmouseout="tt(1)"> <area shape="circle" coords="387,333,10" title="MAG 4.4 27-FEB-2015 02:39:51 SOUTH OF KERMADEC ISLANDS" onmouseover="tt(91)" onmouseout="tt(1)"> <area shape="circle" coords="163,153,10" title="MAG 4.4 27-FEB-2015 02:24:47 NORTHERN IRAN" onmouseover="tt(92)" onmouseout="tt(1)"> <area shape="circle" coords="542,345,10" title="MAG 5.1 27-FEB-2015 00:47:38 WEST CHILE RISE" onmouseover="tt(93)" onmouseout="tt(1)"> <area shape="circle" coords="334,259,10" title="MAG 5.1 26-FEB-2015 23:44:57 NEW BRITAIN REGION, P.N.G." onmouseover="tt(94)" onmouseout="tt(1)"> <area shape="circle" coords="293,167,10" title="MAG 4.7 26-FEB-2015 22:32:15 SOUTHEAST OF RYUKYU ISLANDS" onmouseover="tt(95)" onmouseout="tt(1)"> <area shape="circle" coords="188,150,11.016" title="MAG 5.4 26-FEB-2015 21:59:05 PAKISTAN" onmouseover="tt(96)" onmouseout="tt(1)"> <area shape="circle" coords="316,147,10" title="MAG 4.6 26-FEB-2015 19:15:48 OFF EAST COAST OF HONSHU, JAPAN" onmouseover="tt(97)" onmouseout="tt(1)"> <area shape="circle" coords="209,216,10" title="MAG 4.4 26-FEB-2015 18:52:32 NICOBAR ISLANDS, INDIA" onmouseover="tt(98)" onmouseout="tt(1)"> <area shape="circle" coords="275,176,10" title="MAG 4.4 26-FEB-2015 16:50:02 TAIWAN REGION" onmouseover="tt(99)" onmouseout="tt(1)"> <area shape="circle" coords="591,326,10" title="MAG 4.0 26-FEB-2015 15:40:03 NEAR COAST OF CENTRAL CHILE" onmouseover="tt(100)" onmouseout="tt(1)"> <area shape="circle" coords="279,240,10" title="MAG 4.7 26-FEB-2015 15:04:16 NORTHERN MOLUCCA SEA" onmouseover="tt(101)" onmouseout="tt(1)"> <area shape="circle" coords="281,237,10" title="MAG 4.7 26-FEB-2015 10:35:53 NORTHERN MOLUCCA SEA" onmouseover="tt(102)" onmouseout="tt(1)"> <area shape="circle" coords="390,114,11.016" title="MAG 5.4 26-FEB-2015 09:45:39 ANDREANOF ISLANDS, ALEUTIAN IS." onmouseover="tt(103)" onmouseout="tt(1)"> <area shape="circle" coords="330,129,10" title="MAG 4.6 26-FEB-2015 07:26:35 EAST OF KURIL ISLANDS" onmouseover="tt(104)" onmouseout="tt(1)"> <area shape="circle" coords="399,299,10" title="MAG 5.2 26-FEB-2015 06:26:56 TONGA ISLANDS" onmouseover="tt(105)" onmouseout="tt(1)"> <area shape="circle" coords="316,141,10" title="MAG 5.0 26-FEB-2015 01:11:25 NEAR EAST COAST OF HONSHU, JAPAN" onmouseover="tt(106)" onmouseout="tt(1)"> <area shape="circle" coords="602,220,10" title="MAG 4.6 26-FEB-2015 00:10:47 VENEZUELA" onmouseover="tt(107)" onmouseout="tt(1)"> <area shape="circle" coords="397,295,10" title="MAG 5.0 25-FEB-2015 19:36:56 TONGA ISLANDS" onmouseover="tt(108)" onmouseout="tt(1)"> <area shape="circle" coords="380,341,10" title="MAG 4.8 25-FEB-2015 19:33:06 OFF E. COAST OF N. ISLAND, N.Z." onmouseover="tt(109)" onmouseout="tt(1)"> <area shape="circle" coords="390,293,10" title="MAG 4.4 25-FEB-2015 19:09:04 FIJI ISLANDS REGION" onmouseover="tt(110)" onmouseout="tt(1)"> <area shape="circle" coords="595,328,10" title="MAG 4.6 25-FEB-2015 14:55:57 SAN JUAN PROVINCE, ARGENTINA" onmouseover="tt(111)" onmouseout="tt(1)"> <area shape="circle" coords="200,136,10" title="MAG 4.3 25-FEB-2015 14:12:19 KYRGYZSTAN-XINJIANG BORDER REG." onmouseover="tt(112)" onmouseout="tt(1)"> <area shape="circle" coords="680,350,10" title="MAG 5.0 25-FEB-2015 13:48:31 SOUTHERN MID-ATLANTIC RIDGE" onmouseover="tt(113)" onmouseout="tt(1)"> <area shape="circle" coords="361,362,10" title="MAG 4.3 25-FEB-2015 12:29:53 OFF W. COAST OF S. ISLAND, N.Z." onmouseover="tt(114)" onmouseout="tt(1)"> <area shape="circle" coords="318,138,10" title="MAG 4.9 25-FEB-2015 10:32:03 OFF EAST COAST OF HONSHU, JAPAN" onmouseover="tt(115)" onmouseout="tt(1)"> <area shape="circle" coords="425,89,10" title="MAG 4.3 25-FEB-2015 09:38:48 CENTRAL ALASKA" onmouseover="tt(116)" onmouseout="tt(1)"> <area shape="circle" coords="143,158,10" title="MAG 4.6 25-FEB-2015 08:34:45 NORTHERN IRAN" onmouseover="tt(117)" onmouseout="tt(1)"> <area shape="circle" coords="222,240,10" title="MAG 4.9 25-FEB-2015 08:29:32 NORTHERN SUMATERA, INDONESIA" onmouseover="tt(118)" onmouseout="tt(1)"> <area shape="circle" coords="388,111,10" title="MAG 4.6 25-FEB-2015 08:00:33 ANDREANOF ISLANDS, ALEUTIAN IS." onmouseover="tt(119)" onmouseout="tt(1)"> <area shape="circle" coords="314,159,12.798" title="MAG 5.7 25-FEB-2015 07:01:01 SOUTH OF HONSHU, JAPAN" onmouseover="tt(120)" onmouseout="tt(1)"> <area shape="circle" coords="312,157,10" title="MAG 4.4 25-FEB-2015 03:42:36 SOUTH OF HONSHU, JAPAN" onmouseover="tt(121)" onmouseout="tt(1)"> <area shape="circle" coords="280,239,10.422" title="MAG 5.3 25-FEB-2015 03:02:40 NORTHERN MOLUCCA SEA" onmouseover="tt(122)" onmouseout="tt(1)"> <area shape="circle" coords="329,127,10" title="MAG 4.6 25-FEB-2015 02:19:27 KURIL ISLANDS" onmouseover="tt(123)" onmouseout="tt(1)"> <area shape="circle" coords="267,226,11.61" title="MAG 5.5 25-FEB-2015 01:31:43 SULU SEA" onmouseover="tt(124)" onmouseout="tt(1)"> <area shape="circle" coords="76,272,10" title="MAG 5.1 24-FEB-2015 23:43:18 ZAIRE" onmouseover="tt(125)" onmouseout="tt(1)"> <area shape="circle" coords="273,244,10" title="MAG 4.7 24-FEB-2015 20:49:46 MINAHASSA PENINSULA, SULAWESI" onmouseover="tt(126)" onmouseout="tt(1)"> <area shape="circle" coords="185,145,10" title="MAG 4.4 24-FEB-2015 19:28:48 AFGHANISTAN-TAJIKISTAN BORD REG." onmouseover="tt(127)" onmouseout="tt(1)"> <area shape="circle" coords="588,339,10" title="MAG 4.3 24-FEB-2015 19:11:40 CHILE-ARGENTINA BORDER REGION" onmouseover="tt(128)" onmouseout="tt(1)"> <area shape="circle" coords="366,296,10" title="MAG 4.7 24-FEB-2015 16:36:44 VANUATU ISLANDS" onmouseover="tt(129)" onmouseout="tt(1)"> <area shape="circle" coords="184,145,10" title="MAG 4.5 24-FEB-2015 14:30:24 HINDU KUSH REGION, AFGHANISTAN" onmouseover="tt(130)" onmouseout="tt(1)"> <area shape="circle" coords="132,207,10" title="MAG 4.9 24-FEB-2015 13:11:24 EASTERN GULF OF ADEN" onmouseover="tt(131)" onmouseout="tt(1)"> <area shape="circle" coords="132,207,10" title="MAG 5.0 24-FEB-2015 10:23:01 EASTERN GULF OF ADEN" onmouseover="tt(132)" onmouseout="tt(1)"> <area shape="circle" coords="585,190,10" title="MAG 4.2 24-FEB-2015 09:02:31 CUBA REGION" onmouseover="tt(133)" onmouseout="tt(1)"> <area shape="circle" coords="695,241,10" title="MAG 5.1 24-FEB-2015 06:54:49 CENTRAL MID-ATLANTIC RIDGE" onmouseover="tt(134)" onmouseout="tt(1)"> <area shape="circle" coords="322,259,10" title="MAG 4.7 24-FEB-2015 06:23:06 EASTERN NEW GUINEA REG., P.N.G." onmouseover="tt(135)" onmouseout="tt(1)"> <area shape="circle" coords="588,332,10" title="MAG 4.9 24-FEB-2015 05:14:02 NEAR COAST OF CENTRAL CHILE" onmouseover="tt(136)" onmouseout="tt(1)"> <area shape="circle" coords="606,306,11.016" title="MAG 5.4 24-FEB-2015 05:13:50 JUJUY PROVINCE, ARGENTINA" onmouseover="tt(137)" onmouseout="tt(1)"> <area shape="circle" coords="601,224,10" title="MAG 4.4 24-FEB-2015 04:29:58 NORTHERN COLOMBIA" onmouseover="tt(138)" onmouseout="tt(1)"> <area shape="circle" coords="593,320,10" title="MAG 4.4 24-FEB-2015 04:28:51 NEAR COAST OF NORTHERN CHILE" onmouseover="tt(139)" onmouseout="tt(1)"> <area shape="circle" coords="389,302,10" title="MAG 4.8 24-FEB-2015 03:13:02 FIJI ISLANDS REGION" onmouseover="tt(140)" onmouseout="tt(1)"> <area shape="circle" coords="361,281,10" title="MAG 5.1 24-FEB-2015 02:58:51 VANUATU ISLANDS" onmouseover="tt(141)" onmouseout="tt(1)"> <area shape="circle" coords="318,138,13.392" title="MAG 5.8 24-FEB-2015 02:28:54 OFF EAST COAST OF HONSHU, JAPAN" onmouseover="tt(142)" onmouseout="tt(1)"> <area shape="circle" coords="243,156,10" title="MAG 4.2 24-FEB-2015 00:52:12 SICHUAN, CHINA" onmouseover="tt(143)" onmouseout="tt(1)"> <area shape="circle" coords="270,198,10" title="MAG 4.5 23-FEB-2015 23:14:12 LUZON, PHILIPPINE ISLANDS" onmouseover="tt(144)" onmouseout="tt(1)"> <area shape="circle" coords="285,264,10" title="MAG 4.1 23-FEB-2015 19:07:32 BANDA SEA" onmouseover="tt(145)" onmouseout="tt(1)"> <area shape="circle" coords="309,167,10" title="MAG 4.2 23-FEB-2015 19:05:14 BONIN ISLANDS REGION" onmouseover="tt(146)" onmouseout="tt(1)"> <area shape="circle" coords="621,392,10" title="MAG 4.7 23-FEB-2015 18:28:20 SOUTH SANDWICH ISLANDS REGION" onmouseover="tt(147)" onmouseout="tt(1)"> <area shape="circle" coords="280,227,10" title="MAG 4.6 23-FEB-2015 16:21:34 MINDANAO, PHILIPPINE ISLANDS" onmouseover="tt(148)" onmouseout="tt(1)"> <area shape="circle" coords="53,139,10" title="MAG 5.0 23-FEB-2015 16:16:30 SPAIN" onmouseover="tt(149)" onmouseout="tt(1)"> <area shape="circle" coords="132,207,10" title="MAG 4.8 23-FEB-2015 12:42:03 EASTERN GULF OF ADEN" onmouseover="tt(150)" onmouseout="tt(1)"> <area shape="circle" coords="380,342,10" title="MAG 5.2 23-FEB-2015 10:25:07 OFF E. COAST OF N. ISLAND, N.Z." onmouseover="tt(151)" onmouseout="tt(1)"> <area shape="circle" coords="333,259,10" title="MAG 4.9 23-FEB-2015 09:05:37 NEW BRITAIN REGION, P.N.G." onmouseover="tt(152)" onmouseout="tt(1)"> <area shape="circle" coords="312,148,10" title="MAG 4.6 23-FEB-2015 08:00:08 NEAR EAST COAST OF HONSHU, JAPAN" onmouseover="tt(153)" onmouseout="tt(1)"> <area shape="circle" coords="213,213,10" title="MAG 4.5 23-FEB-2015 06:32:07 ANDAMAN ISLANDS, INDIA" onmouseover="tt(154)" onmouseout="tt(1)"> <area shape="circle" coords="314,144,10" title="MAG 4.5 23-FEB-2015 01:43:52 NEAR EAST COAST OF HONSHU, JAPAN" onmouseover="tt(155)" onmouseout="tt(1)"> <area shape="circle" coords="320,138,10" title="MAG 4.7 23-FEB-2015 01:37:36 OFF EAST COAST OF HONSHU, JAPAN" onmouseover="tt(156)" onmouseout="tt(1)"> <area shape="circle" coords="280,256,10" title="MAG 4.7 23-FEB-2015 00:48:46 BANDA SEA" onmouseover="tt(157)" onmouseout="tt(1)"> <area shape="circle" coords="305,253,10" title="MAG 4.8 23-FEB-2015 00:09:36 IRIAN JAYA, INDONESIA" onmouseover="tt(158)" onmouseout="tt(1)"> <area shape="circle" coords="303,144,10" title="MAG 4.0 22-FEB-2015 23:09:26 SEA OF JAPAN" onmouseover="tt(159)" onmouseout="tt(1)"> <area shape="circle" coords="275,244,10" title="MAG 4.3 22-FEB-2015 22:39:35 MINAHASSA PENINSULA, SULAWESI" onmouseover="tt(160)" onmouseout="tt(1)"> <area shape="circle" coords="392,297,10" title="MAG 4.7 22-FEB-2015 22:17:07 FIJI ISLANDS REGION" onmouseover="tt(161)" onmouseout="tt(1)"> <area shape="circle" coords="318,137,10" title="MAG 5.1 22-FEB-2015 19:43:32 OFF EAST COAST OF HONSHU, JAPAN" onmouseover="tt(162)" onmouseout="tt(1)"> <area shape="circle" coords="604,310,10" title="MAG 5.0 22-FEB-2015 18:26:52 CHILE-ARGENTINA BORDER REGION" onmouseover="tt(163)" onmouseout="tt(1)"> <area shape="circle" coords="649,188,10" title="MAG 4.8 22-FEB-2015 17:10:54 NORTHERN MID-ATLANTIC RIDGE" onmouseover="tt(164)" onmouseout="tt(1)"> <area shape="circle" coords="530,192,10" title="MAG 4.5 22-FEB-2015 14:36:21 OFF COAST OF JALISCO, MEXICO" onmouseover="tt(165)" onmouseout="tt(1)"> <area shape="circle" coords="530,192,15.768" title="MAG 6.2 22-FEB-2015 14:23:13 OFF COAST OF JALISCO, MEXICO" onmouseover="tt(166)" onmouseout="tt(1)"> <area shape="circle" coords="390,294,10" title="MAG 5.1 22-FEB-2015 13:02:16 FIJI ISLANDS REGION" onmouseover="tt(167)" onmouseout="tt(1)"> <area shape="circle" coords="594,236,12.204" title="MAG 5.6 22-FEB-2015 12:56:24 COLOMBIA" onmouseover="tt(168)" onmouseout="tt(1)"> <area shape="circle" coords="37,323,10" title="MAG 5.1 22-FEB-2015 11:48:25 SOUTH ATLANTIC OCEAN" onmouseover="tt(169)" onmouseout="tt(1)"> <area shape="circle" coords="218,127,10" title="MAG 5.2 22-FEB-2015 06:42:55 NORTHERN XINJIANG, CHINA" onmouseover="tt(170)" onmouseout="tt(1)"> <area shape="circle" coords="295,257,11.61" title="MAG 5.5 22-FEB-2015 06:10:33 IRIAN JAYA REGION, INDONESIA" onmouseover="tt(171)" onmouseout="tt(1)"> <area shape="circle" coords="600,299,10" title="MAG 4.8 22-FEB-2015 05:40:20 NEAR COAST OF NORTHERN CHILE" onmouseover="tt(172)" onmouseout="tt(1)"> <area shape="circle" coords="362,285,10" title="MAG 4.6 22-FEB-2015 03:54:59 VANUATU ISLANDS" onmouseover="tt(173)" onmouseout="tt(1)"> <area shape="circle" coords="319,137,10" title="MAG 5.0 22-FEB-2015 02:53:42 OFF EAST COAST OF HONSHU, JAPAN" onmouseover="tt(174)" onmouseout="tt(1)"> <area shape="circle" coords="595,230,10" title="MAG 5.2 21-FEB-2015 22:26:44 COLOMBIA" onmouseover="tt(175)" onmouseout="tt(1)"> <area shape="circle" coords="345,269,10" title="MAG 5.2 21-FEB-2015 19:50:59 SOLOMON ISLANDS" onmouseover="tt(176)" onmouseout="tt(1)"> <area shape="circle" coords="322,259,10" title="MAG 5.1 21-FEB-2015 19:42:22 EASTERN NEW GUINEA REG., P.N.G." onmouseover="tt(177)" onmouseout="tt(1)"> <area shape="circle" coords="370,307,10" title="MAG 4.8 21-FEB-2015 18:52:43 LOYALTY ISLANDS REGION" onmouseover="tt(178)" onmouseout="tt(1)"> <area shape="circle" coords="280,226,10" title="MAG 4.7 21-FEB-2015 18:19:32 MINDANAO, PHILIPPINE ISLANDS" onmouseover="tt(179)" onmouseout="tt(1)"> <area shape="circle" coords="390,298,10" title="MAG 4.4 21-FEB-2015 17:38:33 FIJI ISLANDS REGION" onmouseover="tt(180)" onmouseout="tt(1)"> <area shape="circle" coords="393,110,10" title="MAG 4.4 21-FEB-2015 14:02:05 ANDREANOF ISLANDS, ALEUTIAN IS." onmouseover="tt(181)" onmouseout="tt(1)"> <area shape="circle" coords="713,290,10.422" title="MAG 5.3 21-FEB-2015 11:34:07 SOUTHERN MID-ATLANTIC RIDGE" onmouseover="tt(182)" onmouseout="tt(1)"> <area shape="circle" coords="241,266,10" title="MAG 4.7 21-FEB-2015 10:37:00 SOUTH OF JAWA, INDONESIA" onmouseover="tt(183)" onmouseout="tt(1)"> <area shape="circle" coords="319,137,14.58" title="MAG 6.0 21-FEB-2015 10:13:54 OFF EAST COAST OF HONSHU, JAPAN" onmouseover="tt(184)" onmouseout="tt(1)"> <area shape="circle" coords="319,138,10" title="MAG 4.7 21-FEB-2015 03:42:48 OFF EAST COAST OF HONSHU, JAPAN" onmouseover="tt(185)" onmouseout="tt(1)"> <area shape="circle" coords="390,301,10" title="MAG 4.7 21-FEB-2015 00:57:37 FIJI ISLANDS REGION" onmouseover="tt(186)" onmouseout="tt(1)"> <area shape="circle" coords="320,139,10" title="MAG 4.9 20-FEB-2015 23:56:52 OFF EAST COAST OF HONSHU, JAPAN" onmouseover="tt(187)" onmouseout="tt(1)"> <area shape="circle" coords="557,202,10" title="MAG 4.7 20-FEB-2015 22:50:59 NEAR COAST OF CHIAPAS, MEXICO" onmouseover="tt(188)" onmouseout="tt(1)"> <area shape="circle" coords="238,178,10" title="MAG 4.6 20-FEB-2015 22:37:50 YUNNAN, CHINA" onmouseover="tt(189)" onmouseout="tt(1)"> <area shape="circle" coords="398,285,10" title="MAG 4.7 20-FEB-2015 21:41:03 TONGA ISLANDS" onmouseover="tt(190)" onmouseout="tt(1)"> <area shape="circle" coords="319,137,10" title="MAG 4.8 20-FEB-2015 21:05:55 OFF EAST COAST OF HONSHU, JAPAN" onmouseover="tt(191)" onmouseout="tt(1)"> <area shape="circle" coords="592,286,10" title="MAG 4.4 20-FEB-2015 20:53:38 NEAR COAST OF PERU" onmouseover="tt(192)" onmouseout="tt(1)"> <area shape="circle" coords="307,149,10" title="MAG 4.3 20-FEB-2015 20:25:27 EASTERN HONSHU, JAPAN" onmouseover="tt(193)" onmouseout="tt(1)"> <area shape="circle" coords="318,132,10.422" title="MAG 5.3 20-FEB-2015 19:28:28 HOKKAIDO, JAPAN REGION" onmouseover="tt(194)" onmouseout="tt(1)"> <area shape="circle" coords="147,169,10" title="MAG 4.5 20-FEB-2015 18:16:28 SOUTHERN IRAN" onmouseover="tt(195)" onmouseout="tt(1)"> <area shape="circle" coords="316,147,10" title="MAG 4.4 20-FEB-2015 15:57:45 OFF EAST COAST OF HONSHU, JAPAN" onmouseover="tt(196)" onmouseout="tt(1)"> <area shape="circle" coords="389,328,10.422" title="MAG 5.3 20-FEB-2015 15:39:18 KERMADEC ISLANDS REGION" onmouseover="tt(197)" onmouseout="tt(1)"> <area shape="circle" coords="337,264,10" title="MAG 4.9 20-FEB-2015 13:01:09 SOLOMON ISLANDS" onmouseover="tt(198)" onmouseout="tt(1)"> <area shape="circle" coords="320,138,10" title="MAG 4.1 20-FEB-2015 12:56:33 OFF EAST COAST OF HONSHU, JAPAN" onmouseover="tt(199)" onmouseout="tt(1)"> <area shape="circle" coords="317,137,10" title="MAG 4.4 20-FEB-2015 11:09:12 NEAR EAST COAST OF HONSHU, JAPAN" onmouseover="tt(200)" onmouseout="tt(1)"> <area shape="circle" coords="320,139,10" title="MAG 4.5 20-FEB-2015 09:46:23 OFF EAST COAST OF HONSHU, JAPAN" onmouseover="tt(201)" onmouseout="tt(1)"> <area shape="circle" coords="12,306,10.422" title="MAG 5.3 20-FEB-2015 09:08:15 SOUTHERN MID-ATLANTIC RIDGE" onmouseover="tt(202)" onmouseout="tt(1)"> <area shape="circle" coords="578,237,10" title="MAG 4.7 20-FEB-2015 07:46:21 OFF COAST OF CENTRAL AMERICA" onmouseover="tt(203)" onmouseout="tt(1)"> <area shape="circle" coords="319,137,16.362" title="MAG 6.3 20-FEB-2015 04:25:24 OFF EAST COAST OF HONSHU, JAPAN" onmouseover="tt(204)" onmouseout="tt(1)"> <area shape="circle" coords="319,138,10" title="MAG 4.3 20-FEB-2015 03:52:20 OFF EAST COAST OF HONSHU, JAPAN" onmouseover="tt(205)" onmouseout="tt(1)"> <area shape="circle" coords="553,195,10" title="MAG 4.5 20-FEB-2015 02:05:05 OAXACA, MEXICO" onmouseover="tt(206)" onmouseout="tt(1)"> <area shape="circle" coords="284,260,10" title="MAG 4.5 19-FEB-2015 23:59:57 BANDA SEA" onmouseover="tt(207)" onmouseout="tt(1)"> <area shape="circle" coords="364,289,10" title="MAG 5.0 19-FEB-2015 19:56:33 VANUATU ISLANDS" onmouseover="tt(208)" onmouseout="tt(1)"> <area shape="circle" coords="258,269,10" title="MAG 4.0 19-FEB-2015 17:21:25 SOUTH OF BALI, INDONESIA" onmouseover="tt(209)" onmouseout="tt(1)"> <area shape="circle" coords="348,108,12.798" title="MAG 5.7 19-FEB-2015 16:32:47 OFF EAST COAST OF KAMCHATKA" onmouseover="tt(210)" onmouseout="tt(1)"> <area shape="circle" coords="385,345,10" title="MAG 4.7 19-FEB-2015 15:10:47 EAST OF NORTH ISLAND, N.Z." onmouseover="tt(211)" onmouseout="tt(1)"> <area shape="circle" coords="385,345,10" title="MAG 4.7 19-FEB-2015 15:10:47 OFF E. COAST OF N. ISLAND, N.Z." onmouseover="tt(212)" onmouseout="tt(1)"> <area shape="circle" coords="363,289,11.61" title="MAG 5.5 19-FEB-2015 14:32:41 VANUATU ISLANDS" onmouseover="tt(213)" onmouseout="tt(1)"> <area shape="circle" coords="389,288,10" title="MAG 5.0 19-FEB-2015 14:08:49 FIJI ISLANDS REGION" onmouseover="tt(214)" onmouseout="tt(1)"> <area shape="circle" coords="364,290,10" title="MAG 5.1 19-FEB-2015 13:38:28 VANUATU ISLANDS" onmouseover="tt(215)" onmouseout="tt(1)"> <area shape="circle" coords="364,289,16.956" title="MAG 6.4 19-FEB-2015 13:18:32 VANUATU ISLANDS" onmouseover="tt(216)" onmouseout="tt(1)"> <area shape="circle" coords="349,380,10" title="MAG 5.1 19-FEB-2015 10:24:04 MACQUARIE ISLANDS REGION" onmouseover="tt(217)" onmouseout="tt(1)"> <area shape="circle" coords="231,257,10" title="MAG 4.6 19-FEB-2015 06:03:26 SOUTHERN SUMATERA, INDONESIA" onmouseover="tt(218)" onmouseout="tt(1)"> <area shape="circle" coords="143,165,10" title="MAG 4.3 19-FEB-2015 05:35:18 SOUTHERN IRAN" onmouseover="tt(219)" onmouseout="tt(1)"> <area shape="circle" coords="471,116,10" title="MAG 4.1 19-FEB-2015 05:19:39 VANCOUVER ISLAND REGION" onmouseover="tt(220)" onmouseout="tt(1)"> <area shape="circle" coords="321,139,10" title="MAG 4.3 19-FEB-2015 01:45:02 OFF EAST COAST OF HONSHU, JAPAN" onmouseover="tt(221)" onmouseout="tt(1)"> <area shape="circle" coords="623,87,10" title="MAG 4.3 19-FEB-2015 01:26:12 ICELAND" onmouseover="tt(222)" onmouseout="tt(1)"> <area shape="circle" coords="630,386,10" title="MAG 5.2 18-FEB-2015 22:47:05 SOUTH SANDWICH ISLANDS REGION" onmouseover="tt(223)" onmouseout="tt(1)"> <area shape="circle" coords="450,98,10" title="MAG 4.2 18-FEB-2015 22:15:07 SOUTHEASTERN ALASKA" onmouseover="tt(224)" onmouseout="tt(1)"> <area shape="circle" coords="283,240,10" title="MAG 4.5 18-FEB-2015 20:20:13 HALMAHERA, INDONESIA" onmouseover="tt(225)" onmouseout="tt(1)"> <area shape="circle" coords="600,189,10" title="MAG 4.6 18-FEB-2015 19:58:16 DOMINICAN REPUBLIC REGION" onmouseover="tt(226)" onmouseout="tt(1)"> <area shape="circle" coords="355,274,10" title="MAG 4.9 18-FEB-2015 18:50:47 SOLOMON ISLANDS" onmouseover="tt(227)" onmouseout="tt(1)"> <area shape="circle" coords="326,126,10" title="MAG 4.4 18-FEB-2015 17:53:26 KURIL ISLANDS" onmouseover="tt(228)" onmouseout="tt(1)"> <area shape="circle" coords="356,274,10" title="MAG 4.7 18-FEB-2015 17:25:16 SANTA CRUZ ISLANDS REGION" onmouseover="tt(229)" onmouseout="tt(1)"> <area shape="circle" coords="356,273,11.016" title="MAG 5.4 18-FEB-2015 17:09:42 SANTA CRUZ ISLANDS REGION" onmouseover="tt(230)" onmouseout="tt(1)"> <area shape="circle" coords="581,219,10" title="MAG 4.5 18-FEB-2015 16:59:37 PANAMA-COSTA RICA BORDER REGION" onmouseover="tt(231)" onmouseout="tt(1)"> <area shape="circle" coords="355,274,10" title="MAG 5.1 18-FEB-2015 16:27:27 SOLOMON ISLANDS" onmouseover="tt(232)" onmouseout="tt(1)"> <area shape="circle" coords="285,236,10" title="MAG 5.2 18-FEB-2015 14:31:53 HALMAHERA, INDONESIA" onmouseover="tt(233)" onmouseout="tt(1)"> <area shape="circle" coords="187,144,10" title="MAG 4.3 18-FEB-2015 13:49:29 AFGHANISTAN-TAJIKISTAN BORD REG." onmouseover="tt(234)" onmouseout="tt(1)"> <area shape="circle" coords="576,215,10" title="MAG 4.5 18-FEB-2015 13:12:25 COSTA RICA" onmouseover="tt(235)" onmouseout="tt(1)"> <area shape="circle" coords="356,273,13.986" title="MAG 5.9 18-FEB-2015 09:32:26 SANTA CRUZ ISLANDS REGION" onmouseover="tt(236)" onmouseout="tt(1)"> <area shape="circle" coords="486,120,10" title="MAG 4.4 18-FEB-2015 09:04:11 WASHINGTON" onmouseover="tt(237)" onmouseout="tt(1)"> <area shape="circle" coords="311,158,10" title="MAG 4.4 18-FEB-2015 04:44:53 SOUTH OF HONSHU, JAPAN" onmouseover="tt(238)" onmouseout="tt(1)"> <area shape="circle" coords="346,268,11.016" title="MAG 5.4 18-FEB-2015 04:43:39 SOLOMON ISLANDS" onmouseover="tt(239)" onmouseout="tt(1)"> <area shape="circle" coords="389,330,10" title="MAG 4.4 18-FEB-2015 04:41:19 KERMADEC ISLANDS REGION" onmouseover="tt(240)" onmouseout="tt(1)"> <area shape="circle" coords="2,265,10" title="MAG 4.9 18-FEB-2015 03:32:21 ASCENSION ISLAND REGION" onmouseover="tt(241)" onmouseout="tt(1)"> <area shape="circle" coords="2,265,11.016" title="MAG 5.4 18-FEB-2015 02:20:37 ASCENSION ISLAND REGION" onmouseover="tt(242)" onmouseout="tt(1)"> <area shape="circle" coords="607,296,10" title="MAG 4.2 18-FEB-2015 02:16:20 SOUTHERN BOLIVIA" onmouseover="tt(243)" onmouseout="tt(1)"> <area shape="circle" coords="541,220,10" title="MAG 5.0 18-FEB-2015 01:41:12 NORTHERN EAST PACIFIC RISE" onmouseover="tt(244)" onmouseout="tt(1)"> <area shape="circle" coords="541,220,10" title="MAG 5.0 18-FEB-2015 01:16:17 NORTHERN EAST PACIFIC RISE" onmouseover="tt(245)" onmouseout="tt(1)"> <area shape="circle" coords="541,220,10" title="MAG 4.6 18-FEB-2015 00:58:00 NORTHERN EAST PACIFIC RISE" onmouseover="tt(246)" onmouseout="tt(1)"> <area shape="circle" coords="540,220,10" title="MAG 5.2 18-FEB-2015 00:48:30 NORTHERN EAST PACIFIC RISE" onmouseover="tt(247)" onmouseout="tt(1)"> <area shape="circle" coords="587,338,10" title="MAG 5.0 18-FEB-2015 00:47:24 CHILE-ARGENTINA BORDER REGION" onmouseover="tt(248)" onmouseout="tt(1)"> <area shape="circle" coords="318,137,10" title="MAG 4.0 17-FEB-2015 20:27:41 NEAR EAST COAST OF HONSHU, JAPAN" onmouseover="tt(249)" onmouseout="tt(1)"> <area shape="circle" coords="291,249,10" title="MAG 4.3 17-FEB-2015 19:55:06 IRIAN JAYA REGION, INDONESIA" onmouseover="tt(250)" onmouseout="tt(1)"> <area shape="circle" coords="360,273,10" title="MAG 4.6 17-FEB-2015 19:48:56 SANTA CRUZ ISLANDS" onmouseover="tt(251)" onmouseout="tt(1)"> <area shape="circle" coords="87,127,10" title="MAG 4.4 17-FEB-2015 19:42:53 NORTHERN ITALY" onmouseover="tt(252)" onmouseout="tt(1)"> <area shape="circle" coords="321,141,10" title="MAG 4.2 17-FEB-2015 18:51:58 OFF EAST COAST OF HONSHU, JAPAN" onmouseover="tt(253)" onmouseout="tt(1)"> <area shape="circle" coords="318,138,10" title="MAG 4.2 17-FEB-2015 18:35:18 OFF EAST COAST OF HONSHU, JAPAN" onmouseover="tt(254)" onmouseout="tt(1)"> <area shape="circle" coords="318,137,10" title="MAG 4.3 17-FEB-2015 17:00:04 OFF EAST COAST OF HONSHU, JAPAN" onmouseover="tt(255)" onmouseout="tt(1)"> <area shape="circle" coords="525,189,10" title="MAG 4.0 17-FEB-2015 16:49:53 REVILLA GIGEDO ISLANDS REGION" onmouseover="tt(256)" onmouseout="tt(1)"> <area shape="circle" coords="319,138,10.422" title="MAG 5.3 17-FEB-2015 16:33:21 OFF EAST COAST OF HONSHU, JAPAN" onmouseover="tt(257)" onmouseout="tt(1)"> <area shape="circle" coords="590,331,10" title="MAG 5.0 17-FEB-2015 14:35:54 NEAR COAST OF CENTRAL CHILE" onmouseover="tt(258)" onmouseout="tt(1)"> <area shape="circle" coords="155,162,10" title="MAG 4.5 17-FEB-2015 13:41:37 NORTHERN IRAN" onmouseover="tt(259)" onmouseout="tt(1)"> <area shape="circle" coords="607,306,10" title="MAG 4.2 17-FEB-2015 13:40:27 JUJUY PROVINCE, ARGENTINA" onmouseover="tt(260)" onmouseout="tt(1)"> <area shape="circle" coords="408,107,10" title="MAG 4.7 17-FEB-2015 13:14:23 UNIMAK ISLAND REGION" onmouseover="tt(261)" onmouseout="tt(1)"> <area shape="circle" coords="390,320,10" title="MAG 4.8 17-FEB-2015 09:11:27 KERMADEC ISLANDS REGION" onmouseover="tt(262)" onmouseout="tt(1)"> <area shape="circle" coords="384,344,10" title="MAG 5.2 17-FEB-2015 05:56:58 OFF E. COAST OF N. ISLAND, N.Z." onmouseover="tt(263)" onmouseout="tt(1)"> <area shape="circle" coords="316,137,13.392" title="MAG 5.8 17-FEB-2015 04:46:38 NEAR EAST COAST OF HONSHU, JAPAN" onmouseover="tt(264)" onmouseout="tt(1)"> <area shape="circle" coords="319,138,10" title="MAG 4.1 17-FEB-2015 04:38:41 OFF EAST COAST OF HONSHU, JAPAN" onmouseover="tt(265)" onmouseout="tt(1)"> <area shape="circle" coords="280,242,10" title="MAG 4.6 17-FEB-2015 03:23:27 NORTHERN MOLUCCA SEA" onmouseover="tt(266)" onmouseout="tt(1)"> <area shape="circle" coords="318,137,10" title="MAG 4.3 17-FEB-2015 03:23:23 OFF EAST COAST OF HONSHU, JAPAN" onmouseover="tt(267)" onmouseout="tt(1)"> <area shape="circle" coords="629,384,10.422" title="MAG 5.3 17-FEB-2015 03:06:30 SOUTH SANDWICH ISLANDS REGION" onmouseover="tt(268)" onmouseout="tt(1)"> <area shape="circle" coords="217,237,10" title="MAG 4.5 17-FEB-2015 02:48:29 OFF W COAST OF NORTHERN SUMATERA" onmouseover="tt(269)" onmouseout="tt(1)"> <area shape="circle" coords="319,138,10" title="MAG 4.2 17-FEB-2015 02:45:17 OFF EAST COAST OF HONSHU, JAPAN" onmouseover="tt(270)" onmouseout="tt(1)"> <area shape="circle" coords="318,138,10" title="MAG 4.8 17-FEB-2015 02:29:52 NEAR EAST COAST OF HONSHU, JAPAN" onmouseover="tt(271)" onmouseout="tt(1)"> <area shape="circle" coords="280,242,10" title="MAG 5.1 17-FEB-2015 02:14:58 NORTHERN MOLUCCA SEA" onmouseover="tt(272)" onmouseout="tt(1)"> <area shape="circle" coords="317,140,10" title="MAG 4.2 17-FEB-2015 01:46:50 NEAR EAST COAST OF HONSHU, JAPAN" onmouseover="tt(273)" onmouseout="tt(1)"> <area shape="circle" coords="319,138,10" title="MAG 4.4 17-FEB-2015 01:27:44 OFF EAST COAST OF HONSHU, JAPAN" onmouseover="tt(274)" onmouseout="tt(1)"> <area shape="circle" coords="318,137,10" title="MAG 4.5 17-FEB-2015 01:15:02 NEAR EAST COAST OF HONSHU, JAPAN" onmouseover="tt(275)" onmouseout="tt(1)"> <area shape="circle" coords="318,137,10" title="MAG 4.7 17-FEB-2015 00:50:02 OFF EAST COAST OF HONSHU, JAPAN" onmouseover="tt(276)" onmouseout="tt(1)"> <area shape="circle" coords="318,137,18.738" title="MAG 6.7 16-FEB-2015 23:06:27 NEAR EAST COAST OF HONSHU, JAPAN" onmouseover="tt(277)" onmouseout="tt(1)"> <area shape="circle" coords="164,258,10" title="MAG 4.6 16-FEB-2015 22:56:43 CHAGOS ARCHIPELAGO REGION" onmouseover="tt(278)" onmouseout="tt(1)"> <area shape="circle" coords="218,130,10" title="MAG 4.2 16-FEB-2015 22:46:42 NORTHERN XINJIANG, CHINA" onmouseover="tt(279)" onmouseout="tt(1)"> <area shape="circle" coords="297,253,10" title="MAG 4.6 16-FEB-2015 22:45:08 IRIAN JAYA REGION, INDONESIA" onmouseover="tt(280)" onmouseout="tt(1)"> <area shape="circle" coords="384,336,10" title="MAG 4.6 16-FEB-2015 22:34:50 SOUTH OF KERMADEC ISLANDS" onmouseover="tt(281)" onmouseout="tt(1)"> <area shape="circle" coords="604,310,10" title="MAG 4.3 16-FEB-2015 22:32:15 CHILE-ARGENTINA BORDER REGION" onmouseover="tt(282)" onmouseout="tt(1)"> <area shape="circle" coords="286,126,10" title="MAG 4.4 16-FEB-2015 22:28:48 NORTHEASTERN CHINA" onmouseover="tt(283)" onmouseout="tt(1)"> <area shape="circle" coords="629,384,15.768" title="MAG 6.2 16-FEB-2015 22:00:53 SOUTH SANDWICH ISLANDS REGION" onmouseover="tt(284)" onmouseout="tt(1)"> <area shape="circle" coords="623,201,10" title="MAG 4.4 16-FEB-2015 21:52:24 LEEWARD ISLANDS" onmouseover="tt(285)" onmouseout="tt(1)"> <area shape="circle" coords="315,184,10" title="MAG 4.3 16-FEB-2015 21:41:42 MARIANA ISLANDS REGION" onmouseover="tt(286)" onmouseout="tt(1)"> <area shape="circle" coords="334,128,10" title="MAG 4.5 16-FEB-2015 21:26:40 EAST OF KURIL ISLANDS" onmouseover="tt(287)" onmouseout="tt(1)"> <area shape="circle" coords="553,352,10" title="MAG 4.5 16-FEB-2015 21:24:20 WEST CHILE RISE" onmouseover="tt(288)" onmouseout="tt(1)"> <area shape="circle" coords="590,326,10" title="MAG 4.8 16-FEB-2015 20:33:45 NEAR COAST OF CENTRAL CHILE" onmouseover="tt(289)" onmouseout="tt(1)"> <area shape="circle" coords="361,285,10" title="MAG 4.8 16-FEB-2015 17:20:34 VANUATU ISLANDS" onmouseover="tt(290)" onmouseout="tt(1)"> <area shape="circle" coords="315,184,10" title="MAG 4.5 16-FEB-2015 16:51:32 MARIANA ISLANDS REGION" onmouseover="tt(291)" onmouseout="tt(1)"> <area shape="circle" coords="281,238,10" title="MAG 4.5 16-FEB-2015 13:22:38 NORTHERN MOLUCCA SEA" onmouseover="tt(292)" onmouseout="tt(1)"> <area shape="circle" coords="373,351,10" title="MAG 4.4 16-FEB-2015 13:14:09 COOK STRAIT, NEW ZEALAND" onmouseover="tt(293)" onmouseout="tt(1)"> <area shape="circle" coords="334,260,10" title="MAG 4.6 16-FEB-2015 13:13:58 NEW IRELAND REGION, P.N.G." onmouseover="tt(294)" onmouseout="tt(1)"> <area shape="circle" coords="111,144,10" title="MAG 4.7 16-FEB-2015 11:52:46 TURKEY" onmouseover="tt(295)" onmouseout="tt(1)"> <area shape="circle" coords="553,238,10" title="MAG 4.8 16-FEB-2015 11:52:09 WEST OF GALAPAGOS ISLANDS" onmouseover="tt(296)" onmouseout="tt(1)"> <area shape="circle" coords="263,264,10" title="MAG 5.0 16-FEB-2015 05:42:46 BALI SEA" onmouseover="tt(297)" onmouseout="tt(1)"> <area shape="circle" coords="389,301,10" title="MAG 4.5 16-FEB-2015 03:45:22 FIJI ISLANDS REGION" onmouseover="tt(298)" onmouseout="tt(1)"> <area shape="circle" coords="289,261,10" title="MAG 4.4 16-FEB-2015 03:27:58 BANDA SEA" onmouseover="tt(299)" onmouseout="tt(1)"> <area shape="circle" coords="362,362,10" title="MAG 4.4 16-FEB-2015 01:58:51 SOUTH ISLAND, NEW ZEALAND" onmouseover="tt(300)" onmouseout="tt(1)"> <area shape="circle" coords="361,285,10" title="MAG 4.7 16-FEB-2015 01:04:09 VANUATU ISLANDS" onmouseover="tt(301)" onmouseout="tt(1)"> <area shape="circle" coords="317,205,10" title="MAG 4.2 15-FEB-2015 21:40:11 MARIANA ISLANDS" onmouseover="tt(302)" onmouseout="tt(1)"> <area shape="circle" coords="577,69,10" title="MAG 4.1 15-FEB-2015 21:26:38 EASTERN GREENLAND" onmouseover="tt(303)" onmouseout="tt(1)"> <area shape="circle" coords="359,274,10" title="MAG 5.2 15-FEB-2015 21:08:43 SANTA CRUZ ISLANDS" onmouseover="tt(304)" onmouseout="tt(1)"> <area shape="rect" coords="5,396,145,412" href="http://www.iris.edu" title="Visit the IRIS Consortium web site " target="_self" onmouseover="tt(2)" onmouseout="tt(1)"> <area shape="rect" coords="575,397,715,413" href="html/utc.html" title="When was this map generated?" target="_self" onmouseover="tt(3)" onmouseout="tt(1)"> <area shape="poly" coords="303,270,326,298,335,324,323,343,313,344,300,333,275,333,261,320,266,296,280,280" title="Australia" onmouseover="tt(4)" onmouseout="tt(1)"> <area shape="poly" coords="368,344,376,331,386,331,389,337,383,351,369,357" title="New Zealand" onmouseover="tt(5)" onmouseout="tt(1)"> <area shape="circle" coords="432,187,9" title="Hawaii" onmouseover="tt(6)" onmouseout="tt(1)"> <area shape="poly" coords="170,421,548,422,593,413,556,414,562,397,275,399,150,406,138,416" title="Antarctica" onmouseover="tt(7)" onmouseout="tt(1)"> <area shape="poly" coords="20,164,41,148,68,143,79,157,93,151,109,159,111,209,130,211,112,284,98,343,59,303,48,248,36,225,12,230,2,217,8,188" title="Africa" onmouseover="tt(8)" onmouseout="tt(1)"> <area shape="poly" coords="118,205,109,156,127,134,143,134,162,172,143,193" title="Arabia" onmouseover="tt(9)" onmouseout="tt(1)"> <area shape="poly" coords="41,141,49,128,64,127,65,109,85,99,158,77,194,81,141,131,129,132,125,123,114,131,108,139,104,135,98,142,91,136,87,143,77,135,79,126,58,140" title="Europe" onmouseover="tt(10)" onmouseout="tt(1)"> <area shape="poly" coords="197,80,241,71,280,69,313,73,361,79,393,84,378,88,358,95,344,100,335,93,307,102,172,103" title="Siberia" onmouseover="tt(11)" onmouseout="tt(1)"> <area shape="poly" coords="231,104,210,180,183,218,163,172,144,132,172,103" title="Central Asia" onmouseover="tt(12)" onmouseout="tt(1)"> <area shape="poly" coords="233,104,311,103,353,101,352,111,340,126,320,158,327,193,312,208,277,209,257,228,235,240,211,182" title="Asia" onmouseover="tt(13)" onmouseout="tt(1)"> <area shape="poly" coords="226,242,235,258,270,276,310,262,309,245,276,236,260,233,251,248,238,251" title="Indonesia" onmouseover="tt(14)" onmouseout="tt(1)"> <area shape="poly" coords="227,242,238,250,250,247,259,234,256,230,244,238" title="Malaysia" onmouseover="tt(15)" onmouseout="tt(1)"> <area shape="poly" coords="262,229,277,211,320,209,307,243,264,234" title="Phillipines" onmouseover="tt(16)" onmouseout="tt(1)"> <area shape="poly" coords="312,245,339,259,313,263" title="Papua New Guinea" onmouseover="tt(17)" onmouseout="tt(1)"> <area shape="poly" coords="405,75,404,91,411,98,374,105,373,111,415,104,443,93,541,196,561,184,567,186,579,172,576,142,606,119,551,82,506,70,463,72" title="North America" onmouseover="tt(18)" onmouseout="tt(1)"> <area shape="poly" coords="596,210,621,212,677,259,652,305,567,381,558,378,598,302,585,264,566,232,576,222" title="South America" onmouseover="tt(19)" onmouseout="tt(1)"> <area shape="poly" coords="704,170,700,191,712,211,718,214,714,195" title="Africa" onmouseover="tt(20)" onmouseout="tt(1)"> <area shape="poly" coords="147,66,189,81,268,69,395,83,410,75,499,69,528,69,538,64,569,63,162,62" title="Arctic Ocean" onmouseover="tt(21)" onmouseout="tt(1)"> <area shape="poly" coords="120,291,124,308,131,311,130,288,127,277" title="Madagascar" onmouseover="tt(22)" onmouseout="tt(1)"> <area shape="poly" coords="324,266,357,295,376,325,393,333,395,284" title="Melanesia" onmouseover="tt(23)" onmouseout="tt(1)"> <area shape="poly" coords="341,259,407,275,405,291,336,268" title="Micronesia" onmouseover="tt(24)" onmouseout="tt(1)"> <area shape="poly" coords="357,113,445,96,572,220,565,241,313,243,329,190,321,155" title="North Pacific Ocean" onmouseover="tt(25)" onmouseout="tt(1)"> <area shape="poly" coords="569,243,596,303,560,376,561,394,515,408,362,413,302,399,302,331,301,243" title="South Pacific Ocean" onmouseover="tt(26)" onmouseout="tt(1)"> <area shape="poly" coords="98,341,150,405,301,400,299,334,263,329,260,304,282,278,301,272,219,243,224,221,131,213" title="Indian Ocean" onmouseover="tt(27)" onmouseout="tt(1)"> <area shape="poly" coords="131,208,161,175,183,217" title="Arabian Sea" onmouseover="tt(28)" onmouseout="tt(1)"> <area shape="poly" coords="214,182,226,219,186,217" title="Bay of Bengal" onmouseover="tt(29)" onmouseout="tt(1)"> <area shape="poly" coords="547,196,571,222,592,212,579,197,563,193,563,184" title="Central America" onmouseover="tt(30)" onmouseout="tt(1)"> <area shape="poly" coords="579,175,628,198,603,208,579,198,563,192" title="Carribbean" onmouseover="tt(31)" onmouseout="tt(1)"> <area shape="rect" coords="608,79,627,90" title="Iceland" onmouseover="tt(32)" onmouseout="tt(1)"> <area shape="poly" coords="534,70,582,92,593,92,598,78,574,65,538,66" title="Greenland" onmouseover="tt(33)" onmouseout="tt(1)"> <area shape="poly" coords="590,91,549,77,602,119,579,145,579,172,625,198,611,206,656,242,719,241,719,215,698,191,703,170,684,133,649,101,628,86,599,72" title="North Atlantic Ocean" onmouseover="tt(34)" onmouseout="tt(1)"> <area shape="poly" coords="146,65,161,72,69,106,63,124,48,128,39,146,18,164,53,113,99,80" title="North Atlantic Ocean" onmouseover="tt(35)" onmouseout="tt(1)"> <area shape="poly" coords="3,243,45,244,37,224,13,229,2,219" title="North Atlantic Ocean" onmouseover="tt(36)" onmouseout="tt(1)"> <area shape="poly" coords="2,244,46,243,60,303,84,336,143,398,87,396,45,361,14,312,2,275" title="South Atlantic Ocean" onmouseover="tt(37)" onmouseout="tt(1)"> <area shape="poly" coords="661,243,718,242,706,309,675,361,631,397,578,397,572,411,557,414,560,385,617,344,655,306,677,259" title="South Atlantic Ocean" onmouseover="tt(38)" onmouseout="tt(1)"> </map> 
+  <!--<img id="beta" src="imgs/beta_small.png"> --> 
+  <script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ ga('create', 'UA-1860730-1', 'auto');
+ ga('send', 'pageview');
+
+</script> 
+  <p style="position:relative;top:0px;font-size:1.0em;font-style:italic;margin-top:0px;">Also: <a title="Google map with millions of earthquakes to choose from" href="http://www.iris.washington.edu/ieb/index.html?nodata=404&amp;limit=900">Earthquake browser</a> with <a href="http://www.iris.washington.edu/3dv/index.html?caller=sm&amp;st=1970-01-01&amp;et=2025-01-01&amp;nma=0&amp;xma=10&amp;nde=0&amp;xde=900&amp;ob=time-desc&amp;li=1000&amp;xla=-11.955&amp;nla=-32.324&amp;xlo=-163.213&amp;nlo=170.070&amp;sbl=1&amp;pbl=1&amp;sz=med" title="A plugin-free 3D earthquakes viewer">3D viewer.</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;( <a href="http://www.iris.washington.edu/ieb/index.html?format=text&amp;nodata=404&amp;starttime=1970-01-01&amp;endtime=2025-01-01&amp;minmag=0&amp;maxmag=10&amp;mindepth=0&amp;maxdepth=900&amp;orderby=time-desc&amp;limit=900&amp;maxlat=89.74&amp;minlat=-89.74&amp;maxlon=180.00&amp;minlon=-180.00&amp;zm=1&amp;mt=ter&amp;caller=spanlnk" title="Un mapa interactivo con millones de terremotos desde 1970 hasta hoy">Navegador de Terremotos</a> con <a href="http://www.iris.washington.edu/3dv/index.html?caller=sm&amp;st=1970-01-01&amp;et=2025-01-01&amp;nma=0&amp;xma=10&amp;nde=0&amp;xde=900&amp;ob=time-desc&amp;li=1000&amp;xla=-11.955&amp;nla=-32.324&amp;xlo=-163.213&amp;nlo=170.070&amp;sbl=1&amp;pbl=1&amp;sz=med" title="Aqui puedes ver miles de terremotos en 3D">Vista 3D</a>&nbsp;&nbsp;y <a href="http://www.iris.washington.edu/latin_am/evlist.phtml?region=mundo&amp;limit=50" title="Listas y mapas de los últimos terremotos hoy en todo mundo y en américa latina">Boletines en español</a> ) 
+   <!--
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+--> </p> 
+  <div style="position:relative;top:-4px;font-size:0.8em;margin-right:20px;width:750px;"> 
+   <p>IRIS Earthquake Browser: the latest quakes, or choose up to 10 thousand from from an archive of 3.4 million, dated 1970 to minutes ago.<br> <a href="http://www.iris.washington.edu/ieb/index.html">IEB</a> also allows you to rotate quakes in <a href="http://www.iris.washington.edu/3dv/index.html?caller=sm&amp;st=1970-01-01&amp;et=2025-01-01&amp;nma=0&amp;xma=10&amp;nde=0&amp;xde=900&amp;ob=time-desc&amp;li=1000&amp;xla=-11.955&amp;nla=-32.324&amp;xlo=-163.213&amp;nlo=170.070&amp;sbl=1&amp;pbl=1&amp;sz=med" "="">3D</a> (no Flash or Java) </p> 
+   <!-- IEB:<br>
+<a href="http://www.iris.washington.edu/ieb"><img src="iebSnap.png"></a>
+<p style="font-size:0.8em;margin-right:40px;"><br>To get to the 3D interactive viewer (needs no Flash or Java), make a selection on the IEB map, and press Open as: 3D Viewer on lower right (in red below):</p>
+--> 
+   <span style="position:relative;top:-8px"> 
+    <!-- IEB thumb snap showing Fiji selected --> <a title="Enter IEB earthquake browser with 1000 earthquakes in Fiji region" href="http://www.iris.washington.edu/ieb/index.html?format=text&amp;nodata=404&amp;starttime=1970-01-01&amp;endtime=2025-01-01&amp;minmag=0&amp;maxmag=10&amp;mindepth=0&amp;maxdepth=900&amp;orderby=time-desc&amp;limit=1000&amp;maxlat=-11.955&amp;minlat=-32.324&amp;maxlon=-163.213&amp;minlon=170.070&amp;sbl=1&amp;pbl=1&amp;name=Fiji%20Tonga%20Region"> <img alt="Image of earthquake browser with 1000 quakes in Fiji region selected" src="IEBFiji.png"> </a> 
+    <!-- then Fiji in 3D viewer animated GIF --> <a title="Enter 3D Viewer with 1000 earthquakes in Fiji Region" href="http://www.iris.washington.edu/3dv/index.html?caller=sm&amp;st=1970-01-01&amp;et=2025-01-01&amp;nma=0&amp;xma=10&amp;nde=0&amp;xde=900&amp;ob=time-desc&amp;li=1000&amp;xla=-11.955&amp;nla=-32.324&amp;xlo=-163.213&amp;nlo=170.070&amp;sbl=1&amp;pbl=1&amp;sz=med"> <img alt="1000 earthquakes rotating in 3D using IRIS 3D Viewer" src="FijiRotate.gif"> </a> <p>New: 3D-compatible<br><a href="videoglobe"><img src="videoglobe/EarthRotate25x25faces.gif" height="100" width="100" title="Near realtime earthquake maps, suitable for projection on world globes or wrapping onto spheres, updated frequently"><br>Videoglobe images</a></p> </span> 
+  </div> 
+  <div id="regionLinks"> 
+   <p style="font-size:16px; font-color:white;padding:0px;margin-top:5px;margin-bottom:0px;">Zoom Maps</p> 
+   <div class="regionLink"> 
+    <a class="btn" title="The latest earthquakes in Africa in Seismic Monitor" href="zoom/index.phtml?rgn=Africa">Africa</a> 
+   </div> 
+   <div class="regionLink"> 
+    <a class="btn" title="The latest earthquakes in Australia and New Zealand in Seismic Monitor" href="zoom/index.phtml?rgn=Australia_NZ">Australia/NZ</a> 
+   </div> 
+   <div class="regionLink"> 
+    <a class="btn" title="The latest earthquakes in Central America in Seismic Monitor" href="zoom/index.phtml?rgn=Central_America">Ctrl America</a> 
+   </div> 
+   <div class="regionLink"> 
+    <a class="btn" title="The latest earthquakes in Central Asia in Seismic Monitor" href="zoom/index.phtml?rgn=Central_Asia">Ctrl Asia</a> 
+   </div> 
+   <div class="regionLink"> 
+    <a class="btn" title="The latest earthquakes in Europe in Seismic Monitor" href="zoom/index.phtml?rgn=Europe">Europe</a> 
+   </div> 
+   <div class="regionLink"> 
+    <a class="btn" title="The latest earthquakes in the Indian Ocean region in Seismic Monitor" href="zoom/index.phtml?rgn=Indian_Ocean">Indian Ocean</a> 
+   </div> 
+   <div class="regionLink"> 
+    <a class="btn" title="The latest earthquakes in North America in Seismic Monitor" href="zoom/index.phtml?rgn=N_America">N America</a> 
+   </div> 
+   <div class="regionLink"> 
+    <a class="btn" title="The latest earthquakes in the Northern Atlantic ocean region in Seismic Monitor" href="zoom/index.phtml?rgn=N_Atlantic">N Atlantic</a> 
+   </div> 
+   <div class="regionLink"> 
+    <a class="btn" title="The latest earthquakes in the Northern Pacific ocean region in Seismic Monitor" href="zoom/index.phtml?rgn=N_Pacific">N Pacific</a> 
+   </div> 
+   <div class="regionLink"> 
+    <a class="btn" title="The latest earthquakes in the Polynesia region in Seismic Monitor" href="zoom/index.phtml?rgn=Polynesia">Polynesia</a> 
+   </div> 
+   <div class="regionLink"> 
+    <a class="btn" title="The latest earthquakes in South America in Seismic Monitor" href="zoom/index.phtml?rgn=S_America">S America</a> 
+   </div> 
+   <div class="regionLink"> 
+    <a class="btn" title="The latest earthquakes in the Southern Atlantic ocean region in Seismic Monitor" href="zoom/index.phtml?rgn=S_Atlantic">S Atlantic</a> 
+   </div> 
+   <div class="regionLink"> 
+    <a class="btn" title="The latest earthquakes in the Southern Pacific ocean region in Seismic Monitor" href="zoom/index.phtml?rgn=S_Pacific">S Pacific</a> 
+   </div> 
+   <div class="regionLink"> 
+    <a class="btn" title="The latest earthquakes in southern Southeast Asia" href="zoom/index.phtml?rgn=S_SE_Asia">S SE Asia</a> 
+   </div> 
+  </div> 
+  <!-- for temporary use in making sitemap.xml file,
+     and so crawlers can find zoom region pages.
+
+     2/17/15: update: regions are now linked to 
+     with normal HREF A elements so should not need:
+<a style='color:white;' title='Seismic Monitor, earthquakes today near lat=-75,lon=-170' href='zoom/index.phtml?lat=-75&lon=-170'>Quakes at lat=-75,lon=</a><br><a style='color:white;' title='Seismic Monitor, earthquakes today near lat=-35,lon=-170' href='zoom/index.phtml?lat=-35&lon=-170'>Quakes at lat=-35,lon=</a><br><a style='color:white;' title='Seismic Monitor, earthquakes today near lat=5,lon=-170' href='zoom/index.phtml?lat=5&lon=-170'>Quakes at lat=5,lon=</a><br><a style='color:white;' title='Seismic Monitor, earthquakes today near lat=45,lon=-170' href='zoom/index.phtml?lat=45&lon=-170'>Quakes at lat=45,lon=</a><br><a style='color:white;' title='Seismic Monitor, earthquakes today near lat=-75,lon=-120' href='zoom/index.phtml?lat=-75&lon=-120'>Quakes at lat=-75,lon=</a><br><a style='color:white;' title='Seismic Monitor, earthquakes today near lat=-35,lon=-120' href='zoom/index.phtml?lat=-35&lon=-120'>Quakes at lat=-35,lon=</a><br><a style='color:white;' title='Seismic Monitor, earthquakes today near lat=5,lon=-120' href='zoom/index.phtml?lat=5&lon=-120'>Quakes at lat=5,lon=</a><br><a style='color:white;' title='Seismic Monitor, earthquakes today near lat=45,lon=-120' href='zoom/index.phtml?lat=45&lon=-120'>Quakes at lat=45,lon=</a><br><a style='color:white;' title='Seismic Monitor, earthquakes today near lat=-75,lon=-70' href='zoom/index.phtml?lat=-75&lon=-70'>Quakes at lat=-75,lon=</a><br><a style='color:white;' title='Seismic Monitor, earthquakes today near lat=-35,lon=-70' href='zoom/index.phtml?lat=-35&lon=-70'>Quakes at lat=-35,lon=</a><br><a style='color:white;' title='Seismic Monitor, earthquakes today near lat=5,lon=-70' href='zoom/index.phtml?lat=5&lon=-70'>Quakes at lat=5,lon=</a><br><a style='color:white;' title='Seismic Monitor, earthquakes today near lat=45,lon=-70' href='zoom/index.phtml?lat=45&lon=-70'>Quakes at lat=45,lon=</a><br><a style='color:white;' title='Seismic Monitor, earthquakes today near lat=-75,lon=-20' href='zoom/index.phtml?lat=-75&lon=-20'>Quakes at lat=-75,lon=</a><br><a style='color:white;' title='Seismic Monitor, earthquakes today near lat=-35,lon=-20' href='zoom/index.phtml?lat=-35&lon=-20'>Quakes at lat=-35,lon=</a><br><a style='color:white;' title='Seismic Monitor, earthquakes today near lat=5,lon=-20' href='zoom/index.phtml?lat=5&lon=-20'>Quakes at lat=5,lon=</a><br><a style='color:white;' title='Seismic Monitor, earthquakes today near lat=45,lon=-20' href='zoom/index.phtml?lat=45&lon=-20'>Quakes at lat=45,lon=</a><br><a style='color:white;' title='Seismic Monitor, earthquakes today near lat=-75,lon=30' href='zoom/index.phtml?lat=-75&lon=30'>Quakes at lat=-75,lon=</a><br><a style='color:white;' title='Seismic Monitor, earthquakes today near lat=-35,lon=30' href='zoom/index.phtml?lat=-35&lon=30'>Quakes at lat=-35,lon=</a><br><a style='color:white;' title='Seismic Monitor, earthquakes today near lat=5,lon=30' href='zoom/index.phtml?lat=5&lon=30'>Quakes at lat=5,lon=</a><br><a style='color:white;' title='Seismic Monitor, earthquakes today near lat=45,lon=30' href='zoom/index.phtml?lat=45&lon=30'>Quakes at lat=45,lon=</a><br><a style='color:white;' title='Seismic Monitor, earthquakes today near lat=-75,lon=80' href='zoom/index.phtml?lat=-75&lon=80'>Quakes at lat=-75,lon=</a><br><a style='color:white;' title='Seismic Monitor, earthquakes today near lat=-35,lon=80' href='zoom/index.phtml?lat=-35&lon=80'>Quakes at lat=-35,lon=</a><br><a style='color:white;' title='Seismic Monitor, earthquakes today near lat=5,lon=80' href='zoom/index.phtml?lat=5&lon=80'>Quakes at lat=5,lon=</a><br><a style='color:white;' title='Seismic Monitor, earthquakes today near lat=45,lon=80' href='zoom/index.phtml?lat=45&lon=80'>Quakes at lat=45,lon=</a><br><a style='color:white;' title='Seismic Monitor, earthquakes today near lat=-75,lon=130' href='zoom/index.phtml?lat=-75&lon=130'>Quakes at lat=-75,lon=</a><br><a style='color:white;' title='Seismic Monitor, earthquakes today near lat=-35,lon=130' href='zoom/index.phtml?lat=-35&lon=130'>Quakes at lat=-35,lon=</a><br><a style='color:white;' title='Seismic Monitor, earthquakes today near lat=5,lon=130' href='zoom/index.phtml?lat=5&lon=130'>Quakes at lat=5,lon=</a><br><a style='color:white;' title='Seismic Monitor, earthquakes today near lat=45,lon=130' href='zoom/index.phtml?lat=45&lon=130'>Quakes at lat=45,lon=</a><br>-->   
+ </body>
+</html>

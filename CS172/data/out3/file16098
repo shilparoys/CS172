@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html class="mobile home">
+ <head> 
+  <title>Tufts Alumni</title> 
+  <meta charset="utf-8"> 
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1" name="viewport"> 
+  <!-- jQuery Mobile theming --> 
+  <link rel="stylesheet" href="/mobile_assets/themes/tufts_mobile.min.css"> 
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile.structure-1.1.0.min.css"> 
+  <link rel="stylesheet" href="/css/mobile.css"> 
+  <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
+  <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script> 
+  <script type="text/javascript">
+
+	// removing all excess wysiwyg styles for inline content
+	function fixContentStyles() {
+		var $generic_content = $('html.generic .inner');
+		if ( $generic_content.length ) {
+			$generic_content.find('img, div, :header, p, table').removeAttr('width height style align');
+			$generic_content.find('iframe[src*="youtube"], iframe[src*=vimeo]').remove();
+			$generic_content.find('p:has(img[src*=alumwk])').remove();
+		}
+	}
+
+	function navGridSizing( $grid ) {
+		var width = 0;
+
+		$grid.each(function(){
+			width = $(this).width();
+			$icons_normal = $(this).find('.icon:not(.portrait, .ignore)');
+			$icons_portrait = $(this).find('.icon.portrait:not(.ignore)');
+
+			$(this).height(width).find('.btn-inner').height(.85 * width);
+			$icons_portrait.find('> span img').height(.30 * width).width((.30 * width) * .66);
+			$icons_normal.find('> span').height(.30 * width).find('img').width(.30 * width);				
+		});
+	}
+
+	function homeNavGrid() {
+
+		var $nav_grid = $('html.home div.nav-grid > a');
+
+  		window.onorientationchange = function() {
+			navGridSizing( $nav_grid );
+		};
+
+		if ( $nav_grid.length )
+			navGridSizing( $nav_grid );
+
+	}
+
+	$(function(){
+		
+		fixContentStyles();
+		homeNavGrid();
+
+	});
+	</script> 
+ </head> 
+ <body> 
+  <div data-theme="a" data-role="page"> 
+   <div class="inner"> 
+    <div class="header "> 
+     <a href="/m/" title="Tufts Alumni" class="logo"><img src="/images/layout/mobile_logo.png" alt="Tufts Alumni"></a> 
+    </div> 
+    <!--<div class="content">
+				<p class="flexible">
+					It's December 2―#GivingTuesday! Help us meet our challenge today and we'll shout you out on our Facebook and Twitter pages! <a href="http://tuftsalumni.org/m/news-detail/3136/">Find out more about the challenge and how you can get involved.</a>
+ 
+				</p>--> 
+    <div class="nav-grid"> 
+     <a href="/m/alumni-events/" data-transition="slide"> 
+      <div class="btn-inner">
+        Alumni Events 
+       <div class="icon">
+        <span><img src="/images/layout/m_alumni_events.png" alt="Alumni Events Calendar"></span>
+       </div> 
+      </div> </a> 
+     <a href="/m/reunion-homecoming" class="smaller"> 
+      <div class="btn-inner">
+        Reunion and Homecoming 
+       <div class="icon">
+        <span><img src="/images/layout/reunion_and_homecoming.png" alt="Reunion and Homecoming"></span>
+       </div> 
+      </div> </a> 
+     <a href="/m/alumni-news"> 
+      <div class="btn-inner">
+        Alumni News 
+       <div class="icon">
+        <span><img src="/images/layout/m_alumni_news.png" alt="Alumni Events Calendar"></span>
+       </div> 
+      </div> </a> 
+     <a href="/m/contact-us/" data-transition="slide"> 
+      <div class="btn-inner">
+        Contact Us 
+       <div class="icon portrait">
+        <span><img src="/images/layout/m_contact_us.png" alt="Contact Us"></span>
+       </div> 
+      </div> </a> 
+     <a href="https://www.alumniconnections.com/olc/membersonly/TUF/old/mdirectory.cgi" data-transition="slide"> 
+      <div class="btn-inner">
+        Search for Alumni 
+       <div class="icon">
+        <span><img src="/images/layout/m_search_for_alumni.png" alt="Search for Alumni"></span>
+       </div> 
+      </div> </a> 
+     <a href="http://m.tufts.edu/news/" rel="external"> 
+      <div class="btn-inner">
+        University News 
+       <div class="icon">
+        <span><img src="/images/layout/m_university_news.png" alt="Alumni Events Calendar"></span>
+       </div> 
+      </div> </a> 
+     <a href="http://m.tufts.edu/calendar/" rel="external"> 
+      <div class="btn-inner">
+        University Events 
+       <div class="icon">
+        <span><img src="/images/layout/m_university_events.png" alt="Alumni Events Calendar"></span>
+       </div> 
+      </div> </a> 
+     <a href="http://gotuftsjumbos.com/landing/index" rel="external"> 
+      <div class="btn-inner">
+        Athletics 
+       <div class="icon">
+        <span><img src="/images/layout/m_athletics.png" alt="Alumni Events Calendar"></span>
+       </div> 
+      </div> </a> 
+     <a href="https://www.facebook.com/tuftsalumni" rel="external"> 
+      <div class="btn-inner">
+        Facebook 
+       <div class="icon">
+        <span><img src="/images/layout/m_facebook.png" alt="Facebook"></span>
+       </div> 
+      </div> </a> 
+     <a href="http://twitter.com/#!/TuftsAlumni" rel="external"> 
+      <div class="btn-inner">
+        Twitter 
+       <div class="icon ignore">
+        <span><img src="/images/layout/m_twitter.png" alt="Twitter" style="width:30%;max-width:32px;"></span>
+       </div> 
+      </div> </a> 
+     <a href="http://instagram.com/tuftsalumni" rel="external"> 
+      <div class="btn-inner">
+        Instagram 
+       <div class="icon ignore">
+        <span><img src="/images/uploads/instagram.png" alt="Instagram" style="width:30%;max-width:32px;"></span>
+       </div> 
+      </div> </a> 
+     <a href="http://www.linkedin.com/groups?gid=35653" rel="external"> 
+      <div class="btn-inner">
+        LinkedIn 
+       <div class="icon ignore">
+        <span><img src="/images/layout/m_linkedin.png" alt="LinkedIn" style="width:30%;max-width:32px;"></span>
+       </div> 
+      </div> </a> 
+     <a href="http://www.youtube.com/user/TuftsAlumni" rel="external"> 
+      <div class="btn-inner">
+        YouTube 
+       <div class="icon ignore">
+        <span><img src="/images/layout/m_youtube.png" alt="YouTube" style="width:30%;max-width:32px;"></span>
+       </div> 
+      </div> </a> 
+     <a href="http://giving.tufts.edu/givenow" rel="external"> 
+      <div class="btn-inner">
+        Make a Gift 
+       <div class="icon ignore">
+        <span><img src="/images/uploads/make_a_gift.png" alt="Make a Gift" style="width:30%;max-width:32px;"></span>
+       </div> 
+      </div> </a> 
+    </div> 
+    <div class="footer"> 
+     <a href="/m/disable" data-ajax="false">View full site</a> 
+    </div> 
+   </div> 
+  </div>  
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-10915719-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>   
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-10915719-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script> 
+ </body>
+</html>

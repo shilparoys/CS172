@@ -1,0 +1,625 @@
+<html>
+ <head> 
+  <title>Assembled and Active Source Datasets Inventory : IRIS</title> 
+  <meta http-equiv="Content-Type" content="text/html; charset=macintosh"> 
+  <meta name="description" content="This form is for querying the database for information about available data sets in non-SEED format (assembled sets). Many of these data sets are from active source experiments."> 
+  <meta name="keywords" content="assembled data, active source data"> 
+  <script language="JavaScript" src="form_verify.js"> </script> 
+  <script language="JavaScript" type="text/JavaScript">
+var MSIE=navigator.userAgent.indexOf("MSIE"); 
+var NETS=navigator.userAgent.indexOf("Netscape"); 
+var OPER=navigator.userAgent.indexOf("Opera"); 
+ 
+function setAreaPreset( )
+{
+   var list=document.customForm.region_presets;
+   var area=list.options[list.selectedIndex].value;
+   //alert("Feature Not Yet Active:\nRegion lat / lons would be set to: "+area);
+   switch (area) {
+   case "default" : setArea(90,-90,180,-180);break;
+   case "europe" :
+     setArea(75,30,45,-20);break;
+   case "northamerica" :
+     setArea(80,20,-45,-165);break;
+   case "arcticcircle" :
+     setArea(90,70,180,-180);break;
+   case "asia" :
+     setArea(55,5,150,45);break;
+   case "siberia" : // N.Asia
+     setArea(80,45,180,40);break;
+   case "indonesia" :
+     setArea(25,-15,180,90);break;
+   case "australianz" :
+     setArea(-5,-55,-170,105);break;
+   case "africa" :
+     setArea(40,-40,60,-30);break;
+   case "indianocean" :
+     setArea(25,-60,135,-20);break;
+   case "mideast" :
+     setArea(45,10,75,20);break;
+   case "carribean" :
+     setArea(35,10,-60,-90);break;
+   case "centralamerica" :
+     setArea(30,0,-45,-105);break;
+   case "southamerica" :
+     setArea(15,-60,-30,-90);break;
+   case "pacificocean" :
+     setArea(60,-70,-80,130);break;
+   case "northpacific" :
+     setArea(60,0,-90,130);break;
+   case "southpacific" :
+     setArea(0,-70,-75,135);break;
+   case "atlanticocean" :
+     setArea(60,-70,10,-70);break;
+   case "northatlantic" :
+     setArea(60,0,0,-80);break;
+   case "southatlantic" :
+     setArea(0,-70,20,-65);break;
+   case "arcticcircle" :
+     setArea(0,65,180,-180);break;
+   case "antarctic" :
+     setArea(-65,-90,180,-180);break;
+   }
+   return;
+}
+function setArea(n,s,e,w) {
+  document.customForm.north.value=n;
+  document.customForm.south.value=s;
+  document.customForm.east.value=e;
+  document.customForm.west.value=w;
+  }
+function setChecked( checkBox )
+{
+   checkBox.checked=true;
+}
+
+function checkBoxes( f, which ) 
+{
+   if(which == "all") {    
+       f.IDcheck.checked = true;
+ 	   f.dsFullCheck.checked = true;
+   	   f.dsShortCheck.checked = true;
+	   f.formatCheck.checked = true;
+ 	   f.typeCheck.checked = true;
+ 	   f.keywordsCheck.checked = true;
+ 	   f.pisCheck.checked = true;
+ 	   f.notesCheck.checked = true;
+ 	   f.urlsCheck.checked = true;
+ 	   f.noFilesCheck.checked = true;
+	   f.appTotSizeCheck.checked = true;
+	   f.excRestrDSCheck.checked = true;
+	   f.yearCheck.checked = true;
+   }
+   else {
+       f.IDcheck.checked = true; 
+ 	   f.dsFullCheck.checked = false;
+   	   f.dsShortCheck.checked = false;
+	   f.formatCheck.checked = false;
+ 	   f.typeCheck.checked = false;
+ 	   f.keywordsCheck.checked = false;
+ 	   f.pisCheck.checked = false;
+ 	   f.notesCheck.checked = false;
+ 	   f.urlsCheck.checked = false;
+ 	   f.noFilesCheck.checked = false;
+	   f.excRestrDSCheck.checked = false;
+	   f.appTotSizeCheck.checked = false;
+	   f.yearCheck.checked = false;
+   }
+}
+
+function validateAndSubmit( f )
+{
+    //alert("the value of mode is: "+theForm.mode.value);
+	var chkIDnum = f.IDcheck.checked;
+	var IDnum = f.idnum.value;
+	var chkDSfull = f.dsFullCheck.checked;
+	var fullname = f.fullname.value;
+	var chkDSshort = f.dsShortCheck.checked;
+	var chkFormat = f.formatCheck.checked;
+	var format = f.format.value;
+	var chkYear = f.yearCheck.checked;
+        //alert("checks: "+chkYear +chkIDnum+chkDSshort+chkFormat);
+	var startYr = f.startYr.value;
+	var endYr = f.endYr.value;
+	var chkType = f.typeCheck.checked;
+	var type = f.type.value;
+	var chkKeys = f.keywordsCheck.checked;
+	var keyWds = f.keywords.value;
+	var chkPIs = f.pisCheck.checked;
+	var PINames = f.PInames.value;
+	var chkNotes = f.notesCheck.checked;
+	var notes = f.notes.value;
+	var chkURLs = f.urlsCheck.checked;
+	var URLs = f.urls.value;
+	var chkNoFiles = f.noFilesCheck.checked;
+	var noFiles = f.noFiles.value;
+	var chkAppTotSize = f.appTotSizeCheck.value;
+	var excRestrDSCheck = f.excRestrDSCheck.checked;
+	var excRestr = f.excRestr.value; 
+	var east = parseInt(f.east.value);
+	var west = parseInt(f.west.value);
+	var north = parseInt(f.north.value);
+	var south = parseInt(f.south.value);
+	//alert(chkIDnum+" "+chkDSfull+" "+chkDSshort+" "+chkFormat+" "+chkYear+" "+chkType);
+	if(chkIDnum   ==false && chkDSfull ==false && 
+	   chkDSshort ==false && chkFormat ==false && 
+	   chkYear    ==false && chkType   ==false && 
+	   chkKeys    ==false && chkPIs    ==false && 
+	   chkNotes   ==false && chkURLs   ==false &&
+	   chkNoFiles ==false && chkAppTotSize==false ) {
+	     alert("If you don't check one or more checkboxes\nyou are not including any fields in your report!");
+		 return(false);
+		 }
+		 	 
+/*
+	//alert('chkIDnum is: '+chkIDnum.checked);
+	if( IDnum != "" && chkIDnum == ""  )
+	{
+			alert("report no. field is non-null. Do you mean to check its box?" );
+		        setChecked( f.IDcheck );
+			return(false);
+	}
+*/
+ 
+	if ( chkYear != "" ) {
+	  val1 = parseInt( startYr );
+	  val2= parseInt( endYr );
+	  if( isNaN( val1 ) == true || isNaN( val2 ) == true ) {
+	     alert("One of the date fields ("+val1+"-"+val2+") is not a valid 4-digit year.");
+	     return(false);
+	  }
+	  if( (val2 < val1) || (val1 < 1900) || (val1 > 2599) || (val2 < 1900) || (val2 > 2599) ) {
+	     alert("Your dates are invalid. Too high, too low, in wrong order.");
+	     return(false);
+	  }
+	}
+	if( isNaN( west ) == true || isNaN( east ) == true || 
+	   isNaN( north ) == true || isNaN( south ) == true ) {
+	   alert("One of the lat / lon fields is not a valid number.");
+	   return(false);
+	}
+
+	if( (north > 90) || (south < -90) || (south >= north) ) {
+		 alert("Your north/south lat/lons are invalid. Please check and try again.");
+			 return(false);
+	}
+	f.east.value = east;
+	f.west.value = west;
+	f.north.value = north;
+	f.south.value = south;
+
+	//alert("west "+west+"east "+east +"north "+north+" south"+south);
+
+	f.submit();
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; 
+    if(d.images){ 
+       if(!d.MM_p) d.MM_p=new Array();
+       var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+       if (a[i].indexOf("#")!=0){ 
+          d.MM_p[j]=new Image; 
+          d.MM_p[j++].src=a[i];
+       }
+    }
+}
+
+
+// IAGT 2007
+//Called to launch coordinate getter in popup
+function getCoordsFromMap() {
+//Open map as popup
+window.open('IAGT/CoordinateAcquisitionTool/coordinateGetter.html','name','height=600,width=532,toolbar=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no');
+//return false;
+}
+
+// IAGT 2007
+//This is called from the popup
+function enterCoords(north,south,east,west) {
+        document.getElementById("north").value = north;
+        document.getElementById("south").value = south;
+        document.getElementById("east").value = east;
+        document.getElementById("west").value = west;
+}
+
+</script> 
+ </head> 
+ <body bgcolor="#ffffff" link="#003366" vlink="#006666" onload="MM_preloadImages('sqnavbar.05.04/sqnavbar.05.04_r1_c1_f2.gif',
+                         'sqnavbar.05.04/sqnavbar.05.04_r1_c2_f2.gif',
+                         'sqnavbar.05.04/sqnavbar.05.04_r1_c3_f2.gif',
+                         'sqnavbar.05.04/sqnavbar.05.04_r1_c4_f2.gif',
+                         'sqnavbar.05.04/sqnavbar.05.04_r1_c5_f2.gif',
+                         'sqnavbar.05.04/sqnavbar.05.04_r1_c6_f2.gif',
+                         'sqnavbar.05.04/sqnavbar.05.04_r1_c7_f2.gif',
+                         'sqnavbar.05.04/sqnavbar.05.04_r1_c8_f2.gif',
+                         'sqnavbar.05.04/sqnavbar.05.04_r1_c9_f2.gif',
+                         'sqnavbar.05.04/sqnavbar.05.04_r2_c2_f2.gif',
+                         'sqnavbar.05.04/sqnavbar.05.04_r2_c3_f2.gif',
+                         'sqnavbar.05.04/sqnavbar.05.04_r2_c4_f2.gif',
+                         'sqnavbar.05.04/sqnavbar.05.04_r2_c5_f2.gif',
+                         'sqnavbar.05.04/sqnavbar.05.04_r2_c6_f2.gif',
+                         'sqnavbar.05.04/sqnavbar.05.04_r2_c7_f2.gif',
+                         'sqnavbar.05.04/sqnavbar.05.04_r2_c8_f2.gif',
+                         'sqnavbar.05.04/sqnavbar.05.04_r2_c9_f2.gif');"> 
+  <table width="700" border="1" align="CENTER"> 
+   <tbody>
+    <tr> 
+     <td> 
+      <div align="center"> 
+       <script language="JavaScript">
+<!--
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+ var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+   var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+   if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_nbGroup(event, grpName) { //v6.0  added by Russ so Excel button can work
+  var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : ((args[i+1])? args[i+1] : img.MM_up);
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) {
+      img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    nbArr = document[grpName];
+    if (nbArr)
+      for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = (args[i+1])? args[i+1] : img.MM_up;
+      nbArr[nbArr.length] = img;
+  } }
+}
+
+
+//-->
+</script>  
+       <table width="679" border="0" align="center" cellpadding="0" cellspacing="0"> 
+        <!-- fwtable fwsrc="sq_navbar_05.04.png" fwbase="sqnavbar.05.04.gif" fwstyle="Dreamweaver" fwdocid = "742308039" fwnested="0" --> 
+        <tbody>
+         <tr> 
+          <td><img src="sqnavbar.05.04/spacer.gif" width="40" height="1" border="0" alt=""></td> 
+          <td><img src="sqnavbar.05.04/spacer.gif" width="85" height="1" border="0" alt=""></td> 
+          <td><img src="sqnavbar.05.04/spacer.gif" width="73" height="1" border="0" alt=""></td> 
+          <td><img src="sqnavbar.05.04/spacer.gif" width="87" height="1" border="0" alt=""></td> 
+          <td><img src="sqnavbar.05.04/spacer.gif" width="96" height="1" border="0" alt=""></td> 
+          <td><img src="sqnavbar.05.04/spacer.gif" width="87" height="1" border="0" alt=""></td> 
+          <td><img src="sqnavbar.05.04/spacer.gif" width="72" height="1" border="0" alt=""></td> 
+          <td><img src="sqnavbar.05.04/spacer.gif" width="81" height="1" border="0" alt=""></td> 
+          <td><img src="sqnavbar.05.04/spacer.gif" width="58" height="1" border="0" alt=""></td> 
+          <td><img src="sqnavbar.05.04/spacer.gif" width="1" height="1" border="0" alt=""></td> 
+         </tr> 
+         <tr> 
+          <td rowspan="2"><a href="." target="_top" onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage('sqnavbar0504_r1_c1',
+'',
+'http://www.iris.edu/images/icons/SQ-icon-sm2.jpg',1);"><img name="sqnavbar0504_r1_c1" src="http://www.iris.edu/images/icons/SQ-icon-sm.jpg" width="48" height="48" border="0" alt="SQ" hspace="3"></a></td> 
+          <td><a href="./summaries.htm" target="_top" onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage('sqnavbar0504_r1_c2','','sqnavbar.05.04/sqnavbar.05.04_r1_c2_f2.gif',1);"><img name="sqnavbar0504_r1_c2" src="sqnavbar.05.04/sqnavbar.05.04_r1_c2.gif" width="85" height="22" border="0" alt="summaries"></a></td> 
+          <td><a href="./by_station.html" target="_top" onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage('sqnavbar0504_r1_c3','','sqnavbar.05.04/sqnavbar.05.04_r1_c3_f2.gif',1);"><img name="sqnavbar0504_r1_c3" src="sqnavbar.05.04/sqnavbar.05.04_r1_c3.gif" width="73" height="22" border="0" alt="by station"></a></td> 
+          <td><a href="./by_network.html" target="_top" onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage('sqnavbar0504_r1_c4','','sqnavbar.05.04/sqnavbar.05.04_r1_c4_f2.gif',1);"><img name="sqnavbar0504_r1_c4" src="sqnavbar.05.04/sqnavbar.05.04_r1_c4.gif" width="87" height="22" border="0" alt="by network"></a></td> 
+          <td><a href="./timeseries.htm" target="_top" onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage('sqnavbar0504_r1_c5','','sqnavbar.05.04/sqnavbar.05.04_r1_c5_f2.gif',1);"><img name="sqnavbar0504_r1_c5" src="sqnavbar.05.04/sqnavbar.05.04_r1_c5.gif" width="96" height="22" border="0" alt="by timeseries"></a></td> 
+          <td><a href="./virtual_net.htm" target="_top" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('sqnavbar0504_r1_c6','','./sqnavbar.05.04/sqnavbar.05.04_r1_c6_f2.gif',1)"><img name="sqnavbar0504_r1_c6" src="sqnavbar.05.04/sqnavbar.05.04_r1_c6.gif" width="87" height="22" border="0" alt="virtual networks"></a></td> 
+          <td><a href="./breq_fast.phtml" target="_top" onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage('sqnavbar0504_r1_c7','','sqnavbar.05.04/sqnavbar.05.04_r1_c7_f2.gif',1);"><img name="sqnavbar0504_r1_c7" src="sqnavbar.05.04/sqnavbar.05.04_r1_c7.gif" width="72" height="22" border="0" alt="breq_fast"></a></td> 
+          <td><img name="sqnavbar0504_r1_c8" src="sqnavbar.05.04/sqnavbar.05.04_r1_c8.gif" width="81" height="22" border="0" alt="weed"></td> 
+          <td><a href="./help.html" target="resultsFrame" onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage('sqnavbar0504_r1_c9','','sqnavbar.05.04/sqnavbar.05.04_r1_c9_f2.gif',1);"><img name="sqnavbar0504_r1_c9" src="sqnavbar.05.04/sqnavbar.05.04_r1_c9.gif" width="58" height="22" border="0" alt="help"></a></td> 
+          <td><img src="sqnavbar.05.04/spacer.gif" width="1" height="22" border="0" alt=""></td> 
+         </tr> 
+         <tr> 
+          <td><a href="./channel.htm" target="_top" onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage('sqnavbar0504_r2_c2','','sqnavbar.05.04/sqnavbar.05.04_r2_c2_f2.gif',1);"><img name="sqnavbar0504_r2_c2" src="sqnavbar.05.04/sqnavbar.05.04_r2_c2.gif" width="85" height="23" border="0" alt="channels"></a></td> 
+          <td><a href="./station.htm" target="_top" onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage('sqnavbar0504_r2_c3','','sqnavbar.05.04/sqnavbar.05.04_r2_c3_f2.gif',1);"><img name="sqnavbar0504_r2_c3" src="sqnavbar.05.04/sqnavbar.05.04_r2_c3.gif" width="73" height="23" border="0" alt="stations"></a></td> 
+          <td><a href="./responses.htm" target="_top" onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage('sqnavbar0504_r2_c4','','sqnavbar.05.04/sqnavbar.05.04_r2_c4_f2.gif',1);"><img name="sqnavbar0504_r2_c4" src="sqnavbar.05.04/sqnavbar.05.04_r2_c4.gif" width="87" height="23" border="0" alt="responses"></a></td> 
+          <td><a href="./tempNets.phtml" target="_top" onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage('sqnavbar0504_r2_c5','','sqnavbar.05.04/sqnavbar.05.04_r2_c5_f2.gif',1);"><img name="sqnavbar0504_r2_c5" src="sqnavbar.05.04/sqnavbar.05.04_r2_c5.gif" width="96" height="23" border="0" alt="emporary networks"></a></td> 
+          <td><a href="./assembled.phtml" target="_top" onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage('sqnavbar0504_r2_c6','','sqnavbar.05.04/sqnavbar.05.04_r2_c6_f2.gif',1);"><img name="sqnavbar0504_r2_c6" src="sqnavbar.05.04/sqnavbar.05.04_r2_c6.gif" width="87" height="23" border="0" alt="assembled"></a></td> 
+          <td><a href="./events.htm" target="_top" onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage('sqnavbar0504_r2_c7','','sqnavbar.05.04/sqnavbar.05.04_r2_c7_f2.gif',1);"><img name="sqnavbar0504_r2_c7" src="sqnavbar.05.04/sqnavbar.05.04_r2_c7.gif" width="72" height="23" border="0" alt="events"></a></td> 
+          <td><a href="./comments.htm" target="_top" onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage('sqnavbar0504_r2_c8','','sqnavbar.05.04/sqnavbar.05.04_r2_c8_f2.gif',1);"><img name="sqnavbar0504_r2_c8" src="sqnavbar.05.04/sqnavbar.05.04_r2_c8.gif" width="81" height="23" border="0" alt="comments"></a></td> 
+          <td><a href="./sql.htm" target="_top" onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage('sqnavbar0504_r2_c9','','sqnavbar.05.04/sqnavbar.05.04_r2_c9_f2.gif',1);"><img name="sqnavbar0504_r2_c9" src="sqnavbar.05.04/sqnavbar.05.04_r2_c9.gif" width="58" height="23" border="0" alt="SQL"></a></td> 
+          <td><img src="sqnavbar.05.04/spacer.gif" width="1" height="23" border="0" alt=""></td> 
+         </tr> 
+        </tbody>
+       </table> 
+      </div> </td> 
+    </tr> 
+    <tr align="center"> 
+     <td> <h3><strong>View Assembled/Active Source Dataset Inventory</strong> <br> </h3> </td> 
+    </tr> 
+    <tr> 
+     <td align="center" bgcolor="#CCCCCC"> Select from these options: 
+      <!--form name="shortForm" method="post" enctype="application/x-www-form-urlencoded"action="/cgi-bin/seismiquery/bin/assembled.pl?mode=short"--> 
+      <form name="shortForm" method="post" enctype="application/x-www-form-urlencoded" action="/mda#adata"> 
+       <h3> <input name="session_mode" type="hidden" id="session_mode" value="new"> <input name="mode" type="hidden" id="dbg4" value="short"> 
+        <table> 
+         <tbody>
+          <tr> 
+           <td> 
+            <ul align="left"> 
+             <li type="circle"> Short description of all <input name="go_short" type="submit" id="go_short" value="View Results"> </li> 
+             <li type="circle"> To request assembled go <a href="/data/assembled_request.phtml">here</a> </li> 
+             <li type="circle"> To request PH5 go <a href="/data/ph5">here</a> </li> 
+            </ul> </td> 
+          </tr> 
+         </tbody>
+        </table> </h3> 
+      </form> <strong>-- OR --</strong> </td> 
+    </tr> 
+   </tbody>
+  </table> 
+  <form action="/cgi-bin/seismiquery/bin/assembled.pl?mode=custom" method="post" name="customForm" id="assemForm"> 
+   <table border="0" cellpadding="0" cellspacing="0"> 
+    <tbody>
+     <tr> 
+      <td colspan="6" align="center" valign="middle"> <h3> <input name="session_mode" type="hidden" id="session_mode" value="new"> <input name="mode" type="hidden" id="mode" value="custom"> Query and Request</h3></td> 
+      <td rowspan="8" valign="top"> 
+       <table width="60%" border="0" cellpadding="0" cellspacing="0"> 
+        <tbody>
+         <tr> 
+          <td width="282" height="217" valign="top"> 
+           <table align="left"> 
+            <tbody>
+             <tr align="center" valign="top" bgcolor="#FFFFFF"> 
+              <td height="25" colspan="3" <font="" size="-5">Region Presets: <select name="region_presets" id="nw_regions" onchange="setAreaPreset();"> <option value="default" selected>Anywhere</option> <option value="europe">Europe</option> <option value="asia">Asia</option> <option value="siberia">N.Asia/Siberia</option> <option value="indonesia">Indonesia</option> <option value="australianz">Australia-NZ</option> <option value="africa">Africa</option> <option value="indianocean">Indian Ocean</option> <option value="mideast">Middle East</option> <option value="carribean">Carribbean</option> <option value="northamerica">North America</option> <option value="centralamerica">Central America</option> <option value="southamerica">South America</option> <option value="pacificocean">Pacific Ocean</option> <option value="northpacific">North Pacific Ocean</option> <option value="southpacific">South Pacific Ocean</option> <option value="atlanticocean">Atlantic Ocean</option> <option value="northatlantic">North Atlantic Ocean</option> <option value="southatlantic">South Atlantic Ocean</option> <option value="arcticcircle">Arctic Circle</option> <option value="antarctic">Antarctic Circle</option> </select> </td> 
+             </tr> 
+             <tr align="center" valign="middle" bgcolor="#FFFFFF"> 
+              <td height="25" colspan="3">Optional: Enter<strong> <br> region</strong> here:</td> 
+             </tr> 
+             <tr> 
+              <td width="58" height="50" align="right" valign="bottom" nowrap bgcolor="#FFFFFF">&nbsp;</td> 
+              <td width="60" align="center" valign="bottom" bgcolor="#CCCCCC"> NORTH <input name="north" type="text" id="north" value="90" size="4" maxlength="4"> </td> 
+              <td width="67" align="left" valign="middle" nowrap bgcolor="#FFFFFF">&nbsp;</td> 
+             </tr> 
+             <tr bgcolor="#CCCCCC"> 
+              <td align="right"> WEST <input name="west" type="text" id="west" value="-180" size="4" maxlength="4"> </td> 
+              <td valign="middle" align="center" bgcolor="#FFFFFF"> <a href="javascript:getCoordsFromMap();"><img src="IAGT/CoordinateAcquisitionTool/globe.gif" alt="Get Coordinates from Map" style="border:0" title="Get Coordinates from Map" width="64" height="64"></a></td> 
+              <td align="left"> EAST <input name="east" type="text" id="east" value="180" size="4" maxlength="4"> </td> 
+             </tr> 
+             <tr> 
+              <td height="50" align="right" valign="middle" nowrap bgcolor="#FFFFFF">&nbsp;</td> 
+              <td align="center" valign="top" bgcolor="#CCCCCC">SOUTH <input name="south" type="text" id="south" value="-90" size="4" maxlength="4"> </td> 
+              <td valign="top" nowrap bgcolor="#FFFFFF">&nbsp;</td> 
+             </tr> 
+            </tbody>
+           </table></td> 
+         </tr> 
+        </tbody>
+       </table> </td>
+     </tr>
+     <tr> 
+      <td colspan="6" align="center" valign="middle"> Checked boxes are included in results, edited fields are case-sensitive search filters. Select sort order with radio button, then press View Results below.</td> 
+     </tr> 
+     <tr> 
+      <td align="right" valign="middle" nowrap>report no.</td> 
+      <td align="center" valign="middle"> <input name="IDcheck" type="checkbox" id="IDcheck" checked></td> 
+      <td align="left" valign="middle"> <input name="radiobutton" type="radio" onclick="setChecked(this.form.IDcheck);" value="idnum" checked></td> 
+      <td colspan="3" align="left" valign="middle"> <input name="idnum" type="text" id="idnum" size="18" maxlength="24"> </td> 
+     </tr> 
+     <tr> 
+      <td align="right" valign="middle" nowrap>dataset name</td> 
+      <td align="center" valign="middle"> <input name="dsFullCheck" type="checkbox" id="dsFullCheck" checked></td> 
+      <td valign="middle"><input name="radiobutton" type="radio" onclick="setChecked(this.form.dsFullCheck)" value="dsnamefull"></td> 
+      <td colspan="3" valign="middle"> <input name="fullname" type="text" id="fullname" size="32" maxlength="32"></td> 
+     </tr> 
+     <tr> 
+      <td align="right" valign="middle" nowrap>nick name</td> 
+      <td align="center" valign="middle"> <input name="dsShortCheck" type="checkbox" id="dsShortCheck" checked></td> 
+      <td align="left" valign="middle"><input type="radio" name="radiobutton" onclick="setChecked(this.form.dsShortCheck)" value="dsnameshort"></td> 
+      <td colspan="3" align="left" valign="middle"> <input name="shortname" type="text" id="shortname" size="18" maxlength="24"> </td> 
+     </tr> 
+     <tr> 
+      <td align="right" valign="middle" nowrap> format</td> 
+      <td align="center" valign="middle"> <input name="formatCheck" type="checkbox" id="formatCheck" checked></td> 
+      <td valign="middle"><input type="radio" name="radiobutton" onclick="setChecked(this.form.formatCheck)" value="format"></td> 
+      <td colspan="3" valign="middle"> <select name="format" id="format"> <option value="ANY" selected> ANY </option> <option value="AH">AH</option> <option value="CSS">CSS</option> <option value="CSS3.0">CSS3.0</option> <option value="IMS">IMS</option> <option value="MATLAB">MATLAB</option> <option value="MSEED">MSEED</option> <option value="None">None</option> <option value="NONE">NONE</option> <option value="PH5">PH5</option> <option value="PSEGY">PSEGY</option> <option value="RAW">RAW</option> <option value="SAC">SAC</option> <option value="SAC/MINISE">SAC/MINISE</option> <option value="SAC/TAR">SAC/TAR</option> <option value="SAC/UNIX">SAC/UNIX</option> <option value="SEED">SEED</option> <option value="SEG2">SEG2</option> <option value="SEG-2">SEG-2</option> <option value="SEGY">SEGY</option> <option value="SEGY ">SEGY </option> <option value="SEGY  ">SEGY </option> <option value="SEGY/TAR">SEGY/TAR</option> <option value="TRD">TRD</option> <option value="UPD">UPD</option> <option value="VAX">VAX</option> </select> </td> 
+     </tr> 
+     <tr> 
+      <td align="right" valign="middle" nowrap>years</td> 
+      <td align="center" valign="middle"> <input name="yearCheck" type="checkbox" id="yearCheck" checked></td> 
+      <td align="left" valign="middle"><input type="radio" name="radiobutton" onclick="setChecked(this.form.yearCheck)" value="year"></td> 
+      <td colspan="3" align="left" valign="middle"> <input name="startYr" type="text" id="startYr" value="1900" size="6" maxlength="4"> through <input name="endYr" type="text" id="endYr" value="2599" size="6" maxlength="4"> </td> 
+     </tr> 
+     <tr> 
+      <td align="right" valign="middle" nowrap>type</td> 
+      <td align="center" valign="middle"> <input name="typeCheck" type="checkbox" id="typeCheck" checked> </td> 
+      <td valign="middle"><input type="radio" name="radiobutton" onclick="setChecked(this.form.typeCheck)" value="type"></td> 
+      <td colspan="3" valign="middle"> <select name="type" id="type"> <option value="ANY"> ANY </option> <option value="BLACKNEST">BLACKNEST</option> <option value="CERI">CERI</option> <option value="DOE">DOE</option> <option value="DSS">DSS</option> <option value="GSN">GSN</option> <option value="IDA/USGS">IDA/USGS</option> <option value="JSP">JSP</option> <option value="LDEO">LDEO</option> <option value="NASA">NASA</option> <option value="None">None</option> <option value="OBSIP">OBSIP</option> <option value="OBSIP-SIO">OBSIP-SIO</option> <option value="OTHER">OTHER</option> <option value="PASSCAL">PASSCAL</option> <option value="PASSCAL/USGS">PASSCAL/USGS</option> <option value="PASSCAL/UTEP">PASSCAL/UTEP</option> <option value="PGE">PGE</option> <option value="PIC">PIC</option> <option value="PIC-FA">PIC-FA</option> <option value="PNE">PNE</option> <option value="SAFOD">SAFOD</option> <option value="SEISUK">SEISUK</option> <option value="SEIS-UK">SEIS-UK</option> <option value="UALR">UALR</option> <option value="UCOPENHAGEN">UCOPENHAGEN</option> <option value="UNR-DOE">UNR-DOE</option> <option value="USDOI">USDOI</option> <option value="US-FA">US-FA</option> <option value="USGS">USGS</option> <option value="USGS/WHOI">USGS/WHOI</option> </select></td> 
+     </tr> 
+     <tr> 
+      <td align="right" valign="middle" nowrap>description keyword(s)</td> 
+      <td align="center" valign="middle"> <input name="keywordsCheck" type="checkbox" id="keywordsCheck" checked></td> 
+      <td align="left" valign="middle">&nbsp;</td> 
+      <td colspan="4" align="left" valign="middle" nowrap> <input name="keywords" type="text" id="keywords" size="34" maxlength="36"> <font size="-1"> up to 3, comma-separated, acting as OR</font></td> 
+     </tr> 
+     <tr> 
+      <td align="right" valign="middle" nowrap>PI name(s)</td> 
+      <td align="center" valign="middle"> <input name="pisCheck" type="checkbox" id="pisCheck"></td> 
+      <td valign="middle">&nbsp;</td> 
+      <td colspan="4" valign="middle" nowrap> <input name="PInames" type="text" id="PInames" size="34" maxlength="36"> <font size="-1"> up to 3, comma-separated, acting as OR</font></td> 
+     </tr> 
+     <tr> 
+      <td align="right" valign="middle" nowrap>notes</td> 
+      <td align="center" valign="middle"> <input name="notesCheck" type="checkbox" id="notesCheck" checked></td> 
+      <td valign="middle">&nbsp;</td> 
+      <td colspan="4" valign="middle" nowrap> <input name="notes" type="text" id="notes" size="34" maxlength="36"> <font size="-1">avoid punctuation; may include links to OBSIP files</font></td> 
+     </tr> 
+     <tr> 
+      <td align="right" valign="middle" nowrap>written report URL</td> 
+      <td align="center" valign="middle"> <input name="urlsCheck" type="checkbox" id="urlsCheck" checked></td> 
+      <td valign="middle">&nbsp;</td> 
+      <td colspan="4" valign="middle" nowrap> <input name="urls" type="text" id="urls" size="34" maxlength="34"> <font size="-1">1 only. may not include links to OBSIP files</font></td> 
+     </tr> 
+     <tr> 
+      <td align="right" valign="middle" nowrap>no. of files</td> 
+      <td align="center" valign="middle"> <input name="noFilesCheck" type="checkbox" id="noFilesCheck" checked></td> 
+      <td valign="middle"><input type="radio" name="radiobutton" onclick="setChecked(this.form.noFilesCheck)" value="nofiles"></td> 
+      <td colspan="3" valign="middle"> <input name="noFiles" type="text" id="noFiles" size="8" maxlength="12"></td> 
+      <td>&nbsp;</td> 
+     </tr> 
+     <tr> 
+      <td align="right" valign="middle" nowrap>app. total size (MB) </td> 
+      <td align="center" valign="middle"> <input name="appTotSizeCheck" type="checkbox" id="appTotSizeCheck" checked></td> 
+      <td valign="middle" nowrap><input type="radio" name="radiobutton" onclick="setChecked(this.form.appTotSizeCheck)" value="apptotsize"></td> 
+      <td colspan="3" valign="middle" nowrap> <input name="appTotSize" type="text" id="appTotSize" size="8" maxlength="8"> +/- <input name="sizePlusMinus" type="text" id="sizePlusMinus" value="10" size="4" maxlength="4"> (MB) </td> 
+      <td>&nbsp;</td> 
+     </tr> 
+     <tr> 
+      <td align="right" valign="middle" nowrap>restricted </td> 
+      <td align="center" valign="middle"> <input name="excRestrDSCheck" type="checkbox" id="excRestrDSCheck"></td> 
+      <td>&nbsp;</td> 
+      <td colspan="2" valign="middle"> <select name="excRestr" id="excRestr"> <option value="Y" selected>Y</option> <option value="N">N</option> </select> </td> 
+     </tr> 
+     <tr> 
+      <td align="right" valign="middle" nowrap><input name="CheckOneBoxBtn" type="button" id="CheckOneBoxBtn" onclick="checkBoxes(document.customForm,&quot;one&quot;);" value="Uncheck All"> <input name="SelectAllBtn" type="button" id="SelectAllBtn" onclick="checkBoxes(document.customForm,&quot;all&quot;);" value="Check All"> </td> 
+      <td align="center" valign="middle">&nbsp;</td> 
+      <td valign="middle">&nbsp;</td> 
+      <td align="center" valign="middle" bgcolor="#CCCCCC"> <input name="submitit" type="button" onclick="validateAndSubmit(this.form);" value="View Results"> </td> 
+      <td valign="middle">&nbsp;</td> 
+      <td align="left" valign="middle"> <input name="FormResetBtn" type="reset" id="FormResetBtn2" value="Reset Form" "=""> </td> 
+      <td>&nbsp;</td> 
+     </tr> 
+    </tbody>
+   </table> 
+  </form> 
+  <p>&nbsp;</p> 
+  <p>Short description example:</p> 
+  <table width="100%" border="0"> 
+   <tbody>
+    <tr> 
+     <th width="56"> start year</th> 
+     <th width="54"> end year</th> 
+     <th width="90"> report no.</th> 
+     <th width="301"> name</th> 
+     <th width="64"> nick name</th> 
+     <th width="70"> type</th> 
+     <th width="42"> restr icted </th>
+     <th width="91"> format</th> 
+    </tr> 
+    <tr bgcolor="#CCCCCC"> 
+     <td>1979</td> 
+     <td>1979</td> 
+     <td>00-001</td> 
+     <td>1979 Bucaramanga, Columbia Experiment</td> 
+     <td>BCE</td> 
+     <td>PASSCAL</td> 
+     <td>
+      <center>
+        N
+      </center></td> 
+     <td>SEGY</td> 
+    </tr>
+    <tr> 
+     <td>1982</td> 
+     <td>1982</td> 
+     <td>99-004</td> 
+     <td>Kilauea Rift Zone</td> 
+     <td>RIFT</td> 
+     <td>PASSCAL</td> 
+     <td>
+      <center>
+        N
+      </center></td> 
+     <td>SEGY</td> 
+    </tr>
+   </tbody>
+  </table> 
+  <p>&nbsp;</p> 
+  <p>Custom query example:</p> 
+  <table width="100%" border="1" cellspacing="0" cellpadding="2" bgcolor="#CCCCCC"> 
+   <tbody>
+    <tr> 
+     <th width="25%">report no.</th> 
+     <td>90-001</td> 
+    </tr> 
+    <tr> 
+     <th width="25%">name</th> 
+     <td>Passcal Basin and Range Passive-Source Seismic Experiment Part 1</td> 
+    </tr> 
+    <tr> 
+     <th width="25%">nickname</th> 
+     <td>BRE1</td> 
+    </tr> 
+    <tr> 
+     <th width="25%">format</th> 
+     <td>SAC</td> 
+    </tr> 
+    <tr> 
+     <th width="25%">start year</th> 
+     <td>1988</td> 
+    </tr> 
+    <tr> 
+     <th width="25%">end year</th> 
+     <td>1989</td> 
+    </tr> 
+    <tr> 
+     <th width="25%">type</th> 
+     <td>PASSCAL</td> 
+    </tr> 
+    <tr> 
+     <th width="25%">description</th> 
+     <td>No description provided.</td> 
+    </tr> 
+    <tr> 
+     <th width="25%">PI(s)</th> 
+     <td>George Randall, Tom Owens</td> 
+    </tr> 
+    <tr> 
+     <th width="25%">notes</th> 
+     <td></td> 
+    </tr> 
+    <tr> 
+     <th width="25%">report URL</th> 
+     <td><a href="/data/reports/1990">http://www.iris.edu/data/reports/1990</a></td> 
+    </tr> 
+    <tr> 
+     <th width="25%">num files</th> 
+     <td></td> 
+    </tr> 
+    <tr> 
+     <th width="25%">approx size</th> 
+     <td></td> 
+    </tr> 
+    <tr> 
+     <th width="25%">restricted?</th> 
+     <td>N</td> 
+    </tr> 
+    <tr> 
+     <th width="25%"><b>request data URL</b></th> 
+     <td><a href="/data/assembled_request.phtml?report_num=90-001">http://www.iris.edu/data/assembled_request.phtml?report_num=90-001</a></td> 
+    </tr> 
+   </tbody>
+  </table> 
+  <hr noshade> 
+  <p align="center" class="small"><a href="./index.html" target="_top">SeismiQuery home</a> | <a href="./summaries.htm" target="_top">summaries</a> | <a href="./by_station.html" target="_top">by station</a> | <a href="./by_network.html" target="_top">by network</a> | <a href="./timeseries.htm" target="_top">by timeseries</a> | <a href="./virtual_net.htm" target="_top">virtual nets</a> | <a href="./breq_fast.phtml" target="_top">breq_fast</a> 
+   <!-- | <a href="./weed.htm" target="_top">WEED</a> --> <br> <a href="./channel.htm" target="_top">channels</a> | <a href="./station.htm" target="_top">stations</a> | <a href="./responses.htm" target="_top">responses</a> | <a href="./tempNets.phtml" target="_top">temp networks</a> | <a href="./assembled.phtml" target="_top">assembled</a> | <a href="./events.htm" target="_top">events</a> | <a href="./comments.htm" target="_top">comments</a><br> <br> <a href="./help.html" target="_top">help</a> | <a href="./SQ_tables.html">database tables</a> | <a href="./SQ_defs.html" target="_top">definitions</a></p> 
+  <p align="center" class="small"><a href="/index.htm" target="_top">IRIS Home</a></p>   
+ </body>
+</html>

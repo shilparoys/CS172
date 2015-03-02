@@ -1,0 +1,335 @@
+<!--?xml version="1.0" encoding="utf-8"?--><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <title>UCR Campus Map</title> 
+  <link rel="stylesheet" type="text/css" href="http://www.ucr.edu/css/design6.css" media="all"> 
+  <link rel="stylesheet" type="text/css" href="http://www.ucr.edu/css/dkblue6.css" media="all"> 
+  <link rel="stylesheet" type="text/css" href="http://www.ucr.edu/css/print6.css" media="print"> 
+  <link rel="stylesheet" type="text/css" href="/campusmap.css"> 
+  <!--[if lte IE 6]>
+<link rel="stylesheet" type="text/css" href="http://www.ucr.edu/css/ie6.css" media="all" />
+<style type="text/css">
+div#main { width: 214px; }
+</style>
+<![endif]--> 
+  <!--[if lt IE 7]>
+<script defer type="text/javascript" src="//www.ucr.edu/pngfix.js"></script>
+<![endif]--> 
+  <style type="text/css">#masthead { background: #1b316c url(http://www.ucr.edu/images/design6/masthead_arches_dkblue.jpg) center bottom no-repeat; }</style> 
+  <script src="scriptaculous/lib/prototype.js" type="text/javascript"></script> 
+  <script src="scriptaculous/src/scriptaculous.js" type="text/javascript"></script> 
+  <script src="mapControls.js" type="text/javascript"></script> 
+  <script type="text/javascript">
+// <![CDATA[
+var flags = new Array();
+//setUpFlagArray initializes array for flags based on size of database
+function setUpFlagArray(){
+flags[0] =0;flags[1] =0;flags[2] =0;flags[3] =0;flags[4] =0;flags[5] =0;flags[6] =0;flags[7] =0;flags[8] =0;flags[9] =0;}
+//handleUpdateBuildCode updates map location from coordinates from ajax call
+function handleUpdateBuildCode(){
+	var http = buildTimer.getHttpObj();
+	if (http.readyState == 4) {
+		if (http.responseText.indexOf('invalid') == -1) {
+			var data = http.responseText;
+			if(data != 'none'){
+				var temp = data.split('&&&');
+				var coords = temp[2].split(',');
+				moveToBuild(coords[0],coords[1]);
+				updateTitle(temp[0],temp[1],temp[3]);
+			}
+			else{
+				alert('Invalid building code.');
+			}
+    	}
+	}
+}
+//updateBuildingCode retrieves building coordinates from database
+function updateBuildingCode(){
+	var code = document.getElementById('buildCode').value;
+	if(code != ''){
+		code = escape(code);
+		var url = "ajaxBuildCode.php?myCode="+code;
+		buildTimer.initTimer(url,handleUpdateBuildCode);
+		buildTimer.startTimer();
+//		http.open("GET", url, true);
+//   		http.onreadystatechange = handleUpdateBuildCode;
+//   		http.send(null);
+	}
+}
+//updateBuildingView sends ajax call to building database
+function updateBuildingView(){
+	//database call to retrieve building coords
+	var index = document.getElementById('buildID').value;
+	if(index != 'blank'){
+		var url = "ajaxBuildData.php?index="+index;
+		buildTimer.initTimer(url,handleHttpResponseInfo);
+		buildTimer.startTimer();
+//		http.open("GET", url, true);
+//   		http.onreadystatechange = handleHttpResponseInfo;
+//   		http.send(null);
+	}
+	else{
+	var oldZoom = zoom;
+		zoom = 0;
+		updateZoom(oldZoom,0,0);
+	}
+}
+//handleHttpResponseInfo gets coordinates of building from database
+function handleHttpResponseInfo(){
+	var http = buildTimer.getHttpObj();
+	if (http.readyState == 4) {
+		if (http.responseText.indexOf('invalid') == -1) {
+			var data = http.responseText.split('&&&');
+			var coords = data[2].split(',');
+			moveToBuild(coords[0],coords[1]);
+			updateTitle(data[0],data[1],data[3]);
+    	}
+	}
+}
+function hideTitle(){
+	document.getElementById('buildTitle').innerHTML = ' ';
+}
+function updateTitle(name,number,abrev){
+	var title = document.getElementById('buildTitle');
+	title.innerHTML = number+' - '+name+'  ('+abrev+')';
+}
+function setBuild(){
+}
+// ]]>
+</script> 
+ </head> 
+ <body onload="showBuildList(); setUpFlagArray(); showFlags(-1,'layout'); setBuild();" onkeyup="keyCap(event)"> 
+  <div class="pagewrapper"> 
+   <ul class="accessibility"> 
+    <li><a href="#main" onfocus="location.href(this.href); return false;" accesskey="2">Skip Navigation</a></li> 
+    <li><a href="http://campusmap.ucr.edu/" onfocus="location.href(this.href); return false;" accesskey="1">Home Page</a></li> 
+    <!--li><a href="/about/accessibility.asp" onfocus="location.href(this.href); return false;" accesskey="0">Accessibility Statement</a></li--> 
+   </ul> 
+   <hr class="accessibility"> 
+   <div id="brandingbar"> 
+    <div class="overlay">
+     <img src="http://www.ucr.edu/images/design6/bell_tower.png" alt="">
+    </div> 
+    <h2><a href="http://www.ucr.edu" title="UCR Home Page"><img src="http://www.ucr.edu/images/design6/ucr_logo.gif" width="150" height="53" alt="UCR" title="UCR Home page"></a></h2> 
+   </div> 
+  </div> 
+  <div id="masthead"> 
+   <h1><a href="http://campusmap.ucr.edu/" title="Campus Map"><img src="/images/Campus Map.gif" height="70"></a></h1> 
+  </div> 
+  <div class="breadcrumbs"> 
+   <p><strong class="arrowBar">Search By </strong><label for="buildCode">Building Abbreviation:</label> <input type="text" size="5" id="buildCode" name="buildCode" value=""> <input type="button" id="mapitButton" value="Map It!" onclick="updateBuildingCode();">&nbsp;&nbsp; <label for="buildID">Building Name: </label><select id="buildID" name="buildID" onchange="updateBuildingView();"> <option value="blank">Full View</option> <option value="9">Aberdeen-Inverness Residence Hall</option><option value="56">Agricultural Operations</option><option value="21">Alumni &amp; Visitors Center</option><option value="52">Anderson Hall</option><option value="22">Arts Building</option><option value="128">Athletics &amp; Dance Building (formerly Physical Ed)</option><option value="13">Bannockburn Village</option><option value="66">Barn Group / University Club</option><option value="42">Batchelor Hall</option><option value="74">Bell Tower</option><option value="81">Biological Sciences</option><option value="38">Biomedical Teaching Complex</option><option value="27">Bookstore</option><option value="48">Botanic Gardens</option><option value="28">Bourns Hall (Engineering)</option><option value="39">Boyce Hall</option><option value="59">Boyden Laboratories</option><option value="2">Canyon Crest Family Student Housing</option><option value="51">Chapman Hall</option><option value="117">CHASS Interdisciplinary Building North</option><option value="118">CHASS Interdisciplinary Building South</option><option value="34">Chemical Sciences</option><option value="4">Child Development Center</option><option value="54">College Building North</option><option value="55">College Building South</option><option value="72">Commons (now Highlander Union Building)</option><option value="44">Computing &amp; Communications</option><option value="6">Corporation Yard</option><option value="71">Costo Hall</option><option value="29">Engineering 2</option><option value="60">Entomology</option><option value="50">Entomology Research Museum</option><option value="53">Environmental Health &amp; Safety</option><option value="45">Fawcett Laboratory</option><option value="126">Genomics Building</option><option value="76">Geology Building</option><option value="32">Glen Mor Apartments</option><option value="41">Greenhouses</option><option value="47">Headhouse (greenhouses)</option><option value="46">Herbarium</option><option value="18">Highlander Hall</option><option value="123">Highlander Union Building (formerly Commons)</option><option value="68">Hinderaker Hall</option><option value="12">Housing Administration</option><option value="17">Human Resources</option><option value="64">Humanities</option><option value="67">Humanities &amp; Social Sciences Building</option><option value="115">Humanities 1500</option><option value="49">Insectary &amp; Quarantine Facility</option><option value="19">International Village Apartments</option><option value="114">Keen, Noel Hall</option><option value="5">KUCR Radio</option><option value="79">Life Science Building</option><option value="113">Life Sciences 1500</option><option value="31">Lothian Residence Hall</option><option value="127">Materials Science &amp; Engineering</option><option value="63">Olmsted Hall</option><option value="125">Orbach Science Library</option><option value="82">Parking Lot 1</option><option value="92">Parking Lot 10</option><option value="93">Parking Lot 11</option><option value="94">Parking Lot 12</option><option value="95">Parking Lot 13</option><option value="96">Parking Lot 14</option><option value="97">Parking Lot 15</option><option value="124">Parking Lot 19</option><option value="83">Parking Lot 1A</option><option value="84">Parking Lot 2</option><option value="119">Parking Lot 20</option><option value="98">Parking Lot 21</option><option value="99">Parking Lot 22</option><option value="100">Parking Lot 24</option><option value="101">Parking Lot 25</option><option value="116">Parking Lot 26</option><option value="85">Parking Lot 3</option><option value="102">Parking Lot 30</option><option value="103">Parking Lot 31</option><option value="86">Parking Lot 4</option><option value="87">Parking Lot 5</option><option value="88">Parking Lot 6</option><option value="89">Parking Lot 7</option><option value="90">Parking Lot 8</option><option value="91">Parking Lot 9</option><option value="7">Parking Services</option><option value="8">Pentland Hills</option><option value="112">Performance Lab Arts 166</option><option value="24">Physical Education Building (now Athletics &amp; Dance)</option><option value="104">Physical Education Field</option><option value="111">Physical Education Pool</option><option value="110">Physics 2000</option><option value="36">Physics Building</option><option value="75">Pierce Hall</option><option value="120">Pierce Hall Annex</option><option value="11">Police Facility</option><option value="62">Psychology Building</option><option value="78">Rivera Library</option><option value="43">Satellite Chiller Plant</option><option value="77">Science Laboratories 1</option><option value="35">Science Library (now Orbach Science Library)</option><option value="80">Spieth Hall</option><option value="69">Sproul Hall</option><option value="37">Statistics Building</option><option value="61">Steam Plant (Central Utility Plant)</option><option value="1">Stonehaven Apartments</option><option value="10">Student Recreation Center</option><option value="122">Student Services Building</option><option value="109">Studio Theatre Arts 113</option><option value="25">Surge Facility</option><option value="20">Telephone Building</option><option value="105">Track Stadium</option><option value="16">UCR Extension Center</option><option value="3">UCR/City Sports Center</option><option value="65">University Cottage</option><option value="58">University Laboratory Building</option><option value="26">University Lecture Hall</option><option value="57">University Office Building</option><option value="14">University Plaza Apartments</option><option value="108">University Theatre / Humanities 400</option><option value="15">University Village</option><option value="107">University Village Theatre</option><option value="33">USDA Salinity Laboratory</option><option value="30">Veitch Student Center (Health Center)</option><option value="106">Watkins 1000 Recital Hall</option><option value="70">Watkins Hall</option><option value="40">Webber Hall</option> </select> </p> 
+  </div> 
+  <div class="pagewrapper"> 
+   <div id="search"> 
+    <div id="nav_utility"> 
+     <ul> 
+      <li class="announce_imp"><a href="imap/index.html">New UCR Map 
+        <!--sup>Beta</sup--></a></li> 
+      <li><a href="/map-color.pdf">Large-Format Printable Map</a></li> 
+      <li><a href="/map.pdf">8½×11 Printable Map</a></li> 
+      <li><a href="/directions.php">Directions to UCR Campus</a></li> 
+      <li><a href="JavaScript:toggleHelp()">Help</a></li> 
+     </ul> 
+    </div> 
+   </div> 
+   <div id="content"> 
+    <h3 id="buildTitle"></h3> 
+    <!-- Start Sidebar --> 
+    <div id="sidebar"> 
+     <div id="zoomDiv" onmousedown="hideTitle();"> 
+      <img id="map" src="images/bground.gif"> 
+      <img id="carts" src="images/CampusMapCarts.gif" style="display:none;"> 
+      <img id="parkingLots" src="images/CampusMapLots.gif" style="display:none;"> 
+      <img id="texttype" src="images/text.gif"> 
+      <div id="ajaxFlags" onmouseover="setTarget(this);" onmouseout="clearTarget(this);" onmouseup="endDrag();" onmousedown="startDrag(this,event);" onmousemove="moveMapDrag(this,event);"></div> 
+     </div> 
+     <div class="bar">
+      <strong class="arrowBar">Select a Building</strong>
+     </div> 
+     <div id="buildsListing"></div> 
+    </div> 
+    <hr class="accessibility"> 
+    <!-- End Sidebar --> 
+    <!-- Start Content Area --> 
+    <div id="main"> 
+     <div id="miniMap"> 
+      <img id="miniMapImg" src="images/bground.gif"> 
+      <div id="miniMapCover" onmousedown="startMiniDrag(this,event);hideTitle();" onmouseup="endMiniDrag(this,event)" onmousemove="moveDrag(this,event)"></div> 
+      <div id="locator" style="background:#2D6CC0 url('images/spacer.gif'); border:1px solid #000000; opacity: .45; filter:alpha(opacity=65); left:0px; top:0px; position:absolute; width:149px; height:149px;" onmousedown="startMiniDrag(this,event);hideTitle();" onmouseup="endMiniDrag()" onmousemove="moveDragLocator(this,event)"></div> 
+     </div> 
+     <div id="zoomBar" onclick="zoomBar(this,event);" onmousedown="hideTitle();"> 
+      <div id="zoomSlider" onclick="zoomSlider();" onmousedown="hideTitle();"></div> 
+     </div> 
+     <div class="clear"></div> 
+     <div id="mapLegend"> 
+      <h3>Legend</h3> 
+      <table> 
+       <tbody>
+        <tr>
+         <td><img class="jlink" src="images/off.gif" onclick="showFlags(0,'layout'); toggleOnOff(this,0);"></td>
+         <td>Emergency Call Boxes</td>
+         <td><img src="images/types/sm_emergency_phone_icon.gif"></td>
+        </tr>
+        <tr>
+         <td><img class="jlink" src="images/off.gif" onclick="showFlags(1,'layout'); toggleOnOff(this,1);"></td>
+         <td>Parking Permit Dispensers</td>
+         <td><img src="images/types/sm_parking_dispenser_icon.gif"></td>
+        </tr>
+        <tr>
+         <td><img class="jlink" src="images/off.gif" onclick="showFlags(2,'layout'); toggleOnOff(this,2);"></td>
+         <td>RTA Bus Stops</td>
+         <td><img src="images/types/sm_rta_bus_icon.gif"></td>
+        </tr>
+        <tr>
+         <td><img class="jlink" src="images/off.gif" onclick="showFlags(3,'layout'); toggleOnOff(this,3);"></td>
+         <td>Highlander Shuttle Stops</td>
+         <td><img src="images/types/sm_hauler_icon.gif"></td>
+        </tr>
+        <tr>
+         <td><img class="jlink" src="images/off.gif" onclick="showFlags(4,'layout'); toggleOnOff(this,4);"></td>
+         <td>Events</td>
+         <td><img src="images/types/sm_event_icon.gif"></td>
+        </tr>
+        <tr>
+         <td><img class="jlink" src="images/off.gif" onclick="showFlags(5,'layout'); toggleOnOff(this,5);"></td>
+         <td>Disabled Parking</td>
+         <td><img src="images/types/sm_parking_disable_icon.gif"></td>
+        </tr>
+        <tr>
+         <td><img class="jlink" src="images/off.gif" onclick="showFlags(6,'layout'); toggleOnOff(this,6);"></td>
+         <td>Construction</td>
+         <td><img src="images/types/sm_construction_icon.gif"></td>
+        </tr>
+        <tr>
+         <td><img class="jlink" src="images/off.gif" onclick="showFlags(7,'layout'); toggleOnOff(this,7);"></td>
+         <td>Kiosk</td>
+         <td><img src="images/types/sm_kiosk_icon.gif"></td>
+        </tr>
+        <tr>
+         <td><img class="jlink" src="images/off.gif" onclick="showFlags(8,'layout'); toggleOnOff(this,8);"></td>
+         <td>Dining Services</td>
+         <td><img src="images/types/sm_dining_icon.gif"></td>
+        </tr>
+        <tr>
+         <td><img class="jlink" src="images/off.gif" onclick="showFlags(9,'layout'); toggleOnOff(this,9);"></td>
+         <td>ATMs</td>
+         <td><img src="images/types/sm_atm_icon.gif"></td>
+        </tr> 
+        <tr>
+         <td><a class="jlink" href="JavaScript:toggleDisplay('carts');"><img src="images/off.gif" id="cartst" alt=""></a></td>
+         <td>Carts Prohibited</td>
+         <td><img src="images/legend_carts_prohibited.gif" alt="Carts Prohibited"></td>
+        </tr> 
+        <tr>
+         <td><a class="jlink" href="JavaScript:toggleDisplay('parkingLots');"><img src="images/off.gif" id="parkingLotst" alt=""></a></td>
+         <td><a href="http://www.parking.ucr.edu/index.php?content=parking_information/rules.html">Parking Lots</a></td>
+         <td><img src="images/legend_parking.gif" alt="Parking Lots"></td>
+        </tr> 
+        <tr>
+         <td></td>
+         <td>Blue Permit Parking</td>
+         <td><img src="images/legend_blue_permit.gif" alt="Blue Permit Parking"></td>
+        </tr> 
+        <tr>
+         <td></td>
+         <td>Red Permit Parking</td>
+         <td><img src="images/legend_red_permit.gif" alt="Red Permit Parking"></td>
+        </tr> 
+        <tr>
+         <td></td>
+         <td>Gold/Visitor Permit Parking</td>
+         <td><img src="images/legend_gold_permit.gif" alt="Gold/Visitor Permit Parking"></td>
+        </tr> 
+        <tr>
+         <td></td>
+         <td>Visitor Parking</td>
+         <td><img src="images/legend_visitor_permit.gif" alt="Visitor Parking"></td>
+        </tr> 
+        <tr>
+         <td></td>
+         <td>Housing Permit Parking</td>
+         <td><img src="images/legend_housing_permit.gif" alt="Housing Permit Parking"></td>
+        </tr> 
+        <!--img src="images/ply.gif" width="20" height="20" alt="Motorcycle Parking" align="absmiddle">Motorcycle Parking--> 
+       </tbody>
+      </table> 
+      <div id="mapLegendKey"> 
+       <div> 
+        <small><img src="images/on.gif" alt="">ON<br><br> <img src="images/off.gif" alt="">OFF</small> 
+       </div> 
+       <div id="mapLegendKeyTxt">
+         Click the button to switch the visibility on and off 
+       </div> 
+      </div> 
+      <div class="clear"></div> 
+     </div> 
+     <hr class="accessibility"> 
+    </div> 
+    <!-- End Content Area --> 
+    <div class="clear"></div> 
+   </div> 
+   <!-- End Content --> 
+   <div id="helpDiv" style="display:none"> 
+    <!-- zoom map controls --> 
+    <h3>Zoom View Controls</h3> Click and drag to move zoomed view. 
+    <h3>MiniMap Controls</h3> Click and drag locator to move view in zoomed view.
+    <br> Click minimap to move locator to selected area. 
+    <h3>Zoom Controls</h3> Click zoom bar to select depth of zoom.
+    <br> Scroll mouse wheel over zoomed view to zoom in and out. 
+    <h3>Legend and Flags</h3> Click On/Off to toggle flags on and off.
+    <br> Hover over flag to show short description.
+    <br> In description bubble:
+    <br> Click Link to jump to website related to flag.
+    <br> Click More to open a window with the full description.
+    <br> Click x mark in upper right corner to close description bubble. 
+    <h3>Building Locators</h3> Select Building from drop down list to move to that building.
+    <br> Type in Building Code to display that building.
+    <br> Building List shows a list of all buildings in current zoom view.
+    <br> Click Building name in list to jump to that building. 
+    <br>
+    <br> 
+    <span class="link" onclick="toggleHelp()">Close</span> 
+   </div> 
+   <div id="footerwrapper"> 
+    <div id="prefooter"> 
+     <div class="column2"> 
+      <h3>General Campus Information</h3> 
+      <address>University of California, Riverside<br>900 University Ave.<br> Riverside, CA 92521<br><br>Tel: 951-827-1012<br>E-mail: <a href="mailto:ucr@ucr.edu">ucr@ucr.edu</a><br><br><br></address> 
+     </div> 
+     <div class="column2"> 
+      <h3>Campus Parking Information</h3> 
+      <address>There is a charge for visitor parking. More information is available at <a href="http://www.parking.ucr.edu">Transportation and Parking Services</a><br><br> <strong>Parking information:</strong> 951-827-4395<br> Monday – Friday, 8 a.m. – 4 p.m.<br><br> After hours: <strong>Campus Police</strong> 951-827-5222</address> 
+     </div> 
+     <div class="column2R"> 
+      <h3>Additional Information</h3> 
+      <address><strong>Receiving</strong><br> 3401 Watkins Drive<br> Riverside, CA 92521<br><br> <strong>Admissions/Campus Tours</strong><br> Office of Undergraduate Recruitment-Tours<br>951-827-TOUR<br> <a href="http://my.ucr.edu">Campus Tours</a></address> 
+     </div> 
+     <div class="clear"></div> 
+    </div> 
+    <div id="footer"> 
+     <ul> 
+      <li><a href="mailto:frankv@ucr.edu">Feedback</a></li> 
+      <li><a href="http://www.ucr.edu/privacy.html">Privacy Policy</a></li> 
+      <li><a href="http://www.ucr.edu/terms.html">© 2007 Regents of the University of California</a></li> 
+     </ul> 
+    </div> 
+   </div> 
+  </div>
+  <!-- end pagewrapper --> 
+  <script type="text/javascript">
+// <![CDATA[
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-3051875-1']);
+  _gaq.push(['_setDomainName', '.ucr.edu']);
+  _gaq.push(['_setAllowHash', false]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+// ]]>
+</script>   
+ </body>
+</html>

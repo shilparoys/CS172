@@ -1,0 +1,91 @@
+<html>
+ <!-- Class Schedule -->
+ <!-- LOGIN FORM waci006.html-->
+ <!-- 2/28/02 ver 2.0 - Modified to trap multiple submits -->
+ <head> 
+  <!--center>
+	<h3><font color="#FF0000" size="3">Maintenance Notice</font></h3>
+	<div class="notice_text">
+	<b>The SBCTC will be performing state-mandated changes to their data center over Presidents Day weekend.</b><br>
+	<b>Class Schedule Information will be unavailable between Friday, February 13th at 5:00 p.m. and Tuesday, February 17th at 5:00 a.m.</b><br>
+	<b>Thank you for your patience.&nbsp; We apologize 
+	in advance for any inconvenience these service outages 
+	may cause.</b>
+	</div>
+  </center><br><br> --> 
+  <title>Class Schedule</title> 
+  <script language="JavaScript">
+
+      <!-- Activate Cloak
+     //---------------------------------------------------------------
+     // Process Request
+     //---------------------------------------------------------------
+    var clicker=0;
+
+    function clickCounter(){
+
+      ++clicker;
+
+      if (clicker == 1){
+         return true
+      }
+
+      if (clicker > 10){
+         clicker=0;
+      }
+
+      return false;
+   }
+   
+   function procRequest(){
+
+      if (clickCounter()){
+         document.login.submit();
+      }
+      return true;
+  }
+  
+    // Deactivate cloak --> 
+    </script> 
+ </head> 
+ <body> 
+  <form name="login" method="POST" action="https://grcc.greenriver.edu/cgi-bin/rqserver.exe"> 
+   <input type="hidden" name="returnurl" value="http://www.greenriver.edu/online-services.htm"> 
+   <input type="hidden" name="request" value="classchd"> 
+   <center> 
+    <font color="#006600" size="4"><b>Green River Community College</b></font>
+    <p> <font size="6">Class Schedule Information</font> <br> <br> <br> </p> 
+    <table> 
+     <tbody>
+      <tr>
+       <td><font size="5"><b>Class Item Number:</b></font></td>
+       <td><font size="5"> <input name="item" maxlength="4" value="" size="4"> </font></td> 
+      </tr> 
+      <tr>
+       <td></td>
+      </tr>
+      <tr>
+       <td></td>
+      </tr> 
+      <tr> 
+       <td><font size="5"><b>Year:</b></font></td>
+       <td><font size="5"> <select name="ayr"> <option>2014 - 15 </option><option>2013 - 14 </option><option>2012 - 13 </option><option>2011 - 12 </option><option>2010 - 11 </option><option>2009 - 10 </option></select> </font></td> 
+       <td align="right"><font size="5"><b>Session:</b></font></td>
+       <td align="right"> <select name="sess"> <option>1 - Summer </option><option>2 - Fall </option><option>3 - Winter </option><option>4 - Spring </option></select> </td> 
+      </tr>
+     </tbody>
+    </table> 
+   </center> 
+   <br> 
+   <center>
+    <input type="button" onclick="procRequest()" value="Get the Class Schedule">
+   </center> 
+  </form> 
+  <p></p>
+  <p></p>
+  <center>
+   <br> 
+   <a href="http://www.greenriver.edu/online-services.htm">Back to Main Menu</a> 
+  </center>  
+ </body>
+</html>

@@ -1,0 +1,578 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+ <!-- replace instanceBegin -->
+ <head> 
+  <title>USC Libraries :: Reserve a Room</title> 
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
+  <!-- Subpages only --> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <meta name="description" content=""> 
+  <meta name="author" content=""> 
+  <!-- Le styles --> 
+  <link href="/libraries/css/bootstrap.min.css?v=211" rel="stylesheet"> 
+  <!-- <link href="/libraries/css/bootstrap-responsive.min.css" rel="stylesheet"> --> 
+  <link href="/libraries/css/usc_sub.css?d=130917" rel="stylesheet"> 
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements --> 
+  <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]--> 
+  <!-- Le fav and touch icons --> 
+  <link rel="shortcut icon" href="//www.usc.edu/favicon.ico"> 
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png"> 
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png"> 
+  <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png"> 
+  <!-- Start Google Analytics --> 
+  <script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-3613630-1']);
+		_gaq.push(['_setCookiePath', '/libraries/']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script> 
+  <!-- End Google Analytics -->
+  <script type="text/javascript">
+  $(document).ready( function() {
+    //insert expand-collapse icon
+    $("#events-accordion h3 a.accordion-toggle").prepend('<i class="icon-chevron-right"></i>&nbsp;');
+    $(".collapse").on("show", function() {
+      $(this).prev(".accordion-heading").find("i").removeClass("icon-chevron-right").addClass("icon-chevron-down");
+    });
+    $(".collapse").on("hide", function() {
+      $(this).prev(".accordion-heading").find("i").removeClass("icon-chevron-down").addClass("icon-chevron-right");
+    });
+
+    //default tab / expanded panel correlated to URL hash
+    var urlHash, tabSel, panelSel;
+    if(typeof window.location.hash != "undefined" && window.location.hash != "") {
+      urlHash = window.location.hash.split("-");
+      tabSel = urlHash[0];
+      panelSel = urlHash[1];
+      if (tabSel.indexOf("#events") != -1) {
+        $("#mainTab a[href='#events']").tab("show");
+        $("#" + panelSel + "-panel").collapse("show");
+      }
+    }
+
+    $("a.showEventsTab").on("click", function(e) {
+      $("#mainTab a[href='#events']").tab("show");
+    });
+
+  });
+</script> 
+  <script src="js/readmore.js"></script> 
+  <link type="text/css" rel="stylesheet" href="/libraries/css/one-col.css"> 
+  <style type="text/css">
+  .room_list { font-weight:bold; font-size:14px; line-height:1.6; }
+  .nav-tabs > .active > a, .nav-tabs > .active > a:hover { font-size:16px; }
+  .accordion-inner div.alert li {
+    margin-left: 14px;
+}
+h2.muted img {
+	margin-top:-10px;
+}
+.well {
+	padding: 20px 20px 38px;
+}
+.btn-custom {
+  background-color: hsl(41, 100%, 66%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffc851", endColorstr="#ffc851");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#ffc851), to(#ffc851));
+  background-image: -moz-linear-gradient(top, #ffc851, #ffc851);
+  background-image: -ms-linear-gradient(top, #ffc851, #ffc851);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffc851), color-stop(100%, #ffc851));
+  background-image: -webkit-linear-gradient(top, #ffc851, #ffc851);
+  background-image: -o-linear-gradient(top, #ffc851, #ffc851);
+  background-image: linear-gradient(#ffc851, #ffc851);
+  border-color: #ffc851 #ffc851 hsl(41, 100%, 66%);
+  color: #333 !important;
+  font-weight:bold;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.00);
+  -webkit-font-smoothing: antialiased;
+}
+#content h3 {
+    line-height: 12px;
+	padding-bottom: 10px;
+}
+.readmore-js-section {
+	color:#666;
+}
+.room-type-txt {
+	display: inline;
+    font-size: 13px;
+    padding-left: 35px;
+}
+</style> 
+ </head> 
+ <body> 
+  <header> 
+   <hgroup class="container"> 
+    <h1> <a href="http://www.usc.edu/libraries">USC Libraries</a> </h1> 
+    <h2> <a href="http://www.usc.edu">University of Southern California</a> </h2> 
+   </hgroup> 
+  </header> 
+  <a href="#main-content" class="element-invisible">skip navigation</a> 
+  <nav class="navbar nocontent navbar-static-top navbar-inverse"> 
+   <div class="navbar-inner"> 
+    <div class="container"> 
+     <!-- .btn-navbar is used as the toggle for collapsed navbar content --> 
+     <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> 
+     <div class="nav-collapse"> 
+      <ul class="nav"> 
+       <li><a class="usclib-home" href="http://www.usc.edu/libraries/">home</a></li> 
+       <li class="dropdown"><a href="http://www.usc.edu/libraries/research" class="dropdown-toggle" data-toggle="dropdown">research support &amp; tools <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+         <li><a href="http://www.usc.edu/libraries/index.php#quicksearch">Quick Search</a></li>
+         <li><a href="http://www.usc.edu/libraries/databases/list_category.php">Databases by subject</a></li>
+         <li><a href="http://zb5lh7ed7a.search.serialssolutions.com/">Journals A-Z</a></li>
+         <li><a href="http://www.usc.edu/homer">HOMER catalog</a></li>
+         <li><a href="http://www.usc.edu/libraries/finding_aids/list_az.php?nav=0-9">USC Archival Collections</a></li>
+         <li><a href="http://www.usc.edu/libraries/collections/">Specialized research collections</a></li>
+         <li><a href="http://www.usc.edu/libraries/subjects/">Resources by subject</a></li>
+         <li><a href="http://libguides.usc.edu/">Research guides</a></li>
+         <li><a class="nohover" href="#">Citation management</a>
+          <ul>
+           <li><a href="http://libproxy.usc.edu/login?url=https://www.refworks.com/Refworks/login.asp?WNCLang=false">RefWorks</a></li>
+           <li><a href="http://libguides.usc.edu/citation">Citation guide</a></li>
+          </ul></li>
+         <li><a href="http://www.usc.edu/libraries/services/mobile/">Mobile resources</a></li>
+         <li><a href="http://www.usc.edu/findarticles">Find articles by citation</a></li>
+         <li><a href="http://www.usc.edu/libraries/about/directory/subject_librarian.php">Find a subject librarian</a></li>
+         <li><a href="http://www.usc.edu/libraries/about/reference/tutorials/">Tutorials</a></li>
+        </ul></li>
+       <li class="dropdown"><a href="http://www.usc.edu/libraries/libraries" class="dropdown-toggle" data-toggle="dropdown">libraries, collections, partners <b class="caret"></b></a>
+        <div class="nav-list dropdown-menu libraries">
+         <div class="nav-header">
+          Libraries &amp; Collections
+         </div>
+         <ul class="menu-items" style="border-right:1px dotted #ccc; padding-left:0;">
+          <li><a href="http://www.usc.edu/libraries/locations/accounting/">Accounting</a></li>
+          <li><a href="http://www.usc.edu/libraries/locations/arts/">Architecture &amp; Fine Arts</a></li>
+          <li><a href="http://www.usc.edu/libraries/locations/business/">Business</a></li>
+          <li><a href="http://www.usc.edu/libraries/locations/cinema_tv/">Cinematic Arts</a></li>
+          <li><a href="http://www.usc.edu/libraries/locations/doheny/">Doheny</a></li>
+          <li><a href="http://www.usc.edu/libraries/locations/east_asian/">East Asian</a>
+           <ul>
+            <li><a href="http://www.usc.edu/libraries/archives/arc/libraries/eastasian/china/index.php">Chinese Collection</a></li>
+            <li><a href="http://www.usc.edu/libraries/archives/arc/libraries/eastasian/japan/index.php">Japanese Collection</a></li>
+            <li><a href="http://www.usc.edu/libraries/archives/arc/libraries/eastasian/korea/index.php">Korean Heritage Library</a></li>
+           </ul></li>
+          <li><a href="http://www.usc.edu/libraries/locations/gerontology/">Gerontology</a></li>
+          <li><a href="http://www.usc.edu/libraries/locations/grand/">Grand Avenue</a></li>
+          <li><a href="http://www.usc.edu/libraries/locations/law/">Law</a></li>
+          <li><a href="http://www.usc.edu/libraries/locations/leavey/">Leavey</a></li>
+          <li><a href="http://www.usc.edu/libraries/locations/music/">Music</a></li>
+         </ul>
+         <ul class="menu-items">
+          <li><a href="http://www.usc.edu/libraries/locations/medical/">Norris Medical Library</a></li>
+          <li><a href="http://one.usc.edu/">ONE Archives at the USC Libraries</a></li>
+          <li><a href="http://www.usc.edu/libraries/locations/philosophy/">Philosophy</a></li>
+          <li><a href="http://www.usc.edu/libraries/locations/science/">Science &amp; Engineering</a></li>
+          <li><a href="http://www.usc.edu/libraries/locations/social_work/">Social Work Information Center</a></li>
+          <li><a href="http://www.usc.edu/libraries/locations/special_collections/">Special Collections</a>
+           <ul>
+            <li><a href="http://www.usc.edu/libraries/locations/boeckmann/">Boeckmann Center</a></li>
+            <li><a href="http://www.usc.edu/libraries/collections/feuchtwanger_books/">Feuchtwanger Memorial</a></li>
+            <li><a href="http://www.usc.edu/libraries/locations/university_archives/">University Archives</a></li>
+           </ul></li>
+          <li><a href="http://digitallibrary.usc.edu/">USC Digital Library</a></li>
+          <li><a href="http://www.usc.edu/libraries/locations/vkc/">VKC Library</a></li>
+          <li><a href="http://www.usc.edu/libraries/locations/dental/">Wilson Dental Library</a></li>
+          <li><a href="http://dornsife.usc.edu/wrigley/wmsc/">Wrigley Marine Science Center</a></li>
+         </ul>
+         <div class="nav-header" style="clear:both; padding-top:20px;">
+          Partners and Other Library Units
+         </div>
+         <ul>
+          <li><a href="http://polymathic.usc.edu">USC Sidney Harman Academy for Polymathic Study</a></li>
+          <li><a href="http://www.laassubject.org">L.A. as Subject</a></li>
+          <li><a href="http://one.usc.edu">ONE Archives at the USC Libraries</a></li>
+          <li><a href="http://www.usc.edu/scripter">Scripter Awards</a></li>
+          <li><a href="http://www.usc.edu/libraries/pkp">The Honor Society of Phi Kappa Phi</a></li>
+          <li><a href="http://vha.usc.edu/">USC Shoah Foundation Visual History Archive</a></li>
+          <li><a href="http://repository.usc.edu/">USC Digital Repository</a></li>
+         </ul>
+        </div></li>
+       <li class="dropdown"><a href="http://www.usc.edu/libraries/services" class="dropdown-toggle" data-toggle="dropdown">library services <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+         <li><a href="http://www.usc.edu/libraries/services/ask_a_librarian">Ask a librarian</a></li>
+         <li><a href="https://reserves.usc.edu">Course reserves (ARES)</a></li>
+         <li><a href="http://www.usc.edu/libraries/illiad">Interlibrary loan and document delivery (ILLIAD)</a></li>
+         <li><a href="http://www.usc.edu/libraries/about/library_space/">Reserve a room</a></li>
+         <li><a href="http://www.usc.edu/libraries/about/facilities_usage/student_filming_policy/">Request approval to film in the library</a></li>
+         <li><a href="http://www.usc.edu/libraries/about/instruction/instructional_services/">Library instruction</a>
+          <ul>
+           <li><a href="http://www.usc.edu/libraries/services/instruction/request_a_class/">Request a class</a></li>
+           <li><a href="http://www.usc.edu/libraries/services/instruction/request_a_tour">Request a tour</a></li>
+          </ul></li>
+         <li><a href="http://www.usc.edu/libraries/about/directory/subject_librarian.php">Find a subject librarian</a></li>
+         <li><a href="http://www.usc.edu/libraries/services/idd/recommend_a_book/">Recommend a book</a></li>
+         <li><a href="http://www.usc.edu/libraries/about/lending_policies/">Library card and borrowing privileges</a></li>
+         <li><a href="http://www.usc.edu/libraries/services/remote_user_services/">Distance learning</a></li>
+         <li><a href="http://www.usc.edu/libraries/services/idd/disability_services/">Disability services</a></li>
+        </ul></li>
+       <li class="dropdown"><a href="http://www.usc.edu/libraries/about" class="dropdown-toggle" data-toggle="dropdown">about usc libraries <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+         <li><a href="http://www.usc.edu/libraries/hours/all_libraries/">Hours and locations</a></li>
+         <li><a href="http://www.usc.edu/libraries/locations/">Libraries</a></li>
+         <li><a href="http://www.usc.edu/libraries/jobs/">Jobs</a></li>
+         <li><a href="http://www.usc.edu/libraries/about/directory">Librarian and staff directory</a></li>
+         <li><a href="http://www.usc.edu/libraries/about/programs_exhibitions/events/">Events &amp; exhibitions</a></li>
+         <li><a href="http://www.usc.edu/libraries/libwire">Libwire news</a></li>
+         <li><a href="http://www.usc.edu/libraries/about/facilities_usage/">Using library facilities</a></li>
+         <li><a href="http://www.usc.edu/libraries/about/donor/factsfigures.php">Facts &amp; figures</a></li>
+         <li><a href="http://www.usc.edu/libraries/dean/">Dean's messages</a></li>
+         <li><a href="http://www.usc.edu/libraries/essential/">Strategic Plan</a></li>
+         <li><a href="http://www.usc.edu/libraries/about/donor/gift.php">Friends of the Libraries</a></li>
+         <li><a href="http://www.usc.edu/libraries/services/dear_library/">Contact us</a></li>
+        </ul></li> 
+      </ul> 
+      <div class="pull-right"> 
+       <a id="askalibrarian" class="btn" href="http://www.usc.edu/libraries/services/ask_a_librarian"><i class="icon-question-sign"></i> Ask a Librarian</a> 
+      </div> 
+     </div>
+     <!--/.nav-collapse --> 
+    </div> 
+   </div> 
+  </nav> 
+  <a name="main-content"></a>
+  <section class="body container"> 
+   <h1>Reserve a Room</h1> 
+   <div id="content"> 
+    <!-- replace instanceBeginEditable name="content" --> 
+    <!--<ul class="nav nav-tabs" id="mainTab">
+    <li class="active"><a href="#study" data-toggle="tab">Group Study Rooms</a></li>
+    <li><a href="#events" data-toggle="tab">Events / Meeting Rooms</a></li>
+
+  </ul>
+--> 
+    <!-- <div class="tab-content">
+  <div class="tab-pane active" id="study">
+    <div class="alert alert-warning" style="width:75%">
+      <strong>NOTE:</strong> The online self-serve room reservation system is only available to current USC students for group study in Leavey, Doheny and the Architecture and Fine Arts Library.  All other users should use the <a class="showEventsTab" href="/libraries/about/library_space/index.php#events">Events/Meeting Rooms tab</a> to reserve other library spaces.
+    </div>--> 
+    <!--<div class="tab-pane" id="events">--> 
+    <p>Click a library below to view room and reservation information.<br> </p> 
+    <div class="accordion" id="events-accordion"> 
+     <div class="accordion-group"> 
+      <div class="accordion-heading"> 
+       <h3><a name="afa" class="accordion-toggle" data-toggle="collapse" data-parent="#events-accordion" href="#afa-panel">Architecture &amp; Fine Arts Library</a> <span class="room-type-txt">One room that doubles as group study or meeting room.</span></h3> 
+      </div> 
+      <div id="afa-panel" class="accordion-body collapse"> 
+       <div class="accordion-inner"> 
+        <div class="span5"> 
+         <div class="well"> 
+          <h2>Meeting and Group Study Rooms</h2> 
+          <br> 
+          <div class="alert alert-warning" style="width:85%"> 
+           <article>
+             This service is for... 
+            <ul> 
+             <li>USC Students, Faculty and Staff </li> 
+             <li>Self-serve reservations</li> 
+             <li>Academic-related Activities</li> 
+             <li>Study groups </li> 
+             <li>Meetings </li> 
+             <li>Lectures and Seminars </li> 
+             <li>Videoconferencing </li> 
+             <li>Multimedia Presentations </li> 
+            </ul> This service is 
+            <strong>not</strong> for... 
+            <ul> 
+             <li>Individuals not affiliated with USC </li> 
+            </ul> 
+           </article> 
+          </div> 
+          <h4><strong>Merendino Room</strong></h4> 
+          <i class="icon-facetime-video"></i> Video | 
+          <i class="icon-volume-up"></i> Audio
+          <br> 
+          <p>Where: <em>Ground floor of Watt Hall</em><br> What: Group study, seminars, videoconferencing.<br> How Many: Max 10<br> More Info: <a href="mailto:afa@usc.edu">afa@usc.edu</a>, 213-740-1956 <br> <a href="http://libcal.usc.edu/booking/AFA" class="btn btn-danger btn-mini"><i class="icon-white icon-ok"></i> <strong>Reserve Online</strong></a> </p> 
+          <br> 
+          <h4>INSTRUCTIONS:</h4> 
+          <ol> 
+           <li>Click the "Reserve Online" button above. All available rooms will be highlighted in green.</li> 
+           <li>Choose a day, then click "Room and Time" to begin. (If you would like more than one block of time, click several boxes per reservation. The limit is 2 hours maximum per day.)</li> 
+           <li><span style="font-size: 1.1em; line-height:auto;"><strong>NOTE:</strong></span> <strong>Use your USC e-mail address when submitting your reservation. You will receive an e-mail requiring you to click a confirmation link within 30 minutes to complete your reservation.&nbsp; If you do not click the link and confirm, your reservation will be canceled.</strong></li> 
+           <li>Forward the confirmation e-mail to group members so they have the reservation information.</li> 
+          </ol> 
+          <!-- <div style="float:right;"><a href="https://libcal.com/login.php?iid=100" class="btn btn-mini">Admin Login</a></div>
+    -->
+         </div>
+        </div> 
+       </div>
+      </div>
+     </div> 
+     <div class="accordion-group"> 
+      <div class="accordion-heading"> 
+       <h3><a name="doheny" class="accordion-toggle" data-toggle="collapse" data-parent="#events-accordion" href="#doheny-panel">Doheny Memorial Library</a><span class="room-type-txt">Meeting rooms for special academic events and group study rooms.</span></h3> 
+      </div> 
+      <div id="doheny-panel" class="accordion-body collapse"> 
+       <div class="accordion-inner"> 
+        <div class="span5"> 
+         <div class="well"> 
+          <h2>Meeting Room / Special Academic Event</h2> 
+          <br> 
+          <div class="alert alert-warning" style="width:85%"> 
+           <article>
+             This service is for... 
+            <ul> 
+             <li>USC Students, Faculty and Staff </li> 
+             <li>Academic-related Activities</li> 
+             <li>Small and Large meetings (select rooms)</li> 
+             <li>Lectures and Seminars </li> 
+             <li>Videoconferencing (select rooms) </li> 
+             <li>Multimedia Presentations (select rooms) </li> 
+            </ul> This service is 
+            <strong>not</strong> for... 
+            <ul>
+             <li>Self-serve reservations</li> 
+             <li>Small study groups </li> 
+             <li>Individuals not affiliated with USC </li> 
+            </ul>
+           </article> 
+          </div> 
+          <h4><strong>Herklotz (Room G24)</strong></h4> 
+          <i class="icon-facetime-video"></i> Video | 
+          <i class="icon-volume-up"></i> Audio
+          <br> 
+          <p>Where: <em>DML G24 Music Library</em><br> What: Small lectures, conferences, readings.<br> How Many: Max 22<br> <a href="http://www.usc.edu/libraries/locations/music/spaces/herklotz/request/index.php" class="btn btn-danger btn-mini"><i class="icon-white icon-pencil"></i> <strong>Request Room</strong></a> <a href="http://www.usc.edu/libraries/locations/music/spaces/herklotz/index.php" class="btn btn-custom btn-mini"><i class="icon-white icon-info-sign"></i> More Info</a> </p> 
+          <h4><strong>East Asian Library (Room 110C &amp; Room 109C)</strong></h4> Where: 
+          <em>Seminar Room 110C</em> 
+          <br> What: Conferences, meetings. 
+          <br> How Many: Max 18 
+          <br> Where: 
+          <em>Conference Room 109C</em> 
+          <br> What: Conferences, meetings. 
+          <br> How Many: Max 8
+          <br> 
+          <a href="http://www.usc.edu/libraries/locations/doheny/spaces/request.php" class="btn btn-danger btn-mini"><i class="icon-white icon-pencil"></i> <strong>Request Room</strong></a> 
+          <a href="http://www.usc.edu/libraries/locations/doheny/spaces/eal/" class="btn btn-custom btn-mini"><i class="icon-white icon-info-sign"></i> More Info</a> 
+          <p></p> 
+          <h4 style="font-weight: bold"> Intellectual Commons (Room 233)</h4> 
+          <p>Where: <em>DML 233</em><br> What: Small lectures and readings<br> How Many: Max 35<br> <a href="http://www.usc.edu/libraries/about/programs_exhibitions/request/index.php" class="btn btn-danger btn-mini"><i class="icon-white icon-pencil"></i> <strong>Request Room</strong></a> <a href="http://www.usc.edu/libraries/about/programs_exhibitions/reserve_venues/" class="btn btn-custom btn-mini"><i class="icon-white icon-info-sign"></i> More Info</a></p> 
+          <h4><strong>Friends of the USC Libraries Lecture Hall (Room 240)</strong></h4> 
+          <p>Where: <em>DML 240</em><br> What: Lectures and readings<br> How Many: Max 150<br> <a href="http://www.usc.edu/libraries/about/programs_exhibitions/request/index.php" class="btn btn-danger btn-mini"><i class="icon-white icon-pencil"></i> <strong>Request Room</strong></a> <a href="http://www.usc.edu/libraries/about/programs_exhibitions/reserve_venues/" class="btn btn-custom btn-mini"><i class="icon-white icon-info-sign"></i> More Info</a></p> 
+         </div>
+        </div> 
+        <div class="span5"> 
+         <div class="well"> 
+          <h2>Group Study Rooms </h2> 
+          <br>
+          <br> 
+          <div class="alert alert-warning" style="width:85%">
+           <article>
+             This service is for... 
+            <ul> 
+             <li>Current USC students with valid USC email</li> 
+             <li>Self-serve reservations</li> 
+             <li>Small study groups </li> 
+            </ul> This service is 
+            <strong>not</strong> for... 
+            <ul> 
+             <li>Meetings </li> 
+             <li>Lectures and Seminars </li> 
+             <li>Videoconferencing </li> 
+             <li>Multimedia Presentations </li> 
+             <li>Individuals not affiliated with USC </li> 
+            </ul>
+           </article> 
+          </div> 
+          <a href="http://libcal.usc.edu/booking/dml" class="btn btn-danger btn-mini"><i class="icon-white icon-ok"></i> <strong>Reserve Online</strong></a> 
+          <a href="http://www.usc.edu/libraries/locations/leavey/cwr/cwr_policies.php" class="btn btn-custom btn-mini"><i class="icon-white icon-info-sign"></i> Room Policies</a> 
+          <br> 
+          <br> 
+          <h4>INSTRUCTIONS:</h4> 
+          <ol> 
+           <li>Click the "Reserve Online" button above. All available rooms will be highlighted in green.</li> 
+           <li>Choose a day, then click "Room and Time" to begin. (If you would like more than one block of time, click several boxes per reservation. The limit is 2 hours maximum per day.)</li> 
+           <li><span style="font-size: 1.1em; line-height:auto;"><strong>NOTE:</strong></span> <strong>Use your USC e-mail address when submitting your reservation. You will receive an e-mail requiring you to click a confirmation link within 30 minutes to complete your reservation.&nbsp; If you do not click the link and confirm, your reservation will be canceled.</strong></li> 
+           <li>Forward the confirmation e-mail to group members so they have the reservation information.</li> 
+          </ol> 
+          <!-- <div style="float:right;"><a href="https://libcal.com/login.php?iid=100" class="btn btn-mini">Admin Login</a></div>
+    -->
+         </div>
+        </div> 
+       </div>
+      </div>
+     </div> 
+     <div class="accordion-group"> 
+      <div class="accordion-heading"> 
+       <h3><a name="leavey" class="accordion-toggle" data-toggle="collapse" data-parent="#events-accordion" href="#leavey-panel">Leavey Library</a><span class="room-type-txt">Meeting rooms for special academic events and group study rooms.</span></h3> 
+      </div> 
+      <div id="leavey-panel" class="accordion-body collapse"> 
+       <div class="accordion-inner"> 
+        <div class="span5"> 
+         <div class="well"> 
+          <h2>Meeting Room / Special Academic Event</h2> 
+          <br> 
+          <div class="alert alert-error" style="width:85%"> 
+           <article>
+            Note: Thank you for your interest. However due to room renovations, LRA, LRB and the Auditorium will be 
+            <b>closed during the Summer 2014</b> and unavailable for reservations.
+           </article> 
+          </div> 
+          <!--Linda Mitchell asked to remove this 5/19/2014
+             <div class="alert alert-warning" style="width:85%">
+
+             <article>
+		This service is for...
+		<ul>
+                <li>USC Students, Faculty and Staff                </li>
+                <li>Academic-related Activities</li>
+                <li>Small and Large meetings </li>
+                <li>Lectures and Seminars                </li>
+                <li>Multimedia Presentations                </li>
+                </ul>
+                This service is <strong>not</strong> for...
+<ul><li>Self-serve reservations</li>
+                <li>Small study groups                </li>
+
+
+<li>Individuals not affiliated with USC                </li>
+              </ul>
+            Please follow these guidelines...<ul>
+
+<li>Priority scheduling is given to librarian-led instruction sessions requested by teaching faculty</li>
+<li>Maximum of 3 reserved sessions per semester per course or event</li>
+<li>Reservations must be submitted <strong>seven business days in advance</strong></li></ul></article></div>
+
+
+                           <h4><strong>Leavey Auditorium</strong></h4> <i class="icon-facetime-video"></i> Video | <i class="icon-volume-up"></i> Audio</a><br />
+
+                <p>Where: <em>Leavey Library Basement</em><br />
+
+                What: <strong>One-time</strong> class meeting, events, seminars.<br/>
+
+       How Many:  Max 49<br />
+  --> 
+          <!--
+                     <a href="http://www.usc.edu/libraries/locations/leavey/spaces/request/" class="btn btn-danger btn-mini"><i class="icon-white icon-pencil"></i> <strong>Request Room</strong></a>
+  --> 
+          <!--taken off per Karen Howell's request To Be Put Back Jan. 2014--> 
+          <!--<a href="http://www.usc.edu/libraries/locations/leavey/spaces/" class="btn btn-custom btn-mini"><i class="icon-white icon-info-sign"></i> More Info</a>--> 
+          <p></p> 
+         </div> 
+        </div> 
+        <div class="span5"> 
+         <div class="well"> 
+          <h2>Group Study Rooms </h2> 
+          <br>
+          <br> 
+          <div class="alert alert-warning" style="width:85%">
+           <article>
+             This service is for... 
+            <ul> 
+             <li>Current USC students with valid USC email</li> 
+             <li>Self-serve reservations</li> 
+             <li>Small study groups </li> 
+             <li>Videoconferencing (select rooms)</li> 
+            </ul> This service is 
+            <strong>not</strong> for... 
+            <ul> 
+             <li>Meetings </li> 
+             <li>Lectures and Seminars </li> 
+             <li>Multimedia Presentations </li> 
+             <li>Individuals not affiliated with USC </li> 
+            </ul> 
+           </article> 
+          </div> 
+          <a href="http://libcal.usc.edu/rooms.php?i=206" class="btn btn-danger btn-mini"><i class="icon-white icon-ok"></i> <strong>Reserve Online</strong></a> 
+          <a href="http://www.usc.edu/libraries/locations/leavey/cwr/cwr_policies.php" class="btn btn-custom btn-mini"><i class="icon-white icon-info-sign"></i> Room Policies</a> 
+          <br> 
+          <br> 
+          <h4>INSTRUCTIONS:</h4> 
+          <ol> 
+           <li>Click the "Reserve Online" button above. All available rooms will be highlighted in green.</li> 
+           <li>Choose a day, then click "Room and Time" to begin. (If you would like more than one block of time, click several boxes per reservation. The limit is 2 hours maximum per day.)</li> 
+           <li><span style="font-size: 1.1em; line-height:auto;"><strong>NOTE:</strong></span> <strong>Use your USC e-mail address when submitting your reservation. You will receive an e-mail requiring you to click a confirmation link within 30 minutes to complete your reservation.&nbsp; If you do not click the link and confirm, your reservation will be canceled.</strong></li> 
+           <li>Forward the confirmation e-mail to group members so they have the reservation information.</li> 
+          </ol> 
+          <!--
+       <div style="float:right;"><a href="https://libcal.com/login.php?iid=100" class="btn btn-mini">Admin Login</a></div>
+    -->
+         </div>
+        </div> 
+       </div>
+      </div>
+     </div> 
+     <div class="accordion-group"> 
+      <div class="accordion-heading"> 
+       <h3><a name="vkc" class="accordion-toggle" data-toggle="collapse" data-parent="#events-accordion" href="#vkc-panel">VKC Library</a><span class="room-type-txt">One indoor and one open-air meeting room for special academic events.</span></h3> 
+      </div> 
+      <div id="vkc-panel" class="accordion-body collapse"> 
+       <div class="accordion-inner"> 
+        <div class="span5"> 
+         <div class="well"> 
+          <h2>Meeting Room / Special Academic Event</h2> 
+          <br> 
+          <div class="alert alert-warning" style="width:85%">
+           <article>
+             This service is for... 
+            <ul> 
+             <li>USC Students, Faculty and Staff </li> 
+             <li>Academic-related Activities</li> 
+             <li>Small and Large meetings (select rooms)</li> 
+             <li>Lectures and Seminars </li> 
+             <li>Videoconferencing </li> 
+             <li>Multimedia Presentations </li> 
+            </ul> This service is 
+            <strong>not</strong> for... 
+            <ul>
+             <li>Self-serve reservations</li> 
+             <li>Individuals not affiliated with USC </li> 
+            </ul> 
+           </article> 
+          </div> 
+          <h4><strong>VKC Multimedia Room (Berkes Global Media Room B40E)</strong></h4> 
+          <i class="icon-facetime-video"></i> Video | 
+          <i class="icon-volume-up"></i> Audio
+          <br> 
+          <p> <strong>First-come, first-serve basis only.</strong><br> Where: <em>VCK B40E</em><br> What: <strong>One-time</strong> class meetings and events sponsored by USC faculty, staff, or student organizations. Seminars, videoconferencing, events that require multimedia display.<br> How Many: Max 20 lecture | 15 meeting/conference<br> <a href="http://www.usc.edu/libraries/locations/vkc/spaces/" class="btn btn-custom btn-mini"><i class="icon-white icon-info-sign"></i> More Info</a> </p> 
+          <br> 
+          <h4><strong>Atrium</strong></h4> 
+          <p>Where: <em>VKC Center (open air)</em><br> What: Informal one-time class meetings and events sponsored by USC faculty, staff, or student organizations. <br> How Many: Max 25<br> <a href="http://www.usc.edu/libraries/locations/vkc/spaces/" class="btn btn-custom btn-mini"><i class="icon-white icon-info-sign"></i> More Info</a> </p> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <!-- replace instanceEndEditable -->
+   </div> 
+   <div style="clear:both"></div> 
+  </section> 
+  <footer id="footer" class="container"> 
+   <p id="footer-usc-name">© University of Southern California</p> 
+   <p id="footer-links"> <a href="http://www.usc.edu/libraries/services/dear_library/">Contact us</a> <span>&#x2022;</span> <a href="http://www.usc.edu/libraries/?mobile=1">Mobile site</a> </p> 
+   <br clear="all"> 
+  </footer>
+  <!-- end footer --> 
+  <!-- Le javascript
+    ================================================== --> 
+  <!-- Placed at the end of the document so the pages load faster --> 
+  <script src="/libraries/js/bootstrap.min.js?v=211"></script> 
+  <script src="/libraries/js/usc_sub.js?d=130826"></script> 
+  <script type="text/javascript">
+    $(document).ready( function() {
+      //fix bootstrap v2.1.1 dropdown menus in iOS
+      $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { 
+          e.stopPropagation(); 
+      });
+    });
+    </script> 
+  <script>
+
+
+    $('article').readmore({maxHeight: 80});
+</script>  
+  <!-- replace instanceEnd -->  
+ </body>
+</html>

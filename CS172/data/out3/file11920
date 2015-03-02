@@ -1,0 +1,1872 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="apple-mobile-web-app-capable" content="yes"> 
+  <title>Drew Catalog</title> 
+  <link rel="apple-touch-startup-image" href="<?php echo S3_PUBLIC_IMG; ?>mobile/loading_screen.png"> 
+  <style type="text/css" media="screen">html, body { background-color: #C5CCD8; }</style> 
+  <style type="text/css" media="screen">@import "/css/jqtouch.css";</style> 
+  <style type="text/css" media="screen">@import "//acalog-clients.s3.amazonaws.com/production/drew/css/mobile/styles.css";</style> 
+  <style type="text/css" media="screen">@import "/css/scrolling.css";</style> 
+  <script src="/js/jquery.1.3.2.min.js" type="text/javascript" charset="utf-8"></script> 
+  <script src="/js/jqtouch.js" type="application/x-javascript" charset="utf-8"></script> 
+  <script src="/js/jqt.scrolling.js" type="application/x-javascript" charset="utf-8"></script> 
+  <script type="text/javascript" charset="utf-8">
+			if (location.hash == '#home'){
+			  window.location.href = 'http://m.catalog.drew.edu/';
+			}
+
+			var jQT = new $.jQTouch({
+				icon: '//acalog-clients.s3.amazonaws.com/production/drew/img/mobile/icon.png',
+				addGlossToIcon: true,
+				statusBar: 'black',
+				slideSelector: '.slide',
+				preloadImages: [
+					'//acalog-clients.s3.amazonaws.com/production/drew/img/mobile/chevron.png',
+					'//acalog-clients.s3.amazonaws.com/production/drew/img/mobile/chevronBack.png',
+					'//acalog-clients.s3.amazonaws.com/production/drew/img/mobile/loading.gif'
+				]
+			});
+			var currentcatalog = '';
+			var catalog_title = '';
+			var alertTimerId = 0;
+			var showtimer = false;
+			var show_archived_message = false;
+
+			jQuery.ajaxSetup({
+				timeout: (60 * 1000),
+				tryCount : 0,
+				retryLimit : 1,
+				error:function(x,e){
+					 if (e == 'timeout') {
+						this.tryCount++;
+						if (this.tryCount <= this.retryLimit) {
+							//try again
+							jQuery.ajax(this);
+							return;
+						}
+					}
+					alert("Unable to load the requested page. Please check your network connection and try again");
+					LoadingIndicator_hide();
+				}
+			});
+
+			
+			$(function(){
+				if(((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)) || (navigator.userAgent.match(/iPad/i))) && !window.navigator.standalone && !(navigator.userAgent.match(/Opera.Mini/i))  ) {
+					var icon_location = 'below';
+					if ( navigator.userAgent.match(/iPad/i) ) {
+						icon_location = 'above';
+					}
+					$('#home div.info p:eq(0)').prepend('Tap the + or <img src="//acalog-clients.s3.amazonaws.com/production/drew/img/mobile/safari_go.png"/> ' + icon_location + ' to add this to your home screen.<br />');
+				}
+				var toolbar_height = Number($('#home .toolbar').height());
+				if ($('#home .banner').height() > 20 ) {
+					toolbar_height += Number($('#home .banner').height());
+				}
+				var menu_height = ( Number(toolbar_height) + Number($("#home .toolbar").siblings(".info").height()) );
+
+				if (navigator.userAgent.match(/Android/i)) {
+					var cssNode = document.createElement('style');
+					cssNode.type = 'text/css';
+					cssNode.id = 'custom_android';
+					cssNode.rel = 'stylesheet';
+					cssNode.media = 'screen';
+					cssNode.title = 'dynamicSheet';
+					cssNode.appendChild(document.createTextNode('.search .button {top: ' + (menu_height + 10) + 'px !important;}'))
+					document.getElementsByTagName("head")[0].appendChild(cssNode);
+				} else {
+					var cssNode = document.createElement('style');
+					cssNode.type = 'text/css';
+					cssNode.id = 'custom_screenheight';
+					cssNode.rel = 'stylesheet';
+					cssNode.media = 'screen';
+					cssNode.title = 'dynamicSheet';
+					cssNode.appendChild(document.createTextNode('.vertical-scroll, .vertical-slide {height: ' + (screen.height - menu_height) + 'px;}.landscape .vertical-scroll, .landscape .vertical-slide {height: ' + (screen.width - menu_height) + 'px;}'))
+					document.getElementsByTagName("head")[0].appendChild(cssNode);
+				}
+
+				LoadingIndicator_hide();
+
+				if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))) {
+
+				} else {
+					 $("a[target='_blank']").bind('click', function(event) {
+						LoadingIndicator_hide();
+					});
+					$('a.bookmark').live('click', function(e){
+						e.preventDefault();
+						LoadingIndicator_show();
+						var link_text = $(this).html();
+						var bookmark = $(this).attr('href');
+						var target = bookmark.substring(1);
+						if ( $(".current a[id='"+target+"']").size() ){
+							scrollPage('-' + $(".current a[id='"+target+"']").position().top);
+						} else if ( $(".current a[name='"+target+"']").size() ){
+							scrollPage('-' + $(".current a[name='"+target+"']").position().top);
+						} else if ($(this).attr("onclick") == undefined){
+							if ( $(this).attr("href") != undefined && $(this).attr("href") != '#') {
+								changePage($(this).attr("href"));
+							} else {
+								jQuery.ajax({
+									url: "mobile_functions.php?title="+escape($('.current h2:first').text())+"&link_text="+escape(link_text)+"&catalogname="+escape($('#cataloghome #catalog_title').html())+"&emailbrokenlink",
+									success: function(data) {
+										alert('That link to an anchor is not valid');
+									}
+								});
+							}
+						}
+						$(this).removeClass('active');
+						LoadingIndicator_hide();
+						return false;
+					});
+				}
+
+				$('.toolbar, .banner').not('.back').click(function(){
+					scrollPage('top');
+				});
+				$('#more25').click(function(){
+					LoadingIndicator_show();
+				});
+
+				$('#switch_mobile .toggle input:checkbox').bind('change',function() {
+					if ($(this).is(':checked')) {
+						var date = new Date();
+						date.setTime(date.getTime()+(365*24*60*60*1000));
+						var expires = "; expires="+date.toGMTString();
+						document.cookie = "acalogMobileApp=gateway"+expires+"; path=/";
+						if(((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))) && window.navigator.standalone) {
+							window.open("http://catalog.drew.edu/index.php?theme","AcalogGateway");
+						} else {
+							window.location.href = 'http://catalog.drew.edu/index.php?theme';
+						}
+					}
+				});
+
+				$('.search form').submit(function() {
+					LoadingIndicator_show();
+					requestResults();
+					$('.current input').blur();
+				  return false;
+				});
+
+				$('.current .search input[type="search"]').keyup(function() {
+					if ($(this).val().length > 0){
+						showSearchResults();
+					}
+				}).focus(function(){
+					if (!$('#overlay').size()) {
+					  $('.current div.vertical-scroll div:eq(0)').append('<div id="overlay"></div>');
+					}
+					switch($(this).val()){
+						case 'Search Courses':
+						case 'Search Programs':
+						case 'Search':
+							$(this).val('');
+						break;
+					}
+				}).blur(function(){
+					clearTimeout( alertTimerId );
+					$('#overlay').fadeOut('slow').remove();
+					showtimer = false;
+				});
+
+				//Get the focus of the search box when clicked/tapped (richgarcia 10/30/2013 Refs #62)
+				$("input[name='q']").bind('tap click touchstart',function(event) {
+					$(this).focus();
+		        });
+
+				$('body').bind('pageAnimationStart', function(e, info){
+					LoadingIndicator_show();
+				});
+
+				$('body').bind('pageAnimationEnd', function(e, info){
+					if (!$('#homebutton').size()) {
+						$('div.toolbar').not('#home div.toolbar').not('#cataloghome div.toolbar').append('<a href="#" class="button back">Back</a>	<a class="button slide reverse" href="#cataloghome" id="homebutton">Home</a>');
+					}
+					$('ul.edgetoedge ').not('#home ul.edgetoedge').css('margin-bottom', '10px');
+					LoadingIndicator_hide();
+				});
+
+				$('#searchFormQuery').bind('keyup', function(event) {
+					if (event.keyCode == '13' || event.keyCode == '10') {
+						searchCatalog();
+					}
+				});
+				$('#searchFormQuery1').bind('keyup', function(event) {
+					if (event.keyCode == '13' || event.keyCode == '10') {
+						searchCatalog('course', $('#searchFormQuery1').val());
+					}
+				});
+				$('#searchFormQuery2').bind('keyup', function(event) {
+					if (event.keyCode == '13' || event.keyCode == '10') {
+						searchCatalog('program', $('#searchFormQuery2').val());
+					}
+				});
+
+				$('#searchCatalogForm .submit').click(function(event) {
+					searchCatalog();
+					return false;
+				});
+
+				$('#searchCatalogForm1 .submit').click(function(event) {
+					searchCatalog('course', $('#searchFormQuery1').val());
+					return false;
+				});
+
+				$('#searchCatalogForm2 .submit').click(function(event) {
+					searchCatalog('program', $('#searchFormQuery2').val());
+					return false;
+				});
+
+				$('#courses').bind('pageAnimationEnd', function(e, info){
+					$('#courses .search').hide();
+				});
+				$('#courseschoose').bind('pageAnimationStart', function(e, info){
+					LoadingIndicator_show();
+
+					if (!$('#coursestypeslink').size()) {
+						jQuery.ajax({
+							url: "mobile_functions.php?catalog=" + currentcatalog + "&type=courses&checktypes",
+							success: function(data) {
+								if (data == 'true') {
+									$('#courseschoose div.vertical-scroll div ul:eq(0)').append('<li class="arrow" id="coursestypeslink"><a href="#" onClick="showCourses_type();">Type</a></li>').fadeIn();
+								}
+							}
+						});
+					}
+				});
+				$('#programschoose').bind('pageAnimationStart', function(e, info){
+					LoadingIndicator_show();
+
+					if (!$('#programtypelink').size()) {
+						jQuery.ajax({
+							url: "mobile_functions.php?catalog=" + currentcatalog + "&type=program&checktypes",
+							success: function(data) {
+								if (data == 'true') {
+								  $('<li class="arrow" id="programtypelink"><a href="#" onClick="showPrograms_type();">Type</a></li>').insertAfter('#programschoose div.vertical-scroll div ul li:eq(0)').fadeIn();
+								}
+							}
+						});
+					}
+					if (!$('#degreetypeprogram').size()) {
+						jQuery.ajax({
+							url: "mobile_functions.php?catalog=" + currentcatalog + "&type=degree&checktypes",
+							success: function(data) {
+								if (data == 'true') {
+									$('#programschoose div.vertical-scroll div ul:eq(0)').append('<li class="arrow" id="degreetypeprogram"><a href="#" onclick="showPrograms_degree();">Degree Type</a></li>').fadeIn();
+								}
+							}
+						});
+					}
+				});
+
+				if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))) {
+					$('a').not('.no_loading').live('tap',function(){LoadingIndicator_show(); });
+					$("a[target='_blank']").bind('tap', function(event) {
+						LoadingIndicator_hide();
+					});
+					$('#jqt a.bookmark').live('tap', function(e){
+						e.preventDefault();
+						LoadingIndicator_show();
+						var link_text = $(this).html();
+						var bookmark = $(this).attr('href');
+						var target = bookmark.substring(1);
+						if ( $(".current a[id='"+target+"']").size() ){
+							scrollPage('-' + $(".current a[id='"+target+"']").position().top);
+						} else if ( $(".current a[name='"+target+"']").size() ){
+							scrollPage('-' + $(".current a[name='"+target+"']").position().top);
+						} else if ($(this).attr("onclick") == undefined){
+							if ( $(this).attr("href") != undefined && $(this).attr("href") != '#') {
+								changePage($(this).attr("href"));
+							} else {
+								// email client
+								jQuery.ajax({
+									url: "mobile_functions.php?title="+escape($('.current h2:first').text())+"&link_text="+escape(link_text)+"&catalogname="+escape($('#cataloghome #catalog_title').html())+"&emailbrokenlink",
+									success: function(data) {
+										alert('That link to an anchor is not valid');
+									}
+								});
+							}
+						}
+						$(this).removeClass('active');
+						LoadingIndicator_hide();
+						return false;
+					});
+					$('.current .search .button').bind('tap',function(){
+						 switch ($('.current').attr('id')){
+							case "courses":
+							case "coursestypes":
+							case "coursesprefix":
+								$('.current .search input[type="search"]').blur().val('Search Courses');
+								requestResults();
+								break;
+							case "programs":
+							case "programschoose":
+							case "programs_alpha":
+							case "programs_sub":
+								$('.current .search input[type="search"]').blur().val('Search Programs');
+								requestResults();
+								break;
+							case "toc":
+								$('.current .search input[type="search"]').blur().val('Search');
+								changePage('#toc');
+								break;
+						}
+						$(".current .search input[name='filter']").val('');
+
+					});
+				} else {
+					$('a').not('.no_loading').live('click', function() {LoadingIndicator_show();});
+					 $('.current .search .button').bind('click',function(){
+						 switch ($('.current').attr('id')){
+							case "courses":
+							case "coursestypes":
+							case "coursesprefix":
+								$('.current .search input[type="search"]').blur().val('Search Courses');
+								break;
+							case "programs":
+							case "programschoose":
+							case "programs_alpha":
+							case "programs_sub":
+								$('.current .search input[type="search"]').blur().val('Search Programs');
+								break;
+							case "toc":
+								$('.current .search input[type="search"]').blur().val('Search');
+								break;
+						}
+						$(".current .search input[name='filter']").val('');
+
+					});
+				}
+			});
+			function moveTable(id, direction){
+				 var table_width = $('#'+id).width();
+				 var table_visible = $('#'+id).parent().width();
+				 var position_left = $('#'+id).position().left;
+				 var movepx = Math.ceil( table_visible / 4 ) * 3;
+
+				if (direction == 'right') {
+					 if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))) {
+					  if (Math.abs(position_left) < table_width) {
+						if ( (Math.abs($('#'+id).position().left) ) < ( table_width - $(window).width() ) ) {
+							$('#'+id).animate({ left: '-='+movepx }, 300);
+							$('#'+id).parent().toggleClass('tablewrapper_wide', false);
+						} else {
+						  $('#'+id).parent().siblings('.right_table').hide();
+						  $('#'+id).parent().toggleClass('tablewrapper_wide', true);
+						}
+					  }
+					 } else {
+						if ( (Math.abs($('#'+id).position().left) ) < ( table_width - $(window).width() ) ) {
+							$('#'+id).animate({ left: '-='+movepx }, 300);
+							$('#'+id).parent().toggleClass('tablewrapper_wide', false);
+						} else {
+						  $('#'+id).parent().siblings('.right_table').hide();
+						  $('#'+id).parent().toggleClass('tablewrapper_wide', true);
+						}
+					 }
+					 $('#'+id).parent().siblings('.left_table').show();
+				} else {
+					// Direction = Left
+					if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))) {
+						if (position_left < 0) {
+								$('#'+id).animate({ left: '+='+movepx }, 0);
+								$('#'+id).parent().toggleClass('tablewrapper_wide', false);
+						} else {
+						  $('#'+id).animate({ left: '0' }, 100);
+						  $('#'+id).parent().siblings('.left_table').hide();
+						  $('#'+id).parent().toggleClass('tablewrapper_wide', true);
+						}
+					} else {
+						if (position_left < 0) {
+						  $('#'+id).animate({ left: '+='+movepx }, 300);
+						  $('#'+id).parent().toggleClass('tablewrapper_wide', false);
+						} else {
+						  $('#'+id).parent().siblings('.left_table').hide();
+						  $('#'+id).parent().toggleClass('tablewrapper_wide', true);
+						}
+					 }
+					 $('#'+id).parent().siblings('.right_table').show();
+				}
+			}
+			function wrapTable( page ){
+				var i = 0;
+
+				$('#'+page + ' table').each(function(){
+					var id = '';
+					if($(this).attr('id')){
+						id = $(this).attr('id');
+					} else {
+						i++;
+						id = 'table_' + i;
+						$(this).attr('id', id);
+					}
+
+					if (!$(this).parent().parent().hasClass("table_wrapper")) {
+						if ( $(this).width() > $(window).width() ){
+							$(this)
+								.wrap('<div class="display_table" ><span class="tablewrapper tablewrapper_wide" /></div>')
+								.parent().before('<span class="left_table" onclick="moveTable(\''+ id +'\',\'left\');"></span>')
+								.after('<span class="right_table" onclick="moveTable(\''+ id +'\',\'right\');"></span>');
+
+							$(this).parents('.display_table').children('.left_table, .right_table').css({'height': $(this).height() +'px'});
+						}
+					}
+				});
+			}
+			function searchCatalog(search_by, search_value) {
+				LoadingIndicator_show();
+				var on_search_page = false;
+
+				if (typeof(search_by) == 'undefined') {
+					search_by = $('#searchWhere').val();
+				}
+
+				if (typeof(search_value) == 'undefined') {
+					search_value = $('#searchFormQuery').val();
+					var on_search_page = true;
+				}
+
+				switch(search_by){
+				 case "course":
+					 jQuery.ajax({
+						url: "mobile_functions.php?catalog=" + currentcatalog + "&q=" + search_value + "&type=course&searchcatalog",
+						success: function(data) {
+							$('#courses ul#course_big_list').empty().append(data);
+							$('#searchwords').val(search_value);
+							if (on_search_page == true) {
+								LoadingIndicator_hide();
+								jQT.goTo('#courses');
+								$('#overlay').fadeOut('slow');
+							} else {
+								changePage('#courses');
+							}
+							showtimer = false;
+						}
+					});
+					 break;
+				 case "program":
+					jQuery.ajax({
+						url: "mobile_functions.php?catalog=" + currentcatalog + "&q=" + search_value + "&type=program&searchcatalog",
+						success: function(data) {
+							$('#programs div.vertical-scroll div:eq(0) ul').empty().append(data);
+							changePage('#programs');
+						}
+					});
+					break;
+				 case "hierarchy":
+				 case "page":
+					var page_id = 'custompage1';
+					var current_page_id = jQuery('.current').attr('id');
+
+					if (current_page_id.substring(0,6) == 'custom') {
+						var page_number = 1;
+						if (current_page_id.substring(current_page_id.length - 1) == page_number) {
+							page_number = page_number + 1;
+						}
+						if (page_number > 9) {
+							page_number = 1;
+						}
+						page_id = 'custompage' + page_number;
+					}
+
+					jQuery.ajax({
+						url: "mobile_functions.php?catalog=" + currentcatalog + "&q=" + search_value + "&type=" + search_by + "&searchcatalog",
+						success: function(data) {
+							$('#' + page_id + ' div.vertical-scroll div:eq(0)').empty().append('<ul class="edgetoedge">' + data + '</ul>');
+							changePage('#' + page_id);
+						}
+					});
+					break;
+				  default:
+					  alert('The search request is invalid please try again.');
+				}
+			}
+			function LoadingIndicator(){
+				if (!$('.toolbar .loading').size()) {
+					jQuery('.toolbar').append('<div class="loading"><img src="//acalog-clients.s3.amazonaws.com/production/drew/img/mobile/loading.gif" alt="Loading" /></div>');
+				} else {
+					jQuery('.toolbar .loading').show();
+				}
+				jQuery('.toolbar h1').css("visibility", "hidden");
+				return false;
+			}
+			function LoadingIndicator_show(){
+				if (!$('.toolbar .loading').size()) {
+					jQuery('.toolbar').append('<div class="loading"><img src="//acalog-clients.s3.amazonaws.com/production/drew/img/mobile/loading.gif" alt="Loading" /></div>');
+				} else {
+					jQuery('.toolbar .loading').show();
+				}
+				jQuery('.toolbar h1').css("visibility", "hidden");
+				return false;
+			}
+			function LoadingIndicator_hide(){
+				jQuery('.toolbar .loading').remove();
+				jQuery('.toolbar h1').css("visibility", "visible");
+				return false;
+			}
+			function showSearchResults( )
+			{
+			  if ( !showtimer )
+			  {
+				// Start the timer
+				showtimer = true;
+				alertTimerId = setTimeout( "requestResults()", 900 );
+			  }
+			  else
+			  {
+				showtimer = false;
+				clearTimeout( alertTimerId );
+			  }
+			}
+
+			function requestResults( )
+			{
+				LoadingIndicator_show();
+
+				var type = '';
+				switch ($('.current').attr('id')){
+					case "courses"://alpha
+					case "coursestypes":
+					case "coursesprefix":
+						type = 'course';
+						break;
+					case "programs":
+					case "programschoose":
+					case "programs_alpha":
+					case "programs_sub":
+						type = 'program';
+						break;
+					case "toc":
+						type = 'page';
+						break;
+				}
+				var searchfor = $('.current .search  input[type="search"]').val().trim();
+				switch(searchfor){
+					case 'Search Courses':
+					case 'Search Programs':
+					case 'Search':
+						searchfor = '';
+					break;
+				}
+				if ($(".current .search input[name='filter']").length)
+				{
+					var filter = $(".current .search input[name='filter']").val().trim();
+					if (filter != '' && typeof(filter) != 'undefined') {
+						searchfor = filter + ' AND ' + searchfor;
+					}
+				}
+
+				jQuery.ajax({
+					url: "mobile_functions.php?catalog=" + currentcatalog + "&q=" + searchfor + "&type=" + type + "&page=1&searchcatalog",
+					success: function(data) {
+						switch (type){
+							case "course":
+							case "program":
+								$('.current div.vertical-scroll div:eq(0) ul').empty().append(data);
+								break;
+							case "page":
+								var page_id = 'custompage3';
+								$('#' + page_id + ' div.vertical-scroll div:eq(0)').empty().append('<ul class="edgetoedge">' + data + '</ul>');
+								changePage('#'+page_id);
+								break;
+							default:
+								type = 'course';
+								var page_id = 'custompage6';
+								$('#' + page_id + ' div.vertical-scroll div:eq(0)').empty().append('<ul class="edgetoedge">' + data + '</ul>');
+								changePage('#'+page_id);
+								break;
+						}
+					},
+					complete: function(){
+						$('#overlay').fadeOut().remove();
+						LoadingIndicator_hide();
+					}
+				});
+
+			}
+			function showMoreSearchResults(page, type, keyword)
+			{
+
+				if(typeof(page) == 'undefined') {
+					page = 2;
+				}
+
+				if(typeof(type) == 'undefined') {
+					type = 'course';
+				}
+
+				if (typeof(keyword) == 'undefined') {
+					keyword = $('#searchwords').val();
+				}
+
+				LoadingIndicator_show();
+
+				jQuery.ajax({
+					url: "mobile_functions.php?catalog=" + currentcatalog + "&q=" + keyword + "&type=" + type + "&page=" + page + "&searchcatalog",
+					success: function(data) {
+						var list = jQuery('.current ul li.showmore').parent();
+						$(list).children('li.showmore').remove();
+						$(list).append(data);
+					},
+					complete: function(){
+						LoadingIndicator_hide();
+					}
+				});
+			}
+			function changePage(page){
+				LoadingIndicator_show();
+				if(typeof(page) == 'undefined') {
+					alert('Sorry, that page is unavailable');
+				}
+				//var lastpage = $('.current').attr('id');
+				page = page.replace(/#/g,'');
+
+				var toPage = '#'+page;
+
+				if (show_archived_message){
+					if (!$(toPage + ' .archived').size() && toPage != '#home') {
+						$(toPage + ' .toolbar').after('<div class="archived">[ARCHIVED CATALOG]</div>');
+					}
+				} else {
+					$('div.archived').remove();
+				}
+				if ((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)) || (navigator.userAgent.match(/iPad/i))) {
+					$('.search').hide();
+					$('#' + page + ' div.vertical-scroll > div').each(function(){
+						$(this).css('-webkit-transform','translate3d(0, 0, 0)');
+					});
+				} else {
+					$('.search').show();
+				}
+				if(!$(toPage).hasClass('current')) {
+					jQT.goTo('#'+page, 'slide');
+					wrapTable(page);
+				}
+				$('.active').removeClass('active');
+				LoadingIndicator_hide();
+			}
+			function scrollPage(pos){
+				if(typeof(pos) == 'undefined') {
+					pos = 0;
+				}
+				if (pos == 'top') {
+					pos = 0;
+				} else {
+					var screenHeight = $('div.current div.vertical-scroll').height();
+					//var toolbarheight = $('div.toolbar').outerHeight();
+					var maxScroll = $('div.current div.vertical-scroll > div').height();
+					pos = Number(pos);
+					screenHeight = Number(screenHeight);
+					maxScroll = Number(maxScroll);
+					if (pos > 0) {
+						pos *= -1;
+					}
+				}
+				if ( isNaN(pos) ) {
+					pos = 0;
+				}
+				//z-index is so the tool bar is in front of the text
+				$('div.toolbar').each(function(){
+					$(this).css('z-index','2');
+				});
+				$('div.current div.vertical-scroll > div').each(function(){
+					$(this).css('webkitTransitionDuration','300ms');
+					// Chrome and Safari use webkit
+					$(this).css('webkitTransform','translate3d(0, ' + pos + 'px, 0)');
+					// set pos an extra 65px for the header
+					if (pos !== 0){
+						pos = 65 + pos;
+					}
+					// IE 10 and Firefox use transform
+					$(this).css('transform','translate3d(0px, ' + pos + 'px, 0px)');
+				});
+			}
+			function showArchivedCatalogs(hidepub){
+				LoadingIndicator_hide();
+
+				var current_page_id = jQuery('.current').attr('id');
+				if ( current_page_id != 'home') {
+				  changePage('#home');
+				}
+
+				if (!$('#cataloglist .showmore').size() && ($('#cataloglist .arrow').not('.archivedCatalog').size() > 0)) {
+					$('#cataloglist').append('<li class="showmore" style="padding: 10px !important;"><a style="padding: 10px ! important;" onclick="showArchivedCatalogs(2);" class="no_loading" href="#">All Catalogs</a></li>');
+				}
+
+				if (typeof(hidepub) != 'undefined'){
+					if (hidepub == 1) {
+						$('#cataloglist .archivedCatalog').slideDown('slow');
+						$('#cataloglist .showmore').hide();
+						$('#cataloglist .arrow').not('.archivedCatalog').hide();
+						if ($('#cataloglist .arrow').not('.archivedCatalog').size() > 0) {
+							$('#cataloglist .showmore').html('<a style="padding: 10px ! important;" onclick="showArchivedCatalogs(2);" class="no_loading" href="#">All Catalogs</a>').slideDown('slow');
+						}
+					} else if (hidepub == 2) {
+						$('#cataloglist .arrow').slideDown('slow');
+						$('#cataloglist .showmore').slideUp('slow');
+					}
+
+				} else {
+					$('#cataloglist .archivedCatalog').slideDown('slow');
+					$('#cataloglist .showmore').slideUp('slow');
+				}
+
+				return false;
+			}
+			function showCatalog(catalog, id, archived){
+				LoadingIndicator_show();
+				currentcatalog = id;
+
+				var find_title = /title">(.*?)</i.exec(catalog.innerHTML);
+				catalog_title = find_title[1];
+
+				if (typeof(archived) != 'undefined' && archived == 1) {
+					show_archived_message = true;
+					if (!$('#catalog_title .archived').size()) {
+						$('#catalog_title .toolbar').not('#home .toolbar').after('<div class="archived">[ARCHIVED CATALOG]</div>');
+					}
+				} else {
+					show_archived_message = false;
+					$('div.archived').remove();
+				}
+
+				$.get("mobile_functions.php?catalog=" + currentcatalog, function(data){
+					$('#catalog_title').html(catalog_title).slideDown("fast");
+
+					changePage('#cataloghome');
+
+				  var toolbar_height = Number($(".current .toolbar").height());
+
+				var menu_height = (Number(toolbar_height) + Number($(".current .toolbar").siblings(".info").height()) + Number($(".current .toolbar").siblings(".archived").height()));
+				if ($('.current .banner').height() > 20 ) {
+					menu_height += Number($('.current .banner').height());
+				}
+				 $('#custom_screenheight').html('.vertical-scroll, .vertical-slide {height: ' + (screen.height - menu_height) + 'px;}.landscape .vertical-scroll, .landscape .vertical-slide {height: ' + (screen.width - menu_height) + 'px;}');
+
+					var sidebuttons = 80;
+					var table_width = $(window).width()-sidebuttons;
+					var table_width_land = $(window).height()+94;
+					$('#custom_screenheight').append(' .tablewrapper {width: ' + table_width + 'px;} .landscape .tablewrapper {width: ' + table_width_land + 'px;}  .tablewrapper_wide {width: ' + (table_width + 40) + 'px;} .landscape .tablewrapper_wide {width: ' + (table_width_land + 40) + 'px;}');
+				 });
+
+				return false;
+			}
+
+			function chooseProgramDisplay(){
+				LoadingIndicator_show();
+
+				jQuery.ajax({
+					url: "mobile_functions.php?catalog=" + currentcatalog + "&type=program&checktypes",
+					success: function(data) {
+						if (data == 'true') {
+							if (!$('#programtypelink').size()) {
+								$('<li class="arrow" id="programtypelink"><a href="#" onClick="showPrograms_type();">Type</a></li>').insertAfter('#programschoose div.vertical-scroll div ul li:eq(0)');
+							}
+						  changePage('#programschoose');
+						} else {
+							$('#programtypelink').remove();
+							jQuery.ajax({
+								url: "mobile_functions.php?catalog=" + currentcatalog + "&type=degree&checktypes",
+								success: function(data) {
+									if (data == 'true') {
+										if (!$('#degreetypeprogram').size()) {
+											$('#programschoose div.vertical-scroll div ul:eq(0)').append('<li class="arrow" id="degreetypeprogram"><a href="#" onclick="showPrograms_degree();">Degree Type</a></li>');
+										}
+										changePage('#programschoose');
+									} else {
+										$('#degreetypeprogram')
+										showPrograms_alpha();
+									}
+								}
+							});
+						}
+					}
+				});
+
+				return false;
+			}
+
+			function showPrograms(program_id, page){
+				LoadingIndicator_show();
+
+				var program_page = 'programs_sub';
+
+				if(typeof(program_id) == 'undefined') {
+					program_id = '';
+					program_page = 'programs';
+				}
+
+				if(typeof(page) == 'undefined') {
+					page = 1;
+				}
+
+				jQuery.ajax({
+					url: "mobile_functions.php?catalog=" + currentcatalog + "&program_id=" + program_id + "&page=" + page + "&showprograms",
+					success: function(data) {
+						var list = $('#' + program_page + ' div.vertical-scroll div ul:eq(0)');
+						if( page <= 1 ) {
+							list.empty();
+						} else {
+							$('#' + program_page + ' div.vertical-scroll div ul:eq(0) li:last-child').remove();
+						}
+						list.append(data);
+						if (page == 1) {
+							changePage('#' + program_page);
+						}
+					}
+				});
+				return false;
+			}
+			function showPrograms_alpha(page, listsep){
+				LoadingIndicator_show();
+
+				if(typeof(page) == 'undefined') {
+					page = 1;
+				}
+
+				if(typeof(listsep) == 'undefined') {
+					listsep = '';
+				}
+
+				jQuery.ajax({
+					url: "mobile_functions.php?catalog=" + currentcatalog + "&type=program&page=" + page + "&listsep=" + listsep + "&showlist",
+					success: function(data) {
+						var list = $('#programs_alpha div.vertical-scroll div ul:eq(0)');
+						if( page <= 1 ) {
+							list.empty();
+						} else {
+							$('#programs_alpha div.vertical-scroll div ul:eq(0) li:last-child').remove();
+						}
+						list.append(data);
+						if ( page == 1) {
+							changePage('#programs_alpha');
+						}
+					}
+				});
+				return false;
+			}
+			function showPrograms_type(){
+				LoadingIndicator_show();
+
+				jQuery.ajax({
+					url: "mobile_functions.php?catalog=" + currentcatalog + "&type=program&showtypes",
+					success: function(data) {
+						var page = 1;
+						var list = $('#programs_type div.vertical-scroll div ul:eq(0)');
+						if( page <= 1 ) {
+							list.empty();
+						} else {
+							$('#programs_type div.vertical-scroll div ul:eq(0) li:last-child').remove();
+						}
+						list.append(data);
+						changePage('#programs_type');
+					}
+				});
+				return false;
+			}
+			function showPrograms_degree(){
+				LoadingIndicator_show();
+				jQuery.ajax({
+					url: "mobile_functions.php?catalog=" + currentcatalog + "&type=degree&showtypes",
+					success: function(data) {
+						var page = 1;
+						var list = $('#degrees div.vertical-scroll div ul:eq(0)');
+						if( page <= 1 ) {
+							list.empty();
+						} else {
+							$('#degrees div.vertical-scroll div ul:eq(0) li:last-child').remove();
+						}
+						list.append(data);
+						changePage('#degrees');
+					}
+				});
+				return false;
+			}
+
+			function showSchools(id, type){
+				LoadingIndicator_show();
+
+				if(typeof(id) == 'undefined') {
+					id = 1;
+					type = 'institution';
+				}
+				if(typeof(type) == 'undefined') {
+					followAnchor({id: id,type:"entity"});
+				} else {
+					type = type.toLowerCase();
+
+					jQuery.ajax({
+						url: "mobile_functions.php?catalog=" + currentcatalog + "&id=" + id + "&showhierarchy",
+						success: function(data) {
+							$('#' + type + ' div.vertical-scroll div:eq(0)').empty().append(data);
+							changePage('#' + type);
+						}
+					});
+				}
+				return false;
+			}
+
+			function showCourses_alpha(page, listsep, options){
+				LoadingIndicator_show();
+				var options_url = "";
+
+				if(typeof(page) == 'undefined') {
+					page = 1;
+				}
+
+				if(typeof(listsep) == 'undefined') {
+					listsep = '';
+				}
+
+				if(typeof(options) == 'string') {
+					options_url = options;
+				}
+
+
+				jQuery.ajax({
+					url: "mobile_functions.php?catalog=" + currentcatalog + "&page=" + page + "&listsep=" + listsep + options_url + "&showlist",
+					success: function(data) {
+						if (typeof(options) == 'undefined') {
+							var list = $('ul#course_big_list');
+
+							if( page <= 1 ) {
+								list.empty();
+							} else {
+								$('ul#course_big_list li:last-child').remove();
+							}
+
+							list.append(data);
+
+							if (page == 1) {
+								changePage('#courses');
+							}
+
+							$("#courses .search input[name='filter']").val('');
+						} else {
+							if (page > 1) {
+								var list = $('div.current ul:last');
+							}
+
+							if( page <= 1 ) {
+								list.empty();
+							} else if (page > 1) {
+								$('div.current ul:last li:last-child').remove();
+							}
+
+							$('#jqt').append('<div style="display:none;" id="temp_holder">'+data+'</div>');
+
+							var first_child = $('div#temp_holder').children().get(0).tagName;
+							if (first_child == 'UL') {
+								$('div.current div.vertical-scroll div ul:last').append($('#temp_holder :first-child').html());
+								$('div#temp_holder ul').eq(0).remove();
+								$('div.current div.vertical-scroll div').append($('#temp_holder').html());
+							} else if (first_child == 'LI')  {
+								$('div.current div.vertical-scroll div ul:last').append($('#temp_holder').html());
+							} else {
+								$('div.current div.vertical-scroll div').append($('#temp_holder').children());
+							}
+							$('#temp_holder').remove();
+						}
+					}
+				});
+				return false;
+			}
+
+
+			function showCourses_type(){
+				LoadingIndicator_show();
+
+				jQuery.ajax({
+					url: "mobile_functions.php?catalog=" + currentcatalog + "&showcoursetypes",
+					success: function(data) {
+						$('#coursestypes div.vertical-scroll div ul:eq(0)').empty().append(data);
+						changePage('#coursestypes');
+					}
+				});
+				return false;
+			}
+
+			function showCourses_prefix(){
+				LoadingIndicator_show();
+
+				jQuery.ajax({
+					url: "mobile_functions.php?catalog=" + currentcatalog + "&showcourseprefixes",
+					success: function(data) {
+						$('#coursesprefix div.vertical-scroll div ul:eq(0)').empty().append(data);
+						changePage('#coursesprefix');
+					}
+				});
+				return false;
+			}
+
+			function showCourses_type_details(type){
+				LoadingIndicator_show();
+
+				if(typeof(type) == 'undefined') {
+					type = '';
+				}
+				jQuery.ajax({
+					url: "mobile_functions.php?catalog=" + currentcatalog + "&coursetype=" + type + "&showcoursesbytype",
+					success: function(data) {
+						$('ul#course_big_list').empty().append(data);
+						$("#courses .search input[name='filter']").val('type:' + type);
+						changePage('#courses');
+						$('#coursestypes li.active').removeClass('active');
+					}
+				});
+				return false;
+			}
+
+			function showCourses_prefix_details(type, page){
+				LoadingIndicator_show();
+
+				if(typeof(type) == 'undefined') {
+					type = '';
+				}
+				if(typeof(page) == 'undefined') {
+					page = 1;
+				}
+				jQuery.ajax({
+					url: "mobile_functions.php?catalog=" + currentcatalog + "&prefix=" + type + "&page=" + page + "&showcoursesbyprefix",
+					success: function(data) {
+						var list = $('ul#course_big_list');
+						if( page <= 1 ) {
+							list.empty();
+						} else {
+							$('ul#course_big_list li:last-child').remove();
+						}
+						list.append(data);
+						$("#courses .search input[name='filter']").val('prefix:' + type);
+						if (page == 1) {
+							changePage('#courses');
+						}
+					}
+				});
+				return false;
+			}
+
+			function showProgramDetails(oid, page_number){
+				LoadingIndicator_show();
+
+				if(typeof(oid) == 'undefined') {
+					oid = '';
+				}
+
+				if(typeof(page_number) == 'undefined') {
+					page_number = 1;
+				}
+
+				var current_page_id = jQuery('.current').attr('id');
+				if (current_page_id.substring(current_page_id.length - 1) == page_number) {
+					page_number = page_number + 1;
+				}
+				if (page_number > 9) {
+					page_number = 1;
+				}
+
+				var page = 'programdetails' + page_number;
+
+				jQuery.ajax({
+					url: "mobile_functions.php?catalog=" + currentcatalog + "&type=program&oid=" + oid + "&showdetails",
+					success: function(data) {
+						$('#' + page + ' div.vertical-scroll div:eq(0)').empty().append(data);
+						changePage('#' + page);
+					}
+				});
+				return false;
+			}
+
+			function showCoreDetails(oid, coreid){
+				LoadingIndicator_show();
+
+				if(typeof(oid) == 'undefined') {
+					oid = '';
+				}
+
+				if(typeof(coreid) == 'undefined') {
+					coreid = '';
+				}
+
+				if(typeof(page_number) == 'undefined') {
+					page_number = 1;
+				}
+
+				var current_page_id = jQuery('.current').attr('id');
+				if (current_page_id.substring(current_page_id.length - 1) == page_number) {
+					page_number = page_number + 1;
+				}
+				if (page_number > 9) {
+					page_number = 1;
+				}
+
+				var page = 'programdetails' + page_number;
+
+				jQuery.ajax({
+					url: "mobile_functions.php?catalog=" + currentcatalog + "&type=program&oid=" + oid + "&coreid=" + coreid + "&showdetails",
+					success: function(data) {
+						$('#' + page + ' div.vertical-scroll div:eq(0)').empty().append(data);
+						changePage('#' + page);
+					}
+				});
+				return false;
+			}
+
+			function showCourseDetails(oid){
+				LoadingIndicator_show();
+				if(typeof(oid) == 'undefined') {
+					oid = '';
+				}
+
+				var current_page_id = jQuery('.current').attr('id');
+				var page = 'coursedetail';
+				if (current_page_id == page) {
+					 page = 'coursedetail1';
+				}
+
+				jQuery.ajax({
+					url: "mobile_functions.php?catalog=" + currentcatalog + "&type=course&oid=" + oid + "&showdetails",
+					success: function(data) {
+						$('#' + page + ' div.vertical-scroll div:eq(0)').empty().append(data);
+						changePage('#' + page);
+					}
+				});
+				return false;
+			}
+
+			function showCustomPage(oid, type, page, options){
+				LoadingIndicator_show();
+				if(typeof(oid) == 'undefined') {
+					oid = '';
+				}
+
+				if(typeof(type) == 'undefined') {
+					type = 'page';
+				}
+
+				if(typeof(page) == 'undefined' || typeof(page) == 'object') {
+					page = '1';
+
+					var current_page_id = jQuery('.current').attr('id');
+
+					if (current_page_id.substring(0,6) == 'custom') {
+						page = parseInt(current_page_id.substring(current_page_id.length - 1)) + 1;
+					}
+				}
+
+				if (page > 9) {
+					page = 1;
+				}
+
+				if (typeof(options) == 'undefined') {
+					options = '';
+				}
+
+				jQuery.ajax({
+					url: "mobile_functions.php?catalog=" + currentcatalog + "&oid=" + oid + "&type=" + type + "&page=" + page + options +"&showCustomPage",
+					success: function(data) {
+						$('#custompage' + page + ' div.vertical-scroll div:eq(0)').empty().append(data);
+						changePage('#custompage' + page);
+					}
+				});
+				return false;
+			}
+			function showTOC(){
+				jQuery.ajax({
+					url: "mobile_functions.php?catalog=" + currentcatalog + "&showTOC",
+					success: function(data) {
+						$('#toc div.vertical-scroll div:eq(0) div.content').empty().append(data);
+						changePage('#toc');
+					}
+				});
+				return false;
+			}
+			function showLocation(location) {
+				if(typeof(location) == 'undefined') {
+					return false;
+				}
+				jQuery.ajax({
+					url: "mobile_functions.php?location=" + location + "&showcontactdetails",
+					success: function(data) {
+						$('#contact_details #schoolinfo').empty().append(data);
+						changePage('#contact_details');
+					}
+				});
+				return false;
+			}
+			function addParentProgramInfo(parent_program_info, link){
+				if (typeof(parent_program_info) != 'undefined' && typeof(link) != 'undefined') {
+					$('body').bind('pageAnimationEnd', function(e, info){
+						if ( $('.current .info').length > 0 ) {
+							$('.current .info').html(parent_program_info);
+							$('.current .info').css('padding', '5px');
+							$('.current .info').attr('onclick', '');
+							$('.current .info').bind('tap click',function(e){
+								eval(link);
+							});
+						} else {
+							$('.current .toolbar').after('<div class="info" style="padding:5px;" onclick="' + link + '">' + parent_program_info + '</div>');
+						}
+						$('.current .info').hide().slideDown("slow");
+						$(this).unbind(e);
+					});
+				}
+			}
+
+			function followAnchor(anchorTag) {
+				LoadingIndicator_show();
+
+				if(typeof(anchorTag.id) == 'undefined') {
+					return false;
+				}
+
+				if (typeof(anchorTag.anchor) != 'undefined'){
+					if (anchorTag.anchor.substr(0,1) == '#') {
+						anchorTag.anchor = anchorTag.anchor.substr(1);
+					}
+				}
+
+				var page = '';
+				var type = '';
+				var page_number = 1;
+				var url_tail = 'showdetails';
+				var current_page_id = jQuery('.current').attr('id');
+
+				switch(anchorTag.type) {
+					case "course":
+					case "courses":
+						page = 'coursedetail';
+						if ( current_page_id == page) {
+							page = 'coursedetail1';
+						}
+						type = 'course';
+						anchorTag.type = 'course';
+						break;
+					case "program":
+					case "programs":
+					case "core":
+						type = 'program';
+						page_number = parseInt(current_page_id.substring(current_page_id.length - 1)) + 1;
+						break;
+					case "entity":
+						type = 'entity';
+						break;
+					case "page":
+						url_tail = 'showCustomPage';
+						type = 'page';
+						break;
+					default:
+						return false;
+				}
+
+				if (type == 'entity' || type == 'page' || type == 'program') {
+					if (current_page_id.substring(0,6) == 'custom') {
+						page_number = parseInt(current_page_id.substring(current_page_id.length - 1)) + 1;
+					} else if (current_page_id.substring(current_page_id.length - 1) == page_number) {
+						page_number = page_number + 1;
+					}
+					if (page_number > 9) {
+						page_number = 1;
+					}
+					if (type == 'program') {
+						page = 'programdetails' + page_number;
+					} else {
+						page = 'custompage' + page_number;
+					}
+				}
+
+				if (current_page_id != page) {
+					var core_url = "";
+					if (typeof(anchorTag.coreid) != 'undefined'){
+						core_url = "&coreid=" + anchorTag.coreid;
+					}
+					findAnchor("catalog=" + currentcatalog + "&type=" + type + "&oid=" + anchorTag.id + core_url  + "&" + url_tail, page, anchorTag.anchor, type);
+				} else {
+					scrollToAnchor(anchorTag.anchor);
+				}
+
+				return false;
+			}
+			function findAnchor(parameter, page, anchor, type){
+				if(typeof(type) != 'undefined' && type == 'entity') {
+					$.getJSON("mobile_functions.php?" + parameter + "&format=json", function(data) {
+						$('#' + page + ' div.toolbar h1').empty().append(data.type);
+						$('#' + page + ' div.vertical-scroll div:eq(0)').empty().append(data.content);
+						changePage('#' + page);
+						waitCurrentPage(page, anchor);
+					});
+				} else {
+					jQuery.ajax({
+						url: "mobile_functions.php",
+						data: parameter,
+						success: function(data) {
+								if (type == 'page') {
+									$('#' + page + ' div.toolbar h1').empty().append('E-Catalog');
+								}
+							$('#' + page + ' div.vertical-scroll div:eq(0)').empty().append(data);
+							changePage('#' + page);
+							waitCurrentPage(page, anchor);
+						}
+					});
+				}
+				return;
+			}
+			function waitCurrentPage(page, anchor) {
+				var current_page_id = jQuery('.current').attr('id');
+				if (current_page_id == page) {
+					window.clearTimeout(alertTimerId);
+					scrollToAnchor(anchor);
+					return true;
+				} else {
+					alertTimerId = window.setTimeout("waitCurrentPage('" + page + "', '" + anchor + "')", 1000);
+				}
+			}
+			function scrollToAnchor(target){
+				if(typeof(target) != 'undefined') {
+					if (target.substr(0,1) == '#') {
+						target = target.substring(1);
+					}
+					if ( $(".current [id='"+target+"']").size() ){
+						scrollPage('-' + $(".current a[id='"+target+"']").position().top);
+					} else if ( $(".current a[name='"+target+"']").size() ){
+						scrollPage('-' + $(".current a[name='"+target+"']").position().top);
+					}
+				}
+				return;
+			}
+			function TryAgain(url){
+				jQuery.ajax({
+					url: "mobile_functions.php?"+url,
+					success: function(data) {
+						jQuery('.current .error').replaceWith(data);
+					}
+				});
+				return false;
+			}
+		</script> 
+ </head> 
+ <body> 
+  <div id="jqt"> 
+   <div id="home"> 
+    <div class="toolbar">
+     <h1>Drew University</h1>
+    </div> 
+    <div class="info"> 
+     <p>This application is intended for mobile devices and may not function as expected.</p> 
+     <p>Choose a catalog.</p> 
+    </div> 
+    <div class="vertical-scroll"> 
+     <div> 
+      <ul class="edgetoedge" id="cataloglist">
+       <li class="arrow"><a href="#" onclick="showCatalog(this,11)" class="showcatalog"><span class="title">2014-2015 College of Liberal Arts Catalog</span></a></li> 
+       <li class="arrow"><a href="#" onclick="showCatalog(this,12)" class="showcatalog"><span class="title">2014-2015 Caspersen School of Graduate Studies Catalog</span></a></li> 
+       <li class="arrow"><a href="#" onclick="showCatalog(this,13)" class="showcatalog"><span class="title">2014-2015 Theological School Catalog</span></a></li> 
+       <li class="arrow archivedCatalog" style="display:none;"><a href="#" onclick="showCatalog(this,10, 1)" class="showcatalog"><span class="title">2013-2014 College of Liberal Arts Catalog</span><span class="details">[ARCHIVED CATALOG]</span></a></li> 
+       <li class="arrow archivedCatalog" style="display:none;"><a href="#" onclick="showCatalog(this,9, 1)" class="showcatalog"><span class="title">2012-2014 Caspersen School of Graduate Studies Catalog</span><span class="details">[ARCHIVED CATALOG]</span></a></li> 
+       <li class="arrow archivedCatalog" style="display:none;"><a href="#" onclick="showCatalog(this,8, 1)" class="showcatalog"><span class="title">2012-2014 Theological School Catalog</span><span class="details">[ARCHIVED CATALOG]</span></a></li> 
+       <li class="arrow archivedCatalog" style="display:none;"><a href="#" onclick="showCatalog(this,7, 1)" class="showcatalog"><span class="title">2012-2013 College of Liberal Arts Catalog</span><span class="details">[ARCHIVED CATALOG]</span></a></li> 
+       <li class="showmore" style="padding:10px !important;"><a href="#" onclick="showArchivedCatalogs();" class="no_loading" style="padding:10px !important;">Other Catalogs<br></a></li>
+      </ul> 
+      <ul class="rounded"> 
+       <li class="arrow" style="background-color:#FFF;"><a href="#contact" class="slide">Contact Institution</a></li> 
+      </ul> 
+      <form method="POST" class="form" id="switch_mobile"> 
+       <ul class="rounded"> 
+        <!-- title removed, was blocking checkbox ticket 4729 --> 
+        <li>View Full Website <span class="toggle"><input alt="View Full Website" type="checkbox"></span></li> 
+       </ul> 
+      </form>
+      <br> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="cataloghome"> 
+    <div class="toolbar"> 
+     <a href="#home" class="back slide">Back</a> 
+     <h1>E-Catalog</h1> 
+     <a href="#searchCatalog" class="button slide">Search</a> 
+    </div> 
+    <div class="vertical-scroll"> 
+     <div> 
+      <h2 id="catalog_title"></h2> 
+      <ul class="rounded"> 
+       <li class="arrow"><a href="#" onclick="showTOC();" class="slide">Table of Contents</a></li> 
+       <li class="arrow"><a href="#" onclick="chooseProgramDisplay();" class="slide">Programs</a></li> 
+       <li class="arrow"><a href="#courseschoose" class="slide">Courses</a></li> 
+      </ul> 
+      <br> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="toc"> 
+    <div class="toolbar"> 
+     <h1>Table of Contents</h1> 
+    </div> 
+    <div class="vertical-scroll"> 
+     <div> 
+      <div class="search"> 
+       <form> 
+        <input type="search" title="Search" placeholder="Search" autocomplete="off" autocorrect="off" maxlength="2048" name="q"> 
+       </form> 
+       <a class="button" id="cancel" style="top:4px;">Clear</a> 
+      </div> 
+      <div class="content">
+       Loading
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="courseschoose"> 
+    <div class="toolbar"> 
+     <h1>Courses</h1> 
+    </div> 
+    <div class="vertical-scroll"> 
+     <div> 
+      <div class="search"> 
+       <form method="POST" action="mobile_functions.php" id="searchCatalogForm1"> 
+        <input type="search" title="Search" placeholder="Search Courses" autocomplete="off" autocorrect="off" maxlength="2048" name="q" id="searchFormQuery1"> 
+        <input name="type" type="hidden" value="course"> 
+       </form> 
+       <a class="button" id="cancel" style="top:4px;">Clear</a> 
+      </div> 
+      <ul class="rounded"> 
+       <li class="arrow"><a onclick="showCourses_alpha('1');return false;" href="#">Alphabetically</a></li> 
+       <li class="arrow"><a href="#" onclick="showCourses_prefix();">Prefix</a></li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="coursestypes"> 
+    <div class="toolbar"> 
+     <h1>Course Types</h1> 
+    </div> 
+    <div class="vertical-scroll"> 
+     <div> 
+      <ul class="edgetoedge"> 
+       <li>Loading</li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="coursesprefix"> 
+    <div class="toolbar"> 
+     <h1>Course Prefixes</h1> 
+    </div> 
+    <div class="vertical-scroll"> 
+     <div> 
+      <ul class="edgetoedge"> 
+       <li>Loading</li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="courses"> 
+    <div class="toolbar"> 
+     <h1>Courses</h1> 
+    </div> 
+    <div class="vertical-scroll"> 
+     <div> 
+      <div class="search"> 
+       <form method="POST" action="mobile_functions.php" id="searchCatalogForm1"> 
+        <input type="search" title="Search" placeholder="Search Courses" autocomplete="off" autocorrect="off" maxlength="2048" name="q" id="searchFormQuery1"> 
+        <input name="type" type="hidden" value="course"> 
+       </form> 
+       <a class="button" id="cancel" style="top:4px;">Clear</a> 
+      </div> 
+      <ul class="edgetoedge showmorelinkready" id="course_big_list"> 
+       <li>Loading...</li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="coursedetail"> 
+    <div class="toolbar"> 
+     <h1>Course Details</h1> 
+    </div> 
+    <div class="vertical-scroll"> 
+     <div> 
+      <h3>Loading</h3> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="coursedetail1"> 
+    <div class="toolbar"> 
+     <h1>Course Details</h1> 
+    </div> 
+    <div class="vertical-scroll"> 
+     <div> 
+      <h3>Loading</h3> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="programschoose"> 
+    <div class="toolbar"> 
+     <h1>Programs</h1> 
+    </div> 
+    <div class="vertical-scroll"> 
+     <div> 
+      <div class="search"> 
+       <form method="POST" action="mobile_functions.php" id="searchCatalogForm2"> 
+        <input type="search" title="Search" placeholder="Search Programs" autocomplete="off" autocorrect="off" maxlength="2048" name="q" id="searchFormQuery2"> 
+        <input name="type" type="hidden" value="programs"> 
+       </form> 
+       <a class="button" id="cancel" style="top:4px;">Clear</a> 
+      </div> 
+      <ul class="rounded"> 
+       <li class="arrow"><a onclick="showPrograms_alpha();" href="#">Alphabetically</a></li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="programs_alpha"> 
+    <div class="toolbar"> 
+     <h1>Programs</h1> 
+    </div> 
+    <div class="vertical-scroll"> 
+     <div> 
+      <div class="search"> 
+       <form method="POST" action="mobile_functions.php" id="searchCatalogForm2"> 
+        <input type="search" title="Search" placeholder="Search Programs" autocomplete="off" autocorrect="off" maxlength="2048" name="q" id="searchFormQuery2"> 
+        <input name="type" type="hidden" value="programs"> 
+       </form> 
+       <a class="button" id="cancel" style="top:4px;">Clear</a> 
+      </div> 
+      <ul class="edgetoedge"> 
+       <li class="sep">Loading</li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="programs"> 
+    <div class="toolbar"> 
+     <h1>Programs</h1> 
+    </div> 
+    <div class="vertical-scroll"> 
+     <div> 
+      <ul class="edgetoedge"> 
+       <li class="sep">Loading</li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="programs_sub"> 
+    <div class="toolbar"> 
+     <h1>Programs</h1> 
+    </div> 
+    <div class="vertical-scroll"> 
+     <div> 
+      <div class="search"> 
+       <form method="POST" action="mobile_functions.php" id="searchCatalogForm2"> 
+        <input type="search" title="Search" placeholder="Search Programs" autocomplete="off" autocorrect="off" maxlength="2048" name="q" id="searchFormQuery2"> 
+        <input name="type" type="hidden" value="programs"> 
+       </form> 
+       <a class="button" id="cancel" style="top:4px;">Clear</a> 
+      </div> 
+      <ul class="edgetoedge"> 
+       <li class="sep">Loading</li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="programs_type"> 
+    <div class="toolbar"> 
+     <h1>Programs</h1> 
+    </div> 
+    <div class="vertical-scroll"> 
+     <div> 
+      <ul class="edgetoedge"> 
+       <li class="sep">Loading</li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="programdetails1"> 
+    <div class="toolbar"> 
+     <h1>Program</h1> 
+    </div> 
+    <div class="vertical-scroll"> 
+     <div> 
+      <h2>Loading</h2> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="programdetails2"> 
+    <div class="toolbar"> 
+     <h1>Program</h1> 
+    </div> 
+    <div class="vertical-scroll"> 
+     <div> 
+      <h2>Loading</h2> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="programdetails3"> 
+    <div class="toolbar"> 
+     <h1>Program</h1> 
+    </div> 
+    <div class="vertical-scroll"> 
+     <div> 
+      <h2>Loading</h2> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="programdetails4"> 
+    <div class="toolbar"> 
+     <h1>Program</h1> 
+    </div> 
+    <div class="vertical-scroll"> 
+     <div> 
+      <h2>Loading</h2> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="programdetails5"> 
+    <div class="toolbar"> 
+     <h1>Program</h1> 
+    </div> 
+    <div class="vertical-scroll"> 
+     <div> 
+      <h2>Loading</h2> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="programdetails6"> 
+    <div class="toolbar"> 
+     <h1>Program</h1> 
+    </div> 
+    <div class="vertical-scroll"> 
+     <div> 
+      <h2>Loading</h2> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="programdetails7"> 
+    <div class="toolbar"> 
+     <h1>Program</h1> 
+    </div> 
+    <div class="vertical-scroll"> 
+     <div> 
+      <h2>Loading</h2> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="programdetails8"> 
+    <div class="toolbar"> 
+     <h1>Program</h1> 
+    </div> 
+    <div class="vertical-scroll"> 
+     <div> 
+      <h2>Loading</h2> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="programdetails9"> 
+    <div class="toolbar"> 
+     <h1>Program</h1> 
+    </div> 
+    <div class="vertical-scroll"> 
+     <div> 
+      <h2>Loading</h2> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="institution"> 
+    <div class="toolbar"> 
+     <h1>Institution</h1> 
+    </div> 
+    <div class="vertical-scroll"> 
+     <div> 
+      <div class="info">
+       School Info will go here
+      </div> 
+      <h2>Loading</h2> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="college"> 
+    <div class="toolbar"> 
+     <h1>School/Colleges</h1> 
+    </div> 
+    <div class="vertical-scroll"> 
+     <div> 
+      <div class="info">
+       School Info will go here
+      </div> 
+      <h2>Loading</h2> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="department"> 
+    <div class="toolbar"> 
+     <h1>Departments</h1> 
+    </div> 
+    <div class="vertical-scroll"> 
+     <div> 
+      <div class="info">
+       School Info will go here
+      </div> 
+      <h2>Loading</h2> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="degrees"> 
+    <div class="toolbar"> 
+     <h1>Degrees</h1> 
+    </div> 
+    <div class="vertical-scroll"> 
+     <div> 
+      <ul class="edgetoedge">
+       <li>loading</li>
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="custompage1"> 
+    <div class="toolbar"> 
+     <h1>E-Catalog</h1> 
+    </div> 
+    <div class="vertical-scroll"> 
+     <div> 
+      <h2>Loading</h2> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="custompage2"> 
+    <div class="toolbar"> 
+     <h1>E-Catalog</h1> 
+    </div> 
+    <div class="vertical-scroll"> 
+     <div> 
+      <h2>Loading</h2> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="custompage3"> 
+    <div class="toolbar"> 
+     <h1>E-Catalog</h1> 
+    </div> 
+    <div class="vertical-scroll"> 
+     <div> 
+      <h2>Loading</h2> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="custompage4"> 
+    <div class="toolbar"> 
+     <h1>E-Catalog</h1> 
+    </div> 
+    <div class="vertical-scroll"> 
+     <div> 
+      <h2>Loading</h2> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="custompage5"> 
+    <div class="toolbar"> 
+     <h1>E-Catalog</h1> 
+    </div> 
+    <div class="vertical-scroll"> 
+     <div> 
+      <h2>Loading</h2> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="custompage6"> 
+    <div class="toolbar"> 
+     <h1>E-Catalog</h1> 
+    </div> 
+    <div class="vertical-scroll"> 
+     <div> 
+      <h2>Loading</h2> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="custompage7"> 
+    <div class="toolbar"> 
+     <h1>E-Catalog</h1> 
+    </div> 
+    <div class="vertical-scroll"> 
+     <div> 
+      <h2>Loading</h2> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="custompage8"> 
+    <div class="toolbar"> 
+     <h1>E-Catalog</h1> 
+    </div> 
+    <div class="vertical-scroll"> 
+     <div> 
+      <h2>Loading</h2> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="custompage9"> 
+    <div class="toolbar"> 
+     <h1>E-Catalog</h1> 
+    </div> 
+    <div class="vertical-scroll"> 
+     <div> 
+      <h2>Loading</h2> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="contact"> 
+    <div class="toolbar"> 
+     <h1>Contact Institution</h1> 
+    </div> 
+    <div class="vertical-scroll"> 
+     <div> 
+      <div id="schoolicon">
+       <img src="//acalog-clients.s3.amazonaws.com/production/drew/img/mobile/icon.png" alt="icon" height="57" width="57">
+      </div> 
+      <h2>Drew University</h2> 
+      <br style="clear:both;"> 
+      <h3>Drew University</h3> 
+      <ul class="rounded location"> 
+       <li class="arrow"><a href="http://maps.google.com/maps?q=36+Madison+Avenue+Madison%2C+NJ+07940+%28Drew+University%29" target="_blank" onclick="LoadingIndicator_hide();" ;="" class="slide"> <span class="label" style="width:95%;">address:</span> <span class="text">36 Madison Avenue<br> Madison, NJ 07940<br> <img alt="map" src="http://maps.google.com/maps/api/staticmap?center=36+Madison+Avenue++Madison%2C+NJ+07940&amp;zoom=17&amp;markers=36+Madison+Avenue++Madison%2C+NJ+07940&amp;size=512x256&amp;maptype=roadmap&amp;sensor=false" style="width: 95%;"> </span> <span class="details">Tap to view in Google Map</span></a> </li>
+      </ul> 
+      <ul class="rounded location"> 
+       <li class="arrow"><a href="tel:(973) 408-3000" class="slide" onclick="LoadingIndicator_hide();" ;="" target="_blank"> <span class="label" style="width:42px;clear:left;">phone:</span> <span class="text" style="margin-left:5px;">(973) 408-3000</span></a> </li>
+      </ul> 
+      <ul class="rounded location"> 
+       <li class="arrow"> <a href="mailto:htate@drew.edu?subject=Contact from the iPhone e-Catalog&amp;body=Hello Support,%0A%0A" class="slide"> <span class="label" style="width:42px;clear:left;">email:</span> <span class="text" style="margin-left:5px;">Support</span></a> </li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="contact_details"> 
+    <div class="toolbar"> 
+     <h1>Contact Details</h1> 
+    </div> 
+    <div class="vertical-scroll"> 
+     <div> 
+      <h1>Drew University</h1> 
+      <span id="schoolinfo"> </span> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="searchCatalog"> 
+    <div class="toolbar"> 
+     <h1>Search</h1> 
+    </div> 
+    <div> 
+     <div> 
+      <form action="mobile_functions.php" method="POST" id="searchCatalogForm"> 
+       <ul class="rounded"> 
+        <li><label for="searchFormQuery">Search For:</label> <input placeholder="Keyword" title="Search" type="search" name="q" id="searchFormQuery" autocomplete="off" autocorrect="off" style="width:65%;z-index:10;"></li> 
+        <li><label for="searchWhere">Search In:</label> <select id="searchWhere" name="type" style="width:65%;margin-left:0px;"> <optgroup label="Search In:"> <option value="program">Programs</option> <option value="course">Courses</option> <option value="hierarchy">Departments &amp; Programs</option> <option value="page">Other Content</option> </optgroup> </select> </li> 
+       </ul> 
+       <div style="text-align:center;"> 
+        <input type="submit" title="Submit" class="submit whiteButton" name="action" value="Search Catalog" style="width:90%;margin:0px 5%;padding:5px 10px 10px;"> 
+       </div> 
+      </form> 
+     </div> 
+    </div> 
+   </div> 
+  </div>
+  <!-- end of jqt -->   
+ </body>
+</html>

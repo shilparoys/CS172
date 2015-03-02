@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="https://www.facebook.com/2008/fbml" xml:lang="en" lang="en">
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+  <meta property="og:title" content="Pennsylvania College of Technology"> 
+  <meta property="og:type" content="website"> 
+  <meta property="og:url" content="http://www.pct.edu/"> 
+  <meta property="og:image" content="http://www.pct.edu/cgi-bin/images/logoFBshare.png"> 
+  <meta property="og:site_name" content="Pennsylvania College of Technology"> 
+  <meta property="og:description" content=""> 
+  <title>Pennsylvania College of Technology</title> 
+  <meta name="Keywords" content="degree,technology,associate,bachelor,college,technical,education,accounting,degrees that work,Business,Hospitality,Accounting,Finance,Baking,Pastry Culinary Arts,Business Hospitality Management,Technology Management,Construction Design Technologies,Architectural Technology,Building Construction,Civil Engineering Surveying,Construction Management,Heating,Ventilation Air Conditioning,Health Sciences,Applied Health Studies,Dental Hygiene,Emergency Medical Services,Paramedic,Health Information Technology,Medical Imaging,Nursing,Occupational Therapy Assistant,Physical Fitness Specialist,Physician Assistant,Surgical Technology,Industrial,Computing Engineering Technologies,Applied Technology Studies,Automated Manufacturing Machining,Electrical,Electronics,Computer Engineering Technology,Engineering Design Technology,Information Technology,Plastics Polymer,Welding,Early Childhood Education,Emergency Management,Graphic Design,Studio Arts,Web Development,Human Services,Industrial Design,Human Factors Design,Legal Assistant,Paralegal,Communication,Literature,Mathematics,Natural Sciences,Social Sciences,Humanities,Transportation Technologies,Natural Resources Technologies,Automotive,Aviation,Collision Repair,Auto Restoration,Diesel,Power Generation,Forestry,Heavy Equipment,Landscape,Horticulture,PCT,Penn Tech,Penn State,Pennsylvania College of Technology,Penn College,Williamsport,Pennsylvania,PA"> 
+  <meta name="Description" content="Pennsylvania College of Technology, a national leader in applied technology education and Penn State affiliate, provides the best opportunities for education, hands-on skills development, and real-world work experience. Penn College, in Williamsport, PA, offers majors in more than 100 career areas, with a special focus on applied technology. Our bachelor degrees, associate degrees, and certificates combine hands-on technical experience with education in theory and management practices."> 
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"> 
+  <style type="text/css" media="screen, projection">
+@import url(/cgi-bin/styles/v1.2/default.css);
+@import url(/cgi-bin/styles/v1.2/aud.css);
+@import url(/cgi-bin/styles/v1.2/home.css);
+</style> 
+  <style type="text/css" media="print">
+@import url(/cgi-bin/styles/v1.2/print.css);
+</style> 
+  <script type="text/javascript" src="/cgi-bin/scripts/jquery.min.js"></script> 
+  <script type="text/javascript" src="/cgi-bin/scripts/jqColor.js"></script> 
+  <script type="text/javascript" src="/cgi-bin/scripts/ui1.2.js"></script> 
+  <script type="text/javascript" src="/cgi-bin/scripts/aud1.2.js"></script> 
+  <script type="text/javascript">
+/*<![CDATA[*/
+var h = 240; var w = 0; var th = 10;  var sh = 10; var rotateTimer, rotateDelay
+
+$(function(){
+	$('#feature_wrapper').hide();
+	var windowWidth, photoCnt, currentPhoto;
+	photoCnt = 7;
+	currentPhoto = 3;
+	var isSmall = false; 
+
+	$(window).resize(function(){
+		checkWindowSizeLocal(cutpoint);
+	});
+	
+	function checkWindowSizeLocal(c){
+		var w = window.innerWidth	
+		if ($.browser.webkit) {w = document.documentElement.clientWidth;}
+		if (isSmall == false && w <= c) {
+			goSmallLocal();
+			isSmall = true;
+		} else if (isSmall == true && w > c) {
+			goLargeLocal();
+			isSmall = false;
+		}
+	}
+	
+	function goSmallLocal() {
+		//Change ID of features to detach script and allow for custom styling
+		$('#features').attr('id','mFeatures').removeAttr('style');
+		$('.slide').removeAttr('style');
+		$('.story').css({'padding-bottom':'0'});
+		$('#content').append('<div id="promotions"><p class="centered"><\/div>');
+		$('#nav > li:gt(0) a').appendTo($('#promotions p:first'));
+		$('#mNav').clone().insertBefore('#feature_wrapper').attr('id','mMainNav').attr('class','cells');
+
+		$("#mMainNav a.hide, #mMainNav a.show").on('click',function(){
+			$(this).siblings("ul").slideToggle(500);
+			$(this).toggleClass("hide").toggleClass("show");
+			if ($(this).attr('class') == 'hide') 
+				$(this).parent('li').css('backgroundColor','#e7ebee');
+			else
+				$(this).parent('li').css('backgroundColor','#C3D3DF');
+		}).siblings().hide();
+	}
+
+	function goLargeLocal() {
+		$("#qSearchBtn").attr("src","\/cgi-bin\/images\/search_button.jpg");
+		$('#nav > li:eq(1)').append($('#promotions a:first'));
+		$('#nav > li:last').append($('#promotions a:last'));
+		$('#global_clone, #menu_trigger, #srch_trigger, #promotions, #mMainNav').remove();
+		$('#mFeatures').attr('id','features');
+		initFeatures();
+	}
+
+	$("#alertbox").hide().delay(250).slideDown(750, "swing");
+	$(window).scroll( function(){$("#nav").css({"top":"0px", "position":"static"}); $(".pagetop").remove();}).resize(function() {initFeatures();}); 
+	$.get("/homeimages/home.xml",function(data){ rotate(3, data);});
+	$("#features a.slide").css("height","auto");
+	if ($("#features a").length>5){
+		$("#feature_wrapper").append('<div id="next_feature"><div id="next_bg">&nbsp;<\/div><\/div><div id="prev_feature"><div id="prev_bg" >&nbsp;<\/div><\/div>');  // add controls to the feature area
+		$("#features .slide_wrapper:last").prependTo('#features');
+		$('#features').css({"left":$('#features').position().left - $("#features a.slide:first").width()/2});
+		$("#prev_feature").click(function(){
+			if($("#features:animated").length==0){
+				$("#features").prepend($("#features .slide_wrapper:last")).css({'left':($("#features a.slide:first").width()*-1.5)});
+				$("#features").animate({'left':$("#features a.slide:first").width()/-(2)},300, function(){initFeatures();});
+			}
+		});
+		$("#next_feature").click(function(){
+			if($("#features:animated").length==0){
+				$("#features").animate({'left':( $("#features a.slide:first").width()*-1.5)},300, function(){
+					$("#features").append($("#features .slide_wrapper:first")).css({'left':($("#features a.slide:first").width()/-2)}); initFeatures();
+				});
+			}
+		});
+	}
+
+	//initFeatures();
+	$(window).load(function() {initFeatures();});//runs again to ensure all images are loaded.
+	rotateTimer = setInterval("autoRotate()",6000);
+	$("#feature_wrapper").hover(
+		function(event){ event.stopPropagation(); clearTimeout(rotateDelay); clearInterval(rotateTimer);},
+		function(event){ event.stopPropagation(); clearTimeout(rotateDelay); clearInterval(rotateTimer); rotateTimer = setInterval("autoRotate()",6000);}
+	);
+
+	checkWindowSizeLocal(cutpoint);
+});
+
+function autoRotate() {	rotateDelay = setTimeout(function(){$("#next_feature").click();},2000);}
+
+function initFeatures(){
+	$('#feature_wrapper').show();
+	th=0;sh=0;h=150;w=0
+	$("#features a.slide").each(function(){th = ($(".title",this).height()>th)?$(".title",this).height():th; sh = ($(".story",this).height()>sh)?$(".story",this).height():sh;});
+	$("#features a.slide").each(function(){$(".category",this).css({'padding-top':th-$(".title",this).height()}); });
+	$("#features a.slide").each(function(){$(".story",this).css({'padding-bottom':sh-$(".story",this).height()}); h=($(this).outerHeight()>h)?$(this).outerHeight():h; w = $(this).width(); });
+	if ($("#features a").length>5){ // arrange for sliding (auto/manual)
+		$("#features a.slide").css({"width":(100/$('#features a').length)+"%"}); 
+		$("#features").css({"width":($("#features a").length/5)*100+"%","height":(h+10)+"px"});
+		image_center=($("#features a.slide:first img:first").height()/2+$("#features a.slide:first img:first").position().top)-10; image_center=image_center>50?image_center:50;
+		$("#next_bg, #prev_bg").css({"background-position": "center "+image_center+"px","height":(h+20)+"px"});
+	}
+}
+/*]]>*/
+</script> 
+ </head> 
+ <body> 
+  <div id="pagebody"> 
+   <ul id="nav"> 
+    <li><a class="logo" href="/"><img src="/cgi-bin/images/logo.jpg" alt="Pennsylvania College of Technology"> </a> 
+     <ul> 
+      <li class="DTW"><a href="/schools/"><em>degrees that work</em>.<sup>®</sup><span class="smallerer">Academic Majors</span></a></li> 
+      <li><a href="/futurestudents/">Future Students</a></li> 
+      <li><a href="/transferstudents/">Transfer Students</a></li> 
+      <li><a href="/currentstudents/">Current Students</a></li> 
+      <li><a href="/parents/">Parents</a></li> 
+      <li><a href="/alumni/">Alumni</a></li> 
+      <li><a href="/giving/">Giving to Penn College</a></li> 
+      <li><a href="/k12educators/">K-12 Educators</a></li> 
+      <li><a href="/busind/">Business &amp; Industry</a></li> 
+      <li><a href="/public/">General Public</a></li> 
+      <li><a href="/jobsAtPennCollege/">Jobs @ Penn College<sup>®</sup></a></li> 
+     </ul> </li> 
+    <li class="brdr"><a href="/giving/scholarshipCampaign.htm"><img src="/giving/images/sc_nav.jpg" alt="The Penn College Scholarship Campaign"></a></li> 
+   </ul> 
+   <div id="global_wrapper"> 
+    <div id="global"> 
+     <form action="/search/" method="post"> 
+      <input id="q" name="q" type="text" title="Search"> 
+      <input id="qSearchBtn" type="image" value="submit" src="/cgi-bin/images/search_button.jpg" alt="search"> 
+      <label for="qSearchBtn" class="hidden">Search</label> 
+     </form> 
+     <ul> 
+      <li><a href="/">Home</a></li> 
+      <li><a href="http://pctoday.pct.edu">News</a></li> 
+      <li><a href="/visit/">Visit Us</a></li> 
+      <li><a href="http://calendar.pct.edu/">Calendars</a></li> 
+      <li><a href="/catalog/">Catalog</a></li> 
+      <li><a href="/admissions/application_types.htm">Apply</a></li> 
+      <li><a href="/about/">About Us</a></li> 
+      <li><a href="/contact/">Contact Us</a></li> 
+     </ul> 
+    </div> 
+   </div> 
+   <div id="content_wrapper"> 
+    <!--end gloabal--> 
+    <div id="content"> 
+     <div class="homepage" style="background-image:url(/homeimages/fall_2014/f07.jpg);"> 
+      <a href="/openHouse/" id="eventMsg"><img src="/openhouse/images/openHouse2015S.png" alt="Join us for Open House"></a> 
+      <div class="reverse"> 
+       <h5><a id="itemtitle" class="ajaxhtml" href="/naturalgas/"><span id="itemsubtitle">The region’s expanding natural gas industry offers a variety of career opportunities for graduates with &amp;ldquo;degrees that work.&amp;rdquo;</span></a></h5> 
+      </div> 
+      <a href="/photos/" class="photo_ad"><span>Share your creativity</span>Share your photo</a> 
+     </div> 
+     <div id="mEventMsg">
+      <ul class="cells">
+       <li><a href="/openHouse/">Open House: <span class="smaller">Saturday, March 28</span></a></li>
+      </ul>
+     </div> 
+     <div id="feature_wrapper"> 
+      <div id="features"> 
+       <!-- PCToday: Script added 5/23/14 --> 
+       <span class="slide_wrapper"><a class="slide" title="Science Festival Offers Hands-On Activities for Children, Families" href="http://pctoday.pct.edu/science-festival-offers-hands-on-activities-for-children-families/"> <span class="category">PCToday</span> <span class="title">Science Festival Offers Hands-On Activities for Children, Families</span><img class="scale" src="/pctoday/homepageimg.asp" width="195" height="125" alt="Science Festival Offers Hands-On Activities for Children, Families"><span class="story"> A Science Festival at Penn College on Thursday, March 19, will provide a variety of fun math and science demonstrations for local children and their families.</span><span class="action">Read more</span></a></span> 
+       <!-- Classnotes a default --> 
+       <span class="slide_wrapper"><a class="slide" title="Class Notes" href="/oca/classNotes.aspx"> <span class="category">One College Avenue</span> <span class="title">Class Notes</span><img class="scale" src="/homeImages/stories/classNotes.jpg" width="195" height="125" alt="Class Notes"> <span class="story">Share your story and find out what's happenning with fellow alumni.</span> <span class="action">Read more</span></a></span> 
+       <!-- Added 5/3/13 --> 
+       <!-- Athletics: Updated 10/15/13 --> 
+       <span class="slide_wrapper"> <a class="slide" href="http://athletics.pct.edu/" title="Go Wildcats!"> <span class="category">Athletics</span> <span class="title">Go Wildcats!</span><img class="scale" src="/homeImages/stories/13a.jpg" width="195" height="125" alt="Go Wildcats!"><span class="story">Visit the Athletics website for highlights, scores, schedules, and features.</span> <span class="action">Read more</span></a></span> 
+       <!-- Featured Video: Updated 1/5/15 --> 
+       <span class="slide_wrapper"><a class="slide" rel="box" href="/videos/detail.aspx?v=eHDBqAJoaHs#detail" title="Electronics &amp; Computer Engineering Technology with Jorgette"> <span class="category">Video</span> <span class="title">Electronics &amp; Computer Engineering Technology</span><img class="scale" src="/homeImages/stories/ytBEE.jpg" width="195" height="125" alt="Electronics &amp; Computer Engineering Technology with Jorgette"> <span class="story">Jorgette Grosso loves tackling challenges. That's why the electronics and computer engineering technology bachelor degree major at Penn College was the perfect choice for her. </span> <span class="action">Watch video</span></a></span> 
+       <!-- Permanent --> 
+       <span class="slide_wrapper"><a class="slide" title="Veterans welcome" href="http://www.pct.edu/finaid/vets.htm"> <span class="category">RECOGNITION</span> <span class="title">Veterans welcome</span><img class="scale" src="/homeImages/stories/8.jpg" width="195" height="125" alt="Veterans welcome"> <span class="story"><img width="50" height="50" alt="Military Friendly School 2012" style="float:left; padding:0 10px 10px 0 " src="/cgi-bin/images/gijobs_50.png" title="Military Friendly School">Penn College is recognized as a Military Friendly School by G.I. Jobs.</span> <span class="action">Read more</span></a></span> 
+       <!-- Updated 10/31/12 --> 
+       <span class="slide_wrapper"> <a rel="box" class="slide" title="Associate Degrees in Demand" href="/videos/detail.aspx?v=1a1yy5ZCwOk#detail"> <span class="category">Video</span> <span class="title">Associate Degrees in Demand</span><img class="scale" src="/homeImages/stories/20.jpg" width="195" height="125" alt="Associate Degrees in Demand"> <span class="story">A wide variety of employers seek two-year students for rewarding career opportunities.</span> <span class="action">Watch Video</span></a></span> 
+       <!-- Permanent --> 
+       <span class="slide_wrapper"><a class="slide" href="http://pctoday.pct.edu/73318/" title="Among the “top 10”"> <span class="category">RECOGNITION</span> <span class="title">Among the “top 10”...</span><img class="scale" src="/homeImages/stories/11.jpg" width="195" height="125" alt="U.S. News America’s Best Colleges Regional, Top Public Schools for 2015"> <span class="story"> … best public, four-year colleges in the north region of the United States, according to America’s Best Colleges by the U.S. News Media Group.</span> <span class="action">Learn more</span></a></span> 
+       <!-- Documentary --> 
+       <span class="slide_wrapper"><a class="slide" href="http://www.pct.edu/centennial/documentary.htm" title="Documentary"> <span class="category">DOCUMENTARY</span> <span class="title">Working Class: 100 Years of Hands-On Education</span><img class="scale" src="http://www.pct.edu/homeImages/stories/ytWorkingClass.jpg" width="195" height="125" alt="Working Class Documentary"> <span class="story">Working Class: 100 Years of Hands-On Education chronicles the history of Pennsylvania College of Technology and highlights its contribution to the American workforce.</span> <span class="action">Learn more</span></a></span> 
+      </div> 
+     </div> 
+    </div> 
+    <!--end content--> 
+   </div> 
+   <!--end main--> 
+  </div> 
+  <!--end pagebody--> 
+  <div class="foot">
+   <a href="https://mypct.pct.edu/" class="mypct">myPCT Login</a> 
+   <p class="address">Pennsylvania College of Technology<br>One College Avenue<br>Williamsport, PA 17701<br><br>570-326-3761<br>800-367-9222</p> 
+   <ul> 
+    <li>Help</li> 
+    <li><a href="/askPennCollege/">Ask Penn College<sup>®</sup></a></li> 
+    <li><a href="/search/">Site map</a></li> 
+    <li><a href="/about/website.htm">About this website</a></li> 
+   </ul> 
+   <ul> 
+    <li>Statements About</li> 
+    <li><a href="/privacy/">Privacy</a></li> 
+    <li><a href="/disabilityservices/accessibility.htm">Accessibility</a></li> 
+    <li><a href="/studentpolicy/nondiscrim.htm">Nondiscrimination</a></li> 
+   </ul> 
+   <ul class="social"> 
+    <li><a href="http://www.pct.edu/contact/social.asp">Join the Conversation!</a></li> 
+    <li><a target="ext" href="http://www.facebook.com/penncollege" title="Penn College on Facebook"><img src="/cgi-bin/images/facebook26.png" alt="Penn College on Facebook"></a> <a target="ext" href="http://www.twitter.com/penncollege" title="Penn College on Twitter"><img src="/cgi-bin/images/twitter26.png" alt="Penn College on Twitter"></a> <a target="ext" href="http://linkd.in/penncollege" title="Penn College on LinkedIn"><img src="/cgi-bin/images/linkedin26.png" alt="Penn College on LinkedIn"></a> <a target="ext" href="http://ocf.pct.edu/" title="One College Family on Tumblr"><img src="/cgi-bin/images/tumblr26.png" alt="One College Family on Tumblr"></a></li> 
+    <li><a target="ext" href="http://www.instagram.com/penncollege" title="Penn College on Instagram"><img src="/cgi-bin/images/instagram26.png" alt="Penn College on Instagram"></a> <a target="ext" href="http://www.pinterest.com/penncollege" title="Penn College on Pinterest"><img src="/cgi-bin/images/pinterest26.png" alt="Penn College on Pinterest"></a> <a target="ext" href="http://www.youtube.com/PennCollegeVideos" title="Penn College on YouTube"><img src="/cgi-bin/images/youtube26.png" alt="Penn College on YouTube"></a> <a target="ext" href="https://google.com/+penncollege" title="Penn College on Google+"><img src="/cgi-bin/images/googlePlus26.png" alt="Penn College on Google+"></a></li> 
+   </ul> 
+   <p class="copy">© 1995 Pennsylvania College of Technology. Penn College<sup>®</sup> and degrees that work<sup>®</sup> are registered in the U.S. Patent and Trademark Office.</p> 
+  </div>   
+ </body>
+</html>

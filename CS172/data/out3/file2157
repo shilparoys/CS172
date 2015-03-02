@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"> 
+  <link rel="index" href="https://uwyo.t2hosted.com//"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../inc/clientResources/styles/t2.layout.css">
+  <link rel="stylesheet" href="../inc/clientResources/styles/t2.elements.css">
+  <link rel="stylesheet" href="../inc/clientResources/fonts/eb-fontello/t2ebicon.css">
+  <link rel="stylesheet" href="../inc/clientResources/fonts/eb-fontello/animation.css">
+  <link id="ctl00_ctl01_favicon" rel="icon" type="image/ico" href="../inc/clientResources/images/favicon.ico"> 
+  <!--[if IE 8]>
+    <link href="../inc/clientResources/styles/ie8.css" type="text/css" rel="stylesheet" />
+    <![endif]--> 
+  <!--[if lt IE 8]>
+    <link href="../inc/clientResources/styles/ie6ie7.css" type="text/css" rel="stylesheet" />
+	<![endif]--> 
+  <!--[if IE 9]>
+    <link href="../inc/clientResources/styles/ie9.css" type="text/css" rel="stylesheet" />
+	<![endif]--> 
+  <title>
+	University of Wyoming - Customer Authentication
+</title>
+  <style type="text/css">body .c-color, body #t2-container .headerContainer .header { color:#333333; }body .c-border { border-color:#5C3317; }body a, body .c-link a, body a.c-link { color:#333FF; }body .c-bgcolor, body .c-bgcolor a { background-color:#5C3317; color:#ffffff; }body .c-width { width:837px; margin:auto; }body {  background-color:#ffffff; }div#t2-transaction div {color:#333333;}#t2-transaction .c-link a, #t2-transaction a, #t2-transaction div, #t2-basket span a { color:#333FF; }div#t2-footer .c-link a { color:#333FF; }</style>
+  <script type="text/javascript" src="https://uwyo.t2hosted.com/inc/clientResources/scripts/t2.jquery.min.js"></script> 
+  <script type="text/javascript" src="https://uwyo.t2hosted.com/inc/clientResources/scripts/jquery-ui-1.10.3.custom.min.js"></script> 
+  <script type="text/javascript" src="https://uwyo.t2hosted.com/inc/clientResources/scripts/urlHandler.js"></script> 
+  <script type="text/javascript" src="https://uwyo.t2hosted.com/inc/clientResources/scripts/authTokenHandler.js"></script> 
+  <script type="text/javascript" src="https://uwyo.t2hosted.com/inc/clientResources/scripts/pubsub.js"></script> 
+  <script type="text/javascript" src="https://uwyo.t2hosted.com/inc/clientResources/scripts/t2.ebusiness.js"></script> 
+  <script type="text/javascript" src="https://uwyo.t2hosted.com/inc/clientResources/scripts/jquery.cookie.js"></script> 
+  <script type="text/javascript" src="https://uwyo.t2hosted.com/inc/clientResources/scripts/notificationHandler.js"></script> 
+  <script type="text/javascript" src="https://uwyo.t2hosted.com/inc/clientResources/scripts/sessionExtender.js"></script> 
+  <script type="text/javascript" src="https://uwyo.t2hosted.com/inc/clientResources/scripts/sessionExtenderUI.js"></script> 
+  <script type="text/javascript">if (t2eb) t2eb.applicationBaseURL = 'https://uwyo.t2hosted.com/'</script>
+ </head> 
+ <body> 
+  <div id="t2-header" class="c-width"> 
+   <h1 id="custom-logo" title="T2 eBusiness"> <img id="ctl00_ctl01_customLogo_imgLogo" src="../inc/controls/getLogo.ashx?ID=1" alt="Site Logo" border="0"> </h1> 
+   <div id="t2-transaction"> 
+    <div id="t2-account"> 
+     <span id="t2-account-welcome"> <span id="ctl00_ctl01_t2UserGreeting_t2AccountWelcome">Welcome</span> </span> 
+     <span id="t2-account-links" class="c-link"> <span id="ctl00_ctl01_t2UserGreeting_t2AccountGuestLinks"><a id="ctl00_ctl01_t2UserGreeting_t2AccountAuthLink" href="auth.aspx">Log in</a><span id="ctl00_ctl01_t2UserGreeting_t2AccountLinkSeparator"> / </span><a id="ctl00_ctl01_t2UserGreeting_t2AccountSignupLink" href="newuser.aspx">Sign up</a></span> </span> 
+    </div> 
+    <div id="t2-basket-wrapper" class="ebicon-basket"> 
+     <div id="t2-basket"> 
+      <div class="basketTitle">
+       Shopping Basket
+      </div> 
+      <div class="basketData">
+       <a id="ctl00_ctl01_t2ShoppingBasketSummary_viewCartLink">(<span id="ctl00_ctl01_t2ShoppingBasketSummary_basketItemCount">0 items</span>, <span id="ctl00_ctl01_t2ShoppingBasketSummary_basketItemTotal">$0.00</span>)</a>
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <div id="custom-menu" class="c-bgcolor"> 
+   <ul class="c-width hmenu"> 
+    <li><a id="ctl00_ctl01_linksTop_rptrLinks_ctl00_hlLinks" href="http://www.uwyo.edu/tap/index.html" target="_self">Transit &amp; Parking Services Home</a></li> 
+    <li><a id="ctl00_ctl01_linksTop_rptrLinks_ctl01_hlLinks" href="http://www.uwyo.edu/tap/Parking/index.html" target="_self">Parking</a></li> 
+    <li><a id="ctl00_ctl01_linksTop_rptrLinks_ctl02_hlLinks" href="http://www.uwyo.edu/tap/Transit/index.html" target="_self">Transit</a></li> 
+    <li><a id="ctl00_ctl01_linksTop_rptrLinks_ctl03_hlLinks" href="http://www.uwyo.edu/tap/Maps/index.html" target="_self">Maps</a></li> 
+   </ul> 
+  </div> 
+  <div id="t2-wrapper"> 
+   <div id="t2-container" class="c-width"> 
+    <div> 
+     <aside id="sessionExtenderContainer"></aside> 
+     <form name="aspnetForm" method="post" action="auth_ext.aspx" id="aspnetForm"> 
+      <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTI4MzkwNDkyNQ9kFgJmD2QWAmYPZBYKAgMPZBYCZg8PFgIeCEltYWdlVXJsBSB+L2luYy9jb250cm9scy9nZXRMb2dvLmFzaHg/SUQ9MWRkAgcPZBYCAgEPZBYEAgEPDxYCHgRUZXh0BQcwIGl0ZW1zZGQCAw8PFgIfAQUFJDAuMDBkZAIJD2QWAmYPFgIeC18hSXRlbUNvdW50AgQWCGYPZBYCAgEPDxYEHgZUYXJnZXQFBV9zZWxmHgtOYXZpZ2F0ZVVybAUiaHR0cDovL3d3dy51d3lvLmVkdS90YXAvaW5kZXguaHRtbGQWAmYPFQEfVHJhbnNpdCAmIFBhcmtpbmcgU2VydmljZXMgSG9tZWQCAQ9kFgICAQ8PFgQfAwUFX3NlbGYfBAUqaHR0cDovL3d3dy51d3lvLmVkdS90YXAvUGFya2luZy9pbmRleC5odG1sZBYCZg8VAQdQYXJraW5nZAICD2QWAgIBDw8WBB8DBQVfc2VsZh8EBSpodHRwOi8vd3d3LnV3eW8uZWR1L3RhcC9UcmFuc2l0L2luZGV4Lmh0bWxkFgJmDxUBB1RyYW5zaXRkAgMPZBYCAgEPDxYEHwMFBV9zZWxmHwQFJ2h0dHA6Ly93d3cudXd5by5lZHUvdGFwL01hcHMvaW5kZXguaHRtbGQWAmYPFQEETWFwc2QCCw9kFgICAQ9kFgYCBQ9kFgJmDzwrAAUBAA8WBB4PU2l0ZU1hcFByb3ZpZGVyBQdNYWluTWFwHgdWaXNpYmxlaGRkAgcPZBYCAgEPFgIfAmZkAgkPZBYMAgEPDxYCHwEFF0N1c3RvbWVyIEF1dGhlbnRpY2F0aW9uZGQCAw8PFgIfAQWMAzxzcGFuIHN0eWxlPSJmb250LXNpemU6IDEycHQ7Ij5XaXRoIHRoZSBVVyBUcmFuc2l0ICZhbXA7IFBhcmtpbmcgU2VydmljZXMgb25saW5lIHN5c3RlbSwgeW91IGNhbiBtYW5hZ2UgeW91ciBwYXJraW5nIGFjY291bnQgYWxsIGluIG9uZSBsb2NhdGlvbi4mbmJzcDsgWW91IGNhbiBwdXJjaGFzZSBwZXJtaXRzLCBwYXkgb3IgYXBwZWFsIGNpdGF0aW9ucywgYW5kIG1vcmUuJm5ic3A7IEZvbGxvdyB0aGUgaW5zdHJ1Y3Rpb25zIGJlbG93IHRvIGdldCBzdGFydGVkLjwvc3Bhbj48YnIgLz4NCjxiciAvPg0KSWYgeW91IGFyZSBhIFVXIHN0dWRlbnQgb3IgZW1wbG95ZWUsIHBsZWFzZSBjbGljayB0aGUgYnV0dG9uIGJlbG93IG1hcmtlZCBGYWN1bHR5LCBTdGFmZiAmYW1wOyBTdHVkZW50IExvZ2luLmRkAgcPZBYCAgEPDxYCHwEFH0ZBQ1VMVFksIFNUQUZGLCAmIFNUVURFTlQgTE9HSU5kZAIJDw8WAh8BBfUBPHNwYW4gY2xhc3M9InNldHRpbmdzdW1tYXJ5LXZhbHVlLXZhbHVlIHNldHRpbmdzdW1tYXJ5LXZhbHVlLXZhbHVlLXR5cGUtZGVmYXVsdCI+SWYgeW91IGFyZSBub3QgYWZmaWxpYXRlZCB3aXRoIFVXLCBjbGljayB0aGUgYnV0dG9uIGJlbG93IG1hcmtlZCBHdWVzdCAmYW1wOyBBZmZpbGlhdGUmbmJzcDtMb2dpbiB0byBjcmVhdGUgYSBndWVzdCBhY2NvdW50IG9yIGxvZyBpbiB0byBhbiBleGlzdGluZyBhY2NvdW50Ljwvc3Bhbj5kZAILD2QWAgIBDw8WAh8BBRdHVUVTVCAmIEFGRklMSUFURSBMT0dJTmRkAg0PDxYCHwEFBEhvbWVkZAIVDxYCHglpbm5lcmh0bWwFzhA8cD48L3A+DQo8cCBzdHlsZT0ibWFyZ2luOiAwaW4gMGluIDBwdDsiPjxzcGFuIHN0eWxlPSdmb250LWZhbWlseTogImNlbnR1cnkgZ290aGljIiwic2Fucy1zZXJpZiI7Jz48Zm9udCBjb2xvcj0iIzAwMDAwMCIgc2l6ZT0iMyI+PHNwYW4gc3R5bGU9ImZvbnQtc2l6ZTogMTJwdDsiPlRyYW5zaXQmYW1wOyBQYXJraW5nIFNlcnZpY2VzPC9zcGFuPjxiciAvPg0KPC9mb250Pjxmb250IGNvbG9yPSIjMDAwMDAwIiBzaXplPSIzIj48c3BhbiBzdHlsZT0iZm9udC1zaXplOiAxMnB0OyI+NDYyIE4uIDEwPC9zcGFuPjwvZm9udD48c3VwPjxmb250IGNvbG9yPSIjMDAwMDAwIiBzaXplPSIyIj48c3BhbiBzdHlsZT0iZm9udC1zaXplOiAxMnB0OyI+dGg8L3NwYW4+PC9mb250Pjwvc3VwPjxmb250IGNvbG9yPSIjMDAwMDAwIiBzaXplPSIzIj48c3BhbiBzdHlsZT0iZm9udC1zaXplOiAxMnB0OyI+IFN0LiDigKIgTGFyYW1pZSwgV1kgODIwNzI8L3NwYW4+PGJyIC8+DQo8L2ZvbnQ+PGZvbnQgY29sb3I9IiMwMDAwMDAiIHNpemU9IjMiPjxzcGFuIHN0eWxlPSJmb250LXNpemU6IDEycHQ7Ij5waG9uZSA8L3NwYW4+PHNwYW4gY2xhc3M9ImJhZWM1YTgxLWU0ZDYtNDY3NC05N2YzLWU5MjIwZjAxMzZjMSIgc3R5bGU9IndoaXRlLXNwYWNlOiBub3dyYXA7Ij48c3BhbiBzdHlsZT0iZm9udC1zaXplOiAxMnB0OyI+KDMwNykgNzY2LTk4MDA8L3NwYW4+PGEgdGl0bGU9IkNhbGw6ICgzMDcpIDc2Ni05ODAwIiBocmVmPSIjIiBzdHlsZT0ibWFyZ2luOiAwcHg7IGJvcmRlcjogY3VycmVudGNvbG9yOyBib3JkZXItaW1hZ2U6IG5vbmU7IGxlZnQ6IDBweDsgdG9wOiAwcHg7IHdpZHRoOiAxNnB4OyBoZWlnaHQ6IDE2cHg7IHJpZ2h0OiAwcHg7IGJvdHRvbTogMHB4OyBvdmVyZmxvdzogaGlkZGVuOyB2ZXJ0aWNhbC1hbGlnbjogbWlkZGxlOyBmbG9hdDogbm9uZTsgZGlzcGxheTogaW5saW5lOyB3aGl0ZS1zcGFjZTogbm93cmFwOyBwb3NpdGlvbjogc3RhdGljICFpbXBvcnRhbnQ7Ij48L2E+PC9zcGFuPjxzcGFuIHN0eWxlPSJmb250LXNpemU6IDEycHQ7Ij4g4oCiIGZheCA8L3NwYW4+PHNwYW4gY2xhc3M9ImJhZWM1YTgxLWU0ZDYtNDY3NC05N2YzLWU5MjIwZjAxMzZjMSIgc3R5bGU9IndoaXRlLXNwYWNlOiBub3dyYXA7Ij48c3BhbiBzdHlsZT0iZm9udC1zaXplOiAxMnB0OyI+KDMwNykgNzY2LTk4MDQ8L3NwYW4+PGEgdGl0bGU9IkNhbGw6ICgzMDcpIDc2Ni05ODA0IiBocmVmPSIjIiBzdHlsZT0ibWFyZ2luOiAwcHg7IGJvcmRlcjogY3VycmVudGNvbG9yOyBib3JkZXItaW1hZ2U6IG5vbmU7IGxlZnQ6IDBweDsgdG9wOiAwcHg7IHdpZHRoOiAxNnB4OyBoZWlnaHQ6IDE2cHg7IHJpZ2h0OiAwcHg7IGJvdHRvbTogMHB4OyBvdmVyZmxvdzogaGlkZGVuOyB2ZXJ0aWNhbC1hbGlnbjogbWlkZGxlOyBmbG9hdDogbm9uZTsgZGlzcGxheTogaW5saW5lOyB3aGl0ZS1zcGFjZTogbm93cmFwOyBwb3NpdGlvbjogc3RhdGljICFpbXBvcnRhbnQ7Ij48L2E+PC9zcGFuPjxzcGFuIHN0eWxlPSJmb250LXNpemU6IDEycHQ7Ij4g4oCiIGUtbWFpbDogPC9zcGFuPjwvZm9udD48L3NwYW4+PGEgaHJlZj0ibWFpbHRvOnRwc0B1d3lvLmVkdSI+PHNwYW4gc3R5bGU9J2ZvbnQtZmFtaWx5OiAiY2VudHVyeSBnb3RoaWMiLCJzYW5zLXNlcmlmIjsgZm9udC1zaXplOiAxMnB0Oyc+PGZvbnQgY29sb3I9IiMwMDAwZmYiPnRwc0B1d3lvLmVkdTwvZm9udD48L3NwYW4+PC9hPjxzcGFuIHN0eWxlPSdmb250LWZhbWlseTogImNlbnR1cnkgZ290aGljIiwic2Fucy1zZXJpZiI7Jz48Zm9udCBjb2xvcj0iIzAwMDAwMCIgc2l6ZT0iMyI+PHNwYW4gc3R5bGU9ImZvbnQtc2l6ZTogMTJwdDsiPiDigKIgd2Vic2l0ZTogPC9zcGFuPjwvZm9udD48L3NwYW4+PGEgaHJlZj0iaHR0cDovL3d3dy51d3lvLmVkdS90YXAiPjxzcGFuIHN0eWxlPSdmb250LWZhbWlseTogImNlbnR1cnkgZ290aGljIiwic2Fucy1zZXJpZiI7IGZvbnQtc2l6ZTogMTJwdDsnPjxmb250IGNvbG9yPSIjMDAwMGZmIj53d3cudXd5by5lZHUvdGFwPC9mb250Pjwvc3Bhbj48L2E+PC9wPg0KPHA+PGZvbnQgY29sb3I9IiMwMDAwMDAiIGZhY2U9IlRpbWVzIE5ldyBSb21hbiIgc2l6ZT0iMyI+PGJyIC8+DQo8L2ZvbnQ+PC9wPmRkvRqntG3FG5nm+WZsoo82jGUK9w1O+j/6s+OqVdHpQ8Y="> 
+      <script src="/ScriptResource.axd?d=YOtTGwk2C2OpeBSN3BOH1dtbVHdkiq-zbYO_PsYMRiWxqI67kJnHEcHkPIZfZim3gbNRsMuc-rfCt3NGBCfJYwsTE7V7MUgSW2vxnAExWfVrkLKEaPg4P_wLPXrWlCgP0&amp;t=ffffffff81f1a403" type="text/javascript"></script> 
+      <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="867FE1C8"> 
+      <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWBAK5tLq3DgLgxN6HCAK/7bOaDQK43Oxc+h94CWPCM+lXntzevh0wzGVO8nuBq2W43/mNRu9eMg8="> 
+      <div class="t2MessageContainer"> 
+      </div> 
+      <div> 
+       <div class="headerContainer"> 
+        <span id="ctl00_ctl01_MainContentPlaceHolder_T2Main_lblHeader" class="header">Customer Authentication</span>
+        <br> 
+        <span id="ctl00_ctl01_MainContentPlaceHolder_T2Main_lblHeaderInst" class="headerinst"><span style="font-size: 12pt;">With the UW Transit &amp; Parking Services online system, you can manage your parking account all in one location.&nbsp; You can purchase permits, pay or appeal citations, and more.&nbsp; Follow the instructions below to get started.</span><br> <br> If you are a UW student or employee, please click the button below marked Faculty, Staff &amp; Student Login.</span>
+        <br> 
+        <span id="ctl00_ctl01_MainContentPlaceHolder_T2Main_lblErrorMsg" class="error"></span>
+        <br> 
+       </div> 
+       <div id="ctl00_ctl01_MainContentPlaceHolder_T2Main_divExternal" class="buttonContainer"> 
+        <input type="submit" name="ctl00$ctl01$MainContentPlaceHolder$T2Main$cmdExtLogin" value="FACULTY, STAFF, &amp; STUDENT LOGIN" id="ctl00_ctl01_MainContentPlaceHolder_T2Main_cmdExtLogin" class="btn-next"> 
+       </div> 
+       <div class="headerContainer"> 
+        <span id="ctl00_ctl01_MainContentPlaceHolder_T2Main_lblSecondHeaderInst" class="headerinst"><span class="settingsummary-value-value settingsummary-value-value-type-default">If you are not affiliated with UW, click the button below marked Guest &amp; Affiliate&nbsp;Login to create a guest account or log in to an existing account.</span></span>
+        <br> 
+       </div> 
+       <div id="ctl00_ctl01_MainContentPlaceHolder_T2Main_divGuest" class="buttonContainer"> 
+        <input type="submit" name="ctl00$ctl01$MainContentPlaceHolder$T2Main$cmdGuestLogin" value="GUEST &amp; AFFILIATE LOGIN" id="ctl00_ctl01_MainContentPlaceHolder_T2Main_cmdGuestLogin" class="btn-next"> 
+       </div> 
+       <div class="buttonContainer"> 
+        <input type="submit" name="ctl00$ctl01$MainContentPlaceHolder$T2Main$cmdHome" value="Home" id="ctl00_ctl01_MainContentPlaceHolder_T2Main_cmdHome" class="btn-home"> 
+       </div> 
+      </div> 
+     </form> 
+    </div> 
+   </div> 
+  </div> 
+  <div id="t2-footer" class="c-border"> 
+   <div class="c-width"> 
+    <div class="footer-column"> 
+     <ul class="c-link vmenu"> 
+     </ul> 
+    </div> 
+    <div class="footer-column"> 
+     <ul class="c-link vmenu"> 
+     </ul> 
+    </div> 
+    <div class="footer-column"> 
+     <ul class="c-link vmenu"> 
+     </ul> 
+    </div> 
+   </div> 
+  </div> 
+  <div id="t2-legal"> 
+   <div id="ctl00_ctl01_contactInfo" class="c-width">
+    <p></p> 
+    <p style="margin: 0in 0in 0pt;"><span style="font-family: &quot;century gothic&quot;,&quot;sans-serif&quot;;"><font color="#000000" size="3"><span style="font-size: 12pt;">Transit&amp; Parking Services</span><br> </font><font color="#000000" size="3"><span style="font-size: 12pt;">462 N. 10</span></font><sup><font color="#000000" size="2"><span style="font-size: 12pt;">th</span></font></sup><font color="#000000" size="3"><span style="font-size: 12pt;"> St. • Laramie, WY 82072</span><br> </font><font color="#000000" size="3"><span style="font-size: 12pt;">phone </span><span class="baec5a81-e4d6-4674-97f3-e9220f0136c1" style="white-space: nowrap;"><span style="font-size: 12pt;">(307) 766-9800</span><a title="Call: (307) 766-9800" href="#" style="margin: 0px; border: currentcolor; border-image: none; left: 0px; top: 0px; width: 16px; height: 16px; right: 0px; bottom: 0px; overflow: hidden; vertical-align: middle; float: none; display: inline; white-space: nowrap; position: static !important;"></a></span><span style="font-size: 12pt;"> • fax </span><span class="baec5a81-e4d6-4674-97f3-e9220f0136c1" style="white-space: nowrap;"><span style="font-size: 12pt;">(307) 766-9804</span><a title="Call: (307) 766-9804" href="#" style="margin: 0px; border: currentcolor; border-image: none; left: 0px; top: 0px; width: 16px; height: 16px; right: 0px; bottom: 0px; overflow: hidden; vertical-align: middle; float: none; display: inline; white-space: nowrap; position: static !important;"></a></span><span style="font-size: 12pt;"> • e-mail: </span></font></span><a href="mailto:tps@uwyo.edu"><span style="font-family: &quot;century gothic&quot;,&quot;sans-serif&quot;; font-size: 12pt;"><font color="#0000ff">tps@uwyo.edu</font></span></a><span style="font-family: &quot;century gothic&quot;,&quot;sans-serif&quot;;"><font color="#000000" size="3"><span style="font-size: 12pt;"> • website: </span></font></span><a href="http://www.uwyo.edu/tap"><span style="font-family: &quot;century gothic&quot;,&quot;sans-serif&quot;; font-size: 12pt;"><font color="#0000ff">www.uwyo.edu/tap</font></span></a></p> 
+    <p><font color="#000000" face="Times New Roman" size="3"><br> </font></p>
+   </div> 
+  </div> 
+  <div id="ctl00_ctl01_featToggleTMC"> 
+   <div id="ctl00_ctl01_testModeControl_T2mode" class="t2mode">
+    <span class="t2modeData"></span>
+   </div> 
+  </div>  
+ </body>
+</html>

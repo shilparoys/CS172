@@ -1,0 +1,393 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+  <title> Student Affairs @ Penn State | University Health Services</title> 
+  <link rel="stylesheet" type="text/css" media="all" href="../css/samain.css"> 
+  <link rel="stylesheet" type="text/css" media="all" href="../css/sa2dept.css"> 
+  <link rel="stylesheet" type="text/css" media="all" href="../css/d/sadeptuhs.css"> 
+  <script type="text/javascript">
+var fadeimages=new Array()
+//SET IMAGE PATHS. Extend or contract array as needed
+fadeimages[0]=["i/r/student1.png", "", ""] //plain image syntax
+fadeimages[1]=["i/r/student2.png", "", ""] //plain image syntax
+fadeimages[2]=["i/r/student3.png", "", ""] //plain image syntax
+fadeimages[3]=["i/r/student4.png", "", ""] //plain image syntax
+fadeimages[4]=["i/r/student5.png", "", ""] //plain image syntax
+fadeimages[5]=["i/r/student6.png", "", ""] //plain image syntax
+fadeimages[6]=["i/r/student7.png", "", ""] //plain image syntax
+fadeimages[7]=["i/r/student8.png", "", ""] //plain image syntax
+fadeimages[8]=["i/r/student9.png", "", ""] //plain image syntax
+fadeimages[9]=["i/r/student10.png", "", ""] //plain image syntax
+fadeimages[10]=["i/r/student11.png", "", ""] //plain image syntax
+fadeimages[11]=["i/r/student12.png", "", ""] //plain image syntax
+fadeimages[12]=["i/r/student13.png", "", ""] //plain image syntax
+fadeimages[13]=["i/r/student14.png", "", ""] //plain image syntax
+fadeimages[14]=["i/r/student15.png", "", ""] //plain image syntax
+fadeimages[15]=["i/r/student16.png", "", ""] //plain image syntax
+fadeimages[16]=["i/r/student17.png", "", ""] //plain image syntax
+fadeimages[17]=["i/r/student18.png", "", ""] //plain image syntax
+fadeimages[18]=["i/r/student19.png", "", ""] //plain image syntax
+fadeimages[19]=["i/r/student20.png", "", ""] //plain image syntax
+fadeimages[20]=["i/r/student21.png", "", ""] //plain image syntax
+fadeimages[21]=["i/r/student22.png", "", ""] //plain image syntax
+fadeimages[22]=["i/r/student23.png", "", ""] //plain image syntax
+fadeimages[23]=["i/r/student24.png", "", ""] //plain image syntax
+fadeimages[24]=["i/r/student25.png", "", ""] //plain image syntax
+fadeimages[25]=["i/r/student26.png", "", ""] //plain image syntax
+fadeimages[26]=["i/r/student27.png", "", ""] //plain image syntax
+
+var fadebgcolor="white"
+
+////NO need to edit beyond here/////////////
+ 
+var fadearray=new Array() //array to cache fadeshow instances
+var fadeclear=new Array() //array to cache corresponding clearinterval pointers
+ 
+var dom=(document.getElementById) //modern dom browsers
+var iebrowser=document.all
+ 
+function fadeshow(theimages, fadewidth, fadeheight, borderwidth, delay, pause, displayorder){
+this.pausecheck=pause
+this.mouseovercheck=0
+this.delay=delay
+this.degree=10 //initial opacity degree (10%)
+this.curimageindex=0
+this.nextimageindex=1
+fadearray[fadearray.length]=this
+this.slideshowid=fadearray.length-1
+this.canvasbase="canvas"+this.slideshowid
+this.curcanvas=this.canvasbase+"_0"
+if (typeof displayorder!="undefined")
+theimages.sort(function() {return 0.5 - Math.random();}) //thanks to Mike (aka Mwinter) :)
+this.theimages=theimages
+this.imageborder=parseInt(borderwidth)
+this.postimages=new Array() //preload images
+for (p=0;p<theimages.length;p++){
+this.postimages[p]=new Image()
+this.postimages[p].src=theimages[p][0]
+}
+ 
+var fadewidth=fadewidth+this.imageborder*2
+var fadeheight=fadeheight+this.imageborder*2
+ 
+if (iebrowser&&dom||dom) //if IE5+ or modern browsers (ie: Firefox)
+document.write('<div id="master'+this.slideshowid+'" style="position:relative;width:'+fadewidth+'px;height:'+fadeheight+'px;overflow:hidden;"><div id="'+this.canvasbase+'_0" style="position:absolute;width:'+fadewidth+'px;height:'+fadeheight+'px;top:0;left:0;filter:progid:DXImageTransform.Microsoft.alpha(opacity=10);opacity:0.1;-moz-opacity:0.1;-khtml-opacity:0.1;background-color:'+fadebgcolor+'"></div><div id="'+this.canvasbase+'_1" style="position:absolute;width:'+fadewidth+'px;height:'+fadeheight+'px;top:0;left:0;filter:progid:DXImageTransform.Microsoft.alpha(opacity=10);opacity:0.1;-moz-opacity:0.1;-khtml-opacity:0.1;background-color:'+fadebgcolor+'"></div></div>')
+else
+document.write('<div><img name="defaultslide'+this.slideshowid+'" src="'+this.postimages[0].src+'"></div>')
+ 
+if (iebrowser&&dom||dom) //if IE5+ or modern browsers such as Firefox
+this.startit()
+else{
+this.curimageindex++
+setInterval("fadearray["+this.slideshowid+"].rotateimage()", this.delay)
+}
+}
+
+function fadepic(obj){
+if (obj.degree<100){
+obj.degree+=10
+if (obj.tempobj.filters&&obj.tempobj.filters[0]){
+if (typeof obj.tempobj.filters[0].opacity=="number") //if IE6+
+obj.tempobj.filters[0].opacity=obj.degree
+else //else if IE5.5-
+obj.tempobj.style.filter="alpha(opacity="+obj.degree+")"
+}
+else if (obj.tempobj.style.MozOpacity)
+obj.tempobj.style.MozOpacity=obj.degree/101
+else if (obj.tempobj.style.KhtmlOpacity)
+obj.tempobj.style.KhtmlOpacity=obj.degree/100
+else if (obj.tempobj.style.opacity&&!obj.tempobj.filters)
+obj.tempobj.style.opacity=obj.degree/101
+}
+else{
+clearInterval(fadeclear[obj.slideshowid])
+obj.nextcanvas=(obj.curcanvas==obj.canvasbase+"_0")? obj.canvasbase+"_0" : obj.canvasbase+"_1"
+obj.tempobj=iebrowser? iebrowser[obj.nextcanvas] : document.getElementById(obj.nextcanvas)
+obj.populateslide(obj.tempobj, obj.nextimageindex)
+obj.nextimageindex=(obj.nextimageindex<obj.postimages.length-1)? obj.nextimageindex+1 : 0
+setTimeout("fadearray["+obj.slideshowid+"].rotateimage()", obj.delay)
+}
+}
+ 
+fadeshow.prototype.populateslide=function(picobj, picindex){
+var slideHTML=""
+if (this.theimages[picindex][1]!="") //if associated link exists for image
+slideHTML='<a href="'+this.theimages[picindex][1]+'" target="'+this.theimages[picindex][2]+'">'
+slideHTML+='<img src="'+this.postimages[picindex].src+'" border="'+this.imageborder+'px">'
+if (this.theimages[picindex][1]!="") //if associated link exists for image
+slideHTML+='</a>'
+picobj.innerHTML=slideHTML
+}
+ 
+ 
+fadeshow.prototype.rotateimage=function(){
+if (this.pausecheck==1) //if pause onMouseover enabled, cache object
+var cacheobj=this
+if (this.mouseovercheck==1)
+setTimeout(function(){cacheobj.rotateimage()}, 100)
+else if (iebrowser&&dom||dom){
+this.resetit()
+var crossobj=this.tempobj=iebrowser? iebrowser[this.curcanvas] : document.getElementById(this.curcanvas)
+crossobj.style.zIndex++
+fadeclear[this.slideshowid]=setInterval("fadepic(fadearray["+this.slideshowid+"])",50)
+this.curcanvas=(this.curcanvas==this.canvasbase+"_0")? this.canvasbase+"_1" : this.canvasbase+"_0"
+}
+else{
+var ns4imgobj=document.images['defaultslide'+this.slideshowid]
+ns4imgobj.src=this.postimages[this.curimageindex].src
+}
+this.curimageindex=(this.curimageindex<this.postimages.length-1)? this.curimageindex+1 : 0
+}
+ 
+fadeshow.prototype.resetit=function(){
+this.degree=10
+var crossobj=iebrowser? iebrowser[this.curcanvas] : document.getElementById(this.curcanvas)
+if (crossobj.filters&&crossobj.filters[0]){
+if (typeof crossobj.filters[0].opacity=="number") //if IE6+
+crossobj.filters(0).opacity=this.degree
+else //else if IE5.5-
+crossobj.style.filter="alpha(opacity="+this.degree+")"
+}
+else if (crossobj.style.MozOpacity)
+crossobj.style.MozOpacity=this.degree/101
+else if (crossobj.style.KhtmlOpacity)
+crossobj.style.KhtmlOpacity=this.degree/100
+else if (crossobj.style.opacity&&!crossobj.filters)
+crossobj.style.opacity=this.degree/101
+}
+ 
+ 
+fadeshow.prototype.startit=function(){
+var crossobj=iebrowser? iebrowser[this.curcanvas] : document.getElementById(this.curcanvas)
+this.populateslide(crossobj, this.curimageindex)
+if (this.pausecheck==1){ //IF SLIDESHOW SHOULD PAUSE ONMOUSEOVER
+var cacheobj=this
+var crossobjcontainer=iebrowser? iebrowser["master"+this.slideshowid] : document.getElementById("master"+this.slideshowid)
+crossobjcontainer.onmouseover=function(){cacheobj.mouseovercheck=1}
+crossobjcontainer.onmouseout=function(){cacheobj.mouseovercheck=0}
+}
+this.rotateimage()
+}
+
+</script> 
+  <meta name="google-site-verification" content="gv7189dFp77qMPTv1MA27whAke5U44M1PCqAb4hD2TA"> 
+ </head> 
+ <body>
+  <div id="header"> 
+   <div id="searchn"> 
+    <p><span class="searchbold">SEARCH</span><br><a href="/search">Student Affairs</a><br> <a href="http://www.psu.edu/directory" target="_blank">People</a> :: <a href="http://search.psu.edu" target="_blank">Penn State</a></p> 
+   </div> 
+   <a href="http://www.psu.edu"><img src="../i/mark_2tone.png" border="0" alt="Penn State Home" id="mark"> </a>
+  </div>
+  <!-- header -->
+  <a href="http://www.psu.edu"> </a>
+  <div id="horiznavd">
+   <a href="http://www.psu.edu"> 
+    <!--important: urls must be set from root to work within content folders--> 
+    <!-- script is for Healthy Penn State links--> <script language="javascript"><!--
+function goExit() {
+  nextWin=window.open('http://studentaffairs.psu.edu/health/hps.html','lastWin','status=no,resizable=yes,scrollbars=no,location=no,left=0,top=0,width=400,height=200');
+}
+//-->
+</script>  
+    <ul id="nav"> 
+     <li class="hnav"><a href="http://studentaffairs.psu.edu">Student Affairs</a></li> 
+     <li class="hnav"><a href="/health">UHS Home</a></li> 
+     <li class="hnav"><a href="/health/myUHS">MyUHS</a> 
+      <ul> 
+       <li><a href="/health/myUHS/appointments.shtml"><span class="navshort">Appointments</span></a></li> 
+       <li><a href="/health/myUHS/billingStatements.shtml">Billing Statements</a></li> 
+       <li><a href="/health/myUHS/communication.shtml">Communication</a></li> 
+       <li><a href="/health/myUHS/confidentialInfo.shtml" class="navshort">Confidential Info</a></li> 
+       <li><a href="/health/myUHS/login.shtml" class="navshort">Login</a></li> 
+      </ul> </li> 
+     <li class="hnav"><a href="/health/welcome/">General Info</a> 
+      <ul> 
+       <li><a href="/health/immunizations/">Immunization Compliance</a></li> 
+       <li><a href="/health/contact/appointments/">Appointments</a></li> 
+       <li><span class="navshort"><a href="/health/welcome/faq/">Student FAQ</a></span></li> 
+       <li><span class="navshort"><a href="/health/welcome/parentsfaq/">Parent FAQ</a></span></li> 
+       <li><a href="/health/welcome/locationHours/">Location and Hours</a></li> 
+       <li><span class="navshort"><a href="/health/welcome/parking/"> Parking</a></span></li> 
+       <li><a href="/health/welcome/accreditation/">Accreditation</a></li> 
+       <li><a href="/health/welcome/confidentiality/">Confidentiality</a></li> 
+       <li><a href="/health/welcome/illnessVerification/">Class Excuses</a></li> 
+       <li><a href="/health/welcome/rightsResponsibilities/">Patient Rights</a></li> 
+       <li><a href="/health/welcome/visionMission/">Vision &amp; Mission</a></li> 
+       <li><span class="navshort"><a href="/health/volunteer/">Volunteer</a></span></li> 
+       <li><span class="navshort"><a href="/health/UHSgreen/">UHSgreen</a></span></li> 
+      </ul> </li> 
+     <li class="hnav"><a href="/health/services/">Services</a> 
+      <ul> 
+       <li><a href="/health/immunizations/">Immunization Compliance</a></li> 
+       <li><a href="/health/services/billing/"><span class="navshort">Billing</span></a></li> 
+       <li><a href="/health/services/clinicalServices/">Medical Care</a></li> 
+       <li><a href="/health/services/emergency/">Emergency Services</a></li> 
+       <li><a href="/health/wellness/">Health Promotion</a></li> 
+       <li><a href="/health/services/healthRecords/">Health Records</a></li> 
+       <li><span class="navshort"><a href="/health/services/insurance/">Insurance</a></span></li> 
+       <li><span class="navshort"><a href="/health/services/laboratory/">Laboratory</a></span></li> 
+       <li><a href="/health/services/pharmacy/"><span class="navshort">Pharmacy</span></a></li> 
+       <li><a href="/health/services/physicalTherapy/">Physical Therapy</a></li> 
+       <li><a href="/health/services/xray/"><span class="navshort">X-Ray</span></a></li> 
+      </ul> </li> 
+     <li class="hnav"><a href="/health/healthTopics/general/">Health Info</a> 
+      <ul> 
+       <li><a href="/health/healthTopics/general/">General Health</a></li> 
+       <li><a href="/health/healthTopics/womensHealth/">Women's Health</a></li> 
+       <li><a href="/health/services/clinicalServices/mensHealth.shtml">Men's Health</a></li> 
+       <li><a href="/health/services/clinicalServices/lgbtHealth.shtml">LGBT Health</a></li> 
+       <li><a href="/health/healthTopics/sexualHealth/">Sexual Health</a></li> 
+       <li><a href="/health/healthTopics/birthControl/">Birth Control</a></li> 
+      </ul> </li> 
+     <li class="hnav"><a href="http://healthypennstate.psu.edu/" target="_blank">Healthy Penn State</a> 
+      <ul> 
+       <li><a href="http://sites.psu.edu/healthypennstate/eating" target="_blank"><span class="navshort">Nutrition</span></a></li> 
+       <li><a href="http://sites.psu.edu/healthypennstate/fitness" target="_blank"><span class="navshort">Physical Activity</span></a></li> 
+       <li><a href="http://sites.psu.edu/healthypennstate/stress" target="_blank"><span class="navshort">Stress</span></a></li> 
+       <li><a href="http://sites.psu.edu/healthypennstate/sleep" target="_blank">Sleep</a></li> 
+      </ul> </li>
+     <li class="hnav"><a href="/health/contact/emergency/">Contact Us</a> 
+      <ul> 
+       <li><a href="/health/contact/emergency/">Emergencies</a></li> 
+       <li><a href="/health/contact/telephoneAdviceNurse/"><span class="navshort">Advice Nurse</span></a></li> 
+       <li><a href="/health/contact/appointments/">Appointments</a></li> 
+       <li><a href="/health/contact/comments/">Comments</a></li> 
+       <li><a href="/health/contact/directory/"><span class="navshort">Directory</span></a></li> 
+       <li><a href="/health/contact/healthline/">Family HealthLine</a></li> 
+      </ul> </li> 
+    </ul></a> 
+  </div>
+  <!-- horizontal nav dept --> 
+  <div id="featurebard"> 
+   <div id="featurebard2"> 
+    <p class="barhead">Contact Numbers</p> 
+    <ul> 
+     <li>Emergencies: 911</li> 
+     <li>24/7 Advice Nurse: 814.863.4463</li> 
+     <li>Appointments: <a href="myUHS">Online 24/7</a> or 814.863.0774 @ business hours</li> 
+     <li><a href="contact/directory">Email UHS</a></li> 
+    </ul> 
+    <p class="barhead">Fall Semester Hours</p> 
+    <p>Monday, Tuesday, Thursday, and Friday: 8am-5pm<br> Wednesday: 9am-5pm<br> Saturday: 11am-3pm starting 8/23</p> 
+    <p style="margin-top: 0; margin-bottom: 0;">Labor Day: 11am-3pm</p> 
+    <p class="barhead">Location</p> 
+    <p>The Student Health Center is adjacent to the Eisenhower Parking Deck and the Bank of America Career Services Building off Bigler Road. </p> 
+   </div>
+   <!--featurebard2--> 
+   <div id="featurebardb"> 
+    <p>Penn State Core Campus Map (Location: <a href="http://www.campusmaps.psu.edu/print/pdf/main_color.pdf" target="_blank">STH Student Health Center B6</a>).</p> 
+   </div>
+   <!-- featurebardb --> 
+  </div>
+  <!--featurebard--> 
+  <div id="deptimage"> 
+   <div id="deptimage"> 
+    <img src="i/deptimagemain.jpg" alt="panoramic closeup image of the front glass, offices, and entry to the Student Health Center" id="deptimagemain"> 
+   </div>
+   <!-- deptimage --> 
+  </div>
+  <!-- deptimage --> 
+  <div id="depttitle"> 
+   <h1>University Health Services (UHS)</h1> 
+  </div>
+  <!-- deptitle --> 
+  <div id="content"> 
+   <div id="rightbox"> 
+    <div id="righticonbar"> 
+     <p>Connect with UHS</p> 
+     <p> <a href="http://www.facebook.com/pages/Penn-State-University-Health-Services/105805379467680?ref=ts#!/pages/Penn-State-University-Health-Services/105805379467680?sk=wall" target="_blank"><img src="../i/fb_666_bg_35px.jpg" height="23" width="23" border="0" alt="Facebook icon"></a> <a href="http://twitter.com/healthpennstate" target="_blank"><img src="../i/tw_666_bg_35px.jpg" height="23" width="23" border="0" alt="Twitter icon"></a> <a href="http://live.psu.edu/tagrss/University_Health_Services" target="_blank"><img src="../i/rs_666_bg_35px.jpg" height="23" width="23" border="0" alt="RSS icon"></a> <a href="http://youtube.com/user/psustuaff" target="_blank"><img src="../i/you_666_bg_35px.jpg" height="23" width="23" border="0" alt="YouTube icon"></a> <a href="http://www.events.psu.edu/cgi-bin/cal/webevent.cgi?cmd=opencal&amp;cal=cal406&amp;" target="_blank"><img src="../i/cal_666_bg_35px.jpg" height="23" width="23" border="0" alt="Calendar icon"></a> </p> 
+    </div>
+    <!--righticonbar--> 
+    <div id="rightfeature"> 
+     <p class="barhead">Featured</p> 
+     <a href="http://studentaffairs.psu.edu/health/services/billing/InsuranceBilling.shtml"><img src="i/uhs_feature.jpg" border="0" alt="Is my health insurance accepted?"></a> 
+    </div>
+    <!--rightffeature--> 
+    <div id="rightfeedbar"> 
+     <p class="barhead">News &amp; Events</p> 
+     <script src="http://www.google.com/jsapi/?key=ABQIAAAA3NxHvTo-Miu6KPKfNe7SDBTNvqTmycV-QAltvgjD8iUqXDqOiBT_uBk5q-Lj6PkraoLzkfv8aWgsqg" type="text/javascript"></script> 
+     <script src="http://www.google.com/uds/solutions/dynamicfeed/gfdynamicfeedcontrol.js" type="text/javascript"></script> 
+     <div id="feedControl">
+      Loading...
+     </div> 
+     <script type="text/javascript">
+  function loadFeedControl() {
+    var feed  = "http://news.psu.edu/rss/topic/health-and-safety";
+    var options = {
+    numResults : 2,
+    displayTime : 5000,
+    title : 'News'
+  }
+  new GFdynamicFeedControl(feed, "feedControl", options);
+  }
+  /**
+   * Use google.load() to load the AJAX Feeds API
+   * Use google.setOnLoadCallback() to call loadFeedControl once the page loads
+   */
+  google.load("feeds", "1");
+  google.setOnLoadCallback(loadFeedControl);
+</script> 
+     <p class="newslink"><a href="http://news.psu.edu/topic/health-and-safety" target="_blank">UHS Newswire</a> </p>
+    </div>
+    <!--rightfeedbar--> 
+    <a href="http://wwwnc.cdc.gov/travel/page/advice-for-colleges-universities-and-students-about-ebola-in-west-africa" target="_blank"><img src="i/uhs_green.jpg" border="0" alt="link to CDC information on Ebola" id="green"></a> 
+   </div>
+   <!-- rightbox--> 
+   <p class="mytext">&nbsp;</p> 
+   <div id="stylebox"> 
+    <p class="mytextlinks"><a href="services/clinicalServices">medical care</a></p> 
+    <p class="mytextlinks"><a href="wellness/">health &amp; wellness</a></p> 
+    <p class="mytextlinks"><a href="immunizations">immunization compliance</a></p> 
+    <p class="mytextlinks"><a href="wellness/nutritionClinic.shtml">nutrition clinic</a></p> 
+    <p class="mytextlinks"><a href="services/pharmacy">pharmacy</a></p> 
+    <p class="mytextlinks"><a href="services/physicaltherapy">physical therapy</a></p> 
+    <p class="mytextlinks"><a href="volunteer">volunteer opportunities</a></p> 
+    <a href="myuhs"><p class="mytext2">&nbsp;</p></a> 
+    <p class="mytextlinks"><a href="myUHS/login.shtml">appointment scheduling</a></p> 
+    <p class="mytextlinks"><a href="myUHS/login.shtml">billing statements</a></p> 
+    <p class="mytextlinks"><a href="myUHS/login.shtml">communication with UHS</a></p> 
+    <p class="mytextlinks"><a href="myUHS/login.shtml">health info &amp; questionnaires</a></p> 
+    <a href="welcome"><img src="i/welcome.jpg" alt="graphic of the opening screen for the Welcome to University Health Services video which links to the General Information page" border="0" id="welcome"></a> 
+    <div id="acc"> 
+     <a href="welcome/accreditation/"><img src="i/aaahc_52px.png" alt="AAAHC logo" border="0"></a> 
+     <p>University Health Services (UHS) is a nationally accredited health care service specializing in outpatient student health.</p> 
+    </div>
+    <!-- acc--> 
+   </div>
+   <!--stylebox--> 
+   <div id="rotator"> 
+    <script type="text/javascript">
+//new fadeshow(IMAGES_ARRAY_NAME, slideshow_width, slideshow_height, borderwidth, delay, pause (0=no, 1=yes), optionalRandomOrder)
+new fadeshow(fadeimages, 175, 425, 0, 6000, 1, "R")
+</script> 
+   </div>
+   <!-- rotatator --> 
+   <!--
+
+<img src="i/student1.png" alt="Student image 1" id="rotatorimg">
+
+-->  
+  </div>
+  <!--content-->  
+  <div id="deptcontact"> 
+   <p>Student Health Center | 814.863.0774 | <a href="/health/contact/directory">Contact University Health Services</a></p> 
+  </div>
+  <!-- deptcontact --> 
+  <div id="footer"> 
+   <p><a href="http://www.psu.edu/web-privacy-statement" target="_blank">Privacy</a> | <a href="http://guru.psu.edu/policies/AD85.html" target="_blank">Non-discrimination</a> | <a href="http://guru.psu.edu/policies/OHR/hr11.html" target="_blank">Equal Opportunity</a> | <a href="http://studentaffairs.psu.edu/accessibility"><span style="color:#f4f712;">Accessibility</span></a> | <a href="http://www.psu.edu/ur/hotline.html" target="_blank"><span style="color:#f4f712;">Hotlines</span></a> | <a href="http://studentaffairs.psu.edu/contact.shtml">Contact Student Affairs</a> | <a href="http://www.psu.edu/ur/copyright.html" target="_blank">©2014</a> </p>
+  </div>
+  <!-- footer --> 
+  <script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script> 
+  <script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-8953671-1");
+pageTracker._trackPageview();
+} catch(err) {}
+</script> 
+ </body>
+</html>

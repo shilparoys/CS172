@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <!-- BEGIN: head_admin --> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge"> 
+  <title>
+						Search - LibGuides at Camden County College Library
+						</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="stylesheet" href="/web/jquery/css/1.8.24_themes_base_jquery-ui.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> 
+  <link rel="stylesheet" href="/web/css1.4.0/springshare.public.css"> 
+  <!--[if lt IE 9]> 
+								<link rel="stylesheet" href="/web/css1.4.0/springshare.public.ie8hacks.css" /> 
+						<![endif]--> 
+  <link rel="stylesheet" href="/web/css1.4.0/springshare.common.css"> 
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css"> 
+  <script type="text/javascript" src="/web/jquery/js/1.10.0_jquery.min.js"></script> 
+  <script type="text/javascript" src="/web/jquery/js/1.9.2_jquery-ui.min.js"></script>
+  <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> 
+  <script type="text/javascript" src="/web/js1.4.0/springshare.common.min.js"></script> 
+  <script type="text/javascript" src="/web/js1.4.0/springshare.public.min.js"></script> 
+  <!-- BEGIN: CUSTOM HEAD JS/CSS --> 
+  <style>
+/** change font color in boxes to black **/
+.s-lib-box-content { color: black;}
+/**change background color and font color of the homepage nav menu**/
+#s-lg-hp-nav {background: #999999;}
+#s-lg-hp-nav a :{color:#fff:}
+/**suppressing Guide Type on HomePage till code is available for more flexibility in using this classification**/
+#s-lg-index-guidetype-btn {display: none;}
+#s-lg-index-owner-btn {display: none;}
+/**change guide title font size and color**/
+#s-lg-guide-name {font-size: 24 px; color:#000099;}
+/** hide the Subject Expert box from the sidebar of the Subject and Databases pages**/ 
+#s-lg-az-experts-div, #s-lg-sb-experts-div {display:none !important;} 
+/**change background on pages**/
+.container {background-color: }
+
+								
+</style> 
+  <!-- BEGIN: CUSTOM HEAD JS/CSS --> 
+  <script src="//search-platform.libapps.com/prepare.js?token=a8adc4e5e56c1a769ee839dc9cc96a7c"></script> 
+  <script src="/web/search/underscore.js"></script> 
+  <script src="/web/search/backbone.js"></script> 
+  <script src="/web/search/search.js"></script> 
+  <script src="/web/search/jquery.history.js"></script> 
+  <script src="/web/search/typeahead.jquery.js"></script> 
+  <script src="sa.php?site_id=148"></script> 
+  <script>
+				 // Spring Tracking init
+				springTrack.init({_st_site_id: '148'});
+				solr_conf = {
+					site_id: "148",
+					guide_id: "0",
+					solrUrl: "search-platform.libapps.com",
+					solrIndex: "lg2",
+					facets: {
+						group: [],
+						tag: [],
+						content_type: [],
+						guide_type: [],
+						subject: []
+					},
+					page: 1,
+					sort: { field: "score", dir: "desc" },
+					lang: {
+						Srch_NotAsked: "No results found.",
+						Srch_Update: "Updated",
+						Srch_SyntaxError: "Syntax Error: Quotation marks can only be used for phrase searching and must be in pairs.",
+						Srch_ResRange: "Showing %1 (of %2)",
+						Srch_PageLabel: "Pagination of search results",
+						Srch_FilterSubject: "Assigned Subjects",
+						Srch_FilterGroup: "In Group",
+						Srch_FilterGType: "Guide Type",
+						Srch_FilterCType: "Contains Content Type",
+						Srch_FilterTag: "Assigned Tags",
+						Srch_FacetNone: "None within current search terms.",
+						Srch_FilterCurr: "Current Filters",
+						Srch_FacetRemoveAll: "Remove All",
+						Srch_FacetAll: "Viewing all",
+						Srch_SortLabelRel: "Relevancy",
+						Srch_SortLabelDate: "Date",
+						Srch_SortHead: "Sort By",
+						Srch_Subject: "Subjects",
+						Srch_BoxHead: "results for: %1",
+						Srch_By: "by"
+					},
+					perpage: 10,
+					profile_url: "//libguides.camdencc.edu/prf.php?account_id=",
+					//searchwt: { guide: 6, page: 5, subject: 4, tag: 4, allInOne: 1 },
+					group_data: []
+				}
+				
+				//set-up the search model
+				var searchinterface = new SearchInterface(solr_conf);
+				
+				(function(window,undefined){
+					var History = window.History; // Note: We are using a capital H instead of a lower h	
+					// Bind to State Change
+					History.Adapter.bind(window, "statechange", function(){
+						//var State = History.getState(); // Note: We are using History.getState() instead of event.state
+						//History.log("statechange:", State.data, State.title, State.url);
+						searchinterface.retrieve();
+					});
+				})(window);
+				
+				jQuery(document).ready(function(){
+					//set up all the views
+					var sresults = new ResultsList({ model: searchinterface, el: jQuery("#s-lg-srch-results") });
+					var sform = new SearchForm({ model: searchinterface, el: jQuery("#s-lg-srch-form") });
+					var sheader = new SearchHeader({ model: searchinterface, el: jQuery("#s-lg-srch-header") });
+					var sfacet_cur = new CurrentParamsView({  model: searchinterface, el: jQuery("#s-lg-srch-facet-current") });
+					var sfacet_sort = new SortView({ model: searchinterface, el: jQuery("#s-lg-srch-facet-sort") });
+					var sfacet_g = new FacetView({ model: searchinterface, el: jQuery("#s-lg-srch-facet-group"), facetType: "group" });
+					var sfacet_t = new FacetView({ model: searchinterface, el: jQuery("#s-lg-srch-facet-tag"), facetType: "tag" });
+					var sfacet_ct = new FacetView({ model: searchinterface, el: jQuery("#s-lg-srch-facet-content_type"), facetType: "content_type" });
+					var sfacet_gt = new FacetView({ model: searchinterface, el: jQuery("#s-lg-srch-facet-guide_type"), facetType: "guide_type" });
+					var sfacet_s = new FacetView({ model: searchinterface, el: jQuery("#s-lg-srch-facet-subject"), facetType: "subject" });
+					//retrieve the results
+					if (true) {
+						searchinterface.retrieve();
+					}	
+				});
+				
+				loadLibGuidesSearch=function() {
+					//var q = "?q=" + jQuery("#s-lg-srch-cols iframe").contents().find("input[name=q]").val();
+					document.location.href="/srch.php";
+				}
+				
+				loadLibAnswersSearch=function(id) {
+					jQuery(".s-lg-srch-nav-btn").removeClass("active");
+					jQuery("#s-lg-srch-site-" + id + "-btn").addClass("active");
+					jQuery("#s-lg-srch-local").toggle(false);
+					jQuery("#s-lg-srch-cols").html("<div class=\"bold s-lib-color-lt-grey pad-top-med text-center\">Loading...</div>");
+					
+					xhr = jQuery.ajax({
+						url: "srch_process.php",
+						type: "POST",
+						dataType: "json",
+						data: {
+							action: 570,
+							site_id: id, 
+							query: jQuery("#s-lg-srch-input-q").val()
+						},
+						success: function(response, textStatus) {
+							if ( response.errCode == 200 ) {
+								jQuery("#s-lg-srch-cols").html(response.data.html);
+							} 
+						},
+						error: function (jqXHR, textStatus, errorThrown) {
+							alert("Oops, sorry! Something unexpected happened: " + errorThrown + " \n\nThat might not mean much to you, but it probably does " + 
+							"to the Springy Techs...you can let them know at support@springshare.com.");
+						}
+					});	
+				}
+			</script> 
+  <style>
+			#search { padding:0px; margin:0px; }
+			.badge { background-color:#ccc; margin-left:5px; }
+			
+			
+			/* jquery typeahead */
+			.input-group .form-control:not(:first-child):not(:last-child) {
+				border-radius: 4px 0 0 4px;
+			}
+			.twitter-typeahead {
+			     width: 100%;
+			     position: relative;
+			}
+			.tt-dropdown-menu {
+			  width: 100%;
+			  min-width: 160px;
+			  margin-top: 2px;
+			  padding: 5px 0;
+			  background-color: #fff;
+			  border: 1px solid #ccc;
+			  border: 1px solid rgba(0, 0, 0, 0.2);
+			  *border-right-width: 2px;
+			  *border-bottom-width: 2px;
+			  -webkit-border-radius: 6px;
+			  -moz-border-radius: 6px;
+			  border-radius: 6px;
+			  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+			  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+			  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+			  -webkit-background-clip: padding-box;
+			  -moz-background-clip: padding;
+			  background-clip: padding-box;
+			}
+			.tt-suggestion {
+			  display: block;
+			  padding: 3px 20px;
+			}
+			.tt-suggestion.tt-cursor {
+			  color: #fff;
+			  background-color: #0081c2;
+			  background-image: -webkit-linear-gradient(top, #0088cc, #0077b3);
+			  background-image: linear-gradient(to bottom, #0088cc, #0077b3);
+			  background-repeat: repeat-x;
+			}
+			.tt-suggestion.tt-cursor a {
+			  color: #fff;
+			}
+			.tt-suggestion p {
+			  margin: 0;
+			}
+			
+			#s-lg-srch-form .form-control { width: 450px; }
+			
+			#s-lg-srch-navigation { margin-top: 0px; }
+			#s-lg-srch-list { list-style-type: none; margin-left: 10px; margin-right: 10px; }
+			#s-lg-srch-list .s-la-faq-listing-q { font-size: 16px; }
+			
+			#DISABLED_s-lg-srch-cols #col1 ul { padding-left: 0px; }
+			
+			.s-lg-srch-cloud label { font-weight: normal; }
+			.s-lg-srch-cloud li.selected { padding: 0px 5px; background-color: pink; border-radius: 3px; margin: 2px 0; }
+			.s-lg-srch-cloud .badge { font-size: 10px; line-height: 10px; margin-left: 5px; }
+			
+			#s-lg-srch-cols #col1 h3 { border-bottom: 1px solid #efefef; font-size: 16px; }
+			#s-lg-srch-cols #col1 h3 a { color: inherit; }
+			
+			#s-lg-srch-selection .removeAll { padding-top: 8px; margin-top: 8px; display: inline-block; }
+			
+			#s-lg-srch-pager, #s-lg-srch-range  { margin: 0px 0 20px 0; }
+			#s-lg-srch-sort a.s-lg-srch-sorter { display: block; }
+			
+			.s-lg-srch-cloud.navbar-collapse { max-height: none; }
+									
+			.s-lg-srch-side-collapse { display: none; }
+
+			li.s-lg-srch-listing { margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #efefef; }
+			.s-lg-srch-listing-t { font-weight: bold; font-size: 16px; }
+			.s-lg-srch-listing-meta .metalabel { font-weight: bold; padding-right: 10px; }
+			.s-lg-srch-listing-meta .divider { padding: 0 5px; color: #ccc; }
+			.s-lg-srch-listing-meta .label-default { font-weight: normal; background-color: #eee; color: #555; }
+			.s-lg-srch-listing-subj .label a { color: inherit; }
+			.s-lg-srch-listing-subj ul { margin-left: 0px; display: inline;  }
+			.s-lg-srch-listing-subj ul li { padding-left: 0px; }
+			
+			@media (max-width: 768px) {
+				.twitter-typeahead .tt-query,
+				.twitter-typeahead .tt-hint {
+				  height: 34px;
+				  font-size: 16px;
+				}
+
+				/* search page */
+				.s-lg-srch-side-collapse { display: inline-block; }
+				#s-lg-srch-cols #col1 { padding-bottom: 15px;  }
+				#s-lg-srch-cols #col1 h3 { margin: 0; padding: 8px 0; cursor: pointer; }
+				#s-lg-srch-cols #col1 ul { margin: 0px; }
+				#s-lg-srch-cols #col1 ul.in { margin: 10px 0; }
+				#s-lg-srch-pager li { display: none; }
+				#s-lg-srch-pager li.pager-step { display: inline-block; }
+			}
+		</style> 
+  <!-- END: head_admin --> 
+ </head> 
+ <body class="s-lib-public-body"> 
+  <!-- BEGIN: Page Header --> 
+  <div id="s-lib-banner" class="container s-lib-banner-public"> 
+   <a href="http://library.camdencc.edu/" title="" target=""><img alt="Banner Image" usemap="#headermap" name="s-lib-banner-img" id="s-lib-banner-img" class="img-responsive" src="//s3.amazonaws.com/libapps/sites/148/banner/LibguideCCCLogo985by124.jpg"></a> 
+  </div> 
+  <!-- END: Page Header --> 
+  <!-- BEGIN: Content Header --> 
+  <div id="s-lib-public-header" class="s-lib-header container s-lib-side-borders"> 
+   <div id="s-lib-bc"> 
+    <ol id="s-lib-bc-list" class="breadcrumb"> 
+     <li id="s-lib-bc-customer"> <a title="Camden County College Library" href="http://library.camdencc.edu/">Camden County College Library </a> </li> 
+     <li id="s-lib-bc-site"> <a title="LibGuides" href="http://libguides.camdencc.edu">LibGuides </a> </li> 
+     <li id="s-lib-bc-page" class="active">Search </li> 
+    </ol> 
+   </div> 
+   <h1 id="s-lib-public-header-title">Search</h1> 
+   <div id="s-lib-public-header-desc">
+    Search for content by keyword or filter results by Groups / Subjects / Tags.
+   </div> 
+  </div> 
+  <!-- END: Content Header --> 
+  <!-- BEGIN: Nav Bar --> 
+  <div id="s-lib-public-nav" class="container s-lib-side-borders"> 
+  </div> 
+  <!-- END: Nav Bar --> 
+  <!-- BEGIN: content --> 
+  <div id="s-lib-public-main" class="s-lib-main container s-lib-side-borders"> 
+   <section> 
+    <div id="s-lg-srch-nav-col" class="row"> 
+     <div id="col0" class="col-md-12 center"> 
+      <div id="s-lg-srch-local"> 
+       <nav class="navbar navbar-default" role="navigation"> 
+        <div class="container-fluid"> 
+         <div class="navbar-header"> 
+          <button type="button" class="navbar-toggle pad-right-med" data-toggle="collapse" data-target="#s-lg-srch-nav-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> 
+         </div> 
+         <div class="collapse navbar-collapse" id="s-lg-az-nav-1"> 
+          <form id="s-lg-srch-form" class="navbar-form navbar-left" role="search"> 
+           <div class="form-group"> 
+            <label for="s-lg-srch-input-q" class="sr-only">Search</label> 
+            <input type="text" id="s-lg-srch-input-q" name="query" autocomplete="off" placeholder="Enter Keywords" class="form-control"> 
+           </div> 
+           <button type="submit" class="btn btn-default">Search</button> 
+          </form> 
+         </div> 
+        </div> 
+       </nav> 
+      </div> 
+     </div> 
+    </div> 
+   </section> 
+   <section> 
+    <div id="s-lg-srch-cols" class="row"> 
+     <div id="col1" class="col-md-4 center"> 
+      <div id="s-lg-srch-facet-current"></div> 
+      <div id="s-lg-srch-facet-sort"></div> 
+      <div id="s-lg-srch-facet-group"></div> 
+      <div id="s-lg-srch-facet-subject"></div> 
+      <div id="s-lg-srch-facet-tag"></div> 
+      <div id="s-lg-srch-facet-guide_type"></div> 
+      <div id="s-lg-srch-facet-content_type"></div> 
+     </div> 
+     <div id="col2" class="col-md-8 center"> 
+      <div id="s-lg-srch-header" class="clearfix"></div> 
+      <div id="s-lg-srch-results"></div> 
+     </div> 
+    </div> 
+   </section> 
+  </div> 
+  <!-- END: content --> 
+  <!-- BEGIN: Page Footer --> 
+  <div id="s-lib-footer-public" class="s-lib-footer footer container  s-lib-side-borders"> 
+   <div> 
+    <div id="s-lib-footer-brand">
+      Powered by 
+     <a href="http://www.springshare.com">Springshare</a>. 
+    </div> 
+    <div id="s-lib-footer-rights">
+      All rights reserved. 
+    </div> 
+    <div id="s-lib-footer-login-link"> 
+     <a href="https://camdencc.libapps.com/libapps/login.php?site_id=148">Login to LibApps</a>. 
+    </div> 
+   </div> 
+   <div> 
+    <div id="s-lib-footer-print-link">
+      View this page in a format suitable for 
+     <a href="#">printers and screen-readers</a>. 
+    </div> 
+    <div id="s-lib-footer-support-link"> 
+    </div> 
+   </div> 
+  </div> 
+  <!-- END: Page Footer --> 
+  <div id="s-lib-alert" title=""> 
+   <div id="s-lib-alert-content"></div> 
+  </div> 
+  <div id="s-lib-popover-title" class="hide"> 
+   <span class="text-info"><strong>title</strong></span> 
+   <button type="button" id="popclose" class="close" onclick="jQuery('.s-lib-popover').popover('hide')">×</button> 
+  </div> 
+  <div id="s-lib-popover-content" class="hide">
+   <i class="fa fa-refresh fa-spin"></i> Loading... 
+   <button class="btn btn-default btn-sm popclose" type="button">Close</button> 
+  </div> 
+  <div id="s-lib-scroll-top" title="Back to Top"> 
+   <span class="fa-stack fa-lg"> <i class="fa fa-square-o fa-stack-2x"></i> <i class="fa fa-angle-double-up fa-stack-1x" style="position:relative; bottom:2px;"></i> </span> 
+  </div> 
+  <!-- BEGIN: Custom Footer --> 
+  <p>Camden County College Library - Blackwood Library, College Drive P.O. Box 200 , Blackwood, NJ 08012-0200 I (856) 227-7200 / Service Desk, X4408</p>
+  <p> 
+   <!-- BEGIN: Analytics code --><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-29817486-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+   <!-- END: Analytics code --> 
+   <!-- END: Custom Footer --> </p>
+ </body>
+</html>

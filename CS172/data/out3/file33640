@@ -1,0 +1,808 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- jQuery Library + ALL jQuery Tools -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <script type="text/javascript" language="javaScript" src="http://cdn.jquerytools.org/1.2.6/full/jquery.tools.min.js"></script> 
+  <script type="text/javascript">
+    function LaunchFancyBox() {
+        // Need to reapply overlay because #popuptrigger is in an update panel and gets
+        // rebuilt in the DOM on each update.
+        $("#popuptrigger").overlay({
+            mask: {
+                color: '#ebecff',
+                loadSpeed: 1200
+            },
+
+            closeOnClick: false
+        });
+
+        // Tigger control that references the popup div
+        setTimeout('$("#popuptrigger").trigger("click");', 0);
+    }
+</script> 
+  <!-- google analytics code --> 
+  <script type="text/javascript">
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-165997-8', 'auto');
+    ga('require', 'displayfeatures');
+    ga('send', 'pageview');
+
+</script>  
+  <meta http-equiv="Content-Language" content="en-us">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>
+	The Office of the Registrar - Schedule of Classes
+</title>
+  <link rel="stylesheet" href="css/consolidated_import.css?version=2.0.101">
+  <link rel="stylesheet" href="css/sitestyles.css?version=2.0.101"> 
+  <!-- CSS Import --> 
+  <link href="css/worklist.css?version=2.0.101" type="text/css" rel="stylesheet">
+  <link href="css/header.css?version=2.0.101" type="text/css" rel="stylesheet">
+  <link rel="stylesheet" media="screen" type="text/css" href="css/css_import.css?version=2.0.101"> 
+  <!-- <script type="text/javascript" language="javaScript" src="http://www.mattkruse.com/javascript/calendarpopup/combined-compact/CalendarPopup.js"></script>--> 
+  <script type="text/javascript">
+        function DoHourglass() {
+            document.body.style.cursor = 'wait';
+            return true;
+        }
+
+        function refresh() {
+            window.location = window.location;
+            return true;
+        }
+
+        function pop(url, eTar, iheight, itop, ileft, iscroll, iwidth) {
+            window.open(url, eTar, 'toolbar=0,scrollbars=' + iscroll + ',titlebar=0,location=0,statusbar=0,menubar=0,resizable=0,height=' + iheight + ',width=' + iwidth + ',top=' + itop + ',left=' + ileft + '');
+        }
+        function popMyCourse(url, eTar, iscroll) {
+            window.open(url, eTar, 'toolbar=0,scrollbars=' + iscroll + ',titlebar=0,location=0,statusbar=0,menubar=0,resizable=0,height=560,width=825,top=22,left=33');
+        }
+        function poplistScholarships(url, eTar, iheight, itop, ileft, iscroll, iwidth) {
+            window.open(url, eTar, 'toolbar=0,scrollbars=' + iscroll + ',titlebar=0,location=0,statusbar=0,menubar=0,resizable=0,height=' + iheight + ',width=' + iwidth + ',top=' + itop + ',left=' + ileft + '');
+        }
+	        
+    </script> 
+  <script type="text/javascript">
+
+
+        function showPopulationDesc() {
+        }
+
+        function closeWindow() {
+        }
+
+        function showRollTip(msg, e) {
+            if (typeof RollTip == "undefined" || !RollTip.ready) return;
+            RollTip.reveal(msg, e);
+        }
+
+        function hideRollTip() {
+            if (typeof RollTip == "undefined" || !RollTip.ready) return;
+            RollTip.conceal();
+        }
+
+
+        function link(obj) {
+            obj.style.backgroundColor = '#507CD1';
+            obj.style.color = 'white';
+            return true;
+        }
+
+        function link1(obj) {
+            obj.style.backgroundColor = '#ffffff';
+            obj.style.color = 'Blue';
+            return true;
+        }
+
+        function linkSOCSearch(obj) {
+            obj.style.borderBottom = '1px solid #507CD1';
+            obj.style.backgroundColor = '#507CD1';
+            obj.style.color = 'white';
+            return true;
+        }
+
+        function link1SOCSearch(obj) {
+            obj.style.borderBottom = '1px solid #5B5BFF';
+            obj.style.backgroundColor = '#ffffff';
+            obj.style.color = '#5B5BFF';
+            return true;
+        }
+
+        function cursor_wait() {
+            document.body.style.cursor = 'wait';
+        }
+
+        function cursor_clear() {
+            document.body.style.cursor = 'default';
+        }
+
+
+        function showorhideAboutSOC(id) {
+            if (document.getElementById(id).style.display == "none") {
+                document.getElementById(id).style.display = "block";
+                document.getElementById("helpbtn").innerHTML = "Hide About Schedule of Classes";
+                function showorhide(id) {
+                    if (document.getElementById(id).style.display == "none") {
+                        document.getElementById(id).style.display = "block";
+                        document.getElementById("helpbtn").innerHTML = "Hide MySystem Information";
+
+                        /*detectPopupBlocker();*/
+
+                    } else {
+                        document.getElementById(id).style.display = "none";
+                        document.getElementById("helpbtn").innerHTML = "MySystem Information";
+                    }
+                }
+
+            } else {
+                document.getElementById(id).style.display = "none";
+                document.getElementById("helpbtn").innerHTML = "About Schedule of Classes";
+            }
+
+
+            function detectPopupBlocker() {
+                var myTest = window.open("about:blank", "", "directories=no,height=1,width=1,menubar=no,resizable=no,scrollbars=no,status=no,titlebar=no,top=0,location=no");
+                myTest.close();
+                if (!myTest) {
+                    document.getElementById("lbl_popupsEnabled").innerHTML = "NOcvc";
+                    lbl_popupsEnabled.style.backgroundColor = 'Red';
+                    myTest.close();
+                } else {
+                    lbl_popupsEnabled.style.backgroundColor = '#ffffff';
+                    document.getElementById("lbl_popupsEnabled").innerHTML = "YES";
+                    myTest.close();
+                }
+
+            }
+        }
+        
+    </script> 
+  <link rel="stylesheet" href="css/example.css?version=2.0.101" type="text/css" media="screen">
+  <link rel="stylesheet" href="css/example-print.css?version=2.0.101" type="text/css" media="print"> 
+  <script type="text/javascript">
+
+        /* Optional: Temporarily hide the "tabber" class so it does not "flash"
+        on the page as plain HTML. After tabber runs, the class is changed
+        to "tabberlive" and it will appear. */
+
+        //document.write('<style type="text/css">.tabber{display:none;}<\/style>');
+
+        var t1 = null;
+        var l1 = "Tooltip for line one";
+        var l2 = "Tooltip for line two";
+
+        function init() {
+            t1 = new ToolTip("a", false);
+        }
+    </script> 
+  <style type="text/css">
+        body
+        {
+            background-color: #e3e9f7;
+            font-size: .80em;
+            /*font-family: Arial, Sans-Serif;*/
+            font-family: Arial,"Helvetica Neue",Helvetica,"Liberation Sans",sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+    </style> 
+  <!-- CSS for the Registrar Header --> 
+  <style type="text/css">        
+        #PageTitleArea{
+            width:1100px;
+            margin-left:auto;
+            margin-right:auto;            
+        }
+        #PageTitleArea .pageTitle{
+            color: #444444;
+            text-align:left;            
+            border-bottom: 1px solid #D6D6D6;
+            margin: 12px;
+            font-family: "Trade Gothic W02 Cn 18","Arial Narrow",Arial,"Helvetica Neue",Helvetica,"Liberation Sans",sans-serif;
+            font-size: 2.25em;
+            font-weight: normal;
+        }
+        #RegHeader {
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+            background-image: url(images/registrar/header-background-old.png);
+            background-repeat: repeat-x;
+            height: 250px;
+        }
+
+            #RegHeader .content{
+                width: 1100px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            #RegHeader .search-bar {
+                height: 52px;
+                width: 100%;
+                font-size:.90em;
+            }
+            #RegHeader .branding-bar{
+                padding-top: 2px;
+                position: relative;
+            }
+
+            #RegHeader .branding-bar h1{
+                position: absolute;
+                z-index: 100;
+            }
+
+            #RegHeader .branding-bar h1 a{
+                text-indent: -9999px;
+                display: block;
+                width: 370px;
+                height: 50px;
+            }
+
+            #RegHeader .branding-bar img{
+                position: relative;
+                z-index: 10;
+            }
+
+            #RegHeader .breadcrumb-bar{
+                color: #fff;
+                margin-top: 6px;
+            }
+
+        .search-bar .logo {
+            float:right;
+            width:200px;
+            text-align:right;
+        }
+        .search-bar li{
+            padding-top: 18px;
+            padding-left: 2px;
+            padding-right: 2px;
+            float: left;
+        }
+        .search-bar li a{
+            text-decoration: none;
+        }
+        .search
+        {
+            border-left: solid 1px #a0a9bd;
+        }   
+
+        .breadcrumbs
+        {
+            float: left;
+            line-height: 14px;
+        }
+
+        .breadcrumbs a
+        {
+            color: #E3E8F7;
+        }
+        #SoCMain {
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;            
+        }
+
+            #SoCMain .mainContent{
+                width: 1100px;
+                margin-left: auto;
+                margin-right: auto;
+            }           
+    </style> 
+ </head> 
+ <body class="standard"> 
+  <form name="form1" method="post" action="Index.aspx" id="form1"> 
+   <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJOTk1MjQ4NTQzD2QWAgIDD2QWFgILDw8WAh4LTmF2aWdhdGVVcmwFL2h0dHA6Ly9yZWdpc3RyYXIudWNyLmVkdS9yZWdpc3RyYXIvZGVmYXVsdC5hc3B4ZGQCDQ8PFgIfAAVDaHR0cDovL3JlZ2lzdHJhci51Y3IuZWR1L1JlZ2lzdHJhci9TY2hlZHVsZS1vZi1DbGFzc2VzL0RlZmF1bHQuYXNweGRkAhEPDxYCHwAFR2h0dHA6Ly9yZWdpc3RyYXIudWNyLmVkdS9yZWdpc3RyYXIvcmVnaXN0ZXJpbmctZm9yLWNsYXNzZXMvZGVmYXVsdC5hc3B4ZGQCEw8PFgIfAAVAaHR0cDovL3JlZ2lzdHJhci51Y3IuZWR1L3JlZ2lzdHJhci90dWl0aW9uLWFuZC1mZWVzL2RlZmF1bHQuYXNweGRkAhUPDxYCHwAFTWh0dHA6Ly9yZWdpc3RyYXIudWNyLmVkdS9yZWdpc3RyYXIvYWNhZGVtaWMtY2FsZW5kYXIvZmluYWwtZXhhbS1zY2hlZHVsZS5hc3B4ZGQCFw8PFgIfAAVIaHR0cDovL3JlZ2lzdHJhci51Y3IuZWR1L3JlZ2lzdHJhci9ndWlkZS10by1ncmFkdWF0aW9uL2RlZ3JlZS1hdWRpdC5hc3B4ZGQCGw9kFgJmD2QWBgIBDw8WAh4EVGV4dGVkZAIDD2QWFAIDD2QWAmYPDxYCHghJbWFnZVVybAURfi9pbWFnZXMvcGx1cy5QTkdkZAIFD2QWDAIBDxAPFgYeDURhdGFUZXh0RmllbGQFBERlc2MeDkRhdGFWYWx1ZUZpZWxkBQRUZXJtHgtfIURhdGFCb3VuZGdkEBU2CTE1IFNQUklORwkxNSBXSU5URVIHMTQgRkFMTAkxNCBTVU1NRVIJMTQgU1BSSU5HCTE0IFdJTlRFUgcxMyBGQUxMCTEzIFNQUklORwkxMyBTVU1NRVIJMTMgV0lOVEVSBzEyIEZBTEwJMTIgU1BSSU5HCTEyIFNVTU1FUgkxMiBXSU5URVIHMTEgRkFMTAkxMSBTUFJJTkcJMTEgU1VNTUVSCTExIFdJTlRFUgcxMCBGQUxMCTEwIFNVTU1FUgkxMCBTUFJJTkcJMTAgV0lOVEVSBzA5IEZBTEwJMDkgU1BSSU5HCTA5IFdJTlRFUgkwOSBTVU1NRVIHMDggRkFMTAkwOCBTUFJJTkcJMDggV0lOVEVSBzA3IEZBTEwJMDcgU1BSSU5HCTA3IFdJTlRFUgcwNiBGQUxMCTA2IFNQUklORwkwNiBXSU5URVIHMDUgRkFMTAkwNSBTUFJJTkcJMDUgV0lOVEVSBzA0IEZBTEwJMDQgU1BSSU5HCTA0IFdJTlRFUgcwMyBGQUxMCTAzIFNQUklORwkwMyBXSU5URVIHMDIgRkFMTAkwMiBTUFJJTkcJMDIgV0lOVEVSBzAxIEZBTEwJMDEgU1BSSU5HCTAxIFdJTlRFUgcwMCBGQUxMCTAwIFNQUklORwkwMCBXSU5URVIHOTkgRkFMTBU2AzE1UwMxNVcDMTRGAzE0VQMxNFMDMTRXAzEzRgMxM1MDMTNVAzEzVwMxMkYDMTJTAzEyVQMxMlcDMTFGAzExUwMxMVUDMTFXAzEwRgMxMFUDMTBTAzEwVwMwOUYDMDlTAzA5VwMwOVUDMDhGAzA4UwMwOFcDMDdGAzA3UwMwN1cDMDZGAzA2UwMwNlcDMDVGAzA1UwMwNVcDMDRGAzA0UwMwNFcDMDNGAzAzUwMwM1cDMDJGAzAyUwMwMlcDMDFGAzAxUwMwMVcDMDBGAzAwUwMwMFcDOTlGFCsDNmdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZxYBZmQCAw8QDxYGHwMFBERlc2MfBAUHU3ViamVjdB8FZ2QPFl0CAQICAgMCBAIFAgYCBwIIAgkCCgILAgwCDQIOAg8CEAIRAhICEwIUAhUCFgIXAhgCGQIaAhsCHAIdAh4CHwIgAiECIgIjAiQCJQImAicCKAIpAioCKwIsAi0CLgIvAjACMQIyAjMCNAI1AjYCNwI4AjkCOgI7AjwCPQI+Aj8CQAJBAkICQwJEAkUCRgJHAkgCSQJKAksCTAJNAk4CTwJQAlECUgJTAlQCVQJWAlcCWAJZAloCWwJcAl0WXRAFDEFudGhyb3BvbG9neQUEQU5USGcQBQdBcmFiaWMgBQRBUkJDZxAFH0FyYWJpYyBMaXRlcmF0dXJlIGFuZCBDdWx0dXJlcyAFBEFSTENnEAUEQVJDIAUEQVJDIGcQBQNBcnQFBEFSVCBnEAULQXJ0IEhpc3RvcnkFBEFIUyBnEAUNQXNpYW4gU3R1ZGllcwUEQVNUIGcQBQ1CYXNpYyBXcml0aW5nBQRCU1dUZxAFDEJpb2NoZW1pc3RyeQUEQkNIIGcQBQ5CaW9lbmdpbmVlcmluZwUEQklFTmcQBQdCaW9sb2d5BQRCSU9MZxAFE0Jpb21lZGljYWwgU2NpZW5jZXMFBEJNU0NnEAUUQm90YW55L1BsYW50IFNjaWVuY2UFBEJQU0NnEAUIQnVzaW5lc3MFBEJVUyBnEAUdQ2VsbCBCaW9sb2d5IGFuZCBOZXVyb3NjaWVuY2UFBENCTlNnEAUqQ2VsbCwgTW9sZWN1bGFyLCBhbmQgRGV2ZWxvcG1lbnRhbCBCaW9sb2d5BQRDTURCZxAFG0NIQVNTIEZpcnN0IFllYXIgRXhwZXJpZW5jZQUEQ0hGWWcQBSZDaGVtaWNhbCBhbmQgRW52aXJvbm1lbnRhbCBFbmdpbmVlcmluZwUEQ0VFIGcQBRRDaGVtaWNhbCBFbmdpbmVlcmluZwUEQ0hFIGcQBQlDaGVtaXN0cnkFBENIRU1nEAUHQ2hpbmVzZQUEQ0hOIGcQBRFDbGFzc2ljYWwgU3R1ZGllcwUEQ0xBIGcQBRZDb21wYXJhdGl2ZSBMaXRlcmF0dXJlBQRDUExUZxAFEENvbXB1dGVyIFNjaWVuY2UFBENTICBnEAUQQ3JlYXRpdmUgV3JpdGluZwUEQ1JXVGcQBTJDcmVhdGl2ZSBXcml0aW5nICYgV3JpdGluZyBmb3IgdGhlIFBlcmZvcm1pbmcgQXJ0cwUEQ1dQQWcQBQVEYW5jZQUERE5DRWcQBQlFY29ub21pY3MFBEVDT05nEAUJRWR1Y2F0aW9uBQRFRFVDZxAFFkVsZWN0cmljYWwgRW5naW5lZXJpbmcFBEVFICBnEAULRW5naW5lZXJpbmcFBEVOR1JnEAUHRW5nbGlzaAUERU5HTGcQBQpFbnRvbW9sb2d5BQRFTlRNZxAFGUVudmlyb25tZW50YWwgRW5naW5lZXJpbmcFBEVOVkVnEAUWRW52aXJvbm1lbnRhbCBTY2llbmNlcwUERU5TQ2cQBRhFbnZpcm9ubWVudGFsIFRveGljb2xvZ3kFBEVOVFhnEAUORXRobmljIFN0dWRpZXMFBEVUU1RnEAUQRXVyb3BlYW4gQ3VsdHVyZQUERVVSIGcQBShFdm9sdXRpb24sIEVjb2xvZ3ksICYgT3JnYW5pc21hbCBCaW9sb2d5BQRFRU9CZxAFCEZpbGlwaW5vBQRGSUwgZxAFBkZyZW5jaAUERlJFTmcQBQRHRElWBQRHRElWZxAFCEdlbmV0aWNzBQRHRU4gZxAFC0dlb3NjaWVuY2VzBQRHRU8gZxAFBkdlcm1hbgUER0VSIGcQBQ5HbG9iYWwgU3R1ZGllcwUER0JTVGcQBQVHcmVlawUER1JLIGcQBQRHU1NUBQRHU1NUZxAFB0hpc3RvcnkFBEhJU1RnEAURSGlzdG9yeSBvZiBFdXJvcGUFBEhJU0VnEAUXSGlzdG9yeSBvZiB0aGUgQW1lcmljYXMFBEhJU0FnEAUGSG9ub3JzBQRITlBHZxAFJUh1bWFuaXRpZXMsIEFydHMsIGFuZCBTb2NpYWwgU2NpZW5jZXMFBEhBU1NnEAUHSXRhbGlhbgUESVRBTGcQBQhKYXBhbmVzZQUESlBOIGcQBQZLb3JlYW4FBEtPUiBnEAUFTGF0aW4FBExBVE5nEAUWTGF0aW4gQW1lcmljYW4gU3R1ZGllcwUETE5TVGcQBQ9MYXcgYW5kIFNvY2lldHkFBExXU09nEAUETEJTVAUETEJTVGcQBR5MZXNiaWFuLCBHYXksIEJpc2V4dWFsIFN0dWRpZXMFBExHQlNnEAULTGluZ3Vpc3RpY3MFBExJTkdnEAUKTWFuYWdlbWVudAUETUdUIGcQBSFNYXRlcmlhbHMgU2NpZW5jZSBhbmQgRW5naW5lZXJpbmcFBE1TRSBnEAULTWF0aGVtYXRpY3MFBE1BVEhnEAUETURDTAUETURDTGcQBRZNZWNoYW5pY2FsIEVuZ2luZWVyaW5nBQRNRSAgZxAFG01lZGlhIGFuZCBDdWx0dXJhbCBTdHVkaWVzIAUETUNTIGcQBQxNaWNyb2Jpb2xvZ3kFBE1DQkxnEAUFTXVzaWMFBE1VUyBnEAUhTmF0dXJhbCBhbmQgQWdyaWN1bHR1cmFsIFNjaWVuY2VzBQROQVNDZxAFCk5lbWF0b2xvZ3kFBE5FTSBnEAUMTmV1cm9zY2llbmNlBQROUlNDZxAFGFBlYWNlICYgQ29uZmxpY3QgU3R1ZGllcwUEUENTVGcQBQpQaGlsb3NvcGh5BQRQSElMZxAFE1BoeXNpY3MgJiBBc3Ryb25vbXkFBFBIWVNnEAUeUGxhbnQgUGF0aG9sb2d5ICYgTWljcm9iaW9sb2d5BQRQTFBBZxAFEVBvbGl0aWNhbCBTY2llbmNlBQRQT1NDZxAFClBzeWNob2xvZ3kFBFBTWUNnEAUNUHVibGljIFBvbGljeQUEUEJQTGcQBQpSZWNyZWF0aW9uBQRSRUMgZxAFEVJlbGlnaW91cyBTdHVkaWVzBQRSTFNUZxAFD1J1c3NpYW4gU3R1ZGllcwUEUlVTTmcQBQlTb2Npb2xvZ3kFBFNPQyBnEAUWU29pbCBhbmQgV2F0ZXIgU2NpZW5jZQUEU1dTQ2cQBRdTb3V0aGVhc3QgQXNpYW4gU3R1ZGllcwUEU0VBU2cQBQdTcGFuaXNoBQRTUE4gZxAFClN0YXRpc3RpY3MFBFNUQVRnEAUHVGhlYXRyZQUEVEhFQWcQBR5VLkMuIFdhc2hpbmd0b24gQ2VudGVyIFByb2dyYW0FBFVDRENnEAUNVXJiYW4gU3R1ZGllcwUEVVJTVGcQBQpWaWV0bmFtZXNlBQRWTk0gZxAFD1dvbWVuIHMgU3R1ZGllcwUEV01TVGdkZAIHDxAPFgYfAwUIQWN0aXZpdHkfBAUDQUNUHwVnZA8WGAIBAgICAwIEAgUCBgIHAggCCQIKAgsCDAINAg4CDwIQAhECEgITAhQCFQIWAhcCGBYYEAUHTEVDVFVSRQUDTEVDZxAFCkRJU0NVU1NJT04FA0RJU2cQBQpMQUJPUkFUT1JZBQNMQUJnEAUSQURESVRJT05BTCBMRUNUVVJFBQNMQ0FnEAUGQ0xJTklDBQNDTE5nEAUKQ09MTE9RVUlVTQUDQ09MZxAFDENPTlNVTFRBVElPTgUDQ09OZxAFBUZJRUxEBQNGTERnEAUUSU5ESVZJRFVBTElaRUQgU1RVRFkFA0lORGcQBQpJTlRFUk5TSElQBQNJTlRnEAUVTVVMVElQTEUgQ09VUlNFIEVOVFJZBQNNQ0VnEAUJUFJBQ1RJQ1VNBQNQUkNnEAUIUkVTRUFSQ0gFA1JFU2cQBQlTQ1JFRU5JTkcFA1NDUmcQBQdTRU1JTkFSBQNTRU1nEAUGU1RVRElPBQNTVFVnEAUGVEhFU0lTBQNUSEVnEAUKVEVSTSBQQVBFUgUDVFBBZxAFCFRVVE9SSUFMBQNUVVRnEAUIV09SS1NIT1AFA1dSS2cQBQhBQ1RJVklUWQUDQUNUZxAFDURFTU9OU1RSQVRJT04FA0RFTWcQBRhPTkxJTkUgRElTIEFORCBMSVNURU5JTkcFA09ETGcQBRRXT1JLU0hPUCAmIFNDUkVFTklORwUDVyZTZ2RkAh8PEA8WBh8DBQhMb2NhdGlvbh8EBQROYW1lHwVnZA8WIwIBAgICAwIEAgUCBgIHAggCCQIKAgsCDAINAg4CDwIQAhECEgITAhQCFQIWAhcCGAIZAhoCGwIcAh0CHgIfAiACIQIiAiMWIxAFHUEuIEdhcnkgQW5kZXJzb24gSGFsbCAoQU5ESEwpBQVBTkRITGcQBRxBbGZyZWQgTS4gQm95Y2UgSGFsbCAoQk9ZSEwpBQVCT1lITGcQBRRBcnRzIEJ1aWxkaW5nIChBUlRTKQUEQVJUU2cQBSJBdGhsZXRpY3MgYW5kIERhbmNlIEJ1aWxkaW5nIChBVEgpBQNBVEhnEAUWQmF0Y2hlbG9yIEhhbGwgKEJBVENIKQUFQkFUQ0hnEAUmQm90YW55IEhlYWRob3VzZXMoZ3JlZW5ob3VzZXMpIChIT1VTRSkFBUhPVVNFZxAFE0JvdXJucyBIYWxsIChCUk5ITCkFBUJSTkhMZxAFFENhbXB1cyBTdXJnZSAoU1VSR0UpBQVTVVJHRWcQBSlDSEFTUyBJbnRlcmRpc2NpcGxpbmFyeSBCbGRnLU5vcnRoIChJTlROKQUESU5UTmcQBSlDSEFTUyBJbnRlcmRpc2NpcGxpbmFyeSBCbGRnLVNvdXRoIChJTlRTKQUESU5UU2cQBRhDaGVtaWNhbCBTY2llbmNlcyAoQ0hFTSkFBENIRU1nEAUSRW50b21vbG9neSAoRU5UT00pBQVFTlRPTWcQBSJFbnRvbW9sb2d5IFJlc2VhcmNoIE11c2V1bSAoRU5UTVUpBQVFTlRNVWcQBRlHZW5vbWljcyBCdWlsZGluZyAoR0VOT00pBQVHRU5PTWcQBRdHZW9sb2d5IEJ1aWxkaW5nIChHRU9MKQUER0VPTGcQBRlHb3JkYW4gV2F0a2lucyBIYWxsIChXQVQpBQNXQVRnEAUdSG9tZXIgRC4gQ2hhcG1hbiBIYWxsIChDSFBITCkFBUNIUEhMZxAFEUh1bWFuaXRpZXMgKEhVTU4pBQRIVU1OZxAFJkh1bWFuaXRpZXMgYW5kIFNvY2lhbCBTY2llbmNlcyAoSE1OU1MpBQVITU5TU2cQBR1MaWZlIFNjaWVuY2VzIEJ1aWxkaW5nIChMRlNDKQUETEZTQ2cQBSdNYXRlcmlhbHMgU2NpZW5jZSBhbmQgRW5naW5lZXJpbmcgKE1TRSkFA01TRWcQBRNPbG1zdGVkIEhhbGwgKE9MTUgpBQRPTE1IZxAFDk9ubGluZSAoT05MTkUpBQVPTkxORWcQBQ1QaHlzaWNzIChQSFkpBQNQSFlnEAUSUGllcmNlIEhhbGwgKFBSQ0UpBQRQUkNFZxAFElBzeWNob2xvZ3kgKFBTWUNIKQUFUFNZQ0hnEAUeU2NpZW5jZSBMYWJvcmF0b3JpZXMgMSAoU0NMQUIpBQVTQ0xBQmcQBRJTcGlldGggSGFsbCAoU1BUSCkFBFNQVEhnEAURU3Byb3VsIEhhbGwgKFNQUikFA1NQUmcQBQ9UaGUgQmFybiAoQkFSTikFBEJBUk5nEAUVVG8gQmUgQW5ub3VuY2VkIChUQkEpBQNUQkFnEAUkVW5pdmVyc2l0eSBMYWJvcmF0b3J5IEJ1aWxkaW5nIChVTEIpBQNVTEJnEAUeVW5pdmVyc2l0eSBMZWN0dXJlIEhhbGwgKFVOTEgpBQRVTkxIZxAFF1VuaXZlcnNpdHkgVmlsbGFnZSAoVVYpBQJVVmcQBRpXaW5zdG9uIENodW5nIEhhbGwgKENIVU5HKQUFQ0hVTkdnZGQCIQ8QDxYGHwMFBERlc2MfBAUFQ29kZXMfBWdkDxYnAgECAgIDAgQCBQIGAgcCCAIJAgoCCwIMAg0CDgIPAhACEQISAhMCFAIVAhYCFwIYAhkCGgIbAhwCHQIeAh8CIAIhAiICIwIkAiUCJgInFicQBSVDT0UtIFNvY2lhbCBTY2llbmNlcyAtIEVjb24sIFBvbGkgU2NpBQZFLVMtRUNnEAUmQ09FLSBTb2NpYWwgU2NpZW5jZXMgLSBBbnRoLCBQc3ljLCBTb2MFBkUtUy1BTmcQBSFDT0UtIFNvY2lhbCBTY2llbmNlcyAtIEFkZGl0aW9uYWwFB0UtUy1BRERnEAUeQ09FLSBOYXQgU2NpICYgTWF0aCAtIFBoeXMgU2NpBQZFLU4tUFNnEAUeQ09FLSBOYXQgU2NpICYgTWF0aCAtIEJpb2wgU2NpBQZFLU4tQlNnEAUgQ09FLSBOYXQgU2NpICYgTWF0aCAtIEFkZGl0aW9uYWwFB0UtTi1BRERnEAUfQ09FLSBIdW1hbml0aWVzIC0gV29ybGQgSGlzdG9yeQUGRS1ILVdIZxAFM0NPRS0gSHVtYW5pdGllcyAtIEZpbmUgQXJ0cywgTGl0LCBQaGlsLCBSZWwgU3R1ZGllcwUGRS1ILUZBZxAFHENPRS0gSHVtYW5pdGllcyAtIEFkZGl0aW9uYWwFB0UtSC1BRERnEAUOQ09FLSBFdGhuaWNpdHkFBUUtRVRIZxAFGENPRS0gRW5nbGlzaCBDb21wb3NpdGlvbgUGRS1FTkdMZxAFIkNOQVMtIFNvY2lhbCBTY2llbmNlcyAtIEFkZGl0aW9uYWwFB04tUy1BRERnEAUVQ05BUy0gU29jaWFsIFNjaWVuY2VzBQNOLVNnEAUfQ05BUy0gTmF0IFNjaSAmIE1hdGggLSBQaHlzIFNjaQUGTi1OLVBTZxAFK0NOQVMtIE5hdCBTY2kgJiBNYXRoIC0gTWF0aCwgU3RhdCwgQ29tcCBTY2kFBk4tTi1NQWcQBSVDTkFTLSBOYXQgU2NpICYgTWF0aCAtIEJpb2xvZ2ljYWwgU2NpBQZOLU4tQlNnEAUhQ05BUy0gTmF0IFNjaSAmIE1hdGggLSBBZGRpdGlvbmFsBQdOLU4tQUREZxAFIENOQVMtIEh1bWFuaXRpZXMgLSBXb3JsZCBIaXN0b3J5BQROLVdIZxAFJENOQVMtIEh1bWFuaXRpZXMgLSBSZWxpZ2lvdXMgU3R1ZGllcwUGTi1ILVJTZxAFHUNOQVMtIEh1bWFuaXRpZXMgLSBQaGlsb3NvcGh5BQZOLUgtUEhnEAUcQ05BUy0gSHVtYW5pdGllcyAtIEZpbmUgQXJ0cwUGTi1ILUZBZxAFHUNOQVMtIEh1bWFuaXRpZXMgLSBBZGRpdGlvbmFsBQdOLUgtQUREZxAFD0NOQVMtIEV0aG5pY2l0eQUFTi1FVEhnEAUZQ05BUy0gRW5nbGlzaCBDb21wb3NpdGlvbgUGTi1FTkdMZxAFIUNOQVMgLSBIdW1hbml0aWVzIC0gV29ybGQgSGlzdG9yeQUGTi1ILVdIZxAFKkNOQVMgLSBIdW1hbml0aWVzIC0gTGl0LCBQaGlsLCBSZWwgU3R1ZGllcwUGTi1ILUxUZxAFJkNIQVNTLVNvY2lhbCBTY2llbmNlcyAtIEVjb24sIFBvbGkgU2NpBQZILVMtRUNnEAUnQ0hBU1MtU29jaWFsIFNjaWVuY2VzIC0gQW50aCwgUHN5YywgU29jBQZILVMtQU5nEAUiQ0hBU1MtU29jaWFsIFNjaWVuY2VzIC0gQWRkaXRpb25hbAUHSC1TLUFERGcQBSBDSEFTUy1IdW1hbml0aWVzIC0gV29ybGQgSGlzdG9yeQUGSC1ILVdIZxAFKUNIQVNTLUh1bWFuaXRpZXMgLSBMaXQsIFBoaWwsIFJlbCBTdHVkaWVzBQZILUgtTFRnEAUcQ0hBU1MtSHVtYW5pdGllcyAtIEZpbmUgQXJ0cwUGSC1ILUZBZxAFHUNIQVNTLUh1bWFuaXRpZXMgLSBBZGRpdGlvbmFsBQdILUgtQUREZxAFIENIQVNTLSBOYXQgU2NpICYgTWF0aCAtIFBoeXMgU2NpBQZILU4tUFNnEAUsQ0hBU1MtIE5hdCBTY2kgJiBNYXRoIC0gTWF0aCwgU3RhdCwgQ29tcCBTY2kFBkgtTi1NQWcQBSBDSEFTUy0gTmF0IFNjaSAmIE1hdGggLSBCaW9sIFNjaQUGSC1OLUJTZxAFIkNIQVNTLSBOYXQgU2NpICYgTWF0aCAtIEFkZGl0aW9uYWwFB0gtTi1BRERnEAUQQ0hBU1MtIEV0aG5pY2l0eQUFSC1FVEhnEAUaQ0hBU1MtIEVuZ2xpc2ggQ29tcG9zaXRpb24FBkgtRU5HTGdkZAIpDw8WAh4HVmlzaWJsZWhkFgoCAQ8PFgIfBmhkFgICAQ8QZGQWAWZkAgMPDxYCHwZoZBYCAgEPEGRkFgFmZAIFDw8WAh8GaGQWAgIBDxBkZBYBZmQCBw9kFgICAQ8QZGQWAWZkAgkPEGRkFgFmZAIJD2QWAgIFD2QWAmYPDxYCHwIFEn4vaW1hZ2VzL21pbnVzLlBOR2RkAgsPDxYCHwZoZBYCAgUPEGRkFgFmZAIPD2QWAmYPDxYCHwIFEn4vaW1hZ2VzL21pbnVzLlBOR2RkAhMPDxYCHwZoZGQCFA8QDxYCHwZoZGQWAWZkAhYPDxYCHwZoZBYEAgEPPCsADQBkAgMPDxYCHwEFNjxoNCBpZD0nbGJsMScgY2xhc3M9J2ZhZGUnPk5vIHJlY29yZChzKSBmb3VuZCEhISE8L2g0PmRkAhoPZBYCZg8PFgIfAgUSfi9pbWFnZXMvbWludXMuUE5HZGQCHA8PFgIfBmhkFgICAQ9kFgICBw8PFgIfBmhkZAIFDw8WAh8GaGQWBgIDD2QWAmYPDxYCHwIFG34vaW1hZ2VzL3BsdXMtbmV3LXdoaXRlLlBOR2RkAgUPZBYCAgEPPCsACwBkAgkPZBYCZg8PFgIfAgUbfi9pbWFnZXMvcGx1cy1uZXctd2hpdGUuUE5HZGQCHQ8PFgIfAQUhTGFzdCBVcGRhdGUgOiAzLzIvMjAxNSA4OjEwOjQ4IEFNZGQCHw8PFgIfAQUiQ3VycmVudCBEYXRlIDogMy8yLzIwMTUgODozMjo1MyBBTWRkAiMPZBYCZg9kFgpmDw8PFgQeC0JvcmRlcldpZHRoGwAAAAAAAPA/AQAAAB4EXyFTQgIgZBYEHgdUb3BMZWZ0BTdpbWFnZXMvdGxfMEU1N0MwLHRyYW5zcGFyZW50XzE1eDE1XzFweCxzb2xpZCwwRTU3QzAucG5nHgRNb2RlCymAAUJvckJlci5XZWJDb250cm9scy5Sb3VuZGVkSW1hZ2VzK0ltYWdlTW9kZSwgQm9yQmVyLldlYkNvbnRyb2xzLlJvdW5kZWRCb3gsIFZlcnNpb249MS4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1udWxsAxYCAgMPDxYEHwEFBUxvZ2luHgdUb29sVGlwBSpMb2dpbiBzbyB5b3UgY2FuIHRha2UgYWR2YW50YWdlIG9mIHRoZSBTT0NkZAIBD2QWBAIBDw8WAh8BBYMBVG8gc2F2ZSBhbmQgcHJpbnQgeW91ciBzZWFyY2ggcmVzdWx0cywgeW914oCZbGwgbmVlZCB0byBsb2ctaW4uICAgVGhpcyB3aWxsIGhlbHAgd2hlbiB5b3UgcmVnaXN0ZXIgZm9yIGNsYXNzZXMgb24gR1JPV0wuPC9iPjwvZm9udD5kZAIDDw8WBB8BBWA8YnI+PGZvbnQgY29sb3I9JyNGN0E1MDAnPjxiPkxvZ2luIGFjY2VzcyBpcyBub3QgYXZhaWxhYmxlIGZvciBWaXNpdGluZyBTdHVkZW50cy48L2I+PC9mb250Pjxicj4fBmhkZAICD2QWDAIDD2QWAmYPDxYCHwIFHH4vaW1hZ2VzL21pbnVzLW5ldy13aGl0ZS5QTkdkZAIFDw8WAh8GaGRkAgsPZBYCZg8PFgIfAgUbfi9pbWFnZXMvcGx1cy1uZXctd2hpdGUuUE5HZGQCDQ9kFgQCAQ88KwANAGQCBQ8PFgIfBmhkZAIRD2QWAmYPDxYCHwIFEX4vaW1hZ2VzL3BsdXMuUE5HZGQCEw9kFgICAQ88KwANAGQCBA8PFgQeCUZvcmVDb2xvcgkRlMf/HwgCBGRkAgUPZBYCZg8PFgIfAgURfi9pbWFnZXMvcGx1cy5QTkdkZAIlD2QWAmYPZBYCAgsPDxYCHwZoZGQYBAUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgcFCWNoa2J4X21vbgUKY2hrYnhfdHVlcwUJY2hrYnhfd2VkBQpjaGtieF90aHVyBQljaGtieF9mcmkFCWNoa2J4X3NhdAUPY2JHcmFkdWF0ZVF1YW50BQ1ncmlkX015U2VhcmNoD2dkBQ5ncmlkX015Q291cnNlcw9nZAUNZ3JpZF9zdHVkZW50cw9nZDPnFiK5FeLzKNMAEz63bNDODvQe"> 
+   <script src="/Em/classes/ScheduleNew/ScriptResource.axd?d=o5FafomnzOILd1aNUPUWVqd1xgoCW1vjhNmZOEHVb-erjhmVxpIoNA8iMGiJTgmPy0xBNHRi1ykqGqZ5M1l08se_CSUMwfuCbvvjIZE1lxXc_RTKJey6oDr9Q8Omwkm-xt3hgwRE1avSGh0nKObSraind5Q1&amp;t=ffffffffdf8ba098" type="text/javascript"></script> 
+   <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWpwICkev0qQwCvq+njw0CsuPnngoCrozfxQICs9KaiwsC+N6nsA4CsuPjngoCrozbxQICs9KmiwsCsuPvngoC+N6jsA4CroznxQICs9KiiwsCsuPrngoC+N6vsA4CrozjxQICs9KuiwsCsuP3ngoC+N6rsA4CrozvxQICs9KqiwsC+N63sA4CsuPzngoCrozrxQICtNLOigsCs+OXngoCr4yPxQIC+d7Lsw4CtNLKigsCs+OTngoCr4yLxQICtNKWiwsCs+PfngoCr4zXxQICtNKSiwsCs+PbngoCr4zTxQICtNKeiwsCs+PnngoCr4zfxQICtNKaiwsCs+PjngoCr4zbxQICtNKmiwsCs+PvngoCr4znxQICtNKiiwsCs+PrngoCr4zjxQICtNKuiwsCs+P3ngoCr4zvxQICtNKqiwsCs+PzngoCr4zrxQICi9LOigsC2YKSsAgCnN2vjg8C5qKhzQ0CxKuSTgKDi5/FDQKc3d+GBQLz9IWRCwKc3duGBQLMmYFbAumGk7sOAtbexrQIArTm24sMAvD01Y4FAvD06Y4FAvD0sZELAoj5qWoCqvDEsgsC8MeIpAkC197urgIC196irwIC197+bwKI+c26CwL7tbv6CQLCq6blAwL+wMybDwLNmYVbAo64vIUIAo6L6+sGArPm67QLAoXK9dgJAvzAhJsPApus/sQEApusttUNApjdy8YDAq6z5/cCAv/00Y4FApjd78AKAv/0haYIAtKPlLwBArPms6gIAsGrstAGAtLe4rQIAp/v8O4DApT5uboLArHm268FAtCP1LsBAv30zaUIAqW9jPsMAv30iaYIAur0kaYIAur0vbgEAur07cQGAru4iKIEAur05UAC9bWLVgKD+e26CwLMj8y7AQKT3aurCwL29P2lCAL29L2bCAL29M2lCAKdoo2fCQKB+d2LAgKQ3euFBQLN3tavAgKQ3aOODwKHi4egBQL0wISbDwL39PmQCwKaounKCgL39LGRCwL09KWOBQLikJxFAvT04Y4FAuL0yaUIAoTviIwPAvTY46wLArO4iIUIAuL0rY4FAvTY19oPArO49MwDArCL08QNAuD05aUIAuD02bYBArGLy8QNAuH0zY4FAuu1m6oPArj57boLAuu1q48GAsTejsMNAtjxuJcCAu/0jaYIApqQuEUC7fThpQgCzY2X9AcCuOyNywoC5+XMkgYCn5qeTQL8zL6PCAKR24DkAgLpl8KkAwKjxYWODwLpl86kAwLIno+kDALFnvelDAL1s5DQDgKssInPCwLT5YCRBgKBmu5OAqXhw7sFAv7+g5EFAtak7vsEAqWwvc8LAonb1OQCAuqzzNAOArSsk/sBAv2zhNAOAo3+g5EFAqfF+Y8PAoya0kkC7LLixwoCuNL9ogwC1Lun6wECyNLdjQwCmrjG6Q4C0ODurA0C+tj/pwoC5JqFkgkC5JrJ4gkC5JrN4wkCxZrpmgkCxZrtmwkCjp3s9QwCqZ3o9AwCqZ3s9QwCqZ3w9gwCqZ309wwCqZ346AwCqZ386QwCqZ2A6wwCqZ3E+wwCqZ3I/AwCjp3k8wwChp3HqwkCifLtxQUCiPLtxQUCi/LtxQUCk8apLQK7tZTkBAKi+ZfkBALYo+HtCAKlqZr9CQKimamkCAL1n8YDAraAjMYFAuns+T0C29LA+wYC89/dwAYCh4SxtgkCpNi8/AYCzMOawgwCkvT+zgwC7onZ6QkC+9/J3QYC+9+twAYCuNzgmQ0CgtiA7AMCmti4pgICvvOWsQ4C3uSV/QEC+d+d3QECv7O1nw8C95L6nAsCtfemgwECmfav+AgCotzIwgQCjJLeuwcC5KKD6QUCm9rh9wEC3YmlmgsCjdesmQYC6aWz3gMC5d/5+AICq42WtwoCuI3ytgsCh7ed6Q0C/aDLggcCn6mgrg0C3e/etgkCocHa5gwCg//SrQsCopDMlQMCnpCAlQMC/PunxgsCtov0jwMCxIv0jwMCo4H+nAcCmYKdDwKqgvkPAr3hzugEAvmrtbYJAoqqnScC5/qnxgsCronRrgECn4r0jwMCnIqMjAMCqYr0jwMChoD+nAcCmuTJ1g4C+4KhDwL5gp0PAoeB+Q8CoODO6AQC4qq1tgkC4aqdJwLwgp0PAv2CrQ8Cx47MlQMCy46AlQMCqfinxgsC3oCdDwLXgK0PAs2A+Q8C6t/O6AQCgYj0jwMC9omMjAMC94n0jwMCyP//nAcCtKi1tgkCr6idJwLc0tnDBQLLnIwbApbF04wGAtLjpIUBAtn80oYDArW73LABArzryawBAo7S4NsJAo7SjJgDgAYWwOfjG1rdcfLZpO4xaBz60pQ="> 
+   <!-- END site-header --> 
+   <div class="yui-t2"> 
+    <!--BEGIN Registrar HEADER--> 
+    <div id="RegHeader"> 
+     <div class="content"> 
+      <div class="search-bar"> 
+       <div style="float: left; width: 620px;"> 
+        <ul> 
+         <li><a href="http://www.ucr.edu/alpha.html">A to Z Listing</a></li> 
+         <li>|</li> 
+         <li><a href="http://www.campusmap.ucr.edu/">Campus Map</a></li> 
+         <li>|</li> 
+         <li><a href="http://www.ucr.edu/find_people.php">Find People</a></li> 
+        </ul> 
+       </div> 
+       <div class="logo"> 
+        <a href="http://www.ucr.edu/"> <img src="Images/registrar/ucr-logo.png" id="imgLogo" alt="UCR"></a> 
+       </div> 
+       <div style="clear: both;"></div> 
+      </div> 
+      <!-- BEGIN Branding Bar --> 
+      <div class="branding-bar"> 
+       <h1><a href="http://registrar.ucr.edu" id="RegHeaderLink">The Office of The Registrar</a></h1> 
+       <img src="Images/Registrar/headerRegistrar.png" id="ImgRegHeader" alt="Registrar Header Image"> 
+      </div> 
+      <!-- END Branding Bar --> 
+      <!-- BEGIN breadcrumbs --> 
+      <div class="breadcrumb-bar"> 
+       <div class="breadcrumbs"> 
+        <span> <a id="bcLinkUCRhome" href="http://www.ucr.edu" target="_self"><u>UCR Home</u></a> &gt; <a id="bcLinkRegistrarHome" href="http://registrar.ucr.edu/registrar/default.aspx" target="_self"><u>Registrar</u></a> &gt; <a id="bcLinkRegistrarScheduleOfClasses" href="http://registrar.ucr.edu/Registrar/Schedule-of-Classes/Default.aspx" target="_self"><u>Schedule of Classes</u></a> &gt; Classes </span> 
+       </div> 
+      </div> 
+      <!-- END breadcrumbs --> 
+     </div> 
+    </div> 
+    <!-- END Registrar HEADER --> 
+    <!-- BEGIN Page Title --> 
+    <div id="PageTitleArea"> 
+     <h2 class="pageTitle"> Classes </h2> 
+    </div> 
+    <!-- END Page Title --> 
+    <!-- BEGIN Common Links --> 
+    <div id="primary-nav"> 
+     <ul id="sitenav"> 
+      <li> <a id="commonLinkUCCrossEnroll" href="http://crossenroll.universityofcalifornia.edu" target="_blank"><u>UC Online Courses</u></a> </li> 
+      <li> <a id="commonLinkRegRegisteringForClasses" href="http://registrar.ucr.edu/registrar/registering-for-classes/default.aspx" target="_self"><u>Registering for Classes</u></a> </li> 
+      <li> <a id="commonLingRegTuitionAndFees" href="http://registrar.ucr.edu/registrar/tuition-and-fees/default.aspx" target="_self"><u>Tuition and Fees</u></a> </li> 
+      <li> <a id="commonLinkRegFinalExamSchedule" href="http://registrar.ucr.edu/registrar/academic-calendar/final-exam-schedule.aspx" target="_self"><u>Final Exam Schedule</u></a> </li> 
+      <li> <a id="commonLinkRegDegreeAudit" href="http://registrar.ucr.edu/registrar/guide-to-graduation/degree-audit.aspx" target="_self"><u>Degree Audit</u></a> </li> 
+      <li class="last"> <a id="commonLinkSummerSession" href="http://summer.ucr.edu/" target="_blank"><u>Summer Session Policies and Fees</u></a> </li> 
+     </ul> 
+    </div> 
+    <!-- END Common Links --> 
+    <!--BEGIN BODY--> 
+    <div id="SoCMain"> 
+     <div class="mainContent"> 
+      <div id="bd"> 
+       <!--BEGIN PRIMARY COLUMN--> 
+       <div id="yui-main"> 
+        <div id="column1" class="yui-b"> 
+         <div id="article-body"> 
+          <div id="UpdatePanel1"> 
+           <div class="Col1_bg" style="border-right: solid 2px #D9E8FD; border-bottom: solid 2px #D9E8FD;
+                                        border-left: solid 1px #D9E8FD; border-top: solid 1px #D9E8FD;"> 
+            <span id="lbl_errorMsg" class="errtext"></span> 
+            <div id="pnel_SOC"> 
+             <table width="100%" class="getFont"> 
+              <tbody>
+               <tr> 
+                <td> 
+                 <div> 
+                  <div class="formboxNav" style="border: #D9E8FD; background-color: #D9E8FD; border-width: 1px;
+                                                                border-left: none; border-right: none"> 
+                   <table width="100%" class="getFont"> 
+                    <tbody>
+                     <tr> 
+                      <td style="width: 50%; color: #c79411; font-weight: bold; height: 14px;" align="left"> 
+                       <div style="font-size: 13px;">
+                         &nbsp;
+                        <img id="img_classSearch" src="images/search.png" border="0"> Class Search
+                       </div> </td> 
+                      <td style="width: 50%; color: #ffffff" align="right"> <a id="lnkbtn_classSearch" href="javascript:__doPostBack('lnkbtn_classSearch','')"><img id="img_classSearch1" src="images/plus.PNG" border="0"></a> &nbsp; </td> 
+                     </tr> 
+                    </tbody>
+                   </table> 
+                  </div> 
+                  <div> 
+                   <div id="pnel_MainSearch" style=""> 
+                    <table width="100%" class="getFont"> 
+                     <tbody>
+                      <tr> 
+                       <td> <select name="drp_term" id="drp_term" style="width: 125px; height: 21px"> <option selected value="15S">15 SPRING</option> <option value="15W">15 WINTER</option> <option value="14F">14 FALL</option> <option value="14U">14 SUMMER</option> <option value="14S">14 SPRING</option> <option value="14W">14 WINTER</option> <option value="13F">13 FALL</option> <option value="13S">13 SPRING</option> <option value="13U">13 SUMMER</option> <option value="13W">13 WINTER</option> <option value="12F">12 FALL</option> <option value="12S">12 SPRING</option> <option value="12U">12 SUMMER</option> <option value="12W">12 WINTER</option> <option value="11F">11 FALL</option> <option value="11S">11 SPRING</option> <option value="11U">11 SUMMER</option> <option value="11W">11 WINTER</option> <option value="10F">10 FALL</option> <option value="10U">10 SUMMER</option> <option value="10S">10 SPRING</option> <option value="10W">10 WINTER</option> <option value="09F">09 FALL</option> <option value="09S">09 SPRING</option> <option value="09W">09 WINTER</option> <option value="09U">09 SUMMER</option> <option value="08F">08 FALL</option> <option value="08S">08 SPRING</option> <option value="08W">08 WINTER</option> <option value="07F">07 FALL</option> <option value="07S">07 SPRING</option> <option value="07W">07 WINTER</option> <option value="06F">06 FALL</option> <option value="06S">06 SPRING</option> <option value="06W">06 WINTER</option> <option value="05F">05 FALL</option> <option value="05S">05 SPRING</option> <option value="05W">05 WINTER</option> <option value="04F">04 FALL</option> <option value="04S">04 SPRING</option> <option value="04W">04 WINTER</option> <option value="03F">03 FALL</option> <option value="03S">03 SPRING</option> <option value="03W">03 WINTER</option> <option value="02F">02 FALL</option> <option value="02S">02 SPRING</option> <option value="02W">02 WINTER</option> <option value="01F">01 FALL</option> <option value="01S">01 SPRING</option> <option value="01W">01 WINTER</option> <option value="00F">00 FALL</option> <option value="00S">00 SPRING</option> <option value="00W">00 WINTER</option> <option value="99F">99 FALL</option> </select> </td> 
+                       <td style="width: 199px"> <select name="drp_subjectArea" id="drp_subjectArea" style="vertical-align: top"> <option value="">Subject Area</option> <option value="ANTH">Anthropology</option> <option value="ARBC">Arabic </option> <option value="ARLC">Arabic Literature and Cultures </option> <option value="ARC ">ARC </option> <option value="ART ">Art</option> <option value="AHS ">Art History</option> <option value="AST ">Asian Studies</option> <option value="BSWT">Basic Writing</option> <option value="BCH ">Biochemistry</option> <option value="BIEN">Bioengineering</option> <option value="BIOL">Biology</option> <option value="BMSC">Biomedical Sciences</option> <option value="BPSC">Botany/Plant Science</option> <option value="BUS ">Business</option> <option value="CBNS">Cell Biology and Neuroscience</option> <option value="CMDB">Cell, Molecular, and Developmental Biology</option> <option value="CHFY">CHASS First Year Experience</option> <option value="CEE ">Chemical and Environmental Engineering</option> <option value="CHE ">Chemical Engineering</option> <option value="CHEM">Chemistry</option> <option value="CHN ">Chinese</option> <option value="CLA ">Classical Studies</option> <option value="CPLT">Comparative Literature</option> <option value="CS  ">Computer Science</option> <option value="CRWT">Creative Writing</option> <option value="CWPA">Creative Writing &amp; Writing for the Performing Arts</option> <option value="DNCE">Dance</option> <option value="ECON">Economics</option> <option value="EDUC">Education</option> <option value="EE  ">Electrical Engineering</option> <option value="ENGR">Engineering</option> <option value="ENGL">English</option> <option value="ENTM">Entomology</option> <option value="ENVE">Environmental Engineering</option> <option value="ENSC">Environmental Sciences</option> <option value="ENTX">Environmental Toxicology</option> <option value="ETST">Ethnic Studies</option> <option value="EUR ">European Culture</option> <option value="EEOB">Evolution, Ecology, &amp; Organismal Biology</option> <option value="FIL ">Filipino</option> <option value="FREN">French</option> <option value="GDIV">GDIV</option> <option value="GEN ">Genetics</option> <option value="GEO ">Geosciences</option> <option value="GER ">German</option> <option value="GBST">Global Studies</option> <option value="GRK ">Greek</option> <option value="GSST">GSST</option> <option value="HIST">History</option> <option value="HISE">History of Europe</option> <option value="HISA">History of the Americas</option> <option value="HNPG">Honors</option> <option value="HASS">Humanities, Arts, and Social Sciences</option> <option value="ITAL">Italian</option> <option value="JPN ">Japanese</option> <option value="KOR ">Korean</option> <option value="LATN">Latin</option> <option value="LNST">Latin American Studies</option> <option value="LWSO">Law and Society</option> <option value="LBST">LBST</option> <option value="LGBS">Lesbian, Gay, Bisexual Studies</option> <option value="LING">Linguistics</option> <option value="MGT ">Management</option> <option value="MSE ">Materials Science and Engineering</option> <option value="MATH">Mathematics</option> <option value="MDCL">MDCL</option> <option value="ME  ">Mechanical Engineering</option> <option value="MCS ">Media and Cultural Studies </option> <option value="MCBL">Microbiology</option> <option value="MUS ">Music</option> <option value="NASC">Natural and Agricultural Sciences</option> <option value="NEM ">Nematology</option> <option value="NRSC">Neuroscience</option> <option value="PCST">Peace &amp; Conflict Studies</option> <option value="PHIL">Philosophy</option> <option value="PHYS">Physics &amp; Astronomy</option> <option value="PLPA">Plant Pathology &amp; Microbiology</option> <option value="POSC">Political Science</option> <option value="PSYC">Psychology</option> <option value="PBPL">Public Policy</option> <option value="REC ">Recreation</option> <option value="RLST">Religious Studies</option> <option value="RUSN">Russian Studies</option> <option value="SOC ">Sociology</option> <option value="SWSC">Soil and Water Science</option> <option value="SEAS">Southeast Asian Studies</option> <option value="SPN ">Spanish</option> <option value="STAT">Statistics</option> <option value="THEA">Theatre</option> <option value="UCDC">U.C. Washington Center Program</option> <option value="URST">Urban Studies</option> <option value="VNM ">Vietnamese</option> <option value="WMST">Women s Studies</option> </select> </td> 
+                       <td> <input name="txtbx_courseNumber" type="text" value="Course#" id="txtbx_courseNumber" onblur="if (form.txtbx_courseNumber.value=='') {form.txtbx_courseNumber.value='Course#'};" onfocus="form.txtbx_courseNumber.value='';" style="vertical-align: top"> </td> 
+                       <td colspan="2" style="width: 60%"> <select name="drp_classType" id="drp_classType" style="width: 166px;
+                                                                                    height: 21px"> <option value="">Class Type</option> <option value="LEC">LECTURE</option> <option value="DIS">DISCUSSION</option> <option value="LAB">LABORATORY</option> <option value="LCA">ADDITIONAL LECTURE</option> <option value="CLN">CLINIC</option> <option value="COL">COLLOQUIUM</option> <option value="CON">CONSULTATION</option> <option value="FLD">FIELD</option> <option value="IND">INDIVIDUALIZED STUDY</option> <option value="INT">INTERNSHIP</option> <option value="MCE">MULTIPLE COURSE ENTRY</option> <option value="PRC">PRACTICUM</option> <option value="RES">RESEARCH</option> <option value="SCR">SCREENING</option> <option value="SEM">SEMINAR</option> <option value="STU">STUDIO</option> <option value="THE">THESIS</option> <option value="TPA">TERM PAPER</option> <option value="TUT">TUTORIAL</option> <option value="WRK">WORKSHOP</option> <option value="ACT">ACTIVITY</option> <option value="DEM">DEMONSTRATION</option> <option value="ODL">ONLINE DIS AND LISTENING</option> <option value="W&amp;S">WORKSHOP &amp; SCREENING</option> </select> </td> 
+                      </tr> 
+                      <tr> 
+                       <td colspan="2"> &nbsp;<span><font face="arial,helvetica,clean,sans-serif;" color="#0E57C0"><input id="chkbx_mon" type="checkbox" name="chkbx_mon"><label for="chkbx_mon">M</label></font></span> <span><font face="arial,helvetica,clean,sans-serif;" color="#0E57C0"><input id="chkbx_tues" type="checkbox" name="chkbx_tues"><label for="chkbx_tues">T</label></font></span> <span><font face="arial,helvetica,clean,sans-serif;" color="#0E57C0"><input id="chkbx_wed" type="checkbox" name="chkbx_wed"><label for="chkbx_wed">W</label></font></span>&nbsp; <span><font face="arial,helvetica,clean,sans-serif;" color="#0E57C0"><input id="chkbx_thur" type="checkbox" name="chkbx_thur"><label for="chkbx_thur">R</label></font></span> <span><font face="arial,helvetica,clean,sans-serif;" color="#0E57C0"><input id="chkbx_fri" type="checkbox" name="chkbx_fri"><label for="chkbx_fri">F</label></font></span> <span><font face="arial,helvetica,clean,sans-serif;" color="#0E57C0"><input id="chkbx_sat" type="checkbox" name="chkbx_sat"><label for="chkbx_sat">S</label></font></span> &nbsp; &nbsp; <select name="drp_startTime" id="drp_startTime" style="vertical-align: top"> <option value="">Start Time</option> <option value="07a.m">7:00 AM</option> <option value="08a.m">8:00 AM</option> <option value="09a.m">9:00 AM</option> <option value="10a.m">10:00 AM</option> <option value="11a.m">11:00 AM</option> <option value="12p.m">12:00 PM</option> <option value="01p.m">1:00 PM</option> <option value="02p.m">2:00 PM</option> <option value="03p.m">3:00 PM</option> <option value="04p.m">4:00 PM</option> <option value="05p.m">5:00 PM</option> <option value="06p.m">6:00 PM</option> <option value="07p.m">7:00 PM</option> <option value="08p.m">8:00 PM</option> <option value="09p.m">9:00 PM</option> <option value="10p.m">10:00 PM</option> </select> </td> 
+                       <td> <select name="drp_fullOpenClasses" id="drp_fullOpenClasses" style="width: 179px; height: 21px; vertical-align: top"> <option value="">Full and Open Classes</option> <option value="1">Open Classes</option> <option value="2">Closed/Waitlist Classes</option> <option value="3">Cancelled Classes</option> </select> </td> 
+                       <td style="width: 90%"> <select name="drp_courseRange" id="drp_courseRange" style="width: 165px; height: 21px; vertical-align: top"> <option value="">Course Range</option> <option value="LGraduate">Lower Division(0-99)</option> <option value="UGraduate">Upper Division(100-199)</option> <option value="Graduate">Graduate(200-299)</option> <option value="PostDoc">Professional/Teaching(300+)</option> </select> </td> 
+                      </tr> 
+                      <tr> 
+                       <td> <input name="txtbx_courseTitle" type="text" value="Course Title" id="txtbx_courseTitle" onblur="if (form.txtbx_courseTitle.value=='') {form.txtbx_courseTitle.value='Course Title'};" onfocus="form.txtbx_courseTitle.value='';"> </td> 
+                       <td> <input name="txt_instructor" type="text" value="Instructor" id="txt_instructor" onblur="if (form.txt_instructor.value=='') {form.txt_instructor.value='Instructor'};" onfocus="form.txt_instructor.value='';"> </td> 
+                       <td style="width: 100%" colspan="2"> <select name="drp_location" id="drp_location" style="vertical-align: top"> <option value="">Location</option> <option value="ANDHL">A. Gary Anderson Hall (ANDHL)</option> <option value="BOYHL">Alfred M. Boyce Hall (BOYHL)</option> <option value="ARTS">Arts Building (ARTS)</option> <option value="ATH">Athletics and Dance Building (ATH)</option> <option value="BATCH">Batchelor Hall (BATCH)</option> <option value="HOUSE">Botany Headhouses(greenhouses) (HOUSE)</option> <option value="BRNHL">Bourns Hall (BRNHL)</option> <option value="SURGE">Campus Surge (SURGE)</option> <option value="INTN">CHASS Interdisciplinary Bldg-North (INTN)</option> <option value="INTS">CHASS Interdisciplinary Bldg-South (INTS)</option> <option value="CHEM">Chemical Sciences (CHEM)</option> <option value="ENTOM">Entomology (ENTOM)</option> <option value="ENTMU">Entomology Research Museum (ENTMU)</option> <option value="GENOM">Genomics Building (GENOM)</option> <option value="GEOL">Geology Building (GEOL)</option> <option value="WAT">Gordan Watkins Hall (WAT)</option> <option value="CHPHL">Homer D. Chapman Hall (CHPHL)</option> <option value="HUMN">Humanities (HUMN)</option> <option value="HMNSS">Humanities and Social Sciences (HMNSS)</option> <option value="LFSC">Life Sciences Building (LFSC)</option> <option value="MSE">Materials Science and Engineering (MSE)</option> <option value="OLMH">Olmsted Hall (OLMH)</option> <option value="ONLNE">Online (ONLNE)</option> <option value="PHY">Physics (PHY)</option> <option value="PRCE">Pierce Hall (PRCE)</option> <option value="PSYCH">Psychology (PSYCH)</option> <option value="SCLAB">Science Laboratories 1 (SCLAB)</option> <option value="SPTH">Spieth Hall (SPTH)</option> <option value="SPR">Sproul Hall (SPR)</option> <option value="BARN">The Barn (BARN)</option> <option value="TBA">To Be Announced (TBA)</option> <option value="ULB">University Laboratory Building (ULB)</option> <option value="UNLH">University Lecture Hall (UNLH)</option> <option value="UV">University Village (UV)</option> <option value="CHUNG">Winston Chung Hall (CHUNG)</option> </select> </td> 
+                      </tr> 
+                     </tbody>
+                    </table> 
+                    <table class="getFont"> 
+                     <tbody>
+                      <tr> 
+                       <td colspan="1" style="height: 32px"> <select name="drp_breadth" id="drp_breadth" style="vertical-align: top"> <option value="">Breadth Courses</option> <option value="E-S-EC">COE- Social Sciences - Econ, Poli Sci</option> <option value="E-S-AN">COE- Social Sciences - Anth, Psyc, Soc</option> <option value="E-S-ADD">COE- Social Sciences - Additional</option> <option value="E-N-PS">COE- Nat Sci &amp; Math - Phys Sci</option> <option value="E-N-BS">COE- Nat Sci &amp; Math - Biol Sci</option> <option value="E-N-ADD">COE- Nat Sci &amp; Math - Additional</option> <option value="E-H-WH">COE- Humanities - World History</option> <option value="E-H-FA">COE- Humanities - Fine Arts, Lit, Phil, Rel Studies</option> <option value="E-H-ADD">COE- Humanities - Additional</option> <option value="E-ETH">COE- Ethnicity</option> <option value="E-ENGL">COE- English Composition</option> <option value="N-S-ADD">CNAS- Social Sciences - Additional</option> <option value="N-S">CNAS- Social Sciences</option> <option value="N-N-PS">CNAS- Nat Sci &amp; Math - Phys Sci</option> <option value="N-N-MA">CNAS- Nat Sci &amp; Math - Math, Stat, Comp Sci</option> <option value="N-N-BS">CNAS- Nat Sci &amp; Math - Biological Sci</option> <option value="N-N-ADD">CNAS- Nat Sci &amp; Math - Additional</option> <option value="N-WH">CNAS- Humanities - World History</option> <option value="N-H-RS">CNAS- Humanities - Religious Studies</option> <option value="N-H-PH">CNAS- Humanities - Philosophy</option> <option value="N-H-FA">CNAS- Humanities - Fine Arts</option> <option value="N-H-ADD">CNAS- Humanities - Additional</option> <option value="N-ETH">CNAS- Ethnicity</option> <option value="N-ENGL">CNAS- English Composition</option> <option value="N-H-WH">CNAS - Humanities - World History</option> <option value="N-H-LT">CNAS - Humanities - Lit, Phil, Rel Studies</option> <option value="H-S-EC">CHASS-Social Sciences - Econ, Poli Sci</option> <option value="H-S-AN">CHASS-Social Sciences - Anth, Psyc, Soc</option> <option value="H-S-ADD">CHASS-Social Sciences - Additional</option> <option value="H-H-WH">CHASS-Humanities - World History</option> <option value="H-H-LT">CHASS-Humanities - Lit, Phil, Rel Studies</option> <option value="H-H-FA">CHASS-Humanities - Fine Arts</option> <option value="H-H-ADD">CHASS-Humanities - Additional</option> <option value="H-N-PS">CHASS- Nat Sci &amp; Math - Phys Sci</option> <option value="H-N-MA">CHASS- Nat Sci &amp; Math - Math, Stat, Comp Sci</option> <option value="H-N-BS">CHASS- Nat Sci &amp; Math - Biol Sci</option> <option value="H-N-ADD">CHASS- Nat Sci &amp; Math - Additional</option> <option value="H-ETH">CHASS- Ethnicity</option> <option value="H-ENGL">CHASS- English Composition</option> </select> </td> 
+                       <td style="color:#0E57C0; width:200px"> <input id="cbGraduateQuant" type="checkbox" name="cbGraduateQuant"> Graduate Quantitative Method </td> 
+                       <td> &nbsp;&nbsp;&nbsp;<img src="images/man.png" height="27px" alt="click Search >> to search for your class"><input type="submit" name="btn_search" value="&nbsp;Search >>" id="btn_search" class="SearchButton" border="1"><img src="images/note.png" height="24px" alt="click Clear >> to clear your selections"><input type="submit" name="btn_clear" value="&nbsp;&nbsp;Clear >>" id="btn_clear" class="SearchButton" border="1"> </td> 
+                      </tr> 
+                     </tbody>
+                    </table> 
+                   </div> 
+                   <div id="pnel_collapse1"> 
+                   </div> 
+                  </div> 
+                  <!--
+                                                                <div id="pnel_collapse">
+			
+                                                                    <br />
+                                                                    <div class="formboxNav" style="border: #D9E8FD; background-color: #D9E8FD; border-width: 1px;
+                                                                        border-left: none; border-right: none">
+                                                                        <table width="100%">
+                                                                            <tr>
+                                                                                <td style="width: 50%; color: #0E57C0; font-weight: bold" align="left">
+                                                                                    <div style="font-size: 13px">
+                                                                                        &nbsp;<img id="img_searchDetails" src="images/find-at-disc.png" border="0" />
+                                                                                        <span id="lbl_searchDetails">MySearch</span></div>
+                                                                                </td>
+                                                                                <td style="width: 50%; color: #ffffff" align="right">
+                                                                                    <a id="lnkbtn_search" href="javascript:__doPostBack('lnkbtn_search','')"><img id="img_searchDeatails" src="images/minus.PNG" border="0" /></a>
+                                                                                    &nbsp;
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </div>
+                                                                
+		</div>--> 
+                  <br> 
+                  <div> 
+                  </div> 
+                  <div class="formboxNav" style="border: #D9E8FD; background-color: #D9E8FD; border-width: 1px;
+                                                                border-left: none; border-right: none"> 
+                   <table width="100%" class="getFont"> 
+                    <tbody>
+                     <tr> 
+                      <td style="width: 50%; color: #D9E8FD; font-weight: bold" align="left"> 
+                       <div class="formboxNav" style="border: #D9E8FD; background-color: #D9E8FD; border-width: 1px;
+                                                                                border-left: none; color: #c79411; border-right: none; font-size: 13px; text-decoration: none;">
+                         &nbsp;
+                        <img id="img_classes1" src="images/explorer.png" border="0"> Classes 
+                       </div> </td> 
+                      <td style="width: 50%;" align="right"> <a id="lnkbtn_classes" href="javascript:__doPostBack('lnkbtn_classes','')" style="background-color: Transparent"><img id="img_classes" src="images/minus.PNG" border="0"></a>&nbsp;&nbsp; </td> 
+                     </tr> 
+                    </tbody>
+                   </table> 
+                  </div> 
+                  <div> 
+                   <table width="100%" class="getFont"> 
+                    <tbody>
+                     <tr> 
+                      <td align="left"> 
+                       <div id="UpdateProgress2" style="display:none;"> 
+                        <img src="images/ajax-loader.gif" alt="loader"> &nbsp;loading....... 
+                       </div> </td> 
+                     </tr> 
+                    </tbody>
+                   </table> 
+                   <table width="100%" class="getFont"> 
+                    <tbody>
+                     <tr> 
+                      <td align="right"> </td> 
+                     </tr> 
+                    </tbody>
+                   </table> 
+                  </div> 
+                  <br> 
+                  <div class="formboxNav" style="border: #D9E8FD; background-color: #D9E8FD; border-width: 1px;
+                                                                border-left: none; border-right: none; display: none"> 
+                   <table width="100%" class="getFont"> 
+                    <tbody>
+                     <tr> 
+                      <td style="width: 50%; color: #c79411; font-weight: bold" align="left"> 
+                       <div class="formboxNav" style="border: #D9E8FD; background-color: #D9E8FD; border-width: 1px;
+                                                                                border-left: none; color: #c79411; border-right: none; font-size: 13px">
+                         &nbsp;
+                        <img id="img_details1" src="images/find-at-disc.png" border="0"> Details 
+                       </div> </td> 
+                      <td style="width: 50%; color: #ffffff" align="right"> <a id="lnkbtn_details" href="javascript:__doPostBack('lnkbtn_details','')"><img id="img_details" src="images/minus.PNG" border="0"></a>&nbsp;&nbsp; </td> 
+                     </tr> 
+                    </tbody>
+                   </table> 
+                  </div> 
+                  <div> 
+                  </div> 
+                 </div> </td> 
+               </tr> 
+              </tbody>
+             </table> 
+            </div> 
+           </div> 
+          </div> 
+          <table width="100%" class="getFont"> 
+           <tbody>
+            <tr> 
+             <td align="left" style="font-size: 10px; color: #0d1f44"> <span id="lbl_lastUpdate"><b><font color="#0E57C0">Last Update : 3/2/2015 8:10:48 AM</font></b></span> </td> 
+             <td align="right" style="font-size: 10px; color: Gray"> <span id="lbl_todayDate"><b><font color="#C79411">Current Date : 3/2/2015 8:32:53 AM</font></b></span> </td> 
+            </tr> 
+           </tbody>
+          </table> 
+          <br> 
+          <table width="100%" class="getFont"> 
+           <tbody>
+            <tr> 
+             <td style="width: 1%"> </td> 
+             <td align="center" style="font-size: 10px; color: Gray"> <span id="lbl_btLabel"><font color="#C79411"><a href="http://ucr.edu">University of California, Riverside</a> - 900 University Avenue - Riverside, CA, 92521 - 951.827.1012 © 2006, Regents of the University of California </font></span> </td> 
+            </tr> 
+           </tbody>
+          </table> 
+         </div> 
+        </div> 
+       </div> 
+       <div id="UpdatePanel2"> 
+        <div id="column2" class="yui-b secondary-column-left"> 
+         <div> 
+          <div> 
+           <!-- <div id="RoundedBox19">
+		<div>
+			<div>
+				<div>
+
+				</div>
+			</div>
+		</div><div>
+			--> 
+           <div> 
+            <div style="background-color: #1f5199"> 
+             <div>
+               &nbsp; 
+              <table width="100%" class="getFontWhite"> 
+               <tbody>
+                <tr> 
+                 <td style="width: 2%"> </td> 
+                 <td align="left"> 
+                  <div style="font-size: 13px"> 
+                   <span id="lbl_loginCap"><b></b></span>
+                  </div> </td> 
+                </tr> 
+               </tbody>
+              </table> 
+              <table width="100%" class="getFontWhite"> 
+               <tbody>
+                <tr> 
+                 <td style="width: 5%"> </td> 
+                 <td> <a id="lnkbtn_login" title="Login so you can take advantage of the SOC" href="javascript:__doPostBack('lnkbtn_login','')"><b><font color="#F7A500">Login</font></b></a> <br> </td> 
+                </tr> 
+               </tbody>
+              </table> 
+              <br> 
+              <!--
+		</div><div>
+			<div>
+				<div>
+
+				</div>
+			</div>
+		</div>
+	</div>--> 
+              <div> 
+               <div id="pnel_login"> 
+                <table width="90%" class="getFontWhite"> 
+                 <tbody>
+                  <tr> 
+                   <td style="width: 5%; height: 31px;"> </td> 
+                   <td style="height: 31px"> <span id="lbl_loginHelp"><font color="White">To save and print your search results, you’ll need to log-in. This will help when you register for classes on GROWL.</font></span><br> </td> 
+                  </tr> 
+                 </tbody>
+                </table> 
+               </div> 
+              </div> 
+             </div> 
+             <br> 
+            </div> 
+            <div> 
+             <br> 
+             <br> 
+             <div> 
+              <br> 
+              <div style="border-right: solid 2px #D9E8FD; border-bottom: solid 2px #D9E8FD; border-left: solid 2px #D9E8FD;
+                                                    border-top: solid 2px #D9E8FD;"> 
+               <table width="100%" class="getFont"> 
+                <tbody>
+                 <tr class="Col2_hver" style="background-color: #D9E8FD"> 
+                  <td style="width: 5%"> </td> 
+                  <td style="width: 20%" align="left"> <img id="img_schedule1" src="images/search.png" border="0"> </td> 
+                  <td class="marktr"> <a id="lnkbtn_schedule" title="Search for your classes " href="javascript:__doPostBack('lnkbtn_schedule','')"><font color="#C79411"><b>Schedule</b></font></a> </td> 
+                  <td align="right"> <a id="lnkbtn_schedule1" href="javascript:__doPostBack('lnkbtn_schedule1','')" style="background-color: transparent"><img id="img_schedule" src="images/plus.PNG" border="0"></a>&nbsp;&nbsp; </td> 
+                 </tr> 
+                </tbody>
+               </table> 
+               <div id="pnel_schedule"> 
+                <div class="Col1_bg"> 
+                 <br> 
+                 <table width="90%" class="getFont"> 
+                  <tbody>
+                   <tr> 
+                    <td style="width: 10%"> </td> 
+                    <td style="color: #0E57C0"> View the schedule to search for courses offered on a particular term. <br> </td> 
+                   </tr> 
+                  </tbody>
+                 </table> 
+                 <br> 
+                </div> 
+               </div> 
+              </div> 
+              <br> 
+              <br> 
+             </div> 
+            </div> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+      <!--END BODY--> 
+     </div> 
+     <div id="UpdatePanel3"> 
+      <a href="#" id="popuptrigger" rel="#ClassInfo"></a> 
+      <div class="simple_overlay" style="width: 85%" id="ClassInfo"> 
+       <div style="overflow: auto; height: auto; max-height: 550px"> 
+        <table class="popup" width="100%" style="padding: 0.3em; vertical-align: top;"> 
+         <tbody>
+          <tr> 
+           <td> 
+            <table width="100%" class="courseDescription"> 
+             <tbody>
+              <tr> 
+               <td align="right" style="height: 15px; background-color: #D9E8FD; width: 14%;"> <span id="lbl_courseNum"><b><font color="#2461BF"></font></b></span> </td> 
+               <td align="left" class="detailheader" style="height: 18px; background-color: #D9E8FD;
+                                                width: 70%;"> <span id="lbl_courseTitle"><b><font color="#2461BF"></font></b></span>&nbsp;&nbsp; <span id="lbl_courseSubTitle"><b><font color="#2461BF"></font></b></span> </td> 
+               <td align="right" valign="top" class="detailheader" style="height: 18px; background-color: #D9E8FD;
+                                                width: 10%;"> <span id="lbl_classStatus"></span> </td> 
+               <td align="right" class="detailheader" style="height: 18px; background-color: #D9E8FD;
+                                                width: 10%;"> <span id="lbl_courseAdded"><b><font color="Red"></font></b></span> </td> 
+              </tr> 
+             </tbody>
+            </table> 
+            <table width="100%"> 
+             <tbody>
+              <tr> 
+               <td align="left" class="detailbox" valign="top" style="width: 100%; background-color: #F0F0F0;"> 
+                <div class="boxcontents"> 
+                 <table width="100%"> 
+                  <tbody>
+                   <tr> 
+                    <td style="width: 80%"> 
+                     <table width="100%"> 
+                      <tbody>
+                       <tr> 
+                        <td style="width: 18%" align="right"> <b><font color="#0E57C0">Call Number : </font></b> </td> 
+                        <td style="width: 1%; padding: 0.2em"> </td> 
+                        <td style="width: 20%" align="left"> <span id="lbl_callNo"><font color="#0E57C0"></font></span> </td> 
+                        <td style="width: 15%" align="right"> <b><font color="#0E57C0">Instructor : </font></b> </td> 
+                        <td style="width: 1%; padding: 0.2em"> </td> 
+                        <td style="width: 20%" align="left"> <span id="lbl_instructor"><font color="#0E57C0"></font></span> </td> 
+                        <td align="right" style="width: 20%"> <b><font color="#0E57C0">Units : </font></b> </td> 
+                        <td style="width: 1%; padding: 0.2em"> </td> 
+                        <td style="width: 30%" align="left" colspan="2"> <span id="lbl_units"><font color="#0E57C0"></font></span> </td> 
+                       </tr> 
+                       <tr valign="top"> 
+                        <td align="right"> <span id="lbl_classActivitiesLabel"><b><font color="#0E57C0">Class Activities :</font></b></span> </td> 
+                        <td> </td> 
+                        <td colspan="5" align="left" style="line-height: 2.2; padding: 0; vertical-align: top;"> <span id="lbl_classActivities"><font color="#0E57C0"></font></span> </td> 
+                       </tr> 
+                       <tr valign="top"> 
+                        <td align="right"> <b><font color="#0E57C0">Co-requisites : </font></b> </td> 
+                        <td> </td> 
+                        <td colspan="8" align="left"> <span id="lbl_coquisites"><font color="#0E57C0"></font></span> </td> 
+                       </tr> 
+                       <tr valign="top"> 
+                        <td align="right"> <b><font color="#0E57C0">Prerequisites : </font></b> </td> 
+                        <td> </td> 
+                        <td colspan="8" align="left"> <span id="lbl_prerequisties"><font color="#0E57C0"></font></span> </td> 
+                       </tr> 
+                       <tr> 
+                        <td align="right"> <span id="lbl_restrictionsB"><font color="#0E57C0"><b>Restrictions : </b></font></span> </td> 
+                        <td> </td> 
+                        <td colspan="6" align="left"> <span id="lbl_restrictionsA"><font color="#0E57C0"></font></span> 
+                         <div id="pnel_additionaCounts"> 
+                          <table width="100%" style="vertical-align: top;"> 
+                           <tbody>
+                            <tr> 
+                             <td align="left" class="detailbox" valign="top" style="width: 100%;"> 
+                              <div class="boxcontents"> 
+                               <table width="100%"> 
+                                <tbody>
+                                 <tr> 
+                                  <td align="left"> <span id="lbl_restrictions"><b><font color="#0E57C0"></font></b></span> </td> 
+                                 </tr> 
+                                </tbody>
+                               </table> 
+                              </div> </td> 
+                            </tr> 
+                           </tbody>
+                          </table> 
+                         </div> </td> 
+                        <td> </td> 
+                        <td> </td> 
+                       </tr> 
+                       <tr> 
+                        <td align="right"> <b><font color="#0E57C0">Cross-Listed with : </font></b> </td> 
+                        <td> </td> 
+                        <td colspan="8" align="left"> <span id="lbl_crossList"><font color="#0E57C0"></font></span> </td> 
+                       </tr> 
+                       <tr> 
+                        <td align="right"> <b><font color="#0E57C0">Grade Type : </font></b> </td> 
+                        <td> </td> 
+                        <td colspan="8" align="left"> <span id="lbl_gradeType"><font color="#0E57C0"></font></span> </td> 
+                       </tr> 
+                       <tr class="smashed"> 
+                        <td align="right"> <b><font color="#0E57C0">Final Exam Date : </font></b> </td> 
+                        <td> </td> 
+                        <td colspan="8" align="left"> <span id="lbl_finalExamDate"><font color="#0E57C0"></font></span> </td> 
+                       </tr> 
+                       <tr class="smashed"> 
+                        <td align="right"> <b><font color="#0E57C0">Final Exam Time : </font></b> </td> 
+                        <td> </td> 
+                        <td colspan="8" align="left"> <span id="lbl_finalExamDateA"><font color="#0E57C0"></font></span> </td> 
+                       </tr> 
+                       <tr> 
+                        <td colspan="3"> </td> 
+                       </tr> 
+                      </tbody>
+                     </table> </td> 
+                    <td style="width: 20%"> 
+                     <table width="100%"> 
+                      <tbody>
+                       <tr> 
+                        <td style="width: 70%; padding: 0.2em" align="right"> <b><font color="#0E57C0">Max Enrollment : </font></b> </td> 
+                        <td style="width: 2px; padding: 0.2em"> </td> 
+                        <td style="width: 30%; padding: 0.2em" align="left"> <span id="lbl_maxEnrollment"><font color="#0E57C0"></font></span> </td> 
+                       </tr> 
+                       <tr> 
+                        <td align="right" style="padding: 0.2em"> <b><font color="#0E57C0">Available Seats : </font></b> </td> 
+                        <td style="padding: 0.2em"> </td> 
+                        <td style="padding: 0.2em"> <span id="lbl_availableSeats"><font color="#0E57C0"></font></span> </td> 
+                       </tr> 
+                       <tr> 
+                        <td align="right" style="padding: 0.2em"> <b><font color="#0E57C0">Wait List Max : </font></b> </td> 
+                        <td style="padding: 0.2em"> </td> 
+                        <td style="padding: 0.2em"> <span id="lbl_waitlistMax"><font color="#0E57C0"></font></span> </td> 
+                       </tr> 
+                       <tr> 
+                        <td align="right" style="padding: 0.2em"> <b><font color="#0E57C0"># on Wait List : </font></b> </td> 
+                        <td style="padding: 0.2em"> </td> 
+                        <td style="padding: 0.2em"> <span id="lbl_onWaitList"><font color="#0E57C0"></font></span> </td> 
+                       </tr> 
+                      </tbody>
+                     </table> </td> 
+                   </tr> 
+                  </tbody>
+                 </table> 
+                 <table width="100%"> 
+                  <tbody>
+                   <tr> 
+                    <td align="right" style="width: 14%"> <b><font color="#0E57C0">Schedule Note(s) : </font></b> </td> 
+                    <td style="width: .6em"> </td> 
+                    <td align="left" style="width: 85%; line-height: 2.2; padding: 0; vertical-align: top;"> <span id="lbl_scheduleNotes"><font color="#0E57C0"></font></span> </td> 
+                   </tr> 
+                   <tr> 
+                    <td align="right"> <b><font color="#0E57C0">Catalog Description : </font></b> </td> 
+                    <td style="width: .6em"> </td> 
+                    <td align="left" style="width: 85%; line-height: 2.2; padding: 0; vertical-align: top;"> <span id="lbl_notes"><font color="#0E57C0"></font></span> </td> 
+                   </tr> 
+                  </tbody>
+                 </table> 
+                </div> </td> 
+              </tr> 
+             </tbody>
+            </table> </td> 
+          </tr> 
+         </tbody>
+        </table> 
+       </div> 
+      </div> 
+     </div> 
+     <!--BEGIN PAGE FOOTER--> 
+     <!--END FOOTER--> 
+     <script type="text/javascript">
+//<![CDATA[
+Sys.Application.initialize();
+//]]>
+</script>    
+    </div>
+   </div>
+  </form>
+ </body>
+</html>

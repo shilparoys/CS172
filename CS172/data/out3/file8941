@@ -1,0 +1,723 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+ <head> 
+  <title>Seismic Monitor: Polynesia </title> 
+  <meta http-equiv="Refresh" content="2020"> 
+  <meta name="description" content="Mar 2 2015: Today's earthquakes in the Polynesia region on a neat map with lists, links, and much more. Los últimos terremotos en alrededor de Polynesia, incluso mapa chivo, listas, enlaces y mucho más."> 
+  <link rel="shortcut icon" href="../imgs/favicon.png"> 
+  <link rel="icon" href="../imgs/favicon.png"> 
+  <style type="text/css">
+body { margin:8; font-family:verdana,sans-serif; font-size:12px;}
+
+
+#questMark { 
+         font-size: 18px; 
+         color: blue;
+         vertical-align:middle; 
+         padding:3 5 0 0;
+         cursor: help;
+}
+#gooTip {
+         display:none;
+         position:relative;
+         top:-200px;
+         left:500px;
+         padding:5px;
+
+         width:90px;
+         font-size: 13px;
+         background-color:blue;
+         color:white;
+}
+
+/*
+NOTE: is critical that even if empty there be linked and visited pseudo elements
+*/
+#questMark:linked  {}
+#questMark:visited  {}
+
+#questMark:hover > p {
+        display:block;
+}
+#gooImg:linked {}
+#gooImg:visited {}
+
+#gooImg:hover + span > p {
+        display:block;
+}
+#gooImg{ 
+      cursor:help;
+}
+
+
+
+
+#regionDiv {
+  position:absolute;
+  top:0px;
+  left:0px;
+  width:910px;
+  height:auto;
+}
+
+#regionLinks {
+  position:fixed;
+  /*top:15px;
+  left:800px; 
+  float:right;*/
+  margin-top:63px;
+  margin-left:30px;
+  -webkit-border-radius: 6;
+  -moz-border-radius: 6;
+  border-radius: 6px;
+  -webkit-box-shadow: 3px 3px 5px #666666;
+  -moz-box-shadow: 3px 3px 5px #666666;
+  box-shadow: 3px 3px 5px #666666;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  background: #cec8e6;
+  padding: 0px 14px 20px 14px;
+  text-decoration: none;
+}
+#regionLinks:hover {
+  text-decoration: none;
+}
+.regionLink {
+  margin-top:12px;
+}
+
+.btn {
+  background: #54bbff;
+  background-image: -webkit-linear-gradient(top, #54bbff, #7c61eb);
+  background-image: -moz-linear-gradient(top, #54bbff, #7c61eb);
+  background-image: -ms-linear-gradient(top, #54bbff, #7c61eb);
+  background-image: -o-linear-gradient(top, #54bbff, #7c61eb);
+  background-image: linear-gradient(to bottom, #54bbff, #7c61eb);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  -webkit-box-shadow: 0px 1px 3px #666666;
+  -moz-box-shadow: 0px 1px 3px #666666;
+  box-shadow: 0px 1px 3px #666666;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 2px 8px 4px 8px;
+  margin-right:3px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #2578cc;
+  background-image: -webkit-linear-gradient(top, #2578cc, #876bd6);
+  background-image: -moz-linear-gradient(top, #2578cc, #876bd6);
+  background-image: -ms-linear-gradient(top, #2578cc, #876bd6);
+  background-image: -o-linear-gradient(top, #2578cc, #876bd6);
+  background-image: linear-gradient(to bottom, #2578cc, #876bd6);
+  text-decoration: none;
+}
+
+
+
+
+#legend { position: absolute;
+        left: 10;
+        visibility: visible;
+        top: 8;
+}
+.small {font-size: 8px; }
+
+.btn {
+  background: #54bbff;
+  background-image: -webkit-linear-gradient(top, #54bbff, #7c61eb);
+  background-image: -moz-linear-gradient(top, #54bbff, #7c61eb);
+  background-image: -ms-linear-gradient(top, #54bbff, #7c61eb);
+  background-image: -o-linear-gradient(top, #54bbff, #7c61eb);
+  background-image: linear-gradient(to bottom, #54bbff, #7c61eb);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  -webkit-box-shadow: 0px 1px 3px #666666;
+  -moz-box-shadow: 0px 1px 3px #666666;
+  box-shadow: 0px 1px 3px #666666;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 2px 8px 4px 8px;
+  margin-right:3px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #2578cc;
+  background-image: -webkit-linear-gradient(top, #2578cc, #876bd6);
+  background-image: -moz-linear-gradient(top, #2578cc, #876bd6);
+  background-image: -ms-linear-gradient(top, #2578cc, #876bd6);
+  background-image: -o-linear-gradient(top, #2578cc, #876bd6);
+  background-image: linear-gradient(to bottom, #2578cc, #876bd6);
+  text-decoration: none;
+}
+
+
+</style>
+  <script language="javascript">
+
+window.onerror=null; // don't annoy user w/error dlgs
+
+// convert all characters to lowercase to simplify testing
+var agt=navigator.userAgent.toLowerCase();
+
+// *** BROWSER VERSION ***
+// Note: On IE5, these return 4, so use is_ie5up to detect IE5.
+var is_major = parseInt(navigator.appVersion);
+var is_minor = parseFloat(navigator.appVersion);
+
+// Note: Opera and WebTV spoof Navigator.  We do strict client detection.
+// If you want to allow spoofing, take out the tests for opera and webtv.
+var is_nav  = ((agt.indexOf('mozilla')!=-1) && (agt.indexOf('spoofer')==-1)
+                 && (agt.indexOf('compatible') == -1) && (agt.indexOf('opera')==
+-1)
+                 && (agt.indexOf('webtv')==-1) && (agt.indexOf('hotjava')==-1));
+var is_nav2 = (is_nav && (is_major == 2));
+var is_nav3 = (is_nav && (is_major == 3));
+var is_nav4 = (is_nav && (is_major == 4));
+var is_nav4up = (is_nav && (is_major >= 4));
+var is_navonly      = (is_nav && ((agt.indexOf(";nav") != -1) ||
+                                   (agt.indexOf("; nav") != -1)) );
+var is_nav6 = (is_nav && (is_major == 5));
+var is_nav6up = (is_nav && (is_major >= 5));
+var is_gecko = (agt.indexOf('gecko') != -1);
+
+var is_ie     = ((agt.indexOf("msie") != -1) && (agt.indexOf("opera") == -1));
+var is_ie3    = (is_ie && (is_major < 4));
+var is_ie4    = (is_ie && (is_major == 4) && (agt.indexOf("msie 5")==-1) );
+var is_ie4up  = (is_ie && (is_major >= 4));
+var is_ie5    = (is_ie && (is_major == 4) && (agt.indexOf("msie 5.0")!=-1) );
+var is_ie5_5  = (is_ie && (is_major == 4) && (agt.indexOf("msie 5.5") !=-1));
+var is_ie5up  = (is_ie && !is_ie3 && !is_ie4);
+var is_ie5_5up =(is_ie && !is_ie3 && !is_ie4 && !is_ie5);
+
+//Array function compatible with Netscape 2.0x and 3.0x
+function MakeArray(n) {                 
+  this.length = n;
+  for (var i = 1; i <= n; i++) { 
+      this[i] = 0 
+  }
+  return this
+}
+
+//find out what we have to work with 
+var tts = new MakeArray(283);
+tts[0]=282;
+tts[1]="";
+tts[2]="SOUTH INDIAN OCEAN";
+tts[3]="SOUTHWEST OF SUMATERA, INDONESIA";
+tts[4]="OFF W COAST OF NORTHERN SUMATERA";
+tts[5]="NICOBAR ISLANDS, INDIA";
+tts[6]="ANDAMAN ISLANDS, INDIA";
+tts[7]="NEAR SOUTH COAST OF MYANMAR";
+tts[8]="MYANMAR";
+tts[9]="MYANMAR-INDIA BORDER REGION";
+tts[10]="SOUTH INDIAN OCEAN";
+tts[11]="SOUTHWEST OF SUMATERA, INDONESIA";
+tts[12]="SOUTHERN SUMATERA, INDONESIA";
+tts[13]="NORTHERN SUMATERA, INDONESIA";
+tts[14]="MALAY PENINSULA";
+tts[15]="GULF OF THAILAND";
+tts[16]="SOUTHEAST ASIA";
+tts[17]="YUNNAN, CHINA";
+tts[18]="WEST OF AUSTRALIA";
+tts[19]="NORTHWEST OF AUSTRALIA";
+tts[20]="SOUTH OF JAWA, INDONESIA";
+tts[21]="JAWA, INDONESIA";
+tts[22]="JAVA SEA";
+tts[23]="BORNEO";
+tts[24]="SOUTH CHINA SEA";
+tts[25]="HAINAN ISLAND, CHINA";
+tts[26]="SOUTHEASTERN CHINA";
+tts[27]="WESTERN AUSTRALIA";
+tts[28]="NORTHWEST OF AUSTRALIA";
+tts[29]="SOUTH OF SUMBAWA, INDONESIA";
+tts[30]="FLORES SEA";
+tts[31]="SULAWESI, INDONESIA";
+tts[32]="BORNEO";
+tts[33]="CELEBES SEA";
+tts[34]="BORNEO";
+tts[35]="PALAWAN, PHILIPPINE ISLANDS";
+tts[36]="PHILIPPINE ISLANDS REGION";
+tts[37]="TAIWAN REGION";
+tts[38]="NEAR SOUTHEASTERN COAST OF CHINA";
+tts[39]="WESTERN AUSTRALIA";
+tts[40]="TIMOR SEA";
+tts[41]="BANDA SEA";
+tts[42]="BURU, INDONESIA";
+tts[43]="NORTHERN MOLUCCA SEA";
+tts[44]="TALAUD ISLANDS, INDONESIA";
+tts[45]="MINDANAO, PHILIPPINE ISLANDS";
+tts[46]="PHILIPPINE ISLANDS REGION";
+tts[47]="EAST OF PHILIPPINE ISLANDS";
+tts[48]="PHILIPPINE SEA";
+tts[49]="RYUKYU ISLANDS";
+tts[50]="NORTHERN TERRITORY, AUSTRALIA";
+tts[51]="ARU ISLANDS REGION, INDONESIA";
+tts[52]="IRIAN JAYA REGION, INDONESIA";
+tts[53]="WESTERN CAROLINE ISLANDS";
+tts[54]="PHILIPPINE SEA";
+tts[55]="QUEENSLAND, AUSTRALIA";
+tts[56]="NEW GUINEA, PAPUA NEW GUINEA";
+tts[57]="NEAR N COAST OF NEW GUINEA, PNG.";
+tts[58]="NINIGO ISLANDS REGION, P.N.G.";
+tts[59]="E. CAROLINE ISLANDS, MICRONESIA";
+tts[60]="SOUTH OF MARIANA ISLANDS";
+tts[61]="MARIANA ISLANDS REGION";
+tts[62]="VOLCANO ISLANDS REGION";
+tts[63]="QUEENSLAND, AUSTRALIA";
+tts[64]="EAST OF AUSTRALIA";
+tts[65]="CORAL SEA";
+tts[66]="NEW BRITAIN REGION, P.N.G.";
+tts[67]="NEW IRELAND REGION, P.N.G.";
+tts[68]="E. CAROLINE ISLANDS, MICRONESIA";
+tts[69]="NORTH PACIFIC OCEAN";
+tts[70]="EAST OF AUSTRALIA";
+tts[71]="SOUTH OF SOLOMON ISLANDS";
+tts[72]="SOLOMON ISLANDS REGION";
+tts[73]="SOLOMON ISLANDS";
+tts[74]="NORTH OF SOLOMON ISLANDS";
+tts[75]="E. CAROLINE ISLANDS, MICRONESIA";
+tts[76]="NORTH PACIFIC OCEAN";
+tts[77]="NEW CALEDONIA";
+tts[78]="VANUATU ISLANDS REGION";
+tts[79]="VANUATU ISLANDS";
+tts[80]="SANTA CRUZ ISLANDS";
+tts[81]="SANTA CRUZ ISLANDS REGION";
+tts[82]="SOUTH PACIFIC OCEAN";
+tts[83]="GILBERT ISLANDS REGION, KIRIBATI";
+tts[84]="MARSHALL ISLANDS REGION";
+tts[85]="BIKINI ATOLL REG., MARSHALL IS.";
+tts[86]="MARSHALL ISLANDS REGION";
+tts[87]="NORTH PACIFIC OCEAN";
+tts[88]="LOYALTY ISLANDS REGION";
+tts[89]="VANUATU ISLANDS REGION";
+tts[90]="FIJI ISLANDS REGION";
+tts[91]="NORTH OF FIJI ISLANDS";
+tts[92]="SOUTH PACIFIC OCEAN";
+tts[93]="GILBERT ISLANDS REGION, KIRIBATI";
+tts[94]="MARSHALL ISLANDS REGION";
+tts[95]="NORTH PACIFIC OCEAN";
+tts[96]="SOUTH OF FIJI ISLANDS";
+tts[97]="FIJI ISLANDS REGION";
+tts[98]="NORTH OF FIJI ISLANDS";
+tts[99]="SOUTH PACIFIC OCEAN";
+tts[100]="NORTH PACIFIC OCEAN";
+tts[101]="HAWAII REGION";
+tts[102]="TONGA ISLANDS REGION";
+tts[103]="SAMOA ISLANDS REGION";
+tts[104]="TOKELAU ISLANDS REGION";
+tts[105]="PHOENIX ISLANDS REGION, KIRIBATI";
+tts[106]="NORTH PACIFIC OCEAN";
+tts[107]="JOHNSTON ISLAND REGION";
+tts[108]="HAWAII REGION";
+tts[109]="COOK ISLANDS REGION";
+tts[110]="NORTHERN COOK ISLANDS";
+tts[111]="LINE ISLANDS REGION, KIRIBATI";
+tts[112]="PALMYRA ISLAND REGION, KIRIBATI";
+tts[113]="LINE ISLANDS REGION, KIRIBATI";
+tts[114]="NORTH PACIFIC OCEAN";
+tts[115]="HAWAII REGION";
+tts[116]="TUBUAI ISLANDS REGION";
+tts[117]="SOCIETY ISLANDS REGION";
+tts[118]="LINE ISLANDS REGION, KIRIBATI";
+tts[119]="NORTH PACIFIC OCEAN";
+tts[120]="HAWAII REGION";
+tts[121]="TUBUAI ISLANDS REGION";
+tts[122]="TUAMOTU ARCHIPELAGO REGION";
+tts[123]="SOUTH PACIFIC OCEAN";
+tts[124]="NORTH PACIFIC OCEAN";
+tts[125]="TUAMOTU ARCHIPELAGO REGION";
+tts[126]="MARQUESAS ISLANDS REGION";
+tts[127]="SOUTH PACIFIC OCEAN";
+tts[128]="NORTH PACIFIC OCEAN";
+tts[129]="MAG 5.1 02-MAR-2015 01:40:52 MINAHASSA PENINSULA, SULAWESI";
+tts[130]="MAG 4.6 01-MAR-2015 16:56:32 FIJI ISLANDS REGION";
+tts[131]="MAG 4.7 01-MAR-2015 16:50:11 SOUTH OF FIJI ISLANDS";
+tts[132]="MAG 5.2 01-MAR-2015 10:24:42 MYANMAR-CHINA BORDER REGION";
+tts[133]="MAG 5.3 01-MAR-2015 07:01:56 TALAUD ISLANDS, INDONESIA";
+tts[134]="MAG 5.4 01-MAR-2015 03:32:36 MINAHASSA PENINSULA, SULAWESI";
+tts[135]="MAG 4.6 28-FEB-2015 22:39:31 NEW BRITAIN REGION, P.N.G.";
+tts[136]="MAG 4.4 28-FEB-2015 16:31:19 NORTHERN MOLUCCA SEA";
+tts[137]="MAG 4.6 28-FEB-2015 11:13:02 NEAR N COAST OF NEW GUINEA, PNG.";
+tts[138]="MAG 5.0 28-FEB-2015 10:53:04 SUMBAWA REGION, INDONESIA";
+tts[139]="MAG 4.6 28-FEB-2015 05:48:10 FIJI ISLANDS REGION";
+tts[140]="MAG 4.6 28-FEB-2015 02:14:58 SOUTH OF MARIANA ISLANDS";
+tts[141]="MAG 5.1 28-FEB-2015 01:02:50 MARIANA ISLANDS";
+tts[142]="MAG 4.7 27-FEB-2015 19:44:17 MARIANA ISLANDS";
+tts[143]="MAG 5.0 27-FEB-2015 17:36:51 MARIANA ISLANDS";
+tts[144]="MAG 4.8 27-FEB-2015 16:52:01 MARIANA ISLANDS";
+tts[145]="MAG 5.0 27-FEB-2015 16:45:20 MARIANA ISLANDS";
+tts[146]="MAG 5.7 27-FEB-2015 16:24:50 MARIANA ISLANDS";
+tts[147]="MAG 5.1 27-FEB-2015 15:27:56 FLORES SEA";
+tts[148]="MAG 4.9 27-FEB-2015 14:54:08 MINDANAO, PHILIPPINE ISLANDS";
+tts[149]="MAG 7.0 27-FEB-2015 13:45:05 FLORES SEA";
+tts[150]="MAG 5.3 27-FEB-2015 11:35:15 SOLOMON ISLANDS";
+tts[151]="MAG 4.5 27-FEB-2015 06:02:51 FIJI ISLANDS REGION";
+tts[152]="MAG 4.5 27-FEB-2015 03:14:14 SOUTHERN SUMATERA, INDONESIA";
+tts[153]="MAG 5.1 26-FEB-2015 23:44:57 NEW BRITAIN REGION, P.N.G.";
+tts[154]="MAG 4.4 26-FEB-2015 18:52:32 NICOBAR ISLANDS, INDIA";
+tts[155]="MAG 4.4 26-FEB-2015 16:50:02 TAIWAN REGION";
+tts[156]="MAG 4.7 26-FEB-2015 15:04:16 NORTHERN MOLUCCA SEA";
+tts[157]="MAG 4.7 26-FEB-2015 10:35:53 NORTHERN MOLUCCA SEA";
+tts[158]="MAG 5.2 26-FEB-2015 06:26:56 TONGA ISLANDS";
+tts[159]="MAG 5.0 25-FEB-2015 19:36:56 TONGA ISLANDS";
+tts[160]="MAG 4.4 25-FEB-2015 19:09:04 FIJI ISLANDS REGION";
+tts[161]="MAG 4.9 25-FEB-2015 08:29:32 NORTHERN SUMATERA, INDONESIA";
+tts[162]="MAG 5.3 25-FEB-2015 03:02:40 NORTHERN MOLUCCA SEA";
+tts[163]="MAG 5.5 25-FEB-2015 01:31:43 SULU SEA";
+tts[164]="MAG 4.7 24-FEB-2015 20:49:46 MINAHASSA PENINSULA, SULAWESI";
+tts[165]="MAG 4.7 24-FEB-2015 16:36:44 VANUATU ISLANDS";
+tts[166]="MAG 4.7 24-FEB-2015 06:23:06 EASTERN NEW GUINEA REG., P.N.G.";
+tts[167]="MAG 4.8 24-FEB-2015 03:13:02 FIJI ISLANDS REGION";
+tts[168]="MAG 5.1 24-FEB-2015 02:58:51 VANUATU ISLANDS";
+tts[169]="MAG 4.5 23-FEB-2015 23:14:12 LUZON, PHILIPPINE ISLANDS";
+tts[170]="MAG 4.1 23-FEB-2015 19:07:32 BANDA SEA";
+tts[171]="MAG 4.6 23-FEB-2015 16:21:34 MINDANAO, PHILIPPINE ISLANDS";
+tts[172]="MAG 4.9 23-FEB-2015 09:05:37 NEW BRITAIN REGION, P.N.G.";
+tts[173]="MAG 4.5 23-FEB-2015 06:32:07 ANDAMAN ISLANDS, INDIA";
+tts[174]="MAG 4.7 23-FEB-2015 00:48:46 BANDA SEA";
+tts[175]="MAG 4.8 23-FEB-2015 00:09:36 IRIAN JAYA, INDONESIA";
+tts[176]="MAG 4.3 22-FEB-2015 22:39:35 MINAHASSA PENINSULA, SULAWESI";
+tts[177]="MAG 4.7 22-FEB-2015 22:17:07 FIJI ISLANDS REGION";
+tts[178]="MAG 5.1 22-FEB-2015 13:02:16 FIJI ISLANDS REGION";
+tts[179]="MAG 5.5 22-FEB-2015 06:10:33 IRIAN JAYA REGION, INDONESIA";
+tts[180]="MAG 4.6 22-FEB-2015 03:54:59 VANUATU ISLANDS";
+tts[181]="MAG 5.2 21-FEB-2015 19:50:59 SOLOMON ISLANDS";
+tts[182]="MAG 5.1 21-FEB-2015 19:42:22 EASTERN NEW GUINEA REG., P.N.G.";
+tts[183]="MAG 4.8 21-FEB-2015 18:52:43 LOYALTY ISLANDS REGION";
+tts[184]="MAG 4.7 21-FEB-2015 18:19:32 MINDANAO, PHILIPPINE ISLANDS";
+tts[185]="MAG 4.4 21-FEB-2015 17:38:33 FIJI ISLANDS REGION";
+tts[186]="MAG 4.7 21-FEB-2015 10:37:00 SOUTH OF JAWA, INDONESIA";
+tts[187]="MAG 4.7 21-FEB-2015 00:57:37 FIJI ISLANDS REGION";
+tts[188]="MAG 4.6 20-FEB-2015 22:37:50 YUNNAN, CHINA";
+tts[189]="MAG 4.7 20-FEB-2015 21:41:03 TONGA ISLANDS";
+tts[190]="MAG 4.9 20-FEB-2015 13:01:09 SOLOMON ISLANDS";
+tts[191]="MAG 4.5 19-FEB-2015 23:59:57 BANDA SEA";
+tts[192]="MAG 5.0 19-FEB-2015 19:56:33 VANUATU ISLANDS";
+tts[193]="MAG 4.0 19-FEB-2015 17:21:25 SOUTH OF BALI, INDONESIA";
+tts[194]="MAG 5.5 19-FEB-2015 14:32:41 VANUATU ISLANDS";
+tts[195]="MAG 5.0 19-FEB-2015 14:08:49 FIJI ISLANDS REGION";
+tts[196]="MAG 5.1 19-FEB-2015 13:38:28 VANUATU ISLANDS";
+tts[197]="MAG 6.4 19-FEB-2015 13:18:32 VANUATU ISLANDS";
+tts[198]="MAG 4.6 19-FEB-2015 06:03:26 SOUTHERN SUMATERA, INDONESIA";
+tts[199]="MAG 4.5 18-FEB-2015 20:20:13 HALMAHERA, INDONESIA";
+tts[200]="MAG 4.9 18-FEB-2015 18:50:47 SOLOMON ISLANDS";
+tts[201]="MAG 4.7 18-FEB-2015 17:25:16 SANTA CRUZ ISLANDS REGION";
+tts[202]="MAG 5.4 18-FEB-2015 17:09:42 SANTA CRUZ ISLANDS REGION";
+tts[203]="MAG 5.1 18-FEB-2015 16:27:27 SOLOMON ISLANDS";
+tts[204]="MAG 5.2 18-FEB-2015 14:31:53 HALMAHERA, INDONESIA";
+tts[205]="MAG 5.9 18-FEB-2015 09:32:26 SANTA CRUZ ISLANDS REGION";
+tts[206]="MAG 5.4 18-FEB-2015 04:43:39 SOLOMON ISLANDS";
+tts[207]="MAG 4.3 17-FEB-2015 19:55:06 IRIAN JAYA REGION, INDONESIA";
+tts[208]="MAG 4.6 17-FEB-2015 19:48:56 SANTA CRUZ ISLANDS";
+tts[209]="MAG 4.6 17-FEB-2015 03:23:27 NORTHERN MOLUCCA SEA";
+tts[210]="MAG 4.5 17-FEB-2015 02:48:29 OFF W COAST OF NORTHERN SUMATERA";
+tts[211]="MAG 5.1 17-FEB-2015 02:14:58 NORTHERN MOLUCCA SEA";
+tts[212]="MAG 4.6 16-FEB-2015 22:45:08 IRIAN JAYA REGION, INDONESIA";
+tts[213]="MAG 4.3 16-FEB-2015 21:41:42 MARIANA ISLANDS REGION";
+tts[214]="MAG 4.8 16-FEB-2015 17:20:34 VANUATU ISLANDS";
+tts[215]="MAG 4.5 16-FEB-2015 16:51:32 MARIANA ISLANDS REGION";
+tts[216]="MAG 4.5 16-FEB-2015 13:22:38 NORTHERN MOLUCCA SEA";
+tts[217]="MAG 4.6 16-FEB-2015 13:13:58 NEW IRELAND REGION, P.N.G.";
+tts[218]="MAG 5.0 16-FEB-2015 05:42:46 BALI SEA";
+tts[219]="MAG 4.5 16-FEB-2015 03:45:22 FIJI ISLANDS REGION";
+tts[220]="MAG 4.4 16-FEB-2015 03:27:58 BANDA SEA";
+tts[221]="MAG 4.7 16-FEB-2015 01:04:09 VANUATU ISLANDS";
+tts[222]="MAG 4.2 15-FEB-2015 21:40:11 MARIANA ISLANDS";
+tts[223]="MAG 5.2 15-FEB-2015 21:08:43 SANTA CRUZ ISLANDS";
+tts[224]="BKNI station";
+tts[225]="KMI station - Click for more info.";
+tts[226]="MNAI station";
+tts[227]="KAPK station";
+tts[228]="PMBI station";
+tts[229]="CISI station";
+tts[230]="QIZ station";
+tts[231]="SMRI station";
+tts[232]="UGM station - Click for more info.";
+tts[233]="JAGI station";
+tts[234]="BKB station";
+tts[235]="KMNB station";
+tts[236]="MBWA station - Click for more info.";
+tts[237]="PHUB station";
+tts[238]="KAPI station - Click for more info.";
+tts[239]="TOLI station";
+tts[240]="BAG station";
+tts[241]="TWKB station";
+tts[242]="TWGB station";
+tts[243]="SSLB station";
+tts[244]="YHNB station";
+tts[245]="LYUB station";
+tts[246]="NACB station";
+tts[247]="WFSB station";
+tts[248]="MMRI station";
+tts[249]="LUWI station";
+tts[250]="SOEI station";
+tts[251]="DAV station - Click for more info.";
+tts[252]="TNTI station";
+tts[253]="SAUI station";
+tts[254]="FAKI station";
+tts[255]="WRAB station - Click for more info.";
+tts[256]="TAOE station";
+tts[257]="GUMO station - Click for more info.";
+tts[258]="CTAO station - Click for more info.";
+tts[259]="PMG station - Click for more info.";
+tts[260]="PPTF station";
+tts[261]="MCSJ station";
+tts[262]="POHA station - Click for more info.";
+tts[263]="XMAS station - Click for more info.";
+tts[264]="KIP station";
+tts[265]="PATS station";
+tts[266]="RAR station - Click for more info.";
+tts[267]="HNR station - Click for more info.";
+tts[268]="NOUC station";
+tts[269]="SANVU station";
+tts[270]="WAKE station - Click for more info.";
+tts[271]="KWAJ station - Click for more info.";
+tts[272]="JOHN station - Click for more info.";
+tts[273]="AFI station - Click for more info.";
+tts[274]="KNTN station";
+tts[275]="TARA station";
+tts[276]="MSVF station - Click for more info.";
+tts[277]="FUNA station - Click for more info.";
+tts[278]="COCO station - Click for more info.";
+tts[279]="LHMI station";
+tts[280]="GSI station";
+tts[281]="CHTO station - Click for more info.";
+tts[282]="PSI station - Click for more info.";
+ 
+var gooMode = 0;
+function toggleGooMode() {
+  if(gooMode==1) { gooMode=0; } else {gooMode=1;}
+  //alert("gooMode is: "+$gooMode);
+}
+
+var screenW = 640, screenH = 480;
+function init() {
+  if (is_nav4up || is_ie4up || is_ie5up ) {
+      screenW = screen.width;
+      screenH = screen.height;
+  }
+  document.statusform.tips.value=(tts[1]);
+  document.statusform.goocheck.checked=false;
+  lastT=1;
+}
+
+//put a tooltip msg in statusform.tips field
+var lastT;
+function tt(t) {
+   if(tts[0]<=2) {
+     document.statusform.tips.value="warning: no tool tips";
+   }
+   else {
+     if(t>tts[0])  {
+       document.statusform.tips.value="warning: tooltips indexing error";
+     }
+     else {
+       document.statusform.tips.value=(tts[t]);
+     }
+  }
+  lastT=t;
+  return true;
+}
+
+//open a google search result
+var gooWindow;
+function goo(t ){
+   if(gooMode == 0) {
+      return;
+   }
+   if(t<=1) t=lastT;
+   if(t<=1) return false;
+   ttp=tts[t]; 
+
+   if(tts[0]<=2) {
+     document.statusform.tips.value="warning: no tool tips";
+   }
+   else {
+     var width=(3*screenW/4);
+     if(width>700){ width=700; }
+     var height=3*screenH/4;
+     if(height>900){ height=900; }
+     var yoff=50;
+     var re;
+
+     // edit the Flynn Engdahl region for a better search
+     re=/-/gi;
+     ttp=ttp.replace(re," ");
+     re=/,/;
+     ttp=ttp.replace(re," ");
+     re=/REGION/gi;
+     ttp=ttp.replace(re,"");
+     re=/REG\./gi;
+     ttp=ttp.replace(re,"");
+     re=/N\.Z\./gi;
+     ttp=ttp.replace(re,"NEW ZEALAND");
+     re=/P\.N\.G\./gi;
+     ttp=ttp.replace(re,"PAPUA NEW GUINEA");
+     re=/PNG/gi;
+     ttp=ttp.replace(re,"PAPUA NEW GUINEA");
+     re=/IS\./gi;
+     ttp=ttp.replace(re,"ISLANDS");
+     re=/PROV\./gi;
+     ttp=ttp.replace(re,"PROVINCE");
+     // drop NORTH, NORTH CENTRAL, SOUTH CENTRAL, etc:
+     re=/THCENT/gi;
+     ttp=ttp.replace(re,"TH CENT");
+     re=/W\./gi;
+     ttp=ttp.replace(re,"WEST");
+     re=/ERN /gi;
+     ttp=ttp.replace(re," ");
+     re=/NORTH/gi;
+     ttp=ttp.replace(re," ");
+     re=/SOUTH/gi;
+     ttp=ttp.replace(re," ");
+     re=/EAST/gi;
+     ttp=ttp.replace(re," ");
+     re=/WEST/gi;
+     ttp=ttp.replace(re," ");
+     re=/CENTRAL /gi;
+     ttp=ttp.replace(re," ");
+     re=/ NW /gi;
+     ttp=ttp.replace(re," ");
+     re=/ SW /gi;
+     ttp=ttp.replace(re," ");
+     re=/ NE /gi;
+     ttp=ttp.replace(re," ");
+     re=/ SE /gi;
+     ttp=ttp.replace(re," ");
+     re=/ARG\./gi;
+     ttp=ttp.replace(re,"ARGENTINA");
+     re=/OFF COAST OF /gi;
+     ttp=ttp.replace(re,"");
+     re=/NEAR COAST OF /gi;
+     ttp=ttp.replace(re,"");
+     re=/NEAR /gi;
+     ttp=ttp.replace(re,"");
+     re=/OFF /gi;
+     ttp=ttp.replace(re,"");
+     re=/ OF /gi;
+     ttp=ttp.replace(re," ");
+
+     var gooUrl="http://www.google.com/search?hl=en&num=20&q="+escape(ttp+" (EARTHQUAKE OR EARTHQUAKES OR SEISMIC OR SEISMICITY OR TECTONICS) -weather -travel -flinn -score -vacation -deals -team -price");
+
+     var settings="width="+width+",height="+height+",top="+yoff+",left=0"+
+         ",screenX=110,screenY="+yoff+",resizable=yes,scrollbars=yes,status=yes,location=yes,toolbar=yes,menubar=yes";
+
+     gooWindow=window.open(gooUrl,  "googleWindow", settings);
+     gooWindow.focus();
+   }
+   return false;
+}
+
+
+// open the event list window, for events near to mouse click
+var evnWindow;
+function evn(lon,lat){
+   var width=950;
+   var height=screenH/2+200;
+   var yoff=50;
+   var xoff=200;
+
+   var rgn="Polynesia";
+
+   // new event list 
+   var url="../eventlist/index.phtml?region="+rgn+"&lon="+lon+"&lat="+lat;
+  ;
+
+   var settings="width="+width+",height="+height+
+                ",top="+yoff+",left="+xoff+
+                ",screenX="+xoff+",screenY="+yoff+
+                ",resizable=yes,scrollbars=yes,status=yes,location=yes,toolbar=yes,menubar=yes";
+
+   evnWindow=window.open(url, "eventWindow", settings);
+   evnWindow.focus();
+   //return true    --don't return anything or it shows up in window
+}
+
+
+</script>
+ </head>   
+ <body bgcolor="#FFFFFF" onload="init()"> 
+  <div id="theMap"> 
+   <span id="topMapImg"> <img src="../views/eveday//imgs/zmMap.eveday.Polynesia.gif" usemap="#topImgMap" border="0"> 
+    <!-- test placing IRIS logo with link  rcw: 1/2015
+     the zoom images are all different sizes which are not known yet.
+     ideally logo would be inside the image's top right edge. 
+     but instead of determining image size (could do) or
+     using jQuery or plain js to add logo element as child of topImgMap 
+           (in the init() function?) 
+     to place the logo, for now let's just put it to the right of image.
+
+     position:fixed; seems to work, float and relative causing headaches. 
+
+  <span id="logo" style="position:relative;float:top; "--> <span id="logo" style="position:fixed; margin-left: 55px;margin-top:2px;"> <a href="http://www.iris.edu" title="Explore the many tools and resources about earthquakes at IRIS"> <img src="../imgs/fromIRIS.png" border="0" width="70" height="56"> </a> </span> <span id="regionLinks"> <p style="font-size:16px; font-color:white;padding:0px;margin-top:5px;margin-bottom:0px;">Zoom Maps</p> 
+     <div class="regionLink"> 
+      <a class="btn" title="The latest earthquakes in Africa in Seismic Monitor" href="index.phtml?rgn=Africa">Africa</a> 
+     </div> 
+     <div class="regionLink"> 
+      <a class="btn" title="The latest earthquakes in Australia and New Zealand in Seismic Monitor" href="index.phtml?rgn=Australia_NZ">Australia/NZ</a> 
+     </div> 
+     <div class="regionLink"> 
+      <a class="btn" title="The latest earthquakes in Central America in Seismic Monitor" href="index.phtml?rgn=Central_America">Ctrl America</a> 
+     </div> 
+     <div class="regionLink"> 
+      <a class="btn" title="The latest earthquakes in Central Asia in Seismic Monitor" href="index.phtml?rgn=Central_Asia">Ctrl Asia</a> 
+     </div> 
+     <div class="regionLink"> 
+      <a class="btn" title="The latest earthquakes in Europe in Seismic Monitor" href="index.phtml?rgn=Europe">Europe</a> 
+     </div> 
+     <div class="regionLink"> 
+      <a class="btn" title="The latest earthquakes in the Indian Ocean region in Seismic Monitor" href="index.phtml?rgn=Indian_Ocean">Indian&nbsp;Ocean</a> 
+     </div> 
+     <div class="regionLink"> 
+      <a class="btn" title="The latest earthquakes in North America in Seismic Monitor" href="index.phtml?rgn=N_America">N America</a> 
+     </div> 
+     <div class="regionLink"> 
+      <a class="btn" title="The latest earthquakes in the Northern Atlantic ocean region in Seismic Monitor" href="index.phtml?rgn=N_Atlantic">N Atlantic</a> 
+     </div> 
+     <div class="regionLink"> 
+      <a class="btn" title="The latest earthquakes in the Northern Pacific ocean region in Seismic Monitor" href="index.phtml?rgn=N_Pacific">N Pacific</a> 
+     </div> 
+     <div class="regionLink"> 
+      <a class="btn" title="The latest earthquakes in the Polynesia region in Seismic Monitor" href="index.phtml?rgn=Polynesia">Polynesia</a> 
+     </div> 
+     <div class="regionLink"> 
+      <a class="btn" title="The latest earthquakes in South America in Seismic Monitor" href="index.phtml?rgn=S_America">S America</a> 
+     </div> 
+     <div class="regionLink"> 
+      <a class="btn" title="The latest earthquakes in the Southern Atlantic ocean region in Seismic Monitor" href="index.phtml?rgn=S_Atlantic">S Atlantic</a> 
+     </div> 
+     <div class="regionLink"> 
+      <a class="btn" title="The latest earthquakes in the Southern Pacific ocean region in Seismic Monitor" href="index.phtml?rgn=S_Pacific">S Pacific</a> 
+     </div> 
+     <div class="regionLink"> 
+      <a class="btn" title="The latest earthquakes in southern Southeast Asia" href="index.phtml?rgn=S_SE_Asia">S SE Asia</a> 
+     </div> </span> </span> 
+  </div> 
+  <span id="legend"> <img src="../imgs/zm_legend.gif" border="0" width="187" height="56"> </span> 
+  <form name="statusform"> 
+   <input type="text" name="tips" size="65" value=""> 
+  </form> 
+  <span> <a class="btn" href="../index.phtml">Return to World View</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a class="btn" href="../eventlist/index.phtml?region=Polynesia">Last 30 Days in Polynesia</a> </span> 
+  <span> <input style="margin-left:35px;" name="goocheck" type="checkbox" onclick="toggleGooMode();" value="none"> <img id="gooImg" style="margin-right:10px;" src="../imgs/google.gif" border="0" width="66" height="24" align="middle"> <span id="questMark"> ? <p id="gooTip" class="small">Click Google checkbox. Then click on map (except earthquakes and stations) to explore news and other information. </p> </span> </span> 
+  <map name="topImgMap"> <area shape="circle" coords="72,252,6" title="BKNI station" onmouseover="tt(224)"> <area shape="circle" coords="92,63,6" title="KMI station - Click for more info." onmouseover="tt(225)" href="http://www.fdsn.org/station_book/IC/KMI/kmi.html" target="_blank"> <area shape="circle" coords="83,288,6" title="MNAI station" onmouseover="tt(226)"> <area shape="circle" coords="87,244,6" title="KAPK station" onmouseover="tt(227)"> <area shape="circle" coords="92,277,6" title="PMBI station" onmouseover="tt(228)"> <area shape="circle" coords="110,313,6" title="CISI station" onmouseover="tt(229)"> <area shape="circle" coords="126,108,6" title="QIZ station" onmouseover="tt(230)"> <area shape="circle" coords="124,309,6" title="SMRI station" onmouseover="tt(231)"> <area shape="circle" coords="125,315,6" title="UGM station - Click for more info." onmouseover="tt(232)" href="http://www.fdsn.org/station_book/GE/UGM/ugm.html" target="_blank"> <area shape="circle" coords="145,320,6" title="JAGI station" onmouseover="tt(233)"> <area shape="circle" coords="160,263,6" title="BKB station" onmouseover="tt(234)"> <area shape="circle" coords="175,68,6" title="KMNB station" onmouseover="tt(235)"> <area shape="circle" coords="180,416,6" title="MBWA station - Click for more info." onmouseover="tt(236)" href="http://www.fdsn.org/station_book/IU/MBWA/mbwa.html" target="_blank"> <area shape="circle" coords="181,75,6" title="PHUB station" onmouseover="tt(237)"> <area shape="circle" coords="176,293,6" title="KAPI station - Click for more info." onmouseover="tt(238)" href="http://www.fdsn.org/station_book/II/KAPI/kapi.html" target="_blank"> <area shape="circle" coords="181,245,6" title="TOLI station" onmouseover="tt(239)"> <area shape="circle" coords="183,128,6" title="BAG station" onmouseover="tt(240)"> <area shape="circle" coords="187,86,6" title="TWKB station" onmouseover="tt(241)"> <area shape="circle" coords="189,80,6" title="TWGB station" onmouseover="tt(242)"> <area shape="circle" coords="188,73,6" title="SSLB station" onmouseover="tt(243)"> <area shape="circle" coords="191,66,6" title="YHNB station" onmouseover="tt(244)"> <area shape="circle" coords="191,86,6" title="LYUB station" onmouseover="tt(245)"> <area shape="circle" coords="192,70,6" title="NACB station" onmouseover="tt(246)"> <area shape="circle" coords="194,63,6" title="WFSB station" onmouseover="tt(247)"> <area shape="circle" coords="190,321,6" title="MMRI station" onmouseover="tt(248)"> <area shape="circle" coords="192,262,6" title="LUWI station" onmouseover="tt(249)"> <area shape="circle" coords="201,330,6" title="SOEI station" onmouseover="tt(250)"> <area shape="circle" coords="208,199,6" title="DAV station - Click for more info." onmouseover="tt(251)" href="http://www.fdsn.org/station_book/IU/DAV/dav.html" target="_blank"> <area shape="circle" coords="217,248,6" title="TNTI station" onmouseover="tt(252)"> <area shape="circle" coords="240,316,6" title="SAUI station" onmouseover="tt(253)"> <area shape="circle" coords="245,277,6" title="FAKI station" onmouseover="tt(254)"> <area shape="circle" coords="259,407,6" title="WRAB station - Click for more info." onmouseover="tt(255)" href="http://www.fdsn.org/station_book/II/WRAB/wrab.html" target="_blank"> <area shape="circle" coords="728,323,6" title="TAOE station" onmouseover="tt(256)"> <area shape="circle" coords="315,149,6" title="GUMO station - Click for more info." onmouseover="tt(257)" href="http://www.fdsn.org/station_book/IU/GUMO/gumo.html" target="_blank"> <area shape="circle" coords="323,408,6" title="CTAO station - Click for more info." onmouseover="tt(258)" href="http://www.fdsn.org/station_book/IU/CTAO/ctao.html" target="_blank"> <area shape="circle" coords="327,327,6" title="PMG station - Click for more info." onmouseover="tt(259)" href="http://www.fdsn.org/station_book/GE/PMG/pmg.html" target="_blank"> <area shape="circle" coords="672,389,6" title="PPTF station" onmouseover="tt(260)"> <area shape="circle" coords="365,69,6" title="MCSJ station" onmouseover="tt(261)"> <area shape="circle" coords="638,102,6" title="POHA station - Click for more info." onmouseover="tt(262)" href="http://www.fdsn.org/station_book/IU/POHA/poha.html" target="_blank"> <area shape="circle" coords="634,238,6" title="XMAS station - Click for more info." onmouseover="tt(263)" href="http://www.fdsn.org/station_book/IU/XMAS/xmas.html" target="_blank"> <area shape="circle" coords="624,90,6" title="KIP station" onmouseover="tt(264)"> <area shape="circle" coords="389,201,6" title="PATS station" onmouseover="tt(265)"> <area shape="circle" coords="614,417,6" title="RAR station - Click for more info." onmouseover="tt(266)" href="http://www.fdsn.org/station_book/IU/RAR/rar.html" target="_blank"> <area shape="circle" coords="398,327,6" title="HNR station - Click for more info." onmouseover="tt(267)" href="http://www.fdsn.org/station_book/IU/HNR/hnr.html" target="_blank"> <area shape="circle" coords="431,423,6" title="NOUC station" onmouseover="tt(268)"> <area shape="circle" coords="437,373,6" title="SANVU station" onmouseover="tt(269)"> <area shape="circle" coords="434,106,6" title="WAKE station - Click for more info." onmouseover="tt(270)" href="http://www.fdsn.org/station_book/IU/WAKE/wake.html" target="_blank"> <area shape="circle" coords="440,186,6" title="KWAJ station - Click for more info." onmouseover="tt(271)" href="http://www.fdsn.org/station_book/II/KWAJ/kwaj.html" target="_blank"> <area shape="circle" coords="564,125,6" title="JOHN station - Click for more info." onmouseover="tt(272)" href="http://www.fdsn.org/station_book/IU/JOHN/john.html" target="_blank"> <area shape="circle" coords="552,361,6" title="AFI station - Click for more info." onmouseover="tt(273)" href="http://www.fdsn.org/station_book/IU/AFI/afi.html" target="_blank"> <area shape="circle" coords="555,276,6" title="KNTN station" onmouseover="tt(274)"> <area shape="circle" coords="470,244,6" title="TARA station" onmouseover="tt(275)"> <area shape="circle" coords="496,391,6" title="MSVF station - Click for more info." onmouseover="tt(276)" href="http://www.fdsn.org/station_book/II/MSVF/msvf.html" target="_blank"> <area shape="circle" coords="504,320,6" title="FUNA station - Click for more info." onmouseover="tt(277)" href="http://www.fdsn.org/station_book/IU/FUNA/funa.html" target="_blank"> <area shape="circle" coords="51,348,6" title="COCO station - Click for more info." onmouseover="tt(278)" href="http://www.fdsn.org/station_book/II/COCO/coco.html" target="_blank"> <area shape="circle" coords="50,214,6" title="LHMI station" onmouseover="tt(279)"> <area shape="circle" coords="52,244,6" title="GSI station" onmouseover="tt(280)"> <area shape="circle" coords="67,110,6" title="CHTO station - Click for more info." onmouseover="tt(281)" href="http://www.fdsn.org/station_book/IU/CHTO/chto.html" target="_blank"> <area shape="circle" coords="60,233,6" title="PSI station - Click for more info." onmouseover="tt(282)" href="http://www.fdsn.org/station_book/PS/PSI/psi.html" target="_blank"> <area shape="circle" coords="202,254,18.468" title="MAG 5.1 02-MAR-2015 01:40:52 MINAHASSA PENINSULA, SULAWESI" onmouseover="tt(129)" href="javascript:evn(124.56,0.06)"> <area shape="circle" coords="513,414,16" title="MAG 4.6 01-MAR-2015 16:56:32 FIJI ISLANDS REGION" onmouseover="tt(130)" href="javascript:evn(-178.59,-20.84)"> <area shape="circle" coords="500,437,16" title="MAG 4.7 01-MAR-2015 16:50:11 SOUTH OF FIJI ISLANDS" onmouseover="tt(131)" href="javascript:evn(179.23,-23.96)"> <area shape="circle" coords="70,74,19.656" title="MAG 5.2 01-MAR-2015 10:24:42 MYANMAR-CHINA BORDER REGION" onmouseover="tt(132)" href="javascript:evn(98.84,23.56)"> <area shape="circle" coords="210,217,20.844" title="MAG 5.3 01-MAR-2015 07:01:56 TALAUD ISLANDS, INDONESIA" onmouseover="tt(133)" href="javascript:evn(125.91,4.74)"> <area shape="circle" coords="201,254,22.032" title="MAG 5.4 01-MAR-2015 03:32:36 MINAHASSA PENINSULA, SULAWESI" onmouseover="tt(134)" href="javascript:evn(124.48,0.07)"> <area shape="circle" coords="351,293,16" title="MAG 4.6 28-FEB-2015 22:39:31 NEW BRITAIN REGION, P.N.G." onmouseover="tt(135)" href="javascript:evn(151.53,-4.97)"> <area shape="circle" coords="213,242,16" title="MAG 4.4 28-FEB-2015 16:31:19 NORTHERN MOLUCCA SEA" onmouseover="tt(136)" href="javascript:evn(126.62,1.53)"> <area shape="circle" coords="310,282,16" title="MAG 4.6 28-FEB-2015 11:13:02 NEAR N COAST OF NEW GUINEA, PNG." onmouseover="tt(137)" href="javascript:evn(144.14,-3.60)"> <area shape="circle" coords="171,322,17.28" title="MAG 5.0 28-FEB-2015 10:53:04 SUMBAWA REGION, INDONESIA" onmouseover="tt(138)" href="javascript:evn(118.84,-8.83)"> <area shape="circle" coords="514,388,16" title="MAG 4.6 28-FEB-2015 05:48:10 FIJI ISLANDS REGION" onmouseover="tt(139)" href="javascript:evn(-178.53,-17.35)"> <area shape="circle" coords="300,162,16" title="MAG 4.6 28-FEB-2015 02:14:58 SOUTH OF MARIANA ISLANDS" onmouseover="tt(140)" href="javascript:evn(142.21,11.86)"> <area shape="circle" coords="321,123,18.468" title="MAG 5.1 28-FEB-2015 01:02:50 MARIANA ISLANDS" onmouseover="tt(141)" href="javascript:evn(145.98,16.98)"> <area shape="circle" coords="321,124,16" title="MAG 4.7 27-FEB-2015 19:44:17 MARIANA ISLANDS" onmouseover="tt(142)" href="javascript:evn(145.84,16.89)"> <area shape="circle" coords="321,124,17.28" title="MAG 5.0 27-FEB-2015 17:36:51 MARIANA ISLANDS" onmouseover="tt(143)" href="javascript:evn(145.92,16.95)"> <area shape="circle" coords="321,123,16" title="MAG 4.8 27-FEB-2015 16:52:01 MARIANA ISLANDS" onmouseover="tt(144)" href="javascript:evn(145.83,16.98)"> <area shape="circle" coords="321,123,17.28" title="MAG 5.0 27-FEB-2015 16:45:20 MARIANA ISLANDS" onmouseover="tt(145)" href="javascript:evn(145.84,17.00)"> <area shape="circle" coords="321,124,25.596" title="MAG 5.7 27-FEB-2015 16:24:50 MARIANA ISLANDS" onmouseover="tt(146)" href="javascript:evn(145.84,16.92)"> <area shape="circle" coords="191,312,18.468" title="MAG 5.1 27-FEB-2015 15:27:56 FLORES SEA" onmouseover="tt(147)" href="javascript:evn(122.52,-7.48)"> <area shape="circle" coords="214,177,16.092" title="MAG 4.9 27-FEB-2015 14:54:08 MINDANAO, PHILIPPINE ISLANDS" onmouseover="tt(148)" href="javascript:evn(126.51,9.90)"> <area shape="circle" coords="191,311,41.04" title="MAG 7.0 27-FEB-2015 13:45:05 FLORES SEA" onmouseover="tt(149)" href="javascript:evn(122.53,-7.29)"> <area shape="circle" coords="372,309,20.844" title="MAG 5.3 27-FEB-2015 11:35:15 SOLOMON ISLANDS" onmouseover="tt(150)" href="javascript:evn(155.30,-7.04)"> <area shape="circle" coords="517,391,16" title="MAG 4.5 27-FEB-2015 06:02:51 FIJI ISLANDS REGION" onmouseover="tt(151)" href="javascript:evn(-178.11,-17.77)"> <area shape="circle" coords="76,280,16" title="MAG 4.5 27-FEB-2015 03:14:14 SOUTHERN SUMATERA, INDONESIA" onmouseover="tt(152)" href="javascript:evn(101.77,-3.31)"> <area shape="circle" coords="359,296,18.468" title="MAG 5.1 26-FEB-2015 23:44:57 NEW BRITAIN REGION, P.N.G." onmouseover="tt(153)" href="javascript:evn(152.98,-5.43)"> <area shape="circle" coords="14,179,16" title="MAG 4.4 26-FEB-2015 18:52:32 NICOBAR ISLANDS, INDIA" onmouseover="tt(154)" href="javascript:evn(90.33,9.66)"> <area shape="circle" coords="196,66,16" title="MAG 4.4 26-FEB-2015 16:50:02 TAIWAN REGION" onmouseover="tt(155)" href="javascript:evn(122.33,24.68)"> <area shape="circle" coords="209,243,16" title="MAG 4.7 26-FEB-2015 15:04:16 NORTHERN MOLUCCA SEA" onmouseover="tt(156)" href="javascript:evn(125.77,1.41)"> <area shape="circle" coords="214,235,16" title="MAG 4.7 26-FEB-2015 10:35:53 NORTHERN MOLUCCA SEA" onmouseover="tt(157)" href="javascript:evn(126.71,2.47)"> <area shape="circle" coords="539,408,19.656" title="MAG 5.2 26-FEB-2015 06:26:56 TONGA ISLANDS" onmouseover="tt(158)" href="javascript:evn(-173.80,-20.05)"> <area shape="circle" coords="533,398,17.28" title="MAG 5.0 25-FEB-2015 19:36:56 TONGA ISLANDS" onmouseover="tt(159)" href="javascript:evn(-174.96,-18.73)"> <area shape="circle" coords="514,391,16" title="MAG 4.4 25-FEB-2015 19:09:04 FIJI ISLANDS REGION" onmouseover="tt(160)" href="javascript:evn(-178.63,-17.79)"> <area shape="circle" coords="50,243,16.092" title="MAG 4.9 25-FEB-2015 08:29:32 NORTHERN SUMATERA, INDONESIA" onmouseover="tt(161)" href="javascript:evn(97.15,1.37)"> <area shape="circle" coords="212,241,20.844" title="MAG 5.3 25-FEB-2015 03:02:40 NORTHERN MOLUCCA SEA" onmouseover="tt(162)" href="javascript:evn(126.43,1.74)"> <area shape="circle" coords="176,207,23.22" title="MAG 5.5 25-FEB-2015 01:31:43 SULU SEA" onmouseover="tt(163)" href="javascript:evn(119.84,6.09)"> <area shape="circle" coords="193,256,16" title="MAG 4.7 24-FEB-2015 20:49:46 MINAHASSA PENINSULA, SULAWESI" onmouseover="tt(164)" href="javascript:evn(122.95,-0.19)"> <area shape="circle" coords="448,399,16" title="MAG 4.7 24-FEB-2015 16:36:44 VANUATU ISLANDS" onmouseover="tt(165)" href="javascript:evn(169.22,-18.90)"> <area shape="circle" coords="327,298,16" title="MAG 4.7 24-FEB-2015 06:23:06 EASTERN NEW GUINEA REG., P.N.G." onmouseover="tt(166)" href="javascript:evn(147.19,-5.61)"> <area shape="circle" coords="510,415,16" title="MAG 4.8 24-FEB-2015 03:13:02 FIJI ISLANDS REGION" onmouseover="tt(167)" href="javascript:evn(-179.05,-21.07)"> <area shape="circle" coords="436,358,18.468" title="MAG 5.1 24-FEB-2015 02:58:51 VANUATU ISLANDS" onmouseover="tt(168)" href="javascript:evn(166.97,-13.42)"> <area shape="circle" coords="183,129,16" title="MAG 4.5 23-FEB-2015 23:14:12 LUZON, PHILIPPINE ISLANDS" onmouseover="tt(169)" href="javascript:evn(120.68,16.28)"> <area shape="circle" coords="224,311,16" title="MAG 4.1 23-FEB-2015 19:07:32 BANDA SEA" onmouseover="tt(170)" href="javascript:evn(128.54,-7.34)"> <area shape="circle" coords="212,208,16" title="MAG 4.6 23-FEB-2015 16:21:34 MINDANAO, PHILIPPINE ISLANDS" onmouseover="tt(171)" href="javascript:evn(126.32,5.98)"> <area shape="circle" coords="358,298,16.092" title="MAG 4.9 23-FEB-2015 09:05:37 NEW BRITAIN REGION, P.N.G." onmouseover="tt(172)" href="javascript:evn(152.75,-5.65)"> <area shape="circle" coords="24,170,16" title="MAG 4.5 23-FEB-2015 06:32:07 ANDAMAN ISLANDS, INDIA" onmouseover="tt(173)" href="javascript:evn(92.04,10.85)"> <area shape="circle" coords="212,289,16" title="MAG 4.7 23-FEB-2015 00:48:46 BANDA SEA" onmouseover="tt(174)" href="javascript:evn(126.36,-4.44)"> <area shape="circle" coords="282,281,16" title="MAG 4.8 23-FEB-2015 00:09:36 IRIAN JAYA, INDONESIA" onmouseover="tt(175)" href="javascript:evn(138.92,-3.48)"> <area shape="circle" coords="198,254,16" title="MAG 4.3 22-FEB-2015 22:39:35 MINAHASSA PENINSULA, SULAWESI" onmouseover="tt(176)" href="javascript:evn(123.90,-0.05)"> <area shape="circle" coords="520,403,16" title="MAG 4.7 22-FEB-2015 22:17:07 FIJI ISLANDS REGION" onmouseover="tt(177)" href="javascript:evn(-177.43,-19.38)"> <area shape="circle" coords="515,393,18.468" title="MAG 5.1 22-FEB-2015 13:02:16 FIJI ISLANDS REGION" onmouseover="tt(178)" href="javascript:evn(-178.32,-18.01)"> <area shape="circle" coords="254,293,23.22" title="MAG 5.5 22-FEB-2015 06:10:33 IRIAN JAYA REGION, INDONESIA" onmouseover="tt(179)" href="javascript:evn(133.91,-4.99)"> <area shape="circle" coords="439,369,16" title="MAG 4.6 22-FEB-2015 03:54:59 VANUATU ISLANDS" onmouseover="tt(180)" href="javascript:evn(167.49,-14.93)"> <area shape="circle" coords="390,325,19.656" title="MAG 5.2 21-FEB-2015 19:50:59 SOLOMON ISLANDS" onmouseover="tt(181)" href="javascript:evn(158.61,-9.22)"> <area shape="circle" coords="327,297,18.468" title="MAG 5.1 21-FEB-2015 19:42:22 EASTERN NEW GUINEA REG., P.N.G." onmouseover="tt(182)" href="javascript:evn(147.13,-5.47)"> <area shape="circle" coords="459,429,16" title="MAG 4.8 21-FEB-2015 18:52:43 LOYALTY ISLANDS REGION" onmouseover="tt(183)" href="javascript:evn(171.55,-22.91)"> <area shape="circle" coords="210,207,16" title="MAG 4.7 21-FEB-2015 18:19:32 MINDANAO, PHILIPPINE ISLANDS" onmouseover="tt(184)" href="javascript:evn(125.98,6.09)"> <area shape="circle" coords="514,406,16" title="MAG 4.4 21-FEB-2015 17:38:33 FIJI ISLANDS REGION" onmouseover="tt(185)" href="javascript:evn(-178.42,-19.77)"> <area shape="circle" coords="104,317,16" title="MAG 4.7 21-FEB-2015 10:37:00 SOUTH OF JAWA, INDONESIA" onmouseover="tt(186)" href="javascript:evn(106.73,-8.14)"> <area shape="circle" coords="515,412,16" title="MAG 4.7 21-FEB-2015 00:57:37 FIJI ISLANDS REGION" onmouseover="tt(187)" href="javascript:evn(-178.28,-20.65)"> <area shape="circle" coords="92,73,16" title="MAG 4.6 20-FEB-2015 22:37:50 YUNNAN, CHINA" onmouseover="tt(188)" href="javascript:evn(102.91,23.66)"> <area shape="circle" coords="536,370,16" title="MAG 4.7 20-FEB-2015 21:41:03 TONGA ISLANDS" onmouseover="tt(189)" href="javascript:evn(-174.73,-15.08)"> <area shape="circle" coords="370,310,16.092" title="MAG 4.9 20-FEB-2015 13:01:09 SOLOMON ISLANDS" onmouseover="tt(190)" href="javascript:evn(154.84,-7.15)"> <area shape="circle" coords="221,301,16" title="MAG 4.5 19-FEB-2015 23:59:57 BANDA SEA" onmouseover="tt(191)" href="javascript:evn(127.96,-6.02)"> <area shape="circle" coords="442,380,17.28" title="MAG 5.0 19-FEB-2015 19:56:33 VANUATU ISLANDS" onmouseover="tt(192)" href="javascript:evn(168.11,-16.36)"> <area shape="circle" coords="150,325,16" title="MAG 4.0 19-FEB-2015 17:21:25 SOUTH OF BALI, INDONESIA" onmouseover="tt(193)" href="javascript:evn(114.94,-9.20)"> <area shape="circle" coords="441,381,23.22" title="MAG 5.5 19-FEB-2015 14:32:41 VANUATU ISLANDS" onmouseover="tt(194)" href="javascript:evn(168.02,-16.53)"> <area shape="circle" coords="512,378,17.28" title="MAG 5.0 19-FEB-2015 14:08:49 FIJI ISLANDS REGION" onmouseover="tt(195)" href="javascript:evn(-179.01,-16.12)"> <area shape="circle" coords="442,382,18.468" title="MAG 5.1 19-FEB-2015 13:38:28 VANUATU ISLANDS" onmouseover="tt(196)" href="javascript:evn(168.17,-16.55)"> <area shape="circle" coords="442,381,33.912" title="MAG 6.4 19-FEB-2015 13:18:32 VANUATU ISLANDS" onmouseover="tt(197)" href="javascript:evn(168.12,-16.44)"> <area shape="circle" coords="77,293,16" title="MAG 4.6 19-FEB-2015 06:03:26 SOUTHERN SUMATERA, INDONESIA" onmouseover="tt(198)" href="javascript:evn(101.89,-4.99)"> <area shape="circle" coords="220,245,16" title="MAG 4.5 18-FEB-2015 20:20:13 HALMAHERA, INDONESIA" onmouseover="tt(199)" href="javascript:evn(127.87,1.17)"> <area shape="circle" coords="420,337,16.092" title="MAG 4.9 18-FEB-2015 18:50:47 SOLOMON ISLANDS" onmouseover="tt(200)" href="javascript:evn(163.98,-10.76)"> <area shape="circle" coords="421,338,16" title="MAG 4.7 18-FEB-2015 17:25:16 SANTA CRUZ ISLANDS REGION" onmouseover="tt(201)" href="javascript:evn(164.19,-10.83)"> <area shape="circle" coords="420,337,22.032" title="MAG 5.4 18-FEB-2015 17:09:42 SANTA CRUZ ISLANDS REGION" onmouseover="tt(202)" href="javascript:evn(164.07,-10.67)"> <area shape="circle" coords="419,338,18.468" title="MAG 5.1 18-FEB-2015 16:27:27 SOLOMON ISLANDS" onmouseover="tt(203)" href="javascript:evn(163.85,-10.82)"> <area shape="circle" coords="224,233,19.656" title="MAG 5.2 18-FEB-2015 14:31:53 HALMAHERA, INDONESIA" onmouseover="tt(204)" href="javascript:evn(128.55,2.73)"> <area shape="circle" coords="421,337,27.972" title="MAG 5.9 18-FEB-2015 09:32:26 SANTA CRUZ ISLANDS REGION" onmouseover="tt(205)" href="javascript:evn(164.15,-10.73)"> <area shape="circle" coords="394,323,22.032" title="MAG 5.4 18-FEB-2015 04:43:39 SOLOMON ISLANDS" onmouseover="tt(206)" href="javascript:evn(159.32,-8.89)"> <area shape="circle" coords="241,268,16" title="MAG 4.3 17-FEB-2015 19:55:06 IRIAN JAYA REGION, INDONESIA" onmouseover="tt(207)" href="javascript:evn(131.64,-1.80)"> <area shape="circle" coords="431,336,16" title="MAG 4.6 17-FEB-2015 19:48:56 SANTA CRUZ ISLANDS" onmouseover="tt(208)" href="javascript:evn(166.04,-10.62)"> <area shape="circle" coords="210,250,16" title="MAG 4.6 17-FEB-2015 03:23:27 NORTHERN MOLUCCA SEA" onmouseover="tt(209)" href="javascript:evn(126.11,0.58)"> <area shape="circle" coords="36,235,16" title="MAG 4.5 17-FEB-2015 02:48:29 OFF W COAST OF NORTHERN SUMATERA" onmouseover="tt(210)" href="javascript:evn(94.57,2.46)"> <area shape="circle" coords="210,250,18.468" title="MAG 5.1 17-FEB-2015 02:14:58 NORTHERN MOLUCCA SEA" onmouseover="tt(211)" href="javascript:evn(126.03,0.55)"> <area shape="circle" coords="257,280,16" title="MAG 4.6 16-FEB-2015 22:45:08 IRIAN JAYA REGION, INDONESIA" onmouseover="tt(212)" href="javascript:evn(134.57,-3.31)"> <area shape="circle" coords="308,89,16" title="MAG 4.3 16-FEB-2015 21:41:42 MARIANA ISLANDS REGION" onmouseover="tt(213)" href="javascript:evn(143.31,21.54)"> <area shape="circle" coords="436,369,16" title="MAG 4.8 16-FEB-2015 17:20:34 VANUATU ISLANDS" onmouseover="tt(214)" href="javascript:evn(166.97,-14.96)"> <area shape="circle" coords="307,89,16" title="MAG 4.5 16-FEB-2015 16:51:32 MARIANA ISLANDS REGION" onmouseover="tt(215)" href="javascript:evn(143.12,21.60)"> <area shape="circle" coords="214,238,16" title="MAG 4.5 16-FEB-2015 13:22:38 NORTHERN MOLUCCA SEA" onmouseover="tt(216)" href="javascript:evn(126.67,2.05)"> <area shape="circle" coords="362,299,16" title="MAG 4.6 16-FEB-2015 13:13:58 NEW IRELAND REGION, P.N.G." onmouseover="tt(217)" href="javascript:evn(153.44,-5.82)"> <area shape="circle" coords="164,311,17.28" title="MAG 5.0 16-FEB-2015 05:42:46 BALI SEA" onmouseover="tt(218)" href="javascript:evn(117.53,-7.33)"> <area shape="circle" coords="511,413,16" title="MAG 4.5 16-FEB-2015 03:45:22 FIJI ISLANDS REGION" onmouseover="tt(219)" href="javascript:evn(-179.02,-20.75)"> <area shape="circle" coords="235,302,16" title="MAG 4.4 16-FEB-2015 03:27:58 BANDA SEA" onmouseover="tt(220)" href="javascript:evn(130.52,-6.13)"> <area shape="circle" coords="436,369,16" title="MAG 4.7 16-FEB-2015 01:04:09 VANUATU ISLANDS" onmouseover="tt(221)" href="javascript:evn(167.00,-14.88)"> <area shape="circle" coords="314,148,16" title="MAG 4.2 15-FEB-2015 21:40:11 MARIANA ISLANDS" onmouseover="tt(222)" href="javascript:evn(144.74,13.68)"> <area shape="circle" coords="429,338,19.656" title="MAG 5.2 15-FEB-2015 21:08:43 SANTA CRUZ ISLANDS" onmouseover="tt(223)" href="javascript:evn(165.58,-10.91)"> <area shape="poly" coords="13,445,0,293,48,293,60,445,13,445" onmouseover="tt(2)" onmouseup="goo(2)" onclick="goo(2)"> <area shape="poly" coords="0,293,0,262,48,262,48,293,0,293" onmouseover="tt(3)" onmouseup="goo(3)" onclick="goo(3)"> <area shape="poly" coords="0,262,0,215,48,215,48,262,0,262" onmouseover="tt(4)" onmouseup="goo(4)" onclick="goo(4)"> <area shape="poly" coords="0,215,2,169,50,169,48,215,0,215" onmouseover="tt(5)" onmouseup="goo(5)" onclick="goo(5)"> <area shape="poly" coords="2,169,4,146,51,146,50,169,2,169" onmouseover="tt(6)" onmouseup="goo(6)" onclick="goo(6)"> <area shape="poly" coords="4,146,6,123,53,123,51,146,4,146" onmouseover="tt(7)" onmouseup="goo(7)" onclick="goo(7)"> <area shape="poly" coords="6,123,11,78,58,78,53,123,6,123" onmouseover="tt(8)" onmouseup="goo(8)" onclick="goo(8)"> <area shape="poly" coords="11,78,15,54,61,54,58,78,11,78" onmouseover="tt(9)" onmouseup="goo(9)" onclick="goo(9)"> <area shape="poly" coords="56,445,47,355,95,355,102,445,56,445" onmouseover="tt(10)" onmouseup="goo(10)" onclick="goo(10)"> <area shape="poly" coords="47,355,44,293,92,293,95,355,47,355" onmouseover="tt(11)" onmouseup="goo(11)" onclick="goo(11)"> <area shape="poly" coords="44,293,44,262,92,262,92,293,44,293" onmouseover="tt(12)" onmouseup="goo(12)" onclick="goo(12)"> <area shape="poly" coords="44,262,44,239,92,239,92,262,44,262" onmouseover="tt(13)" onmouseup="goo(13)" onclick="goo(13)"> <area shape="poly" coords="44,239,45,192,93,192,92,239,44,239" onmouseover="tt(14)" onmouseup="goo(14)" onclick="goo(14)"> <area shape="poly" coords="45,192,46,169,94,169,93,192,45,192" onmouseover="tt(15)" onmouseup="goo(15)" onclick="goo(15)"> <area shape="poly" coords="46,169,54,78,101,78,94,169,46,169" onmouseover="tt(16)" onmouseup="goo(16)" onclick="goo(16)"> <area shape="poly" coords="54,78,57,54,103,54,101,78,54,78" onmouseover="tt(17)" onmouseup="goo(17)" onclick="goo(17)"> <area shape="poly" coords="98,445,95,415,142,415,145,445,98,445" onmouseover="tt(18)" onmouseup="goo(18)" onclick="goo(18)"> <area shape="poly" coords="95,415,91,355,139,355,142,415,95,415" onmouseover="tt(19)" onmouseup="goo(19)" onclick="goo(19)"> <area shape="poly" coords="91,355,89,324,137,324,139,355,91,355" onmouseover="tt(20)" onmouseup="goo(20)" onclick="goo(20)"> <area shape="poly" coords="89,324,89,293,137,293,137,324,89,324" onmouseover="tt(21)" onmouseup="goo(21)" onclick="goo(21)"> <area shape="poly" coords="89,293,88,262,136,262,137,293,89,293" onmouseover="tt(22)" onmouseup="goo(22)" onclick="goo(22)"> <area shape="poly" coords="88,262,88,239,136,239,136,262,88,262" onmouseover="tt(23)" onmouseup="goo(23)" onclick="goo(23)"> <area shape="poly" coords="88,239,93,123,140,123,136,239,88,239" onmouseover="tt(24)" onmouseup="goo(24)" onclick="goo(24)"> <area shape="poly" coords="93,123,95,101,142,101,140,123,93,123" onmouseover="tt(25)" onmouseup="goo(25)" onclick="goo(25)"> <area shape="poly" coords="95,101,100,54,146,54,142,101,95,101" onmouseover="tt(26)" onmouseup="goo(26)" onclick="goo(26)"> <area shape="poly" coords="141,445,136,385,184,385,187,445,141,445" onmouseover="tt(27)" onmouseup="goo(27)" onclick="goo(27)"> <area shape="poly" coords="136,385,135,355,182,355,184,385,136,385" onmouseover="tt(28)" onmouseup="goo(28)" onclick="goo(28)"> <area shape="poly" coords="135,355,134,324,181,324,182,355,135,355" onmouseover="tt(29)" onmouseup="goo(29)" onclick="goo(29)"> <area shape="poly" coords="134,324,133,293,181,293,181,324,134,324" onmouseover="tt(30)" onmouseup="goo(30)" onclick="goo(30)"> <area shape="poly" coords="133,293,132,262,181,262,181,293,133,293" onmouseover="tt(31)" onmouseup="goo(31)" onclick="goo(31)"> <area shape="poly" coords="132,262,132,239,181,239,181,262,132,262" onmouseover="tt(32)" onmouseup="goo(32)" onclick="goo(32)"> <area shape="poly" coords="132,239,133,215,181,215,181,239,132,239" onmouseover="tt(33)" onmouseup="goo(33)" onclick="goo(33)"> <area shape="poly" coords="133,215,133,192,181,192,181,215,133,215" onmouseover="tt(34)" onmouseup="goo(34)" onclick="goo(34)"> <area shape="poly" coords="133,192,134,169,182,169,181,192,133,192" onmouseover="tt(35)" onmouseup="goo(35)" onclick="goo(35)"> <area shape="poly" coords="134,169,138,101,185,101,182,169,134,169" onmouseover="tt(36)" onmouseup="goo(36)" onclick="goo(36)"> <area shape="poly" coords="138,101,140,78,186,78,185,101,138,101" onmouseover="tt(37)" onmouseup="goo(37)" onclick="goo(37)"> <area shape="poly" coords="140,78,142,54,188,54,186,78,140,78" onmouseover="tt(38)" onmouseup="goo(38)" onclick="goo(38)"> <area shape="poly" coords="184,445,179,355,226,355,230,445,184,445" onmouseover="tt(39)" onmouseup="goo(39)" onclick="goo(39)"> <area shape="poly" coords="179,355,178,324,226,324,226,355,179,355" onmouseover="tt(40)" onmouseup="goo(40)" onclick="goo(40)"> <area shape="poly" coords="178,324,177,293,225,293,226,324,178,324" onmouseover="tt(41)" onmouseup="goo(41)" onclick="goo(41)"> <area shape="poly" coords="177,293,177,262,225,262,225,293,177,293" onmouseover="tt(42)" onmouseup="goo(42)" onclick="goo(42)"> <area shape="poly" coords="177,262,177,239,225,239,225,262,177,262" onmouseover="tt(43)" onmouseup="goo(43)" onclick="goo(43)"> <area shape="poly" coords="177,239,177,215,225,215,225,239,177,239" onmouseover="tt(44)" onmouseup="goo(44)" onclick="goo(44)"> <area shape="poly" coords="177,215,178,169,226,169,225,215,177,215" onmouseover="tt(45)" onmouseup="goo(45)" onclick="goo(45)"> <area shape="poly" coords="178,169,179,146,227,146,226,169,178,169" onmouseover="tt(46)" onmouseup="goo(46)" onclick="goo(46)"> <area shape="poly" coords="179,146,181,101,228,101,227,146,179,146" onmouseover="tt(47)" onmouseup="goo(47)" onclick="goo(47)"> <area shape="poly" coords="181,101,183,78,229,78,228,101,181,101" onmouseover="tt(48)" onmouseup="goo(48)" onclick="goo(48)"> <area shape="poly" coords="183,78,184,54,231,54,229,78,183,78" onmouseover="tt(49)" onmouseup="goo(49)" onclick="goo(49)"> <area shape="poly" coords="226,445,222,324,270,324,273,445,226,445" onmouseover="tt(50)" onmouseup="goo(50)" onclick="goo(50)"> <area shape="poly" coords="222,324,221,293,269,293,270,324,222,324" onmouseover="tt(51)" onmouseup="goo(51)" onclick="goo(51)"> <area shape="poly" coords="221,293,221,239,269,239,269,293,221,293" onmouseover="tt(52)" onmouseup="goo(52)" onclick="goo(52)"> <area shape="poly" coords="221,239,223,146,270,146,269,239,221,239" onmouseover="tt(53)" onmouseup="goo(53)" onclick="goo(53)"> <area shape="poly" coords="223,146,227,54,273,54,270,146,223,146" onmouseover="tt(54)" onmouseup="goo(54)" onclick="goo(54)"> <area shape="poly" coords="269,445,266,324,314,324,315,445,269,445" onmouseover="tt(55)" onmouseup="goo(55)" onclick="goo(55)"> <area shape="poly" coords="266,324,265,293,314,293,314,324,266,324" onmouseover="tt(56)" onmouseup="goo(56)" onclick="goo(56)"> <area shape="poly" coords="265,293,265,262,314,262,314,293,265,293" onmouseover="tt(57)" onmouseup="goo(57)" onclick="goo(57)"> <area shape="poly" coords="265,262,265,239,314,239,314,262,265,262" onmouseover="tt(58)" onmouseup="goo(58)" onclick="goo(58)"> <area shape="poly" coords="265,239,266,169,314,169,314,239,265,239" onmouseover="tt(59)" onmouseup="goo(59)" onclick="goo(59)"> <area shape="poly" coords="266,169,266,146,314,146,314,169,266,169" onmouseover="tt(60)" onmouseup="goo(60)" onclick="goo(60)"> <area shape="poly" coords="266,146,268,78,315,78,314,146,266,146" onmouseover="tt(61)" onmouseup="goo(61)" onclick="goo(61)"> <area shape="poly" coords="268,78,269,54,315,54,315,78,268,78" onmouseover="tt(62)" onmouseup="goo(62)" onclick="goo(62)"> <area shape="poly" coords="312,445,311,415,358,415,358,445,312,445" onmouseover="tt(63)" onmouseup="goo(63)" onclick="goo(63)"> <area shape="poly" coords="311,415,311,385,358,385,358,415,311,415" onmouseover="tt(64)" onmouseup="goo(64)" onclick="goo(64)"> <area shape="poly" coords="311,385,310,324,358,324,358,385,311,385" onmouseover="tt(65)" onmouseup="goo(65)" onclick="goo(65)"> <area shape="poly" coords="310,324,310,293,358,293,358,324,310,324" onmouseover="tt(66)" onmouseup="goo(66)" onclick="goo(66)"> <area shape="poly" coords="310,293,310,262,358,262,358,293,310,293" onmouseover="tt(67)" onmouseup="goo(67)" onclick="goo(67)"> <area shape="poly" coords="310,262,310,169,358,169,358,262,310,262" onmouseover="tt(68)" onmouseup="goo(68)" onclick="goo(68)"> <area shape="poly" coords="310,169,312,54,358,54,358,169,310,169" onmouseover="tt(69)" onmouseup="goo(69)" onclick="goo(69)"> <area shape="poly" coords="354,445,354,385,401,385,401,445,354,445" onmouseover="tt(70)" onmouseup="goo(70)" onclick="goo(70)"> <area shape="poly" coords="354,385,354,355,402,355,401,385,354,385" onmouseover="tt(71)" onmouseup="goo(71)" onclick="goo(71)"> <area shape="poly" coords="354,355,354,324,402,324,402,355,354,355" onmouseover="tt(72)" onmouseup="goo(72)" onclick="goo(72)"> <area shape="poly" coords="354,324,354,293,402,293,402,324,354,324" onmouseover="tt(73)" onmouseup="goo(73)" onclick="goo(73)"> <area shape="poly" coords="354,293,354,262,402,262,402,293,354,293" onmouseover="tt(74)" onmouseup="goo(74)" onclick="goo(74)"> <area shape="poly" coords="354,262,354,169,402,169,402,262,354,262" onmouseover="tt(75)" onmouseup="goo(75)" onclick="goo(75)"> <area shape="poly" coords="354,169,354,54,400,54,402,169,354,169" onmouseover="tt(76)" onmouseup="goo(76)" onclick="goo(76)"> <area shape="poly" coords="397,445,397,415,444,415,443,445,397,445" onmouseover="tt(77)" onmouseup="goo(77)" onclick="goo(77)"> <area shape="poly" coords="397,415,398,385,445,385,444,415,397,415" onmouseover="tt(78)" onmouseup="goo(78)" onclick="goo(78)"> <area shape="poly" coords="398,385,398,355,446,355,445,385,398,385" onmouseover="tt(79)" onmouseup="goo(79)" onclick="goo(79)"> <area shape="poly" coords="398,355,398,324,446,324,446,355,398,355" onmouseover="tt(80)" onmouseup="goo(80)" onclick="goo(80)"> <area shape="poly" coords="398,324,398,293,446,293,446,324,398,324" onmouseover="tt(81)" onmouseup="goo(81)" onclick="goo(81)"> <area shape="poly" coords="398,293,398,262,446,262,446,293,398,293" onmouseover="tt(82)" onmouseup="goo(82)" onclick="goo(82)"> <area shape="poly" coords="398,262,398,239,446,239,446,262,398,262" onmouseover="tt(83)" onmouseup="goo(83)" onclick="goo(83)"> <area shape="poly" coords="398,239,398,169,446,169,446,239,398,239" onmouseover="tt(84)" onmouseup="goo(84)" onclick="goo(84)"> <area shape="poly" coords="398,169,398,146,445,146,446,169,398,169" onmouseover="tt(85)" onmouseup="goo(85)" onclick="goo(85)"> <area shape="poly" coords="398,146,398,123,445,123,445,146,398,146" onmouseover="tt(86)" onmouseup="goo(86)" onclick="goo(86)"> <area shape="poly" coords="398,123,397,54,443,54,445,123,398,123" onmouseover="tt(87)" onmouseup="goo(87)" onclick="goo(87)"> <area shape="poly" coords="439,445,440,415,487,415,486,445,439,445" onmouseover="tt(88)" onmouseup="goo(88)" onclick="goo(88)"> <area shape="poly" coords="440,415,441,385,488,385,487,415,440,415" onmouseover="tt(89)" onmouseup="goo(89)" onclick="goo(89)"> <area shape="poly" coords="441,385,442,355,489,355,488,385,441,385" onmouseover="tt(90)" onmouseup="goo(90)" onclick="goo(90)"> <area shape="poly" coords="442,355,442,324,490,324,489,355,442,355" onmouseover="tt(91)" onmouseup="goo(91)" onclick="goo(91)"> <area shape="poly" coords="442,324,442,293,491,293,490,324,442,324" onmouseover="tt(92)" onmouseup="goo(92)" onclick="goo(92)"> <area shape="poly" coords="442,293,442,215,491,215,491,293,442,293" onmouseover="tt(93)" onmouseup="goo(93)" onclick="goo(93)"> <area shape="poly" coords="442,215,441,123,488,123,491,215,442,215" onmouseover="tt(94)" onmouseup="goo(94)" onclick="goo(94)"> <area shape="poly" coords="441,123,439,54,485,54,488,123,441,123" onmouseover="tt(95)" onmouseup="goo(95)" onclick="goo(95)"> <area shape="poly" coords="482,445,483,415,530,415,528,445,482,445" onmouseover="tt(96)" onmouseup="goo(96)" onclick="goo(96)"> <area shape="poly" coords="483,415,486,355,533,355,530,415,483,415" onmouseover="tt(97)" onmouseup="goo(97)" onclick="goo(97)"> <area shape="poly" coords="486,355,486,324,534,324,533,355,486,355" onmouseover="tt(98)" onmouseup="goo(98)" onclick="goo(98)"> <area shape="poly" coords="486,324,487,262,535,262,534,324,486,324" onmouseover="tt(99)" onmouseup="goo(99)" onclick="goo(99)"> <area shape="poly" coords="487,262,483,78,529,78,535,262,487,262" onmouseover="tt(100)" onmouseup="goo(100)" onclick="goo(100)"> <area shape="poly" coords="483,78,482,54,528,54,529,78,483,78" onmouseover="tt(101)" onmouseup="goo(101)" onclick="goo(101)"> <area shape="poly" coords="525,445,528,385,576,385,571,445,525,445" onmouseover="tt(102)" onmouseup="goo(102)" onclick="goo(102)"> <area shape="poly" coords="528,385,530,324,578,324,576,385,528,385" onmouseover="tt(103)" onmouseup="goo(103)" onclick="goo(103)"> <area shape="poly" coords="530,324,531,293,579,293,578,324,530,324" onmouseover="tt(104)" onmouseup="goo(104)" onclick="goo(104)"> <area shape="poly" coords="531,293,531,262,579,262,579,293,531,293" onmouseover="tt(105)" onmouseup="goo(105)" onclick="goo(105)"> <area shape="poly" coords="531,262,529,146,577,146,579,262,531,262" onmouseover="tt(106)" onmouseup="goo(106)" onclick="goo(106)"> <area shape="poly" coords="529,146,528,123,576,123,577,146,529,146" onmouseover="tt(107)" onmouseup="goo(107)" onclick="goo(107)"> <area shape="poly" coords="528,123,524,54,570,54,576,123,528,123" onmouseover="tt(108)" onmouseup="goo(108)" onclick="goo(108)"> <area shape="poly" coords="567,445,573,355,621,355,614,445,567,445" onmouseover="tt(109)" onmouseup="goo(109)" onclick="goo(109)"> <area shape="poly" coords="573,355,575,293,623,293,621,355,573,355" onmouseover="tt(110)" onmouseup="goo(110)" onclick="goo(110)"> <area shape="poly" coords="575,293,575,215,623,215,623,293,575,293" onmouseover="tt(111)" onmouseup="goo(111)" onclick="goo(111)"> <area shape="poly" coords="575,215,575,192,623,192,623,215,575,215" onmouseover="tt(112)" onmouseup="goo(112)" onclick="goo(112)"> <area shape="poly" coords="575,192,574,169,622,169,623,192,575,192" onmouseover="tt(113)" onmouseup="goo(113)" onclick="goo(113)"> <area shape="poly" coords="574,169,573,146,621,146,622,169,574,169" onmouseover="tt(114)" onmouseup="goo(114)" onclick="goo(114)"> <area shape="poly" coords="573,146,566,54,613,54,621,146,573,146" onmouseover="tt(115)" onmouseup="goo(115)" onclick="goo(115)"> <area shape="poly" coords="610,445,613,415,660,415,656,445,610,445" onmouseover="tt(116)" onmouseup="goo(116)" onclick="goo(116)"> <area shape="poly" coords="613,415,617,355,665,355,660,415,613,415" onmouseover="tt(117)" onmouseup="goo(117)" onclick="goo(117)"> <area shape="poly" coords="617,355,618,169,666,169,665,355,617,355" onmouseover="tt(118)" onmouseup="goo(118)" onclick="goo(118)"> <area shape="poly" coords="618,169,617,146,664,146,666,169,618,169" onmouseover="tt(119)" onmouseup="goo(119)" onclick="goo(119)"> <area shape="poly" coords="617,146,609,54,655,54,664,146,617,146" onmouseover="tt(120)" onmouseup="goo(120)" onclick="goo(120)"> <area shape="poly" coords="653,445,656,415,703,415,699,445,653,445" onmouseover="tt(121)" onmouseup="goo(121)" onclick="goo(121)"> <area shape="poly" coords="656,415,661,355,709,355,703,415,656,415" onmouseover="tt(122)" onmouseup="goo(122)" onclick="goo(122)"> <area shape="poly" coords="661,355,664,262,712,262,709,355,661,355" onmouseover="tt(123)" onmouseup="goo(123)" onclick="goo(123)"> <area shape="poly" coords="664,262,651,54,697,54,712,262,664,262" onmouseover="tt(124)" onmouseup="goo(124)" onclick="goo(124)"> <area shape="poly" coords="695,445,705,355,753,355,742,445,695,445" onmouseover="tt(125)" onmouseup="goo(125)" onclick="goo(125)"> <area shape="poly" coords="705,355,708,293,756,293,753,355,705,355" onmouseover="tt(126)" onmouseup="goo(126)" onclick="goo(126)"> <area shape="poly" coords="708,293,708,262,757,262,756,293,708,293" onmouseover="tt(127)" onmouseup="goo(127)" onclick="goo(127)"> <area shape="poly" coords="708,262,694,54,740,54,757,262,708,262" onmouseover="tt(128)" onmouseup="goo(128)" onclick="goo(128)"> </map> 
+  <script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ ga('create', 'UA-1860730-1', 'auto');
+ ga('send', 'pageview');
+
+</script>   
+ </body>
+</html>

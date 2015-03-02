@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>         <html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>         <html class="ie ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en">
+ <!--<![endif]-->
+ <head> 
+  <title>Did You Feel It?</title> 
+  <!-- 150302,121017,backup --> 
+  <script type="text/javascript" src="/template/js/jquery-1.7.1.min.js"></script> 
+  <script type="text/javascript" src="/template/js/master_20120330.js"></script> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+  <meta name="keywords" content="aftershock,earthquake,epicenter,fault,foreshock,geologist,geophysics,hazard,hypocenter,intensity,intensity scale,magnitude,magnitude scale,mercalli,plate,richter,seismic,seismicity,seismogram,seismograph,seismologist,seismology,subduction,tectonics,tsunami,quake,sismologico,sismologia"> 
+  <meta name="google-site-verification" content="5Bw3LIEvwx8C0JA5hWKosAweW7kXIw0LS5OR438MOqU"> 
+  <meta name="description" content="USGS Earthquake Hazards Program, responsible for monitoring, reporting, and researching earthquakes and earthquake hazards"> 
+  <!--[if lt IE 7]>
+<link rel="stylesheet" href="/template/css/ietextonly.css" type="text/css" media="all" />
+<![endif]--> 
+  <!--[if gte IE 7]><!--> 
+  <link rel="stylesheet" type="text/css" media="all" href="/template/css/reset.css"> 
+  <link rel="stylesheet" type="text/css" media="all" href="/template/css/master.css"> 
+  <!--<![endif]--> 
+  <link rel="stylesheet" media="print" type="text/css" href="/template/css/print.css"> 
+  <!--[if gte IE 7]><!-->
+  <link rel="stylesheet" type="text/css" href="/template/widgets/ui/ui.css">
+  <link rel="stylesheet" type="text/css" href="/css/mmi.css">
+  <link rel="stylesheet" type="text/css" href="/earthquakes/dyfi/css/ciim.home.css">
+  <style type="text/css">#mapwrapper{width:800px;margin-bottom:1em;position:relative;}#smallmaps{margin:0;padding:0;}#smallmaps ul{list-style:none;margin:0;padding:0;}#smallmaps li{width:116px;height:116px;position:absolute;margin:0;padding:0;border:1px solid #CCCCCC;}#smallmaps li .mask{position:absolute;top:0;left:0;width:116px;height:116px;z-index:1000;cursor:pointer;opacity:0.5;filter:alpha(opacity=50);}#smallmaps li img{width:116px;height:116px;}#smallmaps li .mask:hover{color:#FF0000}#smallmaps li .mask strong{display:block;margin:50px auto 0;background-color:#FFFFFF;-moz-border-radius:3px;padding:4px;width:100px;text-align:center;font-size:.9em;}.btn_link{-webkit-border-top-left-radius:5px;-webkit-border-top-right-radius:5px;-webkit-border-bottom-left-radius:5px;-webkit-border-bottom-right-radius:5px;-moz-border-radius:5px;background:transparent url('images/bkgrd_blu.png') repeat-x;display:block;width:15em;line-height:2;height:30px;margin:0 0 .25em 0;padding:0;text-align:center;text-decoration:none;color:#FFFFFF;background-color:#006699;font-weight:bold;font-size:15px;}.btn_link:visited{color:white;}.btn_link:active{color:white;}.btn_link:hover,.btn_link:visited:hover{color:white;}#unknown_event{background:transparent url('images/bkgrd_org.png') repeat-x;background-color:#FF9900;color:black;font-size:1.17em;}#unknown_event:active{color:black;}#unknown_event:visited{color:black;}#unknown_event:hover{color:black;}#event_list_1{width:715px;}#event_list_1 tr.odd{background-color:#E9E9E9;}#event_list_1 caption{text-align:left;color:#333333;font-size:1.3em;}#event_list_1 th,#event_list_1 td{font-size:.95em;color:#333333;text-align:center;vertical-align:middle;padding:.25em .5em;line-height:1.5;}#event_list_1 th.header{text-decoration:underline;cursor:pointer;}#event_list_1 td.intensity span{border:1px solid #333333;display:block;}#event_list_1 .location{text-align:left;}#event_list_1 .time{width:15em;}#event_list_1 .location span,#event_list_1 .time span{display:block;font-size:.7em;}#event_list_1 td.time{text-align:right;}.btn_link{-webkit-border-top-left-radius:5px;-webkit-border-top-right-radius:5px;-webkit-border-bottom-left-radius:5px;-webkit-border-bottom-right-radius:5px;-moz-border-radius:5px;background:transparent url('images/bkgrd_blu.png') repeat-x;display:block;width:15em;line-height:2;height:30px;margin:0 0 .25em 0;padding:0;text-align:center;text-decoration:none;color:#FFFFFF;background-color:#006699;font-weight:bold;font-size:15px;}#event_list_7{width:715px;}#event_list_7 tr.odd{background-color:#E9E9E9;}#event_list_7 caption{text-align:left;color:#333333;font-size:1.3em;}#event_list_7 th,#event_list_7 td{font-size:.95em;color:#333333;text-align:center;vertical-align:middle;padding:.25em .5em;line-height:1.5;}#event_list_7 th.header{text-decoration:underline;cursor:pointer;}#event_list_7 td.intensity span{border:1px solid #333333;display:block;}#event_list_7 .location{text-align:left;}#event_list_7 .time{width:15em;}#event_list_7 .location span,#event_list_7 .time span{display:block;font-size:.7em;}#event_list_7 td.time{text-align:right;}.btn_link{-webkit-border-top-left-radius:5px;-webkit-border-top-right-radius:5px;-webkit-border-bottom-left-radius:5px;-webkit-border-bottom-right-radius:5px;-moz-border-radius:5px;background:transparent url('images/bkgrd_blu.png') repeat-x;display:block;width:15em;line-height:2;height:30px;margin:0 0 .25em 0;padding:0;text-align:center;text-decoration:none;color:#FFFFFF;background-color:#006699;font-weight:bold;font-size:15px;}</style>
+  <!--<![endif]-->
+ </head> 
+ <body> 
+  <div id="header">
+   <div id="usgsbanner">
+    <div> 
+     <a href="http://www.usgs.gov/"><img src="/template/images/usgs.jpg" alt="USGS - science for a changing world" title="U.S. Geological Survey Home Page"></a> 
+     <ul> 
+      <li><a href="http://www.usgs.gov/">USGS Home</a></li> 
+      <li><a href="http://answers.usgs.gov/cgi-bin/gsanswers?tmplt=2/">Contact USGS</a></li> 
+      <li><a href="http://search.usgs.gov/">Search USGS</a></li> 
+     </ul> 
+    </div>
+   </div> 
+   <div id="usgstitle">
+    <div> 
+     <p><a href="/">Earthquake Hazards Program</a></p> 
+     <ul id="utilities"> 
+      <li class="invisiblelink"><a href="#startcontent" class="invisiblelink">Skip to main content</a></li> 
+      <li><a href="/">Home</a></li>
+      <li><a href="/aboutus/">About Us</a></li>
+      <li><a href="/contactus/regional.php">Contact Us</a></li> 
+      <li id="search"> 
+       <form method="get" action="http://www.google.com/search" id="header-search-form" target="_blank" class="search-form"> 
+        <span class="search-wrap"> <input type="text" name="q" size="10" maxlength="50" title="Search Text" class="search-text"> <input type="image" src="/template/images/sbox_button.gif" alt="Search" class="search-button"> </span> 
+        <input type="hidden" name="q" value="site:earthquake.usgs.gov" class="search-siteonly"> 
+       </form> </li> 
+     </ul> 
+    </div> 
+   </div> 
+  </div> 
+  <hr> 
+  <div id="sitenav">
+   <ul>
+    <li><strong><a href="/earthquakes/?source=sitenav">Earthquakes</a></strong></li>
+    <li><a href="/hazards/?source=sitenav">Hazards</a></li>
+    <li><a href="/data/?source=sitenav">Data<span style="font-size: .85em;"> &amp; </span>Products</a></li>
+    <li><a href="/learn/?source=sitenav">Learn</a></li>
+    <li><a href="/monitoring/?source=sitenav">Monitoring</a></li>
+    <li><a href="/research/?source=sitenav">Research</a></li>
+   </ul> 
+  </div> 
+  <hr> 
+  <div id="content"> 
+   <a id="startcontent"></a> 
+   <div id="main"> 
+    <h1>Did You Feel It?</h1> 
+    <!--<a title="Submit a Felt Report for an Event Not Shown Below"
+		id="unknown_event" href="form.php?enabled=false" class="btn_link"
+		>Report Unknown Event</a>
+
+	<noscript>
+
+		<ul style="list-style: none;">			<li><a href="form.php?region=ca&amp;scripts=disabled&amp;evt_location=Unlisted+Event+in+California" target="_blank">Report Unlisted Event in California</a></li>
+			<li><a href="form.php?region=imw&amp;scripts=disabled&amp;evt_location=Unlisted+Event+in+the+Intermountain+West" target="_blank">Report Unlisted Event in the Intermountain West</a></li>
+			<li><a href="form.php?region=pnw&amp;scripts=disabled&amp;evt_location=Unlisted+Event+in+the+Pacific+Northwest" target="_blank">Report Unlisted Event in the Pacific Northwest</a></li>
+			<li><a href="form.php?region=ak&amp;scripts=disabled&amp;evt_location=Unlisted+Event+in+Alaska" target="_blank">Report Unlisted Event in Alaska</a></li>
+			<li><a href="form.php?region=hi&amp;scripts=disabled&amp;evt_location=Unlisted+Event+in+Hawaii" target="_blank">Report Unlisted Event in Hawaii</a></li>
+			<li><a href="form.php?region=cus&amp;scripts=disabled&amp;evt_location=Unlisted+Event+in+the+Central+U.S." target="_blank">Report Unlisted Event in the Central U.S.</a></li>
+			<li><a href="form.php?region=ne&amp;scripts=disabled&amp;evt_location=Unlisted+Event+in+the+Northeast" target="_blank">Report Unlisted Event in the Northeast</a></li>
+			<li><a href="form.php?region=prt&amp;scripts=disabled&amp;evt_location=Unlisted+Event+in+Puerto+Rico+or+Other+Territories" target="_blank">Report Unlisted Event in Puerto Rico or Other Territories</a></li>
+			<li><a href="form.php?region=global&amp;scripts=disabled&amp;evt_location=Unlisted+Event+outside+the+United+States" target="_blank">Report Unlisted Event outside the United States</a></li>
+</ul>
+	</noscript>--> 
+    <div id="mapwrapper" style="position:relative;"> 
+     <div id="mapdiv"></div> 
+     <div id="smallmaps"></div> 
+    </div> 
+    <script type="text/javascript"> // <![CDATA[
+		var numerics = {'I':'1','II':'2','III':'3','IV':'4','V':'5','VI':'6',
+				'VII':'7','VIII':'8','IX':'9','X':'10'
+			};
+		var romans = {0:'I',1:'I',2:'II',3:'III',4:'IV',5:'V',6:'VI',7:'VII',
+				8:'VIII',9:'IX',10:'X'
+			};
+
+		var iconWidth = 27;
+		var iconHeight = 19;
+
+		var events = Array();
+		var icon_library = Object();
+
+		
+		events[events.length] = {"network":"us","code":"c000tubw","source":"us","magnitude":"2.7","latitude":"36.221","longitude":"-97.653","depth":"5","event_time":"2015-03-02 11:46:27","local_time":"2015-03-02 05:46:27","timezone":"Local","location":"OKLAHOMA","max_intensity":"2.00","num_responses":"1"};
+		events[events.length] = {"network":"us","code":"c000tubr","source":"us","magnitude":"4.8","latitude":"4.813","longitude":"96.184","depth":"20","event_time":"2015-03-02 10:33:16","local_time":"2015-03-02 17:33:16","timezone":"Local","location":"NORTHERN SUMATRA, INDONESIA","max_intensity":"1.00","num_responses":"0"};
+		events[events.length] = {"network":"us","code":"c000tuba","source":"us","magnitude":"4.6","latitude":"31.374","longitude":"140.229","depth":"10","event_time":"2015-03-02 08:38:59","local_time":"2015-03-02 17:38:59","timezone":"Local","location":"IZU ISLANDS, JAPAN REGION","max_intensity":"1.00","num_responses":"0"};
+		events[events.length] = {"network":"us","code":"c000tubb","source":"us","magnitude":"4.4","latitude":"31.719","longitude":"139.647","depth":"10","event_time":"2015-03-02 08:37:25","local_time":"2015-03-02 17:37:25","timezone":"Local","location":"IZU ISLANDS, JAPAN REGION","max_intensity":"1.00","num_responses":"0"};
+		events[events.length] = {"network":"ak","code":"11520874","source":"us","magnitude":"2.9","latitude":"59.528","longitude":"-153.371","depth":"97","event_time":"2015-03-02 07:05:41","local_time":"2015-03-01 22:05:41","timezone":"Local","location":"SOUTHERN ALASKA","max_intensity":"1.00","num_responses":"0"};
+		events[events.length] = {"network":"pr","code":"15061002","source":"us","magnitude":"2.8","latitude":"19.119","longitude":"-66.391","depth":"25","event_time":"2015-03-02 06:51:07","local_time":"2015-03-02 02:51:07","timezone":"Local","location":"PUERTO RICO REGION","max_intensity":"1.00","num_responses":"0"};
+		events[events.length] = {"network":"us","code":"c000tuaz","source":"us","magnitude":"4.6","latitude":"-20.565","longitude":"-175.123","depth":"163","event_time":"2015-03-02 06:43:43","local_time":"2015-03-02 19:43:43","timezone":"Local","location":"TONGA","max_intensity":"1.00","num_responses":"0"};
+		events[events.length] = {"network":"pr","code":"15061001","source":"us","magnitude":"2.9","latitude":"18.702","longitude":"-65.061","depth":"66","event_time":"2015-03-02 06:09:11","local_time":"2015-03-02 02:09:11","timezone":"Local","location":"VIRGIN ISLANDS REGION","max_intensity":"1.00","num_responses":"0"};
+		events[events.length] = {"network":"us","code":"c000tuaw","source":"us","magnitude":"4.4","latitude":"35.677","longitude":"48.981","depth":"10","event_time":"2015-03-02 06:08:43","local_time":"2015-03-02 09:38:43","timezone":"Local","location":"WESTERN IRAN","max_intensity":"1.00","num_responses":"0"};
+		events[events.length] = {"network":"ak","code":"11520857","source":"us","magnitude":"3.6","latitude":"61.221","longitude":"-146.808","depth":"16","event_time":"2015-03-02 06:05:12","local_time":"2015-03-01 21:05:12","timezone":"Local","location":"SOUTHERN ALASKA","max_intensity":"2.20","num_responses":"1"};
+		events[events.length] = {"network":"nc","code":"72403985","source":"us","magnitude":"2.3","latitude":"38.794","longitude":"-122.778","depth":"0","event_time":"2015-03-02 05:54:05","local_time":"2015-03-01 21:54:05","timezone":"Local","location":"NORTHERN CALIFORNIA","max_intensity":"1.00","num_responses":"0"};
+		events[events.length] = {"network":"us","code":"c000tuar","source":"us","magnitude":"4.7","latitude":"-27.936","longitude":"-66.477","depth":"163","event_time":"2015-03-02 05:39:50","local_time":"2015-03-02 02:39:50","timezone":"Local","location":"CATAMARCA, ARGENTINA","max_intensity":"1.00","num_responses":"0"};
+		events[events.length] = {"network":"us","code":"c000tu7f","source":"us","magnitude":"2.6","latitude":"35.349","longitude":"-97.965","depth":"5","event_time":"2015-03-01 16:49:17","local_time":"2015-03-01 10:49:17","timezone":"Local","location":"OKLAHOMA","max_intensity":"3.60","num_responses":"6"};
+		events[events.length] = {"network":"nc","code":"72403700","source":"us","magnitude":"2.5","latitude":"38.798","longitude":"-122.793","depth":"0","event_time":"2015-03-01 15:53:52","local_time":"2015-03-01 07:53:52","timezone":"Local","location":"NORTHERN CALIFORNIA","max_intensity":"2.70","num_responses":"9"};
+		events[events.length] = {"network":"us","code":"c000tu6s","source":"us","magnitude":"5.0","latitude":"-17.218","longitude":"-71.926","depth":"57","event_time":"2015-03-01 15:08:28","local_time":"2015-03-01 10:08:28","timezone":"Local","location":"NEAR THE COAST OF SOUTHERN PERU","max_intensity":"3.40","num_responses":"7"};
+		events[events.length] = {"network":"us","code":"c000tu6h","source":"us","magnitude":"2.8","latitude":"35.372","longitude":"-97.983","depth":"3","event_time":"2015-03-01 12:28:07","local_time":"2015-03-01 06:28:07","timezone":"Local","location":"OKLAHOMA","max_intensity":"3.40","num_responses":"2"};
+
+		events[events.length] = {"network":"us","code":"c000tu60","source":"us","magnitude":"3.0","latitude":"35.955","longitude":"-96.784","depth":"3","event_time":"2015-03-01 08:58:54","local_time":"2015-03-01 02:58:54","timezone":"Local","location":"OKLAHOMA","max_intensity":"2.90","num_responses":"6"};
+		events[events.length] = {"network":"nc","code":"72403560","source":"us","magnitude":"2.1","latitude":"38.358","longitude":"-122.396","depth":"8","event_time":"2015-03-01 06:53:30","local_time":"2015-02-28 22:53:30","timezone":"Local","location":"NORTHERN CALIFORNIA","max_intensity":"2.50","num_responses":"7"};
+		events[events.length] = {"network":"us","code":"c000tu4j","source":"us","magnitude":"3.5","latitude":"37.091","longitude":"-97.853","depth":"7","event_time":"2015-03-01 02:47:20","local_time":"2015-02-28 20:47:20","timezone":"Local","location":"KANSAS","max_intensity":"5.10","num_responses":"13"};
+		events[events.length] = {"network":"nc","code":"72403460","source":"us","magnitude":"2.9","latitude":"39.146","longitude":"-123.517","depth":"5","event_time":"2015-03-01 01:47:03","local_time":"2015-02-28 17:47:03","timezone":"Local","location":"NORTHERN CALIFORNIA","max_intensity":"2.90","num_responses":"15"};
+		events[events.length] = {"network":"us","code":"c000tu3p","source":"us","magnitude":"3.1","latitude":"35.966","longitude":"-96.807","depth":"2","event_time":"2015-03-01 00:05:12","local_time":"2015-02-28 18:05:12","timezone":"Local","location":"OKLAHOMA","max_intensity":"3.60","num_responses":"21"};
+		events[events.length] = {"network":"nm","code":"60070727","source":"us","magnitude":"3.1","latitude":"36.533","longitude":"-89.639","depth":"13","event_time":"2015-02-28 23:08:44","local_time":"2015-02-28 17:08:44","timezone":"Local","location":"SOUTHEASTERN MISSOURI","max_intensity":"3.40","num_responses":"36"};
+		events[events.length] = {"network":"us","code":"c000tu1q","source":"us","magnitude":"3.1","latitude":"36.140","longitude":"-97.291","depth":"5","event_time":"2015-02-28 20:01:04","local_time":"2015-02-28 14:01:04","timezone":"Local","location":"OKLAHOMA","max_intensity":"2.80","num_responses":"8"};
+		events[events.length] = {"network":"us","code":"c000ttya","source":"us","magnitude":"4.7","latitude":"35.627","longitude":"140.722","depth":"47","event_time":"2015-02-28 08:40:40","local_time":"2015-02-28 17:40:40","timezone":"Local","location":"NEAR THE EAST COAST OF HONSHU, JAPAN","max_intensity":"3.20","num_responses":"9"};
+		events[events.length] = {"network":"us","code":"c000tty8","source":"us","magnitude":"4.2","latitude":"43.640","longitude":"18.423","depth":"4","event_time":"2015-02-28 08:24:24","local_time":"2015-02-28 09:24:24","timezone":"Local","location":"BOSNIA AND HERZEGOVINA","max_intensity":"3.20","num_responses":"7"};
+		events[events.length] = {"network":"us","code":"c000ttzb","source":"us","magnitude":"3.9","latitude":"-12.056","longitude":"-76.558","depth":"29","event_time":"2015-02-28 04:43:03","local_time":"2015-02-27 23:43:03","timezone":"Local","location":"NEAR THE COAST OF CENTRAL PERU","max_intensity":"3.80","num_responses":"29"};
+		events[events.length] = {"network":"us","code":"c000ttx8","source":"us","magnitude":"4.7","latitude":"-36.822","longitude":"-72.993","depth":"31","event_time":"2015-02-28 03:45:33","local_time":"2015-02-28 00:45:33","timezone":"Local","location":"BIO-BIO, CHILE","max_intensity":"4.10","num_responses":"35"};
+		events[events.length] = {"network":"us","code":"c000ttvt","source":"us","magnitude":"4.8","latitude":"14.052","longitude":"-90.860","depth":"94","event_time":"2015-02-27 23:46:44","local_time":"2015-02-27 17:46:44","timezone":"Local","location":"GUATEMALA","max_intensity":"4.10","num_responses":"25"};
+		events[events.length] = {"network":"us","code":"c000ttvd","source":"us","magnitude":"3.1","latitude":"32.940","longitude":"-88.016","depth":"4","event_time":"2015-02-27 22:40:49","local_time":"2015-02-27 16:40:49","timezone":"Local","location":"ALABAMA","max_intensity":"2.20","num_responses":"6"};
+		events[events.length] = {"network":"us","code":"c000ttu2","source":"us","magnitude":"3.3","latitude":"36.266","longitude":"-97.381","depth":"6","event_time":"2015-02-27 20:23:10","local_time":"2015-02-27 14:23:10","timezone":"Local","location":"OKLAHOMA","max_intensity":"2.70","num_responses":"7"};
+		events[events.length] = {"network":"us","code":"c000ttkd","source":"us","magnitude":"7.0","latitude":"-7.288","longitude":"122.532","depth":"552","event_time":"2015-02-27 13:45:05","local_time":"2015-02-27 21:45:05","timezone":"Local","location":"FLORES SEA","max_intensity":"3.70","num_responses":"17"};
+		events[events.length] = {"network":"us","code":"c000ttju","source":"us","magnitude":"3.1","latitude":"32.825","longitude":"-96.893","depth":"5","event_time":"2015-02-27 12:18:21","local_time":"2015-02-27 06:18:21","timezone":"Local","location":"NORTHERN TEXAS","max_intensity":"4.10","num_responses":"214"};
+		events[events.length] = {"network":"ci","code":"37104391","source":"us","magnitude":"3.4","latitude":"32.220","longitude":"-117.691","depth":"20","event_time":"2015-02-27 00:43:45","local_time":"2015-02-26 16:43:45","timezone":"Local","location":"OFFSHORE BAJA CALIFORNIA, MEXICO","max_intensity":"3.10","num_responses":"10"};
+		events[events.length] = {"network":"us","code":"c000ttgc","source":"us","magnitude":"5.4","latitude":"34.658","longitude":"73.302","depth":"28","event_time":"2015-02-26 21:59:05","local_time":"2015-02-27 02:59:05","timezone":"Local","location":"PAKISTAN","max_intensity":"4.70","num_responses":"39"};
+		events[events.length] = {"network":"se","code":"60004908","source":"us","magnitude":"2.5","latitude":"37.709","longitude":"-77.868","depth":"7","event_time":"2015-02-26 08:48:28","local_time":"2015-02-26 03:48:28","timezone":"Local","location":"VIRGINIA","max_intensity":"3.80","num_responses":"37"};
+		events[events.length] = {"network":"ci","code":"37103367","source":"us","magnitude":"3.7","latitude":"33.938","longitude":"-116.029","depth":"3","event_time":"2015-02-26 01:18:37","local_time":"2015-02-25 17:18:37","timezone":"Local","location":"SOUTHERN CALIFORNIA","max_intensity":"3.30","num_responses":"50"};
+		events[events.length] = {"network":"us","code":"c000ttaf","source":"us","magnitude":"5.0","latitude":"38.497","longitude":"141.971","depth":"56","event_time":"2015-02-26 01:11:25","local_time":"2015-02-26 10:11:25","timezone":"Local","location":"NEAR THE EAST COAST OF HONSHU, JAPAN","max_intensity":"3.40","num_responses":"8"};
+		events[events.length] = {"network":"us","code":"c000tt9q","source":"us","magnitude":"3.7","latitude":"49.000","longitude":"-2.400","depth":"2","event_time":"2015-02-25 22:55:07","local_time":"2015-02-25 23:55:07","timezone":"Local","location":"CHANNEL ISLANDS REGION, UNITED KINGDOM","max_intensity":"3.10","num_responses":"10"};
+		events[events.length] = {"network":"us","code":"c000tszi","source":"us","magnitude":"3.2","latitude":"36.855","longitude":"-98.265","depth":"5","event_time":"2015-02-25 02:08:22","local_time":"2015-02-24 20:08:22","timezone":"Local","location":"OKLAHOMA","max_intensity":"3.10","num_responses":"5"};
+		events[events.length] = {"network":"nc","code":"72401005","source":"us","magnitude":"3.0","latitude":"40.843","longitude":"-124.830","depth":"21","event_time":"2015-02-24 23:28:02","local_time":"2015-02-24 15:28:02","timezone":"Local","location":"OFFSHORE NORTHERN CALIFORNIA","max_intensity":"2.00","num_responses":"6"};
+		events[events.length] = {"network":"ci","code":"37101519","source":"us","magnitude":"2.5","latitude":"34.151","longitude":"-117.576","depth":"11","event_time":"2015-02-24 18:02:39","local_time":"2015-02-24 10:02:39","timezone":"Local","location":"GREATER LOS ANGELES AREA, CALIFORNIA","max_intensity":"3.10","num_responses":"5"};
+		events[events.length] = {"network":"ld","code":"60087201","source":"us","magnitude":"2.1","latitude":"41.734","longitude":"-71.884","depth":"2","event_time":"2015-02-24 14:18:27","local_time":"2015-02-24 09:18:27","timezone":"Local","location":"SOUTHERN NEW ENGLAND","max_intensity":"2.70","num_responses":"9"};
+		events[events.length] = {"network":"us","code":"c000tslh","source":"us","magnitude":"4.9","latitude":"-32.628","longitude":"-71.706","depth":"60","event_time":"2015-02-24 05:14:02","local_time":"2015-02-24 02:14:02","timezone":"Local","location":"OFFSHORE VALPARAISO, CHILE","max_intensity":"3.20","num_responses":"10"};
+		events[events.length] = {"network":"us","code":"c000tsl8","source":"us","magnitude":"4.4","latitude":"-27.763","longitude":"-71.635","depth":"48","event_time":"2015-02-24 04:28:51","local_time":"2015-02-24 01:28:51","timezone":"Local","location":"OFFSHORE ATACAMA, CHILE","max_intensity":"3.80","num_responses":"5"};
+		events[events.length] = {"network":"us","code":"c000tsku","source":"us","magnitude":"2.3","latitude":"35.957","longitude":"-96.780","depth":"3","event_time":"2015-02-24 02:53:39","local_time":"2015-02-23 20:53:39","timezone":"Local","location":"OKLAHOMA","max_intensity":"3.20","num_responses":"6"};
+		events[events.length] = {"network":"us","code":"c000tsk2","source":"us","magnitude":"4.5","latitude":"16.279","longitude":"120.683","depth":"52","event_time":"2015-02-23 23:14:12","local_time":"2015-02-24 07:14:12","timezone":"Local","location":"LUZON, PHILIPPINES","max_intensity":"4.10","num_responses":"9"};
+		events[events.length] = {"network":"us","code":"c000tsgt","source":"us","magnitude":"5.0","latitude":"39.057","longitude":"-2.665","depth":"12","event_time":"2015-02-23 16:16:30","local_time":"2015-02-23 17:16:30","timezone":"Local","location":"SPAIN","max_intensity":"5.40","num_responses":"199"};
+		events[events.length] = {"network":"us","code":"c000tsf4","source":"us","magnitude":"4.6","latitude":"35.486","longitude":"140.307","depth":"35","event_time":"2015-02-23 08:00:08","local_time":"2015-02-23 17:00:08","timezone":"Local","location":"NEAR THE EAST COAST OF HONSHU, JAPAN","max_intensity":"3.10","num_responses":"28"};
+
+		/**
+		 * Method to add a google map to the page.
+		 */
+		initHomePage = function(_event)  {
+			$.tablesorter.addParser({
+				id: 'mmi',
+				is: function(s) {
+					return false;
+				},
+				format: function(s) {
+					return numerics[s];
+				},
+				type: 'numeric'
+			});
+
+			$.tablesorter.addParser({
+				id: 'utc_date',
+				is: function(s) {
+					return false;
+				},
+				format: function(s) {
+					var content = s.substring(0,19);
+					content = content.replace(/\D/g,'');
+					content = parseInt(content);
+					return content;
+				},
+				type: 'numeric'
+			});
+
+			$("#event_list_1").tablesorter({
+					widgets: ['zebra'],
+					headers: {
+						0: {sorter: 'mmi'},
+						3: {sorter: 'utc_date'}
+					}
+				});
+			$("#event_list_7").tablesorter({
+					widgets: ['zebra'],
+					headers: {
+						0: {sorter: 'mmi'},
+						3: {sorter: 'utc_date'}
+					}
+				});
+
+			/*$('#unknown_event').attr('href', 'javascript:void(null);').click(
+				function(_event) {
+					var ciim_form = window.open(
+						'form.php?scripts=enabled',
+						'ciim_form',
+						'width=500px,height=350px,resizable,scrollbars'
+					);
+					ciim_form.focus();
+
+				}
+			);*/
+
+			if(GBrowserIsCompatible()) {
+				var mapdiv = $('#mapdiv');
+
+				mapdiv.css(
+						{
+							margin:'0',
+							width:'550px',
+							height:'240px',
+							border:'1px solid #CCCCCC'
+						}
+					);
+
+				var map = new GMap2(document.getElementById('mapdiv'));
+				//map.setCenter(new GLatLng(15.0, 0.0), 1);
+				map.setCenter(new GLatLng(40, -95.0), 3);
+				map.addControl(new GSmallMapControl());
+
+				map.setMapType(G_PHYSICAL_MAP);
+
+				map.plotEvents = function() {
+					for(var i = 0; i < events.length; ++i) {
+						var event = events[i];
+						var latlng = new GLatLng(
+								event['latitude'],event['longitude']);
+						map.addOverlay(createMarker(latlng, event));
+					}
+				};
+
+				map.plotEvents();
+				$("#mapdiv img[width='27']").each(function() {
+					$(this).mouseover(NTshow);
+					$(this).mouseout(NThide);
+					this.nicetitle = this.title;
+					this.removeAttribute('title');
+					this.removeAttribute('alt');
+				});
+
+				// Save away for later use
+				window.map = map;
+
+				$('#smallmaps').append(	
+			'<ul>' +
+			'<li style="right:126px;top:0;">' +
+				'<img src="images/world.png" alt="Jump to World"/>' +
+				'<div  ' +
+					'class="mask worldMap"><strong>Jump to World<'+'/strong><'+'/div>' +
+			'<'+'/li>' +
+			'<li style="right:0;top:0;">' +
+				'<img src="images/us.png" alt="Jump to US"/>' +
+				'<div ' +
+					'class="mask usMap"><strong>Jump to US<'+'/strong><'+'/div>' +
+			'<'+'/li>' +
+			'<li style="right:126px;bottom:0;">' +
+				'<img src="images/ak.png" alt="Jump to Alaska"/>' +
+				'<div  ' +
+					'class="mask alaskaMap"><strong>Jump To Alaska<'+'/strong><'+'/div>' +
+			'<'+'/li>' +
+			'<li style="right:0;bottom:0;">' +
+				'<img src="images/hi.png" alt="Jump to Hawaii"/>' +
+				'<div  ' +
+					'class="mask hawaiiMap"><strong>Jump to Hawaii<'+'/strong><'+'/div>' +
+			'<'+'/li>' +
+			'<'+'/ul>'
+				);
+				
+			$('.worldMap').click(function(){
+				map.setCenter(new GLatLng(15.0, 0.0), 1);
+			});
+		
+			$('.usMap').click(function(){
+				map.setCenter(new GLatLng(40, -95.0), 3);
+			});
+			
+			$('.alaskaMap').click(function(){
+				map.setCenter(new GLatLng(65.0, -150.0), 3);
+			});
+			
+			$('.hawaiiMap').click(function(){
+				map.setCenter(new GLatLng(20.0, -156.0), 6);
+			});
+		
+			}
+		};
+
+		createMarker = function(_latlng, _event) {
+			var mmiIcon = null;
+			var mmi = romans[Math.round(_event['max_intensity'])];
+			if(!icon_library[mmi]) {
+				icon_library[mmi] = createIcon(mmi);
+			}
+			mmiIcon = icon_library[mmi];
+
+			var ciimTitle = _event['event_time'].substr(0,10)+" "+
+					_event['event_time'].substr(11) + " UTC MMI "+mmi+
+					" Mag: "+_event['magnitude'];
+
+			var ciimText = _event['event_time'].substr(0,10)+"<br />"+
+					_event['event_time'].substr(11) + " UTC<br />MMI "+mmi+
+					"<br />Mag: "+_event['magnitude'];
+
+			var href = "events/"+_event['network']+"/"+
+					_event['code']+"/"+_event['source']+"/index.html";
+
+			var image = "events/"+_event['network']+"/"+
+					_event['code']+"/"+_event['source']+"/"+_event['network']+
+					_event['code']+"_ciim.jpg";
+
+			var html =  "<div class=\"ciim_infowindow\">";
+				html += "<a href=\""+href+"\">";
+				html += "<img alt=\""+ciimTitle+"\" src=\""+image+"\" />";
+				html += "<\/a>";
+				html += "<h3>"+_event['location']+"<\/h3>";
+				html += "<p>" + ciimText + "<\/p><\/div>";
+				html += "<br clear=\"all\" />";
+			var marker = new GMarker(_latlng, {
+				icon:mmiIcon,
+				title:ciimTitle,
+				zIndexProcess:function(_marker) {
+					return _marker.zIndexOrder;
+				}
+			});
+			marker.zIndexOrder = Math.round(_event['max_intensity']*10);
+			GEvent.addListener(marker, "click", function() {
+				marker.openInfoWindowHtml(html);
+			});
+
+			return marker;
+		};
+
+		createIcon = function(_mmi) {
+			var img_dir = "images";
+			var img_file = img_dir + "/mmi_" + _mmi + ".png";
+			var sha_file = img_dir + "/mmi_shadow.png";
+			var tmp_icon = new GIcon();
+			tmp_icon.image  = img_file;
+			tmp_icon.shadow = sha_file;
+			tmp_icon.iconSize = new GSize(iconWidth, iconHeight);
+			tmp_icon.shadowSize = new GSize(iconWidth, 3);
+			tmp_icon.iconAnchor = new GPoint(14, 19);
+			tmp_icon.infoWindowAnchor = new GPoint(14, 17);
+			return tmp_icon;
+		};
+		// Start formatting the page on-load
+		$(document).ready(initHomePage);
+	/* ]]> */ </script> 
+    <div style="overflow:hidden"> 
+     <a id="unknown_event" class="btn_link" href="/earthquakes/eventpage/unknown" title="Submit a Felt Report for an Event Not Shown Below" style="float:left;" target="_blank">Report Unknown Event</a> 
+     <a title="View Listing of Recent/Historical Events Not Shown Below" id="view_archives" href="archives.php" class="btn_link" style="margin-left: 16em; float:right;">View Archives</a> 
+    </div> 
+    <table class="tabular" id="event_list_1">
+     <caption>
+      Found 16 matching results Events - Last 24 Hours
+     </caption>
+     <thead>
+      <tr>
+       <th class="intensity">MMI</th>
+       <th class="magnitude">Mag</th>
+       <th class="location">Location</th>
+       <th class="time">Event Time</th>
+       <th class="id">Event ID</th>
+       <th class="nresp">Response</th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiII">II</span></td>
+       <td class="magnitude">2.7</td>
+       <td class="location"><a href="events/us/c000tubw/us/index.html">OKLAHOMA</a><span>36.22°N -97.65°W 5Km Deep</span></td>
+       <td class="time">2015-03-02 11:46:27 UTC<span>2015-03-02 05:46:27 LOCAL</span></td>
+       <td class="id">USC000TUBW</td>
+       <td class="nresp">1</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiI">I</span></td>
+       <td class="magnitude">4.8</td>
+       <td class="location"><a href="events/us/c000tubr/us/index.html">NORTHERN SUMATRA, INDONESIA</a><span>4.81°N 96.18°E 20Km Deep</span></td>
+       <td class="time">2015-03-02 10:33:16 UTC<span>2015-03-02 17:33:16 LOCAL</span></td>
+       <td class="id">USC000TUBR</td>
+       <td class="nresp">0</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiI">I</span></td>
+       <td class="magnitude">4.6</td>
+       <td class="location"><a href="events/us/c000tuba/us/index.html">IZU ISLANDS, JAPAN REGION</a><span>31.37°N 140.23°E 10Km Deep</span></td>
+       <td class="time">2015-03-02 08:38:59 UTC<span>2015-03-02 17:38:59 LOCAL</span></td>
+       <td class="id">USC000TUBA</td>
+       <td class="nresp">0</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiI">I</span></td>
+       <td class="magnitude">4.4</td>
+       <td class="location"><a href="events/us/c000tubb/us/index.html">IZU ISLANDS, JAPAN REGION</a><span>31.72°N 139.65°E 10Km Deep</span></td>
+       <td class="time">2015-03-02 08:37:25 UTC<span>2015-03-02 17:37:25 LOCAL</span></td>
+       <td class="id">USC000TUBB</td>
+       <td class="nresp">0</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiI">I</span></td>
+       <td class="magnitude">2.9</td>
+       <td class="location"><a href="events/ak/11520874/us/index.html">SOUTHERN ALASKA</a><span>59.53°N -153.37°W 97Km Deep</span></td>
+       <td class="time">2015-03-02 07:05:41 UTC<span>2015-03-01 22:05:41 LOCAL</span></td>
+       <td class="id">AK11520874</td>
+       <td class="nresp">0</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiI">I</span></td>
+       <td class="magnitude">2.8</td>
+       <td class="location"><a href="events/pr/15061002/us/index.html">PUERTO RICO REGION</a><span>19.12°N -66.39°W 25Km Deep</span></td>
+       <td class="time">2015-03-02 06:51:07 UTC<span>2015-03-02 02:51:07 LOCAL</span></td>
+       <td class="id">PR15061002</td>
+       <td class="nresp">0</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiI">I</span></td>
+       <td class="magnitude">4.6</td>
+       <td class="location"><a href="events/us/c000tuaz/us/index.html">TONGA</a><span>20.57°S -175.12°W 163Km Deep</span></td>
+       <td class="time">2015-03-02 06:43:43 UTC<span>2015-03-02 19:43:43 LOCAL</span></td>
+       <td class="id">USC000TUAZ</td>
+       <td class="nresp">0</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiI">I</span></td>
+       <td class="magnitude">2.9</td>
+       <td class="location"><a href="events/pr/15061001/us/index.html">VIRGIN ISLANDS REGION</a><span>18.70°N -65.06°W 66Km Deep</span></td>
+       <td class="time">2015-03-02 06:09:11 UTC<span>2015-03-02 02:09:11 LOCAL</span></td>
+       <td class="id">PR15061001</td>
+       <td class="nresp">0</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiI">I</span></td>
+       <td class="magnitude">4.4</td>
+       <td class="location"><a href="events/us/c000tuaw/us/index.html">WESTERN IRAN</a><span>35.68°N 48.98°E 10Km Deep</span></td>
+       <td class="time">2015-03-02 06:08:43 UTC<span>2015-03-02 09:38:43 LOCAL</span></td>
+       <td class="id">USC000TUAW</td>
+       <td class="nresp">0</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiII">II</span></td>
+       <td class="magnitude">3.6</td>
+       <td class="location"><a href="events/ak/11520857/us/index.html">SOUTHERN ALASKA</a><span>61.22°N -146.81°W 16Km Deep</span></td>
+       <td class="time">2015-03-02 06:05:12 UTC<span>2015-03-01 21:05:12 LOCAL</span></td>
+       <td class="id">AK11520857</td>
+       <td class="nresp">1</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiI">I</span></td>
+       <td class="magnitude">2.3</td>
+       <td class="location"><a href="events/nc/72403985/us/index.html">NORTHERN CALIFORNIA</a><span>38.79°N -122.78°W 0Km Deep</span></td>
+       <td class="time">2015-03-02 05:54:05 UTC<span>2015-03-01 21:54:05 LOCAL</span></td>
+       <td class="id">NC72403985</td>
+       <td class="nresp">0</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiI">I</span></td>
+       <td class="magnitude">4.7</td>
+       <td class="location"><a href="events/us/c000tuar/us/index.html">CATAMARCA, ARGENTINA</a><span>27.94°S -66.48°W 163Km Deep</span></td>
+       <td class="time">2015-03-02 05:39:50 UTC<span>2015-03-02 02:39:50 LOCAL</span></td>
+       <td class="id">USC000TUAR</td>
+       <td class="nresp">0</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiIV">IV</span></td>
+       <td class="magnitude">2.6</td>
+       <td class="location"><a href="events/us/c000tu7f/us/index.html">OKLAHOMA</a><span>35.35°N -97.97°W 5Km Deep</span></td>
+       <td class="time">2015-03-01 16:49:17 UTC<span>2015-03-01 10:49:17 LOCAL</span></td>
+       <td class="id">USC000TU7F</td>
+       <td class="nresp">6</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiIII">III</span></td>
+       <td class="magnitude">2.5</td>
+       <td class="location"><a href="events/nc/72403700/us/index.html">NORTHERN CALIFORNIA</a><span>38.80°N -122.79°W 0Km Deep</span></td>
+       <td class="time">2015-03-01 15:53:52 UTC<span>2015-03-01 07:53:52 LOCAL</span></td>
+       <td class="id">NC72403700</td>
+       <td class="nresp">9</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiIII">III</span></td>
+       <td class="magnitude">5.0</td>
+       <td class="location"><a href="events/us/c000tu6s/us/index.html">NEAR THE COAST OF SOUTHERN PERU</a><span>17.22°S -71.93°W 57Km Deep</span></td>
+       <td class="time">2015-03-01 15:08:28 UTC<span>2015-03-01 10:08:28 LOCAL</span></td>
+       <td class="id">USC000TU6S</td>
+       <td class="nresp">7</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiIII">III</span></td>
+       <td class="magnitude">2.8</td>
+       <td class="location"><a href="events/us/c000tu6h/us/index.html">OKLAHOMA</a><span>35.37°N -97.98°W 3Km Deep</span></td>
+       <td class="time">2015-03-01 12:28:07 UTC<span>2015-03-01 06:28:07 LOCAL</span></td>
+       <td class="id">USC000TU6H</td>
+       <td class="nresp">2</td>
+      </tr>
+     </tbody>
+    </table> 
+    <table class="tabular" id="event_list_7">
+     <caption>
+      Found 32 matching results Felt Events - Last 7 Days
+     </caption>
+     <thead>
+      <tr>
+       <th class="intensity">MMI</th>
+       <th class="magnitude">Mag</th>
+       <th class="location">Location</th>
+       <th class="time">Event Time</th>
+       <th class="id">Event ID</th>
+       <th class="nresp">Response</th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiIII">III</span></td>
+       <td class="magnitude">3.0</td>
+       <td class="location"><a href="events/us/c000tu60/us/index.html">OKLAHOMA</a><span>35.95°N -96.78°W 3Km Deep</span></td>
+       <td class="time">2015-03-01 08:58:54 UTC<span>2015-03-01 02:58:54 LOCAL</span></td>
+       <td class="id">USC000TU60</td>
+       <td class="nresp">6</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiIII">III</span></td>
+       <td class="magnitude">2.1</td>
+       <td class="location"><a href="events/nc/72403560/us/index.html">NORTHERN CALIFORNIA</a><span>38.36°N -122.40°W 8Km Deep</span></td>
+       <td class="time">2015-03-01 06:53:30 UTC<span>2015-02-28 22:53:30 LOCAL</span></td>
+       <td class="id">NC72403560</td>
+       <td class="nresp">7</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiV">V</span></td>
+       <td class="magnitude">3.5</td>
+       <td class="location"><a href="events/us/c000tu4j/us/index.html">KANSAS</a><span>37.09°N -97.85°W 7Km Deep</span></td>
+       <td class="time">2015-03-01 02:47:20 UTC<span>2015-02-28 20:47:20 LOCAL</span></td>
+       <td class="id">USC000TU4J</td>
+       <td class="nresp">13</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiIII">III</span></td>
+       <td class="magnitude">2.9</td>
+       <td class="location"><a href="events/nc/72403460/us/index.html">NORTHERN CALIFORNIA</a><span>39.15°N -123.52°W 5Km Deep</span></td>
+       <td class="time">2015-03-01 01:47:03 UTC<span>2015-02-28 17:47:03 LOCAL</span></td>
+       <td class="id">NC72403460</td>
+       <td class="nresp">15</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiIV">IV</span></td>
+       <td class="magnitude">3.1</td>
+       <td class="location"><a href="events/us/c000tu3p/us/index.html">OKLAHOMA</a><span>35.97°N -96.81°W 2Km Deep</span></td>
+       <td class="time">2015-03-01 00:05:12 UTC<span>2015-02-28 18:05:12 LOCAL</span></td>
+       <td class="id">USC000TU3P</td>
+       <td class="nresp">21</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiIII">III</span></td>
+       <td class="magnitude">3.1</td>
+       <td class="location"><a href="events/nm/60070727/us/index.html">SOUTHEASTERN MISSOURI</a><span>36.53°N -89.64°W 13Km Deep</span></td>
+       <td class="time">2015-02-28 23:08:44 UTC<span>2015-02-28 17:08:44 LOCAL</span></td>
+       <td class="id">NM60070727</td>
+       <td class="nresp">36</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiIII">III</span></td>
+       <td class="magnitude">3.1</td>
+       <td class="location"><a href="events/us/c000tu1q/us/index.html">OKLAHOMA</a><span>36.14°N -97.29°W 5Km Deep</span></td>
+       <td class="time">2015-02-28 20:01:04 UTC<span>2015-02-28 14:01:04 LOCAL</span></td>
+       <td class="id">USC000TU1Q</td>
+       <td class="nresp">8</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiIII">III</span></td>
+       <td class="magnitude">4.7</td>
+       <td class="location"><a href="events/us/c000ttya/us/index.html">NEAR THE EAST COAST OF HONSHU, JAPAN</a><span>35.63°N 140.72°E 47Km Deep</span></td>
+       <td class="time">2015-02-28 08:40:40 UTC<span>2015-02-28 17:40:40 LOCAL</span></td>
+       <td class="id">USC000TTYA</td>
+       <td class="nresp">9</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiIII">III</span></td>
+       <td class="magnitude">4.2</td>
+       <td class="location"><a href="events/us/c000tty8/us/index.html">BOSNIA AND HERZEGOVINA</a><span>43.64°N 18.42°E 4Km Deep</span></td>
+       <td class="time">2015-02-28 08:24:24 UTC<span>2015-02-28 09:24:24 LOCAL</span></td>
+       <td class="id">USC000TTY8</td>
+       <td class="nresp">7</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiIV">IV</span></td>
+       <td class="magnitude">3.9</td>
+       <td class="location"><a href="events/us/c000ttzb/us/index.html">NEAR THE COAST OF CENTRAL PERU</a><span>12.06°S -76.56°W 29Km Deep</span></td>
+       <td class="time">2015-02-28 04:43:03 UTC<span>2015-02-27 23:43:03 LOCAL</span></td>
+       <td class="id">USC000TTZB</td>
+       <td class="nresp">29</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiIV">IV</span></td>
+       <td class="magnitude">4.7</td>
+       <td class="location"><a href="events/us/c000ttx8/us/index.html">BIO-BIO, CHILE</a><span>36.82°S -72.99°W 31Km Deep</span></td>
+       <td class="time">2015-02-28 03:45:33 UTC<span>2015-02-28 00:45:33 LOCAL</span></td>
+       <td class="id">USC000TTX8</td>
+       <td class="nresp">35</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiIV">IV</span></td>
+       <td class="magnitude">4.8</td>
+       <td class="location"><a href="events/us/c000ttvt/us/index.html">GUATEMALA</a><span>14.05°N -90.86°W 94Km Deep</span></td>
+       <td class="time">2015-02-27 23:46:44 UTC<span>2015-02-27 17:46:44 LOCAL</span></td>
+       <td class="id">USC000TTVT</td>
+       <td class="nresp">25</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiII">II</span></td>
+       <td class="magnitude">3.1</td>
+       <td class="location"><a href="events/us/c000ttvd/us/index.html">ALABAMA</a><span>32.94°N -88.02°W 4Km Deep</span></td>
+       <td class="time">2015-02-27 22:40:49 UTC<span>2015-02-27 16:40:49 LOCAL</span></td>
+       <td class="id">USC000TTVD</td>
+       <td class="nresp">6</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiIII">III</span></td>
+       <td class="magnitude">3.3</td>
+       <td class="location"><a href="events/us/c000ttu2/us/index.html">OKLAHOMA</a><span>36.27°N -97.38°W 6Km Deep</span></td>
+       <td class="time">2015-02-27 20:23:10 UTC<span>2015-02-27 14:23:10 LOCAL</span></td>
+       <td class="id">USC000TTU2</td>
+       <td class="nresp">7</td>
+      </tr>
+      <tr class="highlight">
+       <td class="intensity"><span class="mmiIV">IV</span></td>
+       <td class="magnitude">7.0</td>
+       <td class="location"><a href="events/us/c000ttkd/us/index.html">FLORES SEA</a><span>7.29°S 122.53°E 552Km Deep</span></td>
+       <td class="time">2015-02-27 13:45:05 UTC<span>2015-02-27 21:45:05 LOCAL</span></td>
+       <td class="id">USC000TTKD</td>
+       <td class="nresp">17</td>
+      </tr>
+      <tr class="highlight">
+       <td class="intensity"><span class="mmiIV">IV</span></td>
+       <td class="magnitude">3.1</td>
+       <td class="location"><a href="events/us/c000ttju/us/index.html">NORTHERN TEXAS</a><span>32.83°N -96.89°W 5Km Deep</span></td>
+       <td class="time">2015-02-27 12:18:21 UTC<span>2015-02-27 06:18:21 LOCAL</span></td>
+       <td class="id">USC000TTJU</td>
+       <td class="nresp">214</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiIII">III</span></td>
+       <td class="magnitude">3.4</td>
+       <td class="location"><a href="events/ci/37104391/us/index.html">OFFSHORE BAJA CALIFORNIA, MEXICO</a><span>32.22°N -117.69°W 20Km Deep</span></td>
+       <td class="time">2015-02-27 00:43:45 UTC<span>2015-02-26 16:43:45 LOCAL</span></td>
+       <td class="id">CI37104391</td>
+       <td class="nresp">10</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiV">V</span></td>
+       <td class="magnitude">5.4</td>
+       <td class="location"><a href="events/us/c000ttgc/us/index.html">PAKISTAN</a><span>34.66°N 73.30°E 28Km Deep</span></td>
+       <td class="time">2015-02-26 21:59:05 UTC<span>2015-02-27 02:59:05 LOCAL</span></td>
+       <td class="id">USC000TTGC</td>
+       <td class="nresp">39</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiIV">IV</span></td>
+       <td class="magnitude">2.5</td>
+       <td class="location"><a href="events/se/60004908/us/index.html">VIRGINIA</a><span>37.71°N -77.87°W 7Km Deep</span></td>
+       <td class="time">2015-02-26 08:48:28 UTC<span>2015-02-26 03:48:28 LOCAL</span></td>
+       <td class="id">SE60004908</td>
+       <td class="nresp">37</td>
+      </tr>
+      <tr class="highlight">
+       <td class="intensity"><span class="mmiIII">III</span></td>
+       <td class="magnitude">3.7</td>
+       <td class="location"><a href="events/ci/37103367/us/index.html">SOUTHERN CALIFORNIA</a><span>33.94°N -116.03°W 3Km Deep</span></td>
+       <td class="time">2015-02-26 01:18:37 UTC<span>2015-02-25 17:18:37 LOCAL</span></td>
+       <td class="id">CI37103367</td>
+       <td class="nresp">50</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiIII">III</span></td>
+       <td class="magnitude">5.0</td>
+       <td class="location"><a href="events/us/c000ttaf/us/index.html">NEAR THE EAST COAST OF HONSHU, JAPAN</a><span>38.50°N 141.97°E 56Km Deep</span></td>
+       <td class="time">2015-02-26 01:11:25 UTC<span>2015-02-26 10:11:25 LOCAL</span></td>
+       <td class="id">USC000TTAF</td>
+       <td class="nresp">8</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiIII">III</span></td>
+       <td class="magnitude">3.7</td>
+       <td class="location"><a href="events/us/c000tt9q/us/index.html">CHANNEL ISLANDS REGION, UNITED KINGDOM</a><span>49.00°N -2.40°W 2Km Deep</span></td>
+       <td class="time">2015-02-25 22:55:07 UTC<span>2015-02-25 23:55:07 LOCAL</span></td>
+       <td class="id">USC000TT9Q</td>
+       <td class="nresp">10</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiIII">III</span></td>
+       <td class="magnitude">3.2</td>
+       <td class="location"><a href="events/us/c000tszi/us/index.html">OKLAHOMA</a><span>36.85°N -98.27°W 5Km Deep</span></td>
+       <td class="time">2015-02-25 02:08:22 UTC<span>2015-02-24 20:08:22 LOCAL</span></td>
+       <td class="id">USC000TSZI</td>
+       <td class="nresp">5</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiII">II</span></td>
+       <td class="magnitude">3.0</td>
+       <td class="location"><a href="events/nc/72401005/us/index.html">OFFSHORE NORTHERN CALIFORNIA</a><span>40.84°N -124.83°W 21Km Deep</span></td>
+       <td class="time">2015-02-24 23:28:02 UTC<span>2015-02-24 15:28:02 LOCAL</span></td>
+       <td class="id">NC72401005</td>
+       <td class="nresp">6</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiIII">III</span></td>
+       <td class="magnitude">2.5</td>
+       <td class="location"><a href="events/ci/37101519/us/index.html">GREATER LOS ANGELES AREA, CALIFORNIA</a><span>34.15°N -117.58°W 11Km Deep</span></td>
+       <td class="time">2015-02-24 18:02:39 UTC<span>2015-02-24 10:02:39 LOCAL</span></td>
+       <td class="id">CI37101519</td>
+       <td class="nresp">5</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiIII">III</span></td>
+       <td class="magnitude">2.1</td>
+       <td class="location"><a href="events/ld/60087201/us/index.html">SOUTHERN NEW ENGLAND</a><span>41.73°N -71.88°W 2Km Deep</span></td>
+       <td class="time">2015-02-24 14:18:27 UTC<span>2015-02-24 09:18:27 LOCAL</span></td>
+       <td class="id">LD60087201</td>
+       <td class="nresp">9</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiIII">III</span></td>
+       <td class="magnitude">4.9</td>
+       <td class="location"><a href="events/us/c000tslh/us/index.html">OFFSHORE VALPARAISO, CHILE</a><span>32.63°S -71.71°W 60Km Deep</span></td>
+       <td class="time">2015-02-24 05:14:02 UTC<span>2015-02-24 02:14:02 LOCAL</span></td>
+       <td class="id">USC000TSLH</td>
+       <td class="nresp">10</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiIV">IV</span></td>
+       <td class="magnitude">4.4</td>
+       <td class="location"><a href="events/us/c000tsl8/us/index.html">OFFSHORE ATACAMA, CHILE</a><span>27.76°S -71.64°W 48Km Deep</span></td>
+       <td class="time">2015-02-24 04:28:51 UTC<span>2015-02-24 01:28:51 LOCAL</span></td>
+       <td class="id">USC000TSL8</td>
+       <td class="nresp">5</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiIII">III</span></td>
+       <td class="magnitude">2.3</td>
+       <td class="location"><a href="events/us/c000tsku/us/index.html">OKLAHOMA</a><span>35.96°N -96.78°W 3Km Deep</span></td>
+       <td class="time">2015-02-24 02:53:39 UTC<span>2015-02-23 20:53:39 LOCAL</span></td>
+       <td class="id">USC000TSKU</td>
+       <td class="nresp">6</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiIV">IV</span></td>
+       <td class="magnitude">4.5</td>
+       <td class="location"><a href="events/us/c000tsk2/us/index.html">LUZON, PHILIPPINES</a><span>16.28°N 120.68°E 52Km Deep</span></td>
+       <td class="time">2015-02-23 23:14:12 UTC<span>2015-02-24 07:14:12 LOCAL</span></td>
+       <td class="id">USC000TSK2</td>
+       <td class="nresp">9</td>
+      </tr>
+      <tr class="highlight">
+       <td class="intensity"><span class="mmiV">V</span></td>
+       <td class="magnitude">5.0</td>
+       <td class="location"><a href="events/us/c000tsgt/us/index.html">SPAIN</a><span>39.06°N -2.67°W 12Km Deep</span></td>
+       <td class="time">2015-02-23 16:16:30 UTC<span>2015-02-23 17:16:30 LOCAL</span></td>
+       <td class="id">USC000TSGT</td>
+       <td class="nresp">199</td>
+      </tr>
+      <tr class="plain">
+       <td class="intensity"><span class="mmiIII">III</span></td>
+       <td class="magnitude">4.6</td>
+       <td class="location"><a href="events/us/c000tsf4/us/index.html">NEAR THE EAST COAST OF HONSHU, JAPAN</a><span>35.49°N 140.31°E 35Km Deep</span></td>
+       <td class="time">2015-02-23 08:00:08 UTC<span>2015-02-23 17:00:08 LOCAL</span></td>
+       <td class="id">USC000TSF4</td>
+       <td class="nresp">28</td>
+      </tr>
+     </tbody>
+    </table> 
+   </div> 
+   <div id="navigation"> 
+    <hr> 
+    <!-- _navigation -->
+    <ul>
+     <li><strong><a href="/earthquakes/dyfi/" class="childselected group">Did You Feel It?</a></strong>
+      <ul>
+       <li><strong><a href="/earthquakes/dyfi/">Home</a></strong></li>
+       <li><a href="/earthquakes/dyfi/archives.php">Archives</a></li>
+       <li><a href="/research/dyfi/">Background</a></li>
+       <li><a href="/contactus/?to=&amp;subject=Did+You+Feel+It">Comment</a></li>
+       <li><a href="http://www.usgs.gov/faq/?q=taxonomy/term/9836" target="_blank">FAQ</a></li>
+       <li><a href="/research/dyfi/disclaimer.php">Disclaimer</a></li>
+      </ul></li>
+    </ul> 
+   </div> 
+  </div> 
+  <hr> 
+  <div id="content_footer"> 
+   <div id="share"> 
+    <p>Share this page:</p> 
+    <ul> 
+     <li class="facebook"><a class="offsite" rel="nofollow" href="http://www.facebook.com/sharer.php?t=Did+You+Feel+It%3F&amp;u=http%3A%2F%2Fearthquake.usgs.gov%2Fearthquakes%2Fdyfi%2Findex.php" title="Share on Facebook">Facebook</a></li> 
+     <li class="twitter"><a class="offsite" rel="nofollow" href="http://twitter.com/share?text=Did+You+Feel+It%3F+%28via+%40usgs%29&amp;url=http%3A%2F%2Fearthquake.usgs.gov%2Fearthquakes%2Fdyfi%2Findex.php" title="Share on Twitter">Twitter</a></li> 
+     <li class="googlemarks"><a class="offsite" rel="nofollow" href="https://www.google.com/bookmarks/mark?op=add&amp;title=Did+You+Feel+It%3F&amp;annotation=&amp;nui=1&amp;service=bookmarks&amp;bkmk=http%3A%2F%2Fearthquake.usgs.gov%2Fearthquakes%2Fdyfi%2Findex.php" title="Share on Google">Google</a></li> 
+     <li class="email"><a class="offsite" rel="nofollow" href="mailto:?subject=Did%20You%20Feel%20It%3F&amp;body=http%3A%2F%2Fearthquake.usgs.gov%2Fearthquakes%2Fdyfi%2Findex.php" title="Share on Email">Email</a></li> 
+    </ul> 
+   </div> 
+  </div> 
+  <hr> 
+  <div id="sitemap"> 
+   <ul> 
+    <li> <a href="/earthquakes/?source=sitemap" class="first">Earthquakes</a> 
+     <ul> 
+      <li><a href="/earthquakes/map/">Latest Earthquakes</a></li> 
+      <li><a href="/earthquakes/feed/">Real-time Feeds &amp; Notifications</a></li> 
+      <li><a href="/earthquakes/search/">Search EQ Archives</a></li> 
+      <li><a href="/earthquakes/region.php">Info by Region</a></li> 
+      <li><a href="/earthquakes/states/seismicity/">US Seismicity Map</a></li> 
+      <li><a href="/earthquakes/world/seismicity_maps/">World Seismicity Maps</a></li> 
+      <li><a href="/earthquakes/eqarchives/">“Top 10” Lists &amp; Maps</a></li> 
+      <li><a href="/earthquakes/dyfi/">Did You Feel It?</a></li> 
+      <li><a href="/earthquakes/shakemap/">ShakeMap</a></li> 
+      <li><a href="/earthquakes/pager/">PAGER</a></li> 
+      <li><a href="/earthquakes/eqinthenews/">Significant EQ Archive</a></li> 
+     </ul> </li> 
+    <li> <a href="/hazards/?source=sitemap">Hazards</a> 
+     <ul> 
+      <li><a href="/hazards/products/">Hazard Maps &amp; Data</a></li> 
+      <li><a href="/hazards/designmaps/">Seismic Design</a></li> 
+      <li><a href="/hazards/apps/">Hazard Analysis Tools</a></li> 
+      <li><a href="/hazards/qfaults/">Faults</a></li> 
+     </ul> </li> 
+    <li> <a href="/data/?source=sitemap">Data<span style="font-size: .85em;"> &amp; </span>Products</a> 
+     <ul> 
+      <li><a href="/data/">Data</a></li> 
+      <li><a href="/data/products/">Products</a></li> 
+     </ul> </li> 
+    <li> <a href="/learn/?source=sitemap">Learn</a> 
+     <ul> 
+      <li><a href="/learn/topics/">EQ Topics for Education</a></li> 
+      <li><a href="http://www.usgs.gov/faq/?q=taxonomy/term/9762"><abbr title="Frequently Asked Questions">FAQ</abbr></a></li> 
+      <li><a href="/learn/glossary/">EQ Glossary</a></li> 
+      <li><a href="/learn/kids/">For Kids</a></li> 
+      <li><a href="/learn/kml.php">Google Earth/KML Files</a></li> 
+      <li><a href="/earthquakes/eqarchives/poster/">EQ Summary Posters</a></li> 
+      <li><a href="/learn/photos.php">Photos</a></li> 
+      <li><a href="/learn/publications/">Publications</a></li> 
+     </ul> </li> 
+    <li> <a href="/monitoring/?source=sitemap">Monitoring</a> 
+     <ul> 
+      <li><a href="/contactus/golden/neic.php">NEIC</a></li> 
+      <li><a href="/monitoring/anss/"><abbr title="Advanced National Seismic System">ANSS</abbr> – United States</a></li> 
+      <li><a href="/monitoring/gsn/"><abbr title="Global Seismic Network">GSN</abbr> – World</a></li> 
+      <li><a href="/monitoring/volunteer/">Volunteer Monitoring</a></li> 
+      <li><a href="/regional/asl/"><abbr title="Albuquerque Seismo Lab">ASL</abbr> – Albuquerque</a></li> 
+      <li><a href="/monitoring/operations/">Network Operations</a></li> 
+      <li><a href="/monitoring/helicorders.php">Seismogram Displays</a></li> 
+      <li><a href="/monitoring/buildings/">Buildings</a></li> 
+      <li><a href="/monitoring/nsmp/"><abbr title="National Strong Motion Project">NSMP</abbr> – Strong Motion</a></li> 
+      <li><a href="/monitoring/deformation/">Crustal Deformation</a></li> 
+     </ul> </li> 
+    <li> <a href="/research/?source=sitemap">Research</a> 
+     <ul> 
+      <li><a href="/research/faults/">Characterizing Faults</a></li> 
+      <li><a href="/research/earlywarning/">Early Warning</a></li> 
+      <li><a href="/research/deformation/">Crustal Deformation</a></li> 
+      <li><a href="/research/eqproc/">Earthquake Processes</a></li> 
+      <li><a href="/research/groundfailure/">Ground Failure</a></li> 
+      <li><a href="/research/groundmotion/">Ground Motion</a></li> 
+      <li><a href="/research/hazrisk/">Hazard &amp; Risk Assessment</a></li> 
+      <li><a href="/research/monitoring/">Improving Monitoring</a></li> 
+      <li><a href="/research/induced/">Induced Earthquakes</a></li> 
+      <li><a href="/research/external/">External Support</a></li> 
+      <li><a href="/contactus/regional.php">Regional Science Activities</a></li> 
+      <li><a href="/research/software/">Software</a></li> 
+     </ul> </li> 
+   </ul> 
+  </div> 
+  <hr> 
+  <div id="usgsnav"> 
+   <ul> 
+    <li><a href="http://www.usgs.gov/laws/accessibility.html" title="Accessibility Policy (Section 508)">Accessibility</a></li> 
+    <li><a href="http://www.usgs.gov/foia/"><abbr title="Freedom of Information Act">FOIA</abbr></a></li> 
+    <li><a href="http://www.usgs.gov/laws/privacy.html" title="Privacy policies of the U.S. Geological Survey.">Privacy</a></li> 
+    <li><a href="http://www.usgs.gov/laws/policies_notices.html" title="Policies and notices that govern information posted on USGS Web sites.">Policies and Notices</a></li> 
+    <li><a href="http://www.nehrp.gov" class="nehrp">In partnership with <abbr title="National Earthquake Hazards Reduction Program">n<span class="e">e</span>hrp</abbr></a></li> 
+    <li><a href="http://www.takepride.gov/" class="takepride" title="Take Pride in America"><img src="/template/images/takePride.jpg" alt="Take Pride in America" width="60" height="58"></a></li> 
+    <li><a href="http://www.usa.gov/" class="usagov" title="USAGov: Government Made Easy"><img src="/template/images/usagov.jpg" alt="USA.gov" width="90" height="26"></a></li> 
+   </ul> 
+  </div> 
+  <div id="footer"> 
+   <p> <a href="http://www.doi.gov/index.cfm">U.S. Department of the Interior</a> | <a href="http://www.usgs.gov/">U.S. Geological Survey</a><br> Page URL: http://earthquake.usgs.gov/earthquakes/dyfi/index.php<br> Page Contact Information: <a target="_blank" href="/contactus/?to=">Contact Us</a><br> Page Last Modified: January 22, 2015 00:03:24 UTC </p> 
+   <small class="disclaimer"><img src="/template/images/small_offsite_arrow.gif" alt="Offsite Link" title="Offsite Link"> <a href="http://www.doi.gov/disclaimer.cfm" title="Department of the Interior - Disclaimer of Liability and Endorsement">DOI</a> and <a href="http://www.usgs.gov/laws/info_policies.html" title="USGS - Information Policies">USGS</a> link policies apply.</small>
+   <small class="disclaimer">References to non-U.S. Department of the Interior (DOI) products do not constitute an endorsement by the DOI. By viewing the Google Maps API on this web site the user agrees to these <a target="_blank" href="http://code.google.com/apis/maps/terms.html">Terms of Service set forth by Google</a>.</small>
+  </div> 
+  <script type="text/javascript" src="/contactus/js/ContactValidator.js"></script>
+  <script type="text/javascript" src="/contactus/js/FAQFilter.js"></script>
+  <script type="text/javascript" src="/contactus/js/contactus.js"></script>
+  <script type="text/javascript" src="/template/widgets/ui/ui.js"></script>
+  <script type="text/javascript" src="/template/widgets/gmaps/gloader.js.php"></script>
+  <script type="text/javascript" src="/template/js/jquery.tablesorter.js"></script>
+  <script type="text/javascript" src="/template/js/nicetitle.20080513.js"></script> 
+  <!--[if lt IE 7]><script type="text/javascript" src="/js/minmax.js"></script><![endif]--> 
+  <!--[if lt IE 8]><script type="text/javascript" src="/template/js/offsite.js"></script><![endif]-->   
+ </body>
+</html>

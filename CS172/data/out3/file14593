@@ -1,0 +1,1003 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+ <head> 
+  <title>Buzón de Sugerencias</title> 
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+  <meta http-equiv="Content-Script-type" content="text/javascript"> 
+  <meta http-equiv="Content-Style-type" content="text/css"> 
+  <meta name="robots" content="index,follow,all"> 
+  <meta name="keywords" lang="es" content="Servicios Universidad Pontificia Comillas ICAI ICADE, Servicios universitarios, Universidad y servicios, Servicios y universidad, universidad y Servicios Madrid, Servicios y universidad Madrid, universidad y Servicios"> 
+  <meta name="Description" content="Universidad Pontificia Comillas - Madrid - http://www.upcomillas.es"> 
+  <meta name="date" content="2005"> 
+  <meta name="language" content="es"> 
+  <meta name="author" content="STIC - Universidad Pontificia Comillas"> 
+  <meta name="copyright" content=""> 
+  <meta http-equiv="imagetoolbar" content="false"> 
+  <link media="handheld,screen,print" href="../estilos/estilos_comunes.css" type="text/css" rel="stylesheet"> 
+  <link media="handheld,screen,print" href="../estilos/estilos_perfiles.css" type="text/css" rel="stylesheet"> 
+  <link media="handheld,screen,print" href="../estilos/estilos_menu_izq.css" type="text/css" rel="stylesheet"> 
+  <link media="handheld,screen,print" href="../estilos/estilos_cabecera.css" type="text/css" rel="stylesheet"> 
+  <style>
+			.cajainput
+			{
+				height: 17px;
+				/*font-size: 90%;*/
+				margin: 0 0 0 0;
+			}	
+		</style> 
+  <script language="JavaScript" type="text/JavaScript">
+		<!--	
+			if (window.screen.width == 800)
+			{							
+				document.write('<link id="hojaestilo" rel="stylesheet" media="handheld,screen,print" type="text/css" href="../estilos/hacksIE7800.css" />');
+			}		
+		-->
+		</script> 
+  <!-- Script que activa el cuadro de texto txtOtros sólo si la opción seleccionada es "otros"
+			 coloca el foco en dicho cuadro de texto
+		--> 
+  <script languaje="javascript">
+			function activarOtros()
+			{
+				if (document.sugerencias.comboRelacion.value == "otros")
+				{
+					document.sugerencias.txtOtros.style.visibility="visible";
+					document.sugerencias.txtOtros.focus();
+				}
+				else
+				{
+					document.sugerencias.txtOtros.style.visibility="hidden";
+				}
+				
+			}
+
+		</script> 
+  <!-- Script que activa el cuadro de texto txtAsunto sólo si la opción seleccionada es "Otros"
+			 y coloca el foco en dicho cuadro de texto
+		--> 
+  <script languaje="javascript">
+			function activarAsunto()
+			{
+				if (document.sugerencias.comboAsunto.value == "otros")
+				{
+					document.sugerencias.txtAsunto.style.visibility="visible";
+					document.sugerencias.txtAsunto.focus();
+				}
+				else
+				{
+					document.sugerencias.txtAsunto.style.visibility="hidden";
+				}
+				
+			}
+
+		</script> 
+  <script language="javascript">
+		<!--		
+		
+			function validarDatos()
+			{
+				var strAsunto =  document.sugerencias.txtAsunto.value;
+				strAsunto = strAsunto.replace(/^\s*|\s*$/g,"");
+				var strRelacion =  document.sugerencias.txtOtros.value;
+				strRelacion = strRelacion.replace(/^\s*|\s*$/g,"");
+				
+				if (document.sugerencias.comboRelacion.value == "")
+				{
+					alert("Debe seleccionar un tipo de Relación para la sugerencia");
+					document.sugerencias.comboRelacion.focus();
+					return false;				
+				}
+				else if (document.sugerencias.comboAsunto.value == "")
+				{
+					alert("Debe seleccionar un Asunto para la sugerencia");					
+					document.sugerencias.comboAsunto.focus();
+					return false;
+				}
+				else if (document.sugerencias.txtSugerencia.value == "")
+				{
+					alert("Debe Introducir una descripción de la Sugerencia");
+					document.sugerencias.txtSugerencia.focus();
+					return false;
+				}
+				else if (document.sugerencias.comboRelacion.value == "otros" && strRelacion == "")
+				
+				{
+					alert("Debe Introducir una descripción para el otro valor de la relación de la sugerencia");
+					document.sugerencias.comboAsunto.focus();
+					return false;
+				}
+				else if (document.sugerencias.comboAsunto.value == "otros" && strAsunto == "")
+				
+				{
+					
+					alert("Debe Introducir una descripción para el otro valor del asunto");
+					document.sugerencias.comboAsunto.focus();
+					return false;
+				}
+				else
+				{
+					return true;
+					
+				}								
+			}
+			
+			//Función que corta un texto si supera los caracteres especificados
+			function CortarTexto(texto, longitud)
+			{
+				if((texto.value.length >= longitud) && (event.keyCode != 8))
+				{ 			 
+					texto.value = texto.value.substr(0, longitud - 1);
+					alert('Has superado el tamaño máximo de caracteres permitido');
+					texto.focus();
+					return false;											
+				}
+			}
+		-->
+		</script> 
+ </head> 
+ <body> 
+  <form name="sugerencias" method="post" action="sugerencias.aspx" id="sugerencias"> 
+   <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTk4MzEzMDUxN2RkrZ1caKi1JZGZKewt9gnZLc88544="> 
+   <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="F7807869"> 
+   <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWCwK+xt6RCwKIgMKjDAKWh5ebBgKs1t70BgL7+8rQDgLXj5N3AsqppZcLAv/LmcwEAs2njt0CAu7RwpwNAqya+foCzULWPKGK2wLIXho8Gxv8q9S3PEk="> 
+   <a href="#content" title="Saltar la navegación. (Atajo: tecla s)" accesskey="s" class="oculto">Saltar la navegación</a> 
+   <div id="contenedor"> 
+    <!--
+<div id="cabecera">
+
+<div id="logoBanner">
+<a href="http://www.upcomillas.es" title="Enlace al principio de la web"><img src="http://www.upcomillas.es/imagenes/home_logo.jpg" height="60" width="131" alt="Logotipo de la Universidad Pontifica Comillas" border="0" /></a><br />
+</div>
+
+<div id="navCabecera">
+    <h3 class="oculto">Ayudas a la navegaci&oacute;n</h3>
+    <ul>
+<li><a href='/default.aspx' title='Página principal Universidad Pontificia Comillas' accesskey='0'>Home</a></li><li><a href='/intranet/validacion.aspx' title='inicio sesión Intranet'  class='iniSesion' accesskey='1'>Intranet</a></li><li><a href='/Sugerencias/Sugerencias.aspx' title='Sugerencias' class='sugerencia'>Sugerencias</a></li><li><a href='#' onclick="javascript:window.open('/Presentacion/pres_conta.aspx','_blank','height=500,width=350');return false;" title='Enlace a la p&aacute;gina de contacto, donde encontrara los datos de contacto detallados' class='contacto' accesskey='9'>Contacto</a></li><li><a href='/eng/Sugerencias/Sugerencias.aspx' title='Link to English Site'  class='english' accesskey='2'>English</a></li><li><a href='/mapa_web.aspx' title='Enlace al mapa de la web' class='mapa' accesskey='3'>Mapa web</a></li><li><input type='text' value='Buscar' title='Buscar en la web' size='25' / id=text1 name=text1><a href='/buscador' title='Este enlace lleva a los resultados de la b&uacute;squeda' tabindex='1' accesskey='4'><img src='/imagenes/btn_lupa.gif' height='16' width='16' alt='Enlace a los resultados de la b&uacute;squeda' border='0' align='middle' /></a></li>
+    </ul>
+    <div id="rightCabecera"><a href="http://www.upcomillas.es/estudios/estu_beca_ayud.aspx?perfil=22" class="arightCabecera" title="Banner: Conoce las becas de la universidad. Pulse para más información"></a></div>
+    </div>
+    <div id="bordeBotCab"></div>
+</div>
+-->  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes"> 
+    <meta name="HandheldFriendly" content="true"> 
+    <meta name="apple-mobile-web-app-capable" content="YES"> 
+    <link href="http://www.upcomillas.es/templates/comillasresponsivenohome/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon"> 
+    <link href="http://www.upcomillas.es/index.php/es/component/search/?Itemid=363&amp;format=opensearch" rel="search" title="Buscar Universidad Pontificia Comillas" type="application/opensearchdescription+xml"> 
+    <link rel="stylesheet" href="http://www.upcomillas.es/components/com_k2/css/k2.css" type="text/css"> 
+    <link rel="stylesheet" href="http://www.upcomillas.es/modules/mod_jse_megamenu/assets/css/style.css" type="text/css"> 
+    <link rel="stylesheet" href="http://www.upcomillas.es/modules/mod_jse_megamenu/assets/css/style/blackwhite.css" type="text/css"> 
+    <link rel="stylesheet" href="http://www.upcomillas.es/modules/mod_jse_megamenu/assets/css/style_responsive.css" type="text/css"> 
+    <link rel="stylesheet" href="http://www.upcomillas.es/media/mod_languages/css/template.css" type="text/css"> 
+    <style type="text/css">
+#js-mainnav.blue ul.level1 .childcontent { margin: -20px 0 0 170px; }@media screen and (max-width: 767px) {#js-mainnav.megamenu.noJS ul.megamenu li { display: none; }}
+  </style> 
+    <script src="http://www.upcomillas.es/media/system/js/mootools-core.js" type="text/javascript"></script> 
+    <script src="http://www.upcomillas.es/media/system/js/core.js" type="text/javascript"></script> 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js" type="text/javascript"></script> 
+    <script src="http://www.upcomillas.es/components/com_k2/js/k2.js?v2.6.7&amp;sitepath=/" type="text/javascript"></script> 
+    <script src="http://www.upcomillas.es/media/system/js/caption.js" type="text/javascript"></script> 
+    <script src="http://www.upcomillas.es/media/system/js/mootools-more.js" type="text/javascript"></script> 
+    <script type="text/javascript">
+window.addEvent('load', function() {
+				new JCaption('img.caption');
+			});
+  </script> 
+    <link href="http://www.upcomillas.es/templates/comillasresponsivenohome/css/template.css" rel="stylesheet" type="text/css"> 
+    <link href="http://www.upcomillas.es/templates/comillasresponsivenohome/css/style.css" rel="stylesheet" type="text/css"> 
+    <link rel="stylesheet" type="text/css" href="http://www.upcomillas.es/templates/comillasresponsivenohome/js/jquery.heroCarousel.css"> 
+    <link rel="stylesheet" type="text/css" href="http://www.upcomillas.es/templates/comillasresponsivenohome/css/responsive.css"> 
+    <script src="http://www.upcomillas.es/templates/comillasresponsivenohome/js/jquery-1.8.3.min.js"></script> 
+    <script type="text/javascript" src="http://www.upcomillas.es/templates/comillasresponsivenohome/js/jquery.easing-1.3.js"></script> 
+    <script type="text/javascript" src="http://www.upcomillas.es/templates/comillasresponsivenohome/js/jquery.heroCarousel-1.3.js"></script> 
+    <script type="text/javascript" src="http://www.upcomillas.es/templates/comillasresponsivenohome/js/jquery.heroCarousel-1.3.min.js"></script> 
+    <script type="text/javascript" src="http://www.upcomillas.es/templates/comillasresponsivenohome/js/bootstrap-dropdown.js"></script> 
+    <script type="text/javascript" src="http://www.upcomillas.es/templates/comillasresponsivenohome/js/bootstrap-tab.js"></script> 
+    <script type="text/javascript">
+			jQuery(document).ready(function(){
+				jQuery('.hero-carousel').heroCarousel({
+					easing: 'easeOutExpo',
+					css3pieFix: true,
+					timeout: 50000
+				});
+			jQuery('.GoTop').click(function(){
+			jQuery('html,body').animate({scrollTop: $('html,body').offset().top},'slow');
+		}); 
+
+		
+			});
+		</script> 
+    <script type="text/javascript">
+        $(document).ready(function(){
+		$("nav#primary-nav ul.menunavbar").each(function () {
+			var primaryNav = $(this);
+			var parents = primaryNav.children("li");
+			primaryNav.hover(function(){
+				parents.children("nav#primary-nav ul.dropdown").stop(true, false).animate({height:"250px"});
+			}, function(){
+				parents.children("nav#primary-nav ul.dropdown").stop(true, false).animate({height:"0"});
+			});
+		});
+	/* Secondary Dropdown */
+	$('.dropdown-toggle').dropdown();
+      });  
+</script> 
+    <script type="text/javascript">      
+//mobile menu style
+jQuery(document).ready(function() {
+ jQuery('#menumob .moduletable_mainmenu ul li:has(>ul)').addClass('subarrow');
+jQuery('a.togglemenu').on('click',function(){
+  jQuery('#menumob .moduletable_mainmenu').slideToggle();
+ 
+});
+ 
+
+});
+
+
+    </script> 
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic" rel="stylesheet" type="text/css"> 
+    <link href="http://fonts.googleapis.com/css?family=Crimson+Text:600,400" rel="stylesheet" type="text/css"> 
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-70776-1']);
+  _gaq.push(['_setDomainName', 'upcomillas.es']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>   
+    <div id="Header_Full"> 
+     <div class="CommonWarp"> 
+      <div class="HeadLogo">
+       <a href="http://www.upcomillas.es"><img src="http://www.upcomillas.es/templates/comillasresponsive/images/logo.png" width="427px" alt="home"></a>
+      </div> 
+      <div class="HeadRight"> 
+       <div class="moduletable_headerrightmenu"> 
+        <p><span style="color: rgb(192, 192, 192); font-family: verdana; font-size: 14pt;">91 542 2800&nbsp;</span><strong><a href="http://www.upcomillas.es/es/formulario-de-contacto"> <span style="color: rgb(192, 192, 192); font-family: &quot;trebuchet ms&quot;, geneva; font-size: 10pt;"><span style="color: rgb(255, 204, 0);"> Contactar&nbsp;</span><img alt="arrow 02" src="http://www.upcomillas.es/images/arrow_02.png"> </span> </a></strong></p> 
+       </div> 
+       <div class="moduletable_searchmod"> 
+        <div class="search_searchmod"> 
+         <input name="searchword" class="inputbox_searchmod" id="mod-search-searchword" type="text" size="10" maxlength="20" value="Buscar...">
+         <input class="button_searchmod" onclick="return false;" type="image" src="http://www.upcomillas.es/templates/plantilla_responsive_estudios/images/searchButton.gif" value="Buscar"> 
+         <div class="clear"></div> 
+        </div> 
+       </div> 
+       <div class="moduletable_footersocial"> 
+        <ul> 
+         <li style="text-align: justify;"><a href="http://www.linkedin.com/company/upcomillas" target="_blank"><img width="24" height="24" title="LinkedIn" alt="LinkedIn" src="http://www.upcomillas.es/images/in_icon.png"></a></li> 
+         <li style="text-align: justify;"><a href="http://twitter.com/ucomillas" target="_blank"><img width="24" height="24" title="Twitter" alt="Twitter" src="http://www.upcomillas.es/images/twt_icon.png"></a></li> 
+         <li style="text-align: justify;"><a href="https://es-es.facebook.com/upcomillas.ICAI.ICADE" target="_blank"><img width="24" height="24" title="Facebook" alt="Facebook" src="http://www.upcomillas.es/images/tb_icon.png"></a></li> 
+         <li style="text-align: justify;"><a href="https://plus.google.com/u/0/+upcomillas/" target="_blank"><img width="24" height="24" title="Google +" alt="Google+" src="http://www.upcomillas.es/images/gplus_icon.png"></a></li> 
+         <li style="text-align: justify;"><a href="http://www.youtube.com/user/VideosUpComillas" target="_blank"><img width="24" height="24" title="YouTube" alt="YouTube" src="http://www.upcomillas.es/images/yt_icon.png"></a></li> 
+        </ul> 
+       </div> 
+       <div class="moduletable"> 
+        <p style="text-align: right;"><a title="Intranet" href="https://intranetsp.upcomillas.es"> <img width="25" height="25" alt="ico intranet" src="http://www.upcomillas.es//images/ico_intranet.png"></a><a title="Buzón de Suguerencias" style="line-height: 1.3em;" href="http://web.upcomillas.es/sugerencias/sugerencias.aspx">&nbsp;</a><img width="25" height="25" alt="bandera-españa" src="http://www.upcomillas.es/images/bandera-espana.png"></p> 
+       </div> 
+       <div class="clear"></div> 
+      </div> 
+      <div class="clear"></div> 
+      <div class="Nav_Area"> 
+       <div class="MainMenu"> 
+        <nav id="primary-nav" role="navigation"> 
+         <div class="moduletable"> 
+          <div class="clearfix megamenu horizontal left blackwhite noJS" id="js-mainnav"> 
+           <div class="megaMenuToggle" id="css3-megaMenuToggle">
+             Menu 
+            <span class="megaMenuToggle-icon"></span> 
+           </div> 
+           <div class="js-megamenu clearfix" id="js-meganav"> 
+            <ul class="megamenu level0">
+             <li class="mega first haschild submenu-align-fullwidth"><a class="mega first haschild " id="menu102" href="#"><span class="menu-title">La Universidad</span></a>
+              <div class="childcontent cols9 "> 
+               <div class="childcontent-inner-wrap"> 
+                <div class="childcontent-inner clearfix" style="width: 1800px;">
+                 <div class="megacol column1 first" style="width: 200px;">
+                  <ul class="megamenu level1">
+                   <li class="mega first group submenu-align-left">
+                    <div class="group clearfix">
+                     <div class="group-title">
+                      <a class="mega first group " id="menu163" href="#"><span class="menu-title">Quiénes somos</span><span class="menu-desc">&nbsp;</span></a>
+                     </div>
+                     <div class="group-content">
+                      <ul class="megamenu level1">
+                       <li class="mega first submenu-align-auto"><a class="mega first " id="menu366" href="http://www.upcomillas.es/es/universidad-comillas-icai-icade/nuestra-universidad/bienvenida-del-rector"><span class="menu-title">Bienvenida del Rector</span></a></li>
+                       <li class="mega submenu-align-auto"><a class="mega " id="menu364" href="http://www.upcomillas.es/es/universidad-comillas-icai-icade/nuestra-universidad/declaracion-institucional"><span class="menu-title">Misión y valores</span></a></li>
+                       <li class="mega submenu-align-auto"><a class="mega " id="menu367" onclick="window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,');return false;" href="http://www.sjweb.info/"><span class="menu-title">Compañía de Jesús</span></a></li>
+                       <li class="mega submenu-align-auto"><a class="mega " id="menu365" href="http://www.upcomillas.es/es/universidad-comillas-icai-icade/nuestra-universidad/organizacion"><span class="menu-title">Organización</span></a></li>
+                       <li class="mega last submenu-align-auto"><a class="mega last " id="menu372" href="http://www.upcomillas.es/es/universidad-comillas-icai-icade/nuestra-universidad/rasgos-distintivos"><span class="menu-title">Rasgos distintivos</span></a></li>
+                      </ul>
+                     </div>
+                    </div></li>
+                  </ul>
+                 </div>
+                 <div class="megacol column2" style="width: 200px;">
+                  <ul class="megamenu level1">
+                   <li class="mega first group submenu-align-left">
+                    <div class="group clearfix">
+                     <div class="group-title">
+                      <a class="mega first group " id="menu355" href="#"><span class="menu-title">Historia y datos</span><span class="menu-desc">&nbsp;</span></a>
+                     </div>
+                     <div class="group-content">
+                      <ul class="megamenu level1">
+                       <li class="mega first submenu-align-auto"><a class="mega first " id="menu369" href="http://www.upcomillas.es/es/universidad-comillas-icai-icade/historia-y-datos-cifras/historia"><span class="menu-title">Historia</span></a></li>
+                       <li class="mega submenu-align-auto"><a class="mega " id="menu370" href="http://www.upcomillas.es/es/universidad-comillas-icai-icade/historia-y-datos-cifras/memoria-academica"><span class="menu-title">Memoria Académica</span></a></li>
+                       <li class="mega submenu-align-auto"><a class="mega " id="menu371" onclick="window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,');return false;" href="http://web.upcomillas.es/presentacion/documentos/Comillas_Cifras_12-13.pdf"><span class="menu-title">Comillas en cifras</span></a></li>
+                       <li class="mega last submenu-align-auto"><a class="mega last " id="menu526" href="http://web.upcomillas.es/presentacion/documentos/calen_acad_14-15.pdf" target="_blank"><span class="menu-title">Calendario académico</span></a></li>
+                      </ul>
+                     </div>
+                    </div></li>
+                  </ul>
+                 </div>
+                 <div class="megacol column3" style="width: 200px;">
+                  <ul class="megamenu level1">
+                   <li class="mega first group submenu-align-left">
+                    <div class="group clearfix">
+                     <div class="group-title">
+                      <a title="Fundación" class="mega first group " id="menu313" href="#"><span class="menu-title">Información Institucional</span><span class="menu-desc">&nbsp;</span></a>
+                     </div>
+                     <div class="group-content">
+                      <ul class="megamenu level1">
+                       <li class="mega first submenu-align-auto"><a class="mega first " id="menu374" href="http://www.upcomillas.es/es/universidad-comillas-icai-icade/fundacion-comillas/2014-01-22-21-51-01"><span class="menu-title">Proyecto educativo</span></a></li>
+                       <li class="mega submenu-align-auto"><a class="mega " id="menu373" href="http://www.upcomillas.es/es/universidad-comillas-icai-icade/fundacion-comillas/estatutos-y-reglamento"><span class="menu-title">Estatutos y Reglamento</span></a></li>
+                       <li class="mega submenu-align-auto"><a class="mega " id="menu403" onclick="window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,');return false;" href="http://web.upcomillas.es/presentacion/documentos/Cod_Conducta_Compa_Jes_Espa.pdf"><span class="menu-title">Código de conducta</span></a></li>
+                       <li class="mega last submenu-align-auto"><a class="mega last " id="menu375" href="http://www.upcomillas.es/es/universidad-comillas-icai-icade/fundacion-comillas/2014-01-22-21-53-05"><span class="menu-title">Identidad Corporativa</span></a></li>
+                      </ul>
+                     </div>
+                    </div></li>
+                  </ul>
+                 </div>
+                 <div class="megacol column4" style="width: 200px;">
+                  <ul class="megamenu level1">
+                   <li class="mega first submenu-align-left"><a class="mega first " id="menu164" href="http://www.upcomillas.es/es/universidad-comillas-icai-icade/sala-de-prensa"><span class="menu-title">SALA DE PRENSA</span><span class="menu-desc">&nbsp;</span></a></li>
+                  </ul>
+                 </div>
+                 <div class="megacol column5" style="width: 200px;">
+                  <ul class="megamenu level1">
+                   <li class="mega first submenu-align-auto"><a class="mega first " id="menu166" href="http://www.upcomillas.es/es/universidad-comillas-icai-icade/2013-12-26-11-13-55"><span class="menu-title">COLABORA CON NOSOTROS</span><span class="menu-desc">&nbsp;</span></a></li>
+                  </ul>
+                 </div>
+                 <div class="megacol column6" style="width: 200px;">
+                  <ul class="megamenu level1">
+                   <li class="mega first submenu-align-auto"><a class="mega first " id="menu502" href="http://www.upcomillas.es/es/universidad-comillas-icai-icade/fundacion-universitaria-comillas-icai"><span class="menu-title">FUNDACIÓN UNIVERSITARIA COMILLAS - I.C.A.I.</span><span class="menu-desc">&nbsp;</span></a></li>
+                  </ul>
+                 </div>
+                 <div class="megacol column7" style="width: 200px;">
+                  <ul class="megamenu level1">
+                   <li class="mega first submenu-align-auto"><a class="mega first " id="menu404" href="http://www.upcomillas.es/es/universidad-comillas-icai-icade/direcciones-de-contacto"><span class="menu-title">SEDES Y MAPAS</span><span class="menu-desc">&nbsp;</span></a></li>
+                  </ul>
+                 </div>
+                 <div class="megacol column8" style="width: 200px;">
+                  <ul class="megamenu level1">
+                   <li class="mega first submenu-align-auto"><a class="mega first " id="menu528" href="http://www.upcomillas.es/es/universidad-comillas-icai-icade/trabaja-con-nosotros"><span class="menu-title">TRABAJA CON NOSOTROS</span><span class="menu-desc">&nbsp;</span></a></li>
+                  </ul>
+                 </div>
+                 <div class="megacol column9 last" style="width: 200px;">
+                  <ul class="megamenu level1">
+                   <li class="mega first submenu-align-auto">
+                    <div class="group clearfix">
+                     <div class="group-title">
+                      <a class="mega first " id="menu381" onclick="window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,');return false;" href="http://catalogo.media.upcomillas.es/Mediasite/Play/a3ca440ecb8a421b9c8784b09d5d0ed01d"><img alt="VIDEO INSTITUCIONAL" src="http://www.upcomillas.es/images/video-corporativo.jpg"><span class="menu-desc"> Vídeo Corporativo</span></a>
+                     </div>
+                    </div></li>
+                  </ul>
+                 </div>
+                </div> 
+               </div>
+              </div></li>
+             <li class="mega haschild submenu-align-fullwidth"><a class="mega haschild " id="menu103" href="#"><span class="menu-title">Admisiones</span></a>
+              <div class="childcontent cols4 "> 
+               <div class="childcontent-inner-wrap"> 
+                <div class="childcontent-inner clearfix" style="width: 880px;">
+                 <div class="megacol column1 first" style="width: 210px;">
+                  <ul class="megamenu level1">
+                   <li class="mega first group submenu-align-auto">
+                    <div class="group clearfix">
+                     <div class="group-title">
+                      <a class="mega first group " id="menu167" href="#"><span class="menu-title">Información general</span></a>
+                     </div>
+                     <div class="group-content">
+                      <ul class="megamenu level1">
+                       <li class="mega first submenu-align-auto"><a class="mega first " id="menu382" href="http://www.upcomillas.es/es/admisiones/2013-12-26-11-13-56/informacion-de-interes"><span class="menu-title">Proceso de Admisión</span></a></li>
+                       <li class="mega submenu-align-auto"><a class="mega " id="menu383" href="http://web.upcomillas.es/estudios/estu_faqs.aspx"><span class="menu-title">Preguntas frecuentes</span></a></li>
+                       <li class="mega submenu-align-auto"><a class="mega " id="menu169" href="http://www.upcomillas.es/es/admisiones/2013-12-26-11-13-56/info-acogida"><span class="menu-title">Alojamiento</span></a></li>
+                       <li class="mega last submenu-align-auto"><a class="mega last " id="menu554" href="http://web.upcomillas.es/admision/admi_pres.aspx"><img alt="Consultar mi  Admisión" src="http://www.upcomillas.es/images/imagemenublue_hover.png"><span class="image-title">Consultar mi Admisión</span> </a></li>
+                      </ul>
+                     </div>
+                    </div></li>
+                  </ul>
+                 </div>
+                 <div class="megacol column2" style="width: 200px;">
+                  <ul class="megamenu level1">
+                   <li class="mega first group submenu-align-auto">
+                    <div class="group clearfix">
+                     <div class="group-title">
+                      <span class="mega first group " id="menu391"><span class="menu-title">VEN A CONOCERNOS</span></span>
+                     </div>
+                     <div class="group-content">
+                      <ul class="megamenu level1">
+                       <li class="mega first submenu-align-auto"><a title="Puertas abiertas 2014-15" class="mega first " id="menu170" onclick="window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,');return false;" href="http://web.upcomillas.es/folletosdigitales/jornadas2014/jornadas2014.html"><span class="menu-title">Puertas Abiertas</span></a></li>
+                       <li class="mega submenu-align-auto"><a class="mega " id="menu392" href="http://web.upcomillas.es/Servicios/serv_prom_acti.aspx#5"><span class="menu-title">Ferias</span></a></li>
+                       <li class="mega last submenu-align-auto"><a class="mega last " id="menu393" onclick="window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,');return false;" href="http://www.foto360.es/comillas/ "><span class="menu-title">Visita Virtual</span></a></li>
+                      </ul>
+                     </div>
+                    </div></li>
+                  </ul>
+                 </div>
+                 <div class="megacol column3" style="width: 220px;">
+                  <ul class="megamenu level1">
+                   <li class="mega first group submenu-align-auto">
+                    <div class="group clearfix">
+                     <div class="group-title">
+                      <a class="mega first group " id="menu168" href="#"><span class="menu-title">Becas y Ayudas</span></a>
+                     </div>
+                     <div class="group-content">
+                      <ul class="megamenu level1">
+                       <li class="mega first submenu-align-auto"><a class="mega first " id="menu500" href="http://www.upcomillas.es/es/admisiones/2013-12-26-11-13-57/becas-de-grado"><span class="menu-title">Becas de Grado</span></a></li>
+                       <li class="mega last submenu-align-auto"><a class="mega last " id="menu386" href="http://www.upcomillas.es/es/admisiones/2013-12-26-11-13-57/2014-01-23-21-44-11"><span class="menu-title">Becas de Postgrado</span></a></li>
+                      </ul>
+                     </div>
+                    </div></li>
+                  </ul>
+                 </div>
+                 <div class="megacol column4 last" style="width: 250px;">
+                  <ul class="megamenu level1">
+                   <li class="mega first group submenu-align-auto">
+                    <div class="group clearfix">
+                     <div class="group-content">
+                      <ul class="megamenu level1">
+                       <li class="mega first submenu-align-auto"><a class="mega first " id="menu387" href="http://web.upcomillas.es/estudios/titulaciones.aspx"><img alt="Admisiones Grado" src="http://www.upcomillas.es/images/admi_pres_grado.jpg"></a></li>
+                       <li class="mega last submenu-align-auto"><a class="mega last " id="menu388" href="http://web.upcomillas.es/estudios/postgrado_admision.aspx"><img alt="Admisiones Postgrado" src="http://www.upcomillas.es/images/admi_pres_postgrado.jpg"></a></li>
+                      </ul>
+                     </div>
+                    </div></li>
+                  </ul>
+                 </div>
+                </div> 
+               </div>
+              </div></li>
+             <li class="mega haschild submenu-align-fullwidth"><a class="mega haschild " id="menu295" href="#"><span class="menu-title">Centros</span></a>
+              <div class="childcontent cols4 "> 
+               <div class="childcontent-inner-wrap"> 
+                <div class="childcontent-inner clearfix" style="width: 960px;">
+                 <div class="megacol column1 first" style="width: 230px;">
+                  <ul class="megamenu level1">
+                   <li class="mega first group submenu-align-auto">
+                    <div class="group clearfix">
+                     <div class="group-title">
+                      <span class="mega first group " id="menu394"><span class="menu-title">FACULTADES</span></span>
+                     </div>
+                     <div class="group-content">
+                      <ul class="megamenu level1">
+                       <li class="mega first submenu-align-auto"><a class="mega first " id="menu476" href="http://icade.upcomillas.es"><span class="menu-title">ICADE Derecho y Empresariales</span></a></li>
+                       <li class="mega submenu-align-auto"><a class="mega " id="menu299" href="http://web.upcomillas.es/centros/cent_fchs.aspx"><span class="menu-title">Ciencias Humanas y Sociales</span></a></li>
+                       <li class="mega submenu-align-auto"><a class="mega " id="menu301" href="http://web.upcomillas.es/centros/cent_teol.aspx"><span class="menu-title">Teología</span></a></li>
+                       <li class="mega last submenu-align-auto"><a class="mega last " id="menu356" href="http://web.upcomillas.es/centros/cent_cano.aspx"><span class="menu-title">Derecho Canónico</span></a></li>
+                      </ul>
+                     </div>
+                    </div></li>
+                  </ul>
+                 </div>
+                 <div class="megacol column2" style="width: 190px;">
+                  <ul class="megamenu level1">
+                   <li class="mega first group submenu-align-auto">
+                    <div class="group clearfix">
+                     <div class="group-title">
+                      <span class="mega first group " id="menu395"><span class="menu-title">ESCUELAS</span></span>
+                     </div>
+                     <div class="group-content">
+                      <ul class="megamenu level1">
+                       <li class="mega first submenu-align-auto"><a class="mega first " id="menu298" href="http://icai.upcomillas.es"><span class="menu-title">ICAI Ingeniería</span></a></li>
+                       <li class="mega last submenu-align-auto"><a class="mega last " id="menu300" href="http://web.upcomillas.es/centros/cent_enfe.aspx"><span class="menu-title">Enfermería y Fisioterapia</span></a></li>
+                      </ul>
+                     </div>
+                    </div></li>
+                  </ul>
+                 </div>
+                 <div class="megacol column3" style="width: 300px;">
+                  <ul class="megamenu level1">
+                   <li class="mega first group submenu-align-auto">
+                    <div class="group clearfix">
+                     <div class="group-title">
+                      <span class="mega first group " id="menu396"><span class="menu-title">OTROS CENTROS</span></span>
+                     </div>
+                     <div class="group-content">
+                      <ul class="megamenu level1">
+                       <li class="mega first submenu-align-auto"><a class="mega first " id="menu401" href="http://www.upcomillas.es/es/2014-01-15-23-08-13/otros-centros/2014-01-24-00-17-18"><span class="menu-title">Institutos y Cátedras</span></a></li>
+                       <li class="mega submenu-align-auto"><a class="mega " id="menu302" href="http://www.upcomillas.es/es/2014-01-15-23-08-13/otros-centros/universidad-de-mayores"><span class="menu-title">Universidad de Mayores</span></a></li>
+                       <li class="mega submenu-align-auto"><a class="mega " id="menu349" href="http://www.upcomillas.es/es/2014-01-15-23-08-13/otros-centros/universidad-de-verano"><span class="menu-title">Universidad de Verano</span></a></li>
+                       <li class="mega submenu-align-auto"><a class="mega " id="menu399" href="http://web.upcomillas.es/Centros/UNINPSI/default.aspx"><span class="menu-title">UNINPSI</span></a></li>
+                       <li class="mega last submenu-align-auto"><a class="mega last " id="menu400" href="http://web.upcomillas.es/centros/uies/cent_uies_pres.aspx"><span class="menu-title">Unidad de Investigación y Estudios Sociales</span></a></li>
+                      </ul>
+                     </div>
+                    </div></li>
+                  </ul>
+                 </div>
+                 <div class="megacol column4 last" style="width: 240px;">
+                  <ul class="megamenu level1">
+                   <li class="mega first submenu-align-auto"><a class="mega first " id="menu402" onclick="window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,');return false;" href="http://www.foto360.es/comillas/ "><img alt="Visita Nuestras instalaciones" src="http://www.upcomillas.es/images/360.jpg"></a></li>
+                  </ul>
+                 </div>
+                </div> 
+               </div>
+              </div></li>
+             <li class="mega haschild submenu-align-fullwidth"><a class="mega haschild " id="menu104" href="#"><span class="menu-title">Estudios</span></a>
+              <div class="childcontent cols4 "> 
+               <div class="childcontent-inner-wrap"> 
+                <div class="childcontent-inner clearfix" style="width: 990px;">
+                 <div class="megacol column1 first" style="width: 270px;">
+                  <ul class="megamenu level1">
+                   <li class="mega first group submenu-align-auto">
+                    <div class="group clearfix">
+                     <div class="group-title">
+                      <a class="mega first group " id="menu174" href="#"><span class="menu-title">GRADO</span></a>
+                     </div>
+                     <div class="group-content">
+                      <ul class="megamenu level1">
+                       <li class="mega first submenu-align-auto">
+                        <div class="group clearfix">
+                         <div class="group-title">
+                          <a class="mega first " id="menu491" href="http://www.upcomillas.es/es/estudios/estudios-de-grado/para-alumnos-de-nuevo-ingreso"><img alt="GRADO_foto" src="http://www.upcomillas.es/images/grado_icon.png"></a>
+                         </div>
+                        </div></li>
+                       <li class="mega submenu-align-auto"><a class="mega " id="menu455" href="http://www.upcomillas.es/es/estudios/estudios-de-grado/para-alumnos-de-nuevo-ingreso"><span class="menu-title">Para Alumnos de nuevo ingreso</span></a></li>
+                       <li class="mega last submenu-align-auto"><a class="mega last " id="menu610" href="http://www.upcomillas.es/es/estudios/estudios-de-grado/estudios"><span class="menu-title">Estudios que se imparten actuamente </span></a></li>
+                      </ul>
+                     </div>
+                    </div></li>
+                  </ul>
+                 </div>
+                 <div class="megacol column2" style="width: 240px;">
+                  <ul class="megamenu level1">
+                   <li class="mega first group submenu-align-auto">
+                    <div class="group clearfix">
+                     <div class="group-title">
+                      <a class="mega first group " id="menu175" href="http://web.upcomillas.es/estudios/estu_postgrado.aspx"><span class="menu-title">MÁSTER</span></a>
+                     </div>
+                     <div class="group-content">
+                      <ul class="megamenu level1">
+                       <li class="mega first submenu-align-auto">
+                        <div class="group clearfix">
+                         <div class="group-title">
+                          <a class="mega first " id="menu492" href="http://www.upcomillas.es/estudios/postgrado.aspx"><img alt="MÁSTER_foto" src="http://www.upcomillas.es/images/postgrado_icon.png"></a>
+                         </div>
+                        </div></li>
+                       <li class="mega submenu-align-auto"><a class="mega " id="menu459" href="http://www.upcomillas.es/es/estudios/2013-12-26-11-13-64/estudios-oficiales"><span class="menu-title">Estudios Oficiales</span></a></li>
+                       <li class="mega last submenu-align-auto"><a class="mega last " id="menu460" href="http://web.upcomillas.es/estudios/postgrado_propios.aspx?nivel=3&amp;id=1668"><span class="menu-title">Estudios Propios</span></a></li>
+                      </ul>
+                     </div>
+                    </div></li>
+                  </ul>
+                 </div>
+                 <div class="megacol column3" style="width: 240px;">
+                  <ul class="megamenu level1">
+                   <li class="mega first group submenu-align-auto">
+                    <div class="group clearfix">
+                     <div class="group-title">
+                      <a class="mega first group " id="menu176" href="http://www.upcomillas.es/es/estudios/doctorado"><span class="menu-title">DOCTORADO</span></a>
+                     </div>
+                     <div class="group-content">
+                      <ul class="megamenu level1">
+                       <li class="mega first submenu-align-auto">
+                        <div class="group clearfix">
+                         <div class="group-title">
+                          <a class="mega first " id="menu493" href="http://www.upcomillas.es/es/estudios/doctorado/doctorado-2-foto"><img alt="DOCTORADO" src="http://www.upcomillas.es/images/doctorado_icon.png"></a>
+                         </div>
+                        </div></li>
+                      </ul>
+                     </div>
+                    </div></li>
+                  </ul>
+                 </div>
+                 <div class="megacol column4 last" style="width: 240px;">
+                  <ul class="megamenu level1">
+                   <li class="mega first group submenu-align-auto">
+                    <div class="group clearfix">
+                     <div class="group-title">
+                      <a class="mega first group " id="menu323" href="#"><span class="menu-title">OTROS ESTUDIOS</span></a>
+                     </div>
+                     <div class="group-content">
+                      <ul class="megamenu level1">
+                       <li class="mega first submenu-align-auto"><a class="mega first " id="menu498" href="http://www.upcomillas.es/es/estudios/2014-01-18-11-14-49/cursos-internacionales"><span class="menu-title">Cursos internacionales</span></a></li>
+                       <li class="mega last submenu-align-auto"><a class="mega last " id="menu406" href="http://web.upcomillas.es/centros/unma_pres.aspx"><span class="menu-title">Cursos para Mayores</span></a></li>
+                      </ul>
+                     </div>
+                    </div></li>
+                  </ul>
+                 </div>
+                </div> 
+               </div>
+              </div></li>
+             <li class="mega haschild submenu-align-fullwidth"><a class="mega haschild " id="menu105" href="#"><span class="menu-title">Investigación </span></a>
+              <div class="childcontent cols6 "> 
+               <div class="childcontent-inner-wrap"> 
+                <div class="childcontent-inner clearfix" style="width: 1350px;">
+                 <div class="megacol column1 first" style="width: 200px;">
+                  <ul class="megamenu level1">
+                   <li class="mega first group submenu-align-auto">
+                    <div class="group clearfix">
+                     <div class="group-title">
+                      <a class="mega first group " id="menu181" href="http://www.upcomillas.es/es/investigacion/2013-12-26-11-13-70"><span class="menu-title">BIBLIOTECA</span></a>
+                     </div>
+                     <div class="group-content">
+                      <ul class="megamenu level1">
+                       <li class="mega first submenu-align-fullwidth"><a class="mega first " id="menu490" href="http://www.upcomillas.es/es/investigacion/2013-12-26-11-13-70/2014-02-02-21-45-21"><img alt="BIBLIOTECA_foto" src="http://www.upcomillas.es/images/bib2.jpg"></a></li>
+                      </ul>
+                     </div>
+                    </div></li>
+                  </ul>
+                 </div>
+                 <div class="megacol column2" style="width: 350px;">
+                  <ul class="megamenu level1">
+                   <li class="mega first group submenu-align-auto">
+                    <div class="group clearfix">
+                     <div class="group-title">
+                      <span class="mega first group " id="menu185"><span class="menu-title">INSTITUTOS</span></span>
+                     </div>
+                     <div class="group-content">
+                      <ul class="megamenu level1">
+                       <li class="mega first submenu-align-auto"><a class="mega first " id="menu445" href="http://www.iit.upcomillas.es/"><span class="menu-title">Instituto de Investigación Tecnológica (IIT)</span></a></li>
+                       <li class="mega submenu-align-auto"><a class="mega " id="menu446" href="http://web.upcomillas.es/centros/cent_inst_espi_iden.aspx"><span class="menu-title">Instituto Universitario de Espiritualidad </span></a></li>
+                       <li class="mega submenu-align-auto"><a class="mega " id="menu448" href="http://web.upcomillas.es/centros/iem/cent_iem_pres.aspx"><span class="menu-title">Instituto Universitario de Estudios sobre Migraciones</span></a></li>
+                       <li class="mega submenu-align-auto"><a class="mega " id="menu450" href="http://web.upcomillas.es/centros/iuf/iuf.aspx"><span class="menu-title">Instituto Universitario de la Familia</span></a></li>
+                       <li class="mega submenu-align-auto"><a class="mega " id="menu447" href="http://web.upcomillas.es/centros/ice/default.aspx"><span class="menu-title">Instituto Universitario de Ciencias de la Educación (ICE)</span></a></li>
+                       <li class="mega last submenu-align-auto"><a class="mega last " id="menu449" href="http://web.upcomillas.es/centros/iim/cent_iim.aspx"><span class="menu-title">Instituto de Idiomas Modernos</span></a></li>
+                      </ul>
+                     </div>
+                    </div></li>
+                  </ul>
+                 </div>
+                 <div class="megacol column3" style="width: 200px;">
+                  <ul class="megamenu level1">
+                   <li class="mega first submenu-align-auto"><a class="mega first " id="menu451" href="http://www.upcomillas.es/es/investigacion/catedras"><span class="menu-title">CÁTEDRAS</span></a></li>
+                  </ul>
+                 </div>
+                 <div class="megacol column4" style="width: 200px;">
+                  <ul class="megamenu level1">
+                   <li class="mega first submenu-align-auto"><a class="mega first " id="menu183" href="http://web.upcomillas.es/investigacion/inve_grup_inve_list.aspx?nivel=3&amp;id=2031"><span class="menu-title">GRUPOS DE INVESTIGACIÓN</span></a></li>
+                  </ul>
+                 </div>
+                 <div class="megacol column5" style="width: 200px;">
+                  <ul class="megamenu level1">
+                   <li class="mega first submenu-align-auto">
+                    <div class="group clearfix">
+                     <div class="group-title">
+                      <a class="mega first " id="menu182" href="http://web.upcomillas.es/servicios/serv_publ.aspx"><span class="menu-title">SERVICIO DE PUBLICACIONES</span></a>
+                     </div>
+                    </div></li>
+                  </ul>
+                 </div>
+                 <div class="megacol column6 last" style="width: 200px;">
+                  <ul class="megamenu level1">
+                   <li class="mega first group submenu-align-auto">
+                    <div class="group clearfix">
+                     <div class="group-title">
+                      <a class="mega first group " id="menu184" href="http://www.upcomillas.es/es/investigacion/colaboracion-con-empresas"><span class="menu-title">COLABORACIÓN CON EMPRESAS</span></a>
+                     </div>
+                     <div class="group-content">
+                      <ul class="megamenu level1">
+                       <li class="mega first submenu-align-auto"><a class="mega first " id="menu453" href="http://web.upcomillas.es/investigacion/inve_conv.aspx?nivel=3&amp;id=2030"><span class="menu-title">Convocatorias I+D+i</span></a></li>
+                      </ul>
+                     </div>
+                    </div></li>
+                  </ul>
+                 </div>
+                </div> 
+               </div>
+              </div></li>
+             <li class="mega haschild submenu-align-fullwidth"><a class="mega haschild " id="menu280" href="#"><span class="menu-title">Alumnos</span></a>
+              <div class="childcontent cols5 "> 
+               <div class="childcontent-inner-wrap"> 
+                <div class="childcontent-inner clearfix" style="width: 1023px;">
+                 <div class="megacol column1 first" style="width: 223px;">
+                  <ul class="megamenu level1">
+                   <li class="mega first group submenu-align-auto">
+                    <div class="group clearfix">
+                     <div class="group-title">
+                      <span class="mega first group " id="menu309"><span class="menu-title">AYUDAS AL ALUMNO</span></span>
+                     </div>
+                     <div class="group-content">
+                      <ul class="megamenu level1">
+                       <li class="mega first submenu-align-auto"><a class="mega first " id="menu425" href="http://www.upcomillas.es/es/alumnos/2014-01-16-08-45-36/2014-01-27-11-39-49"><span class="menu-title">Becas y ayudas al estudio</span></a></li>
+                       <li class="mega submenu-align-auto"><a class="mega " id="menu427" href="http://www.upcomillas.es/es/admisiones/2013-12-26-11-13-56/info-acogida"><span class="menu-title">Alojamiento</span></a></li>
+                       <li class="mega submenu-align-auto"><a class="mega " id="menu429" href="http://web.upcomillas.es/servicios/serv_uts_serv.aspx"><span class="menu-title">Ayuda Especial</span></a></li>
+                       <li class="mega submenu-align-auto"><a class="mega " id="menu428" href="http://web.upcomillas.es/servicios/serv_unid_orie.aspx"><span class="menu-title">Orientación Psicopedagógica</span></a></li>
+                       <li class="mega submenu-align-auto"><a class="mega " id="menu430" href="http://www.upcomillas.es/es/alumnos/2014-01-16-08-45-36/2014-01-27-11-52-36"><span class="menu-title">Función Tutorial</span></a></li>
+                       <li class="mega last submenu-align-auto"><a class="mega last " id="menu444" onclick="window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,');return false;" href="http://web.upcomillas.es/webcorporativo/servicios/preuniversitario/"><span class="menu-title">Campus Preuniversitario</span></a></li>
+                      </ul>
+                     </div>
+                    </div></li>
+                  </ul>
+                 </div>
+                 <div class="megacol column2" style="width: 183px;">
+                  <ul class="megamenu level1">
+                   <li class="mega first group submenu-align-auto">
+                    <div class="group clearfix">
+                     <div class="group-title">
+                      <a class="mega first group " id="menu303" href="#"><span class="menu-title">VIDA EN EL CAMPUS</span></a>
+                     </div>
+                     <div class="group-content">
+                      <ul class="megamenu level1">
+                       <li class="mega first submenu-align-auto"><a class="mega first " id="menu432" href="http://web.upcomillas.es/servicios/serv_past.aspx"><span class="menu-title">Pastoral</span></a></li>
+                       <li class="mega submenu-align-auto"><a class="mega " id="menu433" href="http://web.upcomillas.es/servicios/serv_acti.aspx"><span class="menu-title">Actividades Culturales</span></a></li>
+                       <li class="mega submenu-align-auto"><a class="mega " id="menu434" href="http://web.upcomillas.es/servicios/serv_depo.aspx"><span class="menu-title">Deportes</span></a></li>
+                       <li class="mega submenu-align-auto"><a class="mega " id="menu435" href="http://web.upcomillas.es/servicios/serv_uts.aspx"><span class="menu-title">Trabajo Social</span></a></li>
+                       <li class="mega submenu-align-auto"><a class="mega " id="menu436" href="http://web.upcomillas.es/servicios/solidario/serv_soli.aspx"><span class="menu-title">Comillas Solidaria</span></a></li>
+                       <li class="mega last submenu-align-auto"><a class="mega last " id="menu613" href="http://www.upcomillas.es/es/alumnos/2014-01-16-08-37-49/generar-automaticamente-desde-el-titulo"><span class="menu-title">Biblioteca</span></a></li>
+                      </ul>
+                     </div>
+                    </div></li>
+                  </ul>
+                 </div>
+                 <div class="megacol column3" style="width: 194px;">
+                  <ul class="megamenu level1">
+                   <li class="mega first group submenu-align-auto">
+                    <div class="group clearfix">
+                     <div class="group-title">
+                      <a class="mega first group " id="menu304" href="#"><span class="menu-title">PRÁCTICAS Y EMPLEO</span></a>
+                     </div>
+                     <div class="group-content">
+                      <ul class="megamenu level1">
+                       <li class="mega first submenu-align-auto"><a class="mega first " id="menu441" href="http://www.upcomillas.es/es/alumnos/practicas-empleo/2014-01-27-12-18-52"><span class="menu-title">Oficina de Prácticas y Empleo</span></a></li>
+                      </ul>
+                     </div>
+                    </div></li>
+                  </ul>
+                 </div>
+                 <div class="megacol column4" style="width: 188px;">
+                  <ul class="megamenu level1">
+                   <li class="mega first group submenu-align-auto">
+                    <div class="group clearfix">
+                     <div class="group-title">
+                      <a class="mega first group " id="menu311" href="#"><span class="menu-title">ANTIGUOS ALUMNOS</span></a>
+                     </div>
+                     <div class="group-content">
+                      <ul class="megamenu level1">
+                       <li class="mega first submenu-align-auto"><a class="mega first " id="menu443" href="http://web.upcomillas.es/servicios/serv_oaa.aspx?perfil=1512"><span class="menu-title">Oficina de Antiguos Alumnos</span></a></li>
+                       <li class="mega submenu-align-auto"><a class="mega " id="menu438" href="http://www.upcomillas.es/es/alumnos/2014-01-16-08-46-58/2014-01-27-12-10-54"><span class="menu-title">Asociaciones de Antiguos Alumnos</span></a></li>
+                       <li class="mega last submenu-align-auto"><a class="mega last " id="menu482" href="http://web.upcomillas.es/sgat/sgat_info.aspx"><span class="menu-title">Sede electrónica y Secretaría General</span></a></li>
+                      </ul>
+                     </div>
+                    </div></li>
+                  </ul>
+                 </div>
+                 <div class="megacol column5 last" style="width: 235px;">
+                  <ul class="megamenu level1">
+                   <li class="mega first group submenu-align-auto">
+                    <div class="group clearfix">
+                     <div class="group-title">
+                      <span class="mega first group " id="menu437"><span class="menu-title">PARTICIPACIÓN ESTUDIANTIL</span></span>
+                     </div>
+                     <div class="group-content">
+                      <ul class="megamenu level1">
+                       <li class="mega first submenu-align-auto"><a class="mega first " id="menu439" href="http://web.upcomillas.es/Servicios/serv_dele.aspx"><span class="menu-title">Delegación de Alumnos</span></a></li>
+                      </ul>
+                     </div>
+                    </div></li>
+                  </ul>
+                 </div>
+                </div> 
+               </div>
+              </div></li>
+             <li class="mega last haschild submenu-align-fullwidth"><a class="mega last haschild " id="menu106" href="#"><span class="menu-title">Internacional</span></a>
+              <div class="childcontent cols4 "> 
+               <div class="childcontent-inner-wrap"> 
+                <div class="childcontent-inner clearfix" style="width: 1020px;">
+                 <div class="megacol column1 first" style="width: 260px;">
+                  <ul class="megamenu level1">
+                   <li class="mega first group submenu-align-auto">
+                    <div class="group clearfix">
+                     <div class="group-title">
+                      <a class="mega first group " id="menu186" href="http://web.upcomillas.es/servicios/sri/serv_sri_inte_extra.aspx?nivel=4&amp;id=1780"><span class="menu-title">Programas de Intercambio</span><span class="menu-desc">&nbsp;</span></a>
+                     </div>
+                     <div class="group-content">
+                      <ul class="megamenu level1">
+                       <li class="mega first submenu-align-auto"><a class="mega first " id="menu408" href="http://web.upcomillas.es/servicios/sri/serv_sri_inte_extra.aspx?nivel=4&amp;id=1780#2"><span class="menu-title">Intercambio Erasmus</span></a></li>
+                       <li class="mega submenu-align-auto"><a class="mega " id="menu409" href="http://web.upcomillas.es/servicios/sri/serv_sri_inte_extra.aspx?nivel=4&amp;id=1780#3"><span class="menu-title">Intercambio Bilateral</span></a></li>
+                       <li class="mega submenu-align-auto"><a class="mega " id="menu411" href="http://www.upcomillas.es/es/internacional/2013-12-26-11-13-75/2014-01-27-10-04-08"><span class="menu-title">Becas</span></a></li>
+                       <li class="mega submenu-align-auto"><a class="mega " id="menu410" href="https://intranetsp.upcomillas.es/_layouts/UPComillas/pasarela.aspx?IdRecurso=163"><span class="menu-title">Solicitud de Intercambio</span></a></li>
+                       <li class="mega last submenu-align-auto"><a class="mega last " id="menu188" href="http://web.upcomillas.es/servicios/sri/serv_sri_prac.aspx?nivel=3&amp;id=1775"><span class="menu-title">Prácticas en el extranjero</span></a></li>
+                      </ul>
+                     </div>
+                    </div></li>
+                  </ul>
+                 </div>
+                 <div class="megacol column2" style="width: 230px;">
+                  <ul class="megamenu level1">
+                   <li class="mega first group submenu-align-auto">
+                    <div class="group clearfix">
+                     <div class="group-title">
+                      <a class="mega first group " id="menu187" href="http://web.upcomillas.es/servicios/sri/serv_sri_conv.aspx?nivel=3&amp;id=1778"><span class="menu-title">Convenios educativos</span><span class="menu-desc">&nbsp;</span></a>
+                     </div>
+                     <div class="group-content">
+                      <ul class="megamenu level1">
+                       <li class="mega first submenu-align-auto"><a class="mega first " id="menu412" href="http://web.upcomillas.es/servicios/sri/serv_sri_conv.aspx?nivel=3&amp;id=1778"><span class="menu-title">Convenios</span></a></li>
+                       <li class="mega submenu-align-auto"><a class="mega " id="menu413" href="http://web.upcomillas.es/servicios/sri/serv_sri_rede.aspx?nivel=3&amp;id=1776"><span class="menu-title">Redes internacionales</span></a></li>
+                       <li class="mega last submenu-align-auto"><a class="mega last " id="menu414" href="http://web.upcomillas.es/servicios/sri/serv_sri_prog_ampl.aspx"><span class="menu-title">Programas Internacionales</span></a></li>
+                      </ul>
+                     </div>
+                    </div></li>
+                  </ul>
+                 </div>
+                 <div class="megacol column3" style="width: 250px;">
+                  <ul class="megamenu level1">
+                   <li class="mega first group submenu-align-auto">
+                    <div class="group clearfix">
+                     <div class="group-title">
+                      <a class="mega first group " id="menu189" href="http://web.upcomillas.es/servicios/sri/serv_sri_inte_comi.aspx?nivel=4&amp;id=1781"><span class="menu-title">Estudiantes extranjeros</span><span class="menu-desc">( Incoming)</span></a>
+                     </div>
+                     <div class="group-content">
+                      <ul class="megamenu level1">
+                       <li class="mega first submenu-align-auto"><a class="mega first " id="menu415" href="http://web.upcomillas.es/servicios/sri/documentos/Guia_Estudiantes_Intercambio.pdf"><span class="menu-title">Guía para estudiantes internacionales</span></a></li>
+                       <li class="mega submenu-align-auto"><a class="mega " id="menu416" href="http://web.upcomillas.es/servicios/sri/documentos/serv_sri_inte_comi_prog_primavera.pdf"><span class="menu-title">Jornadas de orientación</span></a></li>
+                       <li class="mega submenu-align-auto"><a class="mega " id="menu417" href="http://web.upcomillas.es/servicios/sri/documentos/serv_sri_inte_comi_exch_fact.pdf"><span class="menu-title">International Exchange Fact Sheet</span></a></li>
+                       <li class="mega last submenu-align-auto"><a class="mega last " id="menu418" href="https://intranet.upcomillas.es/intercambio/entrante/crearsolicitud/valida_propuesta_alumno.aspx"><span class="menu-title">Solicitud de Intercambio</span></a></li>
+                      </ul>
+                     </div>
+                    </div></li>
+                  </ul>
+                 </div>
+                 <div class="megacol column4 last" style="width: 280px;">
+                  <ul class="megamenu level1">
+                   <li class="mega first group submenu-align-auto">
+                    <div class="group clearfix">
+                     <div class="group-title">
+                      <a class="mega first group " id="menu419" href="http://www.upcomillas.es/es/internacional/cursos-internacionales"><span class="menu-title">CURSOS INTERNACIONALES</span><span class="menu-desc">&nbsp;</span></a>
+                     </div>
+                     <div class="group-content">
+                      <ul class="megamenu level1">
+                       <li class="mega first group submenu-align-auto">
+                        <div class="group clearfix">
+                         <div class="group-title">
+                          <a class="mega first group " id="menu424" href="http://web.upcomillas.es/inside/inside_curs.aspx"><img alt="En EE.UU y China:" src="http://www.upcomillas.es/images/arrow_03.png"><span class="image-title">En EE.UU y China:</span> </a>
+                         </div>
+                         <div class="group-content">
+                          <ul class="megamenu level1">
+                           <li class="mega first submenu-align-auto"><a class="mega first " id="menu190" href="http://web.upcomillas.es/inside/inside.aspx"><span class="menu-title">Programas INSIDE</span></a></li>
+                          </ul>
+                         </div>
+                        </div></li>
+                       <li class="mega last group submenu-align-auto">
+                        <div class="group clearfix">
+                         <div class="group-title">
+                          <a class="mega last group " id="menu423" href="http://www.upcomillas.es/es/internacional/cursos-internacionales/en-madrid"><img alt="En Madrid:" src="http://www.upcomillas.es/images/arrow_03.png"><span class="image-title">En Madrid:</span> </a>
+                         </div>
+                         <div class="group-content">
+                          <ul class="megamenu level1">
+                           <li class="mega first submenu-align-auto"><a class="mega first " id="menu420" href="http://web.upcomillas.es/servicios/sri/serv_sri_curs_vera.aspx"><span class="menu-title">Cursos de Verano</span></a></li>
+                           <li class="mega submenu-align-auto"><a class="mega " id="menu421" href="http://www.upcomillas.es/es/internacional/cursos-internacionales/en-madrid/spanish-language-courses"><span class="menu-title">Spanish Language Courses</span></a></li>
+                           <li class="mega last submenu-align-auto"><a class="mega last " id="menu422" href="http://www.upcomillas.es/es/internacional/cursos-internacionales/en-madrid/2014-01-27-11-04-53"><span class="menu-title">Programas semestrales</span></a></li>
+                          </ul>
+                         </div>
+                        </div></li>
+                      </ul>
+                     </div>
+                    </div></li>
+                  </ul>
+                 </div>
+                </div> 
+               </div>
+              </div></li>
+            </ul> 
+           </div>
+          </div> 
+          <!--<style type="text/css">
+	 ul.level1 .childcontent { margin: -20px 0 0 px; }
+</style>--> 
+         </div> 
+        </nav>
+       </div> 
+      </div> 
+      <div class="LangConvert"> 
+       <div class="clear"></div> 
+      </div> 
+      <div class="clear"></div> 
+     </div> 
+    </div> 
+   </div>
+   <!--header area is end--> 
+   <!--banner Area is Start here--> 
+   <div id="BannerWarp2"></div> 
+   <style type="text/css">
+body{
+	font-size: 1em;
+	color:#000;
+	background: #FFF;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	min-width: 799px;
+}
+</style> 
+   <div id="navLeft"> 
+   </div> 
+   <div id="contenido"> 
+    <h3 class="oculto">Perfiles</h3> 
+    <div id="contentCentral"> 
+     <div id="bloque_sugerencias" class="bloque100 bloqueIzq"> 
+      <h1>Buzón de Sugerencias</h1> 
+      <br> 
+      <p>En la Universidad Pontificia Comillas estamos continuamente trabajando por la excelencia, y nos interesan mucho sus sugerencias de mejora y quejas.</p> 
+      <ul> 
+       <li>Una <strong>SUGERENCIA</strong> es la aportación de ideas o iniciativas para mejorar nuestra calidad.</li> 
+       <li>Una <strong>QUEJA</strong> es una manifestación de insatisfacción con alguna de nuestras actuaciones.</li> 
+      </ul> 
+      <p>Éste <strong>NO ES UN SERVICIO DE INFORMACIÓN</strong>. Para consultas sobre actividades universitarias diríjase a la Oficina de Información y Acogida: </p> 
+      <p class="indentado">Teléfonos: 91 540 61 19, 91 540 61 20 <br>Correo electrónico: <a href="mailto:oia@oia.upcomillas.es">oia@oia.upcomillas.es</a></p> 
+      <p>Las reclamaciones o solicitudes oficiales deberá realizarlas en Secretaría General.</p> 
+      <p>Si quiere hacernos llegar alguna sugerencia o queja, utilice el siguiente formulario:</p> 
+      <p>Nombre:<br><input name="txtNombre" type="text" id="txtNombre" class="cajainput" style="WIDTH:60%" maxlenght="250"></p> 
+      <p>Correo Electrónico (será imprescindible rellenar este campo en caso de que quiera recibir respuesta):<br><input name="txtDireccion" type="text" id="txtDireccion" class="cajainput" style="WIDTH:60%" maxlength="150"></p> 
+      <p>Relación con la Universidad:(*)<br> <select name="comboRelacion" id="comboRelacion" onchange="javaScript:activarOtros()"> <option value="">--Elija una Relación--</option> <option value="alumno">Alumno/Antiguo Alumno</option> <option value="padre">Padre/Madre de Alumno</option> <option value="pdi">PDI</option> <option value="pas">PAS</option> <option value="empresa">Empresa/Entidad</option> <option value="otros">Otros. Indique cuál</option> </select> <input name="txtOtros" type="text" id="txtOtros" class="cajainput" style="WIDTH:41.25%; visibility:hidden;" maxlength="100"></p> 
+      <p>Asunto: (*)<br> <select name="comboAsunto" id="comboAsunto" onchange="javaScript:activarAsunto()"> <option value="">--Tiene que ver con--</option> <option value="docencia">Docencia/Profesorado</option> <option value="instalaciones">Instalaciones</option> <option value="servicios">Servicios administrativos</option> <option value="otros">Otros. Indique cuál</option> </select> <input name="txtAsunto" type="text" id="txtAsunto" class="cajainput" style="WIDTH:41%; visibility:hidden;"></p> 
+      <p>Descripción: (*) <br> <textarea name="txtSugerencia" id="txtSugerencia" style="WIDTH:60%; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; " rows="5" onblur="CortarTexto(this, 500);" onkeyup="return CortarTexto(this, 500);"></textarea></p> 
+      <p> 
+       <!-- Captcha --> </p>
+      <p>Cadena de Verificación <br>Introduzca los caracteres de la imagen (*)</p> 
+      <!-- Se carga el control del Captcha --> 
+      <table class="invisible" width="50%" style="font-size:0.8em"> 
+       <tbody>
+        <tr> 
+         <td>  
+          <div id="imgCaptcha_divCaptcha"> 
+           <img id="imgCaptcha_imgCaptchaRegistro" src="../sugerencias/Captcha.aspx" border="0"> 
+           <br> 
+           <input name="imgCaptcha$txtTextoControl" type="text" maxlength="4" id="imgCaptcha_txtTextoControl" class="cajacomun"> 
+           <br> &nbsp; 
+           <br> &nbsp; 
+          </div> </td> 
+        </tr> 
+        <tr> 
+         <td><input type="submit" name="Enviar" value="Enviar" onclick="javascript:return validarDatos();WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;Enviar&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="Enviar"></td> 
+        </tr> 
+       </tbody>
+      </table> 
+      <!-- Fin Captcha --> 
+      <p></p> 
+      <p><strong>Los campos señalados con (*) son obligatorios.</strong></p> 
+      <!--<input name="txtControl" type="text" id="txtControl" class="cajainput" style="WIDTH:31%; visibility:hidden;" />--> 
+      <p>Las sugerencias y quejas serán gestionadas por la Unidad de Calidad y Prospectiva, que se compromete a informar al interesado de las actuaciones realizadas en el plazo de 20 días hábiles. </p> 
+      <p>Las sugerencias que promuevan mejoras en nuestra institución académica serán enviadas al rectorado y a los órganos de gobierno interesados. </p> 
+     </div> 
+     <div id="bloque_mensajes" class="bloque100 bloqueIzq"> 
+     </div> 
+    </div> 
+   </div> 
+   <!--
+<div id="pie"><p>© Universidad Pontificia Comillas<br />C/ Alberto Aguilera 23 - 28015 Madrid - Tlf. (34) 91 542 28 00</p></div>
+<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script>
+<script type="text/javascript">
+	_uacct = "UA-70776-1";
+	urchinTracker();
+</script>
+--> 
+   <div class="clear"></div> 
+   <div id="WarpBottom"> 
+    <div class="CommonWarp"> 
+     <div class="FooterLeft"> 
+      <div class="moduletable_footer-logo"> 
+       <p align="center"><a style="color: rgb(0, 0, 204); text-decoration: underline;" href="http://www.linkedin.com/company/upcomillas" target="blank"><img width="23" height="23" title="LinkedIn" alt="LinkedIn" src="http://www.upcomillas.es/images/in_icon.png"></a>&nbsp;&nbsp;<a style="text-align: justify; line-height: 1.3em;" href="http://twitter.com/ucomillas" target="blank"><img width="24" height="23" title="Twitter" alt="Twitter" src="http://www.upcomillas.es/images/twt_icon.png"></a>&nbsp;&nbsp;<a style="text-align: justify; line-height: 1.3em;" href="https://es-es.facebook.com/upcomillas.ICAI.ICADE" target="blank"><img width="22" height="23" title="Facebook" alt="Facebook" src="http://www.upcomillas.es/images/tb_icon.png"></a>&nbsp;&nbsp;<a style="text-align: justify; line-height: 1.3em;" href="https://plus.google.com/u/0/+upcomillas/" target="blank"><img width="22" height="23" title="Google +" alt="Google+" src="http://www.upcomillas.es/images/gplus_icon.png"></a>&nbsp;&nbsp;<a style="text-align: justify; line-height: 1.3em;" href="http://www.youtube.com/user/VideosUpComillas" target="blank"><img width="22" height="23" title="YouTube" alt="YouTube" src="http://www.upcomillas.es/images/yt_icon.png"></a>&nbsp; &nbsp;<span>&nbsp;&nbsp;</span><a style="color: rgb(223, 223, 223); text-decoration: underline;" href="http://web.upcomillas.es/Aviso_Legal.pdf">Aviso legal</a><span style="line-height: 1.3em;">&nbsp; | &nbsp;<a style="color: rgb(223, 223, 223); text-decoration: underline;" href="http://www.upcomillas.es/es/politica-de-cookies">Política de cookies</a></span><span style="line-height: 1.3em;">&nbsp; &nbsp; &nbsp;<a title="Buzón Sugerencias" href="http://web.upcomillas.es/sugerencias/sugerencias.aspx" target="_self"><img width="24" height="24" alt="Buzón Sugerencias" src="http://www.upcomillas.es/images/ico_cantacto.png"></a></span></p> 
+       <p align="center"><br>© <a style="color: rgb(223, 223, 223);">Universidad Pontificia Comillas</a> |&nbsp; C. Alberto Aguilera 23 Madrid-28015 -&nbsp; Tel.:(+34) 91 542 28 00 &nbsp;<a style="color: rgb(223, 223, 223); text-decoration: underline;" href="mailto:oia@oia.upcomillas.es">oia@oia.upcomillas.es</a>&nbsp; &nbsp;</p> 
+       <p align="center"><a style="line-height: 1.3em;" href="http://www.aristoscampusmundus.net/" target="_blank"><img title="Aristos Campus Mundus 2015" alt="Aristos Campus Mundus 2015" src="http://www.upcomillas.es/images/logo_01.jpg"></a><span style="line-height: 1.3em;">&nbsp; &nbsp; &nbsp; &nbsp;</span><a style="line-height: 1.3em;" href="http://www.unijes.net/" target="_blank"><img title="Universidades Jesuítas UNIJES" alt="Consultar web de Unijes" src="http://www.upcomillas.es/images/logo_02.png"></a><span style="line-height: 1.3em;">&nbsp; &nbsp; &nbsp; &nbsp;</span><a style="line-height: 1.3em;" href="http://www.universia.es/index.htm" target="_blank"><img title="Universia" alt="Consultar web de Universia" src="http://www.upcomillas.es/images/logo_03.png"></a></p> 
+       <div class="clear"></div> 
+      </div> 
+     </div> 
+     <div class="FooterRight"> 
+      <div class="GoTop">
+       <p><a href="#">Subir</a></p>
+      </div> 
+      <div class="clear"></div> 
+      <div class="clear"></div> 
+     </div> 
+     <div class="clear"></div> 
+     <div class="FooterBottom"> 
+     </div> 
+    </div> 
+   </div>  
+  </form>  
+ </body>
+</html>

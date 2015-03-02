@@ -1,0 +1,290 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+  <title>LA as Subject</title> 
+  <link href="http://www.laassubject.org/index.php?css=global/reset_css.v.1312396408" type="text/css" rel="stylesheet" media="screen"> 
+  <link href="http://www.laassubject.org/index.php?css=global/text_css.v.1312396408" type="text/css" rel="stylesheet" media="screen"> 
+  <link href="http://www.laassubject.org/index.php?css=global/960_24_col_css.v.1312396408" type="text/css" rel="stylesheet" media="screen"> 
+  <link href="http://www.laassubject.org/index.php?css=global/site_css.v.1405709096" type="text/css" rel="stylesheet" media="screen"> 
+  <link href="http://www.laassubject.org/index.php?css=global/home_css.v.1393006879" type="text/css" rel="stylesheet" media="screen"> 
+  <!--[if IE 6]>
+	<style type="text/css">
+		#nav-main ul {border-bottom:none;}
+		.article-caption-box {background-color:#000;}
+	</style>
+	<![endif]--> 
+  <!--[if IE]> 
+	<style type="text/css"> 
+		.home.box h3 { filter: progid:DXImageTransform.Microsoft.Shadow(color=#999999,direction=135,strength=4); }
+		#nav-main ul { filter: progid:DXImageTransform.Microsoft.Shadow(color=#999999,direction=135,strength=4); }
+		#nav-sub { filter: progid:DXImageTransform.Microsoft.Shadow(color=#999999,direction=135,strength=4); }
+	</style> 
+	<![endif]--> 
+  <!-- JS --> 
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script> 
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js" type="text/javascript"></script> 
+  <style type="text/css">
+	  #blogFeedContainer {width:280px;}
+	  #blogFeed { list-style:none; margin:0; padding:0; }
+	  #blogFeed li { border-bottom:1px dotted #333; }
+	  #blogFeed li div {padding:.5em;}
+	  #blogFeed li a {color:#331907;}
+	  #blogFeed li a:hover {color:#DF5E00;}
+	  #blogFeed li span { font-style:italic; font-size:90%; }
+	</style> 
+  <script src="http://www.laassubject.org/js/jquery.vticker-min.js" type="text/javascript"></script> 
+  <script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAAt3bHGRhD1-9IAAm0bnrA6BRBY5u8Hu8Z_f_5KHZFhT6l8it_bxSuy8tdhtl2_YtkCUdJatJEgOWrCw"></script> 
+  <script type="text/javascript"> 
+	Array.prototype.unique = function () {
+		var r = new Array();
+		o:for(var i = 0, n = this.length; i < n; i++)
+		{
+			for(var x = 0, y = r.length; x < y; x++)
+			{
+				if(r[x]==this[i])
+				{
+					continue o;
+				}
+			}
+			r[r.length] = this[i];
+		}
+		return r;
+	}
+	//Code courtesy of http://xhtml.ru/2007/05/03/ajax-feed-api-and-multiple-feeds/
+		google.load("feeds", "1");
+		var FA = new Array(
+"http://arcadiapubliclibrary.blogspot.com/feeds/posts/default", "http://blog.theautry.org/category/libraries-and-archives//feed/", "http://boyleheightshistoryblog.blogspot.com/feeds/posts/default", "http://blog.theautry.org/category/libraries-and-archives//feed/", "http://junginla.blogspot.com/feeds/posts/default", "http://blogs.libraries.claremont.edu/sc/atom.xml", "http://www.curatingla.com/blog-index/rss.xml", "http://onbunkerhill.org/rss.xml", "http://huntingtonblogs.org/", "http://www.sportsletter.org/sportsletter/rss.xml", "http://metroprimaryresources.info/?feed=rss", "http://lmulibrary.typepad.com/lmu-library-news/atom.xml", "http://library.pepperdine.edu/news/index.php/feed/", "http://scgsgenealogy.blogspot.com/feeds/posts/default", "http://sites.uci.edu/ucisca/", "http://clarklibrary.wordpress.com/feed/", "http://blogs.library.ucla.edu/special/feed/", "http://feeds.feedburner.com/libwire-main", "http://feeds.feedburner.com/libwire-main", "http://fromthevcvault.wordpress.com/feed/atom/");
+		FA = FA.unique();
+
+	   function initialize() {
+			var feedsArr = new Array();
+			var numEntr = 3;
+			var cnt = FA.length;
+		
+		for (var k=0; k<FA.length; k++) {
+			var feed = new google.feeds.Feed(FA[k]);
+			feed.setNumEntries(numEntr);
+			feed.setResultFormat(google.feeds.Feed.JSON_FORMAT);
+			feed.load(function(result) {
+				if (!result.error) {
+					for (var i = 0; i < result.feed.entries.length; i++) {
+						var entry = result.feed.entries[i];
+						var attributes = ["title", "link", "publishedDate", "contentSnippet"];
+						var ind = feedsArr.length;
+						feedsArr[ind] = new Array();
+						feedsArr[ind][0] = Date.parse(entry[attributes[2]]);// for sort entries
+						feedsArr[ind][1] = entry[attributes[1]];
+						feedsArr[ind][2] = entry[attributes[2]];
+						feedsArr[ind][3] = entry[attributes[3]];
+						feedsArr[ind][4] = entry[attributes[0]];
+						feedsArr[ind][5] = result.feed.title; // site title 
+					}
+				}
+				cnt--;
+				if (cnt == 0) {
+					feedsArr.sort();
+					feedsArr.reverse();
+					for (var j = 0; j < feedsArr.length;  j++) {
+						$("#blogFeed").append('<li><div><a href="' + feedsArr[j][1] + '">' + feedsArr[j][4] + '</a><br /><span>(source: ' + feedsArr[j][5] + '</a>)</span></div></li>');
+					}
+				}
+			});
+		}
+		$('#blogFeedContainer').vTicker({
+				speed: 800,
+				pause: 3000,
+				showItems: 5,
+				animation: 'fade',
+				height: 250,
+				direction: 'up'
+			 });
+	   }
+	   google.setOnLoadCallback(initialize);
+	</script> 
+  <link href="http://www.laassubject.org/index.php/global/articles_rss" rel="alternate" type="application/rss+xml" title="RSS Feed"> 
+  <!-- Google Analytics --> 
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18440534-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script> 
+ </head> 
+ <body> 
+  <!-- Begin Header --> 
+  <div id="custom_header"> 
+   <div id="usclibHeader"> 
+    <div id="usclibContainer"> 
+     <h1> <a href="http://www.usc.edu/libraries">USC Libraries</a> </h1> 
+     <h2> <a href="http://www.usc.edu">University of Southern California</a> </h2> 
+    </div> 
+   </div> 
+   <div id="usclibPagehead"> 
+    <h2><a href="http://www.laassubject.org/">LA as Subject</a></h2> 
+   </div> 
+  </div> 
+  <div class="clear"></div> 
+  <!-- End Header --> 
+  <div class="container_24"> 
+   <!-- Begin Tagline --> 
+   <div id="tagline" class="grid_19"> 
+    <img src="http://www.laassubject.org/images/site_images/tagline.gif" width="736" height="20" alt="Collectively preserving, archiving and sharing the rich history and culture of Los Angeles"> 
+   </div> 
+   <div class="header-search-box grid_5">
+     &nbsp; 
+    <form method="post" action="http://www.laassubject.org/index.php"> 
+     <div class="hiddenFields"> 
+      <input type="hidden" name="ACT" value="7"> 
+      <input type="hidden" name="XID" value="fc891ecb0743cdb7e00e7a14f0da086578660760"> 
+      <input type="hidden" name="RES" value=""> 
+      <input type="hidden" name="meta" value="GOeMTItKoGdGr72FOvSzeEj2l/Ex7hFs3X7KNMpRlNel4FWTSBbZjfqEvNL6TRLeMOsf/fIbAmq7/P2LT3AJ07UxC/khw/frC2qQvK+4CgppDmN+l3oOpMYcpuZXS95gdglSzUPHoe7CLX2+5FwXCcHxUW5LFYAl/QVHKG+8Ed3EJxsvZdHwClfJ7lqv2jjTA7z2RdS03PTW1LxuYVHvOrw850CQQxyh6HSf64culWcMQfNrHEApkY+AFiTep2/+cIH9wwUkGqlJAB+ZfbNGfZNBEKTo2PM3GamlzCgo6Rwf2QDNgy9AoDJ9ndtc2CGSvgE+C7RGp7yKXbHQ/b6yAE4NOPfCZgkcZVLVwupR1R5kmqFvUdRLL9NIw6I533yB"> 
+      <input type="hidden" name="site_id" value="1"> 
+     </div> 
+     <label for="keywords">Search</label> 
+     <input type="text" name="keywords" id="keywords" class="input-box"> 
+     <input type="image" class="input-submit" src="http://www.laassubject.org/images/site_images/icon_search_magnify.gif"> 
+    </form> 
+   </div> 
+   <div class="clear"></div> 
+   <!-- End Tagline --> 
+   <!-- Begin Main Nav --> 
+   <div id="nav-main" class="grid_24"> 
+    <ul>
+     <li class="sel"><a href="/index.php">Home</a></li>
+     <li><a href="http://www.laassubject.org/index.php/articles">Blog</a></li>
+     <li><a href="http://www.laassubject.org/index.php/about">About</a></li>
+     <li><a href="http://www.laassubject.org/index.php/meetings_events">Meetings &amp; Events</a></li>
+     <li><a href="http://www.laassubject.org/index.php/archives_bazaar">Archives Bazaar</a></li>
+     <li><a href="http://www.laassubject.org/index.php/directory">Directory</a></li>
+     <li><a href="http://www.laassubject.org/index.php/residency_program">Residency Program</a></li>
+     <li><a href="http://www.laassubject.org/index.php/members_area">Members Area</a></li>
+    </ul> 
+   </div> 
+   <div class="clear"></div> 
+   <!-- End Main Nav --> 
+   <a name="top" id="top"></a> 
+   <!-- Begin Feature Article --> 
+   <div class="grid_8 push_16"> 
+    <div id="home-feature-box"> 
+     <img src="http://usclib_laas.s3.amazonaws.com/articles/206/1423097549-laas-hp.jpg" alt="" width="306" height="525"> 
+     <div class="article-caption-box" "=""> 
+      <div class="caption"> 
+       <h2> <a href="http://southland.gizmodo.com/before-1948-las-power-grid-was-incompatible-with-the-r-1683629042" target="_blank">Before 1948, L.A.‘s Power Grid Was Incompatible With the Rest of the Nation’s</a> </h2> 
+       <p> Before 1948, there was something funny about the Southland's electricity. Plug in a clock from New York and it would lose 10 minutes every hour. Spin a record on a… <a href="http://southland.gizmodo.com/before-1948-las-power-grid-was-incompatible-with-the-r-1683629042" target="_blank">Read more at Gizmodo&nbsp;»</a></p> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="clear"></div> 
+    <!-- Begin bottom box - Member Directory Search --> 
+    <div class="home box"> 
+     <h3>Member Directory Search</h3> 
+     <div class="box-body" style="height:56px;"> 
+      <br> 
+      <form id="directory-search-box" method="post" action="http://www.laassubject.org/index.php"> 
+       <div class="hiddenFields"> 
+        <input type="hidden" name="ACT" value="7"> 
+        <input type="hidden" name="XID" value="04630ca04951433d507013fb51ded3be8ae0f1a0"> 
+        <input type="hidden" name="RES" value=""> 
+        <input type="hidden" name="meta" value="GOeMTItKoGdGr72FOvSzeEj2l/Ex7hFs3X7KNMpRlNel4FWTSBbZjfqEvNL6TRLeMOsf/fIbAmq7/P2LT3AJ07UxC/khw/frC2qQvK+4CgppDmN+l3oOpMYcpuZXS95gdglSzUPHoe7CLX2+5FwXCcHxUW5LFYAl/QVHKG+8Ed3EJxsvZdHwClfJ7lqv2jjTA7z2RdS03PTW1LxuYVHvOrw850CQQxyh6HSf64culWcMQfNrHEApkY+AFiTep2/+cIH9wwUkGqlJAB+ZfbNGfZNBEKTo2PM3GamlzCgo6Rwf2QDNgy9AoDJ9ndtc2CGSvgE+C7RGp7yKXbHQ/b6yAE4NOPfCZgkcZVLVwupR1R5kmqFvUdRLL9NIw6I533yB"> 
+        <input type="hidden" name="site_id" value="1"> 
+       </div> 
+       <label for="keywords" style="display:block;">Search</label> 
+       <input type="text" name="keywords" id="keywords" size="25" style="padding-right: 20px; width: 120px; "> 
+       <input type="image" src="http://www.laassubject.org/images/site_images/icon_search_magnify.gif" style="position: absolute; left: 138px; top: 40px; "> 
+      </form> 
+      <a href="http://www.laassubject.org/index.php/directory/register"><img src="http://www.laassubject.org/images/site_images/button_become.png" style="position:absolute; top:15px; right:15px;"></a> 
+     </div> 
+     <div class="box-footer"></div> 
+    </div> 
+    <!-- End bottom box --> 
+   </div> 
+   <!-- End Feature Article --> 
+   <!-- Begin Main Articles --> 
+   <div class="grid_16 pull_8"> 
+    <div class="grid_16 alpha omega"> 
+     <div id="home-article-box1"> 
+      <img src="http://usclib_laas.s3.amazonaws.com/articles/206/1414431342-monomania.jpg" width="397" height="381" alt=""> 
+      <div class="article-caption-box"> 
+       <div class="caption"> 
+        <h2> <a href="http://laassubject.org/index.php/monomania" target="_blank">Monomania L.A.: The Obsessive Collectors of Southern California</a> </h2> 
+        <p> What happens when collecting becomes more than a hobby? File cabinets conquer living rooms. Boxes scrape the ceilings of garages. A trip to a paper ephemera… <a href="http://laassubject.org/index.php/monomania" target="_blank">Read more&nbsp;»</a></p> 
+       </div> 
+      </div> 
+     </div> 
+     <div id="home-article-box2"> 
+      <img src="http://usclib_laas.s3.amazonaws.com/articles/126/1424273556-Coordinator-Text-Treatment.png" width="227" height="381" alt=""> 
+      <div class="article-caption-box"> 
+       <div class="caption"> 
+        <h2> <a href="http://www.laassubject.org/index.php/articles/detail/article_institute_for_baseball_studies_now_open_to_the_public">Institute for Baseball Studies now open to the public</a> </h2> 
+        <p> The Institute for Baseball Studies, the first humanities-based… <a href="http://www.laassubject.org/index.php/articles/detail/article_institute_for_baseball_studies_now_open_to_the_public">Read&nbsp;more&nbsp;»</a></p> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="clear"></div> 
+    <!-- Begin bottom boxes --> 
+    <!-- Begin left box --> 
+    <div class="home box grid_8 alpha"> 
+     <h3>News from Members</h3> 
+     <div class="box-body"> 
+      <div style="height:180px; overflow:hidden;"> 
+       <div id="blogFeedContainer"> 
+        <ul id="blogFeed"></ul> 
+       </div> 
+      </div> 
+      <div class="box-more">
+       <a href="http://www.laassubject.org/index.php/directory/social">» View contributing blogs</a>
+      </div> 
+     </div> 
+     <div class="box-footer"></div> 
+    </div> 
+    <!-- End left box --> 
+    <!-- Begin middle box --> 
+    <div class="home box grid_8 omega"> 
+     <h3>Upcoming Events </h3> 
+     <div class="box-body box-middle"> 
+      <ul> 
+       <li>Friday, March 13<br><a href="http://www.laassubject.org/index.php/meetings_events/detail/995">Exhibit workshop @ Cal State University Northridge</a></li> 
+       <li>Tuesday, April 14<br><a href="http://www.laassubject.org/index.php/meetings_events/detail/997">LA as Subject General Membership Meeting @ Pepperdine University</a></li> 
+       <li>Tuesday, June 9<br><a href="http://www.laassubject.org/index.php/meetings_events/detail/998">LA as Subject General Membership Meeting @ Cal State University Fullerton</a></li> 
+       <li>Tuesday, October 13<br><a href="http://www.laassubject.org/index.php/meetings_events/detail/999">LA as Subject General Membership Meeting @ USC Doheny Library</a></li> 
+      </ul> 
+      <div class="box-more">
+       <a href="http://www.laassubject.org/index.php/meetings_events">» View all events</a>
+      </div> 
+     </div> 
+     <div class="box-footer"></div> 
+    </div> 
+    <!-- End right box --> 
+    <!-- End bottom boxes --> 
+   </div> 
+   <div class="clear"></div> 
+   <!-- End Main Articles --> 
+   <!-- Begin Footer --> 
+   <hr class="footer"> 
+   <div class="footer-content grid_12"> 
+    <p> <a href="http://facebook.com/laassubject"><img src="http://www.laassubject.org/images/site_images/icon_facebook_30.gif" width="30" height="30" alt="LA as Subject on Facebook" style="vertical-align:middle;"></a> &nbsp;<a href="http://twitter.com/laassubject"><img src="http://www.laassubject.org/images/site_images/icon_twitter_30.gif" width="30" height="30" alt="LA as Subject on Twitter" style="vertical-align:middle;"></a> &nbsp; &nbsp; <span class="call"><a href="http://www.laassubject.org/index.php/directory/social">LA as Subject Social Space</a></span> </p> 
+   </div> 
+   <div class="footer-content grid_12"> 
+    <ul id="footer-nav" class="right"> 
+     <li class="first"><a href="http://www.laassubject.org/index.php/home/privacy">Privacy Policy</a></li> 
+     <li><a href="http://www.laassubject.org/index.php/home/conditions">Terms of Use</a></li> 
+     <li><a href="http://www.laassubject.org/index.php/home/contact">Contact Us</a></li> 
+    </ul> 
+    <div class="clear"></div> 
+    <p class="right">© University of Southern California</p> 
+   </div> 
+   <div class="clear"></div> 
+   <!-- End Footer --> 
+  </div> 
+  <!-- End .container_24 -->  
+ </body>
+</html>

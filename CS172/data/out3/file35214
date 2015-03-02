@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+  <script type="text/javascript" src="/findaprovider/static/plugins/yui-2.8.2.1/js/yui/utilities/utilities.min.js"></script> 
+  <title>Find A Physician - Penn State Hershey Medical Center</title> 
+  <meta name="description" content="Search for a Penn State Hershey doctor using our Find A Physician locator. You can search using keywords, medical specialty or name"> 
+  <link rel="stylesheet" type="text/css" href="/findaprovider/static/plugins/yui-2.8.2.1/js/yui/reset-fonts-grids/reset-fonts-grids.min.css"> 
+  <link rel="stylesheet" type="text/css" href="/findaprovider/static/plugins/yui-2.8.2.1/js/yui/base/base-min.min.css"> 
+  <meta name="layout" content="hmc"> 
+  <script type="text/javascript" src="/findaprovider/static/plugins/yui-2.8.2.1/js/yui/datasource/datasource-min.min.js"></script> 
+  <script type="text/javascript" src="/findaprovider/static/bundle-bundle_yui-autocomplete_head.min.js"></script> 
+  <script type="text/javascript" src="/findaprovider/static/bundle-bundle_yui-tabview_head.min.js"></script> 
+  <link rel="stylesheet" type="text/css" href="/findaprovider/static/bundle-bundle_yui-tabview-dev-assets_head.min.css"> 
+  <link rel="stylesheet" type="text/css" href="/findaprovider/static/bundle-bundle_yui-autocomplete_head.min.css"> 
+  <link rel="shortcut icon" href="http://assets.pennstatehershey.org/assets/icons/psuicon.ico" type="image/x-icon"> 
+  <link rel="stylesheet" href="http://assets.pennstatehershey.org/assets/css/psh_common.css" type="text/css" media="screen, print"> 
+  <link href="/findaprovider/static/css/hmc-master.min.css" type="text/css" rel="stylesheet" media="screen, print"> 
+  <link href="/findaprovider/static/css/application.min.css" type="text/css" rel="stylesheet" media="screen, print"> 
+  <script src="/findaprovider/static/js/application.packed.min.js" type="text/javascript"></script> 
+  <script src="http://assets.pennstatehershey.org/assets/javascript/jquery.js" type="text/javascript"></script> 
+  <script src="http://assets.pennstatehershey.org/assets/javascript/j2browse.js" type="text/javascript"></script> 
+  <script src="http://assets.pennstatehershey.org/assets/javascript/hover_intent.js" type="text/javascript"></script> 
+  <!--[if lt IE 7]>
+      <script src="/findaprovider/static/js/pngfix.min.js" type="text/javascript"></script>
+      <script type="text/javascript">
+        DD_belatedPNG.fix('.png');
+      </script>
+    <![endif]--> 
+ </head> 
+ <body class="yui-skin-sam"> 
+  <div id="custom-doc"> 
+   <div id="hd"> 
+    <div id="psh-header">
+     <div id="psh-banner">
+      <div id="psh-site">
+       <div id="psh-site-logo">
+        <a href="http://www.pennstatehershey.org/web/guest/home"><img src="http://assets.pennstatehershey.org/psh-images/logos/guest.gif" height="72" alt="Penn State Hershey"></a>
+       </div>
+       <div id="psh-site-name" class="">
+        <a href="/findaprovider/">Find a Physician</a>
+       </div>
+      </div>
+      <div id="psh-careline">
+       800-243-1455
+      </div>
+      <div id="psh-search-form">
+       <script type="text/javascript">
+									/* <![CDATA[ */
+									function submitSearch() {
+										var query = jQuery('#hmcq').val();
+										var searchType = jQuery('#search').val();
+										if (searchType == 'people') {
+											var str = query.replace(/ /, '*');
+											searchUrl = 'http://www.psu.edu/cgi-bin/ldap/ldap_query.cgi?cn=*' + escape(str) + '*';
+										}
+										else {
+											searchUrl = 'http://search.pennstatehershey.org/search?site=' + searchType + '&client=psh&output=xml_no_dtd&proxystylesheet=psh&proxyreload=1&q=' + escape(query);
+										}
+										parent.location.href = searchUrl;
+									}
+									function initSearchBox(selector){
+										var $input = jQuery(selector);
+										var label_text = 'Search for';
+										$input.val(label_text);
+										$input.focus(function() {
+											if (this.value == label_text) {
+												jQuery(this).removeClass('placeholder').val('');
+											};
+										}).blur(function() {
+											if (this.value == '') {
+												jQuery(this).addClass('placeholder').val(label_text);
+											};
+										});
+									}
+								   jQuery.extend({
+										getUrlVars: function(){
+											var vars = [], hash;
+											var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+											for(var i = 0; i < hashes.length; i++)
+											{
+												hash = hashes[i].split('=');
+												vars.push(hash[0]);
+												vars[hash[0]] = hash[1];
+											}
+											return vars;
+										},
+										getUrlVar: function(name){
+											return jQuery.getUrlVars()[name];
+										}
+									});
+									jQuery(document).ready(function(){
+										jQuery("#search > option").each(function() {
+											if (this.value == jQuery.getUrlVar('collection')) {
+												 this.selected = true
+											}
+										});
+										initSearchBox('#psh-search-form .text');
+									});
+									/* ]]> */
+								</script>
+       <form name="hmcSearchForm" action="#" onsubmit="submitSearch();return false">
+        <input type="text" id="hmcq" name="hmcq" value="Search for" class="text placeholder" title="Type search term here"> 
+        <select id="search" name="search" title="Search in"><option value="ewp-all">Penn State Hershey</option><option value="healthinfo">Health Information</option><option value="physician" selected>Physicians</option><option value="practice">Clinic Locations</option><option value="profiles">Faculty Profiles</option><option value="people">College Faculty/Staff</option></select> 
+        <input id="psh-search-button" type="submit" value=" " class="button" title="Search">
+       </form>
+      </div>
+     </div>
+    </div>
+    <div id="psh-navigation" class="sort-pages modify-pages">
+     <ul>
+      <li class=""><a href="http://www.pennstatehershey.org/web/guest/home"><span>Home</span></a></li>
+      <li class="selected"><a href="http://www.pennstatehershey.org/web/guest/patientcare"><span>Patient Care</span></a></li>
+      <li class=""><a href="http://www.pennstatehershey.org/web/guest/education"><span>Education</span></a></li>
+      <li class=""><a href="http://www.pennstatehershey.org/web/college/research"><span>Research</span></a></li>
+      <li class=""><a href="http://www.pennstatehershey.org/web/guest/community"><span>Community</span></a></li>
+      <li><a href="http://www.pennstatehershey.org/findaprovider"><span>Find a Physician</span></a></li>
+      <li><a href="http://www.pennstatehershey.org/findapractice"><span>Find a Practice</span></a></li>
+      <li><a href="http://www.pennstatehershey.org/healthlibrary"><span>Health Information Library</span></a></li>
+      <li><a href="http://www.pennstatehershey.org/web/guest/home/aboutus"><span>About</span></a></li>
+     </ul>
+    </div> 
+   </div> 
+   <div id="bd"> 
+    <table border="0" cellspacing="0" cellpadding="0" id="main"> 
+     <tbody>
+      <tr> 
+       <td valign="top" id="col1"> 
+        <div class="psh-navigation-menu"> 
+         <div class="nav-menu-header"> 
+          <div class="nav-menu-header-link"> 
+           <a class="nav-menu-header-link" href="/web/guest/patientcare/patientvisitorinformation"> For Patients and Visitors</a> 
+          </div> 
+          <div class="nav-menu-header-toggle"> 
+           <a href="#">-</a> 
+          </div> 
+         </div> 
+         <div class="nav-menu-content"> 
+          <ul class="layouts level-2"> 
+           <li class=""><a class="" href="/web/guest/patientcare/patientvisitorinformation/general"> General Information</a></li> 
+           <li class=""><a class="selected" href="/findaprovider"> Find a Physician</a></li> 
+           <li class=""><a class="" href="/findapractice"> Find a Practice</a></li> 
+           <li class=""><a class="" href="/web/guest/patientcare/appointments"> Make an Appointment</a></li> 
+           <li class=""><a class="" href="http://pennstatehershey.adam.com/content.aspx?productId=121"> Health Information Library</a></li> 
+           <li class=""><a class="" href="/web/guest/patientcare/locationsservices"> Clinical Departments</a></li> 
+           <li class=""><a class="" href="/web/guest/patientcare/clinicaltrials"> Clinical Studies</a></li> 
+           <li class=""><a class="" href="/web/guest/patientcare/classessupportgroups"> Classes &amp; Support Groups</a></li> 
+           <li class=""><a class="" href="/web/guest/patientcare/hero"> Salute a Hershey Hero</a></li> 
+          </ul> 
+         </div> 
+        </div> </td> 
+       <td valign="top" id="col2"> <img src="http://assets.pennstatehershey.org/psh-images/findaphysician/fap.jpg" style="width:713px"> <p>At Penn State Milton S. Hershey Medical Center, our staff is of the highest caliber. They receive international acclaim for their accomplishments in the areas of patient care, research and education.</p> 
+        <div class="solid-block-bl clear"> 
+         <div class="solid-block-br"> 
+          <div class="solid-block-tl"> 
+           <div class="solid-block-tr"> 
+            <div id="search-tabs" class="yui-navset" style="display:none"> 
+             <ul class="yui-nav"> 
+              <li><a href="#tab1"><em>Find by Keyword</em></a></li> 
+              <li><a href="#tab2"><em>Find by Name</em></a></li> 
+              <li><a href="#tab3"><em>Find by Specialty</em></a></li> 
+             </ul> 
+             <div class="yui-content"> 
+              <div align="center"> 
+               <form action="/findaprovider/search" method="get" name="queryForm" id="queryForm"> 
+                <input type="hidden" name="format" value="html"> 
+                <input type="text" id="q" name="q" value="" style="width:30em"> 
+                <input type="submit" value="Search"> 
+               </form> 
+              </div> 
+              <div align="center"> 
+               <form action="/findaprovider/search" method="get" name="nameForm" id="nameForm"> 
+                <input type="hidden" name="offset" id="offset" value="0"> 
+                <div align="center"> 
+                 <table style="border:none;margin:0" border="0"> 
+                  <tbody>
+                   <tr> 
+                    <td align="right" style="border:none;padding:0"> 
+                     <div class="yui-ac" style="width:30em"> 
+                      <input type="hidden" name="format" value="html"> 
+                      <input autocomplete="off" class="" id="fullname" name="fullname" value="" type="text"> 
+                      <div align="left" class="yui-ac-container" id="cgui_d917cdd8575b6238827b3742e76d62a5"></div> 
+                     </div> </td> 
+                    <td align="left" style="border:none;padding:0">&nbsp;<input type="submit" value="Search"></td> 
+                   </tr> 
+                  </tbody>
+                 </table> 
+                </div> 
+               </form> 
+              </div> 
+              <div align="center"> 
+               <form action="/findaprovider/search" method="get" name="specialtyForm" id="specialtyForm"> 
+                <input type="hidden" name="format" value="html"> 
+                <select style="width:30em;" id="specialty" name="specialty"> <option value="">Select a Specialty...</option> <option value="186">Abdominal Imaging</option> <option value="190">Abdominal Imaging/Ultrasound</option> <option value="4">Acupuncture</option> <option value="222">Acute Care Surgery</option> <option value="7">Addiction Psychiatry</option> <option value="3">Adolescent &amp; Child Psychiatry</option> <option value="6">Adolescent Medicine</option> <option value="10">Adult Psychiatry</option> <option value="8">Allergy &amp; Immunology</option> <option value="105">Anatomic &amp; Clinical Pathology</option> <option value="11">Anatomic Pathology</option> <option value="9">Anesthesiology</option> <option value="212">Anesthesiology Pre-Operative</option> <option value="14">Bariatric Medicine</option> <option value="283">Behavior and Developmental Pediatrics</option> <option value="17">Behavioral Psychology</option> <option value="15">Blood Banking/Transfusion Med</option> <option value="189">Breast Imaging</option> <option value="18">Breast Surgery</option> <option value="32">Cardiothoracic Surgery</option> <option value="171">Cardiovascular and Interventional Radiology</option> <option value="30">Cardiovascular Disease</option> <option value="118">Certified Clinical Perfusionist</option> <option value="25">Certified Registered Nurse Anesthetist</option> <option value="19">Child &amp; Adolescent Psychiatry</option> <option value="244">Child Abuse Pediatrics</option> <option value="264">Child Psychology</option> <option value="23">Clin &amp; Lab Derm Immunology</option> <option value="21">Clin Cardiac Electrophysiology</option> <option value="33">Clinical Cytogenetics</option> <option value="27">Clinical Neurophysiology</option> <option value="24">Clinical Neuropsychology</option> <option value="28">Clinical Nurse Specialist</option> <option value="29">Clinical Pathology</option> <option value="184">Clinical Psychologist</option> <option value="242">Cognitive and Behavioral Neurology</option> <option value="20">Colon &amp; Rectal Surgery</option> <option value="22">Critical Care Medicine</option> <option value="34">Cytopathology</option> <option value="35">Dermatology</option> <option value="38">Dermatopathology</option> <option value="39">Diagnostic Radiology</option> <option value="41">Electrodiagnostic Medicine</option> <option value="173">Electrophysiology</option> <option value="42">Emergency Medicine</option> <option value="294">Endocrine Surgery</option> <option value="44">Endocrinology</option> <option value="290">Epilepsy</option> <option value="46">Exercise Physiologist</option> <option value="47">Family Medicine</option> <option value="243">Family Medicine Obstetrics</option> <option value="200">Foot &amp; Ankle Surgery</option> <option value="188">Foot and Ankle Surgery</option> <option value="48">Forensic Psychiatry</option> <option value="54">Gastroenterology</option> <option value="181">General Pediatrics</option> <option value="239">General Pediatrics, Chief Resident</option> <option value="161">General Surgery</option> <option value="53">Geriatric Medicine</option> <option value="52">Geriatric Psychiatry</option> <option value="55">Gynecologic Oncology</option> <option value="204">Hand &amp; Wrist Surgery</option> <option value="60">Hematology</option> <option value="61">Hematology/Oncology</option> <option value="289">Hematology/Oncology, St. Joseph's Medical Center</option> <option value="62">Hepatology</option> <option value="227">Hip and Knee Joint Arthroplasty</option> <option value="269">Hospice &amp; Palliative Care Medicine</option> <option value="230">Hospitalist, Family Medicine, Mt. Nittany</option> <option value="177">Hospitalist, Internal Medicine</option> <option value="229">Hospitalist, Internal Medicine, Mt. Nittany</option> <option value="176">Hospitalist, Pediatrics</option> <option value="255">Hospitalist, Pediatrics, Lancaster General</option> <option value="271">Hospitalist, Pediatrics, Moses Taylor</option> <option value="296">Hospitalist, Pediatrics, Pinnacle Health</option> <option value="198">Imaging</option> <option value="65">Infectious Diseases</option> <option value="237">Integrative Holistic Medicine</option> <option value="66">Internal Medicine</option> <option value="231">Internal Medicine, Chief Resident</option> <option value="67">Internal Medicine-Pediatrics</option> <option value="69">Interventional Cardiology</option> <option value="194">Interventional neuroradiology</option> <option value="72">Maternal &amp; Fetal Medicine</option> <option value="74">Medical Microbiology</option> <option value="75">Medical Oncology</option> <option value="207">Minimally Invasive Gynecologic Surgery</option> <option value="224">Minimally Invasive Surgery/Bariatric</option> <option value="73">Minimally Invasive/Gen Surgery</option> <option value="76">Molecular Pathology</option> <option value="77">Musculoskeletal Oncology</option> <option value="185">Musculoskeletal Radiology</option> <option value="78">Neonatal - Perinatal Medicine</option> <option value="79">Nephrology</option> <option value="211">Neuro-Critical Care</option> <option value="223">Neuro-Oncology</option> <option value="191">Neurointerventional Radiology</option> <option value="80">Neurology</option> <option value="85">Neuropathology</option> <option value="86">Neuropsychology</option> <option value="88">Neuroradiology</option> <option value="89">Neurosurgery</option> <option value="275">Neurosurgery, St. Joseph's Medical Center</option> <option value="277">Neurosurgery, State College</option> <option value="82">Nuclear Medicine</option> <option value="87">Nuclear Radiology</option> <option value="83">Nurse Midwife</option> <option value="84">Nurse Practitioner</option> <option value="92">Obstetrics</option> <option value="91">Obstetrics &amp; Gynecology</option> <option value="95">Oncology</option> <option value="96">Ophthalmology</option> <option value="98">Optometry</option> <option value="99">Orthopaedic Surgery</option> <option value="180">Orthopaedic Trauma</option> <option value="252">Orthopaedic, General</option> <option value="102">Otolaryngology</option> <option value="124">Pain Management</option> <option value="106">Palliative Care Medicine</option> <option value="285">Palliative Care Medicine, Pediatrics</option> <option value="234">Palliative Medicine</option> <option value="108">Pathology</option> <option value="206">Pediatric &amp; Congenital Heart Surgery</option> <option value="104">Pediatric Allergy &amp; Immunology</option> <option value="286">Pediatric Cardiac Electrophysiology</option> <option value="109">Pediatric Cardiology</option> <option value="110">Pediatric Critical Care Medicine</option> <option value="208">Pediatric Dermatology</option> <option value="115">Pediatric Emergency Medicine</option> <option value="116">Pediatric Endocrinology</option> <option value="119">Pediatric Gastroenterology</option> <option value="120">Pediatric Genetics</option> <option value="121">Pediatric Hematology-Oncology</option> <option value="122">Pediatric Infectious Diseases</option> <option value="128">Pediatric Nephrology</option> <option value="126">Pediatric Neurology</option> <option value="297">Pediatric Neurology, Moses Taylor</option> <option value="136">Pediatric Neuropsychology</option> <option value="103">Pediatric Neuroradiology</option> <option value="130">Pediatric Neurosurgery</option> <option value="131">Pediatric Orthopaedics</option> <option value="137">Pediatric Psychology</option> <option value="135">Pediatric Pulmonology</option> <option value="138">Pediatric Radiology</option> <option value="276">Pediatric Rehabilitation &amp; Development</option> <option value="140">Pediatric Rheumatology</option> <option value="178">Pediatric Sleep Medicine</option> <option value="142">Pediatric Surgery</option> <option value="114">Pediatrics</option> <option value="232">Pediatrics, Chief Resident</option> <option value="298">Phlebology</option> <option value="125">Physical Medicine and Rehabilitation</option> <option value="218">Physical Medicine and Rehabilitation</option> <option value="146">Physical Therapy</option> <option value="175">Physician Assistant</option> <option value="141">Plastic Surgery</option> <option value="134">Podiatric Surgery</option> <option value="132">Podiatry</option> <option value="123">Preventive Medicine</option> <option value="245">Primary Care Sports Medicine</option> <option value="145">Psychiatry</option> <option value="143">Psychology</option> <option value="111">Psychosomatic Medicine</option> <option value="147">Pulmonary Disease</option> <option value="240">Pulmonary Pathology</option> <option value="150">Radiation Oncology</option> <option value="258">Radiologist Assistant</option> <option value="149">Radiology</option> <option value="151">Reproductive Endocrinology</option> <option value="153">Rheumatology</option> <option value="156">Shoulder &amp; Elbow Surgery</option> <option value="157">Sleep Medicine</option> <option value="162">Social Worker</option> <option value="201">Spine Surgery</option> <option value="158">Sports Medicine</option> <option value="254">Surgery</option> <option value="155">Surgical Critical Care</option> <option value="159">Surgical Oncology</option> <option value="192">Thoracic Radiology</option> <option value="167">Thoracic Surgery</option> <option value="165">Transplant Surgery</option> <option value="166">Trauma Surgery</option> <option value="228">Ultrasound</option> <option value="225">Urogynecology</option> <option value="235">Urologic Oncology</option> <option value="169">Urology</option> <option value="172">Vascular Neurology</option> <option value="170">Vascular Surgery</option> <option value="291">Vascular Surgery, St. Joseph Medical Center</option> </select> 
+               </form> 
+               <script type="text/javascript">
+                var element = new YAHOO.util.Element('specialty');
+                element.on('change',function() {
+                  if(specialtyForm.specialty.value) {
+                    specialtyForm.submit();
+                  }
+                })
+              </script> 
+              </div> 
+             </div> 
+            </div> 
+            <table class="alpha-table sub"> 
+             <tbody> 
+              <tr> 
+               <td class="alpha-link"> <a href="/findaprovider/search/alpha/A" class=""> A </a> </td> 
+               <td class="alpha-link"> <a href="/findaprovider/search/alpha/B" class=""> B </a> </td> 
+               <td class="alpha-link"> <a href="/findaprovider/search/alpha/C" class=""> C </a> </td> 
+               <td class="alpha-link"> <a href="/findaprovider/search/alpha/D" class=""> D </a> </td> 
+               <td class="alpha-link"> <a href="/findaprovider/search/alpha/E" class=""> E </a> </td> 
+               <td class="alpha-link"> <a href="/findaprovider/search/alpha/F" class=""> F </a> </td> 
+               <td class="alpha-link"> <a href="/findaprovider/search/alpha/G" class=""> G </a> </td> 
+               <td class="alpha-link"> <a href="/findaprovider/search/alpha/H" class=""> H </a> </td> 
+               <td class="alpha-link"> <a href="/findaprovider/search/alpha/I" class=""> I </a> </td> 
+               <td class="alpha-link"> <a href="/findaprovider/search/alpha/J" class=""> J </a> </td> 
+               <td class="alpha-link"> <a href="/findaprovider/search/alpha/K" class=""> K </a> </td> 
+               <td class="alpha-link"> <a href="/findaprovider/search/alpha/L" class=""> L </a> </td> 
+               <td class="alpha-link"> <a href="/findaprovider/search/alpha/M" class=""> M </a> </td> 
+               <td class="alpha-link"> <a href="/findaprovider/search/alpha/N" class=""> N </a> </td> 
+               <td class="alpha-link"> <a href="/findaprovider/search/alpha/O" class=""> O </a> </td> 
+               <td class="alpha-link"> <a href="/findaprovider/search/alpha/P" class=""> P </a> </td> 
+               <td class="alpha-link"> <a href="/findaprovider/search/alpha/Q" class=""> Q </a> </td> 
+               <td class="alpha-link"> <a href="/findaprovider/search/alpha/R" class=""> R </a> </td> 
+               <td class="alpha-link"> <a href="/findaprovider/search/alpha/S" class=""> S </a> </td> 
+               <td class="alpha-link"> <a href="/findaprovider/search/alpha/T" class=""> T </a> </td> 
+               <td class="alpha-link"> <a href="/findaprovider/search/alpha/U" class=""> U </a> </td> 
+               <td class="alpha-link"> <a href="/findaprovider/search/alpha/V" class=""> V </a> </td> 
+               <td class="alpha-link"> <a href="/findaprovider/search/alpha/W" class=""> W </a> </td> 
+               <td class="alpha-link"> <a href="/findaprovider/search/alpha/X" class=""> X </a> </td> 
+               <td class="alpha-link"> <a href="/findaprovider/search/alpha/Y" class=""> Y </a> </td> 
+               <td class="alpha-link"> <a href="/findaprovider/search/alpha/Z" class=""> Z </a> </td> 
+              </tr> 
+             </tbody> 
+            </table> 
+           </div> 
+          </div> 
+         </div> 
+        </div> <script type="text/javascript">
+  var searchTabs = new YAHOO.widget.TabView('search-tabs'); // make tab at position 1 active
+  searchTabs.set('activeIndex', 0);
+  document.getElementById('search-tabs').style.display = 'block';
+</script> <script>
+  function itemSelectHandler(sType, aArgs) {
+        var aData = aArgs[2];
+        var id = aData[1];
+        location.replace('/findaprovider/provider/view/'+id);
+  }
+              function init_fullname_ac() {
+
+                  var dataSource = new YAHOO.widget.DS_XHR('/findaprovider/provider/fullNameAutoComplete', ['result','name','id']);
+                  dataSource.scriptQueryAppend = "";
+                  dataSource.connMethodPost=true;
+
+              var fullnameAc = new YAHOO.widget.AutoComplete('fullname', 'cgui_d917cdd8575b6238827b3742e76d62a5', dataSource);
+              fullnameAc.prehighlightClassName = 'yui-ac-prehighlight';
+              fullnameAc.minQueryLength = 3;
+              fullnameAc.textboxFocusEvent.subscribe(function() {
+                  var sInputValue = YAHOO.util.Dom.get('fullname').value;
+                  if (sInputValue.length === 0) {
+                      var oSelf = this;
+                      setTimeout(function() {
+                          oSelf.sendQuery(sInputValue);
+                      }, 0);
+                  }
+              });
+              fullnameAc.minQueryLength = 2;
+              fullnameAc.useShadow = false;
+              fullnameAc.queryDelay = 0.2;
+              fullnameAc.queryMatchContains = false;
+              fullnameAc.itemSelectEvent.subscribe(itemSelectHandler);
+          }
+      YAHOO.util.Event.onDOMReady(init_fullname_ac);
+      queryForm.q.focus();
+</script> </td> 
+      </tr> 
+     </tbody>
+    </table> 
+   </div> 
+   <br> 
+   <br> 
+   <div id="ft"> 
+    <!-- Footer --> 
+    <div id="psh-footer" class="clear">
+     <div id="psh-footer-header">
+      <div id="psh-footer-contactus">
+       <span>Contact Us:</span>
+       <a href="http://www.pennstatehershey.org/web/guest/home/contactus"><img src="http://assets.pennstatehershey.org/assets/images/common/phone.png" width="23" height="23" alt="Phone Icon"><span>800-243-1455</span></a>
+       <a href="http://www.pennstatehershey.org/web/guest/home/contactus"><img src="http://assets.pennstatehershey.org/assets/images/common/email.png" width="35" height="23" alt="Email Icon"><span>Have a question?</span></a>
+      </div>
+      <div id="psh-footer-social">
+       <span>Follow Us Online:</span>
+       <a href="http://www.pennstatehershey.org/web/guest/community/social-media#facebook" target="_top"><img src="http://assets.pennstatehershey.org/assets/images/socialmedia/facebook.gif" height="30" alt="Facebook"></a>
+       <a href="http://www.pennstatehershey.org/web/guest/community/social-media#twitter" target="_top"><img src="http://assets.pennstatehershey.org/assets/images/socialmedia/twitter.gif" height="30" alt="Twitter"></a>
+       <a href="http://www.youtube.com/pennstatehershey" target="_blank"><img src="http://assets.pennstatehershey.org/assets/images/socialmedia/youtube.gif" height="30" alt="YouTube"></a>
+       <a href="http://www.pennstatehershey.libsyn.com/" target="_blank"><img src="http://assets.pennstatehershey.org/assets/images/socialmedia/podcasts.gif" height="30" alt="Podcasts"></a>
+       <a href="http://www.flickr.com/photos/pennstatehershey" target="_blank"><img src="http://assets.pennstatehershey.org/assets/images/socialmedia/flickr.gif" height="30" alt="Flickr"></a>
+       <a href="http://www.linkedin.com/company/hershey-medical-center" target="_blank"><img src="http://assets.pennstatehershey.org/assets/images/socialmedia/linkedin.gif" height="30" alt="LinkedIn"></a>
+      </div>
+     </div>
+     <div id="psh-footer-nav">
+      <div class="psh-footer-nav-column first">
+       <h5>Penn State Hershey</h5>
+       <ul>
+        <li><a href="http://www.pennstatehershey.org/web/guest/home/aboutus/mapsdirections">Maps &amp; Directions</a></li>
+        <li><a href="http://www.pennstatehershey.org/web/guest/home/employment">Careers</a></li>
+        <li><a href="http://www.pennstatehershey.org/web/guest/patientcare/locationsservices">Health System</a></li>
+        <li><a href="http://www.pennstatehershey.org/web/guest/home/aboutus">About Us</a></li>
+        <li><a href="http://www.pennstatehershey.org/web/guest/home/awards">Awards</a></li>
+        <li><a href="http://hersheynewsroom.vmhost.psu.edu" target="_blank">Press Room</a></li>
+        <li><a href="http://www.pennstatehershey.org/web/diversity/home">Diversity</a></li>
+        <li><a href="http://www.pennstatehershey.org/web/guest/home/contactus">Contact Us</a></li>
+       </ul>
+      </div>
+      <div class="psh-footer-nav-column">
+       <h5>Patient Care</h5>
+       <ul>
+        <li><a href="http://www.pennstatehershey.org/web/guest/patientcare/patientvisitorinformation">Patient &amp; Visitor Information</a></li>
+        <li><a href="http://www.pennstatehershey.org/findaprovider">Find a Physician</a></li>
+        <li><a href="http://www.pennstatehershey.org/findapractice">Find a Practice</a></li>
+        <li><a href="http://www.pennstatehershey.org/healthinfo">Health Information Library</a></li>
+        <li><a href="http://www.pennstatehershey.org/web/guest/patientcare/locationsservices">Hospitals, Centers &amp; Institutes</a></li>
+        <li><a href="http://www.pennstatehershey.org/web/guest/patientcare/locationsservices">Departments</a></li>
+        <li><a href="http://www.pennstatehershey.org/web/guest/about-my-health-portal">My Health</a></li>
+        <li><a href="http://www.pennstatehershey.org/web/guest/patientcare/medicalprofessionals/referringphysicians">Referring Physicians</a></li>
+        <li><a href="http://www.pennstatehershey.org/web/guest/patientcare/patientvisitorinformation/duringvisit">Billing</a></li>
+       </ul>
+      </div>
+      <div class="psh-footer-nav-column">
+       <h5>Education</h5>
+       <ul>
+        <li><a href="http://med.psu.edu">College of Medicine</a></li>
+        <li><a href="http://med.psu.edu/web/college/admissions">Admissions</a></li>
+        <li><a href="http://www.pennstatehershey.org/web/residency/home">Residencies &amp; Fellowships</a></li>
+        <li><a href="http://med.psu.edu/web/college/education">Students</a></li>
+        <li><a href="http://med.psu.edu/web/alumni/home">Alumni</a></li>
+        <li><a href="http://med.psu.edu/web/library/home">Libraries</a></li>
+       </ul>
+      </div>
+      <div class="psh-footer-nav-column">
+       <h5>Research</h5>
+       <ul>
+        <li><a href="http://med.psu.edu/web/college/research/overview/departmental">Departments</a></li>
+        <li><a href="http://profiles.psu.edu" target="_blank">Faculty Profiles</a></li>
+        <li><a href="http://med.psu.edu/web/college/basicscience">Basic Sciences</a></li>
+        <li><a href="http://med.psu.edu/web/college/research/core">Core Facilities</a></li>
+        <li><a href="http://ctsi.psu.edu" target="_blank">CTSI</a></li>
+        <li><a href="http://med.psu.edu/ipm">Personalized Medicine</a></li>
+        <li><a href="http://www.pennstatehershey.org/web/cto/home">Clinical Trials</a></li>
+       </ul>
+      </div>
+      <div class="psh-footer-nav-column last">
+       <h5>Community</h5>
+       <ul>
+        <li><a href="http://www.pennstatehershey.org/web/guest/community">Community Programs</a></li>
+        <li><a href="http://www.pennstatehershey.org/web/guest/community/classessupportgroups">Classes &amp; Support Groups</a></li>
+        <li><a href="http://www.pennstatehershey.org/web/guest/community/healthwellness">Health &amp; Wellness</a></li>
+        <li><a href="http://www.pennstatehershey.org/web/guest/community/educationaloutreach">Educational Outreach</a></li>
+        <li><a href="http://www.pennstatehershey.org/web/guest/home/volunteers">Volunteering</a></li>
+        <li><a href="http://carepages.com/pennstatehershey" target="_blank">CarePages</a></li>
+        <li><a href="http://www.pennstatehershey.org/web/guest/community/welcomenewborn">Welcome Newborn</a></li>
+        <li><a href="http://giveto.pennstatehershey.org" target="_blank">Ways To Give</a></li>
+       </ul>
+      </div>
+     </div>
+     <div id="psh-footer-footer">
+      <div id="psh-footer-recognitions">
+       <img src="http://assets.pennstatehershey.org/assets/images/awards/magnet.gif" height="46" alt="Magnet">
+      </div>
+      <div id="psh-footer-copyright-etc">
+       <ul>
+        <li><a href="http://www.pennstatehershey.org/web/guest/home/copyright">Copyright 2013</a></li>
+        <li><a href="http://www.pennstatehershey.org/web/guest/accessibility">Accessibility</a></li>
+        <li><a href="http://guru.psu.edu/policies/AD85.html" target="_blank">Nondiscrimination</a></li>
+        <li><a href="http://www.pennstatehershey.org/web/guest/home/privacynotice">Privacy</a></li>
+        <li><a href="http://www.psu.edu" target="_blank">PSU</a></li>
+        <li><a href="http://www.pennstatehershey.org/web/guest/home/sitemap">Site Map</a></li>
+        <li><a href="/findaprovider/login">Sign In</a></li>
+       </ul>
+      </div>
+     </div>
+    </div> 
+   </div> 
+   <script type="text/javascript">
+      /*<![CDATA[*/
+          var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+          document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      /*]]>*/
+    </script> 
+   <script type="text/javascript">
+      /*<![CDATA[*/
+          try {
+              var pageTracker = _gat._getTracker("UA-3432919-1");
+              pageTracker._trackPageview();
+          } catch(err) {}
+      /*]]>*/
+    </script> 
+   <script type="text/javascript">
+      /*<![CDATA[*/
+        (function() {
+          var sz = document.createElement('script'); sz.type = 'text/javascript'; sz.async = true;
+          sz.src = '//us1.siteimprove.com/js/siteanalyze_731.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sz, s);
+        })();
+      /*]]>*/
+    </script> 
+   <script type="text/javascript">
+      /*<![CDATA[*/
+        (function() {
+          var foreseeScript = document.createElement('script'); foreseeScript.type = 'text/javascript'; foreseeScript.src = '/foresee/foresee-trigger.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(foreseeScript, s);
+        })();
+      /*]]>*/
+    </script> 
+   <!-- AdTaxi Conversion Pixels --> 
+   <!-- Conversion Pixel - MNG 67103 - Penn State Hershey Heart & Vascular - Conversion Pixel - DO NOT MODIFY --> 
+   <img src="http://ib.adnxs.com/px?id=457433&amp;t=2" width="1" height="1"> 
+   <!-- End of Conversion Pixel --> 
+   <!-- Conversion Pixel - MNG 67105 - Penn State Hershey Neuroscience - Conversion Pixel - Stroke - DO NOT MODIFY --> 
+   <img src="http://ib.adnxs.com/px?id=457601&amp;t=2" width="1" height="1"> 
+   <!-- End of Conversion Pixel --> 
+   <!-- Conversion Pixel - MNG 67105 - Penn State Hershey Neuroscience - Conversion Pixel - Tumor - DO NOT MODIFY --> 
+   <img src="http://ib.adnxs.com/px?id=457602&amp;t=2" width="1" height="1"> 
+   <!-- End of Conversion Pixel --> 
+  </div>   
+ </body>
+</html>

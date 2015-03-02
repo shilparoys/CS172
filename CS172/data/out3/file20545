@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"> 
+  <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1" media="(device-height: 568px)"> 
+  <meta name="start" content="{ts '2015-03-02 03:14:05'}"> 
+  <title>SignUpGenius</title> 
+  <!-- jQuery / jQuery Mobile --> 
+  <script src="assets/library/jqmobile/jquery-1.8.1.min.js"></script> 
+  <script src="assets/library/jqmobile/jquery.mobile-1.3.0.min.js"></script> 
+  <link rel="stylesheet" href="assets/library/jqmobile/jquery.mobile-1.3.0.min.css"> 
+  <!-- Themeroller --> 
+  <link rel="stylesheet" href="assets/css/default.min.css"> 
+  <!-- Apple icons --> 
+  <link rel="apple-touch-icon" href="assets/images/touch-icon-iphone.png"> 
+  <link rel="apple-touch-icon" sizes="72x72" href="assets/images/touch-icon-ipad.png"> 
+  <link rel="apple-touch-icon" sizes="114x114" href="assets/images/touch-icon-iphone-retina.png"> 
+  <link rel="apple-touch-icon" sizes="144x144" href="assets/images/touch-icon-ipad-retina.png"> 
+  <!-- Hide menu bar --> 
+  <meta name="apple-mobile-web-app-capable" content="yes"> 
+  <meta name="apple-mobile-web-app-status-bar-style" content="translucent black"> 
+  <!-- URLHide.js --> 
+  <script>
+			function BlockMove( event ) {
+			  // Tell Safari not to move the window.
+			  event.preventDefault() ;
+			}
+			
+			
+				if( document.height < window.outerHeight){
+					document.body.style.height = ( window.outerHeight + 50 ) + 'px';
+				}
+				window.scrollTo( 0, 1 );
+			
+			// Prevent links from opening in a new window.
+			(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")
+			var addToHomeConfig = {
+				touchIcon: true,
+			};
+		</script> 
+  <!-- custom --> 
+  <script src="assets/js/main.js"></script> 
+  <script>
+		function getRemaining( slotitemID, field, qtyfield, commentfield ){
+			$.ajax({
+				url: 'model/service/remoteService.cfc',	
+				type: 'get',
+				dataType: 'JSON',
+				data: {
+					method: 'getRemaining',	
+					dsn: 'SUGeniusSQLProd',
+					slotitemID: slotitemID
+				},
+				success: function( data ){
+					field.val('');
+					field.attr( 'placeholder', data.PLACEHOLDER );
+					field.attr( 'max', data.REMAINING );
+					field.val( 1 );
+					qtyfield.html( '(' + data.PLACEHOLDER + ')' );
+					commentfield.text( data.ITEMCOMMENT );
+				},
+				error: function ( err, message, detail ){
+					console.log( message, detail );
+				}
+			});
+		}
+		$(document).on('pageshow', '#goNonSSL', function(event, ui){
+			window.location.href = 'http://www3.signupgenius.com/mobile/index.cfm?action=members.myaccount&loadMobileTemplate';
+		});
+		$(document).on('pageshow', '#goNonSSLNoLogin', function(event, ui){
+			window.location.href = 'http://www3.signupgenius.com/mobile/index.cfm?action=main.default&loadMobileTemplate&nossl';
+		});
+		$(document).on('pageshow', '#goNonSSLSummary', function(event, ui){
+			var sugToken = $('#sugToken').val();
+			window.location.href = 'http://www3.signupgenius.com/mobile/index.cfm?action=signups.signupSummary&sugToken='+sugToken+'&mode=signup&loadMobileTemplate&nossl';
+		});
+		$(document).on('pageshow', '#goNonSSLForm', function(event, ui){
+			var sugToken = $('#sugToken').val();
+			window.location.href = 'http://www3.signupgenius.com/mobile/index.cfm?action=signups.signupForm&sugToken='+sugToken+'&mode=signup&loadMobileTemplate&nossl';
+		});
+		$(document).on('pageshow', '#reloadThankYou', function(event, ui){
+			var sugToken = $('#sugToken').val();
+			window.location.href = 'http://www3.signupgenius.com/mobile/index.cfm?action=signups.thankyou&sugToken='+sugToken+'&loadMobileTemplate';
+		});
+		$(document).on('pageshow', '#reloadSignupPage', function(event, ui){
+			var sugToken = $('#sugToken').val();
+			window.location.href = 'http://www3.signupgenius.com/mobile/index.cfm?action=signups.signup&sugToken='+sugToken+'&jqPageID=reloaded&loadMobileTemplate';
+		});
+	</script> 
+  <link rel="stylesheet" href="assets/css/custom.css"> 
+  <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script> 
+  <!-- Google --> 
+  <!--  Double Click for Publishers - Google ad server - https://support.google.com/dfp_premium/topic/28788?hl=en&ref_topic=28149 --> 
+  <!-- Google Analytics --> 
+  <script type="text/javascript">
+			  var _gaq = _gaq || [];
+			  _gaq.push(['_setAccount', 'UA-5787832-1']);
+			  _gaq.push(['_trackPageview']);
+			  (function() {
+			    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			  })();
+			</script> 
+  <!-- AdExchange --> 
+  <script type="text/javascript">
+			var googletag = googletag || {};
+			googletag.cmd = googletag.cmd || [];
+			(function() {
+			var gads = document.createElement('script');
+			gads.async = true;
+			gads.type = 'text/javascript';
+			var useSSL = 'https:' == document.location.protocol;
+			gads.src = (useSSL ? 'https:' : 'http:') + 
+			'//www.googletagservices.com/tag/js/gpt.js';
+			var node = document.getElementsByTagName('script')[0];
+			node.parentNode.insertBefore(gads, node);
+			})();
+			</script> 
+ </head> 
+ <body> 
+  <div data-theme="a"> 
+   <!-- SignUpGenius Mobile c2013 --> 
+   <script>
+		if ( window.mobileTemplateLoaded == undefined ){
+			window.location.href = 'index.cfm?message=&loadMobileTemplate';
+		};
+	</script> 
+   <div data-role="page" data-title="SignUpGenius" id="page_6254" data-theme="a" class="pageContent"> 
+    <div data-role="header"> 
+     <h1>SignUpGenius</h1> 
+    </div> 
+    <div data-role="content"> 
+     <div id="logo_image" class="center"> 
+      <img src="assets/images/SUGmobile.jpg" style="max-width: 100%;"> 
+     </div> 
+     <a href="https://www3.signupgenius.com/mobile/index.cfm?action=security.loginform" data-ajax="false" data-role="button" data-icon="check">LOGIN</a> 
+     <a href="/mobile/index.cfm?action=main.findsignupsform" data-ajax="true" data-role="button" data-icon="search" data-transition="slide">FIND A SIGN UP</a> 
+     <a href="http://www.signupgenius.com/index.cfm?go=c.home&amp;useFullSite=true" data-role="button" data-icon="delete" data-ajax="false">EXIT TO FULL SITE</a> 
+     <div data-role="controlgroup"> 
+      <a href="/mobile/index.cfm?action=main.about" data-role="button">About SignUpGenius</a> 
+     </div> 
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+     <br> 
+     <script>
+	window.scrollTo(0, 1);
+</script> 
+     <br>
+     <br>
+     <br> 
+    </div> 
+    <div data-role="footer" data-position="fixed" style="margin-top:4px; text-align: center;" class="footer"> 
+     <!-- SignUpGenius/Mobile --> 
+     <div id="Advert_Mobile" style="width:320;height:50;"> 
+      <script type="text/javascript">
+				    googletag.cmd.push(function() {
+				      
+					googletag.defineSlot('/311748471/SignUpGenius/Mobile', [320, 50], 'Advert_Mobile').addService(googletag.pubads());
+				
+				      googletag.enableServices();
+				      googletag.display('Advert_Mobile');
+				  });
+				  </script> 
+     </div> 
+     <div style="padding:5px;"> 
+      <h4 style="font-size: 0.6em; color: #fae9a6; line-height: 1.0 em; margin:0;padding:0;">© 2013 SignUpGenius v2.99 </h4> 
+     </div> 
+    </div> 
+   </div> 
+   <br>
+   <br>
+   <br> 
+  </div>  
+ </body>
+</html>

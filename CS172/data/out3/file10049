@@ -1,0 +1,240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"XAYAVVVRGwYGVVVaAwQ="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=s(e),f=c.length,u=i(a,o,r),d=0;f>d;d++)c[d].apply(u,n);return u}function a(t,e){f[t]=s(t).concat(e)}function s(t){return f[t]||[]}function c(){return n(e)}var f={};return{on:a,emit:e,create:c,listeners:s,_events:f}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],3:[function(t){function e(t,e,n,i,s){try{c?c-=1:r("err",[s||new UncaughtException(t,e,n)])}catch(f){try{r("ierr",[f,(new Date).getTime(),!0])}catch(u){}}return"function"==typeof a?a.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(5),i=t("ee"),a=window.onerror,s=!1,c=0;t("loader").features.err=!0,window.onerror=e,NREUM.noticeError=n;try{throw new Error}catch(f){"stack"in f&&(t(1),t(4),"addEventListener"in window&&t(2),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&t(3),s=!0)}i.on("fn-start",function(){s&&(c+=1)}),i.on("fn-err",function(t,e,r){s&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){s&&!this.thrown&&c>0&&(c-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:8,2:5,3:9,4:7,5:21,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],4:[function(t){function e(){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var n=t("ee"),r=t("handle"),o=t(2);t("loader").features.stn=!0,t(1),n.on("fn-start",function(t){var e=t[0];e instanceof Event&&(this.bstStart=Date.now())}),n.on("fn-end",function(t,e){var n=t[0];n instanceof Event&&r("bst",[n,e,this.bstStart,Date.now()])}),o.on("fn-start",function(t,e,n){this.bstStart=Date.now(),this.bstType=n}),o.on("fn-end",function(t,e){r("bstTimer",[e,this.bstStart,Date.now(),this.bstType])}),n.on("pushState-start",function(){this.time=Date.now(),this.startPath=location.pathname+location.hash}),n.on("pushState-end",function(){r("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),"addEventListener"in window.performance&&(window.performance.addEventListener("webkitresourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.webkitClearResourceTimings()},!1),window.performance.addEventListener("resourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.clearResourceTimings()},!1)),document.addEventListener("scroll",e,!1),document.addEventListener("keypress",e,!1),document.addEventListener("click",e,!1)}},{1:6,2:8,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],5:[function(t,e){function n(t){i.inPlace(t,["addEventListener","removeEventListener"],"-",r)}function r(t){return t[1]}var o=(t(1),t("ee").create()),i=t(2)(o),a=t("gos");if(e.exports=o,n(window),"getPrototypeOf"in Object){for(var s=document;s&&!s.hasOwnProperty("addEventListener");)s=Object.getPrototypeOf(s);s&&n(s);for(var c=XMLHttpRequest.prototype;c&&!c.hasOwnProperty("addEventListener");)c=Object.getPrototypeOf(c);c&&n(c)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&n(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t){if(t[1]){var e=t[1];"function"==typeof e?this.wrapped=t[1]=a(e,"nr@wrapped",function(){return i(e,"fn-",null,e.name||"anonymous")}):"function"==typeof e.handleEvent&&i.inPlace(e,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:21,2:22,ee:"QJf3ax",gos:"7eSDFh"}],6:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window.history,["pushState"],"-")},{1:22,2:21,ee:"QJf3ax"}],7:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=r(t[0],"fn-")})},{1:22,2:21,ee:"QJf3ax"}],8:[function(t,e){function n(t,e,n){var r=t[0];"string"==typeof r&&(r=new Function(r)),t[0]=o(r,"fn-",null,n)}var r=(t(2),t("ee").create()),o=t(1)(r);e.exports=r,o.inPlace(window,["setTimeout","setInterval","setImmediate"],"setTimer-"),r.on("setTimer-start",n)},{1:22,2:21,ee:"QJf3ax"}],9:[function(t,e){function n(){c.inPlace(this,d,"fn-")}function r(t,e){c.inPlace(e,["onreadystatechange"],"fn-")}function o(t,e){return e}var i=t("ee").create(),a=t(1),s=t(2),c=s(i),f=s(a),u=window.XMLHttpRequest,d=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];e.exports=i,window.XMLHttpRequest=function(t){var e=new u(t);try{i.emit("new-xhr",[],e),f.inPlace(e,["addEventListener","removeEventListener"],"-",function(t,e){return e}),e.addEventListener("readystatechange",n,!1)}catch(r){try{i.emit("internal-error",[r])}catch(o){}}return e},window.XMLHttpRequest.prototype=u.prototype,c.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",o),i.on("send-xhr-start",r),i.on("open-xhr-start",r)},{1:5,2:22,ee:"QJf3ax"}],10:[function(t){function e(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function n(t){var n=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;c>i;i++)t.removeEventListener(s[i],this.listener,!1);if(!n.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){n.status=t.status;var a=t.responseType,f="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,u=e(f);if(u&&(r.rxSize=u),this.sameOrigin){var d=t.getResponseHeader("X-NewRelic-App-Data");d&&(n.cat=d.split(", ").pop())}}else n.status=0;r.cbTime=this.cbTime,o("xhr",[n,r,this.startTime])}}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}if(window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)){t("loader").features.xhr=!0;var o=t("handle"),i=t(2),a=t("ee"),s=["load","error","abort","timeout"],c=s.length,f=t(1);t(4),t(3),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=n,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,n){var r=this.metrics,o=t[0],i=this;if(r&&o){var f=e(o);f&&(r.txSize=f)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof n.onload))&&i.end(n)}catch(e){try{a.emit("internal-error",[e])}catch(r){}}};for(var u=0;c>u;u++)n.addEventListener(s[u],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof XMLHttpRequest&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&&a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{1:"XL7HBI",2:11,3:9,4:5,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],11:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&&e.port===n.port&&e.protocol===n.protocol,r}},{}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):(o[t]||(o[t]=[]),void o[t].push(e))}var r=t("ee").create(),o={};e.exports=n,n.ee=r,r.q=o},{ee:"QJf3ax"}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],G9z0Bl:[function(t,e){function n(){var t=l.info=NREUM.info;if(t&&t.licenseKey&&t.applicationID&&f&&f.body){s(h,function(e,n){e in t||(t[e]=n)}),l.proto="https"===p.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var e=f.createElement("script");e.src=l.proto+t.agent,f.body.appendChild(e)}}function r(){"complete"===f.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=t(1),c=window,f=c.document,u="addEventListener",d="attachEvent",p=(""+location).split("?")[0],h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-515.min.js"},l=e.exports={offset:i(),origin:p,features:{}};f[u]?(f[u]("DOMContentLoaded",o,!1),c[u]("load",n,!1)):(f[d]("onreadystatechange",r),c[d]("onload",n)),a("mark",["firstbyte",i()])},{1:20,handle:"D5DuLP"}],20:[function(t,e){function n(t,e){var n=[],o="",i=0;for(o in t)r.call(t,o)&&(n[i]=e(o,t[o]),i+=1);return n}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],21:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],22:[function(t,e){function n(t){return!(t&&"function"==typeof t&&t.apply&&!t[i])}var r=t("ee"),o=t(1),i="nr@wrapper",a=Object.prototype.hasOwnProperty;e.exports=function(t){function e(t,e,r,a){function nrWrapper(){var n,i,s,f;try{i=this,n=o(arguments),s=r&&r(n,i)||{}}catch(d){u([d,"",[n,i,a],s])}c(e+"start",[n,i,a],s);try{return f=t.apply(i,n)}catch(p){throw c(e+"err",[n,i,p],s),p}finally{c(e+"end",[n,i,f],s)}}return n(t)?t:(e||(e=""),nrWrapper[i]=!0,f(t,nrWrapper),nrWrapper)}function s(t,r,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<r.length;c++)s=r[c],a=t[s],n(a)||(t[s]=e(a,f?s+o:o,i,s,t))}function c(e,n,r){try{t.emit(e,n,r)}catch(o){u([o,e,n,r])}}function f(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){u([r])}for(var o in t)a.call(t,o)&&(e[o]=t[o]);return e}function u(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=r),e.inPlace=s,e.flag=i,e}},{1:21,ee:"QJf3ax"}]},{},["G9z0Bl",3,10,4]);</script> 
+  <title>IRIS Seismographs in Schools - Regional Networks</title> 
+  <style type="text/css" media="all">@import url(http://www.iris.edu/hq/ssn/css/reset.css);</style> 
+  <style type="text/css" media="all">@import url(http://www.iris.edu/hq/ssn/css/menu.css);</style> 
+  <style type="text/css" media="all">@import url(http://www.iris.edu/hq/ssn/css/default.css);</style> 
+  <style type="text/css" media="all">@import url(http://www.iris.edu/hq/ssn/css/data.css);</style> 
+  <style type="text/css" media="print">@import url(http://www.iris.edu/hq/ssn/css/print.css);</style> 
+  <style type="text/css" media="print">@import url(/hq/ssn/css/tkb.css);</style> 
+  <!--[if IE]>
+      <style type="text/css" media="all">@import url(http://www.iris.edu/hq/ssn/css/ie7.css);</style>
+      <script type="text/javascript" src="http://www.iris.edu/hq/ssn/js/ie_menu.js"></script>
+    <![endif]--> 
+  <!--[if lte IE 6]>
+      <style type="text/css" media="all">@import url(http://www.iris.edu/hq/ssn/css/ie6.css);</style>
+    <![endif]--> 
+ </head> 
+ <body> 
+  <div id="container"> 
+   <div id="header"> 
+    <a href="/hq"><img id="irisLink" src="http://www.iris.edu/hq/ssn/img/layout/transparent.gif" alt="Back to the IRIS Homepage" title="Back to the IRIS Homepage"></a> 
+    <a href="http://www.iris.edu/hq/ssn"><img id="seismographsLink" src="http://www.iris.edu/hq/ssn/img/layout/transparent.gif" alt="Seismographs in Schools Homepage" title="Seismographs in Schools Homepage"></a> 
+    <a href="http://www.nsf.gov"><img id="nsfLink" src="http://www.iris.edu/hq/ssn/img/layout/transparent.gif" alt="National Science Foundation Homepage" title="National Science Foundation Homepage"></a> 
+    <div id="linkBox">
+     <a href="/hq">IRIS Home</a> 
+     <a href="/hq/programs/education_and_outreach">E&amp;O Home</a>
+    </div> 
+   </div> 
+   <div id="nav"> 
+    <ul id="topMenu"> 
+     <li class="home base"><a href="/hq/sis" class="top home"></a></li> 
+     <li class="seismic base"><a href="http://www.iris.edu/hq/ssn/events" class="top seismic"></a> 
+      <ul> 
+       <li class="first"><a href="http://www.iris.edu/hq/ssn/events">Recent Earthquakes </a></li> 
+       <li class="ieFix3"><a href="/hq/sis/data/seismon">Seismic Monitor </a></li> 
+       <li class="ieFix6"><a href="http://www.iris.edu/hq/ssn/events/upload">Upload Your Data </a></li> 
+       <li class="ieFix9"><a href="http://www.iris.edu/hq/ssn/events">Download Seismic Data </a></li> 
+       <li class="ieFix12 down"><a href="http://www.iris.edu/hq/ssn/events">Archived Data </a> 
+        <ul> 
+         <li><a href="http://www.iris.edu/hq/ssn/events/year/2009">2009</a></li> 
+         <li class="ieFix3"><a href="http://www.iris.edu/hq/ssn/events/year/2008">2008</a></li> 
+         <li class="ieFix6"><a href="http://www.iris.edu/hq/ssn/events/year/2007">2007</a></li> 
+         <li class="ieFix9"><a href="http://www.iris.edu/hq/ssn/events/year/2006">2006</a></li> 
+         <li class="ieFix12"><a href="http://www.iris.edu/hq/ssn/events/year/2005">2005</a></li> 
+        </ul> </li> 
+       <li class="ieFix15"><a href="http://www.iris.edu/hq/ssn/schools/realtime">Realtime Station Displays </a></li> 
+      </ul> </li> 
+     <li class="stations base"><a href="http://www.iris.edu/hq/ssn/schools" class="top stations"></a> 
+      <ul> 
+       <li class="first"><a href="http://www.iris.edu/hq/ssn/schools">Participating Schools </a></li> 
+       <li class="ieFix3"><a href="http://www.iris.edu/hq/ssn/schools/register">Register Your Station </a></li> 
+       <li class="ieFix6"><a href="http://www.iris.edu/hq/ssn/schools/update">Update Your Station</a></li> 
+      </ul> </li> 
+     <li class="resources base"><a href="/hq/sis/resources/curriculum" class="top resources"></a> 
+      <ul> 
+       <li class="first"><a href="/hq/sis/resources/start">Getting Started </a></li> 
+       <li class="ieFix3"><a href="/hq/programs/education_and_outreach/moments">Teachable Moments </a></li> 
+       <li class="ieFix6"><a href="/hq/sis/resources/after_an_earthquake">After an Earthquake </a></li> 
+       <li class="ieFix9"><a href="/hq/sis/resources/curriculum">Instructional Resources </a></li> 
+       <li class="ieFix12"><a href="/hq/sis/resources/seismometers">Seismometers </a></li> 
+       <li class="ieFix15"><a href="/hq/sis/resources/software">Software </a></li> 
+       <li class="ieFix18"><a href="/hq/sis/resources/newsletters">Program News </a></li> 
+       <li class="ieFix21"><a href="/hq/sis/resources/faqs">FAQs </a></li> 
+      </ul> </li> 
+     <li class="community base"><a href="/hq/sis/community" class="top community"></a> 
+      <ul> 
+       <li class="first"><a href="/hq/sis/story">In the News </a></li> 
+       <li class="ieFix3"><a href="http://www.iris.washington.edu/mailman/listinfo/eno_quakes" target="_blank">E&amp;O Quakes Mailing List </a></li> 
+       <li class="ieFix6"><a href="http://www.iris.edu/hq/ssn/schools/find">Find Other Teachers </a></li> 
+       <li class="ieFix9"><a href="http://www.iris.edu/hq/ssn/networks">Regional Networks </a></li> 
+       <li class="ieFix12"><a href="/hq/sis/com/workshops">Workshops </a></li> 
+      </ul> </li> 
+     <li class="contact base"><a href="http://www.iris.edu/hq/ssn/contact" class="top contact"></a> 
+      <ul> 
+       <li class="first"><a href="/hq/sis/about">About Us</a></li> 
+       <li class="ieFix3"><a href="http://www.iris.edu/hq/ssn/contact">Contact </a></li> 
+      </ul> </li> 
+    </ul> 
+   </div> 
+   <div id="mainTop">
+    <!-- -->
+   </div> 
+   <div id="main"> 
+    <h1>Regional Networks</h1> 
+    <h2>IRIS (IRI)</h2> 
+    <div style="padding: 5px;border-top: 10px solid #660099;border-left: 2px solid #660099;border-right: 2px solid #660099;border-bottom: 2px solid #660099"> 
+     <a href="http://www.iris.edu/hq/sis" target="_blank"><img src="http://www.iris.edu/hq/ssn/img/misc/iris.png" alt="Logo" style="float: left;width: 100px;padding-right: 10px;margin-bottom: 20px"></a>IRIS�s Seismographs in Schools Program serves teachers across the country and around the world using seismic instruments or real-time seismic data in K-16 classrooms. Our hope is to bridge the gap between science classrooms to create an international educational seismic network. 
+     <br>
+     <br> 
+     <a href="http://www.iris.edu/hq/ssn/networks/view/IRI">View All Stations in this Network</a>
+     <br>
+     <br> 
+     <strong>Managed by <a href="http://www.iris.edu/hq/ssn/schools/contact_teacher/n/IRI">Tammy Bravo</a></strong>
+     <br> 
+     <a href="http://www.iris.edu/hq/sis" target="_blank"><em>http://www.iris.edu/hq/sis</em></a> 
+    </div> 
+    <div style="clear: both;margin-bottom: 20px"> 
+    </div> 
+    <h2>Australian Seismometers in Schools Network (AuS)</h2> 
+    <div style="padding: 5px;border-top: 10px solid #;border-left: 2px solid #;border-right: 2px solid #;border-bottom: 2px solid #"> 
+     <br>
+     <br> 
+     <a href="http://www.iris.edu/hq/ssn/networks/view/AuS">View All Stations in this Network</a>
+     <br>
+     <br> 
+     <strong>Managed by <a href="http://www.iris.edu/hq/ssn/schools/contact_teacher/n/AuS">Natalie Balfour</a></strong>
+     <br> 
+     <a href="" target="_blank"><em></em></a> 
+    </div> 
+    <div style="clear: both;margin-bottom: 20px"> 
+    </div> 
+    <h2>MiQuakes (MIQ)</h2> 
+    <div style="padding: 5px;border-top: 10px solid #102b24;border-left: 2px solid #102b24;border-right: 2px solid #102b24;border-bottom: 2px solid #102b24">
+      Michigan SIS Program
+     <br>
+     <br> 
+     <a href="http://www.iris.edu/hq/ssn/networks/view/MIQ">View All Stations in this Network</a>
+     <br>
+     <br> 
+     <strong>Managed by <a href="http://www.iris.edu/hq/ssn/schools/contact_teacher/n/MIQ">Kaz Fujita, Greg Waite</a></strong>
+     <br> 
+     <a href="" target="_blank"><em></em></a> 
+    </div> 
+    <div style="clear: both;margin-bottom: 20px"> 
+    </div> 
+    <h2>Oregon Shakes (ORS)</h2> 
+    <div style="padding: 5px;border-top: 10px solid #FF0000;border-left: 2px solid #FF0000;border-right: 2px solid #FF0000;border-bottom: 2px solid #FF0000"> 
+     <a href="http://www.oregonshakes.com/" target="_blank"><img src="http://www.iris.edu/hq/ssn/img/misc/oregon_shakes.png" alt="Logo" style="float: left;width: 100px;padding-right: 10px;margin-bottom: 20px"></a>Oregon Shakes mission is to inspire the love of science and math in "kids" of all ages by introducing them to the fascinating world of earthquakes. There is nothing quite as exciting as watching an earthquake unfold in real time on your own school seismograph! We hope to place a seismograph in all public schools in Lincoln County, Oregon, and to supplement the seismograph by providing educational resources, volunteers, and earth science activities. We also work with other groups such as local libraries, afterschool programs, home schooled kids and the Hatfield Marine Science Institute to install seismographs and offer activities for the general public.
+     <br>
+     <br> 
+     <a href="http://www.iris.edu/hq/ssn/networks/view/ORS">View All Stations in this Network</a>
+     <br>
+     <br> 
+     <strong>Managed by <a href="http://www.iris.edu/hq/ssn/schools/contact_teacher/n/ORS">Kay Wyatt</a></strong>
+     <br> 
+     <a href="http://www.oregonshakes.com/" target="_blank"><em>http://www.oregonshakes.com/</em></a> 
+    </div> 
+    <div style="clear: both;margin-bottom: 20px"> 
+    </div> 
+    <h2>PEPP (IUP)</h2> 
+    <div style="padding: 5px;border-top: 10px solid #990000;border-left: 2px solid #990000;border-right: 2px solid #990000;border-bottom: 2px solid #990000">
+      Indiana University PEPP Earthquake Science Institute: Bringing Seismology Research into the Classroom
+     <br>
+     <br> 
+     <a href="http://www.iris.edu/hq/ssn/networks/view/IUP">View All Stations in this Network</a>
+     <br>
+     <br> 
+     <strong>Managed by <a href="http://www.iris.edu/hq/ssn/schools/contact_teacher/n/IUP">Michael Hamburger</a></strong>
+     <br> 
+     <a href="http://www.indiana.edu/~pepp/" target="_blank"><em>http://www.indiana.edu/~pepp/</em></a> 
+    </div> 
+    <div style="clear: both;margin-bottom: 20px"> 
+    </div> 
+    <h2>Seismology Ireland (SIE)</h2> 
+    <div style="padding: 5px;border-top: 10px solid #31b449;border-left: 2px solid #31b449;border-right: 2px solid #31b449;border-bottom: 2px solid #31b449"> 
+     <a href="http://www.dias.ie/lang/en/cosmic/geo/seismo_in_schools.html" target="_blank"><img src="http://www.iris.edu/hq/files/programs/education_and_outreach/seismographs_in_schools/images/DIAS_blue_seal.jpg" alt="Logo" style="float: left;width: 100px;padding-right: 10px;margin-bottom: 20px"></a>The Seismology in Schools (Seismeola�ocht sa Scoil) in Ireland currently comprises 50 schools in total from the primary and secondary educational sectors. The seismometer in use in the schools is the SEP(Science Enhancement Programme) seismometer designed at Middlesex University in the UK. The students involved in this programme range in age from 10 -17 years old. The schools currently use the seismometer to record teleseismic events and as a teaching tool in the physics classes. DIAS (Dublin Institute for Advanced Studies) has been the leading agency in Ireland in the monitoring of earthquakes from all over the world since 1978. The Geophysics Section of the School of Cosmic Physics in DIAS coordinates the Seismology in Schools (Seismeola�ocht sa Scoil) programme as part of its Science Outreach Programme.
+     <br>
+     <br> 
+     <a href="http://www.iris.edu/hq/ssn/networks/view/SIE">View All Stations in this Network</a>
+     <br>
+     <br> 
+     <strong>Managed by <a href="http://www.iris.edu/hq/ssn/schools/contact_teacher/n/SIE">Tom Blake</a></strong>
+     <br> 
+     <a href="http://www.dias.ie/lang/en/cosmic/geo/seismo_in_schools.html" target="_blank"><em>http://www.dias.ie/lang/en/cosmic/geo/seismo_in_schools.html</em></a> 
+    </div> 
+    <div style="clear: both;margin-bottom: 20px"> 
+    </div> 
+    <h2>The UK school seismology network (UK)</h2> 
+    <div style="padding: 5px;border-top: 10px solid #FFFC17;border-left: 2px solid #FFFC17;border-right: 2px solid #FFFC17;border-bottom: 2px solid #FFFC17"> 
+     <a href="http://www.bgs.ac.uk/schoolseismology/" target="_blank"><img src="http://www.iris.edu/hq/ssn/img/misc/seismology_logo3.png" alt="Logo" style="float: left;width: 100px;padding-right: 10px;margin-bottom: 20px"></a>Founded in 1835, the British Geological Survey (BGS) is the world's oldest national geological survey and the United Kingdom's premier centre for earth science information and expertise. Schools involved in the UK school seismology network are mostly secondary schools (teaching students aged 11-18) both state and private schools are involved with a mixture of science, geography and geology teachers supporting the project.
+     <br>
+     <br> 
+     <a href="http://www.iris.edu/hq/ssn/networks/view/UK">View All Stations in this Network</a>
+     <br>
+     <br> 
+     <strong>Managed by <a href="http://www.iris.edu/hq/ssn/schools/contact_teacher/n/UK">Paul Denton</a></strong>
+     <br> 
+     <a href="http://www.bgs.ac.uk/schoolseismology/" target="_blank"><em>http://www.bgs.ac.uk/schoolseismology/</em></a> 
+    </div> 
+    <div style="clear: both;margin-bottom: 20px"> 
+    </div> 
+    <h2>Z-NET (ZNT)</h2> 
+    <div style="padding: 5px;border-top: 10px solid #6699FF;border-left: 2px solid #6699FF;border-right: 2px solid #6699FF;border-bottom: 2px solid #6699FF"> 
+     <br>
+     <br> 
+     <a href="http://www.iris.edu/hq/ssn/networks/view/ZNT">View All Stations in this Network</a>
+     <br>
+     <br> 
+     <strong>Managed by <a href="http://www.iris.edu/hq/ssn/schools/contact_teacher/n/ZNT">Ted Channel</a></strong>
+     <br> 
+     <a href="" target="_blank"><em></em></a> 
+    </div> 
+    <div style="clear: both;margin-bottom: 20px"> 
+    </div> 
+    <h2>Unassigned Stations (UNA)</h2> 
+    <div style="padding: 5px;border-top: 10px solid #b7b7b7;border-left: 2px solid #b7b7b7;border-right: 2px solid #b7b7b7;border-bottom: 2px solid #b7b7b7">
+      These are stations that have not been affiliated with a regional network.
+     <br>
+     <br> 
+     <a href="http://www.iris.edu/hq/ssn/networks/view/UNA">View All Stations in this Network</a>
+     <br>
+     <br> 
+     <strong>Managed by <a href="http://www.iris.edu/hq/ssn/schools/contact_teacher/n/UNA">IRIS</a></strong>
+     <br> 
+     <a href="" target="_blank"><em></em></a> 
+    </div> 
+    <div style="clear: both;margin-bottom: 20px"> 
+    </div> 
+   </div> 
+   <div id="footer"> 
+    <div> 
+     <a href="/hq">Home</a> | 
+     <a href="/hq/about_iris">About IRIS</a> | 
+     <a href="/hq/programs">Programs</a> | 
+     <a href="/data">Data</a> | 
+     <a href="/software">Software</a> | 
+     <a href="/hq/instrumentation">Instrumentation</a> | 
+     <a href="/hq/publications">Publications</a> | 
+     <a href="/hq/staff">Staff</a> | 
+     <a href="/hq/employment">Employment</a> | 
+     <a href="/hq/sitemap">Sitemap</a> | 
+     <a href="/hq/contact">Contact</a> 
+     <p> <a href="/hq"><img src="/hq/images/layout/irisFooterLogo.gif" alt="IRIS" border="0"></a> <br> Copyright © 2015 IRIS - Incorporated Research Institutions for Seismology<br> <a href="/hq/forms/web_update" class="requestUpdate" target="_blank">Submit changes, questions,or comments related to this page.</a> </p> 
+    </div> 
+   </div> 
+  </div> 
+  <script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script> 
+  <script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-1860730-1");
+pageTracker._trackPageview();
+} catch(err) {}</script> 
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"beacon-5.newrelic.com","licenseKey":"a0c27f55c0","applicationID":"5614845","transactionName":"MQNUbUAAW0UAVEwKVwhJd1pGCFpYTlldF08JFF1KHQhbUgRP","queueTime":0,"applicationTime":42,"atts":"HURXGwgaSEs=","errorBeacon":"bam.nr-data.net","agent":"js-agent.newrelic.com\/nr-515.min.js"}</script>  
+ </body>
+</html>

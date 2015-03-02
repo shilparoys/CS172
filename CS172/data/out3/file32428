@@ -1,0 +1,706 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <!-- InstanceBegin template="/Templates/frontpage.dwt" codeOutsideHTMLIsLocked="false" -->
+ <head>
+  <script id="f5_cspm">(function(){var f5_cspm={f5_p:'LFHMCDEBBJOPJHPBKEHOIJDJAKNNNHAOFMGNAMACBOKBKEHJFFFILCBPMLKABCPCBEHGMHBKCKHLKDIKAEDCHIHPNJPPAEABOOJIPMKDHFHOLGONFCBEMJFFMMDHOJON',setCharAt:function(str,index,chr){if(index>str.length-1)return str;return str.substr(0,index)+chr+str.substr(index+1);},get_byte:function(str,i){var s=(i/16)|0;i=(i&15);s=s*32;return((str.charCodeAt(i+16+s)-65)<<4)|(str.charCodeAt(i+s)-65);},set_byte:function(str,i,b){var s=(i/16)|0;i=(i&15);s=s*32;str=f5_cspm.setCharAt(str,(i+16+s),String.fromCharCode((b>>4)+65));str=f5_cspm.setCharAt(str,(i+s),String.fromCharCode((b&15)+65));return str;},set_latency:function(str,latency){latency=latency&0xffff;str=f5_cspm.set_byte(str,32,(latency>>8));str=f5_cspm.set_byte(str,33,(latency&0xff));str=f5_cspm.set_byte(str,27,2);return str;},wait_perf_data:function(){try{var wp=window.performance.timing;if(wp.loadEventEnd>0){var res=wp.loadEventEnd-wp.navigationStart;if(res<60001){var cookie_val=f5_cspm.set_latency(f5_cspm.f5_p,res);window.document.cookie='aaaaaaaaaaaaaaa='+encodeURIComponent(cookie_val)+';path=/';}
+return;}}
+catch(err){return;}
+setTimeout(f5_cspm.wait_perf_data,100);return;},go:function(){var chunk=window.document.cookie.split(/\s*;\s*/);for(var i=0;i<chunk.length;++i){var pair=chunk[i].split(/\s*=\s*/);if(pair[0]=='f5_cspm'){if(pair[1]=='1234'){var d=new Date();d.setTime(d.getTime()-1);window.document.cookie='f5_cspm=;expires='+d.toUTCString()+';path=/;';setTimeout(f5_cspm.wait_perf_data,100);}}}}}
+f5_cspm.go();}());</script> 
+  <!-- InstanceBeginEditable name="doctitle" --> 
+  <title>One Stop Home</title> 
+  <!-- InstanceEndEditable --> 
+  <link rel="stylesheet" href="/css/onestop_base_v2.css" type="text/css"> 
+  <link rel="stylesheet" href="/css/UofMHeaderFooter.css" type="text/css"> 
+  <link rel="stylesheet" href="/css/UofMHeaderSubNav.css" type="text/css"> 
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+  <link rel="icon" type="image/png" href="/img/favicon.png"> 
+  <script type="text/javascript" src="/js/searchfield.js"></script> 
+  <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script> 
+  <link rel="stylesheet" href="/css/onestop_frontpage_v3.css" type="text/css"> 
+  <style type="text/css">
+#tabs {display:block;}
+#students {display:none}
+#featureHeader{display:none}
+</style> 
+  <!--	<script type="text/javascript" src="/js/jquery-1.6.1.min.js"></script> NOTE this is included in the calendar  js--> 
+  <script type="text/javascript" src="/js/google_calendar_fp.js.php"></script> 
+  <script type="text/javascript" src="/js/sliderkit/lib/js/sliderkit.1.5.2_all_min.js"></script> 
+  <script type="text/javascript">
+	jQuery(document).ready(function(){
+	// REMOVE FEATURE HEADER
+	$('#featureHeader').remove();
+
+
+
+	// SET SLIDERKIT FOR FEATURES
+	var numOfSlides;
+	var slideHeight=0;
+	numOfSlides=buildNavigation('sliderkit-panel','frontpage');
+			
+	jQuery(".sliderkit").sliderkit({auto:true,verticalnav:true,circular:true,autospeed:10000,panelfx:"fading",mousewheel:false,shownavitems:numOfSlides,fashchange:true});	
+	var testText=""; //Needed to slow Chrom down enough for it to catch the style
+	$('.sliderkit_nav_ul li').each(function(){testText+=$(this).attr('style')+"\n";});
+	$('.sliderkit-nav-clip, .sliderkit_nav_ul, .sliderkit_nav_ul li').removeAttr('style');
+	
+	var maxheightStart=230;
+	var maxheight=230;
+	$('.sliderkit-panel').each(function(){if($(this).height()>maxheight) maxheight=$(this).height();	});
+	$('#whats_happening, .sliderkit-panel').height(maxheight);
+	var newCalHeight=$('#calendars_data').height()+maxheight-maxheightStart;
+	$('#calendars_data').height($('#calendars_data').height()+maxheight-maxheightStart);
+	$('.sliderkit').trigger('mouseover').trigger('mouseout'); // Make sure Chrome rotates through all tabs
+	
+
+	
+	// CALENDARS
+	var myCals=new loadGoogleCals({
+		'url':'/calendars/google_calendar_front_page.php',
+		'jsonpCallback':'onestopjson','calendarFunction':calDisplay,'eventsFunction':entryDisplay					
+	});			    
+	
+	
+	////////////////// MOBILE LINK //////////////////
+	
+	$('.goToMobileVersionLink').click(function(event){
+		$.cookie('noMobile', null, {path: '/' });		// kill cookie
+		window.location=$(this).attr('href');	
+		event.preventDefault();
+
+	});
+	
+	
+});/*end document ready*/		
+</script> 
+  <link rel="stylesheet" href="/css/onestop_print.css" media="print" type="text/css"> 
+  <!--[if IE]><link rel="stylesheet" href="/css/ie.css" type="text/css" /><![endif]--> 
+  <!--[if IE 6]><link rel="stylesheet" href="/css/ie6.css" type="text/css" /><![endif]--> 
+  <!--[if IE 7]><link rel="stylesheet" href="/css/ie7.css" type="text/css" /><![endif]--> 
+  <!--[if IE 8]><link rel="stylesheet" href="/css/ie8.css" type="text/css" /><![endif]--> 
+  <script type="text/javascript">
+	$(document).ready(function(){
+		if($('#feature_imgs li').length==5){
+			$('#feature_imgs li').css('width','19%');	
+		}
+	});
+
+</script> 
+  <!-- InstanceBeginEditable name="head" --> 
+  <!-- *********************************************************  --> 
+  <!-- *********************************************************  --> 
+  <!-- *********************************************************  --> 
+  <script src="/mobile/scripts/redirectFull.php"></script> 
+  <script type="text/javascript">mobileRedirect("/mobile");</script> 
+  <!-- *********************************************************  --> 
+  <!-- *********************************************************  --> 
+  <!-- *********************************************************  --> 
+  <!-- InstanceEndEditable --> 
+ </head> 
+ <body> 
+  <div id="wrapper"> 
+   <!-- BEGIN U of M TEMPLATE HEADER --> 
+   <a href="#main_content" style="position:absolute; left:-99999px">Skip to main content</a> 
+   <div id="UofM_header_wrapper"> 
+    <div id="UofM_campus_links_wrapper"> 
+     <div id="UofM_campus_home_links"> 
+      <p>Campuses: </p> 
+      <ul> 
+       <li><a class="here" href="http://www.umn.edu">Twin Cities</a></li> 
+       <li><a href="http://www.crk.umn.edu">Crookston</a></li> 
+       <li><a href="http://www.d.umn.edu">Duluth</a></li> 
+       <li><a href="http://www.morris.umn.edu">Morris</a></li> 
+       <li><a href="http://www.r.umn.edu">Rochester</a></li> 
+       <li><a href="http://www.umn.edu/campuses.php">Other Locations</a></li> 
+      </ul> 
+     </div> 
+    </div> 
+    <div id="UofM_watermark_header"> 
+     <div id="UofM_logo_UMNTC"> 
+      <a href="http://www.umn.edu"><span>Go to the U of M Twin Cities home page</span></a>
+     </div> 
+     <div id="UofM_search_wrapper"> 
+      <div id="UofM_header_buttons"> 
+       <!--<a id="UofM_btn_onestop" href="http://onestop.umn.edu"><span>OneStop</span></a>-->
+       <a id="UofM_btn_email" href="https://mail.umn.edu/"><span>Email</span></a> 
+       <a id="UofM_btn_myu" href="https://www.myu.umn.edu/"><span>myU</span></a>
+      </div> 
+      <form title="Search U of M Web sites" method="get" action="http://search.umn.edu/tc/" id="UofM_gsearch"> 
+       <input type="hidden" name="s" value="onestop"> 
+       <input type="hidden" name="u" value="1"> 
+       <label for="UofM_search_field">Search One Stop, umn.edu, or people</label> 
+       <input type="text" title="Search text" value="Search One Stop, umn.edu, or people" name="q" id="UofM_search_field" onfocus="if (this.value == 'Search One Stop, umn.edu, or people') { this.value = ''; }" onblur="if(this.value==''){this.value='Search One Stop, umn.edu, or people'}"> 
+       <input type="image" value="Search" alt="Submit Search" src="/img/header_banner_footer/search_button.gif"> 
+      </form> 
+     </div> 
+    </div> 
+   </div> 
+   <!-- END U of M TEMPLATE HEADER --> 
+   <div id="banner"> 
+    <div id="oneStopImage"> 
+     <a href="/"><img src="/img/header_banner_footer/smMwdmk.gif"><span>One Stop</span> student services</a> 
+    </div> 
+    <ul id="tabs"> 
+     <li id="students"><a href="/index.html">Students</a></li> 
+     <li id="staff"><a href="/staff/index.html">Staff</a></li> 
+     <li id="faculty"><a href="/faculty/index.html">Faculty</a></li> 
+    </ul> 
+   </div> 
+   <div id="UofM_header_sub"> 
+    <ul> 
+     <li><a href="/registration/index.html">Registration</a> 
+      <ul> 
+       <li><a href="/registration/prepare/index.html">Prepare for registration</a></li> 
+       <li><a href="/registration/guidelines/index.html">Registration guidelines</a></li> 
+       <li><a href="/registration/change/index.html">Change registration</a></li> 
+       <li><a href="/registration/printable_p_and_p/index.html">Printable policies</a></li> 
+      </ul> </li> 
+     <li><a href="/finances/index.html">Finances</a> 
+      <ul> 
+       <li><a href="/finances/financial_aid/index.html">Financial aid</a></li> 
+       <li><a href="/finances/financial_aid/award_acceptance/index.html">Financial Aid Award Notice (eFAAN)</a></li> 
+       <li><a href="/finances/costs_and_tuition/index.html">Costs, tuition, &amp; fees</a></li> 
+       <li><a href="/finances/student_account/index.html">Your student account</a></li> 
+       <li><a href="/finances/pay/index.html">Pay the University</a></li> 
+       <li><a href="/finances/manage_money/index.html">Money management</a></li> 
+       <li><a href="/finances/scams_and_fraud/index.html">Scams &amp; fraud</a></li> 
+      </ul> </li> 
+     <li><a href="/grades_and_transcripts/index.html">Grades &amp; transcripts</a> 
+      <ul> 
+       <li><a href="/grades_and_transcripts/grades/index.html">Grades</a></li> 
+       <li><a href="/grades_and_transcripts/official_transcripts/">Official transcript</a></li> 
+       <li><a href="/grades_and_transcripts/unofficial_transcripts.html">Unofficial transcripts</a></li> 
+       <li><a href="/grades_and_transcripts/certification_letters/">Enrollment/Degree Verification</a></li> 
+       <li><a href="/grades_and_transcripts/student_records_privacy.html">Student records privacy</a></li> 
+      </ul> </li> 
+     <li><a href="/degree_planning/index.html">Degree planning</a> 
+      <ul> 
+       <li><a href="/degree_planning/explore_degree_options.html">Explore degree options</a></li> 
+       <li><a href="/degree_planning/advising.html">Advising &amp; counseling offices</a></li> 
+       <li><a href="/degree_planning/graduation_planner.html">Graduation Planner</a></li> 
+       <li><a href="/degree_planning/graduate_in_four_years.html">Graduate in four years</a></li> 
+       <li><a href="/degree_planning/lib_eds/index.html">Liberal education requirements</a></li> 
+       <li><a href="/degree_planning/changing_college_or_major/index.html">Changing college or major</a></li> 
+       <li><a href="/degree_planning/graduation/index.html">Graduation</a></li> 
+       <li><a href="/degree_planning/academic_support/index.html">Academic support &amp; tutoring</a></li> 
+      </ul> </li>
+     <li><a href="/calendars/index.html">Calendars</a> 
+      <ul> 
+       <li><a href="/calendars/index.html">Academic calendar</a></li> 
+       <li><a href="/calendars/final_exams/index.html">Final exams</a></li> 
+       <li><a href="/calendars/cancel_add_refund_deadlines/index.html">Cancel/add &amp; refund deadlines</a></li> 
+       <li><a href="/finances/pay/where_when_how/index.html">Payment due dates</a></li> 
+      </ul> </li> 
+     <li><a href="/u_resources/index.html">U Resources</a> 
+      <ul> 
+       <li><a href="/u_resources/new_to_the_u.html">New to the U?</a></li> 
+       <li><a href="/u_resources/campus_life.html">Campus life</a></li> 
+       <li><a href="/u_resources/computing_and_technology/index.html">Computing &amp; technology</a></li> 
+       <li><a href="/u_resources/employment_and_career_resources.html">Employment &amp; careers</a></li> 
+       <li><a href="/u_resources/getting_around/index.html">Getting around campus</a></li> 
+       <li><a href="/u_resources/policies_and_administration/index.html">U policies &amp; administration</a></li> 
+      </ul> </li> 
+     <li class="last"><a href="/contact_us/index.html">Contact us</a> 
+      <ul> 
+       <li><a href="/contact_us/index.html">Hours, locations, phone numbers</a></li> 
+       <li><a href="/contact_us/parent_guest_access.html">Access for parents/guests</a></li> 
+       <li><a href="/contact_us/alumni_web_access.html">Access for former students</a></li> 
+       <li><a href="/contact_us/student_account_assistance.html">Student Account Assistance</a></li> 
+       <li><a href="/contact_us/veterans_contacts.html">Veterans services &amp; resources</a></li> 
+      </ul> </li> 
+    </ul> 
+    <!--
+	<ul >
+		<li><a href="/registration/index.html">Registration</a>
+			<ul>
+				<li><a href="https://onestop2.umn.edu/registration/initializeCurrentEnrollment.do?institution=UMNTC&amp;resetInstitut">Register online</a></li>
+				<li><a href="/registration/prepare/">Prepare to register</a></li>
+				<li><a href="/registration/guidelines/">Registration guidelines</a></li>
+				<li><a href="/registration/change/">Change your registration</a></li>
+				<li><a href="">Printable policies</a></li>
+				<li><a href="/Registration/Additional_Registration_Information/13_Credit_Policy.html">13 credit policy</a></li>
+				<li><a href="http://preview.onestop.asr.umn.edu/onestop/Registration/Holds.html">Holds</a></li>
+			</ul>
+		</li>
+		<li><a href="/finances/index.html">Finances</a>
+			<ul>
+				<li><a href="/finances/costs_and_tuition/index.html">Costs &amp; tuition</a></li>
+				<li><a href="/finances/financial_aid/index.html">Financial aid</a></li>
+				<li><a href="/finances/student_account/index.html">Your student account</a></li>
+				<li><a href="/finances/pay/index.html">Pay the University</a></li>
+				<li><a href="/finances/manage_money/index.html">Money management</a></li>
+				<li><a href="/finances/scams_and_fraud/index.html">Scams &amp; fraud</a></li>
+				<li><a href="/finances/financial_aid/scholarships/index.html">Scholarships</a></li>
+				<li><a href="http://tax.umn.edu/educational.html">Education tax benefits</a></li>
+				<li><a href="/finances/financial_aid/award_acceptance/index.html">Financial Aid Award Notice (eFAAN)</a></li>
+				<li><a href="http://umn.financialaidtv.com/">Financial aid videos</a></li>
+			</ul>
+		</li>
+		<li><a href="/grades_and_transcripts/index.html">Grades &amp; Transcripts</a>
+			<ul>
+				<li><a href="/grades_and_transcripts/grades/index.html">Understanding your grades</a></li>
+				<li><a href="/grades_and_transcripts/official_transcripts/index.html">Official transcripts</a></li>
+				<li><a href="/grades_and_transcripts/unofficial_transcripts.html">Unofficial transcripts </a></li>
+				<li><a href="/grades_and_transcripts/certification_letters/index.html">Certification letters</a></li>
+				<li><a href="/grades_and_transcripts/student_records_privacy.html">Student records privacy</a></li>
+			</ul>
+		</li>
+		<li><a href="/degree_planning/index.html">Degree Planning</a>
+			<ul>
+				
+							<li><a href="/degree_planning/graduation_planner.html">Graduation Planner</a></li>
+							<li><a href="/degree_planning/explore_degree_options.html">Explore degree options</a></li>
+	            <li><a href="/degree_planning/lib_eds/index.html">Liberal education requirements</a></li>
+							<li><a href="/degree_planning/advising.html">Advising &amp; counseling offices</a></li>
+							<li><a href="/degree_planning/graduate_in_four_years.html">Graduate in four years</a></li>
+						  <li><a href="/degree_planning/changing_college_or_major/index.html">Changing college or major</a></li>
+							<li><a href="/degree_planning/graduation/index.html">Graduation</a></li>
+						
+			</ul>
+		</li>
+		<li><a href="/calendars/index.html">Calendars</a>
+			<ul>
+				<li><a href="calendars/index.html">Academic calendar</a></li>
+				<li><a href="calendars/final_exams/index.html">Final exams</a></li>
+				<li><a href="calendars/cancel_add_refund_deadlines/index.html">Cancel/add &amp; refund deadlines</a></li>
+				<li><a href="/finances/pay/where_when_how/index.html">Payment due dates</a></li>
+			</ul>
+		</li>
+		<li><a href="/u_resources/index.html" >U Resources</a>
+			<ul>
+				<li><a href="/u_resources/new_to_the_u.html">New to the U?</a></li>
+				<li><a href="/u_resources/campus_life.html">Campus life</a></li>
+				<li><a href="/u_resources/computing_and_technology/index.html">Computing &amp; technology</a></li>
+				<li><a href="/u_resources/employment_and_career_resources.html">Employment &amp; careers</a></li>
+				<li><a href="/u_resources/getting_around/index.html">Getting around campus</a></li>
+				<li><a href="/u_resources/student_family_resources.html">Student family resources</a></li>
+				<li><a href="/u_resources/policies_and_administration/index.html">U policies &amp; administration</a></li>
+			</ul>
+		</li>
+		<li class="last"><a href="/contact_us/index.html">Contact Us</a>
+			<ul>
+				<li><a href="contact_us/index.html">Hours, locations, phone numbers</a></li>
+				<li><a href="contact_us/parent_guest_access.html">Authorize parent/guest access to your student records</a></li>
+				<li><a href="/contact_us/alumni_web_access.html">Online access for former students</a></li>
+				<li><a href="/contact_us/veterans_contacts.html">University Student Veterans</a></li>
+				<li><a href="/contact_us/student_financial_collections.html">Student Financial Collections</a></li>
+			</ul>
+		</li>
+	</ul>  !---> 
+   </div> 
+   <div id="content"> 
+    <div id="right_navigation"> 
+     <h3>Quick Links</h3> 
+     <!-- InstanceBeginEditable name="quicklinks" --> 
+     <ul> 
+      <li><a href="/forms/index.html">Forms online</a></li> 
+     </ul> 
+     <h4>Registration tools</h4> 
+     <ul> 
+      <li><a href="http://onestop2.umn.edu/courseinfo/classschedule_selectsubject.jsp?institution=UMNTC">Class Schedule</a></li> 
+      <li><a href="http://onestop2.umn.edu/courseinfo/searchcriteria.jsp?institution=UMNTC">Class Search</a></li> 
+      <li><a href="http://onestop2.umn.edu/courseinfo/courseguide_selectsubject.jsp?institution=UMNTC">Course Guide</a></li> 
+      <li><a href="http://www.catalogs.umn.edu/">University Catalogs </a></li> 
+      <li class="login"><a href="https://onestop2.umn.edu/enrollmentsummary/enrollmentSummary.do?institution=UMNTC">Enrollment Summary</a></li> 
+      <li class="login"><a href="https://onestop2.umn.edu/registration/initializeCurrentEnrollment.do?institution=UMNTC&amp;resetInstitut">Register</a></li> 
+      <li><a href="http://onestop2.umn.edu/courseinfo/sectionstatus_selectsubject.jsp?institution=UMNTC">Class section status</a></li> 
+      <li class="login"><a href="https://onestop2.umn.edu/healthinsurance/healthInsurance.do?institution=UMNTC&amp;resetInstitution=Y">Health plan coverage</a></li> 
+     </ul> 
+     <h4>Finance tools</h4> 
+     <ul> 
+      <li class="login"><a href="https://csprd-self.psoft.umn.edu/psc/HEPCOM/EMPLOYEE/HRMS/c/ROLE_EMPLOYEE.PY_IC_DIR_DEP.GBL">Direct Deposit</a></li> 
+      <li class="login"><a href="https://onestop2.umn.edu/fastatus/initializeHolds.do?institution=UMNTC&amp;hasHolds=N">Financial Aid Status</a></li> 
+      <li class="login">Pay online: <a href="https://webapps-prd.oit.umn.edu/studentaccount/billingAndPayment.do?campus=UMNTC">student</a>, <a href="finances/pay/um_pay/index.html">parent/guest</a> </li> 
+      <li class="login"><a href="https://onestop2.umn.edu/studentaccount/viewChooseAccount.do?campus=UMNTC">Student account</a></li> 
+      <li class="login"><a href="https://scholarships.umn.edu/">Scholarship Search</a></li> 
+     </ul> 
+     <h4>Student records tools</h4> 
+     <ul> 
+      <li class="login"><a href="https://onestop2.umn.edu/darwin/login.jsp"><abbr title="Academic Progress Audit System">APAS</abbr> report</a></li> 
+      <li class="login"><a href="https://onestop2.umn.edu/viewgrades/viewGrades.do?institution=UMNTC">Grades</a></li> 
+      <li class="login"><a href="https://onestop2.umn.edu/gradplanner/Initialize.do?campus=UMNTC">Graduation Planner</a></li> 
+      <li class="login"><a href="https://onestop2.umn.edu/viewholds/viewHolds.do?institution=UMNTC&amp;resetInstitution=Y">Holds</a></li> 
+      <li><a href="contact_us/parent_guest_access.html">Parent/guest access</a></li> 
+      <li class="login"><a href="https://onestop2.umn.edu/personaldemographics/viewGeneralInfo.do?institution=UMNTC">Personal information</a></li> 
+      <li class="login"><a href="https://onestop2.umn.edu/viewgrades/unOfficialTranscript.do?institution=UMNTC">Unofficial transcript</a></li> 
+      <li><a href="grades_and_transcripts/official_transcripts/">Order transcript</a></li> 
+     </ul> 
+     <h4>Calendars</h4> 
+     <ul> 
+      <li><a href="calendars/index.html">Academic calendar</a></li> 
+      <li><a href="calendars/final_exams/index.html">Final exams</a></li> 
+      <li><a href="calendars/cancel_add_refund_deadlines/index.html">Cancel/add &amp; refund deadlines</a></li> 
+      <li><a href="/finances/pay/where_when_how/index.html">Payment due dates</a> </li> 
+     </ul> 
+     <h4>&nbsp;</h4> 
+     <!-- *********************************************************  --> 
+     <!-- *********************************************************  --> 
+     <!-- *********************************************************  --> 
+     <ul> 
+      <li><a href="/mobile/" class="goToMobileVersionLink" style="color:#7a0019">View mobile version</a></li> 
+     </ul> 
+     <!-- *********************************************************  --> 
+     <!-- *********************************************************  --> 
+     <!-- *********************************************************  --> 
+     <!-- InstanceEndEditable -->
+    </div> 
+    <div id="main_content"> 
+     <div class="message">
+      <!-- InstanceBeginEditable name="message" -->
+      <!-- InstanceEndEditable -->
+     </div> 
+     <div id="top_info_bar"> 
+      <div id="calendars"> 
+       <h2 style=" padding: 5px;"><a href="/calendars/index.html">Academic dates &amp; deadlines</a></h2> 
+       <div id="calendars_data"> 
+        <p><a href="/calendars/index.html">View calendars</a></p> 
+       </div> 
+      </div> 
+      <div id="whats_happening" class="sliderkit"> 
+       <div id="whats_happening_content" class="skiderkit-panels"> 
+        <!-- InstanceBegin template="/Templates/features.dwt" codeOutsideHTMLIsLocked="false" --> 
+        <div> 
+         <!-- InstanceBeginRepeat name="Panel" -->
+         <!-- InstanceBeginRepeatEntry --> 
+         <div class="sliderkit-panel" data-role="collapsible" data-content-theme="c"> 
+          <h2>
+           <!-- InstanceBeginEditable name="title" --> <strong><strong></strong></strong>Registration begins in March
+           <!-- InstanceEndEditable --></h2> 
+          <div class="whats_happening_text">
+           <!-- InstanceBeginEditable name="paragraph" --> 
+           <p>Registration for May, summer, and fall terms will be earlier than usual to accommodate a core technology upgrade later this spring. May/summer 2015 registration will begin Monday, March 9 and fall 2015 registration begins Monday, March 23. <a href="../registration/prepare/times/time_tables.html"><u>Learn more about registration times</u></a>.<br> </p> 
+           <!-- InstanceEndEditable --> 
+           <ul> 
+            <!-- InstanceBeginRepeat name="Links" -->
+            <!-- InstanceEndRepeat --> 
+           </ul> 
+          </div> 
+         </div> 
+         <!-- InstanceEndRepeatEntry -->
+         <!-- InstanceBeginRepeatEntry --> 
+         <div class="sliderkit-panel" data-role="collapsible" data-content-theme="c"> 
+          <h2>
+           <!-- InstanceBeginEditable name="title" --> <strong><strong>Prepare to register earlier</strong></strong> 
+           <!-- InstanceEndEditable --></h2> 
+          <div class="whats_happening_text">
+           <!-- InstanceBeginEditable name="paragraph" --> 
+           <p>To prepare for earlier registration, make an appointment with your adviser, <a href="http://upgrade.umn.edu/student/"><u>learn about some changes to the registration process</u></a>, and look for an email with your registration time in the next few weeks. Visit the <a href="../registration/prepare/index.html"><u>One Stop website for a complete list on what you need to do to prepare for registration.</u></a><br> </p> 
+           <!-- InstanceEndEditable --> 
+           <ul> 
+            <!-- InstanceBeginRepeat name="Links" -->
+            <!-- InstanceEndRepeat --> 
+           </ul> 
+          </div> 
+         </div> 
+         <!-- InstanceEndRepeatEntry -->
+         <!-- InstanceBeginRepeatEntry --> 
+         <div class="sliderkit-panel" data-role="collapsible" data-content-theme="c"> 
+          <h2>
+           <!-- InstanceBeginEditable name="title" --> <strong><strong>Pay online</strong></strong>
+           <!-- InstanceEndEditable --></h2> 
+          <div class="whats_happening_text">
+           <!-- InstanceBeginEditable name="paragraph" --> 
+           <p><a href="../finances/pay/where_when_how/pay_online.html"><u>Paying online</u></a> is the safest and easiest way to pay your bill. You can pay by eCheck for free. All you need is your bank's routing number and your account number, both of which can be found at the bottom of a personal check. If you have any questions, <a href="http://z.umn.edu/contact"><u>contact One Stop</u></a>.</p> 
+           <!-- InstanceEndEditable --> 
+           <ul> 
+            <!-- InstanceBeginRepeat name="Links" -->
+            <!-- InstanceEndRepeat --> 
+           </ul> 
+          </div> 
+         </div> 
+         <!-- InstanceEndRepeatEntry -->
+         <!-- InstanceBeginRepeatEntry --> 
+         <div class="sliderkit-panel" data-role="collapsible" data-content-theme="c"> 
+          <h2>
+           <!-- InstanceBeginEditable name="title" --> <strong><strong>Work for the U</strong></strong>
+           <!-- InstanceEndEditable --></h2> 
+          <div class="whats_happening_text">
+           <!-- InstanceBeginEditable name="paragraph" --> 
+           <p>Looking to earn extra money this semester? Consider applying for student work positions. The U offers a variety of employment opportunities, some available for work-study recipients and some for all students. You can<a href="https://employment.umn.edu/applicants/jsp/shared/search/Search_css.jsp"><u> search for openings and apply online</u></a>.<br> </p> 
+           <!-- InstanceEndEditable --> 
+           <ul> 
+            <!-- InstanceBeginRepeat name="Links" -->
+            <!-- InstanceEndRepeat --> 
+           </ul> 
+          </div> 
+         </div> 
+         <!-- InstanceEndRepeatEntry -->
+         <!-- InstanceBeginRepeatEntry --> 
+         <div class="sliderkit-panel" data-role="collapsible" data-content-theme="c"> 
+          <h2>
+           <!-- InstanceBeginEditable name="title" --> <strong><strong>File your FAFSA</strong></strong> 
+           <!-- InstanceEndEditable --></h2> 
+          <div class="whats_happening_text">
+           <!-- InstanceBeginEditable name="paragraph" --> 
+           <p> File your taxes as soon as possible or by the April 15 deadline to ensure you're ready to complete your <a href="http://www.fafsa.ed.gov/"><u>Free Application for Federal Student Aid (FAFSA</u></a>. The priority deadline for returning students is April 15, but you can increase your chances of receiving a variety of financial aid awards by completing your FAFSA early. <br> </p> 
+           <!-- InstanceEndEditable --> 
+           <ul> 
+            <!-- InstanceBeginRepeat name="Links" -->
+            <!-- InstanceEndRepeat --> 
+           </ul> 
+          </div> 
+         </div> 
+         <!-- InstanceEndRepeatEntry -->
+         <!-- InstanceEndRepeat --> 
+        </div> 
+        <!-- InstanceEnd --> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="clearBar"></div> 
+     <!-- InstanceBeginRepeat name="Column" -->
+     <!-- InstanceBeginRepeatEntry --> 
+     <div class="link_column"> 
+      <div class="link_column_inner">
+       <!-- InstanceBeginEditable name="bodycontent" --> 
+       <h2><a href="/registration/index.html">Registration</a></h2> 
+       <ul> 
+        <li><a href="https://onestop2.umn.edu/registration/initializeCurrentEnrollment.do?institution=UMNTC&amp;resetInstitut">Register online</a></li> 
+        <li><a href="/registration/prepare/index.html">Prepare for registration</a></li> 
+        <li><a href="/registration/guidelines/index.html">Registration guidelines</a></li> 
+        <li><a href="/registration/change/index.html">Registration changes</a> </li> 
+        <li><a href="/registration/printable_p_and_p/index.html">Printable policies</a></li> 
+        <li><a href="/registration/guidelines/credit_load/13_credit_policy.html">Credit load</a></li> 
+        <li><a href="/registration/guidelines/holds/index.html">Holds</a></li> 
+       </ul> 
+       <!-- InstanceEndEditable -->
+      </div>
+     </div> 
+     <!-- InstanceEndRepeatEntry -->
+     <!-- InstanceBeginRepeatEntry --> 
+     <div class="link_column"> 
+      <div class="link_column_inner">
+       <!-- InstanceBeginEditable name="bodycontent" --> 
+       <h2><a href="/finances/index.html">Finances</a></h2> 
+       <ul> 
+        <li><a href="/finances/costs_and_tuition/index.html">Costs, tuition, &amp; fees</a></li> 
+        <li><a href="/finances/financial_aid/index.html">Financial aid</a></li> 
+        <li><a href="/finances/student_account/index.html">Your student account</a></li> 
+        <li><a href="/finances/pay/index.html">Pay the University</a></li> 
+        <li><a href="/finances/manage_money/index.html">Money management</a></li> 
+        <li><a href="http://tax.umn.edu/educational.html">Educational tax benefits </a></li> 
+        <li><a href="/finances/scams_and_fraud/index.html">Scams &amp; fraud</a></li> 
+       </ul> 
+       <!-- InstanceEndEditable -->
+      </div>
+     </div> 
+     <!-- InstanceEndRepeatEntry -->
+     <!-- InstanceBeginRepeatEntry --> 
+     <div class="link_column"> 
+      <div class="link_column_inner">
+       <!-- InstanceBeginEditable name="bodycontent" --> 
+       <h2><a href="grades_and_transcripts/index.html">Grades &amp; transcripts</a></h2> 
+       <ul> 
+        <li><a href="/grades_and_transcripts/grades/index.html">Understanding grades</a></li> 
+        <li><a href="/grades_and_transcripts/unofficial_transcripts.html">Unofficial transcripts </a></li> 
+        <li><a href="/grades_and_transcripts/official_transcripts/index.html">Official transcripts</a></li> 
+        <li><a href="/grades_and_transcripts/certification_letters/index.html">Enrollment/Degree Verification</a></li> 
+        <li><a href="/grades_and_transcripts/student_records_privacy.html">Student records privacy</a></li> 
+       </ul> 
+       <!-- InstanceEndEditable -->
+      </div> 
+     </div> 
+     <!-- InstanceEndRepeatEntry -->
+     <!-- InstanceBeginRepeatEntry --> 
+     <div class="link_column"> 
+      <div class="link_column_inner">
+       <!-- InstanceBeginEditable name="bodycontent" --> 
+       <h2><a href="/degree_planning/index.html">Degree planning</a></h2> 
+       <ul> 
+        <li><a href="/degree_planning/explore_degree_options.html">Explore degree options</a></li> 
+        <li><a href="/degree_planning/advising.html">Advising &amp; counseling</a></li> 
+        <li><a href="/degree_planning/graduation_planner.html">Graduation Planner</a></li> 
+        <li><a href="/degree_planning/graduate_in_four_years.html">Graduate in four years</a></li> 
+        <li><a href="/degree_planning/academic_support/index.html">Academic support &amp; tutoring </a></li> 
+        <li><a href="/degree_planning/changing_college_or_major/index.html">Changing college or major</a></li> 
+        <li><a href="/degree_planning/lib_eds/index.html">LE requirements</a></li> 
+        <li><a href="/degree_planning/graduation/index.html">Graduation</a></li> 
+       </ul> 
+       <!-- InstanceEndEditable -->
+      </div>
+     </div> 
+     <!-- InstanceEndRepeatEntry -->
+     <!-- InstanceBeginRepeatEntry --> 
+     <div class="link_column"> 
+      <div class="link_column_inner">
+       <!-- InstanceBeginEditable name="bodycontent" --> 
+       <h2><a href="/u_resources/index.html">U resources</a></h2> 
+       <ul> 
+        <li><a href="/u_resources/new_to_the_u.html">New to the U</a></li> 
+        <li><a href="/u_resources/campus_life.html">Campus life</a></li> 
+        <li><a href="/u_resources/computing_and_technology/index.html">Computing &amp; technology</a></li> 
+        <li><a href="/u_resources/employment_and_career_resources.html">Employment &amp; career</a></li> 
+        <li><a href="/u_resources/getting_around/index.html">Getting around campus</a></li> 
+        <li><a href="/u_resources/policies_and_administration/index.html">U policies &amp; administration</a></li> 
+        <li><a href="http://www.lib.umn.edu/">Libraries</a></li> 
+        <li><a href="http://www.bookstores.umn.edu/">Bookstores</a></li> 
+       </ul> 
+       <!-- InstanceEndEditable -->
+      </div>
+     </div> 
+     <!-- InstanceEndRepeatEntry -->
+     <!-- InstanceEndRepeat --> 
+     <div id="specialForBar"> 
+      <h2>Special for:</h2> 
+      <!-- InstanceBeginEditable name="special_for" --> 
+      <ul> 
+       <li><a href="/special_for/new_students.html">New students</a></li> 
+       <li><a href="/special_for/parents.html">Parents &amp; guests</a></li> 
+       <li><a href="/veterans/index.html">Veterans</a></li> 
+       <li><a href="/non-degree/index.html">Non-degree students</a></li> 
+       <li><a href="/special_for/former_students.html">Former students</a></li> 
+       <li><a href="special_for/graduate_students.html">Graduate students </a> </li> 
+      </ul> 
+      <!-- InstanceEndEditable -->
+     </div> 
+     <ul id="feature_imgs"> 
+      <!-- InstanceBeginRepeat name="feature images" -->
+      <!-- InstanceBeginRepeatEntry --> 
+      <li>
+       <!-- InstanceBeginEditable name="feature img content" --><a href=" /finances/manage_money/live_like_a_student/"><img src="images/LLAS-OnestopGraphicFinal_2014.jpg" alt="Live like a student" width="120" height="65" style="border:none"></a>
+       <!-- InstanceEndEditable --></li> 
+      <!-- InstanceEndRepeatEntry -->
+      <!-- InstanceBeginRepeatEntry --> 
+      <li>
+       <!-- InstanceBeginEditable name="feature img content" --><a href="http://plan.umn.edu/"><img src="img/frontpage/feature_img/grad_planner.png" alt="Link to Graduation Planner"></a>
+       <!-- InstanceEndEditable --></li> 
+      <!-- InstanceEndRepeatEntry -->
+      <!-- InstanceBeginRepeatEntry --> 
+      <li>
+       <!-- InstanceBeginEditable name="feature img content" --><a onclick="xlaAFMsearch('','','');return false;" href="http://faq.asr.umn.edu/afmmain.aspx"><img alt="Ask One Stop - an FAQ knowledgebase" src="img/frontpage/feature_img/askonestop.png"></a>
+       <!-- InstanceEndEditable --></li> 
+      <!-- InstanceEndRepeatEntry -->
+      <!-- InstanceBeginRepeatEntry --> 
+      <li>
+       <!-- InstanceBeginEditable name="feature img content" --><a href="https://scholarships.umn.edu"><img src="img/frontpage/feature_img/schol-search-button11-08.png" alt="Undergraduate Scholarship Search"></a>
+       <!-- InstanceEndEditable --></li> 
+      <!-- InstanceEndRepeatEntry -->
+      <!-- InstanceBeginRepeatEntry --> 
+      <li>
+       <!-- InstanceBeginEditable name="feature img content" --><a href="http://engage.umn.edu/"><img src="images/Engage-OnestopGraphic_Final_000.jpg" alt="Engage" width="95" height="51"></a>
+       <!-- InstanceEndEditable --></li> 
+      <!-- InstanceEndRepeatEntry -->
+      <!-- InstanceEndRepeat --> 
+     </ul> 
+     <div style="clear:both;height:25px"></div> 
+    </div> 
+   </div> 
+   <div id="UofM_unit_footer_wrapper"> 
+    <div id="UofM_unit_footer_inner"> 
+     <ul> 
+      <li class="screenOnly"><a href="/contact_us/"><img src="/img/header_banner_footer/onestop_unit_footer_img.gif" alt="One Stop" class="unit_footer_one_stop_img"></a></li> 
+      <li><a href="mailto:onestop@umn.edu">onestop@umn.edu</a> </li> 
+      <li>612-624-1111</li> 
+      <li>1-800-400-8636</li> 
+      <!--	<li  class="screenOnly"><a href=" /contact_us/index.html#locations">Hours &amp; locations</a></li>--> 
+      <li class="screenOnly"><a href="http://intranet.asr.umn.edu/osf/commentcard/onestop_form/">Suggestions
+        <!-- &amp; comments--></a></li> 
+      <li class="screenOnly"><a href=" /contact_us/index.html">Contact One Stop</a></li> 
+      <li class="screenOnly"><a href="http://www.facebook.com/livelikeastudent"><img src="/img/frontpage/facebook_button_LLAS.png" alt="Live Like A Student Facebook"></a></li> 
+      <li><a href="http://www.facebook.com/pages/One-Stop-Student-Services/92520187967"><img src="/img/frontpage/facebook.png" width="22" height="22" alt="Facebook" title="Facebook"></a></li> 
+      <li><a href="https://twitter.com/UMNOneStop"><img src="/img/frontpage/twitter.png" alt="Twitter" title="Twitter"></a></li> 
+     </ul> 
+     <div class="clearBar"></div> 
+    </div> 
+   </div> 
+   <div id="UofM_footer_wrapper"> 
+    <div id="UofM_footer_inner"> 
+     <div id="UofM_footer_links"> 
+      <p>Twin Cities Campus:</p> 
+      <ul> 
+       <li><a href="http://www1.umn.edu/pts/">Parking &amp; Transportation</a></li> 
+       <li><a href="http://www.umn.edu/twincities/maps/index.html">Maps &amp; Directions</a></li> 
+       <li><a href="http://www.directory.umn.edu/">Directories</a></li> 
+       <li><a href="http://www.umn.edu/twincities/contact/">Contact U of M</a></li> 
+       <li><a href="/privacy/index.html">Privacy</a></li> 
+      </ul> 
+     </div> 
+     <p id="UofM_copyright">© 2010 Regents of the University of Minnesota. All rights reserved.<br> The University of Minnesota is an equal opportunity educator and employer.<br> 
+      <!--Information current as of <?php echo date('F d, Y');?>.--></p> 
+    </div> 
+   </div> 
+  </div> 
+  <script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-3957247-2', 'auto');
+  ga('send', 'pageview');
+// below taken from http://www.blastam.com/blog/index.php/2013/09/howto-track-downloads-links-universalanalytics
+if (typeof jQuery != 'undefined') {
+  var filetypes = /\.(zip|exe|dmg|pdf|doc.*|xls.*|ppt.*|mp3|txt|rar|wma|mov|avi|wmv|flv|wav)$/i;
+  var baseHref = '';
+  if (jQuery('base').attr('href') != undefined) baseHref = jQuery('base').attr('href');
+  var hrefRedirect = '';
+
+  jQuery('body').on('click', 'a', function(event) {
+    var el = jQuery(this);
+    var track = true;
+    var href = (typeof(el.attr('href')) != 'undefined' ) ? el.attr('href') : '';
+    var isThisDomain = href.match(document.domain.split('.').reverse()[1] + '.' + document.domain.split('.').reverse()[0]);
+    if (!href.match(/^javascript:/i)) {
+      var elEv = []; elEv.value=0, elEv.non_i=false;
+      if (href.match(/^mailto\:/i)) {
+        elEv.category = 'email';
+        elEv.action = 'click';
+        elEv.label = href.replace(/^mailto\:/i, '');
+        elEv.loc = href;
+      }
+      else if (href.match(filetypes)) {
+        var extension = (/[.]/.exec(href)) ? /[^.]+$/.exec(href) : undefined;
+        elEv.category = 'download';
+        elEv.action = 'click-' + extension[0];
+        elEv.label = href.replace(/ /g,'-');
+        elEv.loc = baseHref + href;
+      }
+      else if (href.match(/^https?\:/i) && !isThisDomain) {
+        elEv.category = 'external';
+        elEv.action = 'click';
+        elEv.label = href.replace(/^https?\:\/\//i, '');
+        elEv.non_i = true;
+        elEv.loc = href;
+      }
+      else if (href.match(/^tel\:/i)) {
+        elEv.category = 'telephone';
+        elEv.action = 'click';
+        elEv.label = href.replace(/^tel\:/i, '');
+        elEv.loc = href;
+      }
+      else track = false;
+
+      if (track) {
+        var ret = true;
+
+        if((elEv.category == 'external' || elEv.category == 'download') && (el.attr('target') == undefined || el.attr('target').toLowerCase() != '_blank') ) {
+          hrefRedirect = elEv.loc;
+
+          ga('send','event', elEv.category.toLowerCase(),elEv.action.toLowerCase(),elEv.label.toLowerCase(),elEv.value,{
+						'nonInteraction': elEv.non_i ,
+						'hitCallback':gaHitCallbackHandler
+          });
+
+          ret = false;
+        }
+        else {
+          ga('send','event', elEv.category.toLowerCase(),elEv.action.toLowerCase(),elEv.label.toLowerCase(),elEv.value,{
+						'nonInteraction': elEv.non_i
+          });
+        }
+
+        return ret;
+			}
+		}
+	});
+
+	gaHitCallbackHandler = function() {
+		window.location.href = hrefRedirect;
+	}
+}
+</script> 
+  <script type="text/javascript" src="/js/search.js"></script> 
+  <script type="text/javascript" src="/js/external_link_tracker.js"></script> 
+  <script type="text/javascript" src="/js/askonestop.js"></script>  
+  <!-- InstanceEnd -->
+ </body>
+</html>

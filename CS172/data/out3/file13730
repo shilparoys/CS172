@@ -1,0 +1,564 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+ <!--WEB CODE VERSION: ePOS 5.5.9.7-->
+ <head>
+  <style type="text/css">
+<!--
+H1 	{ text-decoration: none; font-family: Verdana,Helvetica,Arial,Sans Serif; font-size: 20px; font-weight: bold; }
+H2		{ text-decoration: none; font-family: Verdana,Helvetica,Arial,Sans Serif; font-size: 14px; font-weight: bold; }
+H3		{ text-decoration: none; font-family: Verdana,Helvetica,Arial,Sans Serif; font-size: 14px; font-weight: bold; }
+H4		{ text-decoration: none; font-family: Verdana,Helvetica,Arial,Sans Serif; font-size: 12px; font-weight: bold; }
+H5		{ text-decoration: none; font-family: Verdana,Helvetica,Arial,Sans Serif; font-size: 12px; font-weight: bold; }
+.text, div.promptDesc, div.promptLimits	{ color: black; font-size: 12px; }
+A.text:hover		{ color: #000099; }
+.textmid			{ color: black; font-size: 14px; }
+A.textmid:hover	{ color: #000099; }
+.textsmall		{ color: black; font-size: 10px; }
+A.textsmall:hover	{ color: #000099; }
+.titlefont	{ color: black; text-decoration: none; font-family: Verdana,Helvetica,Arial,Sans Serif; font-size: 20px; }
+.titlemid		{ color: black; text-decoration: none; font-family: Verdana,Helvetica,Arial,Sans Serif; font-size: 14px; }
+.titletext	{ color: black; text-decoration: none; font-family: Verdana,Helvetica,Arial,Sans Serif; font-size: 12px }
+.strongtext, #itemText ul	{ color: #00009B; font-size: 12px; }
+.strongmid	{ color: #00009B; font-size: 14px; }
+.strongsmall	{ color: #00009B; font-size: 10px; }
+.alerttitle		{ color: #9b0000; text-decoration: none; font-family: Verdana,Helvetica,Arial,Sans Serif; font-size: 20px; }
+.alerttext		{ color: #9b0000; font-size: 12px; }
+A.alerttext:hover	{ color: black; }
+.alertmid			{ color: #9b0000; font-size: 14px; }
+A.alertmid:hover	{ color: black; }
+.alertsmall		{ color: #9b0000; font-size: 10px; }
+A.alertsmall:hover	{ color: black; }
+.heading		{ color: #ffffff; text-decoration: none; font-family: Verdana,Helvetica,Arial,Sans Serif; font-size: 14px; }
+.headingtext	{ color: #ffffff; text-decoration: none; font-family: Verdana,Helvetica,Arial,Sans Serif; font-size: 12px }
+.headingsmall	{ color: #ffffff; text-decoration: none; font-family: Verdana,Helvetica,Arial,Sans Serif; font-size: 10px; }
+.headertext	{ color: #ffffbb; text-decoration: none; font-size: 12px }
+.headermid	{ color: #ffffbb; text-decoration: none; font-size: 14px; }
+.headersmall	{ color: #ffffbb; text-decoration: none; font-size: 10px; }
+.celltitle		{ color: black; text-decoration: none; font-family: Verdana,Helvetica,Arial,Sans Serif; font-size: 20px; }
+.celltext			{ color: black; font-size: 12px; }
+A.celltext:hover	{ color: #000099; }
+.cellmid			{ color: black; font-size: 14px; }
+.cellsmall		{ color: black; font-size: 10px; }
+A.cellsmall:hover	{ color: #000099;}
+.gmfont		{ color: 000099; font-size: 12px }
+.gmfontsmall	{ color: 000099; font-size: 10px; }
+select.term		{ width: 100%; background-color:#ffffff; color:#000000; font-weight:bold; font-size:12px; font-style:normal; }
+select.dept		{ width: 100%; background-color:#eeffee; color:#000000; font-weight:bold; font-size:12px; font-style:normal; }
+select.course		{ width: 100%; background-color:#ddeedd; color:#000000; font-weight:bold; font-size:12px; font-style:normal; }
+select.section	{ width: 100%; background-color:#ccddcc; color:#000000; font-weight:bold; font-size:12px; font-style:normal; }
+select.levelmenu	{ background-color:#ccddcc; color:#000000; font-weight:normal; font-size:10px; font-style:normal; }
+select.searchtype	{ background-color:#ddeedd; color:#000000; font-weight:normal; font-size:10px; font-style:normal; }
+input.searchterm	{ background-color:#ffffff; color:#000000; font-weight:normal; font-size:12px; font-style:normal; }
+.rbutton { display: block; _display: inline; _zoom: 1; float: left; font-size: 14px; font-weight: bold; _height: 3em; padding: 5px 10px 5px 10px; _padding: .3em 6px .3em 6px; color: #fff; background: #000; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#666666', endColorstr='#000000'); background: -webkit-gradient(linear, left top, left bottom, from(#666), to(#000)); background: -moz-linear-gradient(top, #666, #000); border: solid 1px #000; margin: 5px 10px 5px 0px; cursor: pointer; -moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; -moz-box-shadow: 2px 2px 2px #aaa; -webkit-box-shadow: 2px 2px 2px #aaa; box-shadow: 2px 2px 2px #aaa; }
+.rsecondary { color: #666; background: #fff; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#bbbbbb'); background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#bbb)); background: -moz-linear-gradient(top, #fff, #bbb); }
+.rsmall { font-size: 11px; padding: 3px 8px 3px 8px; _padding: .2em 4px .2em 4px; }
+.rbig { font-size: 16px !important; padding: 8px 25px 8px 25px !important; _padding: .4em 15px .4em 15px !important; }
+.rnofloat { float: none; }
+a.rbutton, a.rsecondary { text-decoration: none; }
+.rbutton:active { margin: 7px 8px 3px 2px; -moz-box-shadow: 0px 0px 0px #aaa; -webkit-box-shadow: 0px 0px 0px #aaa; box-shadow: 0px 0px 0px #aaa; }
+.rbutton:hover{ color: #ee6; }
+.rsecondary:hover{ color: #000; }
+.rbutton:active { background: #333; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#999999', endColorstr='#333333'); background: -webkit-gradient(linear, left top, left bottom, from(#999), to(#333)); background: -moz-linear-gradient(top, #999, #333); }
+.rsecondary:active { background: #fff; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#cccccc'); background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ccc)); background: -moz-linear-gradient(top, #fff, #ccc); }
+a.rnofloat { display: inline-block; _display: inline; _zoom: 1; }
+-->
+</style> 
+  <style type="text/css">
+<!--
+BODY	{ color: black; font-family: Verdana,Helvetica,Arial,Sans Serif; font-size: 12px}
+#ePOScart { width: 100%; border-collapse: collapse; color: black; font-size: 12; }
+#ePOScart td { padding: 5px; font-size: 12px; }
+#ePOScart th { padding: 5px; color: #ffffbb; }
+.cartpagetitle	{ color: black; text-decoration: none; font-family: Verdana,Helvetica,Arial,Sans Serif; font-size: 20px; }
+.cartitemheader	{ background: #005555; border-bottom: 1px solid #ffffbb; }
+.cartheader1	{ background: #005555; border-bottom: 1px solid #ffffbb; border-left: 1px dashed #ffffbb;}
+.cartheader2	{ background: #005555; border-bottom: 1px solid #ffffbb; border-left: 1px dashed #ffffbb;}
+.cartitemA a, .cartitemB a { color: #00009B; font-weight: bold; }
+.cartitemA a:hover, .cartitemB a:hover { color: #00009B; text-decoration: none; }
+.cartitemA		{ background: #eeffee; border-bottom: 1px solid #ccddcc;}
+.cartitemB		{ background: #ddeedd; border-bottom: 1px solid #ccddcc;}
+.cartcellA1	{ background: #eeffee; border-bottom: 1px solid #ccddcc; border-left: 1px dashed #ccddcc;}
+.cartcellA2	{ background: #eeffee; border-bottom: 1px solid #ccddcc; border-left: 1px dashed #ccddcc;}
+.cartcellB1	{ background: #ddeedd; border-bottom: 1px solid #ccddcc; border-left: 1px dashed #ccddcc;}
+.cartcellB2	{ background: #ddeedd; border-bottom: 1px solid #ccddcc; border-left: 1px dashed #ccddcc;}
+.courseitem		{ color: #ffffbb; background: #006666; border-bottom: 1px solid #ffffbb;}
+.courseitem a { color: #ffffbb; font-weight: bold; }
+.courseitem a:hover { color: #ffffbb; text-decoration: none; }
+.coursecell1	{ color: #ffffbb; background: #006666; border-bottom: 1px solid #ffffbb; border-left: 1px dashed #ffffbb;}
+.coursecell2	{ color: #ffffbb; background: #006666; border-bottom: 1px solid #ffffbb; border-left: 1px dashed #ffffbb;}
+.cartbackorder, #cartDiscountPartial, #availNotes .noStock, .noOnhand, #onhandItemDisplay.outofstock, .noStock, #atlimit h3, #soldout h3	{ color: #9b0000;}
+.cartitem	{ font-weight: bold; }
+.cartsublabel		{ color: #00009B; font-weight: bold; border-top: 1px solid #ccddcc;}
+.cartlabel			{ color: #00009B; }
+.carttotallabel	{ color: #00009B; font-size: 14; font-weight: bold; }
+.cartsubtotal		{ background: #eeffee; color: #00009B; font-weight: bold; border-top: 1px solid #ccddcc;}
+.carttax, .cartshipping	{ background: #eeffee; color: #00009B; }
+.carttotal			{ background: #ddeedd; color: #00009B; font-size: 14; font-weight: bold; }
+#paymentframe		{ display: block; width: auto; background: #eeffee; border: 1px solid #ccddcc; }
+#paymentframe #paymenttitle		{ display: block; width: auto; padding: 10px 10px 5px 10px; color: black; font-size: 14px; font-weight: bold; background: #ddeedd; border-bottom: 1px solid #ccddcc; padding: 10px;}
+#paymentframe #paymentinfo		{ padding: 10px; color: black; font-size: 10px; }
+#paymenttable, #billtable, #newlogintable, #shiptable, #optionstable		{ border-collapse: collapse;}
+#paymenttable td, #billtable td, #newlogintable td, #shiptable td, #optionstable td	{ padding: 5px; color: black; font-size: 10px; }
+span.reqflag, span.shipflag, a.goButton { color: #ffffbb; background-color: #005555;}
+a.whatCID 			{ color: #ffffbb; background-color: #005555; display: inline-block; position : relative; margin-right: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; font-size: 10px; padding: 3px 6px 3px 6px; font-weight: bold; text-decoration: none; -webkit-box-shadow: 2px 2px 2px #aaa; box-shadow: 2px 2px 2px #aaa;	}
+td.paylabel, #discountfields #discountLabel { font-weight: bold; text-align: right;}
+td.paylabel2		{ font-weight: bold; padding-bottom: 3px;}
+td.reviewpaylabel	{ color: #9b0000; font-weight: bold; text-align: right; background: #ffff00;}
+td.reviewpaydata		{ color: #9b0000; background: #ffff00; border-top: solid 1px #999900; border-bottom: solid 1px #999900; border-right: solid 1px #999900;}
+td.reviewpaylabel2	{ color: #9b0000; font-weight: bold; background: #ffff00; padding: 3px; }
+td.reviewpaydata2		{ color: #9b0000; background: #ffff00; padding: 3px; border-left: solid 1px #999900; border-right: solid 1px #999900; border-bottom: solid 1px #999900;}
+td.payheading		{ color: black; font-weight: bold;}
+td.paywarning		{ color: #9b0000; font-weight: bold; background: #ffff00; border-top: solid 1px #999900; border-bottom: solid 1px #999900; border-left: solid 1px #999900; border-right: solid 1px #999900;}
+#billingtitle, #billingtitleSplit, #shippingtitle, #optionstitle		{ display: block; width: auto; padding: 10px 10px 5px 10px; color: black; font-size: 14px; font-weight: bold; background: #ddeedd; border-bottom: 1px solid #ccddcc; padding: 10px;}
+#billingdata, #shippingdata, #optionsdata, #billingdata td, #shippingdata td, #optionsdata td		{ color: black; font-size: 10px; }
+#billingdata, #shippingdata, #optionsdata		{ padding: 10px; }
+#checkouttable		{ border-collapse: collapse;}
+#checkouttable td.billingcell	{ border-left: solid 1px #005555; border-right: solid 1px #ccddcc;}
+#checkouttable td.shippingcell, #checkouttable td.optionscell2	{ border-right: solid 1px #005555;}
+#checkouttable td.optionscell	{ border-left: solid 1px #005555; border-right: solid 1px #005555; border-top: solid 1px #ccddcc;}
+#checkouttable td.textoptcell	{ padding: 10px; border-left: solid 1px #005555; border-right: solid 1px #005555; border-bottom: dashed 1px #005555;}
+#checkouttable td.newlogincell	{ padding: 10px; border: solid 1px #005555;}
+#checkouttable td.alertcell, td.newlogincell, #checkouttable td.checkoutnotescell, #checkouttable td.reviewcartcell, #checkouttable td.buttoncell	{ padding: 10px; border-left: solid 1px #005555; border-right: solid 1px #005555;}
+#checkouttable td.alertcell			{ color: #9b0000; background: #ffff00; font-size: 14px; border-top: solid 1px #005555; }
+#checkouttable	{ border-top: solid 1px #005555;}
+#checkouttable td.newlogincell, #checkouttable td.checkoutnotescell	{ border-bottom: dashed 1px #005555;}
+#checkouttable td.reviewcartcell	{ border-top: dashed 1px #005555; border-bottom: dashed 1px #005555;}
+#checkouttable td.buttoncell	{ border-bottom: solid 1px #005555; background: #ccddcc;}
+.catalogtitle			{ color: black; text-decoration: none; font-family: Verdana,Helvetica,Arial,Sans Serif; font-weight: bold; font-size: 20px; }
+.catalogitem			{ color: black; font-size: 12px; text-decoration: none; font-weight: bold; }
+A.catalogitem:hover	{ color: #000099; text-decoration: underline;}
+.catalogtext			{ color: black; font-size: 12px; text-decoration: none; }
+A.catalogtext:hover	{ color: #000099; text-decoration: underline; }
+.catalogsmall			{ color: black; text-decoration: none; font-size: 10px; }
+A.catalogsmall:hover	{ color: #000099; text-decoration: underline;}
+.catalogprice			{ color: black; font-size: 12px; text-decoration: none; font-weight: bold; }
+A.catalogprice:hover	{ color: #000099; text-decoration: underline;}
+.catalogprice2		{ color: black; text-decoration: none; font-size: 10px; }
+A.catalogprice2:hover	{ color: #000099; text-decoration: underline; }
+.catalogsale			{ color: #9b0000; font-size: 12px; text-decoration: none; font-weight: bold; }
+A.catalogsale:hover	{ color: #000099; text-decoration: underline; }
+.cataloglink			{ color: #00009B; text-decoration: none; font-size: 10px; }
+A.cataloglink:hover	{ color: #000099; text-decoration: underline; }
+.catalogcount			{ color: #00009B; text-decoration: none; font-size: 10px; }
+A.catalogcount:hover	{ color: #ffffff; background-color: #004444; text-decoration: none; }
+#sortby, #sortby ul 	{ color: black; text-decoration: none; font-size: 10px; text-transform: none; width: 100%; list-style: none; line-height: 1; padding: 0px; margin: 0px; }
+#sortby li 			{ float: left; }
+#sortby a 				{ color: #00009B; text-decoration: none; display: block; padding: 0px; margin: 0px 0px 0px 10px; }
+#sortby a:hover		{ text-decoration: underline; }
+#sortby a.selected		{ color: #00009B; font-weight: bold; }
+.itemtitle		{ color: black; text-decoration: none; font-family: Verdana,Helvetica,Arial,Sans Serif; font-weight: bold; font-size: 20px; }
+.itemtitle2		{ color: black; text-decoration: none; font-family: Verdana,Helvetica,Arial,Sans Serif; font-weight: bold; font-size: 14px; }
+.itemtext			{ color: black; font-size: 12px; }
+.itemprice		{ color: black; font-weight: bold; font-size: 14px; }
+.itemprice2		{ color: black; font-size: 10px; }
+.itemsale			{ color: #9b0000; font-weight: bold; font-size: 14px; }
+.itemlink			{ color: #00009B; font-size: 12px; text-decoration: none; }
+A.itemlink:hover	{ color: #000099; text-decoration: underline; }
+.itemimage		{ color: #00009B; text-decoration: none; font-size: 10px; }
+A.itemimage:hover	{ color: black; text-decoration: underline;}
+.permalink			{ color: #00009B; font-size: 10px; font-weight: bold; text-decoration: none; }
+A.permalink:hover	{ color: #000099; text-decoration: underline; }
+.emaillink			{ color: #00009B; font-size: 10px; font-weight: bold; text-decoration: none; }
+A.emaillink:hover	{ color: #000099; text-decoration: underline; }
+#permarow		{ color: #00009B; font-size: 10px; font-weight: bold; text-decoration: none; margin: 10px; padding: 0px; list-style: none; float: left;}
+#permarow LI	{ float: left; display: inline; }
+#permarow #permalink			{ color: #00009B; font-size: 10px; font-weight: bold; text-decoration: none; }
+#permarow #permalink:hover	{ color: #000099; text-decoration: underline; }
+#permarow #emaillink			{ color: #00009B; font-size: 10px; font-weight: bold; text-decoration: none; }
+#permarow #emaillink:hover	{ color: #000099; text-decoration: underline; }
+#permarow #permalinkdivider	{ margin: 0px 5px 0px 5px; }
+.featuredheading			{ color: #ffffff; font-size: 12px; text-decoration: none; font-family: Verdana,Helvetica,Arial,Sans Serif; font-weight: bold; }
+A.featuredheading:hover		{ color: #ffffff; text-decoration: underline; }
+.featuredtitle			{ color: black; text-decoration: none; font-family: Verdana,Helvetica,Arial,Sans Serif; font-weight: bold; font-size: 20px; }
+A.featuredtitle:hover		{ color: #000099; text-decoration: underline; }
+.featuredmid				{ color: black; text-decoration: none; font-family: Verdana,Helvetica,Arial,Sans Serif; font-weight: bold; font-size: 14px; }
+A.featuredmid:hover		{ color: #000099; text-decoration: underline;}
+.featuredtext				{ color: black; font-size: 12px; text-decoration: none; }
+A.featuredtext:hover		{ color: #000099; text-decoration: underline; }
+.featuredstrong			{ color: #00009B; font-size: 12px; font-weight:bold; font-style: italic; text-decoration: none; }
+.featuredprice			{ color: black; font-size: 12px; text-decoration: none; }
+.featuredpricesmall		{ color: black; text-decoration: none; font-size: 10px; }
+.featuredsale				{ color: #9b0000; font-size: 12px; text-decoration: none; }
+.featuredclass		{ color: #00009B; text-decoration: none; font-weight: bold; font-size: 14px; font-style: italic; }
+A.featuredclass:hover	{ color: #9b0000; text-decoration: underline; }
+.logintext			{ color: black; font-size: 12px; text-decoration: none; }
+.datetext				{ color: black; font-size: 12px; text-decoration: none; }
+.loginbutton			{ color: #ffffbb; font-size: 12px; text-decoration: none; font-weight: bold; }
+.loginbutton:hover	{ color: #ffffbb; text-decoration: underline; }
+.logoutbutton			{ color: #ffffbb; font-size: 12px; text-decoration: none; font-weight: bold; }
+.logoutbutton:hover	{ color: #ffffbb; text-decoration: underline; }
+#giftcardframe, #discountframe { padding: 10px; border: 1px solid #005555; background: #eeffee; width: 350px; float: right; display: block;}
+#giftcardtitle { font-size: 14; font-weight: bold; color: #00009B;}
+#giftcardfields td.paylabel, #giftcardfields td.reviewpaylabel, #discountfields #discountLabel { font-size: 12; font-weight: bold; text-align: right;}
+#giftcarddata a, #discountframe a { color: #00009B; font-size: 10; font-weight: bold; text-decoration: none;}
+#giftcarddata a:hover, #discountframe a:hover { color: #000099; text-decoration: underline;}
+div .gccenter { display: block; background: #eeffee; border: 1px solid #005555; width: 75%;}
+div .gccentertitle { display: block; background: #004444; color: #ffffff; font-size: 14; font-weight: bold; border-bottom: 1px solid #005555; width: auto; padding: 5px;}
+div .gccenterdata { display: block; padding: 10px; width: auto;}
+div #gcbalance { display: block; background: #ffffff; border: 1px solid #005555; margin-bottom: 10px;}
+div #gcbalanceheading { display: block; background: #ddeedd; color: #00009B; font-size: 12; font-weight: bold; border-bottom: 1px solid #005555; width: auto; padding: 5px;}
+div #gcbalancedata { display: block; padding: 10px; width: auto; font-size: 12;}
+div .gcalert { display: block; padding: 10px; background: #ffff00; color: #9b0000; border: 1px solid #9b0000;}
+div.cartAdd { color: #666; font-size: 12px; width: 90%; display: block; background: #eeffee; border: 1px solid #005555;	margin: 5px 0px 5px 0px; padding: 5px 10px 5px 10px; -moz-border-radius: 6px;  -webkit-border-radius: 6px; -webkit-box-shadow: 3px 3px 3px #aaa; box-shadow: 3px 3px 3px #aaa;	}
+#discountframe #cartDiscountName { font-size: 14; font-weight: bold; }
+div.casheqField { background-color:#ddeedd; -moz-border-radius: 5px; -webkit-border-radius: 5px; padding: 10px; margin: 5px 0px 5px 0px; }
+div.casheqAlert { background-color:#ffb; border: 1px solid #f00; -moz-border-radius: 5px; -webkit-border-radius: 5px; padding: 10px; margin: 5px 0px 5px 0px; }
+#alertmessage { display: block; padding: 10px !important; background: #ffff00; color: #9b0000; border: 1px solid #9b0000;}
+.ebookflag { display:inline-block; margin: 3px 0px 3px 0px; padding: 4px !important; background: #ffffff; font-weight: bold; color: #00009B; border: 1px solid #005555; -moz-border-radius: 3px; -webkit-border-radius: 3px; }
+div.cartAlert, div.cartInfo, div.cartSuccess, div.cartChecking { padding: 10px; margin: 5px 0px 5px 0px; -moz-border-radius: 5px; -webkit-border-radius: 5px; }
+div.cartAlert { color: #c00; background-color: #fff; border: 3px solid #f00; }
+div.cartSuccess { color: #fff; background-color: #0f0; font-weight: bold; }
+div.cartChecking { color: #999; background-color: #e6e6e6; }
+div.cartInfo { color: #00009B; background-color: #eeffee; border: 2px solid #eeffee;}
+.preload { display: none; }
+.loading { display: block; }
+#loadingframe { width: 100%; height: 100%; float: left; _overflow-y: auto; position: fixed; _position: absolute; left: 0px; top: 0px; z-index: 997; }
+#loadingback { width: 100%; height: 100%; display: block;  float: center; _float: left; position: fixed; _position: absolute; left: 0px; top: 0px; background: #ffffff; _background: none; z-index: 998; opacity:0.5; filter:alpha(opacity=40); }
+#loadingmessage { width: 30%; height: 140px; padding: 20px; border: 8px solid #cccccc; background: #888; color: #ffffff; font-weight: bold; font-size: 18px; text-align: center; display: block; float: center; _float: left; position: fixed; _position: absolute; left: 35%; top: 25%; _top: 150px; z-index: 999; opacity:0.9; filter:alpha(opacity=90); -moz-border-radius: 5px; -webkit-border-radius: 5px; -webkit-box-shadow: 8px 8px 8px #555; }
+#loadimage { padding-top: 30px; }
+#catShare a { padding: 10px; }
+#catShare { font-size: 14px; font-weight: bold; }
+#catShare td, .secondarytitle { padding: 11px 10px 10px 10px; }
+#catShare { font-size: 14px; font-weight: bold; }
+#catShare td.fb { padding: 10px 10px 10px 10px; }
+.hidden { display: none; }
+.open { display: block; }
+.closed { display: none; }
+div.infoPopup { -moz-border-radius: 5px;  -webkit-border-radius: 5px;  border: 2px solid #999; padding: 10px; color: #888 !important; background-color: #eee; font-size: 12px; font-weight: normal; position: fixed; overflow: auto; left: 15%; top: 10%; float: center; width: 70%; max-height: 70%; -webkit-box-shadow: 5px 5px 5px #555; z-index: 999; text-align: left; }
+div.infoPopup span { color: #666 !important; }
+div.infoPopup a.closebutton{ background-color: #aaa; -moz-border-radius: 3px;  -webkit-border-radius: 3px;  font-size: 11px; border: 1px solid #ddd; padding: 3px; display: block; color: #fff; width: 7em; text-decoration: none; font-weight: bold; text-align: center; -webkit-box-shadow: 3px 3px 3px #888;}
+div.orderWarning { display: block; color: #fff; font-weight: bold; background: #c00; border: solid 1px #900; margin: 5px 0px 5px 0px; padding: 5px 10px 5px 10px; -moz-border-radius: 6px; -webkit-border-radius: 6px; -webkit-box-shadow: 3px 3px 3px #aaa; box-shadow: 3px 3px 3px #aaa; }
+div.orderWarning a { color: #fff; text-decoration: underline; }
+div.itemAlert, div.timeLimited { display: inline-block; color: #00009B; font-weight: bold; background: #fff; border: solid 2px #00009B; margin: 5px 0px 5px 0px; padding: 5px 10px 5px 10px; -moz-border-radius: 6px; -webkit-border-radius: 6px; -webkit-box-shadow: 3px 3px 3px #aaa; box-shadow: 3px 3px 3px #aaa; }
+div.noAdd, div.timeClosed, div.timeUpcoming { display: inline-block; color: #9b0000; font-weight: bold; background: #fff; border: solid 2px #9b0000; margin: 5px 0px 5px 0px; padding: 5px 10px 5px 10px; -moz-border-radius: 6px; -webkit-border-radius: 6px; -webkit-box-shadow: 3px 3px 3px #aaa; box-shadow: 3px 3px 3px #aaa; }
+span.reqflag, span.shipflag { color: #ffffbb; background-color: #005555; font-weight: bold; display: inline-block; position : relative; top: 2px; padding: 0px 3px 0px 3px; font-size: 16px; margin-right: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;}
+div.cartItem div.cartItemRow div.cartDetails span.cartSale, span.cartRegular {color: #9b0000;}
+span.cartBackorder, td.reviewpaylabel, td.reviewpaylabel2, td.reviewpaylabel span.reqflag, td.reviewpaylabel2 span.reqflag, td.reviewpaylabel span.shipflag, td.reviewpaylabel2 span.shipflag { color: #fff !important; }
+span.cartBackorder, td.reviewpaylabel, td.reviewpaylabel2, td.reviewpaylabel span.reqflag, td.reviewpaylabel2 span.reqflag, td.reviewpaylabel span.shipflag, td.reviewpaylabel2 span.shipflag {background-color: #9b0000;}
+td.reviewpaydata, td.reviewpaydata2  { color: #9b0000; background-color: #fff; }
+td.reviewpaydata, td.reviewpaydata2 {border: solid 1px #9b0000 !important;}
+.loginfields {margin-bottom: 10px;}
+.forgotpass {margin-top: 5px;}
+div.promptFrame, div.loginFrame, div.roundedFrame { display: block; padding: 15px 15px 15px 15px; -moz-border-radius: 15px;  -webkit-border-radius: 15px; border: 1px solid #005555; background: #eeffee; margin-top: 10px; margin-bottom: 10px; text-align: left; }
+div.promptFrame { padding: 5px 15px 15px 15px; }
+div.promptDesc, div.promptLimits, div.promptAdd { margin-top: 10px; }
+div.promptLabel, div.promptInput, div.promptLabelReview, div.promptInputReview { display: block; float: left; padding: 3px; margin-top: 10px; margin-bottom: 10px; text-align: right; font-weight: bold; vertical-align: middle; }
+div.promptLabelReview { background: #f00; color: #fff; padding: 10px; -moz-border-radius-topleft: 8px; -webkit-border-top-left-radius: 8px; -moz-border-radius-bottomleft: 8px; -webkit-border-bottom-left-radius: 8px; border: solid 1px #f00; }
+div.promptInputReview { background: #fff; color: #000; padding: 8px; -moz-border-radius-topright: 8px; -webkit-border-top-right-radius: 8px; -moz-border-radius-bottomright: 8px; -webkit-border-bottom-right-radius: 8px; border: solid 1px #f00; }
+#rentalAgreement { width: 50%; height: 300px; padding: 20px; border: 8px solid #cccccc; background: #eee; color: #333; font-size: 12px; display: block; float: center; _float: left; position: fixed; _position: absolute; left: 25%; top: 15%; _top: 50px; z-index: 999; opacity:1; filter:alpha(opacity=100); -moz-border-radius: 5px; -webkit-border-radius: 5px; -webkit-box-shadow: 8px 8px 8px #555; }
+#rentalText { height: 250px; overflow: scroll; }
+#rentalText h1 { font-weight: bold; font-size: 16px; text-align: center; color: #000; }
+#rentalAgreement label { font-weight: bold; font-size: 14px; color: #000; }
+.bookRenterBanner { display: block; white-space:nowrap; margin-bottom: 10px; margin-right: 5px; padding: 10px; height: 50px; line-height: 50px; position: relative; z-index: 10; -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px; -webkit-background-clip: padding-box; -moz-box-shadow: rgba(0, 0, 0, 0.4) 0 1px 2px; -webkit-box-shadow: rgba(0, 0, 0, 0.4) 0 1px 2px; box-shadow: rgba(0, 0, 0, 0.4) 0 1px 2px; border: 1px solid #999999; border-top-color: #919966; border-bottom-color: #989287; text-shadow: rgba(0, 0, 0, 0.3) 0 -1px 2px; text-decoration: none; background: #fff; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f2f2f2'); background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f2f2f2)); background: -moz-linear-gradient(top, #ffffff, #f2f2f2); font-size: 16px; font-weight: bold; }
+.bookRenterTitle { display: block; float: left; z-index: 12; }
+.bookRenterFloat { display: block; float: right; overflow: visible; }
+.bookrenterCart { padding-top: 5px; }
+#mobileReturn { font-weight: bold; font-size: 18px; text-align: center; width: 100%; background: #ff6; border: 2px solid #000; }
+#mobileReturn a { color: #000; text-decoration: none; padding: 20px; display: block; }
+#giftcard_login .strongtext {display: block; border-bottom: 1px #666 solid; }
+td.reviewpaylabel { -moz-border-radius-topleft: 8px; -webkit-border-top-left-radius: 8px; -moz-border-radius-bottomleft: 8px; -webkit-border-bottom-left-radius: 8px; }
+td.reviewpaylabel2 { -moz-border-radius-topleft: 8px; -webkit-border-top-left-radius: 8px; -moz-border-radius-topright: 8px; -webkit-border-top-right-radius: 8px; }
+td.reviewpaydata  { -moz-border-radius-topright: 8px; -webkit-border-top-right-radius: 8px; -moz-border-radius-bottomright: 8px; -webkit-border-bottom-right-radius: 8px; }
+td.reviewpaydata2  { -moz-border-radius-bottomleft: 8px; -webkit-border-bottom-left-radius: 8px; -moz-border-radius-bottomright: 8px; -webkit-border-bottom-right-radius: 8px; }
+-->
+</style> 
+  <style type="text/css">
+<!--
+
+.title   { color: #000000; text-decoration: none; font-family: Verdana, Arial, Helvetica, "San Serif"; font-weight: bold; font-size: 24px; text-transform: lowercase }
+.subtitle   { color: #005555; text-decoration: none; font-family: Verdana, Arial, Helvetica, "San Serif"; font-weight: bold; font-size: 14px; text-transform: lowercase }
+
+.cartbutton   { color: #ffffff; text-decoration: none; font-family: Verdana, Arial, Helvetica, "San Serif"; font-weight: bold; font-size: 10px; text-transform: uppercase }
+.cartbutton:hover   { color: #ffffbb; text-decoration: none; font-family: Verdana, Arial, Helvetica, "San Serif"; font-weight: bold; font-size: 10px; text-transform: uppercase }
+.trackingbutton   { color: #ffffff; text-decoration: none; font-family: Verdana, Arial, Helvetica, "San Serif"; font-weight: bold; font-size: 10px; text-transform: uppercase }
+.trackingbutton:hover   { color: #ffffbb; text-decoration: none; font-family: Verdana, Arial, Helvetica, "San Serif"; font-weight: bold; font-size: 10px; text-transform: uppercase }
+.accountbutton   { color: #ffffff; text-decoration: none; font-family: Verdana, Arial, Helvetica, "San Serif"; font-weight: bold; font-size: 10px; text-transform: uppercase }
+.accountbutton:hover   { color: #ffffbb; text-decoration: none; font-family: Verdana, Arial, Helvetica, "San Serif"; font-weight: bold; font-size: 10px; text-transform: uppercase }
+.homebutton   { color: #ffffff; text-decoration: none; font-family: Verdana, Arial, Helvetica, "San Serif"; font-weight: bold; font-size: 10px; text-transform: uppercase }
+.homebutton:hover   { color: #ffffbb; text-decoration: none; font-family: Verdana, Arial, Helvetica, "San Serif"; font-weight: bold; font-size: 10px; text-transform: uppercase }
+
+.onbutton   { color: #ffffbb; text-decoration: none; font-family: Verdana, Arial, Helvetica, "San Serif"; font-weight: bold; font-size: 10px; text-transform: uppercase }
+.onbutton:hover   { color: #ffffbb; text-decoration: underline; font-family: Verdana, Arial, Helvetica, "San Serif"; font-weight: bold; font-size: 10px; text-transform: uppercase }
+
+.dayfont   { color: #ffffff; text-decoration: none; font-family: Verdana, Arial, Helvetica, "San Serif"; font-weight: bold; font-size: 10px; text-transform: none }
+.sloganfont   { color: #C8C8C8; text-decoration: none; font-family: Verdana, Arial, Helvetica, "San Serif"; font-weight: bold; font-size: 10px; text-transform: none }
+
+.deptfont   { color: #000000; text-decoration: none; font-family: Verdana, Arial, Helvetica, "San Serif"; font-weight: bold; font-size: 10px; line-height: .85; text-transform: none }
+.deptfont:hover   { color: #005555; text-decoration: none; font-family: Verdana, Arial, Helvetica, "San Serif"; font-weight: bold; font-size: 10px; line-height: .85; text-transform: none }
+.deptfont2   { color: #ffffff; text-decoration: none; font-family: Verdana, Arial, Helvetica, "San Serif"; font-weight: bold; font-size: 10px; line-height: .85; text-transform: none }
+.deptfont2:hover   { color: #ffffbb; text-decoration: underline; font-family: Verdana, Arial, Helvetica, "San Serif"; font-weight: bold; font-size: 10px; line-height: .85; text-transform: none }
+
+.sectionfont   { color: #ffffbb; text-decoration: none; font-family: Verdana, Arial, Helvetica, "San Serif"; font-weight: normal; font-size: 10px; text-transform: lowercase }
+.sectionfont:hover   { color: #ffffff; text-decoration: underline; font-family: Verdana, Arial, Helvetica, "San Serif"; font-weight: normal; font-size: 10px; text-transform: lowercase }
+.sectionfont2   { color: #ffffff; text-decoration: none; font-family: Verdana, Arial, Helvetica, "San Serif"; font-weight: bold; font-size: 10px; text-transform: lowercase }
+.sectionfont2:hover   { color: #ffffff; text-decoration: underline; font-family: Verdana, Arial, Helvetica, "San Serif"; font-weight: bold; font-size: 10px; text-transform: lowercase }
+
+.searchfont   { color: #000099; text-decoration: none; font-family: Verdana, Arial, Helvetica, "San Serif"; font-weight: normal; font-size: 10px; text-transform: lowercase }
+.searchbutton   { color: #000099; text-decoration: underline; font-family: Verdana, Arial, Helvetica, "San Serif"; font-weight: normal; font-size: 10px; text-transform: lowercase }
+.searchbutton:hover   { color: #000099; text-decoration: underline; font-family: Verdana, Arial, Helvetica, "San Serif"; font-weight: normal; font-size: 10px; text-transform: lowercase }
+
+.carttitle   { color: #000000; text-decoration: none; font-family: Verdana, Arial, Helvetica, "San Serif"; font-weight: bold; font-size: 10px; text-transform: lowercase }
+
+.boxtitle   { color: #889988; text-decoration: none; font-family: Verdana, Arial, Helvetica, "San Serif"; font-weight: bold; font-size: 10px; text-transform: lowercase }
+.boxheading   { color: #005555; text-decoration: none; font-family: Verdana, Arial, Helvetica, "San Serif"; font-weight: bold; font-size: 10px; text-transform: uppercase }
+.boxsubheading   { color: #005555; text-decoration: none; font-family: Verdana, Arial, Helvetica, "San Serif"; font-weight: bold; font-size: 10px }
+.boxfont   { color: #000000; text-decoration: none; font-family: Verdana, Arial, Helvetica, "San Serif"; font-size: 10px; }
+.boxfont:hover   { color: #000000; text-decoration: underline; font-family: Verdana, Arial, Helvetica, "San Serif"; font-size: 10px; }
+.boxlink { color: #000000; font-family: Verdana, Arial, Helvetica, "San Serif"; font-size: 10px; }
+.boxlink:hover { color: #005555; font-family: Verdana, Arial, Helvetica, "San Serif"; font-size: 10px; }
+
+.sidetitle   { color: #000000; text-decoration: none; font-family: Verdana, Arial, Helvetica, "San Serif"; font-weight: bold; font-size: 10px; text-transform: lowercase }
+.sideheading   { color: #000000; text-decoration: none; font-family: Verdana, Arial, Helvetica, "San Serif"; font-weight: bold; font-size: 10px; text-transform: uppercase }
+.sidesubheading   { color: #000000; text-decoration: none; font-family: Verdana, Arial, Helvetica, "San Serif"; font-weight: bold; font-size: 10px }
+.sidefont   { color: #445544; text-decoration: none; font-family: Verdana, Arial, Helvetica, "San Serif"; font-size: 10px; }
+.sidefont:hover   { color: #000000; text-decoration: underline; font-family: Verdana, Arial, Helvetica, "San Serif"; font-size: 10px; }
+.sidelink { color: #445544; font-family: Verdana, Arial, Helvetica, "San Serif"; font-size: 10px; }
+.sidelink:hover { color: #000000; font-family: Verdana, Arial, Helvetica, "San Serif"; font-size: 10px; }
+
+.infoheading   { color: #000000; text-decoration: none; font-family: Verdana, Arial, Helvetica, "San Serif"; font-weight: bold; font-size: 10px; }
+.infoheading:hover   { color: #005555; text-decoration: underline; font-family: Verdana, Arial, Helvetica, "San Serif"; font-weight: bold; font-size: 10px; }
+.infofont   { color: #000000; text-decoration: none; font-family: Verdana, Arial, Helvetica, "San Serif"; font-size: 10px; }
+.infofont2   { color: #000000; text-decoration: none; font: italic 10px Verdana, Arial, Helvetica, "San Serif"; }
+.infofont2:hover   { color: #005555; text-decoration: none; font: italic 10px Verdana, Arial, Helvetica, "San Serif"; }
+
+.copyright   { color: #000000; font-family: Verdana, Arial, Helvetica, "San Serif"; font-size: 10px; }
+
+-->
+</style>  
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+  <title>The Paper Tree - Course Requisitions</title> 
+ </head> 
+ <body vlink="#00aa88" text="black" link="#000099" bgcolor="#ffffff" alink="00ff00"> 
+  <!--designs3/cso4/parts/top_tables.inc begins--> 
+  <table width="100%" summary="" cellspacing="0" cellpadding="0" border="0"> 
+   <tbody>
+    <tr> 
+     <td width="35%" valign="bottom" align="center"><a href="http://papertreebooks.collegestoreonline.com/ePOS?store=599&amp;form=shared3%2findex%2ehtml"><img src="images/599/logo.gif" border="0" alt="The Paper Tree"></a></td> 
+     <td width="65%" valign="center" align="left"> <a href="http://papertreebooks.collegestoreonline.com/ePOS?store=599&amp;form=shared3%2findex%2ehtml"><font class="title">The Paper Tree</font></a><br> <font class="subtitle"></font></td> 
+    </tr> 
+   </tbody>
+  </table> 
+  <p> </p>
+  <table width="100%" summary="" cellspacing="0" cellpadding="0" border="0"> 
+   <tbody>
+    <tr> 
+     <td valign="bottom" colspan="4" align="center"> 
+      <!--designs3/cso4/parts/dept_tabs.inc begins--> 
+      <table summary="" cellspacing="0" cellpadding="0" border="0"> 
+       <tbody>
+        <tr> 
+         <td valign="bottom" bgcolor="#aaaa88"><img width="5" src="images/shared_images/cso4/tabcap_unselected_lt.gif" height="29" border="0" alt=""></td> 
+         <td valign="middle" bgcolor="#aaaa88" align="center"><a href="http://papertreebooks.collegestoreonline.com/ePOS?this_category=21&amp;store=599&amp;form=shared3%2fgm%2fmain%2ehtml&amp;design=599" class="deptfont">&nbsp;Backpacks&nbsp;</a></td> 
+         <td valign="bottom" bgcolor="#aaaa88"><img width="4" src="images/shared_images/cso4/tabcap_unselected_rt.gif" height="29" border="0" alt=""></td> 
+         <td valign="bottom" bgcolor="#aaaa88"><img width="5" src="images/shared_images/cso4/tabcap_unselected_lt.gif" height="29" border="0" alt=""></td> 
+         <td valign="middle" bgcolor="#aaaa88" align="center"><a href="http://papertreebooks.collegestoreonline.com/ePOS?this_category=2&amp;store=599&amp;form=shared3%2fgm%2fmain%2ehtml&amp;design=599" class="deptfont">&nbsp;General Books&nbsp;</a></td> 
+         <td valign="bottom" bgcolor="#aaaa88"><img width="4" src="images/shared_images/cso4/tabcap_unselected_rt.gif" height="29" border="0" alt=""></td> 
+         <td valign="bottom" bgcolor="#aaaa88"><img width="5" src="images/shared_images/cso4/tabcap_unselected_lt.gif" height="29" border="0" alt=""></td> 
+         <td valign="middle" bgcolor="#aaaa88" align="center"><a href="http://papertreebooks.collegestoreonline.com/ePOS?this_category=17&amp;store=599&amp;form=shared3%2fgm%2fmain%2ehtml&amp;design=599" class="deptfont">&nbsp;Gift Cards&nbsp;</a></td> 
+         <td valign="bottom" bgcolor="#aaaa88"><img width="4" src="images/shared_images/cso4/tabcap_unselected_rt.gif" height="29" border="0" alt=""></td> 
+         <td valign="bottom" bgcolor="#aaaa88"><img width="5" src="images/shared_images/cso4/tabcap_unselected_lt.gif" height="29" border="0" alt=""></td> 
+         <td valign="middle" bgcolor="#aaaa88" align="center"><a href="http://papertreebooks.collegestoreonline.com/ePOS?this_category=61&amp;store=599&amp;form=shared3%2fgm%2fmain%2ehtml&amp;design=599" class="deptfont">&nbsp;Shopping Mall&nbsp;</a></td> 
+         <td valign="bottom" bgcolor="#aaaa88"><img width="4" src="images/shared_images/cso4/tabcap_unselected_rt.gif" height="29" border="0" alt=""></td> 
+         <td valign="bottom" bgcolor="#aaaa88"><img width="5" src="images/shared_images/cso4/tabcap_unselected_lt.gif" height="29" border="0" alt=""></td> 
+         <td valign="middle" bgcolor="#aaaa88" align="center"><a href="http://papertreebooks.collegestoreonline.com/ePOS?this_category=46&amp;store=599&amp;form=shared3%2fgm%2fmain%2ehtml&amp;design=599" class="deptfont">&nbsp;Supplies&nbsp;</a></td> 
+         <td valign="bottom" bgcolor="#aaaa88"><img width="4" src="images/shared_images/cso4/tabcap_unselected_rt.gif" height="29" border="0" alt=""></td> 
+         <td valign="bottom" bgcolor="#aaaa88"><img width="5" src="images/shared_images/cso4/tabcap_unselected_lt.gif" height="29" border="0" alt=""></td> 
+         <td valign="middle" bgcolor="#aaaa88" align="center"><a href="http://papertreebooks.collegestoreonline.com/ePOS?this_category=1&amp;store=599&amp;form=shared3%2ftextbooks%2fmain%2ehtml&amp;design=599" class="deptfont">&nbsp;Textbooks&nbsp;</a></td> 
+         <td valign="bottom" bgcolor="#aaaa88"><img width="4" src="images/shared_images/cso4/tabcap_unselected_rt.gif" height="29" border="0" alt=""></td> 
+         <td valign="bottom" bgcolor="#aaaa88"><img width="5" src="images/shared_images/cso4/tabcap_unselected_lt.gif" height="29" border="0" alt=""></td> 
+         <td valign="middle" bgcolor="#aaaa88" align="center"><a href="http://papertreebooks.collegestoreonline.com/ePOS?this_category=70&amp;store=599&amp;form=shared3%2fgm%2fmain%2ehtml&amp;design=599" class="deptfont">&nbsp;Gifts and Insignia&nbsp;</a></td> 
+         <td valign="bottom" bgcolor="#aaaa88"><img width="4" src="images/shared_images/cso4/tabcap_unselected_rt.gif" height="29" border="0" alt=""></td> 
+         <td valign="bottom" bgcolor="#aaaa88"><img width="5" src="images/shared_images/cso4/tabcap_unselected_lt.gif" height="29" border="0" alt=""></td> 
+         <td valign="middle" bgcolor="#aaaa88" align="center"><a href="http://papertreebooks.collegestoreonline.com/ePOS?this_category=88&amp;store=599&amp;form=shared3%2fgm%2fmain%2ehtml&amp;design=599" class="deptfont">&nbsp;Food, Health and Beauty&nbsp;</a></td> 
+         <td valign="bottom" bgcolor="#aaaa88"><img width="4" src="images/shared_images/cso4/tabcap_unselected_rt.gif" height="29" border="0" alt=""></td> 
+        </tr> 
+       </tbody>
+      </table> 
+      <!--designs3/cso4/parts/dept_tabs.inc ends--> </td> 
+    </tr> 
+    <tr bgcolor="#005555"> 
+     <td colspan="4"> 
+      <table width="100%" summary="" cellspacing="0" cellpadding="4" border="0"> 
+       <tbody>
+        <tr> 
+         <td valign="center"> 
+          <div style="margin: 0px 0px 5px 0px;"> 
+           <table width="" summary="" cellspacing="0" cellpadding="0" border="0" bgcolor="#005555"> 
+            <tbody>
+             <tr> 
+              <td bgcolor="#005555"> 
+               <table width="100%" summary="" cellspacing="1" cellpadding="3" border="0"> 
+                <tbody>
+                 <tr> 
+                  <td nowrap class="loginbutton" bgcolor="#004444" align="center"><a href="https://secure.sequoiars.com/ePOS?store=599&amp;login_target=faculty&amp;form=shared3%2fusers%2fuserlogin%2ehtml&amp;design=599&amp;__session_info__=ee8gpm9UylzLJ6BJUpt7%2fIleLeKja9wq%2f6jJ1Rjo9BKUDSpcM4ezRBgkk%2bf5gts2W5wYoouCZHE4umx7TNYmQvYXjot4QpobZnVMRTDRprOlvZQ9AkRP7DQ%2boQfEKDA%2fXPXKwRn4esFDuegEekdH%2fY4AkowsS9vhZohoqlq1vMs%3d" class="loginbutton">Log In</a></td> 
+                  <td class="datetext" bgcolor="#eeffee" align="left"><script type="text/javascript">
+		 var d=new Date()
+		 var weekday=new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday")
+		 var monthname=new Array("January","February","March","April","May","June","July","August","September","October","November","December")
+		 document.write(weekday[d.getDay()] + ", ")
+		 document.write(monthname[d.getMonth()] + " ")
+		 document.write(d.getDate() + ", ")
+		 document.write(d.getFullYear())
+</script></td> 
+                 </tr> 
+                </tbody>
+               </table> </td> 
+             </tr> 
+            </tbody>
+           </table> 
+          </div> </td> 
+         <td valign="center" align="right"> <a href="https://secure.sequoiars.com/ePOS?store=599&amp;form=shared3%2fcart%2fcartpages%2ffinalcart%2ehtml&amp;__session_info__=ee8gpm9UylzLJ6BJUpt7%2fIleLeKja9wq%2f6jJ1Rjo9BKUDSpcM4ezRBgkk%2bf5gts2W5wYoouCZHE4umx7TNYmQvYXjot4QpobZnVMRTDRprOlvZQ9AkRP7DQ%2boQfEKDA%2fXPXKwRn4esFDuegEekdH%2fY4AkowsS9vhZohoqlq1vMs%3d" class="cartbutton">Cart</a> &nbsp;&nbsp;&nbsp; <a href="http://papertreebooks.collegestoreonline.com/ePOS?store=599&amp;form=shared3%2fsearch%2fsearch%2ehtml" class="trackingbutton">Search</a> &nbsp;&nbsp;&nbsp; <a href="https://secure.sequoiars.com/ePOS?store=599&amp;form=shared3%2fusers%2fuserlogin%2ehtml&amp;__session_info__=ee8gpm9UylzLJ6BJUpt7%2fIleLeKja9wq%2f6jJ1Rjo9BKUDSpcM4ezRBgkk%2bf5gts2W5wYoouCZHE4umx7TNYmQvYXjot4QpobZnVMRTDRprOlvZQ9AkRP7DQ%2boQfEKDA%2fXPXKwRn4esFDuegEekdH%2fY4AkowsS9vhZohoqlq1vMs%3d" class="accountbutton">Account</a> &nbsp;&nbsp;&nbsp;<a href="http://papertreebooks.collegestoreonline.com/ePOS?store=599&amp;form=shared3%2findex%2ehtml" class="homebutton">Home</a> </td> 
+        </tr> 
+       </tbody>
+      </table> </td> 
+    </tr> 
+   </tbody>
+  </table> 
+  <!--designs3/cso4/parts/top_tables.inc ends--> 
+  <table width="100%" summary="" cellspacing="0" cellpadding="3" border="0"> 
+   <tbody>
+    <tr> 
+     <td width="180" valign="top" bgcolor="#aaaa88"> 
+      <table width="100%" summary="" cellspacing="0" cellpadding="5" border="0"> 
+       <tbody>
+        <tr> 
+         <td> 
+          <!--designs3/cso4/parts/side_tables.inc begins--> <img width="170" src="images/shared_images/cso4/clear.gif" height="3" alt=""><br> 
+          <table width="100%" summary="" cellspacing="1" cellpadding="5" border="0"> 
+           <tbody>
+            <tr> 
+             <td class="sidefont" align="left"> <span class="sideheading">Store Links</span><br> <a href="http://papertreebooks.collegestoreonline.com/ePOS/form=shared3/custom/site_map.html&amp;store=599&amp;design=599" class="sidefont">Site Map</a><br> <a href="http://papertreebooks.collegestoreonline.com/ePOS?store=599&amp;form=shared3%2ftracking%2ftracking%2ehtml&amp;design=599" class="sidefont">Order Tracking</a><br> <a href="http://papertreebooks.collegestoreonline.com/ePOS?store=599&amp;form=shared3%2fcustom%2finfo%2ehtml&amp;design=599" class="sidefont">Information</a><br> <a href="http://papertreebooks.collegestoreonline.com/ePOS?store=599&amp;form=shared3%2ffaculty%2flogin%2ehtml&amp;design=599" class="sidefont">Faculty</a><br> <a href="http://papertreebooks.collegestoreonline.com/ePOS?store=599&amp;form=shared3%2findex%2ehtml&amp;design=599" class="sidefont">Home Page</a><br> <p><a href="http://papertreebooks.collegestoreonline.com/ePOS?store=599&amp;form=shared3%2findex%2ehtml&amp;design=599&amp;ada=1" class="sidefont">Text-Only Version</a><br> </p></td> 
+            </tr> 
+           </tbody>
+          </table> 
+          <table width="100%" summary="" cellspacing="0" cellpadding="0" border="0"> 
+           <tbody>
+            <tr> 
+             <td><img src="images/shared_images/cso4/clear.gif" height="8" alt=""></td> 
+            </tr> 
+            <tr> 
+             <td bgcolor="#005555"><img src="images/shared_images/cso4/clear.gif" alt=""></td> 
+            </tr> 
+            <tr> 
+             <td><img src="images/shared_images/cso4/clear.gif" height="8" alt=""></td> 
+            </tr> 
+           </tbody>
+          </table> 
+          <table width="100%" summary="" cellspacing="1" cellpadding="5" border="0"> 
+           <tbody>
+            <tr> 
+             <td class="sidefont" align="left"> </td> 
+            </tr> 
+           </tbody>
+          </table> <p> 
+           <!--designs3/cso4/parts/side_tables.inc ends--> </p></td> 
+        </tr> 
+       </tbody>
+      </table> </td> 
+     <td width="95%" valign="top"> 
+      <table width="100%" summary="" cellspacing="0" cellpadding="10" border="0"> 
+       <tbody>
+        <tr> 
+         <td width="100%" valign="top" bgcolor="#ffffff" align="left"> 
+          <table width="100%" summary="" cellspacing="0" cellpadding="5" border="0"> 
+           <tbody>
+            <tr> 
+             <td> <span class="titlefont"> <b>Course 
+                <nobr>
+                 Requisitions -
+                </nobr></b> Login</span> </td> 
+            </tr> 
+           </tbody>
+          </table> 
+          <table summary="" border="0" cellpadding="5" cellspacing="0" width="99%">
+           <tbody>
+            <tr>
+             <td> 
+              <div class="loginFrame"> 
+               <form name="noname" method="post" action="https://secure.sequoiars.com/ePOS"> 
+                <input type="hidden" name="store" value="599"> 
+                <input type="hidden" name="form" value="shared3/faculty/main.html"> 
+                <input type="hidden" name="design" value="599"> 
+                <input type="hidden" name="__session_info__" value="ee8gpm9UylzLJ6BJUpt7/IleLeKja9wq/6jJ1Rjo9BKUDSpcM4ezRBgkk+f5gts2W5wYoouCZHE4umx7TNYmQvYXjot4QpobZnVMRTDRprOlvZQ9AkRP7DQ+oQfEKDA/XPXKwRn4esFDuegEekdH/Y4AkowsS9vhZohoqlq1vMs="> 
+                <div id="local_user" class="loginfields"> 
+                 <input name="newlogin" value="YES" type="hidden"> 
+                 <table summary="" cellspacing="0" cellpadding="2" border="0"> 
+                  <tbody>
+                   <tr> 
+                    <td colspan="2" class="titlemid"> <b>Log In with Your Faculty User Account</b><br> </td> 
+                   </tr> 
+                   <tr> 
+                    <td class="text" align="right"><b><label for="login">Email Address:</label></b></td> 
+                    <td width="100%"><input type="text" name="passwdlogin" id="login" size="32" tabindex="$tab_count"></td> 
+                   </tr> 
+                   <tr> 
+                    <td class="text" align="right"><b><label for="password">Password:</label></b></td> 
+                    <td width="100%"><input type="password" name="passwdpassword" id="password" size="20" tabindex="$tab_count"></td> 
+                   </tr> 
+                   <tr> 
+                    <td></td> 
+                    <td width="100%"> 
+                     <div class="forgotpass">
+                      <a href="https://secure.sequoiars.com/ePOS?store=599&amp;form=shared3%2ffaculty%2fusers%2fpassword%2fpassword%2ehtml&amp;design=599&amp;__session_info__=ee8gpm9UylzLJ6BJUpt7%2fIleLeKja9wq%2f6jJ1Rjo9BKUDSpcM4ezRBgkk%2bf5gts2W5wYoouCZHE4umx7TNYmQvYXjot4QpobZnVMRTDRprOlvZQ9AkRP7DQ%2boQfEKDA%2fXPXKwRn4esFDuegEekdH%2fY4AkowsS9vhZohoqlq1vMs%3d" tabindex="2" class="strongsmall">Forgot your password? Click Here</a>
+                     </div> </td> 
+                   </tr> 
+                   <tr> 
+                    <td colspan="2"> <p><br><input name="Login!" type="image" src="images/buttons/generic/login.gif" border="0" alt="Login"></p></td> 
+                   </tr> 
+                  </tbody>
+                 </table> 
+                </div> 
+               </form> 
+               <div id="new_user" class="loginfields"> 
+                <table width="75%" summary="" cellspacing="0" cellpadding="5" border="0"> 
+                 <tbody>
+                  <tr> 
+                   <td valign="top" class="textsmall"> <span class="titlemid"><b>Create a Faculty User Account</b></span><br> Click below to create a new user account. Your account will allow you to save your requisitions so you can finish them later, check the status of submitted requisitions, and re-use requisitions you have submitted for previous semesters. In addition to submitting textbook requisitions, you will be able to use your account for one-step ordering on our entire site.<br> </td> 
+                  </tr> 
+                  <tr> 
+                   <td valign="top"> <a href="https://secure.sequoiars.com/ePOS?store=599&amp;form=shared3%2ffaculty%2fusers%2fnewuser%2ehtml&amp;design=599&amp;account_target=reservations&amp;__session_info__=ee8gpm9UylzLJ6BJUpt7%2fIleLeKja9wq%2f6jJ1Rjo9BKUDSpcM4ezRBgkk%2bf5gts2W5wYoouCZHE4umx7TNYmQvYXjot4QpobZnVMRTDRprOlvZQ9AkRP7DQ%2boQfEKDA%2fXPXKwRn4esFDuegEekdH%2fY4AkowsS9vhZohoqlq1vMs%3d"><img src="images/buttons/generic/new_account.gif" border="0" alt="Create New Account"></a> </td> 
+                  </tr> 
+                 </tbody>
+                </table> 
+               </div> 
+              </div> </td>
+            </tr>
+           </tbody>
+          </table> </td> 
+        </tr> 
+       </tbody>
+      </table> </td> 
+    </tr> 
+   </tbody>
+  </table> 
+  <!--designs3/cso4/parts/footer.inc begins--> 
+  <hr size="1"> 
+  <center> 
+   <table width="50%" summary="" cellspacing="0" cellpadding="0" border="0"> 
+    <tbody>
+     <tr> 
+      <td width="50%" align="center"> 
+       <table width="100%" summary="" cellspacing="4" cellpadding="0" border="0"> 
+        <tbody>
+         <tr> 
+          <td width="100%" align="center"> <a href="http://papertreebooks.collegestoreonline.com/ePOS?store=599&amp;form=shared3%2findex%2ehtml&amp;design=599" class="infoheading">The Paper Tree</a><br> <span class="infofont">12401 SE 320th St.</span> <span class="infofont"> <br> Auburn, WA, 98092<br> Phone: (253) 931-3961 &nbsp; Fax: (253) 288-3435<br></span> <a href="http://papertreebooks.collegestoreonline.com/ePOS?store=599&amp;form=shared3%2fcustom%2femail%2fcontact%2ehtml&amp;design=599" class="infofont2">Contact Us</a><br> </td> 
+         </tr> 
+        </tbody>
+       </table> </td> 
+     </tr> 
+     <tr> 
+      <td align="center"> 
+       <table summary="" cellspacing="0" cellpadding="5" border="0"> 
+        <tbody>
+         <tr> 
+          <td align="center"> <span class="copyright">powered by </span><a href="http://www.SequoiaRS.com"><img src="images/shared_images/ePOS.gif" border="0" align="bottom"></a> <span class="copyright"> from </span> <a href="http://www.SequoiaRS.com" class="copyright">Sequoia Retail Systems, Inc.</a><br> <span class="copyright">Design ©2015 by College Store Online and Sequoia Retail Systems, Inc. </span> </td> 
+         </tr> 
+        </tbody>
+       </table> </td> 
+     </tr> 
+    </tbody>
+   </table> 
+  </center> 
+  <!--designs3/cso4/parts/footer.inc ends-->   
+ </body>
+</html>

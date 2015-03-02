@@ -1,0 +1,354 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+ <head>
+  <meta http-equiv="Expires" content="Fri, 10 Apr 1998 20:00:00 GMT"> 
+  <meta http-equiv="Refresh" content="900"> 
+  <meta http-equiv="Cache-Control" content="no-cache, must-revalidate"> 
+  <meta http-equiv="Pragma" content="no-cache"> 
+  <meta name="description" content="Recent seismic events, or earthquakes, are displayed on an interactive map server GMT educational WILBER seismicity observation stations fdsn magnitude links google seismic surfing plate tectonics education and outreach IRIS DMS DMC e&amp;o taber welti ahern">  
+  <title>Seismic Monitor</title> 
+  <meta http-equiv="Refresh" content="600">
+  <style type="text/css">
+body { margin:8; font-family:verdana,sans-serif; font-size:14px;}
+
+#theMsg {
+  position: absolute;
+  top: 3px;
+  left: 0px;
+  color: green;
+}
+#iebBeta { /* drive some traffic to IEB beta! */
+  position: absolute;
+  top: 750px;
+  left: 470px;
+  visibility: visible;
+  display: inherit;
+}
+
+#theMap {position: relative  }
+#topImgMap{ 
+  position: absolute;
+  left: 0;
+  top: 70 
+}
+#legend { position: absolute;
+        left: 12;
+        visibility: visible;
+        top: 12;
+}
+#usgs { position: absolute;
+        left: 97;
+        visibility: visible;
+        top: 662;
+}
+<!--
+#outtage { position: absolute;
+        left: 370;
+        visibility: visible;
+        top: 250;
+}
+-->
+
+#eq0 { position: absolute;
+     left: 455px; visibility: hidden; top: 360px;
+}
+#eq1 { position: absolute;
+     left: 561px; visibility: hidden; top: 146px;
+}
+#eq2 { position: absolute;
+     left: 643px; visibility: hidden; top: 516px;
+}
+#eq3 { position: absolute;
+     left: 506px; visibility: hidden; top: 193px;
+}
+#eq4 { position: absolute;
+     left: 647px; visibility: hidden; top: 459px;
+}
+#eq5 { position: absolute;
+     left: 639px; visibility: hidden; top: 473px;
+}
+#eq6 { position: absolute;
+     left: 994px; visibility: hidden; top: 487px;
+}
+#eq7 { position: absolute;
+     left: 993px; visibility: hidden; top: 487px;
+}
+#eq8 { position: absolute;
+     left: 518px; visibility: hidden; top: 217px;
+}
+#eq9 { position: absolute;
+     left: 1003px; visibility: hidden; top: 442px;
+}
+#eq10 { position: absolute;
+     left: 375px; visibility: hidden; top: 250px;
+}
+#eq11 { position: absolute;
+     left: 942px; visibility: hidden; top: 296px;
+}
+#eq12 { position: absolute;
+     left: 506px; visibility: hidden; top: 204px;
+}
+#eq13 { position: absolute;
+     left: 459px; visibility: hidden; top: 338px;
+}
+#eq14 { position: absolute;
+     left: 454px; visibility: hidden; top: 360px;
+}
+#eq15 { position: absolute;
+     left: 1159px; visibility: hidden; top: 356px;
+}
+#eq16 { position: absolute;
+     left: 546px; visibility: hidden; top: 384px;
+}
+#eq17 { position: absolute;
+     left: 939px; visibility: hidden; top: 295px;
+}
+#eq18 { position: absolute;
+     left: 877px; visibility: hidden; top: 249px;
+}
+#eq19 { position: absolute;
+     left: 1054px; visibility: hidden; top: 602px;
+}
+.title {
+	font-family: Courier New, Courier, mono;
+	font-size: 48px;
+	color: #FFFFFF;
+	background-color: #000000;
+	visibility: visible;
+	position: absolute;
+	left: 397.5px;
+
+	top: 15px;
+	width: 450px;
+	height: 36px;
+}
+.stitle {
+	font-family: Courier New, Courier, mono;
+	font-size: 18px;
+	color: #FFFFFF;
+	background-color: #000000;
+	visibility: visible;
+	position: absolute;
+	left: 391.5px;
+	top: 720px;
+	width: 462px;
+	height: 24px;
+}
+</style>
+  <script language="javascript">
+
+//Array function compatible with Netscape 2.0x and 3.0x
+function MakeArray(n) {                 
+  this.length = n;
+  for (var i = 1; i <= n; i++) { 
+      this[i] = 0 
+  }
+  return this
+}
+
+var DHTML = (document.getElementById || document.all || document.layers);
+
+function getObj(name)
+{
+  if (document.getElementById)
+  {
+     this.obj = document.getElementById(name);
+     this.style = document.getElementById(name).style;
+  }
+  else if (document.all)
+  {
+     this.obj = document.all[name];
+     this.style = document.all[name].style;
+  }
+  else if (document.layers)
+  {
+     this.obj = getObjNN4(document,name);
+     this.style = this.obj;
+  }
+}
+
+function getObjNN4(obj,name)
+{
+     var x = obj.layers;
+     var thereturn;
+     for (var i=0;i<x.length;i++) {
+         if (x[i].id == name) thereturn = x[i];
+         else if (x[i].layers.length)
+              var tmp = getObjNN4(x[i],name);
+         if (tmp) thereturn = tmp;
+     }
+     return thereturn;
+}
+
+
+var recEQs = new MakeArray(20);
+recEQs[0]="eq0";
+recEQs[1]="eq1";
+recEQs[2]="eq2";
+recEQs[3]="eq3";
+recEQs[4]="eq4";
+recEQs[5]="eq5";
+recEQs[6]="eq6";
+recEQs[7]="eq7";
+recEQs[8]="eq8";
+recEQs[9]="eq9";
+recEQs[10]="eq10";
+recEQs[11]="eq11";
+recEQs[12]="eq12";
+recEQs[13]="eq13";
+recEQs[14]="eq14";
+recEQs[15]="eq15";
+recEQs[16]="eq16";
+recEQs[17]="eq17";
+recEQs[18]="eq18";
+recEQs[19]="eq19";
+function setEQVis(eqIndex,v)
+{
+  if (!DHTML) return;
+  var eq = new getObj(recEQs[eqIndex]);
+  eq.style.visibility = (v) ? 'visible' : 'hidden'
+}
+
+function init() {
+  setEQVis(0,1);
+  setEQVis(1,1);
+  setEQVis(2,1);
+  setEQVis(3,1);
+  setEQVis(4,1);
+  setEQVis(5,1);
+  setEQVis(6,1);
+  setEQVis(7,1);
+  setEQVis(8,1);
+  setEQVis(9,1);
+  setEQVis(10,1);
+  setEQVis(11,1);
+  setEQVis(12,1);
+  setEQVis(13,1);
+  setEQVis(14,1);
+  setEQVis(15,1);
+  setEQVis(16,1);
+  setEQVis(17,1);
+  setEQVis(18,1);
+  setEQVis(19,1);
+  setTimeout("setEQVis(0,0)",8000);
+  setTimeout("setEQVis(1,0)",8000);
+  setTimeout("setEQVis(2,0)",8000);
+  setTimeout("setEQVis(3,0)",8000);
+  setTimeout("setEQVis(4,0)",8000);
+  setTimeout("setEQVis(5,0)",8000);
+  setTimeout("setEQVis(6,0)",8000);
+  setTimeout("setEQVis(7,0)",8000);
+  setTimeout("setEQVis(8,0)",8000);
+  setTimeout("setEQVis(9,0)",8000);
+  setTimeout("setEQVis(10,0)",8000);
+  setTimeout("setEQVis(11,0)",8000);
+  setTimeout("setEQVis(12,0)",8000);
+  setTimeout("setEQVis(13,0)",8000);
+  setTimeout("setEQVis(14,0)",8000);
+  setTimeout("setEQVis(15,0)",8000);
+  setTimeout("setEQVis(16,0)",8000);
+  setTimeout("setEQVis(17,0)",8000);
+  setTimeout("setEQVis(18,0)",8000);
+  setTimeout("setEQVis(19,0)",8000);
+}
+</script>
+ </head>    
+ <body bgcolor="#000000" text="#FFFFFF" link="#00FFFF" vlink="#0066FF" onload="init();" onclick="javascript:document.location.href='http://www.iris.edu/seismon';"> 
+  <!--<div id="theMsg"><a href="http://www.iris.edu/seismon">Looking for the interactive Seismic Monitor?</a></div>--> 
+  <div id="iebBeta"> 
+   <a href="http://www.iris.edu/ieb/index.html?format=text&amp;nodata=404&amp;starttime=1970-01-01&amp;endtime=2025-01-01&amp;orderby=time-desc&amp;limit=2000&amp;maxlat=86.06&amp;minlat=-86.06&amp;maxlon=180.00&amp;minlon=-180.00&amp;pbl=1&amp;name=Be%20sure%20to%20try%20the%203D%20viewer%2C%20see%20lower%20right&amp;zm=1&amp;mt=ter">Care to try the new IRIS Earthquake Browser?</a> 
+  </div> 
+  <div id="theMap"> 
+   <div id="topImgMap"> 
+    <img src="../views/eveday_big//imgs/topMap.eveday_big.gif" height="627" width="1245" border="0"> 
+   </div> 
+   <span id="legend"> <img src="../imgs/top_legend.gif" border="0" width="161" height="58"> </span> 
+   <span id="usgs"> <img src="../imgs/usgs_tiny.gif" border="0" width="40" height="12"> </span> 
+   <!--
+  <span id="outtage">
+  <img src="../imgs/outtage.gif" border="0" width="400" height="100">
+  </span>
+--> 
+   <!-- one for each museum with custom logos: --> 
+   <span class="title">Seismic Monitor</span>
+   <br> 
+   <span class="stitle">Page served at: Mon Mar 2 2:26:13 GMT 2015</span>
+   <br> 
+   <span id="eq0"><img src="../imgs/eq.gif" border="0" width="35" height="35"> </span> 
+   <span id="eq1"><img src="../imgs/eq.gif" border="0" width="35" height="35"> </span> 
+   <span id="eq2"><img src="../imgs/eq.gif" border="0" width="35" height="35"> </span> 
+   <span id="eq3"><img src="../imgs/eq.gif" border="0" width="35" height="35"> </span> 
+   <span id="eq4"><img src="../imgs/eq.gif" border="0" width="35" height="35"> </span> 
+   <span id="eq5"><img src="../imgs/eq.gif" border="0" width="35" height="35"> </span> 
+   <span id="eq6"><img src="../imgs/eq.gif" border="0" width="35" height="35"> </span> 
+   <span id="eq7"><img src="../imgs/eq.gif" border="0" width="35" height="35"> </span> 
+   <span id="eq8"><img src="../imgs/eq.gif" border="0" width="35" height="35"> </span> 
+   <span id="eq9"><img src="../imgs/eq.gif" border="0" width="35" height="35"> </span> 
+   <span id="eq10"><img src="../imgs/eq.gif" border="0" width="35" height="35"> </span> 
+   <span id="eq11"><img src="../imgs/eq.gif" border="0" width="35" height="35"> </span> 
+   <span id="eq12"><img src="../imgs/eq.gif" border="0" width="35" height="35"> </span> 
+   <span id="eq13"><img src="../imgs/eq.gif" border="0" width="35" height="35"> </span> 
+   <span id="eq14"><img src="../imgs/eq.gif" border="0" width="35" height="35"> </span> 
+   <span id="eq15"><img src="../imgs/eq.gif" border="0" width="35" height="35"> </span> 
+   <span id="eq16"><img src="../imgs/eq.gif" border="0" width="35" height="35"> </span> 
+   <span id="eq17"><img src="../imgs/eq.gif" border="0" width="35" height="35"> </span> 
+   <span id="eq18"><img src="../imgs/eq.gif" border="0" width="35" height="35"> </span> 
+   <span id="eq19"><img src="../imgs/eq.gif" border="0" width="35" height="35"> </span> 
+   <br> 
+   <br> 
+   <br> 
+   <br> 
+   <br> 
+   <br> 
+   <br> 
+   <br> 
+   <br> 
+   <br> 
+   <br> 
+   <br> 
+   <br> 
+   <p align="center">This is a jumbo sized image of the <a href="http://www.iris.edu/seismon">IRIS Seismic Monitor</a> web page.</p>
+   <p align="center">It is an image only. It does not contain any earthquake or station links. </p>
+   <p align="center">Download GIF or Postscript file of above map <a href="../views/eveday_big/imgs">here</a>.</p>
+   <p> <br> <br> <br> <br> <br> </p>
+   <table align="center" width="768" border="0" bgcolor="#000000"> 
+    <tbody>
+     <tr> 
+      <td valign="top">
+       <div align="center">
+        Developed by the IRIS Consortium
+       </div></td> 
+      <td>&nbsp;</td> 
+      <td valign="top">
+       <div align="center">
+        Earthquake data courtesy of the USGS NEIC 
+       </div></td> 
+      <td>&nbsp;</td> 
+      <td valign="bottom">
+       <div align="center">
+        Maps made with GMT
+       </div></td> 
+     </tr> 
+     <tr> 
+      <td width="231" valign="bottom">
+       <div align="center"> 
+       </div>
+       <div align="center"> 
+        <a href="http://www.iris.edu"><img src="../imgs/irisnew.gif" width="100" height="76" border="0" align="bottom"></a> 
+       </div></td> 
+      <td width="44">&nbsp;</td> 
+      <td width="211" valign="middle">
+       <div align="center"> 
+        <p> <a href="http://wwwneic.cr.usgs.gov/"><img src="../imgs/usgs_banner.gif" width="195" height="36" border="0" align="middle"></a> </p> 
+       </div> </td> 
+      <td width="40">&nbsp;</td> 
+      <td width="220" valign="middle">
+       <div align="center"> 
+        <p> <a href="http://gmt.soest.hawaii.edu"><img src="../imgs/gmt_logo.gif" width="100" height="38" align="middle"></a> </p> 
+       </div> </td> 
+     </tr> 
+    </tbody>
+   </table>   
+  </div>
+ </body>
+</html>

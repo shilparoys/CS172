@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8">
+  <title>
+	Green River Community College: Classroom Login
+</title>
+  <meta http-equiv="Content-type" content="text/html;charset=UTF-8"> 
+  <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script> 
+  <style type="text/css">#logo h4{ display: none; }#logo h1{font-size: 0;text-indent: -999px;background: url(/common/images/0/160.gif) no-repeat top left;width: 250px;
+height: 75px;
+}</style>
+  <script type="text/javascript" src="/oic/Includes/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="/oic/Includes/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="/oic/Includes/jquery-ui-1.10.3.custom.min.js"></script>
+  <script type="text/javascript" src="/oic/Includes/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  <link type="text/css" rel="stylesheet" href="/oic/Includes/fancybox/2.1.5/jquery.fancybox.css" media="all">
+  <link type="text/css" rel="stylesheet" href="/oic/Includes/jqueryui/jquery-ui-1.10.3.custom.css" media="all">
+  <script type="text/javascript" src="/oic/Includes/jquery.scrollTo-min.js"></script>
+  <script type="text/javascript" src="/oic/Includes/ed2gooic.js"></script>
+  <link type="text/css" rel="stylesheet" href="/oic/Stylesheets/One/Themes/layout.css" media="all">
+  <link type="text/css" rel="stylesheet" href="https://www.ed2go.com/greenriver/StyleSheets/One/Themes/claret/theme.css" media="all"> 
+  <!-- //**** Start Google Analytics**** --> 
+  <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-5274086-1']);
+_gaq.push(['_setDomainName', '.ed2go.com']);
+_gaq.push(['_trackPageview', ]);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+ })();
+
+</script> 
+  <!-- //**** End Google Analytics**** --> 
+  <meta name="robots" content="noindex,nofollow">
+ </head> 
+ <body> 
+  <form name="aspnetForm" method="post" action="/greenriver/classroom.html?Refresh=1" id="aspnetForm"> 
+   <div> 
+    <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUILTk2OTA5MzUPZBYCZg9kFgICARBkZBYgAgMPFgIeB1Zpc2libGVoFgICAQ8PFgQeBFRleHQFFWh0dHA6Ly93d3cuZWQyZ28uY29tLx4LTmF2aWdhdGVVcmwFFWh0dHA6Ly93d3cuZWQyZ28uY29tL2RkAgUPZBYCAgEPDxYCHwIFH2h0dHA6Ly93d3cuZWQyZ28uY29tL2dyZWVucml2ZXJkZAIHDxYCHgVjbGFzcwUGYWN0aXZlFgICAQ8PFgIfAgUvaHR0cHM6Ly93d3cuZWQyZ28uY29tL2dyZWVucml2ZXIvY2xhc3Nyb29tLmh0bWxkZAIJD2QWAgIBDw8WAh8CBS1odHRwOi8vd3d3LmVkMmdvLmNvbS9ncmVlbnJpdmVyL2Fib3V0X3VzLmh0bWxkZAILD2QWAgIBDw8WAh8CBSpodHRwczovL3d3dy5lZDJnby5jb20vZ3JlZW5yaXZlci9oZWxwLmh0bWxkZAINDw8WAh8AaGRkAg8PDxYEHwIFPWh0dHBzOi8vd3d3LmVkMmdvLmNvbS9ncmVlbnJpdmVyL0NsYXNzcm9vbS9NeUFjY291bnRFZGl0LmFzcHgfAGhkZAIRDw8WAh8AaGRkAhMPDxYCHwIFL2h0dHBzOi8vd3d3LmVkMmdvLmNvbS9ncmVlbnJpdmVyL2NsYXNzcm9vbS5odG1sZGQCFQ8PFgIfAGhkZAIXDxYCHwBoZAIZD2QWAgIBD2QWAgIBD2QWDGYPZBYEAgMPFgIfAQUdR3JlZW4gUml2ZXIgQ29tbXVuaXR5IENvbGxlZ2VkAgUPFgIfAQUUQ29udGludWluZyBFZHVjYXRpb25kAgIPZBYCZg9kFgZmDw8WAh8CBR9odHRwOi8vd3d3LmVkMmdvLmNvbS9ncmVlbnJpdmVyZGQCAQ8PFgIfAgU8aHR0cDovL3d3dy5lZDJnby5jb20vZ3JlZW5yaXZlci9TZWFyY2hSZXN1bHRzLmFzcHgjU2VhcmNoQmFyZGQCAg9kFgYCAQ8WAh4DZm9yBSVjdGwwMF9jcGhNYWluX2N0bDAwX1NlYXJjaDFfdHh0U2VhcmNoZAIDDw8WBB4IQ3NzQ2xhc3MFBXNib3gyHgRfIVNCAgIWAh4LcGxhY2Vob2xkZXIFEUVudGVyIFNlYXJjaCBIZXJlZAIFDw8WBB8FBQhzc3VibWl0Mh8GAgJkZAIED2QWBgIBDw8WCB8CZB8BBQkmbHQ7IGJhY2seB0VuYWJsZWRoHwBoZGQCAw8WBB8BBQ1Zb3VyIFNlYXJjaDogHwBoZAIFDxYEHwFkHwBoZAIGD2QWCGYPDxYCHwEF9QE8cCBjbGFzcz0nZXJyb3InPkxvZ2luIGZhaWxlZC4gUGxlYXNlIGNoZWNrIHlvdXIgRS1tYWlsIEFkZHJlc3Mgb3IgUGFzc3dvcmQgYW5kIHRyeSBhZ2Fpbi48YnIvPjxici8+SWYgeW91IGZlZWwgeW91IGhhdmUgcmVjZWl2ZWQgdGhpcyBtZXNzYWdlIGluIGVycm9yIHBsZWFzZSA8YSBocmVmPSdodHRwczovL3d3dy5lZDJnby5jb20vZ3JlZW5yaXZlci9oZWxwLmh0bWw/VG9waWM9c3VwcG9ydCc+Y2xpY2sgaGVyZTwvYT4uPC9wPmRkAgQPFgIfAQU0PG5vc2NyaXB0PjxzbWFsbD4oY2FzZSBzZW5zaXRpdmUpPC9zbWFsbD48L25vc2NyaXB0PmQCCA8PZBYCHgVzdHlsZQUNZGlzcGxheTpub25lO2QCCg9kFgJmD2QWCgIDDw8WAh4UVmFsaWRhdGlvbkV4cHJlc3Npb24FqQFeKD86KD86W148PigpW1xdXFwuLDs6XHNAXCJdKyg/OlwuW148PigpW1xdXFwuLDs6XHNAXCJdKykqKXwoPzpcIi4rXCIpKUAoPzooPzpcW1swLTldezEsM31cLlswLTldezEsM31cLlswLTldezEsM31cLlswLTldezEsM31cXSl8KD86KD86W2EtekEtWlwtMC05XStcLikrW2EtekEtWl17Mix9KSkkZGQCBA8PFgIfAQXHATxwIGNsYXNzPSdlcnJvcic+RS1tYWlsIGFkZHJlc3Mgbm90IG9uIGZpbGUuPGJyLz48YnIvPklmIHlvdSBmZWVsIHlvdSBoYXZlIHJlY2VpdmVkIHRoaXMgbWVzc2FnZSBpbiBlcnJvciBwbGVhc2UgPGEgaHJlZj0naHR0cHM6Ly93d3cuZWQyZ28uY29tL2dyZWVucml2ZXIvaGVscC5odG1sP1RvcGljPXN1cHBvcnQnPmNsaWNrIGhlcmU8L2E+LjwvcD5kZAIHDxYCHwEFHUdyZWVuIFJpdmVyIENvbW11bml0eSBDb2xsZWdlZAIIDw8WAh8CBThodHRwczovL3d3dy5lZDJnby5jb20vZ3JlZW5yaXZlci9oZWxwLmh0bWw/VG9waWM9c3VwcG9ydGRkAgkPD2QWAh8JBQ1kaXNwbGF5Om5vbmU7ZAIID2QWDGYPDxYCHwIFJS9ncmVlbnJpdmVyL2NsYXNzcm9vbS5odG1sP0Jyb3dzZXI9aWVkZAIBDw8WAh8AaGRkAgIPDxYCHwIFJS9ncmVlbnJpdmVyL2NsYXNzcm9vbS5odG1sP0Jyb3dzZXI9ZmZkZAIDDw8WAh8AaGRkAgQPDxYCHwIFKS9ncmVlbnJpdmVyL2NsYXNzcm9vbS5odG1sP0Jyb3dzZXI9ZmZfbWFjZGQCBQ8PFgIfAGhkZAIKD2QWCgIBDw8WAh4ISW1hZ2VVcmwFU2h0dHBzOi8vd3d3LmVkMmdvLmNvbS9ncmVlbnJpdmVyL1N0eWxlU2hlZXRzL09uZS9UaGVtZXMvY2xhcmV0Ly9pbWFnZXMvbmF2Y2xvc2UucG5nZGQCAg8WAh8DBQhleHBhbmRlZBYCAgEPZBYGAgEPDxYCHwIFd2h0dHA6Ly93d3cuZWQyZ28uY29tL2dyZWVucml2ZXIvU2VhcmNoUmVzdWx0cy5hc3B4P1NvcnQ9UkVMRVZBTkNFJlByZXZTb3J0PVJFTEVWQU5DRSZTb3J0QXNjPVRydWUmUHJvZHVjdEdyb3VwPUZFQVRVUkVEFgIeB29uY2xpY2sFRF9nYXEucHVzaChbJ190cmFja0V2ZW50JywgJ0hlYWRsaW5lQWN0aW9uJywnTWVudUNsaWNrJywnRmVhdHVyZWQnXSk7ZAIDDw8WAh8CBXZodHRwOi8vd3d3LmVkMmdvLmNvbS9ncmVlbnJpdmVyL1NlYXJjaFJlc3VsdHMuYXNweD9Tb3J0PVJFTEVWQU5DRSZQcmV2U29ydD1SRUxFVkFOQ0UmU29ydEFzYz1UcnVlJlByb2R1Y3RHcm91cD1QT1BVTEFSFgIfDAVDX2dhcS5wdXNoKFsnX3RyYWNrRXZlbnQnLCAnSGVhZGxpbmVBY3Rpb24nLCdNZW51Q2xpY2snLCdQb3B1bGFyJ10pO2QCBQ8PFgIfAgVyaHR0cDovL3d3dy5lZDJnby5jb20vZ3JlZW5yaXZlci9TZWFyY2hSZXN1bHRzLmFzcHg/U29ydD1SRUxFVkFOQ0UmUHJldlNvcnQ9UkVMRVZBTkNFJlNvcnRBc2M9VHJ1ZSZQcm9kdWN0R3JvdXA9TkVXFgIfDAU/X2dhcS5wdXNoKFsnX3RyYWNrRXZlbnQnLCAnSGVhZGxpbmVBY3Rpb24nLCdNZW51Q2xpY2snLCdOZXcnXSk7ZAIED2QWBGYPFgIfAGdkAgEPFgIfAGdkAgUPFgIfAGhkAggPDxYCHwBoZBYCZg8PFgIfAgVCaHR0cDovL2hpZ2hzY2hvb2wuZWQyZ28uY29tL3JlY292ZXItY291cnNlLWNyZWRpdC8/U2l0ZT1ncmVlbnJpdmVyZGQCGw8PFgIfAGdkFhJmDw8WAh8CBT9odHRwczovL3d3dy5lZDJnby5jb20vZ3JlZW5yaXZlci9MaWdodEJveC5hc3B4P1RvcGljPW5ld3NsZXR0ZXJkZAIBDw8WAh8CBTVodHRwOi8vd3d3LmVkMmdvLmNvbS9ncmVlbnJpdmVyL2Fib3V0X3VzLmh0bWwjY29udGFjdGRkAgIPDxYCHwBoZGQCAw8PFgIfAGhkZAIEDw8WAh8AaGRkAgUPFgIfAQW9CjxkaXYgaWQ9ImxlYXJuaW5ndHlwZXMiIGNsYXNzPSJ0d291cCI+DQo8aW1nIHNyYz0iL29pYy9PSUMvSW1hZ2VzL0xheW91dC9vbmUvdG9wYXJyb3cucG5nIiBpZD0idG90b3AiIGFsdD0iU2Nyb2xsIHRvIFRvcCIgdGl0bGU9IlNjcm9sbCB0byBUb3AiIG9ubW91c2V1cD0iJC5zY3JvbGxUbygwLCA1MDApOyIgLz4NCjxoMz4mbmJzcDs8c3Ryb25nPk9ubGluZSBMZWFybmluZzwvc3Ryb25nPjwvaDM+DQo8ZGwgY2xhc3M9Im9jIGZpcnN0Ij4KPGR0Pkluc3RydWN0b3ItTGVkIENvdXJzZXM8L2R0Pgo8ZGQ+UHJvZmVzc2lvbmFsIGRldmVsb3BtZW50IGFuZCBwZXJzb25hbCBlbnJpY2htZW50PC9kZD4KPGRkPlNlc3Npb25zIHN0YXJ0IG1vbnRobHk8L2RkPgo8ZGQ+Q29udmVuaWVudCBzaXgtd2VlayBmb3JtYXQ8L2RkPgo8ZGQ+SW50ZXJhY3RpdmUgbGVhcm5pbmcgZW52aXJvbm1lbnQ8L2RkPgo8ZGQ+SW5zdHJ1Y3RvcnMgbGVhZCBlYWNoIGNvdXJzZTwvZGQ+CjxkZD5Bd2FyZCBvZiBjb21wbGV0aW9uIHdpdGggcGFzc2luZyBzY29yZTwvZGQ+CjxkZCBjbGFzcz0ibGVhcm5tb3JlIj4KPGEgaHJlZj0iaHR0cDovL3d3dy5lZDJnby5jb20vZ3JlZW5yaXZlci9Qcm9kdWN0SW5mby5hc3B4P3Byb2R1Y3Q9SUxDIj5MZWFybiBNb3JlPC9hPgo8YSBocmVmPSJodHRwOi8vd3d3LmVkMmdvLmNvbS9ncmVlbnJpdmVyL1NlYXJjaFJlc3VsdHMuYXNweD9TZWFyY2hGaWx0ZXJJRD0xJmFtcDtTZWFyY2hGaWx0ZXJUeXBlSUQ9MSI+VmlldyBDYXRhbG9nPC9hPgo8L2RkPgo8L2RsPg0KPGRsIGNsYXNzPSJjdHAgbGFzdCI+CjxkdD5DYXJlZXIgVHJhaW5pbmcgUHJvZ3JhbXM8L2R0Pgo8ZGQ+UHJlcGFyZSBmb3IgaW5kdXN0cnkgY2VydGlmaWNhdGlvbiBvciBzdGFydCBhIG5ldyBjYXJlZXI8L2RkPgo8ZGQ+U3RhcnQgQW55dGltZTwvZGQ+CjxkZD5NYW55IHByb2dyYW1zIGNvbXBsZXRlZCBpbiBsZXNzIHRoYW4gc2l4IG1vbnRoczwvZGQ+CjxkZD5Jbi1kZXB0aCBzdHVkeSwgYWxsIGxlYXJuaW5nIG1hdGVyaWFscyBwcm92aWRlZDwvZGQ+CjxkZD5QZXJzb25hbCBJbnN0cnVjdG9yIGFzc2lzdGFuY2U8L2RkPgo8ZGQ+Q2VydGlmaWNhdGUgb2YgY29tcGxldGlvbiBhd2FyZGVkIHdpdGggcGFzc2luZyBzY29yZTwvZGQ+CjxkZCBjbGFzcz0ibGVhcm5tb3JlIj4KPGEgaHJlZj0iaHR0cDovL3d3dy5lZDJnby5jb20vZ3JlZW5yaXZlci9Qcm9kdWN0SW5mby5hc3B4P3Byb2R1Y3Q9Q1RQIj5MZWFybiBNb3JlPC9hPgo8YSBocmVmPSJodHRwOi8vY2FyZWVydHJhaW5pbmcuZWQyZ28uY29tL2dyZWVucml2ZXIvIj5WaWV3IENhdGFsb2c8L2E+CjwvZGQ+CjwvZGw+DQo8L2Rpdj4NCmQCBg8WAh8BBVo8c3Ryb25nPkdyZWVuIFJpdmVyIENvbW11bml0eSBDb2xsZWdlPC9zdHJvbmc+IHwgIDEyNDAxIFNFIDMyMHRoIFN0cmVldCB8IEF1YnVybiwgV0EgOTgwOTJkAggPZBYCZg9kFggCAw8PFgIeC1Bvc3RCYWNrVXJsBUNodHRwczovL3d3dy5lZDJnby5jb20vZ3JlZW5yaXZlci9jbGFzc3Jvb20uaHRtbD9SZWZyZXNoPTEmc3NsPUZhbHNlZGQCBA8PZBYCHwkFDWRpc3BsYXk6bm9uZTtkAgsPDxYCHwoFqQFeKD86KD86W148PigpW1xdXFwuLDs6XHNAXCJdKyg/OlwuW148PigpW1xdXFwuLDs6XHNAXCJdKykqKXwoPzpcIi4rXCIpKUAoPzooPzpcW1swLTldezEsM31cLlswLTldezEsM31cLlswLTldezEsM31cLlswLTldezEsM31cXSl8KD86KD86W2EtekEtWlwtMC05XStcLikrW2EtekEtWl17Mix9KSkkZGQCDA8PFgIfAgUfaHR0cDovL3d3dy5lZDJnby5jb20vZ3JlZW5yaXZlcmRkAgkPZBYCZg8PFgIfAGhkZAIfD2QWAmYPDxYCHwIFNWh0dHA6Ly93d3cuZWQyZ28uY29tL2dyZWVucml2ZXIvYWJvdXRfdXMuaHRtbCNjb250YWN0ZGQCIQ8PFgIfDQU7aHR0cHM6Ly93d3cuZWQyZ28uY29tL2dyZWVucml2ZXIvY2xhc3Nyb29tLmh0bWw/Rm9yZ290PVRydWVkZAIlDw8WAh8AaGRkZF4SwDWFqytDYgzwq3AeQTF9gmDLKIxiVOlVIItm0p5F"> 
+   </div> 
+   <script src="/oic/ScriptResource.axd?d=-UQPVC41zAh9tEtt14MFEveyFIY2SUcDJffO4Svaa2ehzSo1Ctf709D5v1IKSBoSCpjfur-W65aVlljFRhGwUTNBTzAnX16qRMCB4s8wBFf1SP8oRwHO8hTlgZE0tGmgawIq1O0_TcaJTMYjOqVdwPtAhIh7blJuSKIgMZb0Cng1&amp;t=ca758f3" type="text/javascript"></script> 
+   <!-- //**** Start SiteCatalyst code version: H.25.2 Click**** --> 
+   <script type="text/javascript">
+$(document).ready(function(){
+$(document).bind('OMNITURE_CLICK', $.proxy(function(e, data){
+OmnitureClick(data.actionName);
+}, this));
+});
+</script> 
+   <!-- //**** End SiteCatalyst code version: H.25.2 Click**** --> 
+   <div> 
+    <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="403FBE23"> 
+    <input type="hidden" name="__PREVIOUSPAGE" id="__PREVIOUSPAGE" value="X6AKA3GsMxryeFWi24aSp8RpEx96rkbI4HUv_SPlF4N_H5KrYYWsxn8uJKebu7iepNiw0juecpAW08pOBICzkzQNYEX0T9KQXgWNcLrFkd0_l61p7yBQ0XfVWvmyDrJA0"> 
+    <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdABFGu8kwxcRCvxOJ0hn5UhmN5gQ6eD6PyXFezUfItFNIrJJHACXbnvhXy92sbv+nU056oghQVKCPzKJLKTUz2KhtOYod//8jjf2lULQgszsrSnc+QEcoQxZmFbMpMkMwdaFot1P4DuMCUnnVxiooGZtjwbahpuFsGvNQkeP6USnhU+BjGgWYzOnYvgkSnJMPgEn/pkcYeJ6zslmnYmwo63dr5+rx6UYtzwQQz0S4lfSQ+jAz6c0DFkp7WTPNBYeVMbaQ357MJKGiqbmmZwwbBJLFSHoGJQ2vqiod9SJbo2oPx1QYnzWQipP5jsAFexspeTDUeLySf/EYBMh4BB5MuHoYtK9nxZURGF6GDWeb1LTmZZY9lrXtTEtQBsvkoFOoBtIABIdn2pbEfk6oAgLmKLUi"> 
+   </div> 
+   <input type="text" id="student_botcheck" name="student_botcheck" style="display: none;"> 
+   <div class="header"> 
+    <noscript> 
+     <div id="sansjs">
+       Your Browser does not have javascript enabled. Your viewing of this site will be greatly limited. Please utilize a javascript-enabled browser to optimally view our website. Thank you. 
+     </div> 
+    </noscript> 
+    <header> 
+     <div class="centered"> 
+      <div class="nav"> 
+       <nav> 
+        <ul> 
+         <li id="ctl00_liHome"> <a id="ctl00_hlkHome" class="home" href="http://www.ed2go.com/greenriver">Home</a> </li> 
+         <li id="ctl00_liMyClassroom" class="active"> <a id="ctl00_hlkMyClassroom" href="https://www.ed2go.com/greenriver/classroom.html">My Classroom</a> </li> 
+         <li id="ctl00_liAboutUs"> <a id="ctl00_hlkAboutUs" href="http://www.ed2go.com/greenriver/about_us.html">About Us</a> </li> 
+         <li id="ctl00_liHelp"> <a id="ctl00_hlkHelp" href="https://www.ed2go.com/greenriver/help.html">Help</a> </li> 
+        </ul> 
+       </nav> 
+      </div> 
+      <div id="userinfo"> 
+       <!-- Not Logged In --> 
+       <!-- Logged In--> 
+       <a id="ctl00_hlkSignIn" class="signin" href="https://www.ed2go.com/greenriver/classroom.html">Sign in</a> 
+      </div> 
+     </div> 
+    </header> 
+   </div> 
+   <!-- JUST A LITTLE DETAIL --> 
+   <div class="topdecor"> 
+   </div> 
+   <noscript> 
+    <div class="headerSpacer"> 
+    </div> 
+   </noscript> 
+   <div id="ctl00_cphMain_pnlContent"> 
+    <!-- BEGIN LOGO AREA --> 
+    <div id="logo" class="centered"> 
+     <div id="ctl00_cphMain_ctl00_Logo1_pnlCobrand" class="cobrand"> 
+      <small> </small> 
+      <h2> </h2> 
+      <h3> </h3> 
+     </div> 
+     <h1> Green River Community College </h1> 
+     <h4> Continuing Education </h4> 
+    </div> 
+    <!-- BEGIN COURSE NAV AND SEARCH --> 
+    <script type="text/javascript" language="javascript">
+
+    function encode(input) {
+        return $('<div />').text(input).html();
+    }
+
+    function decode(input) {
+        return $('<div />').html(input).text();
+    }
+
+    $.ui.autocomplete.prototype._renderItem = function (ul, item) {
+        // Escape any regexy type characters so they don't bugger up the other reg ex
+        var keywords = this.term.replace(/([\^\$\(\)\[\]\{\}\*\.\+\?\|\\])/gi, "\\$1");
+        // Join the terms with a pipe as an 'OR'
+        keywords = keywords.split(' ').join('|');
+        //$.ui.autocomplete.escapeRegex(keywords)
+        item.label = item.label.replace(new RegExp("(?![^&;]+;)(?!<[^<>]*)(" + keywords + ")(?![^<>]*>)(?![^&;]+;)", "gi"), "<strong>$1</strong>");
+        return $("<li></li>")
+                    .data("item.autocomplete", item)
+                    .append("<a>" + item.label + "</a>")
+                    .appendTo(ul);
+    };
+
+    $.ui.autocomplete.prototype._resizeMenu = function () {
+        var ul = this.menu.element;
+        ul.outerWidth(this.element.outerWidth());
+    }
+
+    var intMaxLength = 140;
+
+    $(function () {
+        $('#ctl00_cphMain_ctl00_Search1_btnSearch').click(function () {
+            var vLen = $('#ctl00_cphMain_ctl00_Search1_txtSearch').val().length;
+            if (vLen > intMaxLength) {
+                alert('Search character limit has been reached. Results cannot be displayed until you reduce your entry.');
+                return false;
+            }
+            $('#ctl00_cphMain_ctl00_Search1_txtSearch').val(encode($('#ctl00_cphMain_ctl00_Search1_txtSearch').val()));
+        });
+    });
+</script> 
+    <style type="text/css">
+    .ui-autocomplete
+    {
+        overflow-y: auto;
+        text-align: left;
+    }
+</style> 
+    <script type="text/javascript" language="javascript">$(function() {$('#ctl00_cphMain_ctl00_Search1_txtSearch').autocomplete({source: 'http://www.ed2go.com/greenriver/AutoComplete.aspx',minLength: 2,select: function(event, ui) {var v = ui.item ? ui.item.value : '';$('#ctl00_cphMain_ctl00_Search1_txtSearch').val(v);$('#ctl00_cphMain_ctl00_Search1_hidIsAutocomplete').val('1');$('#ctl00_cphMain_ctl00_Search1_btnSearch').click();}});});</script> 
+    <div id="ctl00_cphMain_ctl00_Search1_divSearch0"> 
+     <div id="navcontain2"> 
+      <a id="ctl00_cphMain_ctl00_Search1_hlkHome" href="http://www.ed2go.com/greenriver">Home</a> 
+      <a id="ctl00_cphMain_ctl00_Search1_hlkCatalog" href="http://www.ed2go.com/greenriver/SearchResults.aspx#SearchBar">View Catalog</a> 
+      <div id="search"> 
+       <div id="ctl00_cphMain_ctl00_Search1_pnlSearch"> 
+        <label id="ctl00_cphMain_ctl00_Search1_lblText" for="ctl00_cphMain_ctl00_Search1_txtSearch"> Search for Courses:</label> 
+        <input name="ctl00$cphMain$ctl00$Search1$txtSearch" type="text" id="ctl00_cphMain_ctl00_Search1_txtSearch" class="sbox2" placeholder="Enter Search Here"> 
+        <input type="submit" name="ctl00$cphMain$ctl00$Search1$btnSearch" value="Search" id="ctl00_cphMain_ctl00_Search1_btnSearch" class="ssubmit2"> 
+       </div> 
+      </div> 
+      <input type="hidden" name="ctl00$cphMain$ctl00$Search1$hidIsAutocomplete" id="ctl00_cphMain_ctl00_Search1_hidIsAutocomplete" value="0"> 
+     </div> 
+    </div> 
+    <!-- BEGIN BREADCRUMBS --> 
+    <div class="crumbs centered"> 
+     <div class="left"> 
+     </div> 
+     <h2> </h2> 
+    </div> 
+    <!-- BEGIN CONTENT AREA --> 
+    <div class="centered"> 
+     <div id="content"> 
+      <article> 
+       <div id="ctl00_cphMain_ctl00_pnlSignin" class="text signinpage"> 
+        <h3> Current Student Sign In</h3> 
+        <p> Sign in to access your courses. </p> 
+        <p> <label for="ctl00_cphMain_ctl00_txtUsername"> E-mail <small>(username):</small></label><br> <input name="ctl00$cphMain$ctl00$txtUsername" type="text" id="ctl00_cphMain_ctl00_txtUsername" class="textinput" placeholder="email@address.com"> </p> 
+        <p> <label for="ctl00_cphMain_ctl00_txtPassword"> Password 
+          <noscript>
+           <small>(case sensitive)</small>
+          </noscript></label><br> <input name="ctl00$cphMain$ctl00$txtPassword" type="password" id="ctl00_cphMain_ctl00_txtPassword" class="textinput" placeholder="case sensitive"> </p> 
+        <div id="ctl00_cphMain_ctl00_ctrlBotCheckSignin" style="display:none;"> 
+         <span id="ctl00_cphMain_ctl00_ctrlBotCheckSignin_lblHidden" style="display:none;">Do Not Fill</span>
+         <input name="ctl00$cphMain$ctl00$ctrlBotCheckSignin$txtHidden" type="text" id="ctl00_cphMain_ctl00_ctrlBotCheckSignin_txtHidden" style="display:none;"> 
+        </div> 
+        <p> <input type="button" name="ctl00$cphMain$ctl00$btnSignIn" value="Sign In" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$cphMain$ctl00$btnSignIn&quot;, &quot;&quot;, true, &quot;signin&quot;, &quot;&quot;, false, true))" id="ctl00_cphMain_ctl00_btnSignIn" class="submit"> </p> 
+        <h3> Forgot Your Password?</h3> 
+        <p> Complete the form below and click the <strong>Reset Password</strong> button. If we find your password, we'll send password reset instructions to the e-mail address we have on record for you. </p> 
+        <div> 
+         <p> <label for="ctl00_cphMain_ctl00_ctrlForgot_txtForgot"> E-mail:</label><br> <input name="ctl00$cphMain$ctl00$ctrlForgot$txtForgot" type="text" id="ctl00_cphMain_ctl00_ctrlForgot_txtForgot" class="textinput" placeholder="email@address.com"> </p> 
+         <p> If you did not receive an e-mail or if you no longer have access to the e-mail address associated with your Green River Community College online courses, please contact <a id="ctl00_cphMain_ctl00_ctrlForgot_hlkForgotContact" href="https://www.ed2go.com/greenriver/help.html?Topic=support">Technical Support</a>. </p> 
+         <div id="ctl00_cphMain_ctl00_ctrlForgot_ctrlBotCheck" style="display:none;"> 
+          <span id="ctl00_cphMain_ctl00_ctrlForgot_ctrlBotCheck_lblHidden" style="display:none;">Do Not Fill</span>
+          <input name="ctl00$cphMain$ctl00$ctrlForgot$ctrlBotCheck$txtHidden" type="text" id="ctl00_cphMain_ctl00_ctrlForgot_ctrlBotCheck_txtHidden" style="display:none;"> 
+         </div> 
+         <p> <input type="button" name="ctl00$cphMain$ctl00$ctrlForgot$btnForgot" value="Reset Password" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$cphMain$ctl00$ctrlForgot$btnForgot&quot;, &quot;&quot;, true, &quot;forgot&quot;, &quot;&quot;, false, true))" id="ctl00_cphMain_ctl00_ctrlForgot_btnForgot" class="submit"> </p> 
+        </div> 
+       </div> 
+      </article> 
+     </div> 
+     <!-- BEGIN LEFT NAV --> 
+     <div id="leftnav" class=""> 
+      <div class="pullout twotiers"> 
+       <span class="label">&nbsp;<img id="ctl00_cphMain_ctl00_ucCatalog_imgNavClose" src="https://www.ed2go.com/greenriver/StyleSheets/One/Themes/claret//images/navclose.png" alt="Close Nav" style="border-width:0px;"></span>
+      </div> 
+      <ul class="menu"> 
+       <li id="ctl00_cphMain_ctl00_ucCatalog_liCatalog" class="expanded"><a href="" class="label">Browse Catalog</a> 
+        <ul class="navigation"> 
+         <li id="ctl00_cphMain_ctl00_ucCatalog_liFeaturedPopularNewLinks" class="featured"> <a id="ctl00_cphMain_ctl00_ucCatalog_hlkFeatured" onclick="_gaq.push(['_trackEvent', 'HeadlineAction','MenuClick','Featured']);" href="http://www.ed2go.com/greenriver/SearchResults.aspx?Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True&amp;ProductGroup=FEATURED">Featured</a> <a id="ctl00_cphMain_ctl00_ucCatalog_hlkPopular" onclick="_gaq.push(['_trackEvent', 'HeadlineAction','MenuClick','Popular']);" href="http://www.ed2go.com/greenriver/SearchResults.aspx?Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True&amp;ProductGroup=POPULAR">Popular</a> <a id="ctl00_cphMain_ctl00_ucCatalog_hlkNew" onclick="_gaq.push(['_trackEvent', 'HeadlineAction','MenuClick','New']);" href="http://www.ed2go.com/greenriver/SearchResults.aspx?Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True&amp;ProductGroup=NEW">New</a> </li> 
+         <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=1&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" class="tier1" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Accounting and Finance',1]);">Accounting and Finance</a>
+          <ul>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=2&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Accounting Fundamentals',2]);">Accounting Fundamentals</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=3&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Accounting Software',2]);">Accounting Software</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=4&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Personal Finance and Investments',2]);">Personal Finance and Investments</a></li>
+          </ul></li>
+         <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=5&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" class="tier1" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Business',1]);">Business</a>
+          <ul>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=6&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Business Communication',2]);">Business Communication</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=7&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Business Software',2]);">Business Software</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=8&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','General Business Skills',2]);">General Business Skills</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=9&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Grant Writing',2]);">Grant Writing</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=10&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Management and Leadership',2]);">Management and Leadership</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=11&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Nonprofit',2]);">Nonprofit</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=12&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Project Management',2]);">Project Management</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=13&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Sales and Marketing',2]);">Sales and Marketing</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=14&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Start Your Own Business',2]);">Start Your Own Business</a></li>
+          </ul></li>
+         <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=1174&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" class="tier1" onclick="_gaq.push(['_trackEvent', 'Menu','Click','College Readiness',1]);">College Readiness</a>
+          <ul>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=1176&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Math',2]);">Math</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=1191&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Science',2]);">Science</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=1177&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Test Prep',2]);">Test Prep</a></li>
+          </ul></li>
+         <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=15&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" class="tier1" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Computer Applications',1]);">Computer Applications</a>
+          <ul>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=16&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Adobe',2]);">Adobe </a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=17&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Microsoft',2]);">Microsoft</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=18&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Other Applications',2]);">Other Applications</a></li>
+          </ul></li>
+         <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=19&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" class="tier1" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Design and Composition',1]);">Design and Composition</a>
+          <ul>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=20&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Adobe Software',2]);">Adobe Software</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=21&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Digital Photography',2]);">Digital Photography</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=22&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Graphic Design',2]);">Graphic Design </a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=24&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Web Design',2]);">Web Design</a></li>
+          </ul></li>
+         <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=25&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" class="tier1" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Health Care and Medical',1]);">Health Care and Medical</a>
+          <ul>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=26&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Alternative Medicine',2]);">Alternative Medicine</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=27&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Ancillary',2]);">Ancillary</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=28&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','EMS and Firefighters',2]);">EMS and Firefighters</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=29&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Ethics, Law, and Compliance',2]);">Ethics, Law, and Compliance</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=30&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Health Care Certificate',2]);">Health Care Certificate</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=31&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Health Information Management',2]);">Health Information Management</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=32&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Veterinary',2]);">Veterinary</a></li>
+          </ul></li>
+         <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=33&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" class="tier1" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Language and Arts',1]);">Language and Arts</a>
+          <ul>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=34&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Arts',2]);">Arts</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=35&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Creative Writing',2]);">Creative Writing</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=36&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Digital Photography',2]);">Digital Photography</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=37&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Graphic and Multimedia Design',2]);">Graphic and Multimedia Design</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=38&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Languages',2]);">Languages</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=39&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Publishing',2]);">Publishing</a></li>
+          </ul></li>
+         <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=40&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" class="tier1" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Law and Legal',1]);">Law and Legal</a>
+          <ul>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=41&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Business and Corporate',2]);">Business and Corporate</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=42&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Criminal Law',2]);">Criminal Law</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=45&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','LSAT Preparation',2]);">LSAT Preparation</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=46&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Paralegal',2]);">Paralegal</a></li>
+          </ul></li>
+         <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=47&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" class="tier1" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Personal Development',1]);">Personal Development</a>
+          <ul>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=48&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Arts',2]);">Arts</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=49&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Children, Parents, and Family',2]);">Children, Parents, and Family</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=50&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Digital Photography',2]);">Digital Photography</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=51&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Health and Wellness',2]);">Health and Wellness</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=52&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Job Search',2]);">Job Search</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=53&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Languages',2]);">Languages</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=54&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Personal Enrichment',2]);">Personal Enrichment</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=55&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Personal Finance and Investments',2]);">Personal Finance and Investments</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=56&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Start Your Own Business',2]);">Start Your Own Business</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=57&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Test Prep',2]);">Test Prep</a></li>
+          </ul></li>
+         <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=58&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" class="tier1" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Teaching and Education',1]);">Teaching and Education</a>
+          <ul>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=59&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Classroom Computing',2]);">Classroom Computing</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=60&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Languages',2]);">Languages</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=61&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Mathematics',2]);">Mathematics</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=62&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Reading and Writing',2]);">Reading and Writing</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=63&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Science',2]);">Science</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=64&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Test Prep',2]);">Test Prep</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=65&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Tools for Teachers',2]);">Tools for Teachers</a></li>
+          </ul></li>
+         <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=66&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" class="tier1" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Technology',1]);">Technology</a>
+          <ul>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=67&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Certificate Prep',2]);">Certificate Prep</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=68&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Computer Fundamentals',2]);">Computer Fundamentals</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=69&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Computer Programming',2]);">Computer Programming</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=70&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Database Management',2]);">Database Management</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=71&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Graphic and Multimedia Design',2]);">Graphic and Multimedia Design</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=72&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Networking and Communications',2]);">Networking and Communications</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=73&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Security',2]);">Security</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=74&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Web Technology',2]);">Web Technology </a></li>
+          </ul></li>
+         <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=75&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" class="tier1" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Writing and Publishing',1]);">Writing and Publishing</a>
+          <ul>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=76&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Business Writing',2]);">Business Writing </a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=77&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Creative Writing',2]);">Creative Writing</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=78&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Grant Writing',2]);">Grant Writing</a></li>
+           <li><a href="http://www.ed2go.com/greenriver/SearchResults.aspx?CurrPage=1&amp;CategoryId=79&amp;Sort=RELEVANCE&amp;PrevSort=RELEVANCE&amp;SortAsc=True" onclick="_gaq.push(['_trackEvent', 'Menu','Click','Publishing',2]);">Publishing</a></li>
+          </ul></li> 
+        </ul> </li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+   <!-- BEGIN FOOTER AREA --> 
+   <div id="footer"> 
+    <footer> 
+     <div class="footimg"> 
+     </div> 
+     <div class="centered"> 
+      <div class="nav"> 
+       <a id="ctl00_ucMainFooter_hlkNewsletter" class="newsletter lightbox" href="https://www.ed2go.com/greenriver/LightBox.aspx?Topic=newsletter"> Sign Up for Our <h3>Newsletter</h3> </a> 
+       <a id="ctl00_ucMainFooter_hlkContactUs" class="footercontact" href="http://www.ed2go.com/greenriver/about_us.html#contact"> Feel Free to <h3>Contact Us</h3> </a> 
+      </div> 
+      <div id="learningtypes" class="twoup"> 
+       <img src="/oic/OIC/Images/Layout/one/toparrow.png" id="totop" alt="Scroll to Top" title="Scroll to Top" onmouseup="$.scrollTo(0, 500);"> 
+       <h3>&nbsp;<strong>Online Learning</strong></h3> 
+       <dl class="oc first"> 
+        <dt>
+         Instructor-Led Courses
+        </dt> 
+        <dd>
+         Professional development and personal enrichment
+        </dd> 
+        <dd>
+         Sessions start monthly
+        </dd> 
+        <dd>
+         Convenient six-week format
+        </dd> 
+        <dd>
+         Interactive learning environment
+        </dd> 
+        <dd>
+         Instructors lead each course
+        </dd> 
+        <dd>
+         Award of completion with passing score
+        </dd> 
+        <dd class="learnmore"> 
+         <a href="http://www.ed2go.com/greenriver/ProductInfo.aspx?product=ILC">Learn More</a> 
+         <a href="http://www.ed2go.com/greenriver/SearchResults.aspx?SearchFilterID=1&amp;SearchFilterTypeID=1">View Catalog</a> 
+        </dd> 
+       </dl> 
+       <dl class="ctp last"> 
+        <dt>
+         Career Training Programs
+        </dt> 
+        <dd>
+         Prepare for industry certification or start a new career
+        </dd> 
+        <dd>
+         Start Anytime
+        </dd> 
+        <dd>
+         Many programs completed in less than six months
+        </dd> 
+        <dd>
+         In-depth study, all learning materials provided
+        </dd> 
+        <dd>
+         Personal Instructor assistance
+        </dd> 
+        <dd>
+         Certificate of completion awarded with passing score
+        </dd> 
+        <dd class="learnmore"> 
+         <a href="http://www.ed2go.com/greenriver/ProductInfo.aspx?product=CTP">Learn More</a> 
+         <a href="http://careertraining.ed2go.com/greenriver/">View Catalog</a> 
+        </dd> 
+       </dl> 
+      </div> 
+      <div id="partnercontact"> 
+       <strong>Green River Community College</strong> | 12401 SE 320th Street | Auburn, WA 98092 
+      </div> 
+      <div id="cengage"> 
+       <a href="http://www.cengage.com/" target="blank" class="blue">Cengage Learning</a> - 
+       <a href="http://www.cengage.com/content/footer/copyright_notices.aspx" target="blank"> Copyright Notices</a> | 
+       <a href="http://www.cengage.com/content/footer/terms_of_use.aspx" target="blank"> Terms of Use</a> | 
+       <a href="http://www.cengage.com/content/footer/privacy_statement.aspx" target="blank"> Privacy Statement</a> 
+       <img id="ctl00_ucMainFooter_Image1" src="../oic/OIC/Images/Layout/one/cengage.gif" alt="Cengage Learning" style="border-width:0px;"> 
+       <div class="spacer"> 
+       </div> 
+      </div> 
+      <div style="display: none;"> 
+       <div id="newsletter" class="text main"> 
+        <script type="text/javascript">
+        $('#ctl00_ucMainFooter_ucNews_btnSubmit').click(function(e) {
+            $.fancybox.resize();
+        });
+        function reSize(e) {
+            var key = e ? e.which : event.keyCode;
+            if (key == 13) {
+                $.fancybox.resize();
+            }
+        }
+    </script> 
+        <div id="ctl00_ucMainFooter_ucNews_pnlNewsletter" onkeyup="javascript: return reSize();"> 
+         <noscript> 
+          <h3> Sign Up For Our Newsletter</h3> 
+          <br> 
+         </noscript> 
+         <label for="ctl00_ucMainFooter_ucNews_txtNameFirst"> Name:</label> 
+         <input name="ctl00$ucMainFooter$ucNews$txtNameFirst" type="text" id="ctl00_ucMainFooter_ucNews_txtNameFirst" class="textinput" placeholder="First"> 
+         <input name="ctl00$ucMainFooter$ucNews$txtNameLast" type="text" id="ctl00_ucMainFooter_ucNews_txtNameLast" class="textinput" placeholder="Last"> 
+         <label for="ctl00_ucMainFooter_ucNews_txtEmail"> E-mail:</label> 
+         <input name="ctl00$ucMainFooter$ucNews$txtEmail" type="text" id="ctl00_ucMainFooter_ucNews_txtEmail" class="textinput" placeholder="email@address.com"> 
+         <input type="submit" name="ctl00$ucMainFooter$ucNews$btnSubmit" value="Submit" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$ucMainFooter$ucNews$btnSubmit&quot;, &quot;&quot;, true, &quot;newsletter&quot;, &quot;https://www.ed2go.com/greenriver/classroom.html?Refresh=1&amp;ssl=False&quot;, false, false))" id="ctl00_ucMainFooter_ucNews_btnSubmit" class="submit"> 
+         <div class="error"> 
+          <div id="ctl00_ucMainFooter_ucNews_ctrlBotCheckSignin" style="display:none;"> 
+           <span id="ctl00_ucMainFooter_ucNews_ctrlBotCheckSignin_lblHidden" style="display:none;">Do Not Fill</span>
+           <input name="ctl00$ucMainFooter$ucNews$ctrlBotCheckSignin$txtHidden" type="text" id="ctl00_ucMainFooter_ucNews_ctrlBotCheckSignin_txtHidden" style="display:none;"> 
+          </div> 
+         </div> 
+         <noscript> 
+          <br> 
+          <a id="ctl00_ucMainFooter_ucNews_hlkHome" href="http://www.ed2go.com/greenriver">Back To Home</a>
+         </noscript> 
+        </div> 
+       </div> 
+      </div> 
+      <div id="copyright">
+        Copyright © 1997 - 2015 All rights reserved. The material on this site cannot be reproduced or redistributed unless you have obtained prior written permission from Cengage Learning. 
+      </div> 
+     </div> 
+    </footer> 
+   </div> 
+   <div style="display: none;"> 
+    <div id="forgotpass" class="text"> 
+     <h3>Forgot Your Password?</h3> 
+     <p> Complete the form below and click the <strong>Reset Password</strong> button. If we find your password, we'll send password reset instructions to the e-mail address we have on record for you. </p> 
+     <p> <label for="student_forgot"> E-mail:</label><br> <input type="text" id="student_forgot" name="student_forgot" class="textinput" placeholder="email@address.com"> </p> 
+     <p> <input type="submit" name="ctl00$btnForgot" value="Reset Password" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$btnForgot&quot;, &quot;&quot;, false, &quot;&quot;, &quot;https://www.ed2go.com/greenriver/classroom.html?Forgot=True&quot;, false, false))" id="ctl00_btnForgot" class="submit"> </p> 
+    </div> 
+   </div> 
+   <script type="text/javascript">
+//<![CDATA[
+_gaq.push(['_setCustomVar', 1,'Member Type','Visitor',1]);//]]>
+</script> 
+   <!-- SiteCatalyst code version: H.25.2
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com --> 
+   <script type="text/javascript" src="/oic/includes/IncludeResource.axd?f=omniture.js&amp;v=1.2.77.20"></script> 
+   <script type="text/javascript"><!--
+s.pageName='classroom student login';
+s.channel='classroom';
+s.server='www.ed2go.com';
+s.prop2='greenriver';
+s.eVar2='greenriver';
+s.prop11='https://www.ed2go.com/greenriver/classroom.html?refresh=1';
+s.eVar11='https://www.ed2go.com/greenriver/classroom.html?refresh=1';
+s.prop26='standard';
+s.eVar26='standard';
+s.hier2='guest,student,no purchase';
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! ************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script> 
+   <script type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE') >= 0) document.write(unescape('%3C') + '\!-' + '-')
+//--></script>
+   <noscript>
+    <a href="http://www.Adobe.com" title="Web Analytics"><img src="https://thed2go.122.2o7.net/b/ss/thed2go/1/H.20.3-NS/0" height="1" width="1" border="0" alt=""></a>
+   </noscript> 
+   <!--/DO NOT REMOVE/--> 
+   <!-- End SiteCatalyst code version:  H.25.2 --> 
+  </form> 
+  <form method="post" id="signform" action="https://www.ed2go.com/greenriver/classroom.html?Login=True"> 
+   <!-- BEGIN SIGN IN AREA --> 
+   <div id="login"> 
+    <div class="centered"> 
+     <div id="logbox"> 
+      <input type="text" id="student_login" name="student_login" placeholder="E-mail or Username"> 
+      <input type="password" id="student_password" name="student_password" placeholder="Password"> 
+      <input type="submit" title="go" class="usubmit" value="go"> 
+      <br> 
+      <a href="https://www.ed2go.com/greenriver/classroom.html?Forgot=True" class="forgot lightbox">Forgot Password?</a> 
+      <script type="text/javascript">
+                        if (-1 != navigator.userAgent.indexOf("MSIE")) {
+                            document.getElementById('student_password').setAttribute("placeholder", "");
+                        }
+                    </script> 
+     </div> 
+    </div> 
+   </div> 
+  </form> 
+  <!-- //**** Start BrightTag **** --> 
+  <script type="text/javascript" src="//s.btstatic.com/tag.js">{ site: "5dwhpeh" }</script> 
+  <noscript>
+   <iframe src="//s.thebrighttag.com/iframe?c=5dwhpeh" width="1" height="1" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+  </noscript> 
+  <!-- //**** End BrightTag **** --> 
+  <!-- WHCINNE2GWEB01P (1.2.77.16) -->  
+ </body>
+</html>

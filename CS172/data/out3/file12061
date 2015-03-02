@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+ <head> 
+  <title>Password Self Service
+        
+    </title> 
+  <meta http-equiv="content-type" content="text/html;charset=utf-8"> 
+  <meta name="Description" content="PWM Password Self Service"> 
+  <meta name="X-Pwm-Instance" content="C7AEF6DAD04EAB33>"> 
+  <meta name="X-Pwm-Version" content="1.6.1 (release)"> 
+  <meta name="X-Pwm-Build" content="1123"> 
+  <meta name="viewport" content="width=320, user-scalable=no"> 
+  <link rel="icon" type="image/x-icon" href="/pwm/resources/favicon.ico"> 
+  <link href="/pwm/resources/pwmStyle.css" rel="stylesheet" type="text/css" media="screen"> 
+  <link href="/pwm/resources/themes/custom/pwmStyle.css" rel="stylesheet" type="text/css" media="screen"> 
+  <link media="only screen and (max-device-width: 480px)" href="/pwm/resources/pwmMobileStyle.css" type="text/css" rel="stylesheet"> 
+  <link media="only screen and (max-device-width: 480px)" href="/pwm/resources/themes/custom/pwmMobileStyle.css" type="text/css" rel="stylesheet"> 
+  <link href="/pwm/resources/dojo/dijit/themes/tundra/tundra.css" rel="stylesheet" type="text/css"> 
+  <script type="text/javascript" src="/pwm/resources/dojo/dojo/dojo.js"></script> 
+  <script type="text/javascript" src="/pwm/resources/dojo/dijit/dijit.js"></script> 
+  <script type="text/javascript" src="/pwm/resources/pwmHelper.js"></script> 
+  <script type="text/javascript">
+        
+        PWM_GLOBAL['pwmFormID'] = 'k9if1Ij8GUCwmSBnt62KzbpjSH2P65fU14bd8982365hstdmh';
+        
+        PWM_GLOBAL['setting-showHidePasswordFields'] =true;
+        
+        PWM_GLOBAL['url-logout'] = "/pwm/public/Logout?idle=true";
+        PWM_GLOBAL['url-command'] = "/pwm/public/CommandServlet";
+        PWM_GLOBAL['url-resources'] = "/pwm/resources";
+        PWM_GLOBAL['url-rest-private'] = "/pwm/private/rest";
+        PWM_GLOBAL['url-rest-public'] = "/pwm/public/rest";
+    </script> 
+ </head> 
+ <body onload="pwmPageLoadHandler();getObject('username').focus();" class="tundra"> 
+  <div id="wrapper"> 
+   <div id="header"> 
+    <div id="header-company-logo"></div> 
+    <div id="header-page">
+      Forgotten Password 
+    </div> 
+    <div id="header-title">
+      Password Self Service 
+    </div> 
+   </div> 
+   <div id="centerbody"> 
+    <p>If you have forgotten your password, follow the prompts to reset your password. If you have not setup your password responses previously, you will not be able to complete this process. For assistance, please contact the University Technology Service Center at (973) 408-4357 or at helpdesk@drew.edu.</p>
+    <p></p>To start, please enter your ulogin ID.
+    <p></p> 
+    <form action="ForgottenPassword" method="post" enctype="application/x-www-form-urlencoded" name="searchForm" onsubmit="handleFormSubmit('submitBtn',this);return false" onreset="handleFormClear();return false;" id="searchForm"> 
+     <span id="message" class="message">&nbsp;</span> 
+     <div id="capslockwarning" style="display:none;">
+      CAPS LOCK is on
+     </div> 
+     <h2><label for="username">uLogin ID</label></h2> 
+     <input type="search" id="username" name="username" class="inputfield" value=""> 
+     <div id="buttonbar"> 
+      <input type="hidden" name="processAction" value="search"> 
+      <input type="submit" class="btn" name="search" value="Search" id="submitBtn"> 
+      <button style="visibility:hidden;" name="button" class="btn" id="button_cancel" onclick="window.location='/pwm/public/CommandServlet?processAction=continue';return false"> Cancel </button> 
+      <script type="text/javascript">getObject('button_cancel').style.visibility = 'visible';</script> 
+      <input type="hidden" name="pwmFormID" value="k9if1Ij8GUCwmSBnt62KzbpjSH2P65fU14bd8982365hstdmh"> 
+     </div> 
+    </form> 
+   </div> 
+   <br class="clear"> 
+  </div> 
+  <div id="footer"> 
+   <span class="idle_status" id="idle_status"> &nbsp; </span> 
+   <br> 104.52.231.160 
+   <script type="text/javascript"> 
+        var localeInfo = {};
+        localeInfo[''] = ''; localeInfo['cs'] = 'Czech'; localeInfo['de'] = 'German'; localeInfo['es'] = 'Spanish'; localeInfo['fi'] = 'Finnish'; localeInfo['fr'] = 'French'; localeInfo['iw'] = 'Hebrew'; localeInfo['it'] = 'Italian'; localeInfo['nl'] = 'Dutch'; localeInfo['pl'] = 'Polish'; localeInfo['pt'] = 'Portuguese'; localeInfo['sk'] = 'Slovak'; localeInfo['tr'] = 'Turkish'; 
+        document.write('| <span id="localeSelectionMenu">English</span>');
+        startupLocaleSelectorMenu(localeInfo, 'localeSelectionMenu');
+    </script> 
+   <style type="text/css"> 
+        
+        
+        .flagLang_en { background-image: url(/pwm/resources/flags/languages/en.png); }
+        
+        
+        .flagLang_cs { background-image: url(/pwm/resources/flags/languages/cs.png); } 
+        
+        .flagLang_de { background-image: url(/pwm/resources/flags/languages/de.png); } 
+        
+        .flagLang_es { background-image: url(/pwm/resources/flags/languages/es.png); } 
+        
+        .flagLang_fi { background-image: url(/pwm/resources/flags/languages/fi.png); } 
+        
+        .flagLang_fr { background-image: url(/pwm/resources/flags/languages/fr.png); } 
+        
+        .flagLang_iw { background-image: url(/pwm/resources/flags/languages/iw.png); } 
+        
+        .flagLang_it { background-image: url(/pwm/resources/flags/languages/it.png); } 
+        
+        .flagLang_nl { background-image: url(/pwm/resources/flags/languages/nl.png); } 
+        
+        .flagLang_pl { background-image: url(/pwm/resources/flags/languages/pl.png); } 
+        
+        .flagLang_pt { background-image: url(/pwm/resources/flags/languages/pt.png); } 
+        
+        .flagLang_sk { background-image: url(/pwm/resources/flags/languages/sk.png); } 
+        
+        .flagLang_tr { background-image: url(/pwm/resources/flags/languages/tr.png); } 
+        
+    </style> 
+   <script type="text/javascript">
+        PWM_STRINGS['Button_Logout'] = "Logout";
+        PWM_STRINGS['Display_IdleTimeout'] = "Idle Timeout:";
+        PWM_STRINGS['Display_Day'] = "day";
+        PWM_STRINGS['Display_Days'] = "days";
+        PWM_STRINGS['Display_Hour'] = "hour";
+        PWM_STRINGS['Display_Hours'] = "hours";
+        PWM_STRINGS['Display_Minute'] = "minute";
+        PWM_STRINGS['Display_Minutes'] = "minutes";
+        PWM_STRINGS['Display_Second'] = "second";
+        PWM_STRINGS['Display_Seconds'] = "seconds";
+        PWM_STRINGS['Display_PleaseWait'] = "Please Wait...";
+        PWM_STRINGS['Display_IdleWarningTitle'] = "Idle Timeout";
+        PWM_STRINGS['Display_IdleWarningMessage'] = "Your browser session is about to timeout.  Please click anywhere on this page to resume.";
+        PWM_STRINGS['Display_CommunicationError'] = "Unable to communicate with server.  Continue when ready.";
+        PWM_STRINGS['Display_LeaveDirtyPasswordPage'] = "If you leave this page, your password will not be changed.";
+        PWM_STRINGS['Button_Hide'] = "Hide Passwords";
+        PWM_STRINGS['Button_Show'] = "Show Passwords";
+        PWM_STRINGS['Button_Cancel'] = "Cancel";
+        PWM_STRINGS['Button_More'] = "More";
+        PWM_STRINGS['Display_CheckingPassword'] = "Checking Password....";
+        PWM_STRINGS['Display_PasswordPrompt'] = "Please type your new password";
+        PWM_STRINGS['url-changepassword'] = "ChangePassword";
+        dojo.addOnLoad(function(){var img = new Image();img.src='/pwm/resources/wait.gif'});
+        dojo.require("dijit.Dialog");
+    </script> 
+   <script type="text/javascript">
+        dojo.addOnLoad(function(){
+            initCountDownTimer(600);
+        });
+        dojo.addOnUnload(function(){
+            dojo.xhrGet({
+                url: PWM_GLOBAL['url-command'] + "?processAction=pageLeaveNotice&pwmFormID=" + PWM_GLOBAL['pwmFormID'],
+                sync: true,
+                load: function() {},
+                error: function() {}
+            });
+        });
+    </script> 
+  </div>   
+ </body>
+</html>

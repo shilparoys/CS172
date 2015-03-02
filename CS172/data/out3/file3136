@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <script type="text/javascript" charset="utf-8" src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script> 
+  <script type="text/javascript" charset="utf-8" src="/js112/jquery-ui-1.9.2.custom.min.js"></script> 
+  <meta content="yes" name="apple-mobile-web-app-capable"> 
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"> 
+  <meta content="minimum-scale=1.0, width=device-width, maximum-scale=4.0, user-scalable=yes" name="viewport"> 
+  <link href="/iWebKit5.04/Framework/css/style.css" rel="stylesheet" media="screen" type="text/css"> 
+  <link rel="stylesheet" href="/css112/mobile.css" type="text/css" media="handheld, all"> 
+  <script src="/iWebKit5.04/Framework/javascript/functions.js" type="text/javascript"></script> 
+  <meta name="robots" content="noindex,nofollow"> 
+  <title>Ask a Librarian</title> 
+  <style>
+			/* Webkit overrides. */
+					body {
+						background:-webkit-gradient(linear,left top,right top,from(#D1D0B6),color-stop(71%, #D1D0B6),color-stop(72%, #D7D6C0),to(#D7D6C0));
+						-webkit-touch-callout:default;
+						font-family: Verdana, Arial;
+						font-size: 10px;
+					}
+					.textbox { margin: 7px; font-size: 10pt; }
+					#title { padding: 0px; padding-top: 5px; position: relative; height: 100%; border: 0px solid #00ff00; line-height: 40px;}
+					#topbar { height: 45px; width: auto; }
+					/* search results styles */
+					#topbar{
+						position:relative;
+						left:0;
+						top:0;
+						width:auto;
+						background:-webkit-gradient(linear,0% 0%,0% 100%,from(#DFDECD),color-stop(3%,#CDCCB0),color-stop(50%,#B3B088),color-stop(51%,#AFAC81),color-stop(97%,#A2A06D),to(#42422D));
+						margin-bottom:13px
+					}
+					input[type="radio"] {-webkit-appearance: radio; position: relative; margin: 7px; width: 10px; height: auto;}
+					
+					/* jquery autocomplete 
+					.ui-widget { font-size: .7em; }*/		</style> 
+  <script>
+			var gIID = "314";
+			
+			//action for browse dropdown
+			function nav(elt, action) {
+				var options = elt.options;
+				document.location.href = '/mobile.php?action=' + action + '&tid=' + elt.value;
+			}
+			
+			//validate question form
+			function askQmobile(err_q, err_email, err_qlen, err_demo, failure){
+				if (jQuery('#pquestion').val() == "" && jQuery('#pdetails').val() == ""){ alert(err_q); return false; }
+				var validate_type = 0; //0=email 1=phone
+				if (jQuery('#preptype').length > 0) {
+					v = jQuery("#preptype").val();
+					v = v.split('##');
+					validate_type = v[0];
+				}				
+				var emailRegex = /^(['a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,6})+$/i;
+				var smsregex = /^\+?[0-9]{10,}$/;
+				var emailask = jQuery.trim(jQuery('#pemail').val());
+				if (validate_type == 1){
+					//emailask = emailask.replace(/\D/g,'');
+					//if (!emailask.match(smsregex)) {	alert(err_email); return false; }
+				} else {
+					if (!emailask.match(emailRegex)) {	alert(err_email); return false; }
+				}
+				
+				var incomplete = 0;
+				jQuery("#askqform input:text.required").each(function(i){
+					if (jQuery(this).val() == "") {
+						incomplete = 1;
+					}
+				});
+				jQuery("#askqform select.required").each(function(i){
+					if (jQuery(this).val() == 0) {
+						incomplete = 1;
+					}
+				});
+				if (incomplete == 1) { alert(err_demo); return false; }
+								
+				//return true;
+				jQuery('#qsubmitbutton').prop('disabled', true);
+				
+				jQuery.post(
+					'/process.php?m=newq',
+					jQuery('#askqform').serialize(),
+					function(data) {
+						var dd_array=data.split("#@#@");
+						if (parseInt(dd_array[0]) > 0) {
+							alert(dd_array[1]);
+							jQuery('#askqform textarea').val('');
+							jQuery('#askqform input:text').val('');
+							jQuery('#askqform select').val(0);
+						} else {
+							alert(failure);
+						}
+						jQuery('#qsubmitbutton').prop('disabled', false);
+					}
+				);
+				
+				
+				return false;
+			}
+			
+			//adjust pemail field/label for varying reponse types
+			function changeResponseType(v) {
+				d = v.split('##');
+				jQuery('#label_pemail').html(d[1]+'<span class="reqnote"> *</span>');
+				if (jQuery('#confem').length > 0) {
+					if (d[0] == 1) {
+						jQuery('#confem').prop('checked', false).prop('disabled', true);
+						jQuery('#confem_f label').css('color', '#aaa');
+					} else {
+						jQuery('#confem').prop('disabled', false);
+						jQuery('#confem_f label').css('color', 'inherit');
+					}
+				}			
+			}
+			
+			//add another file upload field
+			var fileupcount = 1;
+			function addFileUp() {
+				$cur = jQuery('#pfileup'+fileupcount);
+				fileupcount = fileupcount+1;
+				$cur.after('<br/><input type=file class=inputtext name=pfileup'+fileupcount+' id=pfileup'+fileupcount+' />');
+				if (fileupcount == 5) { jQuery('#addfileup').remove(); }
+				return false;
+			}
+						
+			//enable the ask us autocomplete. Call this inside document ready function
+			function enableAutocomplete() {
+				
+				jQuery("#qtext").autocomplete({
+						source: "process_searchitem.php?iid="+gIID,
+						minLength: 3,
+						select: function( event, ui ) {
+							doSearch(ui.item.id, ui.item.label);
+							return false;
+						}
+					});
+			
+			}
+			
+			//when autocomplete option is selected
+			function doSearch(qid, question){
+				var action = '8';	
+				document.location.href = '/mobile.php?action=' + action + '&s=' + question;
+				return false;
+			}
+			
+			
+			//comment via js to avoid spam
+			function addComment(msg, warn){
+				if (jQuery('#cname').val() == "") { alert(warn); return false; }
+				if (jQuery('#cemail').val() == "") { alert(warn); return false; }
+				if (jQuery('#cpost').val() == "") { alert(warn); return false; }
+				jQuery('#comsubmitbut').text('Working...');
+				jQuery.post(
+					'process_comments.php?m=addcomment',
+					jQuery('#commentform').serialize(),
+					function(data){
+						if (data > 0){
+							jQuery('#box_content_commentform').html(msg);
+						} else {
+							alert('Error');
+						}
+					}
+				);
+				return false;
+			}
+			
+			
+			//redo the dialogue as an alert
+			function mwMoreInfo(id) {
+				jQuery('#mwdetails'+id).toggle();
+				return false;
+			}
+			
+			jQuery(document).ready(function () {
+				enableAutocomplete();
+			});
+			
+		</script> 
+ </head> 
+ <body id="mobile_php"> 
+  <div id="topbar"> 
+   <a href="/mobile.php" style="text-decoration: none;">
+    <div id="title">
+     UW Libraries Ask Us
+    </div></a> 
+  </div>
+  <div class="searchbox ui-widget"> 
+   <form id="mainsearch" action="/mobile.php" method="get" style="width: 80%;"> 
+    <input type="text" name="s" id="qtext" value="Type your question keywords, such as: education articles." style="width: 100%;" onfocus="if(this.value=='Type your question keywords, such as: education articles.'){this.value='';}"> 
+    <input type="hidden" name="action" value="8"> 
+   </form> 
+  </div>
+  <span class="graytitle">Browse Answers</span>
+  <ul id="hpbrowse" class="pageitem">
+   <li class="select" style="padding-left: 2px;"><select name="sel_topics" style="font-size: 14px; padding-left: 5px;" onchange="nav(this, '2');"><option value="0">By Topic</option><option value="16964">Checkout/renewals/overdues (51)</option><option value="16965">Computers/technology (25)</option><option value="16963">Articles (21)</option><option value="18460">Where is . . . (14)</option><option value="18462">Other (13)</option><option value="18455">Books (12)</option><option value="18472">Databases (12)</option><option value="18456">Citations (8)</option><option value="27377">accessibility (7)</option><option value="18458">Research help (4)</option><option value="18351">Specialized collections/formats (4)</option><option value="18803">Library Hours (2)</option><option value="18461">Recommend a purchase (2)</option><option value="18459">Study rooms/classrooms (2)</option><option value="18457">Movies/music (1)</option><option value="18807">Maps (1)</option><option value="18454">Alumni or Non-UW (1)</option><option value="31067">Staff Members (1)</option><option value="31378">Public Non-UW Patrons (1)</option></select><span class="arrow"></span></li>
+   <li class="menu"><a href="/mobile.php?action=3"> <span class="name" style="font-size: 14px;">Popular</span> 
+     <div style="font-size: 1px; line-height: 1px; ">
+      &nbsp;
+     </div> <span class="arrow"></span></a></li>
+   <li class="menu"><a href="/mobile.php?action=4"> <span class="name" style="font-size: 14px;">Recent</span> 
+     <div style="font-size: 1px; line-height: 1px; ">
+      &nbsp;
+     </div> <span class="arrow"></span></a></li>
+  </ul>
+  <span class="graytitle">Ways to get help</span>
+  <ul class="pageitem">
+   <li class="textbox"><h4>Text us &nbsp;<img src="http://www-lib.uwyo.edu/img/txt.png" alt="cellphone image" height="" width=""></h4> <h5>Text us at <span class="bold">(307) 460-4336</span></h5> <h4>Live chat &nbsp;<img src="http://www-lib.uwyo.edu/img/chat44.png" alt="chat icon" width="" height=""></h4> <h5>Look for the live chat icon on the right side of your browser window</h5> <h4>Mail us &nbsp;<img src="http://www-lib.uwyo.edu/img/email.png" alt="mailbox" height="" width=""></h4> <p>University of Wyoming Libraries<br> Department 3334,<br> 1000 E. University Ave.<br> Laramie, WY 82071</p> <h4>Phone us &nbsp;<img src="http://www-lib.uwyo.edu/img/phon.png" alt="telephone" height="" width=""></h4> 
+    <div class="tablenom"> 
+     <table class="table table-striped"> 
+      <tbody> 
+       <tr> 
+        <td width="137">Coe Library</td> 
+        <td width="115"><a href="tel:3077662070">307-766-2070</a> or <a href="tel:18004426757">1-800-442-6757</a></td> 
+       </tr> 
+       <tr> 
+        <td width="137">Media Collection</td> 
+        <td width="115"><a href="tel:3077665531">307-766-5531</a></td> 
+       </tr> 
+       <tr> 
+        <td>American Heritage Center</td> 
+        <td><a href="tel:3077663756">307-766-3756</a></td> 
+       </tr> 
+       <tr> 
+        <td>Geology Library</td> 
+        <td><a href="tel:3077663374">307-766-3374</a></td> 
+       </tr> 
+       <tr> 
+        <td>Hebard Collection</td> 
+        <td><a href="tel:3077666245">307-766-6245</a></td> 
+       </tr> 
+       <tr> 
+        <td>Learning Resource Center</td> 
+        <td><a href="tel:3077662527">307-766-2527</a></td> 
+       </tr> 
+       <tr> 
+        <td>Library Annex</td> 
+        <td><a href="tel:3077666539">307-766-6539</a></td> 
+       </tr> 
+       <tr> 
+        <td>Law Library</td> 
+        <td><a href="tel:3077665737">307-766-5737</a></td> 
+       </tr> 
+      </tbody> 
+     </table> 
+    </div> <h5>Reference services are available in all UW libraries.</h5> <p></p> 
+    <figure>
+     <a href="http://www-lib.uwyo.edu/about/hours/"><img src="http://www-lib.uwyo.edu/img/hours-136.png" alt="hours" title="click to see operation hours for all branches" height="" width="">
+      <figcaption>
+       Hours
+      </figcaption></a>
+    </figure> <p>&nbsp; <a href="../about/dir/"></a></p> 
+    <figure>
+     <a href="http://www-lib.uwyo.edu/about/dir/"><img src="http://www-lib.uwyo.edu/img/dir-136.png" alt="contacts" title="find personnel phone numbers" height="" width="">
+      <figcaption>
+       Contacts directory
+      </figcaption></a>
+    </figure> 
+    <div class="clearfix"></div></li>
+  </ul>
+  <ul class="pageitem">
+   <li class="menu"><a href="/mobile.php?action=7"> <span class="name" style="font-size: 14px;">Live Chat</span> 
+     <div style="font-size: 1px; line-height: 1px; ">
+      &nbsp;
+     </div> <span class="arrow"></span></a></li>
+  </ul>
+  <ul class="pageitem">
+   <li class="textbox"><strong>Submit Your Question</strong></li>
+   <li class="textbox">Email us your question</li>
+  </ul>
+  <form name="askqform" id="askqform" method="post" onsubmit="return askQmobile('Please enter a question.', 'Invalid email address.', 'Question must not be longer than 150 characters.', 'Please answer all required questions.', 'Error submitting your question. Please reload the page and try again.');">
+   <ul class="pageitem">
+    <li class="textbox"><a name="questionform"></a><input type="hidden" name="instid" value="314"> <input type="hidden" name="qlog" value="0"> <input type="hidden" name="pu" value=""> <input type="hidden" name="source" value="3"><label for="pquestion">Question:</label><br><textarea name="pquestion" id="pquestion" class="textinput"></textarea></li> 
+    <li class="textbox" id="pdetails_f"><label for="pdetails">More Detail/Explanation:</label><br><textarea name="pdetails" id="pdetails" class="textinput"></textarea></li>
+    <li></li>
+    <li class="textbox"><label for="pemail">Email<span class="reqnote"> *</span></label> <input class="textinput required" type="text" id="pemail" name="pemail" value=""></li>
+    <li class="textbox"><label for="pname">Name</label> <input class="textinput" type="text" id="pname" name="pname" value=""></li>
+    <li class="select" style="padding-left: 2px;"><select class=" required" name="val1" id="val1"><option value="0">Status  *</option><option value="1">UW student, faculty, or staff</option><option value="2">Guest</option></select><span class="arrow"></span></li>
+    <input type="hidden" name="val5" id="val5" value="####">
+    <li class="textbox" id="confem_f"><input type="checkbox" name="confem" id="confem" value="1"> <label class="radiolabel" for="confem">Receive an email confirmation of your submission.</label></li>
+    <li class="textbox">Fields marked with <span class="reqnote"> *</span> are required.<br><br><button type="submit" id="qsubmitbutton">Submit Your Question</button></li>
+   </ul>
+   <div id="mobile_footer_nav"> 
+    <a id="footer_top_link" href="#">^ Top</a>&nbsp;&nbsp;
+    <span id="footer_top_link_spacer">|</span>&nbsp;&nbsp;
+    <a id="footer_home_page_link" href="/mobile.php">Home</a>&nbsp;&nbsp;
+    <span id="footer_home_page_link_spacer">|</span>&nbsp;&nbsp;
+    <a id="footer_full_site_link" href="/index.php?full_site=1">Full Site</a> 
+   </div> 
+   <div id="mobile_footer"> 
+    <div style="text-align: center;"> 
+     <div id="footer_powered_by">
+      Powered by 
+      <a href="http://www.springshare.com">Springshare</a> and iWebKit.
+     </div> 
+     <div id="footer_rights">
+      All rights reserved.
+     </div> 
+     <div id="footer_support_link">
+      <a href="http://ask.springshare.com/ask">Report a tech support issue.</a>
+     </div> 
+    </div> 
+   </div>   
+  </form>
+ </body>
+</html>

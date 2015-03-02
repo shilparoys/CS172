@@ -1,0 +1,551 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" class="no-js">
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+  <link rel="shortcut icon" type="image/x-icon" href="/ui/custom/default/collection/default/images/favicon.ico?version=1403571758"> 
+  <meta name="google-site-verification" content=""> 
+  <title>USC Libraries Digital Collections</title> 
+  <script type="text/javascript">
+    var cdmHttps = 'off';
+    var cdmInsecureWebsitePort = '';
+    var cdmSecureWebsitePort = '';
+  </script> 
+  <link rel="stylesheet" type="text/css" href="/ui/custom/default/collection/default/css/main.css?version=1424380795"> 
+  <link type="text/css" href="/utils/getstaticcontent/file/js~bt~jquery.bt.css/type/stylesheet" rel="stylesheet"> 
+  <link type="text/css" href="/utils/getstaticcontent/file/js~skins~tango~skin.css/type/stylesheet" rel="stylesheet"> 
+  <link type="text/css" href="/utils/getstaticcontent/file/js~skins~cdm~skin.css/version/1414128589/type/stylesheet" rel="stylesheet"> 
+  <style>
+    .line_breaker, pre {
+        white-space: pre;
+        white-space: pre-wrap;
+        white-space: pre-line;
+        white-space: -pre-wrap;
+        white-space: -o-pre-wrap;
+        white-space: -moz-pre-wrap;
+        white-space: -hp-pre-wrap;
+        word-wrap: break-word;
+    } 
+  </style> 
+  <!-- NEW JQUERY and UI --> 
+  <script type="text/javascript" src="/utils/getstaticcontent/file/js~jquery_1.7.2~jquery-1.7.2.js/type/javascript"></script> 
+  <script type="text/javascript" src="/utils/getstaticcontent/file/js~jquery_1.7.2~jquery-ui-1.8.20.js/type/javascript"></script> 
+  <script type="text/javascript" src="/utils/getstaticcontent/file/js~jquery-ui-togglebox.js/type/javascript"></script> 
+  <script type="text/javascript" src="/utils/getstaticcontent/file/js~jquery.hoverIntent.minified.js/type/javascript"></script> 
+  <script type="text/javascript" src="/utils/getstaticcontent/file/js~jquery.scrollTo-min.js/type/javascript"></script> 
+  <script type="text/javascript" src="/utils/getstaticcontent/file/js~default.js/version/1414128589/type/javascript"></script> 
+  <script type="text/javascript" src="/utils/getstaticcontent/file/js~modernizr-2.6.3.js/type/javascript"></script> 
+  <!--[if lt IE 10]>
+		<script type="text/javascript" src="/utils/getstaticcontent/file/js~cdmOldInternetExplorerChecker.js/type/javascript"></script>
+	<![endif]--> 
+  <script type="text/javascript" src="/utils/getstaticcontent/file/js~bt~jquery.bt.min.js/type/javascript"></script> 
+  <script type="text/javascript" src="/utils/getstaticcontent/file/js~quickview.js/type/javascript"></script> 
+  <!--[if IE]>
+		<script type="text/javascript" src="/ui/cdm/default/collection/default/js/excanvas.compiled.js"></script>
+	<![endif]--> 
+  <!--[if IE 7]>
+		<link href="/ui/cdm/default/collection/default/css/ie7.css" type="text/css" rel="stylesheet" />
+	<![endif]--> 
+  <script type="text/javascript" src="/ui/custom/default/collection/default/js/main.js">//</script> 
+  <script type="text/javascript" src="/ui/custom/default/collection/default/js/jquery.cookie.js">//</script> 
+  <script type="text/javascript" src="/ui/custom/default/collection/default/js/usc.v2.js">//</script> 
+  <link type="text/css" href="/ui/custom/default/collection/default/css/custom/all.v2a.css" rel="stylesheet"> 
+ </head> 
+ <body> 
+  <a name="top"></a> 
+  <!-- START CUSTOM CONTENT --> 
+  <!-- DL Home page --> 
+  <script type="text/javascript">
+$(document).ready( function() {
+	//help link
+	$("#help_link").click( function(e) {
+		e.preventDefault();
+		helpLink($(this).attr("href"));
+	});
+  //Search box - store option
+  //change collection(s) when check/uncheck store checkbox
+  $("#storeOptionHome").change(function() {
+    $("#search_coll").val($(this).prop("checked") ? "collection/" + $(this).val() + "/" : "");
+  });
+});
+</script> 
+  <style type="text/css">
+/* Qualtrics side tab */
+/*
+#qfeedback{
+background: url(http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/images/feedback-tab.png) no-repeat; 
+left:0px; 
+top:30%;height:78px;width:30px;margin:0;padding:0;position:fixed;z-index:5000;}
+#qfeedback:hover { background: url(http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/images/feedback-tab-hover.png) no-repeat; }
+#qfeedback a{display:block;width:100%;height:100%;}
+*/
+</style> 
+  <div class="page"> 
+   <div id="wrapper" class="container-fluid"> 
+    <div id="header"> 
+     <div id="custom_header"> 
+      <div id="usclibHeader"> 
+       <div id="usclibContainer"> 
+        <h1><a href="http://www.usc.edu/libraries">USC Libraries</a></h1> 
+        <h2><a href="http://www.usc.edu">University of Southern California</a></h2> 
+       </div> 
+      </div> 
+      <div id="usclibPagehead"> 
+       <h2><a href="/cdm/">USC Digital Library</a></h2> 
+      </div> 
+     </div> 
+     <div class="clear"></div> 
+     <div class="promo"> 
+      <div id="nav_top_left"> 
+       <ul class="nav"> 
+        <li class="nav_li"><a href="/cdm/" class="selected">
+          <div class="nav_top_left_text_container">
+           Home
+          </div></a></li>
+        <li class="nav_li"><a href="/cdm/collections">
+          <div class="nav_top_left_text_container">
+           Collections
+          </div></a></li>
+        <li class="nav_li"><a href="/cdm/store">
+          <div class="nav_top_left_text_container">
+           Store
+          </div></a></li>
+        <li class="nav_li"><a href="/cdm/about">
+          <div class="nav_top_left_text_container">
+           About
+          </div></a></li> 
+       </ul> 
+      </div> 
+      <div class="promo-holder"> 
+       <ul class="nav"> 
+        <li tabindex="1005" id="login_link_li"> <span class="currentUser" id="currentUser">--</span> <a id="login_link" href="/login/">Log in</a> </li> 
+        <li tabindex="1006" id="favorites_link_li"> <a id="favorites_link" href="/cdm/favorites">Favorites</a> </li> 
+        <li tabindex="1007" id="help_link_li"> <a id="help_link" href="/cdm/helpdocs">Help</a> </li> 
+       </ul> 
+       <form id="search-form" class="search-form" method="get" action="/cdm/search"> 
+        <fieldset> 
+         <input id="search_term" class="text" type="text" placeholder="SEARCH COLLECTIONS"> 
+         <input id="search_btn" class="submit" type="submit" value="Search"> 
+         <input id="search_coll" type="hidden" value=""> 
+        </fieldset> 
+       </form> 
+       <div class="search-options"> 
+        <div id="storeCheckboxHome"> 
+         <label title="Find items available for purchase online"><input id="storeOptionHome" type="checkbox" value="p15799coll170!p15799coll44"> Search Store</label> 
+        </div> 
+        <span class="add-search"><a id="search_content_adv_link_usc" href="/cdm/advancedsearch">Advanced Search</a></span> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="gallery"> 
+     <div class="gallery-holder"> 
+      <div class="buttons"> 
+       <div> 
+        <a class="prev" href="#">prev</a> 
+        <a class="next" href="#">next</a> 
+       </div> 
+      </div> 
+      <ul> 
+       <li> 
+        <div class="text-holder"> 
+         <p>Los Angeles Museum of Natural History showing displays of prehistoric skeletons, ca. 1920</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll65/id/9926">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>USC football players during a game, 1972</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll104/id/889">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Hollywood and Vine, Hollywood, California, ca. 1960</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll77/id/285">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Union Oil pumpkin…Halloween decoration, 1952</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll44/id/45141">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Coliseum crowds, ca. 1940</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll170/id/21012">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Boy's Middle School, Kongju or Konju, [s.d.]</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll48/id/737">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>A group of trained lions standing on a multi-level platform behind their trainer, at Gay's Lion Farm. Ca. 1936</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll65/id/21944">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>A view of a steamboat in New Orleans, Louisiana, [s.d.]</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll65/id/20842">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Columba capite albo</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll58/id/6597">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Kankai ibun, Alternate title: Description and travel of circumnavigation of seas, [1807], vol. 6.</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll58/id/19865">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Exterior view of houses moved off their foundations, San Francisco, 1906</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll65/id/23534">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Lili Saint Cyr trial, 1951</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll44/id/27706">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Amelia Earhart and Loretta Schimmoler standing in front of an airplane, 1937</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll65/id/11732">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>View of an outdoor film set at Vitagraph Studios, showing a film shoot in progress, 1917</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll65/id/11341">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Men sifting through rubble of L.A. Times offices after bombing, October 1910</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll65/id/4395">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Portrait of a California homesteader receiving the patent to her land, 1895-1905</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll65/id/76">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Woman standing with a car at the base of a mountain, Canada, ca. 1930-1939</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll65/id/21152">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Swim school with underwater window, 1952</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll44/id/30439">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Hikers on Mount Lowe, Altadena, [s.d.]</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll65/id/15911">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Los Angeles Police Bicycle Squad in the Mounted Police Parade on Broadway, north of Fifth, May 24, 1904</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll65/id/25484">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Summari[a]e disputationes in universam Aristotelis dialecticam</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll58/id/19157">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>May Company employees urge management to end discriminatory hiring, circa 1946, Los Angeles</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll102/id/1491">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Los Angeles Star, vol. 3, no. 17, September 3, 1853</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll68/id/1599">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Exterior view of the Los Angeles International Airport, looking toward the tower, showing parking lots, 1971</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll65/id/22648">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Plank roads and iron telephone poles stretching across the sand dunes, Imperial Valley, ca.1920</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll65/id/7196">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Portrait of the Apache Indian Chief Geronimo, ca.1880-1884</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll65/id/409">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Eight people including Professor Holder displaying their catch of large fish on Catalina Island, ca.1905</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll65/id/10772">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Portrait of celebrated literary and cultural figure of Los Angeles, Charles F. Lummis, [s.d.]</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll65/id/13231">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>1964 Gaines Scholar Athlete Award, Los Angeles, ca. 1964</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll102/id/1820">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Charlotta Bass at a celebration with the staff of the California Eagle, Los Angeles, ca. 1951-1960</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll102/id/400">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Cavern-temple of Elephanta</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll58/id/6544">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Currus pharaonis et exercitum eius proiecit in mare Adiutor ...</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll58/id/504">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Pocket diary owned by Isaiah G. Hacker, a soldier in the Union Army during the American Civil War, 1864</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll58/id/18514">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Zur Farbenlehre. Erklärung der zu Goethe's Farbenlehre gehörigen Tafeln</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll58/id/192">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Oil wells in Signal Hill, at Long Beach, ca.1925</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll65/id/11723">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Lake Arrowhead fire (forest), 1953</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll44/id/73224">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Record beach crowd at Santa Monica and Long Beach, 1957</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll44/id/61989">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>El Clamor Publico, vol.II, no.5, Julio 19 de 1856</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll70/id/563">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Valck World Map, 1714</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll58/id/30233">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Erna Finci Viterbi and her Mother, Among refugees from Nazi-occupied Europe, Switzerland, 1944</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll117/id/194968">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Group of Japanese men dressed in ceremonial clothing, Japan, ca. 1920-1940</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll123/id/11207">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Masai warrior, Tanzania, ca. 1900-1914</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll123/id/35925">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Herbert G. Klein with Lyndon Johnson and Tom Johnson</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll169/id/62">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>"A Man in Four Million"</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll75/id/1896">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>WPA Land use survey map for the City of Los Angeles, book 4 (Van Nuys District to Garvanza District)</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll120/id/635">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Marcella Trujillo &amp; Alurista at the Festival de Flor y Canto, Los Angeles, 1973</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll79/id/81">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Pulemet, no. 5, 1906</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll1/id/1934">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Adskaia pochta, no. 2, May 1906</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll3/id/47">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Rice bowl fragment; Excavated from Feature 32, Union Station area, Los Angeles, CA, 1989-1991.</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll73/id/761">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>East elevation, elevation of gate and fence, plan of beams over terrace, half plan of rafters</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll61/id/859">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Woman adjusting flowers as baby stands by incense, 1999</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll52/id/910">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Catching a crocodile</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll123/id/35638">MORE</a> 
+        </div> 
+        <div class="text-holder"> 
+         <p>Masai warrior, Tanzania, ca. 1900-1914</p> 
+         <a class="more" href="/cdm/ref/collection/p15799coll123/id/35925">MORE</a> 
+        </div> </li> 
+      </ul> 
+     </div> 
+    </div> 
+    <div> 
+     <div class="row"> 
+      <div class="col-xs-12 col-sm-7 col-md-7"> 
+       <div class="box"> 
+        <h1>News &amp; Features</h1> 
+        <div class="post"> 
+         <h2><a target="_blank" href="http://www.kcet.org/updaily/socal_focus/history/la-as-subject/how-the-15th-amendment-came-to-los-angeles.html">How the 15th Amendment Came to Los Angeles</a></h2> 
+         <p>The amendment gave black Angelenos the right to vote, but the county clerk at first refused to register them anyway.</p> 
+         <a class="more" target="_blank" href="http://www.kcet.org/updaily/socal_focus/history/la-as-subject/how-the-15th-amendment-came-to-los-angeles.html">Learn More</a> 
+        </div> 
+        <div class="post"> 
+         <h2><a target="_blank" href="http://www.kcet.org/updaily/socal_focus/history/la-as-subject/elysian-parks-incredible-moving-mountain-of-1937.html">Elysian Park's Incredible Moving Mountain of 1937</a></h2> 
+         <p>A slow-motion, 1.5-million-ton landslide drew huge crowds of spectators.</p> 
+         <a class="more" target="_blank" href="http://www.kcet.org/updaily/socal_focus/history/la-as-subject/elysian-parks-incredible-moving-mountain-of-1937.html">Learn More</a> 
+        </div> 
+        <div class="post"> 
+         <h2><a target="_blank" href="http://www.kcet.org/updaily/socal_focus/history/la-as-subject/a-freeway-bridge-to-nowhere.html">At First and Beverly, A Freeway Bridge Out of Nowhere</a></h2> 
+         <p>The First Street-Beverly Boulevard Viaduct is something of an infrastructural anomaly -- a 900-foot bridge better suited for a ...</p> 
+         <a class="more" target="_blank" href="http://www.kcet.org/updaily/socal_focus/history/la-as-subject/a-freeway-bridge-to-nowhere.html">Learn More</a> 
+        </div> 
+        <div class="post"> 
+         <h2><a target="_blank" href="http://www.kcet.org/updaily/socal_focus/history/la-as-subject/how-santa-monicas-third-street-became-a-promenade.html">How Santa Monica's Third Street Became a Promenade</a></h2> 
+         <p>Since 1965, the pedestrian rather than the automobile has reigned over a three-block stretch of downtown Santa Monica.</p> 
+         <a class="more" target="_blank" href="http://www.kcet.org/updaily/socal_focus/history/la-as-subject/how-santa-monicas-third-street-became-a-promenade.html">Learn More</a> 
+        </div> 
+       </div> 
+       <div class="box"> 
+        <h1>Essays &amp; Interpretations</h1> 
+        <p>Scholarly and interpretive works exploring USCDL collections.</p> 
+        <div class="row"> 
+         <img class="img-responsive col-xs-4 col-sm-4 col-md-4" src="http://digitallibrary.usc.edu/utils/ajaxhelper/?CISOROOT=p15799coll123&amp;CISOPTR=7502&amp;action=2&amp;DMSCALE=8.75&amp;DMWIDTH=250&amp;DMHEIGHT=178&amp;DMX=0&amp;DMY=0&amp;DMROTATE=0" alt="visual interpreters"> 
+         <img class="img-responsive col-xs-4 col-sm-4 col-md-4" src="http://digitallibrary.usc.edu/utils/ajaxhelper/?CISOROOT=p15799coll123&amp;CISOPTR=4219&amp;action=2&amp;DMSCALE=8.75&amp;DMWIDTH=250&amp;DMHEIGHT=178&amp;DMX=0&amp;DMY=0&amp;DMROTATE=0" alt="visual interpreters"> 
+         <img class="img-responsive col-xs-4 col-sm-4 col-md-4" src="http://digitallibrary.usc.edu/utils/ajaxhelper/?CISOROOT=p15799coll123&amp;CISOPTR=6730&amp;action=2&amp;DMSCALE=8.75&amp;DMWIDTH=250&amp;DMHEIGHT=179&amp;DMX=0&amp;DMY=0&amp;DMROTATE=0" alt="visual interpreters"> 
+        </div> 
+        <p><a class="more" href="/cdm/interpreters">Learn More</a></p> 
+       </div> 
+      </div> 
+      <div class="col-xs-12 col-sm-5 col-md-5"> 
+       <div class="box"> 
+        <h1>Digital Library Store</h1> 
+        <p><a href="/cdm/store">Buy gifts and fine art prints</a></p> 
+        <div class="row"> 
+         <div class=""> 
+          <a href="/cdm/store"><img class="col-xs-4 col-sm-4 col-md-4 img-responsive" src="/ui/custom/default/collection/default/resources/custompages/store/02_curtis_vol_02cover_250w.jpg" alt="Edward Sheriff Curtis, The North American Indian"></a> 
+         </div> 
+         <div class=""> 
+          <a href="/cdm/store"><img class="col-xs-4 col-sm-4 col-md-4 img-responsive" src="/ui/custom/default/collection/default/resources/custompages/store/usc_football2_250w.jpg" alt="Univerisity of Southern California University Archives"></a> 
+         </div> 
+         <div class=""> 
+          <a href="/cdm/store"><img class="col-xs-4 col-sm-4 col-md-4 img-responsive" src="/ui/custom/default/collection/default/resources/custompages/store/goethe_250w.jpg" alt="Johann Wolfgang Von Goethe, Zur FarbenLehre"></a> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="row" style="margin-bottom:1.5em;"> 
+        <div class="col-md-12"> 
+         <a class="twitter-timeline" href="https://twitter.com/USCdiglib" data-widget-id="273568530933366786">Tweets by @USCdiglib</a> 
+         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script> 
+        </div> 
+       </div> 
+       <div class="row"> 
+        <div class="col-md-12" id="pinterest-widget" style="margin-bottom:1.5em;"> 
+         <a data-pin-do="embedUser" href="http://pinterest.com/uscdiglib/" data-pin-board-width="350"></a> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <!-- background container --> 
+   <ul id="bg"> 
+    <li class="active"><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/CHS-5699.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/uaic-foo-003_1.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/pcard-print-pub-pc-45a.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/EXM-N-9730-002_1.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/DW-910-68-4-ISLA.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/Taylor_box21num38.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/CHS-47941.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/CHS-47289.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/rbm-Catesby-v1-pl25.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/RBM-910-41-O88k-v6_026.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/CHS-39906.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/EXM-N-9416-036_19.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/CHS-35498.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/CHS-31135.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/CHS-31104.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/CHS-7498.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/CHS-47502.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/EXM-N-9500-002_1.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/CHS-36395.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/CHS-6386.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/RBM-Z105-5-C67_091.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/scl-mss064-0393_1.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/STAR_076.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/CHS-31080.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/CHS-6299.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/CHS-3573.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/CHS-12970.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/CHS-6669.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/scl-mss064-0494_1.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/scl-mss064-0033_1.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/rbm-ousley-travels-1819.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/RBM-Z105-5-C384_21.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/rbm-hacker-diary-1864_047.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/RBM-QC495-G59-1810-V3_49.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/CHS-41131.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/EXM-N-9989-004_1.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/EXM-N-12166-001_1.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/ECLAM-1856-07-12_3.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/PB-Valck-Map-1714.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/VIT000067_1.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/MFB-Japan-MenGrps-003.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/IMP-LPZ-CC_28P.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/klein-a-201-012-001_1.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/JARDA-8-6.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/WPA-M-4-36_1.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/florcanto-a-flor_redo069.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/SJP-PULEMET-1906-V00-N05_p02.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/SJP-APOCHTA-1906-V00-N02_p04.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/CHSSC-UPT-3399.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/GGUSC-FordF-103.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/soul-la78-31.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/impa-abmpix-18381.jpg" width="1139" alt="image description" height="812"></li> 
+    <li><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/slideshowimg/IMP-LPZ-CC_28P.jpg" width="1139" alt="image description" height="812"></li> 
+   </ul> 
+  </div> 
+  <!-- Qualtrics feedback link
+<p id="qfeedback">
+<a onclick="window.open(this.href,'feedbackWin','width=900,height=600,menubar=0,toolbar=0,scrollbars=yes'); return false;" target="_blank" href="https://usclibraries.qualtrics.com/SE/?SID=SV_5uW9BWE4Y9sn2p7" title="Share your comments on the new website"></a>
+</p>
+-->
+  <!-- END CUSTOM CONTENT --> ﻿
+  <div id="footer-top-gradient"></div> 
+  <div id="footer" class="footer-usc"> 
+   <div class="footer-holder"> 
+    <div class="col" style="width:32%"> 
+     <h4>Collaborative Projects</h4> 
+     <ul> 
+      <li><a href="http://digitallibrary.usc.edu/bmpix">Basel Mission Image Archive</a></li> 
+      <li><a href="http://www.usc.edu/dept/architecture/greeneandgreene/">Greene &amp; Greene Virtual Archive</a></li> 
+      <li><a href="/cdm/landingpage/collection/p15799coll123">International Mission Photography Archive</a></li> 
+      <li><a href="/cdm/landingpage/collection/p15799coll14">Pentecostal and Charismatic Research Archive</a></li> 
+      <li><a href="/cdm/landingpage/collection/p15799coll1">Russian Satirical Journals</a></li> 
+      <li><a href="http://alumnigroups.usc.edu/archive/">The Trojan Family Archive</a></li> 
+     </ul> 
+    </div> 
+    <div class="col" style="width:32%"> 
+     <h4>USCDL Supporters</h4> 
+     <ul> 
+      <li><a href="http://www.getty.edu">The Getty Foundation</a></li> 
+      <li><a href="http://www.haynesfoundation.org/">The John Randolph Haynes and Dora Haynes Foundation </a></li> 
+      <li><a href="http://www.imls.gov">The Institute for Museum and Library Services</a></li> 
+      <li><a href="http://www.mellon.org">The Andrew W. Mellon Foundation</a></li> 
+      <li><a href="http://www.neh.gov">The National Endowment for the Humanities</a></li> 
+      <li><a href="http://www.templeton.org/">The John Templeton Foundation</a></li> 
+      <li><a href="http://research.usc.edu/for-investigators/funding/usc/zumberge/">The James H. Zumberge Research and Innovation Fund</a></li> 
+     </ul>
+    </div> 
+    <div class="col info" style="width:29%"> 
+     <h4>USC Digital Library</h4> 
+     <address> <span>3434 South Grand Avenue</span><br> <span>CAL 207 MC 2810</span><br> <span>Los Angeles, CA 90089-2810</span> </address> 
+     <p><a href="/cdm/contactus">Contact us</a> if you have any questions or feedback</p> 
+     <ul class="social-links"> 
+      <li><a href="http://www.facebook.com/USCLibraries" id="links-facebook" target="_blank"><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/images/f_logo.png" alt="USC Libraries on Facebook"></a></li> 
+      <li><a href="http://www.twitter.com/USCdiglib" id="links-twitter" target="_blank"><img src="http://digitallibrary.usc.edu/ui/custom/default/collection/default/resources/custompages/images/twitter-bird-light-bgs-32.png" alt="Follow USC Digital Library on Twitter"></a></li> 
+      <li><a data-pin-do="buttonFollow" href="http://pinterest.com/uscdiglib/">uscdiglib</a></li> 
+     </ul> 
+    </div> 
+   </div> 
+   <span class="university">© 2015 University of Southern California</span> 
+  </div> 
+  <!-- Pinterest code --> 
+  <script src="//assets.pinterest.com/js/pinit.js"></script> 
+  <!-- Google Analytics --> 
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36637916-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>   
+ </body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta charset="utf-8"> 
+  <title>NYU Login</title> 
+  <link rel="stylesheet" href="/idp/sso/css/login.css" media="screen"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+  <script src="https://www.nyu.edu/etc/designs/nyu/clientlibs/jquery.js"></script> 
+  <script src="/idp/sso/js/utils.js"></script> 
+  <script>
+	if (typeof jQuery == 'undefined') {
+		document
+				.write(unescape("%3Cscript src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+	}
+</script> 
+  <script src="//www.nyu.edu/etc/designs/nyu/clientlibs/nyucore.js"></script> 
+  <script type="text/javascript">
+	var console = console || {
+		"log" : function() {
+		}
+	};
+	//var keys = [];
+	function displayAlert(data) {
+		var color = data.color ? data.color : "green";
+		var headlineMessage = data.headlineMessage ? data.headlineMessage
+				: "No headline.";
+		var message = data.message ? data.message : "No message.";
+		var url = data.url ? data.url : "http://www.nyu.edu";
+		if (color == "green")
+			$("div.alert").addClass("alert-green");
+		if (color == "red")
+			$("div.alert").addClass("alert-red");
+		$("div.alert a").attr('href', url);
+		$("div.alert a.message").text(headlineMessage);
+		$("div.alert").show();
+	}
+
+	$(document).ready(
+			function() {
+				//show surprise
+				//function showSurprise(key) {
+				//	$("h1").text("Dinosaur!!!");
+				//}
+				//keypress logic
+				//function timeForSurprise(key) {
+				//	var surpriseArray = [100, 105, 110, 111, 115, 97, 117, 114];
+				//	if (surpriseArray[keys.length] == key) {
+				//		keys.push(key);
+				//		if (keys.length == surpriseArray.length) {
+				//			showSurprise(keys);
+				//		}
+				//	} else {
+				//		keys.length = 0;
+				//	}
+				//}
+				//keypress trigger
+				//$(document).on("keypress.dino", function(event){
+				//	timeForSurprise(event.which);
+				//});
+				//$("#password").focus(function () {
+				//	$(document).off(".dino");
+				//});
+				//scroll to hide address bar on mobile devices
+				var scrollPosition = window.scrollY || window.pageYOffset
+						|| $(window).scrollTop();
+				if (!scrollPosition) {
+					window.scrollTo(0, 1);
+				}
+				//NYU notice message is retrieved
+				$.getJSON('//www.nyu.edu/feeds/status/alerts.json', function(
+						data) {
+					//NYU notice message is displayed
+					if (data.headlineMessage) {
+						displayAlert(data);
+					}
+				});
+				//netid is converted to lowercase
+				$("#netid").blur(function() {
+					$(this).val(function(index, value) {
+						return value.toLowerCase();
+					});
+				});
+				//clicking on terms link
+				$(".nav-terms").click(function(e) {
+					e.preventDefault();
+					$(".nav-terms, .error, .help, .login, .logout").hide();
+					$(".nav-login").parent().addClass("right");
+					$(".nav-login, .terms").show();
+				});
+				//clicking on help link
+				$(".nav-help").click(function(e) {
+					e.preventDefault();
+					$(".nav-help, .error, .login, .logout").hide();
+					$(".help").show();
+					$(".nav-login").parent().addClass("left");
+					$(".nav-login").show();
+					if ($(window).width() <= 600) {
+						$(".terms").hide();
+					}
+					//if help is showing, change the top margin for terms to be better aligned
+					if ($(".help").is(":visible")) {
+						$(".terms").animate({
+							"marginTop" : "20px"
+						}, "slow").css({
+							"min-height" : "200px"
+						});
+					}
+				});
+			});
+</script> 
+  <!--[if lte IE 9]>
+<link rel="stylesheet" href="/idp/sso/css/login-ie.css" media="screen" />
+<script src="/idp/sso/js/ie.js"></script>
+<![endif]--> 
+ </head> 
+ <body> 
+  <div class="alert"> 
+   <div class="wrap"> 
+    <p> <a href="" class="message"></a> </p> 
+    <a href="" class="alert-more right uppercase rounded">More</a> 
+   </div> 
+  </div> 
+  <header> 
+   <div class="wrap"> 
+    <a href="https://shibboleth.nyu.edu/idp/Authn/UserPassword" class="logo">New York University</a> 
+   </div> 
+  </header> 
+  <div class="content wrap shadow rounded"> 
+   <div class="login-content"> 
+    <section class="col col2"> 
+     <div class="login"> 
+      <h1>NYU Login</h1> 
+      <p> Login to <strong> NYUHome </strong> </p> 
+      <form method="POST" action="/idp/Authn/UserPassword" name="login" id="login"> 
+       <label for="username">NetID</label> 
+       <input type="text" autocomplete="off" name="j_username" id="netid" autofocus required> 
+       <label for="password">Password</label> 
+       <input type="password" name="j_password" id="password" required> 
+       <input type="submit" value="Login" class="uppercase rounded"> 
+      </form> 
+     </div> 
+     <div class="help"> 
+      <h2>Help</h2> 
+      <p> <a href="http://www.nyu.edu/its/faq/passwords/#forget">Forgot</a> your password? </p> 
+      <p> <a href="http://www.nyu.edu/its/faq/nyuhome/#trouble">Problems</a> signing in? </p> 
+      <p> Need to <a href="http://start.nyu.edu/">activate</a> your NetID or NYUHome account? </p> 
+      <p> For assistance: contact the <a href="http://www.nyu.edu/its/askits/helpdesk">IT Service Desk</a> </p> 
+     </div> 
+    </section> 
+    <!--/leftcol--> 
+    <div class="col col2 terms"> 
+     <p> By your use of these resources, you agree to abide by the <a href="http://www.nyu.edu/about/policies-guidelines-compliance/policies-and-guidelines/responsible-use-of-nyu-computers-and-data-policy-on.html">Policy on Responsible Use of NYU Computers and Data.</a> </p> 
+    </div> 
+    <!--rightcol--> 
+   </div> 
+  </div> 
+  <footer class="wrap"> 
+   <nav> 
+    <ul class="clearfix"> 
+     <li class="left"><a href="#" class="nav-help">Need Help?</a></li> 
+     <li><a href="" class="nav-login">Login</a></li> 
+     <li class="right"><a href="#" class="nav-terms">Terms &amp; Privacy</a></li> 
+    </ul> 
+   </nav> 
+  </footer>   
+ </body>
+</html>

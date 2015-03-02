@@ -1,0 +1,1648 @@
+<!DOCTYPE html>
+<html lang="en_US">
+ <head>
+  <script>(function(){var f=this;function g(a){var d=typeof a;if("object"==d)if(a){if(a instanceof Array)return"array";if(a instanceof Object)return d;var b=Object.prototype.toString.call(a);if("[object Window]"==b)return"object";if("[object Array]"==b||"number"==typeof a.length&&"undefined"!=typeof a.splice&&"undefined"!=typeof a.propertyIsEnumerable&&!a.propertyIsEnumerable("splice"))return"array";if("[object Function]"==b||"undefined"!=typeof a.call&&"undefined"!=typeof a.propertyIsEnumerable&&!a.propertyIsEnumerable("call"))return"function"}else return"null";else if("function"==
+d&&"undefined"==typeof a.call)return"object";return d}var h=Date.now||function(){return+new Date};function t(a,d){var b=["LOWLIFE_wizbind"],c=d||f;b[0]in c||!c.execScript||c.execScript("var "+b[0]);for(var e;b.length&&(e=b.shift());)b.length||void 0===a?c[e]?c=c[e]:c=c[e]={}:c[e]=a};var u;n:{var B=f.navigator;if(B){var C=B.userAgent;if(C){u=C;break n}}u=""}function D(a){return-1!=u.indexOf(a)};var E={};function F(a,d){return function(b){b||(b=window.event);return d.call(a,b)}}var G="undefined"!=typeof navigator&&/Macintosh/.test(navigator.userAgent);function H(){return D("Opera")||D("OPR")}function I(){return D("Edge")||D("Trident")||D("MSIE")}function J(){return(D("Chrome")||D("CriOS"))&&!H()&&!I()};var K=H(),L=I(),M=D("Gecko")&&!(-1!=u.toLowerCase().indexOf("webkit")&&!D("Edge"))&&!(D("Trident")||D("MSIE"))&&!D("Edge"),N=-1!=u.toLowerCase().indexOf("webkit")&&!D("Edge");function Q(){var a=u;if(M)return/rv\:([^\);]+)(\)|;)/.exec(a);if(L&&D("Edge"))return/Edge\/([\d\.]+)/.exec(a);if(L)return/\b(?:MSIE|rv)[:]([^\);]+)(\)|;)/.exec(a);if(N)return/WebKit\/(\S+)/.exec(a)}
+(function(){if(K&&f.opera){var a=f.opera.version;return"function"==g(a)?a():a}var a="",d=Q();d&&(a=d?d[1]:"");return L&&!D("Edge")&&(d=(d=f.document)?d.documentMode:void 0,d>parseFloat(a))?String(d):a})();!D("Android")||J()||D("Firefox")||H();J();function R(){this.e=[];this.c=[];this.d={};this.a=null;this.b=[]}var aa="undefined"!=typeof navigator&&/iPhone|iPad|iPod/.test(navigator.userAgent),S=String.prototype.trim?function(a){return a.trim()}:function(a){return a.replace(/^\s+/,"").replace(/\s+$/,"")},ba=/\s*;\s*/;function ca(a,d){return function(b){var c;c=d;var e;"click"==c&&(G&&b.metaKey||!G&&b.ctrlKey||2==b.which||null==b.which&&4==b.button||b.shiftKey)&&(c="clickmod");var n=b.srcElement||b.target,w=T(c,b,n,"",null),k,O;for(e=n;e&&e!=this;e=e.__owner||e.parentNode){k=O=e;var P=c,l=k.__jsaction;if(!l){var q=U(k,"jsaction");if(q){l=E[q];if(!l){for(var l={},x=q.split(ba),y=0,v=x?x.length:0;y<v;y++){var m=x[y];if(m){var p=m.indexOf(":"),r=-1!=p,z=r?S(m.substr(0,p)):"click",m=r?S(m.substr(p+1)):m;l[z]=m}}E[q]=
+l}q=l;l={};for(z in q){x=l;y=z;e:if(v=q[z],!(0<=v.indexOf(".")))for(m=k;m;m=m.parentNode){p=m;r=p.__jsnamespace;void 0===r&&(r=U(p,"jsnamespace"),p.__jsnamespace=r);if(p=r){v=p+"."+v;break e}if(m==this)break}x[y]=v}k.__jsaction=l}else l=da,k.__jsaction=l}k={g:P,action:l[P]||"",event:null,h:!1};if(k.h||k.action)break}k&&(w=T(k.g,k.event||b,n,k.action||"",O,w.timeStamp));k&&k.action||(w.action="",w.actionElement=null);c=w;a.a&&(e=T(c.eventType,c.event,c.targetElement,c.action,c.actionElement,c.timeStamp),"clickonly"==e.eventType&&(e.eventType="click"),a.a(e,!0));if(c.actionElement)if(b.stopPropagation?b.stopPropagation():b.cancelBubble=!0,"A"!=c.actionElement.tagName||"click"!=c.eventType&&"clickmod"!=c.eventType||(b.preventDefault?b.preventDefault():b.returnValue=!1),a.a)a.a(c);else{var A;if((e=f.document)&&!e.createEvent&&e.createEventObject)try{A=e.createEventObject(b)}catch(ha){A=b}else A=b;c.event=A;a.b.push(c)}}}
+function T(a,d,b,c,e,n){return{eventType:a,event:d,targetElement:b,action:c,actionElement:e,timeStamp:n||h()}}function U(a,d){var b=null;"getAttribute"in a&&(b=a.getAttribute(d));return b}var da={};function ea(a,d){return function(b){var c=a,e=d,n=!1;"mouseenter"==c?c="mouseover":"mouseleave"==c&&(c="mouseout");if(b.addEventListener){if("focus"==c||"blur"==c||"error"==c||"load"==c)n=!0;b.addEventListener(c,e,n)}else b.attachEvent&&("focus"==c?c="focusin":"blur"==c&&(c="focusout"),e=F(b,e),b.attachEvent("on"+c,e));return{g:c,f:e,i:n}}}
+function V(a,d){if(!a.d.hasOwnProperty(d)&&"mouseenter"!=d&&"mouseleave"!=d){var b=ca(a,d),c=ea(d,b);a.d[d]=b;a.e.push(c);for(b=0;b<a.c.length;++b){var e=a.c[b];e.b.push(c.call(null,e.a))}}}R.prototype.f=function(a){return this.d[a]};var fa=window,W=new R,X=fa||window,Y=new function(a){this.a=a;this.b=[]}(X.document.documentElement),ga=Y.a;aa&&(ga.style.cursor="pointer");for(var Z=0;Z<W.e.length;++Z)Y.b.push(W.e[Z].call(null,Y.a));W.c.push(Y);V(W,"click");V(W,"focus");V(W,"focusin");V(W,"blur");V(W,"focusout");V(W,"keydown");V(W,"keypress");V(W,"mouseover");V(W,"mouseout");V(W,"mouseenter");V(W,"mouseleave");V(W,"change");V(W,"input");V(W,"keyup");V(W,"mousedown");V(W,"mouseup");V(W,"touchcancel");(function(a,d){t({trigger:function(b){var c=a.f(b.type);c||(V(a,b.type),c=a.f(b.type));c.call((b.target||b.srcElement).ownerDocument.documentElement,b)},bind:function(b){a.a=b;a.b&&(0<a.b.length&&b(a.b),a.b=null)}},d)})(W,X);})();</script>
+  <meta content="IE=10" http-equiv="X-UA-Compatible">
+  <link href="/store/opensearch.xml?hl=en_US" rel="search" title="Google Play" type="application/opensearchdescription+xml">
+  <link href="android-app://com.android.vending/https/play.google.com/store/apps/details?id=com.insidehighered.daily.apk" rel="alternate">
+  <meta content="PJKdyVFC5jlu_l8Wo_hirJkhs1cmitmn44fgpOc3zFc" name="google-site-verification">
+  <meta content="A6H2WZG5rRIUFFopIQcyPeabS5ffxhFlhTiyhzWGPRA" name="google-site-verification">
+  <style type="text/css">#gbar,#guser{font-size:13px;padding-top:0px !important;}#gbar{height:22px}#guser{padding-bottom:7px !important;text-align:right}.gbh,.gbd{border-top:1px solid #c9d7f1;font-size:1px}.gbh{height:0;position:absolute;top:24px;width:100%}@media all{.gb1{height:22px;margin-right:.5em;vertical-align:top}#gbar{float:left}}a.gb1,a.gb4{text-decoration:underline !important}a.gb1,a.gb4{color:#00c !important}.gbi .gb4{color:#dd8e27 !important}.gbf .gb4{color:#900 !important}</style>
+  <style type="text/css">@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Roboto Thin'), local('Roboto-Thin'), url(//fonts.gstatic.com/s/roboto/v15/Jzo62I39jc0gQRrbndN6nfesZW2xOQ-xsNqO47m55DA.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Roboto Light'), local('Roboto-Light'), url(//fonts.gstatic.com/s/roboto/v15/Hgo13k-tfSpn0qi1SFdUfaCWcynf_cDxXwCLxiixG1c.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto Regular'), local('Roboto-Regular'), url(//fonts.gstatic.com/s/roboto/v15/zN7GBFwfMP4uA6AR0HCoLQ.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Roboto Medium'), local('Roboto-Medium'), url(//fonts.gstatic.com/s/roboto/v15/RxZJdnzeo3R5zSexge8UUaCWcynf_cDxXwCLxiixG1c.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Roboto Bold'), local('Roboto-Bold'), url(//fonts.gstatic.com/s/roboto/v15/d-6IYplOFocCacKzxwXSOKCWcynf_cDxXwCLxiixG1c.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: italic;
+  font-weight: 100;
+  src: local('Roboto Thin Italic'), local('Roboto-ThinItalic'), url(//fonts.gstatic.com/s/roboto/v15/12mE4jfMSBTmg-81EiS-YS3USBnSvpkopQaUR-2r7iU.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Roboto Light Italic'), local('Roboto-LightItalic'), url(//fonts.gstatic.com/s/roboto/v15/7m8l7TlFO-S3VkhHuR0at50EAVxt0G0biEntp43Qt6E.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Roboto Italic'), local('Roboto-Italic'), url(//fonts.gstatic.com/s/roboto/v15/W4wDsBUluyw0tK3tykhXEfesZW2xOQ-xsNqO47m55DA.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Roboto Slab Thin'), local('RobotoSlab-Thin'), url(//fonts.gstatic.com/s/robotoslab/v6/MEz38VLIFL-t46JUtkIEgH4UHu-c0cTZKOwO_f6u1Os.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Roboto Slab Light'), local('RobotoSlab-Light'), url(//fonts.gstatic.com/s/robotoslab/v6/dazS1PrQQuCxC3iOAJFEJbfB31yxOzP-czbf6AAKCVo.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto Slab Regular'), local('RobotoSlab-Regular'), url(//fonts.gstatic.com/s/robotoslab/v6/y7lebkjgREBJK96VQi37Zp0EAVxt0G0biEntp43Qt6E.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Roboto Slab Bold'), local('RobotoSlab-Bold'), url(//fonts.gstatic.com/s/robotoslab/v6/dazS1PrQQuCxC3iOAJFEJZ_TkvowlIOtbR7ePgFOpF4.ttf) format('truetype');
+}
+</style>
+  <link type="text/css" rel="stylesheet" href="//www.gstatic.com/_/play/_/ss/k=play.ss.-1gj4vri09myhe.L.X.O/m=l/d=0/rs=AGlW0sbpkarrSABDpI_8EScZDpLwfpvtvw">
+  <link href="//ssl.gstatic.com/android/market_images/web/favicon.ico" rel="shortcut icon">
+  <script type="text/javascript"></script>
+  <title id="main-title">Inside Higher Ed Daily Update - Android Apps on Google Play</title>
+  <meta content="Inside Higher Ed is the free daily news Website for people interested in higher education. Original reporting of higher education news, opinion from college and univer..." name="Description">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk" rel="canonical">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk" hreflang="x-default" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=af" hreflang="af" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=in" hreflang="in" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=ms" hreflang="ms" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=ca" hreflang="ca" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=cs" hreflang="cs" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=da" hreflang="da" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=de" hreflang="de" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=et" hreflang="et" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=en_GB" hreflang="en_GB" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=en" hreflang="en" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=es" hreflang="es" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=es_419" hreflang="es_419" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=fil" hreflang="fil" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=fr" hreflang="fr" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=fr_BE" hreflang="fr_BE" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=fr_CA" hreflang="fr_CA" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=fr_FR" hreflang="fr_FR" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=hr" hreflang="hr" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=zu" hreflang="zu" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=it" hreflang="it" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=sw" hreflang="sw" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=lv" hreflang="lv" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=lt" hreflang="lt" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=hu" hreflang="hu" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=nl" hreflang="nl" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=nl_BE" hreflang="nl_BE" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=nl_NL" hreflang="nl_NL" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=no" hreflang="no" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=pl" hreflang="pl" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=pt_BR" hreflang="pt_BR" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=pt_PT" hreflang="pt_PT" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=ro" hreflang="ro" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=sk" hreflang="sk" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=sl" hreflang="sl" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=fi" hreflang="fi" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=sv" hreflang="sv" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=vi" hreflang="vi" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=tr" hreflang="tr" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=el" hreflang="el" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=be" hreflang="be" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=bg" hreflang="bg" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=ru" hreflang="ru" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=sr" hreflang="sr" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=uk" hreflang="uk" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=am" hreflang="am" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=hi" hreflang="hi" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=th" hreflang="th" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=ko" hreflang="ko" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=zh_HK" hreflang="zh_HK" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=ja" hreflang="ja" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=zh_CN" hreflang="zh_CN" rel="alternate">
+  <link href="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;hl=zh_TW" hreflang="zh_TW" rel="alternate">
+ </head>
+ <body class="no-focus-outline" data-page-server-cookie="">
+  <div id="gbar">
+   <nobr>
+    <a class="gb1" href="https://www.google.com/webhp?tab=8w">Search</a> 
+    <a class="gb1" href="http://www.google.com/imghp?hl=en&amp;tab=8i">Images</a> 
+    <a class="gb1" href="https://maps.google.com/maps?hl=en&amp;tab=8l">Maps</a> 
+    <b class="gb1">Play</b> 
+    <a class="gb1" href="https://www.youtube.com/?tab=81">YouTube</a> 
+    <a class="gb1" href="https://news.google.com/nwshp?hl=en&amp;tab=8n">News</a> 
+    <a class="gb1" href="https://mail.google.com/mail/?tab=8m">Gmail</a> 
+    <a class="gb1" href="https://drive.google.com/?tab=8o">Drive</a> 
+    <a class="gb1" style="text-decoration:none" href="http://www.google.com/intl/en/options/"><u>More</u> »</a>
+   </nobr>
+  </div>
+  <div style="position:fixed;top:-100000px;left:-100000px;opacity:0" id="offscreen-renderer"></div>
+  <div class="wrapper-with-footer" id="wrapper">
+   <div style="display:block"> 
+    <div class="nav-container hover-zone" style="visibility:hidden" data-server-cookie="CAMiGwgBEAAaFRITCg12ZXJ0aWNhbF9tZW51EBoYAA==" data-uitype="418"> 
+     <span class="show-all-hover-zone"> <span class="hover-arrow"></span> </span> 
+     <ul class="nav" role="navigation"> 
+      <li class="nav-list-item id-track-click apps" data-backend="3" data-server-cookie="CAQqBggDEAMoBA==" data-uitype="101" style="display:none"> <a class="menu-link id-no-menu-change selected" href="/store/apps"> <span class="hover-target"> <span class="icon-container"> <span class="icon"></span> </span> <span class="title"> Apps </span> </span> </a> 
+       <ul class="sub-nav non-store-sub-nav"> 
+        <li class="sub-nav-option id-track-click" data-uitype="103"> <a class="library-link id-no-menu-change" href="/apps"> My apps </a> </li> 
+        <li class="sub-nav-option"> <a class="shop-link id-no-menu-change chosen" href="/store/apps"> Shop </a> </li> 
+        <li class="sub-nav-divider"></li> 
+        <li class="secondary-sub-nav-option"> <a class="sub-nav-link id-no-menu-change" href="/store/apps/category/GAME"> Games </a> </li> 
+        <li class="secondary-sub-nav-option"> <a class="sub-nav-link id-no-menu-change" href="/store/apps/collection/editors_choice"> Editors' Choice </a> </li> 
+       </ul> </li> 
+      <li class="nav-list-item id-track-click movies-tv" data-backend="4" data-server-cookie="CAQqBggDEAQoBA==" data-uitype="101" style="display:none"> <a class="menu-link id-no-menu-change default" href="/store/movies"> <span class="hover-target"> <span class="icon-container"> <span class="icon"></span> </span> <span class="title"> Movies &amp; TV </span> </span> </a> 
+       <ul class="sub-nav non-store-sub-nav"> 
+        <li class="sub-nav-option id-track-click" data-uitype="105"> <a class="library-link id-no-menu-change" href="/movies"> My movies &amp; TV </a> </li> 
+        <li class="sub-nav-option"> <a class="shop-link id-no-menu-change chosen" href="/store/movies"> Shop </a> </li> 
+        <li class="sub-nav-divider"></li> 
+        <li class="secondary-sub-nav-option"> <a class="sub-nav-link id-no-menu-change" href="/store/movies/category/MOVIE"> Movies </a> </li> 
+        <li class="secondary-sub-nav-option"> <a class="sub-nav-link id-no-menu-change" href="/store/movies/category/TV"> TV </a> </li> 
+        <li class="secondary-sub-nav-option"> <a class="sub-nav-link id-no-menu-change" href="/store/movies/collection/promotion_collections_movie_studios"> Studios </a> </li> 
+        <li class="secondary-sub-nav-option"> <a class="sub-nav-link id-no-menu-change" href="/store/movies/collection/promotion_collections_tv_networks"> Networks </a> </li> 
+       </ul> </li> 
+      <li class="nav-list-item id-track-click music" data-backend="2" data-server-cookie="CAQqBggDEAIoBA==" data-uitype="101" style="display:none"> <a class="menu-link id-no-menu-change default" href="/store/music"> <span class="hover-target"> <span class="icon-container"> <span class="icon"></span> </span> <span class="title"> Music </span> </span> </a> 
+       <ul class="sub-nav non-store-sub-nav"> 
+        <li class="sub-nav-option id-track-click" data-uitype="104"> <a class="library-link id-no-menu-change id-no-nav" href="/music?authuser"> My music </a> </li> 
+        <li class="sub-nav-option"> <a class="shop-link id-no-menu-change chosen" href="/store/music"> Shop </a> </li> 
+       </ul> </li> 
+      <li class="nav-list-item id-track-click books" data-backend="1" data-server-cookie="CAQqBggDEAEoBA==" data-uitype="101" style="display:none"> <a class="menu-link id-no-menu-change default" href="/store/books"> <span class="hover-target"> <span class="icon-container"> <span class="icon"></span> </span> <span class="title"> Books </span> </span> </a> 
+       <ul class="sub-nav non-store-sub-nav"> 
+        <li class="sub-nav-option id-track-click" data-uitype="106"> <a class="library-link id-no-menu-change id-no-nav" href="/books"> My books </a> </li> 
+        <li class="sub-nav-option"> <a class="shop-link id-no-menu-change chosen" href="/store/books"> Shop </a> </li> 
+        <li class="sub-nav-divider"></li> 
+        <li class="secondary-sub-nav-option"> <a class="sub-nav-link id-no-menu-change" href="/store/books/collection/promotion_1000568_txb_product"> Textbooks </a> </li> 
+       </ul> </li> 
+      <li class="nav-list-item id-track-click magazines" data-backend="6" data-server-cookie="CAQqBggDEAYoBA==" data-uitype="101" style="display:none"> <a class="menu-link id-no-menu-change default" href="/store/newsstand"> <span class="hover-target"> <span class="icon-container"> <span class="icon"></span> </span> <span class="title"> Newsstand </span> </span> </a> 
+       <ul class="sub-nav non-store-sub-nav"> 
+        <li class="sub-nav-option"> <a class="library-link id-no-menu-change id-track-click" data-uitype="121" href="/newsstand"> My newsstand </a> </li> 
+        <li class="sub-nav-option"> <a class="shop-link id-no-menu-change chosen" href="/store/newsstand"> Shop </a> </li> 
+       </ul> </li> 
+      <li class="nav-list-item id-track-click devices" data-backend="5" data-server-cookie="CAQqBggDEAUoBA==" data-uitype="101" style="display:none"> <a class="menu-link id-no-menu-change default" href="/store/devices"> <span class="hover-target"> <span class="icon-container"> <span class="icon"></span> </span> <span class="title"> Devices </span> </span> </a> 
+       <ul class="sub-nav non-store-sub-nav"> 
+        <li class="sub-nav-option"> <a class="shop-link id-no-menu-change chosen" href="/store/devices"> Shop </a> </li> 
+       </ul> </li> 
+      <li class="nav-list-item id-track-click store" data-backend="0" data-server-cookie="CAQqBggDEAAoBA==" data-uitype="101" style="display:none"> <a class="menu-link id-no-menu-change default" href="/store"> <span class="hover-target"> <span class="icon-container"> <span class="icon"></span> </span> <span class="title"> Store </span> </span> </a> </li> 
+      <li class="store"> 
+       <ul class="sub-nav id-sub-nav-store"> 
+        <li class="secondary-sub-nav-option id-track-click" data-uitype="123"> <a class="sub-nav-link id-no-menu-change" href="/store/myplayactivity"> My Play activity </a> </li> 
+        <li class="secondary-sub-nav-option id-track-click" data-uitype="108"> <a class="sub-nav-link id-no-menu-change" href="/wishlist"> My wishlist </a> </li> 
+        <li class="secondary-sub-nav-option id-cannot-set-chosen redeem-option id-track-click" data-uitype="109"> <button class="sub-nav-link id-no-menu-change id-no-nav"> Redeem </button> </li> 
+        <li class="secondary-sub-nav-option id-cannot-set-chosen id-track-click" data-uitype="125"> <a class="sub-nav-link id-no-menu-change id-no-nav" href="https://play.google.com/intl/en-US_us/about/giftcards"> Buy gift card </a> </li> 
+        <li class="secondary-sub-nav-option id-cannot-set-chosen id-track-click" data-uitype="128"> <button class="sub-nav-link id-no-menu-change topup-link"> Buy Google Play credit </button> </li> 
+       </ul> </li> 
+     </ul> 
+    </div> 
+   </div>
+   <div class="butterbar-container">
+    <span id="butterbar"></span>
+   </div>
+   <div class="body-content-loading-overlay" style="display:none">
+    <div class="body-content-loading-spinner"></div>
+   </div>
+   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+   <script src="//www.gstatic.com/_/play/_/js/k=play.js.en_US.o5ZFbUQmQO8.O/m=b,i/rt=j/d=1/rs=AGlW0sYlpHrjlIGyBIPfeGKv_3hTW3rbyQ"></script>
+   <script>initializeAppMenu();</script>
+   <div class="id-body-content-beginning" aria-labelledby="main-title" tabindex="-1"></div>
+   <div class="action-bar-container" role="navigation" jsl="$t t-NjQXl_7dol8;$x 0;"> 
+    <div class="action-bar-inner"> 
+     <div class="action-bar apps" jsl="$x 1;" jsan="7.action-bar,7.apps"> 
+      <div jsinstance="0" jsl="$x 2;$t t-rwatkwvxdCk;$x 0;" class="action-bar-item" jsan="t-rwatkwvxdCk,7.action-bar-item"> 
+       <div jsl="$x 1;" style="display:none" jsan="5.display"></div> 
+       <div jsl="$x 2;" style="display:none" jsan="5.display"></div> 
+       <button jsl="$x 3;" style="display:none" jsan="5.display"></button> 
+       <div jsl="$x 4;$t t-pZpp18oHJ6M;$x 0;" class="action-bar-dropdown-container"> 
+        <div class="action-bar-dropdown"> 
+         <button class="action-bar-dropdown-top" aria-controls="action-dropdown-children-Categories" aria-owns="action-dropdown-children-Categories" id="action-dropdown-parent-Categories" aria-expanded="false" aria-haspopup="true" jsl="$x 1;" jsan="7.action-bar-dropdown-top,0.aria-controls,0.aria-owns,0.id,0.aria-expanded,0.aria-haspopup"> <span class="title" jsl="$x 2;" jsan="7.title">Categories</span> <span class="dropdown-icon"></span> </button> 
+        </div> 
+        <div class="name-edit-toggle" style="display:none"> 
+         <input class="edit-field-text" value="Categories" maxlength="50" size="18" type="text" jsl="$x 3;"> 
+        </div> 
+        <div class="action-bar-dropdown-children-container" aria-labelledby="action-dropdown-parent-Categories" id="action-dropdown-children-Categories" jsl="$x 4;" style="display:none"> 
+         <div class="dropdown-submenu" jsl="$x 5;" jsan="7.dropdown-submenu"> 
+          <ul jsl="$x 6;"> 
+           <li jsinstance="0" class="action-dropdown-outer-list-item" jsl="$x 7;" jsan="7.action-dropdown-outer-list-item"> 
+            <ul jsl="$x 8;$t t-ufnLPd03FBo;$x 0;" class="submenu-item-wrapper"> 
+             <li class="parent-submenu-link-wrapper" jsl="$x 1;" style="display:none"> <a target="_blank" jsl="$x 2;" jsan="0.target"></a> </li> 
+             <li class="submenu-divider" jsl="$x 3;" style="display:none"></li> 
+             <li jsinstance="0" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/BOOKS_AND_REFERENCE" title="Books &amp; Reference" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Books &amp; Reference</a> </li>
+             <li jsinstance="1" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/BUSINESS" title="Business" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Business</a> </li>
+             <li jsinstance="2" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/COMICS" title="Comics" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Comics</a> </li>
+             <li jsinstance="3" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/COMMUNICATION" title="Communication" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Communication</a> </li>
+             <li jsinstance="4" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/EDUCATION" title="Education" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Education</a> </li>
+             <li jsinstance="5" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/ENTERTAINMENT" title="Entertainment" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Entertainment</a> </li>
+             <li jsinstance="6" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/FINANCE" title="Finance" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Finance</a> </li>
+             <li jsinstance="7" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/HEALTH_AND_FITNESS" title="Health &amp; Fitness" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Health &amp; Fitness</a> </li>
+             <li jsinstance="8" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/LIBRARIES_AND_DEMO" title="Libraries &amp; Demo" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Libraries &amp; Demo</a> </li>
+             <li jsinstance="9" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/LIFESTYLE" title="Lifestyle" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Lifestyle</a> </li>
+             <li jsinstance="10" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/APP_WALLPAPER" title="Live Wallpaper" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Live Wallpaper</a> </li>
+             <li jsinstance="11" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/MEDIA_AND_VIDEO" title="Media &amp; Video" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Media &amp; Video</a> </li>
+             <li jsinstance="12" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/MEDICAL" title="Medical" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Medical</a> </li>
+             <li jsinstance="13" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/MUSIC_AND_AUDIO" title="Music &amp; Audio" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Music &amp; Audio</a> </li>
+             <li jsinstance="14" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/NEWS_AND_MAGAZINES" title="News &amp; Magazines" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">News &amp; Magazines</a> </li>
+             <li jsinstance="15" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/PERSONALIZATION" title="Personalization" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Personalization</a> </li>
+             <li jsinstance="16" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/PHOTOGRAPHY" title="Photography" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Photography</a> </li>
+             <li jsinstance="17" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/PRODUCTIVITY" title="Productivity" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Productivity</a> </li>
+             <li jsinstance="18" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/SHOPPING" title="Shopping" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Shopping</a> </li>
+             <li jsinstance="19" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/SOCIAL" title="Social" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Social</a> </li>
+             <li jsinstance="20" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/SPORTS" title="Sports" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Sports</a> </li>
+             <li jsinstance="21" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/TOOLS" title="Tools" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Tools</a> </li>
+             <li jsinstance="22" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/TRANSPORTATION" title="Transportation" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Transportation</a> </li>
+             <li jsinstance="23" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/TRAVEL_AND_LOCAL" title="Travel &amp; Local" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Travel &amp; Local</a> </li>
+             <li jsinstance="24" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/WEATHER" title="Weather" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Weather</a> </li>
+             <li jsinstance="*25" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/APP_WIDGETS" title="Widgets" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Widgets</a> </li> 
+            </ul> 
+            <div jsl="$x 9;" style="display:none"></div> </li>
+           <li jsinstance="*1" class="action-dropdown-outer-list-item" jsl="$x 7;" jsan="7.action-dropdown-outer-list-item"> 
+            <ul jsl="$x 8;$t t-ufnLPd03FBo;$x 0;" class="submenu-item-wrapper"> 
+             <li class="parent-submenu-link-wrapper" jsl="$x 1;"> <a class="parent-submenu-link" href="/store/apps/category/GAME" title="Games" jsl="$x 2;" jsan="7.parent-submenu-link,8.href,0.title">Games</a> </li> 
+             <li class="submenu-divider" jsl="$x 3;"></li> 
+             <li jsinstance="0" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/GAME_ACTION" title="Action" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Action</a> </li>
+             <li jsinstance="1" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/GAME_ADVENTURE" title="Adventure" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Adventure</a> </li>
+             <li jsinstance="2" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/GAME_ARCADE" title="Arcade" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Arcade</a> </li>
+             <li jsinstance="3" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/GAME_BOARD" title="Board" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Board</a> </li>
+             <li jsinstance="4" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/GAME_CARD" title="Card" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Card</a> </li>
+             <li jsinstance="5" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/GAME_CASINO" title="Casino" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Casino</a> </li>
+             <li jsinstance="6" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/GAME_CASUAL" title="Casual" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Casual</a> </li>
+             <li jsinstance="7" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/GAME_EDUCATIONAL" title="Educational" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Educational</a> </li>
+             <li jsinstance="8" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/GAME_FAMILY" title="Family" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Family</a> </li>
+             <li jsinstance="9" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/GAME_MUSIC" title="Music" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Music</a> </li>
+             <li jsinstance="10" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/GAME_PUZZLE" title="Puzzle" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Puzzle</a> </li>
+             <li jsinstance="11" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/GAME_RACING" title="Racing" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Racing</a> </li>
+             <li jsinstance="12" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/GAME_ROLE_PLAYING" title="Role Playing" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Role Playing</a> </li>
+             <li jsinstance="13" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/GAME_SIMULATION" title="Simulation" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Simulation</a> </li>
+             <li jsinstance="14" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/GAME_SPORTS" title="Sports" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Sports</a> </li>
+             <li jsinstance="15" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/GAME_STRATEGY" title="Strategy" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Strategy</a> </li>
+             <li jsinstance="16" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/GAME_TRIVIA" title="Trivia" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Trivia</a> </li>
+             <li jsinstance="*17" class="child-submenu-link-wrapper" jsl="$x 4;"> <a class="child-submenu-link" href="/store/apps/category/GAME_WORD" title="Word" jsl="$x 5;" jsan="7.child-submenu-link,8.href,0.title">Word</a> </li> 
+            </ul> 
+            <div jsl="$x 9;" style="display:none"></div> </li> 
+          </ul> 
+         </div> 
+        </div> 
+       </div> 
+       <div jsl="$x 5;" style="display:none" class="action-bar-spacer"> 
+       </div> 
+       <div jsl="$x 6;" style="display:none"></div> 
+      </div>
+      <div jsinstance="1" jsl="$x 2;$t t-rwatkwvxdCk;$x 0;" class="action-bar-item" jsan="t-rwatkwvxdCk,7.action-bar-item"> 
+       <div jsl="$x 1;" style="display:none" jsan="5.display"></div> 
+       <div jsl="$x 2;" style="display:none" jsan="5.display"></div> 
+       <button jsl="$x 3;" style="display:none" jsan="5.display"></button> 
+       <div jsl="$x 4;" style="display:none"></div> 
+       <div jsl="$x 5;" class="action-bar-spacer"> 
+       </div> 
+       <div jsl="$x 6;" style="display:none"></div> 
+      </div>
+      <div jsinstance="2" jsl="$x 2;$t t-rwatkwvxdCk;$x 0;" class="action-bar-item" jsan="t-rwatkwvxdCk,7.action-bar-item"> 
+       <div jsl="$x 1;" style="display:none" jsan="5.display"></div> 
+       <div jsl="$x 2;$t t-3kDrbXyPsIE;$x 0;" class="action-bar-link" jsan="t-3kDrbXyPsIE,7.action-bar-link"> 
+        <a class="action-bar-link-title" aria-selected="false" href="/store/apps" jsl="$x 1;" jsan="7.action-bar-link-title,0.aria-selected,8.href">Home</a> 
+        <span class="action-bar-link-title" jsl="$x 2;" style="display:none" jsan="7.action-bar-link-title,5.display"></span> 
+       </div> 
+       <button jsl="$x 3;" style="display:none" jsan="5.display"></button> 
+       <div jsl="$x 4;" style="display:none"></div> 
+       <div jsl="$x 5;" style="display:none" class="action-bar-spacer"> 
+       </div> 
+       <div jsl="$x 6;" style="display:none"></div> 
+      </div>
+      <div jsinstance="3" jsl="$x 2;$t t-rwatkwvxdCk;$x 0;" class="action-bar-item" jsan="t-rwatkwvxdCk,7.action-bar-item"> 
+       <div jsl="$x 1;" style="display:none" jsan="5.display"></div> 
+       <div jsl="$x 2;$t t-3kDrbXyPsIE;$x 0;" class="action-bar-link" jsan="t-3kDrbXyPsIE,7.action-bar-link"> 
+        <a class="action-bar-link-title" aria-selected="false" href="/store/apps/top" jsl="$x 1;" jsan="7.action-bar-link-title,0.aria-selected,8.href">Top Charts</a> 
+        <span class="action-bar-link-title" jsl="$x 2;" style="display:none" jsan="7.action-bar-link-title,5.display"></span> 
+       </div> 
+       <button jsl="$x 3;" style="display:none" jsan="5.display"></button> 
+       <div jsl="$x 4;" style="display:none"></div> 
+       <div jsl="$x 5;" style="display:none" class="action-bar-spacer"> 
+       </div> 
+       <div jsl="$x 6;" style="display:none"></div> 
+      </div>
+      <div jsinstance="4" jsl="$x 2;$t t-rwatkwvxdCk;$x 0;" class="action-bar-item" jsan="t-rwatkwvxdCk,7.action-bar-item"> 
+       <div jsl="$x 1;" style="display:none" jsan="5.display"></div> 
+       <div jsl="$x 2;$t t-3kDrbXyPsIE;$x 0;" class="action-bar-link" jsan="t-3kDrbXyPsIE,7.action-bar-link"> 
+        <a class="action-bar-link-title" aria-selected="false" href="/store/apps/new" jsl="$x 1;" jsan="7.action-bar-link-title,0.aria-selected,8.href">New Releases</a> 
+        <span class="action-bar-link-title" jsl="$x 2;" style="display:none" jsan="7.action-bar-link-title,5.display"></span> 
+       </div> 
+       <button jsl="$x 3;" style="display:none" jsan="5.display"></button> 
+       <div jsl="$x 4;" style="display:none"></div> 
+       <div jsl="$x 5;" style="display:none" class="action-bar-spacer"> 
+       </div> 
+       <div jsl="$x 6;" style="display:none"></div> 
+      </div>
+      <div jsinstance="*5" jsl="$x 2;$t t-JC5PZYWvdyU;$x 0;" class="action-bar-aux" jsan="t-JC5PZYWvdyU,7.action-bar-aux"> 
+       <div jsinstance="0" jsl="$x 1;$t t-rwatkwvxdCk;$x 0;" class="action-bar-item" jsan="t-rwatkwvxdCk,7.action-bar-item"> 
+        <div jsl="$x 1;" style="display:none" jsan="5.display"></div> 
+        <div jsl="$x 2;" style="display:none" jsan="5.display"></div> 
+        <button jsl="$x 3;$t t-jrVj4fYkncg;$x 0;" class="action-bar-link action-bar-help play-button small id-track-click" data-uitype="112" title="Help" jsan="t-jrVj4fYkncg,7.action-bar-link,7.action-bar-help,7.play-button,7.small,7.id-track-click,0.data-uitype,0.title"> <span class="action-bar-link-title" jsl="$x 1;" jsan="7.action-bar-link-title"></span> </button> 
+        <div jsl="$x 4;" style="display:none"></div> 
+        <div jsl="$x 5;" style="display:none" class="action-bar-spacer"> 
+        </div> 
+        <div jsl="$x 6;" style="display:none"></div> 
+       </div>
+       <div jsinstance="*1" jsl="$x 1;$t t-rwatkwvxdCk;$x 0;" class="action-bar-item settings-gear-menu play-button small" jsan="t-rwatkwvxdCk,7.action-bar-item,7.settings-gear-menu,7.play-button,7.small"> 
+        <div jsl="$x 1;" style="display:none" jsan="5.display"></div> 
+        <div jsl="$x 2;" style="display:none" jsan="5.display"></div> 
+        <button jsl="$x 3;" style="display:none" jsan="5.display"></button> 
+        <div jsl="$x 4;$t t-pZpp18oHJ6M;$x 0;" class="action-bar-dropdown-container"> 
+         <div class="action-bar-dropdown"> 
+          <button class="action-bar-dropdown-top" aria-controls="action-dropdown-children-" aria-owns="action-dropdown-children-" id="action-dropdown-parent-" aria-expanded="false" aria-haspopup="true" jsl="$x 1;" jsan="7.action-bar-dropdown-top,0.aria-controls,0.aria-owns,0.id,0.aria-expanded,0.aria-haspopup"> <span class="title" jsl="$x 2;" jsan="7.title"></span> <span class="dropdown-icon"></span> </button> 
+         </div> 
+         <div class="name-edit-toggle" style="display:none"> 
+          <input class="edit-field-text" value="" maxlength="50" size="18" type="text" jsl="$x 3;"> 
+         </div> 
+         <div class="action-bar-dropdown-children-container" aria-labelledby="action-dropdown-parent-" id="action-dropdown-children-" jsl="$x 4;" style="display:none"> 
+          <div class="dropdown-submenu" jsl="$x 5;" jsan="7.dropdown-submenu"> 
+           <ul class="submenu-item-wrapper" jsl="$x 6;" jsan="7.submenu-item-wrapper"> 
+            <li jsinstance="0" jsl="$x 7;"> 
+             <ul jsl="$x 8;" style="display:none"></ul> 
+             <div jsl="$x 9;$t t-RFvLnNve14Q;$x 0;" class="leaf-submenu-link-wrapper"> 
+              <a class="leaf-submenu-link" href="/store/account" title="My orders" jsl="$x 1;" jsan="7.leaf-submenu-link,8.href,0.title">My orders</a> 
+              <button jsl="$x 2;" style="display:none" jsan="5.display"></button> 
+             </div> </li>
+            <li jsinstance="1" jsl="$x 7;"> 
+             <ul jsl="$x 8;" style="display:none"></ul> 
+             <div jsl="$x 9;$t t-RFvLnNve14Q;$x 0;" class="leaf-submenu-link-wrapper"> 
+              <a class="leaf-submenu-link" href="/settings" title="Settings" jsl="$x 1;" jsan="7.leaf-submenu-link,8.href,0.title">Settings</a> 
+              <button jsl="$x 2;" style="display:none" jsan="5.display"></button> 
+             </div> </li>
+            <li jsinstance="*2" jsl="$x 7;"> 
+             <ul jsl="$x 8;" style="display:none"></ul> 
+             <div jsl="$x 9;$t t-RFvLnNve14Q;$x 0;" class="leaf-submenu-link-wrapper"> 
+              <a class="leaf-submenu-link" href="https://www.google.com/android/devicemanager?hl=en_US" target="_blank" title="Android Device Manager" jsl="$x 1;" jsan="7.leaf-submenu-link,8.href,0.target,0.title">Android Device Manager</a> 
+              <button jsl="$x 2;" style="display:none" jsan="5.display"></button> 
+             </div> </li> 
+           </ul> 
+          </div> 
+         </div> 
+        </div> 
+        <div jsl="$x 5;" style="display:none" class="action-bar-spacer"> 
+        </div> 
+        <div jsl="$x 6;" style="display:none"></div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </div>
+   <div itemscope itemtype="http://schema.org/MobileApplication" id="body-content" role="main">
+    <meta content="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk" itemprop="url">
+    <meta content="https://www.gstatic.com/android/market_images/plus/play_stream_logo.png" itemprop="logoImageUrl">
+    <meta content="https://play.google.com" itemprop="logoHrefUrl">
+    <div class="main-content">
+     <div> 
+      <div class="details-wrapper apps square-cover id-track-partial-impression" data-docid="com.insidehighered.daily.apk" data-server-cookie="CAIaJgokEiIKHGNvbS5pbnNpZGVoaWdoZXJlZC5kYWlseS5hcGsQARgD" data-uitype="209"> 
+       <div class="details-info"> 
+        <div class="cover-container"> 
+         <img class="cover-image" src="https://lh4.ggpht.com/Nfawd_WOeeXXgoeZoccNT8U_DmIfEOJ5XMJBcvTKJepuL1XafRd5al4wpuz2c0pcRec=w300" alt="Cover art" aria-hidden="true" itemprop="image"> 
+        </div> 
+        <div class="info-container"> 
+         <div class="document-title" itemprop="name"> 
+          <div>
+           Inside Higher Ed Daily Update
+          </div> 
+         </div> 
+         <div itemprop="author" itemscope itemtype="http://schema.org/Organization"> 
+          <meta content="/store/apps/developer?id=Inside+Higher+Ed" itemprop="url"> 
+          <a class="document-subtitle primary" href="/store/apps/developer?id=Inside+Higher+Ed"> <span itemprop="name">Inside Higher Ed</span> </a> 
+          <div class="document-subtitle">
+           - April 16, 2014
+          </div> 
+         </div> 
+         <div> 
+          <a class="document-subtitle category" href="/store/apps/category/NEWS_AND_MAGAZINES"> <span itemprop="genre">News &amp; Magazines</span> </a> 
+         </div> 
+         <div> 
+         </div> 
+         <div class="details-actions"> 
+          <span> <span class="apps medium play-button buy-button-container" data-doc-fetch-skip-cache="0" data-doc-fetch-vouchers="0" data-docid="com.insidehighered.daily.apk"> 
+            <div class="pon" style="display:none">
+             1
+            </div> <button class="price buy id-track-click" data-server-cookie="CAIaJgokEiIKHGNvbS5pbnNpZGVoaWdoZXJlZC5kYWlseS5hcGsQARgD" data-uitype="221"> <span> <span itemprop="offers" itemscope itemtype="http://schema.org/Offer"> 
+               <meta content="https://play.google.com/store/apps/details?id=com.insidehighered.daily.apk&amp;rdid=com.insidehighered.daily.apk&amp;rdot=1&amp;feature=md" itemprop="url"> 
+               <meta content="" itemprop="previewUrl"> 
+               <meta content="" itemprop="offerType"> 
+               <meta content="0" itemprop="price"> 
+               <meta content="" itemprop="description"> <span itemprop="seller" itemscope itemtype="http://schema.org/Organization"> 
+                <meta content="Android" itemprop="name"> </span> </span> </span> 
+             <jsl jsl="$x 0;$t t-_eIX7HsHFbc;$x 0;$t t-ha7zyzmVjec;$x 0;"> 
+              <jsl jsl="$x 1;$t t-nH6Xd1T8X0Y;$x 0;"> 
+               <jsl jsl="$x 1;$t t-R7hS--kHwck;$x 0;"> 
+                <span jsl="$x 1;" style="display:none" jsan="5.display"></span> 
+               </jsl> 
+              </jsl> 
+             </jsl> <span>Install</span> </button> </span> </span> 
+          <div class="id-wishlist-display wishlist-display id-track-click"> 
+           <div class="wishlist-container" data-enable-wishlist-icon-center="true" data-server-cookie="CAIaJgokEiIKHGNvbS5pbnNpZGVoaWdoZXJlZC5kYWlseS5hcGsQARgD" data-uitype="203"> 
+            <button class="play-button wishlist-content wishlist-yet-to-add" data-docid="com.insidehighered.daily.apk"> 
+             <div class="wishlist-icon"></div> 
+             <div class="wishlist-text"> 
+              <div class="wishlist-text-default wishlist-text-add id-track-click" data-server-cookie="CAIaJgokEiIKHGNvbS5pbnNpZGVoaWdoZXJlZC5kYWlseS5hcGsQARgD" data-uitype="204">
+                Add to Wishlist 
+              </div> 
+              <div class="wishlist-text-default wishlist-text-adding">
+                Adding... 
+              </div> 
+              <div class="wishlist-text-default wishlist-text-added id-track-impression">
+                Added to Wishlist 
+              </div> 
+              <div class="wishlist-text-default wishlist-text-remove id-track-click" data-server-cookie="CAIaJgokEiIKHGNvbS5pbnNpZGVoaWdoZXJlZC5kYWlseS5hcGsQARgD" data-uitype="205">
+                Remove 
+              </div> 
+              <div class="wishlist-text-default wishlist-text-removing">
+                Removing... 
+              </div> 
+             </div> </button> 
+           </div> 
+          </div> 
+         </div> 
+         <div class="voucher-message id-voucher-message" style="display:none"></div> 
+         <div class="app-compatibility"> 
+          <div class="app-compatibility-initial" style="display:none"> 
+           <div class="compatibility-loading compatibility-image"></div> 
+           <span> Loading device compatibility... </span> 
+          </div> 
+          <div class="app-compatibility-final" style="display:none"> 
+           <div class="id-app-compatibility-icon compatibility-image"></div> 
+          </div> 
+          <div class="app-compatibility-device-list" style="display:none"></div> 
+          <script>(function(){var docid='com.insidehighered.daily.apk';if (typeof fci !== 'undefined'){fci(docid);}else {jQuery('body').one('onPressPlay',function(){fci(docid);});}
+})();</script> 
+         </div> 
+         <div class="details-info-divider"></div> 
+         <div class="header-star-badge"> 
+          <div class="stars-container"> 
+           <div class="tiny-star star-rating-non-editable-container" aria-label=" Rated 3.2 stars out of five stars "> 
+            <div class="current-rating" style="width: 64.4444465637207%"></div> 
+           </div> 
+          </div> 
+          <div class="stars-count">
+            (
+           <span class="reviewers-small"></span>18) 
+          </div> 
+         </div> 
+         <div class="details-sharing-section"> 
+          <div class="plusone-container"> 
+           <div class="g-plusone" data-align="right" data-href="https://market.android.com/details?id=com.insidehighered.daily.apk" data-annotation="inline" data-recommendations="false" data-se="3" data-size="medium" data-source="google:market" data-width="240"></div> 
+           <script type="text/javascript">if (window.gapi && gapi.plusone){gapi.plusone.go("body-content");}
+</script> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="details-section screenshots" aria-hidden="true"> 
+        <div class="details-section-contents"> 
+         <div class="details-section-body expandable"> 
+          <div class="thumbnails-wrapper"> 
+           <div class="thumbnails" data-expand-target="thumbnails"> 
+            <img class="screenshot" alt="Inside Higher Ed Daily Update - screenshot thumbnail" data-expand-to="full-screenshot-0" src="https://lh3.ggpht.com/WXv_p78VB1CQVy8CaqKmH_uAZpZKvz9IOn8WY5A2lSnzMeIiVmNhB0lgWfX5owhZHBN5=h310" itemprop="screenshot">
+            <img class="screenshot" alt="Inside Higher Ed Daily Update - screenshot thumbnail" data-expand-to="full-screenshot-1" src="https://lh3.ggpht.com/NcBGLSxAzijEgMaQPm7FcUu-9kze4ONJzWUEhhHBB_tzr9jgfbHJDa0JAoaRpDWA8pEr=h310" itemprop="screenshot">
+            <img class="screenshot" alt="Inside Higher Ed Daily Update - screenshot thumbnail" data-expand-to="full-screenshot-2" src="https://lh3.ggpht.com/PlKAKi4EmCKZUJpN-eolfKbyBNMAsjjsL1SeM1ocsMecVM7uuSjgDfrPbT8pH0yrRA=h310" itemprop="screenshot">
+            <img class="screenshot" alt="Inside Higher Ed Daily Update - screenshot thumbnail" data-expand-to="full-screenshot-3" src="https://lh5.ggpht.com/bOTF0bYVUL9LJg397V96g2CoQKNcDZBc6USyGrj3DuiQUY8tVLVmaggHrTLxmqTI6Cw=h310" itemprop="screenshot"> 
+           </div> 
+          </div> 
+          <div class="screenshot-container" style="display:none"> 
+           <div class="screenshot-align"> 
+            <div class="screenshot-align-inner"> 
+             <img class="full-screenshot" alt="Inside Higher Ed Daily Update - screenshot" data-expand-fit-to="screen" data-expand-scroll="true" data-expand-target="full-screenshot-0" data-expand-to="full-screenshot-1" src="https://lh3.ggpht.com/WXv_p78VB1CQVy8CaqKmH_uAZpZKvz9IOn8WY5A2lSnzMeIiVmNhB0lgWfX5owhZHBN5=h900"> 
+            </div> 
+           </div> 
+          </div>
+          <div class="screenshot-container" style="display:none"> 
+           <div class="screenshot-align"> 
+            <div class="screenshot-align-inner"> 
+             <img class="full-screenshot" alt="Inside Higher Ed Daily Update - screenshot" data-expand-fit-to="screen" data-expand-scroll="true" data-expand-target="full-screenshot-1" data-expand-to="full-screenshot-2" src="https://lh3.ggpht.com/NcBGLSxAzijEgMaQPm7FcUu-9kze4ONJzWUEhhHBB_tzr9jgfbHJDa0JAoaRpDWA8pEr=h900"> 
+            </div> 
+           </div> 
+          </div>
+          <div class="screenshot-container" style="display:none"> 
+           <div class="screenshot-align"> 
+            <div class="screenshot-align-inner"> 
+             <img class="full-screenshot" alt="Inside Higher Ed Daily Update - screenshot" data-expand-fit-to="screen" data-expand-scroll="true" data-expand-target="full-screenshot-2" data-expand-to="full-screenshot-3" src="https://lh3.ggpht.com/PlKAKi4EmCKZUJpN-eolfKbyBNMAsjjsL1SeM1ocsMecVM7uuSjgDfrPbT8pH0yrRA=h900"> 
+            </div> 
+           </div> 
+          </div>
+          <div class="screenshot-container" style="display:none"> 
+           <div class="screenshot-align"> 
+            <div class="screenshot-align-inner"> 
+             <img class="full-screenshot" alt="Inside Higher Ed Daily Update - screenshot" data-expand-fit-to="screen" data-expand-scroll="true" data-expand-target="full-screenshot-3" data-expand-to="thumbnails" src="https://lh5.ggpht.com/bOTF0bYVUL9LJg397V96g2CoQKNcDZBc6USyGrj3DuiQUY8tVLVmaggHrTLxmqTI6Cw=h900"> 
+            </div> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="details-section-divider"></div> 
+       </div> 
+       <div class="details-section description simple contains-text-link"> 
+        <div class="details-section-contents show-more-container" data-show-use-buffer="true"> 
+         <h1 class="heading"> Description </h1> 
+         <div class="show-more-content text-body" itemprop="description"> 
+          <div class="id-app-orig-desc">
+           Inside Higher Ed is the free daily news Website for people interested in higher education. Original reporting of higher education news, opinion from college and university thought leaders, compelling blogs, career content and thousands of job listings. Daily update keeps you abreast of what’s new.
+          </div> 
+          <div class="show-more-end"></div> 
+         </div> 
+         <div> 
+          <button class="play-button show-more small"> Read more </button> 
+          <button class="play-button expand-close"> 
+           <div class="close-image"> 
+           </div> </button> 
+         </div> 
+        </div> 
+        <div class="details-section-divider"></div> 
+       </div> 
+      </div> 
+     </div>
+     <div class="details-wrapper apps" data-docid="com.insidehighered.daily.apk"> 
+      <div class="details-section highlighted-review" style="display:none"> 
+       <div class="highlighted-section-contents"> 
+        <div style="display:none" class="review-help unallowed-app-review-container" data-unallowed-docid="com.insidehighered.daily.apk"> 
+         <div class="review-panel-content"> 
+          <div class="review-panel-close"></div> 
+          <div class="review-row"> 
+           <span class="unallowed-app-review id-unowned-app"> You must install this app before submitting a review. </span> 
+          </div> 
+          <div class="review-row review-action-buttons-row"> 
+           <div class="review-action-button-container"> 
+            <button class="play-button apps" id="close-dialog-button"> OK </button> 
+           </div> 
+          </div> 
+         </div> 
+         <div class="write-review-triangle-container"></div> 
+        </div> 
+        <div style="display:none" class="review-help id-gplus-signup"> 
+         <div class="review-panel-content"> 
+          <div class="review-panel-close"></div> 
+          <div class="review-row">
+            Google Play reviews now use Google+ so it's easier to see opinions from people you care about. New reviews will be publicly linked to your Google+ profile. Your name on previous reviews now appears as "A Google User". 
+          </div> 
+          <div class="review-row review-action-buttons-row"> 
+           <div class="review-action-button-container"> 
+            <a class="play-button id-no-nav apps" href="https://plus.google.com/up/accounts/upgrade?gpsrc=gpwr0&amp;continue=https://play.google.com/store/apps/details?id%3Dcom.insidehighered.daily.apk"> Sign up for Google+ </a> 
+           </div> 
+           <div class="review-action-button-container cancel-button"> 
+            <button class="play-button" id="close-dialog-button"> CANCEL </button> 
+           </div> 
+          </div> 
+         </div> 
+         <div class="write-review-triangle-container"></div> 
+        </div> 
+        <div style="display:none" class="review-help id-gpr-onboard"> 
+         <div class="review-panel-content"> 
+          <div class="review-panel-close"></div> 
+          <div class="review-row">
+            Google Play reviews now use Google+ so it's easier to see opinions from people you care about. New reviews will be publicly linked to your Google+ profile. Your name on previous reviews now appears as "A Google User". 
+          </div> 
+          <div class="review-row"> 
+           <div class="review-action-button-container"> 
+            <button class="play-button id-enable-gpr apps"> Continue </button> 
+           </div> 
+          </div> 
+         </div> 
+         <div class="write-review-triangle-container"></div> 
+        </div> 
+        <div style="display:none" class="write-review-panel"> 
+         <div> 
+          <div class="review-panel-content"> 
+           <div class="review-panel-close"></div> 
+           <div class="review-row"> 
+            <div class="review-row-header">
+              Write a review 
+            </div> 
+           </div> 
+           <div class="review-row"> 
+            <div class="write-review-title-container"> 
+             <input class="review-input-text-box write-review-title" maxlength="75" type="text"> 
+            </div> 
+           </div> 
+           <div class="review-row"> 
+            <div class="write-review-comment-container"> 
+             <textarea class="review-input-text-box write-review-comment" maxlength="1200"></textarea> 
+            </div> 
+           </div> 
+           <div class="review-row"> 
+            <div class="review-stars-container"> 
+             <div class="neutral write-star-rating-container"> 
+              <div class="small-star"> 
+               <div class="star-rating-editable-container"> 
+                <span class="star-common first-star"></span> 
+                <span class="star-common second-star"></span> 
+                <span class="star-common third-star"></span> 
+                <span class="star-common fourth-star"></span> 
+                <span class="star-common fifth-star"></span> 
+               </div> 
+               <div class="small-star star-rating-non-editable-container" aria-label=" Rated  stars out of five stars "> 
+                <div class="current-rating" style="width: 0%"></div> 
+               </div> 
+               <div class="star-rating-aria"> 
+                <button class="first-star" aria-label=" Rate one star out of five stars "></button> 
+                <button class="second-star" aria-label=" Rate two stars out of five stars "></button> 
+                <button class="third-star" aria-label=" Rate three stars out of five stars "></button> 
+                <button class="fourth-star" aria-label=" Rate four stars out of five stars "></button> 
+                <button class="fifth-star" aria-label=" Rate five stars out of five stars "></button> 
+               </div> 
+              </div> 
+             </div> 
+             <span class="alert-message-container"> 
+              <div class="alert-image-container"></div> 
+              <div class="alert-review-text-container"></div> </span> 
+            </div> 
+            <div class="review-action-button-container"> 
+             <button class="id-submit-review play-button apps disabled"> Submit Review </button> 
+            </div> 
+           </div> 
+          </div> 
+          <div class="write-review-triangle-container"></div> 
+         </div> 
+        </div> 
+        <div style="display:none" class="my-review-panel"> 
+         <div data-reviewid=""> 
+          <div class="review-panel-content"> 
+           <div class="review-panel-close"></div> 
+           <div class="review-image-row"> 
+            <div> 
+             <span> </span> 
+            </div> 
+           </div> 
+           <div class="review-row"> 
+            <div class="review-row-header">
+              My review 
+            </div> 
+           </div> 
+           <div class="review-row"> 
+            <span class="review-title"></span> 
+           </div> 
+           <div class="review-row"> 
+            <div class="review-stars-container"> 
+             <div class="small-star star-rating-non-editable-container" aria-label=" Rated  stars out of five stars "> 
+              <div class="current-rating" style="width: 0%"></div> 
+             </div> 
+            </div> 
+            <div class="review-action-button-container"> 
+             <button class="play-button icon-button small review-action-button-gap"> 
+              <div class="review-trash-button-icon"></div> </button> 
+            </div> 
+           </div> 
+           <div class="review-row"> 
+           </div> 
+          </div> 
+          <div class="write-review-triangle-container"></div> 
+         </div> 
+        </div> 
+        <div style="display:none"> 
+         <div class="id-selected-review-panel" data-reviewid=""> 
+          <div class="review-panel-content"> 
+           <div class="review-panel-close"></div> 
+           <div class="review-image-row"> 
+            <div> 
+             <span> </span> 
+            </div> 
+           </div> 
+           <div class="review-row"> 
+            <div class="review-row-header"> 
+             <span> Review from <span style="display:none"> </span> </span> 
+            </div> 
+           </div> 
+           <div class="review-row"> 
+            <span class="review-title"></span> 
+           </div> 
+           <div class="review-row"> 
+            <div class="review-stars-container"> 
+             <div class="small-star star-rating-non-editable-container" aria-label=" Rated  stars out of five stars "> 
+              <div class="current-rating" style="width: 0%"></div> 
+             </div> 
+            </div> 
+           </div> 
+           <div class="review-row"> 
+           </div> 
+          </div> 
+          <div class="write-review-triangle-container"></div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="details-section reviews"> 
+       <div class="details-section-contents"> 
+        <div class="details-section-heading"> 
+         <h1 class="heading"> Reviews </h1> 
+         <div class="review-actions id-track-click" data-uitype="206"> 
+          <div class="review-filters" data-expanded-only="true" style="display:none"> 
+           <div class="dropdown-menu-container review-filter id-review-sort-filter"> 
+            <div class="dropdown-menu"> 
+             <span class="displayed-child">Helpfulness</span> 
+             <div class="dropdown-icon"></div> 
+            </div> 
+            <div class="dropdown-menu-children"> 
+             <div class="dropdown-child" data-dropdown-value="0">
+              Newest
+             </div>
+             <div class="dropdown-child" data-dropdown-value="1">
+              Rating
+             </div>
+             <div class="dropdown-child selected" data-dropdown-value="2">
+              Helpfulness
+             </div> 
+            </div> 
+           </div>
+           <div class="dropdown-menu-container review-filter id-review-version-filter"> 
+            <div class="dropdown-menu"> 
+             <span class="displayed-child">All Versions</span> 
+             <div class="dropdown-icon"></div> 
+            </div> 
+            <div class="dropdown-menu-children"> 
+             <div class="dropdown-child selected" data-dropdown-value="">
+              All Versions
+             </div>
+             <div class="dropdown-child" data-dropdown-value="3">
+              Latest Version
+             </div> 
+            </div> 
+           </div> 
+          </div> 
+          <button class="id-write-button play-button"> <span class="write-review-button-icon"></span> <span> Write a Review </span> </button> 
+         </div> 
+        </div> 
+        <div class="details-section-body expandable" data-done-fetching="true" data-load-more-docid="com.insidehighered.daily.apk" data-load-more-section-id="reviews"> 
+         <div class="preview-panel"> 
+          <div class="preview-reviews multicol" data-multicol-fixed-height="true" data-multicol-width="auto"> 
+           <div class="rating-box"> 
+            <div class="score-container" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"> 
+             <meta content="3.222222328186035" itemprop="ratingValue"> 
+             <meta content="18" itemprop="ratingCount"> 
+             <div class="score">
+              3.2
+             </div> 
+             <div class="score-container-star-rating"> 
+              <div class="small-star star-rating-non-editable-container" aria-label=" Rated 3.2 stars out of five stars "> 
+               <div class="current-rating" style="width: 64.4444465637207%"></div> 
+              </div> 
+             </div> 
+             <div class="reviews-stats"> 
+              <span class="reviewers-small"></span> 
+              <span class="reviews-num">18</span> total 
+             </div> 
+            </div> 
+            <div class="rating-histogram"> 
+             <div class="rating-bar-container five"> 
+              <span class="bar-label"> <span class="star-tiny star-full"></span>5 </span> 
+              <span class="bar" style="width:100%"></span> 
+              <span class="bar-number">7</span> 
+             </div>
+             <div class="rating-bar-container four"> 
+              <span class="bar-label"> <span class="star-tiny star-full"></span>4 </span> 
+              <span class="bar" style="width:14%"></span> 
+              <span class="bar-number">1</span> 
+             </div>
+             <div class="rating-bar-container three"> 
+              <span class="bar-label"> <span class="star-tiny star-full"></span>3 </span> 
+              <span class="bar" style="width:42%"></span> 
+              <span class="bar-number">3</span> 
+             </div>
+             <div class="rating-bar-container two"> 
+              <span class="bar-label"> <span class="star-tiny star-full"></span>2 </span> 
+              <span class="bar" style="width:42%"></span> 
+              <span class="bar-number">3</span> 
+             </div>
+             <div class="rating-bar-container one"> 
+              <span class="bar-label"> <span class="star-tiny star-full"></span>1 </span> 
+              <span class="bar" style="width:57%"></span> 
+              <span class="bar-number">4</span> 
+             </div> 
+            </div> 
+           </div> 
+           <div class="featured-review" data-expand-to="user-0" data-reviewid="gp:AOqpTOFHcwyob-eRcoaVslGtdJcpNHxM4EXgNQgtm8W436KnzR7bPbrkBGU24JgH86NAKTbQEPMUO58vsoqZUw"> 
+            <div class="author"> 
+             <a href="/store/people/details?id=111347301698394335942"> <img class="author-image" alt="Madelaine Adelman avatar image" src="https://lh3.googleusercontent.com/uFp_tsTJboUY7kue5XAsGA=w48-c-h48"> </a> 
+            </div> 
+            <div> 
+             <span class="author-name"> <a href="/store/people/details?id=111347301698394335942">Madelaine Adelman</a> </span> 
+             <div class="featured-review-star-rating"> 
+              <div class="tiny-star star-rating-non-editable-container" aria-label=" Rated 1 stars out of five stars "> 
+               <div class="current-rating" style="width: 20%"></div> 
+              </div> 
+             </div> 
+             <div class="quoted-review"> 
+              <div class="review-text"> 
+               <span class="review-title">Loved it until it stopped loading articles.</span> Each day I check and, again, no articles in any category. Uninstalled and installed. No change. 
+              </div> 
+              <div class="paragraph-end details-light"></div> 
+             </div> 
+            </div> 
+           </div> 
+           <div class="featured-review" data-expand-to="user-1" data-reviewid="gp:AOqpTOHnA4F114FLQ2q5090znWZ5US1yG0R7fN8al9lMjDmwO6uNwO3U0u8gtmmxBPxUNWUiERbRuKU5Mse3cg"> 
+            <div class="author"> 
+             <a href="/store/people/details?id=105032938513652737875"> <img class="author-image" alt="Alex McCormick avatar image" src="https://lh4.googleusercontent.com/-UJHxsoR7dBY/AAAAAAAAAAI/AAAAAAAAADU/X4LKQwuwjk8/w48-c-h48/photo.jpg"> </a> 
+            </div> 
+            <div> 
+             <span class="author-name"> <a href="/store/people/details?id=105032938513652737875">Alex McCormick</a> </span> 
+             <div class="featured-review-star-rating"> 
+              <div class="tiny-star star-rating-non-editable-container" aria-label=" Rated 3 stars out of five stars "> 
+               <div class="current-rating" style="width: 60%"></div> 
+              </div> 
+             </div> 
+             <div class="quoted-review"> 
+              <div class="review-text"> 
+               <span class="review-title">OK but website integration lacking</span> I find the app useful but whenever I click to read a story it sends me to the non mobile Web site that is not formatted for my device. Linking to a mobile site would be a big improvement. 
+              </div> 
+              <div class="paragraph-end details-light"></div> 
+             </div> 
+            </div> 
+           </div> 
+           <div class="featured-review" data-expand-to="user-2" data-reviewid="lg:AOqpTOF4blpyn-oiHyrBEC8D4LjsLRiUeVJwerLvZL_xVLgRYjaPZSxaM4wLyEJx9Or8yYqLtRaWjsfjJ5br0Q"> 
+            <div class="author"> 
+             <span> <img class="author-image" alt="A Google User avatar image" src="https://lh3.googleusercontent.com/uFp_tsTJboUY7kue5XAsGA=w48-c-h48"> </span> 
+            </div> 
+            <div> 
+             <span class="author-name"> A Google User </span> 
+             <div class="featured-review-star-rating"> 
+              <div class="tiny-star star-rating-non-editable-container" aria-label=" Rated 1 stars out of five stars "> 
+               <div class="current-rating" style="width: 20%"></div> 
+              </div> 
+             </div> 
+             <div class="quoted-review"> 
+              <div class="review-text"> 
+               <span class="review-title"></span> Love the actual website, but since having the app for 2 weeks only 2 times would it show anything. All others it would say 'sorry no updates today.' 
+              </div> 
+              <div class="paragraph-end details-light"></div> 
+             </div> 
+            </div> 
+           </div> 
+           <div class="featured-review" data-expand-to="user-3" data-reviewid="lg:AOqpTOHrhX1Vll85ESkWArss0pKb2mg1t-4hxO_JtESJMMxKy7TEmUqY7jY7DzHNJsQvAL-COhskSZ_UeJgdwQ"> 
+            <div class="author"> 
+             <span> <img class="author-image" alt="A Google User avatar image" src="https://lh3.googleusercontent.com/uFp_tsTJboUY7kue5XAsGA=w48-c-h48"> </span> 
+            </div> 
+            <div> 
+             <span class="author-name"> A Google User </span> 
+             <div class="featured-review-star-rating"> 
+              <div class="tiny-star star-rating-non-editable-container" aria-label=" Rated 2 stars out of five stars "> 
+               <div class="current-rating" style="width: 40%"></div> 
+              </div> 
+             </div> 
+             <div class="quoted-review"> 
+              <div class="review-text"> 
+               <span class="review-title">Meh</span> Nothing exciting. Its free 
+              </div> 
+              <div class="paragraph-end details-light"></div> 
+             </div> 
+            </div> 
+           </div> 
+           <div class="featured-review" data-expand-to="user-4" data-reviewid="lg:AOqpTOH277Et-tp0EQkJYB-tguGpBxRifTZHWgo0SSd2UxdVfrmyqKS6wPYY--hWX6q4ey3gMtRmuNSGWqFZ_w"> 
+            <div class="author"> 
+             <span> <img class="author-image" alt="A Google User avatar image" src="https://lh3.googleusercontent.com/uFp_tsTJboUY7kue5XAsGA=w48-c-h48"> </span> 
+            </div> 
+            <div> 
+             <span class="author-name"> A Google User </span> 
+             <div class="featured-review-star-rating"> 
+              <div class="tiny-star star-rating-non-editable-container" aria-label=" Rated 2 stars out of five stars "> 
+               <div class="current-rating" style="width: 40%"></div> 
+              </div> 
+             </div> 
+             <div class="quoted-review"> 
+              <div class="review-text"> 
+               <span class="review-title"></span> Love IHE and grateful for app but why does it take a millennium to load up each time? 
+              </div> 
+              <div class="paragraph-end details-light"></div> 
+             </div> 
+            </div> 
+           </div> 
+           <div class="featured-review" data-expand-to="user-5" data-reviewid="lg:AOqpTOEsIOBhs2nQ71n7Q3eJt5q5d2sTqKKk4Uy94xw-RbjfINGRBrmmoQZTTBZTAWFz6moPSebvh1MZP0wBSg"> 
+            <div class="author"> 
+             <span> <img class="author-image" alt="A Google User avatar image" src="https://lh3.googleusercontent.com/uFp_tsTJboUY7kue5XAsGA=w48-c-h48"> </span> 
+            </div> 
+            <div> 
+             <span class="author-name"> A Google User </span> 
+             <div class="featured-review-star-rating"> 
+              <div class="tiny-star star-rating-non-editable-container" aria-label=" Rated 5 stars out of five stars "> 
+               <div class="current-rating" style="width: 100%"></div> 
+              </div> 
+             </div> 
+             <div class="quoted-review"> 
+              <div class="review-text"> 
+               <span class="review-title"></span> Awesome! Thank-you very much! 
+              </div> 
+              <div class="paragraph-end details-light"></div> 
+             </div> 
+            </div> 
+           </div> 
+          </div> 
+         </div> 
+         <div style="display:none" class="all-reviews multicol" data-expand-scroll="true" data-multicol-fixed-height="true"> 
+          <div> 
+           <div class="reviews-heading">
+             User reviews 
+           </div> 
+           <div class="single-review"> 
+            <a href="/store/people/details?id=111347301698394335942"> <img class="author-image" alt="Madelaine Adelman avatar image" src="https://lh3.googleusercontent.com/uFp_tsTJboUY7kue5XAsGA=w48-c-h48"> </a> 
+            <div class="review-header" data-expand-target="user-0" data-reviewid="gp:AOqpTOFHcwyob-eRcoaVslGtdJcpNHxM4EXgNQgtm8W436KnzR7bPbrkBGU24JgH86NAKTbQEPMUO58vsoqZUw"> 
+             <div class="review-info"> 
+              <span class="author-name"> <a href="/store/people/details?id=111347301698394335942">Madelaine Adelman</a> </span> 
+              <span class="review-date">August 20, 2014</span> 
+              <a class="reviews-permalink" href="/store/apps/details?id=com.insidehighered.daily.apk&amp;reviewId=Z3A6QU9xcFRPRkhjd3lvYi1lUmNvYVZzbEd0ZEpjcE5IeE00RVhnTlFndG04VzQzNktuelI3YlBicmtCR1UyNEpnSDg2TkFLVGJRRVBNVU81OHZzb3FaVXc" title=" Link to this review "></a> 
+              <div class="review-source" style="display:none"></div> 
+              <div class="review-info-star-rating"> 
+               <div class="tiny-star star-rating-non-editable-container" aria-label=" Rated 1 stars out of five stars "> 
+                <div class="current-rating" style="width: 20%"></div> 
+               </div> 
+              </div> 
+             </div> 
+             <div class="rate-review-wrapper"> 
+              <div class="play-button icon-button small rate-review" title=" Spam " data-rating="SPAM"> 
+               <div class="icon spam-flag"></div> 
+              </div> 
+              <div class="play-button icon-button small rate-review" title=" Helpful " data-rating="HELPFUL"> 
+               <div class="icon thumbs-up"></div> 
+              </div> 
+              <div class="play-button icon-button small rate-review" title=" Unhelpful " data-rating="UNHELPFUL"> 
+               <div class="icon thumbs-down"></div> 
+              </div> 
+             </div> 
+            </div> 
+            <div class="review-body"> 
+             <span class="review-title">Loved it until it stopped loading articles.</span> Each day I check and, again, no articles in any category. Uninstalled and installed. No change. 
+             <div class="review-link" style="display:none"> 
+              <a class="id-no-nav play-button tiny" href="#" target="_blank"> Full Review </a> 
+             </div> 
+            </div> 
+           </div> 
+          </div> 
+          <div> 
+           <div class="single-review"> 
+            <a href="/store/people/details?id=105032938513652737875"> <img class="author-image" alt="Alex McCormick avatar image" src="https://lh4.googleusercontent.com/-UJHxsoR7dBY/AAAAAAAAAAI/AAAAAAAAADU/X4LKQwuwjk8/w48-c-h48/photo.jpg"> </a> 
+            <div class="review-header" data-expand-target="user-1" data-reviewid="gp:AOqpTOHnA4F114FLQ2q5090znWZ5US1yG0R7fN8al9lMjDmwO6uNwO3U0u8gtmmxBPxUNWUiERbRuKU5Mse3cg"> 
+             <div class="review-info"> 
+              <span class="author-name"> <a href="/store/people/details?id=105032938513652737875">Alex McCormick</a> </span> 
+              <span class="review-date">July 27, 2013</span> 
+              <a class="reviews-permalink" href="/store/apps/details?id=com.insidehighered.daily.apk&amp;reviewId=Z3A6QU9xcFRPSG5BNEYxMTRGTFEycTUwOTB6bldaNVVTMXlHMFI3Zk44YWw5bE1qRG13TzZ1TndPM1UwdThndG1teEJQeFVOV1VpRVJiUnVLVTVNc2UzY2c" title=" Link to this review "></a> 
+              <div class="review-source" style="display:none"></div> 
+              <div class="review-info-star-rating"> 
+               <div class="tiny-star star-rating-non-editable-container" aria-label=" Rated 3 stars out of five stars "> 
+                <div class="current-rating" style="width: 60%"></div> 
+               </div> 
+              </div> 
+             </div> 
+             <div class="rate-review-wrapper"> 
+              <div class="play-button icon-button small rate-review" title=" Spam " data-rating="SPAM"> 
+               <div class="icon spam-flag"></div> 
+              </div> 
+              <div class="play-button icon-button small rate-review" title=" Helpful " data-rating="HELPFUL"> 
+               <div class="icon thumbs-up"></div> 
+              </div> 
+              <div class="play-button icon-button small rate-review" title=" Unhelpful " data-rating="UNHELPFUL"> 
+               <div class="icon thumbs-down"></div> 
+              </div> 
+             </div> 
+            </div> 
+            <div class="review-body"> 
+             <span class="review-title">OK but website integration lacking</span> I find the app useful but whenever I click to read a story it sends me to the non mobile Web site that is not formatted for my device. Linking to a mobile site would be a big improvement. 
+             <div class="review-link" style="display:none"> 
+              <a class="id-no-nav play-button tiny" href="#" target="_blank"> Full Review </a> 
+             </div> 
+            </div> 
+           </div> 
+          </div> 
+          <div> 
+           <div class="single-review"> 
+            <span> <img class="author-image" alt="A Google User avatar image" src="https://lh3.googleusercontent.com/uFp_tsTJboUY7kue5XAsGA=w48-c-h48"> </span> 
+            <div class="review-header" data-expand-target="user-2" data-reviewid="lg:AOqpTOF4blpyn-oiHyrBEC8D4LjsLRiUeVJwerLvZL_xVLgRYjaPZSxaM4wLyEJx9Or8yYqLtRaWjsfjJ5br0Q"> 
+             <div class="review-info"> 
+              <span class="author-name"> A Google User </span> 
+              <span class="review-date">July 19, 2011</span> 
+              <a class="reviews-permalink" href="/store/apps/details?id=com.insidehighered.daily.apk&amp;reviewId=bGc6QU9xcFRPRjRibHB5bi1vaUh5ckJFQzhENExqc0xSaVVlVkp3ZXJMdlpMX3hWTGdSWWphUFpTeGFNNHdMeUVKeDlPcjh5WXFMdFJhV2pzZmpKNWJyMFE" title=" Link to this review "></a> 
+              <div class="review-source" style="display:none"></div> 
+              <div class="review-info-star-rating"> 
+               <div class="tiny-star star-rating-non-editable-container" aria-label=" Rated 1 stars out of five stars "> 
+                <div class="current-rating" style="width: 20%"></div> 
+               </div> 
+              </div> 
+             </div> 
+             <div class="rate-review-wrapper"> 
+              <div class="play-button icon-button small rate-review" title=" Spam " data-rating="SPAM"> 
+               <div class="icon spam-flag"></div> 
+              </div> 
+              <div class="play-button icon-button small rate-review" title=" Helpful " data-rating="HELPFUL"> 
+               <div class="icon thumbs-up"></div> 
+              </div> 
+              <div class="play-button icon-button small rate-review" title=" Unhelpful " data-rating="UNHELPFUL"> 
+               <div class="icon thumbs-down"></div> 
+              </div> 
+             </div> 
+            </div> 
+            <div class="review-body"> 
+             <span class="review-title"></span> Love the actual website, but since having the app for 2 weeks only 2 times would it show anything. All others it would say 'sorry no updates today.' 
+             <div class="review-link" style="display:none"> 
+              <a class="id-no-nav play-button tiny" href="#" target="_blank"> Full Review </a> 
+             </div> 
+            </div> 
+           </div> 
+          </div> 
+          <div> 
+           <div class="single-review"> 
+            <span> <img class="author-image" alt="A Google User avatar image" src="https://lh3.googleusercontent.com/uFp_tsTJboUY7kue5XAsGA=w48-c-h48"> </span> 
+            <div class="review-header" data-expand-target="user-3" data-reviewid="lg:AOqpTOHrhX1Vll85ESkWArss0pKb2mg1t-4hxO_JtESJMMxKy7TEmUqY7jY7DzHNJsQvAL-COhskSZ_UeJgdwQ"> 
+             <div class="review-info"> 
+              <span class="author-name"> A Google User </span> 
+              <span class="review-date">September 19, 2011</span> 
+              <a class="reviews-permalink" href="/store/apps/details?id=com.insidehighered.daily.apk&amp;reviewId=bGc6QU9xcFRPSHJoWDFWbGw4NUVTa1dBcnNzMHBLYjJtZzF0LTRoeE9fSnRFU0pNTXhLeTdURW1VcVk3alk3RHpITkpzUXZBTC1DT2hza1NaX1VlSmdkd1E" title=" Link to this review "></a> 
+              <div class="review-source" style="display:none"></div> 
+              <div class="review-info-star-rating"> 
+               <div class="tiny-star star-rating-non-editable-container" aria-label=" Rated 2 stars out of five stars "> 
+                <div class="current-rating" style="width: 40%"></div> 
+               </div> 
+              </div> 
+             </div> 
+             <div class="rate-review-wrapper"> 
+              <div class="play-button icon-button small rate-review" title=" Spam " data-rating="SPAM"> 
+               <div class="icon spam-flag"></div> 
+              </div> 
+              <div class="play-button icon-button small rate-review" title=" Helpful " data-rating="HELPFUL"> 
+               <div class="icon thumbs-up"></div> 
+              </div> 
+              <div class="play-button icon-button small rate-review" title=" Unhelpful " data-rating="UNHELPFUL"> 
+               <div class="icon thumbs-down"></div> 
+              </div> 
+             </div> 
+            </div> 
+            <div class="review-body"> 
+             <span class="review-title">Meh</span> Nothing exciting. Its free 
+             <div class="review-link" style="display:none"> 
+              <a class="id-no-nav play-button tiny" href="#" target="_blank"> Full Review </a> 
+             </div> 
+            </div> 
+           </div> 
+          </div> 
+          <div> 
+           <div class="single-review"> 
+            <span> <img class="author-image" alt="A Google User avatar image" src="https://lh3.googleusercontent.com/uFp_tsTJboUY7kue5XAsGA=w48-c-h48"> </span> 
+            <div class="review-header" data-expand-target="user-4" data-reviewid="lg:AOqpTOH277Et-tp0EQkJYB-tguGpBxRifTZHWgo0SSd2UxdVfrmyqKS6wPYY--hWX6q4ey3gMtRmuNSGWqFZ_w"> 
+             <div class="review-info"> 
+              <span class="author-name"> A Google User </span> 
+              <span class="review-date">April 5, 2011</span> 
+              <a class="reviews-permalink" href="/store/apps/details?id=com.insidehighered.daily.apk&amp;reviewId=bGc6QU9xcFRPSDI3N0V0LXRwMEVRa0pZQi10Z3VHcEJ4UmlmVFpIV2dvMFNTZDJVeGRWZnJteXFLUzZ3UFlZLS1oV1g2cTRleTNnTXRSbXVOU0dXcUZaX3c" title=" Link to this review "></a> 
+              <div class="review-source" style="display:none"></div> 
+              <div class="review-info-star-rating"> 
+               <div class="tiny-star star-rating-non-editable-container" aria-label=" Rated 2 stars out of five stars "> 
+                <div class="current-rating" style="width: 40%"></div> 
+               </div> 
+              </div> 
+             </div> 
+             <div class="rate-review-wrapper"> 
+              <div class="play-button icon-button small rate-review" title=" Spam " data-rating="SPAM"> 
+               <div class="icon spam-flag"></div> 
+              </div> 
+              <div class="play-button icon-button small rate-review" title=" Helpful " data-rating="HELPFUL"> 
+               <div class="icon thumbs-up"></div> 
+              </div> 
+              <div class="play-button icon-button small rate-review" title=" Unhelpful " data-rating="UNHELPFUL"> 
+               <div class="icon thumbs-down"></div> 
+              </div> 
+             </div> 
+            </div> 
+            <div class="review-body"> 
+             <span class="review-title"></span> Love IHE and grateful for app but why does it take a millennium to load up each time? 
+             <div class="review-link" style="display:none"> 
+              <a class="id-no-nav play-button tiny" href="#" target="_blank"> Full Review </a> 
+             </div> 
+            </div> 
+           </div> 
+          </div> 
+          <div> 
+           <div class="single-review"> 
+            <span> <img class="author-image" alt="A Google User avatar image" src="https://lh3.googleusercontent.com/uFp_tsTJboUY7kue5XAsGA=w48-c-h48"> </span> 
+            <div class="review-header" data-expand-target="user-5" data-reviewid="lg:AOqpTOEsIOBhs2nQ71n7Q3eJt5q5d2sTqKKk4Uy94xw-RbjfINGRBrmmoQZTTBZTAWFz6moPSebvh1MZP0wBSg"> 
+             <div class="review-info"> 
+              <span class="author-name"> A Google User </span> 
+              <span class="review-date">December 26, 2010</span> 
+              <a class="reviews-permalink" href="/store/apps/details?id=com.insidehighered.daily.apk&amp;reviewId=bGc6QU9xcFRPRXNJT0JoczJuUTcxbjdRM2VKdDVxNWQyc1RxS0trNFV5OTR4dy1SYmpmSU5HUkJybW1vUVpUVEJaVEFXRno2bW9QU2VidmgxTVpQMHdCU2c" title=" Link to this review "></a> 
+              <div class="review-source" style="display:none"></div> 
+              <div class="review-info-star-rating"> 
+               <div class="tiny-star star-rating-non-editable-container" aria-label=" Rated 5 stars out of five stars "> 
+                <div class="current-rating" style="width: 100%"></div> 
+               </div> 
+              </div> 
+             </div> 
+             <div class="rate-review-wrapper"> 
+              <div class="play-button icon-button small rate-review" title=" Spam " data-rating="SPAM"> 
+               <div class="icon spam-flag"></div> 
+              </div> 
+              <div class="play-button icon-button small rate-review" title=" Helpful " data-rating="HELPFUL"> 
+               <div class="icon thumbs-up"></div> 
+              </div> 
+              <div class="play-button icon-button small rate-review" title=" Unhelpful " data-rating="UNHELPFUL"> 
+               <div class="icon thumbs-down"></div> 
+              </div> 
+             </div> 
+            </div> 
+            <div class="review-body"> 
+             <span class="review-title"></span> Awesome! Thank-you very much! 
+             <div class="review-link" style="display:none"> 
+              <a class="id-no-nav play-button tiny" href="#" target="_blank"> Full Review </a> 
+             </div> 
+            </div> 
+           </div> 
+          </div> 
+          <div> 
+           <div class="single-review"> 
+            <a href="/store/people/details?id=103864330238193208328"> <img class="author-image" alt="Craig W. Beebe avatar image" src="https://lh6.googleusercontent.com/-8fwIXHFFEcc/AAAAAAAAAAI/AAAAAAAAQ2w/P5LroLi3KMw/w48-c-h48/photo.jpg"> </a> 
+            <div class="review-header" data-expand-target="user-6" data-reviewid="gp:AOqpTOEJ3mW0jt4h8xQ8DCP3YwOOt9rUqdk4acsQYN_QMd_iRy4jPtgO4A8TLbzQ5LDzIOncceAwsOWP4jJyWw"> 
+             <div class="review-info"> 
+              <span class="author-name"> <a href="/store/people/details?id=103864330238193208328">Craig W. Beebe</a> </span> 
+              <span class="review-date">June 30, 2013</span> 
+              <a class="reviews-permalink" href="/store/apps/details?id=com.insidehighered.daily.apk&amp;reviewId=Z3A6QU9xcFRPRUozbVcwanQ0aDh4UThEQ1AzWXdPT3Q5clVxZGs0YWNzUVlOX1FNZF9pUnk0alB0Z080QThUTGJ6UTVMRHpJT25jY2VBd3NPV1A0akp5V3c" title=" Link to this review "></a> 
+              <div class="review-source" style="display:none"></div> 
+              <div class="review-info-star-rating"> 
+               <div class="tiny-star star-rating-non-editable-container" aria-label=" Rated 2 stars out of five stars "> 
+                <div class="current-rating" style="width: 40%"></div> 
+               </div> 
+              </div> 
+             </div> 
+             <div class="rate-review-wrapper"> 
+              <div class="play-button icon-button small rate-review" title=" Spam " data-rating="SPAM"> 
+               <div class="icon spam-flag"></div> 
+              </div> 
+              <div class="play-button icon-button small rate-review" title=" Helpful " data-rating="HELPFUL"> 
+               <div class="icon thumbs-up"></div> 
+              </div> 
+              <div class="play-button icon-button small rate-review" title=" Unhelpful " data-rating="UNHELPFUL"> 
+               <div class="icon thumbs-down"></div> 
+              </div> 
+             </div> 
+            </div> 
+            <div class="review-body"> 
+             <span class="review-title">Free. Still not worth it.</span> App doesn't do anything. Better just to bookmark the website. 
+             <div class="review-link" style="display:none"> 
+              <a class="id-no-nav play-button tiny" href="#" target="_blank"> Full Review </a> 
+             </div> 
+            </div> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="details-section-divider"></div> 
+      </div> 
+      <script>if (typeof ircs == 'undefined'){jQuery('body').one('onPressPlay',function(){ircs();});}else {ircs();}
+</script> 
+     </div> 
+     <div class="details-wrapper"> 
+      <div class="details-section metadata"> 
+       <div class="details-section-heading"> 
+        <h1 class="heading"> Additional information </h1> 
+       </div> 
+       <div class="details-section-contents"> 
+        <div class="meta-info"> 
+         <div class="title">
+          Updated
+         </div> 
+         <div class="content" itemprop="datePublished">
+          April 16, 2014
+         </div> 
+        </div> 
+        <div class="meta-info"> 
+         <div class="title">
+          Size
+         </div> 
+         <div class="content" itemprop="fileSize">
+           64k 
+         </div> 
+        </div> 
+        <div class="meta-info"> 
+         <div class="title">
+          Installs
+         </div> 
+         <div class="content" itemprop="numDownloads">
+           1,000 - 5,000 
+         </div> 
+        </div> 
+        <div class="meta-info"> 
+         <div class="title">
+          Current Version
+         </div> 
+         <div class="content" itemprop="softwareVersion">
+           1.2 
+         </div> 
+        </div> 
+        <div class="meta-info"> 
+         <div class="title">
+          Requires Android
+         </div> 
+         <div class="content" itemprop="operatingSystems">
+           2.1 and up 
+         </div> 
+        </div> 
+        <div class="meta-info"> 
+         <div class="title">
+          Content Rating
+         </div> 
+         <div class="content" itemprop="contentRating">
+           Everyone 
+         </div> 
+        </div> 
+        <div class="meta-info"> 
+         <div class="title">
+          Permissions
+         </div> 
+         <button class="content id-view-permissions-details fake-link" data-docid="com.insidehighered.daily.apk"> View details </button> 
+        </div> 
+        <div class="meta-info contains-text-link"> 
+         <div class="title">
+          Report
+         </div> 
+         <a class="content" href="https://support.google.com/googleplay/?p=report_content" target="_blank"> Flag as inappropriate </a> 
+        </div> 
+        <div class="meta-info"> 
+         <div class="title">
+           Offered By 
+         </div> 
+         <div class="content">
+          Inside Higher Ed
+         </div> 
+        </div> 
+        <div class="meta-info"> 
+         <div class="title">
+           Developer 
+         </div> 
+         <div class="content contains-text-link"> 
+          <a class="dev-link" href="https://www.google.com/url?q=http://www.insidehighered.com&amp;sa=D&amp;usg=AFQjCNHryu2vC9dWgx9bOvIdy6eCoVfYEA" rel="nofollow" target="_blank"> Visit Website </a> 
+          <a class="dev-link" href="mailto:insideihe@insidehighered.com" rel="nofollow" target="_blank"> Email insideihe@insidehighered.com </a> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="details-section-divider"></div> 
+      </div> 
+     </div>
+     <div class="details-wrapper"> 
+      <div class="details-section recommendation"> 
+       <div class="details-section-contents"> 
+        <div class="rec-cluster" data-server-cookie="CAMiLAgCEAMaJBIiChxjb20uaW5zaWRlaGlnaGVyZWQuZGFpbHkuYXBrEAEYAygB" data-uitype="400"> 
+         <h1 class="heading"> Similar </h1> 
+         <div class="cards expandable"> 
+          <div class="card no-rationale square-cover apps small" data-docid="samsungupdate.com" data-original-classes="card no-rationale square-cover apps small" data-short-classes="card no-rationale square-cover apps tiny"> 
+           <div class="card-content id-track-click id-track-impression" data-docid="samsungupdate.com" data-server-cookie="CAIaGwoZEhcKEXNhbXN1bmd1cGRhdGUuY29tEAEYAw==" data-uitype="500"> 
+            <a class="card-click-target" data-server-cookie="CAIaGwoZEhcKEXNhbXN1bmd1cGRhdGUuY29tEAEYAw==" data-uitype="500" href="/store/apps/details?id=samsungupdate.com" aria-hidden="true" tabindex="-1"></a> 
+            <div class="cover"> 
+             <div class="cover-image-container"> 
+              <div class="cover-outer-align"> 
+               <div class="cover-inner-align"> 
+                <img alt="Samsung Update Android Version" class="cover-image" data-cover-large="https://lh6.ggpht.com/UN_Jrn-6FpeLv5pvQZVr0MckOXQmcJe3G1lX-EgzzrPSq_GEtg5aPtPpU8rrsILTr1I=w340" data-cover-small="https://lh6.ggpht.com/UN_Jrn-6FpeLv5pvQZVr0MckOXQmcJe3G1lX-EgzzrPSq_GEtg5aPtPpU8rrsILTr1I=w170" src="https://lh6.ggpht.com/UN_Jrn-6FpeLv5pvQZVr0MckOXQmcJe3G1lX-EgzzrPSq_GEtg5aPtPpU8rrsILTr1I=w170" aria-hidden="true"> 
+               </div> 
+              </div> 
+             </div> 
+             <a class="card-click-target" href="/store/apps/details?id=samsungupdate.com" aria-hidden="true" tabindex="-1"> <span class="movies preordered-overlay-container id-preordered-overlay-container" style="display:none"> <span class="preordered-label"> Pre-ordered </span> </span> <span class="preview-overlay-container" data-docid="samsungupdate.com"> </span> </a> 
+            </div> 
+            <div class="details"> 
+             <a class="card-click-target" href="/store/apps/details?id=samsungupdate.com" aria-hidden="true" tabindex="-1"></a> 
+             <h2> <a class="title" href="/store/apps/details?id=samsungupdate.com" title="Samsung Update Android Version"> Samsung Update Android Version <span class="paragraph-end"></span> </a> </h2> 
+             <div class="subtitle-container"> 
+              <a class="subtitle" href="/store/apps/developer?id=eVeek" title="eVeek">eVeek</a> 
+              <span class="price-container"> <span class="paragraph-end"></span> <span class="apps is-price-tag buy-button-container" data-doc-fetch-skip-cache="0" data-doc-fetch-vouchers="0" data-docid="samsungupdate.com"> 
+                <div class="pon" style="display:none">
+                 1
+                </div> <button class="price buy id-track-click" data-server-cookie="CAIaGwoZEhcKEXNhbXN1bmd1cGRhdGUuY29tEAEYAw==" data-uitype="221"> <span class="display-price">Free</span> </button> </span> </span> 
+             </div> 
+             <div class="description">
+               Get the latest Android technology news, OS updates, ROMs, hacks, trends, tips and updates to become a savvy Android technology expert with Samsung Update
+              <p>Find and keep up with the latest - </p>
+              <p>✓ Software updates <br>✓ New Android apps &amp; games<br>✓ Operating System OS Updates<br>✓ Android news<br>✓ Android tips &amp; tricks<br>✓ Android accessories<br>✓ Android wallpapers<br>✓ Android themes <br>✓ Android widgets<br>✓ Android tools<br>✓ Android manuals and guides <br>✓ Android how tos<br>✓ Cyanogen Mod kernels and updates<br>✓ Firmware, kernel version updates</p>
+              <p>Samsung Update curates articles, blog posts and technology news feed items from top publications and technology news sites such as Engadget, Android Authority, Yahoo News, Android Central, Tech Radar, Drippler, Feedly, Phandroid, BBC, The Verge, Gizmodo, Mashable, Android Guys, TalkAndroid, Droid Gamers, XDA Developers, Android Police, Land Of Droid, AndroidSpin and ZDNet amongst others, ensuring that you receive high quality, reliable technology news and headlines from all across the globe</p>
+              <p>Samsung Update is your one stop newsreader and OS update helper for accessing – </p>
+              <p>- The best operating system OS, firmware version and system version updates and upgrades such as Android KitKat, Lollipop, Jelly Bean and others<br>- Custom ROM, hacks, themes and HD wallpapers for your smartphone<br>- Android phone and tablet rooting tools and step-by-step instructions, manuals, tutorials and guides<br>- Thousands of technology news, how to articles, daily tips, tech secrets and tricks<br>- Reviews and news of top Android apps, tech widgets and cool video games<br>- Top Android software (apps and games) and hardware reviews such as wearable tech, gadgets, tools and accessories<br>- Trending and noteworthy technology news, tech tips and updates in the Android world</p>
+              <p>Now find information technology IT news and answers to topics and questions such as - Which is the best free antivirus, virus protection Android app? How can I install Android operating system updates and from where? How to root my Android phone? Which are the best apps for rooted Android? How can I optimize for a faster Android device? How can I upgrade my phone’s system setting?</p>
+              <p>Samsung Update will keep you updated with these and many other questions, technology news, tricks and trending technology news items from all across the tech world to keep you in touch and help you get the daily dose right on your Android device!</p>
+              <p>Samsung Update supports versions - Honeycomb (3.0, 3.1, 3.2), Ice Cream Sandwich ICS (4.0), Jelly Bean (4.1, 4.2, 4.3), KitKat (4.4), Lollipop (5.0)</p>
+              <p>Tested and working perfectly on - Nexus 6, Nexus 5, Nexus 4, Nexus 7, Nexus 10, Samsung Galaxy S5, Samsung Galaxy S4, Samsung Galaxy S3, Samsung Galaxy Note 4, ASUS, Samsung Galaxy Note 3, Motorola Moto X, Motorola Moto G, Samsung Galaxy Note 2, HTC One X, HTC Desire, Sony Xperia Z3, Samsung Galaxy Tab 2, Samsung Galaxy Tab 3, Motorola Droid Razr</p>
+              <p>News from top countries such as United States of America USA, United Kingdom UK, Singapore, Canada, Australia, Ireland, Malaysia, India, Germany, France, Italy, Pakistan, Brazil, New Zealand, Russia, Netherlands, Spain, Mexico, Argentina, China, Taiwan, Belgium and Austria</p>
+              <p>So, what are you waiting for? Download Samsung Update, keep updated with the latest technology news, tips, tricks and updates and become a savvy Android technology expert!</p>
+              <p></p>
+              <p></p>
+              <p></p>
+              <p></p>
+              <p></p>
+              <p></p>
+              <p></p>
+              <p></p>
+              <p></p>
+              <p></p> 
+              <span class="paragraph-end"></span> 
+              <a class="card-click-target" href="/store/apps/details?id=samsungupdate.com" aria-hidden="true" tabindex="-1"></a> 
+             </div> 
+            </div> 
+            <div class="reason-set"> 
+             <span class="stars-container"> <a href="/store/apps/details?id=samsungupdate.com" tabindex="-1"> 
+               <div class="reason-set-star-rating"> 
+                <div class="tiny-star star-rating-non-editable-container" aria-label=" Rated 3.9 stars out of five stars "> 
+                 <div class="current-rating" style="width: 77.60205268859863%"></div> 
+                </div> 
+               </div> </a> <span class="price-container"> <span class="paragraph-end"></span> <span class="apps is-price-tag buy-button-container" data-doc-fetch-skip-cache="0" data-doc-fetch-vouchers="0" data-docid="samsungupdate.com"> 
+                <div class="pon" style="display:none">
+                 1
+                </div> <button class="price buy id-track-click" data-server-cookie="CAIaGwoZEhcKEXNhbXN1bmd1cGRhdGUuY29tEAEYAw==" data-uitype="221"> <span class="display-price">Free</span> </button> </span> </span> </span> 
+            </div> 
+           </div> 
+          </div> 
+          <div class="card no-rationale square-cover apps small" data-docid="com.a1267407108500e98bf263915a.a22064080a" data-original-classes="card no-rationale square-cover apps small" data-short-classes="card no-rationale square-cover apps tiny"> 
+           <div class="card-content id-track-click id-track-impression" data-docid="com.a1267407108500e98bf263915a.a22064080a" data-server-cookie="CAIaMwoxEi8KKWNvbS5hMTI2NzQwNzEwODUwMGU5OGJmMjYzOTE1YS5hMjIwNjQwODBhEAEYAw==" data-uitype="500"> 
+            <a class="card-click-target" data-server-cookie="CAIaMwoxEi8KKWNvbS5hMTI2NzQwNzEwODUwMGU5OGJmMjYzOTE1YS5hMjIwNjQwODBhEAEYAw==" data-uitype="500" href="/store/apps/details?id=com.a1267407108500e98bf263915a.a22064080a" aria-hidden="true" tabindex="-1"></a> 
+            <div class="cover"> 
+             <div class="cover-image-container"> 
+              <div class="cover-outer-align"> 
+               <div class="cover-inner-align"> 
+                <img alt="Hacker Update" class="cover-image" data-cover-large="https://lh5.ggpht.com/O-sfmAURIL-i53AhffYjgeP8IC38dJ7U9IhQDvR8f1fC9LHKIwsJQRhfUwXy3lqhB4rB=w340" data-cover-small="https://lh5.ggpht.com/O-sfmAURIL-i53AhffYjgeP8IC38dJ7U9IhQDvR8f1fC9LHKIwsJQRhfUwXy3lqhB4rB=w170" src="https://lh5.ggpht.com/O-sfmAURIL-i53AhffYjgeP8IC38dJ7U9IhQDvR8f1fC9LHKIwsJQRhfUwXy3lqhB4rB=w170" aria-hidden="true"> 
+               </div> 
+              </div> 
+             </div> 
+             <a class="card-click-target" href="/store/apps/details?id=com.a1267407108500e98bf263915a.a22064080a" aria-hidden="true" tabindex="-1"> <span class="movies preordered-overlay-container id-preordered-overlay-container" style="display:none"> <span class="preordered-label"> Pre-ordered </span> </span> <span class="preview-overlay-container" data-docid="com.a1267407108500e98bf263915a.a22064080a"> </span> </a> 
+            </div> 
+            <div class="details"> 
+             <a class="card-click-target" href="/store/apps/details?id=com.a1267407108500e98bf263915a.a22064080a" aria-hidden="true" tabindex="-1"></a> 
+             <h2> <a class="title" href="/store/apps/details?id=com.a1267407108500e98bf263915a.a22064080a" title="Hacker Update"> Hacker Update <span class="paragraph-end"></span> </a> </h2> 
+             <div class="subtitle-container"> 
+              <a class="subtitle" href="/store/apps/developer?id=Mobile+Apps+or+Websites" title="Mobile Apps or Websites">Mobile Apps or Websites</a> 
+              <span class="price-container"> <span class="paragraph-end"></span> <span class="apps is-price-tag buy-button-container" data-doc-fetch-skip-cache="0" data-doc-fetch-vouchers="0" data-docid="com.a1267407108500e98bf263915a.a22064080a"> 
+                <div class="pon" style="display:none">
+                 1
+                </div> <button class="price buy id-track-click" data-server-cookie="CAIaMwoxEi8KKWNvbS5hMTI2NzQwNzEwODUwMGU5OGJmMjYzOTE1YS5hMjIwNjQwODBhEAEYAw==" data-uitype="221"> <span class="display-price">Free</span> </button> </span> </span> 
+             </div> 
+             <div class="description">
+               An easy way to keep up to date with all the latest hacker news and events going on in the world. Click on each post to read into it in more depth.
+              <p>Click on the Videos or More tab to see links to latest videos relevant to the subject linked from around the web and latest blog feeds also relevant to the subject in hand.</p> 
+              <span class="paragraph-end"></span> 
+              <a class="card-click-target" href="/store/apps/details?id=com.a1267407108500e98bf263915a.a22064080a" aria-hidden="true" tabindex="-1"></a> 
+             </div> 
+            </div> 
+            <div class="reason-set"> 
+             <span class="stars-container"> <a href="/store/apps/details?id=com.a1267407108500e98bf263915a.a22064080a" tabindex="-1"> 
+               <div class="reason-set-star-rating"> 
+                <div class="tiny-star star-rating-non-editable-container" aria-label=" Rated 4.1 stars out of five stars "> 
+                 <div class="current-rating" style="width: 81.71428680419922%"></div> 
+                </div> 
+               </div> </a> <span class="price-container"> <span class="paragraph-end"></span> <span class="apps is-price-tag buy-button-container" data-doc-fetch-skip-cache="0" data-doc-fetch-vouchers="0" data-docid="com.a1267407108500e98bf263915a.a22064080a"> 
+                <div class="pon" style="display:none">
+                 1
+                </div> <button class="price buy id-track-click" data-server-cookie="CAIaMwoxEi8KKWNvbS5hMTI2NzQwNzEwODUwMGU5OGJmMjYzOTE1YS5hMjIwNjQwODBhEAEYAw==" data-uitype="221"> <span class="display-price">Free</span> </button> </span> </span> </span> 
+            </div> 
+           </div> 
+          </div> 
+          <div class="card no-rationale square-cover apps small" data-docid="com.ritekno.jambiupdate" data-original-classes="card no-rationale square-cover apps small" data-short-classes="card no-rationale square-cover apps tiny"> 
+           <div class="card-content id-track-click id-track-impression" data-docid="com.ritekno.jambiupdate" data-server-cookie="CAIaIQofEh0KF2NvbS5yaXRla25vLmphbWJpdXBkYXRlEAEYAw==" data-uitype="500"> 
+            <a class="card-click-target" data-server-cookie="CAIaIQofEh0KF2NvbS5yaXRla25vLmphbWJpdXBkYXRlEAEYAw==" data-uitype="500" href="/store/apps/details?id=com.ritekno.jambiupdate" aria-hidden="true" tabindex="-1"></a> 
+            <div class="cover"> 
+             <div class="cover-image-container"> 
+              <div class="cover-outer-align"> 
+               <div class="cover-inner-align"> 
+                <img alt="Jambi Update" class="cover-image" data-cover-large="https://lh3.ggpht.com/-S5jwuC-luNZq8ZI8-a3rZMWl-8xYTnKFpZmiZlhUVIHARcpHN52UkeNFbRW_bagZ2SR=w340" data-cover-small="https://lh3.ggpht.com/-S5jwuC-luNZq8ZI8-a3rZMWl-8xYTnKFpZmiZlhUVIHARcpHN52UkeNFbRW_bagZ2SR=w170" src="https://lh3.ggpht.com/-S5jwuC-luNZq8ZI8-a3rZMWl-8xYTnKFpZmiZlhUVIHARcpHN52UkeNFbRW_bagZ2SR=w170" aria-hidden="true"> 
+               </div> 
+              </div> 
+             </div> 
+             <a class="card-click-target" href="/store/apps/details?id=com.ritekno.jambiupdate" aria-hidden="true" tabindex="-1"> <span class="movies preordered-overlay-container id-preordered-overlay-container" style="display:none"> <span class="preordered-label"> Pre-ordered </span> </span> <span class="preview-overlay-container" data-docid="com.ritekno.jambiupdate"> </span> </a> 
+            </div> 
+            <div class="details"> 
+             <a class="card-click-target" href="/store/apps/details?id=com.ritekno.jambiupdate" aria-hidden="true" tabindex="-1"></a> 
+             <h2> <a class="title" href="/store/apps/details?id=com.ritekno.jambiupdate" title="Jambi Update"> Jambi Update <span class="paragraph-end"></span> </a> </h2> 
+             <div class="subtitle-container"> 
+              <a class="subtitle" href="/store/apps/developer?id=RITEKNO" title="RITEKNO">RITEKNO</a> 
+              <span class="price-container"> <span class="paragraph-end"></span> <span class="apps is-price-tag buy-button-container" data-doc-fetch-skip-cache="0" data-doc-fetch-vouchers="0" data-docid="com.ritekno.jambiupdate"> 
+                <div class="pon" style="display:none">
+                 1
+                </div> <button class="price buy id-track-click" data-server-cookie="CAIaIQofEh0KF2NvbS5yaXRla25vLmphbWJpdXBkYXRlEAEYAw==" data-uitype="221"> <span class="display-price">Free</span> </button> </span> </span> 
+             </div> 
+             <div class="description">
+               Jambi Update adalah sebuah situs berita online provinsi Jambi yang di fokuskan pada foto - foto yang sedang terjadi di provinsi jambi. Berita Jambi Foto, situs yang pertama memuat konten foto 
+              <span class="paragraph-end"></span> 
+              <a class="card-click-target" href="/store/apps/details?id=com.ritekno.jambiupdate" aria-hidden="true" tabindex="-1"></a> 
+             </div> 
+            </div> 
+            <div class="reason-set"> 
+             <span class="stars-container"> <a href="/store/apps/details?id=com.ritekno.jambiupdate" tabindex="-1"> 
+               <div class="reason-set-star-rating"> 
+                <div class="tiny-star star-rating-non-editable-container" aria-label=" Rated 3.6 stars out of five stars "> 
+                 <div class="current-rating" style="width: 72.72727489471436%"></div> 
+                </div> 
+               </div> </a> <span class="price-container"> <span class="paragraph-end"></span> <span class="apps is-price-tag buy-button-container" data-doc-fetch-skip-cache="0" data-doc-fetch-vouchers="0" data-docid="com.ritekno.jambiupdate"> 
+                <div class="pon" style="display:none">
+                 1
+                </div> <button class="price buy id-track-click" data-server-cookie="CAIaIQofEh0KF2NvbS5yaXRla25vLmphbWJpdXBkYXRlEAEYAw==" data-uitype="221"> <span class="display-price">Free</span> </button> </span> </span> </span> 
+            </div> 
+           </div> 
+          </div> 
+          <div class="card no-rationale square-cover apps small" data-docid="sajid.android.kashmirnewsupdates" data-original-classes="card no-rationale square-cover apps small" data-short-classes="card no-rationale square-cover apps tiny"> 
+           <div class="card-content id-track-click id-track-impression" data-docid="sajid.android.kashmirnewsupdates" data-server-cookie="CAIaKgooEiYKIHNhamlkLmFuZHJvaWQua2FzaG1pcm5ld3N1cGRhdGVzEAEYAw==" data-uitype="500"> 
+            <a class="card-click-target" data-server-cookie="CAIaKgooEiYKIHNhamlkLmFuZHJvaWQua2FzaG1pcm5ld3N1cGRhdGVzEAEYAw==" data-uitype="500" href="/store/apps/details?id=sajid.android.kashmirnewsupdates" aria-hidden="true" tabindex="-1"></a> 
+            <div class="cover"> 
+             <div class="cover-image-container"> 
+              <div class="cover-outer-align"> 
+               <div class="cover-inner-align"> 
+                <img alt="Kashmir News Update" class="cover-image" data-cover-large="https://lh6.ggpht.com/7zFAmrvaH7C3FSyLafwG7gMFUZqn0wJyb04N1xFIp2cUhPZS1OA5S7nPc3WY3zYV1Q=w340" data-cover-small="https://lh6.ggpht.com/7zFAmrvaH7C3FSyLafwG7gMFUZqn0wJyb04N1xFIp2cUhPZS1OA5S7nPc3WY3zYV1Q=w170" src="https://lh6.ggpht.com/7zFAmrvaH7C3FSyLafwG7gMFUZqn0wJyb04N1xFIp2cUhPZS1OA5S7nPc3WY3zYV1Q=w170" aria-hidden="true"> 
+               </div> 
+              </div> 
+             </div> 
+             <a class="card-click-target" href="/store/apps/details?id=sajid.android.kashmirnewsupdates" aria-hidden="true" tabindex="-1"> <span class="movies preordered-overlay-container id-preordered-overlay-container" style="display:none"> <span class="preordered-label"> Pre-ordered </span> </span> <span class="preview-overlay-container" data-docid="sajid.android.kashmirnewsupdates"> </span> </a> 
+            </div> 
+            <div class="details"> 
+             <a class="card-click-target" href="/store/apps/details?id=sajid.android.kashmirnewsupdates" aria-hidden="true" tabindex="-1"></a> 
+             <h2> <a class="title" href="/store/apps/details?id=sajid.android.kashmirnewsupdates" title="Kashmir News Update"> Kashmir News Update <span class="paragraph-end"></span> </a> </h2> 
+             <div class="subtitle-container"> 
+              <a class="subtitle" href="/store/apps/developer?id=Sajid+Alam" title="Sajid Alam">Sajid Alam</a> 
+              <span class="price-container"> <span class="paragraph-end"></span> <span class="apps is-price-tag buy-button-container" data-doc-fetch-skip-cache="0" data-doc-fetch-vouchers="0" data-docid="sajid.android.kashmirnewsupdates"> 
+                <div class="pon" style="display:none">
+                 1
+                </div> <button class="price buy id-track-click" data-server-cookie="CAIaKgooEiYKIHNhamlkLmFuZHJvaWQua2FzaG1pcm5ld3N1cGRhdGVzEAEYAw==" data-uitype="221"> <span class="display-price">Free</span> </button> </span> </span> 
+             </div> 
+             <div class="description">
+               This application is intended to ease the access of different newspapers of Jammu &amp; Kashmir. The user interface of this application is user friendly, it’s a sort of metro UI. This application contains around 16 newspapers of Jammu &amp; Kashmir with few different languages.
+              <br>Please provide your suggestions like,
+              <br>1. If you want me to add more content to this application, which I am unaware about.
+              <br>2. If you want any sort of enhancement with regards to UI of the application.
+              <br>3. Please send your suggestions and reviews on this e-mail address kashmirnewsupdate@live.in so that we may enhance this application together, your suggestions are very important to me so that we may stable this application for further use. 
+              <span class="paragraph-end"></span> 
+              <a class="card-click-target" href="/store/apps/details?id=sajid.android.kashmirnewsupdates" aria-hidden="true" tabindex="-1"></a> 
+             </div> 
+            </div> 
+            <div class="reason-set"> 
+             <span class="stars-container"> <a href="/store/apps/details?id=sajid.android.kashmirnewsupdates" tabindex="-1"> 
+               <div class="reason-set-star-rating"> 
+                <div class="tiny-star star-rating-non-editable-container" aria-label=" Rated 4.2 stars out of five stars "> 
+                 <div class="current-rating" style="width: 83.33333015441895%"></div> 
+                </div> 
+               </div> </a> <span class="price-container"> <span class="paragraph-end"></span> <span class="apps is-price-tag buy-button-container" data-doc-fetch-skip-cache="0" data-doc-fetch-vouchers="0" data-docid="sajid.android.kashmirnewsupdates"> 
+                <div class="pon" style="display:none">
+                 1
+                </div> <button class="price buy id-track-click" data-server-cookie="CAIaKgooEiYKIHNhamlkLmFuZHJvaWQua2FzaG1pcm5ld3N1cGRhdGVzEAEYAw==" data-uitype="221"> <span class="display-price">Free</span> </button> </span> </span> </span> 
+            </div> 
+           </div> 
+          </div> 
+          <div class="card no-rationale square-cover apps small" data-docid="com.albani.technoupdate" data-original-classes="card no-rationale square-cover apps small" data-short-classes="card no-rationale square-cover apps tiny"> 
+           <div class="card-content id-track-click id-track-impression" data-docid="com.albani.technoupdate" data-server-cookie="CAIaIQofEh0KF2NvbS5hbGJhbmkudGVjaG5vdXBkYXRlEAEYAw==" data-uitype="500"> 
+            <a class="card-click-target" data-server-cookie="CAIaIQofEh0KF2NvbS5hbGJhbmkudGVjaG5vdXBkYXRlEAEYAw==" data-uitype="500" href="/store/apps/details?id=com.albani.technoupdate" aria-hidden="true" tabindex="-1"></a> 
+            <div class="cover"> 
+             <div class="cover-image-container"> 
+              <div class="cover-outer-align"> 
+               <div class="cover-inner-align"> 
+                <img alt="Techno Update" class="cover-image" data-cover-large="https://lh4.ggpht.com/lNAgfV1TGhHwm0-4_Ow6y9gZUaVBCbpuWijkmgCTmPrFndyC8f3eGy0iVpEha54F914=w340" data-cover-small="https://lh4.ggpht.com/lNAgfV1TGhHwm0-4_Ow6y9gZUaVBCbpuWijkmgCTmPrFndyC8f3eGy0iVpEha54F914=w170" src="https://lh4.ggpht.com/lNAgfV1TGhHwm0-4_Ow6y9gZUaVBCbpuWijkmgCTmPrFndyC8f3eGy0iVpEha54F914=w170" aria-hidden="true"> 
+               </div> 
+              </div> 
+             </div> 
+             <a class="card-click-target" href="/store/apps/details?id=com.albani.technoupdate" aria-hidden="true" tabindex="-1"> <span class="movies preordered-overlay-container id-preordered-overlay-container" style="display:none"> <span class="preordered-label"> Pre-ordered </span> </span> <span class="preview-overlay-container" data-docid="com.albani.technoupdate"> </span> </a> 
+            </div> 
+            <div class="details"> 
+             <a class="card-click-target" href="/store/apps/details?id=com.albani.technoupdate" aria-hidden="true" tabindex="-1"></a> 
+             <h2> <a class="title" href="/store/apps/details?id=com.albani.technoupdate" title="Techno Update"> Techno Update <span class="paragraph-end"></span> </a> </h2> 
+             <div class="subtitle-container"> 
+              <a class="subtitle" href="/store/apps/developer?id=n00bDev+Studio" title="n00bDev Studio">n00bDev Studio</a> 
+              <span class="price-container"> <span class="paragraph-end"></span> <span class="apps is-price-tag buy-button-container" data-doc-fetch-skip-cache="0" data-doc-fetch-vouchers="0" data-docid="com.albani.technoupdate"> 
+                <div class="pon" style="display:none">
+                 1
+                </div> <button class="price buy id-track-click" data-server-cookie="CAIaIQofEh0KF2NvbS5hbGJhbmkudGVjaG5vdXBkYXRlEAEYAw==" data-uitype="221"> <span class="display-price">Free</span> </button> </span> </span> 
+             </div> 
+             <div class="description">
+               TechnoUpdate adalah aplikasi Newsfeed tentang berita Teknologi.Aplikasi ini dapat memudahkan kita dalam mencari atau mendapatkan informasi up-to-date tentang teknologi. diambil dari beberapa website berita online, diantaranya:
+              <p>- Detik<br>- AntaraNews<br>- Vivanews<br>- Kompas<br>- Gadgetan<br>- TeknoUp</p> 
+              <span class="paragraph-end"></span> 
+              <a class="card-click-target" href="/store/apps/details?id=com.albani.technoupdate" aria-hidden="true" tabindex="-1"></a> 
+             </div> 
+            </div> 
+            <div class="reason-set"> 
+             <span class="stars-container"> <a href="/store/apps/details?id=com.albani.technoupdate" tabindex="-1"> 
+               <div class="reason-set-star-rating"> 
+                <div class="tiny-star star-rating-non-editable-container" aria-label=" Rated 4.0 stars out of five stars "> 
+                 <div class="current-rating" style="width: 80%"></div> 
+                </div> 
+               </div> </a> <span class="price-container"> <span class="paragraph-end"></span> <span class="apps is-price-tag buy-button-container" data-doc-fetch-skip-cache="0" data-doc-fetch-vouchers="0" data-docid="com.albani.technoupdate"> 
+                <div class="pon" style="display:none">
+                 1
+                </div> <button class="price buy id-track-click" data-server-cookie="CAIaIQofEh0KF2NvbS5hbGJhbmkudGVjaG5vdXBkYXRlEAEYAw==" data-uitype="221"> <span class="display-price">Free</span> </button> </span> </span> </span> 
+            </div> 
+           </div> 
+          </div> 
+          <div class="card no-rationale square-cover apps small" data-docid="org.qmags.com.irupdate" data-original-classes="card no-rationale square-cover apps small" data-short-classes="card no-rationale square-cover apps tiny"> 
+           <div class="card-content id-track-click id-track-impression" data-docid="org.qmags.com.irupdate" data-server-cookie="CAIaIAoeEhwKFm9yZy5xbWFncy5jb20uaXJ1cGRhdGUQARgD" data-uitype="500"> 
+            <a class="card-click-target" data-server-cookie="CAIaIAoeEhwKFm9yZy5xbWFncy5jb20uaXJ1cGRhdGUQARgD" data-uitype="500" href="/store/apps/details?id=org.qmags.com.irupdate" aria-hidden="true" tabindex="-1"></a> 
+            <div class="cover"> 
+             <div class="cover-image-container"> 
+              <div class="cover-outer-align"> 
+               <div class="cover-inner-align"> 
+                <img alt="IR Update" class="cover-image" data-cover-large="https://lh3.ggpht.com/q9x3_zkUlJTBgS7FpprVyJ1BPJ23dZWxhzCxqMgi0vj5_ebkvYMUVUOaxqCmM7F_LA0=w340" data-cover-small="https://lh3.ggpht.com/q9x3_zkUlJTBgS7FpprVyJ1BPJ23dZWxhzCxqMgi0vj5_ebkvYMUVUOaxqCmM7F_LA0=w170" src="https://lh3.ggpht.com/q9x3_zkUlJTBgS7FpprVyJ1BPJ23dZWxhzCxqMgi0vj5_ebkvYMUVUOaxqCmM7F_LA0=w170" aria-hidden="true"> 
+               </div> 
+              </div> 
+             </div> 
+             <a class="card-click-target" href="/store/apps/details?id=org.qmags.com.irupdate" aria-hidden="true" tabindex="-1"> <span class="movies preordered-overlay-container id-preordered-overlay-container" style="display:none"> <span class="preordered-label"> Pre-ordered </span> </span> <span class="preview-overlay-container" data-docid="org.qmags.com.irupdate"> </span> </a> 
+            </div> 
+            <div class="details"> 
+             <a class="card-click-target" href="/store/apps/details?id=org.qmags.com.irupdate" aria-hidden="true" tabindex="-1"></a> 
+             <h2> <a class="title" href="/store/apps/details?id=org.qmags.com.irupdate" title="IR Update"> IR Update <span class="paragraph-end"></span> </a> </h2> 
+             <div class="subtitle-container"> 
+              <a class="subtitle" href="/store/apps/developer?id=Qmags.com" title="Qmags.com">Qmags.com</a> 
+              <span class="price-container"> <span class="paragraph-end"></span> <span class="apps is-price-tag buy-button-container" data-doc-fetch-skip-cache="0" data-doc-fetch-vouchers="0" data-docid="org.qmags.com.irupdate"> 
+                <div class="pon" style="display:none">
+                 1
+                </div> <button class="price buy id-track-click" data-server-cookie="CAIaIAoeEhwKFm9yZy5xbWFncy5jb20uaXJ1cGRhdGUQARgD" data-uitype="221"> <span class="display-price">Free</span> </button> </span> </span> 
+             </div> 
+             <div class="description">
+               “THIS APP PROVIDES A PRINT-REPLICA OF THE MAGAZINE PAGES, THUS SMALLER DEVICES WILL REQUIRE GREATER ZOOMING. IT IS DESIGNED FOR TABLET USE ONLY, AND WILL NOT FUNCTION PROPERLY ON MOST SMARTPHONES.”
+              <p><br>IR Update is the premier magazine for the investor relations (IR) profession. Each issue contains informative articles on the latest IR developments, trends and best practices from today's thought leaders. IR Update is published by NIRI (National Investor Relations Institute) the largest professional investor relations association in the world. IR Update is available as a benefit to NIRI members or the digital edition is available by subscription to non-members.</p> 
+              <span class="paragraph-end"></span> 
+              <a class="card-click-target" href="/store/apps/details?id=org.qmags.com.irupdate" aria-hidden="true" tabindex="-1"></a> 
+             </div> 
+            </div> 
+            <div class="reason-set"> 
+             <span class="stars-container"> <a href="/store/apps/details?id=org.qmags.com.irupdate" tabindex="-1"> 
+               <div class="reason-set-star-rating"> 
+                <div class="tiny-star star-rating-non-editable-container" aria-label=" Rated 3.3 stars out of five stars "> 
+                 <div class="current-rating" style="width: 66.66666507720947%"></div> 
+                </div> 
+               </div> </a> <span class="price-container"> <span class="paragraph-end"></span> <span class="apps is-price-tag buy-button-container" data-doc-fetch-skip-cache="0" data-doc-fetch-vouchers="0" data-docid="org.qmags.com.irupdate"> 
+                <div class="pon" style="display:none">
+                 1
+                </div> <button class="price buy id-track-click" data-server-cookie="CAIaIAoeEhwKFm9yZy5xbWFncy5jb20uaXJ1cGRhdGUQARgD" data-uitype="221"> <span class="display-price">Free</span> </button> </span> </span> </span> 
+            </div> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div>
+    </div>
+    <div class="secondary-content"></div>
+   </div>
+   <div class="overlay-background" style="display:none"></div>
+   <div class="overlay-wrapper" style="display:none">
+    <div class="overlay-content-wrapper">
+     <div id="overlay-content"></div>
+    </div>
+   </div>
+   <div style="clear:both"></div>
+   <div id="footer-content"> 
+    <button class="play-button" id="show-more-button" style="display:none"> Show More </button> 
+    <div class="bottom-loading" style="display:none"></div> 
+    <div class="footer"> 
+     <div class="footer-links-container"> 
+      <span class="copyright">©2015 Google</span> 
+      <a class="footer-link id-no-nav" href="https://play.google.com/intl/en-US_us/about/play-terms.html" target="_blank"> Site Terms of Service</a> 
+      <a class="footer-link id-no-nav" href="https://play.google.com/intl/en-US_us/about/device-terms.html" target="_blank"> Devices Terms of Sale</a> 
+      <a class="footer-link id-no-nav" href="http://www.google.com/intl/en-US_us/policies/privacy/" target="_blank"> Privacy Policy</a> 
+      <a class="footer-link id-no-nav" href="http://developer.android.com/index.html" target="_blank"> Developers</a> 
+      <a class="footer-link id-no-nav" href="https://play.google.com/artists" target="_blank"> Artists</a> 
+      <a class="footer-link id-no-nav" href="https://support.google.com/googleplay/?p=about_play" target="_blank"> About Google</a> 
+     </div> 
+    </div> 
+   </div>
+  </div>
+  <div class="loading" id="page-load-indicator"></div>
+  <div id="audio-player">
+   <audio autoplay="autoplay" id="html5Player"></audio>
+  </div>
+  <script>(function(){window._sc='[[\42/store/permissionsupdate\42,\42\42,\42/store\42,\42/store/account\42,\42/store/movies\42,\42/store/music\42,\42/store/books\42,\42/store/newsstand\42,\42/store/apps\42,\42/store/devices\42,\42https://market.android.com/suggest/SuggRequest?json\\u003d1\\u0026c\\u003d0\42,\42https://market.android.com/suggest/SuggRequest?json\\u003d1\\u0026c\\u003d4\42,\42https://market.android.com/suggest/SuggRequest?json\\u003d1\\u0026c\\u003d1\42,\42https://market.android.com/suggest/SuggRequest?json\\u003d1\\u0026c\\u003d6\42,null,\42https://encrypted.google.com/complete/search?client\\u003dpartner\\u0026partnerid\\u003dskyjam-store\\u0026ds\\u003dcse\42,\42https://market.android.com/suggest/SuggRequest?json\\u003d1\\u0026c\\u003d3\42,\42https://market.android.com/suggest/SuggRequest?json\\u003d1\\u0026c\\u003d5\42,null,\42/\42,\42/play/log?format\\u003djson\42,null,\42https://play.google.com/intl/en-US_us/about/play-terms.html\42,\42https://support.google.com/googleplay/bin/answer.py?topic\\u003d2450225\\u0026answer\\u003d2479637\\u0026hl\\u003den_US\42,\42/store/buy\42,\42/store/install\42,\42/store/getpurchaseoutcome\42,\42/wishlist\42,\42/movies\42,\42/music?authuser\42,\42/books\42,\42/newsstand\42,\42/apps\42,\42/store/xhr/enablegpr\42,\42/store/xhr/deletereview\42,\42/store/xhr/ructx\42,\42/store/xhr/getuseraddress\42,\42/store/submitreview\42,\42/store/addtocart\42,\42/store/xhr/updatecart\42,\42https://www.gstatic.com/play/store/web/swf/4musicplayer.swf\42,\42/store/xhr/rapcategories\42,\42/store/xhr/rapsubmit\42,\42/store/xhr/puc\42,\42/store/xhr/pulc\42,\42/store/xhr/getwatchembed\42,\42https://accounts.google.com/ServiceLogin?service\\u003dgoogleplay\\u0026passive\\u003d86400\42,\42https://accounts.google.com/ServiceLogin?service\\u003dgoogleplay\\u0026passive\\u003d0\42,null,\42/store/xhr/mul\42,\42/store/xhr/getdoc\42,\42http://support.google.com/mobile/?p\\u003dbooks_formats\42,\42http://support.google.com/mobile/?p\\u003dbooks_devices\42,\42http://support.google.com/mobile/?p\\u003dbooks_androidapp\42,\42http://support.google.com/mobile/?p\\u003dbooks_iosapp\42,\42http://support.google.com/googleplay/bin/answer.py?answer\\u003d1062502\\u0026topic\\u003d1187416\\u0026ctx\\u003dtopic\42,\42/store/apps/details?id\\u003dcom.google.android.apps.books\42,\42/store/apps/details?id\\u003dcom.google.android.music\42,\42/store/apps/details?id\\u003dcom.google.android.videos\42,\42/store/apps/details?id\\u003dcom.google.android.apps.magazines\42,\42/store/xhr/topupopts\42,\42/store/setuserdata\42,\42/store/xhr/buynoco\42,\42/store/apps/collection/editors_choice\42,\42/store/apps/category/GAME\42,\42/store/account\42,\42/redeem\42,\42/store/xhr/getnumcartitems\42,\42/store/cart?modTime\\u003d0\42,\42/store/xhr/cancelsub\42,\42/store/xhr/dfph\42,\42https://play.google.com/intl/en-US_us/about/giftcards\42,\42/store/movies/category/MOVIE\42,\42/store/movies/category/TV\42,\42/store/cancelpreorder\42,\42http://support.google.com/googleplay/devices\42,\42/settings\42,\42/store/ratereview\42,\42/store/getdevicepermissions\42,\42/store/xhr/hide\42,\42/store/getreviews\42,\42/store/movies/collection/promotion_collections_movie_studios\42,\42/store/movies/collection/promotion_collections_tv_networks\42,\42/store/xhr/canceldeviceorder\42,\42https://plus.google.com/\42,\42https://wallet.google.com/updateCreditCard\42,\42/store/books/collection/promotion_1000568_txb_product\42,\42/store/xhr/experimenttoggler\42,\42https://support.google.com/googleplay/bin/answer.py?answer\\u003d1141080\42,null,\42/store/onewayredeem\42,\42https://wallet.google.com/legaldocument?docId\\u003d0.buyertos/US/2/1/und\42,\42/store/xhr/getvariantrec\42,\42https://wallet.google.com/legaldocument?family\\u003d0.privacynotice\\u0026hl\\u003den_US\42,\42https://play.google.com/intl/en-US_us/about/redeem-terms.html\42,\42/store/xhr/prepur\42,\42/store/xhr/comppurch\42,\42/store/xhr/getsimilarcluster\42,\42/store/xhr/getreviewannotation\42,\42/store/xhr/dismisssug\42,\42/store/xhr/getartistalbums\42,\42/store/myplayactivity\42,\42/store/opensearch.xml\42,\42https://ageverification.google.co.kr/ageverification?cl\\u003d1\\u0026hl\\u003dko\\u0026authuser\42,\42https://support.google.com/websearch/answer/4358949?ref_topic\\u003d3285072\\u0026hl\\u003dko\42,\42https://support.google.com/googleplay/?p\\u003dreport_content\42,null,\42/store/order\42,\42https://play.google.com/intl/en-US_us/about/promo-terms.html\42,\42/store/xhr/gbp\42,\42/store/xhr/uninstall\42,\42/store/xhr/talentcontent\42,\42/store/approveitem\42,\42\42,\42/store/licenses/apps\42,\42/store/unapproveitem\42,\42/store/xhr/pglc\42,\42/store/xhr/assign\42,\42https://wallet.google.com\42,\42/store/xhr/accepttos\42,\42\42,\42/store/xhr/getassignees\42,\42/store/xhr/guided_help_get\42,\42/store/xhr/guided_help_set\42,\42/store/xhr/pp\42,\42/store/xhr/cp\42,\42/store/chrome\42,\42/store/teacheraccess\42,\42/store/apps/category/FAMILY\42,\42https://bpui0.google.com\42]\n,1,1,[\42/store/search\42,\42Search\42]\n,\42UA-19995903-1\42,\42PROD\42,1,\42https://wallet.google.com/payments/widgets/instrument_creator.js\42,60000,0,\0421\42]\n';})();</script>
+  <script>(function(){window._uc='[null,\42\42,\42en\42,\42US\42,[[\04272b063b1\42,null,1,\42enable_movies_chrome_app_integration\42]\n,[\42f6caf8fb\42,null,1,\42enable_in_app_rap_fix\42]\n,[\42fd0884cc\42,null,1,\42enable_inapp_purchase_text\42]\n,[\42b023b0c4\42,null,1,\42enable_music_preview_rights\42]\n,[\042628aa86c\42,null,1,\42enable_gift_card_payments_integrator_tokens\42]\n,[\42b744e4cb\42,null,1,\42enable_signout_options_for_logout\42]\n,[\42cfc83a8f\42,null,1,\42enable_movie_device_setup_page\42]\n,[\4283a1c766\42,null,1,\42enable_grouping_app_permissions\42]\n,[\42c14f90b0\42,null,1,\42enable_corpus_menu_removal_for_mobile\42]\n,[\04211cdcd88\42,null,1,\42enable_optimize_mobile\42]\n,[\04214ec563\42,null,1,\42enable_apps_country_specific_ratings\42]\n,[\42cd9bd9ce\42,null,1,\42enable_mobile_video_trailer\42]\n,[\429cd547a3\42,null,1,\42enable_enable_scs\42]\n,[\42b60e3c9f\42,null,1,\42enable_ftc_bulk_refund\42]\n,[\04237ad289c\42,null,1,\42enable_hardware_cancel_redirect_on_success\42]\n,[\42b0eb6535\42,null,1,\42enable_movies_subtitle_warning\42]\n,[\0422b277ce0\42,null,1,\42enable_glass_discount\42]\n,[\0421e72ba8d\42,null,1,\42enable_flag_inappropriate\42]\n,[\4283f335b0\42,null,1,\42enable_logging_to_odyssey\42]\n,[\42e38df948\42,null,1,\42enable_finsky_wishlist_icon_adjust\42]\n,[\04219aea0aa\42,null,1,\42enable_loonie_vouchers\42]\n,[\42fd2d7ae8\42,null,1,\42enable_loonie_for_newsstand\42]\n]\n,0,null,0,null,null,[]\n,null,0,[\42nocache:laz\42,\42nocache:payments_flow_for_setup_stored_value\42,\42nocache:payments_flow_for_update_profile_at_purchase\42,\42signed-out\42]\n,[5500112,5500079,5500153,5500101,5500119,5500146,5500118,5500130,5500147,5500138,5500133,5500120,5500162,5500011,5500125,5500137,5500123,5500128]\n,null,null,null,\42en-US\42,[2]\n]\n';})();</script>
+  <script src="//www.gstatic.com/_/play/_/js/k=play.js.en_US.o5ZFbUQmQO8.O/m=m/rt=j/d=1/exm=i/ed=1/rs=AGlW0sYlpHrjlIGyBIPfeGKv_3hTW3rbyQ"></script>
+  <script>window.pressPlayCalled = false;if (typeof window.gapi != 'undefined' && !window.pressPlayCalled){window.pressPlayCalled = true;pressPlay();}
+</script>
+  <script type="text/javascript">(function(){var locale='en_US';window.___gcfg = {lang:locale,parsetags:'explicit'
+};(function(){function onGapiLoad(){if (typeof window.gapi != 'undefined'){window.gapi.load('plus:plusone:card:gapi.iframes:gapi.iframes.style.common',function (){if (!window.pressPlayCalled){window.pressPlayCalled = true;pressPlay();}
+window.gapi.plusone.go('body-content');window.gapi.plus.go();window.gapi.config.update('card/source','play.webstore');window.gapi.card.watch();window.gapi.iframes.getContext().restyleSelf({'show':'yes'});window.gapi.iframes.getContext().ready();});}
+}
+var po = document.createElement('script');po.type = 'text/javascript';po.async = true;po.src = 'https://apis.google.com/js/platform.js';if (!po.addEventListener){po.attachEvent('onload',onGapiLoad);}else {po.addEventListener('load',onGapiLoad,false);}
+var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(po,s);})();})();</script>
+  <div id="instrument-manager-parent"></div>
+  <script src="https://wallet.google.com/inapp/lib/buy.js"></script>
+  <script type="text/javascript">(function(){var locale='en';google.payments.inapp.preload({'locale' :locale
+});})();</script>
+  <script type="text/javascript">(function(){var tracking_id='UA-19995903-1';(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','play_ga');if (typeof igas == 'undefined'){jQuery('body').one('onPressPlay',function(){igas('play_ga',tracking_id);});}else {igas('play_ga',tracking_id);}
+})();</script>
+  <div> 
+   <script>(function(){var fu=true;var pt='';var ab='';var lmt='';var curl='https://play.google.com/store/apps/details?id\75com.insidehighered.daily.apk';var nbp='[]\n';var sc='CAESKAgFIiQSIgocY29tLmluc2lkZWhpZ2hlcmVkLmRhaWx5LmFwaxABGAM\075';var pgj=false;var di='com.insidehighered.daily.apk';var du=2;window.updateClient = function(){if (fu){if (pt){upt(pt);}
+if (ab){uab(ab);}
+if (lmt){ihc(lmt);}
+if (nbp && typeof snbp != 'undefined'){snbp(nbp);}
+if (curl){sglc(curl);}
+if (pgj){if (gapi && gapi.plus && gapi.plus.go){gapi.plus.go();}
+}
+upba(di,du);usc(sc);}
+}
+if (window.pressPlayCalled){window.updateClient();}
+})();</script> 
+  </div>
+ </body>
+</html>

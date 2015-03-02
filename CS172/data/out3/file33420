@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html class="no-js ie6 lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7 lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8 lt-ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head> 
+  <title>
+		Events Calendar - UT Events Calendar
+	</title> 
+  <meta name="description" content="UT Events Calendar events, powered by Localist"> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"b4c5954d77","applicationID":"2296387","transactionName":"IVhWEBRdWF1XEExcCwFWVA0SSxtCWg0U","queueTime":1298,"applicationTime":21,"agentToken":null,"agent":"js-agent.newrelic.com/nr-536.min.js"}</script> 
+  <script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VwMCV15bGwECXVdRDwY="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=s(e),u=c.length,f=i(a,o,r),d=0;u>d;d++)c[d].apply(f,n);return f}function a(t,e){u[t]=s(t).concat(e)}function s(t){return u[t]||[]}function c(){return n(e)}var u={};return{on:a,emit:e,create:c,listeners:s,_events:u}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],3:[function(t){function e(t,e,n,i,s){try{c?c-=1:r("err",[s||new UncaughtException(t,e,n)])}catch(u){try{r("ierr",[u,(new Date).getTime(),!0])}catch(f){}}return"function"==typeof a?a.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(5),i=t("ee"),a=window.onerror,s=!1,c=0;t("loader").features.err=!0,window.onerror=e;try{throw new Error}catch(u){"stack"in u&&(t(3),t(4),"addEventListener"in window&&t(1),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&t(2),s=!0)}i.on("fn-start",function(){s&&(c+=1)}),i.on("fn-err",function(t,e,r){s&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){s&&!this.thrown&&c>0&&(c-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:4,2:7,3:6,4:5,5:20,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],4:[function(t,e){function n(t){i.inPlace(t,["addEventListener","removeEventListener"],"-",r)}function r(t){return t[1]}var o=(t(1),t("ee").create()),i=t(2)(o),a=t("gos");if(e.exports=o,n(window),"getPrototypeOf"in Object){for(var s=document;s&&!s.hasOwnProperty("addEventListener");)s=Object.getPrototypeOf(s);s&&n(s);for(var c=XMLHttpRequest.prototype;c&&!c.hasOwnProperty("addEventListener");)c=Object.getPrototypeOf(c);c&&n(c)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&n(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t){if(t[1]){var e=t[1];"function"==typeof e?this.wrapped=t[1]=a(e,"nr@wrapped",function(){return i(e,"fn-",null,e.name||"anonymous")}):"function"==typeof e.handleEvent&&i.inPlace(e,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:20,2:21,ee:"QJf3ax",gos:"7eSDFh"}],5:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=r(t[0],"fn-")})},{1:21,2:20,ee:"QJf3ax"}],6:[function(t,e){function n(t,e,n){var r=t[0];"string"==typeof r&&(r=new Function(r)),t[0]=o(r,"fn-",null,n)}var r=(t(2),t("ee").create()),o=t(1)(r);e.exports=r,o.inPlace(window,["setTimeout","setInterval","setImmediate"],"setTimer-"),r.on("setTimer-start",n)},{1:21,2:20,ee:"QJf3ax"}],7:[function(t,e){function n(){c.inPlace(this,d,"fn-")}function r(t,e){c.inPlace(e,["onreadystatechange"],"fn-")}function o(t,e){return e}var i=t("ee").create(),a=t(1),s=t(2),c=s(i),u=s(a),f=window.XMLHttpRequest,d=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];e.exports=i,window.XMLHttpRequest=function(t){var e=new f(t);try{i.emit("new-xhr",[],e),u.inPlace(e,["addEventListener","removeEventListener"],"-",function(t,e){return e}),e.addEventListener("readystatechange",n,!1)}catch(r){try{i.emit("internal-error",[r])}catch(o){}}return e},window.XMLHttpRequest.prototype=f.prototype,c.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",o),i.on("send-xhr-start",r),i.on("open-xhr-start",r)},{1:4,2:21,ee:"QJf3ax"}],8:[function(t){function e(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function n(t){var n=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;c>i;i++)t.removeEventListener(s[i],this.listener,!1);if(!n.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){n.status=t.status;var a=t.responseType,u="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,f=e(u);if(f&&(r.rxSize=f),this.sameOrigin){var d=t.getResponseHeader("X-NewRelic-App-Data");d&&(n.cat=d.split(", ").pop())}}else n.status=0;r.cbTime=this.cbTime,o("xhr",[n,r,this.startTime])}}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}if(window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)){t("loader").features.xhr=!0;var o=t("handle"),i=t(2),a=t("ee"),s=["load","error","abort","timeout"],c=s.length,u=t(1);t(4),t(3),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=n,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,n){var r=this.metrics,o=t[0],i=this;if(r&&o){var u=e(o);u&&(r.txSize=u)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof n.onload))&&i.end(n)}catch(e){try{a.emit("internal-error",[e])}catch(r){}}};for(var f=0;c>f;f++)n.addEventListener(s[f],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+u(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+u(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof XMLHttpRequest&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&&a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{1:"XL7HBI",2:9,3:7,4:4,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],9:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&&e.port===n.port&&e.protocol===n.protocol,r}},{}],10:[function(t,e){function n(t){return function(){r(t,[(new Date).getTime()].concat(i(arguments)))}}var r=t("handle"),o=t(1),i=t(2);"undefined"==typeof window.newrelic&&(newrelic=window.NREUM);var a=["setPageViewName","trackUserAction","finished","traceEvent","inlineHit","noticeError"];o(a,function(t,e){window.NREUM[e]=n("api-"+e)}),e.exports=window.NREUM},{1:19,2:20,handle:"D5DuLP"}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):(o[t]||(o[t]=[]),void o[t].push(e))}var r=t("ee").create(),o={};e.exports=n,n.ee=r,r.q=o},{ee:"QJf3ax"}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],G9z0Bl:[function(t,e){function n(){var t=l.info=NREUM.info;if(t&&t.licenseKey&&t.applicationID&&u&&u.body){s(h,function(e,n){e in t||(t[e]=n)}),l.proto="https"===p.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var e=u.createElement("script");e.src=l.proto+t.agent,u.body.appendChild(e)}}function r(){"complete"===u.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=t(1),c=(t(2),window),u=c.document,f="addEventListener",d="attachEvent",p=(""+location).split("?")[0],h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-536.min.js"},l=e.exports={offset:i(),origin:p,features:{}};u[f]?(u[f]("DOMContentLoaded",o,!1),c[f]("load",n,!1)):(u[d]("onreadystatechange",r),c[d]("onload",n)),a("mark",["firstbyte",i()])},{1:19,2:10,handle:"D5DuLP"}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],19:[function(t,e){function n(t,e){var n=[],o="",i=0;for(o in t)r.call(t,o)&&(n[i]=e(o,t[o]),i+=1);return n}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],20:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],21:[function(t,e){function n(t){return!(t&&"function"==typeof t&&t.apply&&!t[i])}var r=t("ee"),o=t(1),i="nr@wrapper",a=Object.prototype.hasOwnProperty;e.exports=function(t){function e(t,e,r,a){function nrWrapper(){var n,i,s,u;try{i=this,n=o(arguments),s=r&&r(n,i)||{}}catch(d){f([d,"",[n,i,a],s])}c(e+"start",[n,i,a],s);try{return u=t.apply(i,n)}catch(p){throw c(e+"err",[n,i,p],s),p}finally{c(e+"end",[n,i,u],s)}}return n(t)?t:(e||(e=""),nrWrapper[i]=!0,u(t,nrWrapper),nrWrapper)}function s(t,r,o,i){o||(o="");var a,s,c,u="-"===o.charAt(0);for(c=0;c<r.length;c++)s=r[c],a=t[s],n(a)||(t[s]=e(a,u?s+o:o,i,s,t))}function c(e,n,r){try{t.emit(e,n,r)}catch(o){f([o,e,n,r])}}function u(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){f([r])}for(var o in t)a.call(t,o)&&(e[o]=t[o]);return e}function f(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=r),e.inPlace=s,e.flag=i,e}},{1:20,ee:"QJf3ax"}]},{},["G9z0Bl",3,8]);</script> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link href="http://calendar.utexas.edu/platform/stylesheet/1422488139.css" rel="stylesheet" type="text/css"> 
+  <script src="http://images-cf.localist.com/assets/application-5dd9eb208c52fd5bc50b0698c57706b4.js" type="text/javascript"></script> 
+  <meta name="description" content="Discover all that’s happening at The University of Texas at Austin. Find featured and trending events, and more. Visit our calendar to start making plans."> 
+  <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0" name="viewport"> 
+  <link rel="stylesheet" type="text/css" href="http://www.utexas.edu/includes/core/http/css/utexas.css" media="screen"> 
+  <link rel="stylesheet" type="text/css" href="http://wwwtest.utexas.edu/includes/localist/wrapper-responsive.css" media="screen"> 
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+  <script type="text/javascript" src="http://wwwtest.utexas.edu/includes/localist/calendar-utexas-edu-inserts.js"></script> 
+ </head> 
+ <body class="homepage"> 
+  <div class="grid_container"> 
+   <div id="header_utexas"> 
+    <div id="menu"> 
+     <a data-target="#header_include_utexas" data-class="expanded" data-action="toggle-class" class="nav-button visible-phone" href="#"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> 
+    </div> 
+    <div id="header_include_utexas"> 
+     <div id="header"> 
+      <div id="banner"> 
+       <div id="header_content"> 
+        <div id="ribbon">
+         <a href="http://www.utexas.edu"><img src="http://www.utexas.edu/includes/core/images/ribbon_internal.png" width="115" height="120" alt="The University of Texas at Austin"></a>
+         <a href="#main" class="skip_main" title="Skip to Main Content">Skip to Main Content</a>
+        </div> 
+        <div class="utility_nav"> 
+         <ul> 
+          <li><a href="http://www.utexas.edu/academics/colleges-schools" title="Colleges &amp; Schools">Colleges &amp; Schools</a></li> 
+          <li><a href="http://www.utexas.edu/directory/" title="Directory">Directory</a></li> 
+          <li><a href="http://www.utexas.edu/directory/offices" title="Offices">Offices</a></li> 
+          <li><a href="http://www.utexas.edu/maps/" title="Maps">Maps</a></li> 
+          <li><a href="http://www.utexas.edu/calendars/" title="Calendars">Calendars</a></li> 
+          <li><a href="http://www.lib.utexas.edu/" title="Libraries">Libraries</a></li> 
+          <li><a href="http://m.utexas.edu" title="Mobile">Mobile</a></li> 
+          <li class="noborder"><a href="https://utdirect.utexas.edu/" title="UT Direct">UT Direct</a></li> 
+         </ul> 
+        </div> 
+        <!-- utility_nav --> 
+        <div id="search"> 
+         <form name="cse_searchbox" action="http://www.utexas.edu/search/results.php" method="get" id="cse_searchbox"> 
+          <label class="label_hide" for="search_input">Search UT</label> 
+          <input type="hidden" name="cx" value="006470498568929423894:etsxpcor8wm"> 
+          <input type="hidden" name="cof" value="FORID:10"> 
+          <input type="text" name="q" size="45" maxlength="255" value="" class="input_textfield input_textfield_bg" id="search_input"> 
+          <input type="image" src="http://www.utexas.edu/includes/core/images/search-trans.png" name="search_button" alt="search" value="" class="input_btn"> 
+         </form> 
+        </div> 
+        <!-- end search --> 
+        <div class="primary_nav"> 
+         <ul> 
+          <li id="first"><a href="http://www.utexas.edu/about-ut" title="About UT">About UT</a></li> 
+          <li><a href="http://www.utexas.edu/academics" title="Academics">Academics</a></li> 
+          <li><a href="http://www.utexas.edu/athletics" title="Athletics">Athletics</a></li> 
+          <li><a href="http://www.utexas.edu/campus-life" title="Campus Life">Campus Life</a></li> 
+          <li><a href="http://www.utexas.edu/community-engagement" title="Community Engagement">Community Engagement</a></li> 
+          <li id="last"><a href="http://www.utexas.edu/research" title="Research">Research</a></li> 
+         </ul> 
+        </div> 
+        <!-- end primary_nav --> 
+       </div> 
+       <!-- end header_content --> 
+      </div> 
+      <!-- end banner --> 
+     </div> 
+     <!-- end header --> 
+     <a name="main"></a> 
+    </div> 
+    <div id="toolbar_include_utexas"> 
+     <div id="LOCALIST_user_menu_utexas"> 
+      <div id="menu"> 
+       <a href="#" class="nav-button visible-phone" data-action="toggle-class" data-class="expanded" data-target="#menu .action_menu"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> 
+       <ul class="action_menu"> 
+        <li class="login"><a href="http://calendar.utexas.edu/auth/shib_login?previous_url=http%3A%2F%2Fcalendar.utexas.edu%2F">Login</a></li> 
+        <li class="search_action"> 
+         <form method="get" id="topsearch" action="/search"> 
+          <input type="text" name="search" value="" placeholder="Search places, events"> 
+          <button id="top-submit" type="submit">Search</button> 
+         </form> </li> 
+       </ul> 
+      </div> 
+     </div> 
+     <div id="header_title_utexas">
+      <h4>Events Calendar</h4>
+     </div> 
+    </div> 
+   </div> 
+   <div id="LOCALIST_top_bar_utexas"> 
+   </div> 
+   <div id="LOCALIST_content_utexas"> 
+    <div class="grid_8 alpha"> 
+     <div class="box_header"> 
+      <h4 id="x-section-tab-buttons" data-section-tabs="container" data-section-tabs-selector="div[data-featured-section]"> <span id="x-section-title" data-section-tabs="title">Featured Events</span> </h4> 
+     </div> 
+     <div data-featured-section="true" id="featured_section_207"> 
+      <div class="featured_item_wrapper" data-num-items="" data-rotate="true"> 
+       <div class="item featured_item" id="featured_section_207_item_0"> 
+        <a href="http://calendar.utexas.edu/event/in_the_shadow_of_vocal_publics_hate_speech_fukushima_and_the_question_of_the_silent_majority"><img alt="In the Shadow of Vocal Publics: Hate speech, Fukushima and the Question of the Silent Majority" class="img_big" height="150" src="http://images-cf.localist.com/photos/252374/big/3f12155620d15844d90ef5b32cba30284c43448a.jpg" title="In the Shadow of Vocal Publics: Hate speech, Fukushima and the Question of the Silent Majority" width="200"></a> 
+        <div class="item_content_featured"> 
+         <h3> <span class="summary"><a href="http://calendar.utexas.edu/event/in_the_shadow_of_vocal_publics_hate_speech_fukushima_and_the_question_of_the_silent_majority">In the Shadow of Vocal Publics: Hate speech, Fukushima and the Question of the Silent Majority</a></span>
+          <!-- UT: un-truncated Featured event title in homepage carousel --> <span class="dateright"> <abbr title="2015-03-02T12:00:00-06:00" class="dtstart"> 3/2 12:00pm </abbr> </span> </h3> 
+         <h4 class="description">While the substantial development of digital communication technologies has amplified the sites and occasions in which people express and share their voices and concerns, the limitation of the internet and social media to foster public dialogue has also become evident. This paper considers it from the Japanese cases of the rise of hate speech and the issue of radioactive contamination in Fukushima areas. It discusses how the digital media...</h4> 
+        </div> 
+       </div> 
+       <div class="item featured_item" id="featured_section_207_item_1"> 
+        <a href="http://calendar.utexas.edu/event/story_time_with_the_dean_of_american_storytelling_gioia_timpanelli"><img alt="Story Time with the Dean of American Storytelling, Gioia Timpanelli" class="img_big" height="150" src="http://images-cf.localist.com/photos/253056/big/bf860cb2a37ca0a232fa60f81bd5442d75dc51b9.jpg" title="Story Time with the Dean of American Storytelling, Gioia Timpanelli" width="200"></a> 
+        <div class="item_content_featured"> 
+         <h3> <span class="summary"><a href="http://calendar.utexas.edu/event/story_time_with_the_dean_of_american_storytelling_gioia_timpanelli">Story Time with the Dean of American Storytelling, Gioia Timpanelli</a></span>
+          <!-- UT: un-truncated Featured event title in homepage carousel --> <span class="dateright"> <abbr title="2015-03-03T15:00:00-06:00" class="dtstart"> 3/3 3:00pm </abbr> </span> </h3> 
+         <h4 class="description">Widely regarded as the “dean of American storytelling, Gioia Timpanelli, tells folk stories and myths from around the world -- in her moving and inimitable way -- and discusses what makes the tradition of oral storytelling so essential to preserve. She is the author of “What Makes a Child Lucky” (2013) and “Sometimes the Soul: Two Novellas of Sicily” (1998), which won the 1999 American Book Award. She has won two Emmy awards for her series of...</h4> 
+        </div> 
+       </div> 
+       <div class="item featured_item" id="featured_section_207_item_2"> 
+        <a href="http://calendar.utexas.edu/event/dspeaks_presents_evan_spiegel_ceo_of_snapchat"><img alt="DSPeaks Presents: Evan Spiegel, CEO of Snapchat" class="img_big" height="150" src="http://images-cf.localist.com/photos/255591/big/9ae7f22500fcb9ab4eef838a24d7ebf2427ae68a.jpg" title="DSPeaks Presents: Evan Spiegel, CEO of Snapchat" width="200"></a> 
+        <div class="item_content_featured"> 
+         <h3> <span class="summary"><a href="http://calendar.utexas.edu/event/dspeaks_presents_evan_spiegel_ceo_of_snapchat">DSPeaks Presents: Evan Spiegel, CEO of Snapchat</a></span>
+          <!-- UT: un-truncated Featured event title in homepage carousel --> <span class="dateright"> <abbr title="2015-03-03T18:30:00-06:00" class="dtstart"> 3/3 6:30pm </abbr> </span> </h3> 
+         <h4 class="description">The Delta Sigma Pi - Beta Kappa Chapter is hosting Evan Spiegel, CEO/ Co-Founder of Snapchat for a speaking event in the SAC Auditorium at The University of Texas at Austin. Snapchat has significantly changed social media and has quickly become one of the most popular social media networks. Its last valuation put it at $10 billion and the application has evolved significantly with their recent "Discover" feature.Evan will be speaking on the...</h4> 
+        </div> 
+       </div> 
+       <div class="item featured_item" id="featured_section_207_item_3"> 
+        <a href="http://calendar.utexas.edu/event/discoveries_in_art_health_lecture"><img alt="Discoveries in Art &amp; Health Lecture" class="img_big" height="150" src="http://images-cf.localist.com/photos/253007/big/9578b7a7b3f2101d4b7e06223da4447a00e1743e.jpg" title="Discoveries in Art &amp; Health Lecture" width="200"></a> 
+        <div class="item_content_featured"> 
+         <h3> <span class="summary"><a href="http://calendar.utexas.edu/event/discoveries_in_art_health_lecture">Discoveries in Art &amp; Health Lecture</a></span>
+          <!-- UT: un-truncated Featured event title in homepage carousel --> <span class="dateright"> <abbr title="2015-03-04T09:00:00-06:00" class="dtstart"> 3/4 9:00am </abbr> </span> </h3> 
+         <h4 class="description">STACEY CHANG Design: A Creative Approach to Disrupting Healthcare The tradition of healthcare is rooted in analytical methods and evidence-based protocols. In spite of prolific research, technological advances, and enough funding to bankrupt a society, we aren’t realizing the promised outcomes. Unexpectedly, a human-centered design-based approach to problem solving is unlocking answers to some of our most intractable problems.</h4> 
+        </div> 
+       </div> 
+       <div class="item featured_item" id="featured_section_207_item_4"> 
+        <a href="http://calendar.utexas.edu/event/nancy_rubinss_monochrome_for_austin_celebration_and_qa"><img alt="Nancy Rubins’s &quot;Monochrome for Austin&quot; Celebration and Q&amp;A" class="img_big" height="150" src="http://images-cf.localist.com/photos/251397/big/86e89d082239fd55ec785479dbfab297c2015e31.jpg" title="Nancy Rubins’s &quot;Monochrome for Austin&quot; Celebration and Q&amp;A" width="200"></a> 
+        <div class="item_content_featured"> 
+         <h3> <span class="summary"><a href="http://calendar.utexas.edu/event/nancy_rubinss_monochrome_for_austin_celebration_and_qa">Nancy Rubins’s "Monochrome for Austin" Celebration and Q&amp;A</a></span>
+          <!-- UT: un-truncated Featured event title in homepage carousel --> <span class="dateright"> <abbr title="2015-03-05T17:30:00-06:00" class="dtstart"> 3/5 5:30pm </abbr> </span> </h3> 
+         <h4 class="description">Join Landmarks in celebrating artist Nancy Rubins’s Monochrome for Austin. The sculpture, a large-scale assemblage made from seventy aluminum canoes and small boats, is located at the corner of 24th Street and Speedway. Commissioned by Landmarks, Monochrome for Austin draws its support from a steel armature and intertwining cables and stands fifty feet tall, making it the largest sculpture on campus to date. The celebration will feature a...</h4> 
+        </div> 
+       </div> 
+       <div class="item featured_item" id="featured_section_207_item_5"> 
+        <a href="http://calendar.utexas.edu/event/violence_on_the_border_womens_experience_and_the_policy_reaction_conference"><img alt="Violence on the Border: Women’s Experience and the Policy Reaction Conference" class="img_big" height="150" src="http://images-cf.localist.com/photos/254450/big/20ff0d29f8b42755c39e998c916bce52cdaa84a8.jpg" title="Violence on the Border: Women’s Experience and the Policy Reaction Conference" width="200"></a> 
+        <div class="item_content_featured"> 
+         <h3> <span class="summary"><a href="http://calendar.utexas.edu/event/violence_on_the_border_womens_experience_and_the_policy_reaction_conference">Violence on the Border: Women’s Experience and the Policy Reaction Conference</a></span>
+          <!-- UT: un-truncated Featured event title in homepage carousel --> <span class="dateright"> <abbr title="2015-03-06T09:00:00-06:00" class="dtstart"> 3/6 9:00am </abbr> </span> </h3> 
+         <h4 class="description">The seminar seeks to explore the perspectives and challenges unique to women who immigrate to the United States. More specifically, a series of workshops delve into the violence affecting women during the process of migration, in U.S. detention centers, and in the workforce. The workshops consist of panels including various subject experts and community organizers, who will facilitate a discussion with the attendees. Upon conclusion, the...</h4> 
+        </div> 
+       </div> 
+       <div class="item featured_item" id="featured_section_207_item_6"> 
+        <a href="http://calendar.utexas.edu/event/explore_ut_opens_the_universitys_doors_to_all"><img alt="Explore UT Opens University's Doors to All" class="img_big" height="150" src="http://images-cf.localist.com/photos/133003/big/6860935ef88da122c1e856129181c89caccc2375.jpg" title="Explore UT Opens University's Doors to All" width="200"></a> 
+        <div class="item_content_featured"> 
+         <h3> <span class="summary"><a href="http://calendar.utexas.edu/event/explore_ut_opens_the_universitys_doors_to_all">Explore UT Opens University's Doors to All</a></span>
+          <!-- UT: un-truncated Featured event title in homepage carousel --> <span class="dateright"> <abbr title="2015-03-07T11:00:00-06:00" class="dtstart"> 3/7 11:00am </abbr> </span> </h3> 
+         <h4 class="description">Explore UT is an opportunity for visitors of all ages to learn more about The University of Texas at Austin. On this day, UT opens its doors to the people of Texas, offering nearly 400 activities across campus that allow guests to experience firsthand the vast world of discovery that is a part of daily life at the university. Contact: University Events, 512-471-7753.</h4> 
+        </div> 
+       </div> 
+       <div class="item featured_item" id="featured_section_207_item_7"> 
+        <a href="http://calendar.utexas.edu/event/lecture_by_artist_writer_and_media_theorist_marisa_olson"><img alt="Marisa Olson: Artist, Writer, and Media Theorist " class="img_big" height="150" src="http://images-cf.localist.com/photos/255540/big/7f46306df0d7d39fe6a898f48231d467b738aae9.jpg" title="Marisa Olson: Artist, Writer, and Media Theorist " width="200"></a> 
+        <div class="item_content_featured"> 
+         <h3> <span class="summary"><a href="http://calendar.utexas.edu/event/lecture_by_artist_writer_and_media_theorist_marisa_olson">Marisa Olson: Artist, Writer, and Media Theorist </a></span>
+          <!-- UT: un-truncated Featured event title in homepage carousel --> <span class="dateright"> <abbr title="2015-03-12T17:00:00-05:00" class="dtstart"> 3/12 5:00pm </abbr> </span> </h3> 
+         <h4 class="description">Marisa Olson is an artist, writer, and media theorist. Her interdisciplinary work has been exhibited at the Venice Biennale, Centre Pompidou, Tate(s) Modern + Liverpool, the Nam June Paik Art Center, British Film Institute, Sundance Film Festival, and PERFORMA Biennial; commissioned and collected by the Whitney Museum, Museum of Modern Art, Houston Center for Photography, Experimental Television Center, and PS122; and reviewed in Artforum,...</h4> 
+        </div> 
+       </div> 
+       <div class="item featured_item" id="featured_section_207_item_8"> 
+        <a href="http://calendar.utexas.edu/event/design_lecture_series_presents_greg_foley"><img alt="Design Lecture Series presents Greg Foley" class="img_big" height="150" src="http://images-cf.localist.com/photos/256216/big/46f3f53b857ec1aab5a383b4f9acd94e382c1deb.jpg" title="Design Lecture Series presents Greg Foley" width="200"></a> 
+        <div class="item_content_featured"> 
+         <h3> <span class="summary"><a href="http://calendar.utexas.edu/event/design_lecture_series_presents_greg_foley">Design Lecture Series presents Greg Foley</a></span>
+          <!-- UT: un-truncated Featured event title in homepage carousel --> <span class="dateright"> <abbr title="2015-03-23T08:30:00-05:00" class="dtstart"> 3/23 8:30am </abbr> </span> </h3> 
+         <h4 class="description">Award-winning designer and author-illustrator Greg Foley grew up in Austin, Texas, and attended the Rhode Island School of Design. He designs and creative-directs Visionaire, V Magazine, VMAN and lives in New York. He is the author-illustrator of the acclaimed Thank You Bear series (Viking Children’s) and also of Willoughby &amp; the Lion, Willoughby &amp; the Moonand Purple Little Bird (Balzer+Bray / HarperCollins).Greg Foley has also collaborated on...</h4> 
+        </div> 
+       </div> 
+       <div class="item featured_item" id="featured_section_207_item_9"> 
+        <a href="http://calendar.utexas.edu/event/jersey_boys_9996"><img alt="Jersey Boys" class="img_big" height="150" src="http://images-cf.localist.com/photos/239765/big/bd17e2834d9350e3b8614fe646d533ebce6dc4b2.jpg" title="Jersey Boys" width="200"></a> 
+        <div class="item_content_featured"> 
+         <h3> <span class="summary"><a href="http://calendar.utexas.edu/event/jersey_boys_9996">Jersey Boys</a></span>
+          <!-- UT: un-truncated Featured event title in homepage carousel --> <span class="dateright"> <abbr title="2015-03-24T20:00:00-05:00" class="dtstart"> 3/24 8:00pm </abbr> </span> </h3> 
+         <h4 class="description">JERSEY BOYS, is the Tony®, Grammy® and Olivier Award-winning Best Musical about Rock and Roll Hall of Famers The Four Seasons: Frankie Valli, Bob Gaudio, Tommy DeVito and Nick Massi. This is the story of how four blue-collar kids became one of the greatest successes in pop music history. They wrote their own songs, invented their own sounds and sold 175 million records worldwide – all before they were 30! JERSEY BOYS features their hit songs...</h4> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="box_header settings"> 
+      <h4 id="x-event-group-tab-buttons" data-section-tabs="container" data-section-tabs-selector="#x-event-groups div.event_group"> <span id="x-event-group-title" data-section-tabs="title"> Trending Events </span> <a href="#trending_events" class="dark_colorfive selected_tab_colorfive" data-title="Trending Events">trending</a> <a href="#upcoming_events" class="dark_colorfive" data-title="Upcoming Events">upcoming</a> </h4> 
+     </div> 
+     <div id="x-event-groups"> 
+      <div id="trending_events" class="event_group"> 
+       <div class="item event_item vevent" id="event_instance_1151118"> 
+        <a href="http://calendar.utexas.edu/event/dspeaks_presents_evan_spiegel_ceo_of_snapchat"><img alt="DSPeaks Presents: Evan Spiegel, CEO of Snapchat" class="img_medium" height="80" src="http://images-cf.localist.com/photos/255591/medium/9ae7f22500fcb9ab4eef838a24d7ebf2427ae68a.jpg" title="DSPeaks Presents: Evan Spiegel, CEO of Snapchat" width="80"></a> 
+        <div class="item_content_medium"> 
+         <h3> <span class="summary"> <a href="http://calendar.utexas.edu/event/dspeaks_presents_evan_spiegel_ceo_of_snapchat">DSPeaks Presents: Evan Spiegel, CEO of Snapchat</a> </span> <span class="dateright"> <abbr title="2015-03-03T18:30:00-06:00" class="dtstart"> 3/3 6:30pm </abbr> </span> </h3> 
+         <h6><a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=24830">Business &amp; Economy</a>, <a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=24835">Science &amp; Tech</a> / <a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=28382">Any Department/All Departments</a></h6> 
+         <h4 class="description">The Delta Sigma Pi - Beta Kappa Chapter is hosting Evan Spiegel, CEO/ Co-Founder of Snapchat for a speaking event in the SAC Auditorium at The University of...</h4> 
+         <h5> <a href="http://calendar.utexas.edu/student_activity_center" class="event_item_venue">Student Activity Center (SAC), Auditorium</a> &nbsp; </h5> 
+         <div class="action_button" id="actions_event_instance_1151118">
+          <a href="/event/405701/watch?button=true&amp;dom_id=actions_event_instance_1151118" class="watchthis" data-action="event-watch" data-disable-with="Watching..." data-ga-action="Watch This" data-ga-category="Event" data-ga-event="true" data-ga-label="DSPeaks Presents: Evan Spiegel, CEO of Snapchat" data-post-login-action="http://calendar.utexas.edu/event/405701/watch?return=http%3A%2F%2Fcalendar.utexas.edu%2F" data-remote="true" rel="ibox;url=#login-lightbox">Watch This</a>
+          <a href="/event/405701/confirm?button=true&amp;date=2015-03-03&amp;dom_id=actions_event_instance_1151118" class="imgoing" data-action="event-going" data-disable-with="Planning..." data-ga-action="I'm Going" data-ga-category="Event" data-ga-event="true" data-ga-label="DSPeaks Presents: Evan Spiegel, CEO of Snapchat" data-post-login-action="http://calendar.utexas.edu/event/405701/confirm?date=2015-03-03&amp;return=http%3A%2F%2Fcalendar.utexas.edu%2F" data-remote="true" rel="ibox;url=#login-lightbox">I'm Going</a>
+         </div> 
+        </div> 
+       </div> 
+       <div class="item event_item vevent" id="event_instance_1067685"> 
+        <a href="http://calendar.utexas.edu/event/chris_tucker"><img alt="Chris Tucker" class="img_medium" height="80" src="http://images-cf.localist.com/photos/243871/medium/dbb0b64d12f4766653723dab9ac57db48a76729e.jpg" title="Chris Tucker" width="80"></a> 
+        <div class="item_content_medium"> 
+         <h3> <span class="summary"> <a href="http://calendar.utexas.edu/event/chris_tucker">Chris Tucker</a> </span> <span class="dateright"> <abbr title="2015-03-07T19:30:00-06:00" class="dtstart"> 3/7 7:30pm </abbr> </span> </h3> 
+         <h6><a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=24829">Arts &amp; Humanities</a> / <a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=24885">College of Fine Arts</a>, <a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=29345">Texas Performing Arts</a></h6> 
+         <h4 class="description">Actor and comedian Chris Tucker’s trademarked style, incomparable delivery, impeccable comedic timing, and signature voice make him one of today’s premiere...</h4> 
+         <h5> <a href="http://calendar.utexas.edu/bass_concert_hall_performing_arts_center_pac_304" class="event_item_venue">Bass Concert Hall, Performing Arts Center (PAC)</a> &nbsp; </h5> 
+         <div class="action_button" id="actions_event_instance_1067685">
+          <a href="/event/380074/watch?button=true&amp;dom_id=actions_event_instance_1067685" class="watchthis" data-action="event-watch" data-disable-with="Watching..." data-ga-action="Watch This" data-ga-category="Event" data-ga-event="true" data-ga-label="Chris Tucker" data-post-login-action="http://calendar.utexas.edu/event/380074/watch?return=http%3A%2F%2Fcalendar.utexas.edu%2F" data-remote="true" rel="ibox;url=#login-lightbox">Watch This</a>
+          <a href="/event/380074/confirm?button=true&amp;date=2015-03-07&amp;dom_id=actions_event_instance_1067685" class="imgoing" data-action="event-going" data-disable-with="Planning..." data-ga-action="I'm Going" data-ga-category="Event" data-ga-event="true" data-ga-label="Chris Tucker" data-post-login-action="http://calendar.utexas.edu/event/380074/confirm?date=2015-03-07&amp;return=http%3A%2F%2Fcalendar.utexas.edu%2F" data-remote="true" rel="ibox;url=#login-lightbox">I'm Going</a>
+         </div> 
+        </div> 
+       </div> 
+       <div class="item event_item vevent" id="event_instance_1153738"> 
+        <a href="http://calendar.utexas.edu/event/into_the_woods_2833"><img alt="Into the Woods" class="img_medium" height="80" src="http://images-cf.localist.com/photos/151973/medium/8786f79d8c8bb2024dda74f8f8c381263f6a9d26.jpg" title="Into the Woods" width="80"></a> 
+        <div class="item_content_medium"> 
+         <h3> <span class="summary"> <a href="http://calendar.utexas.edu/event/into_the_woods_2833">Into the Woods</a> </span> <span class="dateright"> <abbr title="2015-03-06T19:30:00-06:00" class="dtstart"> 3/6 7:30pm </abbr> </span> </h3> 
+         <h6><a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=24829">Arts &amp; Humanities</a> / <a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=24885">College of Fine Arts</a>, <a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=29345">Texas Performing Arts</a></h6> 
+         <h4 class="description">The UT performing arts program is putting on a production of Stephen Sondheim's beloved show, Into the Woods. The dates include: February 27 at 7:30...</h4> 
+         <h5> <a href="http://calendar.utexas.edu/mccullough_theatre_performing_arts_center_pac_204" class="event_item_venue">McCullough Theatre, Performing Arts Center (PAC)</a> &nbsp; </h5> 
+         <div class="action_button" id="actions_event_instance_1153738">
+          <a href="/event/406729/watch?button=true&amp;dom_id=actions_event_instance_1153738" class="watchthis" data-action="event-watch" data-disable-with="Watching..." data-ga-action="Watch This" data-ga-category="Event" data-ga-event="true" data-ga-label="Into the Woods" data-post-login-action="http://calendar.utexas.edu/event/406729/watch?return=http%3A%2F%2Fcalendar.utexas.edu%2F" data-remote="true" rel="ibox;url=#login-lightbox">Watch This</a>
+          <a href="/event/406729/confirm?button=true&amp;date=2015-03-06&amp;dom_id=actions_event_instance_1153738" class="imgoing" data-action="event-going" data-disable-with="Planning..." data-ga-action="I'm Going" data-ga-category="Event" data-ga-event="true" data-ga-label="Into the Woods" data-post-login-action="http://calendar.utexas.edu/event/406729/confirm?date=2015-03-06&amp;return=http%3A%2F%2Fcalendar.utexas.edu%2F" data-remote="true" rel="ibox;url=#login-lightbox">I'm Going</a>
+         </div> 
+        </div> 
+       </div> 
+       <div class="item event_item vevent" id="event_instance_1146265"> 
+        <a href="http://calendar.utexas.edu/event/violence_on_the_border_womens_experience_and_the_policy_reaction_conference"><img alt="Violence on the Border: Women’s Experience and the Policy Reaction Conference" class="img_medium" height="80" src="http://images-cf.localist.com/photos/254450/medium/20ff0d29f8b42755c39e998c916bce52cdaa84a8.jpg" title="Violence on the Border: Women’s Experience and the Policy Reaction Conference" width="80"></a> 
+        <div class="item_content_medium"> 
+         <h3> <span class="summary"> <a href="http://calendar.utexas.edu/event/violence_on_the_border_womens_experience_and_the_policy_reaction_conference">Violence on the Border: Women’s Experience and the Policy Reaction Conference</a> </span> <span class="dateright"> <abbr title="2015-03-06T09:00:00-06:00" class="dtstart"> 3/6 9:00am </abbr> </span> </h3> 
+         <h6><a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=24833">Policy &amp; Law</a>, <a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=24837">World &amp; Culture</a></h6> 
+         <h4 class="description">The seminar seeks to explore the perspectives and challenges unique to women who immigrate to the United States. More specifically, a series of workshops...</h4> 
+         <h5> <a href="http://calendar.utexas.edu/lbj_school_of_public_affairs_bass_lecture_hall_89" class="event_item_venue">LBJ School of Public Affairs, Bass Lecture Hall</a> &nbsp; </h5> 
+         <div class="action_button" id="actions_event_instance_1146265">
+          <a href="/event/403873/watch?button=true&amp;dom_id=actions_event_instance_1146265" class="watchthis" data-action="event-watch" data-disable-with="Watching..." data-ga-action="Watch This" data-ga-category="Event" data-ga-event="true" data-ga-label="Violence on the Border: Women’s Experience and the Policy Reaction Conference" data-post-login-action="http://calendar.utexas.edu/event/403873/watch?return=http%3A%2F%2Fcalendar.utexas.edu%2F" data-remote="true" rel="ibox;url=#login-lightbox">Watch This</a>
+          <a href="/event/403873/confirm?button=true&amp;date=2015-03-06&amp;dom_id=actions_event_instance_1146265" class="imgoing" data-action="event-going" data-disable-with="Planning..." data-ga-action="I'm Going" data-ga-category="Event" data-ga-event="true" data-ga-label="Violence on the Border: Women’s Experience and the Policy Reaction Conference" data-post-login-action="http://calendar.utexas.edu/event/403873/confirm?date=2015-03-06&amp;return=http%3A%2F%2Fcalendar.utexas.edu%2F" data-remote="true" rel="ibox;url=#login-lightbox">I'm Going</a>
+         </div> 
+        </div> 
+       </div> 
+       <div class="item event_item vevent" id="event_instance_1151203"> 
+        <a href="http://calendar.utexas.edu/event/escaping_north_korea_a_talk_with_a_nk_refugee"><img alt="Escaping North Korea: A Talk with a NK Refugee" class="img_medium" height="80" src="http://images-cf.localist.com/photos/255627/medium/8ace0f4991b234eb0f785333cd9e2992a2647573.jpg" title="Escaping North Korea: A Talk with a NK Refugee" width="80"></a> 
+        <div class="item_content_medium"> 
+         <h3> <span class="summary"> <a href="http://calendar.utexas.edu/event/escaping_north_korea_a_talk_with_a_nk_refugee">Escaping North Korea: A Talk with a NK Refugee</a> </span> <span class="dateright"> <abbr title="2015-03-08T19:00:00-05:00" class="dtstart"> 3/8 7:00pm </abbr> </span> </h3> 
+         <h6><a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=24829">Arts &amp; Humanities</a>, <a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=24831">Campus &amp; Community</a>, <a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=24832">Health &amp; Wellness</a>, <a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=24833">Policy &amp; Law</a>, <a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=24837">World &amp; Culture</a> / <a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=28382">Any Department/All Departments</a></h6> 
+         <h4 class="description">North Korean defector Alex Jeong is visiting LiNK Texas to discuss living in North Korea and how he escaped, followed by a Q&amp;A session. There will be a...</h4> 
+         <h5> <a href="http://calendar.utexas.edu/student_activity_center" class="event_item_venue">Student Activity Center (SAC), Blackbox Theatre</a> &nbsp; </h5> 
+         <div class="action_button" id="actions_event_instance_1151203">
+          <a href="/event/405755/watch?button=true&amp;dom_id=actions_event_instance_1151203" class="watchthis" data-action="event-watch" data-disable-with="Watching..." data-ga-action="Watch This" data-ga-category="Event" data-ga-event="true" data-ga-label="Escaping North Korea: A Talk with a NK Refugee" data-post-login-action="http://calendar.utexas.edu/event/405755/watch?return=http%3A%2F%2Fcalendar.utexas.edu%2F" data-remote="true" rel="ibox;url=#login-lightbox">Watch This</a>
+          <a href="/event/405755/confirm?button=true&amp;date=2015-03-08&amp;dom_id=actions_event_instance_1151203" class="imgoing" data-action="event-going" data-disable-with="Planning..." data-ga-action="I'm Going" data-ga-category="Event" data-ga-event="true" data-ga-label="Escaping North Korea: A Talk with a NK Refugee" data-post-login-action="http://calendar.utexas.edu/event/405755/confirm?date=2015-03-08&amp;return=http%3A%2F%2Fcalendar.utexas.edu%2F" data-remote="true" rel="ibox;url=#login-lightbox">I'm Going</a>
+         </div> 
+        </div> 
+       </div> 
+       <div class="item event_item vevent" id="event_instance_1113304"> 
+        <a href="http://calendar.utexas.edu/event/to_light_a_candle_documentary_screening_and_panel"><img alt="To Light a Candle: Documentary Screening and Panel" class="img_medium" height="80" src="http://images-cf.localist.com/photos/250439/medium/60d93ae84efbe33466cc6f08f27b058c2582a561.jpg" title="To Light a Candle: Documentary Screening and Panel" width="80"></a> 
+        <div class="item_content_medium"> 
+         <h3> <span class="summary"> <a href="http://calendar.utexas.edu/event/to_light_a_candle_documentary_screening_and_panel">To Light a Candle: Documentary Screening and Panel</a> </span> <span class="dateright"> <abbr title="2015-03-02T19:15:00-06:00" class="dtstart"> 3/2 7:15pm </abbr> </span> </h3> 
+         <h6><a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=24833">Policy &amp; Law</a>, <a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=24837">World &amp; Culture</a> / <a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=24876">College of Education</a>, <a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=24892">College of Liberal Arts</a>, <a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=24971">Lyndon B Johnson School of Public Affairs</a>, <a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=24994">School of Law</a>, <a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=25000">School of Social Work</a>, <a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=25003">School of Undergraduate Studies</a>, <a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=28382">Any Department/All Departments</a></h6> 
+         <h4 class="description">The UT Baha'i Association on campus is hosting a screening of the documentary "To Light a Candle". The 1-hour documentary is about the human rights...</h4> 
+         <h5> <a href="http://calendar.utexas.edu/union" class="event_item_venue">Texas Union Building (UNB), Theater</a> &nbsp; </h5> 
+         <div class="action_button" id="actions_event_instance_1113304">
+          <a href="/event/394545/watch?button=true&amp;dom_id=actions_event_instance_1113304" class="watchthis" data-action="event-watch" data-disable-with="Watching..." data-ga-action="Watch This" data-ga-category="Event" data-ga-event="true" data-ga-label="To Light a Candle: Documentary Screening and Panel" data-post-login-action="http://calendar.utexas.edu/event/394545/watch?return=http%3A%2F%2Fcalendar.utexas.edu%2F" data-remote="true" rel="ibox;url=#login-lightbox">Watch This</a>
+          <a href="/event/394545/confirm?button=true&amp;date=2015-03-02&amp;dom_id=actions_event_instance_1113304" class="imgoing" data-action="event-going" data-disable-with="Planning..." data-ga-action="I'm Going" data-ga-category="Event" data-ga-event="true" data-ga-label="To Light a Candle: Documentary Screening and Panel" data-post-login-action="http://calendar.utexas.edu/event/394545/confirm?date=2015-03-02&amp;return=http%3A%2F%2Fcalendar.utexas.edu%2F" data-remote="true" rel="ibox;url=#login-lightbox">I'm Going</a>
+         </div> 
+        </div> 
+       </div> 
+       <div class="pagination_container"> 
+        <div class="page_link"> 
+         <h5> <a href="http://calendar.utexas.edu/calendar">View all events today...</a> </h5> 
+        </div> 
+       </div> 
+      </div> 
+      <div id="upcoming_events" class="event_group" style="display: none;"> 
+       <div class="item event_item vevent" id="event_instance_1136507"> 
+        <a href="http://calendar.utexas.edu/event/march_to_freedom_civil_rights_exhibit"><img alt="&quot;March to Freedom&quot; Civil Rights Exhibit" class="img_medium" height="80" src="http://images-cf.localist.com/photos/253325/medium/314c938c82c4a259321b6e9c4eb33e91823a28c0.jpg" title="&quot;March to Freedom&quot; Civil Rights Exhibit" width="80"></a> 
+        <div class="item_content_medium"> 
+         <h3> <span class="summary"> <a href="http://calendar.utexas.edu/event/march_to_freedom_civil_rights_exhibit">"March to Freedom" Civil Rights Exhibit</a> </span> <span class="dateright"> <abbr title="2015-03-02T00:00:00-06:00" class="dtstart"> 3/2 </abbr> </span> </h3> 
+         <h6><a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=24829">Arts &amp; Humanities</a> / <a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=25932">Dolph Briscoe Center for American History, Office of the Executive Vice President and Provost</a></h6> 
+         <h4 class="description">In honor of Black History Month, a new exhibit by UT Austin’s Briscoe Center and the LBJ Presidential Library celebrates the 50th anniversaries of the civil...</h4> 
+         <h5> <a href="http://calendar.utexas.edu/johnson_library" class="event_item_venue">Lyndon B. Johnson Library (LBJ)</a> &nbsp; </h5> 
+         <div class="action_button" id="actions_event_instance_1136507">
+          <a href="/event/401659/watch?button=true&amp;dom_id=actions_event_instance_1136507" class="watchthis" data-action="event-watch" data-disable-with="Watching..." data-ga-action="Watch This" data-ga-category="Event" data-ga-event="true" data-ga-label="&quot;March to Freedom&quot; Civil Rights Exhibit" data-post-login-action="http://calendar.utexas.edu/event/401659/watch?return=http%3A%2F%2Fcalendar.utexas.edu%2F" data-remote="true" rel="ibox;url=#login-lightbox">Watch This</a>
+          <a href="/event/401659/confirm?button=true&amp;date=2015-03-02&amp;dom_id=actions_event_instance_1136507" class="imgoing" data-action="event-going" data-disable-with="Planning..." data-ga-action="I'm Going" data-ga-category="Event" data-ga-event="true" data-ga-label="&quot;March to Freedom&quot; Civil Rights Exhibit" data-post-login-action="http://calendar.utexas.edu/event/401659/confirm?date=2015-03-02&amp;return=http%3A%2F%2Fcalendar.utexas.edu%2F" data-remote="true" rel="ibox;url=#login-lightbox">I'm Going</a>
+         </div> 
+        </div> 
+       </div> 
+       <div class="item event_item vevent" id="event_instance_877990"> 
+        <a href="http://calendar.utexas.edu/event/1914_the_perfect_season_museum_exhibit"><img alt="1914: The Perfect Season, Museum Exhibit" class="img_medium" height="80" src="http://images-cf.localist.com/photos/107601/medium/b7a1e2c8f21530524382afa6f5f5fdee886b7213.jpg" title="1914: The Perfect Season, Museum Exhibit" width="80"></a> 
+        <div class="item_content_medium"> 
+         <h3> <span class="summary"> <a href="http://calendar.utexas.edu/event/1914_the_perfect_season_museum_exhibit">1914: The Perfect Season, Museum Exhibit</a> </span> <span class="dateright"> <abbr title="2015-03-02T00:00:00-06:00" class="dtstart"> 3/2 </abbr> </span> </h3> 
+         <h6><a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=24829">Arts &amp; Humanities</a>, <a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=24836">Sports &amp; Recreation</a> / <a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=24876">College of Education</a></h6> 
+         <h4 class="description">Celebrate the centennial of UT's 1914 Football Season in which the Longhorns won every game and outscored their opponents 358-21 through this new exhibit at...</h4> 
+         <h5> <a href="http://calendar.utexas.edu/event/1914_the_perfect_season_museum_exhibit" class="event_item_venue">Stark Center, NEZ 5.700</a> &nbsp; </h5> 
+         <div class="action_button" id="actions_event_instance_877990">
+          <a href="/event/321062/watch?button=true&amp;dom_id=actions_event_instance_877990" class="watchthis" data-action="event-watch" data-disable-with="Watching..." data-ga-action="Watch This" data-ga-category="Event" data-ga-event="true" data-ga-label="1914: The Perfect Season, Museum Exhibit" data-post-login-action="http://calendar.utexas.edu/event/321062/watch?return=http%3A%2F%2Fcalendar.utexas.edu%2F" data-remote="true" rel="ibox;url=#login-lightbox">Watch This</a>
+          <a href="/event/321062/confirm?button=true&amp;date=2015-03-02&amp;dom_id=actions_event_instance_877990" class="imgoing" data-action="event-going" data-disable-with="Planning..." data-ga-action="I'm Going" data-ga-category="Event" data-ga-event="true" data-ga-label="1914: The Perfect Season, Museum Exhibit" data-post-login-action="http://calendar.utexas.edu/event/321062/confirm?date=2015-03-02&amp;return=http%3A%2F%2Fcalendar.utexas.edu%2F" data-remote="true" rel="ibox;url=#login-lightbox">I'm Going</a>
+         </div> 
+        </div> 
+       </div> 
+       <div class="item event_item vevent" id="event_instance_1144451"> 
+        <a href="http://calendar.utexas.edu/event/abstracts_invited_for_the_longhorn_research_bazaar"><img alt="Abstracts Invited for the Longhorn Research Bazaar " class="img_medium" height="80" src="http://images-cf.localist.com/photos/254044/medium/11445725fa47ddbe4f7fc45dcd54b2e19f0d7b54.jpg" title="Abstracts Invited for the Longhorn Research Bazaar " width="80"></a> 
+        <div class="item_content_medium"> 
+         <h3> <span class="summary"> <a href="http://calendar.utexas.edu/event/abstracts_invited_for_the_longhorn_research_bazaar">Abstracts Invited for the Longhorn Research Bazaar </a> </span> <span class="dateright"> <abbr title="2015-03-02T00:00:00-06:00" class="dtstart"> 3/2 </abbr> </span> </h3> 
+         <h6><a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=24828">Academics</a>, <a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=24834">Research Opportunities &amp; Studies</a> / <a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=28382">Any Department/All Departments</a></h6> 
+         <h4 class="description">The Office of Undergraduate Research invites undergraduates across campus to submit an abstract for the Longhorn Research Bazaar by Friday, March 13. The...</h4> 
+         <h5> &nbsp; </h5> 
+         <div class="action_button" id="actions_event_instance_1144451">
+          <a href="/event/403242/watch?button=true&amp;dom_id=actions_event_instance_1144451" class="watchthis" data-action="event-watch" data-disable-with="Watching..." data-ga-action="Watch This" data-ga-category="Event" data-ga-event="true" data-ga-label="Abstracts Invited for the Longhorn Research Bazaar " data-post-login-action="http://calendar.utexas.edu/event/403242/watch?return=http%3A%2F%2Fcalendar.utexas.edu%2F" data-remote="true" rel="ibox;url=#login-lightbox">Watch This</a>
+          <a href="/event/403242/confirm?button=true&amp;date=2015-03-02&amp;dom_id=actions_event_instance_1144451" class="imgoing" data-action="event-going" data-disable-with="Planning..." data-ga-action="I'm Going" data-ga-category="Event" data-ga-event="true" data-ga-label="Abstracts Invited for the Longhorn Research Bazaar " data-post-login-action="http://calendar.utexas.edu/event/403242/confirm?date=2015-03-02&amp;return=http%3A%2F%2Fcalendar.utexas.edu%2F" data-remote="true" rel="ibox;url=#login-lightbox">I'm Going</a>
+         </div> 
+        </div> 
+       </div> 
+       <div class="item event_item vevent" id="event_instance_1124240"> 
+        <a href="http://calendar.utexas.edu/event/apply_now_ronald_e_mcnair_scholars_program"><img alt="Apply Now: Ronald E. McNair Scholars Program" class="img_medium" height="80" src="http://images-cf.localist.com/photos/251543/medium/bcfe154e8101a6666a98b5a002d2dcce6b4d3a1d.jpg" title="Apply Now: Ronald E. McNair Scholars Program" width="80"></a> 
+        <div class="item_content_medium"> 
+         <h3> <span class="summary"> <a href="http://calendar.utexas.edu/event/apply_now_ronald_e_mcnair_scholars_program">Apply Now: Ronald E. McNair Scholars Program</a> </span> <span class="dateright"> <abbr title="2015-03-02T00:00:00-06:00" class="dtstart"> 3/2 </abbr> </span> </h3> 
+         <h6><a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=24828">Academics</a>, <a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=24834">Research Opportunities &amp; Studies</a> / <a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=29955">Office of the VP for Diversity and Community Engagement</a></h6> 
+         <h4 class="description">The McNair Scholars program is currently recruiting and accepting new students for the Fall 2015 semester. We are looking for undergraduate students who are...</h4> 
+         <h5> &nbsp; </h5> 
+         <div class="action_button" id="actions_event_instance_1124240">
+          <a href="/event/397322/watch?button=true&amp;dom_id=actions_event_instance_1124240" class="watchthis" data-action="event-watch" data-disable-with="Watching..." data-ga-action="Watch This" data-ga-category="Event" data-ga-event="true" data-ga-label="Apply Now: Ronald E. McNair Scholars Program" data-post-login-action="http://calendar.utexas.edu/event/397322/watch?return=http%3A%2F%2Fcalendar.utexas.edu%2F" data-remote="true" rel="ibox;url=#login-lightbox">Watch This</a>
+          <a href="/event/397322/confirm?button=true&amp;date=2015-03-02&amp;dom_id=actions_event_instance_1124240" class="imgoing" data-action="event-going" data-disable-with="Planning..." data-ga-action="I'm Going" data-ga-category="Event" data-ga-event="true" data-ga-label="Apply Now: Ronald E. McNair Scholars Program" data-post-login-action="http://calendar.utexas.edu/event/397322/confirm?date=2015-03-02&amp;return=http%3A%2F%2Fcalendar.utexas.edu%2F" data-remote="true" rel="ibox;url=#login-lightbox">I'm Going</a>
+         </div> 
+        </div> 
+       </div> 
+       <div class="item event_item vevent" id="event_instance_1084786"> 
+        <a href="http://calendar.utexas.edu/event/apply_ace_-_a_community_for_education_hiring_americorps_tutors_6347"><img alt="Apply: ACE - A Community for Education Hiring Americorps Tutors" class="img_medium" height="80" src="http://images-cf.localist.com/photos/246077/medium/b3df38bde84fd20a0b2af21434524a8533bd26f1.jpg" title="Apply: ACE - A Community for Education Hiring Americorps Tutors" width="80"></a> 
+        <div class="item_content_medium"> 
+         <h3> <span class="summary"> <a href="http://calendar.utexas.edu/event/apply_ace_-_a_community_for_education_hiring_americorps_tutors_6347">Apply: ACE - A Community for Education Hiring Americorps Tutors</a> </span> <span class="dateright"> <abbr title="2015-03-02T00:00:00-06:00" class="dtstart"> 3/2 </abbr> </span> </h3> 
+         <h6><a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=24831">Campus &amp; Community</a> / <a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=28382">Any Department/All Departments</a></h6> 
+         <h4 class="description">Teach young children to read and give back to the community in and around Austin. ACE is hiring 100 full-time AmeriCorps Early Literacy Tutors to serve from...</h4> 
+         <h5> <a href="http://calendar.utexas.edu/event/apply_ace_-_a_community_for_education_hiring_americorps_tutors_6347" class="event_item_venue">UT Dana Center</a> &nbsp; </h5> 
+         <div class="action_button" id="actions_event_instance_1084786">
+          <a href="/event/385191/watch?button=true&amp;dom_id=actions_event_instance_1084786" class="watchthis" data-action="event-watch" data-disable-with="Watching..." data-ga-action="Watch This" data-ga-category="Event" data-ga-event="true" data-ga-label="Apply: ACE - A Community for Education Hiring Americorps Tutors" data-post-login-action="http://calendar.utexas.edu/event/385191/watch?return=http%3A%2F%2Fcalendar.utexas.edu%2F" data-remote="true" rel="ibox;url=#login-lightbox">Watch This</a>
+          <a href="/event/385191/confirm?button=true&amp;date=2015-03-02&amp;dom_id=actions_event_instance_1084786" class="imgoing" data-action="event-going" data-disable-with="Planning..." data-ga-action="I'm Going" data-ga-category="Event" data-ga-event="true" data-ga-label="Apply: ACE - A Community for Education Hiring Americorps Tutors" data-post-login-action="http://calendar.utexas.edu/event/385191/confirm?date=2015-03-02&amp;return=http%3A%2F%2Fcalendar.utexas.edu%2F" data-remote="true" rel="ibox;url=#login-lightbox">I'm Going</a>
+         </div> 
+        </div> 
+       </div> 
+       <div class="item event_item vevent" id="event_instance_1016191"> 
+        <a href="http://calendar.utexas.edu/event/apply_ace_-_a_community_for_education_hiring_americorps_tutors"><img alt="Apply: ACE - A Community for Education Hiring Americorps Tutors" class="img_medium" height="80" src="http://images-cf.localist.com/photos/238711/medium/8b8d30306f264705e3ca14f7643f0785fb6473f5.jpg" title="Apply: ACE - A Community for Education Hiring Americorps Tutors" width="80"></a> 
+        <div class="item_content_medium"> 
+         <h3> <span class="summary"> <a href="http://calendar.utexas.edu/event/apply_ace_-_a_community_for_education_hiring_americorps_tutors">Apply: ACE - A Community for Education Hiring Americorps Tutors</a> </span> <span class="dateright"> <abbr title="2015-03-02T00:00:00-06:00" class="dtstart"> 3/2 </abbr> </span> </h3> 
+         <h6><a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=24829">Arts &amp; Humanities</a>, <a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=24831">Campus &amp; Community</a>, <a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=24834">Research Opportunities &amp; Studies</a>, <a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=24837">World &amp; Culture</a> / <a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=24868">Moody College of Communication</a>, <a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=24876">College of Education</a>, <a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=24885">College of Fine Arts</a>, <a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=24892">College of Liberal Arts</a>, <a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=24994">School of Law</a>, <a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=25000">School of Social Work</a>, <a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=25003">School of Undergraduate Studies</a>, <a href="http://calendar.utexas.edu/calendar/week?event_types%5B%5D=33459">School of Public Health</a></h6> 
+         <h4 class="description">Teach young children to read and give back to the community in and around Austin. ACE is hiring 100 full-time AmeriCorps Early Literacy Tutors to serve from...</h4> 
+         <h5> <a href="http://calendar.utexas.edu/ut_administration_building_uta_396" class="event_item_venue">UT Administration Building (UTA)</a> &nbsp; </h5> 
+         <div class="action_button" id="actions_event_instance_1016191">
+          <a href="/event/366429/watch?button=true&amp;dom_id=actions_event_instance_1016191" class="watchthis" data-action="event-watch" data-disable-with="Watching..." data-ga-action="Watch This" data-ga-category="Event" data-ga-event="true" data-ga-label="Apply: ACE - A Community for Education Hiring Americorps Tutors" data-post-login-action="http://calendar.utexas.edu/event/366429/watch?return=http%3A%2F%2Fcalendar.utexas.edu%2F" data-remote="true" rel="ibox;url=#login-lightbox">Watch This</a>
+          <a href="/event/366429/confirm?button=true&amp;date=2015-03-02&amp;dom_id=actions_event_instance_1016191" class="imgoing" data-action="event-going" data-disable-with="Planning..." data-ga-action="I'm Going" data-ga-category="Event" data-ga-event="true" data-ga-label="Apply: ACE - A Community for Education Hiring Americorps Tutors" data-post-login-action="http://calendar.utexas.edu/event/366429/confirm?date=2015-03-02&amp;return=http%3A%2F%2Fcalendar.utexas.edu%2F" data-remote="true" rel="ibox;url=#login-lightbox">I'm Going</a>
+         </div> 
+        </div> 
+       </div> 
+       <div class="pagination_container"> 
+        <div class="page_link"> 
+         <h5> <a href="http://calendar.utexas.edu/calendar">View all events today...</a> </h5> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="grid_4 omega"> 
+     <div id="homepage_nav"> 
+      <div class="item nav_calendar"> 
+       <h3><span><a href="http://calendar.utexas.edu/calendar">All Events</a></span></h3> 
+      </div> 
+      <div class="item nav_place"> 
+       <h3><span><a href="http://calendar.utexas.edu/browse/places">Places to Go</a></span></h3> 
+      </div> 
+     </div> 
+     <div class="user_action"> 
+      <a href="http://calendar.utexas.edu/event/create" class="nav_createevent" rel="ibox;url=#login-lightbox" data-post-login-action="http://calendar.utexas.edu/event/create"> Submit an Event </a> 
+     </div> 
+     <div class="box_container light_colorone" data-minicalendar="true" data-minicalendar-class-prefix="localist-minical" data-minicalendar-today="2015-03-02" data-minicalendar-link-template="/calendar/day/@YEAR@/@MONTH@/@DAY@" data-minicalendar-format-month="MMMM" data-minicalendar-format-month-year="MMMM yyyy"> 
+      <h2 class="dark_colorone">Calendar</h2> 
+      <div class="box_content"> 
+       <div class="pagination_container minical"> 
+        <a href="#" id="localist-minical-prev-month" data-minicalendar="previous">«</a> 
+        <a href="#" id="localist-minical-next-month" data-minicalendar="next" class="right">»</a> 
+        <div class="page_heading"> 
+         <h1 id="month-name" data-minicalendar="month-label">March</h1> 
+        </div> 
+       </div> 
+       <div id="localist-minical-month-03"> 
+        <table id="minicalendar" class="minicalendar" cellspacing="3" cellpadding="0"> 
+         <tbody>
+          <tr> 
+           <th>S</th> 
+           <th>M</th> 
+           <th>T</th> 
+           <th>W</th> 
+           <th>T</th> 
+           <th>F</th> 
+           <th>S</th> 
+          </tr> 
+         </tbody>
+         <tbody data-minicalendar="calendar"> 
+          <tr>
+           <td class="active"><a href="/calendar/day/2015/3/1">1</a></td>
+           <td class="today active selected"><a href="/calendar/day/2015/3/2">2</a></td>
+           <td class="active"><a href="/calendar/day/2015/3/3">3</a></td>
+           <td class="active"><a href="/calendar/day/2015/3/4">4</a></td>
+           <td class="active"><a href="/calendar/day/2015/3/5">5</a></td>
+           <td class="active"><a href="/calendar/day/2015/3/6">6</a></td>
+           <td class="active"><a href="/calendar/day/2015/3/7">7</a></td>
+          </tr>
+          <tr>
+           <td class="active"><a href="/calendar/day/2015/3/8">8</a></td>
+           <td class="active"><a href="/calendar/day/2015/3/9">9</a></td>
+           <td class="active"><a href="/calendar/day/2015/3/10">10</a></td>
+           <td class="active"><a href="/calendar/day/2015/3/11">11</a></td>
+           <td class="active"><a href="/calendar/day/2015/3/12">12</a></td>
+           <td class="active"><a href="/calendar/day/2015/3/13">13</a></td>
+           <td class="active"><a href="/calendar/day/2015/3/14">14</a></td>
+          </tr>
+          <tr>
+           <td class="active"><a href="/calendar/day/2015/3/15">15</a></td>
+           <td class="active"><a href="/calendar/day/2015/3/16">16</a></td>
+           <td class="active"><a href="/calendar/day/2015/3/17">17</a></td>
+           <td class="active"><a href="/calendar/day/2015/3/18">18</a></td>
+           <td class="active"><a href="/calendar/day/2015/3/19">19</a></td>
+           <td class="active"><a href="/calendar/day/2015/3/20">20</a></td>
+           <td class="active"><a href="/calendar/day/2015/3/21">21</a></td>
+          </tr>
+          <tr>
+           <td class="active"><a href="/calendar/day/2015/3/22">22</a></td>
+           <td class="active"><a href="/calendar/day/2015/3/23">23</a></td>
+           <td class="active"><a href="/calendar/day/2015/3/24">24</a></td>
+           <td class="active"><a href="/calendar/day/2015/3/25">25</a></td>
+           <td class="active"><a href="/calendar/day/2015/3/26">26</a></td>
+           <td class="active"><a href="/calendar/day/2015/3/27">27</a></td>
+           <td class="active"><a href="/calendar/day/2015/3/28">28</a></td>
+          </tr>
+          <tr>
+           <td class="active"><a href="/calendar/day/2015/3/29">29</a></td>
+           <td class="active"><a href="/calendar/day/2015/3/30">30</a></td>
+           <td class=""><a href="/calendar/day/2015/3/31">31</a></td>
+           <td class="dimday"><a href="/calendar/day/2015/4/1">1</a></td>
+           <td class="dimday"><a href="/calendar/day/2015/4/2">2</a></td>
+           <td class="dimday"><a href="/calendar/day/2015/4/3">3</a></td>
+           <td class="dimday"><a href="/calendar/day/2015/4/4">4</a></td>
+          </tr>
+         </tbody> 
+        </table> 
+       </div> 
+      </div> 
+     </div> 
+     <!-- Event Types --> 
+     <div class="form_box"> 
+      <div class="filter_list"> 
+       <fieldset id="x-list-event_types"> 
+        <label> <span>Event Types</span> </label> 
+        <ul data-has-selection="false" id="x-event_types">
+         <li data-count="27" id="x-list-event_types-item-24834"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=24834">Research Opportunities &amp; Studies (27)</a></li>
+         <li data-count="18" id="x-list-event_types-item-24831"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=24831">Campus &amp; Community (18)</a></li>
+         <li data-count="17" id="x-list-event_types-item-24829"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=24829">Arts &amp; Humanities (17)</a></li>
+         <li data-count="11" id="x-list-event_types-item-24837"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=24837">World &amp; Culture (11)</a></li>
+         <li data-count="7" id="x-list-event_types-item-24828"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=24828">Academics (7)</a></li>
+         <li data-count="5" id="x-list-event_types-item-24832"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=24832">Health &amp; Wellness (5)</a></li>
+         <li data-additional="true" data-count="5" id="x-list-event_types-item-24836" style="display:none;"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=24836">Sports &amp; Recreation (5)</a></li>
+         <li data-additional="true" data-count="4" id="x-list-event_types-item-24833" style="display:none;"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=24833">Policy &amp; Law (4)</a></li>
+         <li data-additional="true" data-count="4" id="x-list-event_types-item-24835" style="display:none;"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=24835">Science &amp; Tech (4)</a></li>
+         <li data-additional="true" data-count="2" id="x-list-event_types-item-24830" style="display:none;"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=24830">Business &amp; Economy (2)</a></li>
+         <li class="sub_show_more" data-show-more="true"><a href="#" data-action="toggle-filter-list" data-collapsed-label="Show More &amp;darr;" data-expanded-label="Show Less &amp;uarr;">Show More ↓</a></li>
+        </ul> 
+       </fieldset> 
+       <fieldset id="x-list-departments"> 
+        <label> <span>Departments</span> </label> 
+        <ul data-has-selection="false" id="x-departments">
+         <li data-count="17" id="x-list-event_types-item-28382"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=28382">Any Department/All Departments (17)</a></li>
+         <li data-count="13" id="x-list-event_types-item-24892"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=24892">College of Liberal Arts (13)</a></li>
+         <li data-count="8" id="x-list-event_types-item-24876"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=24876">College of Education (8)</a></li>
+         <li data-count="7" id="x-list-event_types-item-24885"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=24885">College of Fine Arts (7)</a></li>
+         <li data-count="7" id="x-list-event_types-item-24885-children">
+          <ul data-has-selection="false" id="x-departments-24885-list">
+           <li data-count="3" id="x-list-event_types-item-29341"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=29341">» Department of Art &amp; Art History (3)</a></li>
+           <li data-count="2" id="x-list-event_types-item-29343"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=29343">» Butler School of Music (2)</a></li>
+           <li data-count="1" id="x-list-event_types-item-29344"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=29344">» Landmarks (1)</a></li>
+           <li data-count="0" id="x-list-event_types-item-29342"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=29342">» Department of Theatre and Dance (0)</a></li>
+           <li data-additional="true" data-count="0" id="x-list-event_types-item-29345" style="display:none;"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=29345">» Texas Performing Arts (0)</a></li>
+           <li data-additional="true" data-count="0" id="x-list-event_types-item-29387" style="display:none;"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=29387">» Visual Arts Center (0)</a></li>
+           <li class="sub_show_more" data-show-more="true"><a href="#" data-action="toggle-filter-list" data-collapsed-label="Expand &amp;darr;" data-expanded-label="Hide &amp;uarr;">Expand ↓</a></li>
+          </ul></li>
+         <li data-count="5" id="x-list-event_types-item-24868"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=24868">Moody College of Communication (5)</a></li>
+         <li data-count="3" id="x-list-event_types-item-25974"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=25974">Office of the Vice President for Student Affairs (3)</a></li>
+         <li data-count="3" id="x-list-event_types-item-25974-children">
+          <ul data-has-selection="false" id="x-departments-25974-list">
+           <li data-count="0" id="x-list-event_types-item-29762"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=29762">» Office of the Dean of Students (0)</a></li>
+          </ul></li>
+         <li data-additional="true" data-count="3" id="x-list-event_types-item-25003" style="display:none;"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=25003">School of Undergraduate Studies (3)</a></li>
+         <li data-additional="true" data-count="2" id="x-list-event_types-item-24994" style="display:none;"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=24994">School of Law (2)</a></li>
+         <li data-additional="true" data-count="2" id="x-list-event_types-item-25000" style="display:none;"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=25000">School of Social Work (2)</a></li>
+         <li data-additional="true" data-count="1" id="x-list-event_types-item-24939" style="display:none;"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=24939">College of Natural Sciences (1)</a></li>
+         <li data-additional="true" data-count="1" id="x-list-event_types-item-24963" style="display:none;"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=24963">College of Pharmacy (1)</a></li>
+         <li data-additional="true" data-count="1" id="x-list-event_types-item-25932" style="display:none;"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=25932">Dolph Briscoe Center for American History, Office of the Executive Vice President and Provost (1)</a></li>
+         <li data-additional="true" data-count="1" id="x-list-event_types-item-24971" style="display:none;"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=24971">Lyndon B Johnson School of Public Affairs (1)</a></li>
+         <li data-additional="true" data-count="1" id="x-list-event_types-item-29955" style="display:none;"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=29955">Office of the VP for Diversity and Community Engagement (1)</a></li>
+         <li data-additional="true" data-count="1" id="x-list-event_types-item-33459" style="display:none;"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=33459">School of Public Health (1)</a></li>
+         <li data-additional="true" data-count="1" id="x-list-event_types-item-25937" style="display:none;"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=25937">University of Texas Libraries, Office of the Executive Vice President and Provost (1)</a></li>
+         <li data-additional="true" data-count="0" id="x-list-event_types-item-24856" style="display:none;"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=24856">Cockrell School of Engineering (0)</a></li>
+         <li data-additional="true" data-count="0" id="x-list-event_types-item-30288" style="display:none;"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=30288">Dell Medical School (0)</a></li>
+         <li data-additional="true" data-count="0" id="x-list-event_types-item-24966" style="display:none;"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=24966">John A and Katherine G Jackson School of Geosciences (0)</a></li>
+         <li data-additional="true" data-count="0" id="x-list-event_types-item-25910" style="display:none;"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=25910">Office of the Executive Vice President and Provost (0)</a></li>
+         <li data-additional="true" data-count="0" id="x-list-event_types-item-28032" style="display:none;"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=28032">Office of the President (0)</a></li>
+         <li data-additional="true" data-count="0" id="x-list-event_types-item-25965" style="display:none;"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=25965">Office of the Vice President for Legal Affairs (0)</a></li>
+         <li data-additional="true" data-count="0" id="x-list-event_types-item-25914" style="display:none;"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=25914">Office of the Vice President for Research (0)</a></li>
+         <li data-additional="true" data-count="0" id="x-list-event_types-item-25983" style="display:none;"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=25983">Office of the Vice President for University Operations (0)</a></li>
+         <li data-additional="true" data-count="0" id="x-list-event_types-item-24974" style="display:none;"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=24974">Office of the Vice Provost and Dean of Graduate Studies (0)</a></li>
+         <li data-additional="true" data-count="0" id="x-list-event_types-item-24978" style="display:none;"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=24978">Red McCombs School of Business (0)</a></li>
+         <li data-additional="true" data-count="0" id="x-list-event_types-item-24988" style="display:none;"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=24988">School of Architecture (0)</a></li>
+         <li data-additional="true" data-count="0" id="x-list-event_types-item-24991" style="display:none;"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=24991">School of Information (0)</a></li>
+         <li data-additional="true" data-count="0" id="x-list-event_types-item-24997" style="display:none;"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=24997">School of Nursing (0)</a></li>
+         <li class="sub_show_more" data-show-more="true"><a href="#" data-action="toggle-filter-list" data-collapsed-label="Show More &amp;darr;" data-expanded-label="Show Less &amp;uarr;">Show More ↓</a></li>
+        </ul> 
+       </fieldset> 
+       <fieldset id="x-list-event_import_type"> 
+        <label> <span>Import Type</span> </label> 
+        <ul data-has-selection="false" id="x-event_import_type">
+         <li data-count="7" id="x-list-event_types-item-26564"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=26564">Hornslink (7)</a></li>
+         <li data-count="2" id="x-list-event_types-item-29757"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=29757">COFA/School of Music (2)</a></li>
+         <li data-count="2" id="x-list-event_types-item-26808"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=26808">Texas Sports (2)</a></li>
+         <li data-count="1" id="x-list-event_types-item-26563"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=26563">Know Events (1)</a></li>
+         <li data-count="0" id="x-list-event_types-item-28687"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=28687">***Testing*** (0)</a></li>
+         <li data-count="0" id="x-list-event_types-item-28687-children">
+          <ul data-has-selection="false" id="x-event_import_type-28687-list">
+           <li data-count="0" id="x-list-event_types-item-27670"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=27670">» Blanton (0)</a></li>
+           <li data-count="0" id="x-list-event_types-item-29329"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=29329">» internaltesting (0)</a></li>
+           <li data-count="0" id="x-list-event_types-item-27669"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=27669">» Libraries (0)</a></li>
+           <li data-count="0" id="x-list-event_types-item-29431"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=29431">» Moody - iCal - 140214 (0)</a></li>
+           <li data-additional="true" data-count="0" id="x-list-event_types-item-30850" style="display:none;"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=30850">» Moody - iCal - 140527 (0)</a></li>
+           <li data-additional="true" data-count="0" id="x-list-event_types-item-32433" style="display:none;"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=32433">» Moody - iCal - 140710 (0)</a></li>
+           <li class="sub_show_more" data-show-more="true"><a href="#" data-action="toggle-filter-list" data-collapsed-label="Expand &amp;darr;" data-expanded-label="Hide &amp;uarr;">Expand ↓</a></li>
+          </ul></li>
+         <li data-count="0" id="x-list-event_types-item-28685"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=28685">COFA/Art &amp; Art History (0)</a></li>
+         <li data-additional="true" data-count="0" id="x-list-event_types-item-28684" style="display:none;"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=28684">COFA/Landmarks (0)</a></li>
+         <li data-additional="true" data-count="0" id="x-list-event_types-item-28688" style="display:none;"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=28688">COFA/Theatre &amp; Dance (0)</a></li>
+         <li data-additional="true" data-count="0" id="x-list-event_types-item-28690" style="display:none;"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=28690">COFA/VisualArtsCenter (0)</a></li>
+         <li class="sub_show_more" data-show-more="true"><a href="#" data-action="toggle-filter-list" data-collapsed-label="Show More &amp;darr;" data-expanded-label="Show Less &amp;uarr;">Show More ↓</a></li>
+        </ul> 
+       </fieldset> 
+       <fieldset id="x-list-event_external_feeds"> 
+        <label> <span>Notices</span> </label> 
+        <ul data-has-selection="false" id="x-event_external_feeds">
+         <li data-count="23" id="x-list-event_types-item-30105"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=30105">Volunteer (23)</a></li>
+         <li data-count="10" id="x-list-event_types-item-30107"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=30107">Apply (10)</a></li>
+         <li data-count="2" id="x-list-event_types-item-30106"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=30106">Register (2)</a></li>
+         <li data-count="1" id="x-list-event_types-item-30108"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=30108">Nominate (1)</a></li>
+        </ul> 
+       </fieldset> 
+       <fieldset id="x-list-event_research_opportunities"> 
+        <label> <span>Research Opportunities</span> </label> 
+        <ul data-has-selection="false" id="x-event_research_opportunities">
+         <li data-count="21" id="x-list-event_types-item-30731"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=30731">Paid (21)</a></li>
+         <li data-count="4" id="x-list-event_types-item-30732"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=30732">Unpaid (4)</a></li>
+        </ul> 
+       </fieldset> 
+       <fieldset id="x-list-event_target_audience"> 
+        <label> <span>Target Audience</span> </label> 
+        <ul data-has-selection="false" id="x-event_target_audience">
+         <li data-count="52" id="x-list-event_types-item-24848"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=24848">Students (52)</a></li>
+         <li data-count="41" id="x-list-event_types-item-24853"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=24853">General Public (41)</a></li>
+         <li data-count="20" id="x-list-event_types-item-24849"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=24849">Staff (20)</a></li>
+         <li data-count="18" id="x-list-event_types-item-24850"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=24850">Faculty (18)</a></li>
+         <li data-count="16" id="x-list-event_types-item-24851"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=24851">Alumni (16)</a></li>
+         <li data-count="10" id="x-list-event_types-item-24852"><a href="http://calendar.utexas.edu/calendar?event_types%5B%5D=24852">Families (10)</a></li>
+        </ul> 
+       </fieldset> 
+      </div>
+      <!-- /.filter_list --> 
+     </div>
+     <!-- /.form_box --> 
+     <div id="share_events_block" class="box_container light_colorfive"> 
+      <h2 class="dark_colorfive">Share Events</h2> 
+      <div class="box_content"> 
+       <p>Want to list an event? Use our simple <a href="http://calendar.utexas.edu/event/create" class="add_event_icon">event submission form</a>. It only takes a minute!</p> 
+       <p>Want these events on your own site? <a href="/help/widget">Build a widget</a>.</p> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <br clear="all"> 
+   <div id="footer_include_utexas"> 
+    <!-- beginning of footer. This version has no universal navigation, but uses a div to hold space between the tower and content of the page. --> 
+    <div class="tower_spacer"></div> 
+    <div id="graphic_footer"> 
+     <div id="footer_bottom"> 
+      <!-- beginning of tower ribbon part of footer at 100% width --> 
+      <div id="footer_tower">
+       <a href="http://www.utexas.edu/what-starts-here" title="What Starts Here">What Starts Here</a>
+      </div> 
+      <!--div "footer_tower" is absolutely positioned on top of the "footer_top" and "footer_bottom"  			and contains the graphic with the wordmark and tower in the background--> 
+      <div id="footer_ribbon"> 
+       <div id="ut_footer"> 
+        <ul> 
+         <li><a href="http://www.utexas.edu/contact/" title="Contact">Contact</a></li> 
+         <li><a href="http://www.utexas.edu/emergency/" title="Emergency Information">Emergency Information</a></li> 
+         <li><a href="http://www.utexas.edu/its/" title="ITS Help &amp; Support">ITS Help &amp; Support</a></li> 
+         <li class="last_item"><a href="http://www.utexas.edu/about-this-site" title="© 2014 The University of Texas at Austin">© 2014 The University of Texas at Austin</a></li> 
+        </ul> 
+       </div> 
+       <!-- end of ut_footer --> 
+       <div id="ut_footer1"> 
+        <ul> 
+         <li><a href="http://www.utexas.edu/web-privacy-policy" title="Web Privacy Policy">Web Privacy Policy</a></li> 
+         <li><a href="http://www.utexas.edu/web-accessibility-policy" title="Web Accessibility Policy">Web Accessibility Policy</a></li> 
+         <li><a href="http://www.utexas.edu/disability" title="Resources for People with Disabilities">Resources for People with Disabilities</a></li> 
+         <li class="last_item"><a href="http://www.utexas.edu/about-this-site" title="About this Site">About this Site</a></li> 
+        </ul> 
+       </div> 
+       <!-- end of ut_footer1 --> 
+       <div id="ut_footer2"> 
+        <ul> 
+         <li><a href="http://www.utsystem.edu" title="UT System">UT System</a></li> 
+         <li><a href="http://www.texas.gov" title="State of Texas">State of Texas</a></li> 
+         <li><a href="http://www2.tsl.state.tx.us/trail/" title="Statewide Search">Statewide Search</a></li> 
+         <li><a href="http://www.utexas.edu/admin/audit/fraud.html" title="Fraud Hotline">Fraud Hotline</a></li> 
+         <li><a href="http://www.txhighereddata.org/approot/resumes/ir_launch.htm" title="Online Institutional Résumés">Online Institutional Résumés</a></li> 
+         <li class="last_item"><a href="https://utdirect.utexas.edu/apps/student/coursedocs/nlogon/" title="Access Syllabi and CVs">Access Syllabi and CVs</a></li> 
+        </ul> 
+       </div> 
+       <!-- end of ut_footer2 --> 
+      </div> 
+      <!--end of footer_ribbon --> 
+     </div> 
+     <!-- close footer_bottom --> 
+    </div> 
+    <!-- end of graphic_footer -->
+   </div> 
+  </div> 
+  <div id="lclst_footer" style="background: #fff;height:50px;"> 
+   <a style="margin-left:auto;margin-right:auto;display:block;width:360px;font-weight:normal;font-size:16px;line-height:50px;font-family:inherit;text-align:left;color:#666;" href="http://www.localist.com?utm_source=UT%20Events%20Calendar&amp;utm_campaign=platform_footer&amp;utm_medium=branded%20link">This social calendar is powered by <img alt="Localist" src="http://images-cf.localist.com/assets/platforms/default/about/logo_footer-c7f27f808a50b8533edb2bb64757ca9a.png" style="vertical-align: middle;"></a> 
+  </div> 
+  <div style="display: none;" id="login-lightbox-container"> 
+   <div id="login-lightbox"> 
+    <div class="grid_container modal login_modal"> 
+     <div class="grid_6 alpha"> 
+      <div class="box_header"> 
+       <h4><span>Login to UT Events Calendar</span></h4> 
+      </div> 
+      <div class="form_box" data-login="container"> 
+       <div class="user_action login"> 
+        <a class="profile_shibboleth_button" href="http://calendar.utexas.edu/auth/shib_login?previous_url=http%3A%2F%2Fcalendar.utexas.edu%2F">Login with School ID</a> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <div id="fb-root"></div> 
+  <script src="//connect.facebook.net/en_US/all.js"></script> 
+  <script type="text/javascript">
+  FB.init({
+    appId: '163772447147758',
+    status: true,
+    cookie: true,
+    xfbml: true,
+    channelUrl: document.location.protocol + '//' + document.location.host + '/channel.html',
+    oauth: true
+  });
+
+  
+</script> 
+  <script type="text/javascript">
+        var _gaq = _gaq || [];
+
+        _gaq.push(['_setAccount', 'UA-38181101-1']); _gaq.push(['_trackPageview']);
+_gaq.push(['t2._setAccount', 'UA-11887171-6']); _gaq.push(['t2._trackPageview']);
+
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+      </script>   
+ </body>
+</html>

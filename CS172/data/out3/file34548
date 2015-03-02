@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <meta charset="utf-8"> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge"> 
+  <script type="text/javascript">
+/*<![CDATA[*/
+var livewhale={"liveurl_dir":"\/live","page":"\/index.php","request":"\/","ajax_timeout":30,"date_format_us":"m\/d\/Y","date_format_euro":"d-m-Y","time_format_us":"g:ia","time_format_euro":"H:i","timezone_format":"us","has_ssl":"true","calendar_widget_args":{"modular":"true","exclusive_categories":"true","image_width":"540","include_featured_content":"true","mini_cal_heat_map":"true","thumb_width":160,"thumb_height":120,"sort_order":["date"]},"has_events_calendar":"true","group_id":null,"group_title":null,"group_title_real":null,"group_fullname":null,"group_fullname_real":null,"group_twitter_name":null,"group_facebook_name":null,"theme":"nyu"};
+/*]]>*/
+</script> 
+  <title>NYU Calendar</title> 
+  <link rel="stylesheet" type="text/css" href="//cloud.typography.com/7436432/636084/css/fonts.css"> 
+  <meta http-equiv="description" content="Calendar of events for New York University."> 
+  <meta http-equiv="keywords" content="new york university, nyu, events, calendar"> 
+  <link href="/live/resource/css/%5Clivewhale%5Ctheme%5Ccore%5Cstyles%5Ccommon.css/%5Clivewhale%5Ctheme%5Ccore%5Cstyles%5Clwui%5Cdefault.css/%5Clivewhale%5Ctheme%5Ccore%5Cstyles%5Cwidgets.css/%5Clivewhale%5Ctheme%5Ccore%5Cstyles%5Cfrontend.rev.1400899469.css" rel="stylesheet" type="text/css"> 
+  <link href="/live/resource/css/livewhale/theme/nyu/styles/calendar.rev.1405014333.css" rel="stylesheet" type="text/css"> 
+  <link href="/live/resource/css/%5Clivewhale%5Ctheme%5Ccore%5Cstyles%5Ccalendar-mobile.css/%5Clivewhale%5Ctheme%5Ccore%5Cstyles%5Cplugins.rev.1400899464.css" rel="stylesheet" type="text/css"> 
+  <link href="//www.nyu.edu/etc/designs/default.css" rel="stylesheet" type="text/css"> 
+  <meta name="author" content="NYU Web Communications"> 
+  <link rel="icon" href="//www.nyu.edu/common/images/favicon.ico" type="image/x-icon"> 
+  <!-- GENERAL SCRIPTS --> 
+  <script type="text/javascript" src="//www.nyu.edu/etc/designs/nyu/clientlibs/jquery.js"></script> 
+  <script type="text/javascript" src="//www.nyu.edu/common/js/utils.js"></script> 
+  <!-- LIGHT BOX --> 
+  <script type="text/javascript" src="//www.nyu.edu/common/js/jquery.lightbox-0.5.js"></script> 
+  <!-- TABLE SORT--> 
+  <script type="text/javascript" src="//www.nyu.edu/common/js/jquery.tablesorter.min.js"></script> 
+  <!-- GLOBAL JS INITIALIZATION--> 
+  <script type="text/javascript">
+    $(document).ready(function()
+        {
+            $("#tableSort").tablesorter();
+        }
+    );
+    </script> 
+  <!-- GENERIC STYLE SHEETS --> 
+  <link rel="stylesheet" href="//www.nyu.edu/common/css/base.css" type="text/css" media="screen"> 
+  <link rel="stylesheet" href="//www.nyu.edu/common/css/cpTemps.css" type="text/css" media="screen"> 
+  <link rel="stylesheet" href="//www.nyu.edu/common/css/print.css" type="text/css" media="print"> 
+  <!-- PHOTO GALLERY --> 
+  <link rel="stylesheet" href="//www.nyu.edu/common/css/jquery.lightbox-0.5.css" type="text/css" media="screen"> 
+  <!-- FORMS --> 
+  <link rel="stylesheet" href="//www.nyu.edu/common/css/forms.css" type="text/css" media="screen"> 
+  <!--[if lt IE 8]>
+		<link rel="stylesheet" type="text/css" href="/live/resource/css/styles/ie7.rev.1405013239.css" />
+    <![endif]--> 
+  <!--[if IE 8]>
+        <link rel="stylesheet" href="//www.nyu.edu/common/css/v60.ie8.css" type="text/css" media="screen" />
+    <![endif]--> 
+  <!--[if IE 7]>
+        <link rel="stylesheet" href="//www.nyu.edu/common/css/v60.ie7.css" type="text/css" media="screen" />
+    <![endif]--> 
+  <!--[if IE 6]>
+        <link rel="stylesheet" href="//www.nyu.edu/common/css/v60.ie6.css" type="text/css" media="screen" />
+        <script type="text/javascript" src="//www.nyu.edu/common/js/unitpngfix.js"></script>
+        <script type="text/javascript">
+            sfHover = function() {
+                var sfEls = document.getElementById("utilities").getElementsByTagName("LI");
+                for (var i=0; i<sfEls.length; i++) {
+                    sfEls[i].onmouseover=function() {
+                        this.className+=" sfhover";
+                    }
+                    sfEls[i].onmouseout=function() {
+                        this.className=this.className.replace(new RegExp(" sfhover\\b"), "");
+                    }
+                }
+            }
+            if (window.attachEvent) window.attachEvent("onload", sfHover);
+        </script>
+    <![endif]--> 
+  <!-- Google Analytics (publisher only) --> 
+  <script type="text/javascript">
+	//Classic Google Analytics
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-1592055-10']);
+	_gaq.push(['_setDomainName', 'nyu.edu']);
+	_gaq.push(['_trackPageview']);
+	_gaq.push(['_addIgnoredOrganic', 'www.nyu.edu']);
+	_gaq.push(['_addIgnoredOrganic', 'nyu.edu']);
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script> 
+  <script>
+	//Universal Google Analytics
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+	__gaTracker('create', 'UA-1592055-11', 'nyu.edu');
+	__gaTracker('send', 'pageview');
+</script> 
+  <script type="text/javascript">
+function trackHashChangeAnalytics() {
+	var pageHash = window.location.hash.substr(1),
+		pageHashArray = pageHash.split("/"),
+		trackEventArray = [],
+		trackPageViewArray = [],
+		trackEventCategory = "unknown",
+		trackEventAction = pageHash.toString(),
+		trackEventLabel = document.title;
+	var trackPageViewObject = new Object();	
+	var trackEventObject = new Object();
+	var searchTermIndex = pageHashArray.indexOf("search", 1) + 1;
+	var isListPage = (pageHashArray.indexOf("view") === 0) ? true : false;
+	var isEventPage = (pageHashArray.indexOf("event_id") === 0) ? true : false;
+	var isSearchPage = (searchTermIndex > 0) ? true : false;
+	var searchTerm = (isSearchPage) ? pageHashArray[searchTermIndex] : "";
+	if (isListPage) {
+		if (isSearchPage) {
+			trackEventCategory = "search";
+		} else {
+			trackEventCategory = "listing";
+		}
+	}
+	if (isEventPage) {
+		trackEventCategory = "event";
+	}
+	if (isSearchPage) {
+		trackEventLabel = searchTerm;
+	}
+	trackEventArray.push("_trackEvent");
+	trackEventArray.push(trackEventCategory);
+	trackEventArray.push(trackEventAction);
+	trackEventArray.push(trackEventLabel);
+	trackEventArray.push(null);
+	trackEventArray.push(false);
+	trackPageViewArray.push("_trackPageview");
+	trackPageViewArray.push(trackEventAction);
+	trackPageViewObject.page = trackEventAction;
+	trackPageViewObject.title = trackEventLabel;
+	trackEventObject.hitType = 'event';
+	trackEventObject.eventCategory = trackEventCategory;
+	trackEventObject.eventAction = trackEventAction;
+	trackEventObject.eventLabel = trackEventLabel;
+
+	// for Classic Google Analytics
+	_gaq.push(trackEventArray);
+	_gaq.push(trackPageViewArray);
+
+	// for Universal Google Analytics
+	__gaTracker('send', 'pageview', trackPageViewObject);
+	__gaTracker('send', trackEventObject);
+}
+window.addEventListener("hashchange", trackHashChangeAnalytics, false);
+</script> 
+  <script type="text/javascript" src="//use.typekit.net/nyw3fax.js"></script> 
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script> 
+  <!-- html5shiv must appear in head --> 
+  <!--[if lt IE 9]><script src="/live/resource/js/livewhale/thirdparty/html5shiv.rev.1363015615.js"></script><![endif]--> 
+  <link rel="canonical" href="/index.php"> 
+  <!--[if lt IE 9]><script src="/live/resource/js/livewhale/thirdparty/html5shiv.js"></script><![endif]--> 
+ </head> 
+ <body class="calendar_body"> 
+  <!--[if IE]>
+        <span id="screenreader_msg" class="offLeft">If you are using a Kurzweil text-to-speech reader, the <strong>Read the Web</strong> function in Firefox performs more accurately than in Internet Explorer. The Kurzweil utility was created specifically for use in Firefox. We recommend that you use Firefox.</span>
+        <![endif]--> 
+  <noscript>
+   <div id="noScript"> 
+    <div>
+     NYU.edu requires JavaScript be enabled in your browser in order to use important features of the site. JavaScript is either disabled or not supported by your browser. For instructions on how to enable JavaScript in your browser, 
+     <a href="//www.nyu.edu/employees/resources-and-services/media-and-communications/digital-communications/browser-support/enable-javascript.html">click here</a>.
+    </div> 
+   </div>
+  </noscript> 
+  <div class="adminSettings"> 
+  </div> 
+  <div id="masterContainer" class="cpTemps"> 
+   <span class="offLeft">New York University</span> 
+   <!-- JUMP LINKS --> 
+   <a class="offLeft" href="#contentWrapper">Skip to Content</a> 
+   <a class="offLeft" href="#searchField">Skip to Search</a> 
+   <a class="offLeft" href="#nav">Skip to Navigation</a> 
+   <a class="offLeft" href="#subnav">Skip to Sub Navigation</a> 
+   <!-- BEGIN HEADER CONTAINER --> 
+   <div id="headerContainer"> 
+    <!-- BEGIN UTILITIES CONTAINER --> 
+    <div class="utilsContainer"> 
+     <div id="utilities" class="utils"> 
+      <!-- ROLES --> 
+      <div class="nyuRoles"> 
+       <!-- ROLES --> 
+       <div class="login"> 
+        <p> <a href="//home.nyu.edu">NYUHome Login</a> </p> 
+       </div> 
+       <div class="utilsLeft"></div> 
+       <p class="utilsLinks"> <a href="//www.nyu.edu/students.html">Students</a> <span class="utilsPipe">|</span> <a href="//www.nyu.edu/faculty.html">Faculty</a> <span class="utilsPipe">|</span> <a href="//www.nyu.edu/alumni.html">Alumni</a> <span class="utilsPipe">|</span> <a href="//www.nyu.edu/employees.html">Employees</a> <span class="utilsPipe">|</span> <a href="//www.nyu.edu/community.html">Community</a> </p>
+       <div class="utilsRight"></div>
+       <!--end .utilsLinks-->
+      </div> 
+      <!-- DROP DOWNS --> 
+      <div class="nyuDropdowns"> 
+       <ul id="dropDowns"> 
+        <li id="schools"> <a class="downArrow" href="">Schools</a> 
+         <ul> 
+          <li class="bg first"><a href="//as.nyu.edu">Arts and Science</a></li> 
+          <li class=""><a href="//cas.nyu.edu">College of Arts and Science</a></li> 
+          <li class="bg"><a href="//dental.nyu.edu/">College of Dentistry</a></li> 
+          <li class=""><a href="//nursing.nyu.edu/">College of Nursing</a></li> 
+          <li class="bg"><a href="//www.cims.nyu.edu/">Courant Institute of Mathematical Sciences</a></li> 
+          <li class=""><a href="//gallatin.nyu.edu/">Gallatin School of Individualized Study</a></li> 
+          <li class="bg"><a href="//gsas.nyu.edu">Graduate School of Arts and Science</a></li> 
+          <li class=""><a href="//www.nyu.edu/gsas/dept/fineart/">Institute of Fine Arts</a></li> 
+          <li class="bg"><a href="//isaw.nyu.edu/">Institute for the Study of the Ancient World</a></li> 
+          <li class=""><a href="//www.stern.nyu.edu/">Leonard N. Stern School of Business</a></li> 
+          <li class=""><a href="//www.liberalstudies.nyu.edu/">Liberal Studies Program</a></li> 
+          <li class="bg"><a href="//nyuad.nyu.edu/">NYU Abu Dhabi</a></li> 
+          <li class=""><a href="//shanghai.nyu.edu">NYU Shanghai</a></li> 
+          <li class="bg"><a href="//engineering.nyu.edu/">Polytechnic Institute of NYU</a></li> 
+          <li class=""><a href="//wagner.nyu.edu/">Robert F. Wagner Graduate School of Public Service</a></li> 
+          <li class="bg"><a href="//www.scps.nyu.edu/">School of Professional Studies</a></li> 
+          <li class=""><a href="//www.law.nyu.edu/">School of Law</a></li> 
+          <li class="bg"><a href="//school.med.nyu.edu/">School of Medicine</a></li> 
+          <li class=""><a href="//socialwork.nyu.edu/">Silver School of Social Work</a></li> 
+          <li class="bg"><a href="//steinhardt.nyu.edu/">Steinhardt School of Culture, Education, and Human Development</a></li> 
+          <li class=""><a href="//www.tisch.nyu.edu/">Tisch School of the Arts</a></li> 
+         </ul> </li> 
+        <li id="quickLinks"> <a class="downArrow" href="">QuickLinks</a> 
+         <ul> 
+          <li class="bg first"><a href="http://www.nyu.edu/registrar/calendars/">Academic Calendars</a></li> 
+          <li class=""><a href="http://www.nyu.edu/about/leadership-university-administration.html">Administrative Units</a></li> 
+          <li class="bg"><a href="http://home.nyu.edu/academics/">Albert</a></li> 
+          <li class=""><a href="http://www.nyu.edu/about/working-at-nyu/apply-for-jobs.html">Apply for Jobs</a></li> 
+          <li class="bg"><a href="http://www.gonyuathletics.com/">Athletics</a></li> 
+          <li class=""><a href="http://www.bookstores.nyu.edu/">Bookstores</a></li> 
+          <li class="bg"><a href="http://www.nyu.edu/bursar">Bursar</a></li> 
+          <li class=""><a href="http://www.nyu.edu/footer/map.html">Campus Map</a></li> 
+          <li class="bg"><a href="http://www.nyu.edu/life/resources-and-services/employment-and-careerdevelopment.html">Career Development</a></li> 
+          <li class=""><a href="http://www.nyu.edu/life/safety-health-wellness/info-alerts.html">Emergencies</a></li> 
+          <li class="bg"><a href="http://events.nyu.edu/">Events</a></li> 
+          <li class=""><a href="http://www.nyu.edu/giving/">Giving to NYU</a></li> 
+          <li class="bg"><a href="http://www.nyu.edu/life/living-at-nyu.html">Housing</a></li> 
+          <li class=""><a href="http://www.nyu.edu/its/">ITS</a></li> 
+          <li class="bg"><a href="http://library.nyu.edu/">Libraries</a></li> 
+          <li class=""><a href="http://www.nyu.edu/about/news-publications/news.html">News</a></li> 
+          <li class="bg"><a href="http://nyubook.collegestoreonline.com/">NYU Apparel</a></li> 
+          <li class=""><a href="http://www.nyu.edu/about/policies-guidelines-compliance.html">Policies</a></li> 
+          <li class="bg"><a href="http://www.nyu.edu/public.safety/">Public Safety</a></li> 
+          <li class=""><a href="http://www.nyu.edu/registrar/">Registrar</a></li> 
+          <li class="bg"><a href="http://www.nyu.edu/shc/">Student Health Center</a></li> 
+          <li class=""><a href="http://www.nyu.edu/life/resources-and-services.html">Student Resources</a></li> 
+          <li class="bg"><a href="http://www.nyu.edu/999/">Wellness Exchange</a></li> 
+         </ul> </li> 
+        <li id="az"> <a class="downArrow" href="">A-Z</a> 
+         <ul> 
+          <li class="bg first"><a href="//www.nyu.edu/nyu/en/AZ/SearchResults.html?alphabet=A">A</a></li> 
+          <li class=""><a href="//www.nyu.edu/nyu/en/AZ/SearchResults.html?alphabet=B">B</a></li> 
+          <li class="bg"><a href="//www.nyu.edu/nyu/en/AZ/SearchResults.html?alphabet=C">C</a></li> 
+          <li class=""><a href="//www.nyu.edu/nyu/en/AZ/SearchResults.html?alphabet=D">D</a></li> 
+          <li class="bg"><a href="//www.nyu.edu/nyu/en/AZ/SearchResults.html?alphabet=E">E</a></li> 
+          <li class=""><a href="//www.nyu.edu/nyu/en/AZ/SearchResults.html?alphabet=F">F</a></li> 
+          <li class="bg"><a href="//www.nyu.edu/nyu/en/AZ/SearchResults.html?alphabet=G">G</a></li> 
+          <li class=""><a href="//www.nyu.edu/nyu/en/AZ/SearchResults.html?alphabet=H">H</a></li> 
+          <li class="bg"><a href="//www.nyu.edu/nyu/en/AZ/SearchResults.html?alphabet=I">I</a></li> 
+          <li class=""><a href="//www.nyu.edu/nyu/en/AZ/SearchResults.html?alphabet=J">J</a></li> 
+          <li class="bg"><a href="//www.nyu.edu/nyu/en/AZ/SearchResults.html?alphabet=K">K</a></li> 
+          <li class=""><a href="//www.nyu.edu/nyu/en/AZ/SearchResults.html?alphabet=L">L</a></li> 
+          <li class="bg"><a href="//www.nyu.edu/nyu/en/AZ/SearchResults.html?alphabet=M">M</a></li> 
+          <li class=""><a href="//www.nyu.edu/nyu/en/AZ/SearchResults.html?alphabet=N">N</a></li> 
+          <li class="bg"><a href="//www.nyu.edu/nyu/en/AZ/SearchResults.html?alphabet=O">O</a></li> 
+          <li class=""><a href="//www.nyu.edu/nyu/en/AZ/SearchResults.html?alphabet=P">P</a></li> 
+          <li class="bg"><a href="//www.nyu.edu/nyu/en/AZ/SearchResults.html?alphabet=Q">Q</a></li> 
+          <li class=""><a href="//www.nyu.edu/nyu/en/AZ/SearchResults.html?alphabet=R">R</a></li> 
+          <li class="bg"><a href="//www.nyu.edu/nyu/en/AZ/SearchResults.html?alphabet=S">S</a></li> 
+          <li class=""><a href="//www.nyu.edu/nyu/en/AZ/SearchResults.html?alphabet=T">T</a></li> 
+          <li class="bg"><a href="//www.nyu.edu/nyu/en/AZ/SearchResults.html?alphabet=U">U</a></li> 
+          <li class=""><a href="//www.nyu.edu/nyu/en/AZ/SearchResults.html?alphabet=V">V</a></li> 
+          <li class="bg"><a href="//www.nyu.edu/nyu/en/AZ/SearchResults.html?alphabet=W">W</a></li> 
+          <li class=""><a href="//www.nyu.edu/nyu/en/AZ/SearchResults.html?alphabet=X">X</a></li> 
+          <li class="bg"><a href="//www.nyu.edu/nyu/en/AZ/SearchResults.html?alphabet=Y">Y</a></li> 
+          <li class=""><a href="//www.nyu.edu/nyu/en/AZ/SearchResults.html?alphabet=Z">Z</a></li> 
+         </ul> </li> 
+       </ul>
+      </div> 
+     </div> 
+     <!-- END UTILS (center) --> 
+    </div> 
+    <!-- END UTILITIES CONTAINER --> 
+    <!-- BEGIN NYU LOGO AND SEARH BOX --> 
+    <div class="nyuLogoContainer"> 
+     <!-- LOGO --> 
+     <div class="nyuTorchLogo"> 
+      <div class="nyuLogo" title="New York University Homepage">
+       <a href="//www.nyu.edu/"><span class="offLeft">New York University</span></a>
+      </div>
+     </div> 
+     <!-- SEARCH --> 
+     <div class="nyuSearch"> 
+      <form id="searchForm" action="//www.nyu.edu/search.html" method="get"> 
+       <div id="searchBar"> 
+        <label for="searchField" class="offLeft">Search NYU</label> 
+        <input type="text" id="searchField" name="search" value="Search..."> 
+       </div> 
+       <button id="searchBtn" type="submit"></button> 
+       <ul id="searchTypes" style="display:none;"> 
+        <li><a class="searchTypeSelected" href="//www.nyu.edu/search.html">Pages</a><span class="searchTypePipe">|</span></li> 
+        <li><a href="//www.nyu.edu/search.directory.html">People</a></li> 
+       </ul> 
+      </form>
+     </div> 
+    </div> 
+    <!-- END NYU LOGO AND SEARH BOX --> 
+    <!-- MAIN NAV --> 
+    <div class="nyuMainnav"> 
+     <!-- MAIN NAV --> 
+     <div class="mainNav"> 
+      <h6 class="offLeft">Main Navigation</h6> 
+      <ul id="nav" title=""> 
+       <li class="about"><a title="About NYU" href="//www.nyu.edu/about.html">About NYU</a></li> 
+       <li class="admissions"><a title="Admissions" href="//www.nyu.edu/admissions.html">Admissions</a></li> 
+       <li class="academics"><a title="Academics" href="//www.nyu.edu/academics.html">Academics</a></li> 
+       <li class="life"><a title="University Life" href="//www.nyu.edu/life.html">University Life</a></li> 
+       <li class="research"><a title="Research" href="//www.nyu.edu/research.html">Research</a></li> 
+       <li class="global"><a title="Global" href="//www.nyu.edu/global.html">Global</a></li> 
+      </ul> 
+     </div>
+     <!--end #mainNav-->
+    </div> 
+   </div> 
+   <!-- END HEADER CONTAINER --> 
+   <!-- IX - getAlerts is not able to retrieve alerts.response.html because of cross-domain restrictions --> 
+   <!--
+<script type="text/javascript" src="//www.nyu.edu/common/js/alerts.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		getAlerts('/common/alerts/admin/alerts.response.html');
+	});
+</script>
+<div id="alertsContainer"></div>
+--> 
+   <nav> 
+    <form id="lw_cal_category_selector" class="lw_hidden lw_cal_selector">
+     <h5>Show only:</h5>
+     <ul> 
+      <li><input type="checkbox">Arts</li> 
+      <li><input type="checkbox">Athletics</li> 
+      <li><input type="checkbox">Conferences - Symposia</li> 
+      <li><input type="checkbox">Dates - Deadlines</li> 
+      <li><input type="checkbox">Programs</li> 
+      <li><input type="checkbox">Speakers</li> 
+     </ul>
+    </form> 
+   </nav> 
+   <!-- BEGIN CONTENT WRAPPER --> 
+   <div id="contentWrapper"> 
+    <!-- BEGIN EDITS BELOW HERE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --> 
+    <!--
+	
+	#######
+	NYU.edu is built on a 5-column design grid.  Every page in our core site has a template with 2-3 columns that add up to a total of 5 (ex. 4-1, 3-2, 3-1-1, 5).  The markup ID classes we use on the content divs are noted below:
+		5 columns - "quintBox"
+		4 columns - "quadBox"
+		3 columns - "tripleBox"
+		2 columns - "doubleBox"
+		1 column - "singleBox"
+		
+	If you wish to have the dotted light gray border show between columns in the page use the ID class:  "rightBorder"
+	#######
+	
+	####### EXAMPLE LAYOUT #######
+	
+	<div class="tripleBox rightBorder">  = start of left column, with the dotted light gray border on the right edge
+	
+		<div class="nyuTitle pageTitle">  = sample page title
+			<h1>Message from the President</h1>
+		</div>
+
+	</div>
+	<!--/tripleBox --> 
+    <div class="singleBox calLeftCol"> 
+     <!-- start of right column, no border--> 
+     <aside> 
+      <div id="lw_mini_cal"></div> 
+      <ul> 
+       <li><a href="http://www.nyu.edu/employees/resources-and-services/media-and-communications/digital-communications/university-events-calendar/about.html">About the Events Calendar</a></li> 
+       <li><a href="http://www.nyu.edu/employees/resources-and-services/media-and-communications/digital-communications/university-events-calendar/tutorials.html">Events Calendar Tutorials</a></li> 
+       <li><a href="mailto:events@nyu.edu">More Info</a></li> 
+       <!--<li><a href="/livewhale/">Calendar Admin</a></li>--> 
+      </ul> 
+      <div id="lw_cal_subscribe"> 
+       <a href="#">Subscribe to calendars</a> 
+      </div> 
+     </aside> 
+     <!-- space required because rest of content position: fixed --> &nbsp; 
+    </div> 
+    <div class="tripleBox calMiddleCol"> 
+     <!-- start of right column, no border--> 
+     <div id="lw_cal"> 
+      <div id="lw_cal_header"> 
+       <div id="lw_cal_date_selector"></div> 
+       <div id="lw_cal_scroll_links"></div> 
+       <h5 id="lw_cal_this_day"></h5> 
+       <div id="lw_cal_showing"></div> 
+      </div> 
+      <div id="lw_cal_body" class="lw_clearfix"> 
+       <div id="lw_cal_events"></div> 
+      </div> 
+      <div id="lw_cal_tz"> 
+       <div class="lw_spinner"></div> 
+       <div class="lw_cal_tz_selector_content"> 
+        <h3>Change Your Timezone</h3> 
+        <div class="lw_cal_tz_selector"> 
+         <select class="lw_cal_tz_select" id="timezones" name="timezones"> <option data-tz-abbrv="" value="Pacific/Midway">(GMT-11:00) Midway Island, Samoa</option> <option data-tz-abbrv="" value="Pacific/Honolulu">(GMT-10:00) Hawaii</option> <option data-tz-abbrv="" value="America/Anchorage">(GMT-09:00) Alaska</option> <option data-tz-abbrv="" value="America/Tijuana">(GMT-08:00) Baja California</option> <option data-tz-abbrv="" value="America/Los_Angeles">(GMT-08:00) Pacific Time (US and Canada)</option> <option data-tz-abbrv="" value="America/Phoenix">(GMT-07:00) Arizona</option> <option data-tz-abbrv="1" value="America/Chihuahua">(GMT-07:00) Chihuahua, La Paz, Mazatlan</option> <option data-tz-abbrv="" value="America/Denver">(GMT-07:00) Mountain Time (US and Canada)</option> <option data-tz-abbrv="" value="America/Detroit">(GMT-05:00) Eastern Time (US and Canada)</option> <option data-tz-abbrv="" value="America/Belize">(GMT-06:00) Central America</option> <option data-tz-abbrv="" value="America/Chicago">(GMT-06:00) Central Time (US and Canada) </option> <option data-tz-abbrv="1" value="America/Mexico_City">(GMT-06:00) Guadalajara, Mexico City, Monterrey</option> <option data-tz-abbrv="1" value="America/Regina">(GMT-06:00) Saskatchewan</option> <option data-tz-abbrv="1" value="America/Bogota">(GMT-05:00) Bogota, Lima, Quito</option> <option data-tz-abbrv="" value="America/New_York">(GMT-05:00) Eastern Time (US and Canada)</option> <option data-tz-abbrv="" value="America/Indiana/Indianapolis">(GMT-05:00) Indiana (East)</option> <option data-tz-abbrv="1" value="America/Caracas">(GMT-04:30) Caracas</option> <option data-tz-abbrv="1" value="America/Asuncion">(GMT-04:00) Asuncion</option> <option data-tz-abbrv="1" value="America/Halifax">(GMT-04:00) Atlantic Time (Canada)</option> <option data-tz-abbrv="1" value="America/Cuiaba">(GMT-04:00) Cuiaba</option> <option data-tz-abbrv="1" value="America/Manaus">(GMT-04:00) Georgetown, La Paz, Manaus, San Juan</option> <option data-tz-abbrv="1" value="America/Santiago">(GMT-04:00) Santiago</option> <option data-tz-abbrv="1" value="America/St_Johns">(GMT-03:30) Newfoundland and Labrador</option> <option data-tz-abbrv="1" value="America/Sao_Paulo">(GMT-03:00) Brasilia</option> <option data-tz-abbrv="1" value="America/Buenos_Aires">(GMT-03:00) Buenos Aires </option> <option data-tz-abbrv="1" value="America/Cayenne">(GMT-03:00) Cayenne, Fortaleza</option> <option data-tz-abbrv="1" value="America/Godthab">(GMT-03:00) Greenland</option> <option data-tz-abbrv="1" value="America/Montevideo">(GMT-03:00) Montevideo</option> <option data-tz-abbrv="1" value="America/Bahia">(GMT-03:00) Salvador</option> <option data-tz-abbrv="1" value="America/Noronha">(GMT-02:00) Mid-Atlantic</option> <option data-tz-abbrv="1" value="Atlantic/Azores">(GMT-01:00) Azores</option> <option data-tz-abbrv="1" value="Atlantic/Cape_Verde">(GMT-01:00) Cape Verde Islands</option> <option data-tz-abbrv="1" value="Europe/London">(GMT) Greenwich Mean Time : Dublin, Edinburgh, Lisbon, London</option> <option data-tz-abbrv="1" value="Africa/Casablanca">(GMT) Casablanca, Monrovia</option> <option data-tz-abbrv="1" value="Europe/Amsterdam">(GMT+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna</option> <option data-tz-abbrv="1" value="Europe/Belgrade">(GMT+01:00) Belgrade, Bratislava, Budapest, Ljubljana, Prague</option> <option data-tz-abbrv="1" value="Europe/Brussels">(GMT+01:00) Brussels, Copenhagen, Madrid, Paris</option> <option data-tz-abbrv="1" value="Europe/Warsaw">(GMT+01:00) Sarajevo, Skopje, Warsaw, Zagreb</option> <option data-tz-abbrv="1" value="Africa/Algiers">(GMT+01:00) West Central Africa</option> <option data-tz-abbrv="1" value="Africa/Windhoek">(GMT+01:00) Windhoek</option> <option data-tz-abbrv="1" value="Europe/Athens">(GMT+02:00) Athens, Bucharest</option> <option data-tz-abbrv="1" value="Asia/Beirut">(GMT+02:00) Beirut</option> <option data-tz-abbrv="1" value="Africa/Cairo">(GMT+02:00) Cairo</option> <option data-tz-abbrv="1" value="Asia/Damascus">(GMT+02:00) Damascus</option> <option data-tz-abbrv="1" value="EET">(GMT+02:00) Eastern Europe</option> <option data-tz-abbrv="1" value="Africa/Harare">(GMT+02:00) Harare, Pretoria</option> <option data-tz-abbrv="1" value="Europe/Helsinki">(GMT+02:00) Helsinki, Kiev, Riga, Sofia, Tallinn, Vilnius</option> <option data-tz-abbrv="1" value="Asia/Istanbul">(GMT+02:00) Istanbul</option> <option data-tz-abbrv="1" value="Asia/Jerusalem">(GMT+02:00) Jerusalem</option> <option data-tz-abbrv="1" value="Asia/Amman">(GMT+03:00) Amman</option> <option data-tz-abbrv="1" value="Asia/Baghdad">(GMT+03:00) Baghdad</option> <option data-tz-abbrv="1" value="Europe/Kaliningrad">(GMT+03:00) Kalinigrad, Minsk</option> <option data-tz-abbrv="1" value="Asia/Kuwait">(GMT+03:00) Kuwait, Riyadh</option> <option data-tz-abbrv="1" value="Africa/Nairobi">(GMT+03:00) Nairobi</option> <option data-tz-abbrv="1" value="Asia/Tehran">(GMT+03:30) Tehran</option> <option data-tz-abbrv="1" value="Asia/Muscat">(GMT+04:00) Abu Dhabi, Muscat</option> <option data-tz-abbrv="1" value="Asia/Baku">(GMT+04:00) Baku</option> <option data-tz-abbrv="1" value="Europe/Moscow">(GMT+04:00) Moscow, St. Petersburg, Volgograd</option> <option data-tz-abbrv="1" value="Indian/Mauritius">(GMT+04:00) Port Louis</option> <option data-tz-abbrv="1" value="Asia/Tbilisi">(GMT+04:00) Tblisi</option> <option data-tz-abbrv="1" value="Asia/Yerevan">(GMT+04:00) Yerevan</option> <option data-tz-abbrv="1" value="Asia/Kabul">(GMT+04:30) Kabul</option> <option data-tz-abbrv="1" value="Asia/Karachi">(GMT+05:00) Islamabad, Karachi</option> <option data-tz-abbrv="1" value="Asia/Tashkent">(GMT+05:00) Tashkent</option> <option data-tz-abbrv="1" value="Asia/Kolkata">(GMT+05:30) Chennai, Kolkata, Mumbai, New Delhi</option> <option data-tz-abbrv="1" value="Asia/Colombo">(GMT+05:30) Sri Jayawardenepura</option> <option data-tz-abbrv="1" value="Asia/Katmandu">(GMT+05:45) Kathmandu</option> <option data-tz-abbrv="1" value="Asia/Almaty">(GMT+06:00) Astana</option> <option data-tz-abbrv="1" value="Asia/Dhaka">(GMT+06:00) Dhaka</option> <option data-tz-abbrv="1" value="Asia/Yekaterinburg">(GMT+06:00) Ekaterinburg</option> <option data-tz-abbrv="1" value="Asia/Rangoon">(GMT+06:30) Yangon (Rangoon)</option> <option data-tz-abbrv="1" value="Asia/Bangkok">(GMT+07:00) Bangkok, Hanoi, Jakarta</option> <option data-tz-abbrv="1" value="Asia/Novosibirsk">(GMT+07:00) Novosibirsk</option> <option data-tz-abbrv="1" value="Asia/Chongqing">(GMT+08:00) Beijing, Chongqing, Hong Kong SAR, Urumqi</option> <option data-tz-abbrv="1" value="Asia/Krasnoyarsk">(GMT+08:00) Krasnoyarsk</option> <option data-tz-abbrv="1" value="Asia/Kuala_Lumpur">(GMT+08:00) Kuala Lumpur, Singapore</option> <option data-tz-abbrv="1" value="Australia/Perth">(GMT+08:00) Perth</option> <option data-tz-abbrv="1" value="Asia/Taipei">(GMT+08:00) Taipei</option> <option data-tz-abbrv="1" value="Asia/Ulaanbaatar">(GMT+08:00) Ulaanbaatar</option> <option data-tz-abbrv="1" value="Asia/Irkutsk">(GMT+09:00) Irkutsk</option> <option data-tz-abbrv="1" value="Asia/Tokyo">(GMT+09:00) Osaka, Sapporo, Tokyo</option> <option data-tz-abbrv="1" value="Asia/Seoul">(GMT+09:00) Seoul</option> <option data-tz-abbrv="1" value="Australia/Adelaide">(GMT+09:30) Adelaide</option> <option data-tz-abbrv="1" value="Australia/Darwin">(GMT+09:30) Darwin</option> <option data-tz-abbrv="1" value="Australia/Brisbane">(GMT+10:00) Brisbane</option> <option data-tz-abbrv="1" value="Australia/Canberra">(GMT+10:00) Canberra, Melbourne, Sydney</option> <option data-tz-abbrv="1" value="Pacific/Guam">(GMT+10:00) Guam, Port Moresby</option> <option data-tz-abbrv="1" value="Australia/Hobart">(GMT+10:00) Hobart</option> <option data-tz-abbrv="1" value="Asia/Yakutsk">(GMT+10:00) Yakutsk</option> <option data-tz-abbrv="1" value="Pacific/Guadalcanal">(GMT+11:00) Solomon Islands, New Caledonia</option> <option data-tz-abbrv="1" value="Asia/Vladivostok">(GMT+11:00) Vladivostok</option> <option data-tz-abbrv="1" value="Pacific/Auckland">(GMT+12:00) Auckland, Wellington</option> <option data-tz-abbrv="1" value="Pacific/Fiji">(GMT+12:00) Fiji Islands, Kamchatka, Marshall Islands</option> <option data-tz-abbrv="1" value="Asia/Magadan">(GMT+12:00) Magadan</option> <option data-tz-abbrv="1" value="Pacific/Tongatapu">(GMT+13:00) Nuku'alofa</option> <option data-tz-abbrv="1" value="Pacific/Apia">(GMT+13:00) Samoa</option> </select> 
+        </div> 
+        <div class="lw_cal_tz_action"> 
+         <button class="lw_submit lw_cal_btn">Change</button> 
+         <button class="lw_cancel lw_cal_btn">Cancel</button> 
+        </div> 
+       </div> 
+      </div> 
+      <div title="%3Cwidget%20type%3D%22events_calendar%22%20priority%3D%22high%22%3E%3Carg%20id%3D%22modular%22%3Etrue%3C%2Farg%3E%3Carg%20id%3D%22exclusive_categories%22%3Etrue%3C%2Farg%3E%3Carg%20id%3D%22image_width%22%3E540%3C%2Farg%3E%3Carg%20id%3D%22include_featured_content%22%3Etrue%3C%2Farg%3E%3Carg%20id%3D%22mini_cal_heat_map%22%3Etrue%3C%2Farg%3E%3C%2Fwidget%3E" class="lw_widget_syntax lw_hidden"></div> 
+     </div> 
+     <div id="lw_cal_tag_selector" class="lw_hidden lw_cal_selector lw_clearfix">
+      <h5>Tags <small><a href="#" id="lw_cal_tag_toggle">show</a></small></h5>
+      <ul> 
+       <li>administrative unit</li> 
+       <li>basketball</li> 
+       <li>club - organization</li> 
+       <li>cross country</li> 
+       <li>dance</li> 
+       <li>discussion</li> 
+       <li>exhibition</li> 
+       <li>fair</li> 
+       <li>fencing</li> 
+       <li>film</li> 
+       <li>golf</li> 
+       <li>guest speaker</li> 
+       <li>health and wellness</li> 
+       <li>interview</li> 
+       <li>lecture</li> 
+       <li>live comedy</li> 
+       <li>music</li> 
+       <li>open house</li> 
+       <li>presentation</li> 
+       <li>school</li> 
+       <li>seminar</li> 
+       <li>soccer</li> 
+       <li>special event</li> 
+       <li>spirituality</li> 
+       <li>swimming and diving</li> 
+       <li>talk</li> 
+       <li>tennis</li> 
+       <li>theater</li> 
+       <li>track and field</li> 
+       <li>training</li> 
+       <li>volleyball</li> 
+       <li>workshop</li> 
+       <li>wrestling</li> 
+      </ul>
+     </div> 
+    </div> 
+    <div class="singleBox calRightCol"> 
+     <!-- start of right column, no border--> 
+     <aside> 
+      <div class="summaryList"> 
+       <ul> 
+        <li><a href="#view/all/group/academic-calendar">Academic Calendar</a></li> 
+        <li><a href="#categories/Free%20Food">Free Food Events</a></li> 
+        <li><a href="#view/all/group/office-holidays">Office Holidays</a></li> 
+        <li><a href="#categories/Open%20to%20the%20Public">Events Open to the Public</a></li> 
+       </ul> 
+      </div> 
+     </aside> 
+    </div> 
+    <!-- DO NOT EDIT BELOW HERE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --> 
+   </div> 
+   <!-- END CONTENT WRAPPER --> 
+   <!-- Begin Footer --> 
+   <div class="nyuFooter"> 
+    <script type="text/javascript" src="//www.nyu.edu/common/js/feedback.js"></script> 
+    <!-- DIVIDER --> 
+    <hr class="invisible"> 
+    <!-- FOOTER --> 
+    <div id="footerContainer"> 
+     <h6 class="offLeft">NYU Footer</h6> 
+     <ul> 
+      <li class="first"><a href="http://www.nyu.edu/search.html">Search</a></li> 
+      <li><a href="http://www.nyu.edu/search.directory.html">Directory</a></li> 
+      <li><a href="http://www.nyu.edu/footer/map.html">Campus Map</a></li> 
+      <li><a href="http://events.nyu.edu">Events</a></li> 
+      <li><a href="http://www.nyu.edu/footer/contact-us.html">Contact Us</a></li> 
+      <li><a href="http://www.nyu.edu/footer/site-map.html">Site Map</a></li> 
+      <li class="last"><a href="http://www.nyu.edu/footer/copyright-and-fair-use.html" style="font-weight: normal;">Copyright and Fair Use</a></li> 
+      <!-- <li class="last"><a href="http://www.nyu.edu/content/nyu/en/footer/feedback/feedbackform.html?pagePath=%2fevents&amp;pageTitle=Events" onclick="return popitup(this.href)">Feedback</a></li> --> 
+     </ul> 
+     <p id="copyright">Unless otherwise noted, all content copyright New York University. All rights reserved.<br>Designed by The Office of Web Communications</p> 
+     <!--social footer links--> 
+     <ul id="social"> 
+      <li id="btn-social-facebook"><a href="http://www.facebook.com/nyu" target="_blank" title="NYU on Facebook" onclick="_gaq.push(['_trackSocial', 'Facebook', 'footer visit']); _gaq.push(['_trackEvent', 'Social', 'Footer Link', 'Facebook',0,true]);">Facebook</a></li> 
+      <li id="btn-social-youtube"><a href="https://www.youtube.com/nyu" target="_blank" title="NYU on YouTube" onclick="_gaq.push(['_trackSocial', 'YouTube', 'footer visit']); _gaq.push(['_trackEvent', 'Social', 'Footer Link', 'YouTube',0,true]);">YouTube</a></li> 
+      <li id="btn-social-linkedin"><a href="http://www.linkedin.com/company/3159?trk=tyah" target="_blank" title="NYU on LinkedIn" onclick="_gaq.push(['_trackSocial', 'LinkedIn', 'footer visit']); _gaq.push(['_trackEvent', 'Social', 'Footer Link', 'LinkedIn',0,true]);">LinkedIn</a></li> 
+      <li id="btn-social-foursquare"><a href="https://foursquare.com/nyuniversity" target="_blank" title="NYU on Foursquare" onclick="_gaq.push(['_trackSocial', 'foursquare', 'footer visit']); _gaq.push(['_trackEvent', 'Social', 'Footer Link', 'foursquare',0,true]);">Foursquare</a></li> 
+      <li id="btn-social-twitter"><a href="http://www.twitter.com/nyuniversity" target="_blank" title="NYU on Twitter" onclick="_gaq.push(['_trackSocial', 'Twitter', 'footer visit']); _gaq.push(['_trackEvent', 'Social', 'Footer Link', 'Twitter',0,true]);">Twitter</a></li> 
+     </ul> 
+     <!--/social footer links--> 
+    </div> 
+    <!-- END FOOTER --> 
+    <!-- End Footer --> 
+   </div> 
+   <!-- Urchin and Optional Remarketing Code (publisher only) --> 
+   <!-- Begin HTML stats included--> 
+   <div id="analyticsSnippet"> 
+   </div> 
+   <a href="/calendar/all_events.php" class="lw_hidden">All Upcoming Events</a> 
+   <!-- End HTML stats --> 
+   <script type="text/javascript" src="/live/resource/js/livewhale/thirdparty/jquery/jquery.min.rev.1400899482.js"></script> 
+   <script type="text/javascript" src="/live/resource/js/livewhale/scripts/lwui/frontend.min.rev.1400899658.js"></script> 
+   <script type="text/javascript" src="/live/resource/js/livewhale/scripts/common.rev.1400899664.js"></script> 
+   <script type="text/javascript" src="/live/resource/js/livewhale/theme/core/scripts/frontend.rev.1400899462.js"></script> 
+   <script type="text/javascript" src="/live/resource/js/livewhale/thirdparty/underscore.rev.1362513973.js"></script> 
+   <script type="text/javascript" src="/live/resource/js/livewhale/scripts/lwui/jquery.lw-popover.rev.1400899662.js"></script> 
+   <script type="text/javascript" src="https://maps.google.com/maps/api/js?v=3&amp;sensor=false"></script> 
+   <script type="text/javascript" src="/live/resource/js/livewhale/plugins/jquery/jquery.lwGoogleMaps.rev.1375390971.js"></script> 
+   <script type="text/javascript" src="/live/resource/js/livewhale/plugins/jquery/jquery.lwPopover.rev.1375390971.js"></script> 
+   <script type="text/javascript" src="/live/resource/js/livewhale/theme/core/scripts/payments.rev.1400899464.js"></script> 
+   <script type="text/javascript" src="/live/resource/js/livewhale/thirdparty/jquery/jquery.hashchange.rev.1362513895.js"></script> 
+   <script type="text/javascript" src="/live/resource/js/livewhale/theme/nyu/scripts/calendar.rev.1412280858.js"></script> 
+   <script type="text/javascript">
+var topUrl = window.top.location.href;
+if(topUrl.indexOf('\/cf#\/') == -1){
+    var UH = UH || [];
+    UH.push([ '_trackPageview' ]);
+    (function(d){
+        var s = d.createElement('script'); s.src = '//www.nyu.edu/common/js/uh.v72.js';
+        d.body.appendChild(s);
+    })
+    (document)
+}
+</script> 
+   <script type="text/javascript">
+(function($) {
+	// IX - switch mini calendar to fixed position
+	// when user scrolls to top of component
+	var $window   = $(window),
+		$aside    = $('.calLeftCol aside'),
+		aside_top = $aside.offset().top,
+		is_fixed  = false;
+	
+	$window.scroll(function() {
+		var pos = aside_top  - $window.scrollTop();
+		
+		// aside's top margin is 25px
+		if (pos < 25 && !is_fixed) {
+			$aside.addClass('fixed');
+			is_fixed = true;
+		}
+		if (pos > 25 && is_fixed) {
+			$aside.removeClass('fixed');
+			is_fixed = false;
+		}
+	});
+	
+	// IX - Actions to after each view renders (page loads)
+	$('body').bind('calLoad.lwcal', function(e, controller) {
+		// register urchin page view
+		var page = window.location.pathname + window.location.hash;
+		if (page) UH.push(['_trackPageview', page]);
+		
+		return true;
+	})
+}(livewhale.jQuery));
+</script>   
+  </div>
+ </body>
+</html>

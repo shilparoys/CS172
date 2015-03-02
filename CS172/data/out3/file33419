@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+ <!-- InstanceBegin template="/Templates/SSEC-Secondary-Pages.dwt" codeOutsideHTMLIsLocked="false" -->
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+  <!-- InstanceBeginEditable name="doctitle" --> 
+  <title>Local Weather -- SSEC</title> 
+  <!-- InstanceEndEditable --> 
+  <meta name="description" content="SSEC is a leader in the analysis and distribution of global satellite data and designs instruments for space flight and weather satellites."> 
+  <meta name="keywords" content="SSEC, ssec, mcidas, CIMSS, cimss, McIDAS, goes, GOES, satellite, data, weather, environment, atmosphere, noaa, NOAA, nasa, NASA, real-time, forecast, cool, meteosat, gms, GMS, space, science, meteorology spaceflight"> 
+  <link href="http://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet" type="text/css"> 
+  <link href="/css/all_pages.php" rel="stylesheet" type="text/css"> 
+  <!--[if lt IE 9]>
+	<link href="/css/all_pages.ie.css?2012-Nov-05" rel="stylesheet" type="text/css">
+	<script src="/js/IE9.js"></script>
+<![endif]--> 
+  <link href="/css/print.css?2012-Nov-05" rel="stylesheet" type="text/css" media="print"> 
+  <script type="text/javascript" src="/webcode/javascript/jquery.js"></script> 
+  <script type="text/javascript" src="/js/all_pages.js?2012-Nov-05"></script> 
+  <!-- InstanceBeginEditable name="head" --> 
+  <link href="./css/style.css" rel="stylesheet" type="text/css"> 
+  <script type="text/javascript" src="/js/moment.min.js"></script> 
+  <script type="text/javascript" src="/js/farinspace-jquery.imgpreload/jquery.imgpreload.min.js"></script> 
+  <script type="text/javascript" src="./js/localweather.js"></script> 
+  <!--[if lte IE 7]>
+<style type="text/css">
+#camera_nav{
+	display: none;
+}
+</style>
+<![endif]--> 
+  <!-- InstanceEndEditable --> 
+  <!-- TEMPLATE_LAST_UPDATED: 2012-11-05 10:10 AM --> 
+ </head> 
+ <body> 
+  <div id="header"> 
+   <div id="banner"> 
+    <div id="banner_inner" class="central_column"> 
+     <a href="http://www.ssec.wisc.edu/" id="ssec_logo"><img src="/images/logo-ssec.png" width="96" height="68" alt="SSEC"></a> 
+     <div id="title"> 
+      <h1><a href="/">Space Science and Engineering Center</a></h1> 
+      <div id="uw_madison">
+       <a href="http://www.wisc.edu/">University of Wisconsin-Madison</a>
+      </div> 
+     </div> 
+     <div id="search_container">
+      <form action="/search.html" method="get" id="searchForm">
+       <input type="text" size="15" maxlength="255" name="s" id="searchBox" value="Search"> 
+       <input type="submit" id="searchButton" value="Submit">
+      </form>
+     </div> 
+     <ul id="otherSites"> 
+      <li><a href="http://cimss.ssec.wisc.edu/">CIMSS</a></li> 
+      <li>•</li> 
+      <li><a href="http://library.ssec.wisc.edu/">Schwerdtfeger Library</a></li> 
+      <li>•</li> 
+      <li id="last_link_cuz_ie_sucks"><a href="http://www.ssec.wisc.edu/datacenter/">SSEC Data Center</a></li> 
+     </ul> 
+    </div>
+    <!--#banner_inner--> 
+    <div id="earth_image_container">
+     <span id="earth_image"></span>
+    </div>
+    <!--#earth_image_container--> 
+   </div>
+   <!--#banner--> 
+   <div id="top_nav" class="navbar"> 
+    <div class="navbar_inner central_column"> 
+     <script type="text/javascript" src="/js/navbar-top-include.js?2012-oct-19"></script> 
+    </div>
+    <!--.navbar_inner--> 
+   </div>
+   <!--#top_nav--> 
+  </div>
+  <!--#header--> 
+  <div id="content_container" class="central_column"> 
+   <div id="content" class="inner_padding"> 
+    <noscript>
+     <p>This website requires JavaScript to function properly.</p>
+    </noscript> 
+    <!-- InstanceBeginEditable name="Content" --> 
+    <!--<canvas id="canvasId" width="165px" height="145px">&#x25C0;</canvas> --> 
+    <h2>Local Weather</h2> 
+    <script type="text/javascript" src="/data/global-status-message.js"></script> 
+    <div id="current_conditions" class="widget"> 
+     <h3>Current Conditions: <span style="margin-left: 0.5em;">Madison, WI</span></h3> 
+     <table class="wx_table"> 
+      <tbody>
+       <tr> 
+        <th scope="col">Location:</th> 
+        <th scope="col">AO&amp;SS <span style="white-space: nowrap;">UW-Madison</span><br> 
+         <!--<a href="http://maps.google.com/maps?z=12&t=m&q=loc:43.070861,-89.407079" target="_blank" style="font-size: 10px;">(Map)</a>--> <a href="https://www.google.com/maps/place/43%C2%B004%2715.1%22N+89%C2%B024%2725.5%22W/@43.070861,-89.4070788,15z/data=!3m1!4b1!4m2!3m1!1s0x0:0x0" target="_blank" style="font-size: 10px;">(Map)</a> </th> 
+        <th scope="col">Dane County Airport<br> 
+         <!--<a href="http://maps.google.com/maps?z=12&t=m&q=loc:43.136256,-89.345798" target="_blank" style="font-size: 10px;">(Map)</a>--> <a href="https://www.google.com/maps/place/43%C2%B008%2710.5%22N+89%C2%B020%2744.9%22W/@43.136256,-89.345798,15z/data=!3m1!4b1!4m2!3m1!1s0x0:0x0" target="_blank" style="font-size: 10px;">(Map)</a> </th> 
+        <th scope="col">Lake Mendota Buoy<br> <a href="http://metobs.ssec.wisc.edu/buoy/#location" target="_blank" style="font-size: 10px;">(Map)</a></th> 
+       </tr> 
+       <tr> 
+        <th scope="row">Time:</th> 
+        <td class="time" id="aoss_datetime"><span id="aoss_status">Loading...</span></td> 
+        <td class="time" id="airport_datetime"><span id="airport_status">Loading...</span></td> 
+        <!--<td class="time" id="buoy_datetime"><span id="buoy_status">Loading...</span></td>--> 
+        <td class="time" id="buoy_datetime"><span id="buoy_status">Buoy has been taken offline for the winter</span></td> 
+       </tr> 
+       <!--
+						<tr>
+							<th scope="row">Station Model:</th>
+							<td><img src="http://www.ssec.wisc.edu/localweather/images/rigplot.jpg" width="90" height="90" alt=""></td>
+							<td><img src="http://www.ssec.wisc.edu/localweather/images/latestob.jpg" width="90" height="90" alt=""></td>
+							<td>&nbsp;</td>
+						</tr>
+						--> 
+       <tr> 
+        <th scope="row">Sky / Weather:</th> 
+        <td id="aoss_sky">&nbsp;</td> 
+        <td id="airport_sky">&nbsp;</td> 
+        <td id="buoy_sky">&nbsp;</td> 
+       </tr> 
+       <tr> 
+        <th scope="row">Temperature:</th> 
+        <td id="aoss_temp">&nbsp;</td> 
+        <td id="airport_temp">&nbsp;</td> 
+        <td id="buoy_temp">&nbsp;</td> 
+       </tr> 
+       <tr> 
+        <th scope="row">Dew Point:</th> 
+        <td id="aoss_dewpt">&nbsp;</td> 
+        <td id="airport_dewpt">&nbsp;</td> 
+        <td id="buoy_dewpt">&nbsp;</td> 
+       </tr> 
+       <tr> 
+        <th scope="row">Relative Humidity:</th> 
+        <td id="aoss_rhum">&nbsp;</td> 
+        <td id="airport_rhum">&nbsp;</td> 
+        <td id="buoy_rhum">&nbsp;</td> 
+       </tr> 
+       <tr> 
+        <th scope="row">Wind:</th> 
+        <td id="aoss_wind">&nbsp;</td> 
+        <td id="airport_wind">&nbsp;</td> 
+        <td id="buoy_wind">&nbsp;</td> 
+       </tr> 
+       <tr> 
+        <th scope="row"><a href="javascript:alert('This is altimeter derived pressure');">Pressure:</a></th> 
+        <td id="aoss_press">&nbsp;</td> 
+        <td id="airport_press">&nbsp;</td> 
+        <td id="buoy_press">&nbsp;</td> 
+       </tr> 
+       <tr> 
+        <th rowspan="3" scope="row" id="dammit">Additional Resources:</th> 
+        <td><a href="http://metobs.ssec.wisc.edu/aoss/tower/popup/" class="javascript_link" id="rig_text">Real-Time Data Text</a></td> 
+        <td><a href="http://www.ssec.wisc.edu/cgi-bin/lc?clim">Daily Climate Summary</a></td> 
+        <td><a href="http://metobs.ssec.wisc.edu/buoy/popup/" class="javascript_link" id="buoy_text">Real-Time Data Text</a></td> 
+       </tr> 
+       <tr> 
+        <td><a href="http://metobs.ssec.wisc.edu/aoss/tower/applet/stripchart.html" class="javascript_link">Meteorogram</a></td> 
+        <td><a href="http://www.ssec.wisc.edu/cgi-bin/lc?mad_met">Meteorogram</a></td> 
+        <td><a href="http://metobs.ssec.wisc.edu/buoy/meteorogram/Meteorogram.html" class="javascript_link" id="buoy_met">Meteorogram</a></td> 
+       </tr> 
+       <tr> 
+        <td><strong><a href="http://metobs.ssec.wisc.edu/aoss/tower/">More Information</a></strong></td> 
+        <td><strong><a href="http://forecast.weather.gov/MapClick.php?map.x=160&amp;map.y=147&amp;site=mkx&amp;zmx=1&amp;zmy=1" class="external_link">More Information</a></strong></td> 
+        <td><strong><a href="http://metobs.ssec.wisc.edu/buoy/">More Information</a></strong></td> 
+       </tr> 
+      </tbody>
+     </table> 
+    </div>
+    <!--#current_conditions.widget--> 
+    <div id="roof_top_image" class="widget"> 
+     <h3>AO&amp;SS Rooftop Camera (<span id="camera_name">West</span>)</h3> 
+     <div class="widget_content"> 
+      <div id="camera_img_container">
+       <span id="camera_loading_message">Loading ...</span>
+      </div> 
+      <form action="#" method="get" id="camera_controls"> 
+       <span id="camera_nav"> 
+        <canvas id="left_arrow" width="18px" height="22px" class="arrow">
+         <img src="/images/left-arrow.png" alt=""> 
+         <script type="text/javascript" src="js/left-arrow.js"></script>
+        </canvas> <select id="select_camera" name="select_camera"> </select> 
+        <canvas id="right_arrow" width="18px" height="20px" class="arrow">
+         <img src="/images/right-arrow.png" alt=""> 
+         <script type="text/javascript" src="js/right-arrow.js"></script>
+        </canvas> </span> 
+       <a href="http://metobs.ssec.wisc.edu/aoss/cameras/" id="camera_link">More info »</a> 
+      </form>
+      <!--#camera_controls--> 
+     </div>
+     <!--.widget_content--> 
+     <!--
+					<div style="padding: 10px; font-size: 12px; color: #990000;">
+					The North camera is currently offline due to technical issues - the image being shown for the North camera is old.  We are working on
+					resolving this issue.
+					</div>
+					--> 
+    </div>
+    <!--#roof_top_image.widget--> 
+    <br style="clear: both;"> 
+    <div class="widget" id="forecast"> 
+     <h3>Madison, WI Forecast: <span id="forecast_datetime"></span></h3> 
+     <div class="widget_content"> 
+      <p><a href="localforecast.html" style="text-decoration: none;"><span id="forecast_excerpt">Loading ...</span><br>More »</a></p> 
+     </div>
+     <!--.widget_content--> 
+    </div>
+    <!--#forecast.widget--> 
+    <div class="widget" id="wx_images"> 
+     <h3>Animations and weather plots</h3> 
+     <div class="widget_content"> 
+      <table> 
+       <tbody>
+        <tr> 
+         <td><a href="/data/wisc/"><img src="http://www.ssec.wisc.edu/localweather/.local.gif" width="174" height="130" border="0" alt="Visible GOES Satellite"><br> <span>Visible GOES Satellite</span></a></td> 
+         <!--
+								<td><div style="margin: 0px auto 0px auto; width: 173px; height: 130px; overflow: hidden; border: solid 1px blue;">
+										<a href="http://www.crh.noaa.gov/images/grb/maps/wi_sfc.gif"><img src="http://www.crh.noaa.gov/images/grb/maps/wi_sfc.gif" border="0" 
+										alt="Wisconsin Weather Plot" style="margin-top: -497px; margin-left: -433px; "></a>
+									</div>
+									<a href="http://www.crh.noaa.gov/images/grb/maps/wi_sfc.gif"><span>Wisconsin Weather Plot</span></a><br>
+									(<a href="http://www.crh.noaa.gov/crh/" style="text-decoration: underline;" title="National Weather Service">Provided by NWS</a>)</td>
+								--> 
+         <td>
+          <div style="margin: 0px auto 0px auto; width: 173px; height: 130px; overflow: hidden; border: solid 1px blue;"> 
+           <a href="./images/wi-sfc-plot.jpg"><img src="./images/wi-sfc-plot.jpg" border="0" alt="Wisconsin Weather Plot" style="width: 120%; margin-left: -7px; margin-top: -10px;"></a> 
+          </div> <a href="./images/wi-sfc-plot.jpg"><span>Wisconsin Weather Plot</span></a> </td> 
+         <td><a href="http://www.ssec.wisc.edu/localweather/radar.html"><img src="http://www.ssec.wisc.edu/localweather/radar/MKX_radar_5.gif" width="130" height="130" border="0" alt="Midwest Radar"><br> <span>Midwest Radar</span></a></td> 
+         <td>
+          <div style="margin: 0px auto 0px auto; width: 173px; height: 130px; overflow: hidden; border: solid 1px blue; "> 
+           <a href="cras/"><img src="http://www.ssec.wisc.edu/localweather/cras/images/small-craspcp1001.jpg" width="541" height="288" border="0" alt="CRAS"></a> 
+          </div> <a href="cras/"><span>Precipitation &amp; Temperature Forecast</span></a></td> 
+        </tr> 
+        <tr> 
+         <td colspan="2" align="left"><a href="us_radar_sat_wx_comp/latest.gif"><img src="us_radar_sat_wx_comp/latest.gif" width="239" height="130" alt="National Satellite / Radar Composite"><br> <span>National Satellite / Radar Composite Image</span></a></td> 
+         <td><a href="http://cimss.ssec.wisc.edu/goes/rtc_goes_east/"><img src="images/rtc_goes_thumb.jpg" border="0" alt=""><br> <span>GOES East and Roof Top Camera (RTC) Imagery</span></a></td> 
+         <td>&nbsp;</td> 
+        </tr> 
+       </tbody>
+      </table> 
+     </div>
+     <!--.widget_content--> 
+    </div>
+    <!--#wx_images.widget_content--> 
+    <div id="text_wx" class="widget list_widget"> 
+     <h3>Text Weather Information</h3> 
+     <div class="widget_content"> 
+      <ul> 
+       <li><a href="/cgi-bin/lc?st_obs">Current State Weather</a> </li> 
+       <li><a href="http://www.ssec.wisc.edu/data/paw/widotwrc.html">MidWest - Winter Road Conditions (WRC) </a> </li> 
+       <li><a href="/cgi-bin/lc?sfc">Regional METAR Obs</a> </li> 
+       <li><a href="/cgi-bin/lc?mad_now">Madison NOWcast</a> </li> 
+       <li><a href="/cgi-bin/lc?wi_for">State Forecast</a> </li> 
+       <li><a href="/cgi-bin/lc?rtf">Regional Terminal Forecasts</a> </li> 
+       <li><a href="/cgi-bin/lc?fdus">Regional Winds Aloft Forecasts</a> </li> 
+       <li><a href="/cgi-bin/lc?mos">MOS Guidance for Madison</a> </li> 
+       <li><a href="/cgi-bin/lc?mrf">MRF Long Range Forecast</a> </li> 
+       <!--<li><a href="http://cimss.ssec.wisc.edu/model/realtime/cras20_MW/dot_sfc.html">CRAS
+								forecasted time series at WI DOT surface Mesonet sites</a></li> --> 
+      </ul> 
+     </div>
+     <!--.widget_content--> 
+    </div>
+    <!--#text_wx.widget--> 
+    <div id="other_resources" class="widget list_widget"> 
+     <h3>Other Resources</h3> 
+     <div class="widget_content"> 
+      <ul> 
+       <li><a href="http://cimss.ssec.wisc.edu/weather/cimssweather.shtml">CIMSS Weather Page</a></li> 
+       <li><a href="http://www.aos.wisc.edu/weather/">AOS Weather Page</a></li> 
+       <!--<li><a href="gameday/">Badger Football Gameday Forecast</a></li>--> 
+       <li><a href="/data/">Images and Data</a></li> 
+       <li><a href="help">Help</a></li> 
+       <li><a href="/disclaimer.html">Disclaimer</a></li> 
+      </ul> 
+     </div>
+     <!--.widget_content--> 
+    </div>
+    <!--#other_resources.widget--> 
+    <!-- InstanceEndEditable --> 
+    <br style="clear: both;"> 
+   </div>
+   <!--#content--> 
+   <div id="footer"> 
+    <div id="bottom_nav" class="navbar"> 
+     <div class="navbar_inner central_column"> 
+      <script type="text/javascript" src="/js/navbar-bottom-include.js?2012-oct-19"></script> 
+     </div>
+     <!--.navbar_inner--> 
+    </div>
+    <!--#bottom_nav--> 
+    <div class="inner_padding"> 
+     <a href="http://www.wisc.edu/"><img src="/images/logo-uw.png" width="89" height="60" alt="UW-Madison" id="uw_madison_logo"></a> 
+     <div id="address">
+       © 2011 Space Science &amp; Engineering Center
+      <br> University of Wisconsin -Madison
+      <br> 1225 W. Dayton Street, Madison, WI 53706, USA 
+     </div>
+     <!--#address--> 
+     <div id="social_icons"> 
+      <a href="http://www.facebook.com/uwssec" id="facebook_link"> <img src="/images/icon-facebook.png" width="23" height="23" alt="Facebook"></a> 
+      <a href="http://www.youtube.com/uwssec" id="youtube_link"><img src="/images/icon-youtube.png" width="23" height="23" alt="Youtube"></a>
+      <br> 
+      <a href="/news/feed/rss" id="rss_link"><img src="/images/icon-rss.png" width="23" height="23" alt="RSS"></a> 
+     </div>
+     <!--#social_icons--> 
+     <div id="footer_links"> 
+      <a href="/disclaimer.html">Disclaimer</a>
+      <br> 
+      <a href="/contact-form/index.php?name=SSEC%20Webmaster">SSEC Webmaster</a>
+      <br> 
+      <strong>LAST UPDATED:</strong> 
+      <!-- InstanceBeginEditable name="Date" -->
+      <!-- #BeginDate format:En2 -->15-Jan-2014
+      <!-- #EndDate -->
+      <!-- InstanceEndEditable --> 
+     </div>
+     <!--#footer_links--> 
+    </div>
+    <!--.inner_padding--> 
+   </div>
+   <!--#footer--> 
+  </div>
+  <!--#content_container-->  
+  <!-- InstanceEnd --> 
+ </body>
+</html>

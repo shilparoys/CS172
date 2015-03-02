@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#" class="sm-ua-unknown sm-browser-unknown sm-browser-unknown-0 sm-platform-unknown sm-user-ui">
+ <head itemscope itemtype="http://schema.org/Thing"> 
+  <meta charset="utf-8">
+  <script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"Ug8HV1NADAUHUFFa"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=s(e),f=c.length,u=i(a,o,r),d=0;f>d;d++)c[d].apply(u,n);return u}function a(t,e){f[t]=s(t).concat(e)}function s(t){return f[t]||[]}function c(){return n(e)}var f={};return{on:a,emit:e,create:c,listeners:s,_events:f}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],3:[function(t){function e(t,e,n,i,s){try{c?c-=1:r("err",[s||new UncaughtException(t,e,n)])}catch(f){try{r("ierr",[f,(new Date).getTime(),!0])}catch(u){}}return"function"==typeof a?a.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(5),i=t("ee"),a=window.onerror,s=!1,c=0;t("loader").features.err=!0,window.onerror=e;try{throw new Error}catch(f){"stack"in f&&(t(1),t(4),"addEventListener"in window&&t(2),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&t(3),s=!0)}i.on("fn-start",function(){s&&(c+=1)}),i.on("fn-err",function(t,e,r){s&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){s&&!this.thrown&&c>0&&(c-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:8,2:5,3:9,4:7,5:22,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],4:[function(t){function e(){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var n=t("ee"),r=t("handle"),o=t(1);t("loader").features.stn=!0,t(2),n.on("fn-start",function(t){var e=t[0];e instanceof Event&&(this.bstStart=Date.now())}),n.on("fn-end",function(t,e){var n=t[0];n instanceof Event&&r("bst",[n,e,this.bstStart,Date.now()])}),o.on("fn-start",function(t,e,n){this.bstStart=Date.now(),this.bstType=n}),o.on("fn-end",function(t,e){r("bstTimer",[e,this.bstStart,Date.now(),this.bstType])}),n.on("pushState-start",function(){this.time=Date.now(),this.startPath=location.pathname+location.hash}),n.on("pushState-end",function(){r("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),"addEventListener"in window.performance&&(window.performance.addEventListener("webkitresourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.webkitClearResourceTimings()},!1),window.performance.addEventListener("resourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.clearResourceTimings()},!1)),document.addEventListener("scroll",e,!1),document.addEventListener("keypress",e,!1),document.addEventListener("click",e,!1)}},{1:8,2:6,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],5:[function(t,e){function n(t){i.inPlace(t,["addEventListener","removeEventListener"],"-",r)}function r(t){return t[1]}var o=(t(1),t("ee").create()),i=t(2)(o),a=t("gos");if(e.exports=o,n(window),"getPrototypeOf"in Object){for(var s=document;s&&!s.hasOwnProperty("addEventListener");)s=Object.getPrototypeOf(s);s&&n(s);for(var c=XMLHttpRequest.prototype;c&&!c.hasOwnProperty("addEventListener");)c=Object.getPrototypeOf(c);c&&n(c)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&n(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t){if(t[1]){var e=t[1];"function"==typeof e?this.wrapped=t[1]=a(e,"nr@wrapped",function(){return i(e,"fn-",null,e.name||"anonymous")}):"function"==typeof e.handleEvent&&i.inPlace(e,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:22,2:23,ee:"QJf3ax",gos:"7eSDFh"}],6:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window.history,["pushState"],"-")},{1:23,2:22,ee:"QJf3ax"}],7:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=r(t[0],"fn-")})},{1:23,2:22,ee:"QJf3ax"}],8:[function(t,e){function n(t,e,n){var r=t[0];"string"==typeof r&&(r=new Function(r)),t[0]=o(r,"fn-",null,n)}var r=(t(2),t("ee").create()),o=t(1)(r);e.exports=r,o.inPlace(window,["setTimeout","setInterval","setImmediate"],"setTimer-"),r.on("setTimer-start",n)},{1:23,2:22,ee:"QJf3ax"}],9:[function(t,e){function n(){c.inPlace(this,d,"fn-")}function r(t,e){c.inPlace(e,["onreadystatechange"],"fn-")}function o(t,e){return e}var i=t("ee").create(),a=t(1),s=t(2),c=s(i),f=s(a),u=window.XMLHttpRequest,d=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];e.exports=i,window.XMLHttpRequest=function(t){var e=new u(t);try{i.emit("new-xhr",[],e),f.inPlace(e,["addEventListener","removeEventListener"],"-",function(t,e){return e}),e.addEventListener("readystatechange",n,!1)}catch(r){try{i.emit("internal-error",[r])}catch(o){}}return e},window.XMLHttpRequest.prototype=u.prototype,c.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",o),i.on("send-xhr-start",r),i.on("open-xhr-start",r)},{1:5,2:23,ee:"QJf3ax"}],10:[function(t){function e(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function n(t){var n=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;c>i;i++)t.removeEventListener(s[i],this.listener,!1);if(!n.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){n.status=t.status;var a=t.responseType,f="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,u=e(f);if(u&&(r.rxSize=u),this.sameOrigin){var d=t.getResponseHeader("X-NewRelic-App-Data");d&&(n.cat=d.split(", ").pop())}}else n.status=0;r.cbTime=this.cbTime,o("xhr",[n,r,this.startTime])}}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}if(window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)){t("loader").features.xhr=!0;var o=t("handle"),i=t(2),a=t("ee"),s=["load","error","abort","timeout"],c=s.length,f=t(1);t(4),t(3),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=n,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,n){var r=this.metrics,o=t[0],i=this;if(r&&o){var f=e(o);f&&(r.txSize=f)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof n.onload))&&i.end(n)}catch(e){try{a.emit("internal-error",[e])}catch(r){}}};for(var u=0;c>u;u++)n.addEventListener(s[u],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof XMLHttpRequest&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&&a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{1:"XL7HBI",2:11,3:9,4:5,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],11:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&&e.port===n.port&&e.protocol===n.protocol,r}},{}],12:[function(t,e){function n(t){return function(){r(t,[(new Date).getTime()].concat(i(arguments)))}}var r=t("handle"),o=t(1),i=t(2);"undefined"==typeof window.newrelic&&(newrelic=window.NREUM);var a=["setPageViewName","trackUserAction","finished","traceEvent","inlineHit","noticeError"];o(a,function(t,e){window.NREUM[e]=n("api-"+e)}),e.exports=window.NREUM},{1:21,2:22,handle:"D5DuLP"}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):(o[t]||(o[t]=[]),void o[t].push(e))}var r=t("ee").create(),o={};e.exports=n,n.ee=r,r.q=o},{ee:"QJf3ax"}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],G9z0Bl:[function(t,e){function n(){var t=l.info=NREUM.info;if(t&&t.licenseKey&&t.applicationID&&f&&f.body){s(h,function(e,n){e in t||(t[e]=n)}),l.proto="https"===p.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var e=f.createElement("script");e.src=l.proto+t.agent,f.body.appendChild(e)}}function r(){"complete"===f.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=t(1),c=(t(2),window),f=c.document,u="addEventListener",d="attachEvent",p=(""+location).split("?")[0],h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-536.min.js"},l=e.exports={offset:i(),origin:p,features:{}};f[u]?(f[u]("DOMContentLoaded",o,!1),c[u]("load",n,!1)):(f[d]("onreadystatechange",r),c[d]("onload",n)),a("mark",["firstbyte",i()])},{1:21,2:12,handle:"D5DuLP"}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],21:[function(t,e){function n(t,e){var n=[],o="",i=0;for(o in t)r.call(t,o)&&(n[i]=e(o,t[o]),i+=1);return n}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],22:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],23:[function(t,e){function n(t){return!(t&&"function"==typeof t&&t.apply&&!t[i])}var r=t("ee"),o=t(1),i="nr@wrapper",a=Object.prototype.hasOwnProperty;e.exports=function(t){function e(t,e,r,a){function nrWrapper(){var n,i,s,f;try{i=this,n=o(arguments),s=r&&r(n,i)||{}}catch(d){u([d,"",[n,i,a],s])}c(e+"start",[n,i,a],s);try{return f=t.apply(i,n)}catch(p){throw c(e+"err",[n,i,p],s),p}finally{c(e+"end",[n,i,f],s)}}return n(t)?t:(e||(e=""),nrWrapper[i]=!0,f(t,nrWrapper),nrWrapper)}function s(t,r,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<r.length;c++)s=r[c],a=t[s],n(a)||(t[s]=e(a,f?s+o:o,i,s,t))}function c(e,n,r){try{t.emit(e,n,r)}catch(o){u([o,e,n,r])}}function f(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){u([r])}for(var o in t)a.call(t,o)&&(e[o]=t[o]);return e}function u(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=r),e.inPlace=s,e.flag=i,e}},{1:22,ee:"QJf3ax"}]},{},["G9z0Bl",3,10,4]);</script> 
+  <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate"> 
+  <meta name="robots" content="all, index, follow, noodp, noydir"> 
+  <meta http-equiv="imagetoolbar" content="no"> 
+  <meta property="fb:app_id" content="51756880368"> 
+  <meta property="og:url" content="http://westmontcollege.smugmug.com/WESTMONT-ATHLETICS"> 
+  <meta property="og:title" content="WESTMONT ATHLETICS"> 
+  <meta property="og:description" content=""> 
+  <meta property="og:type" content="article"> 
+  <meta property="og:image" content="http://westmontcollege.smugmug.com/WESTMONT-ATHLETICS/2013-2014/W-Soccer-2013/i-SQ9pXp5/0/XL/WS13_2868-XL.jpg"> 
+  <meta property="og:image:type" content="image/jpeg"> 
+  <meta property="og:image:width" content="1024"> 
+  <meta property="og:image:height" content="683"> 
+  <meta name="twitter:card" content="summary_large_image"> 
+  <meta name="twitter:url" content="http://westmontcollege.smugmug.com/WESTMONT-ATHLETICS"> 
+  <meta name="twitter:title" content="WESTMONT ATHLETICS"> 
+  <meta name="twitter:description" content=""> 
+  <meta name="twitter:image" content="http://westmontcollege.smugmug.com/WESTMONT-ATHLETICS/2013-2014/W-Soccer-2013/i-SQ9pXp5/0/XL/WS13_2868-XL.jpg"> 
+  <meta name="twitter:image:width" content="1024"> 
+  <meta name="twitter:image:height" content="683"> 
+  <meta name="twitter:site" content="@SmugMug"> 
+  <meta itemprop="description" content=""> 
+  <meta itemprop="image" content="http://westmontcollege.smugmug.com/WESTMONT-ATHLETICS/2013-2014/W-Soccer-2013/i-SQ9pXp5/0/XL/WS13_2868-XL.jpg"> 
+  <meta itemprop="name" content="WESTMONT ATHLETICS"> 
+  <meta itemprop="url" content="http://westmontcollege.smugmug.com/WESTMONT-ATHLETICS"> 
+  <meta itemprop="height" content="683"> 
+  <meta itemprop="width" content="1024"> 
+  <meta name="description" content="Billions of happy photos, millions of passionate customers. Gorgeous online photo albums. Protect your priceless memories. Buy beautiful prints &amp; gifts."> 
+  <title>WESTMONT ATHLETICS - WestmontCollege</title> 
+  <link rel="dns-prefetch" href="http://cdn.smugmug.com"> 
+  <link rel="shortcut icon" href="/favicon.ico"> 
+  <link rel="openid.server" href="http://www.smugmug.com/services/openid/server/"> 
+  <script>var SM = {env: {"apiKey":"Pm0HeGdZls8VUfp20r3ZY1Ql76.ACff0","clipboardSmuggler":{"version":"2008110602"},"flashUploader":{"version":"2014100601"},"host":{"api":"api.smugmug.com","cartUrl":"https:\/\/secure.smugmug.com\/cart\/","cdn":"cdn.smugmug.com","http":"http:\/\/","imgUrl":"http:\/\/cdn.smugmug.com\/img\/","main":"www.smugmug.com","maps":"maps.smugmug.com","photos":"photos.smugmug.com","spacerGif":"http:\/\/cdn.smugmug.com\/img\/spacer.gif","ssl":"secure.smugmug.com","sslImgUrl":"https:\/\/secure.smugmug.com\/img\/","upload":"upload.smugmug.com","customDomain":false,"session":".smugmug.com"},"js":{"appRoot":"js\/app\/build\/","base":"\/include\/","libRoot":"js\/lib\/build\/","root":"js\/lib\/build\/"},"liveChat":{"license":1082622},"macDaddy":{"version":"3.0.4.510"},"md5s":{"icart":"2df7cab6b4ca4b55cba287d77b00ef43"},"ninjaLoader":{"version":"2010100701"},"slideshow":{"version":"2013072402"},"type":"live","videoPlayer":{"version":"2014100601"},"yui2":{"assets":"assets\/","base":"\/include\/","root":"yui\/2.8.1\/","skin":"skins\/sam\/","version":"2.8.1"},"yui3":{"assets":"assets\/","base":"\/include\/","commit":"0a111004","root":"yui\/3\/","skin":"skins\/sam\/","version":"3"},"buyerCurrency":"USD","device":"Unknown","facebook":{"appId":"51756880368","connectAPIKey":"7528d1bb7f7a685bc080054d9bc154d2","permissions":"email,status_update,publish_stream","serviceId":1,"serviceType":2},"google":{"apiKey":"AIzaSyDlPfxC2naf0Ifc_tH4HTLQoKJZ60fi0fo","clientId":"797232669904-588vo3bk37fog3id58bkmi7vhnfibs3f.apps.googleusercontent.com","serviceId":11,"serviceType":2},"loggedInUser":null,"logoutURL":"https:\/\/secure.smugmug.com\/logout?s=65710\u0026goTo=http%3A%2F%2Fwestmontcollege.smugmug.com%2FWESTMONT-ATHLETICS","pageOwner":{"homepage":"http:\/\/westmontcollege.smugmug.com","isTrial":false,"countDown404":0,"isPro":true,"mainDomain":"smugmug.com","nickName":"WestmontCollege","profileName":"WestmontCollege","rootNodeId":"2pZnb","siteName":"WestmontCollege","features":{"Albums":true,"Backprinting":true,"BasicCustomization":true,"Collect":true,"CSS":true,"Customization":true,"Domain":true,"GrantAccess":true,"HTML":true,"LimitedAccessSystemPages":true,"Pricing":true,"Printmarks":true,"ProLab":true,"Sales":true,"RightClick":true,"Sharpening":true,"SitePassword":true,"SupportChat":true,"Themes":true,"Upload":true,"Video":true,"Watermarks":true,"Assistant":true,"Coupons":true,"CustomCart":true,"Events":true,"LegacyFooter":true,"MultiplePricelists":true,"Packages":true,"CustomPackaging":true}},"platform":"Unknown","readOnly":false,"rightClickMessage":"These photos are copyrighted by their respective owners. All rights reserved. Unauthorized use prohibited.","tracking":{"ga":{"domain":"smugmug.com","smugmug":"UA-138402-3","user":null}}}, modules: {}};
+
+SM.namespace = function () {
+    var a = arguments, o = null, j, d;
+
+    for (var i = 0, len = a.length; i < len; ++i) {
+        d = a[i].split(".");
+        o = SM; for (j = (d[0] === "SM") ? 1 : 0;
+        j < d.length; ++j) { o[d[j]] = o[d[j]] || {}; o = o[d[j]]; }
+    }
+
+    return o;
+};
+</script> 
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?subset=latin-ext&amp;family=Roboto%3A100%2C300%2C400%2C500"> 
+  <link rel="stylesheet" href="http://cdn.smugmug.com/css/skin/p/456/1379626061-82bc5cc8d175431a1ea5acd6f633ef79.css" id="sm-custom-skin"> 
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?subset=latin-ext&amp;family=Lato%3A100%7CLato"> 
+  <link rel="stylesheet" href="http://cdn.smugmug.com/include/css/0/0/0/smugmug/core-83e86a33214ab7ab3faf9b356b19be90.css" id="sm-css-core"> 
+  <link rel="stylesheet" href="http://cdn.smugmug.com/include/css/0/0/0/smugmug/widget_bundle-6fae0d436a7bda28e55ad99e2f0a10e3.css" id="sm-css-widgets"> 
+  <link rel="stylesheet" href="http://cdn.smugmug.com/include/css/0/0/0/smugmug/gallery_bundle-289a2187396146b07065441ed25984cd.css"> 
+  <link rel="stylesheet" href="http://cdn.smugmug.com/include/widgetcombo/combo.css?widget-4723067-2-2-p-414016-1-1390538921-min.css&amp;widget-4723068-40-2-p-414016-1-1390603433-min.css&amp;widget-4723069-41-2-p-414016-1-1392860367-min.css" id="sm-sitemaster-css"> 
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?subset=latin-ext&amp;family=Advent+Pro%3A500"> 
+  <link rel="stylesheet" href="http://cdn.smugmug.com/include/widgetcombo/combo.css?widget-4723071-1-2-p-414016-1-1390533633-min.css" id="sm-pagemaster-css"> 
+  <link rel="stylesheet" href="http://cdn.smugmug.com/include/widgetcombo/combo.css?widget-4723391-1-2-p-414016-1-1390535293-min.css&amp;widget-4723392-36-2-p-414016-1-1390535293-min.css" id="sm-page-widget-css"> 
+  <script src="http://cdn.smugmug.com/include/js/smugpage/core-top-8bffa7b15f7fe9fa22f3e5794ce7bcf0.js"></script> 
+  <script src="http://cdn.smugmug.com/include/js/smugpage/core-config-4cf005d07f59f45a5ae5bdde00fb7e72.js"></script> 
+  <script src="http://cdn.smugmug.com/include/js/bundles/nodepagewithwidgets-95950d89bc39b7ed0286e7baeb112c2b.js"></script> 
+ </head> 
+ <body class="sm-user-professional sm-page sm-page-node sm-page-node-Vcgj2 sm-page-parentnode-2pZnb"> 
+  <header id="sm-page-header" class="sm-page-header"> 
+   <nav class="sm-page-header-content"> 
+    <a href="http://www.smugmug.com" class="sm-logo-link"><img src="http://cdn.smugmug.com/img/spacer.gif" class="sm-logo" alt="Photo Sharing &amp; Video Hosting by SmugMug :D"><img src="http://cdn.smugmug.com/img/spacer.gif" class="sm-logo-badge"></a> 
+    <ul class="sm-page-header-nav sm-page-header-nav-right">
+     <li class="yui3-u sm-page-header-navitem sm-page-header-navitem-mainhost" data-nav="mainhost"> <a type="button" class="sm-button sm-button-size-small sm-button-skin-default sm-button-nochrome" href="http://www.smugmug.com"> <span class="sm-button-label">Photo Sharing</span> </a> </li> 
+     <li class="yui3-u sm-page-header-navitem sm-page-header-navitem-login sm-login-button" data-nav="login"> <a type="button" class="sm-button sm-button-size-small sm-button-skin-default sm-button-nochrome" href="https://secure.smugmug.com/login?goTo=http%3A%2F%2Fwestmontcollege.smugmug.com%2FWESTMONT-ATHLETICS"> <span class="sm-fonticon sm-button-fonticon sm-fonticon-small sm-fonticon-User"></span> <span class="sm-button-label">Log In</span> </a> </li>
+     <li class="yui3-u sm-page-header-navitem sm-page-header-navitem-search"> 
+      <form method="get" action="/search/" class="sm-page-header-search"> 
+       <span class="sm-fonticon sm-fonticon-small sm-fonticon-Search sm-page-header-search-icon"></span> 
+       <input type="text" name="q" class="sm-form-field sm-form-field-text-input"> 
+       <input type="hidden" name="c" value="photos"> 
+       <input type="hidden" name="scope" value="node"> 
+       <input type="hidden" name="scopeValue" value="Vcgj2"> 
+      </form> </li>
+     <li class="yui3-u sm-page-header-navitem sm-page-header-navitem-cart" data-nav="cart" style="display: none;"></li>
+     <li class="yui3-u sm-page-header-navitem sm-page-header-navitem-help" data-nav="help"> <a type="button" class="sm-button sm-button-size-small sm-button-skin-default" href="http://help.smugmug.com/"> <span class="sm-fonticon sm-button-fonticon sm-fonticon-small sm-fonticon-HelpEncircled"></span> </a> </li> 
+    </ul>
+    <ul class="sm-page-header-nav sm-page-header-nav-left"></ul> 
+   </nav> 
+   <div class="sm-clear"></div> 
+  </header> 
+  <div id="sm-page-content" class="sm-page-content">
+   <div class="sm-page-layout sm-page-layout-sitetemplate sm-page-layout-full" style="margin: 0px;">
+    <div class="sm-page-layout-region sm-page-layout-region-header">
+     <div class="sm-page-layout-region sm-page-layout-region-top" data-layout-region="Top">
+      <div class="sm-page-layout-row yui3-g" data-layout-row="h">
+       <div class="sm-page-layout-column yui3-u" style="width: 100%;" data-layout-column="0">
+        <div id="sm-page-widget-6cZsDLw2" class="sm-page-widget sm-page-widget-nav sm-page-widget-4723067" data-typeid="4723067">
+         <div class="sm-page-widget-content">
+          <div class="sm-page-widget-header"></div>
+          <div id="sm-page-widget-fn2NBKkB" class="sm-page-widget-body"></div>
+          <div class="sm-page-widget-footer"></div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="sm-page-layout-row yui3-g" data-layout-row="F">
+       <div class="sm-page-layout-column yui3-u" style="width: 100%;" data-layout-column="0">
+        <div id="sm-page-widget-96n4J427" class="sm-page-widget sm-page-widget-logo sm-page-widget-4723068" data-typeid="4723068">
+         <div class="sm-page-widget-content">
+          <div class="sm-page-widget-header"></div>
+          <div id="sm-page-widget-k79JrvHv" class="sm-page-widget-body"> 
+           <div class="sm-page-widget-logo-container sm-page-widget-logo-align-center "> 
+            <div class="sm-page-widget-logo-text-container" style="
+            display: inline-block;
+    
+        "> 
+             <a href="http://www.westmont.edu/"><h1 class="sm-page-widget-logo-text sm-page-widget-logo-l sm-page-widget-logo-upper" style="
+                                        color: #63052b;
+                                                        font-family: Advent Pro,Roboto, Helvetica, Arial, sans-serif;
+                                                        font-weight: 500;
+                                                                ">Westmont College</h1></a> 
+             <h2 class="sm-page-widget-logo-subtext sm-page-widget-logo-l"> brad elliott photography </h2> 
+            </div> 
+           </div> 
+          </div>
+          <div class="sm-page-widget-footer"></div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="sm-page-layout-region sm-page-layout-region-body">
+     <div class="sm-page-layout-region sm-page-layout-region-left" style="width: 0px;" data-layout-region="Left"></div>
+     <div class="sm-page-layout-region sm-page-layout-region-right" style="width: 0px;" data-layout-region="Right"></div>
+     <div class="sm-page-layout-region sm-page-layout-region-center" data-layout-region="Center">
+      <div class="sm-page-layout-row yui3-g sm-page-layout-row-reserved" data-layout-row="main" data-layout-row-reserved="main">
+       <div class="sm-page-layout-column yui3-u" style="width: 100%;" data-layout-column="0">
+        <div class="sm-page-layout sm-page-layout-pagetemplate sm-page-layout-full sm-page-layout-fillheight" style="margin: 0px 100px 20px;">
+         <div class="sm-page-layout-region sm-page-layout-region-header"></div>
+         <div class="sm-page-layout-region sm-page-layout-region-body">
+          <div class="sm-page-layout-region sm-page-layout-region-left" style="width: 0px;" data-layout-region="Left"></div>
+          <div class="sm-page-layout-region sm-page-layout-region-right" style="width: 0px;" data-layout-region="Right"></div>
+          <div class="sm-page-layout-region sm-page-layout-region-center" data-layout-region="Center">
+           <div class="sm-page-layout-row yui3-g" data-layout-row="a">
+            <div class="sm-page-layout-column yui3-u" style="width: 100%;" data-layout-column="0">
+             <div id="sm-page-widget-KkwJBK9J" class="sm-page-widget sm-page-widget-breadcrumb sm-page-widget-4723391" data-typeid="4723391">
+              <div class="sm-page-widget-content">
+               <div class="sm-page-widget-header"></div>
+               <div id="sm-page-widget-rgWQphkj" class="sm-page-widget-body"></div>
+               <div class="sm-page-widget-footer"></div>
+              </div>
+             </div>
+            </div>
+           </div>
+           <div class="sm-page-layout-row yui3-g" data-layout-row="b">
+            <div class="sm-page-layout-column yui3-u" style="width: 100%;" data-layout-column="0">
+             <div id="sm-page-widget-3nrHgftH" class="sm-page-widget sm-page-widget-folders sm-page-widget-4723392 sm-page-widget-hidden" data-typeid="4723392">
+              <div class="sm-page-widget-content">
+               <div class="sm-page-widget-header">
+                <h2>SEASONS</h2>
+               </div>
+               <div id="sm-page-widget-Q5x3xhSG" class="sm-page-widget-body"></div>
+               <div class="sm-page-widget-footer"></div>
+              </div>
+             </div>
+            </div>
+           </div>
+           <div class="sm-page-layout-row yui3-g sm-page-layout-row-reserved" data-layout-row="main" data-layout-row-reserved="main"></div>
+          </div>
+          <div class="sm-clear"></div>
+         </div>
+         <div class="sm-page-layout-region sm-page-layout-region-footer"></div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="sm-clear"></div>
+    </div>
+    <div class="sm-page-layout-region sm-page-layout-region-footer">
+     <div class="sm-page-layout-region sm-page-layout-region-bottom" data-layout-region="Bottom">
+      <div class="sm-page-layout-row yui3-g" data-layout-row="t">
+       <div class="sm-page-layout-column yui3-u" style="width: 100%;" data-layout-column="0">
+        <div id="sm-page-widget-bj66MHVJ" class="sm-page-widget sm-page-widget-sociallinks sm-page-widget-4723069" data-typeid="4723069">
+         <div class="sm-page-widget-content">
+          <div class="sm-page-widget-header"></div>
+          <div id="sm-page-widget-xTgGwLCg" class="sm-page-widget-body"> 
+           <ul class="sm-page-widget-social-links sm-social-links-center sm-social-links-small sm-social-links-horizontal"></ul> 
+          </div>
+          <div class="sm-page-widget-footer"></div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div> 
+  <footer id="sm-page-footer" class="sm-page-footer sm-text-mini"> 
+   <nav class="sm-page-footer-content yui3-g"> 
+    <div class="yui3-u-1-2"> 
+     <ul class="sm-footer-nav yui3-g"> 
+      <li class="yui3-u sm-footer-navitem sm-footer-navitem-photo"><a href="http://www.smugmug.com/">Photo Sharing</a></li> 
+      <li class="yui3-u sm-footer-navitem sm-footer-navitem-about"><a href="http://www.smugmug.com/about/">About SmugMug</a></li> 
+      <li class="yui3-u sm-footer-navitem sm-footer-navitem-browse"><a href="http://www.smugmug.com/browse/">Browse Photos</a></li> 
+      <li class="yui3-u sm-footer-navitem sm-footer-navitem-prints"><a href="http://www.smugmug.com/prints/catalog/">Prints &amp; Gifts</a></li> 
+      <li class="yui3-u sm-footer-navitem sm-footer-navitem-terms"><a href="http://www.smugmug.com/about/terms/">Terms</a></li> 
+      <li class="yui3-u sm-footer-navitem sm-footer-navitem-privacy"><a href="http://www.smugmug.com/about/privacy/">Privacy</a></li> 
+      <li class="yui3-u sm-footer-navitem sm-footer-navitem-contact "><a href="http://help.smugmug.com/">Contact</a></li> 
+      <li class="yui3-u sm-footer-navitem sm-footer-navitem-login sm-login-button" data-nav="login"><a href="https://secure.smugmug.com/login?goTo=http%3A%2F%2Fwestmontcollege.smugmug.com%2FWESTMONT-ATHLETICS">Log In</a></li> 
+     </ul> 
+    </div>
+    <div class="yui3-u-1-2 sm-page-footer-copyright">
+      © 2015 SmugMug, Inc. 
+    </div> 
+   </nav> 
+  </footer> 
+  <div class="sm-user-ui sm-user-overlay-container"></div> 
+  <div class="sm-nui sm-overlay-container"></div>
+  <script>    YUI().use('sm-page','sm-es5-polyfill','sm-page-tracking','sm-page-nav','sm-page-nav-login','sm-page-nav-cart','sm-page-contact','sm-page-nodepage','sm-page-layout','sm-pagewidget-nav-view','sm-pagewidget-logo-view','sm-pagewidget-breadcrumb-view','sm-pagewidget-folders-view',function(Y){
+                    var widget0,widget1,widget2,widget3;
+        
+        
+        Y.SM.Page.responsiveDesign = {"mobileMaxWidth":670};
+        Y.SM.Page.init({"nodeId":"Vcgj2","uploadNodeId":"Vcgj2","uploadNodeDepth":1,"addCreateMenu":null,"tracking":true,"trackingOptions":{"ga":{"customVariables":[{"index":1,"name":"Version","value":"SMN","scope":3}]}},"dataLayer":{"tag_manager_id":"GTM-KQPLTF","host_level":"live","site_version":"SMN","tracking_enabled":1,"smugmug_ga_config":{"id":"UA-138402-3"},"user_ga_config":{"id":""},"snowplow_js_location":"http:\/\/cdn.smugmug.com\/include\/js\/snowplow-20140415155912.js","first_party_cookie_domain":"smugmug.com","user_id":"414016"},"cookieMonster":false,"cookieMonsterHost":"","eucookie":false,"allowCustomDesigns":true,"defaultTemplateId":7,"feedsConfig":[],"showNext":true,"nextSandbox":false,"loadNuxGuides":false,"csrfToken":null,"loadQuickNews":false,"isAdmin":false,"showHeader":true,"features":{"ALBUMS":"Albums","ASSISTANT":"Assistant","BACKPRINTING":"Backprinting","BASIC_CUSTOMIZATION":"BasicCustomization","COLLECT":"Collect","COUPONS":"Coupons","CSS":"CSS","CUSTOM_CART":"CustomCart","CUSTOMIZATION":"Customization","DOMAIN":"Domain","EVENTS":"Events","GRANT_ACCESS":"GrantAccess","HTML":"HTML","LEGACY_FOOTER":"LegacyFooter","LIMITED_SYSTEM_PAGES":"LimitedAccessSystemPages","MULTIPLE_PRICELISTS":"MultiplePricelists","PACKAGES":"Packages","PACKAGING":"CustomPackaging","PRICING":"Pricing","PRINTMARKS":"Printmarks","PRO_LABS":"ProLab","RCP":"RightClick","SALES":"Sales","SHARPENING":"Sharpening","SITE_PASSWORD":"SitePassword","SUPPORT_CHAT":"SupportChat","THEMES":"Themes","UPLOAD":"Upload","VIDEO":"Video","WATERMARKS":"Watermarks","WHITELABEL":"WhiteLabel"},"analyticsId":false,"loadChat":false});
+
+        
+        
+        if (Y.SM.Page.renderWidgets) {
+            widget0 = new Y.SM.PageWidget.Nav({moduleName: '', config: {"user":{"nickName":"WestmontCollege"},"page":{"nodeId":"Vcgj2"},"widget":{"parentId":"sm-page-widget-6cZsDLw2","containerId":"sm-page-widget-fn2NBKkB","data":{"items":[{"children":[],"data":{"type":"node","typeInfo":{"NodeID":"2pZnb","ParentID":"","RemoteID":"","Type":1,"Name":"","UrlName":"","UrlPath":"","Url":"http:\/\/westmontcollege.smugmug.com","IDPath":"","HLSetting":0,"HLImageID":0,"DateAdded":"1390525566","DateAddedDisplay":"January 23, 2014","DateModified":"1390525566","DateModifiedDisplay":"January 23, 2014","PasswordProtected":false,"IsPasswordUnlocked":false,"PrivacyLevel":1,"NodePrivacyLevel":1,"IsOwner":false,"HasChildren":true,"Depth":0,"Description":"","Keywords":"","SmugSearchable":8,"WorldSearchable":3,"SortIndex":"1390525566","SecurityType":1,"EffectiveSecurityType":1,"ParentEffectiveSecurityType":1,"SortDirection":"Ascending","SortMethod":"SortIndex"}},"label":"Home","url":"http:\/\/westmontcollege.smugmug.com"},{"children":[],"data":{"type":"node","typeInfo":{"NodeID":"R3wZ9","ParentID":"2pZnb","RemoteID":"","Type":16,"Name":"browse","UrlName":"browse","UrlPath":"\/browse","Url":"http:\/\/westmontcollege.smugmug.com\/browse","IDPath":"2pZnb","HLSetting":0,"HLImageID":0,"DateAdded":"1390525566","DateAddedDisplay":"January 23, 2014","DateModified":"1390525566","DateModifiedDisplay":"January 23, 2014","PasswordProtected":false,"IsPasswordUnlocked":false,"PrivacyLevel":1,"NodePrivacyLevel":1,"IsOwner":false,"HasChildren":false,"Depth":1,"Description":"","Keywords":"","SmugSearchable":1,"WorldSearchable":1,"SortIndex":"6","SecurityType":1,"EffectiveSecurityType":1,"ParentEffectiveSecurityType":1,"ParentPrivacyLevel":1}},"label":"Browse","url":"http:\/\/westmontcollege.smugmug.com\/browse"},{"children":[],"data":{"type":"node","typeInfo":{"NodeID":"sn7fp","ParentID":"2pZnb","RemoteID":"","Type":16,"Name":"search","UrlName":"search","UrlPath":"\/search","Url":"http:\/\/westmontcollege.smugmug.com\/search","IDPath":"2pZnb","HLSetting":0,"HLImageID":0,"DateAdded":"1390525566","DateAddedDisplay":"January 23, 2014","DateModified":"1390525566","DateModifiedDisplay":"January 23, 2014","PasswordProtected":false,"IsPasswordUnlocked":false,"PrivacyLevel":1,"NodePrivacyLevel":1,"IsOwner":false,"HasChildren":false,"Depth":1,"Description":"","Keywords":"","SmugSearchable":1,"WorldSearchable":1,"SortIndex":"5","SecurityType":1,"EffectiveSecurityType":1,"ParentEffectiveSecurityType":1,"ParentPrivacyLevel":1}},"label":"Search","url":"http:\/\/westmontcollege.smugmug.com\/search"}],"style":"horizontal","topLinkStyle":"capitalize","subLinkStyle":"regular","alignment":"center","textColor":"default","textSize":"medium","topLinkSeparator":false,"subLinkSeparator":true,"collapseMobile":false,"hasSubitems":false,"hasContactItem":false,"hasSearchItem":false}}}, container: '#sm-page-widget-fn2NBKkB'}); widget0.render(); widget1 = new Y.SM.PageWidget.Logo({moduleName: '', config: {"user":{"nickName":"WestmontCollege"},"page":{"nodeId":"Vcgj2"},"widget":{"parentId":"sm-page-widget-96n4J427","containerId":"sm-page-widget-k79JrvHv","data":{"IsProtected":false}}}, container: '#sm-page-widget-k79JrvHv'}); widget1.render(); widget2 = new Y.SM.PageWidget.Breadcrumb({moduleName: '', config: {"user":{"nickName":"WestmontCollege"},"page":{"nodeId":"Vcgj2"},"widget":{"parentId":"sm-page-widget-KkwJBK9J","containerId":"sm-page-widget-rgWQphkj","data":{"breadcrumbs":[{"name":"WestmontCollege","url":"http:\/\/westmontcollege.smugmug.com"},{"name":"WESTMONT ATHLETICS","url":""}],"showCurrentPage":true,"showFullBreadcrumb":false,"emphasizeCurrentPage":false}}}, container: '#sm-page-widget-rgWQphkj'}); widget2.render(); widget3 = new Y.SM.PageWidget.Folders({moduleName: '', config: {"user":{"nickName":"WestmontCollege"},"page":{"nodeId":"Vcgj2"},"widget":{"parentId":"sm-page-widget-3nrHgftH","containerId":"sm-page-widget-Q5x3xhSG","data":{"nodeId":"Vcgj2","paginationType":4,"tileLayout":"grid","imageCrop":"4x3","imageSize":"M","varyHeight":false,"tileSpacing":72,"tileInfo":"after","tileInfoHover":"","pageSize":0,"pageSizeType":"auto","sortMethod":7,"sortDirection":2,"nodeSource":"currentPage"}}}, container: '#sm-page-widget-Q5x3xhSG'}); widget3.render();         }
+
+        Y.SM.Page.widgets = [widget0,widget1,widget2,widget3];
+
+            });
+</script>
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"d7cf326645","applicationID":"467408","transactionName":"ZlIEMEJQCENYUhBeWl8YMxZZHg9eXVQcGVhW","queueTime":0,"applicationTime":150,"atts":"ShUTRgpKGxwbUEYNTkxK","errorBeacon":"bam.nr-data.net","agent":"js-agent.newrelic.com\/nr-536.min.js"}</script>
+ </body>
+</html>
