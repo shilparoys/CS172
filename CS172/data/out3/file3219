@@ -1,104 +1,0 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
- <!-- InstanceBegin template="/Templates/core.dwt" codeOutsideHTMLIsLocked="false" -->
- <head> 
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
-  <title>Westmont | Visitor Information</title> 
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> 
-  <script type="text/javascript" src="https://www.westmont.edu/_includes/swfobject.js"></script> 
-  <meta name="viewport" content="width=801"> 
-  <link href="http://www.westmont.edu/_css/westmont.css" rel="stylesheet" type="text/css"> 
-  <link href="http://www.westmont.edu/_css/w-header.css" rel="stylesheet" type="text/css"> 
-  <!--[if IE]>
-<link rel="stylesheet" type="text/css" href="https://www.westmont.edu/_css/iehacks.css" />
-<![endif]--> 
-  <!--[if IE 6]>
-<link rel="stylesheet" type="text/css" href="https://www.westmont.edu/_css/ie6hacks.css" />
-<![endif]--> 
-  <!--[if IE 7]>
-<link rel="stylesheet" type="text/css" href="https://www.westmont.edu/_css/ie7hacks.css" />
-<![endif]--> 
-  <script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-3049632-1']);
-  _gaq.push(['_setDomainName', '.westmont.edu']);
-  _gaq.push(['_trackPageview']);
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script> 
-  <!-- InstanceBeginEditable name="head" -->
-  <!-- InstanceEndEditable --> 
- </head> 
- <body> 
-  <div id="page"> 
-   <div id="header"> 
-    <div id="topnav"> 
-     <ul> 
-      <li><a href="http://www.westmont.edu/academics/">Academics</a> |</li> 
-      <li><a href="http://www.westmont.edu/admissions/"> Admissions</a> |</li> 
-      <li><a href="http://www.westmont.edu/_current_students/"> Student Life</a> |</li> 
-      <li><a href="http://webapps.westmont.edu/cgi-bin/WebObjects/eventsCalendar.woa/wa"> Calendars &amp; Events</a> |</li> 
-      <li><a href="http://blogs.westmont.edu/"> News</a> | </li> 
-      <li><a href="http://www.westmont.edu/contact/">Contact</a></li> 
-     </ul> 
-    </div> 
-    <div id="title"> 
-     <a href="index.html">Visitor Information</a> 
-    </div> 
-    <div id="desc"></div> 
-    <div id="bread_crumbs">
-     <a href="http://www.westmont.edu">Home</a> &nbsp;»&nbsp; 
-     <a href="http://www.westmont.edu/_visitors/">Visitor Information</a> 
-    </div> 
-   </div> 
-   <div id="main"> 
-    <link href="/_css/w-nav.css" rel="stylesheet" type="text/css"> 
-    <div id="sidebar"> 
-     <ul> 
-      <li class="navHeader">Resources</li> 
-      <li><a href="http://www.westmont.edu/_visitors/pdf/map.pdf">Campus Map</a></li> 
-      <li><a href="directions_to_campus.html">Directions to Campus</a></li> 
-      <li><a href="santa-barbara-lodging.html">Santa Barbara Lodging</a></li> 
-      <li><a href="http://www.westmont.edu/parents/common-questions-from-out-of-state-parents.html">Out-of-State Parents</a></li> 
-      <li><a href="http://www.westmont.edu/admissions/visit.html">Campus Visit</a></li> 
-      <li><a href="http://www.westmont.edu/_offices/olp/">Post a Job</a></li> 
-     </ul> 
-    </div> 
-    <div id="content"> 
-     <!-- InstanceBeginEditable name="Page Content" --> 
-     <h1>Santa Barbara Hotels &amp; Lodging</h1> 
-     <p>Prices as of June 2014 and are subject to change.</p> 
-     <p><strong>Note:</strong> This is a limited list of hotels who offer rates at discounted prices to Westmont Parents and Alumni. The list below does not include all of the hotels in the Santa Barbara area. </p> 
-     <p>Discounts apply to Westmont Parents and Alumni when requested at time of reservation.</p> 
-     <p>All discounts vary according to season and availability. Call to confirm discounts for specific dates.</p> 
-     <div id="hotels"></div> 
-     <div id="lodging"></div> 
-     <hr> 
-     <div id="message">
-      If you can't see any of these listings, you're probably using an outdated browser (Internet Explorer 6, 7, 8, or 9). Please update your browser or use Google's browser, 
-      <a href="https://www.google.com/intl/en/chrome/browser/">Chrome</a>, to view these listings.
-     </div> 
-     <script type="text/javascript">                   function exists(item) {      return ((item !== null) && (item.length > 0));    }    $.getJSON('http://poi.westmont.edu/api/category/Hotels.json',     	function(data) {			var items = ['<table width="535" height="1870" border="0" cellpadding="0" cellspacing="0"  class="table_row_borders"><tr><td width="94" class="table_heading1">Name </td><td width="105" class="table_heading1">Adress</td><td width="104" class="table_heading1">Phone </td><td width="232" class="table_heading1">Rates</td></tr>'];			$.each(data, function(i){            	items.push((exists(data[i].website) ? '<tr><td><a href="'+ data[i].website + '"> ' + data[i].name + '</a></td>' : '<strong>' + data[i].name + '</strong>'));      	items.push('<td>' + data[i].address + '</td>');        items.push('<td><p>' + data[i].phone + '</p></td>');        items.push((exists(data[i].contact) ? '<td><p>' + data[i].contact + '</p>' : "<td> "));        items.push('<p>' + data[i].description + ' </p></td></tr>');        });      items.push('</table>');      $('#hotels').html(items.join(''));          });</script> 
-     <script type="text/javascript">    function exists(item) {      return ((item !== null) && (item.length > 0));    }    $.getJSON('http://poi.westmont.edu/api/category/Additional%20Lodging.json', function(data) {      var items = ['<ul>'];      $.each(data, function(i){            	items.push((exists(data[i].website) ? '<li><strong><a href="'+ data[i].website + '"> ' + data[i].name + '</a></strong>' : '<li><strong>' + data[i].name + '</strong>'));        items.push((exists(data[i].contact) ? '<br><strong>' + data[i].contact : ""));        items.push((exists(data[i].phone) ? ' | ' + data[i].phone : ""));        items.push((exists(data[i].email) ? ' | ' + data[i].email + '</strong><br>' : "</strong><br>"));        items.push('' + data[i].description + ' </p></li>');        });      		items.push('</ul>');            $('#lodging').html(items.join(''));          });</script> 
-     <!-- InstanceEndEditable --> 
-    </div> 
-    <div class="clear">
-     &nbsp;
-    </div> 
-   </div> 
-  </div> 
-  <div id="footer_padding"> 
-   <div id="footer">
-    <a title="Westmont Homepage" href="http://www.westmont.edu/">Westmont College</a> | © 2015 - All rights reserved | 
-    <a title="Privacy Policy" href="http://blogs.westmont.edu/privacy-policy/">Privacy Policy</a> | 
-    <a title="Terms of Use" href="http://blogs.westmont.edu/terms-and-conditions/">Terms of Use</a> | 
-    <a title="Emergency Info" href="http://www.westmont.edu/emergency/">Emergency Info</a> | 
-    <a href="#" onclick="window.open(&quot;http://forms.westmont.edu/forms/pagecontacts/webmaster/index.php&quot;,&quot;name&quot;,&quot;width=350,height=500&quot;)">Feedback</a>
-   </div> 
-  </div>  
-  <!-- InstanceEnd -->
- </body>
-</html>
